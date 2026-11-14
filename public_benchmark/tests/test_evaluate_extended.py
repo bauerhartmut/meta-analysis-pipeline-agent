@@ -35,9 +35,18 @@ def test_numeric_perfect_prediction_scores_one() -> None:
     metrics = evaluate_numeric(records, {"r1": prediction("r1", cells=[{"field": "intervention_group_size", "arm": "intervention", "value": 143}])})
     assert metrics["cell_precision"] == 1.0
     assert metrics["cell_recall"] == 1.0
-    assert metrics["mae_matched"] == 0.0
+    assert metrics["mae_pairs"] == 0.0
     assert metrics["record_exact"] == 1
     assert metrics["arm_swap_evaluable"] == 0
+
+
+def test_numeric_mae_ignores_cells_without_pair() -> None:
+    records = [numeric_record("r1", [("intervention_mean", "intervention", 10.0), ("comparator_mean", "comparator", 20.0)])]
+    metrics = evaluate_numeric(records, {"r1": prediction("r1", cells=[{"field": "intervention_mean", "arm": "intervention", "value": 11.0}])})
+    assert metrics["mae_pairs"] == 1.0
+    assert metrics["mae_pairs_covered"] == 1
+    assert metrics["mae_coverage"] == 0.5
+    assert metrics["fields"]["comparator_mean"]["mae"] is None
 
 
 def test_numeric_missing_cell_reduces_recall() -> None:
@@ -48,19 +57,30 @@ def test_numeric_missing_cell_reduces_recall() -> None:
     assert metrics["record_exact"] == 0
 
 
-def test_numeric_mae_uses_absolute_difference() -> None:
+def test_numeric_mae_is_positive_at_default_tolerance() -> None:
+    """Der MAE muss auch dann messen, wenn die Toleranz den Treffer verhindert."""
     records = [numeric_record("r1", [("intervention_mean", "intervention", 10.0)])]
-    metrics = evaluate_numeric(records, {"r1": prediction("r1", cells=[{"field": "intervention_mean", "arm": "intervention", "value": 12.0}])})
-    assert metrics["cell_recall"] == 0.0
-    assert metrics["mae_matched"] is None
-    # Mit Toleranz wird die Zelle getroffen und der Fehler als MAE berichtet.
     metrics = evaluate_numeric(
         records,
-        {"r1": prediction("r1", cells=[{"field": "intervention_mean", "arm": "intervention", "value": 12.0}])},
-        abs_tol=3.0,
+        {"r1": prediction("r1", cells=[{"field": "intervention_mean", "arm": "intervention", "value": 14.0}])},
     )
-    assert metrics["cell_recall"] == 1.0
-    assert metrics["mae_matched"] == 2.0
+    assert metrics["cell_recall"] == 0.0
+    assert metrics["mae_pairs"] == 4.0
+    assert metrics["mae_pairs_max"] == 4.0
+    assert metrics["mae_pairs_covered"] == 1
+    assert metrics["mae_coverage"] == 1.0
+
+
+def test_numeric_mae_and_recall_differ_under_tolerance() -> None:
+    records = [numeric_record("r1", [("intervention_mean", "intervention", 10.0)])]
+    predictions = {"r1": prediction("r1", cells=[{"field": "intervention_mean", "arm": "intervention", "value": 12.0}])}
+    strict = evaluate_numeric(records, predictions)
+    assert strict["cell_recall"] == 0.0
+    assert strict["mae_pairs"] == 2.0
+    tolerant = evaluate_numeric(records, predictions, abs_tol=3.0)
+    assert tolerant["cell_recall"] == 1.0
+    # Der MAE bleibt gleich: er haengt nicht von der Toleranz ab.
+    assert tolerant["mae_pairs"] == 2.0
 
 
 def test_numeric_relative_tolerance() -> None:
@@ -71,7 +91,7 @@ def test_numeric_relative_tolerance() -> None:
         rel_tol=0.01,
     )
     assert metrics["cell_recall"] == 1.0
-    assert metrics["mae_matched"] == 0.9
+    assert metrics["mae_pairs"] == pytest.approx(0.9, abs=1e-6)
 
 
 def test_numeric_detects_swapped_arms() -> None:

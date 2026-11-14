@@ -4,7 +4,8 @@
 Drei Aufgaben, drei Metriksaetze:
 
 * ``numeric_extraction`` (Yun): zellgenaue Treffer (Precision/Recall/F1),
-  mittlerer absoluter Fehler (MAE) auf getroffenen Zellen und Armvertauschung.
+  mittlerer absoluter Fehler (MAE) ueber Feld-Arm-Paare unabhaengig von der
+  Toleranz und Armvertauschung.
 * ``evidence_direction`` (Evidence Inference): Label-Genauigkeit, Macro-F1 der
   Labels und Spannen-F1 ueber IoU-Matching.
 * ``pico_span`` (EBM-NLP): Token-F1 je PICO-Element.
@@ -98,8 +99,11 @@ def evaluate_numeric(
     gold_cells = 0
     predicted_cells = 0
     matched = 0
+    # Fehler werden unabhaengig von der Toleranz ueber Feld-Arm-Paare gesammelt.
     errors: list[float] = []
-    per_field: dict[str, dict[str, float]] = defaultdict(lambda: {"gold": 0, "predicted": 0, "matched": 0, "errors": 0})
+    per_field: dict[str, dict[str, float]] = defaultdict(
+        lambda: {"gold": 0, "predicted": 0, "matched": 0, "errors": 0, "mae_covered": 0}
+    )
     field_abs_error: dict[str, list[float]] = defaultdict(list)
 
     exact_records = 0
@@ -148,8 +152,23 @@ def evaluate_numeric(
             used_pred.add(best_index)
             matched += 1
             per_field[field]["matched"] += 1
-            errors.append(best_delta or 0.0)
-            field_abs_error[field].append(best_delta or 0.0)
+
+        # MAE unabhaengig von der Toleranz: jedes Gold-Feld-Arm-Paar zaehlt, fuer
+        # das eine Vorhersage existiert, auch wenn der Wert ausserhalb liegt.
+        paired_pred: set[int] = set()
+        for field, arm, value in gold:
+            candidates = [
+                (abs(p_value - value), index)
+                for index, (p_field, p_arm, p_value) in enumerate(pred)
+                if index not in paired_pred and p_field == field and (arm is None or p_arm == arm)
+            ]
+            if not candidates:
+                continue
+            delta, index = min(candidates)
+            paired_pred.add(index)
+            errors.append(delta)
+            field_abs_error[field].append(delta)
+            per_field[field]["mae_covered"] += 1
 
         extra = len(pred) - len(used_pred)
         if all_matched and extra == 0:
@@ -192,6 +211,7 @@ def evaluate_numeric(
             "recall": round(_safe_div(counts["matched"], counts["gold"]), 4),
             "precision": round(_safe_div(counts["matched"], counts["predicted"]), 4),
             "mae": round(sum(field_values) / len(field_values), 4) if field_values else None,
+            "mae_covered": counts["mae_covered"],
         }
 
     return {
@@ -204,8 +224,10 @@ def evaluate_numeric(
         "cell_precision": round(precision, 4),
         "cell_recall": round(recall, 4),
         "cell_f1": round(_f1(precision, recall), 4),
-        "mae_matched": round(sum(errors) / len(errors), 4) if errors else None,
-        "mae_max": round(max(errors), 4) if errors else None,
+        "mae_pairs": round(sum(errors) / len(errors), 4) if errors else None,
+        "mae_pairs_max": round(max(errors), 4) if errors else None,
+        "mae_pairs_covered": len(errors),
+        "mae_coverage": round(_safe_div(len(errors), gold_cells), 4),
         "record_exact": exact_records,
         "record_exact_rate": round(_safe_div(exact_records, len(records)), 4),
         "arm_swap_records": swap_records,

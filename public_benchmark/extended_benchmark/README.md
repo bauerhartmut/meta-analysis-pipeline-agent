@@ -103,7 +103,7 @@ Vorhersage; unbekannte IDs werden gemeldet und nicht bewertet.
 
 | Aufgabe | Kennzahlen | Definition |
 |---|---|---|
-| `numeric_extraction` (Yun) | zellgenaue Precision/Recall/F1, MAE, Armvertauschung, Record-Exaktheit | Eine Zelle trifft, wenn Feld, Arm und Wert übereinstimmen (absolute und relative Toleranz einstellbar). MAE über die absoluten Abweichungen getroffener Zellen. Armvertauschung zählt, wenn beide Arme eines Feldes vertauscht geliefert werden. |
+| `numeric_extraction` (Yun) | zellgenaue Precision/Recall/F1, MAE, Armvertauschung, Record-Exaktheit | Eine Zelle trifft, wenn Feld, Arm und Wert übereinstimmen (absolute und relative Toleranz einstellbar); Precision und Recall zählen tolerant. Der MAE läuft über Feld-Arm-Paare **unabhängig von der Toleranz**: Jede Gold-Zelle mit einer Vorhersage zum selben Feld und Arm zählt, auch wenn der Wert daneben liegt — sonst wäre er bei Standardtoleranz immer null. Armvertauschung zählt, wenn beide Arme eines Feldes vertauscht geliefert werden. |
 | `evidence_direction` (Evidence Inference) | Label-Genauigkeit, Macro-F1, Spannen-F1 | Label wird je Record exakt verglichen. Spannen werden über IoU gematcht (Standard 0,5); Precision/Recall mikro über alle Records. |
 | `pico_span` (EBM-NLP) | Token-F1 je Element, Macro-F1, Record-Exaktheit | Spannen werden als Tokenmengen je Element verglichen; Überlappung wird mikro gezählt. |
 
