@@ -5,3 +5,8 @@ __pycache__/
 # Auditkarten und Evidenzledger enthalten Artikelzitate und bleiben lokal.
 validation/yun_audit_cards.md
 validation/yun_audit_410_ledger.json
+
+# Erzeugte Benchmark-Dateien sind aus den Rohdaten reproduzierbar; der Build
+# schreibt Hashes und Zählungen in extended_benchmark/manifest.json.
+extended_benchmark/records/
+extended_benchmark/pmc_oa_cache/

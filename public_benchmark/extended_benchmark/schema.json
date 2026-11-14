@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "description": "Einheitlicher Record fuer den erweiterten Cross-Model-Benchmark. Ein Record ist eine einzelne Extraktionsaufgabe auf genau einem Dokument.",
+  "required": [
+    "record_id",
+    "dataset",
+    "task",
+    "document",
+    "context",
+    "gold",
+    "provenance"
+  ],
+  "tasks": {
+    "numeric_extraction": "Numerische Armwerte aus Abstracts/Results extrahieren (N, Mean, SD, Ereignisse).",
+    "evidence_direction": "Intervention, Comparator, Outcome und Evidenzrichtung samt Textbeleg bestimmen.",
+    "pico_span": "PICO-Textspannen in Abstracts markieren."
+  },
+  "fields": {
+    "record_id": "Eindeutig, Format <dataset>:<source_id>.",
+    "dataset": "yun2024 | evidence_inference_v2 | ebm_nlp | pmc_oa",
+    "task": "Siehe tasks.",
+    "document": {
+      "id": "PMCID oder PMID, wie in der Quelle gefuehrt.",
+      "kind": "abstract_xml | abstract_text | fulltext_xml | fulltext_markdown",
+      "path": "Relativer Pfad zur Textquelle, leer wenn nicht lokal.",
+      "split": "train | dev | test | null. Null bedeutet: in der Quelle kein Split.",
+      "text_chars": "Zeichenzahl der Textquelle, null wenn unbekannt."
+    },
+    "context": {
+      "intervention": "Freitext oder null.",
+      "comparator": "Freitext oder null.",
+      "outcome": "Freitext oder null.",
+      "outcome_type": "binary | continuous | null"
+    },
+    "gold": {
+      "cells": "Liste aus {field, arm, value, unit, source} fuer numerische Aufgaben. Leere Liste bei semantischen Aufgaben.",
+      "label": "Evidenzrichtung oder null.",
+      "spans": "Liste aus {kind, element, start, end, text} in Zeichen- oder Tokenindizes, je nach Quelle dokumentiert."
+    },
+    "provenance": {
+      "source_file": "Relativer Pfad zur Originaldatei.",
+      "source_id": "ID in der Originaldatei.",
+      "dataset_version": "Commit oder Release der Quelle."
+    },
+    "issues": "Liste von Strings mit bekannten Einschraenkungen dieses Records."
+  },
+  "invariants": [
+    "Keine Werte werden erfunden: fehlt ein Wert, fehlt die Zelle.",
+    "Jede Zelle nennt ihren Arm (intervention, comparator oder null).",
+    "record_id ist ueber alle Datensaetze eindeutig.",
+    "Der eingefrorene Yun-Testsplit (249 Records) wird ohne ausdrueckliche Freigabe nicht aufgenommen."
+  ]
+}
