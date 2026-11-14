@@ -22,28 +22,34 @@ ist kein Unterschied zwischen den Modellen nachweisbar.** Das ist kein
 Gleichstandsnachweis: die kleinste nachweisbare Differenz liegt bei dieser
 Größe im Bereich von 9 bis 10 Prozentpunkten.
 
-## Zusatzmodell Qwen3-30B
+## Weitere Qwen-Varianten unter 40B
 
-Nachgereicht wurde `gwdg/qwen3-30b-a3b-instruct-2507` (30B MoE, 3B aktiv,
-`max_tokens` 8000). Der Lauf brauchte 74 Sekunden: 54 Aufrufe, 54 × HTTP 200,
-kein leerer und kein fehlerhafter Aufruf, Median 0,8 s je Record bei drei
-Threads.
+Nachgereicht wurden drei kleinere Modelle, alle über denselben Prompt und
+dieselben 54 Records:
 
-| Kennzahl | Qwen3-30B | Spanne der drei großen Modelle |
-|---|---:|---|
-| Recall | 0,566 | 0,571-0,604 |
-| Precision | 0,426 | 0,358-0,510 |
-| F1 | 0,486 | 0,450-0,539 |
-| exakte Records | 7 / 54 | 8-9 / 54 |
-| Zeilen zugeordnet | 0,778 | 0,815-0,852 |
-| Genauigkeit in gefundener Zeile | 0,744 | 0,844-0,897 |
-| Zusatzzellen | 113 | 88-179 |
+| Kennzahl | Qwen3-30B | Qwen 3.6-35B | Qwen 3.8-27B | Spanne der drei großen Modelle |
+|---|---:|---:|---:|---|
+| Recall | 0,566 | 0,511 | 0,566 | 0,571-0,604 |
+| Precision | 0,426 | 0,503 | 0,355 | 0,358-0,510 |
+| F1 | 0,486 | 0,507 | 0,436 | 0,450-0,539 |
+| exakte Records | 7 / 54 | 6 / 54 | 6 / 54 | 8-9 / 54 |
+| Zeilen zugeordnet | 0,778 | 0,778 | 0,833 | 0,815-0,852 |
+| Genauigkeit in gefundener Zeile | 0,744 | 0,853 | 0,821 | 0,844-0,897 |
+| Zusatzzellen | 113 | 76 | 167 | 88-179 |
+| Aufrufe | 54 | 59 | 72 | 54-111 |
+| leer / Fehler | 0 / 0 | 0 / 5 | 6 / 12 | 11-41 / 2-13 |
+| Median je Record | 0,8 s | 13,1 s | 110,0 s | 4,2-49,6 s |
 
-Das Modell findet die Goldzeile ähnlich oft wie die großen Modelle, füllt sie
-also seltener korrekt und ordnet seltener zu. Der Unterschied ist bei 54 Records
-nicht signifikant, die Richtung ist über alle Kennzahlen gleich. Bemerkenswert
-ist das Tempo: 54 Records in 74 Sekunden gegenüber rund 25 Minuten bei den
-großen Modellen, bei vergleichbarem Recall.
+Drei Profile, gleiche Stichprobe: Qwen3-30B hält beim Recall mit, füllt
+gefundene Zeilen aber am schlechtesten. Qwen 3.6-35B extrahiert vorsichtig —
+niedrigster Recall, dafür die wenigsten Zusatzzellen und die zweitbeste
+Genauigkeit in gefundener Zeile. Qwen 3.8-27B ist ein Reasoning-Modell: bei
+8000 Tokens fünfmal `finish_reason: length` mit leerem Inhalt, deshalb 24000
+Tokens; danach Median 110 s je Record und die schlechteste Precision im Feld.
+
+Keiner der Abstände ist bei 54 Records signifikant. Das Tempo dagegen ist
+deutlich: Qwen3-30B braucht 0,8 s je Record gegen 24 bis 50 s bei den großen
+Modellen.
 
 ## Was die Zahlen sagen
 

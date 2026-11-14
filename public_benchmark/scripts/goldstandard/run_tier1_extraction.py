@@ -47,6 +47,8 @@ MODELS = {
     "deepseek": {"id": "gwdg/deepseek-v4.1-flash-1017", "max_tokens": 8000},
     "glm": {"id": "gwdg/glm-5.3", "max_tokens": 24000},
     "qwen30": {"id": "gwdg/qwen3-30b-a3b-instruct-2507", "max_tokens": 8000},
+    "qwen38": {"id": "gwdg/qwen3.8-27b", "max_tokens": 24000},
+    "qwen36": {"id": "gwdg/qwen3.6-35b-a3b", "max_tokens": 8000},
 }
 
 SYSTEM = (

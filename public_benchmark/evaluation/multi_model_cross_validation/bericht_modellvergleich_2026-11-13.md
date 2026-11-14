@@ -1,28 +1,29 @@
-# Numerische Extraktion aus RCT-Publikationen: Vergleich von vier Sprachmodellen
+# Numerische Extraktion aus RCT-Publikationen: Vergleich von sechs Sprachmodellen
 
 **Stand:** 13. November 2026
 **Status:** Ergebnisbericht, nicht begutachtet
 **Datenbasis:** GLASS / TrialReviewBench (öffentlich), 54 Publikationen, 182 Gold-Zellen
-**Modelle:** GLM 5.3, DeepSeek V4.1 Flash, Qwen 3.5 397B, Qwen3-30B
+**Modelle:** GLM 5.3, DeepSeek V4.1 Flash, Qwen 3.5 397B, Qwen3-30B, Qwen 3.8-27B, Qwen 3.6-35B
 
 ---
 
 ## Zusammenfassung
 
-Vier Sprachmodelle extrahierten numerische Ergebnisse aus 54 onkologischen
+Sechs Sprachmodelle extrahierten numerische Ergebnisse aus 54 onkologischen
 RCT-Publikationen mit offenem Volltext. Bewertet wurde gegen einen öffentlichen
 Goldstandard ohne eigene Annotation.
 
-- Alle Modelle erreichen einen **Recall von 0,57 bis 0,60** auf 182 Gold-Zellen.
-- **7 bis 9 von 54 Records** sind vollständig korrekt.
+- Die Modelle erreichen einen **Recall von 0,51 bis 0,60** auf 182 Gold-Zellen.
+- **6 bis 9 von 54 Records** sind vollständig korrekt.
 - Wenn die richtige Ergebniszeile gefunden wird, stimmen **74 bis 90 Prozent**
   ihrer Zellen.
 - **Kein Unterschied zwischen den Modellen ist statistisch belegbar**; die
   95-Prozent-Intervalle überlappen vollständig. Die kleinste mit dieser
   Stichprobe nachweisbare Differenz liegt bei **7,0 Prozentpunkten**.
-- Das kleinste Modell (Qwen3-30B) hält beim Recall mit, füllt gefundene Zeilen
-  aber seltener korrekt und ist rund **20-mal schneller** als die großen
-  Modelle.
+- Die kleineren Modelle halten beim Recall überwiegend mit, sind aber
+  **rund 20- bis 60-mal schneller**. Die Bandbreite innerhalb dieser Gruppe ist
+  jedoch groß: Qwen 3.6-35B erreicht den niedrigsten Recall (0,511) bei
+  gleichzeitig hoher Precision, Qwen 3.8-27B liefert viele Zusatzzeilen.
 
 Der wichtigste technische Befund betrifft nicht die Modellwahl: Ein zu kleines
 Tokenbudget erzeugte 52 leere Antworten, weil das Reasoning das Budget vor der
@@ -71,6 +72,8 @@ Modellantwort.
 | DeepSeek V4.1 Flash | `gwdg/deepseek-v4.1-flash-1017` | 8.000 |
 | Qwen 3.5 397B | `gwdg/qwen3.5-397b-a17b` | 16.000 |
 | Qwen3-30B | `gwdg/qwen3-30b-a3b-instruct-2507` | 8.000 |
+| Qwen 3.8-27B | `gwdg/qwen3.8-27b` | 24.000 |
+| Qwen 3.6-35B | `gwdg/qwen3.6-35b-a3b` | 8.000 |
 
 **Bewertung, Stufe 1 (Multiset).** Alle numerischen Zellen eines Records werden
 als Multiset verglichen. Recall = korrekt gelieferte Gold-Zellen / alle
@@ -102,6 +105,8 @@ zweiseitig, Power 0,80.
 | DeepSeek V4.1 Flash | 0,577 | 0,469-0,681 | 0,383 | 0,461 | 8 / 54 |
 | Qwen 3.5 397B | 0,571 | 0,471-0,670 | 0,510 | 0,539 | 9 / 54 |
 | Qwen3-30B | 0,566 | 0,477-0,652 | 0,426 | 0,486 | 7 / 54 |
+| Qwen 3.8-27B | 0,566 | 0,454-0,674 | 0,355 | 0,436 | 6 / 54 |
+| Qwen 3.6-35B | 0,511 | 0,370-0,638 | 0,503 | 0,507 | 6 / 54 |
 
 Die Intervalle überlappen vollständig. Die Rangfolge nach Recall ist mit dieser
 Stichprobe nicht belegbar; die Unterschiede liegen innerhalb der Unsicherheit.
@@ -114,6 +119,8 @@ Stichprobe nicht belegbar; die Unterschiede liegen innerhalb der Unsicherheit.
 | DeepSeek V4.1 Flash | 0,852 | 0,566 | 0,376 | 0,851 | 153 |
 | Qwen 3.5 397B | 0,815 | 0,571 | 0,510 | 0,897 | 88 |
 | Qwen3-30B | 0,778 | 0,528 | 0,397 | 0,744 | 113 |
+| Qwen 3.8-27B | 0,833 | 0,555 | 0,348 | 0,821 | 167 |
+| Qwen 3.6-35B | 0,778 | 0,511 | 0,503 | 0,853 | 76 |
 
 Drei Beobachtungen:
 
@@ -124,10 +131,12 @@ Drei Beobachtungen:
    alle Subgruppen eines Papers liefern, der Goldstandard aber nur eine Zeile
    führt. 88 bis 179 Zellen pro Modell gehören zu keiner Goldzeile — das ist
    echte Überextraktion gegenüber der Goldgranularität, kein Bewertungsfehler.
-3. **Das kleine Modell füllt gefundene Zeilen schlechter.** Qwen3-30B ordnet
-   ähnlich viele Zeilen zu wie Qwen 3.5 397B (0,778 gegen 0,815), erreicht in
-   diesen Zeilen aber nur 0,744 statt 0,897. Der Unterschied ist nicht
-   signifikant, aber über alle Kennzahlen gleichgerichtet.
+3. **Innerhalb der kleineren Modelle streuen die Fehlerarten stark.**
+   Qwen 3.6-35B liefert die wenigsten Zusatzzellen (76) und die zweithöchste
+   Precision (0,503), hat aber den niedrigsten Recall (0,511): es extrahiert
+   vorsichtig und lässt dafür Gold-Zellen liegen. Qwen 3.8-27B macht das
+   Gegenteil — Recall 0,566 bei 167 Zusatzzellen und Precision 0,355. Qwen3-30B
+   liegt dazwischen, füllt gefundene Zeilen aber am schlechtesten (0,744).
 
 ### 4.3 Stabilität und Aufwand
 
@@ -137,6 +146,8 @@ Drei Beobachtungen:
 | Qwen 3.5 397B | 67 | 11 | 2 | 49,6 s |
 | DeepSeek V4.1 Flash | 54 | 0 | 0 | 4,2 s |
 | Qwen3-30B | 54 | 0 | 0 | 0,8 s |
+| Qwen 3.6-35B | 59 | 0 | 5 | 13,1 s |
+| Qwen 3.8-27B | 72 | 6 | 12 | 110,0 s |
 
 Alle leeren Antworten hatten `finish_reason: length` und exakt das jeweilige
 Tokenbudget verbraucht: Das Reasoning endete vor der JSON-Ausgabe. Nach Anhebung
@@ -161,6 +172,11 @@ Ein Modellrang ist mit 54 Records und 28 Clustern nicht zu vergeben. Wer
 trotzdem wählen muss, wählt nach Nebenkriterien: Qwen 3.5 397B liefert die
 saubersten Zeilen (höchste Precision, wenigste Überextraktion), GLM die meisten
 Treffer, Qwen3-30B das mit Abstand beste Verhältnis aus Laufzeit und Recall.
+Qwen 3.8-27B ist trotz seiner 27B das langsamste Modell im Feld (110 s je
+Record, Reasoning-Modus) und liefert dabei die schlechteste Precision — für
+diesen Task keine sinnvolle Wahl. Qwen 3.6-35B ist der interessanteste
+Kompromiss: halb so viele Zusatzzellen wie Qwen3-30B und die zweithöchste
+Precision, aber der niedrigste Recall.
 
 ## 6. Grenzen
 
