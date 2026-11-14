@@ -125,6 +125,20 @@ Optionen: `--abs-tol` (Standard `1e-6`), `--rel-tol` (Standard `0`),
 Feldaufschlüsselung bei Yun, die Label-Konfusionsmatrix bei Evidence Inference
 und die Elementauflösung bei EBM-NLP.
 
+## Extraktionslauf
+
+`run_extended_extraction.py` schickt die Records eines Splits an ein Modell und
+schreibt Vorhersagen im Bewertungsformat. Es wird nichts nachgebessert; ein
+abgebrochener Lauf wird mit demselben Befehl fortgesetzt.
+
+```bash
+python public_benchmark/extended_benchmark/run_extended_extraction.py \
+  --models qwen30 glm --split dev --workers 3 --run-id yun_dev_20261114
+```
+
+Ausgabe: `runs/<run_id>/predictions.jsonl` mit Status, Laufzeit, Parserfehler
+und Zellen je (Record, Modell).
+
 ## PMC-Open-Access-Downloader
 
 Die alten FTP-Pakete (`oa_file_list.csv`, `oa_comm/`) hat NCBI im August 2026
