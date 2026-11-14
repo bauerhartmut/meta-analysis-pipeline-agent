@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "format": "JSONL, eine Zeile je Record",
+  "required_per_line": ["record_id", "dataset", "predicted"],
+  "description": "Vorhersagedatei zum erweiterten Benchmark. Es wird genau ein Objekt je Zeile erwartet; die Reihenfolge ist beliebig, die Zuordnung erfolgt ueber record_id.",
+  "per_task": {
+    "numeric_extraction": {
+      "predicted": {
+        "cells": [
+          {
+            "field": "intervention_group_size | intervention_mean | intervention_standard_deviation | intervention_events | comparator_group_size | comparator_mean | comparator_standard_deviation | comparator_events",
+            "arm": "intervention | comparator",
+            "value": "Zahl"
+          }
+        ]
+      },
+      "notes": "Fehlende Zellen werden weggelassen, nicht mit null aufgefuellt. Zusaetzliche Zellen zaehlen als falsch positv."
+    },
+    "evidence_direction": {
+      "predicted": {
+        "label": "no significant difference | significantly increased | significantly decreased | null",
+        "spans": [
+          {
+            "start": "Zeichenindex, inklusiv",
+            "end": "Zeichenindex, exklusiv",
+            "text": "optional, wird nicht bewertet"
+          }
+        ]
+      },
+      "notes": "Label wird je Record genau verglichen. Spannen werden ueber IoU gegen die Goldspannen gematcht."
+    },
+    "pico_span": {
+      "predicted": {
+        "spans": [
+          {
+            "element": "participants | interventions | outcomes",
+            "start": "Tokenindex, inklusiv",
+            "end": "Tokenindex, exklusiv"
+          }
+        ]
+      },
+      "notes": "Bewertung als Tokenmengen je Element; Ueberlappung wird mikro ueber alle Records gezaehlt."
+    }
+  },
+  "example": {
+    "record_id": "yun2024:12",
+    "dataset": "yun2024",
+    "predicted": {
+      "cells": [
+        {"field": "intervention_group_size", "arm": "intervention", "value": 103},
+        {"field": "comparator_group_size", "arm": "comparator", "value": 97}
+      ]
+    }
+  }
+}

@@ -67,6 +67,8 @@ extended_benchmark/
   adapters/yun.py              Yun 2024 -> numeric_extraction
   adapters/evidence_inference.py  EI 2.0 -> evidence_direction
   adapters/ebm_nlp.py          EBM-NLP 2.00 -> pico_span
+  predictions_schema.json     festes Format der Vorhersagedatei
+  evaluate_extended.py         Bewertung je Aufgabe
   build_extended_benchmark.py  baut records/*.jsonl + manifest.json
   download_pmc_oa.py           PMC-OA-Downloader mit Tabellenparser
   records/                     erzeugte JSONL-Dateien
@@ -85,6 +87,43 @@ python public_benchmark/extended_benchmark/download_pmc_oa.py --pmcids-file pmci
 
 Der Build läuft offline auf den lokal vorhandenen Rohdaten und dauert rund
 zweieinhalb Minuten (die EBM-NLP-Zuordnung ist der teuerste Teil).
+
+## Bewertung
+
+**Vorhersagedatei.** JSONL nach `predictions_schema.json`, eine Zeile je Record
+mit `record_id`, `dataset` und `predicted`. Die Reihenfolge ist beliebig, die
+Zuordnung erfolgt über `record_id`. Fehlt ein Record, zählt er als leere
+Vorhersage; unbekannte IDs werden gemeldet und nicht bewertet.
+
+```json
+{"record_id": "yun2024:12", "dataset": "yun2024", "predicted": {"cells": [{"field": "intervention_group_size", "arm": "intervention", "value": 103}]}}
+```
+
+**Metriken je Aufgabe.**
+
+| Aufgabe | Kennzahlen | Definition |
+|---|---|---|
+| `numeric_extraction` (Yun) | zellgenaue Precision/Recall/F1, MAE, Armvertauschung, Record-Exaktheit | Eine Zelle trifft, wenn Feld, Arm und Wert übereinstimmen (absolute und relative Toleranz einstellbar). MAE über die absoluten Abweichungen getroffener Zellen. Armvertauschung zählt, wenn beide Arme eines Feldes vertauscht geliefert werden. |
+| `evidence_direction` (Evidence Inference) | Label-Genauigkeit, Macro-F1, Spannen-F1 | Label wird je Record exakt verglichen. Spannen werden über IoU gematcht (Standard 0,5); Precision/Recall mikro über alle Records. |
+| `pico_span` (EBM-NLP) | Token-F1 je Element, Macro-F1, Record-Exaktheit | Spannen werden als Tokenmengen je Element verglichen; Überlappung wird mikro gezählt. |
+
+Bewusst kein gemeinsamer Gesamtscore: Die drei Aufgaben messen Verschiedenes,
+und ein Mittelwert wäre nicht interpretierbar.
+
+**Aufruf.**
+
+```bash
+python public_benchmark/extended_benchmark/evaluate_extended.py \
+  --dataset yun \
+  --records public_benchmark/extended_benchmark/records/yun.jsonl \
+  --predictions vorhersagen.jsonl \
+  --out ergebnis.json
+```
+
+Optionen: `--abs-tol` (Standard `1e-6`), `--rel-tol` (Standard `0`),
+`--iou` (Standard `0.5`). Das Ergebnis-JSON enthält zusätzlich die
+Feldaufschlüsselung bei Yun, die Label-Konfusionsmatrix bei Evidence Inference
+und die Elementauflösung bei EBM-NLP.
 
 ## PMC-Open-Access-Downloader
 
