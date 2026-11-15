@@ -102,6 +102,13 @@ Tokens, dafür 4 leere Antworten statt 0. Die Zeile verursacht die Ausfälle,
 behebt aber die leere Antwort. Beide Fassungen verfehlen mindestens ein Ziel;
 Details in `pilot_gegenprobe.md`.
 
+**Dritte Fassung gelaufen** (`pilot_kurzregel_20261116`, Feldvorgabe statt zwei
+Regelsätze): 5 Primärausfälle, 2 leere Antworten, 169.176 Tokens, F1 0,7302.
+Jede Gruppengrößen-Zeile erhöht die Schleifenneigung; das Ziel bleibt verfehlt.
+Die Zeile ist deshalb jetzt **opt-in** (`--group-size-mode`, Standard `aus`),
+die Auswert-Ausnahme für `*_group_size` bleibt. Details in
+`pilot_kurzregel.md`.
+
 ## 3. Messbare Erfolgskriterien
 
 Bezogen auf die bestehende Verteilung (v6 0,6548 / kombiniert 0,6934 F1;

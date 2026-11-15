@@ -70,6 +70,19 @@ RETRY_MAX_TOKENS = 32000
 # Zellen. Ein erneuter Loop kostet damit hoechstens REPAIR_MAX_TOKENS.
 REPAIR_MAX_TOKENS = 6000
 REPAIR_TEXT_LIMIT = 15000
+# Die Gruppengroessen-Zeile ist opt-in: in der Fassung ``lang`` verdreifachte sie
+# im 12-Record-Pilot die Primaerausfaelle (6 statt 2), in ``kurz`` ist sie eine
+# reine Feldvorgabe. Standard ist keine Zeile (``aus``).
+GROUP_SIZE_TEXTE = {
+    "aus": "",
+    "lang": (
+        "Group sizes (*_group_size) are arm characteristics, not outcome values: report them without a time "
+        "point, and they are exempt from the one-time-point rule. "
+    ),
+    "kurz": (
+        "Report group sizes as intervention_group_size or comparator_group_size without a timepoint. "
+    ),
+}
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
 SESSION_TAG = ""
@@ -115,7 +128,9 @@ def bestimme_version(
     return f"{version}_cb" if cache_buster else version
 
 
-def _prompt_v7(record: dict[str, Any], text: str, limit: int, target: str, group_size_rule: bool = True) -> str:
+def _prompt_v7(
+    record: dict[str, Any], text: str, limit: int, target: str, group_size_mode: str = "aus"
+) -> str:
     """v7: ein Zeitpunkt je Antwort, Header mit Einheit, JSON zuerst.
 
     Der Zeitpunkt ist Eigenschaft der Antwort, nicht des Feldes. Damit ist eine
@@ -143,12 +158,7 @@ def _prompt_v7(record: dict[str, Any], text: str, limit: int, target: str, group
         '"comparator", "value": <number>}, ...]}\n'
         f"Allowed fields: {fields}. "
         "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
-        + (
-            "Group sizes (*_group_size) are arm characteristics, not outcome values: report them without a time "
-            "point, and they are exempt from the one-time-point rule. "
-            if group_size_rule
-            else ""
-        )
+        + GROUP_SIZE_TEXTE.get(group_size_mode, "")
         + "Never report an outcome value without naming the time point of the answer, never mix two time points. "
         "Never invent a time point_header: copy it from the article or leave it empty. "
         "Copy numbers exactly as reported; do not convert, do not compute, do not guess. "
@@ -209,10 +219,10 @@ def build_prompt(
     target_timepoint: str | None = None,
     fallback: bool = False,
     cell_timepoint: bool = False,
-    group_size_rule: bool = True,
+    group_size_mode: str = "aus",
 ) -> str:
     if cell_timepoint and target_timepoint:
-        return _prompt_v7(record, text, limit, target_timepoint, group_size_rule)
+        return _prompt_v7(record, text, limit, target_timepoint, group_size_mode)
     context = record["context"]
     fields = ", ".join(f'"{name}"' for name in FIELDS)
     berichtet = bool(last_timepoint or target_timepoint)
@@ -540,10 +550,10 @@ def main() -> int:
         help="Zielzeitpunkt mit Rueckfall auf den naechsten berichteten Zeitpunkt (v6_target_fallback, Standard)",
     )
     parser.add_argument(
-        "--no-group-size-rule",
-        dest="group_size_rule",
-        action="store_false",
-        help="die Zeile zu *_group_size ohne Zeitpunktpflicht weglassen (Gegenprobe)",
+        "--group-size-mode",
+        choices=("aus", "lang", "kurz"),
+        default="aus",
+        help="Zeile zu *_group_size im v7-Prompt: aus (Standard), lang (zwei Regelsaetze) oder kurz (Feldvorgabe)",
     )
     parser.add_argument(
         "--repair",
@@ -620,7 +630,7 @@ def main() -> int:
             target_timepoint=target or None,
             fallback=args.target_fallback,
             cell_timepoint=args.cell_timepoint,
-            group_size_rule=args.group_size_rule,
+            group_size_mode=args.group_size_mode,
         )
         prompt_version = bestimme_version(
             absolute_counts=args.absolute_counts,
@@ -708,7 +718,7 @@ def main() -> int:
             "fallback": v7["fallback"],
             "content_chars": len(response.get("content") or ""),
             "pfad": pfad,
-            "group_size_rule": args.group_size_rule,
+            "group_size_mode": args.group_size_mode,
             "repair_tokens": repair.get("completion_tokens") if repair else None,
             "repair_finish_reason": repair.get("finish_reason", "") if repair else "",
             "repair_fehlerklasse": repair_fehlerklasse,

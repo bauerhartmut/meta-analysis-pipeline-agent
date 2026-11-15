@@ -55,7 +55,14 @@ gezählt); das Gold bleibt unverändert.
 
 Nachtrag 15.11.2026: Schritt 1 und 2 des Entwicklungsplans sind umgesetzt
 (`--repair` mit 6.000-Token-Deckel; `*_group_size` ohne Zeitpunktpflicht samt
-eigener Auswertklasse), 231 Tests grün, kein Modellaufruf.
+eigener Auswertklasse).
+
+Nachtrag 16.11.2026: Drei Pilotläufe über dieselben 12 Records zeigen, dass die
+Gruppengrößen-Zeile im Prompt die Primärausfälle von 2 auf 6 (lang) bzw. 5
+(kurz) hebt. Sie ist deshalb **opt-in** (`--group-size-mode`, Standard `aus`);
+die Auswert-Ausnahme bleibt. Keine der drei Fassungen erreicht die
+Length-Schwelle von 10 %. Details in `pilot_repair.md`, `pilot_gegenprobe.md`
+und `pilot_kurzregel.md`.
 
 ### 2.3 Wie viele der 18 Length-Ausfälle sind erklärbar?
 

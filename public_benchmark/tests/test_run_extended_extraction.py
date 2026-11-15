@@ -173,7 +173,9 @@ def test_v7_prompt_nimmt_gruppengroessen_von_der_zeitpunktregel_aus() -> None:
         "record_id": "yun2024:1",
         "context": {"intervention": "A", "comparator": "B", "outcome": "C", "outcome_type": "continuous"},
     }
-    prompt = runner.build_prompt(record, "Text", target_timepoint="baseline", fallback=True, cell_timepoint=True)
+    prompt = runner.build_prompt(
+        record, "Text", target_timepoint="baseline", fallback=True, cell_timepoint=True, group_size_mode="lang"
+    )
     assert "Group sizes (*_group_size) are arm characteristics" in prompt
     assert "exempt from the one-time-point rule" in prompt
     # Der Reparaturprompt sagt dasselbe knapper.
@@ -182,20 +184,27 @@ def test_v7_prompt_nimmt_gruppengroessen_von_der_zeitpunktregel_aus() -> None:
     assert "smallest possible answer" in kurz
 
 
-def test_gegenprobe_ohne_gruppenregel_laesst_die_zeile_weg() -> None:
+def test_gruppenzeile_ist_opt_in_und_hat_drei_fassungen() -> None:
     record = {
         "record_id": "yun2024:1",
         "context": {"intervention": "A", "comparator": "B", "outcome": "C", "outcome_type": "continuous"},
     }
-    mit = runner.build_prompt(record, "Text", target_timepoint="baseline", cell_timepoint=True)
-    ohne = runner.build_prompt(
-        record, "Text", target_timepoint="baseline", cell_timepoint=True, group_size_rule=False
-    )
-    assert "arm characteristics" in mit
-    assert "arm characteristics" not in ohne
-    # Der Rest des Prompts bleibt gleich, nur die eine Zeile fehlt.
-    assert len(mit) - len(ohne) > 100
-    assert "Never report an outcome value without naming the time point" in ohne
+
+    def prompt(modus: str) -> str:
+        return runner.build_prompt(
+            record, "Text", target_timepoint="baseline", cell_timepoint=True, group_size_mode=modus
+        )
+
+    aus, lang, kurz = prompt("aus"), prompt("lang"), prompt("kurz")
+    # Standard ist aus: ohne Angabe keine Zeile.
+    assert prompt("aus") == runner.build_prompt(record, "Text", target_timepoint="baseline", cell_timepoint=True)
+    assert runner.GROUP_SIZE_TEXTE["lang"] not in aus
+    assert runner.GROUP_SIZE_TEXTE["kurz"] not in aus
+    assert "arm characteristics" in lang and "exempt from the one-time-point rule" in lang
+    assert "Report group sizes as intervention_group_size" in kurz
+    assert "arm characteristics" not in kurz
+    assert len(lang) > len(kurz) > len(aus)
+    assert "Never report an outcome value without naming the time point" in aus
 
 
 def test_v7_hat_eigene_version_und_zeitpunkt_je_antwort() -> None:
