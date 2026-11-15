@@ -153,10 +153,16 @@ erzwingt damit eine neue Generierung. Der Lauf wird dann als eigene
 Prompt-Version `v2b_cachebuster` geführt und nicht mit `v2_timepoint`
 vermischt.
 
-`PROMPT_VERSION` im Runner benennt die aktuelle Prompt-Fassung
-(`v2_timepoint`: Werte am Ende der Intervention, nicht Baseline und nicht
-Follow-up). Ergebnisse unterschiedlicher Versionen sind nicht direkt
-vergleichbar.
+`PROMPT_VERSION` im Runner benennt die Standardfassung: **`v2_timepoint`**
+(Werte am Ende der Intervention, nicht Baseline und nicht Follow-up). Sie hat
+sich im Dev-Lauf als beste gemessene Fassung erwiesen.
+
+`--absolute-counts` schaltet den Zusatz aus `v3_abs_count` ein („Ereignisse als
+absolute Anzahl, nie als Prozent"). v3 lag im Dev-Lauf unter v2_timepoint
+(F1 0,919 statt 0,945) und ist deshalb **nicht** Standard.
+
+Ergebnisse unterschiedlicher Versionen sind nicht direkt vergleichbar;
+`--cache-buster` hängt zusätzlich ein `_cb` an die Version.
 
 ## Fehleranalyse
 

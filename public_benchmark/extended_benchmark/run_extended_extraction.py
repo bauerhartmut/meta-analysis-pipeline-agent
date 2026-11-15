@@ -53,7 +53,10 @@ FIELDS = (
     "comparator_standard_deviation",
 )
 
-PROMPT_VERSION = "v3_abs_count"
+# Standard ist die Referenzversion; v3 hat sich im Dev-Lauf nicht belegt und ist
+# nur noch per --absolute-counts waehlbar.
+PROMPT_VERSION = "v2_timepoint"
+VERSION_ABSOLUTE_COUNTS = "v3_abs_count"
 RETRY_MAX_TOKENS = 32000
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
@@ -68,7 +71,7 @@ SYSTEM = (
 LOCK = threading.Lock()
 
 
-def build_prompt(record: dict[str, Any], text: str, limit: int = 45000) -> str:
+def build_prompt(record: dict[str, Any], text: str, limit: int = 45000, absolute_counts: bool = False) -> str:
     context = record["context"]
     fields = ", ".join(f'"{name}"' for name in FIELDS)
     return (
@@ -84,7 +87,12 @@ def build_prompt(record: dict[str, Any], text: str, limit: int = 45000) -> str:
         "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
         "Use the values measured at the end of the intervention (post-test), not baseline values "
         "and not follow-up values from a later measurement point. "
-        "Report event counts as absolute numbers of events, never as percentages or rates. "
+        + (
+            "Report event counts as absolute numbers of events, never as percentages or rates. "
+            if absolute_counts
+            else ""
+        )
+        +
         "Copy numbers exactly as reported; do not convert, do not compute, do not guess. "
         "Omit a cell the paper does not report. "
         "Do not add commentary, markdown or code fences."
@@ -241,6 +249,7 @@ def main() -> int:
     parser.add_argument("--save-content", action="store_true", help="Rohantwort im Ergebnis mitspeichern")
     parser.add_argument("--max-tokens", type=int, default=None, help="Tokenbudget fuer alle Modelle ueberschreiben")
     parser.add_argument("--cache-buster", action="store_true", help="eindeutigen Session-Tag in den Systemprompt haengen")
+    parser.add_argument("--absolute-counts", action="store_true", help="Prompt-Zusatz aus v3_abs_count aktivieren")
     parser.add_argument("--run-id", default=datetime.now(timezone.utc).strftime("extended_%Y%m%d"))
     args = parser.parse_args()
 
@@ -250,10 +259,10 @@ def main() -> int:
             spec["max_tokens"] = args.max_tokens
 
     global SESSION_TAG
-    prompt_version = PROMPT_VERSION
+    prompt_version = VERSION_ABSOLUTE_COUNTS if args.absolute_counts else PROMPT_VERSION
     if args.cache_buster:
         SESSION_TAG = uuid.uuid4().hex[:12]
-        prompt_version = f"{PROMPT_VERSION}_cb"
+        prompt_version = f"{prompt_version}_cb"
 
     config = get_config()
     key = config.tudagpt_api_key
@@ -281,7 +290,7 @@ def main() -> int:
             candidate = REPO / path
             if candidate.exists():
                 text = candidate.read_text(encoding="utf-8", errors="replace")
-        prompt = build_prompt(record, text)
+        prompt = build_prompt(record, text, absolute_counts=args.absolute_counts)
         response = call(models[model], prompt, key, base)
         retry: dict[str, Any] | None = None
         # Reasoning-Schleifen enden mit finish_reason "length" und leerem Inhalt.
