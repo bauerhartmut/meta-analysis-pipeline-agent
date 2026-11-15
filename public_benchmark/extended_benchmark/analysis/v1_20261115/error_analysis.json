@@ -91,7 +91,7 @@
       "fehlerhafte_zellen": 7,
       "zusaetzliche_zellen": 7,
       "klassen": {
-        "Prozentwert und absolute Zahl verwechselt": 1,
+        "Falsche Tabellenzeile": 1,
         "Zahl nicht extrahiert": 2,
         "Nicht eindeutig klassifizierbar": 4
       },
@@ -120,7 +120,7 @@
       "fehlerhafte_zellen": 17,
       "zusaetzliche_zellen": 6,
       "klassen": {
-        "Prozentwert und absolute Zahl verwechselt": 1,
+        "Falsche Tabellenzeile": 1,
         "Zahl nicht extrahiert": 6,
         "Unvollstaendige Modellantwort": 6,
         "Nicht eindeutig klassifizierbar": 4
@@ -180,7 +180,7 @@
       "fehlerhafte_zellen": 29,
       "zusaetzliche_zellen": 6,
       "klassen": {
-        "Prozentwert und absolute Zahl verwechselt": 1,
+        "Falsche Tabellenzeile": 1,
         "Zahl nicht extrahiert": 6,
         "Unvollstaendige Modellantwort": 18,
         "Nicht eindeutig klassifizierbar": 4
@@ -240,7 +240,7 @@
       "fehlerhafte_zellen": 17,
       "zusaetzliche_zellen": 5,
       "klassen": {
-        "Prozentwert und absolute Zahl verwechselt": 1,
+        "Falsche Tabellenzeile": 1,
         "Zahl nicht extrahiert": 6,
         "Unvollstaendige Modellantwort": 6,
         "Nicht eindeutig klassifizierbar": 4
@@ -558,9 +558,8 @@
       "klassen": {
         "Nicht eindeutig klassifizierbar": 100,
         "Zahl nicht extrahiert": 100,
-        "Prozentwert und absolute Zahl verwechselt": 3,
-        "Unvollstaendige Modellantwort": 28,
-        "Falsche Tabellenzeile": 4
+        "Falsche Tabellenzeile": 7,
+        "Unvollstaendige Modellantwort": 28
       },
       "technisch": 28,
       "inhaltlich": 207,
@@ -568,7 +567,7 @@
         "glm": {
           "Nicht eindeutig klassifizierbar": 12,
           "Zahl nicht extrahiert": 14,
-          "Prozentwert und absolute Zahl verwechselt": 3,
+          "Falsche Tabellenzeile": 3,
           "Unvollstaendige Modellantwort": 24
         },
         "qwen30": {
@@ -581,8 +580,7 @@
       "nach_feld": {
         "comparator_events": {
           "Nicht eindeutig klassifizierbar": 5,
-          "Prozentwert und absolute Zahl verwechselt": 3,
-          "Falsche Tabellenzeile": 2,
+          "Falsche Tabellenzeile": 5,
           "Zahl nicht extrahiert": 2
         },
         "comparator_group_size": {
@@ -664,7 +662,7 @@
           "gold": 64.0,
           "prediction": 48.0,
           "abs_error": 16.0,
-          "klasse": "Prozentwert und absolute Zahl verwechselt"
+          "klasse": "Falsche Tabellenzeile"
         },
         {
           "run_id": "yun_dev_retry_20261115",
@@ -708,7 +706,7 @@
           "gold": 64.0,
           "prediction": 48.0,
           "abs_error": 16.0,
-          "klasse": "Prozentwert und absolute Zahl verwechselt"
+          "klasse": "Falsche Tabellenzeile"
         },
         {
           "run_id": "yun_dev_retry_20261115",
@@ -829,7 +827,7 @@
           "gold": 64.0,
           "prediction": 48.0,
           "abs_error": 16.0,
-          "klasse": "Prozentwert und absolute Zahl verwechselt"
+          "klasse": "Falsche Tabellenzeile"
         },
         {
           "run_id": "yun_dev_tp_20261115",
@@ -923,7 +921,7 @@
       "klassen": {
         "Nicht eindeutig klassifizierbar": 4,
         "Zahl nicht extrahiert": 6,
-        "Prozentwert und absolute Zahl verwechselt": 1,
+        "Falsche Tabellenzeile": 1,
         "Unvollstaendige Modellantwort": 6
       },
       "technisch": 6,
@@ -932,14 +930,14 @@
         "glm": {
           "Nicht eindeutig klassifizierbar": 4,
           "Zahl nicht extrahiert": 6,
-          "Prozentwert und absolute Zahl verwechselt": 1,
+          "Falsche Tabellenzeile": 1,
           "Unvollstaendige Modellantwort": 6
         }
       },
       "nach_feld": {
         "comparator_events": {
           "Nicht eindeutig klassifizierbar": 1,
-          "Prozentwert und absolute Zahl verwechselt": 1
+          "Falsche Tabellenzeile": 1
         },
         "comparator_group_size": {
           "Zahl nicht extrahiert": 1,
@@ -1013,7 +1011,7 @@
           "gold": 64.0,
           "prediction": 48.0,
           "abs_error": 16.0,
-          "klasse": "Prozentwert und absolute Zahl verwechselt"
+          "klasse": "Falsche Tabellenzeile"
         }
       ],
       "zusaetzliche_zellen": 5,
@@ -1027,19 +1025,17 @@
   "fehler_nach_klasse": {
     "Nicht eindeutig klassifizierbar": 187,
     "Unvollstaendige Modellantwort": 46,
-    "Falsche Tabellenzeile": 6,
+    "Falsche Tabellenzeile": 10,
     "Falscher Messzeitpunkt": 8,
-    "Zahl nicht extrahiert": 136,
-    "Prozentwert und absolute Zahl verwechselt": 4
+    "Zahl nicht extrahiert": 136
   },
   "fehler_nach_modell": {
     "glm": {
       "Nicht eindeutig klassifizierbar": 51,
       "Unvollstaendige Modellantwort": 40,
-      "Falsche Tabellenzeile": 1,
+      "Falsche Tabellenzeile": 5,
       "Falscher Messzeitpunkt": 4,
-      "Zahl nicht extrahiert": 20,
-      "Prozentwert und absolute Zahl verwechselt": 4
+      "Zahl nicht extrahiert": 20
     },
     "qwen30": {
       "Zahl nicht extrahiert": 116,
@@ -1094,8 +1090,7 @@
       "Unvollstaendige Modellantwort": 1,
       "Zahl nicht extrahiert": 3,
       "Nicht eindeutig klassifizierbar": 7,
-      "Prozentwert und absolute Zahl verwechselt": 4,
-      "Falsche Tabellenzeile": 2
+      "Falsche Tabellenzeile": 6
     }
   },
   "fehler_nach_prompt_version": {
@@ -1109,14 +1104,13 @@
     "v2_timepoint": {
       "Nicht eindeutig klassifizierbar": 100,
       "Zahl nicht extrahiert": 100,
-      "Prozentwert und absolute Zahl verwechselt": 3,
-      "Unvollstaendige Modellantwort": 28,
-      "Falsche Tabellenzeile": 4
+      "Falsche Tabellenzeile": 7,
+      "Unvollstaendige Modellantwort": 28
     },
     "v3_abs_count": {
       "Nicht eindeutig klassifizierbar": 4,
       "Zahl nicht extrahiert": 6,
-      "Prozentwert und absolute Zahl verwechselt": 1,
+      "Falsche Tabellenzeile": 1,
       "Unvollstaendige Modellantwort": 6
     }
   },
@@ -1273,8 +1267,8 @@
         "gold": 64.0,
         "prediction": 48.0,
         "abs_error": 16.0,
-        "klasse": "Prozentwert und absolute Zahl verwechselt",
-        "beleg": "Vorhersage entspricht dem Prozentwert (48.12) der Ereignisrate",
+        "klasse": "Falsche Tabellenzeile",
+        "beleg": "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' (Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
         "textstelle": "single 118 (45.7) 61 (48.8) 57 (42.9) married/cohabiting 140 (54.3) 64 (51.2)"
       },
       {
@@ -1329,8 +1323,8 @@
         "gold": 64.0,
         "prediction": 48.0,
         "abs_error": 16.0,
-        "klasse": "Prozentwert und absolute Zahl verwechselt",
-        "beleg": "Vorhersage entspricht dem Prozentwert (48.12) der Ereignisrate",
+        "klasse": "Falsche Tabellenzeile",
+        "beleg": "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' (Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
         "textstelle": "single 118 (45.7) 61 (48.8) 57 (42.9) married/cohabiting 140 (54.3) 64 (51.2)"
       },
       {
@@ -1483,8 +1477,8 @@
         "gold": 64.0,
         "prediction": 48.0,
         "abs_error": 16.0,
-        "klasse": "Prozentwert und absolute Zahl verwechselt",
-        "beleg": "Vorhersage entspricht dem Prozentwert (48.12) der Ereignisrate",
+        "klasse": "Falsche Tabellenzeile",
+        "beleg": "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' (Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
         "textstelle": "single 118 (45.7) 61 (48.8) 57 (42.9) married/cohabiting 140 (54.3) 64 (51.2)"
       },
       {
@@ -1637,8 +1631,8 @@
         "gold": 64.0,
         "prediction": 48.0,
         "abs_error": 16.0,
-        "klasse": "Prozentwert und absolute Zahl verwechselt",
-        "beleg": "Vorhersage entspricht dem Prozentwert (48.12) der Ereignisrate",
+        "klasse": "Falsche Tabellenzeile",
+        "beleg": "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' (Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
         "textstelle": "single 118 (45.7) 61 (48.8) 57 (42.9) married/cohabiting 140 (54.3) 64 (51.2)"
       }
     ]

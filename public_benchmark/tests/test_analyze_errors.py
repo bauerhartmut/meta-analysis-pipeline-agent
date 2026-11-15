@@ -11,6 +11,7 @@ BENCH = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BENCH))
 
 from extended_benchmark.analyze_errors import (  # noqa: E402
+    GEPRUEFTE_FAELLE,
     Dokument,
     baue_faelle,
     baue_queue,
@@ -209,6 +210,13 @@ def test_baue_queue_priorisiert_ereignisse_vor_fehlenden_zellen() -> None:
     assert queue[0]["record_id"] == "r2"
     assert queue[1]["prioritaet"] == 2
     assert all(eintrag["pruefstatus"] == "offen" for eintrag in queue)
+
+
+def test_prozentklasse_fuer_191_zurueckgenommen() -> None:
+    """48 ist die Ereigniszahl der 0-3-Monats-Zeile, nicht der Prozentwert."""
+    eintrag = GEPRUEFTE_FAELLE[("yun_dev_fresh_20261115", "yun2024:191", "comparator_events", "comparator")]
+    assert eintrag[0] == 1
+    assert "Koinzidenz" in eintrag[1]
 
 
 def test_queue_traegt_status_je_version() -> None:

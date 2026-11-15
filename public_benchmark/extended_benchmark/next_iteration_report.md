@@ -31,8 +31,8 @@ Für die Referenz `v2_timepoint` (235 Fehler, 28 davon technisch):
 | Nicht eindeutig klassifizierbar | 100 | 43 % |
 | Zahl nicht extrahiert | 100 | 43 % |
 | Unvollständige Modellantwort | 28 | 12 % |
-| Falsche Tabellenzeile | 4 | 2 % |
-| Prozentwert statt absoluter Zahl | 3 | 1 % |
+| Falsche Tabellenzeile | 7 | 3 % |
+| Prozentwert statt absoluter Zahl | 0 | – |
 | Falscher Messzeitpunkt | 0 | – |
 | Halluzinierter Wert | 0 | – |
 | Gruppenverwechslung | 0 | – |
@@ -40,7 +40,7 @@ Für die Referenz `v2_timepoint` (235 Fehler, 28 davon technisch):
 | Parser-/Formatfehler | 0 | – |
 
 `v3_abs_count` (verworfen) hat 17 Fehler: 6 nicht extrahiert, 6 unvollständig,
-4 nicht eindeutig, 1 Prozentwert. Die Ereigniszahlen sind darin unverändert
+4 nicht eindeutig, 1 falsche Tabellenzeile. Die Ereigniszahlen sind darin unverändert
 gegenüber der Referenz; die Fassung wird ab hier nur noch nachrichtlich geführt.
 
 Drei Befunde sind wichtiger als die Verteilung:
@@ -66,7 +66,7 @@ Nur Referenzversion `v2_timepoint`:
 | Zahl nicht extrahiert | 14 | 86 |
 | Unvollständige Antwort | 24 | 4 |
 | Falsche Tabellenzeile | 0 | 4 |
-| Prozentwert statt absolut | 3 | 0 |
+| Prozentwert statt absolut | 0 | 0 |
 | Falscher Messzeitpunkt | 0 | 0 |
 | Halluzinierter Wert | 0 | 0 |
 
@@ -93,7 +93,7 @@ unvollständig ist, kann nur eine Sichtprüfung entscheiden.
 | comparator_mean | nicht eindeutig (22), unvollständig (4) |
 | comparator_standard_deviation | nicht eindeutig (18), unvollständig (4) |
 | intervention_events | nicht eindeutig (10), nicht extrahiert (4) |
-| comparator_events | nicht eindeutig (5), Prozent (3), Tabellenzeile (2) |
+| comparator_events | nicht eindeutig (5), Tabellenzeile (5) |
 
 Die Gruppengrößen sind der größte Einzelposten — aber ausschließlich als
 **fehlende** Zellen (86 fehlende Gruppengrößen-Zellen in der
@@ -109,8 +109,8 @@ In der Referenzversion sind 26 Ereigniszellen fehlerhaft. Aufgeschlüsselt:
 | Ursache | Anzahl | Beleg |
 |---|---|---|
 | nicht extrahiert / keine Antwort | 6 | Feld fehlt in der Antwort |
-| Prozentwert statt absoluter Zahl | 3 | Ereignisrate stimmt auf 0,1 Prozent |
-| falsche Tabellenzeile | 2 | Wert entspricht einer anderen Outcome-Zeile |
+| falsche Tabellenzeile | 5 | Wert entspricht einer anderen Zeile |
+| Prozentwert statt absoluter Zahl | 0 | nach Sichtprüfung widerlegt |
 | nicht eindeutig (Wert steht im Text) | 15 | Zeile/Spalte nicht belegbar |
 
 **Die vermuteten Hauptursachen bestätigen sich nicht:**
@@ -139,7 +139,28 @@ In der Referenzversion sind 26 Ereigniszellen fehlerhaft. Aufgeschlüsselt:
 
 Der Restfehler bei glm (Recall 0,75 auf Ereignissen) ist damit **nicht** ein
 Verständnisproblem der Begriffe, sondern ein Zuordnungsproblem bei mehrzeiligen
-Tabellen — plus ein Prozentproblem, das sich billig beheben lässt.
+Tabellen.
+
+### Nachtrag: Prozentklasse zurückgenommen (15.11.2026)
+
+Die manuelle Prüfung der 20 falschen Ereigniszellen
+(`analysis/v1_20261115/events_review.md`) hat die Klasse „Prozentwert statt
+absoluter Zahl" **vollständig widerlegt**: In der Referenz gibt es keinen
+einzigen belegten Fall.
+
+Der Auslöser war `yun2024:191 comparator_events`: Gold 64, Vorhersage 48, und
+64/133 = 48,1 Prozent sah nach einer Ereignisrate aus. Der Artikel enthält
+48 aber als **Ereigniszahl der Zeile „0–3 months"** (31 und 48), während Gold
+64 aus der Zeile „Total 0–12 months" stammt. Die Partnerzelle der Vorhersage
+(31) passt exakt zu derselben Zeile, die Prozentübereinstimmung ist also
+**Koinzidenz**. Die Zelle ist jetzt als falsche Tabellenzeile klassifiziert,
+und ebenso die übrigen drei Zeilen desselben Zelltyps in den anderen Läufen.
+
+Folgen: Die Klassenverteilung in Abschnitt 1 verschiebt sich um 3 Zellen von
+„Prozentwert" zu „falsche Tabellenzeile" (7 statt 4); die Ereignisübersicht
+nennt 5 statt 2 Tabellenzeilen und 0 Prozentfälle. Die Prompt-Zeile aus
+`v3_abs_count` zielte damit auf eine Ursache, die es nicht gibt — konsistent
+damit, dass v3 bei den Ereigniszahlen nichts verändert hat.
 
 ## 5. Gold-Datenqualität
 
@@ -222,11 +243,11 @@ Werte liefert.
 
 | Rang | Maßnahme | erwartete Wirkung | Aufwand |
 |---|---|---|---|
-| 1 | Prompt: „Ereignisse als absolute Anzahl, nicht als Prozent" | behebt belegte 3 Fälle, verhindert die Klasse | Minuten |
+| 1 | ~~Prompt: „Ereignisse als absolute Anzahl"~~ **gestrichen** | kein belegter Prozentfall; im Dev-Lauf ohne Wirkung | – |
 | 2 | Prompt: Tabellenzeile explizit benennen lassen (Outcome-Name aus dem Record) und in der Antwort mitliefern | adressiert 15 mehrdeutige Ereigniszellen und 100 mehrdeutige Zellen der Referenzversion | Stunden |
 | 3 | Retry-Regel beibehalten (32.000 Token) | +12 Zellen Abdeckung bei glm, belegt | erledigt |
 | 4 | Zeitpunkt- und Populationsfeld in die Records aufnehmen | macht Annotation prüfbar, verhindert Zeitpunktfehler strukturell | Stunden + Nachannotation |
-| 5 | Technische Validierung: Ereignisse ≤ Gruppengröße, Prozentwerte erkennen | fängt 3–5 Fehler automatisch, ohne Modell | Stunden |
+| 5 | Technische Validierung: Ereignisse ≤ Gruppengröße | fängt in diesen Daten 0 Fälle; bleibt Schutz für neue Daten | Stunden |
 | 6 | Tabellen separat übergeben statt Volltext | größter Hebel bei mehrzeiligen Tabellen, aber größter Umbau | Tage |
 
 ## 9. Konzept für die nächste Benchmark-Iteration
@@ -237,7 +258,8 @@ Werte liefert.
 wirksam (MAE 3,76 → 0,41 bei glm, F1 0,708 → 0,945). Population ist in den
 Daten nicht vorhanden, ein Prompt-Zusatz daher wirkungslos, solange die Records
 sie nicht führen. Armangabe ist bereits im Prompt und die Verwechslungsrate 0.
-Erwartung: kleiner Zusatzgewinn (Prozentregel), sonst ausgeschöpft.
+Erwartung: nach der Sichtprüfung kein Zusatzgewinn über die Zeitpunktangabe
+hinaus (die Prozentregel ist widerlegt), sonst ausgeschöpft.
 Aufwand: Minuten. Risiko: gering, aber jede Änderung braucht eine neue
 Prompt-Version, sonst sind Läufe nicht vergleichbar.
 

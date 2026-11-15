@@ -74,6 +74,29 @@ GEPRUEFTE_FAELLE: dict[tuple[str, str, str, str], tuple[int, str]] = {
         3,
         "geprueft am 15.11.2026: 80,46 ist die Follow-up-Spalte nach vier Monaten in PMC5498715",
     ),
+    # Sichtpruefung 15.11.2026 (analysis/v1_20261115/events_review.md): 48 ist die
+    # Ereigniszahl der Zeile "0-3 months" in PMC5244530; die Uebereinstimmung mit
+    # der Rate 64/133 = 48,1 Prozent ist Zufall. Prozentklasse zurueckgenommen.
+    ("yun_dev_fresh_20261115", "yun2024:191", "comparator_events", "comparator"): (
+        1,
+        "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' "
+        "(Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
+    ),
+    ("yun_dev_retry_20261115", "yun2024:191", "comparator_events", "comparator"): (
+        1,
+        "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' "
+        "(Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
+    ),
+    ("yun_dev_v3_20261115", "yun2024:191", "comparator_events", "comparator"): (
+        1,
+        "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' "
+        "(Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
+    ),
+    ("yun_dev_tp_20261115", "yun2024:191", "comparator_events", "comparator"): (
+        1,
+        "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' "
+        "(Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
+    ),
     ("yun_dev_fresh_20261115", "yun2024:3", "intervention_mean", "intervention"): (
         15,
         "Artikel nennt fuer denselben Wert 50,7 und 50,6 (Selbstwiderspruch im Text); "
