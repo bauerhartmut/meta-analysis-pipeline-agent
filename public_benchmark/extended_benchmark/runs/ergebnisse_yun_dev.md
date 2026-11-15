@@ -19,7 +19,12 @@ Fehler bei duenner Abdeckung nicht als gut durchgeht.
 | Lauf 2: Zeitpunkt im Prompt | `v2_timepoint` | glm-5.3 | 0,829 | 0,928 | 0,876 | 0,509 | 0,859 (146/170) | 31/43 | 0/73 | 5/43 | 1/43 |
 | Lauf 3: mit Retry (Cache-Treffer) | `v2_timepoint` | qwen3-30b-a3b | 0,465 | 0,468 | 0,466 | 0,977 | 0,735 (125/170) | 8/43 | 0/61 | 1/43 | 43/43 |
 | Lauf 3: mit Retry (Cache-Treffer) | `v2_timepoint` | glm-5.3 | 0,900 | 0,933 | 0,916 | 0,470 | 0,929 (158/170) | 33/43 | 0/79 | 3/43 | 43/43 |
-| Lauf 4: frisch, Cache-Buster | `v2b_cachebuster` | glm-5.3 | 0,959 | 0,931 | 0,945 | 0,405 | 0,988 (168/170) | 35/43 | 0/84 | 2/43 | 0/43 |
+| Lauf 4: frisch, Cache-Buster | `v2_timepoint` | glm-5.3 | 0,959 | 0,931 | 0,945 | 0,405 | 0,988 (168/170) | 35/43 | 0/84 | 2/43 | 0/43 |
+| Lauf 5: absolute Ereigniszahlen | `v3_abs_count` | glm-5.3 | 0,900 | 0,939 | 0,919 | 0,431 | 0,929 (158/170) | 33/43 | 0/79 | 3/43 | 0/43 |
+
+Prompt-Versionen kanonisch: `v2b_cachebuster`, `v2_timepoint` und
+`v2_timepoint_cb` sind dieselbe Fassung (`v2_timepoint`), der Cache-Zusatz
+`_cb` ist nur eine Generierungsvariante (siehe `versions.py`).
 
 Antworten unter einer Sekunde sind ein Cache-Verdacht, kein Beweis: bei
 qwen3-30b sind sie auch normale Geschwindigkeit. Aussagekraeftig ist das
@@ -27,7 +32,7 @@ Vollbild: Lauf 3 hat 43 von 43 in unter 0,2 s, Lauf 4 keine einzige.
 
 ## Letzter Lauf je Modell nach Feld
 
-qwen3-30b: Lauf 3 (`v2_timepoint`), glm: Lauf 4 (`v2b_cachebuster`).
+qwen3-30b: Lauf 3, glm: Lauf 4 (beide kanonisch `v2_timepoint`).
 Werte als Recall | MAE | abgedeckte Zellen.
 
 | Feld | Gold | qwen3-30b | glm-5.3 |
@@ -79,4 +84,5 @@ Werte als Recall | MAE | abgedeckte Zellen.
 - `yun_dev_tp_20261115/`: Lauf 2: Zeitpunkt im Prompt, `predictions.jsonl`, `eval/*.metrics.json`
 - `yun_dev_retry_20261115/`: Lauf 3: mit Retry (Cache-Treffer), `predictions.jsonl`, `eval/*.metrics.json`
 - `yun_dev_fresh_20261115/`: Lauf 4: frisch, Cache-Buster, `predictions.jsonl`, `eval/*.metrics.json`
+- `yun_dev_v3_20261115/`: Lauf 5: absolute Ereigniszahlen, `predictions.jsonl`, `eval/*.metrics.json`
 - Erzeugt von `runs/build_results_md.py`.

@@ -164,6 +164,11 @@ absolute Anzahl, nie als Prozent"). v3 lag im Dev-Lauf unter v2_timepoint
 Ergebnisse unterschiedlicher Versionen sind nicht direkt vergleichbar;
 `--cache-buster` hängt zusätzlich ein `_cb` an die Version.
 
+Für Auswertungen gilt die feste Zuordnung in `versions.py`: `v2_timepoint`,
+`v2b_cachebuster` und `v2_timepoint_cb` sind dieselbe Fassung (`v2_timepoint`),
+`v3_abs_count[_cb]` ist `v3_abs_count`. Die Rohdaten der Läufe werden nicht
+umschrieben, nur die Auswertung normalisiert.
+
 ## Fehleranalyse
 
 `analyze_errors.py` vergleicht jede Vorhersage mit den Gold-Zellen,

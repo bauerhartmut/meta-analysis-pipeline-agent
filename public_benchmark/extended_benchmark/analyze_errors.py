@@ -31,6 +31,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 
 from extended_benchmark.evaluate_extended import evaluate_numeric  # noqa: E402
+from extended_benchmark.versions import normalisiere_version  # noqa: E402
 
 RUNS = HERE / "runs"
 RECORDS = HERE / "records" / "yun_dev.jsonl"
@@ -517,7 +518,8 @@ def main() -> int:
         cache_rate = sum(1 for row in lauf["rows"] if (row.get("elapsed_s") or 99) < 1.0) / len(lauf["rows"])
         for model in lauf["modelle"]:
             rows = [row for row in lauf["rows"] if row["model"] == model]
-            version = rows[0].get("prompt_version") or VERSION_FALLBACK.get(lauf["run_id"], "unbekannt")
+            roh_version = rows[0].get("prompt_version") or VERSION_FALLBACK.get(lauf["run_id"], "unbekannt")
+            version = normalisiere_version(roh_version)
             faelle, zusatz, zusammenfassung = baue_faelle(
                 lauf["run_id"],
                 model,
@@ -537,6 +539,7 @@ def main() -> int:
                     "run_id": lauf["run_id"],
                     "model": model,
                     "prompt_version": version,
+                    "prompt_version_roh": roh_version,
                     "antworten": len(rows),
                     "cache_anteil": round(cache_rate, 3),
                     "leere_antworten": sum(1 for row in rows if not row["predicted"]["cells"]),

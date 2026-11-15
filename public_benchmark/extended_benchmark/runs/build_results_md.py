@@ -11,8 +11,13 @@ from __future__ import annotations
 
 import json
 import statistics
+import sys
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from extended_benchmark.versions import normalisiere_version  # noqa: E402
 
 RUNS = Path(__file__).resolve().parent
 BENCH = RUNS.parent
@@ -25,6 +30,7 @@ LAEUFE = [
     ("yun_dev_tp_20261115", "Lauf 2: Zeitpunkt im Prompt", "v2_timepoint"),
     ("yun_dev_retry_20261115", "Lauf 3: mit Retry (Cache-Treffer)", "v2_timepoint"),
     ("yun_dev_fresh_20261115", "Lauf 4: frisch, Cache-Buster", "v2b_cachebuster"),
+    ("yun_dev_v3_20261115", "Lauf 5: absolute Ereigniszahlen", "v3_abs_count"),
 ]
 MODELLE = [("qwen30", "qwen3-30b-a3b"), ("glm", "glm-5.3")]
 
@@ -93,6 +99,7 @@ def main() -> int:
     zeilen.append("|---|---|---|---|---|---|---|---|---|---|---|---|")
 
     for run, label, version in LAEUFE:
+        version = normalisiere_version(version)
         for model, model_label in MODELLE:
             metrics_path = RUNS / run / "eval" / f"{model}.metrics.json"
             if not metrics_path.exists():
@@ -111,6 +118,10 @@ def main() -> int:
                 f"| {metrics['arm_swap_records']}/{metrics['arm_swap_evaluable']} | {leer}/{len(rows)} | {cache}/{len(rows)} |"
             )
     zeilen.append("")
+    zeilen.append("Prompt-Versionen kanonisch: `v2b_cachebuster`, `v2_timepoint` und")
+    zeilen.append("`v2_timepoint_cb` sind dieselbe Fassung (`v2_timepoint`), der Cache-Zusatz")
+    zeilen.append("`_cb` ist nur eine Generierungsvariante (siehe `versions.py`).")
+    zeilen.append("")
     zeilen.append("Antworten unter einer Sekunde sind ein Cache-Verdacht, kein Beweis: bei")
     zeilen.append("qwen3-30b sind sie auch normale Geschwindigkeit. Aussagekraeftig ist das")
     zeilen.append("Vollbild: Lauf 3 hat 43 von 43 in unter 0,2 s, Lauf 4 keine einzige.")
@@ -118,7 +129,7 @@ def main() -> int:
 
     zeilen.append("## Letzter Lauf je Modell nach Feld")
     zeilen.append("")
-    zeilen.append("qwen3-30b: Lauf 3 (`v2_timepoint`), glm: Lauf 4 (`v2b_cachebuster`).")
+    zeilen.append("qwen3-30b: Lauf 3, glm: Lauf 4 (beide kanonisch `v2_timepoint`).")
     zeilen.append("Werte als Recall | MAE | abgedeckte Zellen.")
     zeilen.append("")
     zeilen.append("| Feld | Gold | qwen3-30b | glm-5.3 |")

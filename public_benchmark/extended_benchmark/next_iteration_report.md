@@ -13,19 +13,19 @@ allen sieben Läufen).
 
 ## 1. Zusammenfassung der Fehler
 
-Über alle vier Läufe mit zusammen sieben Modell-Durchgängen sind **370
-fehlerhafte Zellen** erfasst, dazu **163 zusätzliche Zellen** ohne
+Über alle fünf Läufe mit zusammen acht Modell-Durchgängen sind **387
+fehlerhafte Zellen** erfasst, dazu **168 zusätzliche Zellen** ohne
 Gold-Pendant.
 
 | Klasse | Anzahl | Anteil |
 |---|---|---|
-| Nicht eindeutig klassifizierbar | 181 | 49 % |
-| Zahl nicht extrahiert | 130 | 35 % |
-| Unvollständige Modellantwort | 40 | 11 % |
+| Nicht eindeutig klassifizierbar | 187 | 48 % |
+| Zahl nicht extrahiert | 136 | 35 % |
+| Unvollständige Modellantwort | 46 | 12 % |
 | Falscher Messzeitpunkt | 8 | 2 % |
 | Falsche Tabellenzeile | 6 | 2 % |
-| Prozentwert statt absoluter Zahl | 3 | 1 % |
-| Halluzinierter Wert | 2 | 1 % |
+| Prozentwert statt absoluter Zahl | 4 | 1 % |
+| Halluzinierter Wert | 0 | – |
 | Gruppenverwechslung | 0 | – |
 | Ereignisse/Teilnehmer verwechselt | 0 | – |
 | Parser-/Formatfehler | 0 | – |
@@ -36,7 +36,7 @@ Drei Befunde sind wichtiger als die Verteilung:
    leer.** Die in der Aufgabe vermuteten Fehlerarten treten in diesem Datensatz
    nicht auf. Wer sie im Prompt adressiert, bekämpft ein Problem, das die Daten
    nicht zeigen.
-2. **Der größte Block ist „nicht extrahiert“** (130 Zellen), nicht „falsch
+2. **Der größte Block ist „nicht extrahiert“** (136 Zellen), nicht „falsch
    gelesen“. Das ist ein Abdeckungs-, kein Genauigkeitsproblem.
 3. **Die Hälfte der Fehler ist nicht eindeutig klassifizierbar**, weil die
    Zahl zwar wörtlich im Artikel steht, die Zuordnung zu Zeile, Spalte oder
@@ -47,21 +47,21 @@ Drei Befunde sind wichtiger als die Verteilung:
 
 | Klasse | glm-5.3 | qwen3-30b |
 |---|---|---|
-| Nicht eindeutig | 46 | 139 |
-| Zahl nicht extrahiert | 14 | 116 |
-| Unvollständige Antwort | 34 | 6 |
+| Nicht eindeutig | 51 | 136 |
+| Zahl nicht extrahiert | 20 | 116 |
+| Unvollständige Antwort | 40 | 6 |
 | Falscher Messzeitpunkt | 4 | 4 |
-| Falsche Tabellenzeile | 0 | 2 |
-| Prozentwert statt absolut | 3 | 0 |
-| Halluzinierter Wert | 2 | 0 |
+| Falsche Tabellenzeile | 1 | 5 |
+| Prozentwert statt absolut | 4 | 0 |
+| Halluzinierter Wert | 0 | 0 |
 
 Die Profile sind gegensätzlich. glm liest fast alles, was es findet, richtig,
-bricht aber bei schwierigen Tabellen ganz ab (Reasoning-Schleife, 34 Zellen
-ohne jede Antwort). qwen3-30b antwortet immer, lässt aber ein Drittel der Zellen
-weg und liefert viele Werte, die zwar im Artikel stehen, aber nicht zur
-gesuchten Zeile gehören (139 nicht eindeutig).
+bricht aber bei schwierigen Tabellen ganz ab (Reasoning-Schleife, 40 Zellen
+ohne jede Antwort). qwen3-30b antwortet fast immer, lässt aber ein Drittel der
+Zellen weg und liefert viele Werte, die zwar im Artikel stehen, aber nicht zur
+gesuchten Zeile gehören (136 nicht eindeutig).
 
-Ein technisches Detail: qwen3-30b gibt in **163 Fällen Zellen zurück, für die es
+Ein technisches Detail: qwen3-30b gibt in **168 Fällen Zellen zurück, für die es
 keine Gold-Zelle gibt** — überwiegend für die 5 Records, in denen der
 Annotator keine Zahlen gefunden hat. Das drückt die Precision, ist aber
 inhaltlich ungeklärt: Ob dort wirklich keine Zahlen stehen oder der Gold-Stand
@@ -81,7 +81,7 @@ unvollständig ist, kann nur eine Sichtprüfung entscheiden.
 | comparator_events | nicht eindeutig (6), Prozent (3), Tabellenzeile (2) |
 
 Die Gruppengrößen sind der größte Einzelposten — aber ausschließlich als
-**fehlende** Zellen (113 fehlende Gruppengrößen-Zellen über alle sieben
+**fehlende** Zellen (115 fehlende Gruppengrößen-Zellen über alle acht
 Modell-Läufe), nicht als falsche. Werden sie geliefert, sind sie fast immer
 richtig. Bei Mittelwerten und
 Streuungen ist es umgekehrt: Sie werden geliefert, aber häufig aus der falschen
@@ -89,14 +89,14 @@ Zeile.
 
 ## 4. Ereigniszahlen im Detail
 
-33 Ereigniszellen sind fehlerhaft. Aufgeschlüsselt:
+37 Ereigniszellen sind fehlerhaft. Aufgeschlüsselt:
 
 | Ursache | Anzahl | Beleg |
 |---|---|---|
 | nicht extrahiert / keine Antwort | 11 | Feld fehlt in der Antwort |
-| Prozentwert statt absoluter Zahl | 3 | Ereignisrate stimmt auf 0,1 Prozent |
+| Prozentwert statt absoluter Zahl | 4 | Ereignisrate stimmt auf 0,1 Prozent |
 | falsche Tabellenzeile | 2 | Wert entspricht einer anderen Outcome-Zeile |
-| nicht eindeutig (Wert steht im Text) | 17 | Zeile/Spalte nicht belegbar |
+| nicht eindeutig (Wert steht im Text) | 20 | Zeile/Spalte nicht belegbar |
 
 **Die vermuteten Hauptursachen bestätigen sich nicht:**
 
@@ -170,18 +170,23 @@ nachvollziehbar.
    Zellen) sind von inhaltlichen Fehlern getrennt ausgewiesen.
 4. **Fehlende Zeitpunkt-/Populationsmetadaten** in den Records (siehe oben).
 5. **Kein Parserfehler**: Alle nicht-leeren Antworten waren maschinell lesbar.
+6. **Uneinheitliche Versionsnamen.** Dieselbe Prompt-Fassung hieß je nach Lauf
+   `v2_timepoint`, `v2b_cachebuster` oder `v2_timepoint_cb`. `versions.py`
+   bildet alle Schreibweisen auf drei kanonische Versionen ab (`v1`,
+   `v2_timepoint`, `v3_abs_count`); Analysen und Übersichten nutzen diese
+   Zuordnung, die Rohdaten der Läufe bleiben unverändert.
 
 ## 7. Menschlich zu prüfende Fälle
 
-`human_review_queue.csv` enthält 469 Einträge mit Prüfstatus `offen`:
+`human_review_queue.csv` enthält 505 Einträge mit Prüfstatus `offen`:
 
 | Priorität | Anzahl | Inhalt |
 |---|---|---|
-| 1 | 22 | falsche Ereigniszahlen |
-| 2 | 170 | fehlende Zellen |
+| 1 | 26 | falsche Ereigniszahlen |
+| 2 | 182 | fehlende Zellen |
 | 3 | 24 | große Abweichungen (≥ 5 absolut) |
-| 4 | 154 | mehrdeutige Zuordnung / sonstige Fehler |
-| 5 | 99 | zufällige korrekte Kontrollfälle |
+| 4 | 155 | mehrdeutige Zuordnung / sonstige Fehler |
+| 5 | 118 | zufällige korrekte Kontrollfälle |
 
 Jeder Eintrag enthält Record, Feld, Arm, Gold, Vorhersage, Quelle (PMCID und
 Dateipfad), Fehlerhypothese und Prüfstatus. Wichtig: Die Prüfung dient der
