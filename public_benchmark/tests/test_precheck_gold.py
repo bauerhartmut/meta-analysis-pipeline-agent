@@ -11,6 +11,7 @@ BENCH = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BENCH))
 
 from extended_benchmark import precheck_gold as pg  # noqa: E402
+from extended_benchmark import precheck_stufen as stufen  # noqa: E402
 
 FUELL = "Die Studie beschreibt den Verlauf der Erkrankung ausfuehrlich und ohne Zahlen. " * 20
 
@@ -67,6 +68,35 @@ def test_tabellenspalte_unit_ist_kein_standort() -> None:
     text = "  Parameter   Lemon verbena   Placebo\n  [unit]   (*N* = 20\n"
     treffer = pg.standortzahlen(text, zellen(intervention_group_size__intervention=20.0))
     assert treffer == []
+
+
+def test_leiter_zaehlt_tabellen_und_prosa_getrennt() -> None:
+    weit = [
+        {"art": "doppelangabe", "record_id": "r1", "field": "m", "arm": "i", "wert_b": 1.0,
+         "satz_a": "::::table-wrap 1.0 1.1", "satz_b": "The mean was 1.1 gm."},
+        {"art": "doppelangabe", "record_id": "r2", "field": "m", "arm": "i", "wert_b": 2.0,
+         "satz_a": "The mean was 2.0 gm.", "satz_b": "The mean was 2.1 gm (50 %)."},
+        {"art": "standortzahl", "record_id": "r3", "field": "g", "arm": "c", "gold": 940,
+         "satz": "940 (34%) were hospitalised in unit A."},
+    ]
+    mittel = [weit[1]]
+    ergebnis = stufen.leiter(weit, mittel)
+    assert ergebnis["weit_treffer"] == 3
+    assert ergebnis["weit_doppelangaben"] == 2
+    assert ergebnis["weit_mindestens_ein_tabellensatz"] == 1
+    assert ergebnis["weit_beide_saetze_prosa"] == 1
+    assert ergebnis["weit_mit_prozentzeichen"] == 1
+    assert ergebnis["mittel_treffer"] == 1
+    assert ergebnis["mittel_beide_saetze_prosa_records"] == ["r2"]
+
+
+def test_entdopple_zaehlt_jeden_wert_einmal() -> None:
+    eintraege = [
+        {"record_id": "r1", "field": "m", "arm": "i", "wert_b": 1.1},
+        {"record_id": "r1", "field": "m", "arm": "i", "wert_b": 1.1},
+        {"record_id": "r1", "field": "m", "arm": "i", "wert_b": 1.2},
+    ]
+    assert len(stufen.entdopple(eintraege)) == 2
 
 
 @pytest.mark.parametrize(

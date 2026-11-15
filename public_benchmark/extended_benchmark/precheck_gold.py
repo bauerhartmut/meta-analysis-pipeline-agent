@@ -237,7 +237,7 @@ def standortzahlen(text: str, cells: list[dict[str, Any]]) -> list[dict[str, Any
     return treffer
 
 
-def pruefe_record(record: dict[str, Any], *, weit: str = "eng") -> list[dict[str, Any]]:
+def pruefe_record(record: dict[str, Any], *, stufe: str = "eng") -> list[dict[str, Any]]:
     pfad = REPO / (record["document"].get("path") or "")
     if not pfad.exists():
         return []
@@ -252,11 +252,13 @@ def pruefe_record(record: dict[str, Any], *, weit: str = "eng") -> list[dict[str
             f"{c['field']}={c['value']:g}" for c in cells
         ),
     }
-    if weit == "weit":
+    # "mittel" und "weit" sind Lockerungen fuer die Messung, ob ein
+    # Nullergebnis an der Regel oder an den Daten liegt (precheck_stufen.py).
+    if stufe == "weit":
         paare = zahlpaare(
             text, outcome, cells, mindestabstand=0, nur_prosa=False, braucht_outcome=False
         )
-    elif weit == "mittel":
+    elif stufe == "mittel":
         paare = zahlpaare(text, outcome, cells, mindestabstand=0)
     else:
         paare = zahlpaare(text, outcome, cells)
@@ -265,21 +267,50 @@ def pruefe_record(record: dict[str, Any], *, weit: str = "eng") -> list[dict[str
     return ereignisse
 
 
+FELDER = [
+    "art", "record_id", "document", "outcome", "gold_zellen", "beziehung",
+    "wert_a", "wert_b", "anker", "region_a", "region_b", "abstand",
+    "position_a", "position_b", "field", "arm", "gold", "ortswort",
+    "satz_a", "satz_b", "satz",
+]
+
+
+def schreibe(ziel: Path, treffer: list[dict[str, Any]], records: int, stufe: str = "eng") -> None:
+    """Trefferliste und Kennzahlen einer Stufe schreiben."""
+    ziel.mkdir(parents=True, exist_ok=True)
+    with (ziel / "hits.csv").open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=FELDER, extrasaction="ignore")
+        writer.writeheader()
+        for eintrag in treffer:
+            zeile = {**eintrag}
+            if isinstance(zeile.get("anker"), list):
+                zeile["anker"] = "|".join(zeile["anker"])
+            writer.writerow(zeile)
+    (ziel / "summary.json").write_text(
+        json.dumps(
+            {
+                "records_geprueft": records,
+                "stufe": stufe,
+                "treffer": len(treffer),
+                "doppelangaben": sum(1 for e in treffer if e["art"] == "doppelangabe"),
+                "standortzahlen": sum(1 for e in treffer if e["art"] == "standortzahl"),
+                "records_mit_treffer": len({e["record_id"] for e in treffer}),
+                "dokumente_mit_treffer": len({e["document"] for e in treffer}),
+                "module_aufrufe": 0,
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--records", type=Path, default=RECORDS)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--nur-split", default="", help="nur Records dieses Splits pruefen")
     parser.add_argument("--ohne-split", default="dev", help="Records dieses Splits auslassen")
-    parser.add_argument(
-        "--stufe",
-        choices=("eng", "mittel", "weit"),
-        default="eng",
-        help=(
-            "eng = Befundstufe; mittel = ohne Abstandsfilter; weit = ohne Prosa-, "
-            "Outcome- und Abstandsfilter (mittel/weit nur zur Messung)"
-        ),
-    )
     args = parser.parse_args()
 
     records = [
@@ -294,51 +325,9 @@ def main() -> int:
 
     alle: list[dict[str, Any]] = []
     for record in records:
-        alle.extend(pruefe_record(record, weit=args.stufe))
-    if args.stufe != "eng":
-        gesehen: set[tuple[Any, ...]] = set()
-        gefiltert = []
-        for eintrag in alle:
-            schluessel = (eintrag["record_id"], eintrag.get("field"), eintrag.get("arm"), eintrag.get("wert_b"))
-            if schluessel in gesehen:
-                continue
-            gesehen.add(schluessel)
-            gefiltert.append(eintrag)
-        alle = gefiltert
+        alle.extend(pruefe_record(record))
 
-    args.out.mkdir(parents=True, exist_ok=True)
-    felder = [
-        "art", "record_id", "document", "outcome", "gold_zellen", "beziehung",
-        "wert_a", "wert_b", "anker", "region_a", "region_b", "abstand",
-        "position_a", "position_b", "field", "arm", "gold", "ortswort",
-        "satz_a", "satz_b", "satz",
-    ]
-    with (args.out / "hits.csv").open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=felder, extrasaction="ignore")
-        writer.writeheader()
-        for eintrag in alle:
-            zeile = {**eintrag}
-            for schluessel in ("anker",):
-                if schluessel in zeile:
-                    zeile[schluessel] = "|".join(zeile[schluessel])
-            writer.writerow(zeile)
-    (args.out / "summary.json").write_text(
-        json.dumps(
-            {
-                "records_geprueft": len(records),
-                "stufe": args.stufe,
-                "treffer": len(alle),
-                "doppelangaben": sum(1 for e in alle if e["art"] == "doppelangabe"),
-                "standortzahlen": sum(1 for e in alle if e["art"] == "standortzahl"),
-                "records_mit_treffer": len({e["record_id"] for e in alle}),
-                "dokumente_mit_treffer": len({e["document"] for e in alle}),
-                "module_aufrufe": 0,
-            },
-            indent=2,
-        )
-        + "\n",
-        encoding="utf-8",
-    )
+    schreibe(args.out, alle, len(records))
     print(
         f"geprueft: {len(records)} Records, Treffer: {len(alle)} "
         f"({sum(1 for e in alle if e['art'] == 'doppelangabe')} Doppelangaben, "

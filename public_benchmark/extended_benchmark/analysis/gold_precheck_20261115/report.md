@@ -28,8 +28,8 @@ Keine Fehltreffer am Dev-Satz, also 3 von 3 richtig.
 
 ## Ergebnis auf den 407 noch nicht verwendeten Records
 
-**0 Treffer** — weder Doppelangaben noch Standortzahlen (`hits.csv`,
-`summary.json`). Das heißt nicht, dass dort keine Probleme stehen, sondern dass
+**0 Treffer** — weder Doppelangaben noch Standortzahlen (`stufe_eng/hits.csv`,
+`stufe_eng/summary.json`). Das heißt nicht, dass dort keine Probleme stehen, sondern dass
 die enge Regel dort nichts findet: Sie braucht eine zweite, fast gleiche Zahl
 in der Nähe desselben Outcome-Begriffs. Der Dev-Satz zeigt, dass dieses Muster
 selten ist (2 Zellen in 170).
@@ -37,9 +37,14 @@ selten ist (2 Zellen in 170).
 ## Lockerungsleiter: Regel oder Daten?
 
 Um zu prüfen, ob die 0 Treffer an der Regel oder am Material liegen, ist die
-Stufe messbar (`--stufe eng|mittel|weit`). Alle drei Stufen brauchen den
-Gold-Anker und die fast gleiche Zahl; sie unterscheiden sich nur in den
-Filtern:
+Stufe messbar. Alle drei Stufen brauchen den Gold-Anker und die fast gleiche
+Zahl; sie unterscheiden sich nur in den Filtern. Reproduzierbar mit
+`precheck_stufen.py` (schreibt die Trefferlisten je Stufe und `stufen.json`):
+
+```
+python public_benchmark/extended_benchmark/precheck_stufen.py \
+    --out public_benchmark/extended_benchmark/analysis/gold_precheck_20261115
+```
 
 | Stufe | Prosa-Filter | Outcome-Begriff | Mindestabstand | Treffer (407 Records) | davon Doppelangaben |
 |---|---|---|---|---|---|
@@ -53,9 +58,17 @@ Ziffernfolge, andere Größe. Er verschwindet also nicht durch die Regel, sonder
 war nie eine Doppelangabe.
 
 Von den 186 Treffern der Stufe `weit` haben **185 mindestens einen Satz in einer
-Tabelle**; nur einer spielt in zwei Prosa-Sätzen, und das ist derselbe
-`yun2024:71`-Zufall. 45 der Paare stehen in Sätzen mit Prozentzeichen, viele
-sind p-Werte (0,013 gegen 0,13) oder benachbarte Tabellenspalten.
+Tabelle** (`weit_mindestens_ein_tabellensatz`); nur **einer** spielt in zwei
+Prosa-Sätzen (`weit_beide_saetze_prosa`, Record `yun2024:71`), und das ist
+derselbe Zufall. **63** der Paare stehen in Sätzen mit Prozentzeichen
+(`weit_mit_prozentzeichen`); viele sind p-Werte (0,013 gegen 0,13) oder
+benachbarte Tabellenspalten. Die Zahlen stammen aus `stufen.json`, erzeugt von
+`precheck_stufen.py`.
+
+Der Dev-Satz als Gegenprobe (`stufen.json`, Abschnitt `dev`): 3 Treffer in der
+Befundstufe, 3 in `mittel`, 37 in `weit` — dort sind die beiden Prosa-Treffer
+die echten `yun2024:3`-Fälle, das Werkzeug verliert sie also nicht durch die
+Lockerung.
 
 **Ergebnis:** Die 0 Treffer sind überwiegend eine Aussage über die Daten, nicht
 über die Regel. Lockert man die Regel, kommen keine echten Doppelangaben hinzu,

@@ -1,0 +1,37 @@
+{
+  "module_aufrufe": 0,
+  "neue_records": {
+    "records": 407,
+    "weit_treffer": 186,
+    "weit_doppelangaben": 186,
+    "weit_mindestens_ein_tabellensatz": 185,
+    "weit_beide_saetze_prosa": 1,
+    "weit_mit_prozentzeichen": 63,
+    "mittel_treffer": 1,
+    "mittel_doppelangaben": 1,
+    "mittel_beide_saetze_prosa": 1,
+    "weit_beide_saetze_prosa_records": [
+      "yun2024:71"
+    ],
+    "mittel_beide_saetze_prosa_records": [
+      "yun2024:71"
+    ]
+  },
+  "dev": {
+    "records": 43,
+    "weit_treffer": 37,
+    "weit_doppelangaben": 36,
+    "weit_mindestens_ein_tabellensatz": 34,
+    "weit_beide_saetze_prosa": 2,
+    "weit_mit_prozentzeichen": 2,
+    "mittel_treffer": 3,
+    "mittel_doppelangaben": 2,
+    "mittel_beide_saetze_prosa": 2,
+    "weit_beide_saetze_prosa_records": [
+      "yun2024:3"
+    ],
+    "mittel_beide_saetze_prosa_records": [
+      "yun2024:3"
+    ]
+  }
+}

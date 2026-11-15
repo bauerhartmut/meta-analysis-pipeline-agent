@@ -205,11 +205,11 @@ Schreibweise einer Goldzahl an anderer Stelle desselben Artikels
 standortbezogene Gruppengrößen („940 (34 %) … unit A"). Tabellenblöcke werden
 ausgeschlossen. Am Dev-Satz findet das Werkzeug genau die drei bekannten Fälle
 (2× `yun2024:3`, 1× `yun2024:83`) und keinen Fehltreffer; auf den 407 noch
-nicht verwendeten Records keinen Treffer. Mit `--stufe mittel|weit` lässt sich
-die Regel lockern (ohne Abstands- bzw. ohne Prosa- und Outcome-Filter); das
-dient nur der Messung, ob ein Nullergebnis an der Regel oder an den Daten
-liegt — auf den 407 Records kommen dabei nur Koinzidenzen hinzu. Grenzen und
-Messungen: `analysis/gold_precheck_20261115/report.md`.
+nicht verwendeten Records keinen Treffer. `precheck_stufen.py` fährt zusätzlich
+zwei gelockerte Stufen (`mittel`: ohne Abstandsfilter, `weit`: ohne Prosa- und
+Outcome-Filter) über beide Sätze und schreibt `stufen.json`; auf den 407 Records
+kommen dabei nur Koinzidenzen hinzu. Grenzen und Messungen:
+`analysis/gold_precheck_20261115/report.md`.
 
 ```
 python public_benchmark/extended_benchmark/precheck_gold.py \
