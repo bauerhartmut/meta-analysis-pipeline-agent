@@ -58,6 +58,70 @@ def test_ids_waehlen_aus_der_alternativen_datei(tmp_path: Path) -> None:
     assert len(runner.waehle_records(runner.load_records("test", None, path=datei), None)) == 3
 
 
+def _auftrag(tmp_path: Path, monkeypatch, antworten: list[dict]) -> tuple[list[str], dict]:
+    """Fuehrt main() mit gefaelschtem API-Aufruf aus; gibt (aufrufe, zeile)."""
+    datei = tmp_path / "rec.jsonl"
+    record = {
+        "record_id": "yun2024:1",
+        "document": {"split": "test", "path": ""},
+        "context": {"intervention": "A", "comparator": "B", "outcome": "C", "outcome_type": "binary"},
+        "gold": {"cells": []},
+        "timepoint": {"target": "week 24"},
+    }
+    datei.write_text(json.dumps(record) + "\n", encoding="utf-8")
+    aufrufe: list[str] = []
+
+    def fake_call(model, prompt, key, base, attempts=4):
+        aufrufe.append(model["id"])
+        return antworten[min(len(aufrufe) - 1, len(antworten) - 1)]
+
+    monkeypatch.setattr(runner, "call", fake_call)
+    monkeypatch.setattr(runner, "HERE", tmp_path)
+    monkeypatch.setattr(
+        runner, "get_config", lambda: type("Cfg", (), {"tudagpt_api_key": "test", "tudagpt_api_base": "http://x"})()
+    )
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["runner", "--records", str(datei), "--split", "test", "--ids", "yun2024:1",
+         "--models", "glm", "--run-id", "t1", "--target-fallback"],
+    )
+    assert runner.main() == 0
+    zeile = json.loads((tmp_path / "runs" / "t1" / "predictions.jsonl").read_text(encoding="utf-8").splitlines()[0])
+    return aufrufe, zeile
+
+
+def test_length_loest_keinen_zweiten_api_aufruf_aus(tmp_path: Path, monkeypatch) -> None:
+    lang = {
+        "http_status": 200, "content": "", "finish_reason": "length",
+        "completion_tokens": 24000, "elapsed_s": 1.0, "error": "",
+    }
+    aufrufe, zeile = _auftrag(tmp_path, monkeypatch, [lang])
+    assert len(aufrufe) == 1, aufrufe
+    assert zeile["fehlerklasse"] == "length_ohne_ergebnis"
+    assert zeile["failed"] is True
+    assert zeile["rows"] == []
+    assert zeile["retried"] is False
+
+
+def test_kaputtes_json_bekommt_genau_einen_zweiten_aufruf(tmp_path: Path, monkeypatch) -> None:
+    kaputt = {
+        "http_status": 200, "content": "kein json", "finish_reason": "stop",
+        "completion_tokens": 900, "elapsed_s": 1.0, "error": "",
+    }
+    gut = {
+        "http_status": 200,
+        "content": json.dumps({"cells": [{"field": "intervention_mean", "arm": "intervention", "value": 1.5, "timepoint": "24"}],
+                              "chosen_timepoint": "24", "discarded_timepoints": ["0"]}),
+        "finish_reason": "stop", "completion_tokens": 800, "elapsed_s": 1.0, "error": "",
+    }
+    aufrufe, zeile = _auftrag(tmp_path, monkeypatch, [kaputt, gut])
+    assert len(aufrufe) == 2, aufrufe
+    assert zeile["fehlerklasse"] == ""
+    assert zeile["retry_grund"] == "json"
+    assert len(zeile["rows"]) == 1
+
+
 def test_length_bekommt_keinen_zweiten_versuch(tmp_path: Path) -> None:
     # Reasoning-Schleife: eindeutige Fehlzeile statt Retry mit groesserem Budget.
     assert runner.fehlerklasse_aus({"finish_reason": "length"}, "") == "length_ohne_ergebnis"
