@@ -621,6 +621,38 @@ Was das für alte Zahlen bedeutet: Alle F1-Werte aus den Abschnitten 1–12 sind
 gegen die alte Referenz gemessen. Für neue Läufe gilt v6 als Maßstab
 (F1 0,944–0,963, MAE 0,0006–0,039, Abdeckung 0,953–0,988).
 
+## 15. Prüfung der v6-Queue und zwei Absicherungen (15.11.2026)
+
+**Versionsetikett.** Der Runner setzt das Label jetzt je Antwort: Eine Fassung,
+die den Record-Zeitpunkt voraussetzt (v5, v6), wird nur dann so etikettiert,
+wenn der Record wirklich einen Zeitpunkt trägt; ohne Annotation läuft und
+heißt der Prompt `v2_timepoint`. Damit kann ein Lauf ohne Annotation nicht mehr
+als `v6_target_fallback` in die Auswertung gehen (Test: `test_lauf_ohne_annotation_heisst_nicht_v6`).
+
+**Zellklassen.** `evaluate_fallback.py` trennt jetzt vier Klassen statt zwei:
+`zieltreu`, `rueckfall`, `ohne_zeitpunkt` (Zelle ohne Angabe) und `ohne_ziel`
+(Record ohne verwertbare Annotation). Die beiden neuen Klassen werden getrennt
+ausgewiesen, nicht als zieltreu verbucht. Auf beiden v6-Läufen: 120/128
+zieltreu, 38/36 Rückfall, 0 ohne Zeitpunktangabe, 13 ohne Ziel (10 richtig,
+3 ohne Gold) — das Modell nennt den Zeitpunkt also durchgehend.
+
+**Prüfung der 52 Referenzfälle** (`analysis/v6_review.md`): 40 Kontrollfälle
+ohne Befund, 6 Zellen eines technisch leeren Laufs (`yun2024:231`, Lauf 10
+korrekt), 4 fehlende Zellen zweier Gruppengrößen, 2 inhaltliche Fälle.
+Davon sind nur **1 echter Modellfehler** (`yun2024:3 comparator_mean`: −7,0
+statt −0,7) und **2 Gold-Konflikte**:
+
+* `yun2024:83` — Gold führt 940 und 1831 als Gruppengrößen, das sind im Artikel
+die Krankenhausstandorte („940 (34 %) … unit A, 1,831 (66 %) … unit B"),
+während die Mittelwerte aus dem Periodenvergleich stammen. Die Annotation
+„Period 2" ist für die Mittelwerte belegt; für die Gruppengrößen gibt es keine
+passende Zahl. Gold unverändert.
+* `yun2024:3` — 50,7 (Text) gegen 50,6 (Tabelle), bereits in Abschnitt 5
+erfasst.
+
+Damit ist die Restlücke bei F1 0,96 überwiegend Datenqualität, nicht
+Extraktionsqualität.
+
 ## Technische Umsetzung
 
 - `analyze_errors.py` liest nur; es schreibt ausschließlich nach `analysis/`.

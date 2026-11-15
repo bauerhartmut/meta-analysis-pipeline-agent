@@ -29,6 +29,17 @@ from evaluate_extended import _close, _f1, _safe_div, evaluate_numeric, read_jso
 from stage_extraction import normalisiere  # noqa: E402
 
 
+def klassifiziere(target: str, label: str) -> str:
+    """Ordnet eine Zelle einer Klasse zu (Eingaben bereits normalisiert)."""
+    if not target:
+        return "ohne_ziel"
+    if not label:
+        return "ohne_zeitpunkt"
+    if label == target:
+        return "zieltreu"
+    return "rueckfall"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", required=True)
@@ -50,13 +61,18 @@ def main() -> int:
     for record_id, record in by_id.items():
         gold = {(cell["field"], cell.get("arm")): float(cell["value"]) for cell in record["gold"]["cells"]}
         target = normalisiere((record.get("timepoint") or {}).get("target") or "")
+        if "not stated" in target:
+            # Kein Zielzeitpunkt im Record: Zellen lassen sich nicht als
+            # zieltreu oder Rueckfall bewerten und zaehlen als "ohne_ziel".
+            target = ""
         cells = (predictions.get(record_id, {}).get("predicted") or {}).get("cells", [])
         gesehen: set[tuple[str, str | None]] = set()
         for cell in cells:
             key = (cell["field"], cell.get("arm"))
             label = normalisiere(cell.get("timepoint") or "")
-            zieltreu = bool(target) and (not label or label == target)
-            art = "zieltreu" if zieltreu else "rueckfall"
+            # Drei getrennte Faelle: Record ohne Annotation, Zelle ohne
+            # Zeitpunktangabe und Zelle mit abweichendem Zeitpunkt.
+            art = klassifiziere(target, label)
             zaehler[f"{art}_zellen"] += 1
             pro_feld[cell["field"]][f"{art}_zellen"] += 1
             if key in gold:
@@ -68,7 +84,7 @@ def main() -> int:
                     zaehler[f"{art}_falsch"] += 1
             else:
                 zaehler[f"{art}_ohne_gold"] += 1
-            if not zieltreu:
+            if art == "rueckfall":
                 ziel_rang, label_rang = rang(target), rang(label)
                 if ziel_rang is not None and label_rang is not None:
                     distanzen.append(abs(label_rang - ziel_rang))
@@ -94,6 +110,18 @@ def main() -> int:
         "run": args.run,
         "records": len(records),
         "gesamt": gesamt,
+        "ohne_ziel": {
+            "zellen": zaehler["ohne_ziel_zellen"],
+            "richtig": zaehler["ohne_ziel_richtig"],
+            "falsch": zaehler["ohne_ziel_falsch"],
+            "ohne_gold": zaehler["ohne_ziel_ohne_gold"],
+        },
+        "ohne_zeitpunkt": {
+            "zellen": zaehler["ohne_zeitpunkt_zellen"],
+            "richtig": zaehler["ohne_zeitpunkt_richtig"],
+            "falsch": zaehler["ohne_zeitpunkt_falsch"],
+            "ohne_gold": zaehler["ohne_zeitpunkt_ohne_gold"],
+        },
         "zieltreu": {
             "zellen": zaehler["zieltreu_zellen"],
             "richtig": zaehler["zieltreu_richtig"],
@@ -144,11 +172,13 @@ def main() -> int:
         f"{gesamt['cell_precision']:.4f} MAE {gesamt['mae_pairs']} coverage {gesamt['mae_coverage']} "
         f"({gesamt['mae_pairs_covered']}/{gold_cells}) exakt {gesamt['record_exact']}/{len(records)}"
     )
-    for art in ("zieltreu", "rueckfall"):
+    for art in ("zieltreu", "rueckfall", "ohne_zeitpunkt", "ohne_ziel"):
         block = ergebnis[art]
+        precision = block.get("precision")
+        zusatz = f", Precision {precision}" if precision is not None else ""
         print(
             f"[{art}] {block['zellen']} Zellen, richtig {block['richtig']}, falsch {block['falsch']}, "
-            f"ohne Gold {block['ohne_gold']}, Precision {block['precision']}"
+            f"ohne Gold {block['ohne_gold']}{zusatz}"
         )
     if ergebnis["rueckfall"]["beispiele"]:
         print(f"[rueckfall] Zeitdistanz Median {ergebnis['rueckfall']['zeitdistanz_median_monate']} Monate "

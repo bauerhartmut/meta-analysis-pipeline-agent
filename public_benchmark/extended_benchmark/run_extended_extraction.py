@@ -78,6 +78,35 @@ SYSTEM = (
 LOCK = threading.Lock()
 
 
+def bestimme_version(
+    *,
+    absolute_counts: bool = False,
+    last_timepoint: bool = False,
+    target_timepoint: bool = False,
+    target: str = "",
+    fallback: bool = False,
+    cache_buster: bool = False,
+) -> str:
+    """Versionslabel fuer eine Antwort.
+
+    Eine Fassung, die den Record-Zeitpunkt voraussetzt, wird nur dann so
+    etikettiert, wenn der Record wirklich einen Zeitpunkt traegt. Ohne
+    Annotation laeuft der Prompt-Text der vorherigen Referenz und heisst auch
+    so, damit Laeufe nicht unter falscher Version in die Auswertung gehen.
+    """
+    if absolute_counts:
+        version = VERSION_ABSOLUTE_COUNTS
+    elif last_timepoint:
+        version = VERSION_LAST_TIMEPOINT
+    elif target_timepoint and target:
+        version = VERSION_TARGET_TIMEPOINT
+    elif fallback and target:
+        version = VERSION_TARGET_FALLBACK
+    else:
+        version = PROMPT_VERSION
+    return f"{version}_cb" if cache_buster else version
+
+
 def build_prompt(
     record: dict[str, Any],
     text: str,
@@ -367,15 +396,8 @@ def main() -> int:
 
     global SESSION_TAG
     prompt_version = VERSION_ABSOLUTE_COUNTS if args.absolute_counts else PROMPT_VERSION
-    if args.last_timepoint:
-        prompt_version = VERSION_LAST_TIMEPOINT
-    if args.target_timepoint:
-        prompt_version = VERSION_TARGET_TIMEPOINT
-    elif args.target_fallback:
-        prompt_version = VERSION_TARGET_FALLBACK
     if args.cache_buster:
         SESSION_TAG = uuid.uuid4().hex[:12]
-        prompt_version = f"{prompt_version}_cb"
 
     config = get_config()
     key = config.tudagpt_api_key
@@ -415,6 +437,14 @@ def main() -> int:
             last_timepoint=args.last_timepoint,
             target_timepoint=target or None,
             fallback=args.target_fallback,
+        )
+        prompt_version = bestimme_version(
+            absolute_counts=args.absolute_counts,
+            last_timepoint=args.last_timepoint,
+            target_timepoint=args.target_timepoint,
+            target=target,
+            fallback=args.target_fallback,
+            cache_buster=args.cache_buster,
         )
         response = call(models[model], prompt, key, base)
         retry: dict[str, Any] | None = None
