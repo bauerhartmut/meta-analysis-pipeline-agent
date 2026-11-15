@@ -10,6 +10,7 @@ import pytest
 BENCH = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BENCH))
 
+from extended_benchmark import analyze_errors as ae  # noqa: E402
 from extended_benchmark.analyze_errors import (  # noqa: E402
     GEPRUEFTE_FAELLE,
     Dokument,
@@ -223,6 +224,13 @@ def test_prozentklasse_fuer_191_zurueckgenommen() -> None:
     partner = GEPRUEFTE_FAELLE[("yun2024:191", "intervention_events", "intervention")]
     assert partner[0] == 1
     assert "0-3 months" in partner[1]
+
+
+def test_minus_sieben_ist_dokumentierter_gold_konflikt() -> None:
+    klasse, beleg = ae.GEPRUEFTE_FAELLE[("yun2024:3", "comparator_mean", "comparator")]
+    assert klasse == 15
+    assert "Ergebnisteil" in beleg
+    assert ae.KLASSEN[klasse] == "Nicht eindeutig klassifizierbar"
 
 
 def test_queue_traegt_status_je_version() -> None:

@@ -715,9 +715,12 @@ treffen — genau eine der beiden Zellen ist zwangsläufig falsch. Damit ist die
 Restlücke der v6-Läufe vollständig Datenqualität; der einzige inhaltliche
 „Fehler" der Prüfqueue entfällt.
 
-**Gegenmaßnahme:** kurzfristig keine Prompt-Änderung, sondern die Zelle neben
-`intervention_mean` als dokumentierten Gold-Konflikt führen (Mechanismus
-`GEPRUEFTE_FAELLE`, keine Metrikänderung). Eine Prompt-Regel „bei Doppelangaben
+**Gegenmaßnahme:** umgesetzt — die Zelle steht jetzt neben `intervention_mean`
+in `GEPRUEFTE_FAELLE` (Klasse 15, Beleg mit beiden Textstellen). Geprüft:
+`metrik_abgleich` und die Fehlerzählungen je Klasse, Feld und Version sind
+vorher/nachher **identisch** (`ableitung_identisch = true`); die Zelle erscheint
+in der Queue als „Nicht eindeutig klassifizierbar" mit dem neuen Beleg statt
+als „Zahlenwert falsch gelesen". Eine Prompt-Regel „bei Doppelangaben
 gilt der Ergebnisteil" wäre eine neue Version mit eigenem Lauf, keine
 Korrektur.
 

@@ -94,6 +94,16 @@ GEPRUEFTE_FAELLE: dict[tuple[str, str, str], tuple[int, str]] = {
         "Artikel nennt fuer denselben Wert 50,7 und 50,6 (Selbstwiderspruch im Text); "
         "Gold 50,6, Modell 50,7 - beide Schreibweisen belegt",
     ),
+    # Textvergleich 15.11.2026 (analysis/yun2024_3_contradiction.md): Der
+    # Ergebnisteil nennt 50,6 und -7,0, die Kurzfassung 50,7 und -0,7 fuer
+    # denselben Vergleich (p = 0,08). Gold mischt beide Stellen; -7,0 ist
+    # woertlich belegt und keine Ziffern-Verrutschung.
+    ("yun2024:3", "comparator_mean", "comparator"): (
+        15,
+        "geprueft am 15.11.2026: -7,0 steht woertlich im Ergebnisteil von PMC1216327 "
+        "('mean loss of body weight (- 7.0 gm)'), die Kurzfassung nennt -0,7; "
+        "Gold mischt beide Stellen, kein konsistentes Lesen trifft beide Zellen",
+    ),
 }
 
 # Auffaellige Gold-Zellen, die am Artikel geprueft wurden (Punkt Aufgabe C).
