@@ -53,6 +53,7 @@ FIELDS = (
 )
 
 PROMPT_VERSION = "v2_timepoint"
+RETRY_MAX_TOKENS = 32000
 
 SYSTEM = (
     "You extract numerical results from randomised controlled trial publications. "
@@ -270,6 +271,13 @@ def main() -> int:
                 text = candidate.read_text(encoding="utf-8", errors="replace")
         prompt = build_prompt(record, text)
         response = call(models[model], prompt, key, base)
+        retry: dict[str, Any] | None = None
+        # Reasoning-Schleifen enden mit finish_reason "length" und leerem Inhalt.
+        # Ein zweiter Versuch mit groesserem Budget behebt einen Teil davon.
+        if response.get("finish_reason") == "length" and models[model]["max_tokens"] < RETRY_MAX_TOKENS:
+            retry = call({**models[model], "max_tokens": RETRY_MAX_TOKENS}, prompt, key, base)
+            if retry.get("content"):
+                response = retry
         cells, parse_error = parse_cells(response.get("content") or "")
         row = {
             "record_id": record["record_id"],
@@ -280,6 +288,10 @@ def main() -> int:
             "finish_reason": response.get("finish_reason", ""),
             "completion_tokens": response.get("completion_tokens"),
             "reasoning_chars": response.get("reasoning_chars", 0),
+            "suspected_cache": (response.get("elapsed_s") or 0) < 1.0,
+            "retried": retry is not None,
+            "retry_finish_reason": retry.get("finish_reason", "") if retry else "",
+            "retry_tokens": retry.get("completion_tokens") if retry else None,
             "elapsed_s": response.get("elapsed_s"),
             "content_len": len(response.get("content") or ""),
             "parse_error": parse_error,

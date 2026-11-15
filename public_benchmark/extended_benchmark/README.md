@@ -142,6 +142,12 @@ Prompt-Version und Zellen je (Record, Modell).
 Für Diagnosen: `--ids <record_ids>` (nur diese Records), `--max-tokens`
 (Budget überschreiben), `--save-content` (Rohantwort mitspeichern).
 
+Antworten mit `finish_reason = "length"` bekommen automatisch einen zweiten
+Versuch mit 32.000 Token (`RETRY_MAX_TOKENS`); `retried`, `retry_finish_reason`
+und `retry_tokens` stehen in der Ausgabe. Laufzeiten unter einer Sekunde werden
+als `suspected_cache` markiert: Das Gateway liefert dann offenbar eine frühere
+Antwort erneut, der Lauf ist kein unabhängiger Messpunkt.
+
 `PROMPT_VERSION` im Runner benennt die aktuelle Prompt-Fassung
 (`v2_timepoint`: Werte am Ende der Intervention, nicht Baseline und nicht
 Follow-up). Ergebnisse unterschiedlicher Versionen sind nicht direkt
