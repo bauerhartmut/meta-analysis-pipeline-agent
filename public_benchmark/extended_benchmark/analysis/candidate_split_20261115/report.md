@@ -15,8 +15,8 @@ Werkzeug, ob die Zahl **gerundet** dasteht (eine Nachkommastelle oder Ganzzahl).
 
 ## Gegenprobe am Dev-Satz
 
-**170 von 170 Zellen wörtlich belegt**, alle 43 Records komplett
-(`dev_validation/`). Das deckt sich mit der früheren Sichtprüfung, die 169 von
+**170 von 170 Zellen wörtlich belegt**, alle 38 Records mit Goldzellen komplett
+(`dev_validation/`; fünf Dev-Records führen keine Zellen). Das deckt sich mit der früheren Sichtprüfung, die 169 von
 170 Zellen als wörtlich belegt und eine Zelle (50,6/50,7) als Doppelangabe
 geführt hatte: 50,6 steht wörtlich im Ergebnisteil.
 
@@ -28,9 +28,14 @@ geführt hatte: 50,6 steht wörtlich im Ergebnisteil.
 | Goldzellen | 1.294 |
 | wörtlich belegt | 1.088 (**84,1 %**) |
 | ohne wörtlichen Beleg | 206 |
-| Records vollständig belegt | **288** |
-| Records mit Lücke | 119 |
+| Records vollständig belegt | **262** |
+| Records mit Lücke | 145 |
 | Records ohne Goldzellen | 26 |
+
+Korrektur gegenüber der ersten Fassung: Dort standen 288 – gezählt wurden
+auch die 26 Records ohne Goldzellen, die formal „alles belegt" haben, aber
+nichts zu extrahieren enthalten. Der Kandidaten-Split umfasst daher **262**
+Records (`zeitpunkte.md`).
 
 Nach Feld:
 
@@ -62,9 +67,10 @@ seltener als reine Zahl.
 
 ## Was das für den Split heißt
 
-* **288 Records** sind vollständig wörtlich belegt und taugen ohne weitere
-  Prüfung als Kandidaten.
-* **119 Records** haben mindestens eine Zelle ohne Beleg; sie brauchen einen
+* **262 Records** sind vollständig wörtlich belegt und taugen ohne weitere
+  Prüfung als Kandidaten (eingefroren als `records/yun_kandidaten.jsonl`, Liste
+  und Zeitpunkte in `zeitpunkte.md`).
+* **145 Records** haben mindestens eine Zelle ohne Beleg; sie brauchen einen
   Blick in den Text, bevor sie in den Benchmark gehen.
 * **26 Records** führen keine Goldzellen und fallen für die Extraktion aus.
 

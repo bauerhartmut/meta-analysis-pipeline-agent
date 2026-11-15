@@ -173,7 +173,10 @@ def main() -> int:
         block = je_feld.setdefault(zelle["field"], {"zellen": 0, "gefunden": 0})
         block["zellen"] += 1
         block["gefunden"] += 1 if zelle["gefunden"] else 0
-    komplett = [r for r in geprueft if r["zellen_gefunden"] == r["zellen_gesamt"]]
+    # Ein Record ohne Goldzellen ist nicht "komplett belegt", sondern leer.
+    komplett = [
+        r for r in geprueft if r["zellen_gesamt"] > 0 and r["zellen_gefunden"] == r["zellen_gesamt"]
+    ]
     ohne_beleg = [r for r in geprueft if r["zellen_gefunden"] == 0]
     summary = {
         "records": len(geprueft),

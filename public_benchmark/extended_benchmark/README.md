@@ -222,8 +222,11 @@ Prüft für jede Goldzelle der noch nicht verwendeten Records, ob die Zahl
 wörtlich im Artikeltext steht (deutsche/englische Schreibweise,
 Tausendertrennzeichen, Minus mit Leerzeichen), und schreibt Belegposition,
 Region und Textfenster. Ohne Modellaufrufe, ohne Gold-Änderung. Dev-Satz: 170
-von 170 Zellen belegt; 407 Records: 1.088 von 1.294 (84,1 %), 288 Records
-vollständig. Auswertung: `analysis/candidate_split_20261115/report.md`.
+von 170 Zellen belegt; 407 Records: 1.088 von 1.294 (84,1 %), 262 Records
+vollständig. Auswertung: `analysis/candidate_split_20261115/report.md`, der
+eingefrorene Split samt Zielzeitpunkten in `zeitpunkte.md` (262 Records,
+`records/yun_kandidaten.jsonl` wird von `annotate_timepoints.py
+--kandidaten-out` erzeugt).
 
 ```
 python public_benchmark/extended_benchmark/candidate_split.py \

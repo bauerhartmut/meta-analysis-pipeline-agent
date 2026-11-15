@@ -43,6 +43,34 @@ def test_fenster_zeigt_die_umgebung() -> None:
     assert fund["region"] in ("Kurzfassung", "Hauptteil", "unbestimmt")
 
 
+def test_zeitpunkt_naeher_an_der_goldzahl_gewinnt() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
+
+    text = "All variables were measured at baseline." + " Fülltext. " * 60 + "At week 12 the score was 4.2 points."
+    gold = text.index("4.2")
+    info = zeitpunkt_aus_text(text, [gold])
+    assert info["target"] == "week 12"
+    assert info["status"] == "auto"
+    assert "week 12" in info["evidence"]
+
+
+def test_zeitpunkt_null_wird_baseline() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
+
+    text2 = "Week 0 values: 5 points."
+    assert zeitpunkt_aus_text(text2, [text2.index("5 points")])["target"] == "baseline"
+    text3 = "Week 4 values: 5 points."
+    assert zeitpunkt_aus_text(text3, [text3.index("5 points")])["target"] == "week 4"
+
+
+def test_ohne_zeitpunktangabe_gibt_es_kein_ziel() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
+
+    info = zeitpunkt_aus_text("Es wurden 30 Patienten eingeschlossen.", [11])
+    assert info["target"] == ""
+    assert info["status"] == "not stated"
+
+
 def test_gerundet_wird_nur_als_naehe_gemeldet() -> None:
     name, fund = cs.finde_gerundet("Der Wert betrug 7 Punkte.", 6.8)
     assert name == "Ganzzahl"
