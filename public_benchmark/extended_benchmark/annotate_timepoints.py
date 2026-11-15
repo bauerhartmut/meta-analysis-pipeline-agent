@@ -125,8 +125,10 @@ MUSTER = [
 ]
 
 
-def zeitpunkt_aus_text(text: str, gold_positionen: list[int]) -> dict[str, Any]:
-    """Naechste Zeitpunktangabe zu einer Goldzahl, mit Beleg und Abstand."""
+UNSPEZIFISCH = {"baseline", "follow-up", "week 0", "month 0", "day 0"}
+
+
+def _zeitpunkt_funde(text: str) -> list[tuple[int, str, str]]:
     funde: list[tuple[int, str, str]] = []
     for muster, label in MUSTER:
         for match in muster.finditer(text):
@@ -135,12 +137,72 @@ def zeitpunkt_aus_text(text: str, gold_positionen: list[int]) -> dict[str, Any]:
                 # Nullmessungen sind Baseline-Messungen, keine eigenen Zeitpunkte.
                 name = "baseline"
             funde.append((match.start(), name, match.group(0)))
+    funde.sort(key=lambda f: f[0])
+    return funde
+
+
+def _satz_um(text: str, position: int) -> tuple[int, int]:
+    """Saetzengrenzen um eine Position (grob ueber Punkt/Zeilenumbruch)."""
+    start = max(text.rfind(". ", 0, position), text.rfind("\n", 0, position))
+    ende = min(
+        [x for x in (text.find(". ", position), text.find("\n", position)) if x != -1] or [len(text)]
+    )
+    return max(0, start), ende
+
+
+def zeitpunkt_aus_text(
+    text: str, gold_positionen: list[int], *, hat_ergebnis: bool = False
+) -> dict[str, Any]:
+    """Zeitpunkt aus dem Text, belegt statt geraten.
+
+    Reihenfolge:
+    1. Steht die Goldzahl in einem Satz mit Zeitpunktangabe, gilt dieser Satz.
+    2. Sonst gewinnt die naechste Angabe — aber **nicht** baseline oder
+       follow-up, wenn Gold Mittelwerte oder Ereignisse enthaelt: solche
+       Ergebnisse stehen nicht in der Baseline-Tabelle, und ein solches Label
+       waere eine Behauptung ohne Beleg.
+    3. Bleibt nichts uebrig, ist das Ziel leer ("not stated").
+    """
+    funde = _zeitpunkt_funde(text)
     if not funde:
         return {"target": "", "evidence": "keine Zeitpunktangabe im Text", "status": "not stated", "abstand": ""}
     if not gold_positionen:
         return {"target": "", "evidence": "keine Goldzahl mit Position", "status": "ohne_goldzahl", "abstand": ""}
-    funde.sort(key=lambda f: f[0])
-    bester = min(funde, key=lambda f: min(abs(f[0] - pos) for pos in gold_positionen))
+
+    # 1. Zeitpunkt im selben Satz wie eine Goldzahl.
+    im_satz: list[tuple[int, str, str]] = []
+    for pos in gold_positionen:
+        start, ende = _satz_um(text, pos)
+        im_satz += [f for f in funde if start <= f[0] <= ende]
+    if hat_ergebnis:
+        # "Baseline" im Satz der Goldzahl belegt keinen Zielzeitpunkt fuer einen
+        # Mittelwert oder eine Ereigniszahl — auch nicht, wenn es dort steht.
+        im_satz = [f for f in im_satz if f[1] not in UNSPEZIFISCH]
+    if im_satz:
+        namen = {f[1] for f in im_satz}
+        if len(namen) == 1:
+            name = namen.pop()
+            bester = im_satz[0]
+            umgebung = text[max(0, bester[0] - 60) : bester[0] + 70].replace("\n", " ").strip()
+            return {
+                "target": name,
+                "evidence": f"'{bester[2]}' im selben Satz wie eine Goldzahl: …{umgebung}…",
+                "status": "auto (Satz der Goldzahl)",
+                "abstand": 0,
+            }
+
+    # 2. Naechste Angabe, baseline/follow-up nur ohne Ergebniszellen.
+    kandidaten = funde
+    if hat_ergebnis:
+        kandidaten = [f for f in funde if f[1] not in UNSPEZIFISCH]
+        if not kandidaten:
+            return {
+                "target": "",
+                "evidence": "nur baseline/follow-up im Text, Gold enthaelt Mittelwerte oder Ereignisse",
+                "status": "not stated (nur unspezifische Angaben)",
+                "abstand": "",
+            }
+    bester = min(kandidaten, key=lambda f: min(abs(f[0] - pos) for pos in gold_positionen))
     abstand = min(abs(bester[0] - pos) for pos in gold_positionen)
     umgebung = text[max(0, bester[0] - 60) : bester[0] + 70].replace("\n", " ").strip()
     return {
@@ -173,6 +235,7 @@ def annotate_kandidaten(
     quelle = HERE / "records" / "yun.jsonl"
     records = [json.loads(line) for line in quelle.read_text(encoding="utf-8").splitlines() if line.strip()]
     auswahl = [r for r in records if r["record_id"] in ids]
+    review_rows: list[dict[str, Any]] = []
     vorher = {r["record_id"]: json.dumps(r["gold"], sort_keys=True, ensure_ascii=False) for r in auswahl}
 
     for record in auswahl:
@@ -191,7 +254,27 @@ def annotate_kandidaten(
         positionen: list[int] = []
         for cell in record["gold"]["cells"]:
             positionen += [f["position"] for f in finde(text, float(cell["value"]))]
-        info = zeitpunkt_aus_text(text, positionen)
+        hat_ergebnis = any(
+            "mean" in c["field"] or "events" in c["field"] for c in record["gold"]["cells"]
+        )
+        info = zeitpunkt_aus_text(text, positionen, hat_ergebnis=hat_ergebnis)
+        # Vergleich mit der alten, ungehaerteten Regel fuer die Prueftabelle.
+        alt = zeitpunkt_aus_text(text, positionen, hat_ergebnis=False)
+        if alt["target"] == "follow-up" or (alt["target"] == "baseline" and hat_ergebnis):
+            review_rows.append(
+                {"record_id": record["record_id"], "alt": alt["target"], "evidence": alt["evidence"]}
+            )
+        if hat_ergebnis and info["target"] in UNSPEZIFISCH:
+            # baseline/follow-up ist bei Mittelwerten und Ereignissen kein belegter
+            # Zielzeitpunkt: es sagt nur "irgendwann gemessen". Lieber leer lassen;
+            # der Runner faellt dann auf die Standardregel zurueck.
+            info = {
+                "target": "",
+                "evidence": f"verworfen: '{info['target']}' bei Ergebniszellen nicht belegt; "
+                + (info["evidence"] or "")[:140],
+                "status": "not stated (unspezifisch bei Ergebniszellen)",
+                "abstand": "",
+            }
         record["timepoint"] = {
             "target": info["target"],
             "evidence": info["evidence"],
@@ -235,13 +318,37 @@ def annotate_kandidaten(
             if r["timepoint"]["target"] == "baseline"
             and any(feld in c["field"] for c in r["gold"]["cells"] for feld in ("mean", "events"))
         )
+        neu_nach_alt = {r["record_id"]: (r["timepoint"]["target"] or "(ohne Ziel)") for r in auswahl}
+        geprueft = review_rows
+        if geprueft:
+            leer = sum(1 for r in geprueft if neu_nach_alt.get(r["record_id"]) == "(ohne Ziel)")
+            geaendert = sum(
+                1 for r in geprueft if neu_nach_alt.get(r["record_id"]) != r["alt"]
+            )
+            zeilen += [
+                "",
+                "## Geprueft: frueher baseline/follow-up",
+                "",
+                "Diese Records trugen vor der Pruefung ein unspezifisches Label. Neu gilt:",
+                "",
+                f"{len(geprueft)} Records geprueft, {geaendert} geaendert, {leer} davon ohne Ziel;",
+                "baseline bei reinen Gruppengroessen bleibt unveraendert und steht nicht in dieser Liste.",
+                "",
+                "| Record | alt | neu | Begruendung (Beleg) |",
+                "|---|---|---|---|",
+            ]
+            for r in geprueft:
+                beleg = (r["evidence"] or "").replace("|", "/")[:150]
+                zeilen.append(
+                    f"| `{r['record_id']}` | {r['alt']} | {neu_nach_alt.get(r['record_id'], '')} | {beleg} |"
+                )
         zeilen += [
             "",
             "## Plausibilitaet der Automatik",
             "",
             f"{baseline_mit_ergebnis} Records tragen \"baseline\", obwohl Gold Mittelwerte oder",
-            "Ereignisse enthaelt. Die Naechste-Angabe-Heuristik greift dort zu Baseline-Tabellen;",
-            "solche Labels sind **nicht** verlaesslich und vor einem Lauf zu pruefen.",
+            "Ereignisse enthaelt. Die Regel verwirft baseline/follow-up bei Ergebniszellen",
+            "grundsaetzlich; bleibt dieser Wert ueber null, ist die Heuristik zu pruefen.",
         ]
         zeilen += ["", "## Je Record", "", "| Record | Dokument | Status | Zielzeitpunkt | Beleg |", "|---|---|---|---|---|"]
         for record in auswahl:

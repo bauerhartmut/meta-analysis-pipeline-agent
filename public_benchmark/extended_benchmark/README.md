@@ -228,6 +228,13 @@ eingefrorene Split samt Zielzeitpunkten in `zeitpunkte.md` (262 Records,
 `records/yun_kandidaten.jsonl` wird von `annotate_timepoints.py
 --kandidaten-out` erzeugt).
 
+Der Zielzeitpunkt wird dort aus dem Text abgeleitet: zuerst zählt die
+Zeitpunktangabe im selben Satz wie eine Goldzahl, sonst die nächste Angabe —
+**nicht** `baseline`/`follow-up`, wenn Gold Mittelwerte oder Ereignisse
+enthält; bleibt nichts übrig, bleibt das Feld leer und der Runner fällt auf die
+Standardregel zurück. 64 unspezifische Labels wurden damit geprüft (55
+geändert, 22 geleert).
+
 ```
 python public_benchmark/extended_benchmark/candidate_split.py \
     --out public_benchmark/extended_benchmark/analysis/candidate_split_20261115

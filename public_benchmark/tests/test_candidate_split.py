@@ -43,6 +43,40 @@ def test_fenster_zeigt_die_umgebung() -> None:
     assert fund["region"] in ("Kurzfassung", "Hauptteil", "unbestimmt")
 
 
+def test_baseline_gewinnt_nicht_bei_ergebniszellen() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
+
+    text = "Baseline values were 4.2 points. " + " Fülltext. " * 40 + "At week 24 the value was 6.5 points."
+    gold = text.index("4.2")
+    # Ohne Ergebniszellen ist baseline erlaubt (naechste Angabe).
+    assert zeitpunkt_aus_text(text, [gold], hat_ergebnis=False)["target"] == "baseline"
+    # Mit Ergebniszellen darf baseline nicht gewinnen.
+    info = zeitpunkt_aus_text(text, [gold], hat_ergebnis=True)
+    assert info["target"] == "week 24"
+
+
+def test_nur_baseline_und_ergebniszellen_bleibt_leer() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
+
+    text = "Baseline characteristics were recorded."
+    info = zeitpunkt_aus_text(text, [0], hat_ergebnis=True)
+    assert info["target"] == ""
+    assert info["status"].startswith("not stated")
+
+
+def test_satz_der_goldzahl_geht_vor_naehe() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
+
+    text = (
+        "At month 12 the score was 3.1 points. "
+        + " Fülltext. " * 30
+        + "The 5.6 value appears here without a timepoint."
+    )
+    info = zeitpunkt_aus_text(text, [text.index("5.6"), text.index("3.1")], hat_ergebnis=True)
+    assert info["target"] == "month 12"
+    assert "Satz der Goldzahl" in info["status"]
+
+
 def test_zeitpunkt_naeher_an_der_goldzahl_gewinnt() -> None:
     from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
 
@@ -50,7 +84,7 @@ def test_zeitpunkt_naeher_an_der_goldzahl_gewinnt() -> None:
     gold = text.index("4.2")
     info = zeitpunkt_aus_text(text, [gold])
     assert info["target"] == "week 12"
-    assert info["status"] == "auto"
+    assert info["status"].startswith("auto")
     assert "week 12" in info["evidence"]
 
 
