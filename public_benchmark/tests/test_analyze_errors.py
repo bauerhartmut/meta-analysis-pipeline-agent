@@ -213,10 +213,16 @@ def test_baue_queue_priorisiert_ereignisse_vor_fehlenden_zellen() -> None:
 
 
 def test_prozentklasse_fuer_191_zurueckgenommen() -> None:
-    """48 ist die Ereigniszahl der 0-3-Monats-Zeile, nicht der Prozentwert."""
-    eintrag = GEPRUEFTE_FAELLE[("yun_dev_fresh_20261115", "yun2024:191", "comparator_events", "comparator")]
+    """48 ist die Ereigniszahl der 0-3-Monats-Zeile, nicht der Prozentwert.
+
+    Die Belege gelten recordweit, nicht pro Lauf.
+    """
+    eintrag = GEPRUEFTE_FAELLE[("yun2024:191", "comparator_events", "comparator")]
     assert eintrag[0] == 1
     assert "Koinzidenz" in eintrag[1]
+    partner = GEPRUEFTE_FAELLE[("yun2024:191", "intervention_events", "intervention")]
+    assert partner[0] == 1
+    assert "0-3 months" in partner[1]
 
 
 def test_queue_traegt_status_je_version() -> None:
