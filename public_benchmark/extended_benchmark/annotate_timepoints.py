@@ -97,6 +97,29 @@ ZEITPUNKTE: dict[str, tuple[str, str]] = {
     "yun2024:261": ("Week 8", "'Summary of Secondary Efficacy Outcomes at Week 8' (CGI-I 68/99, 62/99)"),
     "yun2024:262": ("On-Therapy Period", "'Adverse Events ... On-Therapy Period' (69/115, 79/112)"),
     "yun2024:263": ("On-Therapy Period", "'Adverse Events ... On-Therapy Period' (72/112, 79/112)"),
+    # PMC4996097: TNR-Tabelle; 0.25 = Postoperative 3rd month, 0.27 = Kontrolle praeoperativ
+    "yun2024:150": (
+        "Postoperative 3rd month",
+        "TNR-Tabelle: 'Postoperative 3rd month 0.25 (0.23--0.26)'; Vergleichswert 0.27 ist der "
+        "praeoperative Kontrollwert — Gold mischt zwei Zeitpunkte",
+    ),
+    # PMC5079604: Gold sind Armgroessen der Remissionsklassifikation
+    "yun2024:168": (
+        "end of study/treatment",
+        "Remission vs. Relapse: 'remission during their last documented study visit' "
+        "(n = 28 / 20), letzter Studienbesuch",
+    ),
+    # PMC5559992: Gold sind Armgroessen der drei Dosisgruppen bei Aufnahme
+    "yun2024:325": (
+        "baseline",
+        "'Of 14 subjects; 5 (35.7%) obtained 32 mg, 4 (28.6%) obtained 64 mg, and 5 (35.7%) "
+        "obtained 96 mg' — Armgroessen bei Aufnahme, Einmaldosis, 7-Tage-Behandlung",
+    ),
+    "yun2024:328": (
+        "baseline",
+        "Dosisgruppen 32 mg (n = 5) vs. 64 mg (n = 4) bei Aufnahme; Einmaldosis, "
+        "7-Tage-Behandlung",
+    ),
 }
 
 # PMC5498715: Tabelle mit Pre-test, Post-test, Follow up after 4 months; Gold = Post-test
@@ -118,6 +141,17 @@ MUSTER = [
     (re.compile(r"\bday\s+(\d{1,2})\b", re.IGNORECASE), lambda m: f"day {m.group(1)}"),
     (re.compile(r"\bat\s+(\d{1,2})\s*weeks?\b", re.IGNORECASE), lambda m: f"week {m.group(1)}"),
     (re.compile(r"\bat\s+(\d{1,2})\s*months?\b", re.IGNORECASE), lambda m: f"month {m.group(1)}"),
+    # Schreibweise der Interventionsstudien: "at 1- (T1) and 4-months (T2)".
+    # "30-month study period" ist eine Studiendauer, kein Messzeitpunkt.
+    (
+        re.compile(
+            r"(?<![\d.])(\d{1,2})\s*-\s*months?\b(?!\s+(?:study|trial|period|program))",
+            re.IGNORECASE,
+        ),
+        lambda m: f"month {m.group(1)}",
+    ),
+    (re.compile(r"\bafter\s+(\d{1,2})\s*months?\b", re.IGNORECASE), lambda m: f"month {m.group(1)}"),
+    (re.compile(r"\((T\d{1,2})\)", re.IGNORECASE), lambda m: m.group(1).upper()),
     (re.compile(r"\bpost[- ]?test\b", re.IGNORECASE), lambda m: "post-test"),
     (re.compile(r"\bfollow[- ]?up\b", re.IGNORECASE), lambda m: "follow-up"),
     (re.compile(r"\bbaseline\b", re.IGNORECASE), lambda m: "baseline"),
@@ -151,12 +185,22 @@ def _zeitpunkt_funde(text: str) -> list[tuple[int, str, str]]:
     for muster, label in MUSTER:
         for match in muster.finditer(text):
             name = label(match)
-            if name in ("week 0", "month 0", "day 0"):
+            if name in ("week 0", "month 0", "day 0", "T0"):
                 # Nullmessungen sind Baseline-Messungen, keine eigenen Zeitpunkte.
                 name = "baseline"
             funde.append((match.start(), name, match.group(0)))
     funde.sort(key=lambda f: f[0])
-    return funde
+    # "4-months (T2)": der Monatswert ist die Aussage, die Studienkennung nur
+    # seine Ueberschrift. Steht ein Monat direkt davor, faellt das T-Label weg.
+    monate = [f for f in funde if f[1].startswith("month ")]
+    return [
+        f
+        for f in funde
+        if not (
+            f[1].startswith("T")
+            and any(f[1] != "baseline" and 0 <= f[0] - m[0] <= 40 for m in monate)
+        )
+    ]
 
 
 def _satz_um(text: str, position: int) -> tuple[int, int]:
@@ -403,10 +447,20 @@ def main() -> int:
 
     dev = [json.loads(line) for line in (HERE / "records" / "yun_dev.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
     ids = {record["record_id"] for record in dev}
+    # Manuelle Eintraege sind auch fuer Kandidaten-Records erlaubt (Stichprobe
+    # 15.11.2026); sie muessen aber im Gesamtdatensatz existieren.
+    alle = set(ids)
+    for pfad in RECORDS:
+        if pfad.exists():
+            alle |= {
+                json.loads(line)["record_id"]
+                for line in pfad.read_text(encoding="utf-8").splitlines()
+                if line.strip()
+            }
     fehlend = sorted(ids - set(ZEITPUNKTE))
-    ueberzaehlig = sorted(set(ZEITPUNKTE) - ids)
-    if fehlend or ueberzaehlig:
-        print(f"FEHLER: ohne Annotation {fehlend}, ohne Record {ueberzaehlig}")
+    unbekannt = sorted(set(ZEITPUNKTE) - alle)
+    if fehlend or unbekannt:
+        print(f"FEHLER: ohne Annotation {fehlend}, ohne Record {unbekannt}")
         return 2
 
     for pfad in args.records:

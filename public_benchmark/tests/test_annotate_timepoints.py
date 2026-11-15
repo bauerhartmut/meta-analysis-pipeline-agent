@@ -22,7 +22,11 @@ def lade_records() -> list[dict]:
 def test_jeder_record_hat_einen_zielzeitpunkt() -> None:
     records = lade_records()
     ids = {record["record_id"] for record in records}
-    assert ids == set(ZEITPUNKTE)
+    # Jeder Dev-Record ist manuell annotiert; zusaetzliche Eintraege (Stichprobe
+    # im Kandidaten-Split) muessen aber im Gesamtdatensatz existieren.
+    alle = {json.loads(line)["record_id"] for line in (BENCH / "records" / "yun.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()}
+    assert ids <= set(ZEITPUNKTE)
+    assert set(ZEITPUNKTE) <= alle
     for record in records:
         info = record.get("timepoint") or {}
         assert info.get("target"), record["record_id"]

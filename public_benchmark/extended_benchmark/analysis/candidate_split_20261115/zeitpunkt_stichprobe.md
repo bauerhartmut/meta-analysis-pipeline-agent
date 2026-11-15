@@ -44,9 +44,12 @@ schon im **Outcome-Namen** („Baseline Height", „BMI reduction at 12 months",
 zuerst den Outcome-Titel (`auto (Outcome-Titel)`); er schlägt Textregel und
 Nähe. Damit sind vier der fünf Fehl-Labels behoben (159, 183, 277, 281).
 
-Offen bleibt die T1/T2-Notation (`yun2024:114`) — die Muster kennen nur
-„week/month/day N". 27 Records tragen jetzt ein Label aus dem Outcome-Titel,
-177 von 262 haben ein Ziel.
+Die T1/T2-Lücke ist geschlossen: `annotate_timepoints.py` liest jetzt
+„1- (T1) and 4-months (T2)", „after 4 months" und „(T0)"; ein Monatswert direkt
+vor einem T-Label schlägt dieses, und „30-month study period" (Studiendauer)
+zählt nicht als Messzeitpunkt. `yun2024:114` trägt damit `month 4` statt leer.
+Stand: **182 von 262** Records mit Ziel, davon 28 aus dem Outcome-Titel und
+4 manuell.
 
 ## Grenzen der Stichprobe
 
@@ -54,6 +57,22 @@ Offen bleibt die T1/T2-Notation (`yun2024:114`) — die Muster kennen nur
   zufällig, und deckt die auffälligen Fälle ab.
 * „unklar" heißt: Der Text nennt einen Zeitpunkt in der Nähe, aber nicht im
   Satz der Goldzahl. Solche Labels sind nicht widerlegt, aber auch nicht belegt.
+
+## Manuell festgelegte Fälle (15.11.2026)
+
+Die vier „unklar"-Fälle der Stichprobe stehen jetzt mit Beleg in der manuellen
+Tabelle `ZEITPUNKTE` (Gold unverändert):
+
+| Record | Ziel | Beleg |
+|---|---|---|
+| `yun2024:150` | Postoperative 3rd month | TNR-Tabelle: „Postoperative 3rd month 0.25 (0.23--0.26)"; der Vergleichswert 0.27 ist der **präoperative Kontrollwert** — Gold mischt zwei Zeitpunkte, das Label folgt der Studienzelle |
+| `yun2024:168` | end of study/treatment | „remission during their last documented study visit" (n = 28 / 20), letzter Studienbesuch |
+| `yun2024:325` | baseline | „Of 14 subjects; 5 (35.7%) obtained 32 mg, 4 (28.6%) obtained 64 mg, and 5 (35.7%) obtained 96 mg" — Armgrößen bei Aufnahme |
+| `yun2024:328` | baseline | Dosisgruppen 32 mg (n = 5) vs. 64 mg (n = 4) bei Aufnahme |
+
+Bei 325/328 ist `baseline` zulässig, weil Gold nur Gruppengrößen enthält; bei
+150 mischt Gold zwei Zeitpunkte, was als Beleg vermerkt ist statt stillschweigend
+geglättet zu werden.
 
 ## Code-Review `annotate_timepoints.py` (frischer Blick)
 

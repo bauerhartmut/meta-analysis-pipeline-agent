@@ -43,6 +43,49 @@ def test_fenster_zeigt_die_umgebung() -> None:
     assert fund["region"] in ("Kurzfassung", "Hauptteil", "unbestimmt")
 
 
+def test_t1_t2_schreibweise_wird_gelesen() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
+
+    text = (
+        "Intake was assessed at baseline and at 1- (T1) and 4-months (T2) postintervention "
+        "using online questionnaires; the 2.17 value is the T2 mean."
+    )
+    info = zeitpunkt_aus_text(text, [text.index("2.17")], hat_ergebnis=True)
+    assert info["target"] == "month 4"
+    assert "4-months" in info["evidence"]
+
+
+def test_studiendauer_ist_kein_zeitpunkt() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
+
+    text = "The chart shows patients admitted during the 30-month study period; 52 (40--58) cases."
+    info = zeitpunkt_aus_text(text, [text.index("52")], hat_ergebnis=True)
+    assert info["target"] == ""
+
+
+def test_t0_ist_baseline() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
+
+    text = "Knowledge score changes between baseline (T0) and the end of training: 4.5 points."
+    info = zeitpunkt_aus_text(text, [text.index("4.5")], hat_ergebnis=False)
+    assert info["target"] == "baseline"
+
+
+def test_manuelle_stichprobenfaelle_sind_belegt() -> None:
+    from extended_benchmark.annotate_timepoints import ZEITPUNKTE
+
+    erwartet = {
+        "yun2024:150": "Postoperative 3rd month",
+        "yun2024:168": "end of study/treatment",
+        "yun2024:325": "baseline",
+        "yun2024:328": "baseline",
+    }
+    for record_id, ziel in erwartet.items():
+        target, beleg = ZEITPUNKTE[record_id]
+        assert target == ziel
+        assert len(beleg) > 40, record_id
+
+
 def test_outcome_titel_geht_vor_textregel() -> None:
     from extended_benchmark.annotate_timepoints import zeitpunkt_aus_outcome
 
