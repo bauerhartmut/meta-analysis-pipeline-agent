@@ -310,6 +310,7 @@ def main() -> int:
     distanzen: list[float] = []
     rueckfall_beispiele: list[dict[str, Any]] = []
     unklar_beispiele: list[dict[str, Any]] = []
+    unsichere_ids: list[str] = []
     arm_gemischt: list[str] = []
     fehlend: Counter[str] = Counter()
     belegstufen: Counter[str] = Counter()
@@ -349,6 +350,15 @@ def main() -> int:
         cells = (vorhersage.get("predicted") or {}).get("cells", [])
         artikel = artikel_text(record)
         gesehen: set[tuple[str, str | None]] = set()
+        # Zielzeitpunkte, die nur aus dem Abstract abgeleitet sind (24 h
+        # postoperativ, at admission, MRI assessment), werden zusaetzlich
+        # getrennt gezaehlt: ihre Zellen duerfen die Hauptmetriken nicht
+        # unbemerkt tragen.
+        unsicher = bool((record.get("timepoint") or {}).get("unsicher"))
+        if unsicher:
+            zaehler["unsichere_ziele_records"] += 1
+            zaehler["unsichere_ziele_zellen"] += len(cells)
+            unsichere_ids.append(str(record_id))
         for cell in cells:
             key = (cell["field"], cell.get("arm"))
             label, label_status = normalisiere_label(cell.get("timepoint") or "", target)
@@ -362,9 +372,13 @@ def main() -> int:
                     if _close(cell["value"], gold[key], 1e-6, 0.0):
                         zaehler["gruppengroesse_ohne_zeitpunkt_richtig"] += 1
                         je_quelle[quelle]["richtig"] += 1
+                        if unsicher:
+                            zaehler["unsichere_ziele_richtig"] += 1
                     else:
                         zaehler["gruppengroesse_ohne_zeitpunkt_falsch"] += 1
                         je_quelle[quelle]["falsch"] += 1
+                        if unsicher:
+                            zaehler["unsichere_ziele_falsch"] += 1
                 else:
                     zaehler["gruppengroesse_ohne_zeitpunkt_ohne_gold"] += 1
                 continue
@@ -405,9 +419,13 @@ def main() -> int:
                     zaehler[f"{art}_richtig"] += 1
                     pro_feld[cell["field"]][f"{art}_richtig"] += 1
                     je_quelle[quelle]["richtig"] += 1
+                    if unsicher:
+                        zaehler["unsichere_ziele_richtig"] += 1
                 else:
                     zaehler[f"{art}_falsch"] += 1
                     je_quelle[quelle]["falsch"] += 1
+                    if unsicher:
+                        zaehler["unsichere_ziele_falsch"] += 1
             else:
                 zaehler[f"{art}_ohne_gold"] += 1
                 je_quelle[quelle]["ohne_gold"] += 1
@@ -503,6 +521,13 @@ def main() -> int:
             "records": zaehler["records_arm_gemischt"],
             "beispiele": arm_gemischt,
         },
+        "unsichere_ziele": {
+            "records": zaehler["unsichere_ziele_records"],
+            "zellen": zaehler["unsichere_ziele_zellen"],
+            "richtig": zaehler["unsichere_ziele_richtig"],
+            "falsch": zaehler["unsichere_ziele_falsch"],
+            "beispiele": unsichere_ids,
+        },
         "belegstufen": {
             "stufen": dict(belegstufen),
             "klassen": dict(stufen_klassen),
@@ -580,6 +605,11 @@ def main() -> int:
         f" nur aus Ziel {stufen['treffer_nur_ziel']}"
     )
     arme = ergebnis["arm_klassen"]
+    print(
+        f"[unsichere_ziele] {zaehler['unsichere_ziele_records']} Records, "
+        f"{zaehler['unsichere_ziele_zellen']} Zellen, richtig {zaehler['unsichere_ziele_richtig']}, "
+        f"falsch {zaehler['unsichere_ziele_falsch']}"
+    )
     print(
         f"[arme] {arme['records']} | gemischte Zellen {arme['gemischte_zellen']}/{arme['zellen_mit_label']}"
         f" ({arme['anteil']}), Wilson Records {arme['wilson_95_records']}, Zellen {arme['wilson_95_zellen']}"

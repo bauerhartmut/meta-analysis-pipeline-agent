@@ -111,7 +111,26 @@ def gold_hash(records: list[dict[str, Any]]) -> str:
     return hashlib.sha256(roh.encode("utf-8")).hexdigest()
 
 
+# Zielzeitpunkte, die nicht woertlich im Abstract stehen, sondern aus dem
+# Messaufbau abgeleitet sind. Sie werden in der Auswertung getrennt gezaehlt
+# (`unsichere_ziele` in evaluate_fallback.py), damit ein Testlauf sie ausweisen
+# kann, ohne die Hauptmetriken zu verwaessern.
+UNSICHER = {
+    "yun2024:63",   # einmalige MRT-Auswertung, kein Zeitpunkt genannt
+    "yun2024:71",   # Handkraft bei Aufnahme, Zeitpunkt aus 'at admission' geschlossen
+    "yun2024:693",  # 24 h postoperativ, aus dem Morphiumbedarf abgeleitet
+    "yun2024:694",  # dito, Schmerz bei Bewegung
+}
+
+
 def annotiere(record: dict[str, Any]) -> dict[str, Any]:
+    """Annotation plus Kennzeichen `unsicher` fuer abgeleitete Zielzeitpunkte."""
+    info = _annotiere(record)
+    info["unsicher"] = record["record_id"] in UNSICHER
+    return info
+
+
+def _annotiere(record: dict[str, Any]) -> dict[str, Any]:
     if record["record_id"] in MANUELL:
         target, beleg = MANUELL[record["record_id"]]
         return {
@@ -230,9 +249,8 @@ def main() -> int:
         for record in records:
             info = record["timepoint"]
             beleg = (info["evidence"] or "").replace("|", "/")[:170]
-            zeilen.append(
-                f"| `{record['record_id']}` | {info['target'] or '(ohne Ziel)'} | {info['status']} | {beleg} |"
-            )
+            ziel = (info["target"] or "(ohne Ziel)") + (" **(unsicher)**" if info.get("unsicher") else "")
+            zeilen.append(f"| `{record['record_id']}` | {ziel} | {info['status']} | {beleg} |")
         args.md.write_text("\n".join(zeilen) + "\n", encoding="utf-8")
         print(f"geschrieben: {args.md}")
     return 0

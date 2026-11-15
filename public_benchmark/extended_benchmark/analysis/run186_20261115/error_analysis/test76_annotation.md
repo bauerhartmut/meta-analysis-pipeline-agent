@@ -36,8 +36,8 @@ Goldzellen unveraendert. Jeder Eintrag nennt Belegstelle und Abstand.
 | `yun2024:52` | postintervention phase | manuell | 'overall restraint rate ... from 11.5% to 13.6% postintervention' |
 | `yun2024:53` | postintervention phase | manuell | 'increase in the use of intermittent restraint, from 0.7 to 5.1%' |
 | `yun2024:54` | postintervention phase | manuell | Postinterventions-Spalte der Tabelle (Wissensscore 6.23 gegen 5.51) |
-| `yun2024:63` | MRI assessment (timepoint not stated) | manuell | 'Various MRI findings were assessed among the above 3 groups'; kein Zeitpunkt im Abstract |
-| `yun2024:71` | at admission | manuell | 'at admission'; Handkraft der bei Aufnahme untersuchten Subgruppe (n = 21) |
+| `yun2024:63` | MRI assessment (timepoint not stated) **(unsicher)** | manuell | 'Various MRI findings were assessed among the above 3 groups'; kein Zeitpunkt im Abstract |
+| `yun2024:71` | at admission **(unsicher)** | manuell | 'at admission'; Handkraft der bei Aufnahme untersuchten Subgruppe (n = 21) |
 | `yun2024:89` | baseline | Regel (nur Gruppengroessen) | Gold enthaelt nur Gruppengroessen (Arm-Eigenschaft, Zeitpunkt Aufnahme) |
 | `yun2024:90` | baseline | Regel (nur Gruppengroessen) | Gold enthaelt nur Gruppengroessen (Arm-Eigenschaft, Zeitpunkt Aufnahme) |
 | `yun2024:91` | baseline | Regel (nur Gruppengroessen) | Gold enthaelt nur Gruppengroessen (Arm-Eigenschaft, Zeitpunkt Aufnahme) |
@@ -100,8 +100,8 @@ Goldzellen unveraendert. Jeder Eintrag nennt Belegstelle und Abstand.
 | `yun2024:671` | baseline | Regel (nur Gruppengroessen) | Gold enthaelt nur Gruppengroessen (Arm-Eigenschaft, Zeitpunkt Aufnahme) |
 | `yun2024:672` | baseline | Regel (nur Gruppengroessen) | Gold enthaelt nur Gruppengroessen (Arm-Eigenschaft, Zeitpunkt Aufnahme) |
 | `yun2024:692` | baseline | Regel (nur Gruppengroessen) | Gold enthaelt nur Gruppengroessen (Arm-Eigenschaft, Zeitpunkt Aufnahme) |
-| `yun2024:693` | 24 h postoperatively | manuell | 'morphine requirement at 24 h'; Schmerz zu 0, 2, 4, 24 und 48 h |
-| `yun2024:694` | 24 h postoperatively | manuell | Schmerz bei Bewegung, gleiche Messreihe (0, 2, 4, 24, 48 h) |
+| `yun2024:693` | 24 h postoperatively **(unsicher)** | manuell | 'morphine requirement at 24 h'; Schmerz zu 0, 2, 4, 24 und 48 h |
+| `yun2024:694` | 24 h postoperatively **(unsicher)** | manuell | Schmerz bei Bewegung, gleiche Messreihe (0, 2, 4, 24, 48 h) |
 | `yun2024:695` | baseline | Regel (nur Gruppengroessen) | Gold enthaelt nur Gruppengroessen (Arm-Eigenschaft, Zeitpunkt Aufnahme) |
 | `yun2024:696` | baseline | Regel (nur Gruppengroessen) | Gold enthaelt nur Gruppengroessen (Arm-Eigenschaft, Zeitpunkt Aufnahme) |
 | `yun2024:697` | baseline | Regel (nur Gruppengroessen) | Gold enthaelt nur Gruppengroessen (Arm-Eigenschaft, Zeitpunkt Aufnahme) |

@@ -45,13 +45,24 @@ Voraussetzungen, bevor TEST das erste Mal läuft:
 243 Goldzellen, 0 Records ohne Zielzeitpunkt.
 
 ```
-SHA-256  9051c64be53aec818c77a20c13eea81bf0b8d3ed932dfa15388b8faec6daa31a
-Bytes    110259
+SHA-256  06fea97c37864debe50f130f03a926f5fb5654a1cd0d2ef75ab330da04ad0ca7
+Bytes    111699
 ```
+
+Der Hash wird von `tests/test_test76_ziel.py` geprüft; jede Änderung an Gold,
+Ziel oder Reihenfolge bricht den Test und braucht eine neue Version mit
+aktualisiertem Hash.
+
+**Vier Zielzeitpunkte sind als `unsicher` markiert** — `yun2024:63` (MRI
+assessment), `yun2024:71` (at admission), `yun2024:693` und `yun2024:694`
+(24 h postoperativ). Sie stehen nicht wörtlich im Abstract, sondern sind aus
+dem Messaufbau abgeleitet. `evaluate_fallback.py` führt sie im Block
+`unsichere_ziele` (Records, Zellen, richtig, falsch, IDs) getrennt; die
+Hauptmetriken enthalten sie weiterhin.
 
 Annotation: 44 Records mit ausschließlich Gruppengrößen → `baseline` (Regel),
 32 Records manuell nach Abstract (`annotate_test76.py`, Tabelle in
-`test76_annotation.md`). Verteilung: 44 baseline, 7 „post (after 4-week
+`test76_annotation.md`, unsichere Ziele dort fett markiert). Verteilung: 44 baseline, 7 „post (after 4-week
 training)“, 4 „postintervention phase“, 4 „post-training“, 2 „intraoperative
 (onset)“, 2 „24 h postoperatively“, je 1 „at admission“, „postintervention“,
 „during the operation“, „at birth (cord blood)“, „end of follow-up“,

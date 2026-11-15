@@ -59,8 +59,10 @@ eigener Auswertklasse).
 
 Nachtrag 16.11.2026: Die 76 Records der zweiten Kohorte sind mit Zielzeitpunkten
 eingefroren (`records/yun_test76_ziel.jsonl`, 243 Goldzellen, SHA-256
-`9051c64be53aec818c77a20c13eea81bf0b8d3ed932dfa15388b8faec6daa31a`); Details
-in `teststrategie.md` und `test76_annotation.md`.
+`06fea97c37864debe50f130f03a926f5fb5654a1cd0d2ef75ab330da04ad0ca7`, im Test
+`test_test76_ziel.py` geprüft); vier abgeleitete Zielzeitpunkte sind als
+`unsicher` markiert und werden in `unsichere_ziele` getrennt ausgewiesen.
+Details in `teststrategie.md` und `test76_annotation.md`.
 
 Nachtrag 16.11.2026: Drei Pilotläufe über dieselben 12 Records zeigen, dass die
 Gruppengrößen-Zeile im Prompt die Primärausfälle von 2 auf 6 (lang) bzw. 5
