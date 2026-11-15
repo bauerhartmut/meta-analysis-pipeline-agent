@@ -84,6 +84,58 @@ def test_cache_suffix_und_vorrang_der_flags() -> None:
     assert runner.bestimme_version(target_timepoint=True, target="Post-test") == "v5_target_timepoint"
 
 
+def test_belegstufe_bevorzugt_gedruckte_und_artikelbelege() -> None:
+    from extended_benchmark.evaluate_fallback import belegstufe
+
+    assert belegstufe("Week 24", "", "") == ("week 24", "gedruckt")
+    assert belegstufe("12 months", "", "") == ("month 12", "gedruckt")
+    assert belegstufe("24", "week 24", "assessed at 24 weeks of treatment") == ("week 24", "artikel")
+    # Artikel und Ziel widersprechen sich fuer dieselbe Zahl: unklar.
+    assert belegstufe("24", "week 24", "followed for 24 months") == ("", "unklar")
+    # Keine Artikel-Evidenz: nur aus dem Ziel, also zirkulaer.
+    assert belegstufe("24", "week 24", "no time given") == ("week 24", "ziel")
+    # Mehrere Einheiten fuer dieselbe Zahl: unklar.
+    assert belegstufe("24", "week 24", "at 24 weeks and at 24 months") == ("", "unklar")
+    assert belegstufe("0", "baseline", "") == ("baseline", "ziel")
+    assert belegstufe("0", "week 24", "") == ("", "unklar")
+    assert belegstufe("", "week 24", "") == ("", "leer")
+
+
+def test_dezimalzahlen_belegen_keine_ganzzahl() -> None:
+    from extended_benchmark.evaluate_fallback import einheiten_im_artikel
+
+    assert einheiten_im_artikel(12, "dose 12.5 mg at week 3") == set()
+    assert einheiten_im_artikel(24, "Weeks (0, 12, 24) of treatment") == {"week"}
+    assert einheiten_im_artikel(24, "0, 12, 24 weeks of follow-up") == {"week"}
+
+
+def test_rueckfallintervall_klammert_unklare_zellen() -> None:
+    from extended_benchmark.evaluate_fallback import rueckfall_intervall
+
+    block = rueckfall_intervall({"zieltreu": 60, "rueckfall": 30, "unklar": 10})
+    assert block["untere_grenze"] == round(30 / 100, 4)
+    assert block["obere_grenze"] == round(40 / 100, 4)
+    leer = rueckfall_intervall({})
+    assert leer["untere_grenze"] is None
+
+
+def test_armklassen_trennen_modell_und_gold() -> None:
+    from extended_benchmark.evaluate_fallback import arm_klasse, zahlen_in_zeile
+
+    cells = [
+        {"arm": "intervention", "timepoint": "24"},
+        {"arm": "comparator", "timepoint": "0"},
+    ]
+    assert arm_klasse(cells, [11.97, 13.72], "", "week 24") == "arm_gemischt_modell"
+    assert (
+        arm_klasse(cells, [11.97, 13.72], "0   7.62   11.97 +- 4.00   24   13.72 +- 4.53", "week 24")
+        == "arm_gemischt_gold_kandidat"
+    )
+    assert zahlen_in_zeile([11.97, 13.72], "nur 11.97 hier\n13.72 dort") is False
+    gleich = [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": "24"}]
+    assert arm_klasse(gleich, [1.0, 2.0], "", "week 24") == "arm_konsistent"
+
+
 def test_zellen_ohne_zeitpunkt_sind_eigene_klasse() -> None:
     assert klassifiziere("post-test", "post-test") == "zieltreu"
     assert klassifiziere("post-test", "") == "ohne_zeitpunkt"

@@ -25,6 +25,7 @@ from typing import Any
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
+from candidate_split import REPO  # noqa: E402
 from check_timepoints import rang  # noqa: E402
 from evaluate_extended import _close, _f1, _safe_div, evaluate_numeric, read_jsonl  # noqa: E402
 from stage_extraction import normalisiere  # noqa: E402
@@ -89,6 +90,167 @@ def arme_gemischt(cells: list[dict[str, Any]], target: str) -> bool:
     return any(m != mengen[0] for m in mengen[1:])
 
 
+EINHEIT_WORT = r"(week|month|day|year|hour)"
+LABEL_EINHEIT_ERST = re.compile(rf"^{EINHEIT_WORT}s?\s*(\d{{1,3}})$", re.I)
+LABEL_ZAHL_ERST = re.compile(rf"^(\d{{1,3}})\s*{EINHEIT_WORT}s?$", re.I)
+
+
+def label_mit_einheit(roh: str) -> tuple[str, int] | None:
+    """Liest "week 24" und "12 months" in dieselbe Form ("month 12")."""
+    treffer = LABEL_EINHEIT_ERST.match(roh)
+    if treffer:
+        return treffer.group(1).lower(), int(treffer.group(2))
+    treffer = LABEL_ZAHL_ERST.match(roh)
+    if treffer:
+        return treffer.group(2).lower(), int(treffer.group(1))
+    return None
+
+
+def _zahl_muster(zahl: int) -> str:
+    """Sucht eine ganze Zahl, aber nicht als Teil von 12,5 oder 112."""
+    return rf"(?<![\d.,]){zahl}(?![\d.,])"
+
+
+def einheiten_im_artikel(zahl: int, text: str) -> set[str]:
+    """Einheiten, die der Artikel fuer diese nackte Zahl belegt.
+
+    Vier Muster: "Week 12", "12 weeks", "Weeks (0 12 24)" und Zahlenreihen mit
+    Einheit in derselben Zeile ("0, 12, 24 weeks"). Dezimalzahlen liefern keine
+    Evidenz fuer die Ganzzahl. Mehrere Einheiten heissen: mehrdeutig.
+    """
+    einheiten: set[str] = set()
+    if not text:
+        return einheiten
+    zahl_muster = _zahl_muster(zahl)
+    for treffer in re.finditer(rf"\b{EINHEIT_WORT}s?\s*{zahl_muster}", text, re.I):
+        einheiten.add(treffer.group(1).lower())
+    for treffer in re.finditer(rf"{zahl_muster}\s*[- ]?\s*{EINHEIT_WORT}s?\b", text, re.I):
+        einheiten.add(treffer.group(1).lower())
+    for treffer in re.finditer(rf"\b{EINHEIT_WORT}s?\s*\(([^)]{{0,80}})\)", text, re.I):
+        if re.search(zahl_muster, treffer.group(2)):
+            einheiten.add(treffer.group(1).lower())
+    # Zahlenreihe mit Einheit in derselben Zeile: "0, 12, 24 weeks".
+    for zeile in text.splitlines():
+        for treffer in re.finditer(rf"((?:\d{{1,3}}\s*[,;/]?\s*){{2,}}){EINHEIT_WORT}s?\b", zeile, re.I):
+            reihe = {int(wert) for wert in re.findall(r"\d{1,3}", treffer.group(1))}
+            if zahl in reihe:
+                einheiten.add(treffer.group(2).lower())
+    return einheiten
+
+
+def belegstufe(label: str, ziel: str, artikel: str) -> tuple[str, str]:
+    """Einheit eines Zeitpunktlabels mit Belegstufe; gibt (label, stufe).
+
+    Stufen: "gedruckt" (Einheit steht im Label), "artikel" (genau eine Einheit
+    fuer die Zahl im Artikeltext), "ziel" (nur aus dem annotierten Ziel, also
+    zirkulaer und nur fuer Treffer brauchbar), "unklar" (nichts belegt,
+    mehrdeutig oder Widerspruch zum Ziel), "leer" (keine Zeitpunktangabe).
+    """
+    roh = normalisiere(label)
+    ziel_norm = normalisiere(ziel)
+    if not roh or roh in ("not applicable", "running text", "not stated"):
+        return "", "leer"
+    gedruckt = label_mit_einheit(roh)
+    if gedruckt:
+        return f"{gedruckt[0]} {gedruckt[1]}", "gedruckt"
+    if not NUMMER.match(roh):
+        return roh, "gedruckt"
+    zahl = int(roh)
+    ziel_treffer = ZEIT_LABEL.match(ziel_norm)
+    ziel_einheit = ziel_treffer.group(1).lower() if ziel_treffer else ""
+    if zahl == 0:
+        if ziel_norm in ("baseline", "week 0", "month 0", "day 0"):
+            return "baseline", "ziel"
+        return "", "unklar"
+    einheiten = einheiten_im_artikel(zahl, artikel)
+    if len(einheiten) == 1:
+        einheit = next(iter(einheiten))
+        if ziel_einheit and ziel_treffer and int(ziel_treffer.group(2)) == zahl and ziel_einheit != einheit:
+            # Artikel und Ziel nennen fuer dieselbe Zahl verschiedene Einheiten.
+            return "", "unklar"
+        return f"{einheit} {zahl}", "artikel"
+    if len(einheiten) > 1:
+        return "", "unklar"
+    if ziel_treffer and int(ziel_treffer.group(2)) == zahl:
+        return f"{ziel_einheit} {zahl}", "ziel"
+    return "", "unklar"
+
+
+def rueckfall_intervall(zaehler: dict[str, int]) -> dict[str, Any]:
+    """Rueckfallquote als Intervall: unklar zaehlt einmal nicht, einmal mit."""
+    zieltreu = zaehler.get("zieltreu", 0)
+    rueckfall = zaehler.get("rueckfall", 0)
+    unklar = zaehler.get("unklar", 0)
+    nenner = zieltreu + rueckfall + unklar
+    if nenner == 0:
+        return {"untere_grenze": None, "obere_grenze": None, "zaehler": {"zieltreu": zieltreu, "rueckfall": rueckfall, "unklar": unklar}}
+    return {
+        "untere_grenze": round(rueckfall / nenner, 4),
+        "obere_grenze": round((rueckfall + unklar) / nenner, 4),
+        "zaehler": {"zieltreu": zieltreu, "rueckfall": rueckfall, "unklar": unklar},
+    }
+
+
+def wilson(treffer: int, n: int) -> tuple[float, float] | None:
+    """95-Prozent-Wilson-Intervall fuer einen Anteil (ohne scipy)."""
+    if n == 0:
+        return None
+    p = treffer / n
+    z = 1.96
+    nenner = 1 + z * z / n
+    mitte = (p + z * z / (2 * n)) / nenner
+    rand = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / nenner
+    return (round(max(0.0, mitte - rand), 4), round(min(1.0, mitte + rand), 4))
+
+
+def zahlen_in_zeile(zahlen: list[float], text: str) -> bool:
+    """Stehen alle Zahlen in derselben Textzeile? (Triage fuer Gold-Konflikte)"""
+    if not zahlen:
+        return False
+    for zeile in text.splitlines():
+        if all(_zahl_steht(zahl, zeile) for zahl in zahlen):
+            return True
+    return False
+
+
+def _zahl_steht(zahl: float, zeile: str) -> bool:
+    for text in {f"{zahl:g}", f"{zahl:.2f}".rstrip("0").rstrip("."), f"{zahl:.2f}"}:
+        if text and (text in zeile or text.replace(".", ",") in zeile):
+            return True
+    return False
+
+
+def bestaetigter_konflikt(record_id: str) -> bool:
+    """Steht der Record in der geprueften Gold-Konfliktliste (analyze_errors) ?"""
+    if not record_id:
+        return False
+    try:
+        from analyze_errors import GEPRUEFTE_FAELLE
+    except Exception:  # pragma: no cover - Analyse-Modul ist optional
+        return False
+    return any(schluessel[0] == record_id for schluessel in GEPRUEFTE_FAELLE)
+
+
+def arm_klasse(
+    cells: list[dict[str, Any]], gold_werte: list[float], artikel: str, target: str, record_id: str = ""
+) -> str:
+    """Trennt Modell- von Goldmischung.
+
+    "arm_konsistent": beide Arme am selben Zeitpunkt. "arm_gemischt_gold_bestaetigt":
+    Gold-Konflikt steht geprueft in `GEPRUEFTE_FAELLE`. "arm_gemischt_gold_kandidat":
+    die Arme sind gemischt und die Goldwerte stehen im Artikel in derselben Zeile
+    (Hinweis auf Goldmischung, kein Beweis bei gefalteten Tabellen).
+    "arm_gemischt_modell": Mischung ohne diesen Hinweis.
+    """
+    if not arme_gemischt(cells, target):
+        return "arm_konsistent"
+    if bestaetigter_konflikt(record_id):
+        return "arm_gemischt_gold_bestaetigt"
+    if len(gold_werte) >= 2 and zahlen_in_zeile(gold_werte, artikel):
+        return "arm_gemischt_gold_kandidat"
+    return "arm_gemischt_modell"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", required=True)
@@ -108,6 +270,21 @@ def main() -> int:
     unklar_beispiele: list[dict[str, Any]] = []
     arm_gemischt: list[str] = []
     fehlend: Counter[str] = Counter()
+    belegstufen: Counter[str] = Counter()
+    stufen_klassen: Counter[str] = Counter()
+    treffer_belegt = 0
+    treffer_nur_ziel = 0
+    arm_klassen: Counter[str] = Counter()
+    arm_kandidaten: list[dict[str, Any]] = []
+    gemischte_zellen = 0
+    zellen_mit_label = 0
+
+    def artikel_text(record: dict[str, Any]) -> str:
+        pfad = (record.get("document") or {}).get("path") or ""
+        datei = REPO / pfad if pfad else None
+        if not datei or not datei.exists():
+            return ""
+        return datei.read_text(encoding="utf-8", errors="replace")
 
     for record_id, record in by_id.items():
         gold = {(cell["field"], cell.get("arm")): float(cell["value"]) for cell in record["gold"]["cells"]}
@@ -117,10 +294,24 @@ def main() -> int:
             # zieltreu oder Rueckfall bewerten und zaehlen als "ohne_ziel".
             target = ""
         cells = (predictions.get(record_id, {}).get("predicted") or {}).get("cells", [])
+        artikel = artikel_text(record)
         gesehen: set[tuple[str, str | None]] = set()
         for cell in cells:
             key = (cell["field"], cell.get("arm"))
             label, label_status = normalisiere_label(cell.get("timepoint") or "", target)
+            # Belegstufe unabhaengig von der Klassifikation: sie sagt, woher die
+            # Einheit stammt, und deckt damit den Zirkel der Ziel-Normalisierung auf.
+            stufe_label, stufe = belegstufe(cell.get("timepoint") or "", target, artikel)
+            belegstufen[stufe] += 1
+            if stufe in ("gedruckt", "artikel", "ziel"):
+                stufen_klassen[klassifiziere(target, stufe_label)] += 1
+                if key in gold and _close(cell["value"], gold[key], 1e-6, 0.0):
+                    if stufe == "ziel":
+                        treffer_nur_ziel += 1
+                    else:
+                        treffer_belegt += 1
+            else:
+                stufen_klassen["unklar"] += 1
             if label_status == "unklar":
                 zaehler["unklar_zellen"] += 1
                 if len(unklar_beispiele) < 20:
@@ -162,10 +353,23 @@ def main() -> int:
                             "gold": gold.get(key),
                         }
                     )
-        if arme_gemischt(cells, target):
+        klasse = arm_klasse(
+            cells, [wert for feld, wert in gold.items() if "mean" in feld[0]], artikel, target, record_id
+        )
+        arm_klassen[klasse] += 1
+        if klasse != "arm_konsistent":
             zaehler["records_arm_gemischt"] += 1
             if len(arm_gemischt) < 20:
                 arm_gemischt.append(record_id)
+            if len(arm_kandidaten) < 20:
+                arm_kandidaten.append({"record_id": record_id, "klasse": klasse})
+            # Zellebene: Zellen, deren Label vom haeufigsten Label des Records abweicht.
+            labels = [normalisiere(c.get("timepoint") or "") for c in cells]
+            labels = [l for l in labels if l and l not in ("not applicable", "running text", "not stated")]
+            if labels:
+                haeufig = Counter(labels).most_common(1)[0][0]
+                gemischte_zellen += sum(1 for l in labels if l != haeufig)
+                zellen_mit_label += len(labels)
         for key in gold:
             if key not in gesehen:
                 fehlend[key[0]] += 1
@@ -219,6 +423,25 @@ def main() -> int:
             "records": zaehler["records_arm_gemischt"],
             "beispiele": arm_gemischt,
         },
+        "belegstufen": {
+            "stufen": dict(belegstufen),
+            "klassen": dict(stufen_klassen),
+            "treffer_belegt": treffer_belegt,
+            "treffer_nur_ziel": treffer_nur_ziel,
+            "rueckfall_intervall": rueckfall_intervall(dict(stufen_klassen)),
+        },
+        "arm_klassen": {
+            "records": dict(arm_klassen),
+            "beispiele": arm_kandidaten,
+            "gemischte_zellen": gemischte_zellen,
+            "zellen_mit_label": zellen_mit_label,
+            "anteil": round(_safe_div(gemischte_zellen, zellen_mit_label), 4) if zellen_mit_label else None,
+            "wilson_95_records": wilson(
+                sum(anzahl for name, anzahl in arm_klassen.items() if name != "arm_konsistent"),
+                sum(arm_klassen.values()),
+            ),
+            "wilson_95_zellen": wilson(gemischte_zellen, zellen_mit_label),
+        },
         "auslassungen": {
             "gesamt": zaehler["auslassungen"],
             "je_feld": dict(sorted(fehlend.items())),
@@ -260,6 +483,17 @@ def main() -> int:
         print(f"[rueckfall] Zeitdistanz Median {ergebnis['rueckfall']['zeitdistanz_median_monate']} Monate "
               f"({ergebnis['rueckfall']['zeitdistanz_bekannt']} bestimmbar)")
     print(f"[auslassungen] {ergebnis['auslassungen']}")
+    stufen = ergebnis["belegstufen"]
+    print(
+        f"[belegstufen] {stufen['stufen']} | Rueckfall {stufen['rueckfall_intervall']['untere_grenze']}"
+        f"-{stufen['rueckfall_intervall']['obere_grenze']} | Treffer belegt {stufen['treffer_belegt']},"
+        f" nur aus Ziel {stufen['treffer_nur_ziel']}"
+    )
+    arme = ergebnis["arm_klassen"]
+    print(
+        f"[arme] {arme['records']} | gemischte Zellen {arme['gemischte_zellen']}/{arme['zellen_mit_label']}"
+        f" ({arme['anteil']}), Wilson Records {arme['wilson_95_records']}, Zellen {arme['wilson_95_zellen']}"
+    )
     return 0
 
 

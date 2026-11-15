@@ -379,6 +379,78 @@
       "yun2024:150"
     ]
   },
+  "belegstufen": {
+    "stufen": {
+      "gedruckt": 479,
+      "artikel": 12,
+      "unklar": 12
+    },
+    "klassen": {
+      "zieltreu": 352,
+      "rueckfall": 139,
+      "unklar": 12
+    },
+    "treffer_belegt": 340,
+    "treffer_nur_ziel": 0,
+    "rueckfall_intervall": {
+      "untere_grenze": 0.2763,
+      "obere_grenze": 0.3002,
+      "zaehler": {
+        "zieltreu": 352,
+        "rueckfall": 139,
+        "unklar": 12
+      }
+    }
+  },
+  "arm_klassen": {
+    "records": {
+      "arm_konsistent": 179,
+      "arm_gemischt_gold_bestaetigt": 1,
+      "arm_gemischt_modell": 5,
+      "arm_gemischt_gold_kandidat": 1
+    },
+    "beispiele": [
+      {
+        "record_id": "yun2024:75",
+        "klasse": "arm_gemischt_gold_bestaetigt"
+      },
+      {
+        "record_id": "yun2024:76",
+        "klasse": "arm_gemischt_modell"
+      },
+      {
+        "record_id": "yun2024:78",
+        "klasse": "arm_gemischt_modell"
+      },
+      {
+        "record_id": "yun2024:80",
+        "klasse": "arm_gemischt_modell"
+      },
+      {
+        "record_id": "yun2024:81",
+        "klasse": "arm_gemischt_modell"
+      },
+      {
+        "record_id": "yun2024:149",
+        "klasse": "arm_gemischt_gold_kandidat"
+      },
+      {
+        "record_id": "yun2024:150",
+        "klasse": "arm_gemischt_modell"
+      }
+    ],
+    "gemischte_zellen": 18,
+    "zellen_mit_label": 38,
+    "anteil": 0.4737,
+    "wilson_95_records": [
+      0.0183,
+      0.0756
+    ],
+    "wilson_95_zellen": [
+      0.3248,
+      0.6274
+    ]
+  },
   "auslassungen": {
     "gesamt": 197,
     "je_feld": {
