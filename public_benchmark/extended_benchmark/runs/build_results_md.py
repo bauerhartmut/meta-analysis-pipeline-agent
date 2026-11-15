@@ -35,6 +35,7 @@ LAEUFE = [
     ("yun_dev_v4_20261115", "Lauf 7: letzter Messzeitpunkt", "v4_last_timepoint"),
     ("yun_dev_v5_20261115", "Lauf 8: Zielzeitpunkt je Record", "v5_target_timepoint"),
     ("yun_dev_v6_20261115", "Lauf 9: Zielzeitpunkt mit Rueckfall", "v6_target_fallback"),
+    ("yun_dev_v6b_20261115", "Lauf 10: Rueckfall wiederholt", "v6_target_fallback"),
 ]
 MODELLE = [("qwen30", "qwen3-30b-a3b"), ("glm", "glm-5.3")]
 

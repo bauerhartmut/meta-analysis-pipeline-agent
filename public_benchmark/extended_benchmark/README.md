@@ -196,11 +196,14 @@ neu berechnet und gegen `eval/*.metrics.json` geprüft. Wo sich eine Ursache
 nicht belegen lässt, steht "Nicht eindeutig klassifizierbar" statt einer
 Vermutung. Der Abschlussbericht liegt in `next_iteration_report.md`.
 
-## Rückfallregel `v6_target_fallback` (Kandidat)
+## Rückfallregel `v6_target_fallback` (Referenz)
 
-`--target-fallback` behält den Zielzeitpunkt als Vorgabe und ersetzt das
-Auslassen: Ist ein Feld dort nicht berichtet, wird der nächstliegende
-berichtete Zeitpunkt genommen und im Feld `timepoint` der Zelle genannt.
+`--target-fallback` ist seit dem 15.11.2026 Standard (abschaltbar mit
+`--no-target-fallback`). Es behält den Zielzeitpunkt aus dem Record als Vorgabe
+und ersetzt das Auslassen: Ist ein Feld dort nicht berichtet, wird der
+nächstliegende berichtete Zeitpunkt genommen und im Feld `timepoint` der Zelle
+genannt. Records ohne Annotation bekommen automatisch den Text der vorherigen
+Referenz `v2_timepoint`.
 
 ```bash
 python public_benchmark/extended_benchmark/run_extended_extraction.py \
@@ -213,10 +216,10 @@ python public_benchmark/extended_benchmark/evaluate_fallback.py \
 ```
 
 `evaluate_fallback.py` trennt zieltreue Zellen und Rückfall-Zellen und weist
-Auslassungen je Feld aus. Ergebnis auf den 43 Dev-Records: F1 0,944, MAE 0,039,
-Abdeckung 0,953; 51 Rückfall-Zellen, davon 46 richtig und keine falsch.
-Bericht, Abschnitt 14. Status vorläufig „kandidat", Referenz bleibt
-`v2_timepoint`.
+Auslassungen je Feld aus. Zwei frische Läufe auf den 43 Dev-Records: F1 0,944
+und 0,963, MAE 0,039 und 0,0006, Abdeckung 0,953 und 0,988; Rückfall-Zellen 46
+und 44 richtig, keine falsch. Bericht, Abschnitt 14. Referenz ab 15.11.2026:
+`v6_target_fallback`.
 
 ## Zielzeitpunkt je Record (`v5_target_timepoint`)
 

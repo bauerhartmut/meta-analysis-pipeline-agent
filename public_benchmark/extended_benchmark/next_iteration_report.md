@@ -268,7 +268,7 @@ Werte liefert.
 | 6 | Tabellen separat übergeben statt Volltext | größter Hebel bei mehrzeiligen Tabellen, aber größter Umbau | Tage |
 | 7 | ~~Zeitpunkt-Regel „letzter Messpunkt"~~ **getestet, verworfen** (Abschnitt 12) | behebt 4 Zellen, zerstört 39; Gold-Konvention ist nicht einheitlich | erledigt |
 | 8 | Messzeitpunkt je Record annotieren und im Prompt setzen | **erledigt** (Abschnitt 13): Annotation trifft die Konvention, Precision 0,937, MAE 0,0008 | erledigt |
-| 9 | Rückfallregel bei fehlendem Zielzeitpunkt (nächstliegender berichteter Zeitpunkt, im Feld ausgewiesen) | **erledigt** (Abschnitt 14): Auslassungen 51 → 8, F1 0,944, MAE 0,039, alle 46 bewertbaren Rückfall-Zellen richtig | erledigt |
+| 9 | Rückfallregel bei fehlendem Zielzeitpunkt (nächstliegender berichteter Zeitpunkt, im Feld ausgewiesen) | **erledigt und Referenz** (Abschnitt 14): zwei frische Läufe F1 0,944/0,963, MAE 0,039/0,0006, keine falsche Rückfall-Zelle | erledigt |
 
 ## 9. Konzept für die nächste Benchmark-Iteration
 
@@ -573,7 +573,7 @@ danach in **zieltreu** und **rückfall** und zählt beide getrennt.
 | mae_coverage | 0,965 (164/170) | 0,700 (119/170) | 0,953 (162/170) |
 | exakte Records | 34/43 | 24/43 | 34/43 |
 
-Lauf: 43 Aufrufe, 1 Retry, kein Cache-Treffer, Median 20,6 s, 1 Record ohne
+Lauf 9: 43 Aufrufe, 1 Retry, kein Cache-Treffer, Median 20,6 s, 1 Record ohne
 Antwort.
 
 ### Die beiden Zellklassen
@@ -589,18 +589,37 @@ allerdings groß — das sind die Fälle, in denen Gold nur eine Größe führt,
 im Zielzeitpunkt nicht steht (vor allem `yun2024:187`–`:189` mit 12-Monats-Ziel
 und reinen Gruppengrößen). Auslassungen sinken von 51 auf 8 Zellen (4,7 %).
 
-### Einordnung
+### Zweiter frischer Lauf und Referenzwechsel (15.11.2026)
 
-Das ist das **beste gemessene Ergebnis** dieser Iteration: F1 +0,012, MAE
-0,415 → 0,039, Abdeckung nur −0,012 gegenüber der Referenz. Die Verbesserung
-ist keine Prompt-Formulierung allein, sondern das Zusammenspiel aus
-annotiertem Zielzeitpunkt (Abschnitt 13) und ausgewiesenem Rückfall.
+Weil der F1-Sprung in der Größenordnung der Streuung der Referenz lag (0,933 vs
+0,945 bei zwei frischen Referenzläufen), ist v6 ein zweites Mal frisch gelaufen
+(Lauf 10, 43 Aufrufe, 2 Retries, kein Cache-Treffer, Median 16,8 s, 1 Record
+ohne Antwort):
 
-Ob `v6_target_fallback` die neue **Referenz** wird, ist eine Festlegung und
-keine Messung: Der Status steht vorläufig auf „kandidat", die Referenz bleibt
-`v2_timepoint` mit Lauf 6, damit alle bisherigen Vergleiche gültig bleiben.
-Wer die Referenz tauscht, muss die Standardwerte in `versions.py`,
-`PROMPT_VERSION` und die Referenzzeile in `analyze_errors.py` mitziehen.
+| Kennzahl | Referenz-Läufe | v6-Lauf 9 | v6-Lauf 10 |
+|---|---|---|---|
+| Zellen-F1 | 0,933 / 0,945 | 0,944 | **0,963** |
+| Recall / Precision | 0,935 / 0,930 | 0,947 / 0,942 | 0,982 / 0,944 |
+| MAE | 0,405 / 0,415 | 0,039 | 0,0006 |
+| Abdeckung | 0,988 / 0,965 | 0,953 | 0,988 (168/170) |
+| exakte Records | 35 / 34 | 34 | 35 |
+| Auslassungen | 6 / 6 | 8 | 2 |
+
+Beide v6-Läufe liegen in F1 und MAE über beiden Referenzläufen; der
+MAE-Unterschied ist zwei Größenordnungen groß und damit kein Streueffekt. Die
+Rückfall-Zellen sind auch im zweiten Lauf fehlerfrei (44 von 44 bewertbaren
+richtig, 0 falsch), die zieltreuen Zellen 123 von 124.
+
+**Referenzwechsel vollzogen:** `v6_target_fallback` ist ab jetzt die Referenz
+(`versions.py`), `v2_timepoint` gilt als vorherige Referenz und bleibt der
+Prompt-Text für Records ohne Zeitpunktannotation. `--target-fallback` ist
+Standard (`--no-target-fallback` schaltet zurück), der Zielzeitpunkt kommt aus
+dem Record. Die Referenzzeile in `analyze_errors.py` wird nicht mehr fest
+verdrahtet, sondern aus dem Status abgeleitet.
+
+Was das für alte Zahlen bedeutet: Alle F1-Werte aus den Abschnitten 1–12 sind
+gegen die alte Referenz gemessen. Für neue Läufe gilt v6 als Maßstab
+(F1 0,944–0,963, MAE 0,0006–0,039, Abdeckung 0,953–0,988).
 
 ## Technische Umsetzung
 

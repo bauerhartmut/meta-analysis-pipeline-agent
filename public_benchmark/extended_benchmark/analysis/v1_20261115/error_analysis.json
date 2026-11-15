@@ -12,7 +12,8 @@
       "yun_dev_v3_20261115",
       "yun_dev_v4_20261115",
       "yun_dev_v5_20261115",
-      "yun_dev_v6_20261115"
+      "yun_dev_v6_20261115",
+      "yun_dev_v6b_20261115"
     ],
     "diagnoselaeufe": [
       "version_check_20261115",
@@ -408,6 +409,34 @@
         "records": 43
       },
       "metriken_identisch": true
+    },
+    {
+      "run_id": "yun_dev_v6b_20261115",
+      "model": "glm",
+      "prompt_version": "v6_target_fallback",
+      "prompt_version_roh": "v6_target_fallback_cb",
+      "antworten": 43,
+      "cache_anteil": 0.0,
+      "leere_antworten": 1,
+      "gold_zellen": 170,
+      "fehlerhafte_zellen": 3,
+      "zusaetzliche_zellen": 9,
+      "klassen": {
+        "Zahl nicht extrahiert": 2,
+        "Nicht eindeutig klassifizierbar": 1
+      },
+      "metriken": {
+        "cell_recall": 0.9824,
+        "cell_precision": 0.9435,
+        "cell_f1": 0.9625,
+        "mae_pairs": 0.0006,
+        "mae_coverage": 0.9882,
+        "mae_pairs_covered": 168,
+        "gold_cells": 170,
+        "record_exact": 35,
+        "records": 43
+      },
+      "metriken_identisch": true
     }
   ],
   "metrik_abgleich": [
@@ -627,6 +656,23 @@
         "mae_pairs_covered": 162,
         "gold_cells": 170,
         "record_exact": 34,
+        "records": 43
+      },
+      "ableitung_identisch": true,
+      "abweichungen": []
+    },
+    {
+      "run_id": "yun_dev_v6b_20261115",
+      "model": "glm",
+      "metriken": {
+        "cell_recall": 0.9824,
+        "cell_precision": 0.9435,
+        "cell_f1": 0.9625,
+        "mae_pairs": 0.0006,
+        "mae_coverage": 0.9882,
+        "mae_pairs_covered": 168,
+        "gold_cells": 170,
+        "record_exact": 35,
         "records": 43
       },
       "ableitung_identisch": true,
@@ -1195,8 +1241,8 @@
         "yun_dev_std_20261115",
         "yun_dev_tp_20261115"
       ],
-      "status": "referenz",
-      "beschreibung": "Zeitpunkt im Prompt (Standard)"
+      "status": "historisch",
+      "beschreibung": "Zeitpunkt im Prompt (vorherige Referenz)"
     },
     "v2_timepoint_stage2": {
       "fehler": 11,
@@ -1505,24 +1551,24 @@
       "beschreibung": "Zielzeitpunkt je Record als Vorgabe"
     },
     "v6_target_fallback": {
-      "fehler": 9,
+      "fehler": 12,
       "klassen": {
-        "Nicht eindeutig klassifizierbar": 1,
-        "Zahl nicht extrahiert": 2,
+        "Nicht eindeutig klassifizierbar": 2,
+        "Zahl nicht extrahiert": 4,
         "Unvollstaendige Modellantwort": 6
       },
       "technisch": 6,
-      "inhaltlich": 3,
+      "inhaltlich": 6,
       "nach_modell": {
         "glm": {
-          "Nicht eindeutig klassifizierbar": 1,
-          "Zahl nicht extrahiert": 2,
+          "Nicht eindeutig klassifizierbar": 2,
+          "Zahl nicht extrahiert": 4,
           "Unvollstaendige Modellantwort": 6
         }
       },
       "nach_feld": {
         "comparator_group_size": {
-          "Zahl nicht extrahiert": 1,
+          "Zahl nicht extrahiert": 2,
           "Unvollstaendige Modellantwort": 1
         },
         "comparator_mean": {
@@ -1533,36 +1579,38 @@
           "Unvollstaendige Modellantwort": 1
         },
         "intervention_group_size": {
-          "Zahl nicht extrahiert": 1,
+          "Zahl nicht extrahiert": 2,
           "Unvollstaendige Modellantwort": 1
         },
         "intervention_mean": {
-          "Unvollstaendige Modellantwort": 1
+          "Unvollstaendige Modellantwort": 1,
+          "Nicht eindeutig klassifizierbar": 1
         },
         "intervention_standard_deviation": {
           "Unvollstaendige Modellantwort": 1
         }
       },
       "ereignis_fehler": [],
-      "zusaetzliche_zellen": 9,
+      "zusaetzliche_zellen": 18,
       "laeufe": [
-        "yun_dev_v6_20261115"
+        "yun_dev_v6_20261115",
+        "yun_dev_v6b_20261115"
       ],
-      "status": "kandidat",
+      "status": "referenz",
       "beschreibung": "Zielzeitpunkt mit Rueckfall auf naechsten berichteten Zeitpunkt"
     }
   },
   "fehler_nach_klasse": {
-    "Nicht eindeutig klassifizierbar": 226,
-    "Zahl nicht extrahiert": 171,
+    "Nicht eindeutig klassifizierbar": 227,
+    "Zahl nicht extrahiert": 173,
     "Falsche Tabellenzeile": 19,
     "Unvollstaendige Modellantwort": 84,
     "Falscher Messzeitpunkt": 12
   },
   "fehler_nach_modell": {
     "glm": {
-      "Nicht eindeutig klassifizierbar": 90,
-      "Zahl nicht extrahiert": 55,
+      "Nicht eindeutig klassifizierbar": 91,
+      "Zahl nicht extrahiert": 57,
       "Falsche Tabellenzeile": 14,
       "Unvollstaendige Modellantwort": 78,
       "Falscher Messzeitpunkt": 8
@@ -1577,18 +1625,18 @@
   },
   "fehler_nach_feld": {
     "intervention_mean": {
-      "Nicht eindeutig klassifizierbar": 58,
+      "Nicht eindeutig klassifizierbar": 59,
       "Zahl nicht extrahiert": 9,
       "Unvollstaendige Modellantwort": 11,
       "Falscher Messzeitpunkt": 3
     },
     "intervention_group_size": {
-      "Zahl nicht extrahiert": 63,
+      "Zahl nicht extrahiert": 64,
       "Unvollstaendige Modellantwort": 19,
       "Nicht eindeutig klassifizierbar": 3
     },
     "comparator_group_size": {
-      "Zahl nicht extrahiert": 63,
+      "Zahl nicht extrahiert": 64,
       "Unvollstaendige Modellantwort": 19,
       "Nicht eindeutig klassifizierbar": 4
     },
@@ -1661,8 +1709,8 @@
       "Unvollstaendige Modellantwort": 32
     },
     "v6_target_fallback": {
-      "Nicht eindeutig klassifizierbar": 1,
-      "Zahl nicht extrahiert": 2,
+      "Nicht eindeutig klassifizierbar": 2,
+      "Zahl nicht extrahiert": 4,
       "Unvollstaendige Modellantwort": 6
     }
   },
@@ -4180,23 +4228,22 @@
     ]
   },
   "pruefqueue": {
-    "eintraege": 718,
+    "eintraege": 741,
     "nach_prioritaet": {
       "1": 34,
-      "2": 255,
+      "2": 257,
       "3": 31,
-      "4": 192,
-      "5": 206
+      "4": 193,
+      "5": 226
     },
     "referenz": {
       "datei": "human_review_queue.csv",
-      "eintraege": 339,
+      "eintraege": 52,
       "nach_prioritaet": {
-        "1": 24,
-        "2": 134,
-        "3": 8,
-        "4": 80,
-        "5": 93
+        "2": 10,
+        "3": 1,
+        "4": 1,
+        "5": 40
       }
     },
     "verworfen": {
@@ -4211,11 +4258,11 @@
     },
     "historisch": {
       "datei": "human_review_historical.csv",
-      "eintraege": 219,
+      "eintraege": 529,
       "versionen": [
         "v1",
-        "v2_timepoint_stage2",
-        "v6_target_fallback"
+        "v2_timepoint",
+        "v2_timepoint_stage2"
       ]
     }
   }

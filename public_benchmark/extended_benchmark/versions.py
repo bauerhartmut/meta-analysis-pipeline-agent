@@ -35,7 +35,7 @@ KANONISCH = (
 
 BESCHREIBUNG = {
     "v1": "ohne Zeitpunktangabe",
-    "v2_timepoint": "Zeitpunkt im Prompt (Standard)",
+    "v2_timepoint": "Zeitpunkt im Prompt (vorherige Referenz)",
     "v3_abs_count": "Zeitpunkt plus absolute Ereigniszahlen",
     "v4_last_timepoint": "letzter berichteter Messzeitpunkt, Zeitpunkte mitgeliefert",
     "v5_target_timepoint": "Zielzeitpunkt je Record als Vorgabe",
@@ -47,13 +47,14 @@ BESCHREIBUNG = {
 # ausgewiesen und nicht mit der Referenz summiert.
 STATUS = {
     "v1": "historisch",
-    "v2_timepoint": "referenz",
+    # Seit dem 15.11.2026 ist v6 die Referenz (zwei frische Laeufe, F1 0,944 und
+    # 0,963); v2 bleibt als vorherige Referenz und als Text fuer Records ohne
+    # Zeitpunkt-Annotation erhalten.
+    "v2_timepoint": "historisch",
     "v3_abs_count": "verworfen",
     "v4_last_timepoint": "verworfen",
     "v5_target_timepoint": "verworfen",
-    # Bestes gemessenes Ergebnis, aber noch nicht als Referenz festgelegt:
-    # Der Tausch der Referenz ist eine Festlegung, keine Messung.
-    "v6_target_fallback": "kandidat",
+    "v6_target_fallback": "referenz",
 }
 
 

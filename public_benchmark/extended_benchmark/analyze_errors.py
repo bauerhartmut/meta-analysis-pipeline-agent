@@ -812,8 +812,10 @@ def main() -> int:
     zeilen.append("")
     zeilen.append("| Datei | Status | Versionen | Eintraege | Prioritaeten |")
     zeilen.append("|---|---|---|---|---|")
+    referenz_versionen = [v for v in BESCHREIBUNG if status_von(v) == "referenz"]
     zeilen.append(
-        f"| `{pruef['referenz']['datei']}` | referenz | v2_timepoint | {pruef['referenz']['eintraege']} "
+        f"| `{pruef['referenz']['datei']}` | referenz | "
+        f"{', '.join(referenz_versionen) or '-'} | {pruef['referenz']['eintraege']} "
         f"| {pruef['referenz']['nach_prioritaet']} |"
     )
     zeilen.append(

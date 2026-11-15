@@ -234,5 +234,7 @@ def test_queue_traegt_status_je_version() -> None:
     }
     queue = baue_queue([fall], [])
     assert queue[0]["status"] == "verworfen"
-    referenz = {**fall, "prompt_version": "v2_timepoint"}
+    referenz = {**fall, "prompt_version": "v6_target_fallback"}
     assert baue_queue([referenz], [])[0]["status"] == "referenz"
+    alt = {**fall, "prompt_version": "v2_timepoint"}
+    assert baue_queue([alt], [])[0]["status"] == "historisch"

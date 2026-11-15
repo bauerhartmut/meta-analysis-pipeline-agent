@@ -56,6 +56,10 @@ FIELDS = (
 # Standard ist die Referenzversion; v3 hat sich im Dev-Lauf nicht belegt und ist
 # nur noch per --absolute-counts waehlbar.
 PROMPT_VERSION = "v2_timepoint"
+# Seit 15.11.2026 ist v6_target_fallback die Referenz. Der Zielzeitpunkt kommt
+# aus dem Record; ohne Annotation faellt der Prompt auf die Standardregel
+# zurueck, der Lauf behaelt aber sein Versionslabel.
+DEFAULT_TARGET_FALLBACK = True
 VERSION_ABSOLUTE_COUNTS = "v3_abs_count"
 VERSION_LAST_TIMEPOINT = "v4_last_timepoint"
 VERSION_TARGET_TIMEPOINT = "v5_target_timepoint"
@@ -344,8 +348,9 @@ def main() -> int:
     )
     parser.add_argument(
         "--target-fallback",
-        action="store_true",
-        help="Zielzeitpunkt mit Rueckfall auf den naechsten berichteten Zeitpunkt (v6_target_fallback)",
+        action=argparse.BooleanOptionalAction,
+        default=DEFAULT_TARGET_FALLBACK,
+        help="Zielzeitpunkt mit Rueckfall auf den naechsten berichteten Zeitpunkt (v6_target_fallback, Standard)",
     )
     parser.add_argument(
         "--last-timepoint",
@@ -366,7 +371,7 @@ def main() -> int:
         prompt_version = VERSION_LAST_TIMEPOINT
     if args.target_timepoint:
         prompt_version = VERSION_TARGET_TIMEPOINT
-    if args.target_fallback:
+    elif args.target_fallback:
         prompt_version = VERSION_TARGET_FALLBACK
     if args.cache_buster:
         SESSION_TAG = uuid.uuid4().hex[:12]

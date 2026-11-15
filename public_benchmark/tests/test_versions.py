@@ -44,8 +44,13 @@ def test_v4_ist_kanonisch_und_verworfen() -> None:
     assert status_von("v4_last_timepoint") == "verworfen"
 
 
-def test_v3_ist_verworfen_und_v2_referenz() -> None:
+def test_v3_ist_verworfen_und_v6_referenz() -> None:
     assert status_von("v3_abs_count") == "verworfen"
-    assert status_von("v2_timepoint") == "referenz"
+    assert status_von("v6_target_fallback") == "referenz"
+    assert status_von("v2_timepoint") == "historisch"
     assert status_von("v1") == "historisch"
     assert status_von("unbekannt") == "unbekannt"
+
+
+def test_genau_eine_referenz() -> None:
+    assert [version for version in KANONISCH if status_von(version) == "referenz"] == ["v6_target_fallback"]
