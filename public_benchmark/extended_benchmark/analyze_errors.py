@@ -104,12 +104,42 @@ GEPRUEFTE_FAELLE: dict[tuple[str, str, str], tuple[int, str]] = {
         "('mean loss of body weight (- 7.0 gm)'), die Kurzfassung nennt -0,7; "
         "Gold mischt beide Stellen, kein konsistentes Lesen trifft beide Zellen",
     ),
+    # Gold-Konflikt yun2024:75 (analysis/yun2024_75_gold_conflict.md): In der
+    # B-Zell-Tabelle stehen zwei Bloecke - "Non-smokers (placebo, n = 27)" mit
+    # 11.00 +/- 3.88 bei Woche 24 und "Non-smokers (palmvitee, n = 29)" mit
+    # 11.97 +/- 4.00 (Woche 0) und 13.72 +/- 4.53 (Woche 24). Gold traegt
+    # 11.97 als Intervention und 13.72 als Komparator, beide mit n = 29, also
+    # palmvitee-Baseline gegen palmvitee-Woche-24; Placebo kommt nicht vor.
+    # Ziel ist week 24. Die Zellen sind woertlich belegt, die Armzuordnung des
+    # Goldes ist es nicht - deshalb Klasse 5 statt Modellfehler.
+    ("yun2024:75", "intervention_mean", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 11,97 +/- 4,00 ist die Zeile '0' des palmvitee-Blocks "
+        "(n = 29), nicht Woche 24; Gold paart sie mit 13,72 aus Woche 24 desselben Arms",
+    ),
+    ("yun2024:75", "intervention_standard_deviation", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 4,00 gehoert zu 11,97 in der Zeile '0' des palmvitee-Blocks",
+    ),
+    ("yun2024:75", "comparator_mean", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 13,72 +/- 4,53 steht im palmvitee-Block (n = 29) bei "
+        "Woche 24; der Placebo-Block (n = 27) fuehrt dort 11,00 +/- 3,88",
+    ),
+    ("yun2024:75", "comparator_standard_deviation", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 4,53 gehoert zu 13,72 im palmvitee-Block, nicht zum Placebo-Arm",
+    ),
 }
 
 # Auffaellige Gold-Zellen, die am Artikel geprueft wurden (Punkt Aufgabe C).
 MANUELLE_GOLD_HINWEISE: dict[tuple[str, str, str], str] = {
     ("yun2024:3", "intervention_mean", "intervention"): (
         "Artikel nennt 50,6 und 50,7 gm fuer denselben Wert; Gold nutzt 50,6"
+    ),
+    ("yun2024:75", "intervention_mean", "intervention"): (
+        "Gold paart palmvitee-Baseline (11,97) mit palmvitee-Woche-24 (13,72); "
+        "Placebo ist n = 27 mit 11,00 bei Woche 24"
     ),
 }
 
