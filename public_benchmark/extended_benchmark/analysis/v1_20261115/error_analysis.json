@@ -13,7 +13,8 @@
       "yun_dev_v4_20261115",
       "yun_dev_v5_20261115",
       "yun_dev_v6_20261115",
-      "yun_dev_v6b_20261115"
+      "yun_dev_v6b_20261115",
+      "yun_dev_v6c_20261115"
     ],
     "diagnoselaeufe": [
       "version_check_20261115",
@@ -437,6 +438,34 @@
         "records": 43
       },
       "metriken_identisch": true
+    },
+    {
+      "run_id": "yun_dev_v6c_20261115",
+      "model": "glm",
+      "prompt_version": "v6_target_fallback",
+      "prompt_version_roh": "v6_target_fallback_cb",
+      "antworten": 43,
+      "cache_anteil": 0.0,
+      "leere_antworten": 1,
+      "gold_zellen": 170,
+      "fehlerhafte_zellen": 3,
+      "zusaetzliche_zellen": 8,
+      "klassen": {
+        "Zahl nicht extrahiert": 2,
+        "Nicht eindeutig klassifizierbar": 1
+      },
+      "metriken": {
+        "cell_recall": 0.9824,
+        "cell_precision": 0.9489,
+        "cell_f1": 0.9653,
+        "mae_pairs": 0.0375,
+        "mae_coverage": 0.9882,
+        "mae_pairs_covered": 168,
+        "gold_cells": 170,
+        "record_exact": 36,
+        "records": 43
+      },
+      "metriken_identisch": true
     }
   ],
   "metrik_abgleich": [
@@ -673,6 +702,23 @@
         "mae_pairs_covered": 168,
         "gold_cells": 170,
         "record_exact": 35,
+        "records": 43
+      },
+      "ableitung_identisch": true,
+      "abweichungen": []
+    },
+    {
+      "run_id": "yun_dev_v6c_20261115",
+      "model": "glm",
+      "metriken": {
+        "cell_recall": 0.9824,
+        "cell_precision": 0.9489,
+        "cell_f1": 0.9653,
+        "mae_pairs": 0.0375,
+        "mae_coverage": 0.9882,
+        "mae_pairs_covered": 168,
+        "gold_cells": 170,
+        "record_exact": 36,
         "records": 43
       },
       "ableitung_identisch": true,
@@ -1551,35 +1597,35 @@
       "beschreibung": "Zielzeitpunkt je Record als Vorgabe"
     },
     "v6_target_fallback": {
-      "fehler": 12,
+      "fehler": 15,
       "klassen": {
-        "Nicht eindeutig klassifizierbar": 2,
-        "Zahl nicht extrahiert": 4,
+        "Nicht eindeutig klassifizierbar": 3,
+        "Zahl nicht extrahiert": 6,
         "Unvollstaendige Modellantwort": 6
       },
       "technisch": 6,
-      "inhaltlich": 6,
+      "inhaltlich": 9,
       "nach_modell": {
         "glm": {
-          "Nicht eindeutig klassifizierbar": 2,
-          "Zahl nicht extrahiert": 4,
+          "Nicht eindeutig klassifizierbar": 3,
+          "Zahl nicht extrahiert": 6,
           "Unvollstaendige Modellantwort": 6
         }
       },
       "nach_feld": {
         "comparator_group_size": {
-          "Zahl nicht extrahiert": 2,
+          "Zahl nicht extrahiert": 3,
           "Unvollstaendige Modellantwort": 1
         },
         "comparator_mean": {
-          "Nicht eindeutig klassifizierbar": 1,
+          "Nicht eindeutig klassifizierbar": 2,
           "Unvollstaendige Modellantwort": 1
         },
         "comparator_standard_deviation": {
           "Unvollstaendige Modellantwort": 1
         },
         "intervention_group_size": {
-          "Zahl nicht extrahiert": 2,
+          "Zahl nicht extrahiert": 3,
           "Unvollstaendige Modellantwort": 1
         },
         "intervention_mean": {
@@ -1591,26 +1637,27 @@
         }
       },
       "ereignis_fehler": [],
-      "zusaetzliche_zellen": 18,
+      "zusaetzliche_zellen": 26,
       "laeufe": [
         "yun_dev_v6_20261115",
-        "yun_dev_v6b_20261115"
+        "yun_dev_v6b_20261115",
+        "yun_dev_v6c_20261115"
       ],
       "status": "referenz",
       "beschreibung": "Zielzeitpunkt mit Rueckfall auf naechsten berichteten Zeitpunkt"
     }
   },
   "fehler_nach_klasse": {
-    "Nicht eindeutig klassifizierbar": 227,
-    "Zahl nicht extrahiert": 173,
+    "Nicht eindeutig klassifizierbar": 228,
+    "Zahl nicht extrahiert": 175,
     "Falsche Tabellenzeile": 19,
     "Unvollstaendige Modellantwort": 84,
     "Falscher Messzeitpunkt": 12
   },
   "fehler_nach_modell": {
     "glm": {
-      "Nicht eindeutig klassifizierbar": 91,
-      "Zahl nicht extrahiert": 57,
+      "Nicht eindeutig klassifizierbar": 92,
+      "Zahl nicht extrahiert": 59,
       "Falsche Tabellenzeile": 14,
       "Unvollstaendige Modellantwort": 78,
       "Falscher Messzeitpunkt": 8
@@ -1631,12 +1678,12 @@
       "Falscher Messzeitpunkt": 3
     },
     "intervention_group_size": {
-      "Zahl nicht extrahiert": 64,
+      "Zahl nicht extrahiert": 65,
       "Unvollstaendige Modellantwort": 19,
       "Nicht eindeutig klassifizierbar": 3
     },
     "comparator_group_size": {
-      "Zahl nicht extrahiert": 64,
+      "Zahl nicht extrahiert": 65,
       "Unvollstaendige Modellantwort": 19,
       "Nicht eindeutig klassifizierbar": 4
     },
@@ -1662,7 +1709,7 @@
     "comparator_mean": {
       "Zahl nicht extrahiert": 9,
       "Unvollstaendige Modellantwort": 11,
-      "Nicht eindeutig klassifizierbar": 53,
+      "Nicht eindeutig klassifizierbar": 54,
       "Falscher Messzeitpunkt": 3
     },
     "comparator_standard_deviation": {
@@ -1709,8 +1756,8 @@
       "Unvollstaendige Modellantwort": 32
     },
     "v6_target_fallback": {
-      "Nicht eindeutig klassifizierbar": 2,
-      "Zahl nicht extrahiert": 4,
+      "Nicht eindeutig klassifizierbar": 3,
+      "Zahl nicht extrahiert": 6,
       "Unvollstaendige Modellantwort": 6
     }
   },
@@ -4228,22 +4275,22 @@
     ]
   },
   "pruefqueue": {
-    "eintraege": 741,
+    "eintraege": 764,
     "nach_prioritaet": {
       "1": 34,
-      "2": 257,
-      "3": 31,
+      "2": 259,
+      "3": 32,
       "4": 193,
-      "5": 226
+      "5": 246
     },
     "referenz": {
       "datei": "human_review_queue.csv",
-      "eintraege": 52,
+      "eintraege": 75,
       "nach_prioritaet": {
-        "2": 10,
-        "3": 1,
+        "2": 12,
+        "3": 2,
         "4": 1,
-        "5": 40
+        "5": 60
       }
     },
     "verworfen": {

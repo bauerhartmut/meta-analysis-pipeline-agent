@@ -26,6 +26,7 @@ Fehler bei duenner Abdeckung nicht als gut durchgeht.
 | Lauf 8: Zielzeitpunkt je Record | `v5_target_timepoint` | glm-5.3 | 0,694 | 0,936 | 0,797 | 0,001 | 0,700 (119/170) | 24/43 | 0/59 | 9/43 | 0/43 |
 | Lauf 9: Zielzeitpunkt mit Rueckfall | `v6_target_fallback` | glm-5.3 | 0,947 | 0,942 | 0,944 | 0,039 | 0,953 (162/170) | 34/43 | 0/81 | 1/43 | 0/43 |
 | Lauf 10: Rueckfall wiederholt | `v6_target_fallback` | glm-5.3 | 0,982 | 0,944 | 0,963 | 0,001 | 0,988 (168/170) | 35/43 | 0/84 | 1/43 | 0/43 |
+| Lauf 11: JSON-Retry, Standard v6 | `v6_target_fallback` | glm-5.3 | 0,982 | 0,949 | 0,965 | 0,037 | 0,988 (168/170) | 36/43 | 0/84 | 1/43 | 0/43 |
 
 Prompt-Versionen kanonisch: `v2b_cachebuster`, `v2_timepoint` und
 `v2_timepoint_cb` sind dieselbe Fassung (`v2_timepoint`), der Cache-Zusatz
@@ -95,4 +96,5 @@ Werte als Recall | MAE | abgedeckte Zellen.
 - `yun_dev_v5_20261115/`: Lauf 8: Zielzeitpunkt je Record, `predictions.jsonl`, `eval/*.metrics.json`
 - `yun_dev_v6_20261115/`: Lauf 9: Zielzeitpunkt mit Rueckfall, `predictions.jsonl`, `eval/*.metrics.json`
 - `yun_dev_v6b_20261115/`: Lauf 10: Rueckfall wiederholt, `predictions.jsonl`, `eval/*.metrics.json`
+- `yun_dev_v6c_20261115/`: Lauf 11: JSON-Retry, Standard v6, `predictions.jsonl`, `eval/*.metrics.json`
 - Erzeugt von `runs/build_results_md.py`.

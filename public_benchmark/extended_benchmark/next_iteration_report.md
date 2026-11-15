@@ -621,7 +621,39 @@ Was das für alte Zahlen bedeutet: Alle F1-Werte aus den Abschnitten 1–12 sind
 gegen die alte Referenz gemessen. Für neue Läufe gilt v6 als Maßstab
 (F1 0,944–0,963, MAE 0,0006–0,039, Abdeckung 0,953–0,988).
 
-## 15. Prüfung der v6-Queue und zwei Absicherungen (15.11.2026)
+## 15. JSON-Robustheit und frischer Lauf (15.11.2026)
+
+`json_kaputt()` im Runner: Antworten, die strukturell kein lesbares JSON sind
+(`kein_json`, `json_fehler`, `kein_objet`), bekommen genau einen zweiten
+Versuch — wie bisher schon die Reasoning-Schleifen (`finish_reason =
+"length"`). Eine leere oder unbrauchbare Zellenliste (`keine_zellen`,
+`keine_verwertbaren_zellen`) ist bewusst **kein** Wiederholungsgrund: Felder
+dürfen ausgelassen werden, und ein zweiter Aufruf würde nur Kosten erzeugen.
+Der Grund steht als `retry_grund` (`length`/`json`) in jeder Zeile.
+Test: `test_kaputtes_json_wird_wiederholt`.
+
+Frischer Lauf 11 (`yun_dev_v6c_20261115`, Standard = v6, 43 Aufrufe, Median
+10,1 s, 1 Retry wegen `length` bei `yun2024:55`):
+
+| Kennzahl | Lauf 9 | Lauf 10 | Lauf 11 |
+|---|---|---|---|
+| Zellen-F1 | 0,944 | 0,963 | **0,965** |
+| Recall / Precision | 0,947 / 0,942 | 0,982 / 0,944 | 0,982 / 0,949 |
+| MAE | 0,039 | 0,0006 | 0,038 |
+| Abdeckung | 0,953 | 0,988 | 0,988 (168/170) |
+| exakte Records | 34 | 35 | **36** |
+
+Drei Läufe, F1 0,944–0,965, MAE 0,0006–0,039. Der MAE-Unterschied zwischen den
+Läufen ist ein einziger Zellenfehler: `yun2024:3 comparator_mean` mit −7,0
+statt −0,7 (6,3 Abweichung / 170 Paare = 0,037). Dieser Fehler tritt in zwei
+von drei Läufen auf und ist damit **kein Einzelfall**, sondern eine
+systematische Fehllesung der Dezimalstelle; Lauf 10 hatte die Zelle richtig.
+
+Der eine leere Record ist `yun2024:19` mit `keine_verwertbaren_zellen` (kein
+JSON-Fehler, kein Gold vorhanden) — der neue Retry greift dort absichtlich
+nicht.
+
+## 16. Prüfung der v6-Queue und zwei Absicherungen (15.11.2026)
 
 **Versionsetikett.** Der Runner setzt das Label jetzt je Antwort: Eine Fassung,
 die den Record-Zeitpunkt voraussetzt (v5, v6), wird nur dann so etikettiert,

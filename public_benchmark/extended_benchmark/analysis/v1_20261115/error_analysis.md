@@ -1,6 +1,6 @@
 # Fehleranalyse Yun-Dev
 
-Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: stage_20261115, yun_dev_20261114, yun_dev_fresh_20261115, yun_dev_retry_20261115, yun_dev_std_20261115, yun_dev_tp_20261115, yun_dev_v3_20261115, yun_dev_v4_20261115, yun_dev_v5_20261115, yun_dev_v6_20261115, yun_dev_v6b_20261115.
+Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: stage_20261115, yun_dev_20261114, yun_dev_fresh_20261115, yun_dev_retry_20261115, yun_dev_std_20261115, yun_dev_tp_20261115, yun_dev_v3_20261115, yun_dev_v4_20261115, yun_dev_v5_20261115, yun_dev_v6_20261115, yun_dev_v6b_20261115, yun_dev_v6c_20261115.
 
 ## Laeufe
 
@@ -20,6 +20,7 @@ Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: stage_20261115, yun_dev_202
 | yun_dev_v5_20261115 | glm | `v5_target_timepoint` | 0.0 | 9/43 | 0.7973 | 0.0008 | 0.7 | ja |
 | yun_dev_v6_20261115 | glm | `v6_target_fallback` | 0.0 | 1/43 | 0.9443 | 0.0389 | 0.9529 | ja |
 | yun_dev_v6b_20261115 | glm | `v6_target_fallback` | 0.0 | 1/43 | 0.9625 | 0.0006 | 0.9882 | ja |
+| yun_dev_v6c_20261115 | glm | `v6_target_fallback` | 0.0 | 1/43 | 0.9653 | 0.0375 | 0.9882 | ja |
 
 ## Fehler je Prompt-Version
 
@@ -34,7 +35,7 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 | `v3_abs_count` | verworfen | 17 | 6 | 11 | 5 | 1 |
 | `v4_last_timepoint` | verworfen | 42 | 0 | 42 | 9 | 1 |
 | `v5_target_timepoint` | verworfen | 52 | 32 | 20 | 7 | 1 |
-| `v6_target_fallback` | referenz | 12 | 6 | 6 | 18 | 2 |
+| `v6_target_fallback` | referenz | 15 | 6 | 9 | 26 | 3 |
 
 ### v1 (historisch)
 
@@ -155,16 +156,16 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 
 | Klasse | Anzahl |
 |---|---|
+| Zahl nicht extrahiert | 6 |
 | Unvollstaendige Modellantwort | 6 |
-| Zahl nicht extrahiert | 4 |
-| Nicht eindeutig klassifizierbar | 2 |
+| Nicht eindeutig klassifizierbar | 3 |
 
 | Feld | Klassen |
 |---|---|
-| comparator_group_size | Zahl nicht extrahiert (2), Unvollstaendige Modellantwort (1) |
-| comparator_mean | Nicht eindeutig klassifizierbar (1), Unvollstaendige Modellantwort (1) |
+| comparator_group_size | Zahl nicht extrahiert (3), Unvollstaendige Modellantwort (1) |
+| comparator_mean | Nicht eindeutig klassifizierbar (2), Unvollstaendige Modellantwort (1) |
 | comparator_standard_deviation | Unvollstaendige Modellantwort (1) |
-| intervention_group_size | Zahl nicht extrahiert (2), Unvollstaendige Modellantwort (1) |
+| intervention_group_size | Zahl nicht extrahiert (3), Unvollstaendige Modellantwort (1) |
 | intervention_mean | Unvollstaendige Modellantwort (1), Nicht eindeutig klassifizierbar (1) |
 | intervention_standard_deviation | Unvollstaendige Modellantwort (1) |
 
@@ -228,11 +229,11 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 
 ## Pruefqueue
 
-Gesamt 741 Eintraege, getrennt nach Version:
+Gesamt 764 Eintraege, getrennt nach Version:
 
 | Datei | Status | Versionen | Eintraege | Prioritaeten |
 |---|---|---|---|---|
-| `human_review_queue.csv` | referenz | v6_target_fallback | 52 | {2: 10, 3: 1, 4: 1, 5: 40} |
+| `human_review_queue.csv` | referenz | v6_target_fallback | 75 | {2: 12, 3: 2, 4: 1, 5: 60} |
 | `human_review_discarded.csv` | verworfen | v3_abs_count, v4_last_timepoint, v5_target_timepoint | 160 | - |
 | `human_review_historical.csv` | historisch | v1, v2_timepoint, v2_timepoint_stage2 | 529 | - |
 

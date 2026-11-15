@@ -35,9 +35,11 @@ gibt es im Artikel keine passende Zahl. Das Modell lässt die Zellen aus — nac
 der Regel korrekt. **Gold nicht geändert**, Fall bleibt als Datenqualitätsfall
 dokumentiert.
 
-**3. `yun2024:3 comparator_mean` (Lauf 9) — echter Modellfehler.** Gold −0,7,
-Vorhersage **−7,0**. Der Artikel schreibt „the patients fed WA (- 0.7 gm)";
-die Zehnerstelle ist verloren gegangen. Einzelfall, keine Systematik.
+**3. `yun2024:3 comparator_mean` (Lauf 9 und Lauf 11) — echter Modellfehler.**
+Gold −0,7, Vorhersage **−7,0**. Der Artikel schreibt „the patients fed WA
+(- 0.7 gm)"; die Zehnerstelle geht verloren. Der Fehler tritt in zwei von drei
+Läufen auf (Lauf 10 hatte die Zelle richtig) und ist damit systematisch, nicht
+zufällig.
 
 **4. `yun2024:3 intervention_mean` (Lauf 10) — Gold-Selbstwiderspruch.**
 Vorhersage 50,7 (Artikeltext „+ 50.7 gm"), Gold 50,6 (Tabelle). Bereits in

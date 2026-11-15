@@ -12,6 +12,16 @@ from extended_benchmark import run_extended_extraction as runner  # noqa: E402
 from extended_benchmark.evaluate_fallback import klassifiziere  # noqa: E402
 
 
+def test_kaputtes_json_wird_wiederholt() -> None:
+    """Strukturell unlesbares JSON gilt als Ausfall, eine leere Zellenliste nicht."""
+    assert runner.json_kaputt("kein_json")
+    assert runner.json_kaputt("kein_objet")
+    assert runner.json_kaputt("json_fehler: Expecting ',' delimiter")
+    assert not runner.json_kaputt("")
+    assert not runner.json_kaputt("keine_zellen")
+    assert not runner.json_kaputt("keine_verwertbaren_zellen")
+
+
 def test_lauf_ohne_annotation_heisst_nicht_v6() -> None:
     ohne = runner.bestimme_version(fallback=True, target="")
     assert ohne == runner.PROMPT_VERSION == "v2_timepoint"

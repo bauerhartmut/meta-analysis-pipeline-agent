@@ -36,6 +36,7 @@ LAEUFE = [
     ("yun_dev_v5_20261115", "Lauf 8: Zielzeitpunkt je Record", "v5_target_timepoint"),
     ("yun_dev_v6_20261115", "Lauf 9: Zielzeitpunkt mit Rueckfall", "v6_target_fallback"),
     ("yun_dev_v6b_20261115", "Lauf 10: Rueckfall wiederholt", "v6_target_fallback"),
+    ("yun_dev_v6c_20261115", "Lauf 11: JSON-Retry, Standard v6", "v6_target_fallback"),
 ]
 MODELLE = [("qwen30", "qwen3-30b-a3b"), ("glm", "glm-5.3")]
 

@@ -203,7 +203,12 @@ Vermutung. Der Abschlussbericht liegt in `next_iteration_report.md`.
 und ersetzt das Auslassen: Ist ein Feld dort nicht berichtet, wird der
 nächstliegende berichtete Zeitpunkt genommen und im Feld `timepoint` der Zelle
 genannt. Records ohne Annotation bekommen automatisch den Text der vorherigen
-Referenz `v2_timepoint`.
+Referenz `v2_timepoint` und auch deren Label.
+
+Zwei Ausfälle bekommen genau einen zweiten Versuch (`retry_grund` in der
+Zeile): `finish_reason = "length"` (Reasoning-Schleife, mit größerem Budget)
+und strukturell kaputtes JSON (`kein_json`, `json_fehler`, `kein_objet`). Eine
+leere Zellenliste ist kein Ausfall — Felder dürfen ausgelassen werden.
 
 ```bash
 python public_benchmark/extended_benchmark/run_extended_extraction.py \

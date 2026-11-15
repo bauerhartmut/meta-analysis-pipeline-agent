@@ -229,6 +229,15 @@ def parse_timepoints(content: str) -> tuple[dict[str, Any], str]:
     return {"chosen": chosen, "discarded": discarded}, ""
 
 
+def json_kaputt(parse_error: str) -> bool:
+    """Wahr, wenn die Antwort strukturell kein lesbares JSON war.
+
+    Eine leere Zellenliste ist kein Fehler (Felder duerfen ausgelassen werden),
+    unlesbares JSON dagegen ist ein Ausfall und wird einmal wiederholt.
+    """
+    return parse_error in ("kein_json", "kein_objet") or parse_error.startswith("json_fehler")
+
+
 def parse_cells(content: str) -> tuple[list[dict[str, Any]], str]:
     """Liest die Zellen aus der Modellantwort; gibt (cells, fehler) zurueck."""
     payload, error = _load_payload(content)
@@ -447,15 +456,26 @@ def main() -> int:
             cache_buster=args.cache_buster,
         )
         response = call(models[model], prompt, key, base)
-        retry: dict[str, Any] | None = None
-        # Reasoning-Schleifen enden mit finish_reason "length" und leerem Inhalt.
-        # Ein zweiter Versuch mit groesserem Budget behebt einen Teil davon.
-        if response.get("finish_reason") == "length" and models[model]["max_tokens"] < RETRY_MAX_TOKENS:
-            retry = call({**models[model], "max_tokens": RETRY_MAX_TOKENS}, prompt, key, base)
-            if retry.get("content"):
-                response = retry
         cells, parse_error = parse_cells(response.get("content") or "")
         timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
+        retry: dict[str, Any] | None = None
+        retry_grund = ""
+        # Reasoning-Schleifen enden mit finish_reason "length" und leerem Inhalt;
+        # strukturell kaputtes JSON ist ebenfalls ein Ausfall, kein Inhalt.
+        # Beides bekommt genau einen zweiten Versuch, danach bleibt das Ergebnis.
+        laenge = (
+            response.get("finish_reason") == "length"
+            and models[model]["max_tokens"] < RETRY_MAX_TOKENS
+        )
+        kaputt = json_kaputt(parse_error)
+        if laenge or kaputt:
+            retry_grund = "length" if laenge else "json"
+            params = {**models[model], "max_tokens": RETRY_MAX_TOKENS} if laenge else models[model]
+            retry = call(params, prompt, key, base)
+            if retry.get("content"):
+                response = retry
+                cells, parse_error = parse_cells(response.get("content") or "")
+                timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
         row = {
             "record_id": record["record_id"],
             "model": model,
@@ -467,6 +487,7 @@ def main() -> int:
             "reasoning_chars": response.get("reasoning_chars", 0),
             "suspected_cache": (response.get("elapsed_s") or 0) < 1.0,
             "retried": retry is not None,
+            "retry_grund": retry_grund,
             "retry_finish_reason": retry.get("finish_reason", "") if retry else "",
             "retry_tokens": retry.get("completion_tokens") if retry else None,
             "elapsed_s": response.get("elapsed_s"),
