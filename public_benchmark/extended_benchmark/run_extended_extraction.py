@@ -52,6 +52,8 @@ FIELDS = (
     "comparator_standard_deviation",
 )
 
+PROMPT_VERSION = "v2_timepoint"
+
 SYSTEM = (
     "You extract numerical results from randomised controlled trial publications. "
     "You answer with a single JSON object and nothing else. You never invent values: "
@@ -75,6 +77,8 @@ def build_prompt(record: dict[str, Any], text: str, limit: int = 45000) -> str:
         '{"cells": [{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...]}\n'
         f"Allowed fields: {fields}. "
         "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
+        "Use the values measured at the end of the intervention (post-test), not baseline values "
+        "and not follow-up values from a later measurement point. "
         "Copy numbers exactly as reported; do not convert, do not compute, do not guess. "
         "Omit a cell the paper does not report. "
         "Do not add commentary, markdown or code fences."
@@ -266,6 +270,7 @@ def main() -> int:
             "elapsed_s": response.get("elapsed_s"),
             "content_len": len(response.get("content") or ""),
             "parse_error": parse_error,
+            "prompt_version": PROMPT_VERSION,
             "predicted": {"cells": cells},
             "rows": cells,
         }

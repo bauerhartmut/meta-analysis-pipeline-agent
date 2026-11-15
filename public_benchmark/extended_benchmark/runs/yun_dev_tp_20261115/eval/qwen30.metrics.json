@@ -1,0 +1,101 @@
+{
+  "task": "numeric_extraction",
+  "records": 43,
+  "records_without_prediction": 0,
+  "gold_cells": 170,
+  "predicted_cells": 169,
+  "matched_cells": 79,
+  "cell_precision": 0.4675,
+  "cell_recall": 0.4647,
+  "cell_f1": 0.4661,
+  "mae_pairs": 0.9774,
+  "mae_pairs_max": 26.0,
+  "mae_pairs_covered": 125,
+  "mae_coverage": 0.7353,
+  "record_exact": 8,
+  "record_exact_rate": 0.186,
+  "arm_swap_records": 0,
+  "arm_swap_evaluable": 61,
+  "arm_swap_rate": 0.0,
+  "fields": {
+    "comparator_events": {
+      "gold": 8,
+      "predicted": 10,
+      "matched": 5,
+      "recall": 0.625,
+      "precision": 0.5,
+      "mae": 3.4286,
+      "mae_covered": 7
+    },
+    "comparator_group_size": {
+      "gold": 38,
+      "predicted": 19,
+      "matched": 16,
+      "recall": 0.4211,
+      "precision": 0.8421,
+      "mae": 0.4706,
+      "mae_covered": 17
+    },
+    "comparator_mean": {
+      "gold": 20,
+      "predicted": 29,
+      "matched": 10,
+      "recall": 0.5,
+      "precision": 0.3448,
+      "mae": 0.302,
+      "mae_covered": 20
+    },
+    "comparator_standard_deviation": {
+      "gold": 19,
+      "predicted": 25,
+      "matched": 10,
+      "recall": 0.5263,
+      "precision": 0.4,
+      "mae": 0.3011,
+      "mae_covered": 19
+    },
+    "intervention_events": {
+      "gold": 8,
+      "predicted": 9,
+      "matched": 4,
+      "recall": 0.5,
+      "precision": 0.4444,
+      "mae": 5.3333,
+      "mae_covered": 6
+    },
+    "intervention_group_size": {
+      "gold": 38,
+      "predicted": 19,
+      "matched": 16,
+      "recall": 0.4211,
+      "precision": 0.8421,
+      "mae": 0.5882,
+      "mae_covered": 17
+    },
+    "intervention_mean": {
+      "gold": 20,
+      "predicted": 33,
+      "matched": 9,
+      "recall": 0.45,
+      "precision": 0.2727,
+      "mae": 0.899,
+      "mae_covered": 20
+    },
+    "intervention_standard_deviation": {
+      "gold": 19,
+      "predicted": 25,
+      "matched": 9,
+      "recall": 0.4737,
+      "precision": 0.36,
+      "mae": 0.9705,
+      "mae_covered": 19
+    }
+  },
+  "tolerance": {
+    "abs": 1e-06,
+    "rel": 0.0
+  },
+  "dataset": "yun",
+  "unknown_prediction_ids": [],
+  "unknown_prediction_count": 0
+}

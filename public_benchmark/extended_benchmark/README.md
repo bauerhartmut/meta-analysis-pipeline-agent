@@ -136,8 +136,13 @@ python public_benchmark/extended_benchmark/run_extended_extraction.py \
   --models qwen30 glm --split dev --workers 3 --run-id yun_dev_20261114
 ```
 
-Ausgabe: `runs/<run_id>/predictions.jsonl` mit Status, Laufzeit, Parserfehler
-und Zellen je (Record, Modell).
+Ausgabe: `runs/<run_id>/predictions.jsonl` mit Status, Laufzeit, Parserfehler,
+Prompt-Version und Zellen je (Record, Modell).
+
+`PROMPT_VERSION` im Runner benennt die aktuelle Prompt-Fassung
+(`v2_timepoint`: Werte am Ende der Intervention, nicht Baseline und nicht
+Follow-up). Ergebnisse unterschiedlicher Versionen sind nicht direkt
+vergleichbar.
 
 ## PMC-Open-Access-Downloader
 
