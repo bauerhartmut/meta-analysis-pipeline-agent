@@ -43,6 +43,16 @@ def test_fenster_zeigt_die_umgebung() -> None:
     assert fund["region"] in ("Kurzfassung", "Hauptteil", "unbestimmt")
 
 
+def test_outcome_titel_geht_vor_textregel() -> None:
+    from extended_benchmark.annotate_timepoints import zeitpunkt_aus_outcome
+
+    assert zeitpunkt_aus_outcome("BMI reduction at 12 months") == "month 12"
+    assert zeitpunkt_aus_outcome("Baseline Height") == "baseline"
+    assert zeitpunkt_aus_outcome("Improvement in score at 6 months post-trauma") == "month 6"
+    assert zeitpunkt_aus_outcome("Anxiety") == ""
+    assert zeitpunkt_aus_outcome("Baseline characteristics and diet") == "baseline"
+
+
 def test_baseline_gewinnt_nicht_bei_ergebniszellen() -> None:
     from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
 

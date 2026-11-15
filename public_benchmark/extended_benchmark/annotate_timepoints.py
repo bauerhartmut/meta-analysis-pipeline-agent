@@ -125,7 +125,25 @@ MUSTER = [
 ]
 
 
-UNSPEZIFISCH = {"baseline", "follow-up", "week 0", "month 0", "day 0"}
+# Nullmessungen normalisiert _zeitpunkt_funde bereits zu "baseline".
+UNSPEZIFISCH = {"baseline", "follow-up"}
+
+
+def zeitpunkt_aus_outcome(outcome: str) -> str:
+    """Zeitpunkt, der schon im Outcome-Namen steht ("at 12 months", "Baseline ...").
+
+    Der Outcome-Name ist die beste Quelle fuer den Zielzeitpunkt: er beschreibt,
+    was die Goldzelle bedeuten soll. Die Stichprobenpruefung (15.11.2026) hat
+    gezeigt, dass die Textregel ohne diesen Anker bei "Baseline Height" und
+    "BMI reduction at 12 months" daneben lag.
+    """
+    if re.search(r"\bbaseline\b", outcome, re.IGNORECASE):
+        return "baseline"
+    funde = _zeitpunkt_funde(outcome)
+    namen = {f[1] for f in funde if f[1] not in UNSPEZIFISCH}
+    if len(namen) == 1:
+        return namen.pop()
+    return ""
 
 
 def _zeitpunkt_funde(text: str) -> list[tuple[int, str, str]]:
@@ -257,24 +275,22 @@ def annotate_kandidaten(
         hat_ergebnis = any(
             "mean" in c["field"] or "events" in c["field"] for c in record["gold"]["cells"]
         )
+        aus_outcome = zeitpunkt_aus_outcome((record.get("context") or {}).get("outcome", ""))
         info = zeitpunkt_aus_text(text, positionen, hat_ergebnis=hat_ergebnis)
+        if aus_outcome and aus_outcome != info["target"]:
+            info = {
+                "target": aus_outcome,
+                "evidence": f"Outcome-Titel nennt '{aus_outcome}'; Textregel hatte "
+                f"'{info['target'] or 'nichts'}' ergeben",
+                "status": "auto (Outcome-Titel)",
+                "abstand": "",
+            }
         # Vergleich mit der alten, ungehaerteten Regel fuer die Prueftabelle.
         alt = zeitpunkt_aus_text(text, positionen, hat_ergebnis=False)
         if alt["target"] == "follow-up" or (alt["target"] == "baseline" and hat_ergebnis):
             review_rows.append(
                 {"record_id": record["record_id"], "alt": alt["target"], "evidence": alt["evidence"]}
             )
-        if hat_ergebnis and info["target"] in UNSPEZIFISCH:
-            # baseline/follow-up ist bei Mittelwerten und Ereignissen kein belegter
-            # Zielzeitpunkt: es sagt nur "irgendwann gemessen". Lieber leer lassen;
-            # der Runner faellt dann auf die Standardregel zurueck.
-            info = {
-                "target": "",
-                "evidence": f"verworfen: '{info['target']}' bei Ergebniszellen nicht belegt; "
-                + (info["evidence"] or "")[:140],
-                "status": "not stated (unspezifisch bei Ergebniszellen)",
-                "abstand": "",
-            }
         record["timepoint"] = {
             "target": info["target"],
             "evidence": info["evidence"],
