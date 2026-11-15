@@ -1,0 +1,130 @@
+{
+  "zeilen": 186,
+  "gueltige_zeilen": 139,
+  "ausfaelle": 47,
+  "ausfallquote": 0.2527,
+  "tokens_gueltig": {
+    "p50": 4425,
+    "p90": 12091,
+    "p95": 14730,
+    "max": 24000,
+    "mittel": 5702
+  },
+  "limit_empfehlung": 19000,
+  "ausfallkosten": {
+    "tokens": 792000,
+    "anteil_aller_tokens": 0.4623,
+    "je_ausfall": 16851,
+    "hoechstes_limit": 24000
+  },
+  "goldzellen": {
+    "gesamt": 566,
+    "in_ausfaellen": 133,
+    "anteil": 0.235
+  },
+  "erwartung_je_record": 10326.0,
+  "gueltig_nahe_limit": 3,
+  "merkmalstests": [
+    {
+      "merkmal": "zieltyp",
+      "gruppen": {
+        "baseline": {
+          "zeilen": 104,
+          "ausfaelle": 19,
+          "quote": 0.1827
+        },
+        "day": {
+          "zeilen": 13,
+          "ausfaelle": 3,
+          "quote": 0.2308
+        },
+        "month": {
+          "zeilen": 27,
+          "ausfaelle": 13,
+          "quote": 0.4815
+        },
+        "sonstiges": {
+          "zeilen": 17,
+          "ausfaelle": 7,
+          "quote": 0.4118
+        },
+        "week": {
+          "zeilen": 25,
+          "ausfaelle": 5,
+          "quote": 0.2
+        }
+      },
+      "fisher_p": 0.0069
+    },
+    {
+      "merkmal": "zielzahl_im_text",
+      "gruppen": {
+        "ja": {
+          "zeilen": 65,
+          "ausfaelle": 21,
+          "quote": 0.3231
+        },
+        "nein": {
+          "zeilen": 121,
+          "ausfaelle": 26,
+          "quote": 0.2149
+        }
+      },
+      "fisher_p": 0.1143
+    },
+    {
+      "merkmal": "goldzellen",
+      "gruppen": {
+        "2": {
+          "zeilen": 124,
+          "ausfaelle": 35,
+          "quote": 0.2823
+        },
+        "3-4": {
+          "zeilen": 26,
+          "ausfaelle": 4,
+          "quote": 0.1538
+        },
+        ">= 5": {
+          "zeilen": 36,
+          "ausfaelle": 8,
+          "quote": 0.2222
+        }
+      },
+      "fisher_p": 0.2139
+    },
+    {
+      "merkmal": "textlaenge",
+      "gruppen": {
+        "< 12893": {
+          "zeilen": 86,
+          "ausfaelle": 21,
+          "quote": 0.2442
+        },
+        ">= 12893": {
+          "zeilen": 100,
+          "ausfaelle": 26,
+          "quote": 0.26
+        }
+      },
+      "fisher_p": 0.8664
+    },
+    {
+      "merkmal": "tabellen",
+      "gruppen": {
+        "< 3": {
+          "zeilen": 81,
+          "ausfaelle": 24,
+          "quote": 0.2963
+        },
+        ">= 3": {
+          "zeilen": 105,
+          "ausfaelle": 23,
+          "quote": 0.219
+        }
+      },
+      "fisher_p": 0.2389
+    }
+  ],
+  "run": "yun_test186_v6_20261115"
+}
