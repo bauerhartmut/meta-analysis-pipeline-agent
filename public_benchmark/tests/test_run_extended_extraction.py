@@ -47,6 +47,19 @@ def test_zielzeitpunkt_ist_verbindlich() -> None:
     assert "post-test" not in prompt
 
 
+def test_rueckfallregel_mit_zelleigenem_zeitpunkt() -> None:
+    prompt = runner.build_prompt(RECORD, "Text", target_timepoint="Post-test", fallback=True)
+    assert runner.VERSION_TARGET_FALLBACK == "v6_target_fallback"
+    assert "closest reported time point" in prompt
+    assert '"timepoint": "<label exactly as printed>"' in prompt
+    cells, error = runner.parse_cells(
+        '{"cells": [{"field": "intervention_mean", "arm": "intervention", "value": 1.5, '
+        '"timepoint": "Post-test"}]}'
+    )
+    assert error == ""
+    assert cells == [{"field": "intervention_mean", "arm": "intervention", "value": 1.5, "timepoint": "Post-test"}]
+
+
 def test_zeitpunkt_parser_liest_labels() -> None:
     timepoints, error = runner.parse_timepoints(
         '{"cells": [], "chosen_timepoint": "12 months follow-up", '

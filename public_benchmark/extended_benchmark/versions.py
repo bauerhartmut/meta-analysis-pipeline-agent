@@ -21,9 +21,17 @@ ALIASE = {
     "v3_abs_count": "v3_abs_count",
     "v4_last_timepoint": "v4_last_timepoint",
     "v5_target_timepoint": "v5_target_timepoint",
+    "v6_target_fallback": "v6_target_fallback",
 }
 
-KANONISCH = ("v1", "v2_timepoint", "v3_abs_count", "v4_last_timepoint", "v5_target_timepoint")
+KANONISCH = (
+    "v1",
+    "v2_timepoint",
+    "v3_abs_count",
+    "v4_last_timepoint",
+    "v5_target_timepoint",
+    "v6_target_fallback",
+)
 
 BESCHREIBUNG = {
     "v1": "ohne Zeitpunktangabe",
@@ -31,6 +39,7 @@ BESCHREIBUNG = {
     "v3_abs_count": "Zeitpunkt plus absolute Ereigniszahlen",
     "v4_last_timepoint": "letzter berichteter Messzeitpunkt, Zeitpunkte mitgeliefert",
     "v5_target_timepoint": "Zielzeitpunkt je Record als Vorgabe",
+    "v6_target_fallback": "Zielzeitpunkt mit Rueckfall auf naechsten berichteten Zeitpunkt",
 }
 
 # Rolle einer Version in der Auswertung. "verworfen" heisst: im Dev-Lauf
@@ -42,6 +51,9 @@ STATUS = {
     "v3_abs_count": "verworfen",
     "v4_last_timepoint": "verworfen",
     "v5_target_timepoint": "verworfen",
+    # Bestes gemessenes Ergebnis, aber noch nicht als Referenz festgelegt:
+    # Der Tausch der Referenz ist eine Festlegung, keine Messung.
+    "v6_target_fallback": "kandidat",
 }
 
 

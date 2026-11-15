@@ -268,7 +268,7 @@ Werte liefert.
 | 6 | Tabellen separat übergeben statt Volltext | größter Hebel bei mehrzeiligen Tabellen, aber größter Umbau | Tage |
 | 7 | ~~Zeitpunkt-Regel „letzter Messpunkt"~~ **getestet, verworfen** (Abschnitt 12) | behebt 4 Zellen, zerstört 39; Gold-Konvention ist nicht einheitlich | erledigt |
 | 8 | Messzeitpunkt je Record annotieren und im Prompt setzen | **erledigt** (Abschnitt 13): Annotation trifft die Konvention, Precision 0,937, MAE 0,0008 | erledigt |
-| 9 | Rückfallregel bei fehlendem Zielzeitpunkt (nächstliegender berichteter Zeitpunkt, im Feld ausgewiesen) | behebt die 51 Auslassungen des v5-Laufs, ohne die Zeitpunktbindung aufzugeben | Stunden |
+| 9 | Rückfallregel bei fehlendem Zielzeitpunkt (nächstliegender berichteter Zeitpunkt, im Feld ausgewiesen) | **erledigt** (Abschnitt 14): Auslassungen 51 → 8, F1 0,944, MAE 0,039, alle 46 bewertbaren Rückfall-Zellen richtig | erledigt |
 
 ## 9. Konzept für die nächste Benchmark-Iteration
 
@@ -323,10 +323,8 @@ solange die Validierung nur markiert und nicht korrigiert.
 4. ~~Messzeitpunkt je Record annotieren~~ **erledigt** (Abschnitt 13): Die
    Annotation ist gesetzt und belegt, der Lauf gewinnt Precision und MAE,
    verliert aber Abdeckung durch Auslassungen.
-5. **Rückfallregel für fehlende Zeitpunkte** — der direkte Anschluss: Auslassen
-   durch „nächstliegenden berichteten Zeitpunkt nennen und ausweisen"
-   ersetzen. Ein Lauf auf denselben 43 Records zeigt, ob Precision und
-   Abdeckung gleichzeitig halten.
+5. ~~Rückfallregel für fehlende Zeitpunkte~~ **erledigt und erfolgreich**
+   (Abschnitt 14): F1 0,944 bei MAE 0,039, keine falsche Rückfall-Zelle.
 6. Tabellenübergabe (B) — erst sinnvoll, wenn Zeitpunkt und Rückfallregel
    stehen, sonst wird dieselbe falsche Spalte nur sauberer gelesen.
 
@@ -558,6 +556,51 @@ stimmt), und die reine Auslassungsregel ist zu streng. Der naheliegende
 nächste Schritt ist deshalb keine neue Datenrunde, sondern eine Rückfallregel:
 Wenn der Zielzeitpunkt für ein Feld nicht berichtet ist, den nächstliegenden
 berichteten Zeitpunkt nehmen und ihn im Feld `chosen_timepoint` ausweisen.
+
+## 14. Rückfallregel: bestes Ergebnis bisher (15.11.2026)
+
+Prompt `v6_target_fallback` behält die verbindliche Vorgabe, ersetzt aber das
+Auslassen durch einen ausgewiesenen Rückfall: Ist ein Feld am Zielzeitpunkt
+nicht berichtet, wird der nächstliegende berichtete Zeitpunkt genommen und im
+Feld `timepoint` der Zelle genannt. `evaluate_fallback.py` trennt die Zellen
+danach in **zieltreu** und **rückfall** und zählt beide getrennt.
+
+| Kennzahl | Referenz (Lauf 6) | `v5` (ohne Rückfall) | `v6` (mit Rückfall) |
+|---|---|---|---|
+| Zellen-F1 | 0,933 | 0,797 | **0,944** |
+| Recall / Precision | 0,935 / 0,930 | 0,694 / 0,937 | 0,947 / 0,942 |
+| MAE | 0,415 | 0,0008 | **0,039** |
+| mae_coverage | 0,965 (164/170) | 0,700 (119/170) | 0,953 (162/170) |
+| exakte Records | 34/43 | 24/43 | 34/43 |
+
+Lauf: 43 Aufrufe, 1 Retry, kein Cache-Treffer, Median 20,6 s, 1 Record ohne
+Antwort.
+
+### Die beiden Zellklassen
+
+| Klasse | Zellen | richtig | falsch | ohne Gold | Precision |
+|---|---|---|---|---|---|
+| zieltreu | 120 | 115 | 1 | 4 | 0,991 |
+| rückfall | 51 | 46 | 0 | 5 | 1,000 |
+
+Die Rückfallregel ist damit **sauber**: 46 von 46 bewertbaren Rückfall-Zellen
+stimmen, keine einzige falsch. Die mittlere Zeitdistanz ist mit 12 Monaten
+allerdings groß — das sind die Fälle, in denen Gold nur eine Größe führt, die
+im Zielzeitpunkt nicht steht (vor allem `yun2024:187`–`:189` mit 12-Monats-Ziel
+und reinen Gruppengrößen). Auslassungen sinken von 51 auf 8 Zellen (4,7 %).
+
+### Einordnung
+
+Das ist das **beste gemessene Ergebnis** dieser Iteration: F1 +0,012, MAE
+0,415 → 0,039, Abdeckung nur −0,012 gegenüber der Referenz. Die Verbesserung
+ist keine Prompt-Formulierung allein, sondern das Zusammenspiel aus
+annotiertem Zielzeitpunkt (Abschnitt 13) und ausgewiesenem Rückfall.
+
+Ob `v6_target_fallback` die neue **Referenz** wird, ist eine Festlegung und
+keine Messung: Der Status steht vorläufig auf „kandidat", die Referenz bleibt
+`v2_timepoint` mit Lauf 6, damit alle bisherigen Vergleiche gültig bleiben.
+Wer die Referenz tauscht, muss die Standardwerte in `versions.py`,
+`PROMPT_VERSION` und die Referenzzeile in `analyze_errors.py` mitziehen.
 
 ## Technische Umsetzung
 

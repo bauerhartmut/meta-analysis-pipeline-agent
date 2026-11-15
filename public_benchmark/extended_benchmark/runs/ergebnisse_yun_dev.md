@@ -24,6 +24,7 @@ Fehler bei duenner Abdeckung nicht als gut durchgeht.
 | Lauf 6: Standardprompt frisch | `v2_timepoint` | glm-5.3 | 0,935 | 0,930 | 0,933 | 0,415 | 0,965 (164/170) | 34/43 | 0/82 | 2/43 | 0/43 |
 | Lauf 7: letzter Messzeitpunkt | `v4_last_timepoint` | glm-5.3 | 0,753 | 0,723 | 0,738 | 3,621 | 0,988 (168/170) | 25/43 | 0/84 | 0/43 | 0/43 |
 | Lauf 8: Zielzeitpunkt je Record | `v5_target_timepoint` | glm-5.3 | 0,694 | 0,936 | 0,797 | 0,001 | 0,700 (119/170) | 24/43 | 0/59 | 9/43 | 0/43 |
+| Lauf 9: Zielzeitpunkt mit Rueckfall | `v6_target_fallback` | glm-5.3 | 0,947 | 0,942 | 0,944 | 0,039 | 0,953 (162/170) | 34/43 | 0/81 | 1/43 | 0/43 |
 
 Prompt-Versionen kanonisch: `v2b_cachebuster`, `v2_timepoint` und
 `v2_timepoint_cb` sind dieselbe Fassung (`v2_timepoint`), der Cache-Zusatz
@@ -91,4 +92,5 @@ Werte als Recall | MAE | abgedeckte Zellen.
 - `yun_dev_std_20261115/`: Lauf 6: Standardprompt frisch, `predictions.jsonl`, `eval/*.metrics.json`
 - `yun_dev_v4_20261115/`: Lauf 7: letzter Messzeitpunkt, `predictions.jsonl`, `eval/*.metrics.json`
 - `yun_dev_v5_20261115/`: Lauf 8: Zielzeitpunkt je Record, `predictions.jsonl`, `eval/*.metrics.json`
+- `yun_dev_v6_20261115/`: Lauf 9: Zielzeitpunkt mit Rueckfall, `predictions.jsonl`, `eval/*.metrics.json`
 - Erzeugt von `runs/build_results_md.py`.

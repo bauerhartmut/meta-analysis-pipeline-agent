@@ -196,6 +196,28 @@ neu berechnet und gegen `eval/*.metrics.json` geprüft. Wo sich eine Ursache
 nicht belegen lässt, steht "Nicht eindeutig klassifizierbar" statt einer
 Vermutung. Der Abschlussbericht liegt in `next_iteration_report.md`.
 
+## Rückfallregel `v6_target_fallback` (Kandidat)
+
+`--target-fallback` behält den Zielzeitpunkt als Vorgabe und ersetzt das
+Auslassen: Ist ein Feld dort nicht berichtet, wird der nächstliegende
+berichtete Zeitpunkt genommen und im Feld `timepoint` der Zelle genannt.
+
+```bash
+python public_benchmark/extended_benchmark/run_extended_extraction.py \
+  --models glm --split dev --cache-buster --target-fallback \
+  --run-id yun_dev_v6_20261115
+
+python public_benchmark/extended_benchmark/evaluate_fallback.py \
+  --run yun_dev_v6_20261115 \
+  --out public_benchmark/extended_benchmark/analysis/v6_20261115/fallback_eval.json
+```
+
+`evaluate_fallback.py` trennt zieltreue Zellen und Rückfall-Zellen und weist
+Auslassungen je Feld aus. Ergebnis auf den 43 Dev-Records: F1 0,944, MAE 0,039,
+Abdeckung 0,953; 51 Rückfall-Zellen, davon 46 richtig und keine falsch.
+Bericht, Abschnitt 14. Status vorläufig „kandidat", Referenz bleibt
+`v2_timepoint`.
+
 ## Zielzeitpunkt je Record (`v5_target_timepoint`)
 
 `annotate_timepoints.py` pflegt den Zielmesszeitpunkt der Dev-Records als Feld

@@ -59,6 +59,7 @@ PROMPT_VERSION = "v2_timepoint"
 VERSION_ABSOLUTE_COUNTS = "v3_abs_count"
 VERSION_LAST_TIMEPOINT = "v4_last_timepoint"
 VERSION_TARGET_TIMEPOINT = "v5_target_timepoint"
+VERSION_TARGET_FALLBACK = "v6_target_fallback"
 RETRY_MAX_TOKENS = 32000
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
@@ -80,18 +81,36 @@ def build_prompt(
     absolute_counts: bool = False,
     last_timepoint: bool = False,
     target_timepoint: str | None = None,
+    fallback: bool = False,
 ) -> str:
     context = record["context"]
     fields = ", ".join(f'"{name}"' for name in FIELDS)
     berichtet = bool(last_timepoint or target_timepoint)
+    zelle = (
+        '{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>, '
+        '"timepoint": "<label exactly as printed>"}'
+        if fallback
+        else '{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}'
+    )
     schema = (
-        '{"cells": [{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...], '
+        f'{{"cells": [{zelle}, ...], '
         '"chosen_timepoint": "<label exactly as printed>", '
         '"discarded_timepoints": ["<label exactly as printed>", ...]}'
         if berichtet
-        else '{"cells": [{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...]}'
+        else f'{{"cells": [{zelle}, ...]}}'
     )
-    if target_timepoint:
+    if target_timepoint and fallback:
+        timepoint_rule = (
+            f'Target time point (binding): "{target_timepoint}". Extract each result at exactly this '
+            "time point when the outcome is reported there. If a field is not reported at the target "
+            "time point, use the closest reported time point instead (prefer the nearest later one, "
+            "otherwise the nearest earlier one; baseline only if nothing else is reported) and name the "
+            "time point you used for that cell in its \"timepoint\" field, copied exactly as printed. "
+            "Never mix two time points inside one cell. Then state the target time point label as "
+            "chosen_timepoint and list the other time point labels of this outcome as "
+            "discarded_timepoints. "
+        )
+    elif target_timepoint:
         timepoint_rule = (
             f'Target time point (binding): "{target_timepoint}". Extract only the results measured at '
             "exactly this time point, as printed for this outcome. If the outcome is not reported at "
@@ -192,13 +211,14 @@ def parse_cells(content: str) -> tuple[list[dict[str, Any]], str]:
         field = str(cell.get("field") or "").strip()
         arm = str(cell.get("arm") or "").strip() or None
         value = cell.get("value")
+        timepoint = str(cell.get("timepoint") or "").strip()
         if field not in FIELDS or arm not in ("intervention", "comparator"):
             continue
         try:
             number = float(str(value).replace(",", "."))
         except (TypeError, ValueError):
             continue
-        cleaned.append({"field": field, "arm": arm, "value": number})
+        cleaned.append({"field": field, "arm": arm, "value": number, "timepoint": timepoint})
     return cleaned, "" if cleaned else "keine_verwertbaren_zellen"
 
 
@@ -323,6 +343,11 @@ def main() -> int:
         help="Zielzeitpunkt aus dem Record als verbindliche Vorgabe setzen (v5_target_timepoint)",
     )
     parser.add_argument(
+        "--target-fallback",
+        action="store_true",
+        help="Zielzeitpunkt mit Rueckfall auf den naechsten berichteten Zeitpunkt (v6_target_fallback)",
+    )
+    parser.add_argument(
         "--last-timepoint",
         action="store_true",
         help="letzten berichteten Messzeitpunkt verlangen und Zeitpunkte mitliefern (v4_last_timepoint)",
@@ -341,6 +366,8 @@ def main() -> int:
         prompt_version = VERSION_LAST_TIMEPOINT
     if args.target_timepoint:
         prompt_version = VERSION_TARGET_TIMEPOINT
+    if args.target_fallback:
+        prompt_version = VERSION_TARGET_FALLBACK
     if args.cache_buster:
         SESSION_TAG = uuid.uuid4().hex[:12]
         prompt_version = f"{prompt_version}_cb"
@@ -372,7 +399,7 @@ def main() -> int:
             if candidate.exists():
                 text = candidate.read_text(encoding="utf-8", errors="replace")
         target = ""
-        if args.target_timepoint:
+        if args.target_timepoint or args.target_fallback:
             target = str(((record.get("timepoint") or {}).get("target")) or "").strip()
             if "not stated" in target.lower():
                 target = ""
@@ -382,6 +409,7 @@ def main() -> int:
             absolute_counts=args.absolute_counts,
             last_timepoint=args.last_timepoint,
             target_timepoint=target or None,
+            fallback=args.target_fallback,
         )
         response = call(models[model], prompt, key, base)
         retry: dict[str, Any] | None = None
@@ -409,8 +437,12 @@ def main() -> int:
             "elapsed_s": response.get("elapsed_s"),
             "content_len": len(response.get("content") or ""),
             "parse_error": parse_error,
-            "timepoints": timepoints if (args.last_timepoint or args.target_timepoint) else {},
-            "timepoint_error": timepoint_error if (args.last_timepoint or args.target_timepoint) else "",
+            "timepoints": timepoints
+            if (args.last_timepoint or args.target_timepoint or args.target_fallback)
+            else {},
+            "timepoint_error": timepoint_error
+            if (args.last_timepoint or args.target_timepoint or args.target_fallback)
+            else "",
             "target_timepoint": target,
             "prompt_version": prompt_version,
             "predicted": {"cells": cells},
