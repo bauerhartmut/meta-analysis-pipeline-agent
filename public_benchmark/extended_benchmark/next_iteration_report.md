@@ -20,18 +20,18 @@ mehr. Die Zuordnung und der Status stehen in `versions.py`.
 
 | Version | Status | Fehler | technisch | inhaltlich | zusätzliche Zellen | Läufe |
 |---|---|---|---|---|---|---|
-| `v2_timepoint` | Referenz | 235 | 28 | 207 | 107 | 3 |
+| `v2_timepoint` | Referenz | 246 | 28 | 218 | 114 | 4 |
 | `v3_abs_count` | **verworfen** | 17 | 6 | 11 | 5 | 1 |
 | `v1` | historisch | 135 | 12 | 123 | 56 | 1 |
 
-Für die Referenz `v2_timepoint` (235 Fehler, 28 davon technisch):
+Für die Referenz `v2_timepoint` (246 Fehler, 28 davon technisch):
 
 | Klasse | Anzahl | Anteil |
 |---|---|---|
-| Nicht eindeutig klassifizierbar | 100 | 43 % |
-| Zahl nicht extrahiert | 100 | 43 % |
-| Unvollständige Modellantwort | 28 | 12 % |
-| Falsche Tabellenzeile | 7 | 3 % |
+| Nicht eindeutig klassifizierbar | 100 | 41 % |
+| Zahl nicht extrahiert | 106 | 43 % |
+| Unvollständige Modellantwort | 28 | 11 % |
+| Falsche Tabellenzeile | 12 | 5 % |
 | Prozentwert statt absoluter Zahl | 0 | – |
 | Falscher Messzeitpunkt | 0 | – |
 | Halluzinierter Wert | 0 | – |
@@ -42,6 +42,23 @@ Für die Referenz `v2_timepoint` (235 Fehler, 28 davon technisch):
 `v3_abs_count` (verworfen) hat 17 Fehler: 6 nicht extrahiert, 6 unvollständig,
 4 nicht eindeutig, 1 falsche Tabellenzeile. Die Ereigniszahlen sind darin unverändert
 gegenüber der Referenz; die Fassung wird ab hier nur noch nachrichtlich geführt.
+
+### Referenz frisch reproduziert (15.11.2026)
+
+Lauf 6 (`yun_dev_std_20261115`) wiederholt die Referenz mit dem Standardprompt
+und frischer Generierung (43 Aufrufe, Median 3,83 s, keine Antwort unter 1 s):
+
+| Kennzahl | Lauf 4 (`v2b`) | Lauf 6 (Standard, frisch) |
+|---|---|---|
+| Zellen-F1 | 0,945 | 0,933 |
+| MAE | 0,405 | 0,415 |
+| mae_coverage | 0,988 (168/170) | 0,965 (164/170) |
+| exakte Records | 35/43 | 34/43 |
+| vorhergesagte Zellen | 175 | 171 |
+
+Die Referenzzahl stammt damit nicht mehr aus einem Sonderpfad, sondern aus dem
+Standardprompt; die Abweichung von 0,012 F1 liegt im Rahmen der Streuung
+zwischen zwei frischen Läufen (zwei leere Antworten, drei Retries).
 
 Drei Befunde sind wichtiger als die Verteilung:
 
@@ -63,9 +80,9 @@ Nur Referenzversion `v2_timepoint`:
 | Klasse | glm-5.3 | qwen3-30b |
 |---|---|---|
 | Nicht eindeutig | 12 | 88 |
-| Zahl nicht extrahiert | 14 | 86 |
+| Zahl nicht extrahiert | 20 | 86 |
 | Unvollständige Antwort | 24 | 4 |
-| Falsche Tabellenzeile | 0 | 4 |
+| Falsche Tabellenzeile | 8 | 4 |
 | Prozentwert statt absolut | 0 | 0 |
 | Falscher Messzeitpunkt | 0 | 0 |
 | Halluzinierter Wert | 0 | 0 |
@@ -76,7 +93,7 @@ ohne jede Antwort). qwen3-30b antwortet fast immer, lässt aber ein Drittel der
 Zellen weg und liefert viele Werte, die zwar im Artikel stehen, aber nicht zur
 gesuchten Zeile gehören (88 nicht eindeutig).
 
-Ein technisches Detail: In der Referenzversion gibt es **107 zusätzliche Zellen
+Ein technisches Detail: In der Referenzversion gibt es **114 zusätzliche Zellen
 ohne Gold-Pendant**, davon 88 von qwen3-30b — überwiegend für die 5 Records, in
 denen der Annotator keine Zahlen gefunden hat. Das drückt die Precision, ist aber
 inhaltlich ungeklärt: Ob dort wirklich keine Zahlen stehen oder der Gold-Stand
@@ -86,17 +103,17 @@ unvollständig ist, kann nur eine Sichtprüfung entscheiden.
 
 | Feld | häufigste Klassen |
 |---|---|
-| intervention_group_size | nicht extrahiert (43), unvollständig (6) |
-| comparator_group_size | nicht extrahiert (43), unvollständig (6) |
-| intervention_mean | nicht eindeutig (23), unvollständig (4) |
-| intervention_standard_deviation | nicht eindeutig (18), unvollständig (4), Tabellenzeile (2) |
-| comparator_mean | nicht eindeutig (22), unvollständig (4) |
-| comparator_standard_deviation | nicht eindeutig (18), unvollständig (4) |
-| intervention_events | nicht eindeutig (10), nicht extrahiert (4) |
-| comparator_events | nicht eindeutig (5), Tabellenzeile (5) |
+| intervention_group_size | nicht extrahiert (44), unvollständig (6) |
+| comparator_group_size | nicht extrahiert (44), unvollständig (6) |
+| intervention_mean | nicht eindeutig (24), unvollständig (4), nicht extrahiert (3) |
+| intervention_standard_deviation | nicht eindeutig (18), unvollständig (4), nicht extrahiert (3), Tabellenzeile (2) |
+| comparator_mean | nicht eindeutig (22), unvollständig (4), nicht extrahiert (3) |
+| comparator_standard_deviation | nicht eindeutig (18), unvollständig (4), nicht extrahiert (3) |
+| intervention_events | nicht eindeutig (9), nicht extrahiert (4), Tabellenzeile (3) |
+| comparator_events | nicht eindeutig (6), Tabellenzeile (5), nicht extrahiert (2) |
 
 Die Gruppengrößen sind der größte Einzelposten — aber ausschließlich als
-**fehlende** Zellen (86 fehlende Gruppengrößen-Zellen in der
+**fehlende** Zellen (88 fehlende Gruppengrößen-Zellen in der
 Referenzversion), nicht als falsche. Werden sie geliefert, sind sie fast immer
 richtig. Bei Mittelwerten und
 Streuungen ist es umgekehrt: Sie werden geliefert, aber häufig aus der falschen
@@ -104,14 +121,14 @@ Zeile.
 
 ## 4. Ereigniszahlen im Detail
 
-In der Referenzversion sind 26 Ereigniszellen fehlerhaft. Aufgeschlüsselt:
+In der Referenzversion sind 30 Ereigniszellen fehlerhaft. Aufgeschlüsselt:
 
 | Ursache | Anzahl | Beleg |
 |---|---|---|
 | nicht extrahiert / keine Antwort | 6 | Feld fehlt in der Antwort |
-| falsche Tabellenzeile | 5 | Wert entspricht einer anderen Zeile |
+| falsche Tabellenzeile | 10 | Wert entspricht einer anderen Zeile |
 | Prozentwert statt absoluter Zahl | 0 | nach Sichtprüfung widerlegt |
-| nicht eindeutig (Wert steht im Text) | 15 | Zeile/Spalte nicht belegbar |
+| nicht eindeutig (Wert steht im Text) | 14 | Zeile/Spalte nicht belegbar |
 
 **Die vermuteten Hauptursachen bestätigen sich nicht:**
 
@@ -219,7 +236,7 @@ Referenz; die übrigen Fälle liegen vollständig vor, damit nichts verloren geh
 
 | Datei | Status | Version | Einträge |
 |---|---|---|---|
-| `human_review_queue.csv` | zum Prüfen | `v2_timepoint` | 309 |
+| `human_review_queue.csv` | zum Prüfen | `v2_timepoint` | 339 |
 | `human_review_discarded.csv` | verworfen | `v3_abs_count` | 36 |
 | `human_review_historical.csv` | historisch | `v1` | 160 |
 
@@ -227,11 +244,11 @@ Prioritäten in der Referenzdatei:
 
 | Priorität | Anzahl | Inhalt |
 |---|---|---|
-| 1 | 20 | falsche Ereigniszahlen |
-| 2 | 128 | fehlende Zellen |
+| 1 | 24 | falsche Ereigniszahlen |
+| 2 | 134 | fehlende Zellen |
 | 3 | 8 | große Abweichungen (≥ 5 absolut) |
-| 4 | 79 | mehrdeutige Zuordnung / sonstige Fehler |
-| 5 | 74 | zufällige korrekte Kontrollfälle |
+| 4 | 80 | mehrdeutige Zuordnung / sonstige Fehler |
+| 5 | 93 | zufällige korrekte Kontrollfälle |
 
 Jeder Eintrag enthält Record, Feld, Arm, Gold, Vorhersage, Quelle (PMCID und
 Dateipfad), Fehlerhypothese und Prüfstatus. Wichtig: Die Prüfung dient der

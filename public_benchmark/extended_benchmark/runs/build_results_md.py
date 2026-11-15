@@ -31,6 +31,7 @@ LAEUFE = [
     ("yun_dev_retry_20261115", "Lauf 3: mit Retry (Cache-Treffer)", "v2_timepoint"),
     ("yun_dev_fresh_20261115", "Lauf 4: frisch, Cache-Buster", "v2b_cachebuster"),
     ("yun_dev_v3_20261115", "Lauf 5: absolute Ereigniszahlen", "v3_abs_count"),
+    ("yun_dev_std_20261115", "Lauf 6: Standardprompt frisch", "v2_timepoint"),
 ]
 MODELLE = [("qwen30", "qwen3-30b-a3b"), ("glm", "glm-5.3")]
 

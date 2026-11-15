@@ -1,6 +1,6 @@
 # Fehleranalyse Yun-Dev
 
-Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: yun_dev_20261114, yun_dev_fresh_20261115, yun_dev_retry_20261115, yun_dev_tp_20261115, yun_dev_v3_20261115.
+Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: yun_dev_20261114, yun_dev_fresh_20261115, yun_dev_retry_20261115, yun_dev_std_20261115, yun_dev_tp_20261115, yun_dev_v3_20261115.
 
 ## Laeufe
 
@@ -11,6 +11,7 @@ Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: yun_dev_20261114, yun_dev_f
 | yun_dev_fresh_20261115 | glm | `v2_timepoint` | 0.0 | 2/43 | 0.9449 | 0.4054 | 0.9882 | ja |
 | yun_dev_retry_20261115 | glm | `v2_timepoint` | 1.0 | 3/43 | 0.9162 | 0.4703 | 0.9294 | ja |
 | yun_dev_retry_20261115 | qwen30 | `v2_timepoint` | 1.0 | 1/43 | 0.4661 | 0.9774 | 0.7353 | ja |
+| yun_dev_std_20261115 | glm | `v2_timepoint` | 0.0 | 2/43 | 0.9326 | 0.4152 | 0.9647 | ja |
 | yun_dev_tp_20261115 | glm | `v2_timepoint` | 0.163 | 5/43 | 0.8758 | 0.5089 | 0.8588 | ja |
 | yun_dev_tp_20261115 | qwen30 | `v2_timepoint` | 0.163 | 1/43 | 0.4661 | 0.9774 | 0.7353 | ja |
 | yun_dev_v3_20261115 | glm | `v3_abs_count` | 0.0 | 3/43 | 0.9189 | 0.431 | 0.9294 | ja |
@@ -23,7 +24,7 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 | Version | Status | Fehler | technisch | inhaltlich | zusätzliche Zellen | Läufe |
 |---|---|---|---|---|---|---|
 | `v1` | historisch | 135 | 12 | 123 | 56 | 1 |
-| `v2_timepoint` | referenz | 235 | 28 | 207 | 107 | 3 |
+| `v2_timepoint` | referenz | 246 | 28 | 218 | 114 | 4 |
 | `v3_abs_count` | verworfen | 17 | 6 | 11 | 5 | 1 |
 
 ### v1 (historisch)
@@ -51,21 +52,21 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 
 | Klasse | Anzahl |
 |---|---|
+| Zahl nicht extrahiert | 106 |
 | Nicht eindeutig klassifizierbar | 100 |
-| Zahl nicht extrahiert | 100 |
 | Unvollstaendige Modellantwort | 28 |
-| Falsche Tabellenzeile | 7 |
+| Falsche Tabellenzeile | 12 |
 
 | Feld | Klassen |
 |---|---|
-| comparator_events | Nicht eindeutig klassifizierbar (5), Falsche Tabellenzeile (5), Zahl nicht extrahiert (2) |
-| comparator_group_size | Zahl nicht extrahiert (43), Unvollstaendige Modellantwort (6), Nicht eindeutig klassifizierbar (2) |
-| comparator_mean | Nicht eindeutig klassifizierbar (22), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (2) |
-| comparator_standard_deviation | Nicht eindeutig klassifizierbar (18), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (2) |
-| intervention_events | Nicht eindeutig klassifizierbar (10), Zahl nicht extrahiert (4) |
-| intervention_group_size | Zahl nicht extrahiert (43), Unvollstaendige Modellantwort (6), Nicht eindeutig klassifizierbar (2) |
-| intervention_mean | Nicht eindeutig klassifizierbar (23), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (2) |
-| intervention_standard_deviation | Nicht eindeutig klassifizierbar (18), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (2), Falsche Tabellenzeile (2) |
+| comparator_events | Nicht eindeutig klassifizierbar (6), Falsche Tabellenzeile (6), Zahl nicht extrahiert (2) |
+| comparator_group_size | Zahl nicht extrahiert (44), Unvollstaendige Modellantwort (6), Nicht eindeutig klassifizierbar (2) |
+| comparator_mean | Nicht eindeutig klassifizierbar (22), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (3) |
+| comparator_standard_deviation | Nicht eindeutig klassifizierbar (18), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (3) |
+| intervention_events | Nicht eindeutig klassifizierbar (8), Falsche Tabellenzeile (4), Zahl nicht extrahiert (4) |
+| intervention_group_size | Zahl nicht extrahiert (44), Unvollstaendige Modellantwort (6), Nicht eindeutig klassifizierbar (2) |
+| intervention_mean | Nicht eindeutig klassifizierbar (24), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (3) |
+| intervention_standard_deviation | Nicht eindeutig klassifizierbar (18), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (3), Falsche Tabellenzeile (2) |
 
 ### v3_abs_count (verworfen)
 
@@ -73,8 +74,8 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 |---|---|
 | Zahl nicht extrahiert | 6 |
 | Unvollstaendige Modellantwort | 6 |
-| Nicht eindeutig klassifizierbar | 4 |
-| Falsche Tabellenzeile | 1 |
+| Nicht eindeutig klassifizierbar | 3 |
+| Falsche Tabellenzeile | 2 |
 
 | Feld | Klassen |
 |---|---|
@@ -82,7 +83,7 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 | comparator_group_size | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
 | comparator_mean | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
 | comparator_standard_deviation | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
-| intervention_events | Nicht eindeutig klassifizierbar (2) |
+| intervention_events | Nicht eindeutig klassifizierbar (1), Falsche Tabellenzeile (1) |
 | intervention_group_size | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
 | intervention_mean | Nicht eindeutig klassifizierbar (1), Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
 | intervention_standard_deviation | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
@@ -100,11 +101,11 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 | `v1` | yun_dev_20261114 | qwen30 | yun2024:263 | intervention_events | intervention | 72.0 |  |  | Zahl nicht extrahiert |
 | `v2_timepoint` | yun_dev_fresh_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
 | `v2_timepoint` | yun_dev_fresh_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
-| `v2_timepoint` | yun_dev_fresh_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_fresh_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Falsche Tabellenzeile |
 | `v2_timepoint` | yun_dev_fresh_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Falsche Tabellenzeile |
 | `v2_timepoint` | yun_dev_retry_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
 | `v2_timepoint` | yun_dev_retry_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
-| `v2_timepoint` | yun_dev_retry_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_retry_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Falsche Tabellenzeile |
 | `v2_timepoint` | yun_dev_retry_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Falsche Tabellenzeile |
 | `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:120 | intervention_events | intervention | 8.0 | 2.0 | 6.0 | Nicht eindeutig klassifizierbar |
 | `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:120 | comparator_events | comparator | 13.0 | 8.0 | 5.0 | Falsche Tabellenzeile |
@@ -113,9 +114,13 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 | `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:191 | intervention_events | intervention | 49.0 |  |  | Zahl nicht extrahiert |
 | `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:191 | comparator_events | comparator | 64.0 |  |  | Zahl nicht extrahiert |
 | `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:263 | intervention_events | intervention | 72.0 |  |  | Zahl nicht extrahiert |
+| `v2_timepoint` | yun_dev_std_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_std_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_std_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Falsche Tabellenzeile |
+| `v2_timepoint` | yun_dev_std_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Falsche Tabellenzeile |
 | `v2_timepoint` | yun_dev_tp_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
 | `v2_timepoint` | yun_dev_tp_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
-| `v2_timepoint` | yun_dev_tp_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_tp_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Falsche Tabellenzeile |
 | `v2_timepoint` | yun_dev_tp_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Falsche Tabellenzeile |
 | `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:120 | intervention_events | intervention | 8.0 | 2.0 | 6.0 | Nicht eindeutig klassifizierbar |
 | `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:120 | comparator_events | comparator | 13.0 | 8.0 | 5.0 | Falsche Tabellenzeile |
@@ -126,7 +131,7 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 | `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:263 | intervention_events | intervention | 72.0 |  |  | Zahl nicht extrahiert |
 | `v3_abs_count` | yun_dev_v3_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
 | `v3_abs_count` | yun_dev_v3_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
-| `v3_abs_count` | yun_dev_v3_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
+| `v3_abs_count` | yun_dev_v3_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Falsche Tabellenzeile |
 | `v3_abs_count` | yun_dev_v3_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Falsche Tabellenzeile |
 
 ## Gold-Pruefung
@@ -139,11 +144,11 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 
 ## Pruefqueue
 
-Gesamt 505 Eintraege, getrennt nach Version:
+Gesamt 535 Eintraege, getrennt nach Version:
 
 | Datei | Status | Versionen | Eintraege | Prioritaeten |
 |---|---|---|---|---|
-| `human_review_queue.csv` | referenz | v2_timepoint | 309 | {1: 20, 2: 128, 3: 8, 4: 79, 5: 74} |
+| `human_review_queue.csv` | referenz | v2_timepoint | 339 | {1: 24, 2: 134, 3: 8, 4: 80, 5: 93} |
 | `human_review_discarded.csv` | verworfen | v3_abs_count | 36 | - |
 | `human_review_historical.csv` | historisch | v1 | 160 | - |
 

@@ -56,48 +56,40 @@ KLASSEN = {
 
 # Manuell am Artikel geprueft, mit Quelle. Nur hier eingetragen, wenn ein
 # Bericht den Fall belegt; alles andere bleibt Klassifikation aus den Daten.
-GEPRUEFTE_FAELLE: dict[tuple[str, str, str, str], tuple[int, str]] = {
-    ("yun_dev_20261114", "yun2024:229", "intervention_mean", "intervention"): (
+# Schluessel ist (record_id, field, arm): Die Belege stammen aus dem Artikel,
+# nicht aus einem einzelnen Lauf, und gelten deshalb fuer jede Prompt-Version.
+GEPRUEFTE_FAELLE: dict[tuple[str, str, str], tuple[int, str]] = {
+    ("yun2024:229", "intervention_mean", "intervention"): (
         3,
         "geprueft am 15.11.2026: 854 ist die Follow-up-Spalte nach vier Monaten in PMC5498715 "
         "(runs/yun_dev_20261114/report.md)",
     ),
-    ("yun_dev_20261114", "yun2024:229", "intervention_standard_deviation", "intervention"): (
+    ("yun2024:229", "intervention_standard_deviation", "intervention"): (
         3,
         "geprueft am 15.11.2026: 271,60 ist die Follow-up-Spalte nach vier Monaten in PMC5498715",
     ),
-    ("yun_dev_20261114", "yun2024:229", "comparator_mean", "comparator"): (
+    ("yun2024:229", "comparator_mean", "comparator"): (
         3,
         "geprueft am 15.11.2026: 470 ist die Follow-up-Spalte nach vier Monaten in PMC5498715",
     ),
-    ("yun_dev_20261114", "yun2024:229", "comparator_standard_deviation", "comparator"): (
+    ("yun2024:229", "comparator_standard_deviation", "comparator"): (
         3,
         "geprueft am 15.11.2026: 80,46 ist die Follow-up-Spalte nach vier Monaten in PMC5498715",
     ),
     # Sichtpruefung 15.11.2026 (analysis/v1_20261115/events_review.md): 48 ist die
     # Ereigniszahl der Zeile "0-3 months" in PMC5244530; die Uebereinstimmung mit
     # der Rate 64/133 = 48,1 Prozent ist Zufall. Prozentklasse zurueckgenommen.
-    ("yun_dev_fresh_20261115", "yun2024:191", "comparator_events", "comparator"): (
+    ("yun2024:191", "comparator_events", "comparator"): (
         1,
         "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' "
         "(Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
     ),
-    ("yun_dev_retry_20261115", "yun2024:191", "comparator_events", "comparator"): (
+    ("yun2024:191", "intervention_events", "intervention"): (
         1,
-        "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' "
-        "(Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
+        "geprueft am 15.11.2026: 31 ist die Ereigniszahl der Zeile '0-3 months' "
+        "(Gold 49 = 'Total 0-12 months'), gleiche Zeile wie die Partnerzelle",
     ),
-    ("yun_dev_v3_20261115", "yun2024:191", "comparator_events", "comparator"): (
-        1,
-        "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' "
-        "(Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
-    ),
-    ("yun_dev_tp_20261115", "yun2024:191", "comparator_events", "comparator"): (
-        1,
-        "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' "
-        "(Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
-    ),
-    ("yun_dev_fresh_20261115", "yun2024:3", "intervention_mean", "intervention"): (
+    ("yun2024:3", "intervention_mean", "intervention"): (
         15,
         "Artikel nennt fuer denselben Wert 50,7 und 50,6 (Selbstwiderspruch im Text); "
         "Gold 50,6, Modell 50,7 - beide Schreibweisen belegt",
@@ -291,7 +283,7 @@ def baue_faelle(
             elif treffer == gold_value:
                 continue
             else:
-                geprueft = GEPRUEFTE_FAELLE.get((run_id, rid, field, arm))
+                geprueft = GEPRUEFTE_FAELLE.get((rid, field, arm))
                 if geprueft:
                     klasse, beleg = geprueft
                 else:
