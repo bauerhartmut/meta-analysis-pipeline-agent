@@ -1,0 +1,12 @@
+{
+  "haupt": "yun_test186_v6_20261115",
+  "folge": "yun_test186_v7_folgelauf_20261116",
+  "zeilen": 186,
+  "aus_hauptlauf": 157,
+  "aus_folgelauf": 29,
+  "folge_verworfen": 18,
+  "je_quelle": {
+    "v6_hauptlauf": 157,
+    "v7_folgelauf": 29
+  }
+}
