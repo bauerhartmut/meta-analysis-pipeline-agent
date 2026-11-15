@@ -5,6 +5,8 @@
   "aus_hauptlauf": 157,
   "aus_folgelauf": 29,
   "folge_verworfen": 18,
+  "folge_nicht_zugeordnet": 0,
+  "folge_nicht_zugeordnet_ids": [],
   "je_quelle": {
     "v6_hauptlauf": 157,
     "v7_folgelauf": 29

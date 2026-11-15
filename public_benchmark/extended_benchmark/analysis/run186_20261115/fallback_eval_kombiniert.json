@@ -544,7 +544,8 @@
       "ohne_gold": 122,
       "falsch": 29,
       "auslassungen": 110,
-      "ausfaelle": 18
+      "leere_antworten": 8,
+      "technische_ausfaelle": 18
     },
     "v7_folgelauf": {
       "records": 29,
@@ -552,7 +553,8 @@
       "falsch": 16,
       "richtig": 44,
       "auslassungen": 27,
-      "ohne_gold": 15
+      "ohne_gold": 15,
+      "leere_antworten": 6
     }
   },
   "zell_f1_aus_klassen": 0.6784

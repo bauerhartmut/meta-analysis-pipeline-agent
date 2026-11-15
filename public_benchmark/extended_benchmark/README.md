@@ -1,7 +1,14 @@
 # Erweiterter Cross-Model-Benchmark
 
-Stand: 2026-11-14
-Status: **Dateninfrastruktur aufgebaut; kein Modelllauf; kein Finetuning.**
+Stand: 2026-11-15
+Status: **Dateninfrastruktur aufgebaut; erster Modelllauf auf dem Yun-Testsplit
+abgeschlossen (v6, 186 Records, 1,71 Mio Completion-Tokens); Auswertung,
+Fehleranalyse und Length-Diagnose vorhanden; 221 Tests; kein Finetuning.**
+
+Belege zum Stand: `runs/yun_test186_v6_20261115/` (Hauptlauf),
+`runs/yun_test186_v7_folgelauf_20261116/` (Folgelauf ueber die 47 Fehlzeilen),
+`runs/yun_test186_kombiniert_20261116/` (zusammengefuehrt, mit `quelle`-Feld)
+und `analysis/run186_20261115/` (Auswertung, Pilot, Gold-Konflikte).
 
 Dieser Bereich ergänzt den bestehenden 54-Record-Benchmark aus GLASS um drei
 öffentliche Datensätze und einen reproduzierbaren PMC-Open-Access-Downloader.
@@ -392,8 +399,10 @@ Commits und SHA-256 in `public_benchmark/source_registry.json` gepinnt.
 
 ## Offene Punkte
 
-1. **Bewertungsskripte** für die drei Aufgaben (numerische Zellmetriken,
-   Label-Genauigkeit, Spannen-F1) sind noch nicht gebaut.
+1. **Bewertungsskripte**: für die numerische Extraktion gebaut und benutzt
+   (`evaluate_extended.py`, `evaluate_fallback.py`, `analyze_errors.py`,
+   `analysis/run186_20261115/laenge_diagnose.py`); für Label-Genauigkeit und
+   Spannen-F1 fehlen sie weiterhin.
 2. **Split-Nutzung**: Evidence Inference hat offizielle Splits für 926 Artikel;
    die übrigen Annotationen haben `split: null` und dürfen nicht als Test
    verwendet werden, ohne eigene Aufteilung.

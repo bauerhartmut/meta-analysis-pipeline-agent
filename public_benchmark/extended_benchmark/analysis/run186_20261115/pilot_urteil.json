@@ -1,9 +1,12 @@
 {
   "zeilen": 6,
-  "erfolge": 5,
-  "quote": 0.8333,
+  "erfolge_json": 5,
+  "erfolge_mit_zellen": 4,
+  "quote_json": 0.8333,
+  "quote_mit_zellen": 0.6667,
   "medien_tokens": 8951,
-  "kriterium": "mindestens 5 Erfolge, Median <= 6000 Tokens",
+  "kriterium": "mindestens 5 Antworten mit stop und parsebarem JSON, Median <= 6000 Tokens",
+  "kriterium_erfuellt_json": true,
   "bestanden": false,
   "details": [
     {

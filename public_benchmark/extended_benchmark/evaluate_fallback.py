@@ -339,8 +339,13 @@ def main() -> int:
         vorhersage = predictions.get(record_id, {})
         quelle = str(vorhersage.get("quelle") or "v6_hauptlauf")
         je_quelle[quelle]["records"] += 1
+        # Technischer Ausfall (keine verwertbare Antwort) getrennt von einer
+        # gueltigen, aber leeren Antwort: das eine ist ein Fehler, das andere
+        # eine Aussage des Modells ("hier steht nichts").
         if vorhersage.get("fehlerklasse"):
-            je_quelle[quelle]["ausfaelle"] += 1
+            je_quelle[quelle]["technische_ausfaelle"] += 1
+        elif not (vorhersage.get("rows") or []):
+            je_quelle[quelle]["leere_antworten"] += 1
         cells = (vorhersage.get("predicted") or {}).get("cells", [])
         artikel = artikel_text(record)
         gesehen: set[tuple[str, str | None]] = set()
@@ -541,7 +546,9 @@ def main() -> int:
         print(
             f"[quelle {quelle}] {counts.get('records', 0)} Records, {counts.get('zellen', 0)} Zellen, "
             f"richtig {counts.get('richtig', 0)}, falsch {counts.get('falsch', 0)}, Precision {quote}, "
-            f"Ausfaelle {counts.get('ausfaelle', 0)}, Auslassungen {counts.get('auslassungen', 0)}"
+            f"technische Ausfaelle {counts.get('technische_ausfaelle', 0)}, "
+            f"leere Antworten {counts.get('leere_antworten', 0)}, "
+            f"Auslassungen {counts.get('auslassungen', 0)}"
         )
     print(f"[auslassungen] {ergebnis['auslassungen']}")
     stufen = ergebnis["belegstufen"]

@@ -52,22 +52,35 @@ def waehle_pilot(kandidaten: list[dict[str, Any]], k: int = 6) -> list[str]:
 
 
 def urteil(zeilen: list[dict[str, Any]]) -> dict[str, Any]:
-    """Formales Urteil ueber einen Pilotlauf."""
+    """Formales Urteil ueber einen Pilotlauf.
+
+    Zwei Erfolgsbegriffe, die nicht verwechselt werden duerfen:
+    `erfolge_json` ist eine Antwort mit `finish_reason = stop` und parsebarem
+    JSON (das vorab festgelegte Kriterium), `erfolge_mit_zellen` verlangt
+    zusaetzlich mindestens eine extrahierte Zelle. Eine leere Zellenliste ist
+    valides JSON, aber keine verwertbare Extraktion.
+    """
     erfolge: list[dict[str, Any]] = []
     for zeile in zeilen:
         parse_error = str(zeile.get("parse_error") or "")
         kaputt = parse_error in KAPUTT or parse_error.startswith("json_fehler")
         if (zeile.get("finish_reason") == "stop") and not zeile.get("fehlerklasse") and not kaputt:
             erfolge.append(zeile)
+    mit_zellen = [zeile for zeile in erfolge if zeile.get("rows")]
     tokens = [int(zeile.get("completion_tokens") or 0) for zeile in erfolge]
     median = statistics.median(tokens) if tokens else None
     bestanden = len(erfolge) >= ZIEL_ERFOLGE and median is not None and median <= ZIEL_MEDIAN
     return {
         "zeilen": len(zeilen),
-        "erfolge": len(erfolge),
-        "quote": round(len(erfolge) / len(zeilen), 4) if zeilen else None,
+        "erfolge_json": len(erfolge),
+        "erfolge_mit_zellen": len(mit_zellen),
+        "quote_json": round(len(erfolge) / len(zeilen), 4) if zeilen else None,
+        "quote_mit_zellen": round(len(mit_zellen) / len(zeilen), 4) if zeilen else None,
         "medien_tokens": median,
-        "kriterium": f"mindestens {ZIEL_ERFOLGE} Erfolge, Median <= {ZIEL_MEDIAN} Tokens",
+        "kriterium": (
+            f"mindestens {ZIEL_ERFOLGE} Antworten mit stop und parsebarem JSON, Median <= {ZIEL_MEDIAN} Tokens"
+        ),
+        "kriterium_erfuellt_json": len(erfolge) >= ZIEL_ERFOLGE,
         "bestanden": bestanden,
         "details": [
             {

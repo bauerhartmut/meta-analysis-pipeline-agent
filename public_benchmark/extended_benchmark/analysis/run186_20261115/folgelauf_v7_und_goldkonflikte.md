@@ -12,7 +12,7 @@ drei Threads, 47 Aufträge.
 | Records | 47 (genau die `length_ohne_ergebnis` des v6-Laufs) |
 | Tokens | **610.540** (12.990 je Record) |
 | gültig mit Zellen | 23 |
-| gültig, aber leere Zellenliste | 6 |
+| gültig, aber leere Zellenliste (`keine_verwertbaren_zellen`) | 6 |
 | erneut `length` | **18** (38,3 %) |
 | Zellen | 79 |
 | Header wörtlich belegt | 22 von 23 Antworten mit Zellen |
@@ -40,10 +40,16 @@ Records kamen aus dem Folgelauf, 18 Folgelauf-Ausfälle wurden verworfen.
 
 Je Quelle:
 
-| Quelle | Records | Zellen | richtig | falsch | Precision | Auslassungen |
-|---|---|---|---|---|---|---|
-| `v6_hauptlauf` | 157 | 491 | 340 | 29 | **0,9214** | 110 |
-| `v7_folgelauf` | 29 | 75 | 44 | 16 | **0,7333** | 27 |
+| Quelle | Records | Zellen | richtig | falsch | Precision | techn. Ausfälle | leere Antworten | Auslassungen |
+|---|---|---|---|---|---|---|---|---|
+| `v6_hauptlauf` | 157 | 491 | 340 | 29 | **0,9214** | 18 | 8 | 110 |
+| `v7_folgelauf` | 29 | 75 | 44 | 16 | **0,7333** | 0 | 6 | 27 |
+
+**Zum F1-Wert:** Der Hauptwert ist `gesamt.cell_f1 = 0,6934`. Die Datei enthält
+daneben `zell_f1_aus_klassen = 0,6784`, eine Nebenrechnung aus den
+Klassenzählern (Treffer und Auslassungen werden dort anders gewichtet). Beide
+Werte sind für sich korrekt, aber nicht austauschbar; zitiert wird der
+Hauptwert.
 
 Die 18 verworfenen Folgelauf-Ausfälle zählen in der zweiten Zeile als
 `v6_hauptlauf`, weil dort die ursprüngliche Fehlzeile steht — deshalb 157 statt

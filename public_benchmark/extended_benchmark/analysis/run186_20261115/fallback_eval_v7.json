@@ -421,7 +421,8 @@
       "richtig": 44,
       "auslassungen": 73,
       "ohne_gold": 15,
-      "ausfaelle": 18
+      "technische_ausfaelle": 18,
+      "leere_antworten": 6
     }
   },
   "zell_f1_aus_klassen": 0.4231

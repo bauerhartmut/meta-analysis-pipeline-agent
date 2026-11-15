@@ -29,6 +29,11 @@ Zellen für 17 der 21 Goldzellen dieser Records. Header sind in allen vier
 Fällen wörtlich im Artikel belegt, `fallback` ist überall stimmig (`false` =
 Zielzeitpunkt).
 
+**Verwertbare Zellen liefern 4 von 6**, nicht 5: `yun2024:325` antwortet gültig,
+aber mit leerer Zellenliste (`keine_verwertbaren_zellen`). Der Unterschied ist
+im Urteil getrennt ausgewiesen (`erfolge_json` = 5, `erfolge_mit_zellen` = 4);
+das vorab festgelegte Kriterium bezieht sich auf parsebares JSON.
+
 ## 3. Kontrolle: der Prompt ist der Hebel, nicht das Limit
 
 `yun2024:115` und `yun2024:117` sind unter v6 **bei 24.000 Tokens** gescheitert
@@ -40,7 +45,8 @@ Schema und Regel.
 
 | Kriterium | Vorgabe | gemessen | erfüllt |
 |---|---|---|---|
-| Erfolge | mindestens 5 von 6 | 5 von 6 (83,3 %) | **ja** |
+| Erfolge (parsebares JSON) | mindestens 5 von 6 | 5 von 6 (83,3 %) | **ja** |
+| Erfolge (mit Zellen) | – (nicht das Kriterium) | 4 von 6 (66,7 %) | – |
 | Median Tokens | ≤ 6.000 | 8.951 | **nein** |
 
 Damit ist `pilot_urteil.bestanden = false` — nicht wegen der Form, sondern wegen
