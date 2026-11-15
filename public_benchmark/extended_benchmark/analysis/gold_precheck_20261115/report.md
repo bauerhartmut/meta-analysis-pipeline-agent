@@ -34,9 +34,39 @@ die enge Regel dort nichts findet: Sie braucht eine zweite, fast gleiche Zahl
 in der Nähe desselben Outcome-Begriffs. Der Dev-Satz zeigt, dass dieses Muster
 selten ist (2 Zellen in 170).
 
+## Lockerungsleiter: Regel oder Daten?
+
+Um zu prüfen, ob die 0 Treffer an der Regel oder am Material liegen, ist die
+Stufe messbar (`--stufe eng|mittel|weit`). Alle drei Stufen brauchen den
+Gold-Anker und die fast gleiche Zahl; sie unterscheiden sich nur in den
+Filtern:
+
+| Stufe | Prosa-Filter | Outcome-Begriff | Mindestabstand | Treffer (407 Records) | davon Doppelangaben |
+|---|---|---|---|---|---|
+| `eng` (Befund) | ja | ja | 1.000 Zeichen | **0** | 0 |
+| `mittel` | ja | ja | keiner | 1 | 1 |
+| `weit` | nein | nein | keiner | 186 | 186 |
+
+Der eine Treffer der Stufe `mittel` ist ein Zufall: `yun2024:71` annotiert
+6,6 kg Handkraft, 263 Zeichen weiter stehen 66,0 % „predicted" — gleiche
+Ziffernfolge, andere Größe. Er verschwindet also nicht durch die Regel, sondern
+war nie eine Doppelangabe.
+
+Von den 186 Treffern der Stufe `weit` haben **185 mindestens einen Satz in einer
+Tabelle**; nur einer spielt in zwei Prosa-Sätzen, und das ist derselbe
+`yun2024:71`-Zufall. 45 der Paare stehen in Sätzen mit Prozentzeichen, viele
+sind p-Werte (0,013 gegen 0,13) oder benachbarte Tabellenspalten.
+
+**Ergebnis:** Die 0 Treffer sind überwiegend eine Aussage über die Daten, nicht
+über die Regel. Lockert man die Regel, kommen keine echten Doppelangaben hinzu,
+sondern nur Koinzidenzen — und zwar schon bei der ersten Lockerung. Was die
+Prüfung nicht zeigt: Doppelangaben mit größerem Zahlenabstand (etwa zwei
+verschiedene Studienarme) fallen durch, weil der Detektor auf fast gleiche
+Zahlen zielt.
+
 ## Grenzen (gemessen, nicht geschätzt)
 
-* Eine weite Fassung (alle Satzpaare mit ähnlicher Zahl, ohne Gold-Anker)
+* Eine noch weitere Fassung (alle Satzpaare mit ähnlicher Zahl, ohne Gold-Anker)
   lieferte auf denselben 407 Records **1.500 Treffer**, fast alle aus Tabellen —
   unbrauchbar. Deshalb der Gold-Anker und der Prosa-Filter.
 * Zwei- oder dreistellige Ganzzahlen ohne Dezimalstelle werden nicht geprüft

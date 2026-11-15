@@ -1,0 +1,271 @@
+art,record_id,document,outcome,gold_zellen,beziehung,wert_a,wert_b,anker,region_a,region_b,abstand,position_a,position_b,field,arm,gold,ortswort,satz_a,satz_b,satz
+doppelangabe,yun2024:3,PMC1216327,The mean body weight gain,intervention_group_size=30; intervention_mean=50.6; comparator_group_size=30; comparator_mean=-0.7,Faktor 10 (Zehnerstelle),-0.7,-7.0,weight,unbestimmt,unbestimmt,7836,1142,8978,comparator_mean,comparator,-0.7,,The mean body weight gain was greater among patients receiving WGJ (+ 50.7 gm) as compared with the patients in the AJ group (+ 18.3 gm) or the patients fed WA (- 0.7 gm) (p = 0.08).,"The mean body weight gain was also higher among the juice fed patients; there was a mean weight gain of 18.3 gm in the AJ fed patients and of 50.6 gm in those given WGJ, whereas there was a mean loss of body weight (- 7.0 gm) among the WA group patients (p = 0.08).",
+doppelangabe,yun2024:3,PMC1216327,The mean body weight gain,intervention_group_size=30; intervention_mean=50.6; comparator_group_size=30; comparator_mean=-0.7,Nachkommastelle,50.6,50.35,,unbestimmt,unbestimmt,266,8978,9244,intervention_mean,intervention,50.6,,"The mean body weight gain was also higher among the juice fed patients; there was a mean weight gain of 18.3 gm in the AJ fed patients and of 50.6 gm in those given WGJ, whereas there was a mean loss of body weight (- 7.0 gm) among the WA group patients (p = 0.08).","::::table-wrap
+::: caption
+Daily intake of patients throughout the study (Kcal/Kg/day)
+:::
+
+                        Apple Juice n = 30   White Grape Juice n = 30   Water^*^ n = 30   P value                      
+  --------------------- -------------------- -------------------------- ------------------ --------- ---------- ------- ---------------
+                                                    ",
+doppelangabe,yun2024:3,PMC1216327,The mean body weight gain,intervention_group_size=30; intervention_mean=50.6; comparator_group_size=30; comparator_mean=-0.7,Nachkommastelle,50.6,50.7,weight,unbestimmt,unbestimmt,-7836,8978,1142,intervention_mean,intervention,50.6,,"The mean body weight gain was also higher among the juice fed patients; there was a mean weight gain of 18.3 gm in the AJ fed patients and of 50.6 gm in those given WGJ, whereas there was a mean loss of body weight (- 7.0 gm) among the WA group patients (p = 0.08).",The mean body weight gain was greater among patients receiving WGJ (+ 50.7 gm) as compared with the patients in the AJ group (+ 18.3 gm) or the patients fed WA (- 0.7 gm) (p = 0.08).,
+doppelangabe,yun2024:4,PMC1216327,The duration of the illness,intervention_group_size=30; intervention_mean=47.5; intervention_standard_deviation=38.9; comparator_group_size=30; comparator_mean=26.5; comparator_standard_deviation=27.4,Faktor 10 (Zehnerstelle),47.5,4.75,duration,unbestimmt,unbestimmt,2159,1325,3484,intervention_mean,intervention,47.5,,"The duration of the illness was longer in the infants fed juice as compared with those given WA (p = 0.006), the mean +/- SD duration in hours was 49.4 ± 32.6, 47.5 ± 38.9 and 26.5 ± 27.4 in patients fed AJ, WGJ and WA respectively.","::::table-wrap
+::: caption
+Clinical Characteristics of Patients on Admission
+:::
+
+                                 Apple Juice n = 30   White Grape Juice n = 30   Water* n= 30                    
+  ------------------------------ -------------------- -------------------------- --------------- ------- -------- --------
+                                                                                 ",
+doppelangabe,yun2024:4,PMC1216327,The duration of the illness,intervention_group_size=30; intervention_mean=47.5; intervention_standard_deviation=38.9; comparator_group_size=30; comparator_mean=26.5; comparator_standard_deviation=27.4,Nachkommastelle,38.9,38.95,duration,unbestimmt,unbestimmt,2159,1325,3484,intervention_standard_deviation,intervention,38.9,,"The duration of the illness was longer in the infants fed juice as compared with those given WA (p = 0.006), the mean +/- SD duration in hours was 49.4 ± 32.6, 47.5 ± 38.9 and 26.5 ± 27.4 in patients fed AJ, WGJ and WA respectively.","::::table-wrap
+::: caption
+Clinical Characteristics of Patients on Admission
+:::
+
+                                 Apple Juice n = 30   White Grape Juice n = 30   Water* n= 30                    
+  ------------------------------ -------------------- -------------------------- --------------- ------- -------- --------
+                                                                                 ",
+doppelangabe,yun2024:4,PMC1216327,The duration of the illness,intervention_group_size=30; intervention_mean=47.5; intervention_standard_deviation=38.9; comparator_group_size=30; comparator_mean=26.5; comparator_standard_deviation=27.4,Nachkommastelle,26.5,26.6,duration,unbestimmt,unbestimmt,2159,1325,3484,comparator_mean,comparator,26.5,,"The duration of the illness was longer in the infants fed juice as compared with those given WA (p = 0.006), the mean +/- SD duration in hours was 49.4 ± 32.6, 47.5 ± 38.9 and 26.5 ± 27.4 in patients fed AJ, WGJ and WA respectively.","::::table-wrap
+::: caption
+Clinical Characteristics of Patients on Admission
+:::
+
+                                 Apple Juice n = 30   White Grape Juice n = 30   Water* n= 30                    
+  ------------------------------ -------------------- -------------------------- --------------- ------- -------- --------
+                                                                                 ",
+standortzahl,yun2024:83,PMC3580751,mean ± SD length of hospital stay between periods 1 and 2 in patients who did not suffer from VAP,intervention_group_size=940; intervention_mean=9.9; intervention_standard_deviation=14.8; comparator_group_size=1831; comparator_mean=9.1; comparator_standard_deviation=9.9,,,,,,,,,,intervention_group_size,intervention,940.0,unit,,,"Among them, 940 (34%) were hospitalised in unit A, and 1,831 (66%) in unit B."
+doppelangabe,yun2024:88,PMC3751573,improvement in nursing,intervention_group_size=19; intervention_mean=117.63; intervention_standard_deviation=19.01; comparator_group_size=23; comparator_mean=158.52; comparator_standard_deviation=23.19,Nachkommastelle,23.19,23.09,improvement|nursing,Hauptteil,Hauptteil,0,6687,6687,comparator_standard_deviation,comparator,23.19,,"::::table-wrap
+::: caption
+The nursing competency of graduating students in two groups at baseline
+and after practicum training
+:::
+
+  **Items**                       **Possible score range**          **T0**                                            **T1**                                                **Difference : CACP group versus EP group Mean difference ± SE (95%CI)**   ***P*** ^**a**^     ","::::table-wrap
+::: caption
+The nursing competency of graduating students in two groups at baseline
+and after practicum training
+:::
+
+  **Items**                       **Possible score range**          **T0**                                            **T1**                                                **Difference : CACP group versus EP group Mean difference ± SE (95%CI)**   ***P*** ^**a**^     ",
+doppelangabe,yun2024:88,PMC3751573,improvement in nursing,intervention_group_size=19; intervention_mean=117.63; intervention_standard_deviation=19.01; comparator_group_size=23; comparator_mean=158.52; comparator_standard_deviation=23.19,Nachkommastelle,23.19,23.2,nursing,Hauptteil,Hauptteil,-4215,6687,2472,comparator_standard_deviation,comparator,23.19,,"::::table-wrap
+::: caption
+The nursing competency of graduating students in two groups at baseline
+and after practicum training
+:::
+
+  **Items**                       **Possible score range**          **T0**                                            **T1**                                                **Difference : CACP group versus EP group Mean difference ± SE (95%CI)**   ***P*** ^**a**^     ","::::table-wrap
+::: caption
+The baseline characteristics of the two groups
+:::
+
+  **Item**                                  **EP group**   **CACP group**   **Total**     ***X***^***2***^**/t**   ***p***
+  ----------------------------------------- -------------- ---------------- ------------- ------------------------ --------------
+  **n (%)**                                 **n (%)**      **n (%)**",
+doppelangabe,yun2024:225,PMC5498715,Scores of amotivation,intervention_group_size=35; intervention_mean=0.33; intervention_standard_deviation=1.06; comparator_group_size=35; comparator_mean=0.7; comparator_standard_deviation=1.24,Faktor 10 (Zehnerstelle),0.33,3.3,amotivation,Hauptteil,Hauptteil,0,8187,8187,intervention_mean,intervention,0.33,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:226,PMC5498715,Body mass index,intervention_group_size=35; intervention_mean=25.78; intervention_standard_deviation=3.3; comparator_group_size=35; comparator_mean=26.53; comparator_standard_deviation=3.53,Nachkommastelle,26.53,26.59,,Hauptteil,Hauptteil,7684,8187,15871,comparator_mean,comparator,26.53,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------","4.77
+  Sedentary behavior (hour/day)            4.26 ± 1.76                           5.91 ± 2.21    0.002[2](#)     −0.74
+
+Effect Size,
+
+U Mann--Whitney test,
+
+t-test::::  ::::table-wrap
+::: caption
+Characteristics of BMI and physical fitness sizes within 4 months after
+intervention by groups
+:::
+
+  Variables                     Follow up after 4 months; Mean ± SD   p-value        ES             ",
+doppelangabe,yun2024:226,PMC5498715,Body mass index,intervention_group_size=35; intervention_mean=25.78; intervention_standard_deviation=3.3; comparator_group_size=35; comparator_mean=26.53; comparator_standard_deviation=3.53,Nachkommastelle,3.3,3.29,,Hauptteil,Hauptteil,4111,4076,8187,intervention_standard_deviation,intervention,3.3,,## 3.3.,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:226,PMC5498715,Body mass index,intervention_group_size=35; intervention_mean=25.78; intervention_standard_deviation=3.3; comparator_group_size=35; comparator_mean=26.53; comparator_standard_deviation=3.53,Faktor 10 (Zehnerstelle),3.3,0.33,,Hauptteil,Hauptteil,4111,4076,8187,intervention_standard_deviation,intervention,3.3,,## 3.3.,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:226,PMC5498715,Body mass index,intervention_group_size=35; intervention_mean=25.78; intervention_standard_deviation=3.3; comparator_group_size=35; comparator_mean=26.53; comparator_standard_deviation=3.53,Nachkommastelle,25.78,25.73,index,Hauptteil,Hauptteil,0,8187,8187,intervention_mean,intervention,25.78,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:226,PMC5498715,Body mass index,intervention_group_size=35; intervention_mean=25.78; intervention_standard_deviation=3.3; comparator_group_size=35; comparator_mean=26.53; comparator_standard_deviation=3.53,Nachkommastelle,26.53,26.6,index,Hauptteil,Hauptteil,0,8187,8187,comparator_mean,comparator,26.53,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:226,PMC5498715,Body mass index,intervention_group_size=35; intervention_mean=25.78; intervention_standard_deviation=3.3; comparator_group_size=35; comparator_mean=26.53; comparator_standard_deviation=3.53,Nachkommastelle,26.53,26.44,index,Hauptteil,Hauptteil,0,8187,8187,comparator_mean,comparator,26.53,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:226,PMC5498715,Body mass index,intervention_group_size=35; intervention_mean=25.78; intervention_standard_deviation=3.3; comparator_group_size=35; comparator_mean=26.53; comparator_standard_deviation=3.53,Nachkommastelle,3.53,3.52,index,Hauptteil,Hauptteil,0,8187,8187,comparator_standard_deviation,comparator,3.53,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:227,PMC5498715,Sedentary behavior,intervention_group_size=35; intervention_mean=5.28; intervention_standard_deviation=2.34; comparator_group_size=35; comparator_mean=5.75; comparator_standard_deviation=2.34,Nachkommastelle,5.75,5.73,,Hauptteil,Hauptteil,7213,8187,15400,comparator_mean,comparator,5.75,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------","0.19
+  Challenge motive                         17.90 ± 5.17                          16.46 ± 5.38   0.36[3](#)      >0.26
+  Social motive                            12.90 ± 5.73                          12.35 ± 5.34   0.78[3](#)      0.1
+  Health care climate                      83.10 ± 1.37                          69.57 ± 1.61   0.001[3](#)     >4.6
+  Total Physical activity (Met-min/Week)   8",
+doppelangabe,yun2024:227,PMC5498715,Sedentary behavior,intervention_group_size=35; intervention_mean=5.28; intervention_standard_deviation=2.34; comparator_group_size=35; comparator_mean=5.75; comparator_standard_deviation=2.34,Nachkommastelle,2.34,2.35,behavior|sedentary,Hauptteil,Hauptteil,0,8187,8187,intervention_standard_deviation,intervention,2.34,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:227,PMC5498715,Sedentary behavior,intervention_group_size=35; intervention_mean=5.28; intervention_standard_deviation=2.34; comparator_group_size=35; comparator_mean=5.75; comparator_standard_deviation=2.34,Faktor 10 (Zehnerstelle),2.34,23.39,behavior|sedentary,Hauptteil,Hauptteil,0,8187,8187,intervention_standard_deviation,intervention,2.34,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:228,PMC5498715,agility test,intervention_group_size=35; intervention_mean=13.21; intervention_standard_deviation=1.44; comparator_group_size=35; comparator_mean=13.8; comparator_standard_deviation=1.14,Nachkommastelle,13.8,13.83,agility,Hauptteil,Hauptteil,0,8187,8187,comparator_mean,comparator,13.8,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:228,PMC5498715,agility test,intervention_group_size=35; intervention_mean=13.21; intervention_standard_deviation=1.44; comparator_group_size=35; comparator_mean=13.8; comparator_standard_deviation=1.14,Nachkommastelle,13.8,13.78,agility,Hauptteil,Hauptteil,0,8187,8187,comparator_mean,comparator,13.8,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:230,PMC5498715,physical fitness - flexibility,intervention_group_size=35; intervention_mean=35.53; intervention_standard_deviation=5.87; comparator_group_size=35; comparator_mean=26.83; comparator_standard_deviation=5.47,Nachkommastelle,5.47,5.49,fitness|flexibility|physical,Hauptteil,Hauptteil,0,8187,8187,comparator_standard_deviation,comparator,5.47,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:230,PMC5498715,physical fitness - flexibility,intervention_group_size=35; intervention_mean=35.53; intervention_standard_deviation=5.87; comparator_group_size=35; comparator_mean=26.83; comparator_standard_deviation=5.47,Nachkommastelle,5.47,5.45,fitness|flexibility|physical,Hauptteil,Hauptteil,0,8187,8187,comparator_standard_deviation,comparator,5.47,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:231,PMC5498715,physical fitness - muscular endurance,intervention_group_size=35; intervention_mean=17.83; intervention_standard_deviation=2.7; comparator_group_size=35; comparator_mean=12.48; comparator_standard_deviation=2.9,Nachkommastelle,17.83,17.9,physical,Hauptteil,Hauptteil,7213,8187,15400,intervention_mean,intervention,17.83,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------","0.19
+  Challenge motive                         17.90 ± 5.17                          16.46 ± 5.38   0.36[3](#)      >0.26
+  Social motive                            12.90 ± 5.73                          12.35 ± 5.34   0.78[3](#)      0.1
+  Health care climate                      83.10 ± 1.37                          69.57 ± 1.61   0.001[3](#)     >4.6
+  Total Physical activity (Met-min/Week)   8",
+doppelangabe,yun2024:231,PMC5498715,physical fitness - muscular endurance,intervention_group_size=35; intervention_mean=17.83; intervention_standard_deviation=2.7; comparator_group_size=35; comparator_mean=12.48; comparator_standard_deviation=2.9,Nachkommastelle,12.48,12.51,endurance|fitness|muscular|physical,Hauptteil,Hauptteil,0,8187,8187,comparator_mean,comparator,12.48,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:232,PMC5498715,physical fitness - agility,intervention_group_size=35; intervention_mean=13.21; intervention_standard_deviation=1.44; comparator_group_size=35; comparator_mean=13.8; comparator_standard_deviation=1.14,Nachkommastelle,13.8,13.83,agility|fitness|physical,Hauptteil,Hauptteil,0,8187,8187,comparator_mean,comparator,13.8,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:232,PMC5498715,physical fitness - agility,intervention_group_size=35; intervention_mean=13.21; intervention_standard_deviation=1.44; comparator_group_size=35; comparator_mean=13.8; comparator_standard_deviation=1.14,Nachkommastelle,13.8,13.78,agility|fitness|physical,Hauptteil,Hauptteil,0,8187,8187,comparator_mean,comparator,13.8,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:234,PMC5498715,Scores of intrinsic motivation,intervention_group_size=35; intervention_mean=10.8; intervention_standard_deviation=2; comparator_group_size=35; comparator_mean=4.9; comparator_standard_deviation=1.88,Nachkommastelle,2.0,2.01,,Hauptteil,Hauptteil,7153,1034,8187,intervention_standard_deviation,intervention,2.0,,"## Results Four months after the intervention, an increase in the mean scores of total PA (p<0.001, ES=4.77), physical fitness tests including flexibility (p<0.001, ES=1.59), muscular endurance (p<0.001, ES=2.0), cardiorespiratory endurance (p<0.001, ES=0.51), and a decrease in mean scores of agility test (p<0.001, ES= − 0.51) and sedentary behavior (p<0.01, ES=− 0.74) was observed in the interven",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:234,PMC5498715,Scores of intrinsic motivation,intervention_group_size=35; intervention_mean=10.8; intervention_standard_deviation=2; comparator_group_size=35; comparator_mean=4.9; comparator_standard_deviation=1.88,Faktor 10 (Zehnerstelle),2.0,0.2,,Hauptteil,Hauptteil,7153,1034,8187,intervention_standard_deviation,intervention,2.0,,"## Results Four months after the intervention, an increase in the mean scores of total PA (p<0.001, ES=4.77), physical fitness tests including flexibility (p<0.001, ES=1.59), muscular endurance (p<0.001, ES=2.0), cardiorespiratory endurance (p<0.001, ES=0.51), and a decrease in mean scores of agility test (p<0.001, ES= − 0.51) and sedentary behavior (p<0.01, ES=− 0.74) was observed in the interven",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:236,PMC5498715,Scores of perception of autonomy,intervention_group_size=35; intervention_mean=26.6; intervention_standard_deviation=4.43; comparator_group_size=35; comparator_mean=19.89; comparator_standard_deviation=4.56,Nachkommastelle,26.6,26.59,,Hauptteil,Hauptteil,7684,8187,15871,intervention_mean,intervention,26.6,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------","4.77
+  Sedentary behavior (hour/day)            4.26 ± 1.76                           5.91 ± 2.21    0.002[2](#)     −0.74
+
+Effect Size,
+
+U Mann--Whitney test,
+
+t-test::::  ::::table-wrap
+::: caption
+Characteristics of BMI and physical fitness sizes within 4 months after
+intervention by groups
+:::
+
+  Variables                     Follow up after 4 months; Mean ± SD   p-value        ES             ",
+doppelangabe,yun2024:236,PMC5498715,Scores of perception of autonomy,intervention_group_size=35; intervention_mean=26.6; intervention_standard_deviation=4.43; comparator_group_size=35; comparator_mean=19.89; comparator_standard_deviation=4.56,Nachkommastelle,26.6,26.53,autonomy|perception,Hauptteil,Hauptteil,0,8187,8187,intervention_mean,intervention,26.6,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:236,PMC5498715,Scores of perception of autonomy,intervention_group_size=35; intervention_mean=26.6; intervention_standard_deviation=4.43; comparator_group_size=35; comparator_mean=19.89; comparator_standard_deviation=4.56,Nachkommastelle,19.89,19.85,autonomy|perception,Hauptteil,Hauptteil,0,8187,8187,comparator_mean,comparator,19.89,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:236,PMC5498715,Scores of perception of autonomy,intervention_group_size=35; intervention_mean=26.6; intervention_standard_deviation=4.43; comparator_group_size=35; comparator_mean=19.89; comparator_standard_deviation=4.56,Nachkommastelle,19.89,19.8,autonomy|perception,Hauptteil,Hauptteil,0,8187,8187,comparator_mean,comparator,19.89,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:237,PMC5498715,Scores of enjoyment,intervention_group_size=35; intervention_mean=27.3; intervention_standard_deviation=6.77; comparator_group_size=35; comparator_mean=26; comparator_standard_deviation=4.68,Nachkommastelle,27.3,27.35,enjoyment,Hauptteil,Hauptteil,0,8187,8187,intervention_mean,intervention,27.3,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------",
+doppelangabe,yun2024:238,PMC5498715,Scores of health care climate,intervention_group_size=35; intervention_mean=80.5; intervention_standard_deviation=9.97; comparator_group_size=35; comparator_mean=69.89; comparator_standard_deviation=1.59,Nachkommastelle,80.5,80.46,climate|health,Hauptteil,Hauptteil,7213,8187,15400,intervention_mean,intervention,80.5,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------","0.19
+  Challenge motive                         17.90 ± 5.17                          16.46 ± 5.38   0.36[3](#)      >0.26
+  Social motive                            12.90 ± 5.73                          12.35 ± 5.34   0.78[3](#)      0.1
+  Health care climate                      83.10 ± 1.37                          69.57 ± 1.61   0.001[3](#)     >4.6
+  Total Physical activity (Met-min/Week)   8",
+doppelangabe,yun2024:238,PMC5498715,Scores of health care climate,intervention_group_size=35; intervention_mean=80.5; intervention_standard_deviation=9.97; comparator_group_size=35; comparator_mean=69.89; comparator_standard_deviation=1.59,Nachkommastelle,69.89,69.57,climate|health,Hauptteil,Hauptteil,7213,8187,15400,comparator_mean,comparator,69.89,,":::
+
+  Variables                                Mean±SD of Pre-test; Intervention (control)   Mean±SD of Post-test; Intervention (control)   Mean±SD of Follow up after 4 months; Intervention (control)   p-value; Intervention[1](#) (control[1](#))
+  ---------------------------------------- --------------------------------------------- ---------------------------------------------- -----------------","0.19
+  Challenge motive                         17.90 ± 5.17                          16.46 ± 5.38   0.36[3](#)      >0.26
+  Social motive                            12.90 ± 5.73                          12.35 ± 5.34   0.78[3](#)      0.1
+  Health care climate                      83.10 ± 1.37                          69.57 ± 1.61   0.001[3](#)     >4.6
+  Total Physical activity (Met-min/Week)   8",

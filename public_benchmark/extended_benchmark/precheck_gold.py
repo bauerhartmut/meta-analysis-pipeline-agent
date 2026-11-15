@@ -52,13 +52,6 @@ ORTSPHASE = re.compile(
 )
 BEREICH = re.compile(r"##\s+(Results|Methods|Materials and Methods|Patients and Methods)\b")
 ZAHL = re.compile(r"(?<![\w.])-?\s?\d+(?:[.,]\d+)?")
-EINHEITEN = (
-    "gm", "g", "kg", "mg", "ml", "mmhg", "cm", "days", "day", "hours", "hour",
-    "months", "month", "weeks", "week", "years", "year", "points", "%", "score",
-)
-# Einheiten, in denen eine Doppelangabe belegt wurde. Prozentwerte und Zeiten
-# sind zu haeufig, um als Anker zu taugen.
-MASSEINHEITEN = {"gm", "g", "kg", "mg", "ml", "mmhg", "cm", "points"}
 
 
 def saetze(text: str) -> list[tuple[int, str]]:
@@ -85,14 +78,6 @@ def zahlen_mit_position(satz: str) -> list[tuple[int, float, bool]]:
         except ValueError:
             continue
     return werte
-
-
-def anker(satz: str, outcome: str) -> tuple[set[str], set[str]]:
-    """Gemeinsame Bezugspunkte: Einheiten und Woerter des Outcome-Begriffs."""
-    klein = satz.lower()
-    einheiten = {e for e in EINHEITEN if re.search(rf"(?<![\w]){re.escape(e)}(?![\w])", klein)}
-    begriffe = {w for w in re.findall(r"[a-z]{5,}", outcome.lower()) if w in klein}
-    return einheiten, begriffe
 
 
 def teile(text: str) -> int | None:
@@ -133,21 +118,35 @@ def ist_prosa(satz: str) -> bool:
     return len(zahlen_mit_position(satz)) <= 6
 
 
-def zahlpaare(text: str, outcome: str, cells: list[dict[str, Any]], *, mindestabstand: int = 1000) -> list[dict[str, Any]]:
+def zahlpaare(
+    text: str,
+    outcome: str,
+    cells: list[dict[str, Any]],
+    *,
+    mindestabstand: int = 1000,
+    nur_prosa: bool = True,
+    braucht_outcome: bool = True,
+) -> list[dict[str, Any]]:
     """Gold-Wert und fast gleiche Zahl an anderer Stelle, beide beim Outcome.
 
     Verankert an den Goldzellen statt an allen Zahlen eines Artikels: gesucht
     wird eine zweite Schreibweise des annotierten Werts (Nachkommastelle oder
     Faktor 10) in einem Satz mit demselben Outcome-Begriff.
+
+    Die Stufe ist einstellbar (`nur_prosa`, `braucht_outcome`,
+    `mindestabstand`). Die gelockerte Stufe dient nur der Messung, ob ein
+    Nullergebnis an der Regel oder an den Daten liegt; als Befund zaehlt sie
+    nicht.
     """
     grenze = teile(text)
     begriffe = [w for w in re.findall(r"[a-z]{5,}", outcome.lower())]
-    if not begriffe:
+    if braucht_outcome and not begriffe:
         return []
     prosa = [
         (pos, satz, zahlen_mit_position(satz))
         for pos, satz in saetze(text)
-        if ist_prosa(satz) and any(w in satz.lower() for w in begriffe)
+        if (ist_prosa(satz) or not nur_prosa)
+        and (not braucht_outcome or any(w in satz.lower() for w in begriffe))
     ]
     treffer: list[dict[str, Any]] = []
     for cell in cells:
@@ -167,6 +166,8 @@ def zahlpaare(text: str, outcome: str, cells: list[dict[str, Any]], *, mindestab
                             ({w for w in begriffe if w in satz_a.lower()}
                              & {w for w in begriffe if w in satz_b.lower()})
                         )
+                        if braucht_outcome and not gemeinsam:
+                            continue
                         treffer.append(
                             {
                                 "art": "doppelangabe",
@@ -236,7 +237,7 @@ def standortzahlen(text: str, cells: list[dict[str, Any]]) -> list[dict[str, Any
     return treffer
 
 
-def pruefe_record(record: dict[str, Any]) -> list[dict[str, Any]]:
+def pruefe_record(record: dict[str, Any], *, weit: str = "eng") -> list[dict[str, Any]]:
     pfad = REPO / (record["document"].get("path") or "")
     if not pfad.exists():
         return []
@@ -251,7 +252,15 @@ def pruefe_record(record: dict[str, Any]) -> list[dict[str, Any]]:
             f"{c['field']}={c['value']:g}" for c in cells
         ),
     }
-    ereignisse = [{**kopf, **t} for t in zahlpaare(text, outcome, cells)]
+    if weit == "weit":
+        paare = zahlpaare(
+            text, outcome, cells, mindestabstand=0, nur_prosa=False, braucht_outcome=False
+        )
+    elif weit == "mittel":
+        paare = zahlpaare(text, outcome, cells, mindestabstand=0)
+    else:
+        paare = zahlpaare(text, outcome, cells)
+    ereignisse = [{**kopf, **t} for t in paare]
     ereignisse += [{**kopf, **t} for t in standortzahlen(text, cells)]
     return ereignisse
 
@@ -262,6 +271,15 @@ def main() -> int:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--nur-split", default="", help="nur Records dieses Splits pruefen")
     parser.add_argument("--ohne-split", default="dev", help="Records dieses Splits auslassen")
+    parser.add_argument(
+        "--stufe",
+        choices=("eng", "mittel", "weit"),
+        default="eng",
+        help=(
+            "eng = Befundstufe; mittel = ohne Abstandsfilter; weit = ohne Prosa-, "
+            "Outcome- und Abstandsfilter (mittel/weit nur zur Messung)"
+        ),
+    )
     args = parser.parse_args()
 
     records = [
@@ -276,7 +294,17 @@ def main() -> int:
 
     alle: list[dict[str, Any]] = []
     for record in records:
-        alle.extend(pruefe_record(record))
+        alle.extend(pruefe_record(record, weit=args.stufe))
+    if args.stufe != "eng":
+        gesehen: set[tuple[Any, ...]] = set()
+        gefiltert = []
+        for eintrag in alle:
+            schluessel = (eintrag["record_id"], eintrag.get("field"), eintrag.get("arm"), eintrag.get("wert_b"))
+            if schluessel in gesehen:
+                continue
+            gesehen.add(schluessel)
+            gefiltert.append(eintrag)
+        alle = gefiltert
 
     args.out.mkdir(parents=True, exist_ok=True)
     felder = [
@@ -298,6 +326,7 @@ def main() -> int:
         json.dumps(
             {
                 "records_geprueft": len(records),
+                "stufe": args.stufe,
                 "treffer": len(alle),
                 "doppelangaben": sum(1 for e in alle if e["art"] == "doppelangabe"),
                 "standortzahlen": sum(1 for e in alle if e["art"] == "standortzahl"),
