@@ -41,6 +41,23 @@ Voraussetzungen, bevor TEST das erste Mal läuft:
 2. Einfrieren als `records/yun_test76_ziel.jsonl` mit SHA-256 im Bericht.
 3. Festlegen, welcher Prompt/Schema-Stand der **eine** Testlauf ist.
 
+**Eingefroren am 16.11.2026:** `records/yun_test76_ziel.jsonl`, 76 Records,
+243 Goldzellen, 0 Records ohne Zielzeitpunkt.
+
+```
+SHA-256  9051c64be53aec818c77a20c13eea81bf0b8d3ed932dfa15388b8faec6daa31a
+Bytes    110259
+```
+
+Annotation: 44 Records mit ausschließlich Gruppengrößen → `baseline` (Regel),
+32 Records manuell nach Abstract (`annotate_test76.py`, Tabelle in
+`test76_annotation.md`). Verteilung: 44 baseline, 7 „post (after 4-week
+training)“, 4 „postintervention phase“, 4 „post-training“, 2 „intraoperative
+(onset)“, 2 „24 h postoperatively“, je 1 „at admission“, „postintervention“,
+„during the operation“, „at birth (cord blood)“, „end of follow-up“,
+„MRI assessment (timepoint not stated)“. Der Gold-Hash der 76 Records ist vor
+und nach der Annotation identisch.
+
 Ohne Zielzeitpunkt wäre TEST eine andere Aufgabe (Rückfall ohne Vorgabe) und
 nicht mit DEV vergleichbar.
 
