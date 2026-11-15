@@ -1,0 +1,70 @@
+{
+  "zeilen": 6,
+  "erfolge": 5,
+  "quote": 0.8333,
+  "medien_tokens": 8951,
+  "kriterium": "mindestens 5 Erfolge, Median <= 6000 Tokens",
+  "bestanden": false,
+  "details": [
+    {
+      "record_id": "yun2024:115",
+      "finish_reason": "stop",
+      "fehlerklasse": "",
+      "parse_error": "",
+      "tokens": 4441,
+      "zellen": 4,
+      "timepoint_header": "4-month follow-up",
+      "fallback": false
+    },
+    {
+      "record_id": "yun2024:117",
+      "finish_reason": "stop",
+      "fehlerklasse": "",
+      "parse_error": "",
+      "tokens": 15592,
+      "zellen": 3,
+      "timepoint_header": "6 months",
+      "fallback": false
+    },
+    {
+      "record_id": "yun2024:325",
+      "finish_reason": "stop",
+      "fehlerklasse": "",
+      "parse_error": "keine_verwertbaren_zellen",
+      "tokens": 8522,
+      "zellen": 0,
+      "timepoint_header": "",
+      "fallback": false
+    },
+    {
+      "record_id": "yun2024:580",
+      "finish_reason": "stop",
+      "fehlerklasse": "",
+      "parse_error": "",
+      "tokens": 8951,
+      "zellen": 2,
+      "timepoint_header": "1-month follow-up",
+      "fallback": false
+    },
+    {
+      "record_id": "yun2024:685",
+      "finish_reason": "length",
+      "fehlerklasse": "length_ohne_ergebnis",
+      "parse_error": "kein_json",
+      "tokens": 19000,
+      "zellen": 0,
+      "timepoint_header": "",
+      "fallback": null
+    },
+    {
+      "record_id": "yun2024:161",
+      "finish_reason": "stop",
+      "fehlerklasse": "",
+      "parse_error": "",
+      "tokens": 11660,
+      "zellen": 4,
+      "timepoint_header": "24 m",
+      "fallback": false
+    }
+  ]
+}
