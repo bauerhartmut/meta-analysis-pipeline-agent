@@ -1,0 +1,232 @@
+{
+  "run": "pilot_repair_20261116",
+  "records": 12,
+  "gesamt": {
+    "task": "numeric_extraction",
+    "records": 12,
+    "records_without_prediction": 0,
+    "gold_cells": 36,
+    "predicted_cells": 23,
+    "matched_cells": 23,
+    "cell_precision": 1.0,
+    "cell_recall": 0.6389,
+    "cell_f1": 0.7797,
+    "mae_pairs": 0.0,
+    "mae_pairs_max": 0.0,
+    "mae_pairs_covered": 23,
+    "mae_coverage": 0.6389,
+    "record_exact": 7,
+    "record_exact_rate": 0.5833,
+    "arm_swap_records": 0,
+    "arm_swap_evaluable": 11,
+    "arm_swap_rate": 0.0,
+    "fields": {
+      "comparator_group_size": {
+        "gold": 12,
+        "predicted": 8,
+        "matched": 8,
+        "recall": 0.6667,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 8
+      },
+      "comparator_mean": {
+        "gold": 4,
+        "predicted": 2,
+        "matched": 2,
+        "recall": 0.5,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 2
+      },
+      "comparator_standard_deviation": {
+        "gold": 2,
+        "predicted": 1,
+        "matched": 1,
+        "recall": 0.5,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 1
+      },
+      "intervention_group_size": {
+        "gold": 12,
+        "predicted": 9,
+        "matched": 9,
+        "recall": 0.75,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 9
+      },
+      "intervention_mean": {
+        "gold": 4,
+        "predicted": 2,
+        "matched": 2,
+        "recall": 0.5,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 2
+      },
+      "intervention_standard_deviation": {
+        "gold": 2,
+        "predicted": 1,
+        "matched": 1,
+        "recall": 0.5,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 1
+      }
+    },
+    "tolerance": {
+      "abs": 1e-06,
+      "rel": 0.0
+    }
+  },
+  "ohne_ziel": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0
+  },
+  "gruppengroesse_ohne_zeitpunkt": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0
+  },
+  "ohne_zeitpunkt": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0
+  },
+  "zieltreu": {
+    "zellen": 21,
+    "richtig": 21,
+    "falsch": 0,
+    "ohne_gold": 0,
+    "precision": 1.0
+  },
+  "rueckfall": {
+    "zellen": 2,
+    "richtig": 2,
+    "falsch": 0,
+    "ohne_gold": 0,
+    "precision": 1.0,
+    "zeitdistanz_median_monate": null,
+    "zeitdistanz_bekannt": 0,
+    "beispiele": [
+      {
+        "record_id": "yun2024:119",
+        "field": "intervention_group_size",
+        "target": "month 6",
+        "timepoint": "6 months post-trauma",
+        "value": 10.0,
+        "gold": 10.0
+      },
+      {
+        "record_id": "yun2024:119",
+        "field": "comparator_group_size",
+        "target": "month 6",
+        "timepoint": "6 months post-trauma",
+        "value": 13.0,
+        "gold": 13.0
+      }
+    ]
+  },
+  "unklar": {
+    "zellen": 0,
+    "anteil": 0.0,
+    "beispiele": []
+  },
+  "arm_gemischt": {
+    "records": 0,
+    "beispiele": []
+  },
+  "belegstufen": {
+    "stufen": {
+      "artikel": 10,
+      "gedruckt": 13
+    },
+    "klassen": {
+      "zieltreu": 21,
+      "rueckfall": 2
+    },
+    "treffer_belegt": 23,
+    "treffer_nur_ziel": 0,
+    "rueckfall_intervall": {
+      "untere_grenze": 0.087,
+      "obere_grenze": 0.087,
+      "zaehler": {
+        "zieltreu": 21,
+        "rueckfall": 2,
+        "unklar": 0
+      }
+    }
+  },
+  "arm_klassen": {
+    "records": {
+      "arm_konsistent": 12
+    },
+    "beispiele": [],
+    "gemischte_zellen": 0,
+    "zellen_mit_label": 0,
+    "anteil": null,
+    "wilson_95_records": [
+      0.0,
+      0.2425
+    ],
+    "wilson_95_zellen": null
+  },
+  "auslassungen": {
+    "gesamt": 13,
+    "je_feld": {
+      "comparator_group_size": 4,
+      "comparator_mean": 2,
+      "comparator_standard_deviation": 1,
+      "intervention_group_size": 3,
+      "intervention_mean": 2,
+      "intervention_standard_deviation": 1
+    },
+    "quote": 0.3611
+  },
+  "je_feld": {
+    "comparator_group_size": {
+      "zieltreu_zellen": 7,
+      "zieltreu_richtig": 7,
+      "rueckfall_zellen": 1,
+      "rueckfall_richtig": 1
+    },
+    "comparator_mean": {
+      "zieltreu_zellen": 2,
+      "zieltreu_richtig": 2
+    },
+    "comparator_standard_deviation": {
+      "zieltreu_zellen": 1,
+      "zieltreu_richtig": 1
+    },
+    "intervention_group_size": {
+      "zieltreu_zellen": 8,
+      "zieltreu_richtig": 8,
+      "rueckfall_zellen": 1,
+      "rueckfall_richtig": 1
+    },
+    "intervention_mean": {
+      "zieltreu_zellen": 2,
+      "zieltreu_richtig": 2
+    },
+    "intervention_standard_deviation": {
+      "zieltreu_zellen": 1,
+      "zieltreu_richtig": 1
+    }
+  },
+  "je_quelle": {
+    "pilot_repair": {
+      "records": 12,
+      "technische_ausfaelle": 3,
+      "auslassungen": 13,
+      "zellen": 23,
+      "richtig": 23
+    }
+  },
+  "zell_f1_aus_klassen": 0.7797
+}

@@ -90,8 +90,11 @@ Gold) und zählt sie nicht mehr als `ohne_zeitpunkt`; an den bestehenden Läufen
 in der Klasse, nachgerechnet). `pruefe_v7_zeile` behandelt sie ebenfalls nicht
 als Zeitpunktverstoß.
 
-**Schritt 6 (Pilot) noch nicht gelaufen** — er braucht Netzzugriff und ist
-damit nicht Teil dieses Auftrags.
+**Schritt 6 gelaufen** (`pilot_repair_20261116`, 12 Records, 161.691 Tokens):
+Length 25,0 % (Ziel ≤ 10 % verfehlt), leere Antworten 0 %, Precision 1,0000,
+Recall 0,6389. Der Reparaturaufruf rettet 3 von 6 Fällen; zwei vorher fehlerfreie
+Records (`119`, `580`) scheiterten jetzt primär. Einzelheiten in
+`pilot_repair.md`.
 
 ## 3. Messbare Erfolgskriterien
 

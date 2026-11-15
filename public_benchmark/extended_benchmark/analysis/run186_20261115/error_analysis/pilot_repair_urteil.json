@@ -1,0 +1,48 @@
+{
+  "zeilen": 12,
+  "length": {
+    "anzahl": 3,
+    "quote": 0.25,
+    "records": [
+      "yun2024:76",
+      "yun2024:169",
+      "yun2024:252"
+    ]
+  },
+  "leer": {
+    "anzahl": 0,
+    "quote": 0.0,
+    "records": []
+  },
+  "repair": {
+    "aufrufe": 6,
+    "tokens": 20806
+  },
+  "tokens": {
+    "gesamt": 161691,
+    "je_record": 13474.2,
+    "primaer": 140885
+  },
+  "gruppen": {
+    "length": [
+      "yun2024:328",
+      "yun2024:566",
+      "yun2024:169"
+    ],
+    "leer": [
+      "yun2024:325",
+      "yun2024:571",
+      "yun2024:252"
+    ],
+    "armgemischt": [
+      "yun2024:149",
+      "yun2024:76",
+      "yun2024:81"
+    ],
+    "normal": [
+      "yun2024:119",
+      "yun2024:580",
+      "yun2024:204"
+    ]
+  }
+}
