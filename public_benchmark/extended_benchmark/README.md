@@ -196,6 +196,23 @@ neu berechnet und gegen `eval/*.metrics.json` geprüft. Wo sich eine Ursache
 nicht belegen lässt, steht "Nicht eindeutig klassifizierbar" statt einer
 Vermutung. Der Abschlussbericht liegt in `next_iteration_report.md`.
 
+## Gold-Vorprüfung `precheck_gold.py`
+
+Reine Textprüfung ohne Modellaufrufe, gedacht als Vorlauf vor der
+Datenerweiterung: sucht (1) Doppelangaben, also eine zweite, fast gleiche
+Schreibweise einer Goldzahl an anderer Stelle desselben Artikels
+(Nachkommastelle oder Faktor 10, gleicher Outcome-Begriff), und (2)
+standortbezogene Gruppengrößen („940 (34 %) … unit A"). Tabellenblöcke werden
+ausgeschlossen. Am Dev-Satz findet das Werkzeug genau die drei bekannten Fälle
+(2× `yun2024:3`, 1× `yun2024:83`) und keinen Fehltreffer; auf den 407 noch
+nicht verwendeten Records keinen Treffer. Grenzen und Messungen:
+`analysis/gold_precheck_20261115/report.md`.
+
+```
+python public_benchmark/extended_benchmark/precheck_gold.py \
+    --out public_benchmark/extended_benchmark/analysis/gold_precheck_20261115
+```
+
 ## Rückfallregel `v6_target_fallback` (Referenz)
 
 `--target-fallback` ist seit dem 15.11.2026 Standard (abschaltbar mit
