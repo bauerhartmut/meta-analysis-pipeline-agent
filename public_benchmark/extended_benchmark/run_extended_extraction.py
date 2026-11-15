@@ -20,6 +20,7 @@ import threading
 import time
 import urllib.error
 import urllib.request
+import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
@@ -54,6 +55,9 @@ FIELDS = (
 
 PROMPT_VERSION = "v2_timepoint"
 RETRY_MAX_TOKENS = 32000
+# Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
+# Antwort einer identischen Anfrage zurueck.
+SESSION_TAG = ""
 
 SYSTEM = (
     "You extract numerical results from randomised controlled trial publications. "
@@ -142,7 +146,7 @@ def _call_once(model: dict[str, Any], prompt: str, key: str, base: str) -> dict[
     payload = {
         "model": model["id"],
         "messages": [
-            {"role": "system", "content": SYSTEM},
+            {"role": "system", "content": SYSTEM + (f"\nSession tag: {SESSION_TAG}" if SESSION_TAG else "")},
             {"role": "user", "content": prompt},
         ],
         "temperature": 0.0,
@@ -235,6 +239,7 @@ def main() -> int:
     parser.add_argument("--ids", default=None, help="Komma-getrennte record_ids, nur diese laufen")
     parser.add_argument("--save-content", action="store_true", help="Rohantwort im Ergebnis mitspeichern")
     parser.add_argument("--max-tokens", type=int, default=None, help="Tokenbudget fuer alle Modelle ueberschreiben")
+    parser.add_argument("--cache-buster", action="store_true", help="eindeutigen Session-Tag in den Systemprompt haengen")
     parser.add_argument("--run-id", default=datetime.now(timezone.utc).strftime("extended_%Y%m%d"))
     args = parser.parse_args()
 
@@ -242,6 +247,12 @@ def main() -> int:
     if args.max_tokens:
         for spec in models.values():
             spec["max_tokens"] = args.max_tokens
+
+    global SESSION_TAG
+    prompt_version = PROMPT_VERSION
+    if args.cache_buster:
+        SESSION_TAG = uuid.uuid4().hex[:12]
+        prompt_version = "v2b_cachebuster"
 
     config = get_config()
     key = config.tudagpt_api_key
@@ -295,7 +306,7 @@ def main() -> int:
             "elapsed_s": response.get("elapsed_s"),
             "content_len": len(response.get("content") or ""),
             "parse_error": parse_error,
-            "prompt_version": PROMPT_VERSION,
+            "prompt_version": prompt_version,
             "predicted": {"cells": cells},
             "rows": cells,
         }

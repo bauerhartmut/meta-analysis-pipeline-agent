@@ -148,6 +148,11 @@ und `retry_tokens` stehen in der Ausgabe. Laufzeiten unter einer Sekunde werden
 als `suspected_cache` markiert: Das Gateway liefert dann offenbar eine frühere
 Antwort erneut, der Lauf ist kein unabhängiger Messpunkt.
 
+`--cache-buster` hängt einen zufälligen Session-Tag in den Systemprompt und
+erzwingt damit eine neue Generierung. Der Lauf wird dann als eigene
+Prompt-Version `v2b_cachebuster` geführt und nicht mit `v2_timepoint`
+vermischt.
+
 `PROMPT_VERSION` im Runner benennt die aktuelle Prompt-Fassung
 (`v2_timepoint`: Werte am Ende der Intervention, nicht Baseline und nicht
 Follow-up). Ergebnisse unterschiedlicher Versionen sind nicht direkt
