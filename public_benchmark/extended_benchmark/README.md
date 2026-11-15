@@ -216,6 +216,20 @@ python public_benchmark/extended_benchmark/precheck_gold.py \
     --out public_benchmark/extended_benchmark/analysis/gold_precheck_20261115
 ```
 
+## Kandidaten-Split `candidate_split.py`
+
+Prüft für jede Goldzelle der noch nicht verwendeten Records, ob die Zahl
+wörtlich im Artikeltext steht (deutsche/englische Schreibweise,
+Tausendertrennzeichen, Minus mit Leerzeichen), und schreibt Belegposition,
+Region und Textfenster. Ohne Modellaufrufe, ohne Gold-Änderung. Dev-Satz: 170
+von 170 Zellen belegt; 407 Records: 1.088 von 1.294 (84,1 %), 288 Records
+vollständig. Auswertung: `analysis/candidate_split_20261115/report.md`.
+
+```
+python public_benchmark/extended_benchmark/candidate_split.py \
+    --out public_benchmark/extended_benchmark/analysis/candidate_split_20261115
+```
+
 ## Rückfallregel `v6_target_fallback` (Referenz)
 
 `--target-fallback` ist seit dem 15.11.2026 Standard (abschaltbar mit

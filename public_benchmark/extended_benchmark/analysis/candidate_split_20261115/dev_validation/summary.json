@@ -1,0 +1,51 @@
+{
+  "records": 43,
+  "zellen": 170,
+  "zellen_gefunden": 170,
+  "zellen_ohne_beleg": 0,
+  "quote": 1.0,
+  "records_komplett_belegt": 43,
+  "records_ohne_beleg": 5,
+  "records_mit_luecke": 0,
+  "records_ohne_text": 0,
+  "records_ohne_zellen": 5,
+  "zellen_ohne_beleg_kurztext": 0,
+  "zellen_ohne_beleg_langtext": 0,
+  "zellen_ohne_beleg_gerundet": 0,
+  "zellen_ohne_beleg_ohne_naehe": 0,
+  "je_feld": {
+    "intervention_group_size": {
+      "zellen": 38,
+      "gefunden": 38
+    },
+    "intervention_mean": {
+      "zellen": 20,
+      "gefunden": 20
+    },
+    "comparator_group_size": {
+      "zellen": 38,
+      "gefunden": 38
+    },
+    "comparator_mean": {
+      "zellen": 20,
+      "gefunden": 20
+    },
+    "intervention_standard_deviation": {
+      "zellen": 19,
+      "gefunden": 19
+    },
+    "comparator_standard_deviation": {
+      "zellen": 19,
+      "gefunden": 19
+    },
+    "intervention_events": {
+      "zellen": 8,
+      "gefunden": 8
+    },
+    "comparator_events": {
+      "zellen": 8,
+      "gefunden": 8
+    }
+  },
+  "module_aufrufe": 0
+}
