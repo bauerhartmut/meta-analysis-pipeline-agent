@@ -343,8 +343,11 @@ def _call_once(model: dict[str, Any], prompt: str, key: str, base: str) -> dict[
         }
 
 
-def load_records(split: str | None, limit: int | None) -> list[dict[str, Any]]:
-    records = [json.loads(line) for line in RECORDS.read_text(encoding="utf-8").splitlines() if line.strip()]
+def load_records(split: str | None, limit: int | None, path: Path | None = None) -> list[dict[str, Any]]:
+    # path erlaubt eine andere Record-Datei (z. B. den eingefrorenen Teilsatz mit
+    # Zeitpunktannotation); Standard bleibt records/yun.jsonl.
+    quelle = path or RECORDS
+    records = [json.loads(line) for line in quelle.read_text(encoding="utf-8").splitlines() if line.strip()]
     if split:
         records = [record for record in records if record["document"].get("split") == split]
     if limit:
@@ -372,6 +375,13 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--models", nargs="+", default=["qwen30", "glm"], choices=sorted(MODELS))
     parser.add_argument("--split", default="dev")
+    parser.add_argument(
+        "--records",
+        type=Path,
+        default=RECORDS,
+        help="Record-Datei (JSONL); Standard records/yun.jsonl. Fuer Teilsaetze die "
+        "eingefrorene Datei mit Zeitpunktannotation uebergeben.",
+    )
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--workers", type=int, default=3)
     parser.add_argument("--ids", default=None, help="Komma-getrennte record_ids, nur diese laufen")
@@ -415,7 +425,7 @@ def main() -> int:
         print("FEHLER: kein API-Schluessel in der Konfiguration", flush=True)
         return 2
 
-    records = load_records(args.split, args.limit)
+    records = load_records(args.split, args.limit, path=args.records)
     if args.ids:
         wanted = {value.strip() for value in args.ids.split(",") if value.strip()}
         records = [record for record in records if record["record_id"] in wanted]
