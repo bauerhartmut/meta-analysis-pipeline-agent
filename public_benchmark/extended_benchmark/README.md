@@ -158,6 +158,27 @@ vermischt.
 Follow-up). Ergebnisse unterschiedlicher Versionen sind nicht direkt
 vergleichbar.
 
+## Fehleranalyse
+
+`analyze_errors.py` vergleicht jede Vorhersage mit den Gold-Zellen,
+klassifiziert Abweichungen nach festem Schema und schreibt vier Ausgaben:
+
+```bash
+python public_benchmark/extended_benchmark/analyze_errors.py \
+  --out public_benchmark/extended_benchmark/analysis/v1_20261115
+```
+
+- `error_analysis.json`: Kennzahlen, Verteilungen nach Klasse, Modell, Feld und
+  Prompt-Version, Ereignisdetails, Gold-Prüfung
+- `error_analysis.md`: lesbare Fassung
+- `error_cases.csv`: jede fehlerhafte, fehlende und zusätzliche Zelle
+- `human_review_queue.csv`: Prüfwarteschlange mit fünf Prioritäten
+
+Das Modul liest nur; bestehende Läufe bleiben unverändert. Die Metriken werden
+neu berechnet und gegen `eval/*.metrics.json` geprüft. Wo sich eine Ursache
+nicht belegen lässt, steht "Nicht eindeutig klassifizierbar" statt einer
+Vermutung. Der Abschlussbericht liegt in `next_iteration_report.md`.
+
 ## PMC-Open-Access-Downloader
 
 Die alten FTP-Pakete (`oa_file_list.csv`, `oa_comm/`) hat NCBI im August 2026
