@@ -12,6 +12,53 @@ from extended_benchmark import run_extended_extraction as runner  # noqa: E402
 from extended_benchmark.evaluate_fallback import klassifiziere  # noqa: E402
 
 
+def test_normalisierung_ergaenzt_einheit_nur_mit_beleg() -> None:
+    from extended_benchmark.evaluate_fallback import normalisiere_label
+
+    # Einheit kommt aus dem annotierten Ziel, nicht aus der Zahl.
+    assert normalisiere_label("24", "week 24") == ("week 24", "ok")
+    assert normalisiere_label("6", "month 6") == ("month 6", "ok")
+    assert normalisiere_label("1", "day 1") == ("day 1", "ok")
+    # Ohne passendes Ziel bleibt die Zahl unklar.
+    assert normalisiere_label("24", "month 6") == ("", "unklar")
+    assert normalisiere_label("24", "") == ("", "unklar")
+
+
+def test_null_wird_nur_bei_belegter_baseline_zu_baseline() -> None:
+    from extended_benchmark.evaluate_fallback import normalisiere_label
+
+    assert normalisiere_label("0", "baseline") == ("baseline", "ok")
+    assert normalisiere_label("0", "week 24") == ("", "unklar")
+
+
+def test_bereits_korrekte_labels_bleiben_unveraendert() -> None:
+    from extended_benchmark.evaluate_fallback import normalisiere_label
+
+    assert normalisiere_label("week 24", "week 24") == ("week 24", "ok")
+    assert normalisiere_label("baseline", "week 24") == ("baseline", "ok")
+    assert normalisiere_label("Post-test", "week 24") == ("post-test", "ok")
+    assert normalisiere_label("", "week 24") == ("", "leer")
+
+
+def test_arme_behalten_ihre_zeitpunkte() -> None:
+    from extended_benchmark.evaluate_fallback import arme_gemischt
+
+    gleich = [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": "24"}]
+    assert arme_gemischt(gleich, "week 24") is False
+    # Genau der Fall yun2024:75: Intervention Woche 24, Komparator Baseline.
+    gemischt = [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": "0"}]
+    assert arme_gemischt(gemischt, "week 24") is True
+    # Fehlt der Zeitpunkt eines Arms, wird nichts uebertragen.
+    assert arme_gemischt([{"arm": "intervention", "timepoint": "24"}], "week 24") is False
+    assert (
+        arme_gemischt(
+            [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": ""}],
+            "week 24",
+        )
+        is False
+    )
+
+
 def test_kaputtes_json_wird_wiederholt() -> None:
     """Strukturell unlesbares JSON gilt als Ausfall, eine leere Zellenliste nicht."""
     assert runner.json_kaputt("kein_json")

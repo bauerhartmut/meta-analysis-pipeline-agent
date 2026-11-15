@@ -58,6 +58,45 @@ def test_ids_waehlen_aus_der_alternativen_datei(tmp_path: Path) -> None:
     assert len(runner.waehle_records(runner.load_records("test", None, path=datei), None)) == 3
 
 
+def test_length_bekommt_keinen_zweiten_versuch(tmp_path: Path) -> None:
+    # Reasoning-Schleife: eindeutige Fehlzeile statt Retry mit groesserem Budget.
+    assert runner.fehlerklasse_aus({"finish_reason": "length"}, "") == "length_ohne_ergebnis"
+    # Kaputtes JSON bleibt ein Retry-Fall (Format, keine Endlosschleife).
+    assert runner.fehlerklasse_aus({"finish_reason": "stop"}, "kein_json") == "json_kaputt"
+    assert runner.fehlerklasse_aus({"finish_reason": "stop"}, "json_fehler: x") == "json_kaputt"
+    # Verwertbare Antwort ist keine Fehlzeile.
+    assert runner.fehlerklasse_aus({"finish_reason": "stop"}, "") == ""
+
+
+def test_fehlzeile_ist_im_datensatz_erkennbar() -> None:
+    # Die Zeile traegt Klassenname und Flag; "rows" bleibt leer.
+    zeile = {"record_id": "yun2024:159", "model": "glm", "rows": [], "fehlerklasse": "length_ohne_ergebnis"}
+    assert zeile["fehlerklasse"] and zeile["rows"] == []
+    assert bool(zeile.get("fehlerklasse")) is True
+
+
+def test_fortsetzen_ueberspringt_erfolgreiche_und_fehlzeilen(tmp_path: Path) -> None:
+    datei = tmp_path / "predictions.jsonl"
+    zeilen = [
+        {"record_id": "a", "model": "glm", "rows": [{"field": "x"}], "fehlerklasse": ""},
+        {"record_id": "b", "model": "glm", "rows": [], "fehlerklasse": "length_ohne_ergebnis"},
+        {"record_id": "c", "model": "glm", "rows": [], "fehlerklasse": "json_kaputt"},
+    ]
+    datei.write_text("\n".join(json.dumps(z) for z in zeilen) + "\n", encoding="utf-8")
+
+    # Standard: nichts wird erneut verarbeitet (auch keine Fehlzeile — sonst
+    # wuerde dieselbe Endlosschleife erneut bezahlt).
+    assert runner.done_keys(datei) == {("a", "glm"), ("b", "glm"), ("c", "glm")}
+    # Gezielte Wiederholung bleibt moeglich.
+    assert runner.done_keys(datei, retry_failed=True) == {("a", "glm")}
+
+
+def test_kaputtes_json_zaehlt_nicht_als_erfolg() -> None:
+    cells, fehler = runner.parse_cells("das ist kein json")
+    assert cells == []
+    assert runner.fehlerklasse_aus({"finish_reason": "stop"}, fehler) == "json_kaputt"
+
+
 def test_record_ohne_ziel_laeuft_als_v2_timepoint() -> None:
     ohne = {"timepoint": {"target": ""}}
     mit = {"timepoint": {"target": "week 24"}}

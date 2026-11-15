@@ -238,6 +238,24 @@ def json_kaputt(parse_error: str) -> bool:
     return parse_error in ("kein_json", "kein_objet") or parse_error.startswith("json_fehler")
 
 
+
+
+def fehlerklasse_aus(response: dict[str, Any], parse_error: str) -> str:
+    """Klassifiziert einen Ausfall; leer heisst: verwertbare Antwort.
+
+    `finish_reason = length` ist eine Reasoning-Schleife: der zweite Versuch mit
+    groesserem Budget lieferte in drei von drei Faellen wieder `length` und
+    kostete je 56.000 Tokens ohne eine Zelle. Deshalb kein Retry, sondern eine
+    eindeutige Fehlzeile. Kaputtes JSON bleibt ein Retry-Fall: dort ist die
+    Ursache Format, nicht Endlosschleife.
+    """
+    if (response.get("finish_reason") or "") == "length":
+        return "length_ohne_ergebnis"
+    if json_kaputt(parse_error):
+        return "json_kaputt"
+    return ""
+
+
 def parse_cells(content: str) -> tuple[list[dict[str, Any]], str]:
     """Liest die Zellen aus der Modellantwort; gibt (cells, fehler) zurueck."""
     payload, error = _load_payload(content)
@@ -363,7 +381,14 @@ def waehle_records(records: list[dict[str, Any]], ids: str | None) -> list[dict[
     return [record for record in records if record["record_id"] in wanted]
 
 
-def done_keys(path: Path) -> set[tuple[str, str]]:
+def done_keys(path: Path, *, retry_failed: bool = False) -> set[tuple[str, str]]:
+    """Schon erledigte (record_id, model)-Paare.
+
+    Jede vorhandene Zeile gilt als erledigt — auch eine Fehlzeile, damit ein
+    Fortsetzen nicht automatisch dieselbe Endlosschleife erneut bezahlt. Mit
+    `retry_failed=True` (Flag `--retry-failed`) werden Fehlzeilen ausgenommen und
+    damit gezielt wiederholt.
+    """
     if not path.exists():
         return set()
     keys = set()
@@ -374,8 +399,12 @@ def done_keys(path: Path) -> set[tuple[str, str]]:
             row = json.loads(line)
         except json.JSONDecodeError:
             continue
-        if row.get("rows"):
-            keys.add((row["record_id"], row["model"]))
+        if not row.get("record_id") or not row.get("model"):
+            continue
+        fehlgeschlagen = bool(row.get("fehlerklasse")) or not row.get("rows")
+        if fehlgeschlagen and retry_failed:
+            continue
+        keys.add((row["record_id"], row["model"]))
     return keys
 
 
@@ -394,6 +423,11 @@ def main() -> int:
     parser.add_argument("--workers", type=int, default=3)
     parser.add_argument("--ids", default=None, help="Komma-getrennte record_ids, nur diese laufen")
     parser.add_argument("--save-content", action="store_true", help="Rohantwort im Ergebnis mitspeichern")
+    parser.add_argument(
+        "--retry-failed",
+        action="store_true",
+        help="Fehlzeilen (z. B. length) gezielt wiederholen statt zu ueberspringen",
+    )
     parser.add_argument("--max-tokens", type=int, default=None, help="Tokenbudget fuer alle Modelle ueberschreiben")
     parser.add_argument("--cache-buster", action="store_true", help="eindeutigen Session-Tag in den Systemprompt haengen")
     parser.add_argument("--absolute-counts", action="store_true", help="Prompt-Zusatz aus v3_abs_count aktivieren")
@@ -437,7 +471,7 @@ def main() -> int:
     run_dir = HERE / "runs" / args.run_id
     run_dir.mkdir(parents=True, exist_ok=True)
     out_path = run_dir / "predictions.jsonl"
-    done = done_keys(out_path)
+    done = done_keys(out_path, retry_failed=args.retry_failed)
 
     jobs = [(record, model) for model in args.models for record in records if (record["record_id"], model) not in done]
     print(f"{len(records)} Records, {len(jobs)} offene Auftraege, {args.workers} Threads", flush=True)
@@ -475,22 +509,18 @@ def main() -> int:
         timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
         retry: dict[str, Any] | None = None
         retry_grund = ""
-        # Reasoning-Schleifen enden mit finish_reason "length" und leerem Inhalt;
-        # strukturell kaputtes JSON ist ebenfalls ein Ausfall, kein Inhalt.
-        # Beides bekommt genau einen zweiten Versuch, danach bleibt das Ergebnis.
-        laenge = (
-            response.get("finish_reason") == "length"
-            and models[model]["max_tokens"] < RETRY_MAX_TOKENS
-        )
-        kaputt = json_kaputt(parse_error)
-        if laenge or kaputt:
-            retry_grund = "length" if laenge else "json"
-            params = {**models[model], "max_tokens": RETRY_MAX_TOKENS} if laenge else models[model]
-            retry = call(params, prompt, key, base)
+        fehlerklasse = fehlerklasse_aus(response, parse_error)
+        # Nur strukturell kaputtes JSON bekommt einen zweiten Versuch (gleiches
+        # Limit): die Ursache ist Format. Reasoning-Schleifen ("length") werden
+        # nicht wiederholt, sie kosten nur Tokens ohne Ergebnis.
+        if fehlerklasse == "json_kaputt":
+            retry_grund = "json"
+            retry = call(models[model], prompt, key, base)
             if retry.get("content"):
                 response = retry
                 cells, parse_error = parse_cells(response.get("content") or "")
                 timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
+                fehlerklasse = fehlerklasse_aus(response, parse_error)
         row = {
             "record_id": record["record_id"],
             "model": model,
@@ -503,6 +533,8 @@ def main() -> int:
             "suspected_cache": (response.get("elapsed_s") or 0) < 1.0,
             "retried": retry is not None,
             "retry_grund": retry_grund,
+            "fehlerklasse": fehlerklasse,
+            "failed": bool(fehlerklasse),
             "retry_finish_reason": retry.get("finish_reason", "") if retry else "",
             "retry_tokens": retry.get("completion_tokens") if retry else None,
             "elapsed_s": response.get("elapsed_s"),
@@ -524,8 +556,16 @@ def main() -> int:
         with LOCK:
             with out_path.open("a", encoding="utf-8", newline="\n") as handle:
                 handle.write(json.dumps(row, ensure_ascii=False) + "\n")
-        status = "ok" if cells else f"leer {parse_error}"
-        print(f"{model}: {record['record_id']} {status} ({len(cells)} Zellen)", flush=True)
+        if fehlerklasse:
+            status = f"FEHLER {fehlerklasse}"
+            print(
+                f"{model}: {record['record_id']} {status} "
+                f"({response.get('completion_tokens') or 0} Tokens, kein Retry)",
+                flush=True,
+            )
+        else:
+            status = "ok" if cells else f"leer {parse_error}"
+            print(f"{model}: {record['record_id']} {status} ({len(cells)} Zellen)", flush=True)
         return row
 
     completed = 0
