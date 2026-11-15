@@ -202,6 +202,10 @@ Annotationsfehler — der Annotator hat eine der beiden Stellen gewählt. Solche
 Fälle sind für den Benchmark wichtig, weil sie die Obergrenze der erreichbaren
 Genauigkeit senken und bei der Bewertung als Modellfehler erscheinen.
 
+Nachtrag (Abschnitt 17): Die Dopplung betrifft **beide** Zellen des Records.
+Der Ergebnisteil nennt 50,6 und −7,0, die Kurzfassung 50,7 und −0,7; Gold
+mischt beide Stellen. −0,7 ist also belegt, aber nur in der Kurzfassung.
+
 Nicht geprüft werden konnte: Zeitpunkt-, Populations- und Armangaben, weil die
 Records diese Metadaten nicht führen (`zeitpunkt`/`population` stehen in
 `error_cases.csv` deshalb als „nicht erfasst"). Diese Lücke ist selbst ein
@@ -684,6 +688,38 @@ erfasst.
 
 Damit ist die Restlücke bei F1 0,96 überwiegend Datenqualität, nicht
 Extraktionsqualität.
+
+## 17. Der −7,0-Fall: zwei Stellen im Artikel, keine Ziffern-Verrutschung (15.11.2026)
+
+Die Abweichung `yun2024:3 comparator_mean` (−7,0 statt −0,7) tritt in zwei von
+drei v6-Läufen auf und erklärt den gesamten MAE dieser Läufe (6,3 / 170 Paare =
+0,037). Textvergleich (`analysis/yun2024_3_contradiction.md`):
+
+| Stelle | Text | Wertepaar |
+|---|---|---|
+| Kurzfassung, Position 1.151 | „… (+ 50.7 gm) … or the patients fed WA (- 0.7 gm)" | 50,7 / −0,7 |
+| Ergebnisteil, Position 8.987 | „… 50.6 gm in those given WGJ … mean loss of body weight (- 7.0 gm)" | 50,6 / −7,0 |
+
+Derselbe Vergleich, dasselbe p = 0,08, zwei Zahlenpaare. Eine Tabelle mit
+diesem Wertepaar existiert nicht („body weight gain" steht nur an diesen zwei
+Stellen). Gold kombiniert 50,6 aus dem Ergebnisteil mit −0,7 aus der
+Kurzfassung.
+
+Die Läufe zitieren jeweils **eine** Stelle vollständig: Lauf 10 die Kurzfassung
+(50,7/−0,7), Läufe 9 und 11 den Ergebnisteil (50,6/−7,0). Kein Lauf mischt,
+keiner verschiebt eine Dezimalstelle.
+
+**Folgerung:** keine Ziffern-Verrutschung, sondern ein Gold-Konflikt wie bei
+`yun2024:83`. Ein konsistentes Lesen des Artikels kann nie beide Goldzellen
+treffen — genau eine der beiden Zellen ist zwangsläufig falsch. Damit ist die
+Restlücke der v6-Läufe vollständig Datenqualität; der einzige inhaltliche
+„Fehler" der Prüfqueue entfällt.
+
+**Gegenmaßnahme:** kurzfristig keine Prompt-Änderung, sondern die Zelle neben
+`intervention_mean` als dokumentierten Gold-Konflikt führen (Mechanismus
+`GEPRUEFTE_FAELLE`, keine Metrikänderung). Eine Prompt-Regel „bei Doppelangaben
+gilt der Ergebnisteil" wäre eine neue Version mit eigenem Lauf, keine
+Korrektur.
 
 ## Technische Umsetzung
 

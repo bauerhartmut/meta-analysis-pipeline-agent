@@ -35,15 +35,17 @@ gibt es im Artikel keine passende Zahl. Das Modell lässt die Zellen aus — nac
 der Regel korrekt. **Gold nicht geändert**, Fall bleibt als Datenqualitätsfall
 dokumentiert.
 
-**3. `yun2024:3 comparator_mean` (Lauf 9 und Lauf 11) — echter Modellfehler.**
-Gold −0,7, Vorhersage **−7,0**. Der Artikel schreibt „the patients fed WA
-(- 0.7 gm)"; die Zehnerstelle geht verloren. Der Fehler tritt in zwei von drei
-Läufen auf (Lauf 10 hatte die Zelle richtig) und ist damit systematisch, nicht
-zufällig.
+**3. `yun2024:3 comparator_mean` (Lauf 9 und Lauf 11) — Gold-Konflikt, kein
+Modellfehler.** Gold −0,7, Vorhersage −7,0. Beide Zahlen stehen wörtlich im
+Artikel: Die Kurzfassung nennt „+ 50.7 gm … (- 0.7 gm)", der Ergebnisteil
+„50.6 gm … (- 7.0 gm)" für denselben Vergleich. Gold mischt beide Stellen
+(50,6 aus dem Ergebnisteil, −0,7 aus der Kurzfassung); Lauf 10 zitiert die
+Kurzfassung, Läufe 9 und 11 den Ergebnisteil. Beleg:
+`analysis/yun2024_3_contradiction.md`.
 
-**4. `yun2024:3 intervention_mean` (Lauf 10) — Gold-Selbstwiderspruch.**
-Vorhersage 50,7 (Artikeltext „+ 50.7 gm"), Gold 50,6 (Tabelle). Bereits in
-Abschnitt 5 dokumentiert; das Modell folgt dem Text, nicht der Tabelle.
+**4. `yun2024:3 intervention_mean` (Lauf 10) — derselbe Gold-Konflikt.**
+Vorhersage 50,7 (Kurzfassung „+ 50.7 gm"), Gold 50,6 (Ergebnisteil „50.6 gm").
+Eine Tabelle mit diesem Wertepaar gibt es nicht; beide Zahlen stehen im Text.
 
 ## Kontrollfälle
 
@@ -52,8 +54,8 @@ und die als Stichprobe in die Queue kommen. Keine Auffälligkeit.
 
 ## Ergebnis
 
-Von 52 Fällen sind **1 echter Modellfehler** (`yun2024:3 comparator_mean`), **1
-technischer Ausfall** (`yun2024:231`, JSON), **2 Gold-Konflikte**
-(`yun2024:83` Gruppengrößen, `yun2024:3` 50,6/50,7) und 40 Kontrollfälle ohne
-Befund. Die verbleibende Lücke bei F1 0,96 ist damit überwiegend Datenqualität,
-nicht Extraktionsqualität.
+Von 52 Fällen sind **0 echte Modellfehler**, **1 technischer Ausfall**
+(`yun2024:231`, JSON), **2 Gold-Konflikte** (`yun2024:83` Gruppengrößen,
+`yun2024:3` 50,6/−7,0 gegen 50,7/−0,7) und 40 Kontrollfälle ohne Befund. Die
+verbleibende Lücke bei F1 0,96 ist damit Datenqualität, nicht
+Extraktionsqualität.
