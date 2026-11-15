@@ -57,6 +57,7 @@ FIELDS = (
 # nur noch per --absolute-counts waehlbar.
 PROMPT_VERSION = "v2_timepoint"
 VERSION_ABSOLUTE_COUNTS = "v3_abs_count"
+VERSION_LAST_TIMEPOINT = "v4_last_timepoint"
 RETRY_MAX_TOKENS = 32000
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
@@ -71,9 +72,33 @@ SYSTEM = (
 LOCK = threading.Lock()
 
 
-def build_prompt(record: dict[str, Any], text: str, limit: int = 45000, absolute_counts: bool = False) -> str:
+def build_prompt(
+    record: dict[str, Any],
+    text: str,
+    limit: int = 45000,
+    absolute_counts: bool = False,
+    last_timepoint: bool = False,
+) -> str:
     context = record["context"]
     fields = ", ".join(f'"{name}"' for name in FIELDS)
+    schema = (
+        '{"cells": [{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...], '
+        '"chosen_timepoint": "<label exactly as printed>", '
+        '"discarded_timepoints": ["<label exactly as printed>", ...]}'
+        if last_timepoint
+        else '{"cells": [{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...]}'
+    )
+    timepoint_rule = (
+        "Use the results measured at the last time point reported for this outcome: the latest "
+        "follow-up. If the table reports a cumulative total row or column, use the total. Never use "
+        "baseline values. Then state which time point label you used and which other time point "
+        "labels you skipped for this outcome, both copied exactly as printed (use \"not applicable\" "
+        "if only one time point is reported, \"running text\" if the outcome is only reported in "
+        "prose). "
+        if last_timepoint
+        else "Use the values measured at the end of the intervention (post-test), not baseline values "
+        "and not follow-up values from a later measurement point. "
+    )
     return (
         f"Publication excerpt:\n{text[:limit]}\n\n"
         f"Intervention: {context.get('intervention') or 'not stated'}\n"
@@ -82,11 +107,10 @@ def build_prompt(record: dict[str, Any], text: str, limit: int = 45000, absolute
         f"Outcome type: {context.get('outcome_type') or 'unknown'}\n\n"
         "Extract the numerical results that belong to this comparison and outcome. "
         "Return exactly one JSON object:\n"
-        '{"cells": [{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...]}\n'
-        f"Allowed fields: {fields}. "
+                    f"{schema}\n"
+            f"Allowed fields: {fields}. "
         "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
-        "Use the values measured at the end of the intervention (post-test), not baseline values "
-        "and not follow-up values from a later measurement point. "
+        + timepoint_rule
         + (
             "Report event counts as absolute numbers of events, never as percentages or rates. "
             if absolute_counts
@@ -99,8 +123,8 @@ def build_prompt(record: dict[str, Any], text: str, limit: int = 45000, absolute
     )
 
 
-def parse_cells(content: str) -> tuple[list[dict[str, Any]], str]:
-    """Liest die Zellen aus der Modellantwort; gibt (cells, fehler) zurueck."""
+def _load_payload(content: str) -> tuple[dict[str, Any] | None, str]:
+    """Liest das JSON-Objekt aus der Antwort, auch mit Codefence oder Beiwerk."""
     text = content.strip()
     if text.startswith("```"):
         text = re.sub(r"^```[a-zA-Z]*\n?", "", text)
@@ -110,11 +134,38 @@ def parse_cells(content: str) -> tuple[list[dict[str, Any]], str]:
     except json.JSONDecodeError:
         match = re.search(r"\{.*\}", text, flags=re.S)
         if not match:
-            return [], "kein_json"
+            return None, "kein_json"
         try:
             payload = json.loads(match.group(0))
         except json.JSONDecodeError as error:
-            return [], f"json_fehler: {error}"
+            return None, f"json_fehler: {error}"
+    if not isinstance(payload, dict):
+        return None, "kein_objet"
+    return payload, ""
+
+
+def parse_timepoints(content: str) -> tuple[dict[str, Any], str]:
+    """Liest chosen_timepoint und discarded_timepoints aus der Antwort."""
+    payload, error = _load_payload(content)
+    if payload is None:
+        return {"chosen": "", "discarded": []}, error
+    chosen = str(payload.get("chosen_timepoint") or "").strip()
+    raw = payload.get("discarded_timepoints")
+    discarded: list[str] = []
+    if isinstance(raw, list):
+        discarded = [str(item).strip() for item in raw if str(item).strip()]
+    elif isinstance(raw, str) and raw.strip():
+        discarded = [part.strip() for part in raw.split(";") if part.strip()]
+    if not chosen:
+        return {"chosen": "", "discarded": discarded}, "kein_zeitpunkt"
+    return {"chosen": chosen, "discarded": discarded}, ""
+
+
+def parse_cells(content: str) -> tuple[list[dict[str, Any]], str]:
+    """Liest die Zellen aus der Modellantwort; gibt (cells, fehler) zurueck."""
+    payload, error = _load_payload(content)
+    if payload is None:
+        return [], error
     cells = payload.get("cells") if isinstance(payload, dict) else None
     if not isinstance(cells, list):
         return [], "keine_zellen"
@@ -250,6 +301,11 @@ def main() -> int:
     parser.add_argument("--max-tokens", type=int, default=None, help="Tokenbudget fuer alle Modelle ueberschreiben")
     parser.add_argument("--cache-buster", action="store_true", help="eindeutigen Session-Tag in den Systemprompt haengen")
     parser.add_argument("--absolute-counts", action="store_true", help="Prompt-Zusatz aus v3_abs_count aktivieren")
+    parser.add_argument(
+        "--last-timepoint",
+        action="store_true",
+        help="letzten berichteten Messzeitpunkt verlangen und Zeitpunkte mitliefern (v4_last_timepoint)",
+    )
     parser.add_argument("--run-id", default=datetime.now(timezone.utc).strftime("extended_%Y%m%d"))
     args = parser.parse_args()
 
@@ -260,6 +316,8 @@ def main() -> int:
 
     global SESSION_TAG
     prompt_version = VERSION_ABSOLUTE_COUNTS if args.absolute_counts else PROMPT_VERSION
+    if args.last_timepoint:
+        prompt_version = VERSION_LAST_TIMEPOINT
     if args.cache_buster:
         SESSION_TAG = uuid.uuid4().hex[:12]
         prompt_version = f"{prompt_version}_cb"
@@ -290,7 +348,9 @@ def main() -> int:
             candidate = REPO / path
             if candidate.exists():
                 text = candidate.read_text(encoding="utf-8", errors="replace")
-        prompt = build_prompt(record, text, absolute_counts=args.absolute_counts)
+        prompt = build_prompt(
+            record, text, absolute_counts=args.absolute_counts, last_timepoint=args.last_timepoint
+        )
         response = call(models[model], prompt, key, base)
         retry: dict[str, Any] | None = None
         # Reasoning-Schleifen enden mit finish_reason "length" und leerem Inhalt.
@@ -300,6 +360,7 @@ def main() -> int:
             if retry.get("content"):
                 response = retry
         cells, parse_error = parse_cells(response.get("content") or "")
+        timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
         row = {
             "record_id": record["record_id"],
             "model": model,
@@ -316,6 +377,8 @@ def main() -> int:
             "elapsed_s": response.get("elapsed_s"),
             "content_len": len(response.get("content") or ""),
             "parse_error": parse_error,
+            "timepoints": timepoints if args.last_timepoint else {},
+            "timepoint_error": timepoint_error if args.last_timepoint else "",
             "prompt_version": prompt_version,
             "predicted": {"cells": cells},
             "rows": cells,

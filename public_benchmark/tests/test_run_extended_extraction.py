@@ -28,3 +28,23 @@ def test_flag_schaltet_absolute_counts_zu() -> None:
     prompt = runner.build_prompt(RECORD, "Text", absolute_counts=True)
     assert "never as percentages" in prompt
     assert "post-test" in prompt
+
+
+def test_letzter_zeitpunkt_ersetzt_die_zeitpunktregel() -> None:
+    prompt = runner.build_prompt(RECORD, "Text", last_timepoint=True)
+    assert runner.VERSION_LAST_TIMEPOINT == "v4_last_timepoint"
+    assert "last time point reported" in prompt
+    assert "chosen_timepoint" in prompt and "discarded_timepoints" in prompt
+    assert "post-test" not in prompt
+
+
+def test_zeitpunkt_parser_liest_labels() -> None:
+    timepoints, error = runner.parse_timepoints(
+        '{"cells": [], "chosen_timepoint": "12 months follow-up", '
+        '"discarded_timepoints": ["Baseline", "3 months follow-up"]}'
+    )
+    assert error == ""
+    assert timepoints == {"chosen": "12 months follow-up", "discarded": ["Baseline", "3 months follow-up"]}
+    leer, fehler = runner.parse_timepoints('{"cells": []}')
+    assert leer["chosen"] == "" and fehler == "kein_zeitpunkt"
+    assert runner.parse_timepoints("keine antwort")[1] == "kein_json"

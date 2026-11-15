@@ -196,6 +196,27 @@ neu berechnet und gegen `eval/*.metrics.json` geprüft. Wo sich eine Ursache
 nicht belegen lässt, steht "Nicht eindeutig klassifizierbar" statt einer
 Vermutung. Der Abschlussbericht liegt in `next_iteration_report.md`.
 
+## Zeitpunkt-Regel `v4_last_timepoint` (verworfen)
+
+`--last-timepoint` verlangt den letzten berichteten Messzeitpunkt und lässt das
+Modell den gewählten Zeitpunkt sowie die verworfenen Zeitpunkte mitliefern:
+
+```bash
+python public_benchmark/extended_benchmark/run_extended_extraction.py \
+  --models glm --split dev --cache-buster --last-timepoint \
+  --run-id yun_dev_v4_20261115
+
+python public_benchmark/extended_benchmark/check_timepoints.py \
+  --run yun_dev_v4_20261115 \
+  --out public_benchmark/extended_benchmark/analysis/v4_20261115/timepoints_check.json
+```
+
+`check_timepoints.py` prüft ohne Modell, ob die genannten Labels wörtlich im
+Artikel stehen, ob ein späterer Zeitpunkt verworfen wurde und wie oft die
+Angabe fehlt; es korrigiert nichts. Die Fassung ist verworfen (F1 0,738 statt
+0,933), weil die Gold-Annotation selbst keinen einheitlichen Zeitpunkt nutzt —
+Befund in `next_iteration_report.md`, Abschnitt 12.
+
 ## Mehrstufige Ereignisextraktion (Prototyp)
 
 `run_stage_extraction.py` ersetzt nur die beiden Ereignisfelder durch eine

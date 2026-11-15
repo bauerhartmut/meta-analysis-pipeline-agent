@@ -19,14 +19,16 @@ ALIASE = {
     "v2_timepoint": "v2_timepoint",
     "v2b_cachebuster": "v2_timepoint",
     "v3_abs_count": "v3_abs_count",
+    "v4_last_timepoint": "v4_last_timepoint",
 }
 
-KANONISCH = ("v1", "v2_timepoint", "v3_abs_count")
+KANONISCH = ("v1", "v2_timepoint", "v3_abs_count", "v4_last_timepoint")
 
 BESCHREIBUNG = {
     "v1": "ohne Zeitpunktangabe",
     "v2_timepoint": "Zeitpunkt im Prompt (Standard)",
     "v3_abs_count": "Zeitpunkt plus absolute Ereigniszahlen",
+    "v4_last_timepoint": "letzter berichteter Messzeitpunkt, Zeitpunkte mitgeliefert",
 }
 
 # Rolle einer Version in der Auswertung. "verworfen" heisst: im Dev-Lauf
@@ -36,6 +38,7 @@ STATUS = {
     "v1": "historisch",
     "v2_timepoint": "referenz",
     "v3_abs_count": "verworfen",
+    "v4_last_timepoint": "verworfen",
 }
 
 

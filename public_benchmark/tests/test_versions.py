@@ -39,6 +39,11 @@ def test_alle_aliase_zeigen_auf_kanonische_namen() -> None:
     assert set(ALIASE.values()) <= set(KANONISCH)
 
 
+def test_v4_ist_kanonisch_und_verworfen() -> None:
+    assert normalisiere_version("v4_last_timepoint_cb") == "v4_last_timepoint"
+    assert status_von("v4_last_timepoint") == "verworfen"
+
+
 def test_v3_ist_verworfen_und_v2_referenz() -> None:
     assert status_von("v3_abs_count") == "verworfen"
     assert status_von("v2_timepoint") == "referenz"

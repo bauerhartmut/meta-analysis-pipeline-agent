@@ -3,12 +3,14 @@
     "records": 43,
     "gold_zellen": 170,
     "laeufe": [
+      "stage_20261115",
       "yun_dev_20261114",
       "yun_dev_fresh_20261115",
       "yun_dev_retry_20261115",
       "yun_dev_std_20261115",
       "yun_dev_tp_20261115",
-      "yun_dev_v3_20261115"
+      "yun_dev_v3_20261115",
+      "yun_dev_v4_20261115"
     ],
     "diagnoselaeufe": [
       "version_check_20261115",
@@ -19,6 +21,35 @@
     ]
   },
   "lauf_uebersicht": [
+    {
+      "run_id": "stage_20261115",
+      "model": "glm",
+      "prompt_version": "v2_timepoint_stage2",
+      "prompt_version_roh": "v2_timepoint_stage2_cb",
+      "antworten": 43,
+      "cache_anteil": 0.0,
+      "leere_antworten": 2,
+      "gold_zellen": 170,
+      "fehlerhafte_zellen": 11,
+      "zusaetzliche_zellen": 15,
+      "klassen": {
+        "Falsche Tabellenzeile": 2,
+        "Zahl nicht extrahiert": 6,
+        "Nicht eindeutig klassifizierbar": 3
+      },
+      "metriken": {
+        "cell_recall": 0.9353,
+        "cell_precision": 0.8883,
+        "cell_f1": 0.9112,
+        "mae_pairs": 0.4152,
+        "mae_coverage": 0.9647,
+        "mae_pairs_covered": 164,
+        "gold_cells": 170,
+        "record_exact": 30,
+        "records": 43
+      },
+      "metriken_identisch": true
+    },
     {
       "run_id": "yun_dev_20261114",
       "model": "glm",
@@ -287,9 +318,56 @@
         "records": 43
       },
       "metriken_identisch": true
+    },
+    {
+      "run_id": "yun_dev_v4_20261115",
+      "model": "glm",
+      "prompt_version": "v4_last_timepoint",
+      "prompt_version_roh": "v4_last_timepoint_cb",
+      "antworten": 43,
+      "cache_anteil": 0.0,
+      "leere_antworten": 0,
+      "gold_zellen": 170,
+      "fehlerhafte_zellen": 42,
+      "zusaetzliche_zellen": 9,
+      "klassen": {
+        "Falsche Tabellenzeile": 1,
+        "Falscher Messzeitpunkt": 4,
+        "Zahl nicht extrahiert": 2,
+        "Nicht eindeutig klassifizierbar": 35
+      },
+      "metriken": {
+        "cell_recall": 0.7529,
+        "cell_precision": 0.7232,
+        "cell_f1": 0.7378,
+        "mae_pairs": 3.6214,
+        "mae_coverage": 0.9882,
+        "mae_pairs_covered": 168,
+        "gold_cells": 170,
+        "record_exact": 25,
+        "records": 43
+      },
+      "metriken_identisch": true
     }
   ],
   "metrik_abgleich": [
+    {
+      "run_id": "stage_20261115",
+      "model": "glm",
+      "metriken": {
+        "cell_recall": 0.9353,
+        "cell_precision": 0.8883,
+        "cell_f1": 0.9112,
+        "mae_pairs": 0.4152,
+        "mae_coverage": 0.9647,
+        "mae_pairs_covered": 164,
+        "gold_cells": 170,
+        "record_exact": 30,
+        "records": 43
+      },
+      "ableitung_identisch": true,
+      "abweichungen": []
+    },
     {
       "run_id": "yun_dev_20261114",
       "model": "glm",
@@ -438,6 +516,23 @@
         "mae_pairs_covered": 158,
         "gold_cells": 170,
         "record_exact": 33,
+        "records": 43
+      },
+      "ableitung_identisch": true,
+      "abweichungen": []
+    },
+    {
+      "run_id": "yun_dev_v4_20261115",
+      "model": "glm",
+      "metriken": {
+        "cell_recall": 0.7529,
+        "cell_precision": 0.7232,
+        "cell_f1": 0.7378,
+        "mae_pairs": 3.6214,
+        "mae_coverage": 0.9882,
+        "mae_pairs_covered": 168,
+        "gold_cells": 170,
+        "record_exact": 25,
         "records": 43
       },
       "ableitung_identisch": true,
@@ -1009,6 +1104,104 @@
       "status": "referenz",
       "beschreibung": "Zeitpunkt im Prompt (Standard)"
     },
+    "v2_timepoint_stage2": {
+      "fehler": 11,
+      "klassen": {
+        "Nicht eindeutig klassifizierbar": 3,
+        "Zahl nicht extrahiert": 6,
+        "Falsche Tabellenzeile": 2
+      },
+      "technisch": 0,
+      "inhaltlich": 11,
+      "nach_modell": {
+        "glm": {
+          "Nicht eindeutig klassifizierbar": 3,
+          "Zahl nicht extrahiert": 6,
+          "Falsche Tabellenzeile": 2
+        }
+      },
+      "nach_feld": {
+        "comparator_events": {
+          "Nicht eindeutig klassifizierbar": 1,
+          "Falsche Tabellenzeile": 1
+        },
+        "comparator_group_size": {
+          "Zahl nicht extrahiert": 1
+        },
+        "comparator_mean": {
+          "Zahl nicht extrahiert": 1
+        },
+        "comparator_standard_deviation": {
+          "Zahl nicht extrahiert": 1
+        },
+        "intervention_events": {
+          "Nicht eindeutig klassifizierbar": 1,
+          "Falsche Tabellenzeile": 1
+        },
+        "intervention_group_size": {
+          "Zahl nicht extrahiert": 1
+        },
+        "intervention_mean": {
+          "Nicht eindeutig klassifizierbar": 1,
+          "Zahl nicht extrahiert": 1
+        },
+        "intervention_standard_deviation": {
+          "Zahl nicht extrahiert": 1
+        }
+      },
+      "ereignis_fehler": [
+        {
+          "run_id": "stage_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 52.0,
+          "prediction": 64.0,
+          "abs_error": 12.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "stage_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 51.0,
+          "prediction": 73.0,
+          "abs_error": 22.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "stage_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 49.0,
+          "prediction": 31.0,
+          "abs_error": 18.0,
+          "klasse": "Falsche Tabellenzeile"
+        },
+        {
+          "run_id": "stage_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 64.0,
+          "prediction": 48.0,
+          "abs_error": 16.0,
+          "klasse": "Falsche Tabellenzeile"
+        }
+      ],
+      "zusaetzliche_zellen": 15,
+      "laeufe": [
+        "stage_20261115"
+      ],
+      "status": "unbekannt",
+      "beschreibung": ""
+    },
     "v3_abs_count": {
       "fehler": 17,
       "klassen": {
@@ -1114,22 +1307,73 @@
       ],
       "status": "verworfen",
       "beschreibung": "Zeitpunkt plus absolute Ereigniszahlen"
+    },
+    "v4_last_timepoint": {
+      "fehler": 42,
+      "klassen": {
+        "Nicht eindeutig klassifizierbar": 35,
+        "Zahl nicht extrahiert": 2,
+        "Falsche Tabellenzeile": 1,
+        "Falscher Messzeitpunkt": 4
+      },
+      "technisch": 0,
+      "inhaltlich": 42,
+      "nach_modell": {
+        "glm": {
+          "Nicht eindeutig klassifizierbar": 35,
+          "Zahl nicht extrahiert": 2,
+          "Falsche Tabellenzeile": 1,
+          "Falscher Messzeitpunkt": 4
+        }
+      },
+      "nach_feld": {
+        "comparator_group_size": {
+          "Zahl nicht extrahiert": 1
+        },
+        "comparator_mean": {
+          "Nicht eindeutig klassifizierbar": 10,
+          "Falscher Messzeitpunkt": 1
+        },
+        "comparator_standard_deviation": {
+          "Nicht eindeutig klassifizierbar": 8,
+          "Falscher Messzeitpunkt": 1
+        },
+        "intervention_group_size": {
+          "Zahl nicht extrahiert": 1
+        },
+        "intervention_mean": {
+          "Nicht eindeutig klassifizierbar": 9,
+          "Falscher Messzeitpunkt": 1
+        },
+        "intervention_standard_deviation": {
+          "Nicht eindeutig klassifizierbar": 8,
+          "Falsche Tabellenzeile": 1,
+          "Falscher Messzeitpunkt": 1
+        }
+      },
+      "ereignis_fehler": [],
+      "zusaetzliche_zellen": 9,
+      "laeufe": [
+        "yun_dev_v4_20261115"
+      ],
+      "status": "verworfen",
+      "beschreibung": "letzter berichteter Messzeitpunkt, Zeitpunkte mitgeliefert"
     }
   },
   "fehler_nach_klasse": {
-    "Nicht eindeutig klassifizierbar": 186,
+    "Nicht eindeutig klassifizierbar": 224,
+    "Zahl nicht extrahiert": 150,
+    "Falsche Tabellenzeile": 19,
     "Unvollstaendige Modellantwort": 46,
-    "Falsche Tabellenzeile": 16,
-    "Falscher Messzeitpunkt": 8,
-    "Zahl nicht extrahiert": 142
+    "Falscher Messzeitpunkt": 12
   },
   "fehler_nach_modell": {
     "glm": {
-      "Nicht eindeutig klassifizierbar": 50,
+      "Nicht eindeutig klassifizierbar": 88,
+      "Zahl nicht extrahiert": 34,
+      "Falsche Tabellenzeile": 14,
       "Unvollstaendige Modellantwort": 40,
-      "Falsche Tabellenzeile": 11,
-      "Falscher Messzeitpunkt": 4,
-      "Zahl nicht extrahiert": 26
+      "Falscher Messzeitpunkt": 8
     },
     "qwen30": {
       "Zahl nicht extrahiert": 116,
@@ -1141,54 +1385,59 @@
   },
   "fehler_nach_feld": {
     "intervention_mean": {
-      "Nicht eindeutig klassifizierbar": 47,
+      "Nicht eindeutig klassifizierbar": 57,
+      "Zahl nicht extrahiert": 5,
       "Unvollstaendige Modellantwort": 6,
-      "Falscher Messzeitpunkt": 2,
-      "Zahl nicht extrahiert": 4
+      "Falscher Messzeitpunkt": 3
     },
     "intervention_group_size": {
+      "Zahl nicht extrahiert": 61,
       "Unvollstaendige Modellantwort": 10,
-      "Zahl nicht extrahiert": 59,
       "Nicht eindeutig klassifizierbar": 3
     },
-    "intervention_standard_deviation": {
-      "Unvollstaendige Modellantwort": 6,
-      "Nicht eindeutig klassifizierbar": 36,
-      "Falsche Tabellenzeile": 4,
-      "Falscher Messzeitpunkt": 2,
-      "Zahl nicht extrahiert": 4
-    },
     "comparator_group_size": {
+      "Zahl nicht extrahiert": 60,
       "Unvollstaendige Modellantwort": 10,
-      "Zahl nicht extrahiert": 58,
       "Nicht eindeutig klassifizierbar": 4
     },
-    "comparator_mean": {
-      "Unvollstaendige Modellantwort": 6,
-      "Nicht eindeutig klassifizierbar": 42,
-      "Falscher Messzeitpunkt": 2,
-      "Zahl nicht extrahiert": 4
-    },
-    "comparator_standard_deviation": {
-      "Unvollstaendige Modellantwort": 6,
-      "Nicht eindeutig klassifizierbar": 36,
-      "Falscher Messzeitpunkt": 2,
-      "Zahl nicht extrahiert": 4
-    },
     "intervention_events": {
+      "Nicht eindeutig klassifizierbar": 11,
+      "Falsche Tabellenzeile": 6,
       "Unvollstaendige Modellantwort": 1,
-      "Zahl nicht extrahiert": 6,
-      "Nicht eindeutig klassifizierbar": 10,
-      "Falsche Tabellenzeile": 5
+      "Zahl nicht extrahiert": 6
     },
     "comparator_events": {
+      "Nicht eindeutig klassifizierbar": 9,
+      "Falsche Tabellenzeile": 8,
       "Unvollstaendige Modellantwort": 1,
-      "Zahl nicht extrahiert": 3,
-      "Nicht eindeutig klassifizierbar": 8,
-      "Falsche Tabellenzeile": 7
+      "Zahl nicht extrahiert": 3
+    },
+    "intervention_standard_deviation": {
+      "Zahl nicht extrahiert": 5,
+      "Unvollstaendige Modellantwort": 6,
+      "Nicht eindeutig klassifizierbar": 44,
+      "Falsche Tabellenzeile": 5,
+      "Falscher Messzeitpunkt": 3
+    },
+    "comparator_mean": {
+      "Zahl nicht extrahiert": 5,
+      "Unvollstaendige Modellantwort": 6,
+      "Nicht eindeutig klassifizierbar": 52,
+      "Falscher Messzeitpunkt": 3
+    },
+    "comparator_standard_deviation": {
+      "Zahl nicht extrahiert": 5,
+      "Unvollstaendige Modellantwort": 6,
+      "Nicht eindeutig klassifizierbar": 44,
+      "Falscher Messzeitpunkt": 3
     }
   },
   "fehler_nach_prompt_version": {
+    "v2_timepoint_stage2": {
+      "Nicht eindeutig klassifizierbar": 3,
+      "Zahl nicht extrahiert": 6,
+      "Falsche Tabellenzeile": 2
+    },
     "v1": {
       "Nicht eindeutig klassifizierbar": 83,
       "Unvollstaendige Modellantwort": 12,
@@ -1207,11 +1456,73 @@
       "Zahl nicht extrahiert": 6,
       "Falsche Tabellenzeile": 2,
       "Unvollstaendige Modellantwort": 6
+    },
+    "v4_last_timepoint": {
+      "Nicht eindeutig klassifizierbar": 35,
+      "Zahl nicht extrahiert": 2,
+      "Falsche Tabellenzeile": 1,
+      "Falscher Messzeitpunkt": 4
     }
   },
   "ereigniszahlen": {
-    "anzahl_fehler": 41,
+    "anzahl_fehler": 45,
     "details": [
+      {
+        "run_id": "stage_20261115",
+        "prompt_version": "v2_timepoint_stage2",
+        "model": "glm",
+        "record_id": "yun2024:190",
+        "field": "intervention_events",
+        "arm": "intervention",
+        "gold": 52.0,
+        "prediction": 64.0,
+        "abs_error": 12.0,
+        "klasse": "Nicht eindeutig klassifizierbar",
+        "beleg": "Wert steht wortwoertlich im Artikel, 3 Treffer im Text; Zeile, Spalte oder Zeitpunkt nicht belegbar",
+        "textstelle": "(45.7) 61 (48.8) 57 (42.9) married/cohabiting 140 (54.3) 64 (51.2) 76 (57.1) children <18 years at home 82 (43.2) 36 (40.4)"
+      },
+      {
+        "run_id": "stage_20261115",
+        "prompt_version": "v2_timepoint_stage2",
+        "model": "glm",
+        "record_id": "yun2024:190",
+        "field": "comparator_events",
+        "arm": "comparator",
+        "gold": 51.0,
+        "prediction": 73.0,
+        "abs_error": 22.0,
+        "klasse": "Nicht eindeutig klassifizierbar",
+        "beleg": "Wert steht wortwoertlich im Artikel; Zeile, Spalte oder Zeitpunkt nicht belegbar",
+        "textstelle": "53 (42) 52 (42) TAU^¤^ 32 (24) 73 (55) 56 (42) 51 (38) ^¤^*TAU* treatment as"
+      },
+      {
+        "run_id": "stage_20261115",
+        "prompt_version": "v2_timepoint_stage2",
+        "model": "glm",
+        "record_id": "yun2024:191",
+        "field": "intervention_events",
+        "arm": "intervention",
+        "gold": 49.0,
+        "prediction": 31.0,
+        "abs_error": 18.0,
+        "klasse": "Falsche Tabellenzeile",
+        "beleg": "geprueft am 15.11.2026: 31 ist die Ereigniszahl der Zeile '0-3 months' (Gold 49 = 'Total 0-12 months'), gleiche Zeile wie die Partnerzelle",
+        "textstelle": "44.84 42.19 0.2 men 76 (29.5) 31 (24.8) 45 (33.8) women 182 (70.5) 94 (75.2)"
+      },
+      {
+        "run_id": "stage_20261115",
+        "prompt_version": "v2_timepoint_stage2",
+        "model": "glm",
+        "record_id": "yun2024:191",
+        "field": "comparator_events",
+        "arm": "comparator",
+        "gold": 64.0,
+        "prediction": 48.0,
+        "abs_error": 16.0,
+        "klasse": "Falsche Tabellenzeile",
+        "beleg": "geprueft am 15.11.2026: 48 ist die Ereigniszahl der Zeile '0-3 months' (Gold 64 = 'Total 0-12 months'); die Prozentrate 48,1 ist Koinzidenz",
+        "textstelle": "single 118 (45.7) 61 (48.8) 57 (42.9) married/cohabiting 140 (54.3) 64 (51.2)"
+      },
       {
         "run_id": "yun_dev_20261114",
         "prompt_version": "v1",
@@ -3667,13 +3978,13 @@
     ]
   },
   "pruefqueue": {
-    "eintraege": 535,
+    "eintraege": 623,
     "nach_prioritaet": {
-      "1": 30,
-      "2": 188,
-      "3": 24,
-      "4": 156,
-      "5": 137
+      "1": 34,
+      "2": 196,
+      "3": 30,
+      "4": 191,
+      "5": 172
     },
     "referenz": {
       "datei": "human_review_queue.csv",
@@ -3689,16 +4000,18 @@
     "verworfen": {
       "datei": "human_review_discarded.csv",
       "status": "verworfen",
-      "eintraege": 36,
+      "eintraege": 94,
       "versionen": [
-        "v3_abs_count"
+        "v3_abs_count",
+        "v4_last_timepoint"
       ]
     },
     "historisch": {
       "datei": "human_review_historical.csv",
-      "eintraege": 160,
+      "eintraege": 190,
       "versionen": [
-        "v1"
+        "v1",
+        "v2_timepoint_stage2"
       ]
     }
   }

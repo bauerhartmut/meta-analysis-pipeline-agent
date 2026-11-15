@@ -266,6 +266,8 @@ Werte liefert.
 | 4 | Zeitpunkt- und Populationsfeld in die Records aufnehmen | macht Annotation prüfbar, verhindert Zeitpunktfehler strukturell | Stunden + Nachannotation |
 | 5 | Technische Validierung: Ereignisse ≤ Gruppengröße | fängt in diesen Daten 0 Fälle; bleibt Schutz für neue Daten | Stunden |
 | 6 | Tabellen separat übergeben statt Volltext | größter Hebel bei mehrzeiligen Tabellen, aber größter Umbau | Tage |
+| 7 | ~~Zeitpunkt-Regel „letzter Messpunkt"~~ **getestet, verworfen** (Abschnitt 12) | behebt 4 Zellen, zerstört 39; Gold-Konvention ist nicht einheitlich | erledigt |
+| 8 | Messzeitpunkt je Record annotieren und im Prompt setzen | macht den Zielzeitpunkt prüfbar, statt ihn raten zu lassen | Stunden + Nachannotation |
 
 ## 9. Konzept für die nächste Benchmark-Iteration
 
@@ -313,13 +315,16 @@ solange die Validierung nur markiert und nicht korrigiert.
    Zwischenschritt benennt die falsche Zeile/Spalte explizit, statt sie zu
    vermeiden, und findet zusätzlich Zellen ohne Gold-Pendant. Er ist damit als
    Verbesserung erledigt und bleibt als Diagnosewerkzeug erhalten.
-3. **Zeitpunkt-Definition im Prompt** — der einzige verbleibende belegte
-   Hebel: Stufe 1 nennt in `yun2024:190` ausdrücklich „3 months follow-up" und
-   in `yun2024:191` „0-3 months", obwohl Gold den letzten Messpunkt bzw. die
-   Total-Zeile meint. „End of intervention" ist dafür zu unbestimmt; nötig ist
-   eine Regel wie „der letzte berichtete Messzeitpunkt" mit Belegpflicht.
-4. Tabellenübergabe (B) — erst sinnvoll, wenn die Zeitpunktregel steht, sonst
-   wird dieselbe falsche Spalte nur sauberer gelesen.
+3. ~~Zeitpunkt-Regel „letzter berichteter Messzeitpunkt"~~ **getestet,
+   verworfen** (Abschnitt 12): behebt die beiden bekannten Zellen, zerstört
+   aber 39 Zellen eines anderen Artikels, weil die Gold-Annotation selbst
+   keinen einheitlichen Zeitpunkt verwendet.
+4. **Messzeitpunkt je Record annotieren** — der einzige Weg, der beide
+   Artikel-Konventionen trifft: Der Zielzeitpunkt steht dann im Record und im
+   Prompt, und die Antwort ist dagegen prüfbar. Aufwand: Nachannotation der 43
+   Dev-Records (Zeitpunkt steht im Artikel), dann ein Lauf.
+5. Tabellenübergabe (B) — erst sinnvoll, wenn der Zielzeitpunkt feststeht,
+   sonst wird dieselbe falsche Spalte nur sauberer gelesen.
 
 ## 10. Datenerweiterung und Fine-Tuning
 
@@ -409,7 +414,65 @@ Ergebnis: Der Prototyp ist **nicht übernommen**. Er kostet den Faktor 3 an
 Aufrufen und verschlechtert F1 um 0,021, weil er zusätzliche Zellen erfindet,
 ohne die Ortswahl zu verbessern. Der belegte Nutzen liegt im Diagnosewert:
 Die Zielzeitpunkt-Definition („end of intervention") ist die offene Stelle,
-nicht die Lesegenauigkeit.
+nicht die Lesegenauigkeit. Diese Vermutung ist in Abschnitt 12 direkt geprüft
+worden — mit negativem Ergebnis.
+
+## 12. Zeitpunkt-Regel „letzter Messpunkt" (15.11.2026)
+
+Prompt `v4_last_timepoint` verlangt den **letzten berichteten Messzeitpunkt**
+des Outcomes (bei kumulativen Tabellen die Total-Zeile), verbietet Baseline und
+lässt das Modell den gewählten Zeitpunkt sowie die verworfenen Zeitpunkte
+wörtlich mitliefern. Ein neuer Lauf auf denselben 43 Records (frisch, 43
+Aufrufe, 1 Retry, Median 7,7 s):
+
+| Kennzahl | Referenz (Lauf 6) | `v4_last_timepoint` |
+|---|---|---|
+| Zellen-F1 | 0,933 | 0,738 |
+| Recall / Precision | 0,935 / 0,930 | 0,753 / 0,723 |
+| MAE | 0,415 | 3,621 |
+| mae_coverage | 0,965 (164/170) | 0,988 (168/170) |
+| exakte Records | 34/43 | 25/43 |
+
+### Offline-Prüfung der genannten Zeitpunkte
+
+`check_timepoints.py` prüft ohne Modell gegen den Artikeltext (Ausgabe:
+`analysis/v4_20261115/timepoints_check.json`):
+
+| Prüfung | Ergebnis |
+|---|---|
+| Records mit Zeitpunktangabe | 43/43 |
+| echte Labels wörtlich im Artikel | 34/34 |
+| Platzhalter („running text", „not applicable") | 9 |
+| verworfene Labels | 58, davon 10 nicht wörtlich |
+| Widerspruch „späterer Zeitpunkt verworfen" | 1 (`yun2024:192`) |
+
+Der eine Widerspruch ist ein Fehlalarm der Heuristik: Das Outcome lautet
+„continued antidepressants until the 6-month", der Horizont endet also bei 6
+Monaten; das Modell lag mit „6 months follow-up" richtig (86/78 = Gold). Die
+Prüfung markiert nur, sie korrigiert nicht.
+
+### Was die Regel behebt und was sie zerstört
+
+**Behoben** (die beiden bekannten Fehlzellen aus Abschnitt 4): `yun2024:190`
+wählt „12 months follow-up" und liefert 52/51 (Gold), `yun2024:191` wählt
+„Total 0-12 months" und liefert 49/64 (Gold). Auch `yun2024:192` ist richtig.
+
+**Zerstört**: Artikel PMC5498715 (`yun2024:224`–`:238`, 15 Records, 90
+Gold-Zellen). Das Modell wählt „Follow up after 4 months" — den letzten
+berichteten Zeitpunkt — und trifft 51 von 90 Zellen; die Referenz traf dort
+90/90, weil Gold Pre-/Post-Test meint (z. B. 0,30/0,79 gegen 0,43/1,04).
+
+### Befund: Die Gold-Annotation hat keinen einheitlichen Zeitpunkt
+
+Derselbe Benchmark bewertet in PMC5244530 den **letzten** Messpunkt (12 Monate
+bzw. Total), in PMC5498715 den **Post-Test** (nicht den letzten Messpunkt).
+Damit kann keine Prompt-Regel beide Artikel treffen: „end of intervention"
+verliert PMC5244530, „letzter Messpunkt" verliert PMC5498715. Der Fehler liegt
+nicht im Modell, sondern in einer fehlenden Angabe in den Gold-Records.
+
+`v4_last_timepoint` ist deshalb **verworfen** (Status in `versions.py`,
+Prüffälle in `human_review_discarded.csv`). Der mitgelieferte Zeitpunkt bleibt
+als Diagnose erhalten: Er macht die Ortswahl sichtbar und offline prüfbar.
 
 ## Technische Umsetzung
 
