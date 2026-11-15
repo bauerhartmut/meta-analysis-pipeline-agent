@@ -1,0 +1,48 @@
+record_id;dokument;ziel;text_zeichen;prompt_zeichen;v6_status;v6_tokens;v6_zellen;v7_status;v7_tokens;v7_zellen;v7_content_len;v7_finish;v7_parse_error;v7_header;v7_fallback;gold;treffer;falscher_wert;ueberzaehlig;auslassung;zieltreu;rueckfall;zeitpunkt_unklar;precision;recall;zell_f1;gold_konflikt;tokens_gesamt;kategorien
+yun2024:119;PMC4323894;month 6;10032;11719;length;24000;0;zellen;16076;4;365;stop;;6 months;False;4;4;0;0;0;4;0;0;1.0;1.0;1.0;nein;40076;
+yun2024:117;PMC4323894;month 6;10032;11719;length;24000;0;zellen;15592;3;295;stop;;6 months;False;3;2;0;1;1;2;0;0;0.6667;0.6667;0.6667;nein;39592;"B:ueberzaehlige_zelle;B:auslassung"
+yun2024:115;PMC4319071;month 4;49917;46732;length;24000;0;zellen;4441;4;371;stop;;4-month follow-up;False;6;2;2;0;2;4;0;0;0.5;0.3333;0.5;nein;28441;"B:falscher_wert;B:auslassung"
+yun2024:158;PMC5056957;month 12;16081;17778;length;24000;0;length;19000;0;0;length;kein_json;;;6;0;0;0;6;0;0;0;;0.0;0.0;nein;43000;A:length_abbruch
+yun2024:151;PMC4996097;month 11;11389;13037;length;24000;0;zellen;15316;4;362;stop;;Preop;True;4;3;1;0;0;0;4;0;0.75;0.75;0.8571;nein;39316;"B:falscher_wert;B:rueckfall_zeitpunkt"
+yun2024:160;PMC5056957;month 12;16081;17772;length;16000;0;zellen;18850;4;359;stop;;12 m;False;6;4;0;0;2;4;0;0;1.0;0.6667;0.8;nein;34850;B:auslassung
+yun2024:161;PMC5056957;month 24;16081;17778;length;16000;0;zellen;11660;4;361;stop;;24 m;False;6;4;0;0;2;4;0;0;1.0;0.6667;0.8;nein;27660;B:auslassung
+yun2024:162;PMC5056957;month 24;16081;17775;length;16000;0;zellen;2832;6;525;stop;;24 m;False;6;4;2;0;0;6;0;0;0.6667;0.6667;0.8;nein;18832;B:falscher_wert
+yun2024:163;PMC5056957;month 24;16081;17773;length;16000;0;length;19000;0;0;length;kein_json;;;6;0;0;0;6;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:170;PMC5079604;follow-up;20409;22113;length;16000;0;zellen;5640;4;358;stop;;;False;2;2;0;2;0;2;0;0;0.5;1.0;0.6667;nein;21640;B:ueberzaehlige_zelle
+yun2024:169;PMC5079604;follow-up;20409;22099;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:196;PMC5360580;week 24;20669;22331;length;16000;0;zellen;3301;4;359;stop;;Week;False;6;0;4;0;2;4;0;0;0.0;0.0;0.0;nein;19301;"B:falscher_wert;B:auslassung"
+yun2024:197;PMC5380284;baseline;5032;6705;length;16000;0;zellen;5008;2;224;stop;;24 hours;True;2;2;0;0;0;0;0;2;1.0;1.0;1.0;nein;21008;B:zeitpunkt_unklar
+yun2024:201;PMC5380284;baseline;5032;6718;length;16000;0;zellen;8593;2;224;stop;;24 hours;True;2;2;0;0;0;0;0;2;1.0;1.0;1.0;nein;24593;B:zeitpunkt_unklar
+yun2024:204;PMC5380326;baseline;14600;16255;length;16000;0;zellen;15480;2;231;stop;;baseline;False;2;2;0;0;0;2;0;0;1.0;1.0;1.0;nein;31480;
+yun2024:252;PMC5614421;baseline;40101;41813;length;16000;0;leer;3911;0;81;stop;keine_verwertbaren_zellen;;False;2;0;0;0;2;0;0;0;;0.0;0.0;nein;19911;A:leere_ausgabe
+yun2024:325;PMC5559992;baseline;2999;4642;length;16000;0;leer;8522;0;81;stop;keine_verwertbaren_zellen;;False;2;0;0;0;2;0;0;0;;0.0;0.0;nein;24522;A:leere_ausgabe
+yun2024:328;PMC5559992;baseline;2999;4648;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:345;PMC5686687;day 42;9253;10879;length;16000;0;zellen;4569;4;357;stop;;day 42;False;6;3;1;0;2;4;0;0;0.75;0.5;0.6667;nein;20569;"B:falscher_wert;B:auslassung"
+yun2024:348;PMC5686687;baseline;9253;10893;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:349;PMC5686687;baseline;9253;10890;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:356;PMC5884950;month 4;19352;21324;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:357;PMC5884950;month 4;19352;21318;length;16000;0;zellen;921;2;224;stop;;4 months;False;2;0;2;0;0;2;0;0;0.0;0.0;0.0;nein;16921;B:falscher_wert
+yun2024:368;PMC1475568;end of study/treatment;11667;13429;length;16000;0;length;19000;0;0;length;kein_json;;;4;0;0;0;4;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:384;PMC2974815;end of study/treatment;16703;18430;length;16000;0;zellen;14442;4;371;stop;;Final Visit;False;2;2;0;2;0;0;2;0;0.5;1.0;0.6667;nein;30442;"B:rueckfall_zeitpunkt;B:ueberzaehlige_zelle"
+yun2024:403;PMC5781260;baseline;12175;13849;length;16000;0;leer;1141;0;81;stop;keine_verwertbaren_zellen;;False;2;0;0;0;2;0;0;0;;0.0;0.0;nein;17141;A:leere_ausgabe
+yun2024:405;PMC5781260;baseline;12175;13819;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:465;PMC5726464;week 24;12893;14571;length;16000;0;zellen;6850;4;354;stop;;Week 24;False;2;2;0;2;0;2;0;0;0.5;1.0;0.6667;nein;22850;B:ueberzaehlige_zelle
+yun2024:483;PMC3343759;month 6;8762;10467;length;16000;0;zellen;14324;2;224;stop;;6 months;False;2;0;2;0;0;2;0;0;0.0;0.0;0.0;nein;30324;B:falscher_wert
+yun2024:533;PMC5800236;month 12;8923;10606;length;16000;0;zellen;18063;2;251;stop;;Month 12 after the Treatment;False;2;0;2;0;0;2;0;0;0.0;0.0;0.0;nein;34063;B:falscher_wert
+yun2024:566;PMC5541727;week 4;15499;17204;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:570;PMC5541727;week 4;15499;17167;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:571;PMC5541727;week 4;15499;17183;length;16000;0;leer;14922;0;85;stop;keine_verwertbaren_zellen;week 4;False;2;0;0;0;2;0;0;0;;0.0;0.0;nein;30922;A:leere_ausgabe
+yun2024:580;PMC3504298;follow-up;12838;14508;length;16000;0;zellen;8951;2;241;stop;;1-month follow-up;False;2;2;0;0;0;2;0;0;1.0;1.0;1.0;nein;24951;
+yun2024:581;PMC115849;baseline;17712;19411;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:582;PMC3504298;follow-up;12838;14545;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:584;PMC3504298;follow-up;12838;14511;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:597;PMC115849;baseline;17712;19391;length;16000;0;zellen;17313;4;373;stop;;over 12 weeks;True;2;2;0;2;0;0;2;0;0.5;1.0;0.6667;nein;33313;"B:rueckfall_zeitpunkt;B:ueberzaehlige_zelle"
+yun2024:605;PMC115849;baseline;17712;19376;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:606;PMC115849;baseline;17712;19391;length;16000;0;zellen;13918;4;368;stop;;12 weeks;True;2;2;0;2;0;0;2;0;0.5;1.0;0.6667;nein;29918;"B:rueckfall_zeitpunkt;B:ueberzaehlige_zelle"
+yun2024:613;PMC115849;baseline;17712;19396;length;16000;0;leer;966;0;81;stop;keine_verwertbaren_zellen;;False;2;0;0;0;2;0;0;0;;0.0;0.0;nein;16966;A:leere_ausgabe
+yun2024:639;PMC4511433;day 12;11362;13003;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:640;PMC4511433;day 12;11362;12994;length;16000;0;zellen;8137;6;530;stop;;baseline;True;2;2;0;4;0;0;2;0;0.3333;1.0;0.5;nein;24137;"B:rueckfall_zeitpunkt;B:ueberzaehlige_zelle"
+yun2024:678;PMC5777419;baseline;12349;14003;length;16000;0;zellen;5339;2;231;stop;;Baseline;False;2;2;0;0;0;2;0;0;1.0;1.0;1.0;nein;21339;
+yun2024:685;PMC2836833;baseline;18929;20578;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:686;PMC2836833;baseline;18929;20589;length;16000;0;length;19000;0;0;length;kein_json;;;2;0;0;0;2;0;0;0;;0.0;0.0;nein;35000;A:length_abbruch
+yun2024:687;PMC2836833;baseline;18929;20575;length;16000;0;leer;3462;0;81;stop;keine_verwertbaren_zellen;;False;2;0;0;0;2;0;0;0;;0.0;0.0;nein;19462;A:leere_ausgabe

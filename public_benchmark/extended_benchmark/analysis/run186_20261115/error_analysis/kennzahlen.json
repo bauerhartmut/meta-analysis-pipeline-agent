@@ -1,0 +1,397 @@
+{
+  "records": 47,
+  "status_v7": {
+    "zellen": 23,
+    "leer": 6,
+    "length": 18
+  },
+  "tokens": {
+    "v6": 792000,
+    "v7": 610540,
+    "gesamt": 1402540,
+    "length_v7": 342000,
+    "length_anteil_v7": 0.5602
+  },
+  "zellen": {
+    "gold": 133,
+    "extrahiert": 79,
+    "treffer": 48,
+    "falscher_wert": 16,
+    "auslassung": 69,
+    "ueberzaehlig": 15,
+    "precision": 0.6076,
+    "recall": 0.3609
+  },
+  "zeitpunkte": {
+    "zieltreu": 48,
+    "rueckfall": 12,
+    "unklar": 4
+  },
+  "kategorien": {
+    "B:ueberzaehlige_zelle": 7,
+    "B:auslassung": 6,
+    "B:falscher_wert": 8,
+    "A:length_abbruch": 18,
+    "B:rueckfall_zeitpunkt": 5,
+    "B:zeitpunkt_unklar": 2,
+    "A:leere_ausgabe": 6
+  },
+  "length_details": [
+    {
+      "record_id": "yun2024:158",
+      "dokument": "PMC5056957",
+      "ziel": "month 12",
+      "text_zeichen": 16081,
+      "prompt_zeichen": 17778,
+      "v6_tokens": 24000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 43000
+    },
+    {
+      "record_id": "yun2024:163",
+      "dokument": "PMC5056957",
+      "ziel": "month 24",
+      "text_zeichen": 16081,
+      "prompt_zeichen": 17773,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:169",
+      "dokument": "PMC5079604",
+      "ziel": "follow-up",
+      "text_zeichen": 20409,
+      "prompt_zeichen": 22099,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:328",
+      "dokument": "PMC5559992",
+      "ziel": "baseline",
+      "text_zeichen": 2999,
+      "prompt_zeichen": 4648,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:348",
+      "dokument": "PMC5686687",
+      "ziel": "baseline",
+      "text_zeichen": 9253,
+      "prompt_zeichen": 10893,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:349",
+      "dokument": "PMC5686687",
+      "ziel": "baseline",
+      "text_zeichen": 9253,
+      "prompt_zeichen": 10890,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:356",
+      "dokument": "PMC5884950",
+      "ziel": "month 4",
+      "text_zeichen": 19352,
+      "prompt_zeichen": 21324,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:368",
+      "dokument": "PMC1475568",
+      "ziel": "end of study/treatment",
+      "text_zeichen": 11667,
+      "prompt_zeichen": 13429,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:405",
+      "dokument": "PMC5781260",
+      "ziel": "baseline",
+      "text_zeichen": 12175,
+      "prompt_zeichen": 13819,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:566",
+      "dokument": "PMC5541727",
+      "ziel": "week 4",
+      "text_zeichen": 15499,
+      "prompt_zeichen": 17204,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:570",
+      "dokument": "PMC5541727",
+      "ziel": "week 4",
+      "text_zeichen": 15499,
+      "prompt_zeichen": 17167,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:581",
+      "dokument": "PMC115849",
+      "ziel": "baseline",
+      "text_zeichen": 17712,
+      "prompt_zeichen": 19411,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:582",
+      "dokument": "PMC3504298",
+      "ziel": "follow-up",
+      "text_zeichen": 12838,
+      "prompt_zeichen": 14545,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:584",
+      "dokument": "PMC3504298",
+      "ziel": "follow-up",
+      "text_zeichen": 12838,
+      "prompt_zeichen": 14511,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:605",
+      "dokument": "PMC115849",
+      "ziel": "baseline",
+      "text_zeichen": 17712,
+      "prompt_zeichen": 19376,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:639",
+      "dokument": "PMC4511433",
+      "ziel": "day 12",
+      "text_zeichen": 11362,
+      "prompt_zeichen": 13003,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:685",
+      "dokument": "PMC2836833",
+      "ziel": "baseline",
+      "text_zeichen": 18929,
+      "prompt_zeichen": 20578,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    },
+    {
+      "record_id": "yun2024:686",
+      "dokument": "PMC2836833",
+      "ziel": "baseline",
+      "text_zeichen": 18929,
+      "prompt_zeichen": 20589,
+      "v6_tokens": 16000,
+      "v7_tokens": 19000,
+      "v7_content_len": 0,
+      "v7_parse_error": "kein_json",
+      "tokens_gesamt": 35000
+    }
+  ],
+  "length_nach_dokument": {
+    "PMC5056957": 2,
+    "PMC5686687": 2,
+    "PMC5541727": 2,
+    "PMC115849": 2,
+    "PMC3504298": 2,
+    "PMC2836833": 2,
+    "PMC5079604": 1,
+    "PMC5559992": 1,
+    "PMC5884950": 1,
+    "PMC1475568": 1,
+    "PMC5781260": 1,
+    "PMC4511433": 1
+  },
+  "length_nach_textkorb": {
+    "16-24k": {
+      "records": 19,
+      "length": 8,
+      "quote": 0.4211
+    },
+    "8-16k": {
+      "records": 22,
+      "length": 9,
+      "quote": 0.4091
+    },
+    "< 8k": {
+      "records": 4,
+      "length": 1,
+      "quote": 0.25
+    },
+    ">= 24k": {
+      "records": 2,
+      "length": 0,
+      "quote": 0.0
+    }
+  },
+  "length_nach_ziel": {
+    "baseline": {
+      "records": 19,
+      "length": 8,
+      "quote": 0.4211
+    },
+    "day 12": {
+      "records": 2,
+      "length": 1,
+      "quote": 0.5
+    },
+    "day 42": {
+      "records": 1,
+      "length": 0,
+      "quote": 0.0
+    },
+    "end of study/treatment": {
+      "records": 2,
+      "length": 1,
+      "quote": 0.5
+    },
+    "follow-up": {
+      "records": 5,
+      "length": 3,
+      "quote": 0.6
+    },
+    "month 11": {
+      "records": 1,
+      "length": 0,
+      "quote": 0.0
+    },
+    "month 12": {
+      "records": 3,
+      "length": 1,
+      "quote": 0.3333
+    },
+    "month 24": {
+      "records": 3,
+      "length": 1,
+      "quote": 0.3333
+    },
+    "month 4": {
+      "records": 3,
+      "length": 1,
+      "quote": 0.3333
+    },
+    "month 6": {
+      "records": 3,
+      "length": 0,
+      "quote": 0.0
+    },
+    "week 24": {
+      "records": 2,
+      "length": 0,
+      "quote": 0.0
+    },
+    "week 4": {
+      "records": 3,
+      "length": 2,
+      "quote": 0.6667
+    }
+  },
+  "length_nach_gold": {
+    "2": {
+      "records": 35,
+      "length": 15,
+      "quote": 0.4286
+    },
+    "3": {
+      "records": 1,
+      "length": 0,
+      "quote": 0.0
+    },
+    "4": {
+      "records": 3,
+      "length": 1,
+      "quote": 0.3333
+    },
+    "6": {
+      "records": 8,
+      "length": 2,
+      "quote": 0.25
+    }
+  },
+  "length_content_len": {
+    "0": 18
+  },
+  "length_parse_error": {
+    "kein_json": 18
+  },
+  "length_tokens": {
+    "19000": 18
+  },
+  "mit_zellen_metrics": {
+    "records": 23,
+    "precision": 0.6076,
+    "recall": 0.64,
+    "median_prompt": 14571
+  },
+  "length_prompt_median": 17185.5,
+  "prompt_median_alle": 17167,
+  "gold_konflikte": [],
+  "fehlende_texte": [],
+  "kosten_je_gerettetem_record": 26545.0
+}
