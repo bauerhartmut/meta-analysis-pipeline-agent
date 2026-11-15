@@ -511,6 +511,11 @@ def main() -> int:
         help="letzten berichteten Messzeitpunkt verlangen und Zeitpunkte mitliefern (v4_last_timepoint)",
     )
     parser.add_argument("--run-id", default=datetime.now(timezone.utc).strftime("extended_%Y%m%d"))
+    parser.add_argument(
+        "--quelle",
+        default="",
+        help="Herkunft der Zeilen (z. B. v7_folgelauf), damit Folgelaeufe im Datensatz erkennbar bleiben",
+    )
     args = parser.parse_args()
 
     models = {name: dict(spec) for name, spec in MODELS.items()}
@@ -628,6 +633,7 @@ def main() -> int:
             if (args.last_timepoint or args.target_timepoint or args.target_fallback)
             else "",
             "target_timepoint": target,
+            "quelle": args.quelle,
             "schema_version": VERSION_CELL_TIMEPOINT if args.cell_timepoint else "v6_percell_timepoint",
             "timepoint_header": v7["header"],
             "fallback": v7["fallback"],

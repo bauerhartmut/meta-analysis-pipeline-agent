@@ -290,9 +290,17 @@ def main() -> int:
     parser.add_argument("--run", required=True)
     parser.add_argument("--records", type=Path, default=HERE / "records" / "yun_dev.jsonl")
     parser.add_argument("--out", type=Path, default=None)
+    parser.add_argument(
+        "--nur-ids",
+        default=None,
+        help="Komma-getrennte record_ids; nur diese werden ausgewertet (fuer den Folgelauf)",
+    )
     args = parser.parse_args()
 
     records = read_jsonl(args.records)
+    nur_ids = {teil.strip() for teil in (args.nur_ids or "").split(",") if teil.strip()}
+    if nur_ids:
+        records = [record for record in records if str(record["record_id"]) in nur_ids]
     by_id = {str(record["record_id"]): record for record in records}
     rows = read_jsonl(HERE / "runs" / args.run / "predictions.jsonl")
     predictions = {str(row["record_id"]): row for row in rows}
@@ -312,6 +320,7 @@ def main() -> int:
     arm_kandidaten: list[dict[str, Any]] = []
     gemischte_zellen = 0
     zellen_mit_label = 0
+    je_quelle: dict[str, Counter] = defaultdict(Counter)
 
     def artikel_text(record: dict[str, Any]) -> str:
         pfad = (record.get("document") or {}).get("path") or ""
@@ -327,7 +336,12 @@ def main() -> int:
             # Kein Zielzeitpunkt im Record: Zellen lassen sich nicht als
             # zieltreu oder Rueckfall bewerten und zaehlen als "ohne_ziel".
             target = ""
-        cells = (predictions.get(record_id, {}).get("predicted") or {}).get("cells", [])
+        vorhersage = predictions.get(record_id, {})
+        quelle = str(vorhersage.get("quelle") or "v6_hauptlauf")
+        je_quelle[quelle]["records"] += 1
+        if vorhersage.get("fehlerklasse"):
+            je_quelle[quelle]["ausfaelle"] += 1
+        cells = (vorhersage.get("predicted") or {}).get("cells", [])
         artikel = artikel_text(record)
         gesehen: set[tuple[str, str | None]] = set()
         for cell in cells:
@@ -363,15 +377,19 @@ def main() -> int:
             art = klassifiziere(target, label)
             zaehler[f"{art}_zellen"] += 1
             pro_feld[cell["field"]][f"{art}_zellen"] += 1
+            je_quelle[quelle]["zellen"] += 1
             if key in gold:
                 gesehen.add(key)
                 if _close(cell["value"], gold[key], 1e-6, 0.0):
                     zaehler[f"{art}_richtig"] += 1
                     pro_feld[cell["field"]][f"{art}_richtig"] += 1
+                    je_quelle[quelle]["richtig"] += 1
                 else:
                     zaehler[f"{art}_falsch"] += 1
+                    je_quelle[quelle]["falsch"] += 1
             else:
                 zaehler[f"{art}_ohne_gold"] += 1
+                je_quelle[quelle]["ohne_gold"] += 1
             if art == "rueckfall":
                 ziel_rang, label_rang = rang(target), rang(label)
                 if ziel_rang is not None and label_rang is not None:
@@ -408,6 +426,7 @@ def main() -> int:
             if key not in gesehen:
                 fehlend[key[0]] += 1
                 zaehler["auslassungen"] += 1
+                je_quelle[quelle]["auslassungen"] += 1
 
     gesamt = evaluate_numeric(records, predictions)
     gold_cells = sum(len(record["gold"]["cells"]) for record in records)
@@ -482,6 +501,7 @@ def main() -> int:
             "quote": round(_safe_div(zaehler["auslassungen"], gold_cells), 4),
         },
         "je_feld": {field: dict(counts) for field, counts in sorted(pro_feld.items())},
+        "je_quelle": {quelle: dict(counts) for quelle, counts in sorted(je_quelle.items())},
         "zell_f1_aus_klassen": round(
             _f1(
                 _safe_div(
@@ -516,6 +536,13 @@ def main() -> int:
     if ergebnis["rueckfall"]["beispiele"]:
         print(f"[rueckfall] Zeitdistanz Median {ergebnis['rueckfall']['zeitdistanz_median_monate']} Monate "
               f"({ergebnis['rueckfall']['zeitdistanz_bekannt']} bestimmbar)")
+    for quelle, counts in ergebnis["je_quelle"].items():
+        quote = round(_safe_div(counts.get("richtig", 0), counts.get("richtig", 0) + counts.get("falsch", 0)), 4)
+        print(
+            f"[quelle {quelle}] {counts.get('records', 0)} Records, {counts.get('zellen', 0)} Zellen, "
+            f"richtig {counts.get('richtig', 0)}, falsch {counts.get('falsch', 0)}, Precision {quote}, "
+            f"Ausfaelle {counts.get('ausfaelle', 0)}, Auslassungen {counts.get('auslassungen', 0)}"
+        )
     print(f"[auslassungen] {ergebnis['auslassungen']}")
     stufen = ergebnis["belegstufen"]
     print(

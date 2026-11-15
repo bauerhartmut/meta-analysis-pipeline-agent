@@ -22,10 +22,11 @@ Spalte** und etikettiert sie als zwei Arme:
 
 In allen fünf Fällen ist die Gruppengröße im Komparator dieselbe wie im
 Interventionsarm — der Komparator ist also kein Placebo-Arm. Für `yun2024:75`
-ist das bereits als Gold-Konflikt eingetragen (`analyze_errors.GEPRUEFTE_FAELLE`,
-Klasse 5, Beleg in `analysis/yun2024_75_gold_conflict.md`); die vier anderen
-sind nach dieser Prüfung **Kandidaten mit Textbeleg**, aber noch nicht
-eingetragen.
+ist das als Gold-Konflikt eingetragen (`analyze_errors.GEPRUEFTE_FAELLE`,
+Klasse 5, Beleg in `analysis/yun2024_75_gold_conflict.md`). Die vier anderen
+sind nach der Prüfung am 15.11.2026 **ebenfalls eingetragen**: je Record
+Mittelwert und Streuung beider Arme als Klasse 5, mit Zeilenangabe und
+Gruppengröße als Beleg. Gold bleibt unverändert.
 
 Ein sauberer Week-24-Schnitt wäre jeweils palmvitee-Woche-24 gegen
 placebo-Woche-24, z. B. bei `:78` 14.11 gegen 11.53.
@@ -51,10 +52,11 @@ Berichtsansicht, nicht in die Konfliktliste.
 
 * `arm_gemischt` in `fallback_eval.json` zählt weiter sieben Records; die
   Fehlerklassen in `arm_klassen` trennen jetzt
-  `arm_gemischt_gold_bestaetigt` (1: `:75`), `arm_gemischt_gold_kandidat`
-  (1: `:149`, nur Hinweis) und `arm_gemischt_modell` (5).
-* Die vier Kandidaten aus PMC3546023 sind **nicht** in `GEPRUEFTE_FAELLE`
-  eingetragen: das ist eine Benchmark-Entscheidung, weil vier Records damit aus
-  der Modellfehler-Zählung fielen. Der Textbeleg liegt oben.
+  `arm_gemischt_gold_bestaetigt` (5: `:75`, `:76`, `:78`, `:80`, `:81`),
+  `arm_gemischt_gold_kandidat` (1: `:149`, nur Hinweis) und
+  `arm_gemischt_modell` (1: `:150`).
+* Damit sind fünf der sieben Mischfälle Gold-Konflikte; nur `:149` und `:150`
+  bleiben Modell- bzw. Grenzfälle, und dort ist die Mischung die Folge davon,
+  dass der Komparator am Zielzeitpunkt nicht berichtet wird.
 * Für die zweite Kohorte empfiehlt sich eine Vorabprüfung aller Records aus
   PMC3546023 und PMC4996097, bevor ihre Goldzellen als Maßstab dienen.

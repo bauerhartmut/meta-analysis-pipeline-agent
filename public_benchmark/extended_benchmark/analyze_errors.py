@@ -130,6 +130,84 @@ GEPRUEFTE_FAELLE: dict[tuple[str, str, str], tuple[int, str]] = {
         5,
         "geprueft am 15.11.2026: 4,53 gehoert zu 13,72 im palmvitee-Block, nicht zum Placebo-Arm",
     ),
+    # Dieselbe Tabellenstruktur in vier weiteren Records derselben Studie
+    # (PMC3546023, Tabelle mit vier Spalten: Non-smokers placebo n = 27 /
+    # palmvitee n = 29, Smokers placebo n = 28 / palmvitee n = 30; Zeilen 0, 12,
+    # 24). Gold paart jeweils Baseline und Woche 24 DERSELBEN Spalte und nennt
+    # beide Zellen mit derselben Gruppengroesse im Komparator. Beleg in
+    # analysis/run186_20261115/gold_konflikt_kandidaten.md.
+    ("yun2024:76", "intervention_mean", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 14,06 +/- 3,81 ist die Zeile '0' der Spalte smokers palmvitee "
+        "(n = 30); Gold paart sie mit 14,40 aus Zeile '24' derselben Spalte",
+    ),
+    ("yun2024:76", "intervention_standard_deviation", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 3,81 gehoert zu 14,06 in Zeile '0' der Spalte smokers palmvitee",
+    ),
+    ("yun2024:76", "comparator_mean", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 14,40 +/- 4,03 steht in Zeile '24' derselben Spalte (n = 30), "
+        "nicht im Placebo-Arm",
+    ),
+    ("yun2024:76", "comparator_standard_deviation", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 4,03 gehoert zu 14,40 in Zeile '24', gleiche Spalte wie 14,06",
+    ),
+    ("yun2024:78", "intervention_mean", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 14,11 +/- 3,89 ist Zeile '24' der Spalte smokers palmvitee (n = 30); "
+        "Gold paart sie mit 11,39 aus Zeile '0' derselben Spalte",
+    ),
+    ("yun2024:78", "intervention_standard_deviation", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 3,89 gehoert zu 14,11 in Zeile '24' der Spalte smokers palmvitee",
+    ),
+    ("yun2024:78", "comparator_mean", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 11,39 +/- 3,06 steht in Zeile '0' derselben Spalte (n = 30), "
+        "Placebo waere n = 28",
+    ),
+    ("yun2024:78", "comparator_standard_deviation", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 3,06 gehoert zu 11,39 in Zeile '0', gleiche Spalte wie 14,11",
+    ),
+    ("yun2024:80", "intervention_mean", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 14,56 +/- 3,06 ist Zeile '24' der Spalte non-smokers palmvitee "
+        "(n = 29); Gold paart sie mit 11,75 aus Zeile '0' derselben Spalte",
+    ),
+    ("yun2024:80", "intervention_standard_deviation", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 3,06 gehoert zu 14,56 in Zeile '24' der Spalte non-smokers palmvitee",
+    ),
+    ("yun2024:80", "comparator_mean", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 11,75 +/- 2,27 steht in Zeile '0' derselben Spalte (n = 29), "
+        "nicht im Placebo-Arm",
+    ),
+    ("yun2024:80", "comparator_standard_deviation", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 2,27 gehoert zu 11,75 in Zeile '0', gleiche Spalte wie 14,56",
+    ),
+    ("yun2024:81", "intervention_mean", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 675,16 +/- 150,00 ist Zeile '24' der Spalte non-smokers palmvitee "
+        "(n = 29); Gold paart sie mit 63,60 aus Zeile '0' derselben Spalte",
+    ),
+    ("yun2024:81", "intervention_standard_deviation", "intervention"): (
+        5,
+        "geprueft am 15.11.2026: 150,00 gehoert zu 675,16 in Zeile '24' der Spalte non-smokers palmvitee",
+    ),
+    ("yun2024:81", "comparator_mean", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 63,60 +/- 5,67 steht in Zeile '0' derselben Spalte (n = 29), "
+        "Placebo waere 62,49 +/- 6,69",
+    ),
+    ("yun2024:81", "comparator_standard_deviation", "comparator"): (
+        5,
+        "geprueft am 15.11.2026: 5,67 gehoert zu 63,60 in Zeile '0', gleiche Spalte wie 675,16",
+    ),
 }
 
 # Auffaellige Gold-Zellen, die am Artikel geprueft wurden (Punkt Aufgabe C).
