@@ -9,33 +9,31 @@ am naechsten steht; Belegstelle und Abstand stehen in der Tabelle.
 | Zielzeitpunkt | Records |
 |---|---|
 | baseline | 104 |
-| (ohne Ziel) | 80 |
+| (ohne Ziel) | 75 |
 | week 24 | 17 |
+| day 1 | 10 |
 | month 6 | 8 |
 | follow-up | 8 |
 | month 12 | 7 |
 | month 4 | 6 |
-| end of study/treatment | 5 |
-| day 1 | 4 |
+| end of study/treatment | 4 |
 | post-test | 4 |
 | week 4 | 4 |
+| month 3 | 3 |
 | month 24 | 3 |
-| month 3 | 2 |
+| week 6 | 2 |
 | day 12 | 2 |
-| month 1 | 1 |
 | Postoperative 3rd month | 1 |
 | month 11 | 1 |
 | week 3 | 1 |
 | day 42 | 1 |
-| month 21 | 1 |
 | week 26 | 1 |
-| week 6 | 1 |
 
 ## Geprueft: frueher baseline/follow-up
 
 Diese Records trugen vor der Pruefung ein unspezifisches Label. Neu gilt:
 
-55 Records geprueft, 36 geaendert, 17 davon ohne Ziel;
+55 Records geprueft, 36 geaendert, 18 davon ohne Ziel;
 baseline bei reinen Gruppengroessen bleibt unveraendert und steht nicht in dieser Liste.
 
 | Record | alt | neu | Begruendung (Beleg) |
@@ -49,15 +47,16 @@ baseline bei reinen Gruppengroessen bleibt unveraendert und steht nicht in diese
 | `yun2024:78` | baseline | week 24 | 'baseline' nahe einer Goldzahl (40 Zeichen): …ere lower in smokers compared to nonsmokers (p < 0.0001) at baseline (S1: p < 0.05, S2: p < 0.005, S3: p |
 | `yun2024:80` | baseline | week 24 | 'baseline' nahe einer Goldzahl (16 Zeichen): …subsets in smokers and nonsmokers. Table  [2](#) shows the baseline according the number of cigarettes s |
 | `yun2024:137` | follow-up | follow-up | 'follow up' nahe einer Goldzahl (2224 Zeichen): …study based upon the written information they received and follow up verbal interaction with study st |
-| `yun2024:149` | baseline | month 1 | 'month   0' nahe einer Goldzahl (216 Zeichen): …--0.76)    0.27 (0.23--0.34)      0.001   Postoperative 1st month   0.30 (0.23--0.35)    -             |
+| `yun2024:158` | baseline | month 12 | 'Baseline' nahe einer Goldzahl (47 Zeichen): …*Baseline (*n*=645) mean (95% CI)*   *12 m (*n*=592) mean (95% CI)*   *… |
 | `yun2024:159` | baseline | month 12 | 'Baseline' nahe einer Goldzahl (47 Zeichen): …*Baseline (*n*=645) mean (95% CI)*   *12 m (*n*=592) mean (95% CI)*   *… |
 | `yun2024:161` | baseline | month 24 | 'baseline' nahe einer Goldzahl (32 Zeichen): …mean (95% CI)*   *24 m (*n*=560) mean (95% CI)*   *P-value (baseline to follow-up)*   *Baseline (*n*=505 |
 | `yun2024:162` | baseline | month 24 | 'baseline' nahe einer Goldzahl (32 Zeichen): …mean (95% CI)*   *24 m (*n*=560) mean (95% CI)*   *P-value (baseline to follow-up)*   *Baseline (*n*=505 |
 | `yun2024:169` | follow-up | follow-up | 'follow-up' nahe einer Goldzahl (157 Zeichen): …sitagliptin group, and 1 in the placebo group were lost to follow-up. One subject in the sitagliptin g |
 | `yun2024:170` | follow-up | follow-up | 'follow-up' nahe einer Goldzahl (157 Zeichen): …sitagliptin group, and 1 in the placebo group were lost to follow-up. One subject in the sitagliptin g |
+| `yun2024:178` | follow-up | month 3 | 'follow-up' im selben Satz wie eine Goldzahl: …tention rate was 65% (26/40) and 63% (25/40) at the 3-month follow-up. Although the attrition rate was  |
 | `yun2024:183` | baseline | baseline | 'baseline' nahe einer Goldzahl (50 Zeichen): …analysed, 33 in each study group. The demographic and other baseline characteristics of subjects in each |
 | `yun2024:195` | baseline | week 24 | 'baseline' im selben Satz wie eine Goldzahl: …n), WMS-R (30 min), erythrocyte PlsPE, and plasma PlsPE, at baseline, although the male-to-female ratio  |
-| `yun2024:203` | baseline | end of study/treatment | 'baseline' im selben Satz wie eine Goldzahl: …als Registry TCTR20160429001 # Results ## Study patients at baseline From January to December 2014, 80 p |
+| `yun2024:203` | baseline | week 6 | 'baseline' im selben Satz wie eine Goldzahl: …als Registry TCTR20160429001 # Results ## Study patients at baseline From January to December 2014, 80 p |
 | `yun2024:277` | baseline | baseline | 'baseline' im selben Satz wie eine Goldzahl: …uctions in all BC variables were seen in the ILI-group from baseline to weeks 10--14 ( [Table 2](#) and  |
 | `yun2024:279` | baseline | baseline | 'week 0' nahe einer Goldzahl (49 Zeichen): …::::table-wrap ::: caption Change in body composition from week 0 to 12 months within the ILI group ( *n*  |
 | `yun2024:281` | baseline | baseline | 'week 0' nahe einer Goldzahl (49 Zeichen): …::::table-wrap ::: caption Change in body composition from week 0 to 12 months within the ILI group ( *n*  |
@@ -70,7 +69,6 @@ baseline bei reinen Gruppengroessen bleibt unveraendert und steht nicht in diese
 | `yun2024:293` | baseline | (ohne Ziel) | 'baseline' im selben Satz wie eine Goldzahl: …to intervention. The HC19 group TFR showed an increase from baseline in the 10--13 Hz range between 1 s  |
 | `yun2024:294` | baseline | (ohne Ziel) | 'baseline' im selben Satz wie eine Goldzahl: …to intervention. The HC19 group TFR showed an increase from baseline in the 10--13 Hz range between 1 s  |
 | `yun2024:295` | baseline | (ohne Ziel) | 'baseline' im selben Satz wie eine Goldzahl: …to intervention. The HC19 group TFR showed an increase from baseline in the 10--13 Hz range between 1 s  |
-| `yun2024:345` | follow-up | day 42 | 'follow-up' nahe einer Goldzahl (57 Zeichen): …the possible confounding factor (use of medication, time to follow-up) revealed no difference between g |
 | `yun2024:365` | baseline | (ohne Ziel) | 'Baseline' nahe einer Goldzahl (254 Zeichen): …l. # 3. Results ## 3.1. Characteristics of the Participants Baseline characteristics of the participant |
 | `yun2024:367` | baseline | baseline | 'Baseline' nahe einer Goldzahl (89 Zeichen): …n literacy and the intervention. ::::table-wrap ::: caption Baseline characteristics. :::    Variable… |
 | `yun2024:368` | baseline | end of study/treatment | 'baseline' im selben Satz wie eine Goldzahl: …s completed for all of the remaining participants (93%). At baseline, most characteristics were similar  |
@@ -81,7 +79,7 @@ baseline bei reinen Gruppengroessen bleibt unveraendert und steht nicht in diese
 | `yun2024:398` | baseline | (ohne Ziel) | 'Baseline' nahe einer Goldzahl (221 Zeichen): …citabine.</figcaption> </figure> ::::table-wrap ::: caption Baseline Patient Demographic and Clinical C |
 | `yun2024:399` | baseline | (ohne Ziel) | 'Baseline' nahe einer Goldzahl (221 Zeichen): …citabine.</figcaption> </figure> ::::table-wrap ::: caption Baseline Patient Demographic and Clinical C |
 | `yun2024:445` | baseline | (ohne Ziel) | 'baseline' im selben Satz wie eine Goldzahl: …2B](#) shows the proportion of severely allergic subjects (baseline [visit 2] ocular itching scores ≥3)  |
-| `yun2024:479` | baseline | month 21 | 'Baseline' im selben Satz wie eine Goldzahl: …e article for the Editors' Summary* # Results ## Enrolment, Baseline Balance, and Attrition [Figure 2](# |
+| `yun2024:479` | baseline | (ohne Ziel) | 'Baseline' im selben Satz wie eine Goldzahl: …e article for the Editors' Summary* # Results ## Enrolment, Baseline Balance, and Attrition [Figure 2](# |
 | `yun2024:487` | follow-up | baseline | 'follow-up' im selben Satz wie eine Goldzahl: …turation Index (VMI), Controlled phase. E, entry visit; C1, follow-up 5–7 days after start of therapy;  |
 | `yun2024:488` | follow-up | baseline | 'follow-up' nahe einer Goldzahl (10 Zeichen): …turation Index (VMI), Controlled phase. E, entry visit; C1, follow-up 5–7 days after start of therapy;  |
 | `yun2024:489` | baseline | baseline | 'baseline' nahe einer Goldzahl (580 Zeichen): …omen were Asian. ::::table-wrap ::: caption Demographic and baseline characteristics :::                |
@@ -134,10 +132,10 @@ grundsaetzlich; bleibt dieser Wert ueber null, ist die Heuristik zu pruefen.
 | `yun2024:104` | PMC4188762 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
 | `yun2024:105` | PMC4188762 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
 | `yun2024:106` | PMC4188762 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
-| `yun2024:110` | PMC4319071 | auto | month 4 | '4-months' nahe einer Goldzahl (11 Zeichen): …ted fat intake were assessed at baseline and at 1- (T1) and 4-months (T2) postintervention using online questionnaires. Linear mix… |
-| `yun2024:111` | PMC4319071 | auto | month 4 | '4-months' nahe einer Goldzahl (11 Zeichen): …ted fat intake were assessed at baseline and at 1- (T1) and 4-months (T2) postintervention using online questionnaires. Linear mix… |
-| `yun2024:114` | PMC4319071 | auto | month 4 | '4-months' nahe einer Goldzahl (11 Zeichen): …ted fat intake were assessed at baseline and at 1- (T1) and 4-months (T2) postintervention using online questionnaires. Linear mix… |
-| `yun2024:115` | PMC4319071 | auto | month 4 | '4-months' nahe einer Goldzahl (11 Zeichen): …ted fat intake were assessed at baseline and at 1- (T1) and 4-months (T2) postintervention using online questionnaires. Linear mix… |
+| `yun2024:110` | PMC4319071 | auto (Satz der Goldzahl) | month 4 | '4-months (T2)' im selben Satz wie eine Goldzahl: …ted fat intake were assessed at baseline and at 1- (T1) and 4-months (T2) postintervention using online questionnaires. Linear mi |
+| `yun2024:111` | PMC4319071 | auto (Satz der Goldzahl) | month 4 | '4-months (T2)' im selben Satz wie eine Goldzahl: …ted fat intake were assessed at baseline and at 1- (T1) and 4-months (T2) postintervention using online questionnaires. Linear mi |
+| `yun2024:114` | PMC4319071 | auto (Satz der Goldzahl) | month 4 | '4-months (T2)' im selben Satz wie eine Goldzahl: …ted fat intake were assessed at baseline and at 1- (T1) and 4-months (T2) postintervention using online questionnaires. Linear mi |
+| `yun2024:115` | PMC4319071 | auto (Satz der Goldzahl) | month 4 | '4-months (T2)' im selben Satz wie eine Goldzahl: …ted fat intake were assessed at baseline and at 1- (T1) and 4-months (T2) postintervention using online questionnaires. Linear mi |
 | `yun2024:116` | PMC4323894 | auto (Satz der Goldzahl) | month 6 | 'at 6 months' im selben Satz wie eine Goldzahl: …noncooling group (*P* = 0.007). Interestingly, the analysis at 6 months post-trauma disclosed mild-cooling-treated patients did be… |
 | `yun2024:117` | PMC4323894 | auto (Satz der Goldzahl) | month 6 | 'at 6 months' im selben Satz wie eine Goldzahl: …e were 63.2% of patients in cooling group attained good GOS at 6 months compared to only 15.4% in noncooling group (*P* = 0.007).… |
 | `yun2024:118` | PMC4323894 | auto | month 6 | 'at 6 months' nahe einer Goldzahl (888 Zeichen): …noncooling group (*P* = 0.007). Interestingly, the analysis at 6 months post-trauma disclosed mild-cooling-treated patients did be |
@@ -158,24 +156,24 @@ grundsaetzlich; bleibt dieser Wert ueber null, ist die Heuristik zu pruefen.
 | `yun2024:146` | PMC4880652 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
 | `yun2024:147` | PMC4880652 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
 | `yun2024:148` | PMC4880652 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
-| `yun2024:149` | PMC4996097 | auto | month 1 | 'month                 1' nahe einer Goldzahl (310 Zeichen): …(0.41--1.38)    0.85 (0.54--1.46)      0.645    Postop 1st month                 1.17 (0.61--1.69)    -                |
+| `yun2024:149` | PMC4996097 | auto (Satz der Goldzahl) | month 3 | '3rd month' im selben Satz wie eine Goldzahl: …145 (113--220)       -                     0.847    Postop 3rd month                 138 (117--220)       -                     0… |
 | `yun2024:150` | PMC4996097 | manuell | Postoperative 3rd month | TNR-Tabelle: 'Postoperative 3rd month 0.25 (0.23--0.26)'; Vergleichswert 0.27 ist der praeoperative Kontrollwert — Gold mischt zwei Zeitpunkte |
-| `yun2024:151` | PMC4996097 | auto (Satz der Goldzahl) | month 11 | 'month            11' im selben Satz wie eine Goldzahl: …81--13,467)    -                        0.022    Postop 3rd month            11,897 (9,869--13,193)    -                    |
+| `yun2024:151` | PMC4996097 | auto | month 11 | 'month            11' nahe einer Goldzahl (17 Zeichen): …81--13,467)    -                        0.022    Postop 3rd month            11,897 (9,869--13,193)    -                    |
 | `yun2024:154` | PMC5055753 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
 | `yun2024:155` | PMC5055753 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
 | `yun2024:157` | PMC5055753 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
-| `yun2024:158` | PMC5056957 | auto (Outcome-Titel) | month 12 | Outcome-Titel nennt 'month 12'; Textregel hatte 'month 24' ergeben |
+| `yun2024:158` | PMC5056957 | auto | month 12 | 'At 12 months' nahe einer Goldzahl (122 Zeichen): …24-month adiposity outcomes are presented in [Table 2](#). At 12 months, there were group-by-time effects for weight (mean differ |
 | `yun2024:159` | PMC5056957 | auto (Outcome-Titel) | month 12 | Outcome-Titel nennt 'month 12'; Textregel hatte 'month 24' ergeben |
 | `yun2024:160` | PMC5056957 | auto | month 12 | 'At 12 months' nahe einer Goldzahl (7 Zeichen): …24-month adiposity outcomes are presented in [Table 2](#). At 12 months, there were group-by-time effects for weight (mean differ… |
-| `yun2024:161` | PMC5056957 | auto | month 24 | '24-month' nahe einer Goldzahl (1309 Zeichen): …#### Changes in adiposity outcomes from baseline to 12- and 24-month follow-up :::    *Outcome*        *Intervention*… |
+| `yun2024:161` | PMC5056957 | auto | month 24 | 'at 24 months' nahe einer Goldzahl (1472 Zeichen): …=0.01) in underweight/normal weight participants were found at 24 months in favour of the intervention group. Among overweight a |
 | `yun2024:162` | PMC5056957 | auto (Satz der Goldzahl) | month 24 | 'At 24 months' im selben Satz wie eine Goldzahl: …ed with those who provided outcome data at all time points. At 24 months, all 5 intervention schools had implemented 6 of the 7 ph |
 | `yun2024:163` | PMC5056957 | auto (Outcome-Titel) | month 24 | Outcome-Titel nennt 'month 24'; Textregel hatte 'month 12' ergeben |
 | `yun2024:167` | PMC5079604 | auto | end of study/treatment | 'end of the study' nahe einer Goldzahl (425 Zeichen): …n in those who remained in remission ([Table 2](#)). At the end of the study, fasting glucose and HbA~1c~ levels were higher  |
 | `yun2024:168` | PMC5079604 | manuell | end of study/treatment | Remission vs. Relapse: 'remission during their last documented study visit' (n = 28 / 20), letzter Studienbesuch |
 | `yun2024:169` | PMC5079604 | auto | follow-up | 'follow-up' nahe einer Goldzahl (157 Zeichen): …sitagliptin group, and 1 in the placebo group were lost to follow-up. One subject in the sitagliptin group and one subject in the… |
 | `yun2024:170` | PMC5079604 | auto | follow-up | 'follow-up' nahe einer Goldzahl (157 Zeichen): …sitagliptin group, and 1 in the placebo group were lost to follow-up. One subject in the sitagliptin group and one subject in the… |
-| `yun2024:175` | PMC5086025 | auto | month 3 | '3-months' nahe einer Goldzahl (0 Zeichen): …physical health were assessed pre- and postintervention and 3-months postintervention.ResultsOf the 40 women enrolled in the study… |
-| `yun2024:178` | PMC5086025 | auto (Satz der Goldzahl) | month 3 | '3-month' im selben Satz wie eine Goldzahl: …ntion retention rate was 65% (26/40) and 63% (25/40) at the 3-month follow-up. Although the attrition rate was similar to that pre… |
+| `yun2024:175` | PMC5086025 | auto | month 3 | 'at 3 months' nahe einer Goldzahl (3 Zeichen): …glucose tolerance tests were conducted at randomization and at 3 months and then every 6 months for a median of 331 days. Oral min… |
+| `yun2024:178` | PMC5086025 | auto | month 3 | 'at 3 months' nahe einer Goldzahl (1206 Zeichen): …glucose tolerance tests were conducted at randomization and at 3 months and then every 6 months for a median of 331 days. Oral mi |
 | `yun2024:183` | PMC5122613 | auto (Outcome-Titel) | baseline | Outcome-Titel nennt 'baseline'; Textregel hatte 'week 3' ergeben |
 | `yun2024:195` | PMC5360580 | auto | week 24 | 'week 24' nahe einer Goldzahl (263 Zeichen): …erythrocyte PlsPE at week 16 in the treatment group and at week 24 in placebo. However, the changes were not significantly differ… |
 | `yun2024:196` | PMC5360580 | auto | week 24 | 'week 24' nahe einer Goldzahl (5 Zeichen): …erythrocyte PlsPE at week 16 in the treatment group and at week 24 in placebo. However, the changes were not significantly differ… |
@@ -184,7 +182,7 @@ grundsaetzlich; bleibt dieser Wert ueber null, ist die Heuristik zu pruefen.
 | `yun2024:199` | PMC5380284 | auto | baseline | 'Baseline' nahe einer Goldzahl (11 Zeichen): …signed to either the Gum (n = 38) or No gum (n = 37) group. Baseline characteristics were similar between the 2 groups (Table [2](… |
 | `yun2024:200` | PMC5380284 | auto | baseline | 'Baseline' nahe einer Goldzahl (11 Zeichen): …signed to either the Gum (n = 38) or No gum (n = 37) group. Baseline characteristics were similar between the 2 groups (Table [2](… |
 | `yun2024:201` | PMC5380284 | auto | baseline | 'Baseline' nahe einer Goldzahl (11 Zeichen): …signed to either the Gum (n = 38) or No gum (n = 37) group. Baseline characteristics were similar between the 2 groups (Table [2](… |
-| `yun2024:203` | PMC5380326 | auto | end of study/treatment | 'end of study' nahe einer Goldzahl (164 Zeichen): …PP IV were measured at baseline and at the 6th week. At the end of study, the mean 25(OH)D level in vitamin D group was significa |
+| `yun2024:203` | PMC5380326 | auto | week 6 | '6th week' nahe einer Goldzahl (147 Zeichen): …ines, IP-10 and DPP IV were measured at baseline and at the 6th week. At the end of study, the mean 25(OH)D level in vitamin D gro… |
 | `yun2024:204` | PMC5380326 | auto (Satz der Goldzahl) | baseline | 'baseline' im selben Satz wie eine Goldzahl: …als Registry TCTR20160429001 # Results ## Study patients at baseline From January to December 2014, 80 patients were included into… |
 | `yun2024:216` | PMC5459456 | auto | week 24 | 'at 24 weeks' nahe einer Goldzahl (2514 Zeichen): …(A), NZ (B), and stiffness (C) of the four different groups at 24 weeks after surgery in all directions after the fatigue test.</ |
 | `yun2024:252` | PMC5614421 | auto | baseline | 'Baseline' nahe einer Goldzahl (1763 Zeichen): …n Current Clinical Trials [ISRCTN20269066](#). # Results ## Baseline information Of an estimated 1,919 eligible women able to be a… |
@@ -224,7 +222,7 @@ grundsaetzlich; bleibt dieser Wert ueber null, ist die Heuristik zu pruefen.
 | `yun2024:342` | PMC5655920 | auto | baseline | 'Baseline' nahe einer Goldzahl (235 Zeichen): …ent were included for any particular variable.  Screening.  Baseline.:::: The combined safety population from the nine GetGoal tri… |
 | `yun2024:343` | PMC5655920 | auto | baseline | 'Baseline' nahe einer Goldzahl (304 Zeichen): …ent were included for any particular variable.  Screening.  Baseline.:::: The combined safety population from the nine GetGoal tri… |
 | `yun2024:344` | PMC5655920 | auto | baseline | 'Baseline' nahe einer Goldzahl (235 Zeichen): …ent were included for any particular variable.  Screening.  Baseline.:::: The combined safety population from the nine GetGoal tri… |
-| `yun2024:345` | PMC5686687 | auto | day 42 | 'day 42' nahe einer Goldzahl (65 Zeichen): …o 2.8)                                     CA-125 (U/mL) at day 42 [*^a^*](#)                11.7 (4.9 to 29.9)      13.7 (5 to 61… |
+| `yun2024:345` | PMC5686687 | auto (Satz der Goldzahl) | day 42 | 'after 42 days' im selben Satz wie eine Goldzahl: …me ### C-1. CA-125 and prolactin CA-125 levels were reduced after 42 days of treatment in placebo ( *P* = 0.01; RM-2 Way ANOVA) a |
 | `yun2024:348` | PMC5686687 | auto | baseline | 'Baseline' nahe einer Goldzahl (133 Zeichen): …subjects in the resveratrol and placebo arms, respectively. Baseline data of the studied population are depicted in [Table 1](#) .… |
 | `yun2024:349` | PMC5686687 | auto | baseline | 'Baseline' nahe einer Goldzahl (133 Zeichen): …subjects in the resveratrol and placebo arms, respectively. Baseline data of the studied population are depicted in [Table 1](#) .… |
 | `yun2024:356` | PMC5884950 | auto | month 4 | 'After 4 months' nahe einer Goldzahl (260 Zeichen): …l group of 24 (21--27) and 21 (20--26) in the active group. After 4 months of dietary intervention, the average oSCORAD decreas |
@@ -266,7 +264,7 @@ grundsaetzlich; bleibt dieser Wert ueber null, ist die Heuristik zu pruefen.
 | `yun2024:469` | PMC5515881 | auto (Satz der Goldzahl) | post-test | 'Posttest' im selben Satz wie eine Goldzahl: …**1**.**57 [0**.**49**, **2**.**65]**, *d* = 0.66   Posttest                                       7.54 (2.57)      6.29 (… |
 | `yun2024:470` | PMC5515881 | auto (Satz der Goldzahl) | post-test | 'Posttest' im selben Satz wie eine Goldzahl: …0.59 (0.12)        −0.001 [−0.08, 0.08], *d* = −0.01   Posttest                                       0.63 (0.11)      0.67 (… |
 | `yun2024:471` | PMC5515881 | auto (Satz der Goldzahl) | post-test | 'Posttest' im selben Satz wie eine Goldzahl: …013 (0.77)      **0.31 [0**.**04**, **0.58]**, *d* = 0.51   Posttest                                       0.443 (0.75)     0.040… |
-| `yun2024:479` | PMC4144850 | auto | month 21 | '21-month' nahe einer Goldzahl (84 Zeichen): …seholds enrolled at the baseline, 1,655 were located at the 21-month follow-up survey (15% attrition) without any significant diff… |
+| `yun2024:479` | PMC4144850 | not stated (nur unspezifische Angaben) | (ohne Ziel) | nur baseline/follow-up im Text, Gold enthaelt Mittelwerte oder Ereignisse |
 | `yun2024:483` | PMC3343759 | auto | month 6 | 'at 6 months' nahe einer Goldzahl (52 Zeichen): …-3.6) among those with less education (p < 0.01). For Coeff at 6 months, the corresponding results were 57 (39--59) and 39 (17--55… |
 | `yun2024:487` | PMC3786549 | auto (Outcome-Titel) | baseline | Outcome-Titel nennt 'baseline'; Textregel hatte 'end of study/treatment' ergeben |
 | `yun2024:488` | PMC3786549 | auto (Outcome-Titel) | baseline | Outcome-Titel nennt 'baseline'; Textregel hatte 'end of study/treatment' ergeben |
@@ -299,12 +297,12 @@ grundsaetzlich; bleibt dieser Wert ueber null, ist die Heuristik zu pruefen.
 | `yun2024:569` | PMC5541727 | auto | week 4 | 'week 4' nahe einer Goldzahl (14 Zeichen): …in class I PRA >10% were observed in 5 out of 6 patients at week 4, in 5 out of 7 patients at week 36, in 2 out of 7 patients at w… |
 | `yun2024:570` | PMC5541727 | auto | week 4 | 'week 4' nahe einer Goldzahl (14 Zeichen): …in class I PRA >10% were observed in 5 out of 6 patients at week 4, in 5 out of 7 patients at week 36, in 2 out of 7 patients at w… |
 | `yun2024:571` | PMC5541727 | auto | week 4 | 'week 4' nahe einer Goldzahl (14 Zeichen): …in class I PRA >10% were observed in 5 out of 6 patients at week 4, in 5 out of 7 patients at week 36, in 2 out of 7 patients at w… |
-| `yun2024:574` | PMC2952311 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
-| `yun2024:575` | PMC2952311 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
-| `yun2024:576` | PMC2952311 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
-| `yun2024:577` | PMC2952311 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
-| `yun2024:578` | PMC2952311 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
-| `yun2024:579` | PMC2952311 | not stated | (ohne Ziel) | keine Zeitpunktangabe im Text |
+| `yun2024:574` | PMC2952311 | auto | day 1 | 'at 1 day' nahe einer Goldzahl (486 Zeichen): …ediately after treatment, and NDI ([Figure 6](#)) was lower at 1 day following treatment compared with pre-treatment in the LP and… |
+| `yun2024:575` | PMC2952311 | auto | day 1 | 'at 1 day' nahe einer Goldzahl (486 Zeichen): …ediately after treatment, and NDI ([Figure 6](#)) was lower at 1 day following treatment compared with pre-treatment in the LP and… |
+| `yun2024:576` | PMC2952311 | auto | day 1 | 'at 1 day' nahe einer Goldzahl (486 Zeichen): …ediately after treatment, and NDI ([Figure 6](#)) was lower at 1 day following treatment compared with pre-treatment in the LP and… |
+| `yun2024:577` | PMC2952311 | auto | day 1 | 'at 1 day' nahe einer Goldzahl (486 Zeichen): …ediately after treatment, and NDI ([Figure 6](#)) was lower at 1 day following treatment compared with pre-treatment in the LP and… |
+| `yun2024:578` | PMC2952311 | auto | day 1 | 'at 1 day' nahe einer Goldzahl (486 Zeichen): …ediately after treatment, and NDI ([Figure 6](#)) was lower at 1 day following treatment compared with pre-treatment in the LP and… |
+| `yun2024:579` | PMC2952311 | auto | day 1 | 'at 1 day' nahe einer Goldzahl (486 Zeichen): …ediately after treatment, and NDI ([Figure 6](#)) was lower at 1 day following treatment compared with pre-treatment in the LP and… |
 | `yun2024:580` | PMC3504298 | auto (Satz der Goldzahl) | follow-up | 'follow-up' im selben Satz wie eine Goldzahl: …modification period and reduction in BDI or CAR across the follow-up period in the positive face-ABM group was not significant [… |
 | `yun2024:581` | PMC115849 | auto | baseline | 'Baseline' nahe einer Goldzahl (462 Zeichen): …rminated.</figcaption> </figure> ::::table-wrap ::: caption Baseline patient characteristics :::    **Characteristic**… |
 | `yun2024:582` | PMC3504298 | auto (Satz der Goldzahl) | follow-up | 'follow-up' im selben Satz wie eine Goldzahl: …modification period and reduction in BDI or CAR across the follow-up period in the positive face-ABM group was not significant [… |

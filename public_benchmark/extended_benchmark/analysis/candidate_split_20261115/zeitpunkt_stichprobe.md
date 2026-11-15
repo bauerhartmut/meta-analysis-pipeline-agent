@@ -74,6 +74,26 @@ Bei 325/328 ist `baseline` zulässig, weil Gold nur Gruppengrößen enthält; be
 150 mischt Gold zwei Zeitpunkte, was als Beleg vermerkt ist statt stillschweigend
 geglättet zu werden.
 
+## Zweite Stichprobe: 8 neu entstandene Labels (15.11.2026)
+
+Nach der Muster-Erweiterung geprüft, jeweils am Textfenster der Goldzahl:
+
+| Record | Label vor Prüfung | Befund am Text | Urteil |
+|---|---|---|---|
+| `yun2024:203` | week 6 | „at the 6th week … 45,93 vs. 21,22 ng/mL" | bestätigt (besser als vorher `end of study`) |
+| `yun2024:110` | month 4 | „assessed at baseline and at 1- (T1) and 4-months (T2)" | bestätigt |
+| `yun2024:114` | month 4 | derselbe Satz | bestätigt |
+| `yun2024:178` | week 14 | „14-week intervention" = **Interventionsdauer**, kein Messzeitpunkt | falsch |
+| `yun2024:626` | week 2 | „2-week quadruple rescue therapy" = **Therapiedauer** | falsch |
+| `yun2024:398` | day 10 | „10-day HhAntag treatment" (Mausversuch), Gold ist Überleben in Monaten | falsch |
+| `yun2024:289` | week 4 | „4-week" steht 314 Zeichen entfernt, Gold stammt aus Pre/Post-Tabelle | unklar |
+| `yun2024:574` | day 1 | „at 1 day following treatment" 486 Zeichen entfernt | unklar |
+
+**Ergebnis: 3 bestätigt, 3 falsch, 2 unklar.** Der Fehler war systematisch: das
+Bindestrich-Muster las Dauerangaben („14-week intervention") als Zeitpunkte.
+Nach dem Umbau sind 626, 398 und 289 leer (richtig), 203 zusätzlich auf
+`week 6` verbessert; 178 und 574 bleiben distance-bedingt unsicher.
+
 ## Code-Review `annotate_timepoints.py` (frischer Blick)
 
 **Entfernt (verhaltensneutral geprüft):**
@@ -100,3 +120,22 @@ geglättet zu werden.
 6. Der zweite `zeitpunkt_aus_text`-Aufruf (`hat_ergebnis=False`) existiert nur
    für die einmalige Prüftabelle. Gemessen: 2,0 s für beide Läufe über
    3.744.667 Textzeichen — kein Problem, kann nach Abschluss der Prüfung weg.
+
+**Zweiter Durchgang (nach der 8er-Stichprobe):**
+
+7. Sieben Muster für dieselbe Aussage („week 6", „at 6 weeks", „6-week",
+   „after 6 months" …) sind auf drei geschrumpft: Einheit-zuerst, Zahl-zuerst
+   (`at|after`) und die T-Kennung. Das breite Bindestrich-Muster ist **weg** —
+   es las Dauerangaben („14-week intervention", „2-week therapy",
+   „10-day treatment") als Messzeitpunkte und erzeugte drei Fehllabels. Ersatz
+   sind zwei präzise Muster: Zahl + Einheit + `(Tn)` („4-months (T2)") und
+   Ordnungszahl („6th week").
+8. Der **40-Zeichen-Filter** für T-Labels war falsch: er verglich gegen *jeden*
+   Monatstreffer im Text (auch 40 Zeichen davor, auch aus fremdem Kontext) und
+   enthielt eine tote Bedingung (`f[1] != "baseline"` in einem Zweig, der schon
+   `f[1].startswith("T")` verlangt). Jetzt gilt: ein T-Label entfällt, wenn es
+   **im** Treffer eines Monatsmusters liegt oder nur Leerraum/Bindestrich
+   dazwischen steht — unabhängig von Zeichenzahlen.
+9. `_KEINE_DAUER` (Negativ-Lookahead auf study/trial/period/…/therapy/treatment)
+   bleibt nur für die `at|after`-Form nötig; die Bindestrichform braucht ihn
+   nicht mehr.

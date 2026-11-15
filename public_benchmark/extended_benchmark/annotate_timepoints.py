@@ -135,22 +135,40 @@ for _nummer in range(224, 239):
 # naechsten steht. Das ist eine Heuristik; jeder Eintrag traegt deshalb
 # `quelle: auto`, den Abstand und die woertliche Belegstelle, damit er pruefbar
 # bleibt. Erfunden wird nichts: ohne Fundstelle steht "not stated".
+#
+# Dauerangaben ("14-week intervention", "2-week therapy", "10-day treatment")
+# sind keine Messzeitpunkte; die Stichprobe vom 15.11.2026 fand drei solche
+# Fehllabels. Die Negativ-Lookaheads halten sie heraus.
+_KEINE_DAUER = (
+    r"(?!\s+(?:study|trial|period|programme?|intervention|therapy|treatment"
+    r"|supplementation|regimen|course))"
+)
+
 MUSTER = [
-    (re.compile(r"\bweek\s+(\d{1,2})\b", re.IGNORECASE), lambda m: f"week {m.group(1)}"),
-    (re.compile(r"\bmonth\s+(\d{1,2})\b", re.IGNORECASE), lambda m: f"month {m.group(1)}"),
-    (re.compile(r"\bday\s+(\d{1,2})\b", re.IGNORECASE), lambda m: f"day {m.group(1)}"),
-    (re.compile(r"\bat\s+(\d{1,2})\s*weeks?\b", re.IGNORECASE), lambda m: f"week {m.group(1)}"),
-    (re.compile(r"\bat\s+(\d{1,2})\s*months?\b", re.IGNORECASE), lambda m: f"month {m.group(1)}"),
-    # Schreibweise der Interventionsstudien: "at 1- (T1) and 4-months (T2)".
-    # "30-month study period" ist eine Studiendauer, kein Messzeitpunkt.
+    # Reihenfolge: Einheit zuerst ("month 12", "Week 8"), dann Zahl zuerst
+    # ("at 6 weeks", "after 4 months"), dann Bindestrichform ("6-week").
+    (
+        re.compile(r"\b(week|month|day)\s+(\d{1,2})\b", re.IGNORECASE),
+        lambda m: f"{m.group(1).lower()} {m.group(2)}",
+    ),
     (
         re.compile(
-            r"(?<![\d.])(\d{1,2})\s*-\s*months?\b(?!\s+(?:study|trial|period|program))",
+            rf"\b(?:at|after)\s+(\d{{1,2}})\s*(weeks?|months?|days?)\b{_KEINE_DAUER}",
             re.IGNORECASE,
         ),
-        lambda m: f"month {m.group(1)}",
+        lambda m: f"{m.group(2).lower().rstrip('s')} {m.group(1)}",
     ),
-    (re.compile(r"\bafter\s+(\d{1,2})\s*months?\b", re.IGNORECASE), lambda m: f"month {m.group(1)}"),
+    # "1- (T1) and 4-months (T2)": nur zusammen mit der Studienkennung, denn ein
+    # Bindestrich allein ("14-week intervention") ist meist eine Dauer.
+    (
+        re.compile(r"(?<![\d.])(\d{1,2})\s*-?\s*(weeks?|months?|days?)\s*\(T\d{1,2}\)", re.IGNORECASE),
+        lambda m: f"{m.group(2).lower().rstrip('s')} {m.group(1)}",
+    ),
+    (
+        # "at the 6th week": Ordnungszahl statt Kardinalzahl.
+        re.compile(r"\b(\d{1,2})(?:st|nd|rd|th)\s*(week|month|day)\b", re.IGNORECASE),
+        lambda m: f"{m.group(2).lower()} {m.group(1)}",
+    ),
     (re.compile(r"\((T\d{1,2})\)", re.IGNORECASE), lambda m: m.group(1).upper()),
     (re.compile(r"\bpost[- ]?test\b", re.IGNORECASE), lambda m: "post-test"),
     (re.compile(r"\bfollow[- ]?up\b", re.IGNORECASE), lambda m: "follow-up"),
@@ -191,16 +209,18 @@ def _zeitpunkt_funde(text: str) -> list[tuple[int, str, str]]:
             funde.append((match.start(), name, match.group(0)))
     funde.sort(key=lambda f: f[0])
     # "4-months (T2)": der Monatswert ist die Aussage, die Studienkennung nur
-    # seine Ueberschrift. Steht ein Monat direkt davor, faellt das T-Label weg.
-    monate = [f for f in funde if f[1].startswith("month ")]
-    return [
-        f
-        for f in funde
-        if not (
-            f[1].startswith("T")
-            and any(f[1] != "baseline" and 0 <= f[0] - m[0] <= 40 for m in monate)
-        )
-    ]
+    # seine Ueberschrift. Faellt ein Monatswert unmittelbar davor, gewinnt er.
+    def _im_monat(t_label: tuple[int, str, str]) -> bool:
+        for m in funde:
+            if not m[1].startswith("month "):
+                continue
+            if m[0] <= t_label[0] < m[0] + len(m[2]):
+                return True
+            if text[m[0] + len(m[2]) : t_label[0]].strip() in ("", "-"):
+                return True
+        return False
+
+    return [f for f in funde if not (f[1].startswith("T") and _im_monat(f))]
 
 
 def _satz_um(text: str, position: int) -> tuple[int, int]:

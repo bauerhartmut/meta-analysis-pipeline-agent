@@ -55,6 +55,28 @@ def test_t1_t2_schreibweise_wird_gelesen() -> None:
     assert "4-months" in info["evidence"]
 
 
+def test_dauerangabe_ist_kein_zeitpunkt() -> None:
+    from extended_benchmark.annotate_timepoints import _zeitpunkt_funde
+
+    for text in (
+        "Usage during the 14-week intervention was recorded.",
+        "Randomized to a 1- or 2-week quadruple rescue therapy.",
+        "After continuous 10-day HhAntag treatment the levels were measured.",
+    ):
+        assert _zeitpunkt_funde(text) == [], text
+
+
+def test_t_kennung_mit_monat_und_ordnungszahl() -> None:
+    from extended_benchmark.annotate_timepoints import _zeitpunkt_funde
+
+    namen = [f[1] for f in _zeitpunkt_funde("assessed at 1- (T1) and 4-months (T2) postintervention")]
+    assert namen == ["month 4"]
+    assert [f[1] for f in _zeitpunkt_funde("measured at baseline and at the 6th week")] == [
+        "baseline",
+        "week 6",
+    ]
+
+
 def test_studiendauer_ist_kein_zeitpunkt() -> None:
     from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
 
