@@ -53,10 +53,12 @@ sind Rückfall (beide richtig), keine Gruppengröße kam ohne Zeitpunkt.
 |---|---:|---:|---:|---:|
 | standard | 6 | 47.691 | 7.949 | 6/6 |
 | repair | 6 | 134.806 | 22.468 | 3/6 |
-| **gesamt** | **12** | **161.691** | **13.474** | **9/12** |
+| **gesamt** | **12** | **182.497** | **15.208** | **9/12** |
 
-Davon Primäraufrufe 140.885 (11.740 je Record) und Reparaturen 20.806; eine
-Reparatur kostet im Mittel 3.468 Tokens. Eine **erfolgreiche** Reparatur
+Davon Primäraufrufe 161.691 (13.474 je Record) und Reparaturen 20.806; eine
+Reparatur kostet im Mittel 3.468 Tokens. (Korrektur vom 15.11.2026: eine frühere
+Fassung dieses Absatzes nannte 161.691 als Gesamtsumme und 140.885 als
+Primäranteil; die Pfadsummen waren richtig, die Beschriftung nicht.) Eine **erfolgreiche** Reparatur
 (`566`, `119`, `580`) kostet 19.000 + 0,9k ≈ 19.900 Tokens für 6 Zellen, also
 etwa 3.500 Tokens je geretteter Zelle; eine **erfolglose** kostet 25.000.
 

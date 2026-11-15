@@ -19,9 +19,10 @@
     "tokens": 20806
   },
   "tokens": {
-    "gesamt": 161691,
-    "je_record": 13474.2,
-    "primaer": 140885
+    "gesamt": 182497,
+    "primaer": 161691,
+    "reparatur": 20806,
+    "je_record": 15208.1
   },
   "gruppen": {
     "length": [

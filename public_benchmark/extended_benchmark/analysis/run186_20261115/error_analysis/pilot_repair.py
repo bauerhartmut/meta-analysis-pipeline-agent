@@ -145,8 +145,12 @@ def urteil(zeilen: list[dict[str, Any]], gruppen: dict[str, list[str]]) -> dict[
         "leer": {"anzahl": len(leer), "quote": round(len(leer) / len(zeilen), 4) if zeilen else None,
                  "records": leer},
         "repair": {"aufrufe": repair_aufrufe, "tokens": repair_tokens},
-        "tokens": {"gesamt": tokens_gesamt, "je_record": round(tokens_gesamt / len(zeilen), 1) if zeilen else None,
-                   "primaer": tokens_gesamt - repair_tokens},
+        "tokens": {
+            "gesamt": tokens_gesamt + repair_tokens,
+            "primaer": tokens_gesamt,
+            "reparatur": repair_tokens,
+            "je_record": round((tokens_gesamt + repair_tokens) / len(zeilen), 1) if zeilen else None,
+        },
         "gruppen": gruppen,
     }
 
@@ -155,6 +159,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--waehlen", action="store_true")
     parser.add_argument("--urteilen", action="store_true")
+    parser.add_argument("--ohne-regel", action="store_true", help="Urteil als Gegenprobe ablegen")
     parser.add_argument("--run", default="pilot_repair_20261116")
     parser.add_argument("--out", type=Path, default=None)
     args = parser.parse_args()
@@ -171,7 +176,7 @@ def main() -> int:
     auswahl = json.loads((HIER / "pilot_repair_ids.json").read_text(encoding="utf-8"))
     zeilen = read_jsonl(BENCH / "runs" / args.run / "predictions.jsonl")
     ergebnis = urteil(zeilen, auswahl["auswahl"])
-    ziel = args.out or (HIER / "pilot_repair_urteil.json")
+    ziel = args.out or (HIER / ("pilot_ohne_regel_urteil.json" if args.ohne_regel else "pilot_repair_urteil.json"))
     ziel.write_text(json.dumps(ergebnis, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(ergebnis, ensure_ascii=False, indent=2))
     return 0

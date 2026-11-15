@@ -182,6 +182,22 @@ def test_v7_prompt_nimmt_gruppengroessen_von_der_zeitpunktregel_aus() -> None:
     assert "smallest possible answer" in kurz
 
 
+def test_gegenprobe_ohne_gruppenregel_laesst_die_zeile_weg() -> None:
+    record = {
+        "record_id": "yun2024:1",
+        "context": {"intervention": "A", "comparator": "B", "outcome": "C", "outcome_type": "continuous"},
+    }
+    mit = runner.build_prompt(record, "Text", target_timepoint="baseline", cell_timepoint=True)
+    ohne = runner.build_prompt(
+        record, "Text", target_timepoint="baseline", cell_timepoint=True, group_size_rule=False
+    )
+    assert "arm characteristics" in mit
+    assert "arm characteristics" not in ohne
+    # Der Rest des Prompts bleibt gleich, nur die eine Zeile fehlt.
+    assert len(mit) - len(ohne) > 100
+    assert "Never report an outcome value without naming the time point" in ohne
+
+
 def test_v7_hat_eigene_version_und_zeitpunkt_je_antwort() -> None:
     assert runner.bestimme_version(cell_timepoint=True, target="week 24") == "v7_zellzeitpunkt"
     # Ohne Ziel bleibt es beim alten Etikett: der Prompt braucht den Zeitpunkt.

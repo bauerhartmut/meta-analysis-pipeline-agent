@@ -90,11 +90,17 @@ Gold) und zählt sie nicht mehr als `ohne_zeitpunkt`; an den bestehenden Läufen
 in der Klasse, nachgerechnet). `pruefe_v7_zeile` behandelt sie ebenfalls nicht
 als Zeitpunktverstoß.
 
-**Schritt 6 gelaufen** (`pilot_repair_20261116`, 12 Records, 161.691 Tokens):
+**Schritt 6 gelaufen** (`pilot_repair_20261116`, 12 Records, 182.497 Tokens):
 Length 25,0 % (Ziel ≤ 10 % verfehlt), leere Antworten 0 %, Precision 1,0000,
 Recall 0,6389. Der Reparaturaufruf rettet 3 von 6 Fällen; zwei vorher fehlerfreie
 Records (`119`, `580`) scheiterten jetzt primär. Einzelheiten in
 `pilot_repair.md`.
+
+**Gegenprobe gelaufen** (`pilot_ohne_regel_20261116`): ohne die
+Gruppengrößen-Zeile nur 2 statt 6 Primärausfälle und 123.291 statt 182.497
+Tokens, dafür 4 leere Antworten statt 0. Die Zeile verursacht die Ausfälle,
+behebt aber die leere Antwort. Beide Fassungen verfehlen mindestens ein Ziel;
+Details in `pilot_gegenprobe.md`.
 
 ## 3. Messbare Erfolgskriterien
 
