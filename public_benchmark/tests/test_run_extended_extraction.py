@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -22,6 +23,46 @@ def test_standardprompt_ohne_absolute_counts_zusatz() -> None:
     prompt = runner.build_prompt(RECORD, "Text")
     assert "post-test" in prompt
     assert "never as percentages" not in prompt
+
+
+def test_records_option_liest_andere_datei(tmp_path: Path) -> None:
+    datei = tmp_path / "teil.jsonl"
+    zeilen = [
+        {"record_id": "yun2024:1", "document": {"split": "test"}},
+        {"record_id": "yun2024:2", "document": {"split": "dev"}},
+        {"record_id": "yun2024:3", "document": {"split": "test"}},
+    ]
+    datei.write_text("\n".join(json.dumps(z) for z in zeilen) + "\n", encoding="utf-8")
+
+    alle = runner.load_records(None, None, path=datei)
+    assert [r["record_id"] for r in alle] == ["yun2024:1", "yun2024:2", "yun2024:3"]
+    assert [r["record_id"] for r in runner.load_records("test", None, path=datei)] == [
+        "yun2024:1",
+        "yun2024:3",
+    ]
+    # Ohne path bleibt der Standardpfad aktiv.
+    assert runner.load_records(None, None) == runner.load_records(None, None, path=runner.RECORDS)
+
+
+def test_ids_waehlen_aus_der_alternativen_datei(tmp_path: Path) -> None:
+    datei = tmp_path / "teil.jsonl"
+    zeilen = [
+        {"record_id": f"yun2024:{i}", "document": {"split": "test"}} for i in (1, 2, 3)
+    ]
+    datei.write_text("\n".join(json.dumps(z) for z in zeilen) + "\n", encoding="utf-8")
+
+    auswahl = runner.waehle_records(runner.load_records("test", None, path=datei), "yun2024:1, yun2024:3")
+    assert [r["record_id"] for r in auswahl] == ["yun2024:1", "yun2024:3"]
+    # Unbekannte IDs werden ignoriert, leere Auswahl bleibt unveraendert.
+    assert runner.waehle_records(runner.load_records("test", None, path=datei), "yun2024:99") == []
+    assert len(runner.waehle_records(runner.load_records("test", None, path=datei), None)) == 3
+
+
+def test_record_ohne_ziel_laeuft_als_v2_timepoint() -> None:
+    ohne = {"timepoint": {"target": ""}}
+    mit = {"timepoint": {"target": "week 24"}}
+    assert runner.bestimme_version(fallback=True, target=ohne["timepoint"]["target"]) == "v2_timepoint"
+    assert runner.bestimme_version(fallback=True, target=mit["timepoint"]["target"]) == "v6_target_fallback"
 
 
 def test_flag_schaltet_absolute_counts_zu() -> None:

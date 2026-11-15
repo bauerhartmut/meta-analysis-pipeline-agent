@@ -355,6 +355,14 @@ def load_records(split: str | None, limit: int | None, path: Path | None = None)
     return records
 
 
+def waehle_records(records: list[dict[str, Any]], ids: str | None) -> list[dict[str, Any]]:
+    """Beschraenkt die Auswahl auf die per --ids genannten record_ids."""
+    if not ids:
+        return records
+    wanted = {value.strip() for value in ids.split(",") if value.strip()}
+    return [record for record in records if record["record_id"] in wanted]
+
+
 def done_keys(path: Path) -> set[tuple[str, str]]:
     if not path.exists():
         return set()
@@ -425,10 +433,7 @@ def main() -> int:
         print("FEHLER: kein API-Schluessel in der Konfiguration", flush=True)
         return 2
 
-    records = load_records(args.split, args.limit, path=args.records)
-    if args.ids:
-        wanted = {value.strip() for value in args.ids.split(",") if value.strip()}
-        records = [record for record in records if record["record_id"] in wanted]
+    records = waehle_records(load_records(args.split, args.limit, path=args.records), args.ids)
     run_dir = HERE / "runs" / args.run_id
     run_dir.mkdir(parents=True, exist_ok=True)
     out_path = run_dir / "predictions.jsonl"

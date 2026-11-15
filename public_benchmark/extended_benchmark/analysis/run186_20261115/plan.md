@@ -130,13 +130,38 @@ Kostenrechnung zählt: 200–216 Aufrufe, 1,4–1,8 Mio Tokens. Wer den Preis pr
 Messung. Bei 3 Threads und 200–216 Aufrufen ist der Lauf ein Vielfaches des
 Dev-Laufs (43 Aufrufe).
 
+## Eingefrorene Dateien (beide gitignored)
+
+| Datei | Records | Goldzellen | Ziel | Version |
+|---|---|---|---|---|
+| `records/yun_test186.jsonl` | 186 | 566 | 186 | `v6_target_fallback` |
+| `records/yun_test76_ohne_ziel.jsonl` | 76 | 243 | 0 | `v2_timepoint` |
+
+Beide sind aus `records/yun.jsonl` plus der Zeitpunktannotation von
+`records/yun_kandidaten.jsonl` gebaut; der Zusammenbau prüft je Record, dass die
+Gold-Struktur zeichengleich bleibt (Assertion im Prep-Block). Die 76 tragen ihre
+Statustexte mit: 57 × `not stated`, 18 × `not stated (nur unspezifische
+Angaben)`, 1 × `not stated (zu weit entfernt)`.
+
 ## Umgang mit den 76 Records ohne Ziel
 
 * Sie sind **nicht** Teil dieses Laufs (`ids.txt` enthält nur die 186).
-* Sie laufen später als **eigene Kohorte** mit `ids_ohne_ziel.txt`, gleicher
-  Befehl, eigene `--run-id` (`yun_test76_v2_20261115`). Ohne Ziel setzt
-  `bestimme_version()` automatisch `v2_timepoint`; die Zeilen sind also im
-  Log erkennbar und nicht als v6 etikettiert.
+* Sie laufen später als **eigene Kohorte**, gleicher Befehl, eigene `--run-id`:
+
+```bash
+cd D:/daswu/AIResearch
+export PYTHONIOENCODING=utf-8
+IDS76=$(cat public_benchmark/extended_benchmark/analysis/run186_20261115/ids_ohne_ziel.txt)
+
+.venv/bin/python public_benchmark/extended_benchmark/run_extended_extraction.py \
+  --records public_benchmark/extended_benchmark/records/yun_test76_ohne_ziel.jsonl \
+  --split test --models glm --workers 3 --ids "$IDS76" --target-fallback \
+  --run-id yun_test76_v2_20261115 \
+  > public_benchmark/extended_benchmark/runs/test76_v2.log 2>&1
+```
+
+  Ohne Ziel setzt `bestimme_version()` automatisch `v2_timepoint` (geprüft); die
+  Zeilen sind also im Log erkennbar und nicht als v6 etikettiert.
 * Auswertung strikt getrennt: die 76 gehen **nicht** in die MAE der 186 ein.
   Sie werden als Kohorte „ohne Ziel" mit `ohne_ziel`-Zellen ausgewiesen
   (`evaluate_fallback.py` trennt diese Klasse bereits).
