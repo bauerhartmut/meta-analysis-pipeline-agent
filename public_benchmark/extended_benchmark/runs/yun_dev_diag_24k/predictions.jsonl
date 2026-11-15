@@ -1,0 +1,1 @@
+{"record_id": "yun2024:228", "model": "glm", "model_id": "gwdg/glm-5.3", "http_status": 200, "error": "", "finish_reason": "length", "completion_tokens": 24000, "reasoning_chars": 104614, "elapsed_s": 0.16, "content_len": 0, "parse_error": "kein_json", "prompt_version": "v2_timepoint", "predicted": {"cells": []}, "rows": [], "content": ""}

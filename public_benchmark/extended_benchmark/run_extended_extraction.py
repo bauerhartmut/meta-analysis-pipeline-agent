@@ -187,6 +187,7 @@ def _call_once(model: dict[str, Any], prompt: str, key: str, base: str) -> dict[
             "content": content,
             "finish_reason": choice.get("finish_reason", ""),
             "completion_tokens": (data.get("usage") or {}).get("completion_tokens"),
+            "reasoning_chars": len((choice.get("message") or {}).get("reasoning_content") or ""),
         }
     except json.JSONDecodeError:
         return {
@@ -230,8 +231,16 @@ def main() -> int:
     parser.add_argument("--split", default="dev")
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--workers", type=int, default=3)
+    parser.add_argument("--ids", default=None, help="Komma-getrennte record_ids, nur diese laufen")
+    parser.add_argument("--save-content", action="store_true", help="Rohantwort im Ergebnis mitspeichern")
+    parser.add_argument("--max-tokens", type=int, default=None, help="Tokenbudget fuer alle Modelle ueberschreiben")
     parser.add_argument("--run-id", default=datetime.now(timezone.utc).strftime("extended_%Y%m%d"))
     args = parser.parse_args()
+
+    models = {name: dict(spec) for name, spec in MODELS.items()}
+    if args.max_tokens:
+        for spec in models.values():
+            spec["max_tokens"] = args.max_tokens
 
     config = get_config()
     key = config.tudagpt_api_key
@@ -241,6 +250,9 @@ def main() -> int:
         return 2
 
     records = load_records(args.split, args.limit)
+    if args.ids:
+        wanted = {value.strip() for value in args.ids.split(",") if value.strip()}
+        records = [record for record in records if record["record_id"] in wanted]
     run_dir = HERE / "runs" / args.run_id
     run_dir.mkdir(parents=True, exist_ok=True)
     out_path = run_dir / "predictions.jsonl"
@@ -257,16 +269,17 @@ def main() -> int:
             if candidate.exists():
                 text = candidate.read_text(encoding="utf-8", errors="replace")
         prompt = build_prompt(record, text)
-        response = call(MODELS[model], prompt, key, base)
+        response = call(models[model], prompt, key, base)
         cells, parse_error = parse_cells(response.get("content") or "")
         row = {
             "record_id": record["record_id"],
             "model": model,
-            "model_id": MODELS[model]["id"],
+            "model_id": models[model]["id"],
             "http_status": response.get("http_status"),
             "error": response.get("error", ""),
             "finish_reason": response.get("finish_reason", ""),
             "completion_tokens": response.get("completion_tokens"),
+            "reasoning_chars": response.get("reasoning_chars", 0),
             "elapsed_s": response.get("elapsed_s"),
             "content_len": len(response.get("content") or ""),
             "parse_error": parse_error,
@@ -274,6 +287,8 @@ def main() -> int:
             "predicted": {"cells": cells},
             "rows": cells,
         }
+        if args.save_content:
+            row["content"] = response.get("content") or ""
         with LOCK:
             with out_path.open("a", encoding="utf-8", newline="\n") as handle:
                 handle.write(json.dumps(row, ensure_ascii=False) + "\n")

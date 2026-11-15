@@ -139,6 +139,9 @@ python public_benchmark/extended_benchmark/run_extended_extraction.py \
 Ausgabe: `runs/<run_id>/predictions.jsonl` mit Status, Laufzeit, Parserfehler,
 Prompt-Version und Zellen je (Record, Modell).
 
+Für Diagnosen: `--ids <record_ids>` (nur diese Records), `--max-tokens`
+(Budget überschreiben), `--save-content` (Rohantwort mitspeichern).
+
 `PROMPT_VERSION` im Runner benennt die aktuelle Prompt-Fassung
 (`v2_timepoint`: Werte am Ende der Intervention, nicht Baseline und nicht
 Follow-up). Ergebnisse unterschiedlicher Versionen sind nicht direkt

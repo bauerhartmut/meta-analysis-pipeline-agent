@@ -66,8 +66,51 @@ liefern jetzt beide Modelle exakt (487,33 und 453,57), vorher beide 854,0 und
 - Die Läufe sind nur innerhalb derselben Prompt-Version vergleichbar. Der Lauf
   vom 14.11. bleibt als `v1` dokumentiert und sollte nicht mit `v2`-Zahlen
   gemischt werden.
-- Offen: glm antwortet bei 5 von 43 Records leer. Vor dem Quell-Testsplit ist zu
-  klären, ob das an der Promptlänge, am JSON-Zwang oder an langen Tabellen liegt.
+- Die 5 leeren glm-Antworten sind diagnostiziert, siehe nächster Abschnitt.
+
+## Diagnose der leeren glm-Antworten (15.11.2026)
+
+Die 5 leeren Zeilen zerfallen in zwei verschiedene Fälle.
+
+**Zwei sind korrekt leer.** `yun2024:2` und `yun2024:18` haben 0 Gold-Zellen
+(Myokardinfarkt ohne berichtete Raten, Adiponectin ohne Zahlen). glm antwortete
+mit 13 Zeichen, also `{"cells": []}` — die richtige Antwort. Diese Records
+kosten keinen Recall, nur eine leere Zeile im Log.
+
+**Drei sind echte Ausfälle.** `yun2024:228`, `:231`, `:233` haben je 6
+Gold-Zellen (18 der 170 Dev-Zellen) und stammen alle aus PMC5498715, dem
+Artikel mit der großen Ergebnistabelle. In allen drei Fällen lief glm in eine
+Reasoning-Schleife: `finish_reason = "length"` bei 24.000 Token, Inhalt leer,
+Reasoning-Text 104.000 bis 138.000 Zeichen. Es ist kein Parser- und kein
+Prompt-Problem, sondern ein Modell, das sich an der Tabelle festdenkt.
+
+Gegenprobe mit erhöhtem Budget (je ein Aufruf, Run-IDs `yun_dev_diag_32k`,
+`yun_dev_diag_24k`):
+
+| Record | Budget | Ergebnis | Token | Reasoning |
+|---|---|---|---|---|
+| yun2024:228 | 32.000 | 6 Zellen, finish stop | 3.728 | 15.175 Zeichen |
+| yun2024:228 | 24.000 (Wiederholung) | leer, finish length | 24.000 | 104.614 Zeichen, 0,16 s |
+| yun2024:233 | 32.000 | 6 Zellen, finish stop | 5.015 | 21.108 Zeichen |
+| yun2024:231 | 32.000 | leer, finish length | 32.000 | 138.553 Zeichen |
+
+Damit ist klar: **Mehr Budget ist keine Lösung.** 233 antwortet bei 32.000
+Token in 24 s, 231 läuft auch dort in die Schleife. Der Ausfall ist
+stochastisch, nicht deterministisch — derselbe Record 228 antwortet einmal mit
+3.728 Token und einmal mit 24.000 ohne Inhalt. Die 0,16 s des zweiten 24.000er
+Laufs können keine frische Generierung von 24.000 Token sein; vermutlich kam
+eine gecachte Antwort zurück. Das ist ungeklärt und ändert nichts an der
+Richtung.
+
+Folge für die Bewertung: Die Abdeckung von glm ist um 18 Zellen zu niedrig
+angesetzt, wenn man die Ausfälle als Modellschwäche liest, die sich mit
+Wiederholung beheben lässt. Für den Quell-Testsplit heißt das: Ausfälle mit
+`finish_reason = "length"` müssen wiederholt werden (ein zweiter Versuch mit
+32.000 Token), sonst wird glm systematisch unterschätzt.
+
+Die Prognose, dass 12 % der Records ausfallen, war zu pessimistisch: 2 der 5
+waren korrekt leer, 3 sind Ausfälle (7 %).
 
 Rohdaten: `predictions.jsonl` (86 Zeilen), `eval/*.jsonl`,
-`eval/*.metrics.json`.
+`eval/*.metrics.json`; Diagnoseläufe in `runs/yun_dev_diag_32k/` und
+`runs/yun_dev_diag_24k/`.
