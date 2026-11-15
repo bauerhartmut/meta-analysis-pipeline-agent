@@ -72,7 +72,7 @@ def _auftrag(tmp_path: Path, monkeypatch, antworten: list[dict], extra: list[str
     aufrufe: list[str] = []
 
     def fake_call(model, prompt, key, base, attempts=4):
-        aufrufe.append(model["id"])
+        aufrufe.append(dict(model))
         return antworten[min(len(aufrufe) - 1, len(antworten) - 1)]
 
     monkeypatch.setattr(runner, "call", fake_call)
@@ -120,6 +120,66 @@ def test_kaputtes_json_bekommt_genau_einen_zweiten_aufruf(tmp_path: Path, monkey
     assert zeile["fehlerklasse"] == ""
     assert zeile["retry_grund"] == "json"
     assert len(zeile["rows"]) == 1
+
+
+def test_repair_fasst_nur_nach_length_nach_und_mit_kleinem_budget(tmp_path: Path, monkeypatch) -> None:
+    lang = {
+        "http_status": 200, "content": "", "finish_reason": "length",
+        "completion_tokens": 19000, "elapsed_s": 1.0, "error": "",
+    }
+    reparatur = {
+        "http_status": 200,
+        "content": json.dumps({"timepoint": "24", "cells": [{"field": "intervention_mean", "arm": "intervention", "value": 13.72}]}),
+        "finish_reason": "stop", "completion_tokens": 900, "elapsed_s": 1.0, "error": "",
+    }
+    aufrufe, zeile = _auftrag(tmp_path, monkeypatch, [lang, reparatur], extra=["--repair", "--cell-timepoint"])
+    assert len(aufrufe) == 2
+    assert aufrufe[0]["max_tokens"] == 24000  # erster Aufruf unveraendert
+    assert aufrufe[1]["max_tokens"] == runner.REPAIR_MAX_TOKENS == 6000
+    assert zeile["pfad"] == "repair"
+    assert zeile["repair_tokens"] == 900
+    assert zeile["fehlerklasse"] == ""  # Reparatur liefert Zellen
+    assert len(zeile["rows"]) == 1
+    assert zeile["rows"][0]["timepoint"] == "24"
+
+
+def test_ohne_repair_flag_bleibt_es_bei_einem_aufruf(tmp_path: Path, monkeypatch) -> None:
+    lang = {
+        "http_status": 200, "content": "", "finish_reason": "length",
+        "completion_tokens": 19000, "elapsed_s": 1.0, "error": "",
+    }
+    aufrufe, zeile = _auftrag(tmp_path, monkeypatch, [lang])
+    assert len(aufrufe) == 1
+    assert zeile["pfad"] == "standard"
+    assert zeile["fehlerklasse"] == "length_ohne_ergebnis"
+
+
+def test_erfolglose_reparatur_bleibt_fehlzeile(tmp_path: Path, monkeypatch) -> None:
+    lang = {
+        "http_status": 200, "content": "", "finish_reason": "length",
+        "completion_tokens": 19000, "elapsed_s": 1.0, "error": "",
+    }
+    defekt = {**lang, "completion_tokens": 6000}
+    aufrufe, zeile = _auftrag(tmp_path, monkeypatch, [lang, defekt], extra=["--repair"])
+    assert len(aufrufe) == 2
+    assert zeile["pfad"] == "repair"
+    assert zeile["repair_fehlerklasse"] == "length_ohne_ergebnis"
+    assert zeile["fehlerklasse"] == "length_ohne_ergebnis"
+    assert zeile["rows"] == []
+
+
+def test_v7_prompt_nimmt_gruppengroessen_von_der_zeitpunktregel_aus() -> None:
+    record = {
+        "record_id": "yun2024:1",
+        "context": {"intervention": "A", "comparator": "B", "outcome": "C", "outcome_type": "continuous"},
+    }
+    prompt = runner.build_prompt(record, "Text", target_timepoint="baseline", fallback=True, cell_timepoint=True)
+    assert "Group sizes (*_group_size) are arm characteristics" in prompt
+    assert "exempt from the one-time-point rule" in prompt
+    # Der Reparaturprompt sagt dasselbe knapper.
+    kurz = runner._prompt_repair(record, "Text", "baseline")
+    assert "need no timepoint" in kurz
+    assert "smallest possible answer" in kurz
 
 
 def test_v7_hat_eigene_version_und_zeitpunkt_je_antwort() -> None:

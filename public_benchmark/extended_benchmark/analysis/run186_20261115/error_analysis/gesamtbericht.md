@@ -46,8 +46,16 @@ verwertbare Antwort: 18-mal endet die Generierung nach 19.000 Tokens mit
 | inhaltlich (falscher Wert, Auslassung, Zeitpunkt, überzählig) | 16 Records mit Zellfehlern | 39 (16 + 11 + 12 Rückfallzellen) |
 | Gold (bestätigter Konflikt) | **0** | 0 |
 
-Die 7 Records mit überzähligen Zellen zählen nicht als Fehler, solange nicht
-geprüft ist, ob die Werte im Artikel stehen — sie sind als offene Frage geführt.
+Die 7 Records mit überzähligen Zellen sind inzwischen am Text geprüft (siehe
+`ueberzaehlige_zellen.md`): **7 der 15 Zellen sind korrekt und fehlen nur im
+Gold**, 2 gehören zu einem falschen Outcome, 4 sind bei Drei-Arm-Studien in der
+Armzuordnung mehrdeutig, 2 sind ohne Tabellenblick nicht belegbar. Die
+Precision liegt damit zwischen 0,61 (alle 15 als Fehler) und 0,70 (7 als richtig
+gezählt); das Gold bleibt unverändert.
+
+Nachtrag 15.11.2026: Schritt 1 und 2 des Entwicklungsplans sind umgesetzt
+(`--repair` mit 6.000-Token-Deckel; `*_group_size` ohne Zeitpunktpflicht samt
+eigener Auswertklasse), 231 Tests grün, kein Modellaufruf.
 
 ### 2.3 Wie viele der 18 Length-Ausfälle sind erklärbar?
 

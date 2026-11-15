@@ -352,6 +352,22 @@ def main() -> int:
         for cell in cells:
             key = (cell["field"], cell.get("arm"))
             label, label_status = normalisiere_label(cell.get("timepoint") or "", target)
+            # Gruppengroessen sind Arm-Eigenschaften, keine Outcome-Werte: sie
+            # duerfen ohne Zeitpunkt kommen und werden als eigene Klasse gefuehrt.
+            if label_status == "leer" and str(cell["field"]).endswith("_group_size"):
+                zaehler["gruppengroesse_ohne_zeitpunkt_zellen"] += 1
+                je_quelle[quelle]["zellen"] += 1
+                if key in gold:
+                    gesehen.add(key)
+                    if _close(cell["value"], gold[key], 1e-6, 0.0):
+                        zaehler["gruppengroesse_ohne_zeitpunkt_richtig"] += 1
+                        je_quelle[quelle]["richtig"] += 1
+                    else:
+                        zaehler["gruppengroesse_ohne_zeitpunkt_falsch"] += 1
+                        je_quelle[quelle]["falsch"] += 1
+                else:
+                    zaehler["gruppengroesse_ohne_zeitpunkt_ohne_gold"] += 1
+                continue
             # Belegstufe unabhaengig von der Klassifikation: sie sagt, woher die
             # Einheit stammt, und deckt damit den Zirkel der Ziel-Normalisierung auf.
             stufe_label, stufe = belegstufe(cell.get("timepoint") or "", target, artikel)
@@ -445,6 +461,12 @@ def main() -> int:
             "falsch": zaehler["ohne_ziel_falsch"],
             "ohne_gold": zaehler["ohne_ziel_ohne_gold"],
         },
+        "gruppengroesse_ohne_zeitpunkt": {
+            "zellen": zaehler["gruppengroesse_ohne_zeitpunkt_zellen"],
+            "richtig": zaehler["gruppengroesse_ohne_zeitpunkt_richtig"],
+            "falsch": zaehler["gruppengroesse_ohne_zeitpunkt_falsch"],
+            "ohne_gold": zaehler["gruppengroesse_ohne_zeitpunkt_ohne_gold"],
+        },
         "ohne_zeitpunkt": {
             "zellen": zaehler["ohne_zeitpunkt_zellen"],
             "richtig": zaehler["ohne_zeitpunkt_richtig"],
@@ -530,7 +552,7 @@ def main() -> int:
         f"{gesamt['cell_precision']:.4f} MAE {gesamt['mae_pairs']} coverage {gesamt['mae_coverage']} "
         f"({gesamt['mae_pairs_covered']}/{gold_cells}) exakt {gesamt['record_exact']}/{len(records)}"
     )
-    for art in ("zieltreu", "rueckfall", "ohne_zeitpunkt", "ohne_ziel"):
+    for art in ("zieltreu", "rueckfall", "ohne_zeitpunkt", "ohne_ziel", "gruppengroesse_ohne_zeitpunkt"):
         block = ergebnis[art]
         precision = block.get("precision")
         zusatz = f", Precision {precision}" if precision is not None else ""

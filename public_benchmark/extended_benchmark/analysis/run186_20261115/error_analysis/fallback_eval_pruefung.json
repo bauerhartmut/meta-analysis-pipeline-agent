@@ -1,0 +1,435 @@
+{
+  "run": "yun_test186_v7_folgelauf_20261116",
+  "records": 47,
+  "gesamt": {
+    "task": "numeric_extraction",
+    "records": 47,
+    "records_without_prediction": 0,
+    "gold_cells": 133,
+    "predicted_cells": 79,
+    "matched_cells": 48,
+    "cell_precision": 0.6076,
+    "cell_recall": 0.3609,
+    "cell_f1": 0.4528,
+    "mae_pairs": 9.0756,
+    "mae_pairs_max": 305.0,
+    "mae_pairs_covered": 64,
+    "mae_coverage": 0.4812,
+    "record_exact": 6,
+    "record_exact_rate": 0.1277,
+    "arm_swap_records": 1,
+    "arm_swap_evaluable": 32,
+    "arm_swap_rate": 0.0312,
+    "fields": {
+      "comparator_events": {
+        "gold": 0,
+        "predicted": 2,
+        "matched": 0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "mae": null,
+        "mae_covered": 0
+      },
+      "comparator_group_size": {
+        "gold": 47,
+        "predicted": 23,
+        "matched": 18,
+        "recall": 0.383,
+        "precision": 0.7826,
+        "mae": 5.7391,
+        "mae_covered": 23
+      },
+      "comparator_mean": {
+        "gold": 12,
+        "predicted": 13,
+        "matched": 7,
+        "recall": 0.5833,
+        "precision": 0.5385,
+        "mae": 0.0387,
+        "mae_covered": 8
+      },
+      "comparator_standard_deviation": {
+        "gold": 8,
+        "predicted": 2,
+        "matched": 0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "mae": 1.35,
+        "mae_covered": 1
+      },
+      "intervention_events": {
+        "gold": 0,
+        "predicted": 1,
+        "matched": 0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "mae": null,
+        "mae_covered": 0
+      },
+      "intervention_group_size": {
+        "gold": 47,
+        "predicted": 23,
+        "matched": 18,
+        "recall": 0.383,
+        "precision": 0.7826,
+        "mae": 6.0435,
+        "mae_covered": 23
+      },
+      "intervention_mean": {
+        "gold": 11,
+        "predicted": 13,
+        "matched": 5,
+        "recall": 0.4545,
+        "precision": 0.3846,
+        "mae": 38.2525,
+        "mae_covered": 8
+      },
+      "intervention_standard_deviation": {
+        "gold": 8,
+        "predicted": 2,
+        "matched": 0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "mae": 2.16,
+        "mae_covered": 1
+      }
+    },
+    "tolerance": {
+      "abs": 1e-06,
+      "rel": 0.0
+    }
+  },
+  "ohne_ziel": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0
+  },
+  "gruppengroesse_ohne_zeitpunkt": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0
+  },
+  "ohne_zeitpunkt": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0
+  },
+  "zieltreu": {
+    "zellen": 46,
+    "richtig": 27,
+    "falsch": 15,
+    "ohne_gold": 4,
+    "precision": 0.6429
+  },
+  "rueckfall": {
+    "zellen": 29,
+    "richtig": 17,
+    "falsch": 1,
+    "ohne_gold": 11,
+    "precision": 0.9444,
+    "zeitdistanz_median_monate": 2.76,
+    "zeitdistanz_bekannt": 8,
+    "beispiele": [
+      {
+        "record_id": "yun2024:117",
+        "field": "intervention_group_size",
+        "target": "month 6",
+        "timepoint": "6 months",
+        "value": 9.0,
+        "gold": 9.0
+      },
+      {
+        "record_id": "yun2024:117",
+        "field": "comparator_group_size",
+        "target": "month 6",
+        "timepoint": "6 months",
+        "value": 13.0,
+        "gold": 13.0
+      },
+      {
+        "record_id": "yun2024:117",
+        "field": "comparator_events",
+        "target": "month 6",
+        "timepoint": "6 months",
+        "value": 2.0,
+        "gold": null
+      },
+      {
+        "record_id": "yun2024:119",
+        "field": "intervention_group_size",
+        "target": "month 6",
+        "timepoint": "6 months",
+        "value": 10.0,
+        "gold": 10.0
+      },
+      {
+        "record_id": "yun2024:119",
+        "field": "intervention_mean",
+        "target": "month 6",
+        "timepoint": "6 months",
+        "value": 70.0,
+        "gold": 70.0
+      },
+      {
+        "record_id": "yun2024:119",
+        "field": "comparator_group_size",
+        "target": "month 6",
+        "timepoint": "6 months",
+        "value": 13.0,
+        "gold": 13.0
+      },
+      {
+        "record_id": "yun2024:119",
+        "field": "comparator_mean",
+        "target": "month 6",
+        "timepoint": "6 months",
+        "value": 15.4,
+        "gold": 15.4
+      },
+      {
+        "record_id": "yun2024:151",
+        "field": "intervention_group_size",
+        "target": "month 11",
+        "timepoint": "Preop",
+        "value": 33.0,
+        "gold": 33.0
+      },
+      {
+        "record_id": "yun2024:151",
+        "field": "intervention_mean",
+        "target": "month 11",
+        "timepoint": "Preop",
+        "value": 12202.0,
+        "gold": 11897.0
+      },
+      {
+        "record_id": "yun2024:151",
+        "field": "comparator_group_size",
+        "target": "month 11",
+        "timepoint": "Preop",
+        "value": 30.0,
+        "gold": 30.0
+      },
+      {
+        "record_id": "yun2024:151",
+        "field": "comparator_mean",
+        "target": "month 11",
+        "timepoint": "Preop",
+        "value": 13229.0,
+        "gold": 13229.0
+      },
+      {
+        "record_id": "yun2024:384",
+        "field": "intervention_group_size",
+        "target": "end of study/treatment",
+        "timepoint": "Final Visit",
+        "value": 108.0,
+        "gold": 108.0
+      },
+      {
+        "record_id": "yun2024:384",
+        "field": "intervention_mean",
+        "target": "end of study/treatment",
+        "timepoint": "Final Visit",
+        "value": 80.0,
+        "gold": null
+      },
+      {
+        "record_id": "yun2024:384",
+        "field": "comparator_group_size",
+        "target": "end of study/treatment",
+        "timepoint": "Final Visit",
+        "value": 246.0,
+        "gold": 246.0
+      },
+      {
+        "record_id": "yun2024:384",
+        "field": "comparator_mean",
+        "target": "end of study/treatment",
+        "timepoint": "Final Visit",
+        "value": 71.0,
+        "gold": null
+      },
+      {
+        "record_id": "yun2024:597",
+        "field": "intervention_group_size",
+        "target": "baseline",
+        "timepoint": "12 weeks",
+        "value": 353.0,
+        "gold": 353.0
+      },
+      {
+        "record_id": "yun2024:597",
+        "field": "intervention_mean",
+        "target": "baseline",
+        "timepoint": "12 weeks",
+        "value": 12.5,
+        "gold": null
+      },
+      {
+        "record_id": "yun2024:597",
+        "field": "comparator_group_size",
+        "target": "baseline",
+        "timepoint": "12 weeks",
+        "value": 357.0,
+        "gold": 357.0
+      },
+      {
+        "record_id": "yun2024:597",
+        "field": "comparator_mean",
+        "target": "baseline",
+        "timepoint": "12 weeks",
+        "value": 25.2,
+        "gold": null
+      },
+      {
+        "record_id": "yun2024:606",
+        "field": "intervention_group_size",
+        "target": "baseline",
+        "timepoint": "12 weeks",
+        "value": 181.0,
+        "gold": 181.0
+      }
+    ]
+  },
+  "unklar": {
+    "zellen": 4,
+    "anteil": 0.0301,
+    "beispiele": [
+      {
+        "record_id": "yun2024:197",
+        "field": "intervention_group_size",
+        "roh": "24",
+        "ziel": "baseline"
+      },
+      {
+        "record_id": "yun2024:197",
+        "field": "comparator_group_size",
+        "roh": "24",
+        "ziel": "baseline"
+      },
+      {
+        "record_id": "yun2024:201",
+        "field": "intervention_group_size",
+        "roh": "24",
+        "ziel": "baseline"
+      },
+      {
+        "record_id": "yun2024:201",
+        "field": "comparator_group_size",
+        "roh": "24",
+        "ziel": "baseline"
+      }
+    ]
+  },
+  "arm_gemischt": {
+    "records": 0,
+    "beispiele": []
+  },
+  "belegstufen": {
+    "stufen": {
+      "artikel": 34,
+      "gedruckt": 41,
+      "unklar": 4
+    },
+    "klassen": {
+      "zieltreu": 49,
+      "rueckfall": 26,
+      "unklar": 4
+    },
+    "treffer_belegt": 44,
+    "treffer_nur_ziel": 0,
+    "rueckfall_intervall": {
+      "untere_grenze": 0.3291,
+      "obere_grenze": 0.3797,
+      "zaehler": {
+        "zieltreu": 49,
+        "rueckfall": 26,
+        "unklar": 4
+      }
+    }
+  },
+  "arm_klassen": {
+    "records": {
+      "arm_konsistent": 47
+    },
+    "beispiele": [],
+    "gemischte_zellen": 0,
+    "zellen_mit_label": 0,
+    "anteil": null,
+    "wilson_95_records": [
+      0.0,
+      0.0756
+    ],
+    "wilson_95_zellen": null
+  },
+  "auslassungen": {
+    "gesamt": 73,
+    "je_feld": {
+      "comparator_group_size": 26,
+      "comparator_mean": 4,
+      "comparator_standard_deviation": 7,
+      "intervention_group_size": 26,
+      "intervention_mean": 3,
+      "intervention_standard_deviation": 7
+    },
+    "quote": 0.5489
+  },
+  "je_feld": {
+    "comparator_events": {
+      "rueckfall_zellen": 1,
+      "zieltreu_zellen": 1
+    },
+    "comparator_group_size": {
+      "zieltreu_zellen": 14,
+      "rueckfall_zellen": 7,
+      "rueckfall_richtig": 7,
+      "zieltreu_richtig": 9
+    },
+    "comparator_mean": {
+      "zieltreu_zellen": 7,
+      "zieltreu_richtig": 5,
+      "rueckfall_zellen": 6,
+      "rueckfall_richtig": 2
+    },
+    "comparator_standard_deviation": {
+      "zieltreu_zellen": 1,
+      "rueckfall_zellen": 1
+    },
+    "intervention_events": {
+      "zieltreu_zellen": 1
+    },
+    "intervention_group_size": {
+      "zieltreu_zellen": 14,
+      "rueckfall_zellen": 7,
+      "rueckfall_richtig": 7,
+      "zieltreu_richtig": 9
+    },
+    "intervention_mean": {
+      "zieltreu_zellen": 7,
+      "zieltreu_richtig": 4,
+      "rueckfall_zellen": 6,
+      "rueckfall_richtig": 1
+    },
+    "intervention_standard_deviation": {
+      "zieltreu_zellen": 1,
+      "rueckfall_zellen": 1
+    }
+  },
+  "je_quelle": {
+    "v7_folgelauf": {
+      "records": 47,
+      "zellen": 75,
+      "falsch": 16,
+      "richtig": 44,
+      "auslassungen": 73,
+      "ohne_gold": 15,
+      "technische_ausfaelle": 18,
+      "leere_antworten": 6
+    }
+  },
+  "zell_f1_aus_klassen": 0.4231
+}

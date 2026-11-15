@@ -136,6 +136,33 @@ def test_armklassen_trennen_modell_und_gold() -> None:
     assert arm_klasse(gleich, [1.0, 2.0], "", "week 24") == "arm_konsistent"
 
 
+def test_gruppengroesse_ohne_zeitpunkt_ist_eigene_klasse() -> None:
+    """Gruppengroessen brauchen keinen Zeitpunkt; sie zaehlen nicht als Fehler."""
+    import json
+
+    from extended_benchmark import evaluate_fallback
+
+    assert evaluate_fallback.normalisiere_label("", "baseline") == ("", "leer")
+    # Ein Zeitpunktfehler bleibt ein Zeitpunktfehler.
+    assert evaluate_fallback.klassifiziere("baseline", "") == "ohne_zeitpunkt"
+    # Die Feldendung entscheidet: nur *_group_size ist von der Regel ausgenommen.
+    assert "intervention_group_size".endswith("_group_size")
+    assert not "intervention_mean".endswith("_group_size")
+    # Das v7-Schema erlaubt der Gruppe ohne Zeitpunkt keinen Zeitpunktzwang.
+    zeile = {
+        "target_timepoint": "baseline",
+        "timepoint_header": "Baseline",
+        "fallback": False,
+        "rows": [
+            {"field": "intervention_group_size", "arm": "intervention", "timepoint": ""},
+            {"field": "comparator_group_size", "arm": "comparator", "timepoint": ""},
+        ],
+    }
+    befund = evaluate_fallback.pruefe_v7_zeile(zeile, "Baseline characteristics")
+    assert befund["ein_zeitpunkt"] is True
+    assert json.dumps(befund)  # serialisierbar fuer den Bericht
+
+
 def test_v7_zeile_wird_formal_geprueft() -> None:
     from extended_benchmark.evaluate_fallback import pruefe_v7_zeile
 

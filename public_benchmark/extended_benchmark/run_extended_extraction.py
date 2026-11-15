@@ -66,6 +66,10 @@ VERSION_TARGET_TIMEPOINT = "v5_target_timepoint"
 VERSION_TARGET_FALLBACK = "v6_target_fallback"
 VERSION_CELL_TIMEPOINT = "v7_zellzeitpunkt"
 RETRY_MAX_TOKENS = 32000
+# Reparaturaufruf nach einem Length-Ausfall: kleines Budget, kurzer Text, wenige
+# Zellen. Ein erneuter Loop kostet damit hoechstens REPAIR_MAX_TOKENS.
+REPAIR_MAX_TOKENS = 6000
+REPAIR_TEXT_LIMIT = 15000
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
 SESSION_TAG = ""
@@ -139,10 +143,40 @@ def _prompt_v7(record: dict[str, Any], text: str, limit: int, target: str) -> st
         '"comparator", "value": <number>}, ...]}\n'
         f"Allowed fields: {fields}. "
         "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
-        "Never report a cell without naming the time point of the answer, never mix two time points. "
+        "Group sizes (*_group_size) are arm characteristics, not outcome values: report them without a time "
+        "point, and they are exempt from the one-time-point rule. "
+        "Never report an outcome value without naming the time point of the answer, never mix two time points. "
         "Never invent a time point_header: copy it from the article or leave it empty. "
         "Copy numbers exactly as reported; do not convert, do not compute, do not guess. "
         "Omit a cell the paper does not report. "
+        "Do not add commentary, markdown or code fences."
+    )
+
+
+def _prompt_repair(record: dict[str, Any], text: str, target: str, limit: int = REPAIR_TEXT_LIMIT) -> str:
+    """Kurzer Reparaturauftrag: kleinste moegliche Antwort, wenige Zellen.
+
+    Ziel ist nicht die beste Extraktion, sondern eine Ausgabe ueberhaupt: Der
+    Standardprompt ist bei diesen Records 6-mal mit leerem Inhalt am Limit
+    gescheitert (siehe error_analysis/length_analysis.md).
+    """
+    context = record["context"]
+    fields = ", ".join(f'"{name}"' for name in FIELDS)
+    return (
+        f"Publication excerpt:\n{text[:limit]}\n\n"
+        f"Intervention: {context.get('intervention') or 'not stated'}\n"
+        f"Comparator: {context.get('comparator') or 'not stated'}\n"
+        f"Outcome: {context.get('outcome') or 'not stated'}\n"
+        f"Outcome type: {context.get('outcome_type') or 'unknown'}\n\n"
+        "Return the JSON object first. Write no analysis before it.\n"
+        f'Target time point: "{target}".\n'
+        "Give the smallest possible answer: at most six cells, at most one cell per field and arm. "
+        'Return exactly one JSON object: {"timepoint": "<label as printed>", "cells": '
+        '[{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...]}\n'
+        f"Allowed fields: {fields}. "
+        "Group sizes (*_group_size) are arm characteristics and need no timepoint. "
+        "Copy numbers exactly as reported; do not convert, do not compute. "
+        "If a value is not reported, leave it out. "
         "Do not add commentary, markdown or code fences."
     )
 
@@ -501,6 +535,11 @@ def main() -> int:
         help="Zielzeitpunkt mit Rueckfall auf den naechsten berichteten Zeitpunkt (v6_target_fallback, Standard)",
     )
     parser.add_argument(
+        "--repair",
+        action="store_true",
+        help=f"nach einem Length-Ausfall einmal mit {REPAIR_MAX_TOKENS} Tokens und kurzem Prompt nachfassen",
+    )
+    parser.add_argument(
         "--cell-timepoint",
         action="store_true",
         help="v7: ein Zeitpunkt je Antwort plus timepoint_header und fallback (v7_zellzeitpunkt)",
@@ -597,11 +636,29 @@ def main() -> int:
                 cells, parse_error = parse_cells(response.get("content") or "")
                 timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
                 fehlerklasse = fehlerklasse_aus(response, parse_error)
+        # Gedeckelter Reparaturaufruf: nur nach einem Length-Ausfall, mit
+        # kleinem Budget und kurzem Text. Ersetzt die Zellen nur bei Erfolg.
+        repair: dict[str, Any] | None = None
+        pfad = "standard"
+        repair_fehlerklasse = ""
+        inhalt = response.get("content") or ""
+        if args.repair and fehlerklasse == "length_ohne_ergebnis":
+            budget = dict(models[model])
+            budget["max_tokens"] = min(REPAIR_MAX_TOKENS, int(budget.get("max_tokens") or REPAIR_MAX_TOKENS))
+            repair = call(budget, _prompt_repair(record, text, target), key, base)
+            pfad = "repair"
+            repair_fehlerklasse = fehlerklasse_aus(repair, parse_cells(repair.get("content") or "")[1])
+            if repair.get("content"):
+                r_cells, r_parse = parse_cells(repair["content"])
+                if r_cells:
+                    cells, parse_error = r_cells, r_parse
+                    inhalt = repair["content"]
+                    fehlerklasse = ""
         # v7 stellt den Zeitpunkt je Antwort; er wird hier auf die Zellen
         # verteilt, damit die Auswertung beide Schemata gleich liest.
         v7 = {"timepoint": "", "header": "", "fallback": None, "error": ""}
         if args.cell_timepoint:
-            v7 = parse_v7_meta(response.get("content") or "")
+            v7 = parse_v7_meta(inhalt)
             if v7["timepoint"]:
                 for cell in cells:
                     cell["timepoint"] = v7["timepoint"]
@@ -638,6 +695,10 @@ def main() -> int:
             "timepoint_header": v7["header"],
             "fallback": v7["fallback"],
             "content_chars": len(response.get("content") or ""),
+            "pfad": pfad,
+            "repair_tokens": repair.get("completion_tokens") if repair else None,
+            "repair_finish_reason": repair.get("finish_reason", "") if repair else "",
+            "repair_fehlerklasse": repair_fehlerklasse,
             "gateway_params": {"max_tokens": models[model]["max_tokens"], "temperature": 0.0},
             "prompt_version": prompt_version,
             "predicted": {"cells": cells},

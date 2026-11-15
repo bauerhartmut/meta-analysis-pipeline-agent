@@ -70,6 +70,29 @@ erste Netzlauf steht am Ende.
 * Ausführung erst nach Schritt 1–5, Freigabe vorausgesetzt.
 * Erfolg: mindestens eine Variante erreicht die Schwellen aus Abschnitt 3.
 
+## 2a. Umsetzungsstand 15.11.2026 (ohne API-Aufruf)
+
+**Schritt 1 umgesetzt.** `run_extended_extraction.py` hat `--repair`; nach einem
+`length_ohne_ergebnis` folgt genau ein Aufruf mit `REPAIR_MAX_TOKENS = 6000`,
+gekürztem Artikeltext (15.000 Zeichen) und der Aufforderung, das JSON ohne
+Voranalyse auszugeben. Die Zeile trägt `pfad`, `repair_tokens`,
+`repair_finish_reason`, `repair_fehlerklasse`; Zellen ersetzt die Reparatur nur
+bei Erfolg, das Originalbudget bleibt unverändert. Fünf Tests decken ab: nur
+nach Length, nur mit Flag, Budget 6.000, Erfolg ersetzt Zellen, Fehlschlag
+bleibt Fehlzeile.
+
+**Schritt 2 umgesetzt.** Der v7-Prompt nimmt `*_group_size` von der
+Zeitpunktpflicht aus („arm characteristics … exempt from the one-time-point
+rule“), der Reparaturprompt ebenso. `evaluate_fallback.py` führt solche Zellen
+in der eigenen Klasse `gruppengroesse_ohne_zeitpunkt` (mit richtig/falsch/ohne
+Gold) und zählt sie nicht mehr als `ohne_zeitpunkt`; an den bestehenden Läufen
+ändert das nichts, weil dort jede Gruppengröße einen Zeitpunkt trägt (0 Zellen
+in der Klasse, nachgerechnet). `pruefe_v7_zeile` behandelt sie ebenfalls nicht
+als Zeitpunktverstoß.
+
+**Schritt 6 (Pilot) noch nicht gelaufen** — er braucht Netzzugriff und ist
+damit nicht Teil dieses Auftrags.
+
 ## 3. Messbare Erfolgskriterien
 
 Bezogen auf die bestehende Verteilung (v6 0,6548 / kombiniert 0,6934 F1;
