@@ -139,6 +139,7 @@ def test_repair_fasst_nur_nach_length_nach_und_mit_kleinem_budget(tmp_path: Path
     assert zeile["pfad"] == "repair"
     assert zeile["repair_tokens"] == 900
     assert zeile["fehlerklasse"] == ""  # Reparatur liefert Zellen
+    assert zeile["content_len"] == 0  # zaehlt weiter die Primaerantwort
     assert len(zeile["rows"]) == 1
     assert zeile["rows"][0]["timepoint"] == "24"
 

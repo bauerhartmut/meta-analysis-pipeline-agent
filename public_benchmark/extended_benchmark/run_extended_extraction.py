@@ -128,6 +128,24 @@ def bestimme_version(
     return f"{version}_cb" if cache_buster else version
 
 
+def _felder() -> str:
+    """Feldliste, wie sie in beiden Prompts steht."""
+    return ", ".join(f'"{name}"' for name in FIELDS)
+
+
+def _kopf(record: dict[str, Any], text: str, limit: int) -> str:
+    """Gemeinsamer Prompt-Kopf: Textauszug, Kontext, JSON-zuerst-Regel."""
+    context = record["context"]
+    return (
+        f"Publication excerpt:\n{text[:limit]}\n\n"
+        f"Intervention: {context.get('intervention') or 'not stated'}\n"
+        f"Comparator: {context.get('comparator') or 'not stated'}\n"
+        f"Outcome: {context.get('outcome') or 'not stated'}\n"
+        f"Outcome type: {context.get('outcome_type') or 'unknown'}\n\n"
+        "Return the JSON object first. Write no analysis before it.\n"
+    )
+
+
 def _prompt_v7(
     record: dict[str, Any], text: str, limit: int, target: str, group_size_mode: str = "aus"
 ) -> str:
@@ -136,16 +154,9 @@ def _prompt_v7(
     Der Zeitpunkt ist Eigenschaft der Antwort, nicht des Feldes. Damit ist eine
     Mischung der Arme strukturell ausgeschlossen, nicht nur per Prompt verboten.
     """
-    context = record["context"]
-    fields = ", ".join(f'"{name}"' for name in FIELDS)
     return (
-        f"Publication excerpt:\n{text[:limit]}\n\n"
-        f"Intervention: {context.get('intervention') or 'not stated'}\n"
-        f"Comparator: {context.get('comparator') or 'not stated'}\n"
-        f"Outcome: {context.get('outcome') or 'not stated'}\n"
-        f"Outcome type: {context.get('outcome_type') or 'unknown'}\n\n"
-        "Return the JSON object first. Write no analysis before it.\n"
-        "One time point for BOTH arms.\n"
+        _kopf(record, text, limit)
+        + "One time point for BOTH arms.\n"
         f'Target time point (binding): "{target}".\n'
         "1. If both arms are reported at the target time point, use it and set \"fallback\": false.\n"
         "2. Otherwise use the closest time point (same unit, smallest absolute difference, ties: the "
@@ -156,7 +167,7 @@ def _prompt_v7(
         'shows this time point together with its unit, e.g. Week 24; empty if there is none>", '
         '"fallback": true | false, "cells": [{"field": "<field>", "arm": "intervention" | '
         '"comparator", "value": <number>}, ...]}\n'
-        f"Allowed fields: {fields}. "
+        f"Allowed fields: {_felder()}. "
         "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
         + GROUP_SIZE_TEXTE.get(group_size_mode, "")
         + "Never report an outcome value without naming the time point of the answer, never mix two time points. "
@@ -174,20 +185,13 @@ def _prompt_repair(record: dict[str, Any], text: str, target: str, limit: int = 
     Standardprompt ist bei diesen Records 6-mal mit leerem Inhalt am Limit
     gescheitert (siehe error_analysis/length_analysis.md).
     """
-    context = record["context"]
-    fields = ", ".join(f'"{name}"' for name in FIELDS)
     return (
-        f"Publication excerpt:\n{text[:limit]}\n\n"
-        f"Intervention: {context.get('intervention') or 'not stated'}\n"
-        f"Comparator: {context.get('comparator') or 'not stated'}\n"
-        f"Outcome: {context.get('outcome') or 'not stated'}\n"
-        f"Outcome type: {context.get('outcome_type') or 'unknown'}\n\n"
-        "Return the JSON object first. Write no analysis before it.\n"
-        f'Target time point: "{target}".\n'
+        _kopf(record, text, limit)
+        + f'Target time point: "{target}".\n'
         "Give the smallest possible answer: at most six cells, at most one cell per field and arm. "
         'Return exactly one JSON object: {"timepoint": "<label as printed>", "cells": '
         '[{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...]}\n'
-        f"Allowed fields: {fields}. "
+        f"Allowed fields: {_felder()}. "
         "Group sizes (*_group_size) are arm characteristics and need no timepoint. "
         "Copy numbers exactly as reported; do not convert, do not compute. "
         "If a value is not reported, leave it out. "
@@ -283,7 +287,7 @@ def build_prompt(
         "Extract the numerical results that belong to this comparison and outcome. "
         "Return exactly one JSON object:\n"
                     f"{schema}\n"
-            f"Allowed fields: {fields}. "
+            f"Allowed fields: {_felder()}. "
         "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
         + timepoint_rule
         + (
@@ -663,19 +667,22 @@ def main() -> int:
         repair: dict[str, Any] | None = None
         pfad = "standard"
         repair_fehlerklasse = ""
-        inhalt = response.get("content") or ""
+        # `content_len`/`content_chars` beschreiben immer die Antwort des
+        # Primaeraufrufs (Vergleichbarkeit mit den alten Zeilen); der Inhalt, aus
+        # dem der v7-Header gelesen wird, kann nach einer Reparatur ein anderer sein.
+        primaer_content = response.get("content") or ""
+        inhalt = primaer_content
         if args.repair and fehlerklasse == "length_ohne_ergebnis":
             budget = dict(models[model])
             budget["max_tokens"] = min(REPAIR_MAX_TOKENS, int(budget.get("max_tokens") or REPAIR_MAX_TOKENS))
             repair = call(budget, _prompt_repair(record, text, target), key, base)
             pfad = "repair"
-            repair_fehlerklasse = fehlerklasse_aus(repair, parse_cells(repair.get("content") or "")[1])
-            if repair.get("content"):
-                r_cells, r_parse = parse_cells(repair["content"])
-                if r_cells:
-                    cells, parse_error = r_cells, r_parse
-                    inhalt = repair["content"]
-                    fehlerklasse = ""
+            inhalt_repair = repair.get("content") or ""
+            r_cells, r_parse = parse_cells(inhalt_repair)
+            repair_fehlerklasse = fehlerklasse_aus(repair, r_parse)
+            if r_cells:
+                cells, parse_error, inhalt = r_cells, r_parse, inhalt_repair
+                fehlerklasse = ""
         # v7 stellt den Zeitpunkt je Antwort; er wird hier auf die Zellen
         # verteilt, damit die Auswertung beide Schemata gleich liest.
         v7 = {"timepoint": "", "header": "", "fallback": None, "error": ""}
@@ -703,7 +710,7 @@ def main() -> int:
             "retry_finish_reason": retry.get("finish_reason", "") if retry else "",
             "retry_tokens": retry.get("completion_tokens") if retry else None,
             "elapsed_s": response.get("elapsed_s"),
-            "content_len": len(response.get("content") or ""),
+            "content_len": len(primaer_content),
             "parse_error": parse_error,
             "timepoints": timepoints
             if (args.last_timepoint or args.target_timepoint or args.target_fallback)
@@ -716,7 +723,7 @@ def main() -> int:
             "schema_version": VERSION_CELL_TIMEPOINT if args.cell_timepoint else "v6_percell_timepoint",
             "timepoint_header": v7["header"],
             "fallback": v7["fallback"],
-            "content_chars": len(response.get("content") or ""),
+            "content_chars": len(primaer_content),
             "pfad": pfad,
             "group_size_mode": args.group_size_mode,
             "repair_tokens": repair.get("completion_tokens") if repair else None,
