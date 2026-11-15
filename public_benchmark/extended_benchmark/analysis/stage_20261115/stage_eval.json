@@ -1,0 +1,548 @@
+{
+  "baseline_run": "yun_dev_std_20261115",
+  "stage_run": "stage_20261115",
+  "records": 43,
+  "gesamt": {
+    "baseline": {
+      "task": "numeric_extraction",
+      "records": 43,
+      "records_without_prediction": 0,
+      "gold_cells": 170,
+      "predicted_cells": 171,
+      "matched_cells": 159,
+      "cell_precision": 0.9298,
+      "cell_recall": 0.9353,
+      "cell_f1": 0.9326,
+      "mae_pairs": 0.4152,
+      "mae_pairs_max": 22.0,
+      "mae_pairs_covered": 164,
+      "mae_coverage": 0.9647,
+      "record_exact": 34,
+      "record_exact_rate": 0.7907,
+      "arm_swap_records": 0,
+      "arm_swap_evaluable": 82,
+      "arm_swap_rate": 0.0,
+      "fields": {
+        "comparator_events": {
+          "gold": 8,
+          "predicted": 10,
+          "matched": 6,
+          "recall": 0.75,
+          "precision": 0.6,
+          "mae": 4.75,
+          "mae_covered": 8
+        },
+        "comparator_group_size": {
+          "gold": 38,
+          "predicted": 37,
+          "matched": 37,
+          "recall": 0.9737,
+          "precision": 1.0,
+          "mae": 0.0,
+          "mae_covered": 37
+        },
+        "comparator_mean": {
+          "gold": 20,
+          "predicted": 20,
+          "matched": 19,
+          "recall": 0.95,
+          "precision": 0.95,
+          "mae": 0.0,
+          "mae_covered": 19
+        },
+        "comparator_standard_deviation": {
+          "gold": 19,
+          "predicted": 18,
+          "matched": 18,
+          "recall": 0.9474,
+          "precision": 1.0,
+          "mae": 0.0,
+          "mae_covered": 18
+        },
+        "intervention_events": {
+          "gold": 8,
+          "predicted": 10,
+          "matched": 6,
+          "recall": 0.75,
+          "precision": 0.6,
+          "mae": 3.75,
+          "mae_covered": 8
+        },
+        "intervention_group_size": {
+          "gold": 38,
+          "predicted": 37,
+          "matched": 37,
+          "recall": 0.9737,
+          "precision": 1.0,
+          "mae": 0.0,
+          "mae_covered": 37
+        },
+        "intervention_mean": {
+          "gold": 20,
+          "predicted": 21,
+          "matched": 18,
+          "recall": 0.9,
+          "precision": 0.8571,
+          "mae": 0.0053,
+          "mae_covered": 19
+        },
+        "intervention_standard_deviation": {
+          "gold": 19,
+          "predicted": 18,
+          "matched": 18,
+          "recall": 0.9474,
+          "precision": 1.0,
+          "mae": 0.0,
+          "mae_covered": 18
+        }
+      },
+      "tolerance": {
+        "abs": 1e-06,
+        "rel": 0.0
+      }
+    },
+    "stufe": {
+      "task": "numeric_extraction",
+      "records": 43,
+      "records_without_prediction": 0,
+      "gold_cells": 170,
+      "predicted_cells": 179,
+      "matched_cells": 159,
+      "cell_precision": 0.8883,
+      "cell_recall": 0.9353,
+      "cell_f1": 0.9112,
+      "mae_pairs": 0.4152,
+      "mae_pairs_max": 22.0,
+      "mae_pairs_covered": 164,
+      "mae_coverage": 0.9647,
+      "record_exact": 30,
+      "record_exact_rate": 0.6977,
+      "arm_swap_records": 0,
+      "arm_swap_evaluable": 82,
+      "arm_swap_rate": 0.0,
+      "fields": {
+        "comparator_events": {
+          "gold": 8,
+          "predicted": 14,
+          "matched": 6,
+          "recall": 0.75,
+          "precision": 0.4286,
+          "mae": 4.75,
+          "mae_covered": 8
+        },
+        "comparator_group_size": {
+          "gold": 38,
+          "predicted": 37,
+          "matched": 37,
+          "recall": 0.9737,
+          "precision": 1.0,
+          "mae": 0.0,
+          "mae_covered": 37
+        },
+        "comparator_mean": {
+          "gold": 20,
+          "predicted": 20,
+          "matched": 19,
+          "recall": 0.95,
+          "precision": 0.95,
+          "mae": 0.0,
+          "mae_covered": 19
+        },
+        "comparator_standard_deviation": {
+          "gold": 19,
+          "predicted": 18,
+          "matched": 18,
+          "recall": 0.9474,
+          "precision": 1.0,
+          "mae": 0.0,
+          "mae_covered": 18
+        },
+        "intervention_events": {
+          "gold": 8,
+          "predicted": 14,
+          "matched": 6,
+          "recall": 0.75,
+          "precision": 0.4286,
+          "mae": 3.75,
+          "mae_covered": 8
+        },
+        "intervention_group_size": {
+          "gold": 38,
+          "predicted": 37,
+          "matched": 37,
+          "recall": 0.9737,
+          "precision": 1.0,
+          "mae": 0.0,
+          "mae_covered": 37
+        },
+        "intervention_mean": {
+          "gold": 20,
+          "predicted": 21,
+          "matched": 18,
+          "recall": 0.9,
+          "precision": 0.8571,
+          "mae": 0.0053,
+          "mae_covered": 19
+        },
+        "intervention_standard_deviation": {
+          "gold": 19,
+          "predicted": 18,
+          "matched": 18,
+          "recall": 0.9474,
+          "precision": 1.0,
+          "mae": 0.0,
+          "mae_covered": 18
+        }
+      },
+      "tolerance": {
+        "abs": 1e-06,
+        "rel": 0.0
+      }
+    }
+  },
+  "nur_ereignisse": {
+    "baseline": {
+      "task": "numeric_extraction",
+      "records": 43,
+      "records_without_prediction": 0,
+      "gold_cells": 16,
+      "predicted_cells": 20,
+      "matched_cells": 12,
+      "cell_precision": 0.6,
+      "cell_recall": 0.75,
+      "cell_f1": 0.6667,
+      "mae_pairs": 4.25,
+      "mae_pairs_max": 22.0,
+      "mae_pairs_covered": 16,
+      "mae_coverage": 1.0,
+      "record_exact": 39,
+      "record_exact_rate": 0.907,
+      "arm_swap_records": 0,
+      "arm_swap_evaluable": 8,
+      "arm_swap_rate": 0.0,
+      "fields": {
+        "comparator_events": {
+          "gold": 8,
+          "predicted": 10,
+          "matched": 6,
+          "recall": 0.75,
+          "precision": 0.6,
+          "mae": 4.75,
+          "mae_covered": 8
+        },
+        "intervention_events": {
+          "gold": 8,
+          "predicted": 10,
+          "matched": 6,
+          "recall": 0.75,
+          "precision": 0.6,
+          "mae": 3.75,
+          "mae_covered": 8
+        }
+      },
+      "tolerance": {
+        "abs": 1e-06,
+        "rel": 0.0
+      }
+    },
+    "stufe": {
+      "task": "numeric_extraction",
+      "records": 43,
+      "records_without_prediction": 0,
+      "gold_cells": 16,
+      "predicted_cells": 28,
+      "matched_cells": 12,
+      "cell_precision": 0.4286,
+      "cell_recall": 0.75,
+      "cell_f1": 0.5455,
+      "mae_pairs": 4.25,
+      "mae_pairs_max": 22.0,
+      "mae_pairs_covered": 16,
+      "mae_coverage": 1.0,
+      "record_exact": 35,
+      "record_exact_rate": 0.814,
+      "arm_swap_records": 0,
+      "arm_swap_evaluable": 8,
+      "arm_swap_rate": 0.0,
+      "fields": {
+        "comparator_events": {
+          "gold": 8,
+          "predicted": 14,
+          "matched": 6,
+          "recall": 0.75,
+          "precision": 0.4286,
+          "mae": 4.75,
+          "mae_covered": 8
+        },
+        "intervention_events": {
+          "gold": 8,
+          "predicted": 14,
+          "matched": 6,
+          "recall": 0.75,
+          "precision": 0.4286,
+          "mae": 3.75,
+          "mae_covered": 8
+        }
+      },
+      "tolerance": {
+        "abs": 1e-06,
+        "rel": 0.0
+      }
+    }
+  },
+  "zwischenstufe": {
+    "records_mit_stage1": 43,
+    "locators_je_arm": {
+      "intervention": 43,
+      "comparator": 25
+    },
+    "geprueft": 37,
+    "zeile_belegt": 27,
+    "spalte_belegt": 17,
+    "beide_belegt": 13,
+    "anteil_beide_belegt": 0.3514,
+    "ohne_beleg": [
+      {
+        "record_id": "yun2024:2",
+        "arm": "intervention",
+        "row_label": "Myocardial infarction / Overall",
+        "column_header": "All patients / Eptifibatide",
+        "zeile_belegt": false,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:2",
+        "arm": "comparator",
+        "row_label": "Myocardial infarction / Overall",
+        "column_header": "All patients / Placebo",
+        "zeile_belegt": false,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:1",
+        "arm": "intervention",
+        "row_label": "Death or myocardial infarction / Overall",
+        "column_header": "All patients / Eptifibatide",
+        "zeile_belegt": false,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:1",
+        "arm": "comparator",
+        "row_label": "Death or myocardial infarction / Overall",
+        "column_header": "All patients / Placebo",
+        "zeile_belegt": false,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:55",
+        "arm": "intervention",
+        "row_label": "All nineteen subjects showed the presence of all three relieving factors after intervention",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:55",
+        "arm": "comparator",
+        "row_label": "seven showed the presence of one relieving factor, another seven showed the presence of two relieving factors and the remaining five showed the presence of all three relieving factors before intervention",
+        "column_header": "running text",
+        "zeile_belegt": false,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:57",
+        "arm": "intervention",
+        "row_label": "Frequency of occurrence reduced from zero to six times with median of two times after practise of yoga",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:57",
+        "arm": "comparator",
+        "row_label": "The median for frequency of occurrence before intervention is twelve times with range from nine to fourteen times per two weeks",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:83",
+        "arm": "intervention",
+        "row_label": "In patients who did not suffer from VAP, no difference was found regarding mean ± SD length of hospital stay between periods 1 and 2 in the intervention group",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:83",
+        "arm": "comparator",
+        "row_label": "whereas it decreased in the control group",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:60",
+        "arm": "intervention",
+        "row_label": "After three months of intervention with selected yogasanas, 14 subjects presented with the presence of two activities to increase the problem, 1 presented with one activity and the remaining 4 subjects presented with no activity to increase the problem",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:60",
+        "arm": "comparator",
+        "row_label": "Out of nineteen participated, 9 showed the presence of three activities, 6 showed the presence of four activities and remaining 4 showed the presence of all five activities before intervention",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:120",
+        "arm": "intervention",
+        "row_label": "Partial obstruction (under \"DTPA scan\" section)",
+        "column_header": "With Stent (n = 30)",
+        "zeile_belegt": false,
+        "spalte_belegt": true
+      },
+      {
+        "record_id": "yun2024:120",
+        "arm": "comparator",
+        "row_label": "Partial obstruction (under \"DTPA scan\" section)",
+        "column_header": "Without Stent (n = 52)",
+        "zeile_belegt": false,
+        "spalte_belegt": true
+      },
+      {
+        "record_id": "yun2024:186",
+        "arm": "intervention",
+        "row_label": "no longer had depression (BDI <13)",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:88",
+        "arm": "intervention",
+        "row_label": "all students in both groups showed improvement in their total nursing competence scores",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:88",
+        "arm": "comparator",
+        "row_label": "all students in both groups showed improvement in their total nursing competence scores",
+        "column_header": "running text",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:190",
+        "arm": "intervention",
+        "row_label": "Sedatives — Intervention",
+        "column_header": "3 months follow-up",
+        "zeile_belegt": false,
+        "spalte_belegt": true
+      },
+      {
+        "record_id": "yun2024:190",
+        "arm": "comparator",
+        "row_label": "Sedatives — TAU^¤^",
+        "column_header": "3 months follow-up",
+        "zeile_belegt": false,
+        "spalte_belegt": true
+      },
+      {
+        "record_id": "yun2024:187",
+        "arm": "intervention",
+        "row_label": "nearly half the patients no longer had depression (BDI <13) — in the intervention",
+        "column_header": "running text",
+        "zeile_belegt": false,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:262",
+        "arm": "intervention",
+        "row_label": "Any TEAE",
+        "column_header": "Desvenlafaxine (n = 115)",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:262",
+        "arm": "comparator",
+        "row_label": "Any TEAE",
+        "column_header": "Placebo (n = 112)",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:263",
+        "arm": "intervention",
+        "row_label": "Any TEAE",
+        "column_header": "Fluoxetine (n = 112)",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      },
+      {
+        "record_id": "yun2024:263",
+        "arm": "comparator",
+        "row_label": "Any TEAE",
+        "column_header": "Placebo (n = 112)",
+        "zeile_belegt": true,
+        "spalte_belegt": false
+      }
+    ]
+  },
+  "verschiebung": {
+    "uebergaenge": {
+      "falsch->falsch": 4,
+      "richtig->richtig": 12
+    },
+    "zellen": [
+      {
+        "record_id": "yun2024:190",
+        "field": "intervention_events",
+        "gold": 52.0,
+        "baseline": 64.0,
+        "staged": 64.0,
+        "uebergang": "falsch->falsch"
+      },
+      {
+        "record_id": "yun2024:190",
+        "field": "comparator_events",
+        "gold": 51.0,
+        "baseline": 73.0,
+        "staged": 73.0,
+        "uebergang": "falsch->falsch"
+      },
+      {
+        "record_id": "yun2024:191",
+        "field": "intervention_events",
+        "gold": 49.0,
+        "baseline": 31.0,
+        "staged": 31.0,
+        "uebergang": "falsch->falsch"
+      },
+      {
+        "record_id": "yun2024:191",
+        "field": "comparator_events",
+        "gold": 64.0,
+        "baseline": 48.0,
+        "staged": 48.0,
+        "uebergang": "falsch->falsch"
+      }
+    ]
+  },
+  "stufenabdeckung": {
+    "records": 43,
+    "voll_ersetzt": 12,
+    "teilweise": 0,
+    "zurueckgefallen": {
+      "intervention_events": 2,
+      "comparator_events": 2
+    }
+  }
+}

@@ -196,6 +196,30 @@ neu berechnet und gegen `eval/*.metrics.json` geprüft. Wo sich eine Ursache
 nicht belegen lässt, steht "Nicht eindeutig klassifizierbar" statt einer
 Vermutung. Der Abschlussbericht liegt in `next_iteration_report.md`.
 
+## Mehrstufige Ereignisextraktion (Prototyp)
+
+`run_stage_extraction.py` ersetzt nur die beiden Ereignisfelder durch eine
+zweistufige Extraktion: Stufe 1 benennt Zeilenlabel und Spaltenkopf, Stufe 2
+liest die Zahl an dieser Stelle. Alle anderen Zellen kommen unverändert aus
+einem Basislauf.
+
+```bash
+python public_benchmark/extended_benchmark/run_stage_extraction.py \
+  --baseline-run yun_dev_std_20261115 --run-id stage_20261115 \
+  --workers 3 --cache-buster
+
+python public_benchmark/extended_benchmark/evaluate_stage_extraction.py \
+  --stage-run stage_20261115 \
+  --out public_benchmark/extended_benchmark/analysis/stage_20261115/stage_eval.json
+```
+
+Der Lauf schreibt `stage1.jsonl` (Locators), `stage2.jsonl` (Zahl mit Zitat)
+und `predictions.jsonl` (gemergte Vorhersage, mit `staged_fields` und
+`fallback_fields`). Die Bewertung weist Gesamtmetriken, Metriken nur auf den
+Ereignisfeldern, den wörtlichen Belegabgleich der Zwischenstufe und die
+Verschiebung je Ereigniszelle getrennt aus. Ergebnis im Bericht, Abschnitt 11:
+keine Verbesserung, Prototyp nicht übernommen.
+
 ## Regelbasierte Prüfung
 
 `validate_predictions.py` markiert unplausible Zellen (Ereignisse größer als

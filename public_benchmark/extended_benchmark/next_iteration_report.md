@@ -261,7 +261,7 @@ Werte liefert.
 | Rang | Maßnahme | erwartete Wirkung | Aufwand |
 |---|---|---|---|
 | 1 | ~~Prompt: „Ereignisse als absolute Anzahl"~~ **gestrichen** | kein belegter Prozentfall; im Dev-Lauf ohne Wirkung | – |
-| 2 | Prompt: Tabellenzeile explizit benennen lassen (Outcome-Name aus dem Record) und in der Antwort mitliefern | adressiert 15 mehrdeutige Ereigniszellen und 100 mehrdeutige Zellen der Referenzversion | Stunden |
+| 2 | ~~Zeile/Spalte in einem Zwischenschritt benennen lassen~~ **getestet, ohne Wirkung** (Abschnitt 11) | benennt dieselbe falsche Stelle wie der Einzelschritt, F1 0,933 → 0,911 | erledigt |
 | 3 | Retry-Regel beibehalten (32.000 Token) | +12 Zellen Abdeckung bei glm, belegt | erledigt |
 | 4 | Zeitpunkt- und Populationsfeld in die Records aufnehmen | macht Annotation prüfbar, verhindert Zeitpunktfehler strukturell | Stunden + Nachannotation |
 | 5 | Technische Validierung: Ereignisse ≤ Gruppengröße | fängt in diesen Daten 0 Fälle; bleibt Schutz für neue Daten | Stunden |
@@ -308,12 +308,18 @@ solange die Validierung nur markiert und nicht korrigiert.
 
 ### Vorschlag für die Reihenfolge
 
-1. Prompt-Regel „absolute Anzahl" + Validierung (E) — ein Nachmittag, belegter
-   Nutzen, keine Strukturänderung.
-2. Mehrstufige Extraktion (C) auf dem bestehenden Dev-Satz prototypisch, mit
-   Zwischenergebnissen im Predictions-Format.
-3. Erst danach Tabellenübergabe (B) — sie ist nur sinnvoll, wenn C zeigt, dass
-   die Zeilenwahl das Problem ist und nicht das Tabellenformat.
+1. ~~Prompt-Regel „absolute Anzahl"~~ **gestrichen**, kein belegter Fall.
+2. Mehrstufige Extraktion (C) — **erledigt, ohne Wirkung** (Abschnitt 11): Der
+   Zwischenschritt benennt die falsche Zeile/Spalte explizit, statt sie zu
+   vermeiden, und findet zusätzlich Zellen ohne Gold-Pendant. Er ist damit als
+   Verbesserung erledigt und bleibt als Diagnosewerkzeug erhalten.
+3. **Zeitpunkt-Definition im Prompt** — der einzige verbleibende belegte
+   Hebel: Stufe 1 nennt in `yun2024:190` ausdrücklich „3 months follow-up" und
+   in `yun2024:191` „0-3 months", obwohl Gold den letzten Messpunkt bzw. die
+   Total-Zeile meint. „End of intervention" ist dafür zu unbestimmt; nötig ist
+   eine Regel wie „der letzte berichtete Messzeitpunkt" mit Belegpflicht.
+4. Tabellenübergabe (B) — erst sinnvoll, wenn die Zeitpunktregel steht, sonst
+   wird dieselbe falsche Spalte nur sauberer gelesen.
 
 ## 10. Datenerweiterung und Fine-Tuning
 
@@ -357,6 +363,53 @@ Sinnvoll wird es frühestens bei 300+ annotierten Records aus dem neuen
 Trainingssplit, mit einem echten Holdout und einem Vergleich gegen den
 Prompt-Stand, nicht gegen den Ausgangspunkt. Bis dahin gilt: Prompt und
 mehrstufige Extraktion zuerst, Fine-Tuning als letzte Stufe.
+
+## 11. Prototyp mehrstufige Extraktion (15.11.2026)
+
+Umgesetzt als reine Ereignisstufe: Stufe 1 nennt Zeilenlabel, Spaltenkopf und
+Tabellenbeschriftung je Arm (keine Zahl), Stufe 2 liest die Zahl an genau
+dieser Stelle. Beide Stufen werden getrennt gespeichert (`stage1.jsonl`,
+`stage2.jsonl`) und getrennt bewertet; nur die beiden Ereignisfelder werden
+durch das Ergebnis ersetzt, alle anderen Zellen stammen unverändert aus dem
+Basislauf. 43 Records, 129 Aufrufe (1 Stufe 1 + bis zu 2 Stufe 2).
+
+| Kennzahl | Basis (Lauf 6) | Stufe |
+|---|---|---|
+| Zellen-F1 | 0,933 | 0,911 |
+| Zell-Recall | 0,935 | 0,935 |
+| Zell-Precision | 0,930 | 0,888 |
+| MAE / Abdeckung | 0,415 / 0,965 | 0,415 / 0,965 |
+| exakte Records | 34/43 | 30/43 |
+
+Nur auf den Ereignisfeldern (16 Gold-Zellen): F1 0,667 → 0,545, Precision
+0,600 → 0,429, Recall unverändert 0,750, MAE unverändert 4,25.
+
+Befunde:
+
+1. **Die Stufe verbessert keine einzige Gold-Zelle und verschlechtert keine.**
+   Von 16 Ereigniszellen bleiben 12 richtig und 4 falsch; alle vier falschen
+   behalten exakt denselben Wert.
+2. **Die falsche Stelle wird in Stufe 1 explizit benannt** — und ist dieselbe
+   wie im Einzelschritt. `yun2024:190` (Gold 12 Monate): Zeile „Sedatives",
+   Spalte „3 months follow-up", Zitat „64 (51)". `yun2024:191` (Gold „Total"):
+   Zeile „0-3 months", Zitat „31(25)" und „48 (36)". Stufe 2 liest also
+   korrekt an einer falsch gewählten Stelle. Der Fehler sitzt in der
+   Ortswahl, nicht im Lesen — die Aufteilung macht ihn sichtbar, aber nicht
+   kleiner.
+3. **Acht zusätzliche Ereigniszellen** auf vier Records (`yun2024:4`, `:5`,
+   `:55`, `:60`), die laut Annotation gar keine Ereigniszahl führen — dort
+   stehen Mittelwerte (47,5/26,5 und 3,59/2,19). Die Stufe sucht, bis sie eine
+   Zahl findet; Precision sinkt dadurch von 0,600 auf 0,429.
+4. **Labels sind oft nicht wörtlich.** Nur 13 von 37 Locators stehen mit Zeile
+   und Spalte wörtlich im Artikel (0,351); Umbenennungen wie „Myocardial
+   infarction / Overall" verhindern einen automatischen Belegabgleich. Die
+   Prüfung der Zwischenstufe ist damit nur teilautomatisch möglich.
+
+Ergebnis: Der Prototyp ist **nicht übernommen**. Er kostet den Faktor 3 an
+Aufrufen und verschlechtert F1 um 0,021, weil er zusätzliche Zellen erfindet,
+ohne die Ortswahl zu verbessern. Der belegte Nutzen liegt im Diagnosewert:
+Die Zielzeitpunkt-Definition („end of intervention") ist die offene Stelle,
+nicht die Lesegenauigkeit.
 
 ## Technische Umsetzung
 
