@@ -1,0 +1,8 @@
+{
+  "run_id": "yun_dev_retry_20261115",
+  "zeilen": 86,
+  "markierungen": 0,
+  "details": [],
+  "regel": "Ereignisse <= Gruppengroesse, negative Ereigniszahlen",
+  "korrigiert": false
+}

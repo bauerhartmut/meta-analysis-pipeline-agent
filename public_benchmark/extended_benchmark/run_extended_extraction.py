@@ -53,7 +53,7 @@ FIELDS = (
     "comparator_standard_deviation",
 )
 
-PROMPT_VERSION = "v2_timepoint"
+PROMPT_VERSION = "v3_abs_count"
 RETRY_MAX_TOKENS = 32000
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
@@ -84,6 +84,7 @@ def build_prompt(record: dict[str, Any], text: str, limit: int = 45000) -> str:
         "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
         "Use the values measured at the end of the intervention (post-test), not baseline values "
         "and not follow-up values from a later measurement point. "
+        "Report event counts as absolute numbers of events, never as percentages or rates. "
         "Copy numbers exactly as reported; do not convert, do not compute, do not guess. "
         "Omit a cell the paper does not report. "
         "Do not add commentary, markdown or code fences."
@@ -252,7 +253,7 @@ def main() -> int:
     prompt_version = PROMPT_VERSION
     if args.cache_buster:
         SESSION_TAG = uuid.uuid4().hex[:12]
-        prompt_version = "v2b_cachebuster"
+        prompt_version = f"{PROMPT_VERSION}_cb"
 
     config = get_config()
     key = config.tudagpt_api_key

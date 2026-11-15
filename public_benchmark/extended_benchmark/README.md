@@ -179,6 +179,20 @@ neu berechnet und gegen `eval/*.metrics.json` geprüft. Wo sich eine Ursache
 nicht belegen lässt, steht "Nicht eindeutig klassifizierbar" statt einer
 Vermutung. Der Abschlussbericht liegt in `next_iteration_report.md`.
 
+## Regelbasierte Prüfung
+
+`validate_predictions.py` markiert unplausible Zellen (Ereignisse größer als
+Gruppengröße, negative Ereigniszahlen) und **korrigiert nichts**:
+
+```bash
+python public_benchmark/extended_benchmark/validate_predictions.py \
+  --run public_benchmark/extended_benchmark/runs/<run_id>
+```
+
+Ausgabe: `validation.json` im Laufverzeichnis mit Regel, Markierungen und
+`korrigiert: false`. Die Prüfung läuft offline auf den gespeicherten
+Vorhersagen.
+
 ## PMC-Open-Access-Downloader
 
 Die alten FTP-Pakete (`oa_file_list.csv`, `oa_comm/`) hat NCBI im August 2026
