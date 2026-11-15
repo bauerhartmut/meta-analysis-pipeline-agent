@@ -234,8 +234,10 @@ Zeitpunktangabe im selben Satz wie eine Goldzahl, sonst die nächste Angabe —
 enthält; bleibt nichts übrig, bleibt das Feld leer und der Runner fällt auf die
 Standardregel zurück. 64 unspezifische Labels wurden damit geprüft (55
 geändert, 22 geleert). Eine Näherungsangabe zählt nur bis 400 Zeichen Abstand
-zur Goldzahl (`MAX_ABSTAND`); weiter entfernte Angaben bleiben leer, weil sie
-keinen Beleg mehr darstellen.
+zur Goldzahl (`MAX_ABSTAND`) — und nur bei Ergebniszellen: Weiter entfernte
+Angaben bleiben dort leer, weil sie keinen Beleg mehr darstellen. Bei reinen
+Gruppengrößen gilt die Grenze nicht, weil "baseline" dort strukturell richtig
+ist.
 
 ```
 python public_benchmark/extended_benchmark/candidate_split.py \

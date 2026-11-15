@@ -66,6 +66,15 @@ def test_zu_weite_angabe_bleibt_leer() -> None:
     assert int(info["abstand"]) > grenze
 
 
+def test_gruppengroessen_ignorieren_die_grenze() -> None:
+    from extended_benchmark.annotate_timepoints import MAX_ABSTAND, zeitpunkt_aus_text
+
+    weit = "Baseline characteristics were collected." + " Filler." * 80 + " The 26 patients were"
+    info = zeitpunkt_aus_text(weit, [weit.index("26")], hat_ergebnis=False)
+    assert info["target"] == "baseline"
+    assert info["abstand"] > MAX_ABSTAND
+
+
 def test_knapp_erreichbare_angabe_zaehlt() -> None:
     from extended_benchmark.annotate_timepoints import MAX_ABSTAND, zeitpunkt_aus_text
 

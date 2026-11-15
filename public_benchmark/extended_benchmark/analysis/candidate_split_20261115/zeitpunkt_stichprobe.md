@@ -108,17 +108,18 @@ Nach dem Umbau sind 626, 398 und 289 leer (richtig), 203 zusätzlich auf
 
 Der weiteste Treffer lag bei **3729 Zeichen** (`yun2024:402`, `baseline`).
 
-**Nach der Änderung** (`MAX_ABSTAND = 400`): 59 Records sind leer mit Status
-`not stated (zu weit entfernt)`, 128 von 262 tragen ein Ziel.
+**Erste Fassung** (`MAX_ABSTAND` für alle): 59 Records leer, davon 58 mit
+ausschließlich Gruppengrößen — dort war `baseline` richtig, die Grenze wirkte
+also fast nur auf korrekte Labels.
 
-**Zusammensetzung der 59:** 58 davon berichten **ausschließlich Gruppengrößen**
-(kein `mean`, kein `events`); bei ihnen war `baseline` ohnehin die richtige
-Angabe, weil die Zahl der Arme keine Messzeitpunkt-Frage ist. Nur **ein**
-Record (`yun2024:178`, Ereignisse 7/26) ist der Fall, für den die Grenze
-gedacht war.
+**Endfassung** (Grenze nur bei Ergebniszellen, `hat_ergebnis`): genau **ein**
+Record wird geleert — `yun2024:178` mit 1206 Zeichen Abstand und Ereignissen
+7/26, also der Fall, für den die Grenze gedacht war. **186 von 262** tragen ein
+Ziel; 76 sind leer, davon 57 ohne jede Zeitpunktangabe, 18 mit nur
+unspezifischen Angaben und 1 zu weit entfernt.
 
-Das ist die offene Nebenwirkung: Die Grenze trifft fast ausschließlich Labels,
-die vorher richtig waren.
+Die 58 Gruppengrößen-Records behalten ihr `baseline` (Abstände bis 3729
+Zeichen), weil die Zahl der Arme keine Messzeitpunkt-Frage ist.
 
 ## Code-Review `annotate_timepoints.py` (frischer Blick)
 

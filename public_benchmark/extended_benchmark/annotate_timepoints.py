@@ -182,7 +182,9 @@ UNSPEZIFISCH = {"baseline", "follow-up"}
 
 # Obergrenze fuer den Abstand zwischen Zeitpunktangabe und Goldzahl. Gemessen am
 # 15.11.2026 (262 Kandidaten): 60 der 121 Naeherungstreffer lagen weiter als
-# 400 Zeichen entfernt, der weiteste bei 3729 Zeichen — das ist kein Beleg mehr.
+# 400 Zeichen entfernt, der weiteste bei 3729 Zeichen. Die Grenze gilt nur fuer
+# Ergebniszellen (Mittelwerte, Ereignisse): bei reinen Gruppengroessen ist
+# "baseline" strukturell richtig, unabhaengig vom Abstand.
 MAX_ABSTAND = 400
 
 
@@ -292,7 +294,7 @@ def zeitpunkt_aus_text(
     bester = min(kandidaten, key=lambda f: min(abs(f[0] - pos) for pos in gold_positionen))
     abstand = min(abs(bester[0] - pos) for pos in gold_positionen)
     umgebung = text[max(0, bester[0] - 60) : bester[0] + 70].replace("\n", " ").strip()
-    if abstand > MAX_ABSTAND:
+    if hat_ergebnis and abstand > MAX_ABSTAND:
         return {
             "target": "",
             "evidence": f"naechste Angabe '{bester[2]}' erst {abstand} Zeichen entfernt "
