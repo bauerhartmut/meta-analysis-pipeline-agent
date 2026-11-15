@@ -1,12 +1,14 @@
 # Review des Fremdstands seit `20a3dad`
 
-Stand: 15.11.2026  
-Geprüfter Bereich: `20a3dad..2297def`  
+Stand: 15.11.2026
+
+Geprüfter Bereich: `20a3dad..acf3d6e`
+
 Art: statischer Review und read-only Auswertung vorhandener Artefakte; kein neuer API-Lauf, keine Gold-Änderung, kein Merge.
 
 ## 1. Umfang
 
-Seit dem letzten hier bekannten Commit wurden **74 Commits** mit **208 geänderten Dateien** und **41.639 Zeilen** hinzugefügt. Der Schwerpunkt liegt auf:
+Seit dem letzten hier bekannten Commit wurden **75 Commits** mit **214 geänderten Dateien** und **42.982 Zeilen** hinzugefügt. Der Schwerpunkt liegt auf:
 
 - Aufnahme und Adaption öffentlicher Goldstandards: GLASS, European Urology, PICO Corpus, Evidence Inference 2.0, EBM-NLP 2.00.
 - Erweitertem Yun-Benchmark mit 450 Records, 262 Kandidaten-Records und einem eingefrorenen 186er-Testset.
@@ -67,7 +69,7 @@ Der Folgelauf `yun_test186_v7_folgelauf_20261116` ist inzwischen vollständig ge
 | Zellen | 79 |
 | Completion-Tokens | 610.540 |
 
-Die Auswertung `fallback_eval_v7.json` bezieht sich nur auf diese 47 Records. Die kombinierte Datei `fallback_eval_kombiniert.json` umfasst wieder 186 Records und weist Zell-F1 **0,6784** bei **137** Auslassungen aus; der v6-Stand lag bei **0,6548** und **197** Auslassungen.
+Die Auswertung `fallback_eval_v7.json` bezieht sich nur auf diese 47 Records. Die kombinierte Datei `fallback_eval_kombiniert.json` umfasst wieder 186 Records und weist im Feld `gesamt.cell_f1` **0,6934** bei **137** Auslassungen aus; der v6-Stand lag bei **0,6548** und **197** Auslassungen. Der abweichende Wert `zell_f1_aus_klassen = 0,6784` ist eine klassenbasierte Nebenrechnung und darf nicht mit dem Hauptwert verwechselt werden.
 
 **Wichtig:** Das ist kein kontrollierter Modellvergleich. Der kombinierte Lauf besteht aus **157 v6-Zeilen** und **29 v7-Zeilen**; 18 v7-Fehler verbleiben im v6-Stand. Die Verbesserung ist daher ein Ergebnis der selektiven Ergänzung, nicht ohne Weiteres eine Verbesserung des Gesamtmodells.
 
@@ -133,19 +135,16 @@ Die 221 Tests decken die neuen Skripte nicht vollständig ab. Es gibt insbesonde
 2. `mische_quelle.py` verweigert `--out-run` gleich `--haupt` oder `--folge`.
 3. `je_quelle` zählt eine leere `stop`-Antwort entweder als leer oder als Ausfall, je nach festgelegter Semantik.
 
-### Befund 6: Aktuelle Folgelauf-Artefakte sind untracked
+### Befund 6: Zwei verschiedene F1-Werte in derselben Auswertung
 
-Beim Review lagen folgende Dateien noch untracked vor:
+`fallback_eval_kombiniert.json` enthält zwei F1-Werte:
 
-```text
-public_benchmark/extended_benchmark/runs/yun_test186_v7_folgelauf_20261116/
-public_benchmark/extended_benchmark/analysis/run186_20261115/fallback_eval_v7.json
-public_benchmark/extended_benchmark/analysis/run186_20261115/fallback_eval_kombiniert.json
-```
+- `gesamt.cell_f1 = 0,6934`
+- `zell_f1_aus_klassen = 0,6784`
 
-Der Folgelauf ist vollständig, aber es fehlt noch die dokumentierte Entscheidung, ob die Rohzeilen und Auswertungen versioniert werden. Wenn sie nicht ins Repo sollen, müssen sie bewusst ignoriert und über eine kurze Zusammenfassung ersetzt werden; sonst gehen sie beim nächsten Cleanup verloren.
+Der neue Bericht `folgelauf_v7_und_goldkonflikte.md` nennt 0,6934. Beide Werte können aus unterschiedlichen Zählwegen korrekt sein, dürfen aber nicht austauschbar zitiert werden. Wer den kleineren Wert als „den“ kombinierten F1 übernimmt, berichtet eine andere Kennzahl als der Bericht.
 
-**Empfehlung:** Entweder Lauf und Auswertungen mit einer kurzen README/Bericht committen oder eine klare Ignore-Regel plus reproduzierbare Zusammenfassung anlegen.
+**Empfehlung:** Im Bericht ausdrücklich `gesamt.cell_f1` als Hauptwert nennen und `zell_f1_aus_klassen` nur mit Erklärung der Nebenrechnung zeigen. Der Folgelauf und die beiden Auswertungen sind inzwischen in `acf3d6e` versioniert; die frühere Untracked-Lücke ist damit geschlossen.
 
 ## 4. Was nicht geprüft wurde
 
@@ -158,7 +157,7 @@ Der Folgelauf ist vollständig, aber es fehlt noch die dokumentierte Entscheidun
 
 1. **Erfolgsdefinition korrigieren:** `pilot_len.urteil()` entweder auf `zellen > 0` umstellen und `pilot_urteil.json` neu erzeugen oder den Bericht ausdrücklich auf „valides JSON“ umformulieren. Kein API-Aufruf nötig.
 2. **Merge-Schutz und Tests ergänzen:** Überschreibschutz in `mische_quelle.py`, Tests für Piloturteil, Merge und `je_quelle`.
-3. **v7-Folgelauf dokumentieren:** Entscheidung über Tracking der 47 Zeilen und der beiden Auswertungen; kombinierte F1 nur mit Quellenanteil und verbleibenden 18 v7-Fehlern berichten.
+3. **v7-Folgelauf konsolidieren:** Der Lauf ist in `acf3d6e` versioniert; im Bericht nur `gesamt.cell_f1` als Hauptwert zitieren und den Unterschied zu `zell_f1_aus_klassen` erklären. Kombinierte F1 nur mit Quellenanteil und verbleibenden 18 v7-Fehlern berichten.
 4. **README aktualisieren:** Status, vorhandene Skripte, Läufe und offene Punkte auf den Stand vom 15.11.2026 bringen.
 5. **Erst danach** über den nächsten API-Lauf entscheiden. Der teuerste Fehler wäre, die 5/6-Zahl als Beleg für eine gelöste Length-Quote zu verwenden, obwohl nur 4/6 Zellen liefern und der Folgelauf weiterhin 18 von 47 Length-Ausfälle hat.
 
