@@ -55,6 +55,26 @@ def test_t1_t2_schreibweise_wird_gelesen() -> None:
     assert "4-months" in info["evidence"]
 
 
+def test_zu_weite_angabe_bleibt_leer() -> None:
+    from extended_benchmark.annotate_timepoints import MAX_ABSTAND, zeitpunkt_aus_text
+
+    fern = "At week 6 the score was reported." + " Filler." * 80 + " The 7.4 value appears here."
+    grenze = MAX_ABSTAND
+    info = zeitpunkt_aus_text(fern, [fern.index("7.4")], hat_ergebnis=True)
+    assert info["target"] == ""
+    assert info["status"] == "not stated (zu weit entfernt)"
+    assert int(info["abstand"]) > grenze
+
+
+def test_knapp_erreichbare_angabe_zaehlt() -> None:
+    from extended_benchmark.annotate_timepoints import MAX_ABSTAND, zeitpunkt_aus_text
+
+    nah = "At week 6 the score was reported." + " Filler." * 35 + " The 7.4 value appears here."
+    info = zeitpunkt_aus_text(nah, [nah.index("7.4")], hat_ergebnis=True)
+    assert info["target"] == "week 6"
+    assert 0 < info["abstand"] <= MAX_ABSTAND
+
+
 def test_dauerangabe_ist_kein_zeitpunkt() -> None:
     from extended_benchmark.annotate_timepoints import _zeitpunkt_funde
 
@@ -121,7 +141,7 @@ def test_outcome_titel_geht_vor_textregel() -> None:
 def test_baseline_gewinnt_nicht_bei_ergebniszellen() -> None:
     from extended_benchmark.annotate_timepoints import zeitpunkt_aus_text
 
-    text = "Baseline values were 4.2 points. " + " Fülltext. " * 40 + "At week 24 the value was 6.5 points."
+    text = "Baseline values were 4.2 points. " + " Fülltext. " * 10 + "At week 24 the value was 6.5 points."
     gold = text.index("4.2")
     # Ohne Ergebniszellen ist baseline erlaubt (naechste Angabe).
     assert zeitpunkt_aus_text(text, [gold], hat_ergebnis=False)["target"] == "baseline"

@@ -180,6 +180,11 @@ MUSTER = [
 # Nullmessungen normalisiert _zeitpunkt_funde bereits zu "baseline".
 UNSPEZIFISCH = {"baseline", "follow-up"}
 
+# Obergrenze fuer den Abstand zwischen Zeitpunktangabe und Goldzahl. Gemessen am
+# 15.11.2026 (262 Kandidaten): 60 der 121 Naeherungstreffer lagen weiter als
+# 400 Zeichen entfernt, der weiteste bei 3729 Zeichen — das ist kein Beleg mehr.
+MAX_ABSTAND = 400
+
 
 def zeitpunkt_aus_outcome(outcome: str) -> str:
     """Zeitpunkt, der schon im Outcome-Namen steht ("at 12 months", "Baseline ...").
@@ -287,6 +292,14 @@ def zeitpunkt_aus_text(
     bester = min(kandidaten, key=lambda f: min(abs(f[0] - pos) for pos in gold_positionen))
     abstand = min(abs(bester[0] - pos) for pos in gold_positionen)
     umgebung = text[max(0, bester[0] - 60) : bester[0] + 70].replace("\n", " ").strip()
+    if abstand > MAX_ABSTAND:
+        return {
+            "target": "",
+            "evidence": f"naechste Angabe '{bester[2]}' erst {abstand} Zeichen entfernt "
+            f"(Grenze {MAX_ABSTAND}): …{umgebung}…",
+            "status": "not stated (zu weit entfernt)",
+            "abstand": abstand,
+        }
     return {
         "target": bester[1],
         "evidence": f"'{bester[2]}' nahe einer Goldzahl ({abstand} Zeichen): …{umgebung}…",

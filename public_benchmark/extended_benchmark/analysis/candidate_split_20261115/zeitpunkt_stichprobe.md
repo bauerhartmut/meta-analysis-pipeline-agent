@@ -94,6 +94,32 @@ Bindestrich-Muster las Dauerangaben („14-week intervention") als Zeitpunkte.
 Nach dem Umbau sind 626, 398 und 289 leer (richtig), 203 zusätzlich auf
 `week 6` verbessert; 178 und 574 bleiben distance-bedingt unsicher.
 
+## Abstandsobergrenze 400 Zeichen (15.11.2026)
+
+**Messung vor der Änderung** (262 Records, Status `auto` = Näherungsregel):
+121 Labels stammten aus der Näherungsregel; davon lagen
+
+| Abstand | Records |
+|---|---|
+| ≤ 100 Zeichen | 35 |
+| 101–400 | 26 |
+| 401–800 | 44 |
+| > 800 | 16 |
+
+Der weiteste Treffer lag bei **3729 Zeichen** (`yun2024:402`, `baseline`).
+
+**Nach der Änderung** (`MAX_ABSTAND = 400`): 59 Records sind leer mit Status
+`not stated (zu weit entfernt)`, 128 von 262 tragen ein Ziel.
+
+**Zusammensetzung der 59:** 58 davon berichten **ausschließlich Gruppengrößen**
+(kein `mean`, kein `events`); bei ihnen war `baseline` ohnehin die richtige
+Angabe, weil die Zahl der Arme keine Messzeitpunkt-Frage ist. Nur **ein**
+Record (`yun2024:178`, Ereignisse 7/26) ist der Fall, für den die Grenze
+gedacht war.
+
+Das ist die offene Nebenwirkung: Die Grenze trifft fast ausschließlich Labels,
+die vorher richtig waren.
+
 ## Code-Review `annotate_timepoints.py` (frischer Blick)
 
 **Entfernt (verhaltensneutral geprüft):**

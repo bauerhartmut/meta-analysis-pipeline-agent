@@ -233,7 +233,9 @@ Zeitpunktangabe im selben Satz wie eine Goldzahl, sonst die nächste Angabe —
 **nicht** `baseline`/`follow-up`, wenn Gold Mittelwerte oder Ereignisse
 enthält; bleibt nichts übrig, bleibt das Feld leer und der Runner fällt auf die
 Standardregel zurück. 64 unspezifische Labels wurden damit geprüft (55
-geändert, 22 geleert).
+geändert, 22 geleert). Eine Näherungsangabe zählt nur bis 400 Zeichen Abstand
+zur Goldzahl (`MAX_ABSTAND`); weiter entfernte Angaben bleiben leer, weil sie
+keinen Beleg mehr darstellen.
 
 ```
 python public_benchmark/extended_benchmark/candidate_split.py \
