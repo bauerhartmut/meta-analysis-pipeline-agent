@@ -32,11 +32,57 @@ kein Artefakt weniger, leicht zu treffender Zellen.
 Der Mittelwert entsteht fast vollständig aus `yun2024:229`: Gold
 `intervention_mean` 487,33, Vorhersage 854,0 (Abweichung 366,67), dazu
 `intervention_standard_deviation` 111,47 gegen 271,6. Beide Modelle liegen dort
-gleich falsch, was auf eine Skalen- oder Armzuordnungsfalle im Artikel
-hindeutet, nicht auf Modellrauschen. Der Median von 0,0 und p90 von 0,68 bei glm
-zeigen: typische Zellen werden exakt getroffen, der Fehler sitzt im Tail. Für
-die Berichterstattung ist der Median deshalb die ehrlichere Kennzahl; der
-Mittelwert allein wäre irreführend.
+gleich falsch. Der Median von 0,0 und p90 von 0,68 bei glm zeigen: typische
+Zellen werden exakt getroffen, der Fehler sitzt im Tail. Für die
+Berichterstattung ist der Median deshalb die ehrlichere Kennzahl; der Mittelwert
+allein wäre irreführend.
+
+## Prüfung von yun2024:229 am Artikel (PMC5498715)
+
+Der Record wurde am 15.11.2026 gegen den Artikeltext geprüft, ohne die
+Gold-Werte zu ändern.
+
+Die Tabelle "Comparison of SDT Components, Physical fitness tests, total PA and
+sedentary behaviors during the assessment process" hat drei Messzeitpunkte:
+Pre-test, Post-test und Follow up after 4 months. Die Zeile `Total Physical
+activity (Met-min/Week)` lautet wörtlich:
+
+| Pre-test | Post-test | Follow up after 4 months |
+|---|---|---|
+| 361,33 ± 98,11 (477,85 ± 108,91) | **487,33 ± 111,47 (453,57 ± 60,87)** | 854 ± 271,60 (470 ± 80,46) |
+
+**Ergebnis: Die Gold-Werte sind korrekt, es liegt weder eine Skalen- noch eine
+Armverwechslung vor.** 487,33 ± 111,47 ist exakt der Interventionswert des
+Post-tests, 453,57 ± 60,87 der Kontrollwert desselben Zeitpunkts (Klammer =
+Kontrollgruppe). Die Gruppengrößen 35/35 stimmen ebenfalls.
+
+Dass die Annotation den Post-test meint, bestätigt der Rest desselben Artikels:
+Alle anderen Gold-Records aus PMC5498715 (BMI 25,78, intrinsische Motivation
+10,80, Gesundheitsklima 80,50, wahrgenommene Autonomie 26,60) sind Post-test-
+Werte. Die einzige Ausnahme ist Agilität, dort steht im Gold-Feld `notes`
+explizit "Data from followup."
+
+Die Modellwerte 854 ± 271,60 und 470 ± 80,46 stehen ebenfalls wörtlich im
+Artikel — es ist die **Follow-up-Spalte nach vier Monaten**. Sie erscheint im
+Text zusätzlich in einer zweiten, zweispaltigen Tabelle, die nur noch
+Follow-up-Mittelwerte und Kontrollen führt, und der Ergebnistext betont den
+Effekt "in 4 months after intervention". Das Modell hat also die falsche
+Spalte gewählt, nicht falsch gerechnet oder die Arme vertauscht: 0,0 %
+Vertauschungsrate bleibt korrekt.
+
+Folgen für die Einordnung:
+
+- Der MAE-Ausreisser ist ein **echter Modellfehler** (Zeitpunkt statt Skala),
+  kein Annotationsfehler. Die Kennzahlen dieses Berichts bleiben unverändert.
+- Der Fehler ist naheliegend und nicht kurios: Der Prompt nennt keinen
+  Messzeitpunkt, und der Benchmark führt auch kein Zeitpunktfeld. Die
+  Gold-Konvention "Post-test, außer wenn anders vermerkt" steht nirgends im
+  Record. Bei jedem Artikel mit mehreren Messzeitpunkten ist die Zelle damit
+  strukturell nicht sicher zu treffen. Wie viele der 43 Dev-Records solche
+  Artikel sind, ist noch nicht erhoben.
+- Damit ist der Ausreisser kein Grund, die Bewertung zu ändern, aber ein
+  Grund, den Prompt oder das Record-Schema um einen Zeitpunkt zu ergänzen,
+  bevor der Quell-Testsplit läuft.
 
 ## Nach Feld (Recall | MAE | abgedeckte Zellen)
 
@@ -69,5 +115,7 @@ vertauscht).
 - 43 Records und 170 Zellen sind eine Pilotgröße. Unterschiede von 0,05 im
   Recall sind hier nicht belastbar, der Größenunterschied zwischen den Modellen
   (0,50 gegen 0,71) schon.
+- Der größte Einzelfehler ist ein Zeitpunktfehler bei fehlender
+  Zeitpunktangabe im Prompt, siehe Prüfung von yun2024:229.
 
 Rohdaten: `predictions.jsonl` (86 Zeilen), `eval/*.jsonl`, `eval/*.metrics.json`.
