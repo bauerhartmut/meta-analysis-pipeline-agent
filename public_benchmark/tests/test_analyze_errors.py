@@ -201,8 +201,8 @@ def test_pruefe_gold_meldet_fehlenden_wert_und_unmoegliche_ereignisse(tmp_path: 
 
 def test_baue_queue_priorisiert_ereignisse_vor_fehlenden_zellen() -> None:
     faelle = [
-        {"run_id": "l", "model": "m", "record_id": "r1", "field": "intervention_mean", "arm": "intervention", "gold": 1.0, "prediction": "", "abs_error": "", "fall_typ": "fehlend", "klasse": 10, "klasse_name": "Zahl nicht extrahiert", "beleg": "", "pmcid": "PMC1", "quelle": "a.md"},
-        {"run_id": "l", "model": "m", "record_id": "r2", "field": "intervention_events", "arm": "intervention", "gold": 12.0, "prediction": 120.0, "abs_error": 108.0, "fall_typ": "falsch", "klasse": 6, "klasse_name": "Ereignisse und Teilnehmer verwechselt", "beleg": "", "pmcid": "PMC1", "quelle": "a.md"},
+        {"run_id": "l", "prompt_version": "v2_timepoint", "model": "m", "record_id": "r1", "field": "intervention_mean", "arm": "intervention", "gold": 1.0, "prediction": "", "abs_error": "", "fall_typ": "fehlend", "klasse": 10, "klasse_name": "Zahl nicht extrahiert", "beleg": "", "pmcid": "PMC1", "quelle": "a.md"},
+        {"run_id": "l", "prompt_version": "v2_timepoint", "model": "m", "record_id": "r2", "field": "intervention_events", "arm": "intervention", "gold": 12.0, "prediction": 120.0, "abs_error": 108.0, "fall_typ": "falsch", "klasse": 6, "klasse_name": "Ereignisse und Teilnehmer verwechselt", "beleg": "", "pmcid": "PMC1", "quelle": "a.md"},
     ]
     queue = baue_queue(faelle, [])
     assert queue[0]["prioritaet"] == 1

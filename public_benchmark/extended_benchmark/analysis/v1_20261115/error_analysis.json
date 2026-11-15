@@ -397,6 +397,633 @@
       "abweichungen": []
     }
   ],
+  "versionen": {
+    "v1": {
+      "fehler": 135,
+      "klassen": {
+        "Nicht eindeutig klassifizierbar": 83,
+        "Unvollstaendige Modellantwort": 12,
+        "Falsche Tabellenzeile": 2,
+        "Falscher Messzeitpunkt": 8,
+        "Zahl nicht extrahiert": 30
+      },
+      "technisch": 12,
+      "inhaltlich": 123,
+      "nach_modell": {
+        "glm": {
+          "Nicht eindeutig klassifizierbar": 35,
+          "Unvollstaendige Modellantwort": 10,
+          "Falsche Tabellenzeile": 1,
+          "Falscher Messzeitpunkt": 4
+        },
+        "qwen30": {
+          "Zahl nicht extrahiert": 30,
+          "Nicht eindeutig klassifizierbar": 48,
+          "Unvollstaendige Modellantwort": 2,
+          "Falsche Tabellenzeile": 1,
+          "Falscher Messzeitpunkt": 4
+        }
+      },
+      "nach_feld": {
+        "comparator_events": {
+          "Unvollstaendige Modellantwort": 1,
+          "Zahl nicht extrahiert": 1,
+          "Nicht eindeutig klassifizierbar": 1
+        },
+        "comparator_group_size": {
+          "Unvollstaendige Modellantwort": 3,
+          "Zahl nicht extrahiert": 13,
+          "Nicht eindeutig klassifizierbar": 2
+        },
+        "comparator_mean": {
+          "Unvollstaendige Modellantwort": 1,
+          "Nicht eindeutig klassifizierbar": 20,
+          "Falscher Messzeitpunkt": 2
+        },
+        "comparator_standard_deviation": {
+          "Unvollstaendige Modellantwort": 1,
+          "Nicht eindeutig klassifizierbar": 18,
+          "Falscher Messzeitpunkt": 2
+        },
+        "intervention_events": {
+          "Unvollstaendige Modellantwort": 1,
+          "Zahl nicht extrahiert": 2,
+          "Nicht eindeutig klassifizierbar": 1
+        },
+        "intervention_group_size": {
+          "Unvollstaendige Modellantwort": 3,
+          "Zahl nicht extrahiert": 14,
+          "Nicht eindeutig klassifizierbar": 1
+        },
+        "intervention_mean": {
+          "Nicht eindeutig klassifizierbar": 22,
+          "Unvollstaendige Modellantwort": 1,
+          "Falscher Messzeitpunkt": 2
+        },
+        "intervention_standard_deviation": {
+          "Unvollstaendige Modellantwort": 1,
+          "Nicht eindeutig klassifizierbar": 18,
+          "Falsche Tabellenzeile": 2,
+          "Falscher Messzeitpunkt": 2
+        }
+      },
+      "ereignis_fehler": [
+        {
+          "run_id": "yun_dev_20261114",
+          "model": "glm",
+          "record_id": "yun2024:120",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 8.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Unvollstaendige Modellantwort"
+        },
+        {
+          "run_id": "yun_dev_20261114",
+          "model": "glm",
+          "record_id": "yun2024:120",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 13.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Unvollstaendige Modellantwort"
+        },
+        {
+          "run_id": "yun_dev_20261114",
+          "model": "qwen30",
+          "record_id": "yun2024:120",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 8.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Zahl nicht extrahiert"
+        },
+        {
+          "run_id": "yun_dev_20261114",
+          "model": "qwen30",
+          "record_id": "yun2024:120",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 13.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Zahl nicht extrahiert"
+        },
+        {
+          "run_id": "yun_dev_20261114",
+          "model": "qwen30",
+          "record_id": "yun2024:190",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 52.0,
+          "prediction": 26.0,
+          "abs_error": 26.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_20261114",
+          "model": "qwen30",
+          "record_id": "yun2024:190",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 51.0,
+          "prediction": 32.0,
+          "abs_error": 19.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_20261114",
+          "model": "qwen30",
+          "record_id": "yun2024:263",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 72.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Zahl nicht extrahiert"
+        }
+      ],
+      "zusaetzliche_zellen": 56,
+      "laeufe": [
+        "yun_dev_20261114"
+      ],
+      "status": "historisch",
+      "beschreibung": "ohne Zeitpunktangabe"
+    },
+    "v2_timepoint": {
+      "fehler": 235,
+      "klassen": {
+        "Nicht eindeutig klassifizierbar": 100,
+        "Zahl nicht extrahiert": 100,
+        "Prozentwert und absolute Zahl verwechselt": 3,
+        "Unvollstaendige Modellantwort": 28,
+        "Falsche Tabellenzeile": 4
+      },
+      "technisch": 28,
+      "inhaltlich": 207,
+      "nach_modell": {
+        "glm": {
+          "Nicht eindeutig klassifizierbar": 12,
+          "Zahl nicht extrahiert": 14,
+          "Prozentwert und absolute Zahl verwechselt": 3,
+          "Unvollstaendige Modellantwort": 24
+        },
+        "qwen30": {
+          "Zahl nicht extrahiert": 86,
+          "Nicht eindeutig klassifizierbar": 88,
+          "Falsche Tabellenzeile": 4,
+          "Unvollstaendige Modellantwort": 4
+        }
+      },
+      "nach_feld": {
+        "comparator_events": {
+          "Nicht eindeutig klassifizierbar": 5,
+          "Prozentwert und absolute Zahl verwechselt": 3,
+          "Falsche Tabellenzeile": 2,
+          "Zahl nicht extrahiert": 2
+        },
+        "comparator_group_size": {
+          "Zahl nicht extrahiert": 43,
+          "Unvollstaendige Modellantwort": 6,
+          "Nicht eindeutig klassifizierbar": 2
+        },
+        "comparator_mean": {
+          "Nicht eindeutig klassifizierbar": 22,
+          "Unvollstaendige Modellantwort": 4,
+          "Zahl nicht extrahiert": 2
+        },
+        "comparator_standard_deviation": {
+          "Unvollstaendige Modellantwort": 4,
+          "Zahl nicht extrahiert": 2,
+          "Nicht eindeutig klassifizierbar": 18
+        },
+        "intervention_events": {
+          "Nicht eindeutig klassifizierbar": 10,
+          "Zahl nicht extrahiert": 4
+        },
+        "intervention_group_size": {
+          "Zahl nicht extrahiert": 43,
+          "Unvollstaendige Modellantwort": 6,
+          "Nicht eindeutig klassifizierbar": 2
+        },
+        "intervention_mean": {
+          "Nicht eindeutig klassifizierbar": 23,
+          "Unvollstaendige Modellantwort": 4,
+          "Zahl nicht extrahiert": 2
+        },
+        "intervention_standard_deviation": {
+          "Unvollstaendige Modellantwort": 4,
+          "Zahl nicht extrahiert": 2,
+          "Nicht eindeutig klassifizierbar": 18,
+          "Falsche Tabellenzeile": 2
+        }
+      },
+      "ereignis_fehler": [
+        {
+          "run_id": "yun_dev_fresh_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 52.0,
+          "prediction": 64.0,
+          "abs_error": 12.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_fresh_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 51.0,
+          "prediction": 73.0,
+          "abs_error": 22.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_fresh_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 49.0,
+          "prediction": 31.0,
+          "abs_error": 18.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_fresh_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 64.0,
+          "prediction": 48.0,
+          "abs_error": 16.0,
+          "klasse": "Prozentwert und absolute Zahl verwechselt"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 52.0,
+          "prediction": 64.0,
+          "abs_error": 12.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 51.0,
+          "prediction": 73.0,
+          "abs_error": 22.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 49.0,
+          "prediction": 31.0,
+          "abs_error": 18.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 64.0,
+          "prediction": 48.0,
+          "abs_error": 16.0,
+          "klasse": "Prozentwert und absolute Zahl verwechselt"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:120",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 8.0,
+          "prediction": 2.0,
+          "abs_error": 6.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:120",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 13.0,
+          "prediction": 8.0,
+          "abs_error": 5.0,
+          "klasse": "Falsche Tabellenzeile"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:190",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 52.0,
+          "prediction": 26.0,
+          "abs_error": 26.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:190",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 51.0,
+          "prediction": 32.0,
+          "abs_error": 19.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:191",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 49.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Zahl nicht extrahiert"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:191",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 64.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Zahl nicht extrahiert"
+        },
+        {
+          "run_id": "yun_dev_retry_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:263",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 72.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Zahl nicht extrahiert"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 52.0,
+          "prediction": 64.0,
+          "abs_error": 12.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 51.0,
+          "prediction": 73.0,
+          "abs_error": 22.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 49.0,
+          "prediction": 31.0,
+          "abs_error": 18.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 64.0,
+          "prediction": 48.0,
+          "abs_error": 16.0,
+          "klasse": "Prozentwert und absolute Zahl verwechselt"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:120",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 8.0,
+          "prediction": 2.0,
+          "abs_error": 6.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:120",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 13.0,
+          "prediction": 8.0,
+          "abs_error": 5.0,
+          "klasse": "Falsche Tabellenzeile"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:190",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 52.0,
+          "prediction": 26.0,
+          "abs_error": 26.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:190",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 51.0,
+          "prediction": 32.0,
+          "abs_error": 19.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:191",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 49.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Zahl nicht extrahiert"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:191",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 64.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Zahl nicht extrahiert"
+        },
+        {
+          "run_id": "yun_dev_tp_20261115",
+          "model": "qwen30",
+          "record_id": "yun2024:263",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 72.0,
+          "prediction": "",
+          "abs_error": "",
+          "klasse": "Zahl nicht extrahiert"
+        }
+      ],
+      "zusaetzliche_zellen": 107,
+      "laeufe": [
+        "yun_dev_fresh_20261115",
+        "yun_dev_retry_20261115",
+        "yun_dev_tp_20261115"
+      ],
+      "status": "referenz",
+      "beschreibung": "Zeitpunkt im Prompt (Standard)"
+    },
+    "v3_abs_count": {
+      "fehler": 17,
+      "klassen": {
+        "Nicht eindeutig klassifizierbar": 4,
+        "Zahl nicht extrahiert": 6,
+        "Prozentwert und absolute Zahl verwechselt": 1,
+        "Unvollstaendige Modellantwort": 6
+      },
+      "technisch": 6,
+      "inhaltlich": 11,
+      "nach_modell": {
+        "glm": {
+          "Nicht eindeutig klassifizierbar": 4,
+          "Zahl nicht extrahiert": 6,
+          "Prozentwert und absolute Zahl verwechselt": 1,
+          "Unvollstaendige Modellantwort": 6
+        }
+      },
+      "nach_feld": {
+        "comparator_events": {
+          "Nicht eindeutig klassifizierbar": 1,
+          "Prozentwert und absolute Zahl verwechselt": 1
+        },
+        "comparator_group_size": {
+          "Zahl nicht extrahiert": 1,
+          "Unvollstaendige Modellantwort": 1
+        },
+        "comparator_mean": {
+          "Zahl nicht extrahiert": 1,
+          "Unvollstaendige Modellantwort": 1
+        },
+        "comparator_standard_deviation": {
+          "Zahl nicht extrahiert": 1,
+          "Unvollstaendige Modellantwort": 1
+        },
+        "intervention_events": {
+          "Nicht eindeutig klassifizierbar": 2
+        },
+        "intervention_group_size": {
+          "Zahl nicht extrahiert": 1,
+          "Unvollstaendige Modellantwort": 1
+        },
+        "intervention_mean": {
+          "Nicht eindeutig klassifizierbar": 1,
+          "Zahl nicht extrahiert": 1,
+          "Unvollstaendige Modellantwort": 1
+        },
+        "intervention_standard_deviation": {
+          "Zahl nicht extrahiert": 1,
+          "Unvollstaendige Modellantwort": 1
+        }
+      },
+      "ereignis_fehler": [
+        {
+          "run_id": "yun_dev_v3_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 52.0,
+          "prediction": 64.0,
+          "abs_error": 12.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_v3_20261115",
+          "model": "glm",
+          "record_id": "yun2024:190",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 51.0,
+          "prediction": 73.0,
+          "abs_error": 22.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_v3_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "intervention_events",
+          "arm": "intervention",
+          "gold": 49.0,
+          "prediction": 31.0,
+          "abs_error": 18.0,
+          "klasse": "Nicht eindeutig klassifizierbar"
+        },
+        {
+          "run_id": "yun_dev_v3_20261115",
+          "model": "glm",
+          "record_id": "yun2024:191",
+          "field": "comparator_events",
+          "arm": "comparator",
+          "gold": 64.0,
+          "prediction": 48.0,
+          "abs_error": 16.0,
+          "klasse": "Prozentwert und absolute Zahl verwechselt"
+        }
+      ],
+      "zusaetzliche_zellen": 5,
+      "laeufe": [
+        "yun_dev_v3_20261115"
+      ],
+      "status": "verworfen",
+      "beschreibung": "Zeitpunkt plus absolute Ereigniszahlen"
+    }
+  },
   "fehler_nach_klasse": {
     "Nicht eindeutig klassifizierbar": 187,
     "Unvollstaendige Modellantwort": 46,
@@ -498,6 +1125,7 @@
     "details": [
       {
         "run_id": "yun_dev_20261114",
+        "prompt_version": "v1",
         "model": "glm",
         "record_id": "yun2024:120",
         "field": "intervention_events",
@@ -511,6 +1139,7 @@
       },
       {
         "run_id": "yun_dev_20261114",
+        "prompt_version": "v1",
         "model": "glm",
         "record_id": "yun2024:120",
         "field": "comparator_events",
@@ -524,6 +1153,7 @@
       },
       {
         "run_id": "yun_dev_20261114",
+        "prompt_version": "v1",
         "model": "qwen30",
         "record_id": "yun2024:120",
         "field": "intervention_events",
@@ -537,6 +1167,7 @@
       },
       {
         "run_id": "yun_dev_20261114",
+        "prompt_version": "v1",
         "model": "qwen30",
         "record_id": "yun2024:120",
         "field": "comparator_events",
@@ -550,6 +1181,7 @@
       },
       {
         "run_id": "yun_dev_20261114",
+        "prompt_version": "v1",
         "model": "qwen30",
         "record_id": "yun2024:190",
         "field": "intervention_events",
@@ -563,6 +1195,7 @@
       },
       {
         "run_id": "yun_dev_20261114",
+        "prompt_version": "v1",
         "model": "qwen30",
         "record_id": "yun2024:190",
         "field": "comparator_events",
@@ -576,6 +1209,7 @@
       },
       {
         "run_id": "yun_dev_20261114",
+        "prompt_version": "v1",
         "model": "qwen30",
         "record_id": "yun2024:263",
         "field": "intervention_events",
@@ -589,6 +1223,7 @@
       },
       {
         "run_id": "yun_dev_fresh_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:190",
         "field": "intervention_events",
@@ -602,6 +1237,7 @@
       },
       {
         "run_id": "yun_dev_fresh_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:190",
         "field": "comparator_events",
@@ -615,6 +1251,7 @@
       },
       {
         "run_id": "yun_dev_fresh_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:191",
         "field": "intervention_events",
@@ -628,6 +1265,7 @@
       },
       {
         "run_id": "yun_dev_fresh_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:191",
         "field": "comparator_events",
@@ -641,6 +1279,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:190",
         "field": "intervention_events",
@@ -654,6 +1293,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:190",
         "field": "comparator_events",
@@ -667,6 +1307,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:191",
         "field": "intervention_events",
@@ -680,6 +1321,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:191",
         "field": "comparator_events",
@@ -693,6 +1335,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:120",
         "field": "intervention_events",
@@ -706,6 +1349,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:120",
         "field": "comparator_events",
@@ -719,6 +1363,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:190",
         "field": "intervention_events",
@@ -732,6 +1377,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:190",
         "field": "comparator_events",
@@ -745,6 +1391,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:191",
         "field": "intervention_events",
@@ -758,6 +1405,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:191",
         "field": "comparator_events",
@@ -771,6 +1419,7 @@
       },
       {
         "run_id": "yun_dev_retry_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:263",
         "field": "intervention_events",
@@ -784,6 +1433,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:190",
         "field": "intervention_events",
@@ -797,6 +1447,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:190",
         "field": "comparator_events",
@@ -810,6 +1461,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:191",
         "field": "intervention_events",
@@ -823,6 +1475,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "glm",
         "record_id": "yun2024:191",
         "field": "comparator_events",
@@ -836,6 +1489,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:120",
         "field": "intervention_events",
@@ -849,6 +1503,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:120",
         "field": "comparator_events",
@@ -862,6 +1517,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:190",
         "field": "intervention_events",
@@ -875,6 +1531,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:190",
         "field": "comparator_events",
@@ -888,6 +1545,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:191",
         "field": "intervention_events",
@@ -901,6 +1559,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:191",
         "field": "comparator_events",
@@ -914,6 +1573,7 @@
       },
       {
         "run_id": "yun_dev_tp_20261115",
+        "prompt_version": "v2_timepoint",
         "model": "qwen30",
         "record_id": "yun2024:263",
         "field": "intervention_events",
@@ -927,6 +1587,7 @@
       },
       {
         "run_id": "yun_dev_v3_20261115",
+        "prompt_version": "v3_abs_count",
         "model": "glm",
         "record_id": "yun2024:190",
         "field": "intervention_events",
@@ -940,6 +1601,7 @@
       },
       {
         "run_id": "yun_dev_v3_20261115",
+        "prompt_version": "v3_abs_count",
         "model": "glm",
         "record_id": "yun2024:190",
         "field": "comparator_events",
@@ -953,6 +1615,7 @@
       },
       {
         "run_id": "yun_dev_v3_20261115",
+        "prompt_version": "v3_abs_count",
         "model": "glm",
         "record_id": "yun2024:191",
         "field": "intervention_events",
@@ -966,6 +1629,7 @@
       },
       {
         "run_id": "yun_dev_v3_20261115",
+        "prompt_version": "v3_abs_count",
         "model": "glm",
         "record_id": "yun2024:191",
         "field": "comparator_events",

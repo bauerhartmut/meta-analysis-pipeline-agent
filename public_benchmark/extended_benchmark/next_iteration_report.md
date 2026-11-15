@@ -13,22 +13,35 @@ allen sieben Läufen).
 
 ## 1. Zusammenfassung der Fehler
 
-Über alle fünf Läufe mit zusammen acht Modell-Durchgängen sind **387
-fehlerhafte Zellen** erfasst, dazu **168 zusätzliche Zellen** ohne
-Gold-Pendant.
+Die Fehler werden **je kanonischer Prompt-Version getrennt** ausgewiesen und
+nicht summiert. `v3_abs_count` ist als **verworfen** markiert: Die Fassung lag
+im Dev-Lauf unter der Referenz (F1 0,919 statt 0,945) und ist kein Standard
+mehr. Die Zuordnung und der Status stehen in `versions.py`.
+
+| Version | Status | Fehler | technisch | inhaltlich | zusätzliche Zellen | Läufe |
+|---|---|---|---|---|---|---|
+| `v2_timepoint` | Referenz | 235 | 28 | 207 | 107 | 3 |
+| `v3_abs_count` | **verworfen** | 17 | 6 | 11 | 5 | 1 |
+| `v1` | historisch | 135 | 12 | 123 | 56 | 1 |
+
+Für die Referenz `v2_timepoint` (235 Fehler, 28 davon technisch):
 
 | Klasse | Anzahl | Anteil |
 |---|---|---|
-| Nicht eindeutig klassifizierbar | 187 | 48 % |
-| Zahl nicht extrahiert | 136 | 35 % |
-| Unvollständige Modellantwort | 46 | 12 % |
-| Falscher Messzeitpunkt | 8 | 2 % |
-| Falsche Tabellenzeile | 6 | 2 % |
-| Prozentwert statt absoluter Zahl | 4 | 1 % |
+| Nicht eindeutig klassifizierbar | 100 | 43 % |
+| Zahl nicht extrahiert | 100 | 43 % |
+| Unvollständige Modellantwort | 28 | 12 % |
+| Falsche Tabellenzeile | 4 | 2 % |
+| Prozentwert statt absoluter Zahl | 3 | 1 % |
+| Falscher Messzeitpunkt | 0 | – |
 | Halluzinierter Wert | 0 | – |
 | Gruppenverwechslung | 0 | – |
 | Ereignisse/Teilnehmer verwechselt | 0 | – |
 | Parser-/Formatfehler | 0 | – |
+
+`v3_abs_count` (verworfen) hat 17 Fehler: 6 nicht extrahiert, 6 unvollständig,
+4 nicht eindeutig, 1 Prozentwert. Die Ereigniszahlen sind darin unverändert
+gegenüber der Referenz; die Fassung wird ab hier nur noch nachrichtlich geführt.
 
 Drei Befunde sind wichtiger als die Verteilung:
 
@@ -36,34 +49,36 @@ Drei Befunde sind wichtiger als die Verteilung:
    leer.** Die in der Aufgabe vermuteten Fehlerarten treten in diesem Datensatz
    nicht auf. Wer sie im Prompt adressiert, bekämpft ein Problem, das die Daten
    nicht zeigen.
-2. **Der größte Block ist „nicht extrahiert“** (136 Zellen), nicht „falsch
+2. **Der größte Block ist „nicht extrahiert“** (100 Zellen), nicht „falsch
    gelesen“. Das ist ein Abdeckungs-, kein Genauigkeitsproblem.
-3. **Die Hälfte der Fehler ist nicht eindeutig klassifizierbar**, weil die
+3. **Knapp die Hälfte der Fehler ist nicht eindeutig klassifizierbar**, weil die
    Zahl zwar wörtlich im Artikel steht, die Zuordnung zu Zeile, Spalte oder
    Zeitpunkt aus den vorhandenen Daten aber nicht belegbar ist. Diese Fälle
    sind der Kern der menschlichen Prüfung, nicht der Prompt-Arbeit.
 
 ## 2. Fehlerverteilung nach Modell
 
+Nur Referenzversion `v2_timepoint`:
+
 | Klasse | glm-5.3 | qwen3-30b |
 |---|---|---|
-| Nicht eindeutig | 51 | 136 |
-| Zahl nicht extrahiert | 20 | 116 |
-| Unvollständige Antwort | 40 | 6 |
-| Falscher Messzeitpunkt | 4 | 4 |
-| Falsche Tabellenzeile | 1 | 5 |
-| Prozentwert statt absolut | 4 | 0 |
+| Nicht eindeutig | 12 | 88 |
+| Zahl nicht extrahiert | 14 | 86 |
+| Unvollständige Antwort | 24 | 4 |
+| Falsche Tabellenzeile | 0 | 4 |
+| Prozentwert statt absolut | 3 | 0 |
+| Falscher Messzeitpunkt | 0 | 0 |
 | Halluzinierter Wert | 0 | 0 |
 
 Die Profile sind gegensätzlich. glm liest fast alles, was es findet, richtig,
-bricht aber bei schwierigen Tabellen ganz ab (Reasoning-Schleife, 40 Zellen
+bricht aber bei schwierigen Tabellen ganz ab (Reasoning-Schleife, 24 Zellen
 ohne jede Antwort). qwen3-30b antwortet fast immer, lässt aber ein Drittel der
 Zellen weg und liefert viele Werte, die zwar im Artikel stehen, aber nicht zur
-gesuchten Zeile gehören (136 nicht eindeutig).
+gesuchten Zeile gehören (88 nicht eindeutig).
 
-Ein technisches Detail: qwen3-30b gibt in **168 Fällen Zellen zurück, für die es
-keine Gold-Zelle gibt** — überwiegend für die 5 Records, in denen der
-Annotator keine Zahlen gefunden hat. Das drückt die Precision, ist aber
+Ein technisches Detail: In der Referenzversion gibt es **107 zusätzliche Zellen
+ohne Gold-Pendant**, davon 88 von qwen3-30b — überwiegend für die 5 Records, in
+denen der Annotator keine Zahlen gefunden hat. Das drückt die Precision, ist aber
 inhaltlich ungeklärt: Ob dort wirklich keine Zahlen stehen oder der Gold-Stand
 unvollständig ist, kann nur eine Sichtprüfung entscheiden.
 
@@ -71,32 +86,32 @@ unvollständig ist, kann nur eine Sichtprüfung entscheiden.
 
 | Feld | häufigste Klassen |
 |---|---|
-| intervention_group_size | nicht extrahiert (57), unvollständig (9) |
-| comparator_group_size | nicht extrahiert (56), unvollständig (9) |
-| intervention_mean | nicht eindeutig (45), unvollständig (5), Zeitpunkt (2) |
-| intervention_standard_deviation | nicht eindeutig (40), unvollständig (5) |
-| comparator_mean | nicht eindeutig (40), unvollständig (5) |
-| comparator_standard_deviation | nicht eindeutig (36), unvollständig (5) |
-| intervention_events | nicht eindeutig (11), nicht extrahiert (6) |
-| comparator_events | nicht eindeutig (6), Prozent (3), Tabellenzeile (2) |
+| intervention_group_size | nicht extrahiert (43), unvollständig (6) |
+| comparator_group_size | nicht extrahiert (43), unvollständig (6) |
+| intervention_mean | nicht eindeutig (23), unvollständig (4) |
+| intervention_standard_deviation | nicht eindeutig (18), unvollständig (4), Tabellenzeile (2) |
+| comparator_mean | nicht eindeutig (22), unvollständig (4) |
+| comparator_standard_deviation | nicht eindeutig (18), unvollständig (4) |
+| intervention_events | nicht eindeutig (10), nicht extrahiert (4) |
+| comparator_events | nicht eindeutig (5), Prozent (3), Tabellenzeile (2) |
 
 Die Gruppengrößen sind der größte Einzelposten — aber ausschließlich als
-**fehlende** Zellen (115 fehlende Gruppengrößen-Zellen über alle acht
-Modell-Läufe), nicht als falsche. Werden sie geliefert, sind sie fast immer
+**fehlende** Zellen (86 fehlende Gruppengrößen-Zellen in der
+Referenzversion), nicht als falsche. Werden sie geliefert, sind sie fast immer
 richtig. Bei Mittelwerten und
 Streuungen ist es umgekehrt: Sie werden geliefert, aber häufig aus der falschen
 Zeile.
 
 ## 4. Ereigniszahlen im Detail
 
-37 Ereigniszellen sind fehlerhaft. Aufgeschlüsselt:
+In der Referenzversion sind 26 Ereigniszellen fehlerhaft. Aufgeschlüsselt:
 
 | Ursache | Anzahl | Beleg |
 |---|---|---|
-| nicht extrahiert / keine Antwort | 11 | Feld fehlt in der Antwort |
-| Prozentwert statt absoluter Zahl | 4 | Ereignisrate stimmt auf 0,1 Prozent |
+| nicht extrahiert / keine Antwort | 6 | Feld fehlt in der Antwort |
+| Prozentwert statt absoluter Zahl | 3 | Ereignisrate stimmt auf 0,1 Prozent |
 | falsche Tabellenzeile | 2 | Wert entspricht einer anderen Outcome-Zeile |
-| nicht eindeutig (Wert steht im Text) | 20 | Zeile/Spalte nicht belegbar |
+| nicht eindeutig (Wert steht im Text) | 15 | Zeile/Spalte nicht belegbar |
 
 **Die vermuteten Hauptursachen bestätigen sich nicht:**
 
@@ -178,7 +193,9 @@ nachvollziehbar.
 
 ## 7. Menschlich zu prüfende Fälle
 
-`human_review_queue.csv` enthält 505 Einträge mit Prüfstatus `offen`:
+`human_review_queue.csv` enthält 505 Einträge mit Prüfstatus `offen` und einer
+Spalte `prompt_version`, damit Referenz- und verworfene Fälle getrennt geprüft
+werden können:
 
 | Priorität | Anzahl | Inhalt |
 |---|---|---|
@@ -199,7 +216,7 @@ Werte liefert.
 | Rang | Maßnahme | erwartete Wirkung | Aufwand |
 |---|---|---|---|
 | 1 | Prompt: „Ereignisse als absolute Anzahl, nicht als Prozent" | behebt belegte 3 Fälle, verhindert die Klasse | Minuten |
-| 2 | Prompt: Tabellenzeile explizit benennen lassen (Outcome-Name aus dem Record) und in der Antwort mitliefern | adressiert die 17 mehrdeutigen Ereigniszellen und 181 mehrdeutigen Zellen insgesamt | Stunden |
+| 2 | Prompt: Tabellenzeile explizit benennen lassen (Outcome-Name aus dem Record) und in der Antwort mitliefern | adressiert 15 mehrdeutige Ereigniszellen und 100 mehrdeutige Zellen der Referenzversion | Stunden |
 | 3 | Retry-Regel beibehalten (32.000 Token) | +12 Zellen Abdeckung bei glm, belegt | erledigt |
 | 4 | Zeitpunkt- und Populationsfeld in die Records aufnehmen | macht Annotation prüfbar, verhindert Zeitpunktfehler strukturell | Stunden + Nachannotation |
 | 5 | Technische Validierung: Ereignisse ≤ Gruppengröße, Prozentwerte erkennen | fängt 3–5 Fehler automatisch, ohne Modell | Stunden |
@@ -230,7 +247,7 @@ abschätzbar.
 Passend zum Befund: Der Fehler ist die Zuordnung, nicht das Lesen. Ein
 zweiter Schritt („welche Zeile, welche Spalte, welcher Zeitpunkt?") macht die
 Entscheidung explizit und prüfbar. Erwartung: höchster inhaltlicher Hebel,
-insbesondere für die 181 mehrdeutigen Zellen. Aufwand: hoch (mehrere Aufrufe
+insbesondere für die 100 mehrdeutigen Zellen der Referenzversion. Aufwand: hoch (mehrere Aufrufe
 pro Record, Verdrahtung, Auswertung). Rechenaufwand: 2–3× pro Record.
 Risiko: Fehlerfortpflanzung zwischen Stufen; Zwischenergebnisse müssen
 mitgespeichert und separat bewertet werden.

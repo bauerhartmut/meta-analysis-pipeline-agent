@@ -29,6 +29,19 @@ BESCHREIBUNG = {
     "v3_abs_count": "Zeitpunkt plus absolute Ereigniszahlen",
 }
 
+# Rolle einer Version in der Auswertung. "verworfen" heisst: im Dev-Lauf
+# schlechter als die Referenz, nicht mehr Standard; Zahlen werden getrennt
+# ausgewiesen und nicht mit der Referenz summiert.
+STATUS = {
+    "v1": "historisch",
+    "v2_timepoint": "referenz",
+    "v3_abs_count": "verworfen",
+}
+
+
+def status_von(version: str) -> str:
+    return STATUS.get(version, "unbekannt")
+
 
 def normalisiere_version(raw: str | None, fallback: str = "unbekannt") -> str:
     """Bildet eine Rohbezeichnung auf die kanonische Version ab."""

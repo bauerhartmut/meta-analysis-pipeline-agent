@@ -15,71 +15,120 @@ Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: yun_dev_20261114, yun_dev_f
 | yun_dev_tp_20261115 | qwen30 | `v2_timepoint` | 0.163 | 1/43 | 0.4661 | 0.9774 | 0.7353 | ja |
 | yun_dev_v3_20261115 | glm | `v3_abs_count` | 0.0 | 3/43 | 0.9189 | 0.431 | 0.9294 | ja |
 
-## Fehler nach Klasse
+## Fehler je Prompt-Version
+
+Versionen werden getrennt ausgewiesen und nicht summiert: `verworfen`
+bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
+
+| Version | Status | Fehler | technisch | inhaltlich | zusätzliche Zellen | Läufe |
+|---|---|---|---|---|---|---|
+| `v1` | historisch | 135 | 12 | 123 | 56 | 1 |
+| `v2_timepoint` | referenz | 235 | 28 | 207 | 107 | 3 |
+| `v3_abs_count` | verworfen | 17 | 6 | 11 | 5 | 1 |
+
+### v1 (historisch)
 
 | Klasse | Anzahl |
 |---|---|
-| Nicht eindeutig klassifizierbar | 187 |
-| Zahl nicht extrahiert | 136 |
-| Unvollstaendige Modellantwort | 46 |
+| Nicht eindeutig klassifizierbar | 83 |
+| Zahl nicht extrahiert | 30 |
+| Unvollstaendige Modellantwort | 12 |
 | Falscher Messzeitpunkt | 8 |
-| Falsche Tabellenzeile | 6 |
-| Prozentwert und absolute Zahl verwechselt | 4 |
-
-## Fehler nach Feld
+| Falsche Tabellenzeile | 2 |
 
 | Feld | Klassen |
 |---|---|
-| comparator_events | Nicht eindeutig klassifizierbar (7), Prozentwert und absolute Zahl verwechselt (4), Zahl nicht extrahiert (3), Falsche Tabellenzeile (2), Unvollstaendige Modellantwort (1) |
-| comparator_group_size | Zahl nicht extrahiert (57), Unvollstaendige Modellantwort (10), Nicht eindeutig klassifizierbar (4) |
-| comparator_mean | Nicht eindeutig klassifizierbar (42), Unvollstaendige Modellantwort (6), Zahl nicht extrahiert (3), Falscher Messzeitpunkt (2) |
-| comparator_standard_deviation | Nicht eindeutig klassifizierbar (36), Unvollstaendige Modellantwort (6), Zahl nicht extrahiert (3), Falscher Messzeitpunkt (2) |
-| intervention_events | Nicht eindeutig klassifizierbar (13), Zahl nicht extrahiert (6), Unvollstaendige Modellantwort (1) |
-| intervention_group_size | Zahl nicht extrahiert (58), Unvollstaendige Modellantwort (10), Nicht eindeutig klassifizierbar (3) |
-| intervention_mean | Nicht eindeutig klassifizierbar (46), Unvollstaendige Modellantwort (6), Zahl nicht extrahiert (3), Falscher Messzeitpunkt (2) |
-| intervention_standard_deviation | Nicht eindeutig klassifizierbar (36), Unvollstaendige Modellantwort (6), Falsche Tabellenzeile (4), Zahl nicht extrahiert (3), Falscher Messzeitpunkt (2) |
+| comparator_events | Unvollstaendige Modellantwort (1), Zahl nicht extrahiert (1), Nicht eindeutig klassifizierbar (1) |
+| comparator_group_size | Zahl nicht extrahiert (13), Unvollstaendige Modellantwort (3), Nicht eindeutig klassifizierbar (2) |
+| comparator_mean | Nicht eindeutig klassifizierbar (20), Falscher Messzeitpunkt (2), Unvollstaendige Modellantwort (1) |
+| comparator_standard_deviation | Nicht eindeutig klassifizierbar (18), Falscher Messzeitpunkt (2), Unvollstaendige Modellantwort (1) |
+| intervention_events | Zahl nicht extrahiert (2), Unvollstaendige Modellantwort (1), Nicht eindeutig klassifizierbar (1) |
+| intervention_group_size | Zahl nicht extrahiert (14), Unvollstaendige Modellantwort (3), Nicht eindeutig klassifizierbar (1) |
+| intervention_mean | Nicht eindeutig klassifizierbar (22), Falscher Messzeitpunkt (2), Unvollstaendige Modellantwort (1) |
+| intervention_standard_deviation | Nicht eindeutig klassifizierbar (18), Falsche Tabellenzeile (2), Falscher Messzeitpunkt (2), Unvollstaendige Modellantwort (1) |
+
+### v2_timepoint (referenz)
+
+| Klasse | Anzahl |
+|---|---|
+| Nicht eindeutig klassifizierbar | 100 |
+| Zahl nicht extrahiert | 100 |
+| Unvollstaendige Modellantwort | 28 |
+| Falsche Tabellenzeile | 4 |
+| Prozentwert und absolute Zahl verwechselt | 3 |
+
+| Feld | Klassen |
+|---|---|
+| comparator_events | Nicht eindeutig klassifizierbar (5), Prozentwert und absolute Zahl verwechselt (3), Falsche Tabellenzeile (2), Zahl nicht extrahiert (2) |
+| comparator_group_size | Zahl nicht extrahiert (43), Unvollstaendige Modellantwort (6), Nicht eindeutig klassifizierbar (2) |
+| comparator_mean | Nicht eindeutig klassifizierbar (22), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (2) |
+| comparator_standard_deviation | Nicht eindeutig klassifizierbar (18), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (2) |
+| intervention_events | Nicht eindeutig klassifizierbar (10), Zahl nicht extrahiert (4) |
+| intervention_group_size | Zahl nicht extrahiert (43), Unvollstaendige Modellantwort (6), Nicht eindeutig klassifizierbar (2) |
+| intervention_mean | Nicht eindeutig klassifizierbar (23), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (2) |
+| intervention_standard_deviation | Nicht eindeutig klassifizierbar (18), Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (2), Falsche Tabellenzeile (2) |
+
+### v3_abs_count (verworfen)
+
+| Klasse | Anzahl |
+|---|---|
+| Zahl nicht extrahiert | 6 |
+| Unvollstaendige Modellantwort | 6 |
+| Nicht eindeutig klassifizierbar | 4 |
+| Prozentwert und absolute Zahl verwechselt | 1 |
+
+| Feld | Klassen |
+|---|---|
+| comparator_events | Nicht eindeutig klassifizierbar (1), Prozentwert und absolute Zahl verwechselt (1) |
+| comparator_group_size | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
+| comparator_mean | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
+| comparator_standard_deviation | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
+| intervention_events | Nicht eindeutig klassifizierbar (2) |
+| intervention_group_size | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
+| intervention_mean | Nicht eindeutig klassifizierbar (1), Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
+| intervention_standard_deviation | Zahl nicht extrahiert (1), Unvollstaendige Modellantwort (1) |
 
 ## Ereigniszahlen
 
-| Lauf | Modell | Record | Feld | Arm | Gold | Vorhersage | Fehler | Klasse |
-|---|---|---|---|---|---|---|---|---|
-| yun_dev_20261114 | glm | yun2024:120 | intervention_events | intervention | 8.0 |  |  | Unvollstaendige Modellantwort |
-| yun_dev_20261114 | glm | yun2024:120 | comparator_events | comparator | 13.0 |  |  | Unvollstaendige Modellantwort |
-| yun_dev_20261114 | qwen30 | yun2024:120 | intervention_events | intervention | 8.0 |  |  | Zahl nicht extrahiert |
-| yun_dev_20261114 | qwen30 | yun2024:120 | comparator_events | comparator | 13.0 |  |  | Zahl nicht extrahiert |
-| yun_dev_20261114 | qwen30 | yun2024:190 | intervention_events | intervention | 52.0 | 26.0 | 26.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_20261114 | qwen30 | yun2024:190 | comparator_events | comparator | 51.0 | 32.0 | 19.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_20261114 | qwen30 | yun2024:263 | intervention_events | intervention | 72.0 |  |  | Zahl nicht extrahiert |
-| yun_dev_fresh_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_fresh_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_fresh_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_fresh_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Prozentwert und absolute Zahl verwechselt |
-| yun_dev_retry_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_retry_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_retry_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_retry_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Prozentwert und absolute Zahl verwechselt |
-| yun_dev_retry_20261115 | qwen30 | yun2024:120 | intervention_events | intervention | 8.0 | 2.0 | 6.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_retry_20261115 | qwen30 | yun2024:120 | comparator_events | comparator | 13.0 | 8.0 | 5.0 | Falsche Tabellenzeile |
-| yun_dev_retry_20261115 | qwen30 | yun2024:190 | intervention_events | intervention | 52.0 | 26.0 | 26.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_retry_20261115 | qwen30 | yun2024:190 | comparator_events | comparator | 51.0 | 32.0 | 19.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_retry_20261115 | qwen30 | yun2024:191 | intervention_events | intervention | 49.0 |  |  | Zahl nicht extrahiert |
-| yun_dev_retry_20261115 | qwen30 | yun2024:191 | comparator_events | comparator | 64.0 |  |  | Zahl nicht extrahiert |
-| yun_dev_retry_20261115 | qwen30 | yun2024:263 | intervention_events | intervention | 72.0 |  |  | Zahl nicht extrahiert |
-| yun_dev_tp_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_tp_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_tp_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_tp_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Prozentwert und absolute Zahl verwechselt |
-| yun_dev_tp_20261115 | qwen30 | yun2024:120 | intervention_events | intervention | 8.0 | 2.0 | 6.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_tp_20261115 | qwen30 | yun2024:120 | comparator_events | comparator | 13.0 | 8.0 | 5.0 | Falsche Tabellenzeile |
-| yun_dev_tp_20261115 | qwen30 | yun2024:190 | intervention_events | intervention | 52.0 | 26.0 | 26.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_tp_20261115 | qwen30 | yun2024:190 | comparator_events | comparator | 51.0 | 32.0 | 19.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_tp_20261115 | qwen30 | yun2024:191 | intervention_events | intervention | 49.0 |  |  | Zahl nicht extrahiert |
-| yun_dev_tp_20261115 | qwen30 | yun2024:191 | comparator_events | comparator | 64.0 |  |  | Zahl nicht extrahiert |
-| yun_dev_tp_20261115 | qwen30 | yun2024:263 | intervention_events | intervention | 72.0 |  |  | Zahl nicht extrahiert |
-| yun_dev_v3_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_v3_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_v3_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
-| yun_dev_v3_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Prozentwert und absolute Zahl verwechselt |
+| Version | Lauf | Modell | Record | Feld | Arm | Gold | Vorhersage | Fehler | Klasse |
+|---|---|---|---|---|---|---|---|---|---|
+| `v1` | yun_dev_20261114 | glm | yun2024:120 | intervention_events | intervention | 8.0 |  |  | Unvollstaendige Modellantwort |
+| `v1` | yun_dev_20261114 | glm | yun2024:120 | comparator_events | comparator | 13.0 |  |  | Unvollstaendige Modellantwort |
+| `v1` | yun_dev_20261114 | qwen30 | yun2024:120 | intervention_events | intervention | 8.0 |  |  | Zahl nicht extrahiert |
+| `v1` | yun_dev_20261114 | qwen30 | yun2024:120 | comparator_events | comparator | 13.0 |  |  | Zahl nicht extrahiert |
+| `v1` | yun_dev_20261114 | qwen30 | yun2024:190 | intervention_events | intervention | 52.0 | 26.0 | 26.0 | Nicht eindeutig klassifizierbar |
+| `v1` | yun_dev_20261114 | qwen30 | yun2024:190 | comparator_events | comparator | 51.0 | 32.0 | 19.0 | Nicht eindeutig klassifizierbar |
+| `v1` | yun_dev_20261114 | qwen30 | yun2024:263 | intervention_events | intervention | 72.0 |  |  | Zahl nicht extrahiert |
+| `v2_timepoint` | yun_dev_fresh_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_fresh_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_fresh_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_fresh_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Prozentwert und absolute Zahl verwechselt |
+| `v2_timepoint` | yun_dev_retry_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_retry_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_retry_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_retry_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Prozentwert und absolute Zahl verwechselt |
+| `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:120 | intervention_events | intervention | 8.0 | 2.0 | 6.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:120 | comparator_events | comparator | 13.0 | 8.0 | 5.0 | Falsche Tabellenzeile |
+| `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:190 | intervention_events | intervention | 52.0 | 26.0 | 26.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:190 | comparator_events | comparator | 51.0 | 32.0 | 19.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:191 | intervention_events | intervention | 49.0 |  |  | Zahl nicht extrahiert |
+| `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:191 | comparator_events | comparator | 64.0 |  |  | Zahl nicht extrahiert |
+| `v2_timepoint` | yun_dev_retry_20261115 | qwen30 | yun2024:263 | intervention_events | intervention | 72.0 |  |  | Zahl nicht extrahiert |
+| `v2_timepoint` | yun_dev_tp_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_tp_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_tp_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_tp_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Prozentwert und absolute Zahl verwechselt |
+| `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:120 | intervention_events | intervention | 8.0 | 2.0 | 6.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:120 | comparator_events | comparator | 13.0 | 8.0 | 5.0 | Falsche Tabellenzeile |
+| `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:190 | intervention_events | intervention | 52.0 | 26.0 | 26.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:190 | comparator_events | comparator | 51.0 | 32.0 | 19.0 | Nicht eindeutig klassifizierbar |
+| `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:191 | intervention_events | intervention | 49.0 |  |  | Zahl nicht extrahiert |
+| `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:191 | comparator_events | comparator | 64.0 |  |  | Zahl nicht extrahiert |
+| `v2_timepoint` | yun_dev_tp_20261115 | qwen30 | yun2024:263 | intervention_events | intervention | 72.0 |  |  | Zahl nicht extrahiert |
+| `v3_abs_count` | yun_dev_v3_20261115 | glm | yun2024:190 | intervention_events | intervention | 52.0 | 64.0 | 12.0 | Nicht eindeutig klassifizierbar |
+| `v3_abs_count` | yun_dev_v3_20261115 | glm | yun2024:190 | comparator_events | comparator | 51.0 | 73.0 | 22.0 | Nicht eindeutig klassifizierbar |
+| `v3_abs_count` | yun_dev_v3_20261115 | glm | yun2024:191 | intervention_events | intervention | 49.0 | 31.0 | 18.0 | Nicht eindeutig klassifizierbar |
+| `v3_abs_count` | yun_dev_v3_20261115 | glm | yun2024:191 | comparator_events | comparator | 64.0 | 48.0 | 16.0 | Prozentwert und absolute Zahl verwechselt |
 
 ## Gold-Pruefung
 

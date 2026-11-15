@@ -8,7 +8,7 @@ from pathlib import Path
 BENCH = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BENCH))
 
-from extended_benchmark.versions import ALIASE, KANONISCH, normalisiere_version  # noqa: E402
+from extended_benchmark.versions import ALIASE, KANONISCH, normalisiere_version, status_von  # noqa: E402
 
 
 def test_alte_und_neue_schreibweise_werden_gleich() -> None:
@@ -37,3 +37,10 @@ def test_unbekannte_schreibweise_bleibt_erhalten() -> None:
 
 def test_alle_aliase_zeigen_auf_kanonische_namen() -> None:
     assert set(ALIASE.values()) <= set(KANONISCH)
+
+
+def test_v3_ist_verworfen_und_v2_referenz() -> None:
+    assert status_von("v3_abs_count") == "verworfen"
+    assert status_von("v2_timepoint") == "referenz"
+    assert status_von("v1") == "historisch"
+    assert status_von("unbekannt") == "unbekannt"

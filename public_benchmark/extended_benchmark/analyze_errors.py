@@ -31,7 +31,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 
 from extended_benchmark.evaluate_extended import evaluate_numeric  # noqa: E402
-from extended_benchmark.versions import normalisiere_version  # noqa: E402
+from extended_benchmark.versions import BESCHREIBUNG, normalisiere_version, status_von  # noqa: E402
 
 RUNS = HERE / "runs"
 RECORDS = HERE / "records" / "yun_dev.jsonl"
@@ -419,6 +419,7 @@ def baue_queue(faelle: list[dict[str, Any]], korrekte: list[dict[str, Any]]) -> 
             {
                 "prioritaet": prio,
                 "grund": grund,
+                "prompt_version": fall["prompt_version"],
                 "run_id": fall["run_id"],
                 "model": fall["model"],
                 "record_id": fall["record_id"],
@@ -438,6 +439,7 @@ def baue_queue(faelle: list[dict[str, Any]], korrekte: list[dict[str, Any]]) -> 
             {
                 "prioritaet": 5,
                 "grund": "Kontrollfall korrekt",
+                "prompt_version": "",
                 "run_id": fall["run_id"],
                 "model": fall["model"],
                 "record_id": fall["record_id"],
@@ -580,6 +582,42 @@ def main() -> int:
 
     gold_befunde = pruefe_gold(records, dokumente)
 
+    def aggregat(faelle: list[dict[str, Any]], zusatz: list[dict[str, Any]]) -> dict[str, Any]:
+        klassen = Counter(f["klasse_name"] for f in faelle)
+        return {
+            "fehler": len(faelle),
+            "klassen": dict(klassen),
+            "technisch": sum(1 for f in faelle if f["klasse"] == 13),
+            "inhaltlich": sum(1 for f in faelle if f["klasse"] != 13),
+            "nach_modell": {m: dict(Counter(f["klasse_name"] for f in faelle if f["model"] == m)) for m in sorted({f["model"] for f in faelle})},
+            "nach_feld": {feld: dict(Counter(f["klasse_name"] for f in faelle if f["field"] == feld)) for feld in sorted({f["field"] for f in faelle})},
+            "ereignis_fehler": [
+                {
+                    "run_id": f["run_id"],
+                    "model": f["model"],
+                    "record_id": f["record_id"],
+                    "field": f["field"],
+                    "arm": f["arm"],
+                    "gold": f["gold"],
+                    "prediction": f["prediction"],
+                    "abs_error": f["abs_error"],
+                    "klasse": f["klasse_name"],
+                }
+                for f in faelle
+                if f["field"].endswith("_events")
+            ],
+            "zusaetzliche_zellen": sum(1 for z in zusatz if z["prompt_version"] == (faelle[0]["prompt_version"] if faelle else "")),
+            "laeufe": sorted({f["run_id"] for f in faelle}),
+            "status": status_von(faelle[0]["prompt_version"] if faelle else ""),
+        }
+
+    versionen: dict[str, dict[str, Any]] = {}
+    for version in sorted({f["prompt_version"] for f in alle_faelle}):
+        faelle_version = [f for f in alle_faelle if f["prompt_version"] == version]
+        aggregate = aggregat(faelle_version, alle_zusatz)
+        aggregate["beschreibung"] = BESCHREIBUNG.get(version, "")
+        versionen[version] = aggregate
+
     nach_klasse = Counter(f["klasse_name"] for f in alle_faelle)
     nach_feld = defaultdict(Counter)
     for fall in alle_faelle:
@@ -597,6 +635,7 @@ def main() -> int:
         ereignis_details.append(
             {
                 "run_id": fall["run_id"],
+                "prompt_version": fall["prompt_version"],
                 "model": fall["model"],
                 "record_id": fall["record_id"],
                 "field": fall["field"],
@@ -622,6 +661,7 @@ def main() -> int:
         },
         "lauf_uebersicht": lauf_uebersicht,
         "metrik_abgleich": abgleich,
+        "versionen": versionen,
         "fehler_nach_klasse": dict(nach_klasse),
         "fehler_nach_modell": {k: dict(v) for k, v in nach_modell.items()},
         "fehler_nach_feld": {k: dict(v) for k, v in nach_feld.items()},
@@ -647,7 +687,7 @@ def main() -> int:
     schreibe_csv(out_dir / "error_cases.csv", alle_faelle + alle_zusatz, fall_felder)
 
     queue_felder = [
-        "prioritaet", "grund", "run_id", "model", "record_id", "field", "arm", "gold", "prediction",
+        "prioritaet", "grund", "prompt_version", "run_id", "model", "record_id", "field", "arm", "gold", "prediction",
         "abs_error", "klasse", "beleg", "quelle", "pruefstatus",
     ]
     schreibe_csv(out_dir / "human_review_queue.csv", queue, queue_felder)
@@ -670,28 +710,40 @@ def main() -> int:
             f"| {'ja' if eintrag['metriken_identisch'] else 'nein'} |"
         )
     zeilen.append("")
-    zeilen.append("## Fehler nach Klasse")
+    zeilen.append("## Fehler je Prompt-Version")
     zeilen.append("")
-    zeilen.append("| Klasse | Anzahl |")
-    zeilen.append("|---|---|")
-    for name, count in sorted(nach_klasse.items(), key=lambda item: -item[1]):
-        zeilen.append(f"| {name} | {count} |")
+    zeilen.append("Versionen werden getrennt ausgewiesen und nicht summiert: `verworfen`")
+    zeilen.append("bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.")
     zeilen.append("")
-    zeilen.append("## Fehler nach Feld")
+    zeilen.append("| Version | Status | Fehler | technisch | inhaltlich | zusätzliche Zellen | Läufe |")
+    zeilen.append("|---|---|---|---|---|---|---|")
+    for version, werte in versionen.items():
+        zeilen.append(
+            f"| `{version}` | {werte['status']} | {werte['fehler']} | {werte['technisch']} "
+            f"| {werte['inhaltlich']} | {werte['zusaetzliche_zellen']} | {len(werte['laeufe'])} |"
+        )
     zeilen.append("")
-    zeilen.append("| Feld | Klassen |")
-    zeilen.append("|---|---|")
-    for feld, zaehler in sorted(nach_feld.items()):
-        verteilung = ", ".join(f"{name} ({count})" for name, count in zaehler.most_common())
-        zeilen.append(f"| {feld} | {verteilung} |")
-    zeilen.append("")
+    for version, werte in versionen.items():
+        zeilen.append(f"### {version} ({werte['status']})")
+        zeilen.append("")
+        zeilen.append("| Klasse | Anzahl |")
+        zeilen.append("|---|---|")
+        for name, count in sorted(werte["klassen"].items(), key=lambda item: -item[1]):
+            zeilen.append(f"| {name} | {count} |")
+        zeilen.append("")
+        zeilen.append("| Feld | Klassen |")
+        zeilen.append("|---|---|")
+        for feld, zaehler in sorted(werte["nach_feld"].items()):
+            verteilung = ", ".join(f"{name} ({count})" for name, count in sorted(zaehler.items(), key=lambda item: -item[1]))
+            zeilen.append(f"| {feld} | {verteilung} |")
+        zeilen.append("")
     zeilen.append("## Ereigniszahlen")
     zeilen.append("")
-    zeilen.append("| Lauf | Modell | Record | Feld | Arm | Gold | Vorhersage | Fehler | Klasse |")
-    zeilen.append("|---|---|---|---|---|---|---|---|---|")
+    zeilen.append("| Version | Lauf | Modell | Record | Feld | Arm | Gold | Vorhersage | Fehler | Klasse |")
+    zeilen.append("|---|---|---|---|---|---|---|---|---|---|")
     for fall in ereignis_details:
         zeilen.append(
-            f"| {fall['run_id']} | {fall['model']} | {fall['record_id']} | {fall['field']} | {fall['arm']} "
+            f"| `{fall['prompt_version']}` | {fall['run_id']} | {fall['model']} | {fall['record_id']} | {fall['field']} | {fall['arm']} "
             f"| {fall['gold']} | {fall['prediction']} | {fall['abs_error']} | {fall['klasse']} |"
         )
     zeilen.append("")
