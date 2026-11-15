@@ -33,6 +33,7 @@ LAEUFE = [
     ("yun_dev_v3_20261115", "Lauf 5: absolute Ereigniszahlen", "v3_abs_count"),
     ("yun_dev_std_20261115", "Lauf 6: Standardprompt frisch", "v2_timepoint"),
     ("yun_dev_v4_20261115", "Lauf 7: letzter Messzeitpunkt", "v4_last_timepoint"),
+    ("yun_dev_v5_20261115", "Lauf 8: Zielzeitpunkt je Record", "v5_target_timepoint"),
 ]
 MODELLE = [("qwen30", "qwen3-30b-a3b"), ("glm", "glm-5.3")]
 

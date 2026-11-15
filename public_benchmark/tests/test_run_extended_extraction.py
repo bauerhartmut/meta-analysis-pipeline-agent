@@ -38,6 +38,15 @@ def test_letzter_zeitpunkt_ersetzt_die_zeitpunktregel() -> None:
     assert "post-test" not in prompt
 
 
+def test_zielzeitpunkt_ist_verbindlich() -> None:
+    prompt = runner.build_prompt(RECORD, "Text", target_timepoint="Post-test")
+    assert runner.VERSION_TARGET_TIMEPOINT == "v5_target_timepoint"
+    assert 'Target time point (binding): "Post-test"' in prompt
+    assert "omit the cell instead of substituting" in prompt
+    assert "chosen_timepoint" in prompt and "discarded_timepoints" in prompt
+    assert "post-test" not in prompt
+
+
 def test_zeitpunkt_parser_liest_labels() -> None:
     timepoints, error = runner.parse_timepoints(
         '{"cells": [], "chosen_timepoint": "12 months follow-up", '

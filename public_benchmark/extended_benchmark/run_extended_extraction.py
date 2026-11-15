@@ -58,6 +58,7 @@ FIELDS = (
 PROMPT_VERSION = "v2_timepoint"
 VERSION_ABSOLUTE_COUNTS = "v3_abs_count"
 VERSION_LAST_TIMEPOINT = "v4_last_timepoint"
+VERSION_TARGET_TIMEPOINT = "v5_target_timepoint"
 RETRY_MAX_TOKENS = 32000
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
@@ -78,27 +79,42 @@ def build_prompt(
     limit: int = 45000,
     absolute_counts: bool = False,
     last_timepoint: bool = False,
+    target_timepoint: str | None = None,
 ) -> str:
     context = record["context"]
     fields = ", ".join(f'"{name}"' for name in FIELDS)
+    berichtet = bool(last_timepoint or target_timepoint)
     schema = (
         '{"cells": [{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...], '
         '"chosen_timepoint": "<label exactly as printed>", '
         '"discarded_timepoints": ["<label exactly as printed>", ...]}'
-        if last_timepoint
+        if berichtet
         else '{"cells": [{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...]}'
     )
-    timepoint_rule = (
+    if target_timepoint:
+        timepoint_rule = (
+            f'Target time point (binding): "{target_timepoint}". Extract only the results measured at '
+            "exactly this time point, as printed for this outcome. If the outcome is not reported at "
+            "this time point, omit the cell instead of substituting another time point. Never use "
+            "baseline values unless the target is a baseline value. Then state the time point label you "
+            "used and the other time point labels of this outcome that you skipped, both copied exactly "
+            'as printed (use "not applicable" if only one time point is reported, "running text" if '
+            "the outcome is only reported in prose). "
+        )
+    elif last_timepoint:
+        timepoint_rule = (
         "Use the results measured at the last time point reported for this outcome: the latest "
         "follow-up. If the table reports a cumulative total row or column, use the total. Never use "
         "baseline values. Then state which time point label you used and which other time point "
-        "labels you skipped for this outcome, both copied exactly as printed (use \"not applicable\" "
-        "if only one time point is reported, \"running text\" if the outcome is only reported in "
-        "prose). "
-        if last_timepoint
-        else "Use the values measured at the end of the intervention (post-test), not baseline values "
-        "and not follow-up values from a later measurement point. "
-    )
+            "labels you skipped for this outcome, both copied exactly as printed (use \"not applicable\" "
+            "if only one time point is reported, \"running text\" if the outcome is only reported in "
+            "prose). "
+        )
+    else:
+        timepoint_rule = (
+            "Use the values measured at the end of the intervention (post-test), not baseline values "
+            "and not follow-up values from a later measurement point. "
+        )
     return (
         f"Publication excerpt:\n{text[:limit]}\n\n"
         f"Intervention: {context.get('intervention') or 'not stated'}\n"
@@ -302,6 +318,11 @@ def main() -> int:
     parser.add_argument("--cache-buster", action="store_true", help="eindeutigen Session-Tag in den Systemprompt haengen")
     parser.add_argument("--absolute-counts", action="store_true", help="Prompt-Zusatz aus v3_abs_count aktivieren")
     parser.add_argument(
+        "--target-timepoint",
+        action="store_true",
+        help="Zielzeitpunkt aus dem Record als verbindliche Vorgabe setzen (v5_target_timepoint)",
+    )
+    parser.add_argument(
         "--last-timepoint",
         action="store_true",
         help="letzten berichteten Messzeitpunkt verlangen und Zeitpunkte mitliefern (v4_last_timepoint)",
@@ -318,6 +339,8 @@ def main() -> int:
     prompt_version = VERSION_ABSOLUTE_COUNTS if args.absolute_counts else PROMPT_VERSION
     if args.last_timepoint:
         prompt_version = VERSION_LAST_TIMEPOINT
+    if args.target_timepoint:
+        prompt_version = VERSION_TARGET_TIMEPOINT
     if args.cache_buster:
         SESSION_TAG = uuid.uuid4().hex[:12]
         prompt_version = f"{prompt_version}_cb"
@@ -348,8 +371,17 @@ def main() -> int:
             candidate = REPO / path
             if candidate.exists():
                 text = candidate.read_text(encoding="utf-8", errors="replace")
+        target = ""
+        if args.target_timepoint:
+            target = str(((record.get("timepoint") or {}).get("target")) or "").strip()
+            if "not stated" in target.lower():
+                target = ""
         prompt = build_prompt(
-            record, text, absolute_counts=args.absolute_counts, last_timepoint=args.last_timepoint
+            record,
+            text,
+            absolute_counts=args.absolute_counts,
+            last_timepoint=args.last_timepoint,
+            target_timepoint=target or None,
         )
         response = call(models[model], prompt, key, base)
         retry: dict[str, Any] | None = None
@@ -377,8 +409,9 @@ def main() -> int:
             "elapsed_s": response.get("elapsed_s"),
             "content_len": len(response.get("content") or ""),
             "parse_error": parse_error,
-            "timepoints": timepoints if args.last_timepoint else {},
-            "timepoint_error": timepoint_error if args.last_timepoint else "",
+            "timepoints": timepoints if (args.last_timepoint or args.target_timepoint) else {},
+            "timepoint_error": timepoint_error if (args.last_timepoint or args.target_timepoint) else "",
+            "target_timepoint": target,
             "prompt_version": prompt_version,
             "predicted": {"cells": cells},
             "rows": cells,

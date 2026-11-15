@@ -267,7 +267,8 @@ Werte liefert.
 | 5 | Technische Validierung: Ereignisse ≤ Gruppengröße | fängt in diesen Daten 0 Fälle; bleibt Schutz für neue Daten | Stunden |
 | 6 | Tabellen separat übergeben statt Volltext | größter Hebel bei mehrzeiligen Tabellen, aber größter Umbau | Tage |
 | 7 | ~~Zeitpunkt-Regel „letzter Messpunkt"~~ **getestet, verworfen** (Abschnitt 12) | behebt 4 Zellen, zerstört 39; Gold-Konvention ist nicht einheitlich | erledigt |
-| 8 | Messzeitpunkt je Record annotieren und im Prompt setzen | macht den Zielzeitpunkt prüfbar, statt ihn raten zu lassen | Stunden + Nachannotation |
+| 8 | Messzeitpunkt je Record annotieren und im Prompt setzen | **erledigt** (Abschnitt 13): Annotation trifft die Konvention, Precision 0,937, MAE 0,0008 | erledigt |
+| 9 | Rückfallregel bei fehlendem Zielzeitpunkt (nächstliegender berichteter Zeitpunkt, im Feld ausgewiesen) | behebt die 51 Auslassungen des v5-Laufs, ohne die Zeitpunktbindung aufzugeben | Stunden |
 
 ## 9. Konzept für die nächste Benchmark-Iteration
 
@@ -319,12 +320,15 @@ solange die Validierung nur markiert und nicht korrigiert.
    verworfen** (Abschnitt 12): behebt die beiden bekannten Zellen, zerstört
    aber 39 Zellen eines anderen Artikels, weil die Gold-Annotation selbst
    keinen einheitlichen Zeitpunkt verwendet.
-4. **Messzeitpunkt je Record annotieren** — der einzige Weg, der beide
-   Artikel-Konventionen trifft: Der Zielzeitpunkt steht dann im Record und im
-   Prompt, und die Antwort ist dagegen prüfbar. Aufwand: Nachannotation der 43
-   Dev-Records (Zeitpunkt steht im Artikel), dann ein Lauf.
-5. Tabellenübergabe (B) — erst sinnvoll, wenn der Zielzeitpunkt feststeht,
-   sonst wird dieselbe falsche Spalte nur sauberer gelesen.
+4. ~~Messzeitpunkt je Record annotieren~~ **erledigt** (Abschnitt 13): Die
+   Annotation ist gesetzt und belegt, der Lauf gewinnt Precision und MAE,
+   verliert aber Abdeckung durch Auslassungen.
+5. **Rückfallregel für fehlende Zeitpunkte** — der direkte Anschluss: Auslassen
+   durch „nächstliegenden berichteten Zeitpunkt nennen und ausweisen"
+   ersetzen. Ein Lauf auf denselben 43 Records zeigt, ob Precision und
+   Abdeckung gleichzeitig halten.
+6. Tabellenübergabe (B) — erst sinnvoll, wenn Zeitpunkt und Rückfallregel
+   stehen, sonst wird dieselbe falsche Spalte nur sauberer gelesen.
 
 ## 10. Datenerweiterung und Fine-Tuning
 
@@ -472,7 +476,88 @@ nicht im Modell, sondern in einer fehlenden Angabe in den Gold-Records.
 
 `v4_last_timepoint` ist deshalb **verworfen** (Status in `versions.py`,
 Prüffälle in `human_review_discarded.csv`). Der mitgelieferte Zeitpunkt bleibt
-als Diagnose erhalten: Er macht die Ortswahl sichtbar und offline prüfbar.
+als Diagnose erhalten: Er macht die Ortswahl sichtbar und offline prüfbar. Der
+nächste Schritt — Zielzeitpunkt je Record — steht in Abschnitt 13.
+
+## 13. Zielzeitpunkt je Record als Vorgabe (15.11.2026)
+
+Weil keine Prompt-Regel beide Artikel-Konventionen treffen kann (Abschnitt 12),
+ist der Zielzeitpunkt jetzt Teil der Daten. `annotate_timepoints.py` schreibt
+je Dev-Record ein Feld `timepoint` mit `target`, wörtlicher `evidence` und
+Datum; das Skript bricht ab, wenn sich eine Gold-Zelle ändern würde — die
+Gold-Werte sind nachweislich unverändert. Übersicht:
+`analysis/timepoints_annotation.md`. Verteilung: 15× „Post-test", 6× „after
+intervention (post-test)", 5× „12 months follow-up", 2× „Week 8", 2× „30
+days", 2× „On-Therapy Period", 2× „whole treatment period", je 1× „Total
+0-12 months", „6 months follow-up", „Period 2", „T1", „post-operative DTPA
+scan"; 4× „not stated" (kein Gold-Wert bzw. Tabellenkopf fehlt).
+
+Prompt `v5_target_timepoint` setzt den Zeitpunkt verbindlich („Target time
+point (binding)"), verbietet das Ausweichen auf einen anderen Zeitpunkt und
+lässt den benutzten wie die verworfenen Zeitpunkte weiter mitliefern.
+
+| Kennzahl | Referenz (Lauf 6) | `v5_target_timepoint` |
+|---|---|---|
+| Zellen-F1 | 0,933 | 0,797 |
+| Recall / Precision | 0,935 / 0,930 | 0,694 / **0,937** |
+| MAE | 0,415 | **0,0008** |
+| mae_coverage | 0,965 (164/170) | 0,700 (119/170) |
+| exakte Records | 34/43 | 24/43 |
+| vorhergesagte Zellen | 171 | 126 |
+
+Lauf: 43 Aufrufe, 2 Retries, kein Cache-Treffer, Median 23,9 s (vorher 3,8 s
+— die Zeitpunktprüfung kostet deutlich Rechenzeit), 9 Records ohne Antwort.
+
+### Was das Ergebnis bedeutet
+
+**Richtig wird fast alles, was beantwortet wird.** Der MAE von 0,0008 über 119
+Paare bedeutet: eine einzige Abweichung von 0,1 — `yun2024:3` mit 50,7 (Text:
+„+50.7 gm") gegen Gold 50,6 (Tabelle), der bekannte Selbstwiderspruch des
+Artikels. Die Precision steigt auf 0,937.
+
+**Der Preis ist die Abdeckung.** 51 Gold-Zellen fehlen, davon 19 Gruppengrößen
+und 24 Mittelwerte/Streuungen; 32 der 52 Fehlerfälle sind „unvollständige
+Modellantwort" (8 Records ohne jede Zelle). Die Vorgabe „lieber weglassen als
+falschen Zeitpunkt" wirkt also genau wie formuliert — sie verschiebt Fehler in
+Auslassungen.
+
+Belegt richtig mit Vorgabe sind unter anderem `yun2024:190` (12 Monate,
+52/51), `yun2024:191` (Total, 49/64), `yun2024:260` (Week 8, 79/62),
+`yun2024:83` (Period 2, 9,9/9,1), `yun2024:88` (T1, 117,63/158,52),
+`yun2024:4` und `yun2024:120`.
+
+**Wo die Auslassungen sitzen:** `yun2024:187`–`:189` führen laut Gold nur
+Gruppengrößen, die bei „12 months follow-up" nicht als Ergebniszeile stehen —
+Auslassen ist dort folgerichtig. `yun2024:224`, `:225`, `:226`, `:230` dagegen
+haben den richtigen Zielzeitpunkt „Post-test" genannt und trotzdem nichts
+geliefert; sie waren ohne Vorgabe korrekt. Das ist Übervorsicht, kein
+Zeitpunktfehler, und der Hauptgrund für den Recall-Verlust.
+
+### Einhaltung der Vorgabe (offline geprüft)
+
+`check_timepoints.py` auf dem v5-Lauf: 34 von 43 Records nennen einen
+Zeitpunkt, 33 davon echte Labels, 29 wörtlich im Artikel; von 57 verworfenen
+Labels stehen 11 nicht wörtlich im Text; 1 Widerspruch (`yun2024:192`, wie in
+Abschnitt 12 ein Fehlalarm der Heuristik).
+
+### Ein verworfener Lauf und seine Ursache
+
+Der erste v5-Lauf erhielt die Vorgabe nie: Der Runner liest `records/yun.jsonl`
+und filtert den Split, die Annotation stand zunächst nur in
+`records/yun_dev.jsonl`. Ergebnis: 43-mal leerer Zielzeitpunkt, Version ohne
+Zeitpunktangabe (F1 0,927, praktisch die Referenz). Der Lauf ist als
+`runs/_verworfen/yun_dev_v5_ohne_vorgabe_20261115/` erhalten und zählt nicht
+zur Auswertung; die Annotation schreibt jetzt in beide Record-Dateien.
+
+### Bewertung
+
+`v5_target_timepoint` ist als Referenz **nicht übernommen** (Status
+„verworfen", F1 −0,136 bei Abdeckung −0,265). Der Versuch belegt aber zwei
+Dinge: Die Annotation trifft die Gold-Konvention (fast jede beantwortete Zelle
+stimmt), und die reine Auslassungsregel ist zu streng. Der naheliegende
+nächste Schritt ist deshalb keine neue Datenrunde, sondern eine Rückfallregel:
+Wenn der Zielzeitpunkt für ein Feld nicht berichtet ist, den nächstliegenden
+berichteten Zeitpunkt nehmen und ihn im Feld `chosen_timepoint` ausweisen.
 
 ## Technische Umsetzung
 

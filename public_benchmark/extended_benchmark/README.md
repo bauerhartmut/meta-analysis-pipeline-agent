@@ -196,6 +196,27 @@ neu berechnet und gegen `eval/*.metrics.json` geprüft. Wo sich eine Ursache
 nicht belegen lässt, steht "Nicht eindeutig klassifizierbar" statt einer
 Vermutung. Der Abschlussbericht liegt in `next_iteration_report.md`.
 
+## Zielzeitpunkt je Record (`v5_target_timepoint`)
+
+`annotate_timepoints.py` pflegt den Zielmesszeitpunkt der Dev-Records als Feld
+`timepoint` (`target`, `evidence`, `annotated`) in `records/yun_dev.jsonl` **und**
+`records/yun.jsonl`; der Runner liest `yun.jsonl` und filtert den Split. Das
+Skript bricht ab, wenn sich ein Gold-Wert ändern würde.
+
+```bash
+python public_benchmark/extended_benchmark/annotate_timepoints.py --write \
+  --md public_benchmark/extended_benchmark/analysis/timepoints_annotation.md
+
+python public_benchmark/extended_benchmark/run_extended_extraction.py \
+  --models glm --split dev --cache-buster --target-timepoint \
+  --run-id yun_dev_v5_20261115
+```
+
+`--target-timepoint` setzt den Record-Zeitpunkt als verbindliche Vorgabe und
+verlangt, den benutzten wie die verworfenen Zeitpunkte zu nennen; `not stated`
+im Record schaltet auf die Standardregel zurück. Ergebnis: Precision 0,937 und
+MAE 0,0008, aber Abdeckung 0,700 (Auslassungen) — Bericht, Abschnitt 13.
+
 ## Zeitpunkt-Regel `v4_last_timepoint` (verworfen)
 
 `--last-timepoint` verlangt den letzten berichteten Messzeitpunkt und lässt das

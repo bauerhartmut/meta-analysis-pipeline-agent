@@ -1,0 +1,801 @@
+{
+  "run": "yun_dev_v5_20261115",
+  "zusammenfassung": {
+    "records": 43,
+    "mit_zeitpunkt": 34,
+    "ohne_zeitpunkt": 9,
+    "chosen_platzhalter": 1,
+    "chosen_belegt": 29,
+    "echte_labels": 33,
+    "chosen_rang_bekannt": 9,
+    "discarded_labels": 57,
+    "discarded_unbelegt": 11,
+    "widersprueche": 1,
+    "chosen_verteilung": {
+      "running text": 1,
+      "30 days": 2,
+      "Duration of diarrhea in hours after randomization": 1,
+      "after intervention (post-test)": 3,
+      "after intervention": 2,
+      "Period 2 (2007 to 2010)": 1,
+      "T1 (after practicum training)": 1,
+      "12 months follow-up": 5,
+      "Total 0-12 months": 1,
+      "6 months follow-up": 1,
+      "Post-test": 12,
+      "Week 8": 2,
+      "On-Therapy Period": 2
+    },
+    "fehler": {
+      "kein_zeitpunkt": 5,
+      "kein_json": 4
+    }
+  },
+  "details": [
+    {
+      "chosen": "running text",
+      "chosen_rang": null,
+      "chosen_platzhalter": true,
+      "chosen_belegt": true,
+      "discarded": [
+        "not applicable"
+      ],
+      "discarded_belegt": {
+        "not applicable": false
+      },
+      "discarded_unbelegt": [
+        "not applicable"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:3",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "30 days",
+      "chosen_rang": 0.9855453350854139,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "not applicable"
+      ],
+      "discarded_belegt": {
+        "not applicable": false
+      },
+      "discarded_unbelegt": [
+        "not applicable"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:1",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Duration of diarrhea in hours after randomization",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "running text"
+      ],
+      "discarded_belegt": {
+        "running text": false
+      },
+      "discarded_unbelegt": [
+        "running text"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:4",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [],
+      "discarded_belegt": {},
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:5",
+      "model": "glm",
+      "timepoint_error": "kein_zeitpunkt"
+    },
+    {
+      "chosen": "",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [],
+      "discarded_belegt": {},
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:17",
+      "model": "glm",
+      "timepoint_error": "kein_zeitpunkt"
+    },
+    {
+      "chosen": "30 days",
+      "chosen_rang": 0.9855453350854139,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "not applicable"
+      ],
+      "discarded_belegt": {
+        "not applicable": false
+      },
+      "discarded_unbelegt": [
+        "not applicable"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:2",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [],
+      "discarded_belegt": {},
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:19",
+      "model": "glm",
+      "timepoint_error": "kein_zeitpunkt"
+    },
+    {
+      "chosen": "",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [],
+      "discarded_belegt": {},
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:18",
+      "model": "glm",
+      "timepoint_error": "kein_zeitpunkt"
+    },
+    {
+      "chosen": "after intervention (post-test)",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [
+        "before intervention (pre-test)"
+      ],
+      "discarded_belegt": {
+        "before intervention (pre-test)": false
+      },
+      "discarded_unbelegt": [
+        "before intervention (pre-test)"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:55",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "after intervention",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "before intervention"
+      ],
+      "discarded_belegt": {
+        "before intervention": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:56",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "after intervention (post-test)",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [
+        "before intervention (pre-test)"
+      ],
+      "discarded_belegt": {
+        "before intervention (pre-test)": false
+      },
+      "discarded_unbelegt": [
+        "before intervention (pre-test)"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:58",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "after intervention",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "before intervention"
+      ],
+      "discarded_belegt": {
+        "before intervention": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:60",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Period 2 (2007 to 2010)",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Period 1 (2004 to 2006)"
+      ],
+      "discarded_belegt": {
+        "Period 1 (2004 to 2006)": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:83",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "T1 (after practicum training)",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [
+        "T0"
+      ],
+      "discarded_belegt": {
+        "T0": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:88",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "after intervention (post-test)",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [
+        "before intervention"
+      ],
+      "discarded_belegt": {
+        "before intervention": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:59",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [],
+      "discarded_belegt": {},
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:57",
+      "model": "glm",
+      "timepoint_error": "kein_json"
+    },
+    {
+      "chosen": "12 months follow-up",
+      "chosen_rang": 12.0,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "baseline",
+        "3 months follow-up",
+        "6 months follow-up"
+      ],
+      "discarded_belegt": {
+        "baseline": true,
+        "3 months follow-up": true,
+        "6 months follow-up": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:186",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "12 months follow-up",
+      "chosen_rang": 12.0,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "baseline",
+        "3 months follow-up",
+        "6 months follow-up"
+      ],
+      "discarded_belegt": {
+        "baseline": true,
+        "3 months follow-up": true,
+        "6 months follow-up": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:188",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [],
+      "discarded_belegt": {},
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:120",
+      "model": "glm",
+      "timepoint_error": "kein_zeitpunkt"
+    },
+    {
+      "chosen": "12 months follow-up",
+      "chosen_rang": 12.0,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Baseline",
+        "3 months follow-up",
+        "6 months follow-up"
+      ],
+      "discarded_belegt": {
+        "Baseline": true,
+        "3 months follow-up": true,
+        "6 months follow-up": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:190",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Total 0-12 months",
+      "chosen_rang": 999.0,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "0-3 months",
+        "4-12 months"
+      ],
+      "discarded_belegt": {
+        "0-3 months": true,
+        "4-12 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:191",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "6 months follow-up",
+      "chosen_rang": 6.0,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Baseline",
+        "3 months follow-up",
+        "12 months follow-up"
+      ],
+      "discarded_belegt": {
+        "Baseline": true,
+        "3 months follow-up": true,
+        "12 months follow-up": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [
+        "12 months follow-up"
+      ],
+      "record_id": "yun2024:192",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "12 months follow-up",
+      "chosen_rang": 12.0,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Baseline",
+        "3 months follow-up",
+        "6 months follow-up"
+      ],
+      "discarded_belegt": {
+        "Baseline": true,
+        "3 months follow-up": true,
+        "6 months follow-up": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:189",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "12 months follow-up",
+      "chosen_rang": 12.0,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "running text"
+      ],
+      "discarded_belegt": {
+        "running text": false
+      },
+      "discarded_unbelegt": [
+        "running text"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:187",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [],
+      "discarded_belegt": {},
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:224",
+      "model": "glm",
+      "timepoint_error": "kein_json"
+    },
+    {
+      "chosen": "",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [],
+      "discarded_belegt": {},
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:225",
+      "model": "glm",
+      "timepoint_error": "kein_json"
+    },
+    {
+      "chosen": "",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": false,
+      "discarded": [],
+      "discarded_belegt": {},
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:226",
+      "model": "glm",
+      "timepoint_error": "kein_json"
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:227",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:230",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:229",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:228",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:232",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:233",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:234",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:231",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:235",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:237",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:236",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Post-test",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "Pre-test",
+        "Follow up after 4 months"
+      ],
+      "discarded_belegt": {
+        "Pre-test": true,
+        "Follow up after 4 months": true
+      },
+      "discarded_unbelegt": [],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:238",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Week 8",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "not applicable"
+      ],
+      "discarded_belegt": {
+        "not applicable": false
+      },
+      "discarded_unbelegt": [
+        "not applicable"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:260",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "On-Therapy Period",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "not applicable"
+      ],
+      "discarded_belegt": {
+        "not applicable": false
+      },
+      "discarded_unbelegt": [
+        "not applicable"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:262",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "Week 8",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "not applicable"
+      ],
+      "discarded_belegt": {
+        "not applicable": false
+      },
+      "discarded_unbelegt": [
+        "not applicable"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:261",
+      "model": "glm",
+      "timepoint_error": ""
+    },
+    {
+      "chosen": "On-Therapy Period",
+      "chosen_rang": null,
+      "chosen_platzhalter": false,
+      "chosen_belegt": true,
+      "discarded": [
+        "not applicable"
+      ],
+      "discarded_belegt": {
+        "not applicable": false
+      },
+      "discarded_unbelegt": [
+        "not applicable"
+      ],
+      "spaeter_verworfen": [],
+      "record_id": "yun2024:263",
+      "model": "glm",
+      "timepoint_error": ""
+    }
+  ]
+}

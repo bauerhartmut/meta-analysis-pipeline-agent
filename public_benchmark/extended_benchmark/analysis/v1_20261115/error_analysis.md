@@ -1,6 +1,6 @@
 # Fehleranalyse Yun-Dev
 
-Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: stage_20261115, yun_dev_20261114, yun_dev_fresh_20261115, yun_dev_retry_20261115, yun_dev_std_20261115, yun_dev_tp_20261115, yun_dev_v3_20261115, yun_dev_v4_20261115.
+Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: stage_20261115, yun_dev_20261114, yun_dev_fresh_20261115, yun_dev_retry_20261115, yun_dev_std_20261115, yun_dev_tp_20261115, yun_dev_v3_20261115, yun_dev_v4_20261115, yun_dev_v5_20261115.
 
 ## Laeufe
 
@@ -17,6 +17,7 @@ Datengrundlage: 43 Records, 170 Gold-Zellen, Laeufe: stage_20261115, yun_dev_202
 | yun_dev_tp_20261115 | qwen30 | `v2_timepoint` | 0.163 | 1/43 | 0.4661 | 0.9774 | 0.7353 | ja |
 | yun_dev_v3_20261115 | glm | `v3_abs_count` | 0.0 | 3/43 | 0.9189 | 0.431 | 0.9294 | ja |
 | yun_dev_v4_20261115 | glm | `v4_last_timepoint` | 0.0 | 0/43 | 0.7378 | 3.6214 | 0.9882 | ja |
+| yun_dev_v5_20261115 | glm | `v5_target_timepoint` | 0.0 | 9/43 | 0.7973 | 0.0008 | 0.7 | ja |
 
 ## Fehler je Prompt-Version
 
@@ -30,6 +31,7 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 | `v2_timepoint_stage2` | unbekannt | 11 | 0 | 11 | 15 | 1 |
 | `v3_abs_count` | verworfen | 17 | 6 | 11 | 5 | 1 |
 | `v4_last_timepoint` | verworfen | 42 | 0 | 42 | 9 | 1 |
+| `v5_target_timepoint` | unbekannt | 52 | 32 | 20 | 7 | 1 |
 
 ### v1 (historisch)
 
@@ -129,6 +131,23 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 | intervention_mean | Nicht eindeutig klassifizierbar (9), Falscher Messzeitpunkt (1) |
 | intervention_standard_deviation | Nicht eindeutig klassifizierbar (8), Falsche Tabellenzeile (1), Falscher Messzeitpunkt (1) |
 
+### v5_target_timepoint (unbekannt)
+
+| Klasse | Anzahl |
+|---|---|
+| Unvollstaendige Modellantwort | 32 |
+| Zahl nicht extrahiert | 19 |
+| Nicht eindeutig klassifizierbar | 1 |
+
+| Feld | Klassen |
+|---|---|
+| comparator_group_size | Unvollstaendige Modellantwort (8), Zahl nicht extrahiert (2) |
+| comparator_mean | Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (4) |
+| comparator_standard_deviation | Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (4) |
+| intervention_group_size | Unvollstaendige Modellantwort (8), Zahl nicht extrahiert (1) |
+| intervention_mean | Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (4), Nicht eindeutig klassifizierbar (1) |
+| intervention_standard_deviation | Unvollstaendige Modellantwort (4), Zahl nicht extrahiert (4) |
+
 ## Ereigniszahlen
 
 | Version | Lauf | Modell | Record | Feld | Arm | Gold | Vorhersage | Fehler | Klasse |
@@ -189,13 +208,13 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 
 ## Pruefqueue
 
-Gesamt 623 Eintraege, getrennt nach Version:
+Gesamt 689 Eintraege, getrennt nach Version:
 
 | Datei | Status | Versionen | Eintraege | Prioritaeten |
 |---|---|---|---|---|
 | `human_review_queue.csv` | referenz | v2_timepoint | 339 | {1: 24, 2: 134, 3: 8, 4: 80, 5: 93} |
 | `human_review_discarded.csv` | verworfen | v3_abs_count, v4_last_timepoint | 94 | - |
-| `human_review_historical.csv` | historisch | v1, v2_timepoint_stage2 | 190 | - |
+| `human_review_historical.csv` | historisch | v1, v2_timepoint_stage2, v5_target_timepoint | 256 | - |
 
 Nur die Referenzdatei ist zur Pruefung vorgesehen; die uebrigen
 liegen vollstaendig vor, damit nichts verloren geht.
