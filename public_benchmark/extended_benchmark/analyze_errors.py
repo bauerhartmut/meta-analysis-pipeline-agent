@@ -420,6 +420,7 @@ def baue_queue(faelle: list[dict[str, Any]], korrekte: list[dict[str, Any]]) -> 
                 "prioritaet": prio,
                 "grund": grund,
                 "prompt_version": fall["prompt_version"],
+                "status": status_von(fall["prompt_version"]),
                 "run_id": fall["run_id"],
                 "model": fall["model"],
                 "record_id": fall["record_id"],
@@ -439,7 +440,8 @@ def baue_queue(faelle: list[dict[str, Any]], korrekte: list[dict[str, Any]]) -> 
             {
                 "prioritaet": 5,
                 "grund": "Kontrollfall korrekt",
-                "prompt_version": "",
+                "prompt_version": fall["prompt_version"],
+                "status": status_von(fall["prompt_version"]),
                 "run_id": fall["run_id"],
                 "model": fall["model"],
                 "record_id": fall["record_id"],
@@ -566,6 +568,7 @@ def main() -> int:
                         korrekt.append(
                             {
                                 "run_id": lauf["run_id"],
+                                "prompt_version": version,
                                 "model": model,
                                 "record_id": record["record_id"],
                                 "field": cell["field"],
@@ -651,6 +654,11 @@ def main() -> int:
 
     queue = baue_queue(alle_faelle, alle_korrekt)
     queue.sort(key=lambda row: (row["prioritaet"], row["run_id"], row["model"], row["record_id"]))
+    # Nur die Referenzversion bekommt Pruefzeit. Verworfene und historische
+    # Faelle werden getrennt abgelegt, damit nichts verloren geht.
+    queue_referenz = [row for row in queue if row["status"] == "referenz"]
+    queue_verworfen = [row for row in queue if row["status"] == "verworfen"]
+    queue_historisch = [row for row in queue if row["status"] not in ("referenz", "verworfen")]
 
     ergebnis = {
         "datengrundlage": {
@@ -675,7 +683,26 @@ def main() -> int:
             "mit_problem": sum(1 for b in gold_befunde if b["braucht_pruefung"]),
             "befunde": gold_befunde,
         },
-        "pruefqueue": {"eintraege": len(queue), "nach_prioritaet": dict(Counter(q["prioritaet"] for q in queue))},
+        "pruefqueue": {
+            "eintraege": len(queue),
+            "nach_prioritaet": dict(Counter(q["prioritaet"] for q in queue)),
+            "referenz": {
+                "datei": "human_review_queue.csv",
+                "eintraege": len(queue_referenz),
+                "nach_prioritaet": dict(Counter(q["prioritaet"] for q in queue_referenz)),
+            },
+            "verworfen": {
+                "datei": "human_review_discarded.csv",
+                "status": "verworfen",
+                "eintraege": len(queue_verworfen),
+                "versionen": sorted({q["prompt_version"] for q in queue_verworfen}),
+            },
+            "historisch": {
+                "datei": "human_review_historical.csv",
+                "eintraege": len(queue_historisch),
+                "versionen": sorted({q["prompt_version"] for q in queue_historisch}),
+            },
+        },
     }
     (out_dir / "error_analysis.json").write_text(json.dumps(ergebnis, ensure_ascii=False, indent=2), encoding="utf-8")
 
@@ -687,10 +714,12 @@ def main() -> int:
     schreibe_csv(out_dir / "error_cases.csv", alle_faelle + alle_zusatz, fall_felder)
 
     queue_felder = [
-        "prioritaet", "grund", "prompt_version", "run_id", "model", "record_id", "field", "arm", "gold", "prediction",
-        "abs_error", "klasse", "beleg", "quelle", "pruefstatus",
+        "prioritaet", "grund", "prompt_version", "status", "run_id", "model", "record_id", "field", "arm", "gold",
+        "prediction", "abs_error", "klasse", "beleg", "quelle", "pruefstatus",
     ]
-    schreibe_csv(out_dir / "human_review_queue.csv", queue, queue_felder)
+    schreibe_csv(out_dir / "human_review_queue.csv", queue_referenz, queue_felder)
+    schreibe_csv(out_dir / "human_review_discarded.csv", queue_verworfen, queue_felder)
+    schreibe_csv(out_dir / "human_review_historical.csv", queue_historisch, queue_felder)
 
     zeilen = ["# Fehleranalyse Yun-Dev", ""]
     zeilen.append(f"Datengrundlage: {ergebnis['datengrundlage']['records']} Records, "
@@ -763,8 +792,26 @@ def main() -> int:
     zeilen.append("")
     zeilen.append("## Pruefqueue")
     zeilen.append("")
-    zeilen.append(f"{ergebnis['pruefqueue']['eintraege']} Eintraege, "
-                  f"Prioritaeten: {ergebnis['pruefqueue']['nach_prioritaet']}.")
+    pruef = ergebnis["pruefqueue"]
+    zeilen.append(f"Gesamt {pruef['eintraege']} Eintraege, getrennt nach Version:")
+    zeilen.append("")
+    zeilen.append("| Datei | Status | Versionen | Eintraege | Prioritaeten |")
+    zeilen.append("|---|---|---|---|---|")
+    zeilen.append(
+        f"| `{pruef['referenz']['datei']}` | referenz | v2_timepoint | {pruef['referenz']['eintraege']} "
+        f"| {pruef['referenz']['nach_prioritaet']} |"
+    )
+    zeilen.append(
+        f"| `{pruef['verworfen']['datei']}` | verworfen | {', '.join(pruef['verworfen']['versionen']) or '-'} "
+        f"| {pruef['verworfen']['eintraege']} | - |"
+    )
+    zeilen.append(
+        f"| `{pruef['historisch']['datei']}` | historisch | {', '.join(pruef['historisch']['versionen']) or '-'} "
+        f"| {pruef['historisch']['eintraege']} | - |"
+    )
+    zeilen.append("")
+    zeilen.append("Nur die Referenzdatei ist zur Pruefung vorgesehen; die uebrigen")
+    zeilen.append("liegen vollstaendig vor, damit nichts verloren geht.")
     zeilen.append("")
     (out_dir / "error_analysis.md").write_text("\n".join(zeilen), encoding="utf-8", newline="\n")
 

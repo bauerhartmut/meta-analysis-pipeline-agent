@@ -3529,6 +3529,32 @@
       "3": 24,
       "4": 155,
       "5": 118
+    },
+    "referenz": {
+      "datei": "human_review_queue.csv",
+      "eintraege": 309,
+      "nach_prioritaet": {
+        "1": 20,
+        "2": 128,
+        "3": 8,
+        "4": 79,
+        "5": 74
+      }
+    },
+    "verworfen": {
+      "datei": "human_review_discarded.csv",
+      "status": "verworfen",
+      "eintraege": 36,
+      "versionen": [
+        "v3_abs_count"
+      ]
+    },
+    "historisch": {
+      "datei": "human_review_historical.csv",
+      "eintraege": 160,
+      "versionen": [
+        "v1"
+      ]
     }
   }
 }

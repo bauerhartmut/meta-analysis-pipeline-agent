@@ -183,7 +183,13 @@ python public_benchmark/extended_benchmark/analyze_errors.py \
   Prompt-Version, Ereignisdetails, Gold-Prüfung
 - `error_analysis.md`: lesbare Fassung
 - `error_cases.csv`: jede fehlerhafte, fehlende und zusätzliche Zelle
-- `human_review_queue.csv`: Prüfwarteschlange mit fünf Prioritäten
+- `human_review_queue.csv`: Prüfwarteschlange mit fünf Prioritäten, **nur
+  Referenzversion `v2_timepoint`**
+- `human_review_discarded.csv`: Fälle der verworfenen `v3_abs_count`
+- `human_review_historical.csv`: Fälle der historischen `v1`
+
+Geprüft wird ausschließlich die Referenzdatei; die beiden anderen enthalten
+dieselben Spalten mit Status `verworfen` bzw. `historisch`.
 
 Das Modul liest nur; bestehende Läufe bleiben unverändert. Die Metriken werden
 neu berechnet und gegen `eval/*.metrics.json` geprüft. Wo sich eine Ursache

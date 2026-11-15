@@ -140,4 +140,13 @@ bedeutet, dass die Fassung im Dev-Lauf schlechter war als die Referenz.
 
 ## Pruefqueue
 
-505 Eintraege, Prioritaeten: {1: 26, 2: 182, 3: 24, 4: 155, 5: 118}.
+Gesamt 505 Eintraege, getrennt nach Version:
+
+| Datei | Status | Versionen | Eintraege | Prioritaeten |
+|---|---|---|---|---|
+| `human_review_queue.csv` | referenz | v2_timepoint | 309 | {1: 20, 2: 128, 3: 8, 4: 79, 5: 74} |
+| `human_review_discarded.csv` | verworfen | v3_abs_count | 36 | - |
+| `human_review_historical.csv` | historisch | v1 | 160 | - |
+
+Nur die Referenzdatei ist zur Pruefung vorgesehen; die uebrigen
+liegen vollstaendig vor, damit nichts verloren geht.

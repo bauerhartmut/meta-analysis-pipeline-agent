@@ -209,3 +209,16 @@ def test_baue_queue_priorisiert_ereignisse_vor_fehlenden_zellen() -> None:
     assert queue[0]["record_id"] == "r2"
     assert queue[1]["prioritaet"] == 2
     assert all(eintrag["pruefstatus"] == "offen" for eintrag in queue)
+
+
+def test_queue_traegt_status_je_version() -> None:
+    fall = {
+        "run_id": "l", "prompt_version": "v3_abs_count", "model": "m", "record_id": "r1",
+        "field": "intervention_events", "arm": "intervention", "gold": 12.0, "prediction": 120.0,
+        "abs_error": 108.0, "fall_typ": "falsch", "klasse": 6,
+        "klasse_name": "Ereignisse und Teilnehmer verwechselt", "beleg": "", "pmcid": "PMC1", "quelle": "a.md",
+    }
+    queue = baue_queue([fall], [])
+    assert queue[0]["status"] == "verworfen"
+    referenz = {**fall, "prompt_version": "v2_timepoint"}
+    assert baue_queue([referenz], [])[0]["status"] == "referenz"

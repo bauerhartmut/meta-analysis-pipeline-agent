@@ -193,17 +193,24 @@ nachvollziehbar.
 
 ## 7. Menschlich zu prüfende Fälle
 
-`human_review_queue.csv` enthält 505 Einträge mit Prüfstatus `offen` und einer
-Spalte `prompt_version`, damit Referenz- und verworfene Fälle getrennt geprüft
-werden können:
+Die Prüfqueue ist **nach Version getrennt**. Geprüft wird ausschließlich die
+Referenz; die übrigen Fälle liegen vollständig vor, damit nichts verloren geht:
+
+| Datei | Status | Version | Einträge |
+|---|---|---|---|
+| `human_review_queue.csv` | zum Prüfen | `v2_timepoint` | 309 |
+| `human_review_discarded.csv` | verworfen | `v3_abs_count` | 36 |
+| `human_review_historical.csv` | historisch | `v1` | 160 |
+
+Prioritäten in der Referenzdatei:
 
 | Priorität | Anzahl | Inhalt |
 |---|---|---|
-| 1 | 26 | falsche Ereigniszahlen |
-| 2 | 182 | fehlende Zellen |
-| 3 | 24 | große Abweichungen (≥ 5 absolut) |
-| 4 | 155 | mehrdeutige Zuordnung / sonstige Fehler |
-| 5 | 118 | zufällige korrekte Kontrollfälle |
+| 1 | 20 | falsche Ereigniszahlen |
+| 2 | 128 | fehlende Zellen |
+| 3 | 8 | große Abweichungen (≥ 5 absolut) |
+| 4 | 79 | mehrdeutige Zuordnung / sonstige Fehler |
+| 5 | 74 | zufällige korrekte Kontrollfälle |
 
 Jeder Eintrag enthält Record, Feld, Arm, Gold, Vorhersage, Quelle (PMCID und
 Dateipfad), Fehlerhypothese und Prüfstatus. Wichtig: Die Prüfung dient der
