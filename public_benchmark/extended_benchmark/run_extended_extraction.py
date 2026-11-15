@@ -64,6 +64,7 @@ VERSION_ABSOLUTE_COUNTS = "v3_abs_count"
 VERSION_LAST_TIMEPOINT = "v4_last_timepoint"
 VERSION_TARGET_TIMEPOINT = "v5_target_timepoint"
 VERSION_TARGET_FALLBACK = "v6_target_fallback"
+VERSION_CELL_TIMEPOINT = "v7_zellzeitpunkt"
 RETRY_MAX_TOKENS = 32000
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
@@ -85,6 +86,7 @@ def bestimme_version(
     target_timepoint: bool = False,
     target: str = "",
     fallback: bool = False,
+    cell_timepoint: bool = False,
     cache_buster: bool = False,
 ) -> str:
     """Versionslabel fuer eine Antwort.
@@ -94,7 +96,9 @@ def bestimme_version(
     Annotation laeuft der Prompt-Text der vorherigen Referenz und heisst auch
     so, damit Laeufe nicht unter falscher Version in die Auswertung gehen.
     """
-    if absolute_counts:
+    if cell_timepoint and target:
+        version = VERSION_CELL_TIMEPOINT
+    elif absolute_counts:
         version = VERSION_ABSOLUTE_COUNTS
     elif last_timepoint:
         version = VERSION_LAST_TIMEPOINT
@@ -107,6 +111,57 @@ def bestimme_version(
     return f"{version}_cb" if cache_buster else version
 
 
+def _prompt_v7(record: dict[str, Any], text: str, limit: int, target: str) -> str:
+    """v7: ein Zeitpunkt je Antwort, Header mit Einheit, JSON zuerst.
+
+    Der Zeitpunkt ist Eigenschaft der Antwort, nicht des Feldes. Damit ist eine
+    Mischung der Arme strukturell ausgeschlossen, nicht nur per Prompt verboten.
+    """
+    context = record["context"]
+    fields = ", ".join(f'"{name}"' for name in FIELDS)
+    return (
+        f"Publication excerpt:\n{text[:limit]}\n\n"
+        f"Intervention: {context.get('intervention') or 'not stated'}\n"
+        f"Comparator: {context.get('comparator') or 'not stated'}\n"
+        f"Outcome: {context.get('outcome') or 'not stated'}\n"
+        f"Outcome type: {context.get('outcome_type') or 'unknown'}\n\n"
+        "Return the JSON object first. Write no analysis before it.\n"
+        "One time point for BOTH arms.\n"
+        f'Target time point (binding): "{target}".\n'
+        "1. If both arms are reported at the target time point, use it and set \"fallback\": false.\n"
+        "2. Otherwise use the closest time point (same unit, smallest absolute difference, ties: the "
+        "later one) at which BOTH arms are reported, and set \"fallback\": true.\n"
+        "3. If there is no such time point, return an empty cell list and the target time point.\n"
+        'Return exactly one JSON object: {"timepoint": "<label exactly as printed, e.g. 24>", '
+        '"timepoint_header": "<shortest string copied character for character from the article that '
+        'shows this time point together with its unit, e.g. Week 24; empty if there is none>", '
+        '"fallback": true | false, "cells": [{"field": "<field>", "arm": "intervention" | '
+        '"comparator", "value": <number>}, ...]}\n'
+        f"Allowed fields: {fields}. "
+        "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
+        "Never report a cell without naming the time point of the answer, never mix two time points. "
+        "Never invent a time point_header: copy it from the article or leave it empty. "
+        "Copy numbers exactly as reported; do not convert, do not compute, do not guess. "
+        "Omit a cell the paper does not report. "
+        "Do not add commentary, markdown or code fences."
+    )
+
+
+def parse_v7_meta(content: str) -> dict[str, Any]:
+    """Liest timepoint, timepoint_header und fallback der v7-Antwort."""
+    payload, error = _load_payload(content)
+    if payload is None:
+        return {"timepoint": "", "header": "", "fallback": None, "error": error}
+    timepoint = str(payload.get("timepoint") or "").strip()
+    fallback = payload.get("fallback")
+    return {
+        "timepoint": timepoint,
+        "header": str(payload.get("timepoint_header") or "").strip(),
+        "fallback": fallback if isinstance(fallback, bool) else None,
+        "error": "" if timepoint else "kein_zeitpunkt",
+    }
+
+
 def build_prompt(
     record: dict[str, Any],
     text: str,
@@ -115,7 +170,10 @@ def build_prompt(
     last_timepoint: bool = False,
     target_timepoint: str | None = None,
     fallback: bool = False,
+    cell_timepoint: bool = False,
 ) -> str:
+    if cell_timepoint and target_timepoint:
+        return _prompt_v7(record, text, limit, target_timepoint)
     context = record["context"]
     fields = ", ".join(f'"{name}"' for name in FIELDS)
     berichtet = bool(last_timepoint or target_timepoint)
@@ -443,6 +501,11 @@ def main() -> int:
         help="Zielzeitpunkt mit Rueckfall auf den naechsten berichteten Zeitpunkt (v6_target_fallback, Standard)",
     )
     parser.add_argument(
+        "--cell-timepoint",
+        action="store_true",
+        help="v7: ein Zeitpunkt je Antwort plus timepoint_header und fallback (v7_zellzeitpunkt)",
+    )
+    parser.add_argument(
         "--last-timepoint",
         action="store_true",
         help="letzten berichteten Messzeitpunkt verlangen und Zeitpunkte mitliefern (v4_last_timepoint)",
@@ -456,7 +519,13 @@ def main() -> int:
             spec["max_tokens"] = args.max_tokens
 
     global SESSION_TAG
-    prompt_version = VERSION_ABSOLUTE_COUNTS if args.absolute_counts else PROMPT_VERSION
+    prompt_version = (
+        VERSION_CELL_TIMEPOINT
+        if args.cell_timepoint
+        else VERSION_ABSOLUTE_COUNTS
+        if args.absolute_counts
+        else PROMPT_VERSION
+    )
     if args.cache_buster:
         SESSION_TAG = uuid.uuid4().hex[:12]
 
@@ -495,6 +564,7 @@ def main() -> int:
             last_timepoint=args.last_timepoint,
             target_timepoint=target or None,
             fallback=args.target_fallback,
+            cell_timepoint=args.cell_timepoint,
         )
         prompt_version = bestimme_version(
             absolute_counts=args.absolute_counts,
@@ -502,6 +572,7 @@ def main() -> int:
             target_timepoint=args.target_timepoint,
             target=target,
             fallback=args.target_fallback,
+            cell_timepoint=args.cell_timepoint,
             cache_buster=args.cache_buster,
         )
         response = call(models[model], prompt, key, base)
@@ -521,6 +592,16 @@ def main() -> int:
                 cells, parse_error = parse_cells(response.get("content") or "")
                 timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
                 fehlerklasse = fehlerklasse_aus(response, parse_error)
+        # v7 stellt den Zeitpunkt je Antwort; er wird hier auf die Zellen
+        # verteilt, damit die Auswertung beide Schemata gleich liest.
+        v7 = {"timepoint": "", "header": "", "fallback": None, "error": ""}
+        if args.cell_timepoint:
+            v7 = parse_v7_meta(response.get("content") or "")
+            if v7["timepoint"]:
+                for cell in cells:
+                    cell["timepoint"] = v7["timepoint"]
+                timepoints = {"chosen": v7["timepoint"], "discarded": []}
+                timepoint_error = v7["error"]
         row = {
             "record_id": record["record_id"],
             "model": model,
@@ -547,6 +628,11 @@ def main() -> int:
             if (args.last_timepoint or args.target_timepoint or args.target_fallback)
             else "",
             "target_timepoint": target,
+            "schema_version": VERSION_CELL_TIMEPOINT if args.cell_timepoint else "v6_percell_timepoint",
+            "timepoint_header": v7["header"],
+            "fallback": v7["fallback"],
+            "content_chars": len(response.get("content") or ""),
+            "gateway_params": {"max_tokens": models[model]["max_tokens"], "temperature": 0.0},
             "prompt_version": prompt_version,
             "predicted": {"cells": cells},
             "rows": cells,

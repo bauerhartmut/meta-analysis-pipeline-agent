@@ -251,6 +251,40 @@ def arm_klasse(
     return "arm_gemischt_modell"
 
 
+def header_belegt(header: str, artikel: str) -> bool:
+    """Steht der Zeitpunkt-Header woertlich im Artikel? (v7-Pruefung)"""
+    if not header or not artikel:
+        return False
+    ruhig = " ".join(header.split()).lower()
+    return ruhig in " ".join(artikel.split()).lower()
+
+
+def pruefe_v7_zeile(row: dict[str, Any], artikel: str) -> dict[str, Any]:
+    """Formale Pruefung einer v7-Zeile: fallback gesetzt, stimmig, Header belegt.
+
+    Inhaltlich geprueft wird nur, was mechanisch pruefbar ist. `fallback_konisstent`
+    ist None, wenn kein Zeitpunkt vorliegt.
+    """
+    fallback = row.get("fallback")
+    header = str(row.get("timepoint_header") or "")
+    ziel = normalisiere(row.get("target_timepoint") or "")
+    labels = {normalisiere(cell.get("timepoint") or "") for cell in (row.get("rows") or [])}
+    labels.discard("")
+    befund: dict[str, Any] = {
+        "fallback_gesetzt": isinstance(fallback, bool),
+        "header_belegt": header_belegt(header, artikel),
+        "ein_zeitpunkt": len(labels) <= 1,
+        "fallback_konsistent": None,
+    }
+    if isinstance(fallback, bool) and len(labels) == 1 and ziel:
+        # Belegstufe statt Rohvergleich: "24" gegen "week 24" ist derselbe
+        # Zeitpunkt, "12" ohne Artikelbeleg bleibt unbestimmt (None).
+        label, stufe = belegstufe(next(iter(labels)), ziel, artikel)
+        if label and stufe in ("gedruckt", "artikel", "ziel"):
+            befund["fallback_konsistent"] = (label != ziel) if fallback else (label == ziel)
+    return befund
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", required=True)

@@ -58,7 +58,7 @@ def test_ids_waehlen_aus_der_alternativen_datei(tmp_path: Path) -> None:
     assert len(runner.waehle_records(runner.load_records("test", None, path=datei), None)) == 3
 
 
-def _auftrag(tmp_path: Path, monkeypatch, antworten: list[dict]) -> tuple[list[str], dict]:
+def _auftrag(tmp_path: Path, monkeypatch, antworten: list[dict], extra: list[str] | None = None) -> tuple[list[str], dict]:
     """Fuehrt main() mit gefaelschtem API-Aufruf aus; gibt (aufrufe, zeile)."""
     datei = tmp_path / "rec.jsonl"
     record = {
@@ -84,7 +84,7 @@ def _auftrag(tmp_path: Path, monkeypatch, antworten: list[dict]) -> tuple[list[s
         sys,
         "argv",
         ["runner", "--records", str(datei), "--split", "test", "--ids", "yun2024:1",
-         "--models", "glm", "--run-id", "t1", "--target-fallback"],
+         "--models", "glm", "--run-id", "t1", "--target-fallback", *(extra or [])],
     )
     assert runner.main() == 0
     zeile = json.loads((tmp_path / "runs" / "t1" / "predictions.jsonl").read_text(encoding="utf-8").splitlines()[0])
@@ -120,6 +120,56 @@ def test_kaputtes_json_bekommt_genau_einen_zweiten_aufruf(tmp_path: Path, monkey
     assert zeile["fehlerklasse"] == ""
     assert zeile["retry_grund"] == "json"
     assert len(zeile["rows"]) == 1
+
+
+def test_v7_hat_eigene_version_und_zeitpunkt_je_antwort() -> None:
+    assert runner.bestimme_version(cell_timepoint=True, target="week 24") == "v7_zellzeitpunkt"
+    # Ohne Ziel bleibt es beim alten Etikett: der Prompt braucht den Zeitpunkt.
+    assert runner.bestimme_version(cell_timepoint=True, target="") == runner.PROMPT_VERSION
+    # v6-Zeilen behalten ihr Etikett.
+    assert runner.bestimme_version(fallback=True, target="week 24") == "v6_target_fallback"
+
+
+def test_v7_prompt_verlangt_json_zuerst_und_einen_zeitpunkt() -> None:
+    record = {
+        "record_id": "yun2024:1",
+        "context": {"intervention": "A", "comparator": "B", "outcome": "C", "outcome_type": "binary"},
+    }
+    prompt = runner.build_prompt(record, "Text", target_timepoint="week 24", fallback=True, cell_timepoint=True)
+    assert "Return the JSON object first" in prompt
+    assert "One time point for BOTH arms" in prompt
+    assert "timepoint_header" in prompt
+    # Kein Zeitpunktfeld je Zelle mehr.
+    assert '"timepoint": "<label exactly as printed>"}' not in prompt
+    v6 = runner.build_prompt(record, "Text", target_timepoint="week 24", fallback=True)
+    assert "closest reported time point" in v6
+
+
+def test_v7_zeile_parst_zeitpunkt_und_header(tmp_path: Path, monkeypatch) -> None:
+    antwort = {
+        "http_status": 200,
+        "content": json.dumps(
+            {
+                "timepoint": "24",
+                "timepoint_header": "Week 24",
+                "fallback": False,
+                "cells": [{"field": "intervention_mean", "arm": "intervention", "value": 13.72}],
+            }
+        ),
+        "finish_reason": "stop",
+        "completion_tokens": 900,
+        "elapsed_s": 1.0,
+        "error": "",
+    }
+    aufrufe, zeile = _auftrag(tmp_path, monkeypatch, [antwort], extra=["--cell-timepoint"])
+    assert len(aufrufe) == 1
+    assert zeile["prompt_version"] == "v7_zellzeitpunkt"
+    assert zeile["schema_version"] == "v7_zellzeitpunkt"
+    assert zeile["timepoint_header"] == "Week 24"
+    assert zeile["fallback"] is False
+    # Der Zeitpunkt wird auf die Zellen verteilt, damit die Auswertung gleich liest.
+    assert zeile["rows"][0]["timepoint"] == "24"
+    assert zeile["timepoints"]["chosen"] == "24"
 
 
 def test_length_bekommt_keinen_zweiten_versuch(tmp_path: Path) -> None:

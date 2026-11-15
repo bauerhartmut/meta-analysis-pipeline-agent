@@ -136,6 +136,32 @@ def test_armklassen_trennen_modell_und_gold() -> None:
     assert arm_klasse(gleich, [1.0, 2.0], "", "week 24") == "arm_konsistent"
 
 
+def test_v7_zeile_wird_formal_geprueft() -> None:
+    from extended_benchmark.evaluate_fallback import pruefe_v7_zeile
+
+    artikel = "B cells were measured at Week 24 and Week 12."
+    gut = {
+        "target_timepoint": "week 24",
+        "timepoint_header": "Week 24",
+        "fallback": False,
+        "rows": [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": "24"}],
+    }
+    befund = pruefe_v7_zeile(gut, artikel)
+    assert befund == {
+        "fallback_gesetzt": True,
+        "header_belegt": True,
+        "ein_zeitpunkt": True,
+        "fallback_konsistent": True,
+    }
+    # Header nicht im Artikel: erfunden.
+    assert pruefe_v7_zeile({**gut, "timepoint_header": "Month 24"}, artikel)["header_belegt"] is False
+    # fallback true, aber der Zeitpunkt ist der Zielzeitpunkt: widerspruechlich.
+    assert pruefe_v7_zeile({**gut, "fallback": True}, artikel)["fallback_konsistent"] is False
+    # Zwei Zeitpunkte in einer Antwort: strukturell unzulaessig.
+    gemischt = {**gut, "rows": [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": "0"}]}
+    assert pruefe_v7_zeile(gemischt, artikel)["ein_zeitpunkt"] is False
+
+
 def test_zellen_ohne_zeitpunkt_sind_eigene_klasse() -> None:
     assert klassifiziere("post-test", "post-test") == "zieltreu"
     assert klassifiziere("post-test", "") == "ohne_zeitpunkt"
