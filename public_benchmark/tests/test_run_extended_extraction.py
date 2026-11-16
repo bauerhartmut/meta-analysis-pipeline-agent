@@ -208,65 +208,55 @@ def test_gruppenzeile_ist_opt_in_und_hat_drei_fassungen() -> None:
     assert "Never report an outcome value without naming the time point" in aus
 
 
-def test_armzeile_ist_opt_in_und_nennt_die_zeile() -> None:
-    """--arm-row-mode an verlangt die Tabellenzeile; aus bleibt unveraendert."""
-    record = {
-        "record_id": "yun2024:289",
-        "context": {"intervention": "A", "comparator": "B", "outcome": "C", "outcome_type": "continuous"},
-    }
-
-    def prompt(modus: str) -> str:
-        return runner.build_prompt(
-            record, "Text", target_timepoint="baseline", cell_timepoint=True, arm_row_mode=modus
-        )
-
-    aus, an = prompt("aus"), prompt("an")
-    assert aus == runner.build_prompt(record, "Text", target_timepoint="baseline", cell_timepoint=True)
-    assert runner.ARM_ROW_TEXTE["an"] not in aus
-    assert "TAU Post" in an and '"arm_row"' in an
-    assert '"arm_row"' not in aus
-    # Der Zusatz steht vor der Schlussregel und nach dem Zeitpunkt-Absatz.
-    assert an.index("One time point for BOTH arms") < an.index("experimental arm's row")
-    assert an.index("experimental arm's row") < an.index("Never report an outcome value")
-    assert len(an) > len(aus)
-    # Der Reparaturaufruf traegt die Regel ebenfalls, sonst greift sie bei
-    # genau den Records nicht, die nur ueber die Reparatur antworten (289/290).
-    kurz_aus = runner._prompt_repair(record, "Text", "baseline")
-    kurz_an = runner._prompt_repair(record, "Text", "baseline", arm_row_mode="an")
-    assert "never a comparator value from the experimental arm's row" not in kurz_aus
-    assert "never a comparator value from the experimental arm's row" in kurz_an
-    assert '"arm_row"' in kurz_an and '"arm_row"' not in kurz_aus
-
-
-def test_armzeile_ohne_zellzeitpunkt_bricht_laut_ab(tmp_path: Path, monkeypatch, capsys) -> None:
-    """--arm-row-mode an ohne --cell-timepoint darf nicht still wirkungslos sein."""
+def test_ohne_records_und_ids_startet_kein_lauf(tmp_path: Path, monkeypatch, capsys) -> None:
+    """Ein Lauf braucht --records oder --ids; sonst bricht er vor jedem API-Zugriff ab."""
     monkeypatch.setattr(
         sys,
         "argv",
-        ["runner", "--records", str(tmp_path / "leer.jsonl"), "--split", "test",
-         "--models", "glm", "--run-id", "t1", "--arm-row-mode", "an"],
+        ["runner", "--split", "test", "--models", "glm", "--run-id", "t1"],
     )
-    # Der Abbruch steht vor jedem API-Zugriff: kein Schluessel, kein Aufruf.
+    # Der Abbruch steht vor jedem API-Zugriff: kein Schluessel, kein Aufruf, kein Lauf.
     monkeypatch.setattr(
         runner, "get_config", lambda: (_ for _ in ()).throw(AssertionError("get_config darf nicht laufen"))
     )
     assert runner.main() == 2
-    ausgabe = capsys.readouterr().out
-    assert "nur mit --cell-timepoint" in ausgabe
+    assert "ohne --records oder --ids" in capsys.readouterr().out
+    assert not (tmp_path / "runs").exists()
 
 
-def test_parse_cells_nimmt_die_armzeile_mit() -> None:
-    """arm_row wird nur gesetzt, wenn das Modell sie nennt (altes Format bleibt)."""
-    mit, _ = runner.parse_cells(
-        '{"timepoint": "post", "cells": [{"field": "comparator_mean", "arm": "comparator", '
-        '"value": 48.2, "timepoint": "post", "arm_row": "TAU Post"}]}'
+def test_ids_allein_reicht_als_auswahl(tmp_path: Path, monkeypatch) -> None:
+    """--ids ohne --records ist erlaubt: die Standarddatei wird dann gefiltert."""
+    monkeypatch.setattr(
+        runner,
+        "load_records",
+        lambda split, limit, path=None: [
+            {
+                "record_id": "yun2024:1",
+                "document": {"split": "test", "path": ""},
+                "context": {"intervention": "A", "comparator": "B", "outcome": "C", "outcome_type": "continuous"},
+                "gold": {"cells": []},
+                "timepoint": {"target": "week 24"},
+            }
+        ],
     )
-    assert mit[0]["arm_row"] == "TAU Post"
-    ohne, _ = runner.parse_cells(
-        '{"timepoint": "post", "cells": [{"field": "comparator_mean", "arm": "comparator", '
-        '"value": 48.2, "timepoint": "post"}]}'
+    monkeypatch.setattr(runner, "HERE", tmp_path)
+    monkeypatch.setattr(
+        runner, "call", lambda model, prompt, key, base, attempts=4: {
+            "http_status": 200, "content": '{"timepoint": "week 24", "cells": []}', "completion_tokens": 1,
+            "finish_reason": "stop", "error": "",
+        }
     )
-    assert "arm_row" not in ohne[0]
+    monkeypatch.setattr(
+        runner, "get_config", lambda: type("Cfg", (), {"tudagpt_api_key": "test", "tudagpt_api_base": "http://x"})()
+    )
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["runner", "--split", "test", "--models", "glm", "--run-id", "t2",
+         "--ids", "yun2024:1", "--target-fallback"],
+    )
+    assert runner.main() == 0
+    assert (tmp_path / "runs" / "t2" / "predictions.jsonl").exists()
 
 
 def test_v7_hat_eigene_version_und_zeitpunkt_je_antwort() -> None:

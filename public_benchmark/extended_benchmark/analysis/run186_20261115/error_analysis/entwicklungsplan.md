@@ -155,6 +155,8 @@ Abbruchkriterien in `armzeile_prompt.md`; der Lauf startet erst nach Freigabe.
 
 **Nachtrag 16.11.2026:** Der Prüflauf über 291–295 ergab **0 von 10** richtigen
 Komparatorzellen (`armzeile_pruefung_291_295.md`). Der Zusatz ist damit nach dem
-vorab festgelegten Kriterium gescheitert; er bleibt als opt-in im Code, wird aber
-nicht empfohlen. Ursache ist kein Zeilenlesefehler: die sieben Records tragen
-`comparator: "baseline"`, das Gold meint aber die TAU-Gruppe zum Post-Zeitpunkt.
+vorab festgelegten Kriterium gescheitert und wurde **wieder aus dem Runner
+entfernt** — die Prompts sind byte-identisch zum Stand davor. Ursache ist kein
+Zeilenlesefehler: die sieben Records tragen `comparator: "baseline"`, das Gold
+meint aber die TAU-Gruppe zum Post-Zeitpunkt. Offen ist, ob Feld oder Gold
+falsch ist; das entscheidet der Artikel, nicht ein Lauf.

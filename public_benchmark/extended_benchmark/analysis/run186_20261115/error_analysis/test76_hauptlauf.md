@@ -26,8 +26,8 @@ wiederholt.
 
 Die MAE von 0,5763 entsteht aus einer Abweichungssumme von 74,92 über 130
 zugeordnete Zellen. Die größten Einzelabweichungen sind `yun2024:365`
-(Komparator-Gruppengröße 20 statt 45 → 25) und die sechs Records der
-MCCB-Studie mit 2,0 bis 8,7 zu niedrigen Komparator-Mittelwerten
+(Komparator-Gruppengröße 20 statt 45 → 25) und die sieben MCCB-Records mit 2,0
+bis 8,7 abweichenden Komparator-Mittelwerten; deren Zuordnung ist strittig
 (Abschnitt 6).
 
 ## 2. Zellklassen
@@ -87,7 +87,11 @@ Korrektur gleich. Die Abweichungssumme fiel von 3.912,08 auf 74,92, weil die
 beiden Abweichungen von 1.920,08 und 1.917,08 entfielen. Details und Hashes in
 `korrektur_yun2024_479.md`.
 
-## 6. Der Modellfehler bei 289–295: falsche Armzeile, richtige Spalte
+## 6. Kein belegter Modellfehler: das Comparator-Feld sagt `baseline`, das Gold meint TAU
+
+**Diese Zellen sind ein Datenkonflikt, kein nachgewiesener Modellfehler.** Die
+Kennzahlen dieses Berichts zählen sie weiter als falsch, weil das eingefrorene
+Gold der Maßstab ist — aber die Zuordnung selbst ist offen.
 
 Sieben Records (`289`–`295`) gehören zur selben Studie (PMC4215531, MCCB-Tabelle
 mit den Zeilen `FAT Pre`, `FAT Post`, `TAU Pre`, `TAU Post`, `CE Pre`,
@@ -95,7 +99,7 @@ mit den Zeilen `FAT Pre`, `FAT Post`, `TAU Pre`, `TAU Post`, `CE Pre`,
 `post (after 4-week training)`, Gold ist die Zeile **TAU Post**.
 
 Read-only geprüft: In **allen 14 Komparator-Zellen** (Mittelwert und SD in sieben
-Records) stammt der Wert aus der Zeile **`FAT Pre`** — also aus dem
+Records) stammt der Modellwert aus der Zeile **`FAT Pre`** — also aus dem
 Interventionsarm, *vor* dem Training:
 
 | Record | Feld | Modell | Gold | Zeile im Artikel |
@@ -108,11 +112,25 @@ Interventionsarm, *vor* dem Training:
 | 294 | `comparator_mean` / SD | 44,5 / 10,7 | 46,5 / 9,8 | FAT Pre |
 | 295 | `comparator_mean` / SD | 39,3 / 11,1 | 42,8 / 11,7 | FAT Pre |
 
-Die Spalte (der jeweilige Untertest) ist also richtig getroffen, die **Zeile**
-falsch: Das Modell nimmt den Interventionsarm und den Pre-Zeitpunkt, obwohl es
-den Komparator zum Post-Zeitpunkt berichten soll. Mittelwert und SD stammen aus
-derselben Zelle, sind also in sich stimmig — der Fehler ist nicht als
-Zahlenverwechslung, sondern nur über die Armzuordnung sichtbar.
+Die Spalte (der jeweilige Untertest) ist richtig getroffen, die Zeile nicht.
+Entscheidend ist aber, was der Datensatz selbst als Komparator nennt — alle
+sieben Records tragen:
+
+```
+comparator: "baseline"
+```
+
+`FAT Pre` ist genau diese Ausgangsmessung des Interventionsarms. Das Modell
+folgt also dem Record, nicht der Tabelle. Der Widerspruch liegt zwischen dem
+Comparator-Feld (`baseline`) und dem Gold (TAU zum Post-Zeitpunkt) — welcher von
+beiden falsch ist, entscheidet sich am Artikel, nicht am Lauf.
+
+Ein Prompt-Zusatz, der die Armzeile ausdrücklich verlangt, wurde gebaut und an
+fünf dieser Records geprüft: **0 von 10 Komparatorzellen richtig**, das Modell
+benannte die Zeile sogar selbst als `FAT Pre` (`armzeile_pruefung_291_295.md`).
+Der Zusatz ist deshalb wieder aus dem Runner entfernt. Die frühere Deutung
+„falsche Armzeile, richtiger Untertest“ war damit unvollständig: sie
+unterschlug, dass der Record den Vergleich zur Baseline verlangt.
 
 Zwei weitere Zellen derselben Gruppe liegen daneben: `291`
 `intervention_standard_deviation` 14 statt 12,8 und `295`
@@ -122,9 +140,9 @@ weil die Werte mehrfach im Text vorkommen (die Suche nennt `FAT Pre` bzw.
 abweichenden Zellen liegen laut nächstem Zeilenkopf in `FAT Pre`, eine in
 `TAU Pre`.
 
-Das sind 14 der 25 falschen Zellen des Laufs. Ein Prompt-Zusatz, der die
-Armzeile und den Zeitpunktzeilen-Kopf ausdrücklich verlangt (ähnlich der
-Gruppengrößen-Zeile, aber opt-in), wäre der direkte Gegenhebel.
+Damit stehen 14 der 25 in diesem Bericht als falsch gezählten Zellen unter dem
+Vorbehalt, dass ihr Gold-Wert aus einem anderen Arm stammt als dem, den der
+Record als Komparator angibt.
 
 ## 7. Überzählige Zellen
 

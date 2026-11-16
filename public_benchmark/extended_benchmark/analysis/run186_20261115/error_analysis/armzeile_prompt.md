@@ -1,5 +1,10 @@
 # Armzeilen-Zusatz im Prompt (opt-in, 16.11.2026)
 
+> **Zurückgezogen am 16.11.2026.** Der Prüflauf über 291–295 ergab 0 von 10
+> richtigen Komparatorzellen (`armzeile_pruefung_291_295.md`). Der Zusatz ist
+> wieder aus dem Runner entfernt; die Prompts sind byte-identisch zum Stand
+> davor. Dieses Dokument bleibt als Beleg für Aufbau, Prüfung und Abbruch.
+
 ## Anlass
 
 Im 76er-Hauptlauf stammen in den sieben MCCB-Records (`yun2024:289`–`295`,

@@ -56,11 +56,11 @@ sagt „baseline“, das Gold meint „TAU“. Genau sieben Records der Testbasi
 
 ## Konsequenz
 
-* `--arm-row-mode` bleibt als opt-in im Code (Standard `aus`), wird aber **nicht
-  empfohlen**; das Abbruchkriterium verlangt „verwerfen“. Ich habe es behalten,
-  weil `arm_row` das einzige Werkzeug ist, das die benutzte Zeile sichtbar macht —
-  und genau damit diesen Widerspruch aufgedeckt hat. Entfernen ist eine
-  Ein-Zeilen-Entscheidung, sobald die Comparator-Frage geklärt ist.
+* `--arm-row-mode` ist **aus dem Runner entfernt** (16.11.2026). Der Lauf
+  `armzeile_291_295_20261116` bleibt als Beleg liegen; seine Zeilen tragen noch
+  `arm_row_mode` und `arm_row`, weil sie vor dem Rückbau geschrieben wurden.
+  Der Runner ist wieder byte-identisch zum Stand vor dem Zusatz (0 von 76
+  Prompts abweichend).
 * Die 14 „falschen Komparatorzellen“ sind **kein Modellfehler im engeren Sinn**,
   solange das Comparator-Feld `baseline` sagt. Sie sind ein Datenbefund wie
   `yun2024:479`.

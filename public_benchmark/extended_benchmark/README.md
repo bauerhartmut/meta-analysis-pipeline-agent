@@ -140,6 +140,7 @@ abgebrochener Lauf wird mit demselben Befehl fortgesetzt.
 
 ```bash
 python public_benchmark/extended_benchmark/run_extended_extraction.py \
+  --records public_benchmark/extended_benchmark/records/yun.jsonl \
   --models qwen30 glm --split dev --workers 3 --run-id yun_dev_20261114
 ```
 
@@ -148,6 +149,10 @@ Prompt-Version und Zellen je (Record, Modell).
 
 Für Diagnosen: `--ids <record_ids>` (nur diese Records), `--max-tokens`
 (Budget überschreiben), `--save-content` (Rohantwort mitspeichern).
+
+Ein Lauf startet nur mit ausdrücklicher Auswahl: `--records` oder `--ids` sind
+Pflicht, sonst bricht der Runner vor jedem API-Zugriff mit Exitcode 2 ab. Ohne
+`--records` gilt `records/yun.jsonl` (186 Records).
 
 Antworten mit `finish_reason = "length"` bekommen automatisch einen zweiten
 Versuch mit 32.000 Token (`RETRY_MAX_TOKENS`); `retried`, `retry_finish_reason`
@@ -267,6 +272,7 @@ leere Zellenliste ist kein Ausfall — Felder dürfen ausgelassen werden.
 
 ```bash
 python public_benchmark/extended_benchmark/run_extended_extraction.py \
+  --records public_benchmark/extended_benchmark/records/yun.jsonl \
   --models glm --split dev --cache-buster --target-fallback \
   --run-id yun_dev_v6_20261115
 
@@ -293,6 +299,7 @@ python public_benchmark/extended_benchmark/annotate_timepoints.py --write \
   --md public_benchmark/extended_benchmark/analysis/timepoints_annotation.md
 
 python public_benchmark/extended_benchmark/run_extended_extraction.py \
+  --records public_benchmark/extended_benchmark/records/yun.jsonl \
   --models glm --split dev --cache-buster --target-timepoint \
   --run-id yun_dev_v5_20261115
 ```
@@ -309,6 +316,7 @@ Modell den gewählten Zeitpunkt sowie die verworfenen Zeitpunkte mitliefern:
 
 ```bash
 python public_benchmark/extended_benchmark/run_extended_extraction.py \
+  --records public_benchmark/extended_benchmark/records/yun.jsonl \
   --models glm --split dev --cache-buster --last-timepoint \
   --run-id yun_dev_v4_20261115
 
