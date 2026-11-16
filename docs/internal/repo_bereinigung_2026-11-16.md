@@ -140,11 +140,12 @@ Lizenznachweis im Repository.
 ## Git-History
 
 Das Entfernen aus dem aktuellen Commit löscht die Dateien **nicht** aus der
-Git-History. Insbesondere `goldstandard_A.json`, die externe Korrespondenz und
-die A-Beispielzeile waren bereits öffentlich. Ein echter Purge benötigt
-History-Rewrite und Force-Push und ist nach den Projektregeln nicht erlaubt.
-Für die B-Blindheit bleibt deshalb die wichtigste Konsequenz: Repository privat
-stellen oder B neu bewerten.
+Git-History. Mit ausdrücklicher Freigabe wurde am 16.11.2026 ein History-Purge
+durchgeführt (siehe unten). Die allgemeine Projektregel „kein Force-Push, keine
+History-Rewrites“ bleibt bestehen und gilt weiter für alle künftigen Aktionen.
+Für die B-Blindheit bleibt die wichtigste Konsequenz: Repository privat stellen
+oder B neu bewerten; vorhandene Klone und Forks können die alten Daten weiterhin
+enthalten.
 
 ## Optionen für die veröffentlichte History
 
@@ -158,14 +159,27 @@ stellen oder B neu bewerten.
 3. **GitHub Support um Löschung bitten** — für sensible Daten oder
    urheberrechtlich geschützte Inhalte (ggf. DMCA). Erfolg ist nicht
    garantiert und deckt nicht automatisch die A-Annotation ab.
-4. **History-Rewrite mit `git filter-repo`/BFG und Force-Push** — entfernt die
-   Dateien aus zukünftigen Klonen, nicht aus vorhandenen Forks/Caches. Das
-   verletzt die Projektregel „kein Force-Push, keine History-Rewrites“ und
-   braucht ausdrückliche Freigabe; nicht empfohlen.
+4. **History-Rewrite mit `git filter-repo`/BFG und Force-Push** — wurde am
+   16.11.2026 mit ausdrücklicher Freigabe einmalig durchgeführt. Das entfernt
+   die Dateien aus zukünftigen Klonen, nicht aus vorhandenen Forks/Caches und
+   nicht aus bereits heruntergeladenen Kopien.
 
 **Empfehlung:** Option 1 sofort, Option 2 nur wenn ein öffentlicher sauberer
 Stand gebraucht wird. B muss ohnehin neu bewertet oder mit neuen Dokumenten
 gestartet werden.
+
+## Durchgeführter History-Purge (2026-11-16)
+
+- Sicherung: `local_patches/AIResearch_pre_purge_20261116.bundle` (lokal,
+  gitignored; enthält die alte History).
+- 31 Pfadpräfixe aus allen Commits entfernt; 549 Commits vorher, 544 danach
+  (fünf leere Commits entfallen).
+- Neue Remote-Spitze: `f7d7324`; die alte Spitze `28a5c35` ist lokal nicht mehr
+  im Objektbestand.
+- Prüfung: 0 Treffer in der neuen History und im aktuellen Baum.
+- GitHub kann unreachable Objekte, Caches und Forks noch eine Zeit lang
+  behalten. Ein vollständiger Purge dort ist nur über GitHub Support bzw.
+  Privatstellen oder Löschen des Repositories sicher.
 
 ## Folgen
 
