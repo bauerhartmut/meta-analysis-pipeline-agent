@@ -136,6 +136,20 @@ def test_armklassen_trennen_modell_und_gold() -> None:
     assert arm_klasse(gleich, [1.0, 2.0], "", "week 24") == "arm_konsistent"
 
 
+def test_stundenangabe_im_ziel_loest_einheit_auf() -> None:
+    """Ziel "24 h postoperatively": "24" ist Stunde 24, kein unklares Label."""
+    from extended_benchmark import evaluate_fallback
+
+    assert evaluate_fallback.normalisiere_label("24", "24 h postoperatively") == ("hour 24", "ok")
+    assert evaluate_fallback.klassifiziere("24 h postoperatively", "hour 24") == "zieltreu"
+    assert evaluate_fallback.belegstufe("24", "24 h postoperatively", "pain at 24 h after surgery") == (
+        "hour 24",
+        "artikel",
+    )
+    # Andere Zahl bleibt unklar.
+    assert evaluate_fallback.normalisiere_label("48", "24 h postoperatively") == ("", "unklar")
+
+
 def test_gruppengroesse_ohne_zeitpunkt_ist_eigene_klasse() -> None:
     """Gruppengroessen brauchen keinen Zeitpunkt; sie zaehlen nicht als Fehler."""
     import json

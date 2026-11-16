@@ -39,7 +39,30 @@ def klassifiziere(target: str, label: str) -> str:
         return "ohne_zeitpunkt"
     if label == target:
         return "zieltreu"
+    if not ZEIT_LABEL.match(target) and _zeitpunkt_gleich(target, label):
+        # Beschreibende Ziele wie "24 h postoperatively" tragen Zusatzwoerter;
+        # gleich sind sie trotzdem, wenn Einheit und Zahl uebereinstimmen.
+        # Reine Ziele ("month 6") laufen unveraendert durch den Vergleich oben,
+        # damit die archivierten Laeufe reproduzierbar bleiben.
+        return "zieltreu"
     return "rueckfall"
+
+
+KURZ_H = re.compile(r"^(\d{1,3})\s*h\b", re.IGNORECASE)
+
+
+def _zeitpunkt_gleich(a: str, b: str) -> bool:
+    """Vergleicht zwei Zeitpunktangaben ueber Einheit und Zahl."""
+
+    def teile(text: str) -> tuple[str, int] | None:
+        treffer = label_mit_einheit(text)
+        if treffer:
+            return treffer
+        kurz = KURZ_H.match(text)
+        return ("hour", int(kurz.group(1))) if kurz else None
+
+    links, rechts = teile(a), teile(b)
+    return bool(links and links == rechts)
 
 
 NUMMER = re.compile(r"^(\d{1,3})$")
@@ -66,6 +89,10 @@ def normalisiere_label(label: str, target: str) -> tuple[str, str]:
         treffer = ZEIT_LABEL.match(ziel)
         if treffer and int(treffer.group(2)) == zahl:
             return f"{treffer.group(1)} {zahl}", "ok"
+        kurz = KURZ_H.match(ziel)
+        if kurz and int(kurz.group(1)) == zahl:
+            # Ziel "24 h postoperatively" belegt die Einheit Stunde.
+            return f"hour {zahl}", "ok"
         return "", "unklar"
     return roh, "ok"
 
@@ -126,6 +153,9 @@ def einheiten_im_artikel(zahl: int, text: str) -> set[str]:
         einheiten.add(treffer.group(1).lower())
     for treffer in re.finditer(rf"{zahl_muster}\s*[- ]?\s*{EINHEIT_WORT}s?\b", text, re.I):
         einheiten.add(treffer.group(1).lower())
+    # Abkuerzung: "24 h" ist eine Stunde, nicht ein Buchstabe.
+    if re.search(rf"{zahl_muster}\s*h\b", text, re.I):
+        einheiten.add("hour")
     for treffer in re.finditer(rf"\b{EINHEIT_WORT}s?\s*\(([^)]{{0,80}})\)", text, re.I):
         if re.search(zahl_muster, treffer.group(2)):
             einheiten.add(treffer.group(1).lower())
@@ -355,9 +385,8 @@ def main() -> int:
         # getrennt gezaehlt: ihre Zellen duerfen die Hauptmetriken nicht
         # unbemerkt tragen.
         unsicher = bool((record.get("timepoint") or {}).get("unsicher"))
-        if unsicher:
+        if unsicher and vorhersage:
             zaehler["unsichere_ziele_records"] += 1
-            zaehler["unsichere_ziele_zellen"] += len(cells)
             unsichere_ids.append(str(record_id))
         for cell in cells:
             key = (cell["field"], cell.get("arm"))
@@ -372,13 +401,9 @@ def main() -> int:
                     if _close(cell["value"], gold[key], 1e-6, 0.0):
                         zaehler["gruppengroesse_ohne_zeitpunkt_richtig"] += 1
                         je_quelle[quelle]["richtig"] += 1
-                        if unsicher:
-                            zaehler["unsichere_ziele_richtig"] += 1
                     else:
                         zaehler["gruppengroesse_ohne_zeitpunkt_falsch"] += 1
                         je_quelle[quelle]["falsch"] += 1
-                        if unsicher:
-                            zaehler["unsichere_ziele_falsch"] += 1
                 else:
                     zaehler["gruppengroesse_ohne_zeitpunkt_ohne_gold"] += 1
                 continue
@@ -419,13 +444,9 @@ def main() -> int:
                     zaehler[f"{art}_richtig"] += 1
                     pro_feld[cell["field"]][f"{art}_richtig"] += 1
                     je_quelle[quelle]["richtig"] += 1
-                    if unsicher:
-                        zaehler["unsichere_ziele_richtig"] += 1
                 else:
                     zaehler[f"{art}_falsch"] += 1
                     je_quelle[quelle]["falsch"] += 1
-                    if unsicher:
-                        zaehler["unsichere_ziele_falsch"] += 1
             else:
                 zaehler[f"{art}_ohne_gold"] += 1
                 je_quelle[quelle]["ohne_gold"] += 1
@@ -444,6 +465,18 @@ def main() -> int:
                             "gold": gold.get(key),
                         }
                     )
+        # Unsichere Ziele zusaetzlich zaehlen, unabhaengig von der Zeitpunkt-
+        # klasse: sonst fehlen Zellen, die als "unklar" enden, im Block.
+        if unsicher:
+            for cell in cells:
+                key = (cell["field"], cell.get("arm"))
+                zaehler["unsichere_ziele_zellen"] += 1
+                if key not in gold:
+                    zaehler["unsichere_ziele_ohne_gold"] += 1
+                elif _close(cell["value"], gold[key], 1e-6, 0.0):
+                    zaehler["unsichere_ziele_richtig"] += 1
+                else:
+                    zaehler["unsichere_ziele_falsch"] += 1
         klasse = arm_klasse(
             cells, [wert for feld, wert in gold.items() if "mean" in feld[0]], artikel, target, record_id
         )
@@ -526,6 +559,7 @@ def main() -> int:
             "zellen": zaehler["unsichere_ziele_zellen"],
             "richtig": zaehler["unsichere_ziele_richtig"],
             "falsch": zaehler["unsichere_ziele_falsch"],
+            "ohne_gold": zaehler["unsichere_ziele_ohne_gold"],
             "beispiele": unsichere_ids,
         },
         "belegstufen": {
