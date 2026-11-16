@@ -630,6 +630,15 @@ def main() -> int:
         help="Herkunft der Zeilen (z. B. v7_folgelauf), damit Folgelaeufe im Datensatz erkennbar bleiben",
     )
     args = parser.parse_args()
+    if args.arm_row_mode == "an" and not args.cell_timepoint:
+        # Ohne v7-Schema gibt es kein Feld arm_row und keine Armzeilen-Regel im
+        # Prompt: der Schalter waere still wirkungslos. Lieber laut abbrechen.
+        print(
+            "FEHLER: --arm-row-mode an wirkt nur mit --cell-timepoint; ohne das v7-Schema "
+            "bleibt der Zusatz wirkungslos.",
+            flush=True,
+        )
+        return 2
 
     models = {name: dict(spec) for name, spec in MODELS.items()}
     if args.max_tokens:

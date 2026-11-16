@@ -152,3 +152,9 @@ Prüfung ohne Netz: Prompt im Modus `aus` für alle 76 Records byte-identisch zu
 Vorstand, 243 Tests grün, Baseline des alten Laufs 0/14 Komparatorzellen richtig
 (alle aus `FAT Pre`). Prüflauf über die sieben MCCB-Records und festgelegte
 Abbruchkriterien in `armzeile_prompt.md`; der Lauf startet erst nach Freigabe.
+
+**Nachtrag 16.11.2026:** Der Prüflauf über 291–295 ergab **0 von 10** richtigen
+Komparatorzellen (`armzeile_pruefung_291_295.md`). Der Zusatz ist damit nach dem
+vorab festgelegten Kriterium gescheitert; er bleibt als opt-in im Code, wird aber
+nicht empfohlen. Ursache ist kein Zeilenlesefehler: die sieben Records tragen
+`comparator: "baseline"`, das Gold meint aber die TAU-Gruppe zum Post-Zeitpunkt.

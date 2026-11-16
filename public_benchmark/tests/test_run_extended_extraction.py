@@ -238,6 +238,23 @@ def test_armzeile_ist_opt_in_und_nennt_die_zeile() -> None:
     assert '"arm_row"' in kurz_an and '"arm_row"' not in kurz_aus
 
 
+def test_armzeile_ohne_zellzeitpunkt_bricht_laut_ab(tmp_path: Path, monkeypatch, capsys) -> None:
+    """--arm-row-mode an ohne --cell-timepoint darf nicht still wirkungslos sein."""
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["runner", "--records", str(tmp_path / "leer.jsonl"), "--split", "test",
+         "--models", "glm", "--run-id", "t1", "--arm-row-mode", "an"],
+    )
+    # Der Abbruch steht vor jedem API-Zugriff: kein Schluessel, kein Aufruf.
+    monkeypatch.setattr(
+        runner, "get_config", lambda: (_ for _ in ()).throw(AssertionError("get_config darf nicht laufen"))
+    )
+    assert runner.main() == 2
+    ausgabe = capsys.readouterr().out
+    assert "nur mit --cell-timepoint" in ausgabe
+
+
 def test_parse_cells_nimmt_die_armzeile_mit() -> None:
     """arm_row wird nur gesetzt, wenn das Modell sie nennt (altes Format bleibt)."""
     mit, _ = runner.parse_cells(
