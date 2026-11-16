@@ -20,8 +20,8 @@ import statistics
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-BENCH = HERE.parent
-REPO = BENCH.parent
+BENCH = HERE.parent          # extended_benchmark
+REPO = HERE.parents[2]       # Projektwurzel (Fallback beim Lesen der Dokumente)
 RUNS = BENCH / "runs"
 STANDARD_RECORDS = HERE / "records" / "yun699.jsonl"
 
