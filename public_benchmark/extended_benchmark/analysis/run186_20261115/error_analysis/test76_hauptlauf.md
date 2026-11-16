@@ -76,9 +76,15 @@ Der Artikel (PMC4144850, Tabelle 4) druckt `Anemic: Hb<110 g/l   1,922  0.508
 1,922 und 1,919 Personen. Korrigiert auf 1919/1922 Personen und 1078/976
 Ereignisse (Gegenprobe: 1919 × 0,562 = 1078,5; 1922 × 0,508 = 976,4).
 
-Wirkung: die beiden Gruppengrößen zählen jetzt als richtig (`zieltreu` 57 statt
-55), die beiden Ereigniszahlen waren ohnehin nicht Teil der Antwort. Die
-Abweichungssumme fiel von 3.912,08 auf 74,92. Details und Hashes in
+Wirkung auf die Zellen (geprüft in `runs/test76_hauptlauf_20261116/
+predictions.jsonl`): Die Antwort zu 479 enthält **vier** Zellen — die
+Gruppengrößen 1919 und 1922, die nach der Korrektur richtig sind (vorher falsch:
+`zieltreu` 57 statt 55), und die beiden Anteile 0,562 und 0,508, die das Modell
+als `*_mean` gemeldet hat. Diese beiden Anteile stehen nicht im Gold und zählen
+als überzählige Zellen. Die **Ereigniszahlen 1.078 und 976 hat das Modell nicht
+berichtet**; die beiden `*_events`-Zellen bleiben Auslassungen — vor und nach der
+Korrektur gleich. Die Abweichungssumme fiel von 3.912,08 auf 74,92, weil die
+beiden Abweichungen von 1.920,08 und 1.917,08 entfielen. Details und Hashes in
 `korrektur_yun2024_479.md`.
 
 ## 6. Der Modellfehler bei 289–295: falsche Armzeile, richtige Spalte
