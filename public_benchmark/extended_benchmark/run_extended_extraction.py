@@ -83,6 +83,20 @@ GROUP_SIZE_TEXTE = {
         "Report group sizes as intervention_group_size or comparator_group_size without a timepoint. "
     ),
 }
+# Die Armzeilen-Zeile ist opt-in. Anlass: in den MCCB-Records 289-295 las das
+# Modell den Komparator aus der Zeile des Interventionsarms vor der Intervention
+# ("FAT Pre") statt aus "TAU Post" - 14 von 25 falschen Zellen des 76er-Laufs.
+ARM_ROW_TEXTE = {
+    "aus": "",
+    "an": (
+        'Tables often stack the arms as rows (for example "FAT Pre", "FAT Post", "TAU Pre", '
+        '"TAU Post"). Take every value from the row of its own arm at the answer time point: an '
+        "intervention value from the experimental arm's row, a comparator value from the control "
+        "arm's row, each in the row for that time point. Never take a comparator value from the "
+        "experimental arm's row, and never from the row of the other time point. "
+    ),
+}
+ARM_ROW_FELD = ', "arm_row": "<row label copied from the table, e.g. TAU Post; empty if not from a table>"'
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
 SESSION_TAG = ""
@@ -147,7 +161,12 @@ def _kopf(record: dict[str, Any], text: str, limit: int) -> str:
 
 
 def _prompt_v7(
-    record: dict[str, Any], text: str, limit: int, target: str, group_size_mode: str = "aus"
+    record: dict[str, Any],
+    text: str,
+    limit: int,
+    target: str,
+    group_size_mode: str = "aus",
+    arm_row_mode: str = "aus",
 ) -> str:
     """v7: ein Zeitpunkt je Antwort, Header mit Einheit, JSON zuerst.
 
@@ -166,10 +185,13 @@ def _prompt_v7(
         '"timepoint_header": "<shortest string copied character for character from the article that '
         'shows this time point together with its unit, e.g. Week 24; empty if there is none>", '
         '"fallback": true | false, "cells": [{"field": "<field>", "arm": "intervention" | '
-        '"comparator", "value": <number>}, ...]}\n'
-        f"Allowed fields: {_felder()}. "
+        '"comparator", "value": <number>'
+        + (ARM_ROW_FELD if arm_row_mode == "an" else "")
+        + "}, ...]}\n"
+        + f"Allowed fields: {_felder()}. "
         "Use the arm that the number belongs to: intervention for the experimental arm, comparator for the control arm. "
         + GROUP_SIZE_TEXTE.get(group_size_mode, "")
+        + ARM_ROW_TEXTE.get(arm_row_mode, "")
         + "Never report an outcome value without naming the time point of the answer, never mix two time points. "
         "Never invent a time point_header: copy it from the article or leave it empty. "
         "Copy numbers exactly as reported; do not convert, do not compute, do not guess. "
@@ -178,7 +200,13 @@ def _prompt_v7(
     )
 
 
-def _prompt_repair(record: dict[str, Any], text: str, target: str, limit: int = REPAIR_TEXT_LIMIT) -> str:
+def _prompt_repair(
+    record: dict[str, Any],
+    text: str,
+    target: str,
+    limit: int = REPAIR_TEXT_LIMIT,
+    arm_row_mode: str = "aus",
+) -> str:
     """Kurzer Reparaturauftrag: kleinste moegliche Antwort, wenige Zellen.
 
     Ziel ist nicht die beste Extraktion, sondern eine Ausgabe ueberhaupt: Der
@@ -190,10 +218,18 @@ def _prompt_repair(record: dict[str, Any], text: str, target: str, limit: int = 
         + f'Target time point: "{target}".\n'
         "Give the smallest possible answer: at most six cells, at most one cell per field and arm. "
         'Return exactly one JSON object: {"timepoint": "<label as printed>", "cells": '
-        '[{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>}, ...]}\n'
-        f"Allowed fields: {_felder()}. "
+        '[{"field": "<field>", "arm": "intervention" | "comparator", "value": <number>'
+        + (ARM_ROW_FELD if arm_row_mode == "an" else "")
+        + "}, ...]}\n"
+        + f"Allowed fields: {_felder()}. "
         "Group sizes (*_group_size) are arm characteristics and need no timepoint. "
-        "Copy numbers exactly as reported; do not convert, do not compute. "
+        + (
+            "Take each value from the row of its own arm at the target time point, never a "
+            "comparator value from the experimental arm's row. "
+            if arm_row_mode == "an"
+            else ""
+        )
+        + "Copy numbers exactly as reported; do not convert, do not compute. "
         "If a value is not reported, leave it out. "
         "Do not add commentary, markdown or code fences."
     )
@@ -224,9 +260,10 @@ def build_prompt(
     fallback: bool = False,
     cell_timepoint: bool = False,
     group_size_mode: str = "aus",
+    arm_row_mode: str = "aus",
 ) -> str:
     if cell_timepoint and target_timepoint:
-        return _prompt_v7(record, text, limit, target_timepoint, group_size_mode)
+        return _prompt_v7(record, text, limit, target_timepoint, group_size_mode, arm_row_mode)
     context = record["context"]
     fields = ", ".join(f'"{name}"' for name in FIELDS)
     berichtet = bool(last_timepoint or target_timepoint)
@@ -389,7 +426,13 @@ def parse_cells(content: str) -> tuple[list[dict[str, Any]], str]:
             number = float(str(value).replace(",", "."))
         except (TypeError, ValueError):
             continue
-        cleaned.append({"field": field, "arm": arm, "value": number, "timepoint": timepoint})
+        zelle: dict[str, Any] = {"field": field, "arm": arm, "value": number, "timepoint": timepoint}
+        # Nur setzen, wenn das Modell die Zeile nennt: der Schluessel bleibt sonst
+        # aus der Zelle heraus und aeltere Laeufe behalten ihr Format.
+        arm_row = str(cell.get("arm_row") or "").strip()
+        if arm_row:
+            zelle["arm_row"] = arm_row
+        cleaned.append(zelle)
     return cleaned, "" if cleaned else "keine_verwertbaren_zellen"
 
 
@@ -560,6 +603,12 @@ def main() -> int:
         help="Zeile zu *_group_size im v7-Prompt: aus (Standard), lang (zwei Regelsaetze) oder kurz (Feldvorgabe)",
     )
     parser.add_argument(
+        "--arm-row-mode",
+        choices=("aus", "an"),
+        default="aus",
+        help="v7-Prompt: aus (Standard) oder an — verlangt die Tabellenzeile je Zelle (arm_row) und die Armzuordnung",
+    )
+    parser.add_argument(
         "--repair",
         action="store_true",
         help=f"nach einem Length-Ausfall einmal mit {REPAIR_MAX_TOKENS} Tokens und kurzem Prompt nachfassen",
@@ -635,6 +684,7 @@ def main() -> int:
             fallback=args.target_fallback,
             cell_timepoint=args.cell_timepoint,
             group_size_mode=args.group_size_mode,
+            arm_row_mode=args.arm_row_mode,
         )
         prompt_version = bestimme_version(
             absolute_counts=args.absolute_counts,
@@ -675,7 +725,7 @@ def main() -> int:
         if args.repair and fehlerklasse == "length_ohne_ergebnis":
             budget = dict(models[model])
             budget["max_tokens"] = min(REPAIR_MAX_TOKENS, int(budget.get("max_tokens") or REPAIR_MAX_TOKENS))
-            repair = call(budget, _prompt_repair(record, text, target), key, base)
+            repair = call(budget, _prompt_repair(record, text, target, arm_row_mode=args.arm_row_mode), key, base)
             pfad = "repair"
             inhalt_repair = repair.get("content") or ""
             r_cells, r_parse = parse_cells(inhalt_repair)
@@ -726,6 +776,7 @@ def main() -> int:
             "content_chars": len(primaer_content),
             "pfad": pfad,
             "group_size_mode": args.group_size_mode,
+            "arm_row_mode": args.arm_row_mode,
             "repair_tokens": repair.get("completion_tokens") if repair else None,
             "repair_finish_reason": repair.get("finish_reason", "") if repair else "",
             "repair_fehlerklasse": repair_fehlerklasse,

@@ -208,6 +208,50 @@ def test_gruppenzeile_ist_opt_in_und_hat_drei_fassungen() -> None:
     assert "Never report an outcome value without naming the time point" in aus
 
 
+def test_armzeile_ist_opt_in_und_nennt_die_zeile() -> None:
+    """--arm-row-mode an verlangt die Tabellenzeile; aus bleibt unveraendert."""
+    record = {
+        "record_id": "yun2024:289",
+        "context": {"intervention": "A", "comparator": "B", "outcome": "C", "outcome_type": "continuous"},
+    }
+
+    def prompt(modus: str) -> str:
+        return runner.build_prompt(
+            record, "Text", target_timepoint="baseline", cell_timepoint=True, arm_row_mode=modus
+        )
+
+    aus, an = prompt("aus"), prompt("an")
+    assert aus == runner.build_prompt(record, "Text", target_timepoint="baseline", cell_timepoint=True)
+    assert runner.ARM_ROW_TEXTE["an"] not in aus
+    assert "TAU Post" in an and '"arm_row"' in an
+    assert '"arm_row"' not in aus
+    # Der Zusatz steht vor der Schlussregel und nach dem Zeitpunkt-Absatz.
+    assert an.index("One time point for BOTH arms") < an.index("experimental arm's row")
+    assert an.index("experimental arm's row") < an.index("Never report an outcome value")
+    assert len(an) > len(aus)
+    # Der Reparaturaufruf traegt die Regel ebenfalls, sonst greift sie bei
+    # genau den Records nicht, die nur ueber die Reparatur antworten (289/290).
+    kurz_aus = runner._prompt_repair(record, "Text", "baseline")
+    kurz_an = runner._prompt_repair(record, "Text", "baseline", arm_row_mode="an")
+    assert "never a comparator value from the experimental arm's row" not in kurz_aus
+    assert "never a comparator value from the experimental arm's row" in kurz_an
+    assert '"arm_row"' in kurz_an and '"arm_row"' not in kurz_aus
+
+
+def test_parse_cells_nimmt_die_armzeile_mit() -> None:
+    """arm_row wird nur gesetzt, wenn das Modell sie nennt (altes Format bleibt)."""
+    mit, _ = runner.parse_cells(
+        '{"timepoint": "post", "cells": [{"field": "comparator_mean", "arm": "comparator", '
+        '"value": 48.2, "timepoint": "post", "arm_row": "TAU Post"}]}'
+    )
+    assert mit[0]["arm_row"] == "TAU Post"
+    ohne, _ = runner.parse_cells(
+        '{"timepoint": "post", "cells": [{"field": "comparator_mean", "arm": "comparator", '
+        '"value": 48.2, "timepoint": "post"}]}'
+    )
+    assert "arm_row" not in ohne[0]
+
+
 def test_v7_hat_eigene_version_und_zeitpunkt_je_antwort() -> None:
     assert runner.bestimme_version(cell_timepoint=True, target="week 24") == "v7_zellzeitpunkt"
     # Ohne Ziel bleibt es beim alten Etikett: der Prompt braucht den Zeitpunkt.

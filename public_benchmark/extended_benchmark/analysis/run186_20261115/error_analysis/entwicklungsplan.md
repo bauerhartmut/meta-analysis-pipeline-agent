@@ -140,3 +140,15 @@ Erst wenn **alle** Bedingungen erfüllt sind:
 
 Vorher ist jeder Vollauf eine Wiederholung der 638.000 Tokens, die die 18
 Length-Ausfälle bereits gekostet haben.
+
+## 5. Armzeilen-Zusatz (Schritt 3, umgesetzt 16.11.2026)
+
+`--arm-row-mode {aus,an}` (Standard `aus`) ergänzt den v7-Prompt um die Regel,
+jeden Wert aus der Zeile des eigenen Arms am Antwortzeitpunkt zu nehmen, und
+verlangt ein optionales Zellfeld `arm_row`. Der Zusatz steht auch im
+Reparaturprompt, weil 289 und 290 im Hauptlauf nur über die Reparatur antworten.
+
+Prüfung ohne Netz: Prompt im Modus `aus` für alle 76 Records byte-identisch zum
+Vorstand, 243 Tests grün, Baseline des alten Laufs 0/14 Komparatorzellen richtig
+(alle aus `FAT Pre`). Prüflauf über die sieben MCCB-Records und festgelegte
+Abbruchkriterien in `armzeile_prompt.md`; der Lauf startet erst nach Freigabe.
