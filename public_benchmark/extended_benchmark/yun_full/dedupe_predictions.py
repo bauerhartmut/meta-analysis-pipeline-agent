@@ -22,6 +22,47 @@ from pathlib import Path
 RUNS = Path(__file__).resolve().parent.parent / "runs"
 
 
+def _fehlgeschlagen(zeile: str) -> bool:
+    """True, wenn die Zeile als Ausfall markiert ist (unlesbar gilt als Ausfall)."""
+    try:
+        return bool(json.loads(zeile).get("failed"))
+    except json.JSONDecodeError:
+        return True
+
+
+def entdopple(zeilen: list[str]) -> tuple[list[str], int, int]:
+    """Bereinigt Zeilen einer predictions.jsonl.
+
+    Rueckgabe: (bereinigte Zeilen in Reihenfolge des ersten Auftretens,
+    Anzahl Duplikate, Anzahl unlesbarer Zeilen).
+
+    Regel je (record_id, model): Die letzte nicht fehlgeschlagene Zeile gewinnt.
+    Gibt es keine erfolgreiche, bleibt die letzte fehlgeschlagene stehen, damit
+    der Record als Ausfall sichtbar bleibt statt zu verschwinden.
+    """
+    gefiltert = [z for z in zeilen if z.strip()]
+    reihenfolge: list[tuple[str, str]] = []
+    beste: dict[tuple[str, str], str] = {}
+    kaputt = 0
+
+    for zeile in gefiltert:
+        try:
+            row = json.loads(zeile)
+        except json.JSONDecodeError:
+            kaputt += 1
+            continue
+        key = (row["record_id"], row["model"])
+        if key not in beste:
+            reihenfolge.append(key)
+            beste[key] = zeile
+        elif _fehlgeschlagen(beste[key]) or not row.get("failed"):
+            # bisheriger Stand ist ein Ausfall, oder die neue Zeile ist brauchbar
+            beste[key] = zeile
+
+    duplikate = len(gefiltert) - len(reihenfolge) - kaputt
+    return [beste[key] for key in reihenfolge], duplikate, kaputt
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--run", required=True, help="Run-Verzeichnis unter runs/")
@@ -33,34 +74,12 @@ def main() -> int:
         print(f"FEHLER: {pfad} fehlt", flush=True)
         return 2
 
-    zeilen = [z for z in pfad.read_text(encoding="utf-8").splitlines() if z.strip()]
-    reihenfolge: list[tuple[str, str]] = []
-    beste: dict[tuple[str, str], str] = {}
-    kaputt = 0
+    roh = pfad.read_text(encoding="utf-8").splitlines()
+    bereinigt, duplikate, kaputt = entdopple(roh)
+    print(f"Zeilen roh: {len(roh)}, eindeutige Paare: {len(bereinigt)}, "
+          f"Duplikate: {duplikate}, unlesbar: {kaputt}")
 
-    for zeile in zeilen:
-        try:
-            row = json.loads(zeile)
-        except json.JSONDecodeError:
-            kaputt += 1
-            continue
-        key = (row["record_id"], row["model"])
-        if key not in beste:
-            reihenfolge.append(key)
-            beste[key] = zeile
-        else:
-            # Fehlzeile durch spaetere brauchbare Zeile ersetzen
-            try:
-                alt_failed = json.loads(beste[key]).get("failed")
-            except json.JSONDecodeError:
-                alt_failed = True
-            if alt_failed or not row.get("failed"):
-                beste[key] = zeile
-
-    doppelt = len(zeilen) - len(reihenfolge) - kaputt
-    print(f"Zeilen roh: {len(zeilen)}, eindeutige Paare: {len(reihenfolge)}, "
-          f"Duplikate: {doppelt}, unlesbar: {kaputt}")
-    if not doppelt and not kaputt:
+    if not duplikate and not kaputt:
         print("nichts zu tun")
         return 0
     if not args.write:
@@ -70,9 +89,9 @@ def main() -> int:
     sicherung = pfad.with_suffix(".jsonl.bak")
     shutil.copy2(pfad, sicherung)
     with pfad.open("w", encoding="utf-8", newline="\n") as fh:
-        for key in reihenfolge:
-            fh.write(beste[key] + "\n")
-    print(f"geschrieben: {len(reihenfolge)} Zeilen (Sicherung: {sicherung.name})")
+        for zeile in bereinigt:
+            fh.write(zeile + "\n")
+    print(f"geschrieben: {len(bereinigt)} Zeilen (Sicherung: {sicherung.name})")
     return 0
 
 
