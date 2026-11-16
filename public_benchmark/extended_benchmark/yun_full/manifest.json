@@ -1,0 +1,80 @@
+{
+  "quelle": {
+    "repository": "https://github.com/hyesunyun/llm-meta-analysis",
+    "commit": "1bc768d4d098c727c9866eeff909297c38a3e84c",
+    "datei": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/annotated_rct_dataset.json",
+    "sha256": "d8f666fdd70a2e7f4ed9d4334cda8f949c85f9c4ef45c3c66e69ba555a4d7e9a",
+    "bytes": 682536,
+    "lizenz": "Apache License 2.0 (LICENSE im Repository)"
+  },
+  "texte": {
+    "verzeichnis": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files",
+    "dateien": 120,
+    "fehlend": [],
+    "sammelhash_sha256": "09564bfdd31a822545ce118db498734a2271924f5fdbfe83cdd83d8aa4d1e798",
+    "manifest": "public_benchmark/extended_benchmark/yun_full/texte_manifest.txt",
+    "bytes": 1734063
+  },
+  "records": {
+    "gesamt": 699,
+    "dev": 43,
+    "test": 656,
+    "artikel_gesamt": 120,
+    "artikel_dev": 10,
+    "artikel_test": 110,
+    "goldzellen": 2773,
+    "goldzellen_dev": 170,
+    "goldzellen_test": 2603,
+    "ohne_zelle": 31,
+    "test_mit_zelle": 630,
+    "test_ohne_zelle": 26,
+    "test_goldzellen": 2603
+  },
+  "schema_mapping": {
+    "pmcid": "document.id (mit PMC-Praefix) + provenance.source_id",
+    "intervention": "context.intervention",
+    "comparator": "context.comparator",
+    "outcome": "context.outcome",
+    "outcome_type": "context.outcome_type",
+    "intervention_mean": "gold.cells[field=intervention_mean].value",
+    "intervention_sd": "gold.cells[field=intervention_standard_deviation].value",
+    "intervention_n": "gold.cells[field=intervention_group_size].value",
+    "comparator_mean": "gold.cells[field=comparator_mean].value",
+    "comparator_sd": "gold.cells[field=comparator_standard_deviation].value",
+    "comparator_n": "gold.cells[field=comparator_group_size].value",
+    "intervention_events": "gold.cells[field=intervention_events].value",
+    "comparator_events": "gold.cells[field=comparator_events].value",
+    "timepoint": "nicht vorhanden; timepoint.target traegt die Regel des Papers",
+    "split": "document.split (DEV -> dev, TEST -> test)",
+    "notes": "issues[0] + provenance"
+  },
+  "anomalien": [
+    "yun2024:206:intervention_mean Tausendertrenner '6,032.37' -> 6032.37",
+    "yun2024:474:intervention_group_size Tausendertrenner '1,525' -> 1525",
+    "yun2024:474:comparator_group_size Tausendertrenner '1,514' -> 1514",
+    "yun2024:475:intervention_group_size Tausendertrenner '1,525' -> 1525",
+    "yun2024:475:comparator_group_size Tausendertrenner '1,514' -> 1514",
+    "yun2024:476:intervention_group_size Tausendertrenner '1,525' -> 1525",
+    "yun2024:476:comparator_group_size Tausendertrenner '1,514' -> 1514",
+    "yun2024:477:intervention_group_size Tausendertrenner '1,525' -> 1525",
+    "yun2024:477:comparator_group_size Tausendertrenner '1,514' -> 1514",
+    "yun2024:479:intervention_group_size Tausendertrenner '1,919' -> 1919",
+    "yun2024:479:intervention_events Tausendertrenner '1,078' -> 1078",
+    "yun2024:479:comparator_group_size Tausendertrenner '1,922' -> 1922",
+    "yun2024:481:intervention_group_size Tausendertrenner '1,522' -> 1522",
+    "yun2024:481:comparator_group_size Tausendertrenner '1,512' -> 1512"
+  ],
+  "feld_typ_abweichungen": [
+    "yun2024:455:comparator_events bei outcome_type=continuous",
+    "yun2024:456:comparator_events bei outcome_type=continuous",
+    "yun2024:457:comparator_events bei outcome_type=continuous",
+    "yun2024:458:comparator_events bei outcome_type=continuous",
+    "yun2024:459:comparator_events bei outcome_type=continuous",
+    "yun2024:460:comparator_events bei outcome_type=continuous"
+  ],
+  "ausgabe": {
+    "datei": "public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl",
+    "sha256": "c22ed3fb42dbaaff7051a89cdb327c4b250a134db0a62a19d3877d5ba311c0b1",
+    "bytes": 1196447
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "alpaca13B": {
+    "continuous_outcomes": {
+      "exact_total": 0.0392,
+      "partial_1": 0.5505,
+      "unknown_total": 1169,
+      "ref_unknown_total": 925,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "standardized_mean_difference": {
+            "mean_absolute_error": 6.257271778721486,
+            "standard_error_of_mae": 3.0147131025219323,
+            "95_confidence_interval_of_mae": [
+              0.3484340977784983,
+              12.166109459664472
+            ]
+          }
+        }
+      }
+    },
+    "binary_outcomes": {
+      "exact_total": 0.0351,
+      "partial_1": 0.193,
+      "unknown_total": 490,
+      "ref_unknown_total": 72,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "log_odds_ratio": {
+            "mean_absolute_error": 0.48457135661173534,
+            "standard_error_of_mae": 0.20668703158152668,
+            "95_confidence_interval_of_mae": [
+              0.07946477471194308,
+              0.8896779385115277
+            ]
+          }
+        }
+      }
+    }
+  },
+  "biomistral": {
+    "continuous_outcomes": {
+      "exact_total": 0.0412,
+      "partial_1": 0.501,
+      "unknown_total": 1985,
+      "ref_unknown_total": 925,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "standardized_mean_difference": {
+            "mean_absolute_error": null,
+            "standard_error_of_mae": null,
+            "95_confidence_interval_of_mae": [
+              null,
+              null
+            ]
+          }
+        }
+      }
+    },
+    "binary_outcomes": {
+      "exact_total": 0.0351,
+      "partial_1": 0.1754,
+      "unknown_total": 612,
+      "ref_unknown_total": 72,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "log_odds_ratio": {
+            "mean_absolute_error": null,
+            "standard_error_of_mae": null,
+            "95_confidence_interval_of_mae": [
+              null,
+              null
+            ]
+          }
+        }
+      }
+    }
+  },
+  "gemma7B": {
+    "continuous_outcomes": {
+      "exact_total": 0.0866,
+      "partial_1": 0.8103,
+      "unknown_total": 775,
+      "ref_unknown_total": 925,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "standardized_mean_difference": {
+            "mean_absolute_error": 3.4657470890218853,
+            "standard_error_of_mae": 1.3786687336348658,
+            "95_confidence_interval_of_mae": [
+              0.7635563710975486,
+              6.167937806946222
+            ]
+          }
+        }
+      }
+    },
+    "binary_outcomes": {
+      "exact_total": 0.1345,
+      "partial_1": 0.6784,
+      "unknown_total": 90,
+      "ref_unknown_total": 72,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "log_odds_ratio": {
+            "mean_absolute_error": 0.9127694251009892,
+            "standard_error_of_mae": 0.1690875585555107,
+            "95_confidence_interval_of_mae": [
+              0.5813578103321884,
+              1.2441810398697901
+            ]
+          }
+        }
+      }
+    }
+  },
+  "gpt35": {
+    "continuous_outcomes": {
+      "exact_total": 0.2804,
+      "partial_1": 0.8722,
+      "unknown_total": 437,
+      "ref_unknown_total": 925,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "standardized_mean_difference": {
+            "mean_absolute_error": 0.9507604727430435,
+            "standard_error_of_mae": 0.4204949806252858,
+            "95_confidence_interval_of_mae": [
+              0.1265903107174834,
+              1.7749306347686038
+            ]
+          }
+        }
+      }
+    },
+    "binary_outcomes": {
+      "exact_total": 0.2982,
+      "partial_1": 0.7485,
+      "unknown_total": 145,
+      "ref_unknown_total": 72,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "log_odds_ratio": {
+            "mean_absolute_error": 0.44138021325083654,
+            "standard_error_of_mae": 0.09339847093838448,
+            "95_confidence_interval_of_mae": [
+              0.258319210211603,
+              0.6244412162900701
+            ]
+          }
+        }
+      }
+    }
+  },
+  "gpt4": {
+    "continuous_outcomes": {
+      "exact_total": 0.4866,
+      "partial_1": 0.9216,
+      "unknown_total": 422,
+      "ref_unknown_total": 925,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "standardized_mean_difference": {
+            "mean_absolute_error": 0.29018370702923446,
+            "standard_error_of_mae": 0.11189726585856487,
+            "95_confidence_interval_of_mae": [
+              0.07086506594644731,
+              0.5095023481120216
+            ]
+          }
+        }
+      }
+    },
+    "binary_outcomes": {
+      "exact_total": 0.655,
+      "partial_1": 0.9123,
+      "unknown_total": 41,
+      "ref_unknown_total": 72,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "log_odds_ratio": {
+            "mean_absolute_error": 0.10136594528876207,
+            "standard_error_of_mae": 0.04294272577083388,
+            "95_confidence_interval_of_mae": [
+              0.017198202777927676,
+              0.18553368779959645
+            ]
+          }
+        }
+      }
+    }
+  },
+  "mistral7B": {
+    "continuous_outcomes": {
+      "exact_total": 0.0948,
+      "partial_1": 0.7938,
+      "unknown_total": 483,
+      "ref_unknown_total": 925,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "standardized_mean_difference": {
+            "mean_absolute_error": 1.1377185258754394,
+            "standard_error_of_mae": 0.3795566306350744,
+            "95_confidence_interval_of_mae": [
+              0.39378752983069365,
+              1.8816495219201852
+            ]
+          }
+        }
+      }
+    },
+    "binary_outcomes": {
+      "exact_total": 0.1637,
+      "partial_1": 0.7076,
+      "unknown_total": 28,
+      "ref_unknown_total": 72,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "log_odds_ratio": {
+            "mean_absolute_error": 0.6566012301997587,
+            "standard_error_of_mae": 0.1014672538726069,
+            "95_confidence_interval_of_mae": [
+              0.4577254126094492,
+              0.8554770477900682
+            ]
+          }
+        }
+      }
+    }
+  },
+  "olmo7B": {
+    "continuous_outcomes": {
+      "exact_total": 0.0351,
+      "partial_1": 0.5072,
+      "unknown_total": 1213,
+      "ref_unknown_total": 925,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "standardized_mean_difference": {
+            "mean_absolute_error": 1.7381328357641646,
+            "standard_error_of_mae": 0.4535038483394878,
+            "95_confidence_interval_of_mae": [
+              0.8492652930187684,
+              2.627000378509561
+            ]
+          }
+        }
+      }
+    },
+    "binary_outcomes": {
+      "exact_total": 0.0117,
+      "partial_1": 0.2749,
+      "unknown_total": 319,
+      "ref_unknown_total": 72,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "log_odds_ratio": {
+            "mean_absolute_error": 1.2528627495675604,
+            "standard_error_of_mae": 0.29464550734697353,
+            "95_confidence_interval_of_mae": [
+              0.6753575551674923,
+              1.8303679439676284
+            ]
+          }
+        }
+      }
+    }
+  },
+  "pmc-llama": {
+    "continuous_outcomes": {
+      "exact_total": 0.0392,
+      "partial_1": 0.5175,
+      "unknown_total": 1778,
+      "ref_unknown_total": 925,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "standardized_mean_difference": {
+            "mean_absolute_error": null,
+            "standard_error_of_mae": null,
+            "95_confidence_interval_of_mae": [
+              null,
+              null
+            ]
+          }
+        }
+      }
+    },
+    "binary_outcomes": {
+      "exact_total": 0.0351,
+      "partial_1": 0.2164,
+      "unknown_total": 524,
+      "ref_unknown_total": 72,
+      "mae": null,
+      "se": null,
+      "enough_data": {
+        "point_estimates": {
+          "log_odds_ratio": {
+            "mean_absolute_error": 1.523250126103748,
+            "standard_error_of_mae": 0.5890305627253435,
+            "95_confidence_interval_of_mae": [
+              0.36875022316207495,
+              2.6777500290454213
+            ]
+          }
+        }
+      }
+    }
+  }
+}

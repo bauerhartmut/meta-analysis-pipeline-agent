@@ -1,0 +1,7 @@
+5 Records, 5 offene Auftraege, 3 Threads
+glm: yun2024:7 ok (2 Zellen)
+glm: yun2024:6 ok (4 Zellen)
+glm: yun2024:12 ok (6 Zellen)
+glm: yun2024:10 ok (2 Zellen)
+glm: yun2024:11 FEHLER json_kaputt (0 Tokens, kein Retry)
+fertig: 5 Auftraege, Ausgabe D:/daswu/AIResearch/public_benchmark/extended_benchmark/runs/yun699_trockenlauf_20261116/predictions.jsonl
