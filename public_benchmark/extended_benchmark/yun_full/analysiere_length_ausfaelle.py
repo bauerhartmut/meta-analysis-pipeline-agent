@@ -121,6 +121,71 @@ def main() -> int:
                   f"n={len(block):3d} Ausfaelle {n_fail:2d} ({n_fail / len(block) * 100:4.1f} %) "
                   f"Textzeichen {median:7.0f}")
 
+        # Nicht-zirkulaer wird der Vergleich erst im Laengenband: Ein Ausfall
+        # setzt verbrauchtes Budget voraus, sein Reasoning ist also bei 8000
+        # Tokens abgeschnitten und damit eine UNTERgrenze des Bedarfs. Erst bei
+        # gleicher Textlaenge sagt der Unterschied etwas ueber das Modell aus.
+        def intensitaet(row: dict) -> float | None:
+            laenge = text_laenge(records[row["record_id"]], cache) or 0
+            if not laenge:
+                return None
+            return (row.get("reasoning_chars") or 0) / laenge * 1000
+
+        def laenge_von(row: dict) -> int:
+            return text_laenge(records[row["record_id"]], cache) or 0
+
+        laengen = sorted(x for x in (laenge_von(r) for r in teil) if x)
+        if len(laengen) >= 5:
+            grenzen = [laengen[int(len(laengen) * q / 5)] for q in range(1, 5)]
+        else:
+            grenzen = []
+
+        def band(wert: int) -> int:
+            for i, grenze in enumerate(grenzen):
+                if wert <= grenze:
+                    return i
+            return len(grenzen)
+
+        print("  Ausfallquote und Reasoning je Textlaengenband:")
+        print(f"    {'Band':4} {'Textzeichen':>18} {'n':>4} {'Ausfall':>7} {'Quote':>6} "
+              f"{'R/1k Erfolg':>12} {'R/1k Ausfall':>12}")
+        for i in range(len(grenzen) + 1):
+            block = [r for r in teil if band(laenge_von(r)) == i]
+            if not block:
+                continue
+            faelle = [r for r in block if r["fehlerklasse"] == "length_ohne_ergebnis"]
+            erfolge_block = [r for r in block if r not in faelle]
+            unten = 0 if i == 0 else grenzen[i - 1]
+            oben = grenzen[i] if i < len(grenzen) else laengen[-1]
+            int_ok = [x for x in (intensitaet(r) for r in erfolge_block) if x is not None]
+            int_fail = [x for x in (intensitaet(r) for r in faelle) if x is not None]
+            print(f"    B{i + 1:<3} {unten:>7}..{oben:<7} {len(block):4d} {len(faelle):7d} "
+                  f"{len(faelle) / len(block) * 100:5.1f}% "
+                  f"{statistics.median(int_ok) if int_ok else 0:12.2f} "
+                  f"{statistics.median(int_fail) if int_fail else 0:12.2f}")
+
+        # Gepaarte Gegenprobe: je Ausfall die Erfolge mit aehnlicher Laenge
+        # (Faktor 0,8 bis 1,25) und deren Reasoning-Intensitaet.
+        paare: list[tuple[float, float]] = []
+        for r in ausfall:
+            l = laenge_von(r)
+            if not l:
+                continue
+            nachbarn = [e for e in erfolg if l * 0.8 <= laenge_von(e) <= l * 1.25]
+            werte = [x for x in (intensitaet(e) for e in nachbarn) if x is not None]
+            eigen = intensitaet(r)
+            if werte and eigen is not None:
+                paare.append((eigen, statistics.median(werte)))
+        if paare:
+            f_aus = statistics.median(p[0] for p in paare)
+            f_ok = statistics.median(p[1] for p in paare)
+            faktor = f"{f_aus / f_ok:.1f}" if f_ok else "n/a"
+            print(f"  Gepaart nach Textlaenge (+-25 %): {len(paare)} Ausfaelle mit "
+                  f"Vergleichsgruppe, Reasoning je 1000 Zeichen "
+                  f"{f_aus:.2f} (Ausfall) gegen {f_ok:.2f} (Erfolg) = Faktor {faktor}")
+            print("    Hinweis: Der Wert der Ausfaelle ist bei 8000 Tokens abgeschnitten,")
+            print("    also eine Untergrenze des tatsaechlichen Bedarfs.")
+
     return 0
 
 
