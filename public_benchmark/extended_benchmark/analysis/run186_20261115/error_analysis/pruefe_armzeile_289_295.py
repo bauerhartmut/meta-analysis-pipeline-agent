@@ -8,7 +8,7 @@ eines Laufs mit dem Gold, nennt je Zelle die Zeile, aus der der Modellwert im
 Artikel steht, und zaehlt die Treffer. Es ruft kein Modell auf.
 
     python pruefe_armzeile_289_295.py --run test76_hauptlauf_20261116
-    python pruefe_armzeile_289_295.py --run <neuer_lauf>   # nach --arm-row-mode an
+    python pruefe_armzeile_289_295.py --run armzeile_291_295_20261116
 """
 
 from __future__ import annotations
