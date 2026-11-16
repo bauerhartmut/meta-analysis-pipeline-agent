@@ -189,6 +189,10 @@ gestartet werden.
   `data/bench/validierung/pruefung_pass_b_zeile_20261110.md` wurde redigiert:
   konkrete Effekt-, KI-, SE- und Zitatwerte wurden entfernt; die Aussage zum
   Meta-Analyse-Gate bleibt erhalten. Kein Code oder Test liest die Notiz.
+- Laufartefakte sind ebenfalls ignoriert: alle SQLite-Datenbanken unter
+  `data/`, `data/runs/`, `data/simulations/`, die generierten Bench-Ausgaben
+  und Benchmark-Runs unter `public_benchmark/extended_benchmark/runs/` sowie
+  die Telemetriedateien und Ergebnisberichte `ERGEBNISSE_*.md`.
 
 ## Lokale Löschung (2026-11-16)
 

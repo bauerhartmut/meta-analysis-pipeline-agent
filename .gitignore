@@ -141,6 +141,34 @@ data/meta_nachbau/**/volltexte/
 data/meta_nachbau/**/volltexte_txt/
 data/origpdf/
 
+# Laufartefakte: Datenbanken, Runs, Simulationen und generierte Ausgaben
+data/**/*.db
+data/**/*.pid
+data/runs/
+data/simulations/
+data/dashboard_meta_agent.json
+data/bench/backfill/
+data/bench/regreports/
+data/bench/harness_run_*.md
+data/bench/net_run*.md
+data/bench/lauf_vergleich_*.md
+data/bench/telemetrie_usage_*.json
+data/bench/sol/*_label_*.json
+data/bench/sol/*_label_*.md
+data/bench/sol/xml_fetch_manifest_*.json
+data/bench/sol2/arm_level.md
+data/bench/sol2/fetch_log.json
+data/bench/sol2/manifest_pairs.json
+data/bench/sol2/pdf.json
+data/bench/sol2/pdf.md
+data/bench/sol2/schnitt.md
+data/bench/sol2/text_arms.md
+data/bench/sol2/gegencheck/
+data/bench/validierung/goldstandard_auswahl.json
+data/bench/validierung/kandidaten_volltexte.json
+public_benchmark/extended_benchmark/runs/
+ERGEBNISSE_*.md
+
 # A-Ableitungen mit konkreten Effektwerten oder Zeilenzahlen (nur lokal)
 data/golden_effects/example_annotation.json
 data/golden_effects/abgleich_*.json
