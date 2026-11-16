@@ -86,9 +86,10 @@ Fehlerklassen und Reproduktionsbefehle stehen im
 
 - **Öffentlich:** der überwiegende Teil des Agentenrahmens (Dashboard, Tests,
   Benchmark- und Prüfskripte), `public_benchmark/`, die
-  Goldstandard-Fixtures unter `data/golden_tables/`, die A/B-Annotation
+  Goldstandard-Fixtures unter `data/golden_tables/`, die B-Arbeitsunterlagen
   unter `data/golden_effects/` und die Benchmark-Baseline unter
-  `data/baseline/`.
+  `data/baseline/`. Die vollständige A-Annotation ist aus
+  Blindheitsgründen nicht öffentlich.
 - **Bewusst nicht im Repository:** die in `.gitignore` als Kernbausteine
   markierten Module (u. a. Orchestrierung, Konfiguration, Bericht, Pooling
   und Extraktion), API-Keys (nur `.env`) und Lauf-Datenbanken unter

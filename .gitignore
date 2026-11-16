@@ -101,3 +101,32 @@ handoff_20261116/
 benchmark_handoff_20261116.zip
 benchmark_analysis_handoff_20261116/
 benchmark_analysis_handoff_20261116.zip
+
+# Externe Korrespondenz und Versandanlagen (nur lokal)
+docs/external/
+
+# Vollstaendige A-Annotation: B bleibt blind, A nur lokal
+# (History bleibt davon unberuehrt; siehe docs/internal/repo_bereinigung_2026-11-16.md)
+data/golden_effects/goldstandard_A.json
+
+# Gespeicherte Verlagsseite (ScienceDirect, all rights reserved)
+scripts/sd_test.html
+
+# PMC-Volltexte: Rechte nicht pauschal geklaert
+data/bench/sol/xml_fetch_ncbi/
+data/bench/sol/xml_q1/
+
+# PubMed-Abstracts als Zwischenartefakt
+data/bench/sol2/abstracts_b_20261108.xml
+
+# Third-Party-Rohdaten ohne ausreichende Lizenz (Manifeste bleiben)
+public_benchmark/evaluation/multi_model_cross_validation/goldstandard_datasets/pico_corpus_v1/original/
+public_benchmark/evaluation/multi_model_cross_validation/goldstandard_datasets/pico_corpus_v1/records.jsonl
+public_benchmark/evaluation/multi_model_cross_validation/goldstandard_datasets/eururology_v1/original/
+public_benchmark/evaluation/multi_model_cross_validation/goldstandard_datasets/eururology_v1/records.jsonl
+
+# Interne PDFs und Screenshots
+ENTWICKLUNGSAUFTRAG_v2.pdf
+docs/briefing_modell_20261107.pdf
+data/bench/**/*.pdf
+data/bench/validierung/*.png

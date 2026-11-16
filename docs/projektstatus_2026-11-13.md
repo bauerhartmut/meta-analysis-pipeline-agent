@@ -469,7 +469,7 @@ Das Projekt ist damit weniger ein „fertiger autonomer Forscher“ als eine **v
 
 ### Goldstandard
 
-- `data/golden_effects/goldstandard_A.json`
+- `data/golden_effects/goldstandard_A.json` (nicht im öffentlichen Repo; nur lokal)
 - `data/golden_effects/goldstandard_B.json`
 - `docs/internal/goldstandard_schema.json`
 - `docs/internal/goldstandard_annotationsanleitung.md`
