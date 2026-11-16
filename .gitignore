@@ -95,3 +95,7 @@ local_patches/
 
 # C1-Testprojektionen aus dem gesperrten Testsplit (nur lokal)
 public_benchmark/evaluation/c1_pilot/test_locked/
+
+# Uebergabe-Artefakte: aus vorhandenen Daten regenerierbar (baue_handoff.py)
+handoff_20261116/
+benchmark_handoff_20261116.zip
