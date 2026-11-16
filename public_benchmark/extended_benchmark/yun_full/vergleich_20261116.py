@@ -26,6 +26,8 @@ LAEUFE = [
     ("yun20_4000_qwen_20261116", "Qwen3.5-397B v7, 20 Records, 4000 Tokens", "qwen"),
     ("yun20_4000_qwen30_20261116", "Qwen3-30B v7, 20 Records, 4000 Tokens", "qwen30"),
     ("yun20_4000_glm_gskcb_20261116", "GLM-5.3 v7 + Gruppengroessenregel, 20 Records, 4000 Tokens", "glm"),
+    ("yun20_8000_glm_cb_20261116", "GLM-5.3 v7, 20 Records, 8000 Tokens, frisch generiert", "glm"),
+    ("yun20_8000_qwen_cb_20261116", "Qwen3.5-397B v7, 20 Records, 8000 Tokens, frisch generiert", "qwen"),
 ]
 
 

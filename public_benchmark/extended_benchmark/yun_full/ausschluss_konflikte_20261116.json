@@ -1,0 +1,53 @@
+{
+  "stand": "2026-11-16",
+  "ergebnisse": [
+    {
+      "run": "yun699_test60_20261116",
+      "label": "60 Records, 4000 Tokens",
+      "mit_konflikten": {
+        "richtig": 144,
+        "falsch": 29,
+        "fehlend": 63,
+        "precision": 0.8324,
+        "recall": 0.6102,
+        "f1": 0.7042
+      },
+      "ohne_konflikte": {
+        "richtig": 137,
+        "falsch": 22,
+        "fehlend": 59,
+        "precision": 0.8616,
+        "recall": 0.6284,
+        "f1": 0.7268
+      },
+      "ausgeschlossen": [
+        "yun2024:524",
+        "yun2024:447",
+        "yun2024:669"
+      ]
+    },
+    {
+      "run": "yun20_4000_glm_20261116",
+      "label": "20 Records, 4000 Tokens",
+      "mit_konflikten": {
+        "richtig": 54,
+        "falsch": 1,
+        "fehlend": 23,
+        "precision": 0.9818,
+        "recall": 0.6923,
+        "f1": 0.812
+      },
+      "ohne_konflikte": {
+        "richtig": 53,
+        "falsch": 0,
+        "fehlend": 19,
+        "precision": 1.0,
+        "recall": 0.7361,
+        "f1": 0.848
+      },
+      "ausgeschlossen": [
+        "yun2024:447"
+      ]
+    }
+  ]
+}

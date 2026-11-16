@@ -1,0 +1,137 @@
+{
+  "run": "yun20_8000_qwen_cb_20261116",
+  "records": 20,
+  "tokens": 91720,
+  "zeit_summiert_s": 1440.2,
+  "zellen": {
+    "gold": 78,
+    "richtig": 58,
+    "falsch": 6,
+    "fehlend": 14,
+    "ohne_gold": 2
+  },
+  "precision": 0.9062,
+  "precision_inkl_zellen_ohne_gold": 0.8788,
+  "recall": 0.7436,
+  "f1": 0.8169,
+  "abdeckung": 0.7436,
+  "mae": 0.9759,
+  "records_status": {
+    "leere_antwort": 2,
+    "exakt_yun": 14,
+    "exakt_strict": 13,
+    "teilweise": 4,
+    "ohne_treffer": 1
+  },
+  "technische_ausfaelle": 0,
+  "leere_antworten": 2,
+  "je_feld": {
+    "comparator_events": {
+      "richtig": 4,
+      "fehlend": 1
+    },
+    "comparator_group_size": {
+      "fehlend": 3,
+      "richtig": 14
+    },
+    "comparator_mean": {
+      "falsch": 2,
+      "ohne_gold": 1,
+      "richtig": 6,
+      "fehlend": 1
+    },
+    "comparator_standard_deviation": {
+      "fehlend": 2,
+      "richtig": 5,
+      "falsch": 1
+    },
+    "intervention_events": {
+      "richtig": 4,
+      "fehlend": 1
+    },
+    "intervention_group_size": {
+      "fehlend": 3,
+      "richtig": 14
+    },
+    "intervention_mean": {
+      "falsch": 2,
+      "ohne_gold": 1,
+      "richtig": 6,
+      "fehlend": 1
+    },
+    "intervention_standard_deviation": {
+      "fehlend": 2,
+      "richtig": 5,
+      "falsch": 1
+    }
+  },
+  "je_arm": {
+    "comparator": {
+      "fehlend": 7,
+      "richtig": 29,
+      "falsch": 3,
+      "ohne_gold": 1
+    },
+    "intervention": {
+      "fehlend": 7,
+      "richtig": 29,
+      "falsch": 3,
+      "ohne_gold": 1
+    }
+  },
+  "je_outcome_typ": {
+    "binary": {
+      "richtig": 16,
+      "fehlend": 4
+    },
+    "continuous": {
+      "fehlend": 10,
+      "richtig": 42,
+      "falsch": 6
+    }
+  },
+  "abweichungen": [
+    {
+      "record_id": "yun2024:30",
+      "field": "intervention_mean",
+      "gold": 38.1,
+      "modell": 6.4,
+      "outcome": "Short-Form 36-Items improvement"
+    },
+    {
+      "record_id": "yun2024:30",
+      "field": "comparator_mean",
+      "gold": 31.5,
+      "modell": 2.1,
+      "outcome": "Short-Form 36-Items improvement"
+    },
+    {
+      "record_id": "yun2024:160",
+      "field": "intervention_mean",
+      "gold": 0.61,
+      "modell": 0.55,
+      "outcome": "BMI z-score at 12months"
+    },
+    {
+      "record_id": "yun2024:160",
+      "field": "intervention_standard_deviation",
+      "gold": 1.8,
+      "modell": 1.11,
+      "outcome": "BMI z-score at 12months"
+    },
+    {
+      "record_id": "yun2024:160",
+      "field": "comparator_mean",
+      "gold": 0.66,
+      "modell": 0.61,
+      "outcome": "BMI z-score at 12months"
+    },
+    {
+      "record_id": "yun2024:160",
+      "field": "comparator_standard_deviation",
+      "gold": 1.69,
+      "modell": 1.13,
+      "outcome": "BMI z-score at 12months"
+    }
+  ]
+}

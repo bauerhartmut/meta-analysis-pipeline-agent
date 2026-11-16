@@ -1,0 +1,124 @@
+{
+  "run": "yun20_8000_glm_cb_20261116",
+  "records": 20,
+  "tokens": 48516,
+  "zeit_summiert_s": 218.1,
+  "zellen": {
+    "gold": 78,
+    "richtig": 59,
+    "falsch": 4,
+    "fehlend": 15,
+    "ohne_gold": 4
+  },
+  "precision": 0.9365,
+  "precision_inkl_zellen_ohne_gold": 0.8806,
+  "recall": 0.7564,
+  "f1": 0.8369,
+  "abdeckung": 0.7564,
+  "mae": 1.2063,
+  "records_status": {
+    "leere_antwort": 2,
+    "exakt_yun": 13,
+    "exakt_strict": 12,
+    "teilweise": 5,
+    "technischer_ausfall": 1
+  },
+  "technische_ausfaelle": 1,
+  "leere_antworten": 2,
+  "je_feld": {
+    "comparator_events": {
+      "richtig": 4,
+      "fehlend": 1
+    },
+    "comparator_group_size": {
+      "fehlend": 4,
+      "richtig": 13
+    },
+    "comparator_mean": {
+      "richtig": 7,
+      "falsch": 1,
+      "fehlend": 1,
+      "ohne_gold": 1
+    },
+    "comparator_standard_deviation": {
+      "richtig": 5,
+      "fehlend": 2,
+      "falsch": 1,
+      "ohne_gold": 1
+    },
+    "intervention_events": {
+      "richtig": 5
+    },
+    "intervention_group_size": {
+      "fehlend": 4,
+      "richtig": 13
+    },
+    "intervention_mean": {
+      "richtig": 7,
+      "falsch": 1,
+      "fehlend": 1,
+      "ohne_gold": 1
+    },
+    "intervention_standard_deviation": {
+      "richtig": 5,
+      "fehlend": 2,
+      "falsch": 1,
+      "ohne_gold": 1
+    }
+  },
+  "je_arm": {
+    "comparator": {
+      "fehlend": 8,
+      "richtig": 29,
+      "falsch": 2,
+      "ohne_gold": 2
+    },
+    "intervention": {
+      "fehlend": 7,
+      "richtig": 30,
+      "falsch": 2,
+      "ohne_gold": 2
+    }
+  },
+  "je_outcome_typ": {
+    "binary": {
+      "richtig": 17,
+      "fehlend": 3
+    },
+    "continuous": {
+      "fehlend": 12,
+      "richtig": 42,
+      "falsch": 4
+    }
+  },
+  "abweichungen": [
+    {
+      "record_id": "yun2024:30",
+      "field": "intervention_mean",
+      "gold": 38.1,
+      "modell": 7.8,
+      "outcome": "Short-Form 36-Items improvement"
+    },
+    {
+      "record_id": "yun2024:30",
+      "field": "intervention_standard_deviation",
+      "gold": 9.5,
+      "modell": 0.4,
+      "outcome": "Short-Form 36-Items improvement"
+    },
+    {
+      "record_id": "yun2024:30",
+      "field": "comparator_mean",
+      "gold": 31.5,
+      "modell": 1.7,
+      "outcome": "Short-Form 36-Items improvement"
+    },
+    {
+      "record_id": "yun2024:30",
+      "field": "comparator_standard_deviation",
+      "gold": 7.4,
+      "modell": 0.6,
+      "outcome": "Short-Form 36-Items improvement"
+    }
+  ]
+}
