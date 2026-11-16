@@ -1,0 +1,304 @@
+{
+  "run": "yun699_test60_20261116",
+  "records": 60,
+  "tokens": 173178,
+  "zeit_summiert_s": 2031.1,
+  "zellen": {
+    "gold": 236,
+    "richtig": 144,
+    "falsch": 29,
+    "fehlend": 63,
+    "ohne_gold": 7
+  },
+  "precision": 0.8,
+  "recall": 0.6102,
+  "f1": 0.6923,
+  "abdeckung": 0.6102,
+  "mae": 6.2058,
+  "records_status": {
+    "leere_antwort": 5,
+    "teilweise": 20,
+    "technischer_ausfall": 6,
+    "exakt": 27,
+    "ohne_treffer": 2
+  },
+  "technische_ausfaelle": 6,
+  "leere_antworten": 5,
+  "je_feld": {
+    "comparator_events": {
+      "fehlend": 4,
+      "richtig": 9,
+      "falsch": 1
+    },
+    "comparator_group_size": {
+      "fehlend": 13,
+      "richtig": 39,
+      "falsch": 2,
+      "ohne_gold": 1
+    },
+    "comparator_mean": {
+      "richtig": 15,
+      "fehlend": 7,
+      "falsch": 5,
+      "ohne_gold": 2
+    },
+    "comparator_standard_deviation": {
+      "fehlend": 8,
+      "falsch": 5,
+      "richtig": 10
+    },
+    "intervention_events": {
+      "fehlend": 2,
+      "richtig": 10,
+      "falsch": 1
+    },
+    "intervention_group_size": {
+      "fehlend": 13,
+      "richtig": 36,
+      "falsch": 5,
+      "ohne_gold": 1
+    },
+    "intervention_mean": {
+      "richtig": 15,
+      "fehlend": 8,
+      "ohne_gold": 3,
+      "falsch": 5
+    },
+    "intervention_standard_deviation": {
+      "fehlend": 8,
+      "falsch": 5,
+      "richtig": 10
+    }
+  },
+  "je_arm": {
+    "comparator": {
+      "fehlend": 32,
+      "richtig": 73,
+      "falsch": 13,
+      "ohne_gold": 3
+    },
+    "intervention": {
+      "fehlend": 31,
+      "richtig": 71,
+      "ohne_gold": 4,
+      "falsch": 16
+    }
+  },
+  "je_outcome_typ": {
+    "binary": {
+      "richtig": 46,
+      "fehlend": 7,
+      "falsch": 3
+    },
+    "continuous": {
+      "fehlend": 56,
+      "richtig": 98,
+      "falsch": 26
+    }
+  },
+  "abweichungen": [
+    {
+      "record_id": "yun2024:110",
+      "field": "intervention_group_size",
+      "gold": 459.0,
+      "modell": 456.0,
+      "outcome": "High-energy snack intake"
+    },
+    {
+      "record_id": "yun2024:110",
+      "field": "intervention_mean",
+      "gold": 2.5,
+      "modell": 3.3,
+      "outcome": "High-energy snack intake"
+    },
+    {
+      "record_id": "yun2024:110",
+      "field": "intervention_standard_deviation",
+      "gold": 2.79,
+      "modell": 2.94,
+      "outcome": "High-energy snack intake"
+    },
+    {
+      "record_id": "yun2024:110",
+      "field": "comparator_mean",
+      "gold": 2.84,
+      "modell": 3.19,
+      "outcome": "High-energy snack intake"
+    },
+    {
+      "record_id": "yun2024:110",
+      "field": "comparator_standard_deviation",
+      "gold": 2.71,
+      "modell": 2.74,
+      "outcome": "High-energy snack intake"
+    },
+    {
+      "record_id": "yun2024:118",
+      "field": "intervention_group_size",
+      "gold": 10.0,
+      "modell": 19.0,
+      "outcome": "Rate of complications"
+    },
+    {
+      "record_id": "yun2024:246",
+      "field": "intervention_mean",
+      "gold": 0.74,
+      "modell": 74.0,
+      "outcome": "Glycemic level"
+    },
+    {
+      "record_id": "yun2024:246",
+      "field": "intervention_standard_deviation",
+      "gold": 0.05,
+      "modell": 5.0,
+      "outcome": "Glycemic level"
+    },
+    {
+      "record_id": "yun2024:246",
+      "field": "comparator_mean",
+      "gold": 0.83,
+      "modell": 83.0,
+      "outcome": "Glycemic level"
+    },
+    {
+      "record_id": "yun2024:246",
+      "field": "comparator_standard_deviation",
+      "gold": 0.05,
+      "modell": 5.0,
+      "outcome": "Glycemic level"
+    },
+    {
+      "record_id": "yun2024:335",
+      "field": "intervention_group_size",
+      "gold": 45.0,
+      "modell": 47.0,
+      "outcome": "Social withdrawal"
+    },
+    {
+      "record_id": "yun2024:335",
+      "field": "intervention_mean",
+      "gold": -4.7,
+      "modell": -5.2,
+      "outcome": "Social withdrawal"
+    },
+    {
+      "record_id": "yun2024:335",
+      "field": "comparator_group_size",
+      "gold": 47.0,
+      "modell": 45.0,
+      "outcome": "Social withdrawal"
+    },
+    {
+      "record_id": "yun2024:335",
+      "field": "comparator_mean",
+      "gold": -5.2,
+      "modell": -4.7,
+      "outcome": "Social withdrawal"
+    },
+    {
+      "record_id": "yun2024:359",
+      "field": "intervention_group_size",
+      "gold": 720.0,
+      "modell": 919.0,
+      "outcome": "Symbol Digit Modalities Test (SDMT) score at week 96"
+    },
+    {
+      "record_id": "yun2024:359",
+      "field": "comparator_group_size",
+      "gold": 682.0,
+      "modell": 922.0,
+      "outcome": "Symbol Digit Modalities Test (SDMT) score at week 96"
+    },
+    {
+      "record_id": "yun2024:369",
+      "field": "intervention_events",
+      "gold": 51.0,
+      "modell": 86.0,
+      "outcome": "Baseline hypertension"
+    },
+    {
+      "record_id": "yun2024:369",
+      "field": "comparator_events",
+      "gold": 57.0,
+      "modell": 89.0,
+      "outcome": "Baseline hypertension"
+    },
+    {
+      "record_id": "yun2024:447",
+      "field": "intervention_group_size",
+      "gold": 104.0,
+      "modell": 114.0,
+      "outcome": "effects for walking"
+    },
+    {
+      "record_id": "yun2024:524",
+      "field": "intervention_standard_deviation",
+      "gold": 0.46,
+      "modell": 1.09,
+      "outcome": "Second test results"
+    },
+    {
+      "record_id": "yun2024:524",
+      "field": "comparator_standard_deviation",
+      "gold": 0.47,
+      "modell": 2.29,
+      "outcome": "Second test results"
+    },
+    {
+      "record_id": "yun2024:573",
+      "field": "intervention_mean",
+      "gold": -3.7,
+      "modell": -1.4,
+      "outcome": "lateral tibial cartilage volume loss"
+    },
+    {
+      "record_id": "yun2024:573",
+      "field": "intervention_standard_deviation",
+      "gold": 3.4,
+      "modell": 5.3,
+      "outcome": "lateral tibial cartilage volume loss"
+    },
+    {
+      "record_id": "yun2024:573",
+      "field": "comparator_mean",
+      "gold": -0.8,
+      "modell": -2.7,
+      "outcome": "lateral tibial cartilage volume loss"
+    },
+    {
+      "record_id": "yun2024:573",
+      "field": "comparator_standard_deviation",
+      "gold": 3.5,
+      "modell": 4.4,
+      "outcome": "lateral tibial cartilage volume loss"
+    },
+    {
+      "record_id": "yun2024:669",
+      "field": "intervention_mean",
+      "gold": 200.1,
+      "modell": 53.3,
+      "outcome": "triglycerides levels"
+    },
+    {
+      "record_id": "yun2024:669",
+      "field": "intervention_standard_deviation",
+      "gold": 55.9,
+      "modell": 36.9,
+      "outcome": "triglycerides levels"
+    },
+    {
+      "record_id": "yun2024:669",
+      "field": "comparator_mean",
+      "gold": 181.8,
+      "modell": 1.1,
+      "outcome": "triglycerides levels"
+    },
+    {
+      "record_id": "yun2024:669",
+      "field": "comparator_standard_deviation",
+      "gold": 61.3,
+      "modell": 43.3,
+      "outcome": "triglycerides levels"
+    }
+  ]
+}

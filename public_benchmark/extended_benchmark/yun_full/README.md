@@ -31,7 +31,7 @@ python public_benchmark/extended_benchmark/run_extended_extraction.py \
   --run-id yun699_trockenlauf_20261116 --quelle yun699_trocken
 ```
 
-## Auswerten
+## Auswerten (eigene Zellmetriken)
 
 ```bash
 python public_benchmark/extended_benchmark/yun_full/auswerte_yun699.py \
@@ -41,6 +41,31 @@ python public_benchmark/extended_benchmark/yun_full/auswerte_yun699.py \
 
 `--split test` zählt nur Testrecords; ohne die Angabe wird alles gezählt, was im
 Lauf steckt.
+
+## Auswerten (Yun-Zählweise)
+
+```bash
+python public_benchmark/extended_benchmark/yun_full/yun_metriken.py \
+  --run <run-id> \
+  --out public_benchmark/extended_benchmark/runs/<run-id>/yun_metriken.json
+```
+
+Exact/Partial/Unknown wie in `calculate_metrics.py` des Originalrepos: fehlende
+Zellen gelten als `x`, `x == x` ist ein Treffer. Punkt-Schätzer (SMD/logOR)
+werden nicht berechnet — dafür bräuchte es `statsmodels` wie im Original.
+
+## Gestaffelter Testlauf
+
+```bash
+python public_benchmark/extended_benchmark/yun_full/baue_stichprobe.py   # 60 IDs
+```
+
+Lauf wie oben, aber `--ids <ids aus stichprobe60.json> --run-id yun699_test60_20261116
+--quelle yun699_test60 --max-tokens 4000`.
+
+**Erfahrungswert:** 4.000 Tokens Deckel sind zu knapp — 17 von 60 Antworten (28 %)
+liefen in `length`, 6 davon ohne jede Zelle. Für den vollen Testsplit 6.000–8.000
+verwenden.
 
 ## Was der Agent sieht
 

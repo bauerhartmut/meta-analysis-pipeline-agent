@@ -1,11 +1,11 @@
 # Yun-2024-Benchmark mit dem aktuellen GLM-Agenten — Stand 16.11.2026
 
-**Status: Infrastruktur fertig, Trockenlauf mit fünf Testaufgaben gelaufen und
-gegen die offiziellen Goldannotationen ausgewertet. Der vollständige Lauf über
-den Testsplit wurde NICHT gestartet** — die gemessene Hochrechnung liegt bei
-0,6–3,2 Mio. Completion-Tokens und rund 26 Stunden Wanduhr. Nach der
-Arbeitsanweisung („falls der vollständige Lauf ungewöhnlich teuer wird, zunächst
-abbrechen und einen Bericht erstellen") ist das der Abbruchpunkt.
+**Status: Infrastruktur fertig. Trockenlauf mit fünf Aufgaben und gestaffelter
+Testlauf mit 60 geschichteten Testrecords sind gelaufen und gegen die offiziellen
+Goldannotationen ausgewertet, zusätzlich in der Yun-Zählweise (Exact/Partial/
+Unknown). Der Rest der 656 Testrecords ist noch nicht gelaufen** — Hochrechnung
+aus dem 60er-Lauf: ~1,7 Mio. Tokens und ~2,5 Stunden für die übrigen 596 Records;
+Entscheidung darüber steht aus.
 
 Getrennt vom bisherigen 76-Record-Benchmark: eigener Datensatz, eigene
 Record-Datei, eigene Auswertung, keine gemeinsamen Kennzahlen.
@@ -296,3 +296,127 @@ erst ein Lauf über den vollen Testsplit mit derselben Zählung wie Yun.
 | `…/yun_full/official_metrics.json` | offizielle Yun-Metriken je Modell |
 | `…/runs/yun699_trockenlauf_20261116/` | predictions, Lauf-Log, Auswertung |
 | `public_benchmark/raw_data/yun_llm_meta_analysis/` | unveränderter Originalklon |
+
+## 13. Gestaffelter Testlauf: 60 geschichtete Testrecords
+
+Freigabe: erst 60 Records, Token-Deckel 4.000 je Antwort, danach Entscheidung
+über den Rest.
+
+### Auswahl (deterministisch, ohne Blick auf Ausgaben)
+
+`yun_full/baue_stichprobe.py` → `yun_full/stichprobe60.json`. Schichten nach
+`outcome_type` × Zahl der Goldzellen, proportional zur Testverteilung
+(Größte-Reste-Verfahren), Auswahl mit gleichmäßigem Schritt über die nach id
+sortierte Schicht:
+
+| Schicht | Test | gewählt |
+|---|---:|---:|
+| continuous, 6 Zellen | 242 | 22 |
+| continuous, 4 Zellen | 45 | 4 |
+| continuous, 3 Zellen | 3 | 0 |
+| continuous, 2 Zellen | 175 | 16 |
+| continuous, 0 Zellen | 20 | 2 |
+| binary, 4 Zellen | 141 | 13 |
+| binary, 2 Zellen | 24 | 2 |
+| binary, 0 Zellen | 6 | 1 |
+| **Summe** | **656** | **60** |
+
+### Lauf
+
+```
+run_extended_extraction.py --models glm --split test \
+  --records yun_full/records/yun699.jsonl --ids <60 ids aus stichprobe60.json> \
+  --cell-timepoint --target-fallback --repair --max-tokens 4000 --workers 3 \
+  --run-id yun699_test60_20261116 --quelle yun699_test60
+```
+
+| | |
+|---|---|
+| Tokens | **173.178** (2.886 je Record) |
+| Laufzeit | ~15 Minuten Wanduhr, 2.031 s summiert, Median 18,8 s je Antwort |
+| Antworten | 43 × `stop`, 17 × `length` (Deckel 4.000) |
+| davon `length` ohne jede Zelle | 6 (technisch gescheitert) |
+| leere Antworten | 11 (5 ohne Fehlerklasse + 6 `length_ohne_ergebnis`) |
+| gemeldete Zellen | 180 |
+
+Der Deckel hat den Ausreißer aus dem Trockenlauf (19.000 Tokens) auf 4.000
+gedrückt, aber **28 % der Antworten laufen in den Deckel**; bei 6 Records bleibt
+danach nichts verwertbar. 4.000 ist für diesen Prompt zu knapp.
+
+### Eigene Zellmetriken
+
+| Kennzahl | Wert |
+|---|---|
+| Goldzellen | 236 |
+| richtig / falsch / fehlend | **144 / 29 / 63** |
+| Zellen ohne Gold | 7 |
+| Precision | **0,8000** |
+| Recall | **0,6102** |
+| F1 | **0,6923** |
+| Abdeckung | 0,6102 |
+| MAE (über 173 verglichene Zellen) | 6,2058 |
+| Records exakt / teilweise / ohne Treffer | 27 / 20 / 2 |
+| technische Ausfälle / leere Antworten | 6 / 11 |
+
+| Feld | richtig | falsch | fehlend |
+|---|---:|---:|---:|
+| `intervention_mean` | 15 | 5 | 8 |
+| `intervention_standard_deviation` | 10 | 5 | 8 |
+| `intervention_group_size` | 36 | 5 | 13 |
+| `intervention_events` | 10 | 1 | 2 |
+| `comparator_mean` | 15 | 5 | 7 |
+| `comparator_standard_deviation` | 10 | 5 | 8 |
+| `comparator_group_size` | 39 | 2 | 13 |
+| `comparator_events` | 9 | 1 | 4 |
+
+Armbild: Intervention 71 richtig / 16 falsch / 31 fehlend, Comparator 73 / 13 /
+32. Die MAE von 6,21 wird von wenigen großen Werten getragen (Gruppengrößen,
+Extremwerte), nicht von systematischer Streuung.
+
+### Yun-Zählweise (Exact/Partial/Unknown)
+
+`yun_full/yun_metriken.py` bildet die Zählweise aus `calculate_metrics.py` nach:
+fehlende Gold- und Modellzellen gelten als `x`, `x == x` ist ein Treffer; exact =
+alle Felder des Tasks stimmen; partial_k = mindestens k Treffer.
+
+| Task | n | exact | partial_1 | model_unknowns | reference_unknowns |
+|---|---:|---:|---:|---:|---:|
+| continuous | 44 | **0,4318** | 0,8864 | 55 | 85 |
+| binary | 16 | **0,6250** | 1,0000 | 7 | 8 |
+
+Feldtrefferquoten continuous: `intervention_mean` 0,6364,
+`intervention_standard_deviation` 0,7045, `intervention_group_size` 0,6364,
+`comparator_mean` 0,6818, `comparator_standard_deviation` 0,7045,
+`comparator_group_size` 0,6818. Binary: 0,8125 / 0,8125 / 0,7500 / 0,8750.
+
+### Vergleich mit GPT-4 — jetzt auf derselben Zählweise, aber nicht derselben Stichprobe
+
+| Metrik | GLM-5.3 (60 Records) | GPT-4 (656 Records, Yun) |
+|---|---:|---:|
+| continuous exact | 0,4318 | 0,4866 |
+| continuous partial_1 | 0,8864 | 0,9216 |
+| binary exact | 0,6250 | 0,6550 |
+| binary partial_1 | 1,0000 | 0,9123 |
+
+**Zulässig ist jetzt der Vergleich der Zählweise, nicht der Population.** Offen
+bleiben vier Unterschiede: (1) 60 geschichtete statt 656 Records, (2) eine
+einheitliche v7-Extraktion statt getrennter Continuous-/Binary-Prompts und
+modellspezifischer Templates, (3) Zeitpunktregel als Text statt keiner Vorgabe,
+(4) 4.000-Token-Deckel, der 28 % der Antworten abschneidet — GPT-4 hatte keinen
+solchen Deckel. Punkt 4 drückt unser Ergebnis; Punkt 2 kann es in beide
+Richtungen verschieben.
+
+Für die Punkt-Schätzer (SMD/logOR) fehlt der Vergleich: Yun nutzt dafür
+`statsmodels`, das in dieser Umgebung nicht installiert ist. Eine eigene Näherung
+wäre nicht Yun-identisch und wird deshalb nicht ausgewiesen.
+
+### Hochrechnung Rest
+
+| | 60 Records gemessen | 596 Records übrig |
+|---|---:|---:|
+| Tokens | 173.178 | **~1,72 Mio.** |
+| Wanduhr | ~15 min | **~2,5 h** |
+
+Der Deckel macht den Restlauf kalkulierbar. Vor dem Start sollte er aber auf
+6.000–8.000 angehoben werden: bei 4.000 scheitern 6 von 60 Records vollständig,
+was den Recall künstlich senkt und den Vergleich mit GPT-4 verzerrt.

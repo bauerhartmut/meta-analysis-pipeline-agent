@@ -1,0 +1,109 @@
+{
+  "methode": "geschichtet nach outcome_type und Goldzellenzahl, proportional, gleichmaessiger Schritt ueber die nach id sortierte Schicht",
+  "gesamttest": 656,
+  "stichprobe": 60,
+  "schichten": {
+    "binary:0": {
+      "test": 6,
+      "ziel": 1,
+      "gewaehlt": 1
+    },
+    "binary:2": {
+      "test": 24,
+      "ziel": 2,
+      "gewaehlt": 2
+    },
+    "binary:4": {
+      "test": 141,
+      "ziel": 13,
+      "gewaehlt": 13
+    },
+    "continuous:0": {
+      "test": 20,
+      "ziel": 2,
+      "gewaehlt": 2
+    },
+    "continuous:2": {
+      "test": 175,
+      "ziel": 16,
+      "gewaehlt": 16
+    },
+    "continuous:3": {
+      "test": 3,
+      "ziel": 0,
+      "gewaehlt": 0
+    },
+    "continuous:4": {
+      "test": 45,
+      "ziel": 4,
+      "gewaehlt": 4
+    },
+    "continuous:6": {
+      "test": 242,
+      "ziel": 22,
+      "gewaehlt": 22
+    }
+  },
+  "ids": [
+    "yun2024:473",
+    "yun2024:118",
+    "yun2024:340",
+    "yun2024:10",
+    "yun2024:40",
+    "yun2024:62",
+    "yun2024:107",
+    "yun2024:132",
+    "yun2024:250",
+    "yun2024:297",
+    "yun2024:369",
+    "yun2024:400",
+    "yun2024:492",
+    "yun2024:507",
+    "yun2024:541",
+    "yun2024:623",
+    "yun2024:319",
+    "yun2024:394",
+    "yun2024:8",
+    "yun2024:89",
+    "yun2024:106",
+    "yun2024:146",
+    "yun2024:198",
+    "yun2024:273",
+    "yun2024:329",
+    "yun2024:404",
+    "yun2024:458",
+    "yun2024:515",
+    "yun2024:565",
+    "yun2024:580",
+    "yun2024:594",
+    "yun2024:605",
+    "yun2024:638",
+    "yun2024:678",
+    "yun2024:11",
+    "yun2024:300",
+    "yun2024:469",
+    "yun2024:620",
+    "yun2024:6",
+    "yun2024:30",
+    "yun2024:76",
+    "yun2024:110",
+    "yun2024:160",
+    "yun2024:183",
+    "yun2024:208",
+    "yun2024:220",
+    "yun2024:246",
+    "yun2024:283",
+    "yun2024:307",
+    "yun2024:335",
+    "yun2024:359",
+    "yun2024:410",
+    "yun2024:421",
+    "yun2024:432",
+    "yun2024:447",
+    "yun2024:503",
+    "yun2024:524",
+    "yun2024:551",
+    "yun2024:573",
+    "yun2024:669"
+  ]
+}
