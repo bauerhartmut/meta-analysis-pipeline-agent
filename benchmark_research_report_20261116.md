@@ -334,14 +334,15 @@ Messung auf dem 60-Record-Baseline-Lauf:
 
 | Kennzahl | Wert |
 |---|---:|
-| Harte Warnungen | 14 |
+| Harte Warnungen | 15 |
 | davon leere Antworten | 11 |
 | davon Events > N | 2 |
 | davon ungleiche Arme | 1 |
+| davon SD gegen Mittelwert | 1 |
 | Erkannte falsche Zellen | 2 von 29 (6,9 %) |
 | Fehlalarme | 1 |
 | Precision der Warnungen | 0,667 |
-| Weiche Hinweise (fehlende Felder) | 112, darunter 63 echte Auslassungen |
+| Weiche Hinweise (fehlende Felder) | 124, darunter 63 echte Auslassungen |
 
 **Bewertung:** Der Validator fängt strukturelle Fehler (leere Antwort, unmögliche
 Ereigniszahlen, defektes Schema), aber **nicht** die häufigen semantischen Fehler
@@ -424,7 +425,7 @@ Fehleranalyse begründet, aber nicht experimentell belegt.
 
 **6. Welche Fehler können wir bereits jetzt automatisch verhindern?**
 Leere Antworten, Events > Gruppengröße, doppelte Zellen, SD ≤ 0, extrem ungleiche Arme,
-Ereigniszahlen bei kontinuierlichem Outcome. Das sind 14 Warnungen auf 60 Records, davon
+Ereigniszahlen bei kontinuierlichem Outcome. Das sind 15 Warnungen auf 60 Records, davon
 11 leere Antworten — die Quote echter Fehler unter den Warnungen liegt bei 2 von 3.
 
 **7. Welche Probleme brauchen weiterhin ein stärkeres Modell oder Menschen?**
