@@ -180,6 +180,16 @@ gestartet werden.
 - Das Repository ist seit 16.11.2026 privat. Der alte Commit liefert mit
   Cache-Bypass 404; ein CDN-Cache kann kurzzeitig noch 200 liefern.
 
+## Nachträgliche Redaktion (2026-11-16)
+
+- `blind_b_20261110.zip` und die Volltextordner unter `data/bench/` sowie
+  `data/origpdf/` sind in `.gitignore` eingetragen. Das Blindpaket enthält
+  Volltexte, aber keine A-Annotation.
+- Die Pass-B-Prüfnotiz
+  `data/bench/validierung/pruefung_pass_b_zeile_20261110.md` wurde redigiert:
+  konkrete Effekt-, KI-, SE- und Zitatwerte wurden entfernt; die Aussage zum
+  Meta-Analyse-Gate bleibt erhalten. Kein Code oder Test liest die Notiz.
+
 ## Lokale Löschung (2026-11-16)
 
 Nach bestätigter neuer History und Privatstellung wurden gelöscht:
