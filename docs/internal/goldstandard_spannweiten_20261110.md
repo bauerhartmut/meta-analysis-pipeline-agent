@@ -13,8 +13,8 @@ formulierungen und Zwei-Zahlen-Klammern.
   17 `klammer_zwei_zahlen`, 6 `korrelation_spanne`.
 - **Ein echter 5.11-Fall: `3790c91f96`.** Alle sechs
   `korrelation_spanne`-Treffer liegen in diesem Dokument; die Spannweiten
-  für emotionale und körperliche Symptome sind bereits in
-  `goldstandard_entscheidung_3790c91f96.md` aufgelöst.
+  für emotionale und körperliche Symptome sind bereits in der internen
+  Entscheidung aufgelöst (nicht öffentlich versioniert).
 - **Kein weiteres Dokument** berichtet eine Spannweite über Zeitpunkte.
 - Zwei Klammer-Kandidaten sind Konfidenzintervalle, keine Zeitpunktspannen:
   `87079ba88a` (`[-9.22, -4.56]`, 95%-KI) und `2675c25aab` (sechs

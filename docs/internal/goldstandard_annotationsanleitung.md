@@ -6,8 +6,8 @@ gegen den Konsens, nicht gegen die Datenbank. v1.1 ergänzt den Grenzfall 5.11
 (Spannweite über Zeitpunkte); v1.2 präzisiert 5.9 für Dosis-Wirkungs-Peaks und
 Sensitivitätsanalysen.
 
-Das JSON-Schema steht in `docs/internal/goldstandard_schema.json`, ein
-geprüftes Beispiel in `data/golden_effects/example_annotation.json`. Der
+Das JSON-Schema steht in `docs/internal/goldstandard_schema.json`. Ein
+öffentliches Beispiel wird aus Blindheitsgründen nicht bereitgestellt; der
 Formatprüfer ist `scripts/pruefe_goldstandard.py`.
 
 ---
@@ -223,7 +223,8 @@ Tabelle 2 löst auf: emotional T1 −0,17, T2 −0,206, T3 −0,199; körperlich
 T1 −0,248, T2 −0,265, T3 −0,266. Das sind sechs Zeilen, nicht zwei. Die
 Pipeline speicherte zwei emotionale Zeilen ohne `time_point` und keine
 körperliche Zeile; der Abgleich wertet das als Recall-Lücke, nicht als
-Matching-Fehler (siehe `goldstandard_entscheidung_3790c91f96.md`).
+Matching-Fehler; der Fall ist intern dokumentiert, aber nicht öffentlich
+versioniert.
 
 ---
 

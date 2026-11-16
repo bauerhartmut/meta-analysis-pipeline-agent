@@ -1,6 +1,6 @@
 # Status B-Rücklauf und Prüfskript (2026-11-10)
 
-Bezug: Stand seit `vollannotation_abgabe_checkliste_20261110.md`.
+Bezug: Stand seit der internen Abgabe-Checkliste (nicht öffentlich versioniert).
 A und B bleiben getrennt; es gab keinen Vergleich zwischen A und B.
 
 ## Kurzfassung

@@ -33,8 +33,8 @@ getrennt; es gab keinen Vergleich zwischen A und B.
   Anweisung für die externe Annotation.
 - `docs/internal/status_20261110_b_ruecklauf.md` — ausführlicher
   Statusbericht.
-- `docs/internal/vollannotation_abgabe_checkliste_20261110.md` —
-  Checkliste mit offenen Abgabe-Hashes.
+- Interne Abgabe-Checkliste (nicht öffentlich versioniert) — Checkliste mit
+  offenen Abgabe-Hashes.
 - Paketprüfung: 36 Prüfsummen OK, ZIP mit 67 Dateien und 30 Volltexten,
   B im ZIP mit 0 Fehlern und 30 offen; keine echte A-Datei.
 

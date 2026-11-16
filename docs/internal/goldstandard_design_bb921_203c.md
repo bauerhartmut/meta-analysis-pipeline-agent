@@ -41,8 +41,7 @@ placebo-controlled study"` sind korrekt.
 die eingeschlossenen Studien, nicht das Design der Arbeit.
 
 **Entscheidung:** `design_verbatim` = `"systematic review and meta-analysis"`
-(wörtlich aus Titel, Abstract und Zeile 123; ebenso im geprüften Beispiel
-`data/golden_effects/example_annotation.json`). `design_category` und
+(wörtlich aus Titel, Abstract und Zeile 123). `design_category` und
 `stratum` bleiben unverändert.
 
 ## Wirkung

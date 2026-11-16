@@ -130,3 +130,17 @@ ENTWICKLUNGSAUFTRAG_v2.pdf
 docs/briefing_modell_20261107.pdf
 data/bench/**/*.pdf
 data/bench/validierung/*.png
+
+# A-Ableitungen mit konkreten Effektwerten oder Zeilenzahlen (nur lokal)
+data/golden_effects/example_annotation.json
+data/golden_effects/abgleich_*.json
+data/golden_effects/kalibrierung_klaerung_09843.json
+data/golden_effects/kalibrierung_pruefpunkte.json
+data/golden_effects/kalibrierung_tabellenpruefung_09843_2c7ab.json
+data/golden_effects/probelauf_eignung.json
+docs/internal/kalibrierung_pruefpunkte_20261110.md
+docs/internal/kalibrierung_tabellenpruefung_09843_2c7ab.md
+docs/internal/vollannotation_abgabe_checkliste_20261110.md
+docs/internal/probelauf_abgabe_checkliste_20261110.md
+docs/internal/goldstandard_entscheidung_*.md
+docs/internal/probelauf_eignung_20261110.md

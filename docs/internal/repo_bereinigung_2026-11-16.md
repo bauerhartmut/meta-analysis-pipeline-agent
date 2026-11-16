@@ -13,7 +13,7 @@ lokalen Kopien bleiben erhalten; sie werden nur nicht mehr versioniert. Die
 anschließenden `.gitignore`-Regeln verhindern ein versehentliches erneutes
 Hinzufügen.
 
-## Entfernte Dateien (57)
+## Entfernte Dateien (71)
 
 ### Private und externe Unterlagen (4)
 
@@ -25,6 +25,31 @@ Hinzufügen.
 ### A-Annotation (1)
 
 - `data/golden_effects/goldstandard_A.json`
+
+### A-Ableitungen mit konkreten Effektwerten oder Zeilenzahlen (14)
+
+- `data/golden_effects/example_annotation.json`
+- `data/golden_effects/abgleich_trockenlauf.json`
+- `data/golden_effects/abgleich_pipeline.json`
+- `data/golden_effects/kalibrierung_klaerung_09843.json`
+- `data/golden_effects/kalibrierung_pruefpunkte.json`
+- `data/golden_effects/kalibrierung_tabellenpruefung_09843_2c7ab.json`
+- `data/golden_effects/probelauf_eignung.json`
+- `docs/internal/kalibrierung_pruefpunkte_20261110.md`
+- `docs/internal/kalibrierung_tabellenpruefung_09843_2c7ab.md`
+- `docs/internal/vollannotation_abgabe_checkliste_20261110.md`
+- `docs/internal/probelauf_abgabe_checkliste_20261110.md`
+- `docs/internal/goldstandard_entscheidung_3790c91f96.md`
+- `docs/internal/goldstandard_entscheidung_5cbf.md`
+- `docs/internal/probelauf_eignung_20261110.md`
+
+`example_annotation.json` enthält eine exakte A-Effektzeile für `203c...`
+(HR 0,83, 95-%-KI, Zitat). `abgleich_trockenlauf.json` übernimmt genau diese
+Zeile als `gold_effect`. Die Kalibrierungsdateien und Checklisten nennen
+konkrete A-Zeilen, Effektwerte oder Zeilenzahlen pro Dokument.
+`abgleich_pipeline.json` enthält aktuell nur `gold: 0`, nennt aber A als
+Goldquelle und ist ein A-abgeleitetes, veraltetes Vergleichsartefakt; es wird
+deshalb ebenfalls nicht weiter versioniert.
 
 ### Verlags- und Dritttexte (38)
 
@@ -98,9 +123,12 @@ Lizenznachweis im Repository.
 
 ## Bewusst nicht entfernt
 
-- `data/golden_effects/example_annotation.json`: ein einzelnes geprüftes
-  Formatbeispiel, keine vollständige Goldstandarddatei. Die Anleitung verweist
-  darauf; es bleibt deshalb vorerst öffentlich.
+- `data/golden_effects/kalibrierung_arbeitsblatt.json` und
+  `data/golden_effects/vollannotation_arbeitsblaetter.json`: Arbeitsblatt-
+  Metadaten und Effektstellen, keine A-Zeilen oder A-Entscheidungen.
+- Statusnotizen mit aggregierten A-Zahlen (69 Zeilen, 13 Begründungen):
+  Sie verraten keine per-Dokument-Antworten, bleiben aber ein Hinweis auf den
+  Umfang. Bei strenger Blindheit sind auch sie zu entfernen.
 - `data/golden_effects/blind_b_20261110/`: das B-Paket mit leerem B-Gerüst,
   Anleitung, Schema und Arbeitsblättern. Es enthält keine A-Annotation.
 - `public_benchmark/.../glass_v1/`: Die Labels sind MIT-lizenziert; die
@@ -112,10 +140,32 @@ Lizenznachweis im Repository.
 ## Git-History
 
 Das Entfernen aus dem aktuellen Commit löscht die Dateien **nicht** aus der
-Git-History. Insbesondere `goldstandard_A.json` und der externe Ordner waren
-bereits öffentlich. Ein echter Purge benötigt History-Rewrite und Force-Push und
-ist nach den Projektregeln nicht erlaubt. Für die B-Blindheit bleibt deshalb die
-wichtigste Konsequenz: Repository privat stellen oder B neu bewerten.
+Git-History. Insbesondere `goldstandard_A.json`, die externe Korrespondenz und
+die A-Beispielzeile waren bereits öffentlich. Ein echter Purge benötigt
+History-Rewrite und Force-Push und ist nach den Projektregeln nicht erlaubt.
+Für die B-Blindheit bleibt deshalb die wichtigste Konsequenz: Repository privat
+stellen oder B neu bewerten.
+
+## Optionen für die veröffentlichte History
+
+1. **Repository privat stellen** — sofort wirksam, kein Rewrite, keine
+   Zustimmung Dritter. Bestehende Klone, Forks und GitHub-Caches werden nicht
+   bereinigt; für B ist A damit trotzdem nicht wieder blind.
+2. **Neues öffentliches Repository mit sauberem Root-Commit** — alten Stand
+   archivieren oder löschen, neuen Baum ohne History veröffentlichen. Kein
+   Force-Push, aber die alte History bleibt bis zur Löschung des alten Repos
+   öffentlich; vorhandene Klone bleiben.
+3. **GitHub Support um Löschung bitten** — für sensible Daten oder
+   urheberrechtlich geschützte Inhalte (ggf. DMCA). Erfolg ist nicht
+   garantiert und deckt nicht automatisch die A-Annotation ab.
+4. **History-Rewrite mit `git filter-repo`/BFG und Force-Push** — entfernt die
+   Dateien aus zukünftigen Klonen, nicht aus vorhandenen Forks/Caches. Das
+   verletzt die Projektregel „kein Force-Push, keine History-Rewrites“ und
+   braucht ausdrückliche Freigabe; nicht empfohlen.
+
+**Empfehlung:** Option 1 sofort, Option 2 nur wenn ein öffentlicher sauberer
+Stand gebraucht wird. B muss ohnehin neu bewertet oder mit neuen Dokumenten
+gestartet werden.
 
 ## Folgen
 
