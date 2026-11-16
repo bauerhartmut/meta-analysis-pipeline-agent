@@ -131,6 +131,16 @@ docs/briefing_modell_20261107.pdf
 data/bench/**/*.pdf
 data/bench/validierung/*.png
 
+# Blindpaket und Volltexte (nicht versionieren)
+blind_b_20261110.zip
+data/bench/**/fulltext/
+data/bench/sol2/volltext/
+data/bench/sol2/xml/
+data/meta_nachbau/**/quellen/
+data/meta_nachbau/**/volltexte/
+data/meta_nachbau/**/volltexte_txt/
+data/origpdf/
+
 # A-Ableitungen mit konkreten Effektwerten oder Zeilenzahlen (nur lokal)
 data/golden_effects/example_annotation.json
 data/golden_effects/abgleich_*.json
