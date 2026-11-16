@@ -8,10 +8,10 @@ Dritt-Datensätze und keine internen Binärartefakte mehr enthalten.
 
 ## Methode
 
-Die Dateien werden mit `git rm --cached` aus dem Repository entfernt. Die
-lokalen Kopien bleiben erhalten; sie werden nur nicht mehr versioniert. Die
-anschließenden `.gitignore`-Regeln verhindern ein versehentliches erneutes
-Hinzufügen.
+Die Dateien wurden mit `git rm --cached` aus dem Repository entfernt. Die
+lokalen Kopien blieben bis zur bestätigten neuen History und Privatstellung
+erhalten; danach wurden sie am 16.11.2026 gelöscht. Die anschließenden
+`.gitignore`-Regeln verhindern ein versehentliches erneutes Hinzufügen.
 
 ## Entfernte Dateien (71)
 
@@ -170,21 +170,31 @@ gestartet werden.
 
 ## Durchgeführter History-Purge (2026-11-16)
 
-- Sicherung: `local_patches/AIResearch_pre_purge_20261116.bundle` (lokal,
-  gitignored; enthält die alte History).
+- Sicherung: `local_patches/AIResearch_pre_purge_20261116.bundle` bestand bis
+  zur bestätigten neuen History und wurde am 16.11.2026 gelöscht.
 - 31 Pfadpräfixe aus allen Commits entfernt; 549 Commits vorher, 544 danach
   (fünf leere Commits entfallen).
 - Neue Remote-Spitze: `f7d7324`; die alte Spitze `28a5c35` ist lokal nicht mehr
   im Objektbestand.
 - Prüfung: 0 Treffer in der neuen History und im aktuellen Baum.
-- GitHub kann unreachable Objekte, Caches und Forks noch eine Zeit lang
-  behalten. Ein vollständiger Purge dort ist nur über GitHub Support bzw.
-  Privatstellen oder Löschen des Repositories sicher.
+- Das Repository ist seit 16.11.2026 privat. Der alte Commit liefert mit
+  Cache-Bypass 404; ein CDN-Cache kann kurzzeitig noch 200 liefern.
+
+## Lokale Löschung (2026-11-16)
+
+Nach bestätigter neuer History und Privatstellung wurden gelöscht:
+
+- das lokale Purge-Backup `AIResearch_pre_purge_20261116.bundle`
+- der temporäre Rewrite-Klon und die Vorab-Kopien unter `local_patches/`
+- die lokalen Kopien der entfernten Dateien an ihren ursprünglichen Pfaden
+
+Andere Sicherungen unter `local_patches/` (Kerndateien) blieben erhalten. Eine
+Wiederherstellung der alten History ist damit nicht mehr möglich.
 
 ## Folgen
 
 - Lokale Prüfskripte, die `goldstandard_A.json` als Default verwenden, laufen
-  weiter, solange die lokale Kopie vorhanden ist.
+  ohne die lokale Kopie nicht mehr; die A-Datei ist bewusst entfernt.
 - Ein frischer Clone enthält die entfernten Dateien nicht. Die betroffenen
   Benchmarks müssen ihre Rohdaten künftig über den dokumentierten Download-
   oder Freigabeweg beziehen.
