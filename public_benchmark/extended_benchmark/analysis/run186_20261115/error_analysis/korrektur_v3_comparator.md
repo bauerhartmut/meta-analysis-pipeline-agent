@@ -82,4 +82,7 @@ wiederholt: Die 14 Komparatorzellen zählen dort weiter als falsch, weil die
 Vorgabe sie verlangte. Die Kennzahlen des Berichts (F1 0,5455, Precision 0,7394,
 Recall 0,4321, MAE 0,5763) sind damit Version-2-Zahlen und nicht mit Version 3
 vergleichbar. Ob das Modell mit dem korrigierten Feld die TAU-Werte extrahiert,
-ist offen und braucht einen eigenen Lauf — er wurde hier bewusst nicht gestartet.
+war offen; der freigegebene Teillauf über 289–295 hat es geprüft:
+**14 von 14 Komparatorzellen richtig**, 41 von 42 Zellen des Teillaufs
+(24.768 Tokens, `v3_comparator_289_295.md`). Die einzige Abweichung ist ein
+weiterer Gold-Fehler (295: SD 11,1 statt 10,4), der eine Version 4 braucht.

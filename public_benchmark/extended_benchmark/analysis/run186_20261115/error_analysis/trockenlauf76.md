@@ -2,8 +2,8 @@
 
 Run-ID `trockenlauf76_20261116`, Modell `glm`, Datei
 `records/yun_test76_ziel.jsonl` (SHA-256 `06fea97c…`, damals Version 1;
-seit 16.11.2026 Version 2 mit `74fd0c05…`, siehe
-`korrektur_yun2024_479.md`),
+Version 2 war `74fd0c05…`, aktuell ist Version 3 mit `3f811bed…`, siehe
+`korrektur_v3_comparator.md`),
 `--split test --cell-timepoint --target-fallback --group-size-mode aus --repair
 --max-tokens 19000`.
 

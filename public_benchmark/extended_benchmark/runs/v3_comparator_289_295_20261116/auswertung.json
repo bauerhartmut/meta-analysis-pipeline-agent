@@ -1,0 +1,402 @@
+{
+  "run": "v3_comparator_289_295_20261116",
+  "records": 76,
+  "gesamt": {
+    "task": "numeric_extraction",
+    "records": 76,
+    "records_without_prediction": 69,
+    "gold_cells": 243,
+    "predicted_cells": 42,
+    "matched_cells": 41,
+    "cell_precision": 0.9762,
+    "cell_recall": 0.1687,
+    "cell_f1": 0.2877,
+    "mae_pairs": 0.0167,
+    "mae_pairs_max": 0.7,
+    "mae_pairs_covered": 42,
+    "mae_coverage": 0.1728,
+    "record_exact": 6,
+    "record_exact_rate": 0.0789,
+    "arm_swap_records": 0,
+    "arm_swap_evaluable": 21,
+    "arm_swap_rate": 0.0,
+    "fields": {
+      "comparator_events": {
+        "gold": 4,
+        "predicted": 0,
+        "matched": 0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "mae": null,
+        "mae_covered": 0
+      },
+      "comparator_group_size": {
+        "gold": 70,
+        "predicted": 7,
+        "matched": 7,
+        "recall": 0.1,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 7
+      },
+      "comparator_mean": {
+        "gold": 26,
+        "predicted": 7,
+        "matched": 7,
+        "recall": 0.2692,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 7
+      },
+      "comparator_standard_deviation": {
+        "gold": 20,
+        "predicted": 7,
+        "matched": 7,
+        "recall": 0.35,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 7
+      },
+      "intervention_events": {
+        "gold": 4,
+        "predicted": 0,
+        "matched": 0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "mae": null,
+        "mae_covered": 0
+      },
+      "intervention_group_size": {
+        "gold": 70,
+        "predicted": 7,
+        "matched": 7,
+        "recall": 0.1,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 7
+      },
+      "intervention_mean": {
+        "gold": 28,
+        "predicted": 7,
+        "matched": 7,
+        "recall": 0.25,
+        "precision": 1.0,
+        "mae": 0.0,
+        "mae_covered": 7
+      },
+      "intervention_standard_deviation": {
+        "gold": 21,
+        "predicted": 7,
+        "matched": 6,
+        "recall": 0.2857,
+        "precision": 0.8571,
+        "mae": 0.1,
+        "mae_covered": 7
+      }
+    },
+    "tolerance": {
+      "abs": 1e-06,
+      "rel": 0.0
+    }
+  },
+  "ohne_ziel": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0
+  },
+  "gruppengroesse_ohne_zeitpunkt": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0
+  },
+  "ohne_zeitpunkt": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0
+  },
+  "zieltreu": {
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0,
+    "precision": 0.0
+  },
+  "rueckfall": {
+    "zellen": 42,
+    "richtig": 41,
+    "falsch": 1,
+    "ohne_gold": 0,
+    "precision": 0.9762,
+    "zeitdistanz_median_monate": null,
+    "zeitdistanz_bekannt": 0,
+    "beispiele": [
+      {
+        "record_id": "yun2024:289",
+        "field": "intervention_group_size",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 19.0,
+        "gold": 19.0
+      },
+      {
+        "record_id": "yun2024:289",
+        "field": "intervention_mean",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 44.6,
+        "gold": 44.6
+      },
+      {
+        "record_id": "yun2024:289",
+        "field": "intervention_standard_deviation",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 12.2,
+        "gold": 12.2
+      },
+      {
+        "record_id": "yun2024:289",
+        "field": "comparator_group_size",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 19.0,
+        "gold": 19.0
+      },
+      {
+        "record_id": "yun2024:289",
+        "field": "comparator_mean",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 48.2,
+        "gold": 48.2
+      },
+      {
+        "record_id": "yun2024:289",
+        "field": "comparator_standard_deviation",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 12.3,
+        "gold": 12.3
+      },
+      {
+        "record_id": "yun2024:290",
+        "field": "intervention_group_size",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 19.0,
+        "gold": 19.0
+      },
+      {
+        "record_id": "yun2024:290",
+        "field": "intervention_mean",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 38.5,
+        "gold": 38.5
+      },
+      {
+        "record_id": "yun2024:290",
+        "field": "intervention_standard_deviation",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 11.8,
+        "gold": 11.8
+      },
+      {
+        "record_id": "yun2024:290",
+        "field": "comparator_group_size",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 19.0,
+        "gold": 19.0
+      },
+      {
+        "record_id": "yun2024:290",
+        "field": "comparator_mean",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 41.3,
+        "gold": 41.3
+      },
+      {
+        "record_id": "yun2024:290",
+        "field": "comparator_standard_deviation",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 10.1,
+        "gold": 10.1
+      },
+      {
+        "record_id": "yun2024:291",
+        "field": "intervention_group_size",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 19.0,
+        "gold": 19.0
+      },
+      {
+        "record_id": "yun2024:291",
+        "field": "intervention_mean",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 49.4,
+        "gold": 49.4
+      },
+      {
+        "record_id": "yun2024:291",
+        "field": "intervention_standard_deviation",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 14.0,
+        "gold": 14.0
+      },
+      {
+        "record_id": "yun2024:291",
+        "field": "comparator_group_size",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 19.0,
+        "gold": 19.0
+      },
+      {
+        "record_id": "yun2024:291",
+        "field": "comparator_mean",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 46.5,
+        "gold": 46.5
+      },
+      {
+        "record_id": "yun2024:291",
+        "field": "comparator_standard_deviation",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 9.8,
+        "gold": 9.8
+      },
+      {
+        "record_id": "yun2024:292",
+        "field": "intervention_group_size",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 19.0,
+        "gold": 19.0
+      },
+      {
+        "record_id": "yun2024:292",
+        "field": "intervention_mean",
+        "target": "post (after 4-week training)",
+        "timepoint": "Post",
+        "value": 48.2,
+        "gold": 48.2
+      }
+    ]
+  },
+  "unklar": {
+    "zellen": 0,
+    "anteil": 0.0,
+    "beispiele": []
+  },
+  "arm_gemischt": {
+    "records": 0,
+    "beispiele": []
+  },
+  "unsichere_ziele": {
+    "records": 0,
+    "zellen": 0,
+    "richtig": 0,
+    "falsch": 0,
+    "ohne_gold": 0,
+    "beispiele": []
+  },
+  "belegstufen": {
+    "stufen": {
+      "gedruckt": 42
+    },
+    "klassen": {
+      "rueckfall": 42
+    },
+    "treffer_belegt": 41,
+    "treffer_nur_ziel": 0,
+    "rueckfall_intervall": {
+      "untere_grenze": 1.0,
+      "obere_grenze": 1.0,
+      "zaehler": {
+        "zieltreu": 0,
+        "rueckfall": 42,
+        "unklar": 0
+      }
+    }
+  },
+  "arm_klassen": {
+    "records": {
+      "arm_konsistent": 76
+    },
+    "beispiele": [],
+    "gemischte_zellen": 0,
+    "zellen_mit_label": 0,
+    "anteil": null,
+    "wilson_95_records": [
+      0.0,
+      0.0481
+    ],
+    "wilson_95_zellen": null
+  },
+  "auslassungen": {
+    "gesamt": 201,
+    "je_feld": {
+      "comparator_events": 4,
+      "comparator_group_size": 63,
+      "comparator_mean": 19,
+      "comparator_standard_deviation": 13,
+      "intervention_events": 4,
+      "intervention_group_size": 63,
+      "intervention_mean": 21,
+      "intervention_standard_deviation": 14
+    },
+    "quote": 0.8272
+  },
+  "je_feld": {
+    "comparator_group_size": {
+      "rueckfall_zellen": 7,
+      "rueckfall_richtig": 7
+    },
+    "comparator_mean": {
+      "rueckfall_zellen": 7,
+      "rueckfall_richtig": 7
+    },
+    "comparator_standard_deviation": {
+      "rueckfall_zellen": 7,
+      "rueckfall_richtig": 7
+    },
+    "intervention_group_size": {
+      "rueckfall_zellen": 7,
+      "rueckfall_richtig": 7
+    },
+    "intervention_mean": {
+      "rueckfall_zellen": 7,
+      "rueckfall_richtig": 7
+    },
+    "intervention_standard_deviation": {
+      "rueckfall_zellen": 7,
+      "rueckfall_richtig": 6
+    }
+  },
+  "je_quelle": {
+    "v3_comparator": {
+      "records": 7,
+      "zellen": 42,
+      "richtig": 41,
+      "falsch": 1
+    },
+    "v6_hauptlauf": {
+      "records": 69,
+      "leere_antworten": 69,
+      "auslassungen": 201
+    }
+  },
+  "zell_f1_aus_klassen": 0.2877
+}
