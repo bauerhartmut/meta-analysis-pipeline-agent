@@ -213,12 +213,18 @@ def main() -> int:
     a("\nGeldkosten sind nicht angegeben: fuer den Endpunkt liegt kein Preisaushang vor.\n")
 
     a("\n## 6. Experimente\n\n")
-    a("| Experiment | Aenderung | Baseline F1 | Variante F1 | Differenz | Ergebnis |\n|---|---|---:|---:|---:|---|\n")
+    a("| Experiment | Aenderung | Baseline P / R / F1 | Variante P / R / F1 | Differenz F1 | Ergebnis |\n")
+    a("|---|---|---|---|---:|---|\n")
+
+    def tripel(e: dict) -> str:
+        return f"{z(e['precision'])} / {z(e['recall'])} / {z(e['f1'])}"
+
     b = laeufe["yun20_4000_glm_gskcb_20261116"]
-    a(f"| B | Gruppengroessenregel im Prompt (`--group-size-mode kurz`) | {z(laeufe['yun20_4000_glm_20261116']['f1'])} | "
-      f"{z(b['f1'])} | {z(b['f1'] - laeufe['yun20_4000_glm_20261116']['f1'])} | kein Gewinn, Hypothese verworfen |\n")
+    b0 = laeufe["yun20_4000_glm_20261116"]
+    a(f"| B | Gruppengroessenregel im Prompt (`--group-size-mode kurz`) | {tripel(b0)} | "
+      f"{tripel(b)} | {z(b['f1'] - b0['f1'])} | kein Gewinn, Hypothese verworfen |\n")
     c = laeufe["yun20_8000_glm_v8_20261116"]
-    a(f"| C | Quellenangabe vor den Zellen (v8, `--quellenzeile`) | {z(g8['f1'])} | {z(c['f1'])} | "
+    a(f"| C | Quellenangabe vor den Zellen (v8, `--quellenzeile`) | {tripel(g8)} | {tripel(c)} | "
       f"{z(c['f1'] - g8['f1'])} | gescheitert: Modell ignoriert den Zusatz und laesst `timepoint` weg |\n")
     a("\nNicht gelaufen (kein Budget): Experiment A (Vollstaendigkeitsregel), D (kompakteres Schema), "
       "E (Evidenz je Zelle). Diese Ideen sind **unbelegt**.\n")

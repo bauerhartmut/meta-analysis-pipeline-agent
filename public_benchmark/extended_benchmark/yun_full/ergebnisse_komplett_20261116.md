@@ -98,10 +98,10 @@ Geldkosten sind nicht angegeben: fuer den Endpunkt liegt kein Preisaushang vor.
 
 ## 6. Experimente
 
-| Experiment | Aenderung | Baseline F1 | Variante F1 | Differenz | Ergebnis |
-|---|---|---:|---:|---:|---|
-| B | Gruppengroessenregel im Prompt (`--group-size-mode kurz`) | 0,8120 | 0,8000 | -0,0120 | kein Gewinn, Hypothese verworfen |
-| C | Quellenangabe vor den Zellen (v8, `--quellenzeile`) | 0,8369 | 0,8088 | -0,0281 | gescheitert: Modell ignoriert den Zusatz und laesst `timepoint` weg |
+| Experiment | Aenderung | Baseline P / R / F1 | Variante P / R / F1 | Differenz F1 | Ergebnis |
+|---|---|---|---|---:|---|
+| B | Gruppengroessenregel im Prompt (`--group-size-mode kurz`) | 0,9818 / 0,6923 / 0,8120 | 1,0000 / 0,6667 / 0,8000 | -0,0120 | kein Gewinn, Hypothese verworfen |
+| C | Quellenangabe vor den Zellen (v8, `--quellenzeile`) | 0,9365 / 0,7564 / 0,8369 | 0,9483 / 0,7051 / 0,8088 | -0,0281 | gescheitert: Modell ignoriert den Zusatz und laesst `timepoint` weg |
 
 Nicht gelaufen (kein Budget): Experiment A (Vollstaendigkeitsregel), D (kompakteres Schema), E (Evidenz je Zelle). Diese Ideen sind **unbelegt**.
 
