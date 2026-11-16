@@ -37,6 +37,16 @@ def test_umfang_und_ziele() -> None:
     assert [r["record_id"] for r in records if not r["timepoint"]["target"]] == []
 
 
+def test_ziel_at_admission_ist_aufloesbar() -> None:
+    """yun2024:71 traegt "at admission"; das ist der Baseline-Zeitpunkt."""
+    record = next(r for r in lies() if r["record_id"] == "yun2024:71")
+    ziel = record["timepoint"]["target"]
+    assert ziel == "at admission"
+    assert evaluate_fallback.klassifiziere(ziel, "baseline") == "zieltreu"
+    assert evaluate_fallback.klassifiziere(ziel, "at admission") == "zieltreu"
+    assert evaluate_fallback.klassifiziere(ziel, "month 6") == "rueckfall"
+
+
 def test_abgeleitete_ziele_sind_als_unsicher_markiert() -> None:
     records = lies()
     markiert = {r["record_id"] for r in records if r["timepoint"].get("unsicher")}

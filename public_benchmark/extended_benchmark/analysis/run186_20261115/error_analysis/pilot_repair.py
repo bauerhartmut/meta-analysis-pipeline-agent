@@ -96,8 +96,7 @@ def waehlen() -> dict[str, Any]:
             gruppen["leer"].append(kandidat)
         elif status == "zellen":
             rows = (v7.get(record_id) or {}).get("rows") or []
-            ziel = str((record.get("context") or {}).get("target_timepoint") or "")
-            if rows and arme_gemischt(rows, ziel):
+            if rows and arme_gemischt(rows):
                 gruppen["armgemischt"].append(kandidat)
             elif not zeile["kategorien"] and zeile["falscher_wert"] == "0" and zeile["ueberzaehlig"] == "0":
                 gruppen["normal"].append(kandidat)

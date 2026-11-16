@@ -33,6 +33,8 @@ from stage_extraction import normalisiere  # noqa: E402
 
 def klassifiziere(target: str, label: str) -> str:
     """Ordnet eine Zelle einer Klasse zu (Eingaben bereits normalisiert)."""
+    target = _kanonisch(target)
+    label = _kanonisch(label)
     if not target:
         return "ohne_ziel"
     if not label:
@@ -48,25 +50,55 @@ def klassifiziere(target: str, label: str) -> str:
     return "rueckfall"
 
 
+# Synonyme fuer die Messung vor der Intervention. Sie sind ein Zeitpunkt, keine
+# Einheit: "at admission" und "baseline" meinen dasselbe. Beide Formen kommen in
+# dieser Sammlung vor (Ziel "at admission" in yun2024:71, sonst "baseline").
+BASELINE_WOERTER = {
+    "baseline",
+    "baseline values",
+    "admission",
+    "at admission",
+    "on admission",
+    "preoperative",
+    "pre operative",
+    "preop",
+    "before surgery",
+}
+
+
+def _kanonisch(text: str) -> str:
+    """Fasst Synonyme des Ausgangspunkts zu "baseline" zusammen.
+
+    Bewusst eng: "day 0" oder "week 0" bleiben stehen, weil sie je nach
+    Studium auch nach der Intervention liegen koennen.
+    """
+    ruhig = " ".join(text.lower().replace("-", " ").replace("/", " ").split())
+    return "baseline" if ruhig in BASELINE_WOERTER else text
+
+
 KURZ_H = re.compile(r"^(\d{1,3})\s*h\b", re.IGNORECASE)
+
+
+def _zahl_und_einheit(text: str) -> tuple[str, int] | None:
+    """Einheit und Zahl aus "week 24", "12 months" oder "24 h postoperatively"."""
+    treffer = label_mit_einheit(text)
+    if treffer:
+        return treffer
+    kurz = KURZ_H.match(text)
+    return ("hour", int(kurz.group(1))) if kurz else None
 
 
 def _zeitpunkt_gleich(a: str, b: str) -> bool:
     """Vergleicht zwei Zeitpunktangaben ueber Einheit und Zahl."""
-
-    def teile(text: str) -> tuple[str, int] | None:
-        treffer = label_mit_einheit(text)
-        if treffer:
-            return treffer
-        kurz = KURZ_H.match(text)
-        return ("hour", int(kurz.group(1))) if kurz else None
-
-    links, rechts = teile(a), teile(b)
+    links, rechts = _zahl_und_einheit(a), _zahl_und_einheit(b)
     return bool(links and links == rechts)
 
 
 NUMMER = re.compile(r"^(\d{1,3})$")
-ZEIT_LABEL = re.compile(r"^(week|month|day)\s+(\d{1,3})$")
+EINHEIT_WORT = r"(week|month|day|year|hour)"
+# Eine Quelle fuer die Einheiten: EINHEIT_WORT. Vorher stand hier nur
+# week|month|day, weshalb "24 h postoperatively" nicht aufloesbar war.
+ZEIT_LABEL = re.compile(rf"^{EINHEIT_WORT}\s+(\d{{1,3}})$")
 
 
 def normalisiere_label(label: str, target: str) -> tuple[str, str]:
@@ -79,25 +111,23 @@ def normalisiere_label(label: str, target: str) -> tuple[str, str]:
     "0" wird nur dann zu baseline, wenn das Ziel baseline sagt.
     """
     roh = normalisiere(label)
-    ziel = normalisiere(target)
+    ziel = _kanonisch(normalisiere(target))
     if not roh or roh in ("not applicable", "running text", "not stated"):
         return "", "leer"
+    if _kanonisch(roh) == "baseline":
+        return "baseline", "ok"
     if NUMMER.match(roh):
         zahl = int(roh)
         if zahl == 0 and ziel in ("baseline", "week 0", "month 0", "day 0"):
             return "baseline", "ok"
-        treffer = ZEIT_LABEL.match(ziel)
-        if treffer and int(treffer.group(2)) == zahl:
-            return f"{treffer.group(1)} {zahl}", "ok"
-        kurz = KURZ_H.match(ziel)
-        if kurz and int(kurz.group(1)) == zahl:
-            # Ziel "24 h postoperatively" belegt die Einheit Stunde.
-            return f"hour {zahl}", "ok"
+        treffer = _zahl_und_einheit(ziel)
+        if treffer and treffer[1] == zahl:
+            return f"{treffer[0]} {zahl}", "ok"
         return "", "unklar"
     return roh, "ok"
 
 
-def arme_gemischt(cells: list[dict[str, Any]], target: str) -> bool:
+def arme_gemischt(cells: list[dict[str, Any]]) -> bool:
     """Wahr, wenn die Arme verschiedene Zeitpunkte tragen.
 
     Ein Zeitpunkt gilt je Arm; weicht der Komparator vom Interventionsarm ab,
@@ -117,7 +147,6 @@ def arme_gemischt(cells: list[dict[str, Any]], target: str) -> bool:
     return any(m != mengen[0] for m in mengen[1:])
 
 
-EINHEIT_WORT = r"(week|month|day|year|hour)"
 LABEL_EINHEIT_ERST = re.compile(rf"^{EINHEIT_WORT}s?\s*(\d{{1,3}})$", re.I)
 LABEL_ZAHL_ERST = re.compile(rf"^(\d{{1,3}})\s*{EINHEIT_WORT}s?$", re.I)
 
@@ -176,8 +205,8 @@ def belegstufe(label: str, ziel: str, artikel: str) -> tuple[str, str]:
     zirkulaer und nur fuer Treffer brauchbar), "unklar" (nichts belegt,
     mehrdeutig oder Widerspruch zum Ziel), "leer" (keine Zeitpunktangabe).
     """
-    roh = normalisiere(label)
-    ziel_norm = normalisiere(ziel)
+    roh = _kanonisch(normalisiere(label))
+    ziel_norm = _kanonisch(normalisiere(ziel))
     if not roh or roh in ("not applicable", "running text", "not stated"):
         return "", "leer"
     gedruckt = label_mit_einheit(roh)
@@ -262,7 +291,7 @@ def bestaetigter_konflikt(record_id: str) -> bool:
 
 
 def arm_klasse(
-    cells: list[dict[str, Any]], gold_werte: list[float], artikel: str, target: str, record_id: str = ""
+    cells: list[dict[str, Any]], gold_werte: list[float], artikel: str, record_id: str = ""
 ) -> str:
     """Trennt Modell- von Goldmischung.
 
@@ -272,7 +301,7 @@ def arm_klasse(
     (Hinweis auf Goldmischung, kein Beweis bei gefalteten Tabellen).
     "arm_gemischt_modell": Mischung ohne diesen Hinweis.
     """
-    if not arme_gemischt(cells, target):
+    if not arme_gemischt(cells):
         return "arm_konsistent"
     if bestaetigter_konflikt(record_id):
         return "arm_gemischt_gold_bestaetigt"
@@ -297,7 +326,7 @@ def pruefe_v7_zeile(row: dict[str, Any], artikel: str) -> dict[str, Any]:
     """
     fallback = row.get("fallback")
     header = str(row.get("timepoint_header") or "")
-    ziel = normalisiere(row.get("target_timepoint") or "")
+    ziel = _kanonisch(normalisiere(row.get("target_timepoint") or ""))
     labels = {normalisiere(cell.get("timepoint") or "") for cell in (row.get("rows") or [])}
     labels.discard("")
     befund: dict[str, Any] = {
@@ -451,7 +480,11 @@ def main() -> int:
                 zaehler[f"{art}_ohne_gold"] += 1
                 je_quelle[quelle]["ohne_gold"] += 1
             if art == "rueckfall":
-                ziel_rang, label_rang = rang(target), rang(label)
+                # Die Distanz misst, was das Modell gedruckt hat, nicht die
+                # kanonische Form: sonst wuerde "preop" ploetzlich als Monat 0
+                # zaehlen und die archivierten Medianwerte verschieben.
+                ziel_rang = rang(target)
+                label_rang = rang(cell.get("timepoint") or "")
                 if ziel_rang is not None and label_rang is not None:
                     distanzen.append(abs(label_rang - ziel_rang))
                 if len(rueckfall_beispiele) < 20:
@@ -478,7 +511,7 @@ def main() -> int:
                 else:
                     zaehler["unsichere_ziele_falsch"] += 1
         klasse = arm_klasse(
-            cells, [wert for feld, wert in gold.items() if "mean" in feld[0]], artikel, target, record_id
+            cells, [wert for feld, wert in gold.items() if "mean" in feld[0]], artikel, record_id
         )
         arm_klassen[klasse] += 1
         if klasse != "arm_konsistent":

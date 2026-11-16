@@ -44,16 +44,15 @@ def test_arme_behalten_ihre_zeitpunkte() -> None:
     from extended_benchmark.evaluate_fallback import arme_gemischt
 
     gleich = [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": "24"}]
-    assert arme_gemischt(gleich, "week 24") is False
+    assert arme_gemischt(gleich) is False
     # Genau der Fall yun2024:75: Intervention Woche 24, Komparator Baseline.
     gemischt = [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": "0"}]
-    assert arme_gemischt(gemischt, "week 24") is True
+    assert arme_gemischt(gemischt) is True
     # Fehlt der Zeitpunkt eines Arms, wird nichts uebertragen.
-    assert arme_gemischt([{"arm": "intervention", "timepoint": "24"}], "week 24") is False
+    assert arme_gemischt([{"arm": "intervention", "timepoint": "24"}]) is False
     assert (
         arme_gemischt(
-            [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": ""}],
-            "week 24",
+            [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": ""}]
         )
         is False
     )
@@ -126,14 +125,14 @@ def test_armklassen_trennen_modell_und_gold() -> None:
         {"arm": "intervention", "timepoint": "24"},
         {"arm": "comparator", "timepoint": "0"},
     ]
-    assert arm_klasse(cells, [11.97, 13.72], "", "week 24") == "arm_gemischt_modell"
+    assert arm_klasse(cells, [11.97, 13.72], "") == "arm_gemischt_modell"
     assert (
-        arm_klasse(cells, [11.97, 13.72], "0   7.62   11.97 +- 4.00   24   13.72 +- 4.53", "week 24")
+        arm_klasse(cells, [11.97, 13.72], "0   7.62   11.97 +- 4.00   24   13.72 +- 4.53")
         == "arm_gemischt_gold_kandidat"
     )
     assert zahlen_in_zeile([11.97, 13.72], "nur 11.97 hier\n13.72 dort") is False
     gleich = [{"arm": "intervention", "timepoint": "24"}, {"arm": "comparator", "timepoint": "24"}]
-    assert arm_klasse(gleich, [1.0, 2.0], "", "week 24") == "arm_konsistent"
+    assert arm_klasse(gleich, [1.0, 2.0], "") == "arm_konsistent"
 
 
 def test_stundenangabe_im_ziel_loest_einheit_auf() -> None:
@@ -148,6 +147,21 @@ def test_stundenangabe_im_ziel_loest_einheit_auf() -> None:
     )
     # Andere Zahl bleibt unklar.
     assert evaluate_fallback.normalisiere_label("48", "24 h postoperatively") == ("", "unklar")
+
+
+def test_aufnahme_ist_ein_baseline_zeitpunkt() -> None:
+    """Ein Aufnahme-Label ist der Ausgangspunkt, kein abweichender Zeitpunkt."""
+    from extended_benchmark.evaluate_fallback import belegstufe, klassifiziere, normalisiere_label
+
+    assert normalisiere_label("at admission", "at admission") == ("baseline", "ok")
+    assert normalisiere_label("On admission", "baseline") == ("baseline", "ok")
+    assert normalisiere_label("pre-operative", "baseline") == ("baseline", "ok")
+    assert klassifiziere("at admission", "baseline") == "zieltreu"
+    assert klassifiziere("baseline", "at admission") == "zieltreu"
+    assert belegstufe("at admission", "at admission", "") == ("baseline", "gedruckt")
+    # Ein anderer Zeitpunkt bleibt rueckfall, und "day 0" wird nicht umgedeutet.
+    assert klassifiziere("at admission", "week 24") == "rueckfall"
+    assert normalisiere_label("day 0", "baseline") == ("day 0", "ok")
 
 
 def test_gruppengroesse_ohne_zeitpunkt_ist_eigene_klasse() -> None:
