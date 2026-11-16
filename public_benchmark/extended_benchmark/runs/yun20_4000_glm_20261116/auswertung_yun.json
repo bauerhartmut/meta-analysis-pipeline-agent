@@ -1,0 +1,98 @@
+{
+  "run": "yun20_4000_glm_20261116",
+  "records": 20,
+  "tokens": 49135,
+  "zeit_summiert_s": 2.2,
+  "zellen": {
+    "gold": 78,
+    "richtig": 54,
+    "falsch": 1,
+    "fehlend": 23,
+    "ohne_gold": 2
+  },
+  "precision": 0.9818,
+  "precision_inkl_zellen_ohne_gold": 0.9474,
+  "recall": 0.6923,
+  "f1": 0.812,
+  "abdeckung": 0.6923,
+  "mae": 0.1818,
+  "records_status": {
+    "leere_antwort": 1,
+    "teilweise": 3,
+    "exakt_yun": 13,
+    "exakt_strict": 13,
+    "technischer_ausfall": 2,
+    "ohne_treffer": 1
+  },
+  "technische_ausfaelle": 2,
+  "leere_antworten": 1,
+  "je_feld": {
+    "comparator_events": {
+      "fehlend": 1,
+      "richtig": 4
+    },
+    "comparator_group_size": {
+      "fehlend": 5,
+      "richtig": 12,
+      "ohne_gold": 1
+    },
+    "comparator_mean": {
+      "fehlend": 3,
+      "richtig": 6
+    },
+    "comparator_standard_deviation": {
+      "fehlend": 3,
+      "richtig": 5
+    },
+    "intervention_events": {
+      "richtig": 5
+    },
+    "intervention_group_size": {
+      "fehlend": 5,
+      "richtig": 11,
+      "falsch": 1,
+      "ohne_gold": 1
+    },
+    "intervention_mean": {
+      "fehlend": 3,
+      "richtig": 6
+    },
+    "intervention_standard_deviation": {
+      "fehlend": 3,
+      "richtig": 5
+    }
+  },
+  "je_arm": {
+    "comparator": {
+      "fehlend": 12,
+      "richtig": 27,
+      "ohne_gold": 1
+    },
+    "intervention": {
+      "fehlend": 11,
+      "richtig": 27,
+      "falsch": 1,
+      "ohne_gold": 1
+    }
+  },
+  "je_outcome_typ": {
+    "binary": {
+      "fehlend": 3,
+      "richtig": 17
+    },
+    "continuous": {
+      "fehlend": 20,
+      "richtig": 37,
+      "falsch": 1
+    }
+  },
+  "abweichungen": [
+    {
+      "record_id": "yun2024:447",
+      "field": "intervention_group_size",
+      "gold": 104.0,
+      "modell": 114.0,
+      "outcome": "effects for walking"
+    }
+  ]
+}

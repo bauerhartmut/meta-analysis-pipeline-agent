@@ -1,0 +1,82 @@
+{
+  "run": "yun20_4000_qwen_20261116",
+  "records": 20,
+  "tokens": 113458,
+  "zeit_summiert_s": 2749.7,
+  "zellen": {
+    "gold": 78,
+    "richtig": 36,
+    "falsch": 0,
+    "fehlend": 42,
+    "ohne_gold": 0
+  },
+  "precision": 1.0,
+  "precision_inkl_zellen_ohne_gold": 1.0,
+  "recall": 0.4615,
+  "f1": 0.6316,
+  "abdeckung": 0.4615,
+  "mae": 0.0,
+  "records_status": {
+    "leere_antwort": 1,
+    "exakt_yun": 10,
+    "exakt_strict": 9,
+    "technischer_ausfall": 10
+  },
+  "technische_ausfaelle": 10,
+  "leere_antworten": 1,
+  "je_feld": {
+    "comparator_events": {
+      "richtig": 4,
+      "fehlend": 1
+    },
+    "comparator_group_size": {
+      "fehlend": 10,
+      "richtig": 7
+    },
+    "comparator_mean": {
+      "fehlend": 5,
+      "richtig": 4
+    },
+    "comparator_standard_deviation": {
+      "fehlend": 5,
+      "richtig": 3
+    },
+    "intervention_events": {
+      "richtig": 4,
+      "fehlend": 1
+    },
+    "intervention_group_size": {
+      "fehlend": 10,
+      "richtig": 7
+    },
+    "intervention_mean": {
+      "fehlend": 5,
+      "richtig": 4
+    },
+    "intervention_standard_deviation": {
+      "fehlend": 5,
+      "richtig": 3
+    }
+  },
+  "je_arm": {
+    "comparator": {
+      "fehlend": 21,
+      "richtig": 18
+    },
+    "intervention": {
+      "fehlend": 21,
+      "richtig": 18
+    }
+  },
+  "je_outcome_typ": {
+    "binary": {
+      "richtig": 16,
+      "fehlend": 4
+    },
+    "continuous": {
+      "fehlend": 38,
+      "richtig": 20
+    }
+  },
+  "abweichungen": []
+}

@@ -1,0 +1,147 @@
+{
+  "run": "yun20_4000_qwen30_20261116",
+  "records": 20,
+  "tokens": 2249,
+  "zeit_summiert_s": 34.8,
+  "zellen": {
+    "gold": 78,
+    "richtig": 38,
+    "falsch": 7,
+    "fehlend": 33,
+    "ohne_gold": 16
+  },
+  "precision": 0.8444,
+  "precision_inkl_zellen_ohne_gold": 0.623,
+  "recall": 0.4872,
+  "f1": 0.6179,
+  "abdeckung": 0.4872,
+  "mae": 0.6151,
+  "records_status": {
+    "ohne_treffer": 8,
+    "leere_antwort": 1,
+    "exakt_yun": 5,
+    "exakt_strict": 5,
+    "teilweise": 6
+  },
+  "technische_ausfaelle": 0,
+  "leere_antworten": 1,
+  "je_feld": {
+    "comparator_events": {
+      "falsch": 1,
+      "richtig": 4,
+      "ohne_gold": 1
+    },
+    "comparator_group_size": {
+      "fehlend": 13,
+      "richtig": 4
+    },
+    "comparator_mean": {
+      "ohne_gold": 4,
+      "falsch": 2,
+      "richtig": 7
+    },
+    "comparator_standard_deviation": {
+      "falsch": 1,
+      "fehlend": 2,
+      "richtig": 5,
+      "ohne_gold": 3
+    },
+    "intervention_events": {
+      "fehlend": 2,
+      "richtig": 3,
+      "ohne_gold": 1
+    },
+    "intervention_group_size": {
+      "fehlend": 14,
+      "richtig": 3
+    },
+    "intervention_mean": {
+      "ohne_gold": 4,
+      "falsch": 2,
+      "richtig": 7
+    },
+    "intervention_standard_deviation": {
+      "falsch": 1,
+      "fehlend": 2,
+      "richtig": 5,
+      "ohne_gold": 3
+    }
+  },
+  "je_arm": {
+    "comparator": {
+      "fehlend": 15,
+      "falsch": 4,
+      "ohne_gold": 8,
+      "richtig": 20
+    },
+    "intervention": {
+      "fehlend": 18,
+      "ohne_gold": 8,
+      "falsch": 3,
+      "richtig": 18
+    }
+  },
+  "je_outcome_typ": {
+    "binary": {
+      "fehlend": 5,
+      "falsch": 1,
+      "richtig": 14
+    },
+    "continuous": {
+      "fehlend": 28,
+      "falsch": 6,
+      "richtig": 24
+    }
+  },
+  "abweichungen": [
+    {
+      "record_id": "yun2024:10",
+      "field": "comparator_events",
+      "gold": 5.0,
+      "modell": 10.0,
+      "outcome": "Grade III/IV stomatitis"
+    },
+    {
+      "record_id": "yun2024:30",
+      "field": "intervention_mean",
+      "gold": 38.1,
+      "modell": 45.8,
+      "outcome": "Short-Form 36-Items improvement"
+    },
+    {
+      "record_id": "yun2024:30",
+      "field": "intervention_standard_deviation",
+      "gold": 9.5,
+      "modell": 11.4,
+      "outcome": "Short-Form 36-Items improvement"
+    },
+    {
+      "record_id": "yun2024:30",
+      "field": "comparator_mean",
+      "gold": 31.5,
+      "modell": 41.1,
+      "outcome": "Short-Form 36-Items improvement"
+    },
+    {
+      "record_id": "yun2024:30",
+      "field": "comparator_standard_deviation",
+      "gold": 7.4,
+      "modell": 10.8,
+      "outcome": "Short-Form 36-Items improvement"
+    },
+    {
+      "record_id": "yun2024:160",
+      "field": "intervention_mean",
+      "gold": 0.61,
+      "modell": 0.62,
+      "outcome": "BMI z-score at 12months"
+    },
+    {
+      "record_id": "yun2024:160",
+      "field": "comparator_mean",
+      "gold": 0.66,
+      "modell": 0.59,
+      "outcome": "BMI z-score at 12months"
+    }
+  ]
+}

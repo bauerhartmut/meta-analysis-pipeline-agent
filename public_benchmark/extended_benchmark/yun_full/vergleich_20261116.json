@@ -1,0 +1,336 @@
+{
+  "stand": "2026-11-16",
+  "laeufe": [
+    {
+      "label": "GLM-5.3 v7, 60 Records, 4000 Tokens",
+      "modell": [
+        "gwdg/glm-5.3"
+      ],
+      "run": "yun699_test60_20261116",
+      "records": 60,
+      "goldzellen": 236,
+      "richtig": 144,
+      "falsch": 29,
+      "fehlend": 63,
+      "zellen_ohne_gold": 7,
+      "precision": 0.8324,
+      "recall": 0.6102,
+      "f1": 0.7042,
+      "tokens_output": 131443,
+      "tokens_pro_richtiger_zelle": 912.8,
+      "zeit_summe_s": 2031,
+      "cached": 0,
+      "fehlerklassen": {
+        "ok": 54,
+        "length_ohne_ergebnis": 6
+      },
+      "je_feld": {
+        "intervention_group_size": {
+          "richtig": 36,
+          "falsch": 5,
+          "fehlend": 13
+        },
+        "comparator_group_size": {
+          "richtig": 39,
+          "falsch": 2,
+          "fehlend": 13
+        },
+        "intervention_mean": {
+          "richtig": 15,
+          "falsch": 5,
+          "fehlend": 8
+        },
+        "comparator_mean": {
+          "richtig": 15,
+          "falsch": 5,
+          "fehlend": 7
+        },
+        "intervention_standard_deviation": {
+          "richtig": 10,
+          "falsch": 5,
+          "fehlend": 8
+        },
+        "comparator_standard_deviation": {
+          "richtig": 10,
+          "falsch": 5,
+          "fehlend": 8
+        },
+        "intervention_events": {
+          "richtig": 10,
+          "falsch": 1,
+          "fehlend": 2
+        },
+        "comparator_events": {
+          "richtig": 9,
+          "falsch": 1,
+          "fehlend": 4
+        }
+      }
+    },
+    {
+      "label": "GLM-5.3 v7, 20 Records, 4000 Tokens",
+      "modell": [
+        "gwdg/glm-5.3"
+      ],
+      "run": "yun20_4000_glm_20261116",
+      "records": 20,
+      "goldzellen": 78,
+      "richtig": 54,
+      "falsch": 1,
+      "fehlend": 23,
+      "zellen_ohne_gold": 2,
+      "precision": 0.9818,
+      "recall": 0.6923,
+      "f1": 0.812,
+      "tokens_output": 35691,
+      "tokens_pro_richtiger_zelle": 660.9,
+      "zeit_summe_s": 2,
+      "cached": 20,
+      "fehlerklassen": {
+        "ok": 18,
+        "length_ohne_ergebnis": 2
+      },
+      "je_feld": {
+        "intervention_group_size": {
+          "richtig": 11,
+          "falsch": 1,
+          "fehlend": 5
+        },
+        "comparator_group_size": {
+          "richtig": 12,
+          "falsch": 0,
+          "fehlend": 5
+        },
+        "intervention_events": {
+          "richtig": 5,
+          "falsch": 0,
+          "fehlend": 0
+        },
+        "comparator_events": {
+          "richtig": 4,
+          "falsch": 0,
+          "fehlend": 1
+        },
+        "intervention_mean": {
+          "richtig": 6,
+          "falsch": 0,
+          "fehlend": 3
+        },
+        "intervention_standard_deviation": {
+          "richtig": 5,
+          "falsch": 0,
+          "fehlend": 3
+        },
+        "comparator_mean": {
+          "richtig": 6,
+          "falsch": 0,
+          "fehlend": 3
+        },
+        "comparator_standard_deviation": {
+          "richtig": 5,
+          "falsch": 0,
+          "fehlend": 3
+        }
+      }
+    },
+    {
+      "label": "Qwen3.5-397B v7, 20 Records, 4000 Tokens",
+      "modell": [
+        "gwdg/qwen3.5-397b-a17b"
+      ],
+      "run": "yun20_4000_qwen_20261116",
+      "records": 20,
+      "goldzellen": 78,
+      "richtig": 36,
+      "falsch": 0,
+      "fehlend": 42,
+      "zellen_ohne_gold": 0,
+      "precision": 1.0,
+      "recall": 0.4615,
+      "f1": 0.6316,
+      "tokens_output": 65201,
+      "tokens_pro_richtiger_zelle": 1811.1,
+      "zeit_summe_s": 2750,
+      "cached": 0,
+      "fehlerklassen": {
+        "ok": 10,
+        "length_ohne_ergebnis": 8,
+        "json_kaputt": 2
+      },
+      "je_feld": {
+        "intervention_group_size": {
+          "richtig": 7,
+          "falsch": 0,
+          "fehlend": 10
+        },
+        "comparator_group_size": {
+          "richtig": 7,
+          "falsch": 0,
+          "fehlend": 10
+        },
+        "intervention_events": {
+          "richtig": 4,
+          "falsch": 0,
+          "fehlend": 1
+        },
+        "comparator_events": {
+          "richtig": 4,
+          "falsch": 0,
+          "fehlend": 1
+        },
+        "intervention_mean": {
+          "richtig": 4,
+          "falsch": 0,
+          "fehlend": 5
+        },
+        "intervention_standard_deviation": {
+          "richtig": 3,
+          "falsch": 0,
+          "fehlend": 5
+        },
+        "comparator_mean": {
+          "richtig": 4,
+          "falsch": 0,
+          "fehlend": 5
+        },
+        "comparator_standard_deviation": {
+          "richtig": 3,
+          "falsch": 0,
+          "fehlend": 5
+        }
+      }
+    },
+    {
+      "label": "Qwen3-30B v7, 20 Records, 4000 Tokens",
+      "modell": [
+        "gwdg/qwen3-30b-a3b-instruct-2507"
+      ],
+      "run": "yun20_4000_qwen30_20261116",
+      "records": 20,
+      "goldzellen": 78,
+      "richtig": 38,
+      "falsch": 7,
+      "fehlend": 33,
+      "zellen_ohne_gold": 16,
+      "precision": 0.8444,
+      "recall": 0.4872,
+      "f1": 0.6179,
+      "tokens_output": 2249,
+      "tokens_pro_richtiger_zelle": 59.2,
+      "zeit_summe_s": 35,
+      "cached": 14,
+      "fehlerklassen": {
+        "ok": 20
+      },
+      "je_feld": {
+        "intervention_group_size": {
+          "richtig": 3,
+          "falsch": 0,
+          "fehlend": 14
+        },
+        "intervention_events": {
+          "richtig": 3,
+          "falsch": 0,
+          "fehlend": 2
+        },
+        "comparator_group_size": {
+          "richtig": 4,
+          "falsch": 0,
+          "fehlend": 13
+        },
+        "comparator_events": {
+          "richtig": 4,
+          "falsch": 1,
+          "fehlend": 0
+        },
+        "intervention_mean": {
+          "richtig": 7,
+          "falsch": 2,
+          "fehlend": 0
+        },
+        "intervention_standard_deviation": {
+          "richtig": 5,
+          "falsch": 1,
+          "fehlend": 2
+        },
+        "comparator_mean": {
+          "richtig": 7,
+          "falsch": 2,
+          "fehlend": 0
+        },
+        "comparator_standard_deviation": {
+          "richtig": 5,
+          "falsch": 1,
+          "fehlend": 2
+        }
+      }
+    },
+    {
+      "label": "GLM-5.3 v7 + Gruppengroessenregel, 20 Records, 4000 Tokens",
+      "modell": [
+        "gwdg/glm-5.3"
+      ],
+      "run": "yun20_4000_glm_gskcb_20261116",
+      "records": 20,
+      "goldzellen": 78,
+      "richtig": 52,
+      "falsch": 0,
+      "fehlend": 26,
+      "zellen_ohne_gold": 2,
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "tokens_output": 29966,
+      "tokens_pro_richtiger_zelle": 576.3,
+      "zeit_summe_s": 1802,
+      "cached": 0,
+      "fehlerklassen": {
+        "ok": 16,
+        "json_kaputt": 2,
+        "length_ohne_ergebnis": 2
+      },
+      "je_feld": {
+        "intervention_group_size": {
+          "richtig": 11,
+          "falsch": 0,
+          "fehlend": 6
+        },
+        "comparator_group_size": {
+          "richtig": 11,
+          "falsch": 0,
+          "fehlend": 6
+        },
+        "intervention_events": {
+          "richtig": 4,
+          "falsch": 0,
+          "fehlend": 1
+        },
+        "comparator_events": {
+          "richtig": 4,
+          "falsch": 0,
+          "fehlend": 1
+        },
+        "intervention_mean": {
+          "richtig": 6,
+          "falsch": 0,
+          "fehlend": 3
+        },
+        "intervention_standard_deviation": {
+          "richtig": 5,
+          "falsch": 0,
+          "fehlend": 3
+        },
+        "comparator_mean": {
+          "richtig": 6,
+          "falsch": 0,
+          "fehlend": 3
+        },
+        "comparator_standard_deviation": {
+          "richtig": 5,
+          "falsch": 0,
+          "fehlend": 3
+        }
+      }
+    }
+  ]
+}

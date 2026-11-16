@@ -1,0 +1,21 @@
+{
+  "run": "yun699_test60_20261116",
+  "records": 60,
+  "warnungen": 139,
+  "je_regel": {
+    "weich:feld_fehlt": 112,
+    "leere_antwort": 11,
+    "weich:n_fehlt": 12,
+    "arme_sehr_ungleich": 1,
+    "events_ueber_n": 2,
+    "sd_gegen_mittel": 1
+  },
+  "gegen_gold": {
+    "falsche_zellen": 29,
+    "erkannt": 2,
+    "quote_erkannt": 0.069,
+    "warnungen_auf_echten_fehler": 2,
+    "warnungen_ohne_fehler": 1,
+    "praezision": 0.6667
+  }
+}

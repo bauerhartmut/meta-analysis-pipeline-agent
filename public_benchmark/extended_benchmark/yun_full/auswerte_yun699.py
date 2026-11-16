@@ -41,6 +41,24 @@ def klasse(feld: str) -> str:
     return "sonstiges"
 
 
+FELDER = {
+    "continuous": [
+        "intervention_mean",
+        "intervention_standard_deviation",
+        "intervention_group_size",
+        "comparator_mean",
+        "comparator_standard_deviation",
+        "comparator_group_size",
+    ],
+    "binary": [
+        "intervention_events",
+        "intervention_group_size",
+        "comparator_events",
+        "comparator_group_size",
+    ],
+}
+
+
 def arm(feld: str) -> str:
     return "intervention" if feld.startswith("intervention") else "comparator"
 
@@ -51,6 +69,7 @@ def main() -> int:
     parser.add_argument("--records", type=Path, default=RECORDS)
     parser.add_argument("--out", type=Path, default=None)
     parser.add_argument("--split", default=None, help="nur Records dieses Splits zaehlen")
+    parser.add_argument("--ids", default=None, help="Komma-getrennte record_ids (sonst alle im Lauf)")
     args = parser.parse_args()
 
     lauf = RUNS / args.run
@@ -59,6 +78,9 @@ def main() -> int:
 
     if args.split:
         rows = [z for z in rows if alle[z["record_id"]]["document"]["split"] == args.split]
+    if args.ids:
+        gewuenscht = {wert.strip() for wert in args.ids.split(",") if wert.strip()}
+        rows = [z for z in rows if z["record_id"] in gewuenscht]
 
     richtig = falsch = fehlend = ohne_gold = 0
     summe_abw = 0.0
@@ -124,20 +146,36 @@ def main() -> int:
                 je_feld[feld]["ohne_gold"] += 1
                 je_arm[arm(feld)]["ohne_gold"] += 1
                 record_komplett = False
-        if row.get("fehlerklasse"):
+        # Yun-Zaehlweise: alle Felder des Tasks gleich, wobei fehlend == fehlend
+        # als Treffer gilt. Sie zaehlt damit auch einen Record als exakt, dessen
+        # Gold leer ist und der leer antwortet.
+        felder = FELDER[typ]
+        yun_treffer = 0
+        for feld in felder:
+            g, m = gold.get(feld), gesehen.get(feld)
+            if (g is None and m is None) or (g is not None and m is not None and abs(g - m) < 1e-9):
+                yun_treffer += 1
+        if yun_treffer == len(felder):
+            record_status["exakt_yun"] += 1
+        if record_komplett and gold:
+            record_status["exakt_strict"] += 1
+        elif row.get("fehlerklasse"):
             record_status["technischer_ausfall"] += 1
         elif not row.get("rows"):
             record_status["leere_antwort"] += 1
-        elif record_komplett and gold:
-            record_status["exakt"] += 1
         elif gold and any(f in gesehen and abs(gesehen[f] - v) < 1e-9 for f, v in gold.items()):
             record_status["teilweise"] += 1
         else:
             record_status["ohne_treffer"] += 1
 
     goldzellen = richtig + falsch + fehlend
-    gemeldet = richtig + falsch + ohne_gold
+    # Bezugsgroesse der Precision sind die bewertbaren Meldungen: Zellen ohne
+    # Goldannotation sind keine falsche Extraktion, sondern unbewertbar. Sie
+    # werden separat ausgewiesen (vorher zaehlten sie als False Positive und
+    # drueckten die Precision von 0,8324 auf 0,8000).
+    gemeldet = richtig + falsch
     precision = richtig / gemeldet if gemeldet else 0.0
+    precision_mit_ohne_gold = richtig / (gemeldet + ohne_gold) if (gemeldet + ohne_gold) else 0.0
     recall = richtig / goldzellen if goldzellen else 0.0
     f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
     ergebnis = {
@@ -153,6 +191,7 @@ def main() -> int:
             "ohne_gold": ohne_gold,
         },
         "precision": round(precision, 4),
+        "precision_inkl_zellen_ohne_gold": round(precision_mit_ohne_gold, 4),
         "recall": round(recall, 4),
         "f1": round(f1, 4),
         "abdeckung": round(richtig / goldzellen, 4) if goldzellen else 0.0,
@@ -169,10 +208,16 @@ def main() -> int:
     print(
         f"  richtig {richtig} | falsch {falsch} | fehlend {fehlend} | ohne Gold {ohne_gold}"
     )
-    print(f"  Precision {precision:.4f} | Recall {recall:.4f} | F1 {f1:.4f}")
+    print(
+        f"  Precision {precision:.4f} (ohne Zellen ohne Gold; mit ihnen "
+        f"{precision_mit_ohne_gold:.4f}) | Recall {recall:.4f} | F1 {f1:.4f}"
+    )
     print(f"  Abdeckung {ergebnis['abdeckung']:.4f} | MAE {ergebnis['mae']}")
-    print(f"  Records exakt {record_status['exakt']} | teilweise {record_status['teilweise']} "
-          f"| ohne Treffer {record_status['ohne_treffer']} | Ausfaelle {ausfaelle} | leer {leere}")
+    print(
+        f"  Records exakt strict {record_status['exakt_strict']} | exakt Yun "
+        f"{record_status['exakt_yun']} | teilweise {record_status['teilweise']} | ohne Treffer "
+        f"{record_status['ohne_treffer']} | Ausfaelle {ausfaelle} | leer {leere}"
+    )
     print(f"  Tokens {tokens} | Zeit summiert {zeit:.0f}s")
     for feld, z in sorted(je_feld.items()):
         print(f"    {feld:<34} richtig {z['richtig']:>4} falsch {z['falsch']:>4} fehlend {z['fehlend']:>4}")
