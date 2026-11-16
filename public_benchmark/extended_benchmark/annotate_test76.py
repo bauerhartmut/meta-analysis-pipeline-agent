@@ -85,6 +85,24 @@ MANUELL: dict[str, tuple[str, str]] = {
     "yun2024:694": ("24 h postoperatively", "Schmerz bei Bewegung, gleiche Messreihe (0, 2, 4, 24, 48 h)"),
 }
 
+# Gold-Korrekturen nach Einzelpruefung am Artikel. Die Quelle
+# `yun_test76_ohne_ziel.jsonl` bleibt unveraendert; die Korrektur wird beim
+# Erzeugen der Ziel-Datei angewandt, damit eine Neuerzeugung sie nicht verliert.
+GOLD_KORREKTUREN: dict[str, dict[str, float]] = {
+    # PMC4144850, Tabelle 4 "Effect of the intervention on health outcomes,
+    # 2011", Spalten "Control Group" / "Intervention Group", Zeile
+    # "Anemic: Hb<110 g/l   1,922  0.508   1,919  0.562": die Kommata sind
+    # Tausendertrenner, also 1.922 bzw. 1.919 Personen. Gegenprobe ueber die
+    # berichteten Anteile: 1919 * 0.562 = 1078,5 und 1922 * 0.508 = 976,4.
+    "yun2024:479": {
+        "intervention_group_size": 1919.0,
+        "intervention_events": 1078.0,
+        "comparator_group_size": 1922.0,
+        "comparator_events": 976.0,
+    },
+}
+
+
 # PMC4215531: MCCB-Tabelle mit Pre/Post, Training ueber 4 Wochen; Gold = Post.
 for _nummer in range(289, 296):
     MANUELL[f"yun2024:{_nummer}"] = (
@@ -104,6 +122,18 @@ ZEITVOKABEL = re.compile(
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def korrigiere_gold(records: list[dict[str, Any]]) -> list[str]:
+    """Setzt die geprueften Goldwerte; gibt die geaenderten Zellen zurueck."""
+    geaendert: list[str] = []
+    for record in records:
+        for feld, wert in GOLD_KORREKTUREN.get(record["record_id"], {}).items():
+            for cell in record["gold"]["cells"]:
+                if cell["field"] == feld and cell["value"] != wert:
+                    geaendert.append(f"{record['record_id']}:{feld} {cell['value']} -> {wert}")
+                    cell["value"] = wert
+    return geaendert
 
 
 def gold_hash(records: list[dict[str, Any]]) -> str:
@@ -198,6 +228,7 @@ def main() -> int:
     if len(records) != 76:
         print(f"FEHLER: {len(records)} Records statt 76 in {QUELLE}")
         return 2
+    print("Gold-Korrekturen:", korrigiere_gold(records) or "keine")
     vorher = gold_hash(records)
 
     for record in records:

@@ -45,7 +45,9 @@ Voraussetzungen, bevor TEST das erste Mal läuft:
 243 Goldzellen, 0 Records ohne Zielzeitpunkt.
 
 ```
-SHA-256  06fea97c37864debe50f130f03a926f5fb5654a1cd0d2ef75ab330da04ad0ca7
+SHA-256  74fd0c057356c22831fae45d71644d8b7640a8a109fb48a60cc7782cfb1db704
+         (Version 2, 16.11.2026; Version 1 war 06fea97c…, siehe
+         `korrektur_yun2024_479.md`)
 Bytes    111699
 ```
 

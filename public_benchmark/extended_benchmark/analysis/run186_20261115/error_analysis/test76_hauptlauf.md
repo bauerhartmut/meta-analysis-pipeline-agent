@@ -1,55 +1,55 @@
 # Hauptlauf auf der Testbasis, alle 76 Records (16.11.2026)
 
-Run-ID `test76_hauptlauf_20261116`, Modell `glm` (`gwdg/glm-5.3`), Datei
-`records/yun_test76_ziel.jsonl` (SHA-256 `06fea97c…`, 76 Records, 243 Zellen),
-`--split test --cell-timepoint --target-fallback --group-size-mode aus --repair
---max-tokens 19000 --workers 3`.
+Run-ID `test76_hauptlauf_20261116`, Modell `glm` (`gwdg/glm-5.3`),
+`records/yun_test76_ziel.jsonl` in **Version 2** (SHA-256 `74fd0c05…`, 76
+Records, 243 Zellen), `--split test --cell-timepoint --target-fallback
+--group-size-mode aus --repair --max-tokens 19000 --workers 3`.
 
 Kosten: **552.552 Completion-Tokens** (531.767 primär, 20.785 Reparatur) für 76
 Records, 7.268 je Record; 4.657 Sekunden Rechenzeit summiert über die Records,
 Wanduhr rund 40 Minuten. 12 Records liefen über den Reparaturpfad.
 
+Die Zahlen der Version 1 (vor der Gold-Korrektur) stehen in
+`korrektur_yun2024_479.md`; die Auswertung wurde ohne neuen API-Aufruf
+wiederholt.
+
 ## 1. Gesamtkennzahlen
 
 | Kennzahl | Wert |
 |---|---|
-| Zell-F1 | 0,5351 |
-| Recall | 0,4239 |
-| Precision | 0,7254 |
-| MAE | 30,0929 |
-| MAE ohne `yun2024:479` | **0,5853** auf 128 statt 130 Zellen |
+| Zell-F1 | 0,5455 |
+| Recall | 0,4321 |
+| Precision | 0,7394 |
+| MAE | **0,5763** |
 | Abdeckung | 0,535 (130/243) |
 | exakte Records | 16/76 |
 
-**Die MAE ist kein Modellbefund.** Die beiden Gruppengrößen von `yun2024:479`
-tragen 3.837,16 der insgesamt 3.912,08 absoluten Abweichung. Ohne diesen einen
-Record liegt die MAE bei 0,5853. Details in Abschnitt 5.
+Die MAE von 0,5763 entsteht aus einer Abweichungssumme von 74,92 über 130
+zugeordnete Zellen. Die größten Einzelabweichungen sind `yun2024:365`
+(Komparator-Gruppengröße 20 statt 45 → 25) und die sechs Records der
+MCCB-Studie mit 2,0 bis 8,7 zu niedrigen Komparator-Mittelwerten
+(Abschnitt 6).
 
 ## 2. Zellklassen
 
 | Klasse | Zellen | richtig | falsch | ohne Gold | Precision |
 |---|---:|---:|---:|---:|---:|
-| `zieltreu` | 76 | 55 | 11 | 10 | 0,8333 |
+| `zieltreu` | 76 | 57 | 9 | 10 | 0,8636 |
 | `rueckfall` | 48 | 32 | 16 | 0 | 0,6667 |
 | `gruppengroesse_ohne_zeitpunkt` | 4 | 4 | 0 | 0 | 1,0 |
 | `ohne_zeitpunkt` / `ohne_ziel` | 0 | – | – | – | – |
 
 Belegstufen der Zeitpunktlabels: `gedruckt` 120, `artikel` 8, `ziel` 2,
-`unklar` 8. Treffer mit belegter Einheit 91, Treffer allein aus dem Ziel 2.
-Rückfallquote-Intervall 0,3913–0,4493 (unklar einmal nicht, einmal mitgezählt).
+`unklar` 8. Treffer mit belegter Einheit 93, Treffer allein aus dem Ziel 2.
+Rückfallquote-Intervall 0,3913–0,4493.
 
-`unsichere_ziele`: **4 Records, 10 Zellen, 10 richtig, 0 falsch.** Die vier
-abgeleiteten Ziele (`63`, `71`, `693`, `694`) sind also im Lauf vollständig
-richtig getroffen — der Block zählt jetzt auch die Zellen mit, die als `unklar`
-oder `rueckfall` enden.
+`unsichere_ziele`: **4 Records, 10 Zellen, 10 richtig, 0 falsch.**
 
 ## 3. Ausfälle und leere Antworten
 
 34 Records liefern keine Zelle: 5 technische Ausfälle und 29 leere Antworten.
 Von den 34 hat 31 ein Gold ohne Mittelwerte (leer ist dort erwartet), 3 ein Gold
 mit Mittelwerten.
-
-Technische Ausfälle:
 
 | Record | Art | Tokens | Reparatur |
 |---|---|---:|---|
@@ -59,60 +59,78 @@ Technische Ausfälle:
 | `yun2024:52` | Read-Timeout (300 s), 0 Tokens | – | Retry lief, wieder Timeout |
 | `yun2024:51` | Read-Timeout (300 s), 0 Tokens | – | Retry lief, wieder Timeout |
 
-Beide Timeout-Records hatten ihren zweiten Versuch schon; `53` und `148` haben
-19.000 plus 6.000 Tokens zweimal erfolglos verbrannt. Ein weiterer Versuch wäre
-blinde Wiederholung, deshalb keiner.
+Beide Timeout-Records hatten ihren zweiten Versuch schon; ein weiterer wäre
+blinde Wiederholung.
 
 ## 4. Auslassungen konzentrieren sich auf Gruppengrößen
 
 125 Auslassungen (Quote 0,5144): `intervention_group_size` 45,
 `comparator_group_size` 45, `*_standard_deviation` 8+7, `*_mean` 7+6,
 `*_events` 3+3. Die 31 folgenlosen Records sind genau die, deren Gold nur
-Gruppengrößen enthält — dort sind die Gruppengrößen die einzige Information,
-und das Modell liefert sie nicht, weil es ohne Zeitpunktbezug antwortet.
+Gruppengrößen enthält.
 
-## 5. Gold-Fehler-Kandidat `yun2024:479`
+## 5. Gold-Korrektur `yun2024:479` (Version 2)
 
-Gold: `intervention_group_size` 1,919 · `comparator_group_size` 1,922 ·
-`intervention_events` 1,078 · `comparator_events` 976. Gruppengrößen von 1,9
-Personen sind unmöglich. Der Artikel (PMC4144850) druckt eine Tabelle:
+Der Artikel (PMC4144850, Tabelle 4) druckt `Anemic: Hb<110 g/l   1,922  0.508
+1,919  0.562` mit Tausendertrennzeichen. Die Version 1 der Testbasis las daraus
+1,922 und 1,919 Personen. Korrigiert auf 1919/1922 Personen und 1078/976
+Ereignisse (Gegenprobe: 1919 × 0,562 = 1078,5; 1922 × 0,508 = 976,4).
 
-```
-Anemic: Hb<110 g/l   1,922  0.508   1,919  0.562   0.050 [-0.011 to 0.110] …
-```
+Wirkung: die beiden Gruppengrößen zählen jetzt als richtig (`zieltreu` 57 statt
+55), die beiden Ereigniszahlen waren ohnehin nicht Teil der Antwort. Die
+Abweichungssumme fiel von 3.912,08 auf 74,92. Details und Hashes in
+`korrektur_yun2024_479.md`.
 
-Das sind **1.922 und 1.919 Personen** mit Tausendertrennzeichen, nicht 1,922
-Personen. Das Gold hat das Komma als Dezimaltrennzeichen gelesen. Das Modell
-antwortete 1919/1922 und hatte damit recht — es wird hier für einen Gold-Fehler
-bestraft, und zwar mit 3.837 der 3.912 absoluten Abweichung des ganzen Laufs.
+## 6. Der Modellfehler bei 289–295: falsche Armzeile, richtige Spalte
 
-Die Datei ist eingefroren und wurde **nicht** geändert. Eine Korrektur braucht
-eine neue Version samt neuem Hash und einem neuen Bericht.
+Sieben Records (`289`–`295`) gehören zur selben Studie (PMC4215531, MCCB-Tabelle
+mit den Zeilen `FAT Pre`, `FAT Post`, `TAU Pre`, `TAU Post`, `CE Pre`,
+`CE Post`; Spalten sind die MCCB-Untertests plus Gesamtwert). Ziel ist
+`post (after 4-week training)`, Gold ist die Zeile **TAU Post**.
 
-## 6. Systematischer Fehler bei „post (after 4-week training)“
+Read-only geprüft: In **allen 14 Komparator-Zellen** (Mittelwert und SD in sieben
+Records) stammt der Wert aus der Zeile **`FAT Pre`** — also aus dem
+Interventionsarm, *vor* dem Training:
 
-Sechs Records derselben Studie (`289`, `290`, `291`, `292`, `294`, `295`) liegen
-beim `comparator_mean` um 2,0 bis 8,7 zu niedrig (39,5 statt 48,2; 33,6 statt
-41,3; 44,6 statt 50,8; 42,8 statt 46,5; 39,3 statt 42,8; 44,5 statt 46,5).
-Der Zeitpunkt ist jeweils richtig (`Post` bzw. das volle Label), nur der Wert
-stammt offenbar aus der falschen Spalte oder Zeile. Das ist der größte
-inhaltliche Fehlerblock des Laufs: 6 von 27 falschen Zellen.
+| Record | Feld | Modell | Gold | Zeile im Artikel |
+|---|---|---:|---:|---|
+| 289 | `comparator_mean` / SD | 39,5 / 10,6 | 48,2 / 12,3 | FAT Pre |
+| 290 | `comparator_mean` / SD | 33,6 / 11,5 | 41,3 / 10,1 | FAT Pre |
+| 291 | `comparator_mean` / SD | 42,8 / 12,8 | 46,5 / 9,8 | FAT Pre |
+| 292 | `comparator_mean` / SD | 44,6 / 10,2 | 50,8 / 12,1 | FAT Pre |
+| 293 | `comparator_mean` / SD | 46,2 / 9,9 | 47,3 / 10,4 | FAT Pre |
+| 294 | `comparator_mean` / SD | 44,5 / 10,7 | 46,5 / 9,8 | FAT Pre |
+| 295 | `comparator_mean` / SD | 39,3 / 11,1 | 42,8 / 11,7 | FAT Pre |
 
-Weitere falsche Zellen: `yun2024:365` Komparator-Gruppengröße 20 statt 45;
-`yun2024:445` 68 statt 70; `yun2024:291` SD 12,8 statt 9,8.
+Die Spalte (der jeweilige Untertest) ist also richtig getroffen, die **Zeile**
+falsch: Das Modell nimmt den Interventionsarm und den Pre-Zeitpunkt, obwohl es
+den Komparator zum Post-Zeitpunkt berichten soll. Mittelwert und SD stammen aus
+derselben Zelle, sind also in sich stimmig — der Fehler ist nicht als
+Zahlenverwechslung, sondern nur über die Armzuordnung sichtbar.
+
+Zwei weitere Zellen derselben Gruppe liegen daneben: `291`
+`intervention_standard_deviation` 14 statt 12,8 und `295`
+`intervention_standard_deviation` 10,4 statt 11,1. Ihre Zuordnung ist unsicher,
+weil die Werte mehrfach im Text vorkommen (die Suche nennt `FAT Pre` bzw.
+`TAU Pre`). Reproduzierbar mit `analyse_mccb_armzeile.py`: 15 der 16
+abweichenden Zellen liegen laut nächstem Zeilenkopf in `FAT Pre`, eine in
+`TAU Pre`.
+
+Das sind 14 der 25 falschen Zellen des Laufs. Ein Prompt-Zusatz, der die
+Armzeile und den Zeitpunktzeilen-Kopf ausdrücklich verlangt (ähnlich der
+Gruppengrößen-Zeile, aber opt-in), wäre der direkte Gegenhebel.
 
 ## 7. Überzählige Zellen
 
 10 Zellen ohne Gold: `*_events` 5, `*_mean` 4, `*_standard_deviation` 1,
-Gruppengrößen 2. Die Precision 0,7254 der Gesamtrechnung enthält diese Zellen
-als Fehler; in der Klassentabelle tauchen sie als `ohne Gold` auf.
+Gruppengrößen 2. Sie zählen in der Precision 0,7394 als Fehler und erscheinen in
+der Klassentabelle als `ohne Gold`.
 
 ## 8. Grenzen
 
 - Ein Modell, ein Lauf, kein Vergleichslauf auf denselben 76 Records.
-- Die 243 Zellen sind die Testbasis, nicht die Trainingsmenge; ein Teil der
-  Auslassungen ist Gold-Eigenschaft (Gruppengrößen ohne Zeitpunktbezug).
-- `MAE` und `Precision` sind durch `yun2024:479` bzw. die überzähligen Zellen
-  verzerrt; beide Zahlen ohne diese Störungen stehen oben daneben.
-- Die zwei Timeout-Records sind nicht bewertet; ihre Zellen fehlen in jeder
-  Kennzahl dieses Berichts.
+- 243 Zellen Testbasis; ein Teil der Auslassungen ist Gold-Eigenschaft
+  (Gruppengrößen ohne Zeitpunktbezug).
+- Die zwei Timeout-Records fehlen in jeder Kennzahl.
+- Die Armzeilen-Analyse ist eine Zuordnung über den nächsten Zeilenkopf im
+  Text; sie belegt die Tendenz, ist aber kein vollständiger Tabellenparser.

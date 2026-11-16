@@ -18,7 +18,9 @@ sys.path.insert(0, str(BENCH))
 from extended_benchmark import evaluate_fallback  # noqa: E402
 
 ZIEL = BENCH / "extended_benchmark" / "records" / "yun_test76_ziel.jsonl"
-SHA256 = "06fea97c37864debe50f130f03a926f5fb5654a1cd0d2ef75ab330da04ad0ca7"
+# Version 2 (16.11.2026): Gold von yun2024:479 korrigiert, siehe
+# analysis/run186_20261115/error_analysis/korrektur_yun2024_479.md
+SHA256 = "74fd0c057356c22831fae45d71644d8b7640a8a109fb48a60cc7782cfb1db704"
 UNSICHER = {"yun2024:63", "yun2024:71", "yun2024:693", "yun2024:694"}
 
 
@@ -35,6 +37,26 @@ def test_umfang_und_ziele() -> None:
     assert len(records) == 76
     assert sum(len(r["gold"]["cells"]) for r in records) == 243
     assert [r["record_id"] for r in records if not r["timepoint"]["target"]] == []
+
+
+def test_gold_von_479_ist_korrigiert() -> None:
+    """Tabelle 4 druckt "1,922 / 1,919"; die Kommata sind Tausendertrenner."""
+    record = next(r for r in lies() if r["record_id"] == "yun2024:479")
+    werte = {c["field"]: c["value"] for c in record["gold"]["cells"]}
+    assert werte["comparator_group_size"] == 1922
+    assert werte["intervention_group_size"] == 1919
+    assert werte["comparator_events"] == 976
+    assert werte["intervention_events"] == 1078
+    # Gegenprobe ueber die im Artikel berichteten Anteile (0.508 und 0.562).
+    assert round(werte["comparator_events"] / werte["comparator_group_size"], 3) == 0.508
+    assert round(werte["intervention_events"] / werte["intervention_group_size"], 3) == 0.562
+
+
+def test_korrektur_ueberlebt_eine_neuerzeugung() -> None:
+    """Die Korrektur steht im Annotationsskript, nicht nur in der Datei."""
+    from extended_benchmark import annotate_test76
+
+    assert annotate_test76.GOLD_KORREKTUREN["yun2024:479"]["comparator_group_size"] == 1922.0
 
 
 def test_ziel_at_admission_ist_aufloesbar() -> None:

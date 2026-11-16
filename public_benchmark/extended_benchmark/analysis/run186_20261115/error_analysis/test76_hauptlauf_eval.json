@@ -7,12 +7,12 @@
     "records_without_prediction": 0,
     "gold_cells": 243,
     "predicted_cells": 142,
-    "matched_cells": 103,
-    "cell_precision": 0.7254,
-    "cell_recall": 0.4239,
-    "cell_f1": 0.5351,
-    "mae_pairs": 30.0929,
-    "mae_pairs_max": 1920.078,
+    "matched_cells": 105,
+    "cell_precision": 0.7394,
+    "cell_recall": 0.4321,
+    "cell_f1": 0.5455,
+    "mae_pairs": 0.5763,
+    "mae_pairs_max": 25.0,
     "mae_pairs_covered": 130,
     "mae_coverage": 0.535,
     "record_exact": 16,
@@ -33,10 +33,10 @@
       "comparator_group_size": {
         "gold": 70,
         "predicted": 32,
-        "matched": 28,
-        "recall": 0.4,
-        "precision": 0.875,
-        "mae": 62.7767,
+        "matched": 29,
+        "recall": 0.4143,
+        "precision": 0.9062,
+        "mae": 0.8387,
         "mae_covered": 31
       },
       "comparator_mean": {
@@ -69,10 +69,10 @@
       "intervention_group_size": {
         "gold": 70,
         "predicted": 32,
-        "matched": 29,
-        "recall": 0.4143,
-        "precision": 0.9062,
-        "mae": 61.9058,
+        "matched": 30,
+        "recall": 0.4286,
+        "precision": 0.9375,
+        "mae": 0.0645,
         "mae_covered": 31
       },
       "intervention_mean": {
@@ -119,10 +119,10 @@
   },
   "zieltreu": {
     "zellen": 76,
-    "richtig": 55,
-    "falsch": 11,
+    "richtig": 57,
+    "falsch": 9,
     "ohne_gold": 10,
-    "precision": 0.8333
+    "precision": 0.8636
   },
   "rueckfall": {
     "zellen": 48,
@@ -414,7 +414,7 @@
       "unklar": 8,
       "rueckfall": 54
     },
-    "treffer_belegt": 91,
+    "treffer_belegt": 93,
     "treffer_nur_ziel": 2,
     "rueckfall_intervall": {
       "untere_grenze": 0.3913,
@@ -460,7 +460,7 @@
     },
     "comparator_group_size": {
       "zieltreu_zellen": 13,
-      "zieltreu_richtig": 10,
+      "zieltreu_richtig": 11,
       "rueckfall_zellen": 11,
       "rueckfall_richtig": 10
     },
@@ -480,7 +480,7 @@
     },
     "intervention_group_size": {
       "zieltreu_zellen": 13,
-      "zieltreu_richtig": 11,
+      "zieltreu_richtig": 12,
       "rueckfall_zellen": 11,
       "rueckfall_richtig": 10
     },
@@ -504,10 +504,10 @@
       "auslassungen": 125,
       "technische_ausfaelle": 5,
       "zellen": 128,
-      "richtig": 91,
+      "richtig": 93,
       "ohne_gold": 10,
-      "falsch": 27
+      "falsch": 25
     }
   },
-  "zell_f1_aus_klassen": 0.4741
+  "zell_f1_aus_klassen": 0.485
 }

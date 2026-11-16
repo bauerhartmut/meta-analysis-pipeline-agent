@@ -59,7 +59,9 @@ eigener Auswertklasse).
 
 Nachtrag 16.11.2026: Die 76 Records der zweiten Kohorte sind mit Zielzeitpunkten
 eingefroren (`records/yun_test76_ziel.jsonl`, 243 Goldzellen, SHA-256
-`06fea97c37864debe50f130f03a926f5fb5654a1cd0d2ef75ab330da04ad0ca7`, im Test
+`74fd0c057356c22831fae45d71644d8b7640a8a109fb48a60cc7782cfb1db704`
+(Version 2 vom 16.11.2026, Gold von `yun2024:479` korrigiert; Version 1 war
+`06fea97c…`, siehe `korrektur_yun2024_479.md`), im Test
 `test_test76_ziel.py` geprüft); vier abgeleitete Zielzeitpunkte sind als
 `unsicher` markiert und werden in `unsichere_ziele` getrennt ausgewiesen.
 Details in `teststrategie.md` und `test76_annotation.md`.
