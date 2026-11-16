@@ -45,10 +45,11 @@ Voraussetzungen, bevor TEST das erste Mal läuft:
 243 Goldzellen, 0 Records ohne Zielzeitpunkt.
 
 ```
-SHA-256  74fd0c057356c22831fae45d71644d8b7640a8a109fb48a60cc7782cfb1db704
-         (Version 2, 16.11.2026; Version 1 war 06fea97c…, siehe
-         `korrektur_yun2024_479.md`)
-Bytes    111699
+SHA-256  3f811bed35653bda0da92a5ab13dc16a13a23dfc79c04a0808b0d2ec8267b587
+         (Version 3, 16.11.2026: Comparator von 289-295 und zwei Goldzellen,
+         siehe `korrektur_v3_comparator.md`; Version 2 war 74fd0c05…,
+         Version 1 war 06fea97c…)
+Bytes    111814
 ```
 
 Der Hash wird von `tests/test_test76_ziel.py` geprüft; jede Änderung an Gold,

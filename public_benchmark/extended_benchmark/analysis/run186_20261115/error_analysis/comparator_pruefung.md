@@ -104,6 +104,16 @@ zwar kein Arm, aber ein sauberer Vorher-Nachher-Vergleich — kein Widerspruch.
 * Zusätzlich zwei Gold-Kandidaten (291 SD, 294 Komparator), die in dieselbe
   Korrekturrunde gehören.
 
+## 5. Umsetzung (Version 3, 16.11.2026)
+
+Umgesetzt als Version 3 der Testbasis, ohne Netzlauf: `context.comparator` von
+289–295 heißt jetzt `treatment as usual (TAU)`, die zwei Goldzellen sind
+korrigiert (291 SD 14,0; 294 Komparator 45,4 ± 7,7). Neuer Hash
+`3f811bed…`, 76 Records und 243 Zellen unverändert. Die Korrekturen stehen im
+Annotationsskript (`GOLD_KORREKTUREN`, neu `KONTEXT_KORREKTUREN`), damit eine
+Neuerzeugung sie behält; Einzelheiten im Korrekturbericht
+`korrektur_v3_comparator.md`.
+
 ## Grenzen
 
 * Geprüft sind die 11 Records mit nicht-armigem Comparator-Feld. Felder, die

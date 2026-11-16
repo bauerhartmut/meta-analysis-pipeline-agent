@@ -100,6 +100,28 @@ GOLD_KORREKTUREN: dict[str, dict[str, float]] = {
         "comparator_group_size": 1922.0,
         "comparator_events": 976.0,
     },
+    # PMC4215531, MCCB-Tabelle, Spalte "Visual learning", Zeile "FAT Post":
+    # 49.4 +- 14.0. Das Gold trug 12.8 — das ist der SD des Pre-Werts
+    # derselben Spalte (FAT Pre: 42.8 +- 12.8).
+    "yun2024:291": {
+        "intervention_standard_deviation": 14.0,
+    },
+    # PMC4215531, Spalte "Reasoning" (6) der Zeile "TAU Post": 45.4 +- 7.7.
+    # Das Gold trug 46.5 +- 9.8 — das ist Spalte 5 (Visual learning).
+    "yun2024:294": {
+        "comparator_mean": 45.4,
+        "comparator_standard_deviation": 7.7,
+    },
+}
+
+# Kontext-Korrekturen: Felder, die den Record falsch beschreiben. Sie aendern
+# die Vorgabe im Prompt, nicht den Goldwert — anders als GOLD_KORREKTUREN.
+KONTEXT_KORREKTUREN: dict[str, dict[str, str]] = {
+    # PMC4215531 randomisiert auf FAT, CE und TAU (Abstract) und berichtet die
+    # MCCB-Werte fuer drei Gruppen zu je n = 19 (Tabellen-Caption). Einen Arm
+    # "baseline" gibt es nicht; das Gold vergleicht FAT Post gegen TAU Post.
+    # Beleg: analysis/run186_20261115/error_analysis/comparator_pruefung.md.
+    **{f"yun2024:{_n}": {"comparator": "treatment as usual (TAU)"} for _n in range(289, 296)},
 }
 
 
@@ -133,6 +155,18 @@ def korrigiere_gold(records: list[dict[str, Any]]) -> list[str]:
                 if cell["field"] == feld and cell["value"] != wert:
                     geaendert.append(f"{record['record_id']}:{feld} {cell['value']} -> {wert}")
                     cell["value"] = wert
+    return geaendert
+
+
+def korrigiere_kontext(records: list[dict[str, Any]]) -> list[str]:
+    """Setzt die geprueften Kontextfelder; gibt die Aenderungen zurueck."""
+    geaendert: list[str] = []
+    for record in records:
+        for feld, wert in KONTEXT_KORREKTUREN.get(record["record_id"], {}).items():
+            alt = (record.get("context") or {}).get(feld)
+            if alt != wert:
+                geaendert.append(f"{record['record_id']}:{feld} {alt!r} -> {wert!r}")
+                record.setdefault("context", {})[feld] = wert
     return geaendert
 
 
@@ -229,6 +263,7 @@ def main() -> int:
         print(f"FEHLER: {len(records)} Records statt 76 in {QUELLE}")
         return 2
     print("Gold-Korrekturen:", korrigiere_gold(records) or "keine")
+    print("Kontext-Korrekturen:", korrigiere_kontext(records) or "keine")
     vorher = gold_hash(records)
 
     for record in records:

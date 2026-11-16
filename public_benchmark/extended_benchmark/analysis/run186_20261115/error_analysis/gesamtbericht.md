@@ -66,6 +66,14 @@ eingefroren (`records/yun_test76_ziel.jsonl`, 243 Goldzellen, SHA-256
 `unsicher` markiert und werden in `unsichere_ziele` getrennt ausgewiesen.
 Details in `teststrategie.md` und `test76_annotation.md`.
 
+Nachtrag 16.11.2026: Version 3 der Testbasis korrigiert die Vorgabe für die
+sieben MCCB-Records: Deren Comparator-Feld nannte `baseline`, das Paper
+randomisiert aber auf FAT, CE und TAU, und das Gold vergleicht FAT Post gegen
+TAU Post. Das Feld heißt jetzt `treatment as usual (TAU)`; dazu zwei Goldzellen
+(291 SD 14,0; 294 Komparator 45,4 ± 7,7). Neuer Hash `3f811bed…`, Bericht in
+`korrektur_v3_comparator.md`. Der Hauptlauf bleibt auf Version 2, ein
+Vergleichslauf wurde nicht gestartet.
+
 Nachtrag 16.11.2026: Drei Pilotläufe über dieselben 12 Records zeigen, dass die
 Gruppengrößen-Zeile im Prompt die Primärausfälle von 2 auf 6 (lang) bzw. 5
 (kurz) hebt. Sie ist deshalb **opt-in** (`--group-size-mode`, Standard `aus`);

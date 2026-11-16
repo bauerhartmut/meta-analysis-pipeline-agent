@@ -84,9 +84,11 @@ GROUP_SIZE_TEXTE = {
     ),
 }
 # Der Armzeilen-Zusatz (--arm-row-mode) wurde am 16.11.2026 nach dem Prueflauf
-# ueber 289-295 wieder entfernt: 0 von 10 Komparatorzellen richtig, weil die
-# Records selbst `comparator: "baseline"` tragen und das Gold die TAU-Gruppe
-# meint. Befund: error_analysis/armzeile_pruefung_291_295.md.
+# ueber 289-295 wieder entfernt: 0 von 10 Komparatorzellen richtig. Ursache war
+# die Vorgabe, nicht der Prompt: die Records trugen `comparator: "baseline"`,
+# waehrend das Gold die TAU-Gruppe fuehrt. In Version 3 der Testbasis heisst das
+# Feld "treatment as usual (TAU)". Befunde:
+# error_analysis/armzeile_pruefung_291_295.md, error_analysis/comparator_pruefung.md.
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
 SESSION_TAG = ""

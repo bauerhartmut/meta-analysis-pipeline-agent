@@ -20,7 +20,10 @@ from extended_benchmark import evaluate_fallback  # noqa: E402
 ZIEL = BENCH / "extended_benchmark" / "records" / "yun_test76_ziel.jsonl"
 # Version 2 (16.11.2026): Gold von yun2024:479 korrigiert, siehe
 # analysis/run186_20261115/error_analysis/korrektur_yun2024_479.md
-SHA256 = "74fd0c057356c22831fae45d71644d8b7640a8a109fb48a60cc7782cfb1db704"
+# Version 3 (16.11.2026): Comparator von 289-295 auf "treatment as usual (TAU)"
+# und zwei Goldzellen (291 SD, 294 Komparator) korrigiert, siehe
+# analysis/run186_20261115/error_analysis/korrektur_v3_comparator.md
+SHA256 = "3f811bed35653bda0da92a5ab13dc16a13a23dfc79c04a0808b0d2ec8267b587"
 UNSICHER = {"yun2024:63", "yun2024:71", "yun2024:693", "yun2024:694"}
 
 
@@ -57,6 +60,40 @@ def test_korrektur_ueberlebt_eine_neuerzeugung() -> None:
     from extended_benchmark import annotate_test76
 
     assert annotate_test76.GOLD_KORREKTUREN["yun2024:479"]["comparator_group_size"] == 1922.0
+
+
+def test_comparator_von_289_bis_295_ist_tau() -> None:
+    """PMC4215531 randomisiert auf FAT, CE und TAU; einen Arm "baseline" gibt es nicht."""
+    records = lies()
+    mccb = [r for r in records if r["record_id"] in {f"yun2024:{n}" for n in range(289, 296)}]
+    assert len(mccb) == 7
+    assert {r["context"]["comparator"] for r in mccb} == {"treatment as usual (TAU)"}
+    # Die Zielangabe bleibt der Post-Zeitpunkt; das Gold vergleicht FAT gegen TAU.
+    assert {r["timepoint"]["target"] for r in mccb} == {"post (after 4-week training)"}
+
+
+def test_gold_zellen_von_291_und_294_sind_korrigiert() -> None:
+    """291: SD aus der Post-Zeile (14.0) statt aus Pre (12.8); 294: Reasoning-Spalte."""
+    werte291 = {c["field"]: c["value"] for c in next(r for r in lies() if r["record_id"] == "yun2024:291")["gold"]["cells"]}
+    assert werte291["intervention_mean"] == 49.4
+    assert werte291["intervention_standard_deviation"] == 14.0
+    assert werte291["comparator_mean"] == 46.5
+    werte294 = {c["field"]: c["value"] for c in next(r for r in lies() if r["record_id"] == "yun2024:294")["gold"]["cells"]}
+    assert werte294["intervention_mean"] == 47.9
+    assert werte294["comparator_mean"] == 45.4
+    assert werte294["comparator_standard_deviation"] == 7.7
+
+
+def test_korrekturen_ueberleben_eine_neuerzeugung() -> None:
+    """Beide Korrekturarten stehen im Annotationsskript, nicht nur in der Datei."""
+    from extended_benchmark import annotate_test76
+
+    assert annotate_test76.GOLD_KORREKTUREN["yun2024:291"]["intervention_standard_deviation"] == 14.0
+    assert annotate_test76.GOLD_KORREKTUREN["yun2024:294"]["comparator_mean"] == 45.4
+    for nummer in range(289, 296):
+        assert annotate_test76.KONTEXT_KORREKTUREN[f"yun2024:{nummer}"] == {
+            "comparator": "treatment as usual (TAU)"
+        }
 
 
 def test_ziel_at_admission_ist_aufloesbar() -> None:

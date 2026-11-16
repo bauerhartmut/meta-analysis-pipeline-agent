@@ -50,6 +50,8 @@ identisch.
 
 * Version 1: `06fea97c37864debe50f130f03a926f5fb5654a1cd0d2ef75ab330da04ad0ca7`
 * Version 2: `74fd0c057356c22831fae45d71644d8b7640a8a109fb48a60cc7782cfb1db704`
+* Version 3: `3f811bed35653bda0da92a5ab13dc16a13a23dfc79c04a0808b0d2ec8267b587`
+  (Comparator von 289–295 und zwei Goldzellen, `korrektur_v3_comparator.md`)
 
 Aktualisiert in `tests/test_test76_ziel.py`, `teststrategie.md`,
 `test76_sha256.txt` und `gesamtbericht.md`.

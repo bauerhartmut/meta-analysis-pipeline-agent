@@ -13,6 +13,11 @@ Die Zahlen der Version 1 (vor der Gold-Korrektur) stehen in
 `korrektur_yun2024_479.md`; die Auswertung wurde ohne neuen API-Aufruf
 wiederholt.
 
+**Version 3 (16.11.2026)** korrigiert das Comparator-Feld von 289–295 und zwei
+Goldzellen (`korrektur_v3_comparator.md`). Dieser Bericht bleibt auf Version 2
+und wird nicht neu gerechnet: die 14 Komparatorzellen zählen hier weiter als
+falsch, weil die Vorgabe auf Version 2 sie verlangte.
+
 ## 1. Gesamtkennzahlen
 
 | Kennzahl | Wert |
@@ -112,6 +117,9 @@ Interventionsarm, *vor* dem Training:
 | 294 | `comparator_mean` / SD | 44,5 / 10,7 | 46,5 / 9,8 | FAT Pre |
 | 295 | `comparator_mean` / SD | 39,3 / 11,1 | 42,8 / 11,7 | FAT Pre |
 
+*Gold nach Version 2. Version 3 führt für 294 die Reasoning-Spalte 45,4 ± 7,7
+und für 291 den Post-SD 14,0 (`korrektur_v3_comparator.md`).*
+
 Die Spalte (der jeweilige Untertest) ist richtig getroffen, die Zeile nicht.
 Entscheidend ist aber, was der Datensatz selbst als Komparator nennt — alle
 sieben Records tragen:
@@ -142,7 +150,9 @@ abweichenden Zellen liegen laut nächstem Zeilenkopf in `FAT Pre`, eine in
 
 Damit stehen 14 der 25 in diesem Bericht als falsch gezählten Zellen unter dem
 Vorbehalt, dass ihr Gold-Wert aus einem anderen Arm stammt als dem, den der
-Record als Komparator angibt.
+Record als Komparator angibt. In Version 3 ist genau das behoben — der Record
+nennt jetzt TAU —; an den Zahlen dieses Berichts ändert das nichts, weil er auf
+Version 2 beruht und nicht wiederholt wurde.
 
 ## 7. Überzählige Zellen
 
