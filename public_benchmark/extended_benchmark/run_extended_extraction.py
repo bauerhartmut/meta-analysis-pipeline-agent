@@ -65,6 +65,7 @@ VERSION_LAST_TIMEPOINT = "v4_last_timepoint"
 VERSION_TARGET_TIMEPOINT = "v5_target_timepoint"
 VERSION_TARGET_FALLBACK = "v6_target_fallback"
 VERSION_CELL_TIMEPOINT = "v7_zellzeitpunkt"
+VERSION_QUELLENZEILE = "v8_quellenzeile"
 RETRY_MAX_TOKENS = 32000
 # Reparaturaufruf nach einem Length-Ausfall: kleines Budget, kurzer Text, wenige
 # Zellen. Ein erneuter Loop kostet damit hoechstens REPAIR_MAX_TOKENS.
@@ -188,6 +189,41 @@ def _prompt_v7(
     )
 
 
+def _prompt_v8(
+    record: dict[str, Any],
+    text: str,
+    limit: int,
+    target: str,
+    group_size_mode: str = "aus",
+) -> str:
+    """v8 = v7 plus erzwungene Quellenangabe vor den Zellen.
+
+    Anlass: In der Fehleranalyse vom 16.11.2026 waren 13 von 29 falschen Zellen
+    Arm- oder Populationsfehler und 4 weitere falsche Tabellenzeilen. Das Modell
+    liest die Zahl richtig und an der falschen Stelle. Deshalb muss es die
+    gelesene Zeile und die Spaltenkoepfe beider Arme zuerst nennen; die Zellen
+    muessen aus genau dieser Zeile stammen. v7 selbst bleibt unveraendert.
+
+    Vorgeschichte: Ein reiner Armzeilen-Zusatz (--arm-row-mode) scheiterte am
+    16.11. an falschen Comparator-Vorgaben in den Records, nicht am Prompt
+    (error_analysis/armzeile_pruefung_291_295.md). Hier wird deshalb nichts
+    vorgegeben, sondern nur benannt, was das Modell gelesen hat.
+    """
+    return (
+        _prompt_v7(record, text, limit, target, group_size_mode)
+        + "\nSource discipline (binding): name your source before the cells. "
+        'Add "source": {"row_label": "<verbatim text of the table row or sentence you read>", '
+        '"intervention_label": "<verbatim column header or group label of the intervention arm>", '
+        '"comparator_label": "<verbatim column header or group label of the comparator arm>"} '
+        "as the first key of the JSON object. "
+        "Every cell must come from that single row and that single time point. "
+        "If the outcome is reported in several rows (subgroups, several populations, several models), "
+        "choose the row whose population matches the arms named in the request, quote only that row, "
+        "and never merge values from two rows. "
+        "If the labels are not printed in the excerpt, use an empty string rather than a guess."
+    )
+
+
 def _prompt_repair(
     record: dict[str, Any],
     text: str,
@@ -239,8 +275,11 @@ def build_prompt(
     fallback: bool = False,
     cell_timepoint: bool = False,
     group_size_mode: str = "aus",
+    quellenzeile: bool = False,
 ) -> str:
     if cell_timepoint and target_timepoint:
+        if quellenzeile:
+            return _prompt_v8(record, text, limit, target_timepoint, group_size_mode)
         return _prompt_v7(record, text, limit, target_timepoint, group_size_mode)
     context = record["context"]
     fields = ", ".join(f'"{name}"' for name in FIELDS)
@@ -585,6 +624,11 @@ def main() -> int:
         help="v7: ein Zeitpunkt je Antwort plus timepoint_header und fallback (v7_zellzeitpunkt)",
     )
     parser.add_argument(
+        "--quellenzeile",
+        action="store_true",
+        help="v8: v7 plus erzwungene Quellenangabe (row_label, Spaltenkoepfe) vor den Zellen",
+    )
+    parser.add_argument(
         "--last-timepoint",
         action="store_true",
         help="letzten berichteten Messzeitpunkt verlangen und Zeitpunkte mitliefern (v4_last_timepoint)",
@@ -660,6 +704,7 @@ def main() -> int:
             fallback=args.target_fallback,
             cell_timepoint=args.cell_timepoint,
             group_size_mode=args.group_size_mode,
+            quellenzeile=args.quellenzeile,
         )
         prompt_version = bestimme_version(
             absolute_counts=args.absolute_counts,
@@ -670,6 +715,8 @@ def main() -> int:
             cell_timepoint=args.cell_timepoint,
             cache_buster=args.cache_buster,
         )
+        if args.quellenzeile:
+            prompt_version = VERSION_QUELLENZEILE
         response = call(models[model], prompt, key, base)
         cells, parse_error = parse_cells(response.get("content") or "")
         timepoints, timepoint_error = parse_timepoints(response.get("content") or "")

@@ -165,6 +165,12 @@ Drei Befunde, die die frühere Bewertung ändern:
 Damit bleibt GLM-5.3 vorn, aber der Vorsprung ist klein: 0,020 F1 bei 2,3-fach
 geringerem Tokenverbrauch und 6,6-fach kürzerer Laufzeit.
 
+Qwen3-30B wurde anschließend bei 8.000 Tokens nachgezogen: F1 **0,5950**
+(P 0,8372 / R 0,4615, 36 richtig, 7 falsch, 35 fehlend, 14 Zellen ohne Gold, 2.185
+Output-Tokens, 29 s, keine Ausfälle). Das höhere Limit hilft ihm nicht — der Recall
+bleibt bei 0,46, weil es Felder gar nicht erst sucht. Damit ist der Modellvergleich
+vollständig: GLM 0,8369 vor Qwen3.5-397B 0,8169 vor Qwen3-30B 0,5950.
+
 **Wichtige Einschränkung:** Die GLM-Zeilen der 4.000er-Spalte sind vollständig aus dem Gateway-Cache
 beantwortet (20/20 `suspected_cache`), inhaltlich also identisch mit dem 60er-Lauf, aber
 ohne belastbare Laufzeit. Bei Qwen3-30B sind 14 von 20 Antworten als Cache-Treffer
@@ -271,6 +277,30 @@ Die Zahl fehlender Gruppengrößen stieg von 10 auf 12. Die Hypothese ist damit 
 bestätigt**, der Effekt liegt innerhalb der Stichprobenstreuung. Die Regel bleibt
 vorerst draußen.
 
+### Experiment C: erzwungene Quellenzeile (`--quellenzeile`, v8)
+
+Hypothese: Wenn das Modell vor den Zellen die gelesene Tabellenzeile und die
+Spaltenköpfe beider Arme nennen muss, sinkt die Zahl der Arm- und Zeilenfehler
+(13 + 4 von 29 falschen Zellen).
+
+Aufbau: v7 + Zusatzblock „Source discipline", identische 20 Records, GLM-5.3,
+8.000 Tokens, Cache-Buster. v7 selbst blieb unverändert.
+
+| Änderung | Baseline (v7, 8.000) | Neue Leistung (v8) | Differenz | Sicherheit |
+|---|---:|---:|---:|---|
+| Quellenzeile im selben JSON | P 0,9365 / R 0,7564 / F1 0,8369 | P 0,9483 / R 0,7051 / F1 **0,8088** | −0,0281 F1 | mittel: 20 Records, aber Ursache belegt |
+
+**Warum es scheiterte, ist belegt:** In einer Kontrollstichprobe mit
+`--save-content` (3 Records) lieferte das Modell **keine** `source`-Angabe, sondern
+nur die Zellen — und ließ dabei zusätzlich die v7-Pflichtangabe `timepoint` weg
+(yun2024:220 lieferte `intervention_mean` sogar zweimal mit 4,5). Ein Zusatz, der das
+Ausgabeschema erweitert, verwässert also die bestehenden Regeln, statt sie zu stärken.
+
+**Konsequenz für die Architektur:** Die Quellenauswahl muss ein **eigener Aufruf**
+sein (wie im vorhandenen `run_stage_extraction.py` für Ereignisfelder), nicht ein
+weiterer Schlüssel im selben JSON. Die Hypothese ist damit nicht widerlegt, aber
+im einstufigen Aufbau nicht umsetzbar.
+
 ### Was nicht getestet wurde und warum
 
 | Experiment | Status | Grund |
@@ -347,7 +377,7 @@ statt Auslassungen.
 | Priorität | Maßnahme | Nutzen | Aufwand | Abhängigkeit | Evidenz |
 |---|---|---|---|---|---|
 | ~~P0~~ | 8.000-Token-Vergleich GLM und Qwen3.5-397B | **erledigt**: GLM 0,8369 vor Qwen 0,8169 | 130 k Tokens, 30 min | keine | Abschnitt 2.3 |
-| **P0** | Zweistufige Extraktion: erst Tabellenzeile/Arm benennen, dann Werte lesen | adressiert 13 der 29 falschen Zellen | 1–2 Tage | Schema für Zwischenausgabe | Fehleranalyse C: Arm/Population dominiert |
+| **P0** | Echte Zweistufigkeit für kontinuierliche Felder (Stufe 1 = Zeile/Arm als eigener Aufruf, Stufe 2 = Werte) | adressiert 13 der 29 falschen Zellen | 2 Tage | `stage_extraction.py` auf Mean/SD/N erweitern | einstufiger Zusatz gescheitert (Experiment C), Fehlerbild Arm/Population |
 | **P1** | Ausgabeschema mit Originaleinheit und Originalwert (keine Umrechnung) | adressiert 4 der 29 falschen Zellen, verhindert stille ×100-Fehler | 1 Tag | Parser + Evaluation | yun2024:246 belegt |
 | **P1** | Validator als Warnschicht ausliefern | fängt leere Antworten und unmögliche Ereigniszahlen | erledigt, nur einbinden | keine | 14 Warnungen, 11 davon leere Antworten |
 | **P1** | Gold-Audit der konfliktären Records (524, 447, 669) | verhindert, dass Modellfehler Goldfehler sind | 2–3 h manuell | keine | Abschnitt 3, zwei belegte Konflikte |
@@ -372,11 +402,11 @@ korrigiert). Wirtschaftlich lohnt es sich trotzdem nicht: 2,3-fache Tokenmenge,
 6,6-fache Laufzeit für 0,020 F1 Rückstand.
 
 **3. Ist Qwen3-30B eine wirtschaftlich sinnvolle Alternative?**
-Als Vorfilter ja, als Extraktor nein. 59 Tokens pro richtiger Zelle gegenüber 661 bei
-GLM ist ein Faktor 11, aber F1 liegt 0,19 Punkte niedriger und die Fehler sind falsche
-Werte statt Auslassungen — die teurere Fehlerart, weil sie stillschweigend in die
-Meta-Analyse gehen. Sinnvolles Muster: Qwen3-30B entscheidet, ob ein Record überhaupt
-extraktionswürdig ist, GLM extrahiert.
+Als Extraktor nein, auch nicht mit 8.000 Tokens: F1 0,5950 gegen 0,8369 bei GLM, also
+0,24 Punkte Rückstand, davon 0,29 Recall. Die Fehler sind zudem falsche Werte statt
+Auslassungen (7 falsch, 14 Zellen ohne Goldbezug) — die teurere Fehlerart, weil sie
+stillschweigend in die Meta-Analyse gehen. Als Vorfilter bleibt es interessant
+(59 Tokens pro richtiger Zelle), aber das ist unbelegt.
 
 **4. Sollten wir die Extraktion in kleinere Teilaufgaben zerlegen?**
 Ja, aber gezielt: nicht nach Feldern, sondern nach **Quellenauswahl**. Die Fehleranalyse
@@ -388,8 +418,9 @@ Tokenkosten versechsfachen, ohne den Kernfehler zu treffen.
 **5. Welche drei Änderungen versprechen den größten Qualitätsgewinn?**
 (a) 8.000-Token-Betrieb (beseitigt 17 Length-Ausfälle und 6 Totalausfälle pro 60
 Records), (b) vorgeschaltete Tabellenzeilen-/Armbestimmung, (c) Ausgabeschema mit
-Originaleinheit ohne Umrechnung. (a) ist gemessen (+0,025 F1), (b) und (c) sind aus der Fehleranalyse begründet, aber
-nicht experimentell belegt.
+Originaleinheit ohne Umrechnung. (a) ist gemessen (+0,025 F1). (b) ist als einstufiger Prompt-Zusatz **gescheitert**
+(−0,028 F1, Experiment C) und braucht einen eigenen Aufruf. (c) ist aus der
+Fehleranalyse begründet, aber nicht experimentell belegt.
 
 **6. Welche Fehler können wir bereits jetzt automatisch verhindern?**
 Leere Antworten, Events > Gruppengröße, doppelte Zellen, SD ≤ 0, extrem ungleiche Arme,
@@ -402,18 +433,17 @@ Follow-ups, Einheiten ohne explizite Angabe. Das erfordert entweder eine Archite
 Quellenzwang oder menschliche Prüfung; ein Plausibilitätsvalidator kann es nicht leisten.
 
 **8. Was ist der sinnvollste nächste Benchmark?**
-Derselbe 20-Record-Satz mit 8.000 Tokens für **Qwen3-30B** (fehlt noch), dazu die
-Auswertung ohne die drei konfliktären Records (524, 447, 669) als Standard. Der
-Modellvergleich ist damit entschieden; offen ist nur noch, ob die billige Variante bei
-8.000 Tokens aufholt.
+Ein Lauf auf dem bereinigten 20-Record-Satz (ohne 524, 447, 669) mit 8.000 Tokens für
+LLM und eine echte Zweistufigkeit. Der Modellvergleich ist entschieden — Qwen3-30B holt
+auch bei 8.000 Tokens nicht auf —, offen ist nur die Architekturfrage.
 
 **9. Was ist belastbar, was explorativ?**
 Belastbar: der Metrikfehler und seine Korrektur (0,8324 / 0,7042), die Fehlerklassen mit
 Artikelbelegen, die Cache-Falle, die technische Ausfallquote der Modelle bei 4.000
 Tokens. Belastbar zusätzlich: der 8.000er-Vergleich GLM gegen Qwen3.5-397B (frisch generiert,
 keine Cache-Treffer). Explorativ: die 20-Record-Stichprobe als Ganzes (klein, breite
-Konfidenzintervalle), Experiment B (kein Effekt nachweisbar), Qwen3-30B (Cache-Anteil
-unklar).
+Konfidenzintervalle), Experiment B (kein Effekt nachweisbar) und Experiment C
+(gescheitert, Ursache aber belegt).
 
 ---
 
@@ -438,15 +468,15 @@ Record-Aufteilung mit Wiederaufnahme (die der Harness bereits unterstützt:
 
 ## 10. Offene Fragen
 
-1. Wie schneidet Qwen3-30B bei 8.000 Tokens ab? (GLM und Qwen3.5-397B sind gemessen,
-siehe Abschnitt 2.3)
+1. Bringt die echte Zweistufigkeit (eigener Aufruf für Zeile/Arm) den erwarteten Gewinn?
+Der einstufige Versuch zeigt nur, dass ein Schema-Zusatz nicht funktioniert.
 2. Ist der Gateway-Cache modellübergreifend? 14 von 20 Qwen3-30B-Antworten waren
    Cache-Treffer, obwohl das Modell zuvor nie lief. Wenn ja, sind Token- und
    Laufzeitangaben für Cache-Treffer wertlos.
 3. Wie viele der 29 falschen Zellen sind Goldfehler? Zwei sind belegt, weitere
    Kandidaten (669, 110) nicht abschließend geklärt.
 4. Bringt die zweistufige Architektur tatsächlich den erwarteten Gewinn? Plausibel
-   begründet, nicht gemessen.
+   begründet, nicht gemessen; der einstufige Ersatz ist gemessen und gescheitert.
 5. Wie verhält sich das System auf den 596 nicht getesteten Records? Die 60er-Stichprobe
    ist geschichtet, aber klein.
 
@@ -465,5 +495,8 @@ siehe Abschnitt 2.3)
 | `runs/yun20_8000_glm_20261116/` | abgebrochener erster 8.000er-Lauf (6 Records, Laufzeitbeleg) |
 | `runs/yun20_8000_glm_cb_20261116/` | GLM bei 8.000 Tokens, frisch generiert |
 | `runs/yun20_8000_qwen_cb_20261116/` | Qwen3.5-397B bei 8.000 Tokens, frisch generiert |
+| `runs/yun20_8000_qwen30_cb_20261116/` | Qwen3-30B bei 8.000 Tokens, frisch generiert |
+| `runs/yun20_8000_glm_v8_20261116/` | Experiment C: Quellenzeile im Prompt (v8) |
+| `runs/yun_v8_probe_20261116/` | Kontrollstichprobe mit Rohantworten (belegt, dass `source` fehlt) |
 | `yun_full/ausschluss_konflikte.py` / `.json` | Kennzahlen mit und ohne die drei konfliktären Records |
 | `runs/yun699_test60_20261116/validator.json` | Validatormessung auf der 60er-Stichprobe |
