@@ -49,13 +49,16 @@ Co-Authored-By: Codebuff <noreply@codebuff.com>
 
 
 def fingerabdruck(auszuege: list[str]) -> str:
-    """Hash der Trefferzeilen einer Datei (sortiert, whitespace-normalisiert).
+    """Hash der Trefferzeilen einer Datei samt Trefferzahl.
 
-    Neue oder geänderte Treffer ändern den Hash; Zeilennummern zählen nicht
-    mit, damit ein reines Verschieben den Fingerabdruck nicht kippt.
+    Sortiert und whitespace-normalisiert, damit ein reines Verschieben den
+    Fingerabdruck nicht kippt; Zeilennummern zählen nicht mit. Die Zahl der
+    Treffer steht zusätzlich im Hash, weil die Zeilenmenge eine eingefügte,
+    textgleiche Duplikatzeile nicht verändert.
     """
     zeilen = sorted({" ".join(auszug.split()) for auszug in auszuege})
     hasher = hashlib.sha256()
+    hasher.update(f"treffer:{len(auszuege)}\n".encode("utf-8"))
     for zeile in zeilen:
         hasher.update(zeile.encode("utf-8") + b"\n")
     return hasher.hexdigest()[:16]

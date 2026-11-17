@@ -1,108 +1,110 @@
 # Sperrbegriff-Ausnahmen fuer den privaten Baum.
 #
-# Format: <pfad> | <Begruendung>. Jede Zeile braucht einen Grund, sonst
-# bricht der Scan ab. Der pre-push-Hook blockiert Treffer, die hier nicht
-# stehen. Neue Dateien mit legitimen Sperrbegriffen gehoeren hier hinein,
+# Format: <pfad> | <Begruendung> | <Fingerabdruck>. Jede Zeile braucht einen
+# Grund, sonst bricht der Scan ab. Der Fingerabdruck hasht die Trefferzeilen
+# samt Trefferzahl: neue, geaenderte und textgleiche doppelte Treffer kippen
+# ihn und machen die Datei wieder offen (--ausnahmen-aktualisieren schreibt
+# ihn neu). Neue Dateien mit legitimen Sperrbegriffen gehoeren hier hinein,
 # nicht in scripts/export_regeln.py.
 #
 # Stand: 108 Dateien, erzeugt aus dem Scan vom 2026-11-17.
 
-METAANALYSE.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 124dd90c92839781
-data/bench/regreports/kognition_report_meta.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 376eaef2fe231a05
-data/bench/regreports/t1_summary.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 376eaef2fe231a05
-data/bench/validierung/arbeitsstand_20261110.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 89768555dbb3d5a0
-data/bench/validierung/e4_kollaps_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 485d9c3baad90f76
-data/bench/validierung/e4_kollaps_20261108.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | ca29ea7cb5126462
-data/bench/validierung/e4e_nachher_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 1c758fddf1a180cd
-data/bench/validierung/e4e_vorher_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 1c758fddf1a180cd
-data/bench/validierung/kandidaten_effektvolltexte.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 05b0a918693a9da9
-data/bench/validierung/kopf_blocker_korpus_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 3ccb0e59bc0fe272
-data/bench/validierung/report_meta_ausschnitt_20261108.txt | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | b1c25ed0c7974f94
-data/bench/validierung/se_ki_konsistenz_20261110.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 168fc04b119bc9e8
-data/bench/validierung/se_ki_konsistenz_20261110.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 62fff915cae815a9
-data/golden_effects/blind_b_20261110/data/golden_effects/goldstandard_B.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 7f56067f03a05033
-data/golden_effects/blind_b_20261110/docs/internal/vollannotation_arbeitsblatt_7df874ca53.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 4090155fb6c0411b
-data/golden_effects/blind_b_20261110/manifest.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 7f56067f03a05033
-data/golden_effects/documents.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 7f56067f03a05033
-data/golden_effects/duplikate.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | f7f9e47fed0ef311
-data/golden_effects/goldstandard_B.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 7f56067f03a05033
-data/golden_effects/vollannotation_arbeitsblaetter.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | f7f9e47fed0ef311
-data/simulation_result.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 0c24195204bb5347
-data/simulations/060eb5fa0a42_smoke/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | a7aec059647af12d
-data/simulations/37568919077f_smoke/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | a3c72038947d99b7
-data/simulations/403bb59d8c6e_kat_effect/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 4926d2a1d11844ca
-data/simulations/403bb59d8c6e_kat_effect3/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 4926d2a1d11844ca
-data/simulations/403bb59d8c6e_kat_null/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 4926d2a1d11844ca
-data/simulations/403bb59d8c6e_kat_repeat/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 4926d2a1d11844ca
-data/simulations/b3a9dd552a7b_smoke/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | a7aec059647af12d
-docs/internal/HANDOFF_STATUS.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 9552a7bfb1375d68
-docs/internal/PROGRESS.md | Forschungsakte der frueheren Fragestellung; bleibt privat | cd57b64fb13e6796
-docs/internal/README_ARBEITSFASSUNG.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b6f3bc8ca1047269
-docs/internal/improvement_prompts.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b2533268c7eb36dc
-docs/internal/vollannotation_arbeitsblatt_7df874ca53.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 4090155fb6c0411b
-public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/candidates.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 41ebb0a6cbb443c3
-public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/candidates_all.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 41ebb0a6cbb443c3
-public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/fulltext_candidate_priority_v1.csv | Benchmark-Bestand der frueheren Reihe; privat | 9b3e962448203e85
-public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/fulltext_candidate_priority_v1.json | Benchmark-Bestand der frueheren Reihe; privat | a3473876a5492c51
-public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/screening_decisions_v1.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 06df849c1a5b70cb
-public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/screening_decisions_v2.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 06df849c1a5b70cb
-public_benchmark/evaluation/multi_model_cross_validation/candidate_pool_v1.json | Benchmark-Bestand der frueheren Reihe; privat | a3473876a5492c51
-public_benchmark/extended_benchmark/analysis/candidate_split_20261115/kandidaten.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 4f2a200d58210465
-public_benchmark/extended_benchmark/analysis/candidate_split_20261115/zellen.csv | Benchmark-Bestand der frueheren Reihe; privat | 397fd00241c2789d
-public_benchmark/extended_benchmark/records/yun_test76_ziel.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 5765654b953c4c03
-public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 5765654b953c4c03
-public_benchmark/processed_data/yun_ico_records.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 150d6a16143d0674
-research_agent/data/journal/06a629f43f7e.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 645b1aa98ed63cd5
-research_agent/data/journal/28fb8225cf60.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/353983972f89.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b1beac26a88b805a
-research_agent/data/journal/35e94d8f0e0b.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b1beac26a88b805a
-research_agent/data/journal/6281c77b4373.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/7d68c28a85ff.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/944436da870c.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b1beac26a88b805a
-research_agent/data/journal/96dfcc4c036c.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b1beac26a88b805a
-research_agent/data/journal/9da7788b79ad.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/a3cee5d34345.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b1beac26a88b805a
-research_agent/data/journal/a85fce02c4d8.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/a8f59959969b.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/b6df1d67275a.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 96ccba8bed109063
-research_agent/data/journal/c52cef2e712e.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/c80aea02c775.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b1beac26a88b805a
-research_agent/data/journal/c890a45cd13b.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 9f8deea53b903e8f
-research_agent/data/journal/d0161929aef3.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 3e90d71aaf389125
-research_agent/data/journal/e3729f45f62d.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/e6bea9f02071.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/e80c8c1c0e2f.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b1beac26a88b805a
-research_agent/data/journal/ef05f985ec38.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 6a2fdbf631265725
-research_agent/data/journal/f015e4510670.md | Forschungsakte der frueheren Fragestellung; bleibt privat | af89dfb69c7a228d
-research_agent/data/journal/fb709a4ea591.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b07dda2473304421
-research_agent/data/journal/fc4249225baa.md | Forschungsakte der frueheren Fragestellung; bleibt privat | b1beac26a88b805a
-research_agent/evals/README.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 7dcc4edde17924fa
-research_agent/evals/golden_answers.json | Golden-Set der frueheren Reihe; die Claims sind Daten aus der alten DB und nicht ohne Quellenpruefung ersetzbar | 95ba4421099bd026
-research_agent/tests/test_backlog_work.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | c0047559220a8c3a
-research_agent/tests/test_citation_snowball.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | cd40bd878b610edb
-research_agent/tests/test_components.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 99e11813cfa6908e
-research_agent/tests/test_fulltext.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 9e89c6b3f88997cf
-research_agent/tests/test_llm_engine.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 1c49b94bc29f40a8
-research_agent/tests/test_meta_extraction.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | e242b17adbf7160a
-research_agent/tests/test_meta_pooling.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 9ad399551f363c9f
-research_agent/tests/test_meta_screening.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 777b59e48b51c8e4
-research_agent/tests/test_program.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 5322b0ae4fa19f7c
-research_agent/tests/test_report.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 855e497c6252e932
-research_agent/tests/test_research_engine.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 36ab569bb5a6114d
-research_agent/tests/test_simulations.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | b11b77f1a60c818b
-research_agent/tests/test_topic_database.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 4cb48db1650aadc8
-research_agent/tests/test_work_queue.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | f8a134c3d64e2a08
-scripts/build_notebook.py | Mess- oder Pruefskript der frueheren Reihe; privat | 2c7c0f6eaffbad22
-scripts/build_notebook2.py | Mess- oder Pruefskript der frueheren Reihe; privat | 3c510a2eb93474db
-scripts/build_notebook_final.py | Mess- oder Pruefskript der frueheren Reihe; privat | 3bf3c653c01c1a4a
-scripts/deploy_kaggle.py | Mess- oder Pruefskript der frueheren Reihe; privat | 6efeb60ced0a02a6
-scripts/kaggle_gpu_server.py | Mess- oder Pruefskript der frueheren Reihe; privat | de3cdecd7e4c09ea
-scripts/measure_search_quality.py | Mess- oder Pruefskript der frueheren Reihe; privat | 60f2cafb94870a93
-scripts/messe_se_ki_konsistenz_20261110.py | Mess- oder Pruefskript der frueheren Reihe; privat | ef1832f8dfc4cd1f
-scripts/pc_gpu_server.py | Mess- oder Pruefskript der frueheren Reihe; privat | 2f64229f3b7448d2
-scripts/pc_gpu_server_with_ngrok.py | Mess- oder Pruefskript der frueheren Reihe; privat | ce11cc6a6649e865
-scripts/simulate_research.py | Mess- oder Pruefskript der frueheren Reihe; privat | 740aef6a020abe04
-scripts/start_all.bat | Mess- oder Pruefskript der frueheren Reihe; privat | a805992293a9be9b
-scripts/start_pc_server.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 6b102d429f9f9a0f
-scripts/start_supervised.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 7a885a02ac8b4c8a
-scripts/start_tunnel.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 2f44e719ca03550b
+METAANALYSE.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 1660f0fea29ceea2
+data/bench/regreports/kognition_report_meta.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 66f0c734cd764b7a
+data/bench/regreports/t1_summary.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 66f0c734cd764b7a
+data/bench/validierung/arbeitsstand_20261110.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 0447c7f70a74caad
+data/bench/validierung/e4_kollaps_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 95336889851eb4c3
+data/bench/validierung/e4_kollaps_20261108.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 110a5d1b00966a0c
+data/bench/validierung/e4e_nachher_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 732ca1b084cb11c7
+data/bench/validierung/e4e_vorher_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 732ca1b084cb11c7
+data/bench/validierung/kandidaten_effektvolltexte.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | f878cf664d66f893
+data/bench/validierung/kopf_blocker_korpus_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | eddb76ff45cf4883
+data/bench/validierung/report_meta_ausschnitt_20261108.txt | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 322184854d62f772
+data/bench/validierung/se_ki_konsistenz_20261110.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 764d210cbe26d086
+data/bench/validierung/se_ki_konsistenz_20261110.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 69ad2c5cd961d7c5
+data/golden_effects/blind_b_20261110/data/golden_effects/goldstandard_B.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 9890df454eabc5a6
+data/golden_effects/blind_b_20261110/docs/internal/vollannotation_arbeitsblatt_7df874ca53.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 59440df6524f3e84
+data/golden_effects/blind_b_20261110/manifest.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 9890df454eabc5a6
+data/golden_effects/documents.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 9890df454eabc5a6
+data/golden_effects/duplikate.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | c491fe83b203e3f3
+data/golden_effects/goldstandard_B.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 9890df454eabc5a6
+data/golden_effects/vollannotation_arbeitsblaetter.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | c491fe83b203e3f3
+data/simulation_result.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 83ad2e522b53c30a
+data/simulations/060eb5fa0a42_smoke/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | fee31c83d6ce92cf
+data/simulations/37568919077f_smoke/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 7427df7e3f42f02b
+data/simulations/403bb59d8c6e_kat_effect/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | e60323a4e1c7070d
+data/simulations/403bb59d8c6e_kat_effect3/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | e60323a4e1c7070d
+data/simulations/403bb59d8c6e_kat_null/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | e60323a4e1c7070d
+data/simulations/403bb59d8c6e_kat_repeat/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | e60323a4e1c7070d
+data/simulations/b3a9dd552a7b_smoke/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | fee31c83d6ce92cf
+docs/internal/HANDOFF_STATUS.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 56caf333cb45de61
+docs/internal/PROGRESS.md | Forschungsakte der frueheren Fragestellung; bleibt privat | cda97de2592f5bb2
+docs/internal/README_ARBEITSFASSUNG.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 7df62ee241099da9
+docs/internal/improvement_prompts.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 782ce5fe2fada180
+docs/internal/vollannotation_arbeitsblatt_7df874ca53.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 59440df6524f3e84
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/candidates.jsonl | Benchmark-Bestand der frueheren Reihe; privat | c9b5870b8ae3256a
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/candidates_all.jsonl | Benchmark-Bestand der frueheren Reihe; privat | c9b5870b8ae3256a
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/fulltext_candidate_priority_v1.csv | Benchmark-Bestand der frueheren Reihe; privat | c31412a28ff91018
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/fulltext_candidate_priority_v1.json | Benchmark-Bestand der frueheren Reihe; privat | 2535cb606fad8730
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/screening_decisions_v1.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 5aa9a9ec4065e98c
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/screening_decisions_v2.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 5aa9a9ec4065e98c
+public_benchmark/evaluation/multi_model_cross_validation/candidate_pool_v1.json | Benchmark-Bestand der frueheren Reihe; privat | 2535cb606fad8730
+public_benchmark/extended_benchmark/analysis/candidate_split_20261115/kandidaten.jsonl | Benchmark-Bestand der frueheren Reihe; privat | f6e4bb8909439377
+public_benchmark/extended_benchmark/analysis/candidate_split_20261115/zellen.csv | Benchmark-Bestand der frueheren Reihe; privat | 3b3c848fbbcb9d1d
+public_benchmark/extended_benchmark/records/yun_test76_ziel.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 7ee1f85c16d607eb
+public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl | Benchmark-Bestand der frueheren Reihe; privat | 7ee1f85c16d607eb
+public_benchmark/processed_data/yun_ico_records.jsonl | Benchmark-Bestand der frueheren Reihe; privat | e4980acfb8a16ed9
+research_agent/data/journal/06a629f43f7e.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 0100f0946ab13b15
+research_agent/data/journal/28fb8225cf60.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 49be169c287ae334
+research_agent/data/journal/353983972f89.md | Forschungsakte der frueheren Fragestellung; bleibt privat | c8b03606d3046149
+research_agent/data/journal/35e94d8f0e0b.md | Forschungsakte der frueheren Fragestellung; bleibt privat | c8b03606d3046149
+research_agent/data/journal/6281c77b4373.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 5afcc408e531d408
+research_agent/data/journal/7d68c28a85ff.md | Forschungsakte der frueheren Fragestellung; bleibt privat | fe73256a78ac60ed
+research_agent/data/journal/944436da870c.md | Forschungsakte der frueheren Fragestellung; bleibt privat | c8b03606d3046149
+research_agent/data/journal/96dfcc4c036c.md | Forschungsakte der frueheren Fragestellung; bleibt privat | c8b03606d3046149
+research_agent/data/journal/9da7788b79ad.md | Forschungsakte der frueheren Fragestellung; bleibt privat | ab458541e6221aca
+research_agent/data/journal/a3cee5d34345.md | Forschungsakte der frueheren Fragestellung; bleibt privat | c8b03606d3046149
+research_agent/data/journal/a85fce02c4d8.md | Forschungsakte der frueheren Fragestellung; bleibt privat | fe73256a78ac60ed
+research_agent/data/journal/a8f59959969b.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 67386dd6c16496e8
+research_agent/data/journal/b6df1d67275a.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 4378d152f6d6497b
+research_agent/data/journal/c52cef2e712e.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 56e19db8ff9b77d8
+research_agent/data/journal/c80aea02c775.md | Forschungsakte der frueheren Fragestellung; bleibt privat | c8b03606d3046149
+research_agent/data/journal/c890a45cd13b.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 2a6336a13315537e
+research_agent/data/journal/d0161929aef3.md | Forschungsakte der frueheren Fragestellung; bleibt privat | ec9990adc2f8a918
+research_agent/data/journal/e3729f45f62d.md | Forschungsakte der frueheren Fragestellung; bleibt privat | ab458541e6221aca
+research_agent/data/journal/e6bea9f02071.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 1c3697c6d37cf3aa
+research_agent/data/journal/e80c8c1c0e2f.md | Forschungsakte der frueheren Fragestellung; bleibt privat | c8b03606d3046149
+research_agent/data/journal/ef05f985ec38.md | Forschungsakte der frueheren Fragestellung; bleibt privat | fe73256a78ac60ed
+research_agent/data/journal/f015e4510670.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 8fbd919c75386fe4
+research_agent/data/journal/fb709a4ea591.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 16e292b7e7c9b4ce
+research_agent/data/journal/fc4249225baa.md | Forschungsakte der frueheren Fragestellung; bleibt privat | c8b03606d3046149
+research_agent/evals/README.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 642292046bab921f
+research_agent/evals/golden_answers.json | Golden-Set der frueheren Reihe; die Claims sind Daten aus der alten DB und nicht ohne Quellenpruefung ersetzbar | dc1b84793e8d89fe
+research_agent/tests/test_backlog_work.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | d0c03562800ce561
+research_agent/tests/test_citation_snowball.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 0674ffbb4eafd183
+research_agent/tests/test_components.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 124996adab443e17
+research_agent/tests/test_fulltext.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 599c46f347a4c1a8
+research_agent/tests/test_llm_engine.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 1e5e7a9bcc6dbd59
+research_agent/tests/test_meta_extraction.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | d8508b977b789431
+research_agent/tests/test_meta_pooling.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | e8b69e3438059be8
+research_agent/tests/test_meta_screening.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | c7324895bfe60b33
+research_agent/tests/test_program.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | c3794d4c0bf0624f
+research_agent/tests/test_report.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 74547f76cead8dee
+research_agent/tests/test_research_engine.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 2b12bffb1c771614
+research_agent/tests/test_simulations.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 84ca1da94633f526
+research_agent/tests/test_topic_database.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | aa8bb6ffe7df3e32
+research_agent/tests/test_work_queue.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 7f9f9b7732a4872e
+scripts/build_notebook.py | Mess- oder Pruefskript der frueheren Reihe; privat | 840e843d5615b69d
+scripts/build_notebook2.py | Mess- oder Pruefskript der frueheren Reihe; privat | d28d376caf15ed84
+scripts/build_notebook_final.py | Mess- oder Pruefskript der frueheren Reihe; privat | 4af9e277da90679d
+scripts/deploy_kaggle.py | Mess- oder Pruefskript der frueheren Reihe; privat | 0883102524d4ad4e
+scripts/kaggle_gpu_server.py | Mess- oder Pruefskript der frueheren Reihe; privat | bb27d73bb30dda44
+scripts/measure_search_quality.py | Mess- oder Pruefskript der frueheren Reihe; privat | d47f1fcda2bf4c5a
+scripts/messe_se_ki_konsistenz_20261110.py | Mess- oder Pruefskript der frueheren Reihe; privat | 805e8aad52a4df9c
+scripts/pc_gpu_server.py | Mess- oder Pruefskript der frueheren Reihe; privat | 7863820f172750d6
+scripts/pc_gpu_server_with_ngrok.py | Mess- oder Pruefskript der frueheren Reihe; privat | 68a61eee857bb9fa
+scripts/simulate_research.py | Mess- oder Pruefskript der frueheren Reihe; privat | db7d709e9029ef10
+scripts/start_all.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 1e2570e1f9a32339
+scripts/start_pc_server.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 12fe7bc43da0f6b6
+scripts/start_supervised.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 1527b2d047b534c0
+scripts/start_tunnel.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 056eed522989d7d0

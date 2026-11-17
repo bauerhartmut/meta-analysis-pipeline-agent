@@ -292,6 +292,38 @@ def pruefe_ausnahmen(export) -> int:
             print(f"FAIL: nicht gelistete Datei wurde akzeptiert: {puffer.getvalue()}")
             fehler += 1
 
+        print("--- Ausnahmen: textgleiche Duplikatzeile ---")
+        doppelt = Path(tmp) / "doppelt"
+        trefferzeile = "Abschnitt zur " + "herit" + "ability im Tierbefund\n"
+        schreibe_quelle(doppelt, {"gleich.md": trefferzeile}, allowlist=False)
+        doppelt_liste = Path(tmp) / "doppelt_ausnahmen.txt"
+        doppelt_liste.write_text("gleich.md | Altlast der frueheren Reihe\n", encoding="utf-8")
+        with redirect_stdout(io.StringIO()):
+            export.aktualisiere_ausnahmen(
+                doppelt,
+                doppelt_liste,
+                export.lade_ausnahmen(doppelt_liste, mit_fingerabdruck=False),
+            )
+        vorher = export.lade_ausnahmen(doppelt_liste)
+        puffer = io.StringIO()
+        with redirect_stdout(puffer):
+            code = export.scan(doppelt, ausnahmen=vorher)
+        if code != 0:
+            print(f"FAIL: Ausgangslage vor dem Duplikat ist nicht begruendet:\n{puffer.getvalue()}")
+            fehler += 1
+        # Gleiche Trefferzeile zweimal: die Zeilenmenge bleibt gleich, nur der
+        # Zaehler aendert sich. Genau diese Luecke muss der Hash schliessen.
+        (doppelt / "gleich.md").write_text(trefferzeile + trefferzeile, encoding="utf-8")
+        puffer = io.StringIO()
+        with redirect_stdout(puffer):
+            code = export.scan(doppelt, ausnahmen=vorher)
+        ausgabe = puffer.getvalue()
+        if code == 1 and "Fingerabdruck geaendert" in ausgabe:
+            print("OK: textgleiche Duplikatzeile kippt den Fingerabdruck und blockiert")
+        else:
+            print(f"FAIL: Duplikatzeile blieb unbemerkt (Code {code}):\n{ausgabe}")
+            fehler += 1
+
         print("--- Ausnahmen: fehlende Begruendung ---")
         kaputt = Path(tmp) / "kaputt.txt"
         kaputt.write_text("alt_thema.md\n", encoding="utf-8")
@@ -355,7 +387,7 @@ def main() -> int:
         return 1
     print(
         "GEGENTEST OK: Sperrliste erkennt alle Fälle, Export lässt sie aus, "
-        "Scan findet sie, Fingerabdruck deckt neue Treffer auf"
+        "Scan findet sie, Fingerabdruck deckt neue und doppelte Treffer auf"
     )
     return 0
 
