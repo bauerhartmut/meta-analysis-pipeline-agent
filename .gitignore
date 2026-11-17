@@ -118,6 +118,11 @@ docs/external/
 # (History bleibt davon unberuehrt; siehe docs/internal/repo_bereinigung_2026-11-16.md)
 data/golden_effects/goldstandard_A.json
 
+# Maschinelle Nachannotation derselben Volltexte: enthaelt konkrete
+# Effektwerte und Zitate, also ebenso wenig ins oeffentliche Repo.
+data/golden_effects/goldstandard_modell_*.json
+docs/internal/modell_annotation_*.md
+
 # Gespeicherte Verlagsseite (ScienceDirect, all rights reserved)
 scripts/sd_test.html
 
