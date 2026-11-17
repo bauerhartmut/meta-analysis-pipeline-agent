@@ -134,6 +134,33 @@ Herleitung mit dokumentierten Annahmen.
    Heterogenitätstreiber Dahne enthält.
 4. App-Namen sind kein Suchbegriff (HARUToday-Befund).
 
+## Nachtrag: systematische Suche nach einem vollständig offenen Review
+
+Skript: `scripts/suche_volltext_review.py`. Es sucht Metaanalysen mit
+Volltext in Europe PMC, zieht aus dem Volltext-XML die im Results-Teil und
+in der Einschlusstabelle zitierten Studien (Hintergrundliteratur steht in
+Einleitung und Diskussion) und prüft für diese den OA-Status.
+
+Geprüft wurden vier Themenfelder (digital/mHealth, COVID-19, Telemedizin,
+Studierende) mit 176 bzw. 177 Kandidaten; auswertbar waren 11 bzw. 6
+Reviews, weil bei vielen der Results-Teil keine Referenzanker trägt.
+
+**Ergebnis: kein Review mit 100 % CC BY.** Bester Wert im
+Interventionsbereich: 17 von 19 Primärstudien frei in PMC (89,5 %),
+14 davon CC BY (`10.2196`-Reihe, PMID 42243497). Im COVID-Feld erreicht
+ein Review 12 von 12 frei in PMC (100 %), aber nur 10 CC BY (83 %)
+(PMID 42666214) - und es ist eine Risikofaktor-Analyse, keine
+Interventionsstudie. Der Spitzenwert über alle Felder (85,6 % CC BY) ist
+eine Cochrane-Diagnostik-Übersicht mit k=146 und damit unbrauchbar.
+
+**Die entscheidende Unterscheidung:** CC BY (Weiterverwendung) und
+"frei in PMC lesbar" (Text-Mining für nicht-kommerzielle Forschung
+erlaubt) sind nicht dasselbe. Meine frühere Fassung des Kriteriums
+"alle Volltexte offen" hat CC BY verlangt und damit systematisch zu
+streng gemessen. Auf der Ebene "lesbar in PMC" existieren Reviews mit
+vollständiger Abdeckung; für Interventionen liegt der gemessene Bestwert
+bei 89 %.
+
 ## Grenzen dieser Prüfung
 
 - Befund 5 stützt sich auf Tabellenüberschriften und Marker, nicht auf

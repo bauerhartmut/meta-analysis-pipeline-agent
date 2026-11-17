@@ -1,0 +1,159 @@
+[
+  {
+    "pmid": "41312797",
+    "pmcid": "PMC12661640",
+    "title": "Rapid, point-of-care antigen tests for diagnosis of SARS-CoV-2 infection.",
+    "journal": "Cochrane Database Syst Rev",
+    "year": "2025",
+    "k": 146,
+    "oa_cc": 125,
+    "oa_cc_by": 112,
+    "nicht_indexiert": 3,
+    "offene_luecke": [
+      "10.1001/jama.2017.19163",
+      "10.1101/2020.11.23.20237198",
+      "10.7754/clin.lab.2021.210304",
+      "10.1101/2020.10.16.20214189",
+      "10.1080/23744235.2021.1914857",
+      "10.1101/c",
+      "10.1101/2020.12.01.20241562",
+      "10.3855/jidc.13925",
+      "10.1101/2021.01.13.21249254v1",
+      "10.1111/apm.13189",
+      "10.1017/ice.2021.281",
+      "10.1002/jmv.27149"
+    ],
+    "erste_titel": [
+      "Rapid, point-of-care antigen tests for diagnosis of SARS-CoV",
+      "Preferred Reporting Items for a Systematic Review and Meta-a",
+      "The Abbott PanBio WHO emergency use listed, rapid, antigen-d",
+      "Performance and operational feasibility of antigen and antib",
+      "Evaluation of Abbott BinaxNOW Rapid Antigen Test for SARS-Co",
+      "Field Performance and Public Health Response Using the Binax"
+    ]
+  },
+  {
+    "pmid": "42666214",
+    "pmcid": "PMC13521914",
+    "title": "Risk factors for post-COVID-19 condition among previously hospitalized COVID-19 patients: a systematic review and meta-analysis.",
+    "journal": "Front Public Health",
+    "year": "2026",
+    "k": 12,
+    "oa_cc": 10,
+    "oa_cc_by": 12,
+    "nicht_indexiert": 0,
+    "offene_luecke": [
+      "10.1136/thoraxjnl-2020-215818",
+      "10.1016/s0140-6736(20)32656-8"
+    ],
+    "erste_titel": [
+      "Clinical characteristics with inflammation profiling of long",
+      "Prevalence and risk factors of post-COVID-19 condition in ad",
+      "Vaccination status and long COVID symptoms in patients disch",
+      "\"Long COVID\" results after hospitalization for SARS-CoV-2 in",
+      "Prevalence and impact of long COVID on health-related qualit",
+      "Female gender is associated with long COVID syndrome: a pros"
+    ]
+  },
+  {
+    "pmid": "42908181",
+    "pmcid": "PMC13712479",
+    "title": "Clinical Outcomes and Complications of Extracorporeal Membrane Oxygenation (ECMO) in Adult Patients With COVID-19 in Central and Eastern Europe: A Systematic Review and Meta-Analysis.",
+    "journal": "Med Sci Monit",
+    "year": "2026",
+    "k": 18,
+    "oa_cc": 14,
+    "oa_cc_by": 15,
+    "nicht_indexiert": 0,
+    "offene_luecke": [
+      "10.1177/02676591231160272",
+      "10.1056/nejmoa1800385",
+      "10.1097/eja.0000000000001670",
+      "10.1016/s2213-2600(24)00369-2"
+    ],
+    "erste_titel": [
+      "Extracorporeal membrane oxygenation for severe COVID-19-asso",
+      "A safety comparison of heparin and argatroban anticoagulatio",
+      "Venovenous extracorporeal membrane oxygenation for COVID-19 ",
+      "Utilisation and outcomes of a mobile (ambulance and air tran",
+      "Inflammatory Biomarkers Affecting Survival Prognosis in Pati",
+      "Extracorporeal membrane oxygenation for COVID-19: a systemat"
+    ]
+  },
+  {
+    "pmid": "41449370",
+    "pmcid": "PMC12888525",
+    "title": "Viral cultures for assessing airborne infectiousness of SARS-CoV-2: a systematic review and meta-analysis.",
+    "journal": "BMC Infect Dis",
+    "year": "2025",
+    "k": 9,
+    "oa_cc": 6,
+    "oa_cc_by": 7,
+    "nicht_indexiert": 1,
+    "offene_luecke": [
+      "10.1093/infdis/jiab564",
+      "10.1080/02786826.2023.2251537",
+      "10.4209/aaqr.220388"
+    ],
+    "erste_titel": [
+      "SARS-CoV2 in public spaces in West London, UK during COVID-1",
+      "Viral emissions into the air and environment after SARS-CoV-",
+      "SARS-CoV-2 in the Air Surrounding Patients during Nebulizer ",
+      "Surfaces and Air Contamination by Severe Acute Respiratory S",
+      "SARS-CoV-2 environmental contamination from hospitalised pat",
+      "Detection and isolation of airborne SARS-CoV-2 in a hospital"
+    ]
+  },
+  {
+    "pmid": "41417528",
+    "pmcid": "PMC12704932",
+    "title": "Impact of SARS-Cov-2 exposure during pregnancy on child neurodevelopment: systematic review and meta-analysis.",
+    "journal": "Rev Paul Pediatr",
+    "year": "2025",
+    "k": 9,
+    "oa_cc": 5,
+    "oa_cc_by": 6,
+    "nicht_indexiert": 0,
+    "offene_luecke": [
+      "10.1007/s00431-023-05147-1",
+      "10.1016/j.earlhumdev.2022.105694",
+      "10.1016/j.ijid.2023.12.001",
+      "10.1001/jamapediatrics.2021.5563"
+    ],
+    "erste_titel": [
+      "The PRISMA 2020 statement: an updated guideline for reportin",
+      "Neurodevelopmental outcomes of infants born to mothers with ",
+      "Impact of Covid-19 in pregnancy on mother's psychological st",
+      "Clinical outcomes and antibody transfer in a cohort of infan",
+      "Neurodevelopmental delay in children exposed to maternal SAR",
+      "Neurodevelopment in infants with antenatal or early neonatal"
+    ]
+  },
+  {
+    "pmid": "42685247",
+    "pmcid": "PMC13537689",
+    "title": "Neutralising antibodies and protection from progression to severe COVID-19: A meta-analysis.",
+    "journal": "PLoS Med",
+    "year": "2026",
+    "k": 11,
+    "oa_cc": 5,
+    "oa_cc_by": 6,
+    "nicht_indexiert": 0,
+    "offene_luecke": [
+      "10.1016/j.jinf.2023.08.005",
+      "10.1038/s41591-021-01377-8",
+      "10.1101/2021.03.09.21252641",
+      "10.1016/s2666-5247(23)00194-5",
+      "10.1128/cvi.00131-10",
+      "10.1080/17476348.2023.2208349"
+    ],
+    "erste_titel": [
+      "Rate and Risk Factors for Severe/Critical Disease Among Full",
+      "COVID-19 vaccine effectiveness against hospitalisation and d",
+      "No difference in risk of hospitalization between reported ca",
+      "Comparative analysis of the risks of hospitalisation and dea",
+      "Coronavirus Resistance Database (CoV-RDB): SARS-CoV-2 suscep",
+      "Neutralizing antibody levels are highly predictive of immune"
+    ]
+  }
+]
