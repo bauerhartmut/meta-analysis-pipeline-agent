@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import fnmatch
+import hashlib
 import re
 import shutil
 import subprocess
@@ -47,25 +48,66 @@ Co-Authored-By: Codebuff <noreply@codebuff.com>
 # und Exporter dieselbe Quelle benutzen.
 
 
-def lade_ausnahmen(pfad: Path) -> dict[str, str]:
-    """Liest `pfad | Begruendung`-Zeilen; jede Ausnahme braucht einen Grund."""
+def fingerabdruck(auszuege: list[str]) -> str:
+    """Hash der Trefferzeilen einer Datei (sortiert, whitespace-normalisiert).
+
+    Neue oder geänderte Treffer ändern den Hash; Zeilennummern zählen nicht
+    mit, damit ein reines Verschieben den Fingerabdruck nicht kippt.
+    """
+    zeilen = sorted({" ".join(auszug.split()) for auszug in auszuege})
+    hasher = hashlib.sha256()
+    for zeile in zeilen:
+        hasher.update(zeile.encode("utf-8") + b"\n")
+    return hasher.hexdigest()[:16]
+
+
+def lade_ausnahmen(
+    pfad: Path, mit_fingerabdruck: bool = True
+) -> dict[str, tuple[str, str]]:
+    """Liest `pfad | Begruendung | Fingerabdruck`-Zeilen.
+
+    Jede Ausnahme braucht einen Grund; im Scan zusätzlich den Fingerabdruck
+    der Treffer, damit eine gelistete Datei nicht unbemerkt neue Treffer
+    bekommen kann.
+    """
     if not pfad.is_file():
         raise SystemExit(f"FEHLER: Ausnahmeliste fehlt: {pfad}")
-    ausnahmen: dict[str, str] = {}
+    ausnahmen: dict[str, tuple[str, str]] = {}
     for nummer, roh in enumerate(pfad.read_text(encoding="utf-8").splitlines(), 1):
         zeile = roh.strip()
         if not zeile or zeile.startswith("#"):
             continue
-        if "|" not in zeile:
+        teile = [teil.strip() for teil in zeile.split("|")]
+        if len(teile) < 2 or not teile[0] or not teile[1]:
             raise SystemExit(
                 f"FEHLER: {pfad}:{nummer}: Ausnahme ohne Begruendung "
-                "(Format: pfad | Grund)"
+                "(Format: pfad | Grund | Fingerabdruck)"
             )
-        rel, grund = (teil.strip() for teil in zeile.split("|", 1))
-        if not rel or not grund:
-            raise SystemExit(f"FEHLER: {pfad}:{nummer}: Pfad oder Grund leer")
-        ausnahmen[rel] = grund
+        rel, grund = teile[0], teile[1]
+        abdruck = teile[2] if len(teile) > 2 else ""
+        if mit_fingerabdruck and len(abdruck) != 16:
+            raise SystemExit(
+                f"FEHLER: {pfad}:{nummer}: Fingerabdruck fehlt oder ist ungueltig "
+                "(16 Hexzeichen; Liste mit --ausnahmen-aktualisieren ergaenzen)"
+            )
+        ausnahmen[rel] = (grund, abdruck)
     return ausnahmen
+
+
+def schreibe_ausnahmen(
+    pfad: Path, ausnahmen: dict[str, tuple[str, str]]
+) -> None:
+    """Schreibt die Liste neu, Kopfkommentare bleiben erhalten."""
+    kopf = [
+        zeile
+        for zeile in pfad.read_text(encoding="utf-8").splitlines()
+        if zeile.strip().startswith("#") or not zeile.strip()
+    ]
+    rumpf = [
+        f"{rel} | {grund} | {abdruck}"
+        for rel, (grund, abdruck) in sorted(ausnahmen.items())
+    ]
+    pfad.write_text("\n".join(kopf + rumpf) + "\n", encoding="utf-8")
 
 
 def git(*args: str, cwd: Path) -> str:
@@ -127,12 +169,15 @@ def filtere_gesperrte(
 
 
 def scan(
-    source: Path, detail: bool = False, ausnahmen: dict[str, str] | None = None
+    source: Path,
+    detail: bool = False,
+    ausnahmen: dict[str, tuple[str, str]] | None = None,
 ) -> int:
     """Prüft alle getrackten Textdateien auf Sperrbegriffe, ohne Allowlist.
 
-    Dateien aus der Ausnahmeliste zählen nicht als Treffer; ihre Begründung
-    wird mitgezählt und bei --detail ausgegeben.
+    Eine Datei aus der Ausnahmeliste gilt nur als begründet, wenn der
+    Fingerabdruck ihrer Trefferzeilen zur Liste passt. Weicht er ab, ist die
+    Datei offen: irgendetwas ist hinzugekommen und braucht eine Entscheidung.
     Rückgabe ist der Exitcode: 0 ohne offene Treffer, 1 mit Treffern.
     """
     ausnahmen = ausnahmen or {}
@@ -149,16 +194,28 @@ def scan(
     for rel, kategorie, zeile, auszug in gesperrt:
         pro_datei.setdefault(rel, []).append((kategorie, zeile, auszug))
 
-    begruendet = sorted(rel for rel in pro_datei if rel in ausnahmen)
-    offen = [rel for rel in pro_datei if rel not in ausnahmen]
+    aktuell = {rel: fingerabdruck([a for _, _, a in treffer]) for rel, treffer in pro_datei.items()}
+    begruendet: list[str] = []
+    geaendert: list[str] = []
+    offen: list[str] = []
+    for rel in pro_datei:
+        if rel not in ausnahmen:
+            offen.append(rel)
+            continue
+        _, abdruck = ausnahmen[rel]
+        if abdruck == aktuell[rel]:
+            begruendet.append(rel)
+        else:
+            geaendert.append(rel)
+            offen.append(rel)
 
     print(f"Sperrbegriff-Scan ohne Allowlist: {source}")
     print(f"Getrackte Dateien: {len(dateien)}, gescannte Textdateien: {len(kandidaten)}")
     if begruendet:
-        print(f"Ausgenommen laut Liste: {len(begruendet)} Dateien (mit Begründung)")
+        print(f"Ausgenommen laut Liste: {len(begruendet)} Dateien (Fingerabdruck passt)")
         if detail:
-            for rel in begruendet:
-                print(f"  ~ {rel}: {ausnahmen[rel]}")
+            for rel in sorted(begruendet):
+                print(f"  ~ {rel}: {ausnahmen[rel][0]}")
     if not offen:
         print("Keine offenen Sperrbegriffe gefunden")
         return 0
@@ -169,11 +226,62 @@ def scan(
     ).most_common():
         print(f"  {kategorie}: {anzahl}")
     for rel in sorted(offen, key=lambda r: (-len(pro_datei[r]), r)):
-        print(f"- {rel}: {len(pro_datei[rel])} Zeilen (nicht in der Ausnahmeliste)")
+        if rel in geaendert:
+            print(
+                f"- {rel}: {len(pro_datei[rel])} Zeilen "
+                f"(Fingerabdruck geaendert: Liste {ausnahmen[rel][1]}, jetzt {aktuell[rel]})"
+            )
+        else:
+            print(f"- {rel}: {len(pro_datei[rel])} Zeilen (nicht in der Ausnahmeliste)")
         if detail:
             for kategorie, zeile, auszug in pro_datei[rel]:
                 print(f"    {zeile}: {kategorie}: {auszug}")
     return 1
+
+
+def aktualisiere_ausnahmen(
+    source: Path,
+    pfad: Path,
+    ausnahmen: dict[str, tuple[str, str]],
+) -> int:
+    """Schreibt die Fingerabdrücke der gelisteten Dateien neu.
+
+    Die Begründungen bleiben unangetastet; Dateien mit Treffern, die nicht in
+    der Liste stehen, werden nur gemeldet und nicht automatisch aufgenommen.
+    """
+    dateien = source_files(source)
+    kandidaten = [
+        rel
+        for rel in dateien
+        if Path(rel).suffix.lower() not in SKIP_SUFFIXES and not ist_env_datei(rel)
+    ]
+    _, gesperrt = filtere_gesperrte(source, kandidaten)
+    pro_datei: dict[str, list[tuple[str, int, str]]] = {}
+    for rel, kategorie, zeile, auszug in gesperrt:
+        pro_datei.setdefault(rel, []).append((kategorie, zeile, auszug))
+
+    neu = dict(ausnahmen)
+    for rel, treffer in pro_datei.items():
+        if rel in neu:
+            grund, _ = neu[rel]
+            neu[rel] = (grund, fingerabdruck([a for _, _, a in treffer]))
+    # Eintraege ohne Treffer sind erledigt: die Datei ist bereinigt.
+    entfernt = sorted(rel for rel in neu if rel not in pro_datei)
+    for rel in entfernt:
+        del neu[rel]
+    schreibe_ausnahmen(pfad, neu)
+
+    print(f"Fingerabdruecke aktualisiert: {len(neu)} Eintraege in {pfad}")
+    for rel in entfernt:
+        print(f"- Eintrag entfernt (keine Treffer mehr): {rel}")
+    unbegruendet = sorted(rel for rel in pro_datei if rel not in neu)
+    if unbegruendet:
+        print("Ohne Begruendung (bitte von Hand eintragen):")
+        for rel in unbegruendet:
+            print(f"- {rel}: {len(pro_datei[rel])} Zeilen")
+        return 1
+    print("Alle Trefferdateien sind begruendet")
+    return 0
 
 
 def build(
@@ -265,7 +373,12 @@ def main() -> int:
     parser.add_argument(
         "--ausnahmen",
         type=Path,
-        help="Ausnahmeliste (`pfad | Grund`) für begründete Treffer im Scan",
+        help="Ausnahmeliste (`pfad | Grund | Fingerabdruck`) für begründete Treffer",
+    )
+    parser.add_argument(
+        "--ausnahmen-aktualisieren",
+        action="store_true",
+        help="Fingerabdruecke der gelisteten Dateien neu schreiben (mit --scan)",
     )
     parser.add_argument(
         "--streng",
@@ -281,9 +394,17 @@ def main() -> int:
     if args.scan:
         if args.dest or args.remote_url:
             parser.error("--scan arbeitet ohne --dest und --remote-url")
+        if args.ausnahmen_aktualisieren:
+            if not args.ausnahmen:
+                parser.error("--ausnahmen-aktualisieren braucht --ausnahmen")
+            return aktualisiere_ausnahmen(
+                args.source.resolve(),
+                args.ausnahmen,
+                lade_ausnahmen(args.ausnahmen, mit_fingerabdruck=False),
+            )
         ausnahmen = lade_ausnahmen(args.ausnahmen) if args.ausnahmen else {}
         return scan(args.source.resolve(), detail=args.detail, ausnahmen=ausnahmen)
-    if args.ausnahmen:
+    if args.ausnahmen or args.ausnahmen_aktualisieren:
         parser.error("--ausnahmen gilt nur zusammen mit --scan")
     if not args.dest or not args.remote_url:
         parser.error("--dest und --remote-url sind ohne --scan Pflicht")

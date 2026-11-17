@@ -4,7 +4,8 @@
 Prüft positiv und negativ: bekannte Formulierungen der alten Forschungsagenda
 und der privaten Infrastruktur müssen erkannt werden, harmloser Text nicht.
 Dazu ein echter Mini-Export (gesperrte Datei darf im Ziel fehlen), der
-Streng-Modus und der Scan-Modus ohne Allowlist mit seinen Exitcodes.
+Streng-Modus, der Scan ohne Allowlist und die Ausnahmeliste mit
+Fingerabdruck.
 
 Aufruf:
     python scripts/pruefe_sperrliste.py
@@ -163,7 +164,10 @@ def pruefe_scan(export) -> int:
         detail = io.StringIO()
         with redirect_stdout(detail):
             export.scan(schmutzig, detail=True)
-        if "Alte Forschungsagenda" in detail.getvalue() and "Private Infrastruktur" in detail.getvalue():
+        if (
+            "Alte Forschungsagenda" in detail.getvalue()
+            and "Private Infrastruktur" in detail.getvalue()
+        ):
             print("OK: --detail nennt die Kategorien je Zeile")
         else:
             print(f"FAIL: --detail ohne Kategorien:\n{detail.getvalue()}")
@@ -216,43 +220,83 @@ def pruefe_ausnahmen(export) -> int:
             encoding="utf-8",
         )
 
-        print("--- Ausnahmen: begruendet ---")
-        ausnahmen = export.lade_ausnahmen(liste)
-        if set(ausnahmen) == {"alt_thema.md", "infra.py"}:
+        print("--- Ausnahmen: ohne Fingerabdruck ---")
+        try:
+            export.lade_ausnahmen(liste)
+        except SystemExit as exc:
+            if "Fingerabdruck" in str(exc.code):
+                print("OK: Liste ohne Fingerabdruck wird abgelehnt")
+            else:
+                print(f"FAIL: Abbruch mit falschem Text: {exc.code}")
+                fehler += 1
+        else:
+            print("FAIL: Liste ohne Fingerabdruck wurde akzeptiert")
+            fehler += 1
+
+        print("--- Ausnahmen: Fingerabdruecke schreiben ---")
+        roh = export.lade_ausnahmen(liste, mit_fingerabdruck=False)
+        if set(roh) == {"alt_thema.md", "infra.py"}:
             print("OK: Ausnahmeliste gelesen, Gründe erhalten")
         else:
-            print(f"FAIL: Ausnahmeliste falsch gelesen: {ausnahmen}")
+            print(f"FAIL: Ausnahmeliste falsch gelesen: {roh}")
+            fehler += 1
+        with redirect_stdout(io.StringIO()):
+            export.aktualisiere_ausnahmen(baum, liste, roh)
+        geschrieben = export.lade_ausnahmen(liste)
+        fehlend = [rel for rel, (_, fp) in geschrieben.items() if len(fp) != 16]
+        if not fehlend:
+            print("OK: Fingerabdruecke geschrieben (16 Hexzeichen je Eintrag)")
+        else:
+            print(f"FAIL: Fingerabdruck fehlt bei {fehlend}")
             fehler += 1
 
+        print("--- Ausnahmen: Fingerabdruck passt ---")
         puffer = io.StringIO()
         with redirect_stdout(puffer):
-            code = export.scan(baum, ausnahmen=ausnahmen)
+            code = export.scan(baum, ausnahmen=geschrieben)
         ausgabe = puffer.getvalue()
-        if code != 0 or "Keine offenen Sperrbegriffe" not in ausgabe:
+        if code != 0 or "Fingerabdruck passt" not in ausgabe:
             print(f"FAIL: begründete Treffer blockieren den Scan: {code}\n{ausgabe}")
             fehler += 1
-        elif "Ausgenommen laut Liste: 2 Dateien" not in ausgabe:
-            print(f"FAIL: Ausnahmen werden nicht gezählt:\n{ausgabe}")
-            fehler += 1
         else:
-            print("OK: begründete Treffer blockieren nicht")
+            print("OK: passende Fingerabdruecke blockieren nicht")
 
+        print("--- Ausnahmen: neuer Treffer in gelisteter Datei ---")
+        (baum / "alt_thema.md").write_text(
+            "Abschnitt zur " + "herit" + "ability im Tierbefund\n"
+            "Nachtrag: " + "poly" + "genic score bleibt offen\n",
+            encoding="utf-8",
+        )
+        puffer = io.StringIO()
+        with redirect_stdout(puffer):
+            code = export.scan(baum, ausnahmen=geschrieben)
+        ausgabe = puffer.getvalue()
+        if code == 1 and "Fingerabdruck geaendert" in ausgabe:
+            print("OK: neuer Treffer kippt den Fingerabdruck und blockiert")
+        else:
+            print(f"FAIL: neuer Treffer blieb unbemerkt (Code {code}):\n{ausgabe}")
+            fehler += 1
+
+        print("--- Ausnahmen: nicht gelistete Datei ---")
         nur_eine = Path(tmp) / "eine.txt"
-        nur_eine.write_text("alt_thema.md | Testfixture\n", encoding="utf-8")
+        nur_eine.write_text("infra.py | Betriebsnotiz\n", encoding="utf-8")
+        nur_eine_mit_abdruck = export.lade_ausnahmen(nur_eine, mit_fingerabdruck=False)
+        with redirect_stdout(io.StringIO()):
+            export.aktualisiere_ausnahmen(baum, nur_eine, nur_eine_mit_abdruck)
         puffer = io.StringIO()
         with redirect_stdout(puffer):
             code = export.scan(baum, ausnahmen=export.lade_ausnahmen(nur_eine))
-        if code == 1 and "infra.py" in puffer.getvalue():
+        if code == 1 and "alt_thema.md" in puffer.getvalue():
             print("OK: nicht gelistete Datei bleibt offener Treffer")
         else:
-            print(f"FAIL: nicht gelistete Datei wurde stillschweigend akzeptiert: {puffer.getvalue()}")
+            print(f"FAIL: nicht gelistete Datei wurde akzeptiert: {puffer.getvalue()}")
             fehler += 1
 
         print("--- Ausnahmen: fehlende Begruendung ---")
         kaputt = Path(tmp) / "kaputt.txt"
         kaputt.write_text("alt_thema.md\n", encoding="utf-8")
         try:
-            export.lade_ausnahmen(kaputt)
+            export.lade_ausnahmen(kaputt, mit_fingerabdruck=False)
         except SystemExit as exc:
             if "ohne Begruendung" in str(exc.code):
                 print("OK: Ausnahme ohne Grund wird abgelehnt")
@@ -261,6 +305,19 @@ def pruefe_ausnahmen(export) -> int:
                 fehler += 1
         else:
             print("FAIL: Ausnahme ohne Grund wurde akzeptiert")
+            fehler += 1
+
+        print("--- Ausnahmen: bereinigte Datei ---")
+        (baum / "infra.py").write_text("server = 'intern'\n", encoding="utf-8")
+        puffer = io.StringIO()
+        with redirect_stdout(puffer):
+            export.aktualisiere_ausnahmen(
+                baum, liste, export.lade_ausnahmen(liste, mit_fingerabdruck=False)
+            )
+        if "Eintrag entfernt (keine Treffer mehr): infra.py" in puffer.getvalue():
+            print("OK: Eintrag einer bereinigten Datei faellt aus der Liste")
+        else:
+            print(f"FAIL: bereinigte Datei bleibt in der Liste:\n{puffer.getvalue()}")
             fehler += 1
 
         print("--- Ausnahmen über die Kommandozeile ---")
@@ -279,7 +336,7 @@ def pruefe_ausnahmen(export) -> int:
             text=True,
         )
         if lauf.returncode == 0 and "Testfixture der frueheren Reihe" in lauf.stdout:
-            print("OK: CLI-Scan mit Ausnahmen endet mit 0 und zeigt den Grund")
+            print("OK: CLI-Scan mit Fingerabdruck endet mit 0 und zeigt den Grund")
         else:
             print(f"FAIL: CLI mit Ausnahmen: {lauf.returncode}\n{lauf.stdout}\n{lauf.stderr}")
             fehler += 1
@@ -298,7 +355,7 @@ def main() -> int:
         return 1
     print(
         "GEGENTEST OK: Sperrliste erkennt alle Fälle, Export lässt sie aus, "
-        "Scan findet sie, begründete Ausnahmen zählen nicht"
+        "Scan findet sie, Fingerabdruck deckt neue Treffer auf"
     )
     return 0
 
