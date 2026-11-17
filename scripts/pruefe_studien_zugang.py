@@ -21,8 +21,10 @@ Aufruf::
 from __future__ import annotations
 
 import argparse
+import glob
 import json
 import re
+import sqlite3
 import time
 import urllib.error
 import urllib.parse
@@ -36,6 +38,40 @@ ZIEL_JSON = ROOT / "data" / "golden_effects" / "studienzugang_20261117.json"
 ZIEL_MD = ROOT / "docs" / "internal" / "studienzugang_20261117.md"
 
 UA = "AIResearch-Goldstandard-Lizenzcheck/1.0 (Forschungsprojekt, Kontakt lokal)"
+
+
+def herkunft() -> dict:
+    """Bezugsquelle je Volltext aus den Run-Datenbanken (source_texts.origin_url).
+
+    Die Volltexte stammen aus den eigenen Laeufen des Agenten; die Tabelle
+    ``source_texts`` haelt je Dokument die abgerufene URL. Ohne diesen Eintrag
+    waere die Herkunft eines Textes nicht belegbar.
+    """
+    treffer: dict[str, dict] = {}
+    for db in sorted(glob.glob(str(ROOT / "data" / "*.db"))):
+        try:
+            conn = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+        except sqlite3.Error:
+            continue
+        try:
+            hat = conn.execute(
+                "select 1 from sqlite_master where type='table' and name='source_texts'"
+            ).fetchone()
+            if not hat:
+                continue
+            for text_id, url, pfad in conn.execute(
+                    "select id, origin_url, path from source_texts"):
+                if text_id and text_id not in treffer:
+                    treffer[text_id] = {
+                        "datenbank": Path(db).stem,
+                        "origin_url": url or "",
+                        "pfad": pfad or "",
+                    }
+        except sqlite3.Error:
+            pass
+        finally:
+            conn.close()
+    return treffer
 DOI_RE = re.compile(r"10\.[0-9]{4,9}/[^\s\"<>]+")
 PMID_RE = re.compile(r"PMID:?\s*([0-9]{6,9})")
 PMC_RE = re.compile(r"(PMC[0-9]{6,9})")
@@ -163,6 +199,7 @@ def main() -> int:
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     docs = manifest.get("documents") or []
+    quelle = herkunft()
     ergebnisse = []
     for nummer, doc in enumerate(docs, start=1):
         pfad = ROOT / doc["fulltext"]
@@ -171,6 +208,7 @@ def main() -> int:
         eintrag = {
             "document_id": doc["document_id"],
             "titel": doc.get("title") or "",
+            "herkunft": quelle.get(doc["document_id"]),
             "kennung": kennung,
             "europepmc": None,
             "crossref": None,
@@ -225,15 +263,16 @@ def main() -> int:
         "(REST, `resultType=core`) und als Rueckfall bei Crossref. Ein fehlender",
         "Treffer ist ein Befund, kein Fehler.",
         "",
-        "| Dokument | DOI | Europe PMC | Lizenz | Urteil |",
-        "|---|---|---|---|---|",
+        "| Dokument | DOI | Europe PMC | Lizenz | Urteil | Bezug |",
+        "|---|---|---|---|---|---|",
     ]
     for e in ergebnisse:
         epmc = e.get("europepmc") or {}
+        bezug = (e.get("herkunft") or {}).get("origin_url") or "-"
         zeilen.append(
             f"| `{e['document_id'][:10]}` | {e['kennung']['doi'] or '-'} | "
             f"{(epmc.get('is_open_access') or '-')} | {(epmc.get('license') or '-')} | "
-            f"{e['urteil']} |"
+            f"{e['urteil']} | {bezug} |"
         )
     offen = sum(1 for e in ergebnisse if e["urteil"].startswith("offen"))
     ohne = [e for e in ergebnisse if not any(e["kennung"].values())]
