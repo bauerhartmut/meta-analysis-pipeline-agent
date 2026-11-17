@@ -1,0 +1,509 @@
+{
+  "review": "Serrano-Ripoll 2022 (10.2196/29621)",
+  "studies": [
+    {
+      "name": "Arean 2016",
+      "pmid": 27998876,
+      "instrument": "PHQ-9",
+      "found_in_epmc": true,
+      "doi": "10.2196/jmir.6482",
+      "pmcid": "PMC5209607",
+      "is_open_access": true,
+      "in_pmc": true,
+      "has_pdf": true,
+      "title": "The Use and Effectiveness of Mobile Apps for Depression: Results From a Fully Remote Clinical Trial.",
+      "journal": "J Med Internet Res",
+      "pub_year": "2016",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2563766843",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Birney 2016",
+      "pmid": 26813737,
+      "instrument": "PHQ-9",
+      "found_in_epmc": true,
+      "doi": "10.2196/mhealth.4231",
+      "pmcid": "PMC4748138",
+      "is_open_access": true,
+      "in_pmc": true,
+      "has_pdf": true,
+      "title": "MoodHacker Mobile Web App With Email for Adults to Self-Manage Mild-to-Moderate Depression: Randomized Controlled Trial.",
+      "journal": "JMIR Mhealth Uhealth",
+      "pub_year": "2016",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2258970805",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Dahne 2019",
+      "pmid": 31208690,
+      "instrument": "PHQ-9",
+      "found_in_epmc": true,
+      "doi": "10.1016/j.beth.2018.12.003",
+      "pmcid": "PMC6582985",
+      "is_open_access": false,
+      "in_pmc": true,
+      "has_pdf": true,
+      "title": "Pilot Randomized Trial of a Self-Help Behavioral Activation Mobile App for Utilization in Primary Care.",
+      "journal": "Behav Ther",
+      "pub_year": "2019",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2904008552",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Ham 2019",
+      "pmid": 31402881,
+      "instrument": "BDI-II",
+      "found_in_epmc": true,
+      "doi": "10.3389/fpsyg.2019.01592",
+      "pmcid": "PMC6669916",
+      "is_open_access": true,
+      "in_pmc": true,
+      "has_pdf": true,
+      "title": "Preliminary Results From a Randomized Controlled Study for an App-Based Cognitive Behavioral Therapy Program for Depression and Anxiety in Cancer Patients.",
+      "journal": "Front Psychol",
+      "pub_year": "2019",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2964311211",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Luedtke 2018",
+      "pmid": 30273901,
+      "instrument": "BDI-II",
+      "found_in_epmc": true,
+      "doi": "10.1016/j.psychres.2018.08.113",
+      "pmcid": "",
+      "is_open_access": false,
+      "in_pmc": false,
+      "has_pdf": false,
+      "title": "A randomized controlled trial on a smartphone self-help application (Be Good to Yourself) to reduce depressive symptoms.",
+      "journal": "Psychiatry Res",
+      "pub_year": "2018",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2889419542",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Mantani 2017",
+      "pmid": 29101095,
+      "instrument": "BDI-II",
+      "found_in_epmc": true,
+      "doi": "10.2196/jmir.8602",
+      "pmcid": "PMC5695656",
+      "is_open_access": true,
+      "in_pmc": true,
+      "has_pdf": true,
+      "title": "Smartphone Cognitive Behavioral Therapy as an Adjunct to Pharmacotherapy for Refractory Depression: Randomized Controlled Trial.",
+      "journal": "J Med Internet Res",
+      "pub_year": "2017",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2766236516",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Moberg 2019",
+      "pmid": 31199319,
+      "instrument": "PHQ-8",
+      "found_in_epmc": true,
+      "doi": "10.2196/12556",
+      "pmcid": "PMC6592477",
+      "is_open_access": true,
+      "in_pmc": true,
+      "has_pdf": true,
+      "title": "Guided Self-Help Works: Randomized Waitlist Controlled Trial of Pacifica, a Mobile App Integrating Cognitive Behavioral Therapy and Mindfulness for Stress, Anxiety, and Depression.",
+      "journal": "J Med Internet Res",
+      "pub_year": "2019",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2942394370",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Pratap 2018",
+      "pmid": 30093372,
+      "instrument": "PHQ-9",
+      "found_in_epmc": true,
+      "doi": "10.2196/10130",
+      "pmcid": "PMC6107735",
+      "is_open_access": true,
+      "in_pmc": true,
+      "has_pdf": true,
+      "title": "Using Mobile Apps to Assess and Treat Depression in Hispanic and Latino Populations: Fully Remote Randomized Clinical Trial.",
+      "journal": "J Med Internet Res",
+      "pub_year": "2018",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2807418321",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Roepke 2015",
+      "pmid": 26182069,
+      "instrument": "CES-D",
+      "found_in_epmc": true,
+      "doi": "10.1089/g4h.2014.0046",
+      "pmcid": "",
+      "is_open_access": false,
+      "in_pmc": false,
+      "has_pdf": false,
+      "title": "Randomized Controlled Trial of SuperBetter, a Smartphone-Based/Internet-Based Self-Help Tool to Reduce Depressive Symptoms.",
+      "journal": "Games Health J",
+      "pub_year": "2015",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2144798030",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Tighe 2017",
+      "pmid": 28132007,
+      "instrument": "PHQ-9",
+      "found_in_epmc": true,
+      "doi": "10.1136/bmjopen-2016-013518",
+      "pmcid": "PMC5278278",
+      "is_open_access": true,
+      "in_pmc": true,
+      "has_pdf": true,
+      "title": "Ibobbly mobile health intervention for suicide prevention in Australian Indigenous youth: a pilot randomised controlled trial.",
+      "journal": "BMJ Open",
+      "pub_year": "2017",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W2582394553",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Graham 2020",
+      "pmid": 32432695,
+      "instrument": "PHQ-8",
+      "found_in_epmc": true,
+      "doi": "10.1001/jamapsychiatry.2020.1011",
+      "pmcid": "PMC7240649",
+      "is_open_access": false,
+      "in_pmc": true,
+      "has_pdf": false,
+      "title": "Coached Mobile App Platform for the Treatment of Depression and Anxiety Among Primary Care Patients: A Randomized Clinical Trial.",
+      "journal": "JAMA Psychiatry",
+      "pub_year": "2020",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W3027708473",
+        "s2_open_access_pdf": true
+      }
+    },
+    {
+      "name": "Guo 2020",
+      "pmid": 32044751,
+      "instrument": "CES-D",
+      "found_in_epmc": true,
+      "doi": "10.2196/16715",
+      "pmcid": "PMC7058168",
+      "is_open_access": true,
+      "in_pmc": true,
+      "has_pdf": true,
+      "title": "Effect of a WeChat-Based Intervention (Run4Love) on Depressive Symptoms Among People Living With HIV in China: A Randomized Controlled Trial.",
+      "journal": "J Med Internet Res",
+      "pub_year": "2020",
+      "identifier": {
+        "europepmc_by_doi": true,
+        "pubmed_by_doi": true,
+        "crossref": true,
+        "openalex": true,
+        "semanticscholar": true,
+        "openalex_id": "https://openalex.org/W3005650543",
+        "s2_open_access_pdf": true
+      }
+    }
+  ],
+  "keyword_recall": {
+    "europepmc": {
+      "treffer": 0,
+      "ueber_doi": 0,
+      "ueber_titel": 0,
+      "von": 12,
+      "hitCount": 500,
+      "zurueckgegeben": 100
+    },
+    "pubmed": {
+      "treffer": 2,
+      "von": 12,
+      "hitCount": 349,
+      "zurueckgegeben": 100
+    },
+    "crossref": {
+      "treffer": 1,
+      "ueber_doi": 0,
+      "ueber_titel": 1,
+      "von": 12,
+      "zurueckgegeben": 100
+    },
+    "openalex": {
+      "treffer": 6,
+      "ueber_doi": 6,
+      "ueber_titel": 6,
+      "von": 12,
+      "zurueckgegeben": 100
+    },
+    "semanticscholar": {
+      "treffer": 0,
+      "ueber_doi": 0,
+      "ueber_titel": 0,
+      "von": 12,
+      "zurueckgegeben": 0
+    }
+  },
+  "ranks": {
+    "europepmc": {
+      "hitCount": 500,
+      "raenge": {
+        "Arean 2016": null,
+        "Birney 2016": 490,
+        "Dahne 2019": null,
+        "Ham 2019": null,
+        "Luedtke 2018": null,
+        "Mantani 2017": 387,
+        "Moberg 2019": null,
+        "Pratap 2018": null,
+        "Roepke 2015": null,
+        "Tighe 2017": null,
+        "Graham 2020": null,
+        "Guo 2020": 412
+      }
+    },
+    "pubmed": {
+      "hitCount": 349,
+      "raenge": {
+        "Arean 2016": null,
+        "Birney 2016": null,
+        "Dahne 2019": 136,
+        "Ham 2019": null,
+        "Luedtke 2018": null,
+        "Mantani 2017": 231,
+        "Moberg 2019": 144,
+        "Pratap 2018": null,
+        "Roepke 2015": null,
+        "Tighe 2017": null,
+        "Graham 2020": 78,
+        "Guo 2020": null
+      }
+    }
+  },
+  "citation": {
+    "Linardon 2019 (World Psychiatry)": {
+      "referenzen": 81,
+      "treffer": [
+        "Arean 2016",
+        "Birney 2016",
+        "Luedtke 2018",
+        "Roepke 2015",
+        "Tighe 2017"
+      ],
+      "anzahl": 5,
+      "von": 12
+    },
+    "Firth 2017 (World Psychiatry)": {
+      "referenzen": 70,
+      "treffer": [
+        "Arean 2016",
+        "Birney 2016",
+        "Roepke 2015",
+        "Tighe 2017"
+      ],
+      "anzahl": 4,
+      "von": 12
+    }
+  },
+  "extraction": [
+    {
+      "name": "Arean 2016",
+      "pmcid": "PMC5209607",
+      "instrument": "PHQ-9",
+      "volltext": "ok",
+      "zeichen": 55297,
+      "pm_vorkommen": 0,
+      "sd_vorkommen": 5,
+      "mean_vorkommen": 0,
+      "instrument_vorkommen": 43,
+      "instrument_mit_zahl": 11,
+      "arm_statistik_im_text": false
+    },
+    {
+      "name": "Birney 2016",
+      "pmcid": "PMC4748138",
+      "instrument": "PHQ-9",
+      "volltext": "ok",
+      "zeichen": 78969,
+      "pm_vorkommen": 0,
+      "sd_vorkommen": 6,
+      "mean_vorkommen": 0,
+      "instrument_vorkommen": 12,
+      "instrument_mit_zahl": 2,
+      "arm_statistik_im_text": false
+    },
+    {
+      "name": "Dahne 2019",
+      "pmcid": "PMC6582985",
+      "instrument": "PHQ-9",
+      "volltext": "XML nicht abrufbar (HTTP 500)"
+    },
+    {
+      "name": "Ham 2019",
+      "pmcid": "PMC6669916",
+      "instrument": "BDI-II",
+      "volltext": "ok",
+      "zeichen": 99719,
+      "pm_vorkommen": 0,
+      "sd_vorkommen": 4,
+      "mean_vorkommen": 0,
+      "instrument_vorkommen": 11,
+      "instrument_mit_zahl": 3,
+      "arm_statistik_im_text": false
+    },
+    {
+      "name": "Luedtke 2018",
+      "pmcid": "",
+      "instrument": "BDI-II",
+      "volltext": "kein PMC-Volltext"
+    },
+    {
+      "name": "Mantani 2017",
+      "pmcid": "PMC5695656",
+      "instrument": "BDI-II",
+      "volltext": "ok",
+      "zeichen": 57701,
+      "pm_vorkommen": 0,
+      "sd_vorkommen": 4,
+      "mean_vorkommen": 4,
+      "instrument_vorkommen": 22,
+      "instrument_mit_zahl": 8,
+      "arm_statistik_im_text": true
+    },
+    {
+      "name": "Moberg 2019",
+      "pmcid": "PMC6592477",
+      "instrument": "PHQ-8",
+      "volltext": "ok",
+      "zeichen": 69060,
+      "pm_vorkommen": 0,
+      "sd_vorkommen": 0,
+      "mean_vorkommen": 0,
+      "instrument_vorkommen": 11,
+      "instrument_mit_zahl": 2,
+      "arm_statistik_im_text": false
+    },
+    {
+      "name": "Pratap 2018",
+      "pmcid": "PMC6107735",
+      "instrument": "PHQ-9",
+      "volltext": "ok",
+      "zeichen": 55361,
+      "pm_vorkommen": 0,
+      "sd_vorkommen": 2,
+      "mean_vorkommen": 1,
+      "instrument_vorkommen": 37,
+      "instrument_mit_zahl": 9,
+      "arm_statistik_im_text": true
+    },
+    {
+      "name": "Roepke 2015",
+      "pmcid": "",
+      "instrument": "CES-D",
+      "volltext": "kein PMC-Volltext"
+    },
+    {
+      "name": "Tighe 2017",
+      "pmcid": "PMC5278278",
+      "instrument": "PHQ-9",
+      "volltext": "ok",
+      "zeichen": 43530,
+      "pm_vorkommen": 4,
+      "sd_vorkommen": 0,
+      "mean_vorkommen": 0,
+      "instrument_vorkommen": 11,
+      "instrument_mit_zahl": 0,
+      "arm_statistik_im_text": true
+    },
+    {
+      "name": "Graham 2020",
+      "pmcid": "PMC7240649",
+      "instrument": "PHQ-8",
+      "volltext": "XML nicht abrufbar (HTTP 500)"
+    },
+    {
+      "name": "Guo 2020",
+      "pmcid": "PMC7058168",
+      "instrument": "CES-D",
+      "volltext": "ok",
+      "zeichen": 51705,
+      "pm_vorkommen": 0,
+      "sd_vorkommen": 0,
+      "mean_vorkommen": 0,
+      "instrument_vorkommen": 28,
+      "instrument_mit_zahl": 7,
+      "arm_statistik_im_text": false
+    }
+  ]
+}
