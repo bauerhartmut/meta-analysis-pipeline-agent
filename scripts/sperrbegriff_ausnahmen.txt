@@ -79,7 +79,7 @@ research_agent/data/journal/f015e4510670.md | Forschungsakte der frueheren Frage
 research_agent/data/journal/fb709a4ea591.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 16e292b7e7c9b4ce
 research_agent/data/journal/fc4249225baa.md | Forschungsakte der frueheren Fragestellung; bleibt privat | c8b03606d3046149
 research_agent/evals/README.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 642292046bab921f
-research_agent/evals/golden_answers.json | Golden-Set der frueheren Reihe; die Claims sind Daten aus der alten DB und nicht ohne Quellenpruefung ersetzbar | dc1b84793e8d89fe
+research_agent/evals/golden_answers.json | Golden-Set, am 2026-11-17 gegen die aktuelle DB neu verankert; die Claims sind Pruefdaten und bleiben privat | 1ca6f126b3552dd4
 research_agent/tests/test_backlog_work.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | d0c03562800ce561
 research_agent/tests/test_citation_snowball.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 0674ffbb4eafd183
 research_agent/tests/test_components.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene | 124996adab443e17

@@ -113,3 +113,33 @@ abdeckung statt bloßer DB-Tautologie.
 
 Die 3 Gap-Checks (Länder, benanntes Rahmenwerk, IQ-Gewinn-Schätzung) bleiben ausstehende
 erwartete Inhalte (alle MISS) und sind unabhängige Lücken-Signale.
+
+## Neuaufbau am 17.11.2026
+
+Die Erhebung, gegen die das Set am 31.08.2026 geschrieben wurde, existiert in
+dieser Form nicht mehr: Von den 24 damals zitierten Record-IDs stehen heute
+nur noch vier in `data/research.db`, 20 sind mit der Neuerhebung entfallen.
+Einzelne Inhalte leben unter neuen IDs weiter, andere gar nicht. Das Set wurde
+deshalb nicht gelöscht, sondern gegen die aktuelle DB neu verankert:
+
+- **29 Claims** (vorher 40): 20 DB-verankert, 9 fremdbelegt.
+- **13 Claims sind entfallen**, weil die aktuelle Erhebung keinen tragenden
+  Record mehr enthält. Sie stehen mit Begründung in `meta.entfallen` und im
+  Diffbericht [`golden_set_diff.md`](golden_set_diff.md).
+- **2 Claims sind neu und ohne Vorgänger**: ein Record zur Vorhersagegüte im
+  UK Biobank und eine Regulierungs-Hypothese. Beide ersetzen keinen alten
+  Claim, sondern füllen die Lücke der entfallenen.
+- Jeder DB-Claim trägt seinen Record-Text wortgleich unter `record_text`.
+  `python scripts/pruefe_golden_set.py` prüft Text, Zahlen und Term-Abdeckung
+  gegen die DB und bricht bei Abweichung ab; `--diff-alt` erzeugt den
+  Diffbericht neu.
+
+Der alte Vergleichswert (40 Claims, composite ≈ 69,8) gilt damit nicht mehr.
+Messung nach dem Neuaufbau gegen `data/research.db` (deterministisch, ohne
+Netzlauf): **composite 71,0**, claim_recall 0,724 (21/29), number_accuracy 0,676
+(25/37); mit `--with-journal` composite 71,8 und number_accuracy 0,703 (26/37).
+Alle 20 DB-verankerten Claims werden vom jeweils zitierten Record getragen; die
+8 offenen Claims sind genau die fremdbelegten (Lee 2018, Savage 2018, HFEA,
+Yengo 2022, Agar 2004, Bratsberg & Rogeberg 2018, Turley 2021, Karavani 2019).
+Die De-Sättigung bleibt damit erhalten: der Score misst weiter Zahlen, die
+nicht in der DB stehen.
