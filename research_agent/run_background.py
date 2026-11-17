@@ -31,7 +31,7 @@ async def main():
     orchestrator = ResearchOrchestrator(config)
     
     try:
-        await orchestrator.start('heritability of intelligence and embryo selection')
+        await orchestrator.start('melatonin and sleep onset latency')
     except Exception as e:
         logger.error(f"Agent error: {e}", exc_info=True)
     finally:

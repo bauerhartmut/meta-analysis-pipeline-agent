@@ -18,7 +18,7 @@ OLLAMA_HOST = "http://localhost:11434"
 OLLAMA_CHECK_URL = f"{OLLAMA_HOST}/api/tags"
 MAX_WAIT_SECONDS = 60
 RESEARCH_CYCLES = 3
-RESEARCH_TOPIC = "heritability of intelligence and embryo selection"
+RESEARCH_TOPIC = "melatonin and sleep onset latency"
 
 logger = logging.getLogger(__name__)
 

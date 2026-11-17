@@ -3,7 +3,7 @@
 A source used to be one string: whatever the HTML cleaner returned, truncated,
 with no notion of where a sentence sat in the document. That is enough to judge
 relevance and it is not enough to make a claim. A scientist writing "the
-heritability estimate rose with age" has to be able to say which section, which
+treatment effect rose with follow-up" has to be able to say which section, which
 page, and which sentence they mean - otherwise the sentence is a paraphrase of a
 research summary, and nobody can check it.
 

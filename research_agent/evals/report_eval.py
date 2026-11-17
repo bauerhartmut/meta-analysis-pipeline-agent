@@ -15,17 +15,17 @@ distinctive terms AND states all of its required numbers.
 Usage:
     # Score one report file against a matched golden question:
     python -m research_agent.evals.report_eval \\
-        --report data/reports/wilson_...md --question "Was ... Wilson-Effekt ..." \\
+        --report data/reports/example_...md --question "Was ... Haupteffekt ..." \\
         --record data/reports/eval_history.jsonl
 
     # Score by explicit golden id:
-    python -m research_agent.evals.report_eval --report ... --golden-id q01_wilson_effect
+    python -m research_agent.evals.report_eval --report ... --golden-id q01_example
 
     # Show the trend from a history file:
     python -m research_agent.evals.report_eval --trend data/reports/eval_history.jsonl
 
     # Optional: run deep research for the question first, then score it:
-    python -m research_agent.evals.report_eval --golden-id q01_wilson_effect --run-deep
+    python -m research_agent.evals.report_eval --golden-id q01_example --run-deep
 """
 
 from __future__ import annotations
@@ -190,7 +190,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--report", help="Path to a deep-research markdown report.")
     ap.add_argument("--question", help="Free-text question (matched to golden set).")
-    ap.add_argument("--golden-id", help="Explicit golden question id (e.g. q01_wilson_effect).")
+    ap.add_argument("--golden-id", help="Explicit golden question id (e.g. q01_example).")
     ap.add_argument("--golden", help="Path to golden_answers.json (default: Paket D built-in).")
     ap.add_argument("--record", help="Append the score to this history JSONL.")
     ap.add_argument("--run-deep", action="store_true",

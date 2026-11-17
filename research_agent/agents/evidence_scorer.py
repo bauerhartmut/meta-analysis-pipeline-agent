@@ -153,21 +153,21 @@ class EvidenceScorer:
         """
         text_lower = text.lower()
 
-        # Heritability estimates (h² or h2) - common in genetics
+        # Explained-variance estimates (h² or h2), e.g. share of variance accounted for
         h2_match = re.search(r"h\s*(?:²|2)\s*[=:]\s*([\d.]+)", text_lower)
         if h2_match:
             try:
                 h2 = float(h2_match.group(1))
                 if h2 > 0.8:
-                    return 1.0, f"Very high heritability (h²={h2})"
+                    return 1.0, f"Very high variance explained (h²={h2})"
                 elif h2 > 0.6:
-                    return 0.85, f"High heritability (h²={h2})"
+                    return 0.85, f"High variance explained (h²={h2})"
                 elif h2 > 0.4:
-                    return 0.7, f"Moderate heritability (h²={h2})"
+                    return 0.7, f"Moderate variance explained (h²={h2})"
                 elif h2 > 0.2:
-                    return 0.5, f"Low heritability (h²={h2})"
+                    return 0.5, f"Low variance explained (h²={h2})"
                 else:
-                    return 0.3, f"Very low heritability (h²={h2})"
+                    return 0.3, f"Very low variance explained (h²={h2})"
             except ValueError:
                 pass
 

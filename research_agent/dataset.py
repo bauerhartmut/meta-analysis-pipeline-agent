@@ -394,11 +394,10 @@ class DatasetExporter:
 
         # Enhanced system prompt for the specialized model
         system_prompt = (
-            "You are a world-class genetics researcher and transhumanist bioethicist "
-            "specializing in eugenics, embryo selection, IQ optimization, and hereditary "
-            "disease elimination. You provide evidence-based, scientifically rigorous "
-            "analysis while acknowledging ethical considerations, limitations, and "
-            "uncertainties. You can argue both sides of any genetic enhancement debate."
+            "You are a rigorous research analyst working on systematic reviews and "
+            "meta-analyses of intervention studies. You argue both sides of a claim, "
+            "ground every number in a quoted source, and name limitations, "
+            "heterogeneity and risk of bias instead of smoothing them over."
         )
 
         # === CATEGORY 1: FACTS (knowledge retrieval pairs) ===
@@ -500,19 +499,16 @@ class DatasetExporter:
                 # Generate generic counter-arguments based on hypothesis content
                 generic_counters = []
                 claim_lower = claim.lower()
-                if 'heritability' in claim_lower or 'genetic' in claim_lower:
-                    generic_counters.append("Heritability estimates are population-specific and may not generalize across environments or populations.")
-                if 'iq' in claim_lower or 'intelligence' in claim_lower or 'cognitive' in claim_lower:
-                    generic_counters.append("IQ measures capture only a narrow slice of cognitive ability and may not reflect real-world outcomes.")
-                if 'embryo' in claim_lower or 'selection' in claim_lower or 'pgt' in claim_lower:
-                    generic_counters.append("Long-term health and cognitive outcomes of embryo selection remain understudied; current data is limited.")
-                if 'flynn' in claim_lower:
-                    generic_counters.append("The Flynn Effect plateau may reflect measurement artifacts or socioeconomic stagnation rather than exhausted environmental potential.")
-                if 'wilson' in claim_lower:
-                    generic_counters.append("The Wilson Effect may be explained by gene-environment correlation rather than pure genetic causation.")
-                if 'polygenic' in claim_lower or 'pgs' in claim_lower or 'gwas' in claim_lower:
-                    generic_counters.append("Polygenic scores explain only 10-15% of variance; missing heritability and gene-environment interactions limit predictive power.")
-                    generic_counters.append("Population stratification and ascertainment bias in GWAS may inflate apparent genetic effects.")
+                if 'effect' in claim_lower or 'reduc' in claim_lower or 'improv' in claim_lower:
+                    generic_counters.append("The pooled effect may be driven by small studies with wide confidence intervals rather than by a robust association.")
+                if 'heterogen' in claim_lower or 'variance' in claim_lower:
+                    generic_counters.append("Heterogeneity between studies is not explained by the reported population or design.")
+                if 'random' in claim_lower or 'trial' in claim_lower:
+                    generic_counters.append("Risk of bias in the included trials (allocation, blinding, attrition) is not addressed by the claim.")
+                if 'signific' in claim_lower:
+                    generic_counters.append("Statistical significance is not the same as a clinically relevant effect size.")
+                if 'publication' in claim_lower or 'bias' in claim_lower:
+                    generic_counters.append("Publication bias and selective outcome reporting may inflate the apparent effect.")
                 if not generic_counters:
                     generic_counters.append("The hypothesis may overstate the strength of available evidence while underestimating alternative explanations.")
                     generic_counters.append("Correlation does not imply causation; confounding variables may explain the observed relationships.")
@@ -568,199 +564,6 @@ class DatasetExporter:
                 ]
             })
 
-        # === CATEGORY 5: ETHICAL DEBATE PAIRS (dynamic, per-hypothesis) ===
-        # First: 3 general ethical debates (kept for broad coverage)
-        general_ethical = [
-            {
-                "q": "What are the strongest ethical arguments FOR embryo selection for intelligence?",
-                "a": (
-                    "## Arguments For Embryo Selection for Intelligence\n\n"
-                    "1. **Reproductive Autonomy:** Parents have the right to make informed reproductive choices, "
-                    "including selecting embryos with favorable genetic profiles, just as they choose "
-                    "education, nutrition, and environment.\n\n"
-                    "2. **Harm Reduction:** If selection can reduce risk of hereditary cognitive disabilities "
-                    "or increase resilience, it aligns with the medical principle of beneficence.\n\n"
-                    "3. **Technological Inevitability:** The technology exists and will be used regardless; "
-                    "regulation should focus on safety and equity rather than prohibition.\n\n"
-                    "4. **Cognitive Enhancement as Public Good:** Higher average cognitive ability could "
-                    "accelerate scientific progress, solve global challenges, and improve human welfare.\n\n"
-                    "5. **Existing Precedent:** PGD for medical conditions is widely accepted; "
-                    "the distinction between medical and enhancement traits is philosophically arbitrary."
-                ),
-            },
-            {
-                "q": "What are the strongest ethical arguments AGAINST embryo selection for intelligence?",
-                "a": (
-                    "## Arguments Against Embryo Selection for Intelligence\n\n"
-                    "1. **Historical Eugenics:** The history of eugenics includes forced sterilization, "
-                    "genocide, and systematic oppression. Even voluntary programs risk normalizing "
-                    "genetic hierarchies.\n\n"
-                    "2. **Genetic Determinism:** Overemphasizing genetics ignores the profound role of "
-                    "environment, education, nutrition, and social factors in cognitive development.\n\n"
-                    "3. **Inequality Amplification:** Only wealthy families could afford selection, "
-                    "creating a genetic underclass and exacerbating existing social inequalities.\n\n"
-                    "4. **Consent of the Selected:** Future children cannot consent to being genetically "
-                    "selected, raising questions about autonomy and instrumentalization.\n\n"
-                    "5. **Diversity Reduction:** Genetic selection could reduce human genetic diversity, "
-                    "potentially eliminating valuable traits we don't yet understand.\n\n"
-                    "6. **Pleiotropic Risks:** Genes affecting intelligence may have trade-offs with "
-                    "mental health, creativity, or other valued traits."
-                ),
-            },
-            {
-                "q": "How should society regulate embryo genetic selection?",
-                "a": (
-                    "## Regulatory Framework Recommendations\n\n"
-                    "1. **Medical vs. Enhancement Distinction:** Maintain strict separation between "
-                    "medical PGD (disease prevention) and enhancement selection. Current evidence "
-                    "supports medical use; enhancement requires more research.\n\n"
-                    "2. **Equity Requirements:** If enhancement selection becomes available, public "
-                    "funding or insurance coverage should prevent it from being wealth-exclusive.\n\n"
-                    "3. **Long-term Monitoring:** Mandate longitudinal studies of children born through "
-                    "genetic selection to track health, cognitive, and social outcomes.\n\n"
-                    "4. **International Coordination:** Prevent regulatory arbitrage by establishing "
-                    "international standards through WHO or similar bodies.\n\n"
-                    "5. **Public Deliberation:** Any expansion beyond medical PGD should require "
-                    "broad public consultation, not just expert or industry input."
-                ),
-            },
-        ]
-        for item in general_ethical:
-            records.append({
-                "category": "ethical_debates",
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": item["q"]},
-                    {"role": "assistant", "content": item["a"]},
-                ]
-            })
-
-        # Dynamic: Generate ethical debate for EACH hypothesis
-        for hyp in hypotheses:
-            claim = hyp.get('claim', '')
-            confidence = hyp.get('confidence', 0)
-            claim_lower = claim.lower()
-
-            # Determine ethical dimension based on hypothesis content
-            ethical_dimensions = []
-            if 'embryo' in claim_lower or 'selection' in claim_lower or 'pgt' in claim_lower or 'pgd' in claim_lower:
-                ethical_dimensions.append('embryo_selection')
-            if 'ai' in claim_lower or 'childci' in claim_lower or 'machine learning' in claim_lower or 'framework' in claim_lower:
-                ethical_dimensions.append('ai_prediction')
-            if 'eugenics' in claim_lower or 'historical' in claim_lower:
-                ethical_dimensions.append('historical_eugenics')
-            if 'intelligence' in claim_lower or 'iq' in claim_lower or 'cognitive' in claim_lower:
-                ethical_dimensions.append('cognitive_enhancement')
-            if 'polygenic' in claim_lower or 'gwas' in claim_lower or 'snp' in claim_lower or 'score' in claim_lower:
-                ethical_dimensions.append('genetic_prediction')
-            if 'wilson' in claim_lower or 'flynn' in claim_lower or 'heritability' in claim_lower:
-                ethical_dimensions.append('heritability_ethics')
-            if 'diversity' in claim_lower or 'trade-off' in claim_lower or 'pleiotrop' in claim_lower:
-                ethical_dimensions.append('genetic_diversity')
-            if 'regulation' in claim_lower or 'society' in claim_lower or 'public' in claim_lower:
-                ethical_dimensions.append('regulation')
-            if 'multigenerational' in claim_lower or 'epigenetic' in claim_lower:
-                ethical_dimensions.append('multigenerational')
-
-            # Default if no specific dimension matched
-            if not ethical_dimensions:
-                ethical_dimensions = ['genetic_enhancement']
-
-            # Build ethical debate response
-            ethical_response = [
-                f"## Ethical Analysis: {claim[:120]}\n",
-                f"**Hypothesis Confidence:** {confidence:.0%}\n",
-                "### Arguments FOR this research direction:\n",
-            ]
-
-            # Pro arguments based on ethical dimensions
-            pro_args = []
-            if 'embryo_selection' in ethical_dimensions:
-                pro_args.append("**Reproductive Freedom:** Parents should have access to information about embryo genetics to make informed choices, including selection for health and cognitive potential.")
-                pro_args.append("**Medical Precedent:** PGT-A and PGT-M for disease prevention are already widely accepted; extending to cognitive traits follows the same ethical framework.")
-            if 'ai_prediction' in ethical_dimensions:
-                pro_args.append("**Scientific Advancement:** AI frameworks can identify patterns invisible to human researchers, accelerating our understanding of cognitive development.")
-                pro_args.append("**Personalized Medicine:** Accurate prediction models could enable early intervention for children at risk of cognitive difficulties.")
-            if 'cognitive_enhancement' in ethical_dimensions:
-                pro_args.append("**Human Potential:** If safe and effective, cognitive enhancement could unlock human potential, accelerate scientific progress, and address global challenges.")
-                pro_args.append("**Harm Reduction:** Better understanding of cognitive genetics could reduce hereditary cognitive disabilities.")
-            if 'genetic_prediction' in ethical_dimensions:
-                pro_args.append("**Informed Decision-Making:** Polygenic scores provide additional information for prospective parents, aligning with principles of informed consent and autonomy.")
-                pro_args.append("**Research Value:** Even imperfect prediction models advance our understanding of complex traits.")
-            if 'heritability_ethics' in ethical_dimensions:
-                pro_args.append("**Scientific Accuracy:** Understanding heritability patterns ensures policies are based on evidence rather than ideological assumptions.")
-            if 'genetic_diversity' in ethical_dimensions:
-                pro_args.append("**Balanced Trade-offs:** Understanding diversity implications allows for informed policy that balances individual choice with collective genetic health.")
-            if 'regulation' in ethical_dimensions:
-                pro_args.append("**Evidence-Based Policy:** Scientific findings should inform regulatory frameworks to ensure safe, equitable access.")
-            if 'multigenerational' in ethical_dimensions:
-                pro_args.append("**Long-term Planning:** Understanding multigenerational effects enables responsible policy development for future generations.")
-            if 'historical_eugenics' in ethical_dimensions:
-                pro_args.append("**Learning from History:** Modern genetic research with informed consent and voluntary participation is fundamentally different from historical forced eugenics programs.")
-            if 'genetic_enhancement' in ethical_dimensions:
-                pro_args.append("**Technological Progress:** Responsible development of genetic technologies could improve human welfare while respecting individual rights.")
-
-            if not pro_args:
-                pro_args.append("**Scientific Value:** Advancing knowledge in this area contributes to our understanding of human biology and development.")
-
-            for i, arg in enumerate(pro_args[:4], 1):
-                ethical_response.append(f"{i}. {arg}")
-
-            ethical_response.append(f"\n### Arguments AGAINST this research direction:\n")
-
-            # Con arguments based on ethical dimensions
-            con_args = []
-            if 'embryo_selection' in ethical_dimensions:
-                con_args.append("**Instrumentalization:** Selecting embryos based on predicted cognitive traits risks treating future children as products to be optimized rather than persons with inherent dignity.")
-                con_args.append("**Slippery Slope:** Allowing selection for cognitive traits may lead to selection for other non-medical traits, expanding the scope of genetic modification beyond societal consensus.")
-            if 'ai_prediction' in ethical_dimensions:
-                con_args.append("**Algorithmic Bias:** AI models trained on specific populations may encode and amplify existing biases, leading to unequal outcomes across racial, ethnic, or socioeconomic groups.")
-                con_args.append("**Overreliance on Technology:** Delegating cognitive prediction to AI systems risks reducing complex human development to algorithmic scores.")
-            if 'cognitive_enhancement' in ethical_dimensions:
-                con_args.append("**Inequality Amplification:** If expensive, cognitive enhancement could create a genetic underclass, exacerbating existing social inequalities.")
-                con_args.append("**Diversity Reduction:** Genetic selection for specific cognitive profiles may reduce human cognitive diversity, potentially eliminating valuable traits.")
-            if 'genetic_prediction' in ethical_dimensions:
-                con_args.append("**Premature Application:** Polygenic scores explain only 10-15% of variance; applying them clinically may give false confidence in predictions.")
-                con_args.append("**Population Specificity:** Scores developed in one population may not predict well in others, leading to health disparities.")
-            if 'heritability_ethics' in ethical_dimensions:
-                con_args.append("**Genetic Determinism:** Emphasizing heritability may lead to deterministic thinking that ignores the profound role of environment, education, and social factors.")
-            if 'genetic_diversity' in ethical_dimensions:
-                con_args.append("**Irreversible Consequences:** Reducing genetic diversity could have unforeseen long-term consequences that cannot be undone.")
-            if 'regulation' in ethical_dimensions:
-                con_args.append("**Regulatory Lag:** Technology advances faster than regulation, creating gaps that may be exploited before adequate safeguards are in place.")
-            if 'multigenerational' in ethical_dimensions:
-                con_args.append("**Unknown Long-term Effects:** Epigenetic and multigenerational effects of genetic selection are poorly understood, risking unforeseen consequences.")
-            if 'historical_eugenics' in ethical_dimensions:
-                con_args.append("**Historical Precedent:** The eugenics movement led to forced sterilization, genocide, and systematic oppression; even voluntary programs risk normalizing genetic hierarchies.")
-            if 'genetic_enhancement' in ethical_dimensions:
-                con_args.append("**Consent of the Unborn:** Future children cannot consent to being genetically modified, raising fundamental questions about autonomy.")
-
-            if not con_args:
-                con_args.append("**Unintended Consequences:** Rapid technological advancement without adequate ethical review may lead to unforeseen harms.")
-
-            for i, arg in enumerate(con_args[:4], 1):
-                ethical_response.append(f"{i}. {arg}")
-
-            # Balanced ethical assessment
-            ethical_response.append(f"\n### Balanced Ethical Assessment:\n")
-            ethical_response.append(f"This research ({confidence:.0%} confidence) sits at the intersection of scientific progress and ethical responsibility. "
-                                  f"Key tension: How do we advance knowledge while protecting individual rights, ensuring equity, and preventing historical mistakes from being repeated?")
-            ethical_response.append(f"\n**Recommended safeguards:**")
-            ethical_response.append(f"- Maintain strict separation between medical and enhancement applications")
-            ethical_response.append(f"- Require diverse, representative study populations")
-            ethical_response.append(f"- Establish independent ethical oversight boards")
-            ethical_response.append(f"- Ensure equitable access if applications become available")
-            ethical_response.append(f"- Mandate long-term follow-up studies for any interventions")
-
-            records.append({
-                "category": "ethical_debates",
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"Provide a comprehensive ethical analysis of this research claim: '{claim[:200]}'. Present balanced arguments for and against, identify key ethical tensions, and recommend safeguards."},
-                    {"role": "assistant", "content": "\n".join(ethical_response)},
-                ]
-            })
-
         # === CATEGORY 6: EVIDENCE SYNTHESIS PAIRS ===
         # For each hypothesis with evidence, create a synthesis pair
         for hyp in hypotheses:
@@ -795,81 +598,6 @@ class DatasetExporter:
             })
 
         # === CATEGORY 7: CHAIN-OF-THOUGHT PAIRS (reasoning training) ===
-        cot_pairs = [
-            {
-                "q": "Analyze whether heritability of IQ increases with age (Wilson Effect). Show your reasoning.",
-                "a": (
-                    "Let me think through this step by step:\n\n"
-                    "**Step 1: What is the hypothesis claiming?**\n"
-                    "The Wilson Effect claims that heritability of IQ increases from childhood (~40%) to adulthood (~80%).\n\n"
-                    "**Step 2: What evidence supports this?**\n"
-                    "- Twin studies show MZ twins become more similar in IQ as they age\n"
-                    "- DZ twins become less similar with age\n"
-                    "- Heritability estimates increase from ~0.4 in childhood to ~0.8 in adulthood\n"
-                    "- Multiple longitudinal studies confirm this pattern\n\n"
-                    "**Step 3: What are the mechanistic explanations?**\n"
-                    "- Gene-environment correlation increases with age\n"
-                    "- People select environments matching their genetic predispositions\n"
-                    "- Shared environmental influences diminish after leaving home\n"
-                    "- Genetic effects accumulate through active gene-environment correlation\n\n"
-                    "**Step 4: What are the counterarguments?**\n"
-                    "- Equal environments assumption in twin studies may be violated\n"
-                    "- Gene-environment interaction could explain the pattern\n"
-                    "- Selection effects in longitudinal studies\n\n"
-                    "**Step 5: What is my conclusion?**\n"
-                    "The Wilson Effect is well-supported by multiple independent studies. The evidence is STRONG for the claim that heritability increases with age.\n\n"
-                    "**Classification: SUPPORTS the hypothesis** (strength: 0.85)"
-                ),
-            },
-            {
-                "q": "Evaluate this evidence: 'A study found no significant difference in IQ between children conceived via IVF and naturally conceived children.' Does this support or contradict the hypothesis that embryo selection improves cognitive outcomes?",
-                "a": (
-                    "Let me analyze this evidence step by step:\n\n"
-                    "**Step 1: What is the hypothesis claiming?**\n"
-                    "Embryo selection (like PGT-A) improves cognitive outcomes in children.\n\n"
-                    "**Step 2: What does the evidence actually say?**\n"
-                    "The study found NO significant IQ difference between IVF and naturally conceived children.\n\n"
-                    "**Step 3: Does this support the hypothesis?**\n"
-                    "Not directly. The hypothesis is about SELECTIVE embryo selection, not just IVF in general.\n\n"
-                    "**Step 4: Does this contradict the hypothesis?**\n"
-                    "Partially. It suggests IVF itself doesn't improve IQ, but doesn't test SELECTIVE selection.\n\n"
-                    "**Step 5: What is the overall relationship?**\n"
-                    "This evidence is NEUTRAL to the specific hypothesis about embryo selection. It addresses a related but different question (IVF vs natural conception, not selected vs unselected embryos).\n\n"
-                    "**Classification: NEUTRAL** (strength: 0.4) - The evidence is about IVF in general, not selective embryo selection."
-                ),
-            },
-            {
-                "q": "A meta-analysis of 50 studies shows polygenic scores explain only 10-15% of IQ variance. Analyze this evidence step by step.",
-                "a": (
-                    "Let me analyze this evidence step by step:\n\n"
-                    "**Step 1: What is the evidence?**\n"
-                    "Meta-analysis of 50 studies: PGS explains 10-15% of IQ variance.\n\n"
-                    "**Step 2: How strong is this evidence?**\n"
-                    "Very strong - meta-analyses are the gold standard. 50 studies provide robust evidence.\n\n"
-                    "**Step 3: Does this support or contradict the hypothesis that PGS can predict intelligence?**\n"
-                    "It PARTIALLY supports - PGS DOES predict IQ, but only explains a small portion.\n"
-                    "It PARTIALLY contradicts - the prediction is weaker than many claim.\n\n"
-                    "**Step 4: What are the implications?**\n"
-                    "- PGS has predictive value but is limited\n"
-                    "- 85-90% of variance is NOT captured by current PGS\n"
-                    "- Missing heritability remains a major challenge\n"
-                    "- Population specificity limits generalizability\n\n"
-                    "**Step 5: Classification?**\n"
-                    "This is COMPLEX - it supports the EXISTENCE of genetic prediction but contradicts claims that PGS is HIGHLY predictive.\n\n"
-                    "**Classification: MIXED** (supports partial prediction, contradicts strong claims)"
-                ),
-            },
-        ]
-        for pair in cot_pairs:
-            records.append({
-                "category": "chain_of_thought",
-                "messages": [
-                    {"role": "system", "content": system_prompt + "\n\nIMPORTANT: Always show your step-by-step reasoning before giving conclusions."},
-                    {"role": "user", "content": pair["q"]},
-                    {"role": "assistant", "content": pair["a"]},
-                ]
-            })
-
         # Generate CoT pairs for existing hypotheses
         for hyp in hypotheses:
             if hyp.get("status") in ("supported", "contested"):
@@ -926,144 +654,6 @@ class DatasetExporter:
                         {"role": "assistant", "content": "".join(cot_response)},
                     ]
                 })
-
-        # === CATEGORY 8: SELF-CONSISTENCY PAIRS (multiple valid perspectives) ===
-        sc_pairs = [
-            {
-                "q": "What is the most likely outcome of embryo selection for intelligence over the next 20 years?",
-                "perspectives": [
-                    {
-                        "label": "Optimistic View",
-                        "reasoning": "Based on rapid advances in polygenic scoring (PGS accuracy improving ~2% per year), decreasing IVF costs, and growing acceptance in countries like Israel and Denmark, embryo selection for cognitive traits could become mainstream within 15-20 years. The theoretical IQ gain of 3-7 points per generation is meaningful.",
-                        "conclusion": "Mainstream adoption by 2045 with significant cognitive gains in early-adopter populations."
-                    },
-                    {
-                        "label": "Conservative View",
-                        "reasoning": "Regulatory barriers, ethical concerns, and the limitation of PGS to only 10-15% variance explained suggest slow progress. Most countries will restrict enhancement applications. The technology exists but societal adoption will be minimal.",
-                        "conclusion": "Limited adoption in a few permissive countries; most of the world maintains restrictions."
-                    },
-                    {
-                        "label": "Technical View",
-                        "reasoning": "The key bottleneck is PGS accuracy, not the selection technology itself. Current PGS explains 10-15% of IQ variance. For meaningful selection, we need 30%+. This requires GWAS sample sizes of millions, which won't be available until ~2035. Then clinical validation takes another 10 years.",
-                        "conclusion": "Technically feasible by 2045-2050, but clinical adoption depends on validation studies."
-                    },
-                ],
-                "synthesis": "All three perspectives agree on the technical timeline (2045-2050) but differ on adoption speed. The most balanced prediction: limited adoption in 2-3 permissive countries by 2035, broader availability by 2050, pending regulatory and ethical resolution."
-            },
-            {
-                "q": "Is the Wilson Effect evidence for genetic determinism?",
-                "perspectives": [
-                    {
-                        "label": "Pro-Genetic View",
-                        "reasoning": "The Wilson Effect shows heritability increases from 40% to 80% with age. This means genetic factors become increasingly dominant as environmental constraints relax. If anything, the environment plays a DECREASING role over time.",
-                        "conclusion": "Supports the primacy of genetics in determining cognitive outcomes."
-                    },
-                    {
-                        "label": "Pro-Environmental View",
-                        "reasoning": "The Wilson Effect actually shows GENE-ENVIRONMENT CORRELATION, not genetic determinism. People actively select environments that match their genetic predispositions. The environment is still crucial - it's just that people choose their own environments based on genetic tendencies.",
-                        "conclusion": "Demonstrates gene-environment interplay, not genetic determinism."
-                    },
-                    {
-                        "label": "Methodological View",
- "reasoning": "The Wilson Effect relies on twin studies which assume equal environments for MZ and DZ twins. If this assumption is violated (MZ twins treated more similarly), heritability estimates are inflated. The 'true' heritability increase may be smaller than reported.",
-                        "conclusion": "The effect size may be overestimated due to methodological limitations."
-                    },
-                ],
-                "synthesis": "The Wilson Effect does NOT support genetic determinism - it demonstrates gene-environment correlation. However, it does show that genetic factors become increasingly important over the lifespan, which has implications for intervention timing and strategy."
-            },
-        ]
-        for pair in sc_pairs:
-            # Create one record per perspective
-            for perspective in pair["perspectives"]:
-                records.append({
-                    "category": "self_consistency",
-                    "messages": [
-                        {"role": "system", "content": system_prompt + "\n\nYou will be asked to provide ONE perspective on a question. Present a clear, well-reasoned argument from that specific viewpoint."},
-                        {"role": "user", "content": f"Question: {pair['q']}\n\nProvide your answer from the {perspective['label']} perspective."},
-                        {"role": "assistant", "content": f"**{perspective['label']}:**\n\n{perspective['reasoning']}\n\n**Conclusion:** {perspective['conclusion']}"},
-                    ]
-                })
-            # Create synthesis record
-            records.append({
-                "category": "self_consistency",
-                "messages": [
-                    {"role": "system", "content": system_prompt + "\n\nYou will be given multiple perspectives on a question. Synthesize them into a balanced conclusion."},
-                    {"role": "user", "content": f"Question: {pair['q']}\n\nPerspectives:\n" + "\n".join(f"- {p['label']}: {p['conclusion']}" for p in pair['perspectives']) + f"\n\nSynthesize these perspectives into a balanced conclusion."},
-                    {"role": "assistant", "content": pair["synthesis"]},
-                ]
-            })
-
-        # === CATEGORY 9: EXTENDED CONCEPT EXPLANATION PAIRS ===
-        concept_pairs = [
-            {
-                "q": "Explain the Wilson Effect and its significance for intelligence research.",
-                "a": (
-                    "The Wilson Effect describes how the heritability of IQ increases from approximately "
-                    "40% in childhood to 80% in adulthood. This occurs because: (1) As individuals mature, "
-                    "they increasingly select and modify their own environments based on genetic predispositions "
-                    "(gene-environment correlation); (2) Shared environmental influences diminish as people leave "
-                    "the family home; (3) Genetic effects accumulate through active gene-environment correlation. "
-                    "Significance: It suggests that genetic factors become increasingly dominant in determining "
-                    "cognitive ability over the lifespan, supporting the case for genetic approaches to "
-                    "cognitive enhancement. However, critics note this does not mean intelligence is "
-                    "immutable - it means the genetic contribution becomes more expressed as environmental "
-                    "constraints relax."
-                ),
-            },
-            {
-                "q": "What are polygenic scores and how do they relate to embryo selection?",
-                "a": (
-                    "Polygenic scores (PGS) aggregate the effects of thousands of genetic variants (SNPs) "
-                    "across the genome into a single score that predicts a trait. For intelligence: (1) GWAS "
-                    "studies have identified hundreds of loci associated with cognitive ability; (2) Current PGS "
-                    "for education/IQ explain about 10-15% of variance in independent samples; (3) For embryo "
-                    "selection, PGS allow ranking of embryos by predicted cognitive potential. Limitations: "
-                    "Population specificity (PGS trained on Europeans may not predict well in other groups), "
-                    "missing heritability, gene-environment interactions, and the small effect sizes of "
-                    "individual variants. The theoretical IQ gain from selecting the best embryo from a batch "
-                    "of 10 is estimated at 3-7 IQ points per generation."
-                ),
-            },
-            {
-                "q": "What is PGT-A and PGT-M and how are they used in embryo selection?",
-                "a": (
-                    "PGT-A (Preimplantation Genetic Testing for Aneuploidy) screens embryos for chromosomal "
-                    "abnormalities (too many or too few chromosomes), which are a major cause of implantation "
-                    "failure and miscarriage. PGT-M (for Monogenic disorders) tests for specific single-gene "
-                    "diseases like cystic fibrosis, Huntington's, or BRCA mutations. Current usage: (1) PGT-A "
-                    "is widely used in IVF to improve pregnancy rates; (2) PGT-M is used when parents carry "
-                    "known genetic mutations; (3) Neither currently screens for intelligence-related genes, "
-                    "though the technology could theoretically be extended. The cognitive and health outcomes "
-                    "of children born through PGT-A/PGT-M appear comparable to naturally conceived children "
-                    "in available studies, though long-term data is limited."
-                ),
-            },
-            {
-                "q": "Explain the Flynn Effect and its implications for genetic vs environmental influences on IQ.",
-                "a": (
-                    "The Flynn Effect refers to the observed increase in IQ scores over generations - "
-                    "approximately 3 points per decade in developed countries during the 20th century. This "
-                    "dramatic improvement occurred too quickly to be genetic, demonstrating that environmental "
-                    "factors (better nutrition, education, healthcare, reduced disease burden) can substantially "
-                    "raise population IQ. However, the Flynn Effect has plateaued or reversed in some "
-                    "developed nations since the 1990s, which transhumanists argue suggests: (1) Environmental "
-                    "optimization has reached its limits; (2) Further IQ gains may require genetic approaches; "
-                    "(3) The genetic component, now relatively more important, becomes the frontier for "
-                    "enhancement. Critics counter that the plateau may reflect measurement artifacts, "
-                    "socioeconomic stagnation, or that new environmental interventions (digital technology, "
-                    "better pedagogy) could produce further gains."
-                ),
-            },
-        ]
-        for pair in concept_pairs:
-            records.append({
-                "category": "concept_explanations",
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": pair["q"]},
-                    {"role": "assistant", "content": pair["a"]},
-                ]
-            })
 
         with open(output_path, "w", encoding="utf-8") as f:
             for record in records:

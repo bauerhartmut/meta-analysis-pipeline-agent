@@ -25,7 +25,7 @@ async def benchmark_single_cycle():
     
     orchestrator = ResearchOrchestrator(config)
     
-    topic = "heritability intelligence twin study GWAS polygenic scores"
+    topic = "melatonin sleep onset latency randomized trial dose"
     
     print(f"\n{'='*60}")
     print(f"BENCHMARK: Single Cycle Performance Test")

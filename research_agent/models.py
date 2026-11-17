@@ -131,7 +131,7 @@ class StudyEffect:
     # when it belongs to none. Pooling groups by this; the wording above stays.
     outcome_key: str = ""
     comparison: str = ""
-    # smd|g|r|z|or|rr|hr|beta|mean_diff|heritability|other
+    # smd|g|r|z|or|rr|hr|beta|mean_diff|variance_explained|other
     effect_type: str = ""
     effect: Optional[float] = None
     se: Optional[float] = None

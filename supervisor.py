@@ -12,7 +12,7 @@ restarts it. This supervisor wraps it:
 
 Usage::
 
-    python supervisor.py -- --topic "Polygenic embryo selection and IQ"
+    python supervisor.py -- --topic "Melatonin and sleep onset latency"
     python supervisor.py --                                  # dashboard only
 
 Options before ``--`` control the supervisor, everything after ``--`` is passed
