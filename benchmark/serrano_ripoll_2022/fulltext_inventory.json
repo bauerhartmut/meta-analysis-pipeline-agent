@@ -186,7 +186,8 @@
         "supplementary_material_available": "ja",
         "quantitative_data_available": "primaervolltext_armstatistik",
         "access_notes": "11 Outcome-Mittelwert-(SD)-Paare (34 Baseline-, 8 Demografie-Paare ausgeschlossen)",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "nein",
+        "hinweis": "Review konnte trotz Autorenkontakt keine Daten erhalten; automatische Armstatistik-Erkennung stammt aus Regressions-tabellen und ist ungeprueft"
       }
     },
     {
@@ -366,7 +367,8 @@
         "supplementary_material_available": "ja",
         "quantitative_data_available": "primaervolltext_modellbasiert",
         "access_notes": "modellbasierte Auswertung ohne Arm-Mittelwerte im Text",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "ja",
+        "hinweis": ""
       }
     },
     {
@@ -532,7 +534,8 @@
         "supplementary_material_available": "nein",
         "quantitative_data_available": "primaervolltext_armstatistik",
         "access_notes": "3 Outcome-Mittelwert-(SD)-Paare (2 Baseline-, 4 Demografie-Paare ausgeschlossen)",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "ja",
+        "hinweis": "Screening PHQ-8, Outcome BDI-II; Volltext nur als Author Manuscript (Text-Mining)"
       }
     },
     {
@@ -726,7 +729,8 @@
         "supplementary_material_available": "nein",
         "quantitative_data_available": "primaervolltext_armstatistik",
         "access_notes": "56 Outcome-Mittelwert-(SD)-Paare (0 Baseline-, 0 Demografie-Paare ausgeschlossen)",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "ja",
+        "hinweis": ""
       }
     },
     {
@@ -851,7 +855,8 @@
         "supplementary_material_available": "nein",
         "quantitative_data_available": "nicht_oeffentlich",
         "access_notes": "keine legale Volltextquelle gefunden",
-        "im_effektpool_review": "nein"
+        "im_effektpool_review": "ja",
+        "hinweis": "Green OA im Repositorium (UiT), Landingpage ohne aufloesbaren PDF-Link"
       }
     },
     {
@@ -1034,7 +1039,8 @@
         "supplementary_material_available": "ja",
         "quantitative_data_available": "primaervolltext_armstatistik",
         "access_notes": "22 Outcome-Mittelwert-(SD)-Paare (6 Baseline-, 4 Demografie-Paare ausgeschlossen)",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "ja",
+        "hinweis": ""
       }
     },
     {
@@ -1216,7 +1222,8 @@
         "supplementary_material_available": "ja",
         "quantitative_data_available": "primaervolltext_modellbasiert",
         "access_notes": "modellbasierte Auswertung ohne Arm-Mittelwerte im Text",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "ja",
+        "hinweis": ""
       }
     },
     {
@@ -1400,7 +1407,8 @@
         "supplementary_material_available": "ja",
         "quantitative_data_available": "primaervolltext_modellbasiert",
         "access_notes": "modellbasierte Auswertung ohne Arm-Mittelwerte im Text",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "nein",
+        "hinweis": ""
       }
     },
     {
@@ -1509,7 +1517,8 @@
         "supplementary_material_available": "nein",
         "quantitative_data_available": "nicht_oeffentlich",
         "access_notes": "keine legale Volltextquelle gefunden",
-        "im_effektpool_review": "nein"
+        "im_effektpool_review": "ja",
+        "hinweis": "keine OA-Quelle, Verlagsseite HTTP 403"
       }
     },
     {
@@ -1678,9 +1687,9 @@
         {
           "kind": "publisher-page-check",
           "url": "https://doi.org/10.1136/bmjopen-2016-013518",
-          "status": 403,
+          "status": 200,
           "bytes": 0,
-          "ok": false
+          "ok": true
         }
       ],
       "csv": {
@@ -1703,7 +1712,8 @@
         "supplementary_material_available": "ja",
         "quantitative_data_available": "primaervolltext_armstatistik",
         "access_notes": "2 Outcome-Mittelwert-(SD)-Paare (9 Baseline-, 3 Demografie-Paare ausgeschlossen)",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "ja",
+        "hinweis": ""
       }
     },
     {
@@ -1852,7 +1862,8 @@
         "supplementary_material_available": "ja",
         "quantitative_data_available": "autorenanfrage",
         "access_notes": "Volltext nur als Author Manuscript in PMC, XML-Endpunkt liefert HTTP 500",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "ja",
+        "hinweis": "Volltext nur Bronze-OA auf der Verlagsseite, kein maschinenlesbarer Text"
       }
     },
     {
@@ -2063,7 +2074,8 @@
         "supplementary_material_available": "ja",
         "quantitative_data_available": "primaervolltext_armstatistik",
         "access_notes": "13 Outcome-Mittelwert-(SD)-Paare (4 Baseline-, 2 Demografie-Paare ausgeschlossen)",
-        "im_effektpool_review": "ja"
+        "im_effektpool_review": "ja",
+        "hinweis": ""
       }
     }
   ],

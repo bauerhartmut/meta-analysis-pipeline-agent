@@ -38,9 +38,9 @@
       {
         "kind": "publisher-page-check",
         "url": "https://doi.org/10.1136/bmjopen-2016-013518",
-        "status": 403,
+        "status": 200,
         "bytes": 0,
-        "ok": false
+        "ok": true
       }
     ],
     "epmc": {
@@ -176,9 +176,9 @@
     {
       "kind": "publisher-page-check",
       "url": "https://doi.org/10.1136/bmjopen-2016-013518",
-      "status": 403,
+      "status": 200,
       "bytes": 0,
-      "ok": false
+      "ok": true
     }
   ]
 }

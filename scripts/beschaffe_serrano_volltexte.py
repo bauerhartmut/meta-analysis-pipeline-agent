@@ -40,15 +40,39 @@ REPORT = ROOT / "BESCHAFFUNGSBERICHT.md"
 
 # Nr. laut Tabelle 2 des Reviews, DOI wie in der Aufgabe, PMID aus der
 # Referenzliste des Reviews (Europe-PMC-References-Endpunkt, geprueft).
+#
+# Effektpool: Das Review poolt 10 der 12 Trials und nennt sie als
+# "[34-39,41-44]" - also Birney, Dahne, Ham, Luedtke, Mantani, Moberg,
+# Roepke, Tighe, Graham, Guo. Nicht gepoolt sind Arean [33] und
+# Pratap [40], laut Reviewtext "owing to lack of available data" nach
+# Autorenkontakt. Dahne und Luedtke sind im Pool und fallen nur in der
+# Sensitivitaetsanalyse heraus.
+NICHT_GEPOOLT = {"Arean 2016", "Pratap 2018"}
+
+# Einschraenkungen, die aus dem Reviewtext bzw. den Belegstellen folgen und
+# in den Datensatz gehoeren, damit die automatische Einordnung nicht
+# ueberinterpretiert wird.
+CAVEATS = {
+    "Arean 2016": "Review konnte trotz Autorenkontakt keine Daten erhalten; "
+                  "automatische Armstatistik-Erkennung stammt aus Regressions-"
+                  "tabellen und ist ungeprueft",
+    "Dahne 2019": "Screening PHQ-8, Outcome BDI-II; Volltext nur als "
+                  "Author Manuscript (Text-Mining)",
+    "Graham 2020": "Volltext nur Bronze-OA auf der Verlagsseite, kein "
+                   "maschinenlesbarer Text",
+    "Luedtke 2018": "Green OA im Repositorium (UiT), Landingpage ohne "
+                    "aufloesbaren PDF-Link",
+    "Roepke 2015": "keine OA-Quelle, Verlagsseite HTTP 403",
+}
 STUDIES = [
-    (1, "Arean 2016", "10.2196/jmir.6482", "27998876", "PHQ-9", True),
+    (1, "Arean 2016", "10.2196/jmir.6482", "27998876", "PHQ-9", False),
     (2, "Birney 2016", "10.2196/mhealth.4231", "26813737", "PHQ-9", True),
     (3, "Dahne 2019", "10.1016/j.beth.2018.12.003", "31208690", "PHQ-9", True),
     (4, "Ham 2019", "10.3389/fpsyg.2019.01592", "31402881", "BDI-II", True),
     (5, "Luedtke 2018", "10.1016/j.psychres.2018.08.113", "30273901", "BDI-II", False),
     (6, "Mantani 2017", "10.2196/jmir.8602", "29101095", "BDI-II", True),
     (7, "Moberg 2019", "10.2196/12556", "31199319", "PHQ-8", True),
-    (8, "Pratap 2018", "10.2196/10130", "30093372", "PHQ-9", True),
+    (8, "Pratap 2018", "10.2196/10130", "30093372", "PHQ-9", False),
     (9, "Roepke 2015", "10.1089/g4h.2014.0046", "26182069", "CES-D", False),
     (10, "Tighe 2017", "10.1136/bmjopen-2016-013518", "28132007", "PHQ-9", True),
     (11, "Graham 2020", "10.1001/jamapsychiatry.2020.1011", "32432695", "PHQ-8", True),
@@ -548,7 +572,7 @@ def write_csv(rows: list[dict]) -> None:
             "fulltext_url", "source_repository", "fulltext_available", "pdf_downloaded",
             "machine_readable", "manuscript_version", "license", "license_verified",
             "supplementary_material_available", "quantitative_data_available", "access_notes",
-            "im_effektpool_review"]
+            "im_effektpool_review", "hinweis"]
     with INVENTORY_CSV.open("w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=cols, extrasaction="ignore")
         w.writeheader()
@@ -677,7 +701,8 @@ def main() -> int:
                                                          or (insp and insp["supplement_im_volltext"])) else "nein",
             "quantitative_data_available": quant[0],
             "access_notes": quant[1],
-            "im_effektpool_review": "ja" if rec["im_effektpool_review"] else "nein",
+            "im_effektpool_review": "nein" if rec["name"] in NICHT_GEPOOLT else "ja",
+            "hinweis": CAVEATS.get(rec["name"], ""),
         }
         rows.append({"nummer_review": rec["nummer_review"], "study_id": rec["study_id"],
                      "name": rec["name"], "doi": rec["doi"], "pmid": rec["pmid"],

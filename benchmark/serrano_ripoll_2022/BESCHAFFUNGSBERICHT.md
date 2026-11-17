@@ -222,7 +222,7 @@ Die Einordnung stammt aus einem Musterabgleich (Mittelwert-(SD)-Paare in der Nae
 - `xml` HTTP 200, 80599 Bytes - https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5278278/fullTextXML
 - `pmc-oa-service` HTTP 404, 0 Bytes - https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC5278278
 - `pdf` HTTP 200, 1375749 Bytes - https://bmjopen.bmj.com/content/bmjopen/7/1/e013518.full.pdf
-- `publisher-page-check` HTTP 403, 0 Bytes - https://doi.org/10.1136/bmjopen-2016-013518
+- `publisher-page-check` HTTP 200, 0 Bytes - https://doi.org/10.1136/bmjopen-2016-013518
 
 ### Graham 2020 (10.1001/jamapsychiatry.2020.1011)
 

@@ -6,7 +6,7 @@
     "doi": "10.2196/10130",
     "pmid": "30093372",
     "instrument": "PHQ-9",
-    "im_effektpool_review": true,
+    "im_effektpool_review": false,
     "sources": {
       "europepmc": true,
       "crossref": true,
