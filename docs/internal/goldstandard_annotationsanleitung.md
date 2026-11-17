@@ -285,3 +285,91 @@ erst nach der Vollannotation aller 30 Dokumente mit
 - [ ] Spannweite über Zeitpunkte: je Zeitpunkt eine Zeile aus der Tabelle,
       `time_point` gesetzt (5.11).
 - [ ] Prüfskript Exit 0, Hash notiert.
+
+---
+
+## Anhang: Beispiel einer vollständigen Effektzeile (2026-11-17)
+
+**Nicht Bestandteil von v1.2.** Die Regeln der Abschnitte 1–9 bleiben
+unverändert; dieser Anhang zeigt nur, wie eine abgabefähige Zeile aufgebaut
+ist. Er enthält bewusst **keine echten Werte und kein Zitat aus einem der 30
+Dokumente**: Aus Blindheitsgründen (§1) wird kein Beispiel aus einer
+abgeschlossenen Annotation bereitgestellt. Alles in spitzen Klammern ist ein
+Platzhalter, kein Datenwert.
+
+### A.1 Die 14 Pflichtfelder einer Effektzeile
+
+| # | Feld | Eintrag | Regel |
+|---|---|---|---|
+| 1 | `effect_id` | `<document_id>-01`, `-02`, … | Lesereihenfolge (§4) |
+| 2 | `outcome_verbatim` | Outcome **wörtlich** aus der Quelle | nicht kürzen (§4) |
+| 3 | `outcome_normalized` | vereinheitlichte Bezeichnung | z. B. „Depressive symptoms“ (§4) |
+| 4 | `comparison_verbatim` | Vergleichsgruppe wörtlich | Intervention vs. Kontrolle (§4) |
+| 5 | `effect_type` | `or`, `rr`, `hr`, `md`, `smd`, `g`, `beta`, `r`, `z`, `other` | nach 5.2–5.5 |
+| 6 | `effect` | Zahl **wie berichtet** | nicht umrechnen, nicht runden (§4) |
+| 7 | `ci_low` | untere Grenze wie berichtet | `null`, wenn nicht berichtet |
+| 8 | `ci_high` | obere Grenze wie berichtet | `null`, wenn nicht berichtet |
+| 9 | `quote` | exakter Ausschnitt mit Effekt **und** Unsicherheit | keine Paraphrase (§6) |
+| 10 | `quote_start` | Zeichenposition des ersten Zeichens | 0-basiert im gespeicherten Text (§6) |
+| 11 | `quote_end` | Position **hinter** dem letzten Zeichen | exklusiv (§6) |
+| 12 | `design_verbatim` | Designbezeichnung wörtlich | aus dem Dokument, nicht aus dem Titel |
+| 13 | `certainty` | `high`, `medium`, `low` | nach §4 |
+| 14 | `is_primary` | `true`; `false` nur für gepoolte Schätzer | nach 5.8 |
+
+Zusätzliche Felder sind freiwillig, aber erlaubt: `se`, `ci_level`, `p_value`,
+`n`, `adjusted`, `time_point`, `population`, `section`, `page`,
+`source_table`, `notes`.
+
+### A.2 Gerüst zum Abschreiben (Platzhalter, keine Werte)
+
+```json
+{
+  "effect_id": "<document_id>-01",
+  "outcome_verbatim": "<Outcome wörtlich aus der Quelle>",
+  "outcome_normalized": "<vereinheitlichte Bezeichnung>",
+  "comparison_verbatim": "<Vergleichsgruppe wörtlich>",
+  "effect_type": "<or|rr|hr|md|smd|g|beta|r|z|other>",
+  "effect": "<Zahl wie berichtet>",
+  "se": null,
+  "ci_low": "<untere Grenze wie berichtet>",
+  "ci_high": "<obere Grenze wie berichtet>",
+  "quote": "<exakter Ausschnitt mit Effekt und Unsicherheit>",
+  "quote_start": "<Position des ersten Zeichens>",
+  "quote_end": "<Position hinter dem letzten Zeichen>",
+  "design_verbatim": "<Designbezeichnung wörtlich>",
+  "certainty": "<high|medium|low>",
+  "is_primary": true,
+  "notes": "<nur Beobachtungen zum Beleg>"
+}
+```
+
+Die spitzen Klammern sind ersetzt zu füllen; die JSON-Anführungszeichen um
+`effect`, `quote_start` und `quote_end` fallen dabei weg, weil dort Zahlen
+stehen. `certainty` ist `high` nur, wenn Zahl **und** Unsicherheit eindeutig
+dastehen.
+
+### A.3 Quote und Positionen: der Prüfweg
+
+Das Prüfskript vergleicht `text[quote_start:quote_end] == quote`. Der
+Zusammenhang, schematisch und ohne Bezug zu einem Dokument:
+
+```
+Text:   A A A   B B B   C C C
+Index:  0 1 2 3 4 5 6 7 8 9 10
+quote = "BBB"   ->  quote_start = 4, quote_end = 7
+```
+
+`quote_end` zeigt auf das Zeichen **hinter** dem Ausschnitt. Ein Ausschnitt,
+der Effekt und Unsicherheit nicht beide enthält, ist unvollständig (§6) –
+bei Tabellenzeilen genügt die Zelle mit Effekt und KI, wenn Outcome und
+Vergleich aus der Zeilenbeschriftung hervorgehen und in `notes` stehen.
+
+### A.4 Häufige Fehler, die der Prüfer meldet
+
+- Anführungszeichen, Bindestriche oder Gedankenstriche im `quote` weichen vom
+  Volltext ab → Exit ≠ 0, keine Warnung (§6).
+- `effect` außerhalb von `ci_low`/`ci_high`, oder Ratio-Werte ≤ 0.
+- `is_primary: false` bei einer Primärstudie (nur 5.8 erlaubt das).
+- Dokument ohne Zeile **und** ohne `no_effect_reason` (oder beides zugleich).
+- Zwei Zeilen für denselben Effekt in Text und Tabelle statt einer Zeile mit
+  Hinweis in `notes` (§3).
