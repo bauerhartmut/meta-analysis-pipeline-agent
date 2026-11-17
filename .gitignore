@@ -48,6 +48,15 @@ nul
 data/*.db-wal
 data/*.db-shm
 
+# --- Release-Zonen (siehe RELEASE.md) ---
+# Gebautes Release-Repo: entsteht nur aus public/ und wird nie mitversioniert
+_release/
+# Alte Export-Bauten (private Dateien darin, nur lokal)
+export_clean_20261117/
+# Nie-Push-Zone: nur die README ist versioniert
+private/*
+!private/README.md
+
 # --- Kernbausteine: nicht oeffentlich ---
 # Das Herzstueck des Research-Agents (Orchestrierung, Statistik-Engine,
 # Extraktions-IP, Agentenlogik). Die zugehoerigen *_PRIVAT.md-Dateien
