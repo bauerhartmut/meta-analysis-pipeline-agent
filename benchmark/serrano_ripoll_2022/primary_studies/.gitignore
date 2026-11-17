@@ -1,0 +1,5 @@
+# Volltexte sind fremde Werke: nur lokal fuer die Forschung, nicht im Repo
+*.xml
+*.pdf
+*.html
+*.txt

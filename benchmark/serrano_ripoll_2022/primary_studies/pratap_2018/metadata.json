@@ -1,0 +1,177 @@
+{
+  "study": {
+    "nummer_review": 8,
+    "study_id": "pratap_2018",
+    "name": "Pratap 2018",
+    "doi": "10.2196/10130",
+    "pmid": "30093372",
+    "instrument": "PHQ-9",
+    "im_effektpool_review": true,
+    "sources": {
+      "europepmc": true,
+      "crossref": true,
+      "unpaywall": true,
+      "pmc": true
+    },
+    "attempts": [
+      {
+        "kind": "xml",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6107735/fullTextXML",
+        "status": 200,
+        "bytes": 117594,
+        "ok": true
+      },
+      {
+        "kind": "pmc-oa-service",
+        "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC6107735",
+        "status": 404,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "repository-landing",
+        "url": "https://doi.org/10.2196/10130",
+        "status": 202,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "publisher-page-check",
+        "url": "https://doi.org/10.2196/10130",
+        "status": 202,
+        "bytes": 0,
+        "ok": false
+      }
+    ],
+    "epmc": {
+      "title": "Using Mobile Apps to Assess and Treat Depression in Hispanic and Latino Populations: Fully Remote Randomized Clinical Trial.",
+      "journal": "Journal of medical Internet research",
+      "year": "2018",
+      "pmcid": "PMC6107735",
+      "is_open_access": true,
+      "in_pmc": true,
+      "in_epmc": true,
+      "has_pdf": true,
+      "has_suppl": true,
+      "license": "cc by",
+      "author_string": "Pratap A, Renn BN, Volponi J, Mooney SD, Gazzaley A, Arean PA, Anguera JA.",
+      "full_text_urls": [
+        "https://doi.org/10.2196/10130",
+        "https://europepmc.org/articles/PMC6107735",
+        "https://europepmc.org/articles/PMC6107735?pdf=render"
+      ]
+    },
+    "crossref": {
+      "title": "Using Mobile Apps to Assess and Treat Depression in Hispanic and Latino Populations: Fully Remote Randomized Clinical Trial",
+      "container": "Journal of Medical Internet Research",
+      "year": "2018",
+      "authors": [
+        "Pratap Abhishek",
+        "Renn Brenna N",
+        "Volponi Joshua",
+        "Mooney Sean D",
+        "Gazzaley Adam",
+        "Arean Patricia A",
+        "Anguera Joaquin A"
+      ],
+      "publisher": "JMIR Publications Inc.",
+      "publisher_url": "https://doi.org/10.2196/10130",
+      "license": []
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "journal_is_oa": true,
+      "best_url": "https://doi.org/10.2196/10130",
+      "best_pdf": "",
+      "best_license": "cc-by",
+      "best_version": "publishedVersion",
+      "best_host": "publisher",
+      "n_locations": 4,
+      "locations": [
+        {
+          "url": "https://doi.org/10.2196/10130",
+          "pdf": null,
+          "license": "cc-by",
+          "version": "publishedVersion",
+          "host": "publisher",
+          "repository": ""
+        },
+        {
+          "url": "https://doi.org/10.2196/preprints.10130",
+          "pdf": null,
+          "license": "cc-by",
+          "version": "submittedVersion",
+          "host": "repository",
+          "repository": ""
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6107735/pdf/",
+          "pdf": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6107735/pdf/",
+          "license": "cc-by",
+          "version": "publishedVersion",
+          "host": "repository",
+          "repository": "National Institutes of Health"
+        },
+        {
+          "url": "http://europepmc.org/pmc/articles/PMC6107735",
+          "pdf": null,
+          "license": "cc-by",
+          "version": "publishedVersion",
+          "host": "repository",
+          "repository": "European Bioinformatics Institute"
+        }
+      ]
+    },
+    "verified": {
+      "doi_aufgeloest_crossref": true,
+      "titel_konsistent_epmc_crossref": 1.0,
+      "jahr_crossref": "2018",
+      "autoren_crossref": "Pratap Abhishek; Renn Brenna N; Volponi Joshua; Mooney Sean D",
+      "autorenzahl_crossref": 7
+    }
+  },
+  "ergebnis": {
+    "fulltext_xml": true,
+    "pdf_saved": false,
+    "pdf_path": "",
+    "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/pratap_2018/fulltext.xml",
+    "download_erlaubt": "ja (CC)",
+    "manuskriptversion": "publishedVersion",
+    "lizenz": "cc by",
+    "lizenz_verifiziert": true,
+    "zugaenglich": true,
+    "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6107735/fullTextXML",
+    "quelle": "Europe PMC fullTextXML"
+  },
+  "zugriffe": [
+    {
+      "kind": "xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6107735/fullTextXML",
+      "status": 200,
+      "bytes": 117594,
+      "ok": true
+    },
+    {
+      "kind": "pmc-oa-service",
+      "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC6107735",
+      "status": 404,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "repository-landing",
+      "url": "https://doi.org/10.2196/10130",
+      "status": 202,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "publisher-page-check",
+      "url": "https://doi.org/10.2196/10130",
+      "status": 202,
+      "bytes": 0,
+      "ok": false
+    }
+  ]
+}

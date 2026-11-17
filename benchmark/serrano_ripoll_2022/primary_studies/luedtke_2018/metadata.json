@@ -1,0 +1,124 @@
+{
+  "study": {
+    "nummer_review": 5,
+    "study_id": "luedtke_2018",
+    "name": "Luedtke 2018",
+    "doi": "10.1016/j.psychres.2018.08.113",
+    "pmid": "30273901",
+    "instrument": "BDI-II",
+    "im_effektpool_review": false,
+    "sources": {
+      "europepmc": true,
+      "crossref": true,
+      "unpaywall": true,
+      "pmc": false
+    },
+    "attempts": [
+      {
+        "kind": "repository-landing",
+        "url": "https://hdl.handle.net/10037/14869",
+        "status": 200,
+        "bytes": 3145,
+        "ok": true
+      },
+      {
+        "kind": "publisher-page-check",
+        "url": "https://doi.org/10.1016/j.psychres.2018.08.113",
+        "status": 200,
+        "bytes": 0,
+        "ok": true
+      }
+    ],
+    "epmc": {
+      "title": "A randomized controlled trial on a smartphone self-help application (Be Good to Yourself) to reduce depressive symptoms.",
+      "journal": "Psychiatry research",
+      "year": "2018",
+      "pmcid": "",
+      "is_open_access": false,
+      "in_pmc": false,
+      "in_epmc": false,
+      "has_pdf": false,
+      "has_suppl": false,
+      "license": "",
+      "author_string": "L\u00fcdtke T, Pult LK, Schr\u00f6der J, Moritz S, B\u00fccker L.",
+      "full_text_urls": [
+        "https://munin.uit.no/bitstream/10037/14869/4/article.pdf",
+        "https://doi.org/10.1016/j.psychres.2018.08.113"
+      ]
+    },
+    "crossref": {
+      "title": "A randomized controlled trial on a smartphone self-help application (Be Good to Yourself) to reduce depressive symptoms",
+      "container": "Psychiatry Research",
+      "year": "2018",
+      "authors": [
+        "L\u00fcdtke Thies",
+        "Pult Lilian Klara",
+        "Schr\u00f6der Johanna",
+        "Moritz Steffen",
+        "B\u00fccker Lara"
+      ],
+      "publisher": "Elsevier BV",
+      "publisher_url": "https://doi.org/10.1016/j.psychres.2018.08.113",
+      "license": [
+        "https://www.elsevier.com/tdm/userlicense/1.0/"
+      ]
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "journal_is_oa": false,
+      "best_url": "https://hdl.handle.net/10037/14869",
+      "best_pdf": "",
+      "best_license": "cc-by-nc-nd",
+      "best_version": "submittedVersion",
+      "best_host": "repository",
+      "n_locations": 1,
+      "locations": [
+        {
+          "url": "https://hdl.handle.net/10037/14869",
+          "pdf": null,
+          "license": "cc-by-nc-nd",
+          "version": "submittedVersion",
+          "host": "repository",
+          "repository": ""
+        }
+      ]
+    },
+    "verified": {
+      "doi_aufgeloest_crossref": true,
+      "titel_konsistent_epmc_crossref": 1.0,
+      "jahr_crossref": "2018",
+      "autoren_crossref": "L\u00fcdtke Thies; Pult Lilian Klara; Schr\u00f6der Johanna; Moritz Steffen",
+      "autorenzahl_crossref": 5
+    }
+  },
+  "ergebnis": {
+    "fulltext_xml": false,
+    "pdf_saved": false,
+    "pdf_path": "",
+    "xml_path": "",
+    "download_erlaubt": "ja (CC)",
+    "manuskriptversion": "submittedVersion",
+    "lizenz": "cc-by-nc-nd",
+    "lizenz_verifiziert": true,
+    "zugaenglich": false,
+    "volltext_url": "",
+    "quelle": ""
+  },
+  "zugriffe": [
+    {
+      "kind": "repository-landing",
+      "url": "https://hdl.handle.net/10037/14869",
+      "status": 200,
+      "bytes": 3145,
+      "ok": true
+    },
+    {
+      "kind": "publisher-page-check",
+      "url": "https://doi.org/10.1016/j.psychres.2018.08.113",
+      "status": 200,
+      "bytes": 0,
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,2102 @@
+{
+  "review": "Serrano-Ripoll 2022 (10.2196/29621)",
+  "stand": "2026-11-17",
+  "studien": [
+    {
+      "nummer_review": 1,
+      "study_id": "arean_2016",
+      "name": "Arean 2016",
+      "doi": "10.2196/jmir.6482",
+      "pmid": "27998876",
+      "epmc": {
+        "title": "The Use and Effectiveness of Mobile Apps for Depression: Results From a Fully Remote Clinical Trial.",
+        "journal": "Journal of medical Internet research",
+        "year": "2016",
+        "pmcid": "PMC5209607",
+        "is_open_access": true,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": true,
+        "has_suppl": true,
+        "license": "cc by",
+        "author_string": "Arean PA, Hallgren KA, Jordan JT, Jordan JT, Gazzaley A, Atkins DC, Heagerty PJ, Anguera JA.",
+        "full_text_urls": [
+          "https://doi.org/10.2196/jmir.6482",
+          "https://europepmc.org/articles/PMC5209607",
+          "https://europepmc.org/articles/PMC5209607?pdf=render"
+        ]
+      },
+      "crossref": {
+        "title": "The Use and Effectiveness of Mobile Apps for Depression: Results From a Fully Remote Clinical Trial",
+        "container": "Journal of Medical Internet Research",
+        "year": "2016",
+        "authors": [
+          "Arean Patricia A",
+          "Hallgren Kevin A",
+          "Jordan Joshua T",
+          "Gazzaley Adam",
+          "Atkins David C",
+          "Heagerty Patrick J",
+          "Anguera Joaquin A"
+        ],
+        "publisher": "JMIR Publications Inc.",
+        "publisher_url": "https://doi.org/10.2196/jmir.6482",
+        "license": []
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "journal_is_oa": true,
+        "best_url": "https://www.jmir.org/2016/12/e330/PDF",
+        "best_pdf": "https://www.jmir.org/2016/12/e330/PDF",
+        "best_license": "cc-by",
+        "best_version": "publishedVersion",
+        "best_host": "publisher",
+        "n_locations": 3,
+        "locations": [
+          {
+            "url": "https://www.jmir.org/2016/12/e330/PDF",
+            "pdf": "https://www.jmir.org/2016/12/e330/PDF",
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "publisher",
+            "repository": ""
+          },
+          {
+            "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/5209607",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "European Bioinformatics Institute"
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5209607/",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2016",
+        "autoren_crossref": "Arean Patricia A; Hallgren Kevin A; Jordan Joshua T; Gazzaley Adam",
+        "autorenzahl_crossref": 7
+      },
+      "result": {
+        "fulltext_xml": true,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/arean_2016/fulltext.xml",
+        "download_erlaubt": "ja (CC)",
+        "manuskriptversion": "publishedVersion",
+        "lizenz": "cc by",
+        "lizenz_verifiziert": true,
+        "zugaenglich": true,
+        "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5209607/fullTextXML",
+        "quelle": "Europe PMC fullTextXML"
+      },
+      "inspection": {
+        "xml_parsebar": true,
+        "doi_im_volltext": true,
+        "titel_im_volltext": "The Use and Effectiveness of Mobile Apps for Depression: Results From a Fully Remote Clinical Trial",
+        "zeichengruppe": 54237,
+        "sektionen": 44,
+        "tabellen": 3,
+        "tabellen_mit_instrument": 3,
+        "plusminus": 0,
+        "sd_marker": 14,
+        "supplement_im_volltext": true,
+        "effektschaetzer_mit_ki": 0,
+        "armstatistik_zeile": true,
+        "mean_sd_paar": 89,
+        "modellbasiert": true,
+        "instrument_mssd": 53,
+        "instrument_mssd_baseline": 34,
+        "demografie_mssd": 8,
+        "outcome_mssd": 11,
+        "belege": [
+          ".611.08(0.10).29(0.15).19 Male0.89(0.09)0.96(0.09).250.96(0.08)\u2013.11(0.14).67 University education1.21(0.13)1.01(0.11).071.01(0.09).18(0.14).92 Married0.93(0.10)0.93(0.09).530.84(0.07)\u2013.21(0.14).46 Emp",
+          "06(0.19).04 GAD-7h1.03(0.17)0.78(0.10).860.76(0.14)\u2013.26(0.19).04 AUDIT-Ci1.03(0.13)0.77(0.06).800.96(0.14)\u2013.14(0.15).001 Psychotic symptoms1.19(0.40)1.02(0.25).621.34(0.53).24(0.39).93 Other psychiatr",
+          ".26(0.19).04 AUDIT-Ci1.03(0.13)0.77(0.06).800.96(0.14)\u2013.14(0.15).001 Psychotic symptoms1.19(0.40)1.02(0.25).621.34(0.53).24(0.39).93 Other psychiatric treatment0.77(0.21)1.08(0.21).340.73(0.23)\u2013.03(0."
+        ]
+      },
+      "quantitative": [
+        "primaervolltext_armstatistik",
+        "11 Outcome-Mittelwert-(SD)-Paare (34 Baseline-, 8 Demografie-Paare ausgeschlossen)"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5209607/fullTextXML",
+          "status": 200,
+          "bytes": 139199,
+          "ok": true
+        },
+        {
+          "kind": "pmc-oa-service",
+          "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC5209607",
+          "status": 404,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "pdf",
+          "url": "https://www.jmir.org/2016/12/e330/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "repository-landing",
+          "url": "https://www.jmir.org/2016/12/e330/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.2196/jmir.6482",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        }
+      ],
+      "csv": {
+        "study_id": "arean_2016",
+        "authors": "Arean Patricia A; Hallgren Kevin A; Jordan Joshua T; Gazzaley Adam",
+        "year": "2016",
+        "title": "The Use and Effectiveness of Mobile Apps for Depression: Results From a Fully Remote Clinical Trial",
+        "doi": "10.2196/jmir.6482",
+        "pmid": "27998876",
+        "pmcid": "PMC5209607",
+        "publisher_url": "https://doi.org/10.2196/jmir.6482",
+        "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5209607/fullTextXML",
+        "source_repository": "Europe PMC fullTextXML",
+        "fulltext_available": "ja",
+        "pdf_downloaded": "nein",
+        "machine_readable": "ja",
+        "manuscript_version": "publishedVersion",
+        "license": "cc by",
+        "license_verified": "ja",
+        "supplementary_material_available": "ja",
+        "quantitative_data_available": "primaervolltext_armstatistik",
+        "access_notes": "11 Outcome-Mittelwert-(SD)-Paare (34 Baseline-, 8 Demografie-Paare ausgeschlossen)",
+        "im_effektpool_review": "ja"
+      }
+    },
+    {
+      "nummer_review": 2,
+      "study_id": "birney_2016",
+      "name": "Birney 2016",
+      "doi": "10.2196/mhealth.4231",
+      "pmid": "26813737",
+      "epmc": {
+        "title": "MoodHacker Mobile Web App With Email for Adults to Self-Manage Mild-to-Moderate Depression: Randomized Controlled Trial.",
+        "journal": "JMIR mHealth and uHealth",
+        "year": "2016",
+        "pmcid": "PMC4748138",
+        "is_open_access": true,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": true,
+        "has_suppl": true,
+        "license": "cc by",
+        "author_string": "Birney AJ, Gunn R, Russell JK, Ary DV.",
+        "full_text_urls": [
+          "https://doi.org/10.2196/mhealth.4231",
+          "https://europepmc.org/articles/PMC4748138",
+          "https://europepmc.org/articles/PMC4748138?pdf=render"
+        ]
+      },
+      "crossref": {
+        "title": "MoodHacker Mobile Web App With Email for Adults to Self-Manage Mild-to-Moderate Depression: Randomized Controlled Trial",
+        "container": "JMIR mHealth and uHealth",
+        "year": "2016",
+        "authors": [
+          "Birney Amelia J",
+          "Gunn Rebecca",
+          "Russell Jeremy K",
+          "Ary Dennis V"
+        ],
+        "publisher": "JMIR Publications Inc.",
+        "publisher_url": "https://doi.org/10.2196/mhealth.4231",
+        "license": []
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "journal_is_oa": true,
+        "best_url": "https://mhealth.jmir.org/2016/1/e8/PDF",
+        "best_pdf": "https://mhealth.jmir.org/2016/1/e8/PDF",
+        "best_license": "cc-by",
+        "best_version": "publishedVersion",
+        "best_host": "publisher",
+        "n_locations": 3,
+        "locations": [
+          {
+            "url": "https://mhealth.jmir.org/2016/1/e8/PDF",
+            "pdf": "https://mhealth.jmir.org/2016/1/e8/PDF",
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "publisher",
+            "repository": ""
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4748138/",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          },
+          {
+            "url": "https://doaj.org/article/20ffa56e8b55445ebdfbe890cb772d51",
+            "pdf": null,
+            "license": "cc-by-sa",
+            "version": "submittedVersion",
+            "host": "repository",
+            "repository": ""
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2016",
+        "autoren_crossref": "Birney Amelia J; Gunn Rebecca; Russell Jeremy K; Ary Dennis V",
+        "autorenzahl_crossref": 4
+      },
+      "result": {
+        "fulltext_xml": true,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/birney_2016/fulltext.xml",
+        "download_erlaubt": "ja (CC)",
+        "manuskriptversion": "publishedVersion",
+        "lizenz": "cc by",
+        "lizenz_verifiziert": true,
+        "zugaenglich": true,
+        "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4748138/fullTextXML",
+        "quelle": "Europe PMC fullTextXML"
+      },
+      "inspection": {
+        "xml_parsebar": true,
+        "doi_im_volltext": true,
+        "titel_im_volltext": "MoodHacker Mobile Web App With Email for Adults to Self-Manage Mild-to-Moderate Depression: Randomized Controlled Trial",
+        "zeichengruppe": 77994,
+        "sektionen": 54,
+        "tabellen": 2,
+        "tabellen_mit_instrument": 1,
+        "plusminus": 0,
+        "sd_marker": 10,
+        "supplement_im_volltext": true,
+        "effektschaetzer_mit_ki": 0,
+        "armstatistik_zeile": true,
+        "mean_sd_paar": 4,
+        "modellbasiert": true,
+        "instrument_mssd": 0,
+        "instrument_mssd_baseline": 0,
+        "demografie_mssd": 0,
+        "outcome_mssd": 0,
+        "belege": []
+      },
+      "quantitative": [
+        "primaervolltext_modellbasiert",
+        "modellbasierte Auswertung ohne Arm-Mittelwerte im Text"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4748138/fullTextXML",
+          "status": 200,
+          "bytes": 184186,
+          "ok": true
+        },
+        {
+          "kind": "pmc-oa-service",
+          "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC4748138",
+          "status": 404,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "pdf",
+          "url": "https://mhealth.jmir.org/2016/1/e8/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "repository-landing",
+          "url": "https://mhealth.jmir.org/2016/1/e8/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.2196/mhealth.4231",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        }
+      ],
+      "csv": {
+        "study_id": "birney_2016",
+        "authors": "Birney Amelia J; Gunn Rebecca; Russell Jeremy K; Ary Dennis V",
+        "year": "2016",
+        "title": "MoodHacker Mobile Web App With Email for Adults to Self-Manage Mild-to-Moderate Depression: Randomized Controlled Trial",
+        "doi": "10.2196/mhealth.4231",
+        "pmid": "26813737",
+        "pmcid": "PMC4748138",
+        "publisher_url": "https://doi.org/10.2196/mhealth.4231",
+        "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4748138/fullTextXML",
+        "source_repository": "Europe PMC fullTextXML",
+        "fulltext_available": "ja",
+        "pdf_downloaded": "nein",
+        "machine_readable": "ja",
+        "manuscript_version": "publishedVersion",
+        "license": "cc by",
+        "license_verified": "ja",
+        "supplementary_material_available": "ja",
+        "quantitative_data_available": "primaervolltext_modellbasiert",
+        "access_notes": "modellbasierte Auswertung ohne Arm-Mittelwerte im Text",
+        "im_effektpool_review": "ja"
+      }
+    },
+    {
+      "nummer_review": 3,
+      "study_id": "dahne_2019",
+      "name": "Dahne 2019",
+      "doi": "10.1016/j.beth.2018.12.003",
+      "pmid": "31208690",
+      "epmc": {
+        "title": "Pilot Randomized Trial of a Self-Help Behavioral Activation Mobile App for Utilization in Primary Care.",
+        "journal": "Behavior therapy",
+        "year": "2019",
+        "pmcid": "PMC6582985",
+        "is_open_access": false,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": true,
+        "has_suppl": false,
+        "license": "",
+        "author_string": "Dahne J, Lejuez CW, Lejuez CW, Diaz VA, Player MS, Kustanowitz J, Felton JW, Carpenter MJ.",
+        "full_text_urls": [
+          "https://doi.org/10.1016/j.beth.2018.12.003",
+          "https://europepmc.org/articles/PMC6582985",
+          "https://europepmc.org/articles/PMC6582985?pdf=render",
+          "https://doi.org/10.1016/j.beth.2018.12.003"
+        ]
+      },
+      "crossref": {
+        "title": "Pilot Randomized Trial of a Self-Help Behavioral Activation Mobile App for Utilization in Primary Care",
+        "container": "Behavior Therapy",
+        "year": "2019",
+        "authors": [
+          "Dahne Jennifer",
+          "Lejuez C.W.",
+          "Diaz Vanessa A.",
+          "Player Marty S.",
+          "Kustanowitz Jacob",
+          "Felton Julia W.",
+          "Carpenter Matthew J."
+        ],
+        "publisher": "Elsevier BV",
+        "publisher_url": "https://doi.org/10.1016/j.beth.2018.12.003",
+        "license": [
+          "https://www.elsevier.com/tdm/userlicense/1.0/",
+          "https://www.elsevier.com/legal/tdmrep-license",
+          "https://doi.org/10.15223/policy-017",
+          "https://doi.org/10.15223/policy-037",
+          "https://doi.org/10.15223/policy-012",
+          "https://doi.org/10.15223/policy-029",
+          "https://doi.org/10.15223/policy-004"
+        ]
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "green",
+        "journal_is_oa": false,
+        "best_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6582985/",
+        "best_pdf": "",
+        "best_license": "",
+        "best_version": "acceptedVersion",
+        "best_host": "repository",
+        "n_locations": 1,
+        "locations": [
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6582985/",
+            "pdf": null,
+            "license": null,
+            "version": "acceptedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2019",
+        "autoren_crossref": "Dahne Jennifer; Lejuez C.W.; Diaz Vanessa A.; Player Marty S.",
+        "autorenzahl_crossref": 7
+      },
+      "result": {
+        "fulltext_xml": true,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/dahne_2019/fulltext_bioc.xml",
+        "download_erlaubt": "eingeschraenkt (Text-Mining, kein Reuse)",
+        "manuskriptversion": "author-manuscript (PMC, kein Reuse-Lizenznehmer)",
+        "lizenz": "author_manuscript (Text-Mining erlaubt, kein Reuse)",
+        "lizenz_verifiziert": true,
+        "zugaenglich": true,
+        "volltext_url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC6582985/unicode",
+        "quelle": "PMC BioC (Author Manuscript, Text-Mining)"
+      },
+      "inspection": {
+        "xml_parsebar": true,
+        "doi_im_volltext": false,
+        "titel_im_volltext": "",
+        "zeichengruppe": 64059,
+        "sektionen": 0,
+        "tabellen": 0,
+        "tabellen_mit_instrument": 0,
+        "plusminus": 0,
+        "sd_marker": 8,
+        "supplement_im_volltext": false,
+        "effektschaetzer_mit_ki": 0,
+        "armstatistik_zeile": false,
+        "mean_sd_paar": 48,
+        "modellbasiert": true,
+        "instrument_mssd": 9,
+        "instrument_mssd_baseline": 2,
+        "demografie_mssd": 4,
+        "outcome_mssd": 3,
+        "belege": [
+          "U condition did not differ significantly from the Week 1 assessment at any other follow-up timepoint. On average, participants in the Moodivate condition had a 12.21(13.15) point decrease on the BDI-I",
+          "articipants in the Moodivate condition had a 12.21(13.15) point decrease on the BDI-II from pre- to post-treatment, participants in the MoodKit condition had a 13.36(11.51) point decrease, and partici",
+          "on the BDI-II from pre- to post-treatment, participants in the MoodKit condition had a 13.36(11.51) point decrease, and participants in the TAU condition had a 7.75(14.99) point decrease. In addition,"
+        ]
+      },
+      "quantitative": [
+        "primaervolltext_armstatistik",
+        "3 Outcome-Mittelwert-(SD)-Paare (2 Baseline-, 4 Demografie-Paare ausgeschlossen)"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6582985/fullTextXML",
+          "status": 500,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "bioc",
+          "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC6582985/unicode",
+          "status": 200,
+          "bytes": 108054,
+          "ok": true
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.1016/j.beth.2018.12.003",
+          "status": 200,
+          "bytes": 0,
+          "ok": true
+        }
+      ],
+      "csv": {
+        "study_id": "dahne_2019",
+        "authors": "Dahne Jennifer; Lejuez C.W.; Diaz Vanessa A.; Player Marty S.",
+        "year": "2019",
+        "title": "Pilot Randomized Trial of a Self-Help Behavioral Activation Mobile App for Utilization in Primary Care",
+        "doi": "10.1016/j.beth.2018.12.003",
+        "pmid": "31208690",
+        "pmcid": "PMC6582985",
+        "publisher_url": "https://doi.org/10.1016/j.beth.2018.12.003",
+        "fulltext_url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC6582985/unicode",
+        "source_repository": "PMC BioC (Author Manuscript, Text-Mining)",
+        "fulltext_available": "ja",
+        "pdf_downloaded": "nein",
+        "machine_readable": "ja",
+        "manuscript_version": "author-manuscript (PMC, kein Reuse-Lizenznehmer)",
+        "license": "author_manuscript (Text-Mining erlaubt, kein Reuse)",
+        "license_verified": "ja",
+        "supplementary_material_available": "nein",
+        "quantitative_data_available": "primaervolltext_armstatistik",
+        "access_notes": "3 Outcome-Mittelwert-(SD)-Paare (2 Baseline-, 4 Demografie-Paare ausgeschlossen)",
+        "im_effektpool_review": "ja"
+      }
+    },
+    {
+      "nummer_review": 4,
+      "study_id": "ham_2019",
+      "name": "Ham 2019",
+      "doi": "10.3389/fpsyg.2019.01592",
+      "pmid": "31402881",
+      "epmc": {
+        "title": "Preliminary Results From a Randomized Controlled Study for an App-Based Cognitive Behavioral Therapy Program for Depression and Anxiety in Cancer Patients.",
+        "journal": "Frontiers in psychology",
+        "year": "2019",
+        "pmcid": "PMC6669916",
+        "is_open_access": true,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": true,
+        "has_suppl": false,
+        "license": "cc by",
+        "author_string": "Ham K, Chin S, Suh YJ, Rhee M, Yu ES, Lee HJ, Kim JH, Kim SW, Koh SJ, Chung KM.",
+        "full_text_urls": [
+          "https://www.frontiersin.org/articles/10.3389/fpsyg.2019.01592/pdf",
+          "https://doi.org/10.3389/fpsyg.2019.01592",
+          "https://europepmc.org/articles/PMC6669916",
+          "https://europepmc.org/articles/PMC6669916?pdf=render"
+        ]
+      },
+      "crossref": {
+        "title": "Preliminary Results From a Randomized Controlled Study for an App-Based Cognitive Behavioral Therapy Program for Depression and Anxiety in Cancer Patients",
+        "container": "Frontiers in Psychology",
+        "year": "2019",
+        "authors": [
+          "Ham Kyunghee",
+          "Chin Siyung",
+          "Suh Yung Jae",
+          "Rhee Myungah",
+          "Yu Eun-Seung",
+          "Lee Hyun Jeong",
+          "Kim Jong-Heun",
+          "Kim Sang Wun",
+          "Koh Su-Jin",
+          "Chung Kyong-Mee"
+        ],
+        "publisher": "Frontiers Media SA",
+        "publisher_url": "https://doi.org/10.3389/fpsyg.2019.01592",
+        "license": [
+          "https://creativecommons.org/licenses/by/4.0/"
+        ]
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "journal_is_oa": true,
+        "best_url": "https://www.frontiersin.org/articles/10.3389/fpsyg.2019.01592/pdf",
+        "best_pdf": "https://www.frontiersin.org/articles/10.3389/fpsyg.2019.01592/pdf",
+        "best_license": "cc-by",
+        "best_version": "publishedVersion",
+        "best_host": "publisher",
+        "n_locations": 4,
+        "locations": [
+          {
+            "url": "https://www.frontiersin.org/articles/10.3389/fpsyg.2019.01592/pdf",
+            "pdf": "https://www.frontiersin.org/articles/10.3389/fpsyg.2019.01592/pdf",
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "publisher",
+            "repository": ""
+          },
+          {
+            "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/6669916",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "European Bioinformatics Institute"
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6669916/",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          },
+          {
+            "url": "https://ir.ymlib.yonsei.ac.kr/handle/22282913/171405",
+            "pdf": null,
+            "license": "cc-by-nc-nd",
+            "version": "submittedVersion",
+            "host": "repository",
+            "repository": "Yonsei University"
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2019",
+        "autoren_crossref": "Ham Kyunghee; Chin Siyung; Suh Yung Jae; Rhee Myungah",
+        "autorenzahl_crossref": 10
+      },
+      "result": {
+        "fulltext_xml": true,
+        "pdf_saved": true,
+        "pdf_path": "benchmark/serrano_ripoll_2022/primary_studies/ham_2019/fulltext.pdf",
+        "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/ham_2019/fulltext.xml",
+        "download_erlaubt": "ja (CC)",
+        "manuskriptversion": "publishedVersion",
+        "lizenz": "cc by",
+        "lizenz_verifiziert": true,
+        "zugaenglich": true,
+        "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6669916/fullTextXML",
+        "quelle": "Unpaywall/publisher"
+      },
+      "inspection": {
+        "xml_parsebar": true,
+        "doi_im_volltext": true,
+        "titel_im_volltext": "Preliminary Results From a Randomized Controlled Study for an App-Based Cognitive Behavioral Therapy Program for Depression and Anxiety in Cancer Patients",
+        "zeichengruppe": 97359,
+        "sektionen": 44,
+        "tabellen": 9,
+        "tabellen_mit_instrument": 2,
+        "plusminus": 0,
+        "sd_marker": 31,
+        "supplement_im_volltext": false,
+        "effektschaetzer_mit_ki": 0,
+        "armstatistik_zeile": true,
+        "mean_sd_paar": 101,
+        "modellbasiert": false,
+        "instrument_mssd": 56,
+        "instrument_mssd_baseline": 0,
+        "demografie_mssd": 0,
+        "outcome_mssd": 56,
+        "belege": [
+          "naires by group in pre-intervention scores.InterventionAttention controlWaitlist controlTypegroup (n = 21)group (n = 21)group (n = 21)FpM (SD)M (SD)M (SD)BDI-II25.24(9.83)24.33(10.97)27.48(10.17)0.510",
+          "roup in pre-intervention scores.InterventionAttention controlWaitlist controlTypegroup (n = 21)group (n = 21)group (n = 21)FpM (SD)M (SD)M (SD)BDI-II25.24(9.83)24.33(10.97)27.48(10.17)0.510.600STAISta",
+          "intervention scores.InterventionAttention controlWaitlist controlTypegroup (n = 21)group (n = 21)group (n = 21)FpM (SD)M (SD)M (SD)BDI-II25.24(9.83)24.33(10.97)27.48(10.17)0.510.600STAIState55.33(9.96"
+        ]
+      },
+      "quantitative": [
+        "primaervolltext_armstatistik",
+        "56 Outcome-Mittelwert-(SD)-Paare (0 Baseline-, 0 Demografie-Paare ausgeschlossen)"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6669916/fullTextXML",
+          "status": 200,
+          "bytes": 223410,
+          "ok": true
+        },
+        {
+          "kind": "pmc-oa-service",
+          "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC6669916",
+          "status": 404,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "pdf",
+          "url": "https://www.frontiersin.org/articles/10.3389/fpsyg.2019.01592/pdf",
+          "status": 200,
+          "bytes": 3666213,
+          "ok": true
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.3389/fpsyg.2019.01592",
+          "status": 200,
+          "bytes": 0,
+          "ok": true
+        }
+      ],
+      "csv": {
+        "study_id": "ham_2019",
+        "authors": "Ham Kyunghee; Chin Siyung; Suh Yung Jae; Rhee Myungah",
+        "year": "2019",
+        "title": "Preliminary Results From a Randomized Controlled Study for an App-Based Cognitive Behavioral Therapy Program for Depression and Anxiety in Cancer Patients",
+        "doi": "10.3389/fpsyg.2019.01592",
+        "pmid": "31402881",
+        "pmcid": "PMC6669916",
+        "publisher_url": "https://doi.org/10.3389/fpsyg.2019.01592",
+        "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6669916/fullTextXML",
+        "source_repository": "Unpaywall/publisher",
+        "fulltext_available": "ja",
+        "pdf_downloaded": "ja",
+        "machine_readable": "ja",
+        "manuscript_version": "publishedVersion",
+        "license": "cc by",
+        "license_verified": "ja",
+        "supplementary_material_available": "nein",
+        "quantitative_data_available": "primaervolltext_armstatistik",
+        "access_notes": "56 Outcome-Mittelwert-(SD)-Paare (0 Baseline-, 0 Demografie-Paare ausgeschlossen)",
+        "im_effektpool_review": "ja"
+      }
+    },
+    {
+      "nummer_review": 5,
+      "study_id": "luedtke_2018",
+      "name": "Luedtke 2018",
+      "doi": "10.1016/j.psychres.2018.08.113",
+      "pmid": "30273901",
+      "epmc": {
+        "title": "A randomized controlled trial on a smartphone self-help application (Be Good to Yourself) to reduce depressive symptoms.",
+        "journal": "Psychiatry research",
+        "year": "2018",
+        "pmcid": "",
+        "is_open_access": false,
+        "in_pmc": false,
+        "in_epmc": false,
+        "has_pdf": false,
+        "has_suppl": false,
+        "license": "",
+        "author_string": "L\u00fcdtke T, Pult LK, Schr\u00f6der J, Moritz S, B\u00fccker L.",
+        "full_text_urls": [
+          "https://munin.uit.no/bitstream/10037/14869/4/article.pdf",
+          "https://doi.org/10.1016/j.psychres.2018.08.113"
+        ]
+      },
+      "crossref": {
+        "title": "A randomized controlled trial on a smartphone self-help application (Be Good to Yourself) to reduce depressive symptoms",
+        "container": "Psychiatry Research",
+        "year": "2018",
+        "authors": [
+          "L\u00fcdtke Thies",
+          "Pult Lilian Klara",
+          "Schr\u00f6der Johanna",
+          "Moritz Steffen",
+          "B\u00fccker Lara"
+        ],
+        "publisher": "Elsevier BV",
+        "publisher_url": "https://doi.org/10.1016/j.psychres.2018.08.113",
+        "license": [
+          "https://www.elsevier.com/tdm/userlicense/1.0/"
+        ]
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "green",
+        "journal_is_oa": false,
+        "best_url": "https://hdl.handle.net/10037/14869",
+        "best_pdf": "",
+        "best_license": "cc-by-nc-nd",
+        "best_version": "submittedVersion",
+        "best_host": "repository",
+        "n_locations": 1,
+        "locations": [
+          {
+            "url": "https://hdl.handle.net/10037/14869",
+            "pdf": null,
+            "license": "cc-by-nc-nd",
+            "version": "submittedVersion",
+            "host": "repository",
+            "repository": ""
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2018",
+        "autoren_crossref": "L\u00fcdtke Thies; Pult Lilian Klara; Schr\u00f6der Johanna; Moritz Steffen",
+        "autorenzahl_crossref": 5
+      },
+      "result": {
+        "fulltext_xml": false,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "",
+        "download_erlaubt": "ja (CC)",
+        "manuskriptversion": "submittedVersion",
+        "lizenz": "cc-by-nc-nd",
+        "lizenz_verifiziert": true,
+        "zugaenglich": false,
+        "volltext_url": "",
+        "quelle": ""
+      },
+      "inspection": null,
+      "quantitative": [
+        "nicht_oeffentlich",
+        "keine legale Volltextquelle gefunden"
+      ],
+      "attempts": [
+        {
+          "kind": "repository-landing",
+          "url": "https://hdl.handle.net/10037/14869",
+          "status": 200,
+          "bytes": 3145,
+          "ok": true
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.1016/j.psychres.2018.08.113",
+          "status": 200,
+          "bytes": 0,
+          "ok": true
+        }
+      ],
+      "csv": {
+        "study_id": "luedtke_2018",
+        "authors": "L\u00fcdtke Thies; Pult Lilian Klara; Schr\u00f6der Johanna; Moritz Steffen",
+        "year": "2018",
+        "title": "A randomized controlled trial on a smartphone self-help application (Be Good to Yourself) to reduce depressive symptoms",
+        "doi": "10.1016/j.psychres.2018.08.113",
+        "pmid": "30273901",
+        "pmcid": "",
+        "publisher_url": "https://doi.org/10.1016/j.psychres.2018.08.113",
+        "fulltext_url": "",
+        "source_repository": "",
+        "fulltext_available": "nein",
+        "pdf_downloaded": "nein",
+        "machine_readable": "nein",
+        "manuscript_version": "submittedVersion",
+        "license": "cc-by-nc-nd",
+        "license_verified": "ja",
+        "supplementary_material_available": "nein",
+        "quantitative_data_available": "nicht_oeffentlich",
+        "access_notes": "keine legale Volltextquelle gefunden",
+        "im_effektpool_review": "nein"
+      }
+    },
+    {
+      "nummer_review": 6,
+      "study_id": "mantani_2017",
+      "name": "Mantani 2017",
+      "doi": "10.2196/jmir.8602",
+      "pmid": "29101095",
+      "epmc": {
+        "title": "Smartphone Cognitive Behavioral Therapy as an Adjunct to Pharmacotherapy for Refractory Depression: Randomized Controlled Trial.",
+        "journal": "Journal of medical Internet research",
+        "year": "2017",
+        "pmcid": "PMC5695656",
+        "is_open_access": true,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": true,
+        "has_suppl": true,
+        "license": "cc by",
+        "author_string": "Mantani A, Kato T, Furukawa TA, Horikoshi M, Imai H, Hiroe T, Chino B, Funayama T, Yonemoto N, Zhou Q, Kawanishi N.",
+        "full_text_urls": [
+          "https://doi.org/10.2196/jmir.8602",
+          "https://europepmc.org/articles/PMC5695656",
+          "https://europepmc.org/articles/PMC5695656?pdf=render"
+        ]
+      },
+      "crossref": {
+        "title": "Smartphone Cognitive Behavioral Therapy as an Adjunct to Pharmacotherapy for Refractory Depression: Randomized Controlled Trial",
+        "container": "Journal of Medical Internet Research",
+        "year": "2017",
+        "authors": [
+          "Mantani Akio",
+          "Kato Tadashi",
+          "Furukawa Toshi A",
+          "Horikoshi Masaru",
+          "Imai Hissei",
+          "Hiroe Takahiro",
+          "Chino Bun",
+          "Funayama Tadashi",
+          "Yonemoto Naohiro",
+          "Zhou Qi",
+          "Kawanishi Nao"
+        ],
+        "publisher": "JMIR Publications Inc.",
+        "publisher_url": "https://doi.org/10.2196/jmir.8602",
+        "license": []
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "journal_is_oa": true,
+        "best_url": "https://www.jmir.org/2017/11/e373/PDF",
+        "best_pdf": "https://www.jmir.org/2017/11/e373/PDF",
+        "best_license": "cc-by",
+        "best_version": "publishedVersion",
+        "best_host": "publisher",
+        "n_locations": 2,
+        "locations": [
+          {
+            "url": "https://www.jmir.org/2017/11/e373/PDF",
+            "pdf": "https://www.jmir.org/2017/11/e373/PDF",
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "publisher",
+            "repository": ""
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5695656/",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2017",
+        "autoren_crossref": "Mantani Akio; Kato Tadashi; Furukawa Toshi A; Horikoshi Masaru",
+        "autorenzahl_crossref": 11
+      },
+      "result": {
+        "fulltext_xml": true,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/mantani_2017/fulltext.xml",
+        "download_erlaubt": "ja (CC)",
+        "manuskriptversion": "publishedVersion",
+        "lizenz": "cc by",
+        "lizenz_verifiziert": true,
+        "zugaenglich": true,
+        "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5695656/fullTextXML",
+        "quelle": "Europe PMC fullTextXML"
+      },
+      "inspection": {
+        "xml_parsebar": true,
+        "doi_im_volltext": true,
+        "titel_im_volltext": "Smartphone Cognitive Behavioral Therapy as an Adjunct to Pharmacotherapy for Refractory Depression: Randomized Controlled Trial",
+        "zeichengruppe": 55405,
+        "sektionen": 27,
+        "tabellen": 4,
+        "tabellen_mit_instrument": 3,
+        "plusminus": 0,
+        "sd_marker": 13,
+        "supplement_im_volltext": true,
+        "effektschaetzer_mit_ki": 4,
+        "armstatistik_zeile": true,
+        "mean_sd_paar": 60,
+        "modellbasiert": false,
+        "instrument_mssd": 32,
+        "instrument_mssd_baseline": 6,
+        "demografie_mssd": 4,
+        "outcome_mssd": 22,
+        "belege": [
+          "ssive episodes3.4 (4.9)3.0 (4.5)3.5 (4.7)2.8 (4.6)Length of current episode (months)24.2 (46.3)23.0 (46.5)27.0 (52.6)22.3 (42.5)PHQ-9aWeek 013.5 (5.5)12.9 (5.3)14.0 (5.2)13.8 (5.1)Week 112.6 (6.2)11.9",
+          "odes3.4 (4.9)3.0 (4.5)3.5 (4.7)2.8 (4.6)Length of current episode (months)24.2 (46.3)23.0 (46.5)27.0 (52.6)22.3 (42.5)PHQ-9aWeek 013.5 (5.5)12.9 (5.3)14.0 (5.2)13.8 (5.1)Week 112.6 (6.2)11.9 (5.9)13.4",
+          "0 (4.5)3.5 (4.7)2.8 (4.6)Length of current episode (months)24.2 (46.3)23.0 (46.5)27.0 (52.6)22.3 (42.5)PHQ-9aWeek 013.5 (5.5)12.9 (5.3)14.0 (5.2)13.8 (5.1)Week 112.6 (6.2)11.9 (5.9)13.4 (5.6)12.6 (5.5"
+        ]
+      },
+      "quantitative": [
+        "primaervolltext_armstatistik",
+        "22 Outcome-Mittelwert-(SD)-Paare (6 Baseline-, 4 Demografie-Paare ausgeschlossen)"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5695656/fullTextXML",
+          "status": 200,
+          "bytes": 159560,
+          "ok": true
+        },
+        {
+          "kind": "pmc-oa-service",
+          "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC5695656",
+          "status": 404,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "pdf",
+          "url": "https://www.jmir.org/2017/11/e373/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "repository-landing",
+          "url": "https://www.jmir.org/2017/11/e373/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.2196/jmir.8602",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        }
+      ],
+      "csv": {
+        "study_id": "mantani_2017",
+        "authors": "Mantani Akio; Kato Tadashi; Furukawa Toshi A; Horikoshi Masaru",
+        "year": "2017",
+        "title": "Smartphone Cognitive Behavioral Therapy as an Adjunct to Pharmacotherapy for Refractory Depression: Randomized Controlled Trial",
+        "doi": "10.2196/jmir.8602",
+        "pmid": "29101095",
+        "pmcid": "PMC5695656",
+        "publisher_url": "https://doi.org/10.2196/jmir.8602",
+        "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5695656/fullTextXML",
+        "source_repository": "Europe PMC fullTextXML",
+        "fulltext_available": "ja",
+        "pdf_downloaded": "nein",
+        "machine_readable": "ja",
+        "manuscript_version": "publishedVersion",
+        "license": "cc by",
+        "license_verified": "ja",
+        "supplementary_material_available": "ja",
+        "quantitative_data_available": "primaervolltext_armstatistik",
+        "access_notes": "22 Outcome-Mittelwert-(SD)-Paare (6 Baseline-, 4 Demografie-Paare ausgeschlossen)",
+        "im_effektpool_review": "ja"
+      }
+    },
+    {
+      "nummer_review": 7,
+      "study_id": "moberg_2019",
+      "name": "Moberg 2019",
+      "doi": "10.2196/12556",
+      "pmid": "31199319",
+      "epmc": {
+        "title": "Guided Self-Help Works: Randomized Waitlist Controlled Trial of Pacifica, a Mobile App Integrating Cognitive Behavioral Therapy and Mindfulness for Stress, Anxiety, and Depression.",
+        "journal": "Journal of medical Internet research",
+        "year": "2019",
+        "pmcid": "PMC6592477",
+        "is_open_access": true,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": true,
+        "has_suppl": true,
+        "license": "cc by",
+        "author_string": "Moberg C, Niles A, Beermann D.",
+        "full_text_urls": [
+          "https://www.jmir.org/2019/6/e12556/PDF",
+          "https://doi.org/10.2196/12556",
+          "https://europepmc.org/articles/PMC6592477",
+          "https://europepmc.org/articles/PMC6592477?pdf=render"
+        ]
+      },
+      "crossref": {
+        "title": "Guided Self-Help Works: Randomized Waitlist Controlled Trial of Pacifica, a Mobile App Integrating Cognitive Behavioral Therapy and Mindfulness for Stress, Anxiety, and Depression",
+        "container": "Journal of Medical Internet Research",
+        "year": "2019",
+        "authors": [
+          "Moberg Christine",
+          "Niles Andrea",
+          "Beermann Dale"
+        ],
+        "publisher": "JMIR Publications Inc.",
+        "publisher_url": "https://doi.org/10.2196/12556",
+        "license": []
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "journal_is_oa": true,
+        "best_url": "https://www.jmir.org/2019/6/e12556/PDF",
+        "best_pdf": "https://www.jmir.org/2019/6/e12556/PDF",
+        "best_license": "cc-by",
+        "best_version": "publishedVersion",
+        "best_host": "publisher",
+        "n_locations": 3,
+        "locations": [
+          {
+            "url": "https://www.jmir.org/2019/6/e12556/PDF",
+            "pdf": "https://www.jmir.org/2019/6/e12556/PDF",
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "publisher",
+            "repository": ""
+          },
+          {
+            "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/6592477",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "European Bioinformatics Institute"
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6592477/",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2019",
+        "autoren_crossref": "Moberg Christine; Niles Andrea; Beermann Dale",
+        "autorenzahl_crossref": 3
+      },
+      "result": {
+        "fulltext_xml": true,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/moberg_2019/fulltext.xml",
+        "download_erlaubt": "ja (CC)",
+        "manuskriptversion": "publishedVersion",
+        "lizenz": "cc by",
+        "lizenz_verifiziert": true,
+        "zugaenglich": true,
+        "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6592477/fullTextXML",
+        "quelle": "Europe PMC fullTextXML"
+      },
+      "inspection": {
+        "xml_parsebar": true,
+        "doi_im_volltext": true,
+        "titel_im_volltext": "Guided Self-Help Works: Randomized Waitlist Controlled Trial of Pacifica, a Mobile App Integrating Cognitive Behavioral Therapy and Mindfulness for Stress, Anxiety, and Depression",
+        "zeichengruppe": 68034,
+        "sektionen": 50,
+        "tabellen": 5,
+        "tabellen_mit_instrument": 0,
+        "plusminus": 0,
+        "sd_marker": 3,
+        "supplement_im_volltext": true,
+        "effektschaetzer_mit_ki": 0,
+        "armstatistik_zeile": false,
+        "mean_sd_paar": 2,
+        "modellbasiert": true,
+        "instrument_mssd": 2,
+        "instrument_mssd_baseline": 0,
+        "demografie_mssd": 1,
+        "outcome_mssd": 1,
+        "belege": [
+          "(91%).Table 1Descriptive data of sample.CharacteristicWaitlist control group (n=247)Active (n=253)Chi-square (df ${3.1}P valueAge (years), mean (SD)a30.2 (10.8)30.2 (10.9)\u2014b.96 Gender, n (%) 2.73 (4) "
+        ]
+      },
+      "quantitative": [
+        "primaervolltext_modellbasiert",
+        "modellbasierte Auswertung ohne Arm-Mittelwerte im Text"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6592477/fullTextXML",
+          "status": 200,
+          "bytes": 162163,
+          "ok": true
+        },
+        {
+          "kind": "pmc-oa-service",
+          "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC6592477",
+          "status": 404,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "pdf",
+          "url": "https://www.jmir.org/2019/6/e12556/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "repository-landing",
+          "url": "https://www.jmir.org/2019/6/e12556/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.2196/12556",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        }
+      ],
+      "csv": {
+        "study_id": "moberg_2019",
+        "authors": "Moberg Christine; Niles Andrea; Beermann Dale",
+        "year": "2019",
+        "title": "Guided Self-Help Works: Randomized Waitlist Controlled Trial of Pacifica, a Mobile App Integrating Cognitive Behavioral Therapy and Mindfulness for Stress, Anxiety, and Depression",
+        "doi": "10.2196/12556",
+        "pmid": "31199319",
+        "pmcid": "PMC6592477",
+        "publisher_url": "https://doi.org/10.2196/12556",
+        "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6592477/fullTextXML",
+        "source_repository": "Europe PMC fullTextXML",
+        "fulltext_available": "ja",
+        "pdf_downloaded": "nein",
+        "machine_readable": "ja",
+        "manuscript_version": "publishedVersion",
+        "license": "cc by",
+        "license_verified": "ja",
+        "supplementary_material_available": "ja",
+        "quantitative_data_available": "primaervolltext_modellbasiert",
+        "access_notes": "modellbasierte Auswertung ohne Arm-Mittelwerte im Text",
+        "im_effektpool_review": "ja"
+      }
+    },
+    {
+      "nummer_review": 8,
+      "study_id": "pratap_2018",
+      "name": "Pratap 2018",
+      "doi": "10.2196/10130",
+      "pmid": "30093372",
+      "epmc": {
+        "title": "Using Mobile Apps to Assess and Treat Depression in Hispanic and Latino Populations: Fully Remote Randomized Clinical Trial.",
+        "journal": "Journal of medical Internet research",
+        "year": "2018",
+        "pmcid": "PMC6107735",
+        "is_open_access": true,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": true,
+        "has_suppl": true,
+        "license": "cc by",
+        "author_string": "Pratap A, Renn BN, Volponi J, Mooney SD, Gazzaley A, Arean PA, Anguera JA.",
+        "full_text_urls": [
+          "https://doi.org/10.2196/10130",
+          "https://europepmc.org/articles/PMC6107735",
+          "https://europepmc.org/articles/PMC6107735?pdf=render"
+        ]
+      },
+      "crossref": {
+        "title": "Using Mobile Apps to Assess and Treat Depression in Hispanic and Latino Populations: Fully Remote Randomized Clinical Trial",
+        "container": "Journal of Medical Internet Research",
+        "year": "2018",
+        "authors": [
+          "Pratap Abhishek",
+          "Renn Brenna N",
+          "Volponi Joshua",
+          "Mooney Sean D",
+          "Gazzaley Adam",
+          "Arean Patricia A",
+          "Anguera Joaquin A"
+        ],
+        "publisher": "JMIR Publications Inc.",
+        "publisher_url": "https://doi.org/10.2196/10130",
+        "license": []
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "journal_is_oa": true,
+        "best_url": "https://doi.org/10.2196/10130",
+        "best_pdf": "",
+        "best_license": "cc-by",
+        "best_version": "publishedVersion",
+        "best_host": "publisher",
+        "n_locations": 4,
+        "locations": [
+          {
+            "url": "https://doi.org/10.2196/10130",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "publisher",
+            "repository": ""
+          },
+          {
+            "url": "https://doi.org/10.2196/preprints.10130",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "submittedVersion",
+            "host": "repository",
+            "repository": ""
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6107735/pdf/",
+            "pdf": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6107735/pdf/",
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          },
+          {
+            "url": "http://europepmc.org/pmc/articles/PMC6107735",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "European Bioinformatics Institute"
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2018",
+        "autoren_crossref": "Pratap Abhishek; Renn Brenna N; Volponi Joshua; Mooney Sean D",
+        "autorenzahl_crossref": 7
+      },
+      "result": {
+        "fulltext_xml": true,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/pratap_2018/fulltext.xml",
+        "download_erlaubt": "ja (CC)",
+        "manuskriptversion": "publishedVersion",
+        "lizenz": "cc by",
+        "lizenz_verifiziert": true,
+        "zugaenglich": true,
+        "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6107735/fullTextXML",
+        "quelle": "Europe PMC fullTextXML"
+      },
+      "inspection": {
+        "xml_parsebar": true,
+        "doi_im_volltext": true,
+        "titel_im_volltext": "Using Mobile Apps to Assess and Treat Depression in Hispanic and Latino Populations: Fully Remote Randomized Clinical Trial",
+        "zeichengruppe": 54527,
+        "sektionen": 44,
+        "tabellen": 5,
+        "tabellen_mit_instrument": 0,
+        "plusminus": 0,
+        "sd_marker": 4,
+        "supplement_im_volltext": true,
+        "effektschaetzer_mit_ki": 0,
+        "armstatistik_zeile": false,
+        "mean_sd_paar": 18,
+        "modellbasiert": true,
+        "instrument_mssd": 0,
+        "instrument_mssd_baseline": 0,
+        "demografie_mssd": 0,
+        "outcome_mssd": 0,
+        "belege": []
+      },
+      "quantitative": [
+        "primaervolltext_modellbasiert",
+        "modellbasierte Auswertung ohne Arm-Mittelwerte im Text"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6107735/fullTextXML",
+          "status": 200,
+          "bytes": 117594,
+          "ok": true
+        },
+        {
+          "kind": "pmc-oa-service",
+          "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC6107735",
+          "status": 404,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "repository-landing",
+          "url": "https://doi.org/10.2196/10130",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.2196/10130",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        }
+      ],
+      "csv": {
+        "study_id": "pratap_2018",
+        "authors": "Pratap Abhishek; Renn Brenna N; Volponi Joshua; Mooney Sean D",
+        "year": "2018",
+        "title": "Using Mobile Apps to Assess and Treat Depression in Hispanic and Latino Populations: Fully Remote Randomized Clinical Trial",
+        "doi": "10.2196/10130",
+        "pmid": "30093372",
+        "pmcid": "PMC6107735",
+        "publisher_url": "https://doi.org/10.2196/10130",
+        "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6107735/fullTextXML",
+        "source_repository": "Europe PMC fullTextXML",
+        "fulltext_available": "ja",
+        "pdf_downloaded": "nein",
+        "machine_readable": "ja",
+        "manuscript_version": "publishedVersion",
+        "license": "cc by",
+        "license_verified": "ja",
+        "supplementary_material_available": "ja",
+        "quantitative_data_available": "primaervolltext_modellbasiert",
+        "access_notes": "modellbasierte Auswertung ohne Arm-Mittelwerte im Text",
+        "im_effektpool_review": "ja"
+      }
+    },
+    {
+      "nummer_review": 9,
+      "study_id": "roepke_2015",
+      "name": "Roepke 2015",
+      "doi": "10.1089/g4h.2014.0046",
+      "pmid": "26182069",
+      "epmc": {
+        "title": "Randomized Controlled Trial of SuperBetter, a Smartphone-Based/Internet-Based Self-Help Tool to Reduce Depressive Symptoms.",
+        "journal": "Games for health journal",
+        "year": "2015",
+        "pmcid": "",
+        "is_open_access": false,
+        "in_pmc": false,
+        "in_epmc": false,
+        "has_pdf": false,
+        "has_suppl": false,
+        "license": "",
+        "author_string": "Roepke AM, Jaffee SR, Riffle OM, McGonigal J, Broome R, Maxwell B.",
+        "full_text_urls": [
+          "https://doi.org/10.1089/g4h.2014.0046"
+        ]
+      },
+      "crossref": {
+        "title": "Randomized Controlled Trial of SuperBetter, a Smartphone-Based/Internet-Based Self-Help Tool to Reduce Depressive Symptoms",
+        "container": "Games for Health Journal",
+        "year": "2015",
+        "authors": [
+          "Roepke Ann Marie",
+          "Jaffee Sara R.",
+          "Riffle Olivia M.",
+          "McGonigal Jane",
+          "Broome Rose",
+          "Maxwell Bez"
+        ],
+        "publisher": "SAGE Publications",
+        "publisher_url": "https://doi.org/10.1089/g4h.2014.0046",
+        "license": [
+          "http://www.liebertpub.com/nv/resources-tools/text-and-data-mining-policy/121/"
+        ]
+      },
+      "unpaywall": {
+        "is_oa": false,
+        "oa_status": "closed",
+        "journal_is_oa": false,
+        "best_url": "",
+        "best_pdf": "",
+        "best_license": "",
+        "best_version": "",
+        "best_host": "",
+        "n_locations": 0,
+        "locations": []
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2015",
+        "autoren_crossref": "Roepke Ann Marie; Jaffee Sara R.; Riffle Olivia M.; McGonigal Jane",
+        "autorenzahl_crossref": 6
+      },
+      "result": {
+        "fulltext_xml": false,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "",
+        "download_erlaubt": "nein (keine OA-Quelle)",
+        "manuskriptversion": "publisher",
+        "lizenz": "unbekannt",
+        "lizenz_verifiziert": false,
+        "zugaenglich": false,
+        "volltext_url": "",
+        "quelle": ""
+      },
+      "inspection": null,
+      "quantitative": [
+        "nicht_oeffentlich",
+        "keine legale Volltextquelle gefunden"
+      ],
+      "attempts": [
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.1089/g4h.2014.0046",
+          "status": 403,
+          "bytes": 0,
+          "ok": false
+        }
+      ],
+      "csv": {
+        "study_id": "roepke_2015",
+        "authors": "Roepke Ann Marie; Jaffee Sara R.; Riffle Olivia M.; McGonigal Jane",
+        "year": "2015",
+        "title": "Randomized Controlled Trial of SuperBetter, a Smartphone-Based/Internet-Based Self-Help Tool to Reduce Depressive Symptoms",
+        "doi": "10.1089/g4h.2014.0046",
+        "pmid": "26182069",
+        "pmcid": "",
+        "publisher_url": "https://doi.org/10.1089/g4h.2014.0046",
+        "fulltext_url": "",
+        "source_repository": "",
+        "fulltext_available": "nein",
+        "pdf_downloaded": "nein",
+        "machine_readable": "nein",
+        "manuscript_version": "publisher",
+        "license": "unbekannt",
+        "license_verified": "nein",
+        "supplementary_material_available": "nein",
+        "quantitative_data_available": "nicht_oeffentlich",
+        "access_notes": "keine legale Volltextquelle gefunden",
+        "im_effektpool_review": "nein"
+      }
+    },
+    {
+      "nummer_review": 10,
+      "study_id": "tighe_2017",
+      "name": "Tighe 2017",
+      "doi": "10.1136/bmjopen-2016-013518",
+      "pmid": "28132007",
+      "epmc": {
+        "title": "Ibobbly mobile health intervention for suicide prevention in Australian Indigenous youth: a pilot randomised controlled trial.",
+        "journal": "BMJ open",
+        "year": "2017",
+        "pmcid": "PMC5278278",
+        "is_open_access": true,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": true,
+        "has_suppl": false,
+        "license": "cc by-nc",
+        "author_string": "Tighe J, Shand F, Ridani R, Mackinnon A, De La Mata N, Christensen H.",
+        "full_text_urls": [
+          "https://doi.org/10.1136/bmjopen-2016-013518",
+          "https://europepmc.org/articles/PMC5278278",
+          "https://europepmc.org/articles/PMC5278278?pdf=render"
+        ]
+      },
+      "crossref": {
+        "title": "Ibobbly mobile health intervention for suicide prevention in Australian Indigenous youth: a pilot randomised controlled trial",
+        "container": "BMJ Open",
+        "year": "2017",
+        "authors": [
+          "Tighe Joseph",
+          "Shand Fiona",
+          "Ridani Rebecca",
+          "Mackinnon Andrew",
+          "De La Mata Nicole",
+          "Christensen Helen"
+        ],
+        "publisher": "BMJ",
+        "publisher_url": "https://doi.org/10.1136/bmjopen-2016-013518",
+        "license": []
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "journal_is_oa": true,
+        "best_url": "https://bmjopen.bmj.com/content/bmjopen/7/1/e013518.full.pdf",
+        "best_pdf": "https://bmjopen.bmj.com/content/bmjopen/7/1/e013518.full.pdf",
+        "best_license": "cc-by-nc",
+        "best_version": "publishedVersion",
+        "best_host": "publisher",
+        "n_locations": 5,
+        "locations": [
+          {
+            "url": "https://bmjopen.bmj.com/content/bmjopen/7/1/e013518.full.pdf",
+            "pdf": "https://bmjopen.bmj.com/content/bmjopen/7/1/e013518.full.pdf",
+            "license": "cc-by-nc",
+            "version": "publishedVersion",
+            "host": "publisher",
+            "repository": ""
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5278278/",
+            "pdf": null,
+            "license": "cc-by-nc",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          },
+          {
+            "url": "https://unsworks.unsw.edu.au/bitstreams/a897f88e-591b-4ba3-b827-937adb4cfea3/download",
+            "pdf": "https://unsworks.unsw.edu.au/bitstreams/a897f88e-591b-4ba3-b827-937adb4cfea3/download",
+            "license": "cc-by-nc",
+            "version": "submittedVersion",
+            "host": "repository",
+            "repository": "Australian Defence Force Academy"
+          },
+          {
+            "url": "http://handle.unsw.edu.au/1959.4/unsworks_47532",
+            "pdf": null,
+            "license": "cc-by-nc-nd",
+            "version": "submittedVersion",
+            "host": "repository",
+            "repository": "UNSW Sydney"
+          },
+          {
+            "url": "https://hdl.handle.net/11343/256135",
+            "pdf": null,
+            "license": "cc-by-nc",
+            "version": "submittedVersion",
+            "host": "repository",
+            "repository": "The University of Melbourne"
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2017",
+        "autoren_crossref": "Tighe Joseph; Shand Fiona; Ridani Rebecca; Mackinnon Andrew",
+        "autorenzahl_crossref": 6
+      },
+      "result": {
+        "fulltext_xml": true,
+        "pdf_saved": true,
+        "pdf_path": "benchmark/serrano_ripoll_2022/primary_studies/tighe_2017/fulltext.pdf",
+        "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/tighe_2017/fulltext.xml",
+        "download_erlaubt": "ja (CC)",
+        "manuskriptversion": "publishedVersion",
+        "lizenz": "cc by-nc",
+        "lizenz_verifiziert": true,
+        "zugaenglich": true,
+        "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5278278/fullTextXML",
+        "quelle": "Unpaywall/publisher"
+      },
+      "inspection": {
+        "xml_parsebar": true,
+        "doi_im_volltext": true,
+        "titel_im_volltext": "Ibobbly mobile health intervention for suicide prevention in Australian Indigenous youth: a pilot randomised controlled trial",
+        "zeichengruppe": 42761,
+        "sektionen": 30,
+        "tabellen": 2,
+        "tabellen_mit_instrument": 0,
+        "plusminus": 4,
+        "sd_marker": 5,
+        "supplement_im_volltext": true,
+        "effektschaetzer_mit_ki": 0,
+        "armstatistik_zeile": false,
+        "mean_sd_paar": 23,
+        "modellbasiert": true,
+        "instrument_mssd": 14,
+        "instrument_mssd_baseline": 9,
+        "demografie_mssd": 3,
+        "outcome_mssd": 2,
+        "belege": [
+          "4)** Control15.1 (3.9)12.8 (5.5)10.8 (5.4)Psychological distress Intervention31.6 (5.7)22.7 (7.4)* Control31.6 (6.0)27.9 (8.0)26.2 (6.9)Impulsivity Intervention72.1 (8.6)70.6 (10.6) Control67.9 (7.7)7",
+          ".5)10.8 (5.4)Psychological distress Intervention31.6 (5.7)22.7 (7.4)* Control31.6 (6.0)27.9 (8.0)26.2 (6.9)Impulsivity Intervention72.1 (8.6)70.6 (10.6) Control67.9 (7.7)70.6 (10.4)68.1 (9.0)*(p\u22640.05)"
+        ]
+      },
+      "quantitative": [
+        "primaervolltext_armstatistik",
+        "2 Outcome-Mittelwert-(SD)-Paare (9 Baseline-, 3 Demografie-Paare ausgeschlossen)"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5278278/fullTextXML",
+          "status": 200,
+          "bytes": 80599,
+          "ok": true
+        },
+        {
+          "kind": "pmc-oa-service",
+          "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC5278278",
+          "status": 404,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "pdf",
+          "url": "https://bmjopen.bmj.com/content/bmjopen/7/1/e013518.full.pdf",
+          "status": 200,
+          "bytes": 1375749,
+          "ok": true
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.1136/bmjopen-2016-013518",
+          "status": 403,
+          "bytes": 0,
+          "ok": false
+        }
+      ],
+      "csv": {
+        "study_id": "tighe_2017",
+        "authors": "Tighe Joseph; Shand Fiona; Ridani Rebecca; Mackinnon Andrew",
+        "year": "2017",
+        "title": "Ibobbly mobile health intervention for suicide prevention in Australian Indigenous youth: a pilot randomised controlled trial",
+        "doi": "10.1136/bmjopen-2016-013518",
+        "pmid": "28132007",
+        "pmcid": "PMC5278278",
+        "publisher_url": "https://doi.org/10.1136/bmjopen-2016-013518",
+        "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5278278/fullTextXML",
+        "source_repository": "Unpaywall/publisher",
+        "fulltext_available": "ja",
+        "pdf_downloaded": "ja",
+        "machine_readable": "ja",
+        "manuscript_version": "publishedVersion",
+        "license": "cc by-nc",
+        "license_verified": "ja",
+        "supplementary_material_available": "ja",
+        "quantitative_data_available": "primaervolltext_armstatistik",
+        "access_notes": "2 Outcome-Mittelwert-(SD)-Paare (9 Baseline-, 3 Demografie-Paare ausgeschlossen)",
+        "im_effektpool_review": "ja"
+      }
+    },
+    {
+      "nummer_review": 11,
+      "study_id": "graham_2020",
+      "name": "Graham 2020",
+      "doi": "10.1001/jamapsychiatry.2020.1011",
+      "pmid": "32432695",
+      "epmc": {
+        "title": "Coached Mobile App Platform for the Treatment of Depression and Anxiety Among Primary Care Patients: A Randomized Clinical Trial.",
+        "journal": "JAMA psychiatry",
+        "year": "2020",
+        "pmcid": "PMC7240649",
+        "is_open_access": false,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": false,
+        "has_suppl": true,
+        "license": "",
+        "author_string": "Graham AK, Greene CJ, Kwasny MJ, Kaiser SM, Lieponis P, Powell T, Mohr DC.",
+        "full_text_urls": [
+          "https://doi.org/10.1001/jamapsychiatry.2020.1011",
+          "https://europepmc.org/articles/PMC7240649",
+          "https://doi.org/10.1001/jamapsychiatry.2020.1011"
+        ]
+      },
+      "crossref": {
+        "title": "Coached Mobile App Platform for the Treatment of Depression and Anxiety Among Primary Care Patients",
+        "container": "JAMA Psychiatry",
+        "year": "2020",
+        "authors": [
+          "Graham Andrea K.",
+          "Greene Carolyn J.",
+          "Kwasny Mary J.",
+          "Kaiser Susan M.",
+          "Lieponis Paul",
+          "Powell Thomas",
+          "Mohr David C."
+        ],
+        "publisher": "American Medical Association (AMA)",
+        "publisher_url": "https://doi.org/10.1001/jamapsychiatry.2020.1011",
+        "license": []
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "bronze",
+        "journal_is_oa": false,
+        "best_url": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+        "best_pdf": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+        "best_license": "",
+        "best_version": "publishedVersion",
+        "best_host": "publisher",
+        "n_locations": 2,
+        "locations": [
+          {
+            "url": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+            "pdf": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+            "license": null,
+            "version": "publishedVersion",
+            "host": "publisher",
+            "repository": ""
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7240649/",
+            "pdf": null,
+            "license": null,
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2020",
+        "autoren_crossref": "Graham Andrea K.; Greene Carolyn J.; Kwasny Mary J.; Kaiser Susan M.",
+        "autorenzahl_crossref": 7
+      },
+      "result": {
+        "fulltext_xml": false,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "",
+        "download_erlaubt": "eingeschraenkt (Autor:innenmanuskript, nicht-kommerziell)",
+        "manuskriptversion": "author-manuscript (PMC, kein Reuse-Lizenznehmer)",
+        "lizenz": "unbekannt",
+        "lizenz_verifiziert": false,
+        "zugaenglich": false,
+        "volltext_url": "",
+        "quelle": ""
+      },
+      "inspection": null,
+      "quantitative": [
+        "autorenanfrage",
+        "Volltext nur als Author Manuscript in PMC, XML-Endpunkt liefert HTTP 500"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7240649/fullTextXML",
+          "status": 500,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "bioc",
+          "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC7240649/unicode",
+          "status": 200,
+          "bytes": 6140,
+          "ok": false
+        },
+        {
+          "kind": "pdf",
+          "url": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+          "status": 0,
+          "bytes": 0,
+          "ok": false,
+          "hinweis": "nicht gespeichert (Lizenz 'unbekannt')"
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.1001/jamapsychiatry.2020.1011",
+          "status": 403,
+          "bytes": 0,
+          "ok": false
+        }
+      ],
+      "csv": {
+        "study_id": "graham_2020",
+        "authors": "Graham Andrea K.; Greene Carolyn J.; Kwasny Mary J.; Kaiser Susan M.",
+        "year": "2020",
+        "title": "Coached Mobile App Platform for the Treatment of Depression and Anxiety Among Primary Care Patients",
+        "doi": "10.1001/jamapsychiatry.2020.1011",
+        "pmid": "32432695",
+        "pmcid": "PMC7240649",
+        "publisher_url": "https://doi.org/10.1001/jamapsychiatry.2020.1011",
+        "fulltext_url": "",
+        "source_repository": "",
+        "fulltext_available": "nein",
+        "pdf_downloaded": "nein",
+        "machine_readable": "nein",
+        "manuscript_version": "author-manuscript (PMC, kein Reuse-Lizenznehmer)",
+        "license": "unbekannt",
+        "license_verified": "nein",
+        "supplementary_material_available": "ja",
+        "quantitative_data_available": "autorenanfrage",
+        "access_notes": "Volltext nur als Author Manuscript in PMC, XML-Endpunkt liefert HTTP 500",
+        "im_effektpool_review": "ja"
+      }
+    },
+    {
+      "nummer_review": 12,
+      "study_id": "guo_2020",
+      "name": "Guo 2020",
+      "doi": "10.2196/16715",
+      "pmid": "32044751",
+      "epmc": {
+        "title": "Effect of a WeChat-Based Intervention (Run4Love) on Depressive Symptoms Among People Living With HIV in China: A Randomized Controlled Trial.",
+        "journal": "Journal of medical Internet research",
+        "year": "2020",
+        "pmcid": "PMC7058168",
+        "is_open_access": true,
+        "in_pmc": true,
+        "in_epmc": true,
+        "has_pdf": true,
+        "has_suppl": true,
+        "license": "cc by",
+        "author_string": "Guo Y, Hong YA, Cai W, Li L, Hao Y, Qiao J, Xu Z, Zhang H, Zeng C, Liu C, Li Y, Zhu M, Zeng Y, Penedo FJ.",
+        "full_text_urls": [
+          "https://www.jmir.org/2020/2/e16715/PDF",
+          "https://doi.org/10.2196/16715",
+          "https://europepmc.org/articles/PMC7058168",
+          "https://europepmc.org/articles/PMC7058168?pdf=render"
+        ]
+      },
+      "crossref": {
+        "title": "Effect of a WeChat-Based Intervention (Run4Love) on Depressive Symptoms Among People Living With HIV in China: A Randomized Controlled Trial",
+        "container": "Journal of Medical Internet Research",
+        "year": "2020",
+        "authors": [
+          "Guo Yan",
+          "Hong Y Alicia",
+          "Cai Weiping",
+          "Li Linghua",
+          "Hao Yuantao",
+          "Qiao Jiaying",
+          "Xu Zhimeng",
+          "Zhang Hanxi",
+          "Zeng Chengbo",
+          "Liu Cong",
+          "Li Yiran",
+          "Zhu Mengting",
+          "Zeng Yu",
+          "Penedo Frank J"
+        ],
+        "publisher": "JMIR Publications Inc.",
+        "publisher_url": "https://doi.org/10.2196/16715",
+        "license": []
+      },
+      "unpaywall": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "journal_is_oa": true,
+        "best_url": "https://www.jmir.org/2020/2/e16715/PDF",
+        "best_pdf": "https://www.jmir.org/2020/2/e16715/PDF",
+        "best_license": "cc-by",
+        "best_version": "publishedVersion",
+        "best_host": "publisher",
+        "n_locations": 5,
+        "locations": [
+          {
+            "url": "https://www.jmir.org/2020/2/e16715/PDF",
+            "pdf": "https://www.jmir.org/2020/2/e16715/PDF",
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "publisher",
+            "repository": ""
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7058168/",
+            "pdf": null,
+            "license": "cc-by",
+            "version": "publishedVersion",
+            "host": "repository",
+            "repository": "National Institutes of Health"
+          },
+          {
+            "url": "https://doaj.org/article/39d5447bed1b44b7bdfe7fd6c755c30d",
+            "pdf": null,
+            "license": "cc-by-sa",
+            "version": "submittedVersion",
+            "host": "repository",
+            "repository": ""
+          },
+          {
+            "url": "https://doi.org/10.60692/n3vya-7vv50",
+            "pdf": null,
+            "license": null,
+            "version": null,
+            "host": "repository",
+            "repository": ""
+          },
+          {
+            "url": "https://doi.org/10.60692/ykw65-4fx78",
+            "pdf": null,
+            "license": null,
+            "version": null,
+            "host": "repository",
+            "repository": ""
+          }
+        ]
+      },
+      "verified": {
+        "doi_aufgeloest_crossref": true,
+        "titel_konsistent_epmc_crossref": 1.0,
+        "jahr_crossref": "2020",
+        "autoren_crossref": "Guo Yan; Hong Y Alicia; Cai Weiping; Li Linghua",
+        "autorenzahl_crossref": 14
+      },
+      "result": {
+        "fulltext_xml": true,
+        "pdf_saved": false,
+        "pdf_path": "",
+        "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/guo_2020/fulltext.xml",
+        "download_erlaubt": "ja (CC)",
+        "manuskriptversion": "publishedVersion",
+        "lizenz": "cc by",
+        "lizenz_verifiziert": true,
+        "zugaenglich": true,
+        "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7058168/fullTextXML",
+        "quelle": "Europe PMC fullTextXML"
+      },
+      "inspection": {
+        "xml_parsebar": true,
+        "doi_im_volltext": true,
+        "titel_im_volltext": "Effect of a WeChat-Based Intervention (Run4Love) on Depressive Symptoms Among People Living With HIV in China: Randomized Controlled Trial",
+        "zeichengruppe": 49800,
+        "sektionen": 29,
+        "tabellen": 5,
+        "tabellen_mit_instrument": 2,
+        "plusminus": 0,
+        "sd_marker": 13,
+        "supplement_im_volltext": true,
+        "effektschaetzer_mit_ki": 0,
+        "armstatistik_zeile": true,
+        "mean_sd_paar": 28,
+        "modellbasiert": true,
+        "instrument_mssd": 19,
+        "instrument_mssd_baseline": 4,
+        "demografie_mssd": 2,
+        "outcome_mssd": 13,
+        "belege": [
+          "\u22657000 (yuan), n (%)68 (45.3)56 (37.3).16Duration of HIV infection, mean (SD)2.4 (2.3)2.3 (2.3).62Center for Epidemiological Studies Depression Scaleb, mean (SD)23.9 (6.4)24.3 (6.9).68Depression severi",
+          "n), n (%)68 (45.3)56 (37.3).16Duration of HIV infection, mean (SD)2.4 (2.3)2.3 (2.3).62Center for Epidemiological Studies Depression Scaleb, mean (SD)23.9 (6.4)24.3 (6.9).68Depression severity (9-item",
+          "3).62Center for Epidemiological Studies Depression Scaleb, mean (SD)23.9 (6.4)24.3 (6.9).68Depression severity (9-item Patient Health Questionnairec), mean (SD)10.2 (4.5)10.7 (5.1).31Physical activity"
+        ]
+      },
+      "quantitative": [
+        "primaervolltext_armstatistik",
+        "13 Outcome-Mittelwert-(SD)-Paare (4 Baseline-, 2 Demografie-Paare ausgeschlossen)"
+      ],
+      "attempts": [
+        {
+          "kind": "xml",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7058168/fullTextXML",
+          "status": 200,
+          "bytes": 128805,
+          "ok": true
+        },
+        {
+          "kind": "pmc-oa-service",
+          "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC7058168",
+          "status": 404,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "pdf",
+          "url": "https://www.jmir.org/2020/2/e16715/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "repository-landing",
+          "url": "https://www.jmir.org/2020/2/e16715/PDF",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        },
+        {
+          "kind": "publisher-page-check",
+          "url": "https://doi.org/10.2196/16715",
+          "status": 202,
+          "bytes": 0,
+          "ok": false
+        }
+      ],
+      "csv": {
+        "study_id": "guo_2020",
+        "authors": "Guo Yan; Hong Y Alicia; Cai Weiping; Li Linghua",
+        "year": "2020",
+        "title": "Effect of a WeChat-Based Intervention (Run4Love) on Depressive Symptoms Among People Living With HIV in China: A Randomized Controlled Trial",
+        "doi": "10.2196/16715",
+        "pmid": "32044751",
+        "pmcid": "PMC7058168",
+        "publisher_url": "https://doi.org/10.2196/16715",
+        "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7058168/fullTextXML",
+        "source_repository": "Europe PMC fullTextXML",
+        "fulltext_available": "ja",
+        "pdf_downloaded": "nein",
+        "machine_readable": "ja",
+        "manuscript_version": "publishedVersion",
+        "license": "cc by",
+        "license_verified": "ja",
+        "supplementary_material_available": "ja",
+        "quantitative_data_available": "primaervolltext_armstatistik",
+        "access_notes": "13 Outcome-Mittelwert-(SD)-Paare (4 Baseline-, 2 Demografie-Paare ausgeschlossen)",
+        "im_effektpool_review": "ja"
+      }
+    }
+  ],
+  "abdeckung": {
+    "identifikationsrate": {
+      "k": 12,
+      "n": 12,
+      "prozent": 100.0
+    },
+    "volltextzugriffsrate": {
+      "k": 9,
+      "n": 12,
+      "prozent": 75.0
+    },
+    "pdf_downloadrate": {
+      "k": 2,
+      "n": 12,
+      "prozent": 16.7
+    },
+    "maschinenlesbarkeitsrate": {
+      "k": 9,
+      "n": 12,
+      "prozent": 75.0
+    },
+    "lizenzgeklaerte_weiterverarbeitung": {
+      "k": 11,
+      "n": 12,
+      "prozent": 91.7
+    },
+    "quantitative_datenverfuegbarkeit": {
+      "k": 9,
+      "n": 12,
+      "prozent": 75.0
+    }
+  }
+}

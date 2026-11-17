@@ -1,0 +1,148 @@
+{
+  "study": {
+    "nummer_review": 3,
+    "study_id": "dahne_2019",
+    "name": "Dahne 2019",
+    "doi": "10.1016/j.beth.2018.12.003",
+    "pmid": "31208690",
+    "instrument": "PHQ-9",
+    "im_effektpool_review": true,
+    "sources": {
+      "europepmc": true,
+      "crossref": true,
+      "unpaywall": true,
+      "pmc": true
+    },
+    "attempts": [
+      {
+        "kind": "xml",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6582985/fullTextXML",
+        "status": 500,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "bioc",
+        "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC6582985/unicode",
+        "status": 200,
+        "bytes": 108054,
+        "ok": true
+      },
+      {
+        "kind": "publisher-page-check",
+        "url": "https://doi.org/10.1016/j.beth.2018.12.003",
+        "status": 200,
+        "bytes": 0,
+        "ok": true
+      }
+    ],
+    "epmc": {
+      "title": "Pilot Randomized Trial of a Self-Help Behavioral Activation Mobile App for Utilization in Primary Care.",
+      "journal": "Behavior therapy",
+      "year": "2019",
+      "pmcid": "PMC6582985",
+      "is_open_access": false,
+      "in_pmc": true,
+      "in_epmc": true,
+      "has_pdf": true,
+      "has_suppl": false,
+      "license": "",
+      "author_string": "Dahne J, Lejuez CW, Lejuez CW, Diaz VA, Player MS, Kustanowitz J, Felton JW, Carpenter MJ.",
+      "full_text_urls": [
+        "https://doi.org/10.1016/j.beth.2018.12.003",
+        "https://europepmc.org/articles/PMC6582985",
+        "https://europepmc.org/articles/PMC6582985?pdf=render",
+        "https://doi.org/10.1016/j.beth.2018.12.003"
+      ]
+    },
+    "crossref": {
+      "title": "Pilot Randomized Trial of a Self-Help Behavioral Activation Mobile App for Utilization in Primary Care",
+      "container": "Behavior Therapy",
+      "year": "2019",
+      "authors": [
+        "Dahne Jennifer",
+        "Lejuez C.W.",
+        "Diaz Vanessa A.",
+        "Player Marty S.",
+        "Kustanowitz Jacob",
+        "Felton Julia W.",
+        "Carpenter Matthew J."
+      ],
+      "publisher": "Elsevier BV",
+      "publisher_url": "https://doi.org/10.1016/j.beth.2018.12.003",
+      "license": [
+        "https://www.elsevier.com/tdm/userlicense/1.0/",
+        "https://www.elsevier.com/legal/tdmrep-license",
+        "https://doi.org/10.15223/policy-017",
+        "https://doi.org/10.15223/policy-037",
+        "https://doi.org/10.15223/policy-012",
+        "https://doi.org/10.15223/policy-029",
+        "https://doi.org/10.15223/policy-004"
+      ]
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "journal_is_oa": false,
+      "best_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6582985/",
+      "best_pdf": "",
+      "best_license": "",
+      "best_version": "acceptedVersion",
+      "best_host": "repository",
+      "n_locations": 1,
+      "locations": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6582985/",
+          "pdf": null,
+          "license": null,
+          "version": "acceptedVersion",
+          "host": "repository",
+          "repository": "National Institutes of Health"
+        }
+      ]
+    },
+    "verified": {
+      "doi_aufgeloest_crossref": true,
+      "titel_konsistent_epmc_crossref": 1.0,
+      "jahr_crossref": "2019",
+      "autoren_crossref": "Dahne Jennifer; Lejuez C.W.; Diaz Vanessa A.; Player Marty S.",
+      "autorenzahl_crossref": 7
+    }
+  },
+  "ergebnis": {
+    "fulltext_xml": true,
+    "pdf_saved": false,
+    "pdf_path": "",
+    "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/dahne_2019/fulltext_bioc.xml",
+    "download_erlaubt": "eingeschraenkt (Text-Mining, kein Reuse)",
+    "manuskriptversion": "author-manuscript (PMC, kein Reuse-Lizenznehmer)",
+    "lizenz": "author_manuscript (Text-Mining erlaubt, kein Reuse)",
+    "lizenz_verifiziert": true,
+    "zugaenglich": true,
+    "volltext_url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC6582985/unicode",
+    "quelle": "PMC BioC (Author Manuscript, Text-Mining)"
+  },
+  "zugriffe": [
+    {
+      "kind": "xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6582985/fullTextXML",
+      "status": 500,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "bioc",
+      "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC6582985/unicode",
+      "status": 200,
+      "bytes": 108054,
+      "ok": true
+    },
+    {
+      "kind": "publisher-page-check",
+      "url": "https://doi.org/10.1016/j.beth.2018.12.003",
+      "status": 200,
+      "bytes": 0,
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "study": {
+    "nummer_review": 9,
+    "study_id": "roepke_2015",
+    "name": "Roepke 2015",
+    "doi": "10.1089/g4h.2014.0046",
+    "pmid": "26182069",
+    "instrument": "CES-D",
+    "im_effektpool_review": false,
+    "sources": {
+      "europepmc": true,
+      "crossref": true,
+      "unpaywall": true,
+      "pmc": false
+    },
+    "attempts": [
+      {
+        "kind": "publisher-page-check",
+        "url": "https://doi.org/10.1089/g4h.2014.0046",
+        "status": 403,
+        "bytes": 0,
+        "ok": false
+      }
+    ],
+    "epmc": {
+      "title": "Randomized Controlled Trial of SuperBetter, a Smartphone-Based/Internet-Based Self-Help Tool to Reduce Depressive Symptoms.",
+      "journal": "Games for health journal",
+      "year": "2015",
+      "pmcid": "",
+      "is_open_access": false,
+      "in_pmc": false,
+      "in_epmc": false,
+      "has_pdf": false,
+      "has_suppl": false,
+      "license": "",
+      "author_string": "Roepke AM, Jaffee SR, Riffle OM, McGonigal J, Broome R, Maxwell B.",
+      "full_text_urls": [
+        "https://doi.org/10.1089/g4h.2014.0046"
+      ]
+    },
+    "crossref": {
+      "title": "Randomized Controlled Trial of SuperBetter, a Smartphone-Based/Internet-Based Self-Help Tool to Reduce Depressive Symptoms",
+      "container": "Games for Health Journal",
+      "year": "2015",
+      "authors": [
+        "Roepke Ann Marie",
+        "Jaffee Sara R.",
+        "Riffle Olivia M.",
+        "McGonigal Jane",
+        "Broome Rose",
+        "Maxwell Bez"
+      ],
+      "publisher": "SAGE Publications",
+      "publisher_url": "https://doi.org/10.1089/g4h.2014.0046",
+      "license": [
+        "http://www.liebertpub.com/nv/resources-tools/text-and-data-mining-policy/121/"
+      ]
+    },
+    "unpaywall": {
+      "is_oa": false,
+      "oa_status": "closed",
+      "journal_is_oa": false,
+      "best_url": "",
+      "best_pdf": "",
+      "best_license": "",
+      "best_version": "",
+      "best_host": "",
+      "n_locations": 0,
+      "locations": []
+    },
+    "verified": {
+      "doi_aufgeloest_crossref": true,
+      "titel_konsistent_epmc_crossref": 1.0,
+      "jahr_crossref": "2015",
+      "autoren_crossref": "Roepke Ann Marie; Jaffee Sara R.; Riffle Olivia M.; McGonigal Jane",
+      "autorenzahl_crossref": 6
+    }
+  },
+  "ergebnis": {
+    "fulltext_xml": false,
+    "pdf_saved": false,
+    "pdf_path": "",
+    "xml_path": "",
+    "download_erlaubt": "nein (keine OA-Quelle)",
+    "manuskriptversion": "publisher",
+    "lizenz": "unbekannt",
+    "lizenz_verifiziert": false,
+    "zugaenglich": false,
+    "volltext_url": "",
+    "quelle": ""
+  },
+  "zugriffe": [
+    {
+      "kind": "publisher-page-check",
+      "url": "https://doi.org/10.1089/g4h.2014.0046",
+      "status": 403,
+      "bytes": 0,
+      "ok": false
+    }
+  ]
+}

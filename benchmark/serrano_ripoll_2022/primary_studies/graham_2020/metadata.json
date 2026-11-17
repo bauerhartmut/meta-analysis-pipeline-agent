@@ -1,0 +1,163 @@
+{
+  "study": {
+    "nummer_review": 11,
+    "study_id": "graham_2020",
+    "name": "Graham 2020",
+    "doi": "10.1001/jamapsychiatry.2020.1011",
+    "pmid": "32432695",
+    "instrument": "PHQ-8",
+    "im_effektpool_review": true,
+    "sources": {
+      "europepmc": true,
+      "crossref": true,
+      "unpaywall": true,
+      "pmc": true
+    },
+    "attempts": [
+      {
+        "kind": "xml",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7240649/fullTextXML",
+        "status": 500,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "bioc",
+        "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC7240649/unicode",
+        "status": 200,
+        "bytes": 6140,
+        "ok": false
+      },
+      {
+        "kind": "pdf",
+        "url": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+        "status": 0,
+        "bytes": 0,
+        "ok": false,
+        "hinweis": "nicht gespeichert (Lizenz 'unbekannt')"
+      },
+      {
+        "kind": "publisher-page-check",
+        "url": "https://doi.org/10.1001/jamapsychiatry.2020.1011",
+        "status": 403,
+        "bytes": 0,
+        "ok": false
+      }
+    ],
+    "epmc": {
+      "title": "Coached Mobile App Platform for the Treatment of Depression and Anxiety Among Primary Care Patients: A Randomized Clinical Trial.",
+      "journal": "JAMA psychiatry",
+      "year": "2020",
+      "pmcid": "PMC7240649",
+      "is_open_access": false,
+      "in_pmc": true,
+      "in_epmc": true,
+      "has_pdf": false,
+      "has_suppl": true,
+      "license": "",
+      "author_string": "Graham AK, Greene CJ, Kwasny MJ, Kaiser SM, Lieponis P, Powell T, Mohr DC.",
+      "full_text_urls": [
+        "https://doi.org/10.1001/jamapsychiatry.2020.1011",
+        "https://europepmc.org/articles/PMC7240649",
+        "https://doi.org/10.1001/jamapsychiatry.2020.1011"
+      ]
+    },
+    "crossref": {
+      "title": "Coached Mobile App Platform for the Treatment of Depression and Anxiety Among Primary Care Patients",
+      "container": "JAMA Psychiatry",
+      "year": "2020",
+      "authors": [
+        "Graham Andrea K.",
+        "Greene Carolyn J.",
+        "Kwasny Mary J.",
+        "Kaiser Susan M.",
+        "Lieponis Paul",
+        "Powell Thomas",
+        "Mohr David C."
+      ],
+      "publisher": "American Medical Association (AMA)",
+      "publisher_url": "https://doi.org/10.1001/jamapsychiatry.2020.1011",
+      "license": []
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "bronze",
+      "journal_is_oa": false,
+      "best_url": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+      "best_pdf": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+      "best_license": "",
+      "best_version": "publishedVersion",
+      "best_host": "publisher",
+      "n_locations": 2,
+      "locations": [
+        {
+          "url": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+          "pdf": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+          "license": null,
+          "version": "publishedVersion",
+          "host": "publisher",
+          "repository": ""
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7240649/",
+          "pdf": null,
+          "license": null,
+          "version": "publishedVersion",
+          "host": "repository",
+          "repository": "National Institutes of Health"
+        }
+      ]
+    },
+    "verified": {
+      "doi_aufgeloest_crossref": true,
+      "titel_konsistent_epmc_crossref": 1.0,
+      "jahr_crossref": "2020",
+      "autoren_crossref": "Graham Andrea K.; Greene Carolyn J.; Kwasny Mary J.; Kaiser Susan M.",
+      "autorenzahl_crossref": 7
+    }
+  },
+  "ergebnis": {
+    "fulltext_xml": false,
+    "pdf_saved": false,
+    "pdf_path": "",
+    "xml_path": "",
+    "download_erlaubt": "eingeschraenkt (Autor:innenmanuskript, nicht-kommerziell)",
+    "manuskriptversion": "author-manuscript (PMC, kein Reuse-Lizenznehmer)",
+    "lizenz": "unbekannt",
+    "lizenz_verifiziert": false,
+    "zugaenglich": false,
+    "volltext_url": "",
+    "quelle": ""
+  },
+  "zugriffe": [
+    {
+      "kind": "xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7240649/fullTextXML",
+      "status": 500,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "bioc",
+      "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC7240649/unicode",
+      "status": 200,
+      "bytes": 6140,
+      "ok": false
+    },
+    {
+      "kind": "pdf",
+      "url": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2766444/jamapsychiatry_graham_2020_oi_200024_1598635264.8797.pdf",
+      "status": 0,
+      "bytes": 0,
+      "ok": false,
+      "hinweis": "nicht gespeichert (Lizenz 'unbekannt')"
+    },
+    {
+      "kind": "publisher-page-check",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2020.1011",
+      "status": 403,
+      "bytes": 0,
+      "ok": false
+    }
+  ]
+}

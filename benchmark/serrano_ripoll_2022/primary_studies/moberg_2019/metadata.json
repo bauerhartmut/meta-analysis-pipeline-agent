@@ -1,0 +1,180 @@
+{
+  "study": {
+    "nummer_review": 7,
+    "study_id": "moberg_2019",
+    "name": "Moberg 2019",
+    "doi": "10.2196/12556",
+    "pmid": "31199319",
+    "instrument": "PHQ-8",
+    "im_effektpool_review": true,
+    "sources": {
+      "europepmc": true,
+      "crossref": true,
+      "unpaywall": true,
+      "pmc": true
+    },
+    "attempts": [
+      {
+        "kind": "xml",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6592477/fullTextXML",
+        "status": 200,
+        "bytes": 162163,
+        "ok": true
+      },
+      {
+        "kind": "pmc-oa-service",
+        "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC6592477",
+        "status": 404,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "pdf",
+        "url": "https://www.jmir.org/2019/6/e12556/PDF",
+        "status": 202,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "repository-landing",
+        "url": "https://www.jmir.org/2019/6/e12556/PDF",
+        "status": 202,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "publisher-page-check",
+        "url": "https://doi.org/10.2196/12556",
+        "status": 202,
+        "bytes": 0,
+        "ok": false
+      }
+    ],
+    "epmc": {
+      "title": "Guided Self-Help Works: Randomized Waitlist Controlled Trial of Pacifica, a Mobile App Integrating Cognitive Behavioral Therapy and Mindfulness for Stress, Anxiety, and Depression.",
+      "journal": "Journal of medical Internet research",
+      "year": "2019",
+      "pmcid": "PMC6592477",
+      "is_open_access": true,
+      "in_pmc": true,
+      "in_epmc": true,
+      "has_pdf": true,
+      "has_suppl": true,
+      "license": "cc by",
+      "author_string": "Moberg C, Niles A, Beermann D.",
+      "full_text_urls": [
+        "https://www.jmir.org/2019/6/e12556/PDF",
+        "https://doi.org/10.2196/12556",
+        "https://europepmc.org/articles/PMC6592477",
+        "https://europepmc.org/articles/PMC6592477?pdf=render"
+      ]
+    },
+    "crossref": {
+      "title": "Guided Self-Help Works: Randomized Waitlist Controlled Trial of Pacifica, a Mobile App Integrating Cognitive Behavioral Therapy and Mindfulness for Stress, Anxiety, and Depression",
+      "container": "Journal of Medical Internet Research",
+      "year": "2019",
+      "authors": [
+        "Moberg Christine",
+        "Niles Andrea",
+        "Beermann Dale"
+      ],
+      "publisher": "JMIR Publications Inc.",
+      "publisher_url": "https://doi.org/10.2196/12556",
+      "license": []
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "journal_is_oa": true,
+      "best_url": "https://www.jmir.org/2019/6/e12556/PDF",
+      "best_pdf": "https://www.jmir.org/2019/6/e12556/PDF",
+      "best_license": "cc-by",
+      "best_version": "publishedVersion",
+      "best_host": "publisher",
+      "n_locations": 3,
+      "locations": [
+        {
+          "url": "https://www.jmir.org/2019/6/e12556/PDF",
+          "pdf": "https://www.jmir.org/2019/6/e12556/PDF",
+          "license": "cc-by",
+          "version": "publishedVersion",
+          "host": "publisher",
+          "repository": ""
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/6592477",
+          "pdf": null,
+          "license": "cc-by",
+          "version": "publishedVersion",
+          "host": "repository",
+          "repository": "European Bioinformatics Institute"
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6592477/",
+          "pdf": null,
+          "license": "cc-by",
+          "version": "publishedVersion",
+          "host": "repository",
+          "repository": "National Institutes of Health"
+        }
+      ]
+    },
+    "verified": {
+      "doi_aufgeloest_crossref": true,
+      "titel_konsistent_epmc_crossref": 1.0,
+      "jahr_crossref": "2019",
+      "autoren_crossref": "Moberg Christine; Niles Andrea; Beermann Dale",
+      "autorenzahl_crossref": 3
+    }
+  },
+  "ergebnis": {
+    "fulltext_xml": true,
+    "pdf_saved": false,
+    "pdf_path": "",
+    "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/moberg_2019/fulltext.xml",
+    "download_erlaubt": "ja (CC)",
+    "manuskriptversion": "publishedVersion",
+    "lizenz": "cc by",
+    "lizenz_verifiziert": true,
+    "zugaenglich": true,
+    "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6592477/fullTextXML",
+    "quelle": "Europe PMC fullTextXML"
+  },
+  "zugriffe": [
+    {
+      "kind": "xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6592477/fullTextXML",
+      "status": 200,
+      "bytes": 162163,
+      "ok": true
+    },
+    {
+      "kind": "pmc-oa-service",
+      "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC6592477",
+      "status": 404,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "pdf",
+      "url": "https://www.jmir.org/2019/6/e12556/PDF",
+      "status": 202,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "repository-landing",
+      "url": "https://www.jmir.org/2019/6/e12556/PDF",
+      "status": 202,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "publisher-page-check",
+      "url": "https://doi.org/10.2196/12556",
+      "status": 202,
+      "bytes": 0,
+      "ok": false
+    }
+  ]
+}

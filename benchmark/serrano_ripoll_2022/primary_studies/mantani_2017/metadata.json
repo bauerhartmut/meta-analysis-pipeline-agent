@@ -1,0 +1,179 @@
+{
+  "study": {
+    "nummer_review": 6,
+    "study_id": "mantani_2017",
+    "name": "Mantani 2017",
+    "doi": "10.2196/jmir.8602",
+    "pmid": "29101095",
+    "instrument": "BDI-II",
+    "im_effektpool_review": true,
+    "sources": {
+      "europepmc": true,
+      "crossref": true,
+      "unpaywall": true,
+      "pmc": true
+    },
+    "attempts": [
+      {
+        "kind": "xml",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5695656/fullTextXML",
+        "status": 200,
+        "bytes": 159560,
+        "ok": true
+      },
+      {
+        "kind": "pmc-oa-service",
+        "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC5695656",
+        "status": 404,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "pdf",
+        "url": "https://www.jmir.org/2017/11/e373/PDF",
+        "status": 202,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "repository-landing",
+        "url": "https://www.jmir.org/2017/11/e373/PDF",
+        "status": 202,
+        "bytes": 0,
+        "ok": false
+      },
+      {
+        "kind": "publisher-page-check",
+        "url": "https://doi.org/10.2196/jmir.8602",
+        "status": 202,
+        "bytes": 0,
+        "ok": false
+      }
+    ],
+    "epmc": {
+      "title": "Smartphone Cognitive Behavioral Therapy as an Adjunct to Pharmacotherapy for Refractory Depression: Randomized Controlled Trial.",
+      "journal": "Journal of medical Internet research",
+      "year": "2017",
+      "pmcid": "PMC5695656",
+      "is_open_access": true,
+      "in_pmc": true,
+      "in_epmc": true,
+      "has_pdf": true,
+      "has_suppl": true,
+      "license": "cc by",
+      "author_string": "Mantani A, Kato T, Furukawa TA, Horikoshi M, Imai H, Hiroe T, Chino B, Funayama T, Yonemoto N, Zhou Q, Kawanishi N.",
+      "full_text_urls": [
+        "https://doi.org/10.2196/jmir.8602",
+        "https://europepmc.org/articles/PMC5695656",
+        "https://europepmc.org/articles/PMC5695656?pdf=render"
+      ]
+    },
+    "crossref": {
+      "title": "Smartphone Cognitive Behavioral Therapy as an Adjunct to Pharmacotherapy for Refractory Depression: Randomized Controlled Trial",
+      "container": "Journal of Medical Internet Research",
+      "year": "2017",
+      "authors": [
+        "Mantani Akio",
+        "Kato Tadashi",
+        "Furukawa Toshi A",
+        "Horikoshi Masaru",
+        "Imai Hissei",
+        "Hiroe Takahiro",
+        "Chino Bun",
+        "Funayama Tadashi",
+        "Yonemoto Naohiro",
+        "Zhou Qi",
+        "Kawanishi Nao"
+      ],
+      "publisher": "JMIR Publications Inc.",
+      "publisher_url": "https://doi.org/10.2196/jmir.8602",
+      "license": []
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "journal_is_oa": true,
+      "best_url": "https://www.jmir.org/2017/11/e373/PDF",
+      "best_pdf": "https://www.jmir.org/2017/11/e373/PDF",
+      "best_license": "cc-by",
+      "best_version": "publishedVersion",
+      "best_host": "publisher",
+      "n_locations": 2,
+      "locations": [
+        {
+          "url": "https://www.jmir.org/2017/11/e373/PDF",
+          "pdf": "https://www.jmir.org/2017/11/e373/PDF",
+          "license": "cc-by",
+          "version": "publishedVersion",
+          "host": "publisher",
+          "repository": ""
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5695656/",
+          "pdf": null,
+          "license": "cc-by",
+          "version": "publishedVersion",
+          "host": "repository",
+          "repository": "National Institutes of Health"
+        }
+      ]
+    },
+    "verified": {
+      "doi_aufgeloest_crossref": true,
+      "titel_konsistent_epmc_crossref": 1.0,
+      "jahr_crossref": "2017",
+      "autoren_crossref": "Mantani Akio; Kato Tadashi; Furukawa Toshi A; Horikoshi Masaru",
+      "autorenzahl_crossref": 11
+    }
+  },
+  "ergebnis": {
+    "fulltext_xml": true,
+    "pdf_saved": false,
+    "pdf_path": "",
+    "xml_path": "benchmark/serrano_ripoll_2022/primary_studies/mantani_2017/fulltext.xml",
+    "download_erlaubt": "ja (CC)",
+    "manuskriptversion": "publishedVersion",
+    "lizenz": "cc by",
+    "lizenz_verifiziert": true,
+    "zugaenglich": true,
+    "volltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5695656/fullTextXML",
+    "quelle": "Europe PMC fullTextXML"
+  },
+  "zugriffe": [
+    {
+      "kind": "xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5695656/fullTextXML",
+      "status": 200,
+      "bytes": 159560,
+      "ok": true
+    },
+    {
+      "kind": "pmc-oa-service",
+      "url": "https://pmc.ncbi.nlm.nih.gov/utils/oa/oa.fcgi?id=PMC5695656",
+      "status": 404,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "pdf",
+      "url": "https://www.jmir.org/2017/11/e373/PDF",
+      "status": 202,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "repository-landing",
+      "url": "https://www.jmir.org/2017/11/e373/PDF",
+      "status": 202,
+      "bytes": 0,
+      "ok": false
+    },
+    {
+      "kind": "publisher-page-check",
+      "url": "https://doi.org/10.2196/jmir.8602",
+      "status": 202,
+      "bytes": 0,
+      "ok": false
+    }
+  ]
+}
