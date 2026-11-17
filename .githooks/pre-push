@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Blockiert den Push, wenn Baum oder Historie einen Sperrbegriff, ein
+# Secret-Muster oder einen absoluten Nutzerpfad enthaelt. Keine Allowlist,
+# keine Ausnahmen. Der Hook ist lokal ueberspringbar (--no-verify), deshalb
+# laeuft derselbe Scan serverseitig als Required Check in der CI.
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+exec python scripts/pruefe_sperrbegriffe.py

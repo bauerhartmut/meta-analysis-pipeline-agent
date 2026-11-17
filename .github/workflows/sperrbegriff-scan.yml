@@ -1,0 +1,32 @@
+name: Sperrbegriff-Scan
+
+# Der Hook auf dem eigenen Rechner ist mit --no-verify ueberspringbar.
+# Dieser Job laeuft auf GitHub ueber Baum UND Historie, ohne Allowlist, ohne
+# Ausnahmen, und ist als Required Check eingetragen.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sperrbegriff-scan:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # die Historie wird mitgeprueft
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sperrbegriffe und Secret-Muster pruefen
+        shell: bash
+        run: python scripts/pruefe_sperrbegriffe.py
