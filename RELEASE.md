@@ -44,12 +44,12 @@ greift ausschließlich auf `public/` zu.
 python scripts/baue_release.py --pruefen      # Scan auf public/
 
 # 2. Altes Release-Verzeichnis entfernen, dann bauen
-rm -rf _release/meta-analysis-pipeline-agent
+rm -rf _release
 python scripts/baue_release.py --bauen \
-  --remote-url git@github.com:bauerhartmut/meta-analysis-pipeline-agent.git
+  --remote-url https://github.com/bauerhartmut/meta-analysis-pipeline-agent.git
 
 # 3. Push (Hook prüft Baum und Historie ein zweites Mal)
-cd _release/meta-analysis-pipeline-agent
+cd _release
 git push -u origin master
 ```
 
