@@ -1,0 +1,1187 @@
+{
+ "stand": "2026-11-17T18:57:34+00:00",
+ "quelle": "Europe PMC REST (resultType=core), Rueckfall Crossref works",
+ "n_dokumente": 30,
+ "dokumente": [
+  {
+   "document_id": "7111ea978757a185d44ea9de90b453c3",
+   "titel": "Mediterranean diet in preeclampsia prevention: mechanisms of action an",
+   "kennung": {
+    "doi": "10.3389/fnut.2025.1626022",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "41112735",
+    "pmcid": "PMC12527848",
+    "doi": "10.3389/fnut.2025.1626022",
+    "journal": "",
+    "year": "2025",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.3389/fnut.2025.1626022"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC12527848"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC12527848?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "3134fdc8c38f475075a70ca32dc4a3d9",
+   "titel": "The risk associated with ultra-processed food intake on depressive sym",
+   "kennung": {
+    "doi": "10.1186/s12916-025-04002-4",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "40128798",
+    "pmcid": "PMC11934811",
+    "doi": "10.1186/s12916-025-04002-4",
+    "journal": "",
+    "year": "2025",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "Unpaywall",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://doi.org/10.1186/s12916-025-04002-4"
+     },
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1186/s12916-025-04002-4"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC11934811"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC11934811?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "d0bec407a2a0dd19c0b67aa43f9e1dfb",
+   "titel": "A quantitative bias analysis to estimate measurement error-related att",
+   "kennung": {
+    "doi": "10.1093/ije/dyz209",
+    "doi_basis": "",
+    "pmid": "31687751",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "31687751",
+    "pmcid": "",
+    "doi": "10.1093/ije/dyz209",
+    "journal": "",
+    "year": "2020",
+    "is_open_access": "N",
+    "in_epmc": "N",
+    "in_pmc": "N",
+    "license": "",
+    "links": [
+     {
+      "site": "Unpaywall",
+      "availability": "Free",
+      "license": null,
+      "url": "https://academic.oup.com/ije/article-pdf/49/1/153/32995492/dyz209.pdf"
+     },
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1093/ije/dyz209"
+     }
+    ]
+   },
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "A quantitative bias analysis to estimate measurement error-related attenuation of the association between self-reported physical activity and colorectal cancer ",
+    "verlag": "Oxford University Press (OUP)",
+    "lizenzen": [
+     "https://academic.oup.com/journals/pages/open_access/funder_policies/chorus/standard_publication_model"
+    ],
+    "link": "http://academic.oup.com/ije/article-pdf/49/1/153/32995492/dyz209.pdf"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "bb9218735fec8fc7f3b6aebbff430aba",
+   "titel": "A Multicenter, Placebo-controlled Trial of Melatonin for Sleep Disturb",
+   "kennung": {
+    "doi": "10.1111/j.1532-5415.1988.tb04260.x",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "3411060",
+    "pmcid": "",
+    "doi": "10.1111/j.1532-5415.1988.tb04260.x",
+    "journal": "",
+    "year": "1988",
+    "is_open_access": "N",
+    "in_epmc": "N",
+    "in_pmc": "N",
+    "license": "",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1111/j.1532-5415.1988.tb04260.x"
+     }
+    ]
+   },
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "Troublesome and Disruptive Behaviors in Dementia",
+    "verlag": "Wiley",
+    "lizenzen": [
+     "http://onlinelibrary.wiley.com/termsAndConditions#vor"
+    ],
+    "link": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1111%2Fj.1532-5415.1988.tb04260.x"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "fb484d488b45d21bbdf407cba4b074d5",
+   "titel": "The effect of exercise on depressive symptoms in multiple sclerosis ba",
+   "kennung": {
+    "doi": "10.1111/ene.12576",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "25327395",
+    "pmcid": "",
+    "doi": "10.1111/ene.12576",
+    "journal": "",
+    "year": "2015",
+    "is_open_access": "N",
+    "in_epmc": "N",
+    "in_pmc": "N",
+    "license": "",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1111/ene.12576"
+     }
+    ]
+   },
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "The effect of exercise on depressive symptoms in multiple sclerosis based on a meta‐analysis and critical review of the literature",
+    "verlag": "Wiley",
+    "lizenzen": [
+     "http://onlinelibrary.wiley.com/termsAndConditions#vor"
+    ],
+    "link": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1111%2Fene.12576"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "3bbb142c717a970694bed1d393736b06",
+   "titel": "Effects of Acute Caffeine Ingestion on Reaction Time in Habitual and L",
+   "kennung": {
+    "doi": "10.1007/s00213-021-05953-1",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "34420061",
+    "pmcid": "PMC8629887",
+    "doi": "10.1007/s00213-021-05953-1",
+    "journal": "",
+    "year": "2021",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "Unpaywall",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://link.springer.com/content/pdf/10.1007/s00213-021-05953-1.pdf"
+     },
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1007/s00213-021-05953-1"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC8629887"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC8629887?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "87079ba88ae1f64f00c5fe32725248a6",
+   "titel": "Withdrawal Symptoms and Executive Functions After 24-Hour Caffeine Abs",
+   "kennung": {
+    "doi": "10.31584/jhsmr.20261333",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": null,
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "Withdrawal Symptoms and Executive Functions After 24-Hour Caffeine Abstinence in Office Workers with Habitual Coffee Consumption",
+    "verlag": "Faculty of Medicine Prince of Songkla University",
+    "lizenzen": [
+     "http://creativecommons.org/licenses/by-nc-nd/4.0"
+    ],
+    "link": "https://www.jhsmr.org/index.php/jhsmr/article/viewFile/1333/1539"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "2c7ab4d1244754e3966780f4bccbfa8c",
+   "titel": "Prevalence of depressive symptoms and its associated factors in older",
+   "kennung": {
+    "doi": "10.4103/0019-5545.166617",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "26600585",
+    "pmcid": "PMC4623650",
+    "doi": "10.4103/0019-5545.166617",
+    "journal": "",
+    "year": "2015",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by-nc-sa",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.4103/0019-5545.166617"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC4623650"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC4623650?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "09843d40d3cc2c9ca039d6d1b45ac656",
+   "titel": "Bidirectional relationships between physical exercise and depressive s",
+   "kennung": {
+    "doi": "10.1038/s41598-025-00947-x",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "40325069",
+    "pmcid": "PMC12053583",
+    "doi": "10.1038/s41598-025-00947-x",
+    "journal": "",
+    "year": "2025",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by-nc-nd",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1038/s41598-025-00947-x"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC12053583"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC12053583?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "334f5f679802315eeec71399149b51c3",
+   "titel": "Optimal dose and type of exercise to improve depressive symptoms in ol",
+   "kennung": {
+    "doi": "10.1002/hec.3604",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "28990318",
+    "pmcid": "",
+    "doi": "10.1002/hec.3604",
+    "journal": "",
+    "year": "2018",
+    "is_open_access": "N",
+    "in_epmc": "N",
+    "in_pmc": "N",
+    "license": "",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1002/hec.3604"
+     }
+    ]
+   },
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "Depression hurts, depression costs: The medical spending attributable to depression and depressive symptoms in China",
+    "verlag": "Wiley",
+    "lizenzen": [
+     "http://onlinelibrary.wiley.com/termsAndConditions#vor"
+    ],
+    "link": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fhec.3604"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "203c831dbeb178297006a888608f4f10",
+   "titel": "Post-Diagnosis Adherence to the Mediterranean Diet and Cancer Recurren",
+   "kennung": {
+    "doi": "10.3390/nu18050807/s1",
+    "doi_basis": "10.3390/nu18050807",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "41829977",
+    "pmcid": "PMC12987049",
+    "doi": "10.3390/nu18050807",
+    "journal": "",
+    "year": "2026",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.3390/nu18050807"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC12987049"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC12987049?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "2675c25aabf33995fb6c2d3e72221923",
+   "titel": "Exploring the validity and internal consistency of the 12-point Medite",
+   "kennung": {
+    "doi": "10.1371/journal.pone.0351396",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "42335096",
+    "pmcid": "PMC13289937",
+    "doi": "10.1371/journal.pone.0351396",
+    "journal": "",
+    "year": "2026",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1371/journal.pone.0351396"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC13289937"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC13289937?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "71c86b675bdc30a57ac17ac779abdce5",
+   "titel": "Adherence to the Mediterranean diet to prevent or delay hepatic steato",
+   "kennung": {
+    "doi": "10.1016/S0025-6196(24)00530-5",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "7382552",
+    "pmcid": "",
+    "doi": "10.1016/s0025-6196(24)00530-5",
+    "journal": "",
+    "year": "1980",
+    "is_open_access": "N",
+    "in_epmc": "N",
+    "in_pmc": "N",
+    "license": "",
+    "links": [
+     {
+      "site": "OpenAlex",
+      "availability": "Free",
+      "license": null,
+      "url": "https://doi.org/10.1016/s0025-6196(24)00530-5"
+     }
+    ]
+   },
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "Nonalcoholic Steatohepatitis",
+    "verlag": "Elsevier BV",
+    "lizenzen": [
+     "https://www.elsevier.com/tdm/userlicense/1.0/",
+     "https://www.elsevier.com/legal/tdmrep-license",
+     "http://www.elsevier.com/open-access/userlicense/1.0/"
+    ],
+    "link": "https://api.elsevier.com/content/article/PII:S0025619624005305?httpAccept=text/xml"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "cf9d739f5090aeda8006074fce2f0b44",
+   "titel": "Impaired sleep, depressive symptoms, and pain as determinants of physi",
+   "kennung": {
+    "doi": "10.1161/JAHA.115.002014",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "26116691",
+    "pmcid": "PMC4608087",
+    "doi": "10.1161/jaha.115.002014",
+    "journal": "",
+    "year": "2015",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by-nc",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1161/JAHA.115.002014"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC4608087"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC4608087?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "b3c35c1d63f972086d2e322e693c1a03",
+   "titel": "Consumption of caffeine-containing beverages improves sustained attent",
+   "kennung": {
+    "doi": "10.1017/jns.2026.10122",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "42559121",
+    "pmcid": "PMC13439017",
+    "doi": "10.1017/jns.2026.10122",
+    "journal": "",
+    "year": "2026",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1017/jns.2026.10122"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC13439017"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC13439017?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "b5e492009e4ca350f512d5144fe8bf92",
+   "titel": "Impact of exercise type, duration, and intensity on depressive symptom",
+   "kennung": {
+    "doi": "10.3389/fpsyg.2024.1484172",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "39346508",
+    "pmcid": "PMC11427357",
+    "doi": "10.3389/fpsyg.2024.1484172",
+    "journal": "",
+    "year": "2024",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.3389/fpsyg.2024.1484172"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC11427357"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC11427357?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "ca2c52d13aaec47ebbeccdedb3ee1d8e",
+   "titel": "The effects of an 8-week Taekwondo exercise intervention on inhibitory",
+   "kennung": {
+    "doi": "10.1186/s12888-025-06598-6",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "40001105",
+    "pmcid": "PMC11863427",
+    "doi": "10.1186/s12888-025-06598-6",
+    "journal": "",
+    "year": "2025",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by-nc-nd",
+    "links": [
+     {
+      "site": "Unpaywall",
+      "availability": "Free",
+      "license": null,
+      "url": "https://doi.org/10.1186/s12888-025-06598-6"
+     },
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1186/s12888-025-06598-6"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC11863427"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC11863427?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "3790c91f96877eb6e260b4d7e0c7e7ee",
+   "titel": "Bidirectional association between cognitive function and depressive sy",
+   "kennung": {
+    "doi": "10.1371/journal.pone.0353689",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "42479734",
+    "pmcid": "PMC13387560",
+    "doi": "10.1371/journal.pone.0353689",
+    "journal": "",
+    "year": "2026",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1371/journal.pone.0353689"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC13387560"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC13387560?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "7df874ca5386e7db9350901562d9408e",
+   "titel": "Age and cohort differences in the association between polygenic scores",
+   "kennung": {
+    "doi": "10.21203/rs.3.rs-8958839/v1",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "",
+    "pmcid": "",
+    "doi": "10.21203/rs.3.rs-8958839/v1",
+    "journal": "Research Square",
+    "year": "2026",
+    "is_open_access": "N",
+    "in_epmc": "N",
+    "in_pmc": "N",
+    "license": "",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Free",
+      "license": null,
+      "url": "https://doi.org/10.21203/rs.3.rs-8958839/v1"
+     }
+    ]
+   },
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "Age and cohort differences in the association between polygenic scores and psychological distress: evidence from the 1958 and 1970 British Birth Cohorts",
+    "verlag": "Springer Science and Business Media LLC",
+    "lizenzen": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "link": "https://www.researchsquare.com/article/rs-8958839/v1"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "17c7628ed0e8f01d4ec063e2b730dc36",
+   "titel": "Bidirectional association between ADL disability and depressive sympto",
+   "kennung": {
+    "doi": "10.1016/j.jad.2025.01.024",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "39793625",
+    "pmcid": "",
+    "doi": "10.1016/j.jad.2025.01.024",
+    "journal": "",
+    "year": "2025",
+    "is_open_access": "N",
+    "in_epmc": "N",
+    "in_pmc": "N",
+    "license": "",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1016/j.jad.2025.01.024"
+     }
+    ]
+   },
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "Interactive effect of sleep duration, lifestyle factors and comorbidity on depressive symptoms: Insights from the China health and retirement longitudinal study",
+    "verlag": "Elsevier BV",
+    "lizenzen": [
+     "https://www.elsevier.com/tdm/userlicense/1.0/",
+     "https://www.elsevier.com/legal/tdmrep-license",
+     "https://doi.org/10.15223/policy-017",
+     "https://doi.org/10.15223/policy-037",
+     "https://doi.org/10.15223/policy-012",
+     "https://doi.org/10.15223/policy-029",
+     "https://doi.org/10.15223/policy-004"
+    ],
+    "link": "https://api.elsevier.com/content/article/PII:S0165032725000308?httpAccept=text/xml"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "7ca468285bd24135c1a9bf48f6f5f202",
+   "titel": "Accelerometer-Assessed Physical Activity and Cognitive Performance amo",
+   "kennung": {
+    "doi": "10.6103/SHARE.w8.800",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": null,
+   "crossref": null,
+   "urteil": "kein offener Nachweis"
+  },
+  {
+   "document_id": "1faf4b78f05cd156029ee647c2e14c51",
+   "titel": "The Effect of Physical Exercise on Depression in College Students: The",
+   "kennung": {
+    "doi": "10.3389/fpsyg.2022.841160",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "35651580",
+    "pmcid": "PMC9150849",
+    "doi": "10.3389/fpsyg.2022.841160",
+    "journal": "",
+    "year": "2022",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "Unpaywall",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://www.frontiersin.org/articles/10.3389/fpsyg.2022.841160/pdf"
+     },
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.3389/fpsyg.2022.841160"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC9150849"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC9150849?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "37cafe8444a2d0edd125109341865251",
+   "titel": "A Cross-Sectional Study of Food Insecurity, Mediterranean Diet Adheren",
+   "kennung": {
+    "doi": "10.3390/nu18162695/s1",
+    "doi_basis": "10.3390/nu18162695",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "42654275",
+    "pmcid": "PMC13516299",
+    "doi": "10.3390/nu18162695",
+    "journal": "",
+    "year": "2026",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.3390/nu18162695"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC13516299"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC13516299?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "5cbf039f22f1bfe9f5902cf3f626852f",
+   "titel": "Aerobic exercise for depression symptoms in adolescents: a systematic",
+   "kennung": {
+    "doi": "10.1016/j.jad.2025.120604",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "41187817",
+    "pmcid": "",
+    "doi": "10.1016/j.jad.2025.120604",
+    "journal": "",
+    "year": "2026",
+    "is_open_access": "N",
+    "in_epmc": "N",
+    "in_pmc": "N",
+    "license": "",
+    "links": [
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1016/j.jad.2025.120604"
+     }
+    ]
+   },
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "The effects of exercise type and dose on depression in children and adolescents: A systematic review, network, and dose-response meta-analysis",
+    "verlag": "Elsevier BV",
+    "lizenzen": [
+     "https://www.elsevier.com/tdm/userlicense/1.0/",
+     "https://www.elsevier.com/legal/tdmrep-license",
+     "https://doi.org/10.15223/policy-017",
+     "https://doi.org/10.15223/policy-037",
+     "https://doi.org/10.15223/policy-012",
+     "https://doi.org/10.15223/policy-029",
+     "https://doi.org/10.15223/policy-004"
+    ],
+    "link": "https://api.elsevier.com/content/article/PII:S0165032725020464?httpAccept=text/xml"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "cfc6567ca3cb6eec8c47a64a1674a849",
+   "titel": "The Effect of Exercise on Depressive Symptoms in Adolescents: A System",
+   "kennung": {
+    "doi": "10.51219/JMMS/he-zheng/60",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": null,
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "The Effect of Exercise Interventions on Depressive Symptoms in College Students: A Meta-Analysis and Systematic Review",
+    "verlag": "United Research Forum",
+    "lizenzen": [],
+    "link": ""
+   },
+   "urteil": "kein offener Nachweis"
+  },
+  {
+   "document_id": "9cac5e48f3873753223db0c3b5f2b501",
+   "titel": "Protocol for Objective Measurement of Infants’ Physical Activity using",
+   "kennung": {
+    "doi": "",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc-titelsuche",
+    "pmid": "29206783",
+    "pmcid": "PMC5849301",
+    "doi": "10.1249/mss.0000000000001512",
+    "journal": "",
+    "year": "2018",
+    "is_open_access": "Y",
+    "in_pmc": "Y",
+    "in_epmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "Unpaywall",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://doi.org/10.1249/mss.0000000000001512"
+     },
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.1249/MSS.0000000000001512"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC5849301"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC5849301?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "83966faed7ce0817920e6bf366efc8bb",
+   "titel": "Editorial: New developments in the intention-behavior gap for physical",
+   "kennung": {
+    "doi": "10.1016/0749-5978(91)90020-T",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": null,
+   "crossref": {
+    "quelle": "crossref",
+    "titel": "The theory of planned behavior",
+    "verlag": "Elsevier BV",
+    "lizenzen": [
+     "https://www.elsevier.com/tdm/userlicense/1.0/"
+    ],
+    "link": "https://api.elsevier.com/content/article/PII:074959789190020T?httpAccept=text/xml"
+   },
+   "urteil": "nur Verlagslizenz, offener Zugang unklar"
+  },
+  {
+   "document_id": "0843e61250179bd14f8d0a45fc678e5d",
+   "titel": "Invited Commentary: Detecting Individual and Global Horizontal Pleiotr",
+   "kennung": {
+    "doi": "",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": null,
+   "crossref": null,
+   "urteil": "kein offener Nachweis"
+  },
+  {
+   "document_id": "6e935d39b012f2a76075a3a7964879b1",
+   "titel": "Editorial: Causal inference in diet, nutrition and health outcomes",
+   "kennung": {
+    "doi": "10.3389/fnut.2022.831470",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": {
+    "quelle": "europepmc",
+    "pmid": "35265657",
+    "pmcid": "PMC8901125",
+    "doi": "10.3389/fnut.2022.831470",
+    "journal": "",
+    "year": "2022",
+    "is_open_access": "Y",
+    "in_epmc": "Y",
+    "in_pmc": "Y",
+    "license": "cc by",
+    "links": [
+     {
+      "site": "Unpaywall",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://www.frontiersin.org/articles/10.3389/fnut.2022.831470/pdf"
+     },
+     {
+      "site": "DOI",
+      "availability": "Subscription required",
+      "license": null,
+      "url": "https://doi.org/10.3389/fnut.2022.831470"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC8901125"
+     },
+     {
+      "site": "Europe_PMC",
+      "availability": "Open access",
+      "license": null,
+      "url": "https://europepmc.org/articles/PMC8901125?pdf=render"
+     }
+    ]
+   },
+   "crossref": null,
+   "urteil": "offen, Lizenz genannt"
+  },
+  {
+   "document_id": "af1bb4ac0c54f9ed49d13393b37f4ffd",
+   "titel": "A computational perspective of the role of Thalamus in cognition",
+   "kennung": {
+    "doi": "",
+    "doi_basis": "",
+    "pmid": "",
+    "pmcid": ""
+   },
+   "europepmc": null,
+   "crossref": null,
+   "urteil": "kein offener Nachweis"
+  }
+ ]
+}
