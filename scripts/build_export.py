@@ -4,6 +4,9 @@
 Jedes Kandidatenfile wird zusätzlich gegen die Sperrbegriffe der alten
 Forschungsagenda und der privaten Infrastruktur geprüft. Treffer werden
 nicht kopiert und am Ende gemeldet; mit --streng bricht der Lauf ab.
+
+Mit --scan läuft nur die Prüfung: alle getrackten Textdateien eines Baums,
+ohne Allowlist und ohne Export. Exitcode 1 bei Treffern.
 """
 
 from __future__ import annotations
@@ -14,6 +17,7 @@ import re
 import shutil
 import subprocess
 import sys
+from collections import Counter
 from pathlib import Path
 
 DEFAULT_SOURCE = Path(__file__).resolve().parents[1]
@@ -137,6 +141,41 @@ def filtere_gesperrte(
     return erlaubt, gesperrt
 
 
+def scan(source: Path, detail: bool = False) -> int:
+    """Prüft alle getrackten Textdateien auf Sperrbegriffe, ohne Allowlist.
+
+    Rückgabe ist der Exitcode: 0 ohne Treffer, 1 mit Treffern.
+    """
+    if not source.is_dir():
+        raise SystemExit(f"FEHLER: Quelle fehlt: {source}")
+    dateien = source_files(source)
+    kandidaten = [
+        rel
+        for rel in dateien
+        if Path(rel).suffix.lower() not in SKIP_SUFFIXES and not ist_env_datei(rel)
+    ]
+    _, gesperrt = filtere_gesperrte(source, kandidaten)
+    pro_datei: dict[str, list[tuple[str, int, str]]] = {}
+    for rel, kategorie, zeile, auszug in gesperrt:
+        pro_datei.setdefault(rel, []).append((kategorie, zeile, auszug))
+
+    print(f"Sperrbegriff-Scan ohne Allowlist: {source}")
+    print(f"Getrackte Dateien: {len(dateien)}, gescannte Textdateien: {len(kandidaten)}")
+    if not pro_datei:
+        print("Keine Sperrbegriffe gefunden")
+        return 0
+
+    print(f"Treffer: {len(pro_datei)} Dateien, {len(gesperrt)} Zeilen")
+    for kategorie, anzahl in Counter(k for _, k, _, _ in gesperrt).most_common():
+        print(f"  {kategorie}: {anzahl}")
+    for rel in sorted(pro_datei, key=lambda r: (-len(pro_datei[r]), r)):
+        print(f"- {rel}: {len(pro_datei[rel])} Zeilen")
+        if detail:
+            for kategorie, zeile, auszug in pro_datei[rel]:
+                print(f"    {zeile}: {kategorie}: {auszug}")
+    return 1
+
+
 def build(
     source: Path,
     destination: Path,
@@ -208,10 +247,20 @@ def main() -> int:
         help="Quell-Repository (Standard: Elternverzeichnis dieses Skripts)",
     )
     parser.add_argument(
-        "--dest", type=Path, required=True, help="Noch nicht vorhandenes Zielverzeichnis"
+        "--dest", type=Path, help="Noch nicht vorhandenes Zielverzeichnis (Pflicht ohne --scan)"
     )
     parser.add_argument(
-        "--remote-url", required=True, help="Explizite Remote-URL für den neuen Export"
+        "--remote-url", help="Explizite Remote-URL für den neuen Export (Pflicht ohne --scan)"
+    )
+    parser.add_argument(
+        "--scan",
+        action="store_true",
+        help="Nur Sperrbegriffe prüfen: keine Allowlist, kein Export; Exitcode 1 bei Treffern",
+    )
+    parser.add_argument(
+        "--detail",
+        action="store_true",
+        help="Mit --scan jede Trefferzeile ausgeben",
     )
     parser.add_argument(
         "--streng",
@@ -224,6 +273,12 @@ def main() -> int:
         help="check_export.py im Ziel nicht ausführen (für Gegentests)",
     )
     args = parser.parse_args()
+    if args.scan:
+        if args.dest or args.remote_url:
+            parser.error("--scan arbeitet ohne --dest und --remote-url")
+        return scan(args.source.resolve(), detail=args.detail)
+    if not args.dest or not args.remote_url:
+        parser.error("--dest und --remote-url sind ohne --scan Pflicht")
     build(
         args.source.resolve(),
         args.dest.resolve(),
