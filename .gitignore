@@ -28,6 +28,8 @@ data/finetune.pid
 .env
 .env.*
 !.env.example
+# VPN-Session-Cookie der HRZ-Anmeldung: niemals committen
+vpn_cookie*.txt
 agent.err.log
 agent.log
 agent.out.log
