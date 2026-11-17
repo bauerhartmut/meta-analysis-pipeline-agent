@@ -61,6 +61,18 @@ Schaetzung stuetzt.
 Bekannte Ausfallquote im ersten Teil: GLM 14,9 % technisch plus 5,2 % leer,
 Qwen 10,3 % technisch plus 6,4 % leer (Stand 78 Zeilen).
 
+## Wo der Lauf laeuft (wichtig fuer die Nacht)
+
+Der Lauf ist eine Prozesskette auf dem PC (bash -> python -> `run_extended_extraction.py`);
+der Pi haelt nur den VPN-Tunnel. Wird der PC ausgeschaltet, endet der Lauf sofort.
+Ein Weiterlaufen auf dem Pi ist nicht moeglich, weil dort weder Harness noch
+`public_benchmark`-Daten liegen (die Kopie unter `AIResearch` dort ist aelter) und
+kein Schluessel fuer die HRZ-API konfiguriert ist.
+
+Standby-Einstellungen des PCs zum Messzeitpunkt: **Netzbetrieb nie** (Index 0),
+Akkubetrieb nach 900 s. Solange das Netzteil steckt, schlaeft der Rechner also
+nicht ein; ein Windows-Update-Neustart bleibt das Restrisiko.
+
 ## Grenze dieses Laufs
 
 Ein Fortsetzungslauf nach einem Abbruch erzeugt fuer die neuen Zeilen einen
