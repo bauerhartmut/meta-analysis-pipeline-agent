@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Sperrbegriff-Scan vor dem Push.
+#
+# Blockiert den Push, wenn eine getrackte Textdatei einen Sperrbegriff der
+# alten Forschungsagenda oder der privaten Infrastruktur enthaelt und nicht
+# mit Begruendung in scripts/sperrbegriff_ausnahmen.txt steht. Der Scan
+# braucht keine Allowlist und liest keine Daten, nur getrackte Textdateien.
+#
+# Bewusst umgehen: git push --no-verify
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+export PYTHONIOENCODING=utf-8
+if [ -x .venv/bin/python ]; then
+    PY=.venv/bin/python
+else
+    PY=python
+fi
+exec "$PY" scripts/build_export.py --scan --ausnahmen scripts/sperrbegriff_ausnahmen.txt

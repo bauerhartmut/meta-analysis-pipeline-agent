@@ -6,7 +6,8 @@ Forschungsagenda und der privaten Infrastruktur geprüft. Treffer werden
 nicht kopiert und am Ende gemeldet; mit --streng bricht der Lauf ab.
 
 Mit --scan läuft nur die Prüfung: alle getrackten Textdateien eines Baums,
-ohne Allowlist und ohne Export. Exitcode 1 bei Treffern.
+ohne Allowlist und ohne Export. Exitcode 1 bei Treffern; Dateien, deren
+Sperrbegriff in einer Ausnahmeliste begründet ist, zählen nicht.
 """
 
 from __future__ import annotations
@@ -19,6 +20,12 @@ import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
+
+HIER = Path(__file__).resolve().parent
+if str(HIER) not in sys.path:
+    sys.path.insert(0, str(HIER))
+
+from export_regeln import BANNED_TERMS, finde_sperrbegriffe  # noqa: E402
 
 DEFAULT_SOURCE = Path(__file__).resolve().parents[1]
 ALLOWLIST_NAME = "export_allowlist.txt"
@@ -36,41 +43,29 @@ Daten, Volltexte, Run-Ordner und geschützte Kernmodule sind nicht enthalten.
 Co-Authored-By: Codebuff <noreply@codebuff.com>
 """
 
-# Sperrbegriffe: Inhalt der alten Forschungsagenda und der privaten
-# Infrastruktur darf die Quelle nicht verlassen. Die Muster werden absichtlich
-# zusammengesetzt, damit sich dieses Skript nicht selbst erkennt.
-BANNED_TERMS: list[tuple[str, re.Pattern[str]]] = [
-    (
-        "Alte Forschungsagenda",
-        re.compile(
-            r"(?i)\b(?:eu"
-            + r"geni\w*|embr"
-            + r"yo\w*|herit"
-            + r"ab\w*|poly"
-            + r"genic|pol"
-            + r"derman|pg"
-            + r"t-[am])\b"
-        ),
-    ),
-    (
-        "Alte Forschungsagenda (Wilson)",
-        re.compile(
-            r"(?i)wil"
-            + r"son[- ]?effekt|wil"
-            + r"son effect|wil"
-            + r"son_effect"
-        ),
-    ),
-    (
-        "Private Infrastruktur",
-        re.compile(
-            r"(?i)\bngr"
-            + r"ok\b|raspberr"
-            + r"y|research-agent-fine"
-            + r"tune|\b192\.168\.\d+\.\d+\b"
-        ),
-    ),
-]
+# Sperrbegriffe: die Liste steht in scripts/export_regeln.py, damit Export-Gate
+# und Exporter dieselbe Quelle benutzen.
+
+
+def lade_ausnahmen(pfad: Path) -> dict[str, str]:
+    """Liest `pfad | Begruendung`-Zeilen; jede Ausnahme braucht einen Grund."""
+    if not pfad.is_file():
+        raise SystemExit(f"FEHLER: Ausnahmeliste fehlt: {pfad}")
+    ausnahmen: dict[str, str] = {}
+    for nummer, roh in enumerate(pfad.read_text(encoding="utf-8").splitlines(), 1):
+        zeile = roh.strip()
+        if not zeile or zeile.startswith("#"):
+            continue
+        if "|" not in zeile:
+            raise SystemExit(
+                f"FEHLER: {pfad}:{nummer}: Ausnahme ohne Begruendung "
+                "(Format: pfad | Grund)"
+            )
+        rel, grund = (teil.strip() for teil in zeile.split("|", 1))
+        if not rel or not grund:
+            raise SystemExit(f"FEHLER: {pfad}:{nummer}: Pfad oder Grund leer")
+        ausnahmen[rel] = grund
+    return ausnahmen
 
 
 def git(*args: str, cwd: Path) -> str:
@@ -106,16 +101,6 @@ def ist_env_datei(rel: str) -> bool:
     return name == ".env" or (name.startswith(".env.") and name != ".env.example")
 
 
-def finde_sperrbegriffe(text: str) -> list[tuple[str, int, str]]:
-    """Liefert (Kategorie, Zeilennummer, Zeilentext) für jeden Treffer."""
-    treffer: list[tuple[str, int, str]] = []
-    for zeilennummer, zeile in enumerate(text.splitlines(), 1):
-        for name, pattern in BANNED_TERMS:
-            if pattern.search(zeile):
-                treffer.append((name, zeilennummer, zeile.strip()[:80]))
-    return treffer
-
-
 def filtere_gesperrte(
     source: Path, files: list[str]
 ) -> tuple[list[str], list[tuple[str, str, int, str]]]:
@@ -141,11 +126,16 @@ def filtere_gesperrte(
     return erlaubt, gesperrt
 
 
-def scan(source: Path, detail: bool = False) -> int:
+def scan(
+    source: Path, detail: bool = False, ausnahmen: dict[str, str] | None = None
+) -> int:
     """Prüft alle getrackten Textdateien auf Sperrbegriffe, ohne Allowlist.
 
-    Rückgabe ist der Exitcode: 0 ohne Treffer, 1 mit Treffern.
+    Dateien aus der Ausnahmeliste zählen nicht als Treffer; ihre Begründung
+    wird mitgezählt und bei --detail ausgegeben.
+    Rückgabe ist der Exitcode: 0 ohne offene Treffer, 1 mit Treffern.
     """
+    ausnahmen = ausnahmen or {}
     if not source.is_dir():
         raise SystemExit(f"FEHLER: Quelle fehlt: {source}")
     dateien = source_files(source)
@@ -159,17 +149,27 @@ def scan(source: Path, detail: bool = False) -> int:
     for rel, kategorie, zeile, auszug in gesperrt:
         pro_datei.setdefault(rel, []).append((kategorie, zeile, auszug))
 
+    begruendet = sorted(rel for rel in pro_datei if rel in ausnahmen)
+    offen = [rel for rel in pro_datei if rel not in ausnahmen]
+
     print(f"Sperrbegriff-Scan ohne Allowlist: {source}")
     print(f"Getrackte Dateien: {len(dateien)}, gescannte Textdateien: {len(kandidaten)}")
-    if not pro_datei:
-        print("Keine Sperrbegriffe gefunden")
+    if begruendet:
+        print(f"Ausgenommen laut Liste: {len(begruendet)} Dateien (mit Begründung)")
+        if detail:
+            for rel in begruendet:
+                print(f"  ~ {rel}: {ausnahmen[rel]}")
+    if not offen:
+        print("Keine offenen Sperrbegriffe gefunden")
         return 0
 
-    print(f"Treffer: {len(pro_datei)} Dateien, {len(gesperrt)} Zeilen")
-    for kategorie, anzahl in Counter(k for _, k, _, _ in gesperrt).most_common():
+    print(f"Offene Treffer: {len(offen)} Dateien, {sum(len(pro_datei[r]) for r in offen)} Zeilen")
+    for kategorie, anzahl in Counter(
+        k for rel in offen for k, _, _ in pro_datei[rel]
+    ).most_common():
         print(f"  {kategorie}: {anzahl}")
-    for rel in sorted(pro_datei, key=lambda r: (-len(pro_datei[r]), r)):
-        print(f"- {rel}: {len(pro_datei[rel])} Zeilen")
+    for rel in sorted(offen, key=lambda r: (-len(pro_datei[r]), r)):
+        print(f"- {rel}: {len(pro_datei[rel])} Zeilen (nicht in der Ausnahmeliste)")
         if detail:
             for kategorie, zeile, auszug in pro_datei[rel]:
                 print(f"    {zeile}: {kategorie}: {auszug}")
@@ -260,7 +260,12 @@ def main() -> int:
     parser.add_argument(
         "--detail",
         action="store_true",
-        help="Mit --scan jede Trefferzeile ausgeben",
+        help="Mit --scan jede Trefferzeile und jede Ausnahme ausgeben",
+    )
+    parser.add_argument(
+        "--ausnahmen",
+        type=Path,
+        help="Ausnahmeliste (`pfad | Grund`) für begründete Treffer im Scan",
     )
     parser.add_argument(
         "--streng",
@@ -276,7 +281,10 @@ def main() -> int:
     if args.scan:
         if args.dest or args.remote_url:
             parser.error("--scan arbeitet ohne --dest und --remote-url")
-        return scan(args.source.resolve(), detail=args.detail)
+        ausnahmen = lade_ausnahmen(args.ausnahmen) if args.ausnahmen else {}
+        return scan(args.source.resolve(), detail=args.detail, ausnahmen=ausnahmen)
+    if args.ausnahmen:
+        parser.error("--ausnahmen gilt nur zusammen mit --scan")
     if not args.dest or not args.remote_url:
         parser.error("--dest und --remote-url sind ohne --scan Pflicht")
     build(

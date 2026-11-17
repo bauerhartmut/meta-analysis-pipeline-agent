@@ -173,7 +173,7 @@ def pruefe_scan(export) -> int:
         puffer = io.StringIO()
         with redirect_stdout(puffer):
             code = export.scan(sauber)
-        if code != 0 or "Keine Sperrbegriffe" not in puffer.getvalue():
+        if code != 0 or "Keine offenen Sperrbegriffe" not in puffer.getvalue():
             print(f"FAIL: sauberer Baum meldet Code {code}: {puffer.getvalue()!r}")
             fehler += 1
         else:
@@ -203,16 +203,103 @@ def pruefe_scan(export) -> int:
         return fehler
 
 
+def pruefe_ausnahmen(export) -> int:
+    fehler = 0
+    with tempfile.TemporaryDirectory() as tmp:
+        baum = Path(tmp) / "baum"
+        schreibe_quelle(baum, BEFUNDE, allowlist=False)
+        liste = Path(tmp) / "ausnahmen.txt"
+        liste.write_text(
+            "# Kopfzeile\n"
+            "alt_thema.md | Testfixture der frueheren Reihe\n"
+            "infra.py | Betriebsnotiz des alten Servers\n",
+            encoding="utf-8",
+        )
+
+        print("--- Ausnahmen: begruendet ---")
+        ausnahmen = export.lade_ausnahmen(liste)
+        if set(ausnahmen) == {"alt_thema.md", "infra.py"}:
+            print("OK: Ausnahmeliste gelesen, Gründe erhalten")
+        else:
+            print(f"FAIL: Ausnahmeliste falsch gelesen: {ausnahmen}")
+            fehler += 1
+
+        puffer = io.StringIO()
+        with redirect_stdout(puffer):
+            code = export.scan(baum, ausnahmen=ausnahmen)
+        ausgabe = puffer.getvalue()
+        if code != 0 or "Keine offenen Sperrbegriffe" not in ausgabe:
+            print(f"FAIL: begründete Treffer blockieren den Scan: {code}\n{ausgabe}")
+            fehler += 1
+        elif "Ausgenommen laut Liste: 2 Dateien" not in ausgabe:
+            print(f"FAIL: Ausnahmen werden nicht gezählt:\n{ausgabe}")
+            fehler += 1
+        else:
+            print("OK: begründete Treffer blockieren nicht")
+
+        nur_eine = Path(tmp) / "eine.txt"
+        nur_eine.write_text("alt_thema.md | Testfixture\n", encoding="utf-8")
+        puffer = io.StringIO()
+        with redirect_stdout(puffer):
+            code = export.scan(baum, ausnahmen=export.lade_ausnahmen(nur_eine))
+        if code == 1 and "infra.py" in puffer.getvalue():
+            print("OK: nicht gelistete Datei bleibt offener Treffer")
+        else:
+            print(f"FAIL: nicht gelistete Datei wurde stillschweigend akzeptiert: {puffer.getvalue()}")
+            fehler += 1
+
+        print("--- Ausnahmen: fehlende Begruendung ---")
+        kaputt = Path(tmp) / "kaputt.txt"
+        kaputt.write_text("alt_thema.md\n", encoding="utf-8")
+        try:
+            export.lade_ausnahmen(kaputt)
+        except SystemExit as exc:
+            if "ohne Begruendung" in str(exc.code):
+                print("OK: Ausnahme ohne Grund wird abgelehnt")
+            else:
+                print(f"FAIL: Abbruch mit falschem Text: {exc.code}")
+                fehler += 1
+        else:
+            print("FAIL: Ausnahme ohne Grund wurde akzeptiert")
+            fehler += 1
+
+        print("--- Ausnahmen über die Kommandozeile ---")
+        lauf = subprocess.run(
+            [
+                sys.executable,
+                str(MODUL),
+                "--scan",
+                "--source",
+                str(baum),
+                "--ausnahmen",
+                str(liste),
+                "--detail",
+            ],
+            capture_output=True,
+            text=True,
+        )
+        if lauf.returncode == 0 and "Testfixture der frueheren Reihe" in lauf.stdout:
+            print("OK: CLI-Scan mit Ausnahmen endet mit 0 und zeigt den Grund")
+        else:
+            print(f"FAIL: CLI mit Ausnahmen: {lauf.returncode}\n{lauf.stdout}\n{lauf.stderr}")
+            fehler += 1
+        return fehler
+
+
 def main() -> int:
     export = lade_export()
     print("--- Mustererkennung ---")
     fehler = pruefe_muster(export)
     fehler += pruefe_export(export)
     fehler += pruefe_scan(export)
+    fehler += pruefe_ausnahmen(export)
     if fehler:
         print(f"GEGENTEST FEHLGESCHLAGEN: {fehler} Abweichungen", file=sys.stderr)
         return 1
-    print("GEGENTEST OK: Sperrliste erkennt alle Fälle, Export lässt sie aus, Scan findet sie")
+    print(
+        "GEGENTEST OK: Sperrliste erkennt alle Fälle, Export lässt sie aus, "
+        "Scan findet sie, begründete Ausnahmen zählen nicht"
+    )
     return 0
 
 

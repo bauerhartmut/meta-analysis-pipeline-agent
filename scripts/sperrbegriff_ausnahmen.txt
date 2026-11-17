@@ -1,0 +1,117 @@
+# Sperrbegriff-Ausnahmen fuer den privaten Baum.
+#
+# Format: <pfad> | <Begruendung>. Jede Zeile braucht einen Grund, sonst
+# bricht der Scan ab. Der pre-push-Hook blockiert Treffer, die hier nicht
+# stehen. Neue Dateien mit legitimen Sperrbegriffen gehoeren hier hinein,
+# nicht in scripts/export_regeln.py.
+#
+# Stand: 108 Dateien, erzeugt aus dem Scan vom 2026-11-17.
+
+research_agent/tests/test_components.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+research_agent/dataset.py | Arbeitsstand der frueheren Domaene; bleibt privat
+research_agent/tests/test_research_engine.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+research_agent/data/journal/f015e4510670.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/evals/golden_answers.json | Arbeitsstand der frueheren Domaene; bleibt privat
+research_agent/tests/test_program.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+research_agent/tests/test_fulltext.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+data/simulation_result.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+research_agent/data/journal/a8f59959969b.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+data/bench/validierung/kandidaten_effektvolltexte.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+docs/internal/PROGRESS.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/tests/test_report.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+research_agent/tests/test_backlog_work.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+scripts/pc_gpu_server_with_ngrok.py | Mess- oder Pruefskript der frueheren Reihe; privat
+research_agent/data/journal/e6bea9f02071.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+docs/internal/improvement_prompts.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/fb709a4ea591.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/tests/test_llm_engine.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+research_agent/data/journal/28fb8225cf60.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+scripts/deploy_kaggle.py | Mess- oder Pruefskript der frueheren Reihe; privat
+scripts/kaggle_gpu_server.py | Mess- oder Pruefskript der frueheren Reihe; privat
+research_agent/agents/evidence_scorer.py | Arbeitsstand der frueheren Domaene; bleibt privat
+research_agent/data/journal/06a629f43f7e.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/b6df1d67275a.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/c52cef2e712e.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/c890a45cd13b.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/evals/README.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/tests/test_citation_snowball.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+data/bench/validierung/report_meta_ausschnitt_20261108.txt | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+research_agent/data/journal/7d68c28a85ff.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/a85fce02c4d8.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/ef05f985ec38.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+scripts/start_pc_server.bat | Mess- oder Pruefskript der frueheren Reihe; privat
+data/bench/validierung/e4_kollaps_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/bench/validierung/e4_kollaps_20261108.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+docs/internal/README_ARBEITSFASSUNG.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/9da7788b79ad.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/d0161929aef3.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/e3729f45f62d.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/evals/report_eval.py | Arbeitsstand der frueheren Domaene; bleibt privat
+research_agent/data/journal/6281c77b4373.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/tests/test_meta_pooling.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+research_agent/tests/test_meta_screening.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+research_agent/tests/test_simulations.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+scripts/messe_se_ki_konsistenz_20261110.py | Mess- oder Pruefskript der frueheren Reihe; privat
+data/bench/validierung/e4e_nachher_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/bench/validierung/e4e_vorher_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/bench/validierung/kopf_blocker_korpus_20261108.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/bench/validierung/se_ki_konsistenz_20261110.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/candidates.jsonl | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/candidates_all.jsonl | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/extended_benchmark/analysis/candidate_split_20261115/zellen.csv | Benchmark-Bestand der frueheren Reihe; privat
+research_agent/tests/test_topic_database.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+research_agent/tests/test_work_queue.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+scripts/build_notebook.py | Mess- oder Pruefskript der frueheren Reihe; privat
+scripts/build_notebook2.py | Mess- oder Pruefskript der frueheren Reihe; privat
+scripts/build_notebook_final.py | Mess- oder Pruefskript der frueheren Reihe; privat
+scripts/measure_search_quality.py | Mess- oder Pruefskript der frueheren Reihe; privat
+scripts/pc_gpu_server.py | Mess- oder Pruefskript der frueheren Reihe; privat
+scripts/simulate_research.py | Mess- oder Pruefskript der frueheren Reihe; privat
+scripts/start_all.bat | Mess- oder Pruefskript der frueheren Reihe; privat
+METAANALYSE.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+data/bench/regreports/kognition_report_meta.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/bench/regreports/t1_summary.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/bench/validierung/arbeitsstand_20261110.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/bench/validierung/se_ki_konsistenz_20261110.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/golden_effects/blind_b_20261110/data/golden_effects/goldstandard_B.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/golden_effects/blind_b_20261110/docs/internal/vollannotation_arbeitsblatt_7df874ca53.md | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/golden_effects/blind_b_20261110/manifest.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/golden_effects/documents.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/golden_effects/duplikate.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/golden_effects/goldstandard_B.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/golden_effects/vollannotation_arbeitsblaetter.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/simulations/060eb5fa0a42_smoke/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/simulations/37568919077f_smoke/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/simulations/403bb59d8c6e_kat_effect/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/simulations/403bb59d8c6e_kat_effect3/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/simulations/403bb59d8c6e_kat_null/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/simulations/403bb59d8c6e_kat_repeat/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+data/simulations/b3a9dd552a7b_smoke/sim.py | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert
+docs/internal/HANDOFF_STATUS.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+docs/internal/vollannotation_arbeitsblatt_7df874ca53.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/fulltext_candidate_priority_v1.csv | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/fulltext_candidate_priority_v1.json | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/screening_decisions_v1.jsonl | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/evaluation/c1_pilot/holdout_p0_20261112/screening_decisions_v2.jsonl | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/evaluation/multi_model_cross_validation/candidate_pool_v1.json | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/extended_benchmark/analysis/candidate_split_20261115/kandidaten.jsonl | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/extended_benchmark/records/yun_test76_ziel.jsonl | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl | Benchmark-Bestand der frueheren Reihe; privat
+public_benchmark/processed_data/yun_ico_records.jsonl | Benchmark-Bestand der frueheren Reihe; privat
+research_agent/benchmark.py | Arbeitsstand der frueheren Domaene; bleibt privat
+research_agent/data/journal/353983972f89.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/35e94d8f0e0b.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/944436da870c.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/96dfcc4c036c.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/a3cee5d34345.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/c80aea02c775.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/e80c8c1c0e2f.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/data/journal/fc4249225baa.md | Forschungsakte der frueheren Fragestellung; bleibt privat
+research_agent/models.py | Arbeitsstand der frueheren Domaene; bleibt privat
+research_agent/research/fulltext.py | Arbeitsstand der frueheren Domaene; bleibt privat
+research_agent/run_background.py | Arbeitsstand der frueheren Domaene; bleibt privat
+research_agent/start.py | Arbeitsstand der frueheren Domaene; bleibt privat
+research_agent/tests/test_meta_extraction.py | Test der frueheren Extraktionsreihe; prueft die alte Domaene
+scripts/start_supervised.bat | Mess- oder Pruefskript der frueheren Reihe; privat
+scripts/start_tunnel.bat | Mess- oder Pruefskript der frueheren Reihe; privat
+supervisor.py | Arbeitsstand der frueheren Domaene; bleibt privat
