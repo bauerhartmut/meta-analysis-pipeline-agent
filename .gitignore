@@ -138,6 +138,7 @@ public_benchmark/evaluation/multi_model_cross_validation/goldstandard_datasets/p
 public_benchmark/evaluation/multi_model_cross_validation/goldstandard_datasets/pico_corpus_v1/records.jsonl
 public_benchmark/evaluation/multi_model_cross_validation/goldstandard_datasets/eururology_v1/original/
 public_benchmark/evaluation/multi_model_cross_validation/goldstandard_datasets/eururology_v1/records.jsonl
+public_benchmark/evaluation/multi_model_cross_validation/goldstandard_datasets/medsr_bench_v1/original/
 
 # Interne PDFs und Screenshots
 ENTWICKLUNGSAUFTRAG_v2.pdf

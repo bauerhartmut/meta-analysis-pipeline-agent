@@ -1,0 +1,89 @@
+{
+  "checked": 40,
+  "by_status": {
+    "paywall": 30,
+    "oa": 7,
+    "pmc_no_oa": 3
+  },
+  "method": "erste PMIDs je Review in numerischer Reihenfolge, Europe PMC EXT_ID",
+  "per_review": [
+    {
+      "review": 1,
+      "checked": 4,
+      "status": {
+        "paywall": 4
+      }
+    },
+    {
+      "review": 2,
+      "checked": 4,
+      "status": {
+        "paywall": 4
+      }
+    },
+    {
+      "review": 3,
+      "checked": 4,
+      "status": {
+        "paywall": 3,
+        "oa": 1
+      }
+    },
+    {
+      "review": 4,
+      "checked": 4,
+      "status": {
+        "paywall": 2,
+        "oa": 2
+      }
+    },
+    {
+      "review": 5,
+      "checked": 4,
+      "status": {
+        "paywall": 3,
+        "oa": 1
+      }
+    },
+    {
+      "review": 6,
+      "checked": 4,
+      "status": {
+        "paywall": 2,
+        "pmc_no_oa": 2
+      }
+    },
+    {
+      "review": 7,
+      "checked": 4,
+      "status": {
+        "paywall": 4
+      }
+    },
+    {
+      "review": 8,
+      "checked": 4,
+      "status": {
+        "oa": 1,
+        "paywall": 3
+      }
+    },
+    {
+      "review": 9,
+      "checked": 4,
+      "status": {
+        "oa": 1,
+        "paywall": 3
+      }
+    },
+    {
+      "review": 10,
+      "checked": 4,
+      "status": {
+        "paywall": 2,
+        "oa": 1,
+        "pmc_no_oa": 1
+      }
+    }
+  ]
+}

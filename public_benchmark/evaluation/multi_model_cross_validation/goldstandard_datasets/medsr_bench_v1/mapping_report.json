@@ -1,0 +1,54 @@
+{
+  "reviews": 100,
+  "trials_total": 1297,
+  "trials_include": 1297,
+  "trials_by_relation": {
+    "include": 1297
+  },
+  "analysis_groups": 2144,
+  "duplicate_group_numbers": 301,
+  "study_rows": 8810,
+  "groups_by_data_type": {
+    "Continuous": 643,
+    "Dichotomous": 1501
+  },
+  "groups_by_effect_measure": {
+    "Mean Difference": 539,
+    "Odds Ratio": 93,
+    "Risk Ratio": 1377,
+    "Std. Mean Difference": 104,
+    "Risk Difference": 18,
+    "Peto Odds Ratio": 13
+  },
+  "groups_with_conclusion": 1908,
+  "conclusion_classes": {
+    "favor comparison": 329,
+    "favor Intervention": 262,
+    "not significant": 1317
+  },
+  "groups_with_at_least_2_studies": 2004,
+  "groups_all_rows_with_effect_and_ci": 2000,
+  "groups_poolable": 2000,
+  "groups_without_any_complete_arm_row": 20,
+  "rows_with_effect_and_ci": 7574,
+  "rows_arm_complete_continuous": 2273,
+  "rows_arm_complete_binary": 5305,
+  "study_names_in_data_studies": 7570,
+  "study_names_unmatched": 0,
+  "reviews_with_orphan_groups": [
+    1,
+    61,
+    63,
+    73,
+    81,
+    88,
+    89
+  ],
+  "implied_ci_z": {
+    "n": 1865,
+    "median": 3.9199,
+    "share_within_3_6_to_4_2": 1.0,
+    "expected_95_percent": 3.9199
+  },
+  "provenance_like_fields": []
+}
