@@ -13,10 +13,11 @@ bei Widersprüchen gilt die Anleitung.
 ## 2. Das Projekt in Kürze
 
 Wir entwickeln einen autonomen KI-gestützten Forschungsagenten, der
-wissenschaftliche Literatur zu einer medizinischen Fragestellung recherchiert,
+wissenschaftliche Literatur zu einer empirischen Forschungsfrage recherchiert,
 Volltexte beschafft und auswertet, relevante Effektgrößen extrahiert, die
 Evidenz kritisch prüft und die Ergebnisse anschließend statistisch
-zusammenführt. Langfristiges Ziel ist ein System, das große Teile eines
+zusammenführt. Das Verfahren ist fachunabhängig; bearbeitet wurden bisher
+Fragen aus Ernährung, Schlaf, Bewegung, Kognition, Psychologie und Genetik. Langfristiges Ziel ist ein System, das große Teile eines
 systematischen Reviews einschließlich der quantitativen Evidenzsynthese
 eigenständig durchführen kann.
 
