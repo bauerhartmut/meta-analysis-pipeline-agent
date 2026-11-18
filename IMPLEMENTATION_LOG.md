@@ -1468,3 +1468,23 @@ hier kein Beleg. A-E unveraendert (58 Goldfelder, 0 Fehler, 60/60),
 `records` identisch.
 
 **Tests:** 5 neu in `research_agent/tests/test_outcome_zeile.py`, gesamt 85.
+
+## Nachtrag Sprint 43 - p-Wert-Korroboration der Outcome-Zeile
+
+Tote Spalten-Schleife in `diagnose_outcome_zeile.py::_zellen_mit_zeile` entfernt;
+die Messung ist davor/danach elementweise identisch (`messung.json` ==
+`messung_ohne_tote_schleife.json`).
+
+`semantics.corroborate_outcome_row_from_document` belegt die Outcome-Zeile ueber
+den gedruckten p-Wert: p-Wert im selben Satz wie das Outcome (Satzgrenze
+inklusive Klammern, mindestens die Haelfte der unterscheidenden Outcome-Woerter),
+genau eine Zeile mit diesem p-Wert in einer Spalte ohne Feld, und Wertabgleich
+jede Messspalte traegt einen gedruckten Wert (keine Spanne). Gesetzt wird
+`focus_rows` und `Table.corroborated_row[outcome]`; `reachable_cells` liest die
+Zeile nur fuer dieses Outcome.
+
+Ergebnis: 1 Uebernahme (`PMC3278655:T2`, `yun2024:390`, r3), 8 ohne Treffer,
+2 mehrdeutig. A-E: Goldfelder 58 -> **62**, Fehler 0, komplett 60/60; nur
+`yun2024:390` aendert sich (Zellen 70 -> 9, Einheiten C 8 -> 1, D/E 15 -> 8,
+Warnungen 8 -> 1). Test: 7 neu in `research_agent/tests/test_pwert_korroboration.py`,
+gesamt 92.

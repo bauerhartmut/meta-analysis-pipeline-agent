@@ -276,6 +276,10 @@ class Table:
     header_facts: List[Dict[str, Any]] = field(default_factory=list)
     # Zeilen, die das Outcome des Records tragen (Zeilenlabel-Pfad, kein Gold).
     focus_rows: List[int] = field(default_factory=list)
+    # Outcome-Zeile je Outcome, die ueber den gedruckten p-Wert belegt wurde.
+    # Getrennt von ``focus_rows``, damit ``reachable_cells`` mit einem anderen
+    # Outcome nicht die Zeile eines fremden Outcomes liest.
+    corroborated_row: Dict[str, int] = field(default_factory=dict)
     # Tabelle, die dasselbe Outcome zum selben Zeitpunkt druckt (Auswahlregel:
     # ``PMC4319071:T4`` ist redundant zu ``T2``). Leer = eigenstaendig.
     redundant_of: str = ""
@@ -387,6 +391,7 @@ class Table:
             "arm_decision": self.arm_decision,
             "role_decision": self.role_decision,
             "outcome_row_decision": self.outcome_row_decision,
+            "corroborated_row": dict(self.corroborated_row),
             "focus_rows": list(self.focus_rows),
         }
 

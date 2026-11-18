@@ -13,7 +13,7 @@ import copy
 import re
 from collections import Counter
 from dataclasses import dataclass
-from typing import Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 from .model import (
     ARM_COMPARATOR,
@@ -1080,6 +1080,167 @@ def consider_outcome_row_candidate(table: Table,
     return f"vorschlag:r{voll[0].row_id}"
 
 
+# Gedruckter p-Wert im Text (``p = 0.001``, ``p < 0.05``, ``p-value 0.3``).
+# Eine Zelle, die nur eine Klammer mit Zahlen traegt (``(0.07--3.11)``), ist
+# eine Spanne. Eine Zelle, die ganz aus einer Zahl besteht, ist ein Wert.
+_KLAMMER_SPANNE_RE = re.compile(r"^\s*\(\s*[-+]?\d.*\)\s*$")
+_EINZELZAHL_RE = re.compile(r"^[-+]?\d+(?:[.,]\d+)?$")
+
+_P_WERT_RE = re.compile(
+    r"\bp\s*(?:-?\s*value)?\s*(?:=|<=|<|\u2264|>|\u2265)\s*(\d+(?:[.,]\d+)?)",
+    re.IGNORECASE,
+)
+
+
+# Satzgrenze: ``.``/``!``/``?``, optional gefolgt von Klammern/Sternchen
+# (``([Table 2](#)).``), dann Weissraum. Ohne die Klammern im Muster wuerde ein
+# Satz, der mit ``).`` endet, nicht enden - und der naechste Satz zoege fremde
+# p-Werte in den Beleg (belegt: ``PMC3278655``, Outcome ``at risk`` bekam
+# ``p = 0.001`` aus dem Subsidence-Satz).
+_SATZ_GRENZE_RE = re.compile(r"[.!?][)\]*\"']*\s+")
+
+
+def _satz_um(text: str, start: int, ende: int) -> str:
+    """Der Satz um eine Textstelle."""
+    links = 0
+    for treffer in _SATZ_GRENZE_RE.finditer(text, 0, start):
+        links = treffer.end()
+    naechster = _SATZ_GRENZE_RE.search(text, ende)
+    rechts = naechster.end() if naechster else len(text)
+    return text[links:rechts]
+
+
+# Woerter, die allein keinen Satz an ein Outcome binden: sie stehen in fast
+# jedem Ergebnissatz (``at the 5-year follow-up``).
+_GENERISCHE_TOKENS = {
+    "year", "month", "week", "day", "time", "point", "follow", "up",
+    "value", "group", "arm", "trial", "patient", "participant",
+}
+
+
+def _satz_belegt_outcome(satz: str, outcome: str) -> bool:
+    """Nennt der Satz das Outcome - und nicht nur ein Fuellwort?
+
+    Mindestens die Haelfte der unterscheidenden Outcome-Woerter muss im Satz
+    stehen; ein gemeinsames ``5``/``year`` reicht nicht. Belegt an
+    ``PMC3278655``: der Satz ``At the 5-year follow-up ... (p = 0.9)`` traegt
+    nur ``5`` und ``year`` und darf das Outcome ``at risk ... at 5 years``
+    nicht belegen.
+    """
+    ziel = {_stem(token) for token in _tokens(outcome)}
+    unterscheidend = {token for token in ziel
+                      if token not in _GENERISCHE_TOKENS and not token.isdigit()}
+    if not unterscheidend:
+        return False
+    tokens = {_stem(token) for token in _tokens(satz)}
+    gemeinsam = unterscheidend & tokens
+    return len(gemeinsam) / len(unterscheidend) >= 0.5
+
+
+def p_werte_zum_outcome(document_text: str, outcome: str) -> set:
+    """p-Werte, die im selben Satz wie das Outcome gedruckt stehen."""
+    if not document_text or not outcome:
+        return set()
+    werte = set()
+    for treffer in _P_WERT_RE.finditer(document_text):
+        satz = _satz_um(document_text, treffer.start(), treffer.end())
+        if not _satz_belegt_outcome(satz, outcome):
+            continue
+        try:
+            werte.add(round(float(treffer.group(1).replace(",", ".")), 6))
+        except ValueError:
+            continue
+    return werte
+
+
+def _wertabgleich(table: Table, row, spalten: Sequence[Column]) -> bool:
+    """Traegt jede Messspalte dieser Zeile einen gedruckten Zahlenwert?
+
+    Die Feldebene zaehlt nur, *dass* ein Feld erreichbar wird; hier wird je
+    Zelle geprueft, ob ein normalisierter Wert vorliegt. Eine reine
+    Klammerzelle (``(0.07--3.11)``) ist eine Spanne, kein einzelner Wert, und
+    zaehlt nicht - sonst entstuende ein Feld ohne gedruckten Wert.
+    """
+    for column in spalten:
+        zelle = row.cells.get(column.col_id)
+        if zelle is None or zelle.value is None:
+            return False
+        if _KLAMMER_SPANNE_RE.match(zelle.text or ""):
+            return False
+    return True
+
+
+def corroborate_outcome_row_from_document(tables: Sequence[Table],
+                                          context: Optional[Dict[str, object]] = None,
+                                          document_text: str = "") -> int:
+    """Outcome-Zeile ueber den gedruckten p-Wert belegen und dann setzen.
+
+    Der Record-Text nennt einen p-Wert im Satz zum Outcome (``greater
+    subsidence ... (p = 0.001)``); die Tabelle druckt denselben p-Wert in einer
+    Zeile. Der Treffer ist ein gedruckter Beleg ueber die Zellform hinaus:
+
+    1. der p-Wert steht im selben Satz wie das Outcome,
+    2. genau **eine** Zeile der Tabelle traegt diesen p-Wert (mehrere -> keine
+       Uebernahme), und
+    3. der **Wertabgleich**: jede Messspalte dieser Zeile traegt einen
+       gedruckten Zahlenwert; kein Feld ohne Wert.
+
+    Nur dann wird ``focus_rows`` gesetzt. Rueckgabe: Anzahl gesetzter Zeilen.
+    """
+    context = context or {}
+    outcome = str(context.get("outcome") or "")
+    if not outcome or not (document_text or "").strip():
+        return 0
+    p_werte = p_werte_zum_outcome(document_text, outcome)
+    if not p_werte:
+        return 0
+    gesetzt = 0
+    for table in tables:
+        if outcome_rows(table, outcome):
+            continue
+        spalten = _messspalten(table)
+        if len(spalten) < 2:
+            continue
+        # Der p-Wert steht in einer Spalte ohne Feld; ihr Kopf kann fehlen
+        # (``PMC3278655:T2``: die p-Wert-Spalte hat keine Kopfgeometrie).
+        # Eine Messspalte scheidet damit aus, auch wenn dort zufaellig
+        # dieselbe Zahl steht.
+        p_spalten = [column for column in table.columns
+                     if not column.field and column.role != ROLE_LABEL]
+        treffer: List[Any] = []
+        for row in table.rows:
+            if row.group_label:
+                continue
+            for column in p_spalten:
+                zelle = row.cells.get(column.col_id)
+                if zelle is None or zelle.value is None:
+                    continue
+                if not _EINZELZAHL_RE.match((zelle.text or "").strip()):
+                    continue
+                if any(abs(zelle.value - wert) <= 1e-9 for wert in p_werte):
+                    treffer.append(row)
+                    break
+        if not treffer:
+            table.outcome_row_decision = "p_wert:kein_treffer"
+            continue
+        if len(treffer) > 1:
+            table.irregularities.append(
+                "outcome_zeile_mehrdeutig:"
+                + "|".join(str(row.row_id) for row in treffer)
+            )
+            table.outcome_row_decision = "p_wert:mehrdeutig"
+            continue
+        row = treffer[0]
+        if not _wertabgleich(table, row, spalten):
+            table.outcome_row_decision = f"p_wert:kein_wert:r{row.row_id}"
+            continue
+        table.focus_rows = [row.row_id]
+        table.corroborated_row[outcome] = row.row_id
+        table.outcome_row_decision = f"p_wert:uebernommen:r{row.row_id}"
+        gesetzt += 1
+    return gesetzt
+
+
 def reachable_cells(table: Table,
                     context: Optional[Dict[str, object]] = None) -> set:
     """Erwartbare Werte: Zellen der Outcome-Zeile **und** Kopfangaben.
@@ -1096,7 +1257,14 @@ def reachable_cells(table: Table,
         field = field_for(ROLE_N, arm if isinstance(arm, str) else None)
         if field:
             cells.add((-1, field))
-    rows = outcome_rows(table, str(context.get("outcome") or ""))
+    # Belegte Zeile aus dem Namen oder aus dem gedruckten p-Wert dieses
+    # Outcomes; ohne Beleg ist keine Zelle erwartbar.
+    outcome = str(context.get("outcome") or "")
+    rows = outcome_rows(table, outcome)
+    if not rows:
+        belegt = (table.corroborated_row or {}).get(outcome)
+        if belegt is not None:
+            rows = [belegt]
     if rows:
         column_fields = reachable_fields(table)
         for row_id in rows:

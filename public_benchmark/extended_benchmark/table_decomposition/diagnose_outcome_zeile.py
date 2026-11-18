@@ -43,6 +43,7 @@ from research_agent.table_decomposition.model import ROLE_N  # noqa: E402
 from research_agent.table_decomposition.semantics import (  # noqa: E402
     _messspalten,
     _zeile_vollstaendig,
+    corroborate_outcome_row_from_document,
     enrich_table,
     field_for,
     outcome_rows,
@@ -85,6 +86,7 @@ def main() -> int:
     selection = json.loads(rb.DEFAULT_SELECTION.read_text(encoding="utf-8"))
     records = rb.load_records(rb.DEFAULT_RECORDS)
     cache: Dict[str, Any] = {}
+    texte: Dict[str, str] = {}
     entscheidungen: Counter = Counter()
     tabellen: List[Dict[str, Any]] = []
     zwang: List[Dict[str, Any]] = []
@@ -97,6 +99,7 @@ def main() -> int:
         if doc_id not in cache:
             text = (rb.REPO / eintrag["document_path"]).read_text(
                 encoding="utf-8", errors="replace")
+            texte[doc_id] = text
             cache[doc_id] = parse_document(text, doc_id)
         parsed = cache[doc_id]
         context = rb.context_of(record)
@@ -106,6 +109,9 @@ def main() -> int:
             continue
         table = copy.deepcopy(table)
         enrich_table(table, context)
+        # p-Wert-Korroboration (setzt die Zeile nur bei genau einem Treffer und
+        # bestandenem Wertabgleich).
+        corroborate_outcome_row_from_document([table], context, texte[doc_id])
         entscheidungen[table.outcome_row_decision.split(":")[0] + ":"
                        + table.outcome_row_decision.split(":")[1]] += 1
         spalten = _messspalten(table)
@@ -119,6 +125,7 @@ def main() -> int:
             "outcome": str(context.get("outcome") or ""),
             "outcome_zeilen": outcome_rows(table, str(context.get("outcome") or "")),
             "entscheidung": table.outcome_row_decision,
+            "focus_rows": list(table.focus_rows),
             "messspalten": [f"c{c.col_id}:{c.field}" for c in spalten],
             "vollstaendige_zeilen": voll,
             "erreichbare_felder": sorted(zellen),
@@ -186,10 +193,6 @@ def _zellen_mit_zeile(table, row) -> set:
         field = field_for(ROLE_N, arm if isinstance(arm, str) else None)
         if field:
             cells.add((-1, field))
-    for column in table.columns:
-        zelle = row.cells.get(column.col_id)
-        if zelle is None or not (zelle.text or "").strip():
-            continue
     cells |= {(row.row_id, name) for name in reachable_fields(table)}
     cells |= {(row.row_id, name) for name in row_fields(table, row)}
     return cells

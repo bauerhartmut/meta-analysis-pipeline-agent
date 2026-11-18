@@ -44,6 +44,7 @@ from research_agent.table_decomposition.engine import (  # noqa: E402
 from research_agent.table_decomposition.parser import parse_document  # noqa: E402
 from research_agent.table_decomposition.reconstruct import Reconstruction  # noqa: E402
 from research_agent.table_decomposition.semantics import (
+    corroborate_outcome_row_from_document,
     enrich_table,
     primary_tables,
     reachable_cells,
@@ -105,6 +106,9 @@ def load_tables(selection_entries: Sequence[Dict[str, Any]],
         enrich_table(table, context, assume_order=assume_order)
     transfer_arms_within_document(parsed.tables, context)
     transfer_arms_from_document(parsed.tables, context, text)
+    # Outcome-Zeile ueber den gedruckten p-Wert belegen (nur bei genau einem
+    # Treffer und mit Wertabgleich); ohne Beleg bleibt der Name zustaendig.
+    corroborate_outcome_row_from_document(parsed.tables, context, text)
     # Auswahlregel: je Outcome und Zeitpunkt eine Tabelle (``T4`` faellt
     # hinter ``T2`` zurueck). Bleibt sonst keine uebrig, bleiben alle stehen.
     redundant = primary_tables(parsed.tables, context)
