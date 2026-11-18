@@ -7,7 +7,8 @@
 # ihn neu). Neue Dateien mit legitimen Sperrbegriffen gehoeren hier hinein,
 # nicht in scripts/export_regeln.py.
 #
-# Stand: 108 Dateien, erzeugt aus dem Scan vom 2026-11-17.
+# Stand: 102 Dateien, erzeugt aus dem Scan vom 2026-11-17; am 2026-11-18 um
+# zwei begruendete Altbestaende ergaenzt (Zugangsliste, Annotationshilfsskript).
 
 METAANALYSE.md | Forschungsakte der frueheren Fragestellung; bleibt privat | 1660f0fea29ceea2
 data/bench/regreports/kognition_report_meta.json | Datenbestand der frueheren Reihe; bleibt privat und wird nie exportiert | 66f0c734cd764b7a
@@ -109,3 +110,5 @@ scripts/start_all.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 1e2
 scripts/start_pc_server.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 12fe7bc43da0f6b6
 scripts/start_supervised.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 1527b2d047b534c0
 scripts/start_tunnel.bat | Mess- oder Pruefskript der frueheren Reihe; privat | 056eed522989d7d0
+data/golden_effects/studienzugang_20261117.json | Zugangsliste der frueheren Reihe; nennt Studien der alten Domaene, bleibt privat und wird nie exportiert | 5b1509860ebbed93
+scripts/erzeuge_modell_annotation.py | Hilfsskript der frueheren Reihe; arbeitet auf den alten Annotationsdaten, bleibt privat und wird nie exportiert | 3dbf86c47af55b18
