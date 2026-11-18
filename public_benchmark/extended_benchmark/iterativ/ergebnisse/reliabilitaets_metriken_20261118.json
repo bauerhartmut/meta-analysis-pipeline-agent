@@ -1,0 +1,39 @@
+{
+  "auftraege": 699,
+  "zeilen_mit_versuchsspur": 0,
+  "job_status": {
+    "completed": 595,
+    "failed": 104,
+    "abgeleitet": 699
+  },
+  "finale_klassen": {
+    "json_kaputt": 1,
+    "length_ohne_ergebnis": 103,
+    "ok": 595
+  },
+  "transportfehler": 0,
+  "erfolg_im_ersten_versuch": null,
+  "erfolg_nach_wiederholung": null,
+  "endgueltig_fehlgeschlagen": 104,
+  "quote_erfolg": 0.8512,
+  "versuche_je_auftrag": null,
+  "http_versuche": null,
+  "wartezeit_s": null,
+  "latenz_s": {
+    "n": 699,
+    "mittel": 20.93,
+    "median": 8.41,
+    "max": 300.03,
+    "p90": 45.64
+  },
+  "tokens": {
+    "gesamt": 1931140,
+    "je_auftrag": 2762.7,
+    "je_erfolgreichem_auftrag": 1860.7
+  },
+  "extraktion": {
+    "mit_zellen": 559,
+    "leere_antworten": 36,
+    "anteil_leer": 0.0515
+  }
+}

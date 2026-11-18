@@ -305,12 +305,19 @@ Planer. Neues Modul `yun_full/jobs.py`, wirksam nur unter `--retry-strategie neu
 3. Crash-Test als Subprozess: Harness schreibt zwei Zeilen, beendet sich mit
    `os._exit(1)`; zweiter Lauf muss die zwei überspringen und den Rest schreiben.
 
-**P4 — Zuverlässigkeitsmetriken (`yun_full/reliabilitaets_metriken.py`)**
-Anfragen, Erfolg im ersten Versuch, Erfolg nach Retry, endgültig fehlgeschlagen,
-Transportfehler als **eine** Kennzahl (Timeout, Verbindungsabbruch), HTTP- und
-JSON-Raten, Retry-Erfolgsquote, mittlere Versuche, Latenz (Mittel/Median),
-Tokens je erfolgreichem Record. Getrennt ausgewiesen:
-technische Zuverlässigkeit und Extraktionsqualität.
+**P4 — Zuverlässigkeitsmetriken (`yun_full/reliabilitaets_metriken.py`) — umgesetzt**
+Liest nur `predictions.jsonl`; kein Netz, keine Datenbank. Ausgegeben werden:
+Aufträge, `completed`/`failed` (samt Zahl der rekonstruierten `job_status`),
+Erfolg im ersten Versuch, Erfolg nach Wiederholung, endgültig fehlgeschlagen,
+**aufgetretene** Transportfehler (jeder Versuch zählt, auch ein geheilter),
+Versuche und HTTP-Versuche je Auftrag (Mittel/Median/Max), Wartezeit gesummt,
+Latenz (Mittel/Median/p90), Tokens gesamt und je erfolgreichem Auftrag. Getrennt
+davon steht die Extraktion: Aufträge mit Zellen und leere Antworten ohne
+Fehlerklasse. Fehlt die Versuchsspur (Läufe unter `alt`), sind die
+Retry-Kennzahlen `None`, nicht 0; der Bericht nennt den Grund.
+Artefakt zum Stand: `iterativ/ergebnisse/reliabilitaets_metriken_20261118.json`
+und `.md` (GLM, Lesekopie: 699 Aufträge, 595/104, Erfolgsquote 0,8512,
+1.931.140 Tokens, 559 mit Zellen, 36 leer, keine Versuchsspur).
 
 **P5 — Validierung an Yun-699 (erst nach Nachtlauf und Nachzug)**
 1. Endgültige Zahl der technischen Ausfälle aus der dann aktuellen Datei.
