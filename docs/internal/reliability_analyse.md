@@ -378,9 +378,16 @@ Tokenverbrauch schwankt stark (443 → 1.195 bei `yun2024:698`). Bericht:
 6. Auswertung vorbereitet (offline, noch ohne Lauf): `yun_full/werte_p5_aus.py`
    stellt die künftigen Zeilen aus `runs/yun699_p5_24000_20261118` je
    `record_id` gegen die 103 Ausfallzeilen, zählt je Record Rettung, Zellgewinn
-   und die adressierten Goldzellen und führt `yun2024:653` getrennt als nicht
+   und die adressierten Goldzellen    und führt `yun2024:653` getrennt als nicht
    bewertbar. Die Zellzaehlung ist eine grobe Selbstpruefung (Feld und Arm, Wert
-   auf 1e-6), nicht die offizielle Bewertung. Nullprobe gegen die eigene
+   auf 1e-6), nicht die offizielle Bewertung. Sie läuft doppelt: einmal großzügig
+   über Feld und Arm, einmal streng zusätzlich über die Zeitpunkt-Eindeutigkeit je
+   Feld und Arm. Ein echter Zeitpunktvergleich gegen das Gold ist nicht möglich:
+   keine Goldzelle in Yun-699 trägt einen Zeitpunkt (0 von 2.773), und der
+   Record-Zeitpunkt beschreibt nur eine Regel. Die strenge Zahl misst deshalb, ob
+   eine Vorhersage denselben Feld/Arm-Schlüssel über mehrere Zeitpunkte streut —
+   genau der Fall, in dem ein Treffer ohne Zeitpunktprüfung zu gut aussieht.
+   Nullprobe gegen die eigene
    Lesekopie: 0 Rettungen, 0 Zellgewinn, 423 Goldzellen; ohne Laufdatei endet das
    Skript mit Exit 2.
 

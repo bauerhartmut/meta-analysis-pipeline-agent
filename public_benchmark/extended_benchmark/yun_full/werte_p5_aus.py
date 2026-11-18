@@ -8,7 +8,9 @@ nicht bewertbar getrennt gefuehrt.
 
 Die Zellzaehlung ist eine grobe Selbstpruefung (Feld und Arm, Wertvergleich mit
 1e-6), **nicht** die offizielle Bewertung; die kommt aus dem geschuetzten
-Bewertungslauf und wird hier nicht nachgebaut.
+Bewertungslauf und wird hier nicht nachgebaut. Sie wird zweimal gezaehlt: einmal
+nur ueber Feld und Arm und einmal zusaetzlich ueber einen eindeutigen Zeitpunkt
+je Feld und Arm, weil die grosszuegige Variante Rettungen zu gut aussehen laesst.
 
 Aufruf:
     python yun_full/werte_p5_aus.py                          # nach dem Lauf
@@ -61,8 +63,38 @@ def schluessel(zelle: dict[str, Any]) -> tuple[str, str]:
     return (str(zelle.get("field") or ""), str(zelle.get("arm") or "").strip().lower())
 
 
-def deckung(gold: list[dict[str, Any]], vorhergesagt: list[dict[str, Any]]) -> tuple[int, int]:
-    """(adressiert, wertgleich) ueber die Goldzellen; Schluessel ist Feld plus Arm."""
+def zeitpunkt(zelle: dict[str, Any]) -> str:
+    """Zeitpunkt als Vergleichsschluessel: klein, ein Leerzeichen, leer heisst `ohne`.
+
+    Bewusst nur Normalisierung, keine Umschreibung: "1 month" und "30 days"
+    bleiben verschieden, weil eine Umrechnung geraten waere.
+    """
+    text = str(zelle.get("timepoint") or "").strip().lower()
+    return " ".join(text.split()) or "ohne"
+
+
+def mehrdeutig(vorhergesagt: list[dict[str, Any]]) -> int:
+    """Anzahl der Feld/Arm-Gruppen, die mehr als einen Zeitpunkt nennen."""
+    gruppen: dict[tuple[str, str], set[str]] = {}
+    for zelle in vorhergesagt:
+        gruppen.setdefault(schluessel(zelle), set()).add(zeitpunkt(zelle))
+    return sum(1 for werte in gruppen.values() if len(werte) > 1)
+
+
+def _deckung(
+    gold: list[dict[str, Any]],
+    vorhergesagt: list[dict[str, Any]],
+    streng: bool = False,
+) -> tuple[int, int]:
+    """(adressiert, wertgleich) ueber die Goldzellen; Schluessel ist Feld plus Arm.
+
+    Das Gold traegt je Zelle keinen Zeitpunkt (in Yun-699: 0 von 2.773), ein
+    Vergleich Gold gegen Vorhersage ist also nicht moeglich. Mit `streng` wird
+    deshalb geprueft, was am Material pruefbar ist: die Vorhersage muss fuer Feld
+    und Arm **einen einzigen** Zeitpunkt nennen. Streut sie denselben Schluessel
+    ueber mehrere Zeitpunkte, ist der Treffer nicht eindeutig zuzuordnen und
+    zaehlt nicht.
+    """
     nach_schluessel: dict[tuple[str, str], list[dict[str, Any]]] = {}
     for zelle in vorhergesagt:
         nach_schluessel.setdefault(schluessel(zelle), []).append(zelle)
@@ -71,6 +103,8 @@ def deckung(gold: list[dict[str, Any]], vorhergesagt: list[dict[str, Any]]) -> t
         kandidaten = nach_schluessel.get(schluessel(zelle), [])
         if not kandidaten:
             continue
+        if streng and len({zeitpunkt(k) for k in kandidaten}) > 1:
+            continue
         adressiert += 1
         soll = zahl(zelle.get("value"))
         if soll is None:
@@ -78,6 +112,18 @@ def deckung(gold: list[dict[str, Any]], vorhergesagt: list[dict[str, Any]]) -> t
         if any((ist := zahl(k.get("value"))) is not None and abs(ist - soll) < 1e-6 for k in kandidaten):
             wertgleich += 1
     return adressiert, wertgleich
+
+
+def deckung(gold: list[dict[str, Any]], vorhergesagt: list[dict[str, Any]]) -> tuple[int, int]:
+    """(adressiert, wertgleich) ueber Feld und Arm — ohne Zeitpunkt, also grosszuegig."""
+    return _deckung(gold, vorhergesagt)
+
+
+def deckung_mit_zeitpunkt(
+    gold: list[dict[str, Any]], vorhergesagt: list[dict[str, Any]]
+) -> tuple[int, int]:
+    """Wie `deckung`, verlangt aber einen eindeutigen Zeitpunkt je Feld und Arm."""
+    return _deckung(gold, vorhergesagt, streng=True)
 
 
 def status(zeile: dict[str, Any] | None) -> str:
@@ -109,6 +155,7 @@ def auswerten(
         vorher = zellen(alt[rid])
         nachher = zellen(neu_zeile)
         adressiert, wertgleich = deckung(gold, nachher)
+        adressiert_zp, wertgleich_zp = deckung_mit_zeitpunkt(gold, nachher)
         eintrag = {
             "record_id": rid,
             "status": status(neu_zeile),
@@ -119,6 +166,11 @@ def auswerten(
             "goldzellen": len(gold),
             "adressiert": adressiert,
             "wertgleich": wertgleich,
+            "adressiert_zeitpunkt": adressiert_zp,
+            "wertgleich_zeitpunkt": wertgleich_zp,
+            "goldzellen_mit_zeitpunkt": sum(1 for z in gold if zeitpunkt(z) != "ohne"),
+            "zellen_neu_mit_zeitpunkt": sum(1 for z in nachher if zeitpunkt(z) != "ohne"),
+            "zeitpunkt_mehrdeutig": mehrdeutig(nachher),
             "tokens_alt": (alt[rid].get("completion_tokens") or 0),
             "tokens_neu": (neu_zeile or {}).get("completion_tokens") or 0,
             "reasoning_chars_neu": (neu_zeile or {}).get("reasoning_chars") or 0,
@@ -144,6 +196,11 @@ def auswerten(
         "goldzellen_bewertbar": summe(bewertbar, "goldzellen"),
         "adressiert": summe(bewertbar, "adressiert"),
         "wertgleich": summe(bewertbar, "wertgleich"),
+        "adressiert_zeitpunkt": summe(bewertbar, "adressiert_zeitpunkt"),
+        "wertgleich_zeitpunkt": summe(bewertbar, "wertgleich_zeitpunkt"),
+        "goldzellen_mit_zeitpunkt": summe(bewertbar, "goldzellen_mit_zeitpunkt"),
+        "zellen_neu_mit_zeitpunkt": summe(bewertbar, "zellen_neu_mit_zeitpunkt"),
+        "zeitpunkt_mehrdeutig": summe(bewertbar, "zeitpunkt_mehrdeutig"),
         "tokens_neu": summe(bewertbar + nicht_bewertbar, "tokens_neu"),
     }
 
@@ -185,12 +242,43 @@ def bericht(werte: dict[str, Any], neu_pfad: str, nullprobe: bool) -> str:
         f"| Zellen nachher | {werte['zellen_neu']} |",
         f"| Zellgewinn | {werte['zellgewinn']} |",
         f"| Goldzellen der bewertbaren | {werte['goldzellen_bewertbar']} |",
-        f"| davon adressiert (Feld und Arm) | {werte['adressiert']} |",
-        f"| davon wertgleich (1e-6) | {werte['wertgleich']} |",
+        f"| davon mit angegebenem Zeitpunkt | {werte['goldzellen_mit_zeitpunkt']} |",
+        f"| vorhergesagte Zellen mit Zeitpunkt | {werte['zellen_neu_mit_zeitpunkt']} |",
+        f"| adressiert, Feld und Arm (grosszuegig) | {werte['adressiert']} |",
+        f"| **adressiert, Feld, Arm und eindeutiger Zeitpunkt** | **{werte['adressiert_zeitpunkt']}** |",
+        f"| wertgleich, Feld und Arm (grosszuegig) | {werte['wertgleich']} |",
+        f"| **wertgleich, Feld, Arm und eindeutiger Zeitpunkt** | **{werte['wertgleich_zeitpunkt']}** |",
+        f"| Feld/Arm-Gruppen mit mehreren Zeitpunkten | {werte['zeitpunkt_mehrdeutig']} |",
         f"| Completion-Tokens neu | {werte['tokens_neu']} |",
         "",
         "Die Zellzaehlung ist eine grobe Selbstpruefung, nicht die offizielle "
         "Bewertung; Recall und MAE kommen aus dem geschuetzten Bewertungslauf.",
+        "",
+        f"Die grosszuegige Zaehlung erkennt eine Goldzelle schon an Feld und Arm. "
+        f"Die fett gesetzte Zaehlung verlangt zusaetzlich einen eindeutigen Zeitpunkt "
+        "(normalisiert: Kleinschreibung, ein Leerzeichen, leer gleich `ohne`). Ein "
+        "Vergleich Gold-Zeitpunkt gegen Vorhersage-Zeitpunkt ist nicht moeglich: das "
+        "Gold traegt je Zelle keinen, und der Record-Zeitpunkt beschreibt in Yun-699 "
+        "nur eine Regel.",
+        "",
+    ]
+    if werte["adressiert"] != werte["adressiert_zeitpunkt"]:
+        zeilen += [
+            f"Abweichung: {werte['adressiert'] - werte['adressiert_zeitpunkt']} adressierte und "
+            f"{werte['wertgleich'] - werte['wertgleich_zeitpunkt']} wertgleiche Treffer haengen an "
+            f"{werte['zeitpunkt_mehrdeutig']} mehrdeutigen Feld/Arm-Gruppen.",
+        ]
+    else:
+        zeilen += [
+            f"Beide Zaehlungen stimmen ueberein: keine der {len(werte['bewertbar'])} "
+            "bewertbaren Zeilen streut einen Feld/Arm-Schluessel ueber mehrere Zeitpunkte.",
+        ]
+    zeilen += [
+        "",
+        f"{werte['zellen_neu_mit_zeitpunkt']} vorhergesagte Zellen tragen einen Zeitpunkt; "
+        "das Gold kann ihn weder bestaetigen noch widerlegen.",
+    ]
+    zeilen += [
     ]
     if nicht:
         zeilen += ["", "## Nicht bewertbar", ""]
@@ -207,13 +295,14 @@ def bericht(werte: dict[str, Any], neu_pfad: str, nullprobe: bool) -> str:
             "",
             "## Gerettete Records",
             "",
-            "| Record | Zellen | Goldzellen | adressiert | wertgleich | Tokens neu |",
-            "|---|---|---|---|---|---|",
+            "| Record | Zellen | Goldzellen | adressiert F/A | adressiert +eindeutiger ZP | wertgleich F/A | wertgleich +eindeutiger ZP | Tokens neu |",
+            "|---|---|---|---|---|---|---|---|",
         ]
         for e in gerettet:
             zeilen.append(
                 f"| `{e['record_id']}` | {e['zellen_neu']} | {e['goldzellen']} | "
-                f"{e['adressiert']} | {e['wertgleich']} | {e['tokens_neu']} |"
+                f"{e['adressiert']} | {e['adressiert_zeitpunkt']} | {e['wertgleich']} | "
+                f"{e['wertgleich_zeitpunkt']} | {e['tokens_neu']} |"
             )
     offen = [e for e in bewertbar if e["status"] in {"weiter_ausfall", "fertig_ohne_zellen", "fehlt"}]
     if offen:

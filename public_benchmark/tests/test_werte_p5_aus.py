@@ -116,9 +116,72 @@ def test_fertig_ohne_zellen_ist_keine_rettung() -> None:
     assert werte["status"]["gerettet"] == 0
 
 
+def test_mehrdeutiger_zeitpunkt_faellt_aus_der_strengen_zaehlung() -> None:
+    gold = [
+        {"field": "intervention_mean", "arm": "intervention", "value": 0.77},
+        {"field": "comparator_mean", "arm": "comparator", "value": 0.04},
+    ]
+    vorhergesagt = [
+        {"field": "intervention_mean", "arm": "intervention", "value": 0.77, "timepoint": "30 days"},
+        # derselbe Feld/Arm-Schluessel zweimal, verschiedene Zeitpunkte
+        {"field": "comparator_mean", "arm": "comparator", "value": 0.04, "timepoint": "30 days"},
+        {"field": "comparator_mean", "arm": "comparator", "value": 0.04, "timepoint": "60 days"},
+    ]
+    assert p5.deckung(gold, vorhergesagt) == (2, 2)
+    assert p5.deckung_mit_zeitpunkt(gold, vorhergesagt) == (1, 1)
+    assert p5.mehrdeutig(vorhergesagt) == 1
+
+
+def test_schreibweise_gilt_nicht_als_mehrdeutig() -> None:
+    gold = [{"field": "f", "arm": "intervention", "value": 1.0}]
+    vorhergesagt = [
+        {"field": "f", "arm": "intervention", "value": 1.0, "timepoint": " 30 Days "},
+        {"field": "f", "arm": "intervention", "value": 1.0, "timepoint": "30 days"},
+    ]
+    assert p5.mehrdeutig(vorhergesagt) == 0
+    assert p5.deckung_mit_zeitpunkt(gold, vorhergesagt) == (1, 1)
+
+
+def test_fehlender_zeitpunkt_ist_eindeutig() -> None:
+    gold = [{"field": "f", "arm": "intervention", "value": 1.0}]
+    vorhergesagt = [{"field": "f", "arm": "intervention", "value": 1.0}]
+    assert p5.mehrdeutig(vorhergesagt) == 0
+    assert p5.deckung_mit_zeitpunkt(gold, vorhergesagt) == (1, 1)
+
+
+def test_auswertung_weist_beide_varianten_aus() -> None:
+    alt = [_alt("a")]
+    neu = [_neu("a", [
+        {"field": "intervention_mean", "arm": "intervention", "value": 0.77, "timepoint": "30 days"},
+        {"field": "comparator_mean", "arm": "comparator", "value": 0.04, "timepoint": "60 days"},
+        {"field": "comparator_mean", "arm": "comparator", "value": 0.04, "timepoint": "90 days"},
+    ])]
+    records = {
+        "a": {"record_id": "a", "gold": {"cells": [
+            {"field": "intervention_mean", "arm": "intervention", "value": 0.77},
+            {"field": "comparator_mean", "arm": "comparator", "value": 0.04},
+        ]}}
+    }
+    werte = p5.auswerten(alt, neu, records)
+
+    assert werte["adressiert"] == 2
+    assert werte["adressiert_zeitpunkt"] == 1
+    assert werte["wertgleich"] == 2
+    assert werte["wertgleich_zeitpunkt"] == 1
+    assert werte["zeitpunkt_mehrdeutig"] == 1
+    assert werte["goldzellen_mit_zeitpunkt"] == 0
+    assert werte["zellen_neu_mit_zeitpunkt"] == 3
+
+    text = p5.bericht(werte, "neu.jsonl", nullprobe=False)
+    assert "eindeutiger Zeitpunkt" in text
+    assert "Abweichung:" in text
+    assert "adressiert +eindeutiger ZP" in text
+
+
 def test_bericht_nennt_offene_und_gerettete() -> None:
     alt, neu, records = _bestand()
     text = p5.bericht(p5.auswerten(alt, neu, records), "neu.jsonl", nullprobe=False)
     assert "Rettungsquote auf den **2 bewertbaren**" in text
     assert "`a`" in text and "weiter ausgefallen" in text
     assert "Nicht bewertbar" in text
+    assert "Beide Zaehlungen stimmen ueberein" in text

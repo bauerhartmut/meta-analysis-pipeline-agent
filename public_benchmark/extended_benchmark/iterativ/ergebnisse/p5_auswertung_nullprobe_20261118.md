@@ -23,11 +23,22 @@ Rettungsquote auf den **102 bewertbaren** Records: **0 von 102** (0.0%)
 | Zellen nachher | 0 |
 | Zellgewinn | 0 |
 | Goldzellen der bewertbaren | 423 |
-| davon adressiert (Feld und Arm) | 0 |
-| davon wertgleich (1e-6) | 0 |
+| davon mit angegebenem Zeitpunkt | 0 |
+| vorhergesagte Zellen mit Zeitpunkt | 0 |
+| adressiert, Feld und Arm (grosszuegig) | 0 |
+| **adressiert, Feld, Arm und eindeutiger Zeitpunkt** | **0** |
+| wertgleich, Feld und Arm (grosszuegig) | 0 |
+| **wertgleich, Feld, Arm und eindeutiger Zeitpunkt** | **0** |
+| Feld/Arm-Gruppen mit mehreren Zeitpunkten | 0 |
 | Completion-Tokens neu | 824000 |
 
 Die Zellzaehlung ist eine grobe Selbstpruefung, nicht die offizielle Bewertung; Recall und MAE kommen aus dem geschuetzten Bewertungslauf.
+
+Die grosszuegige Zaehlung erkennt eine Goldzelle schon an Feld und Arm. Die fett gesetzte Zaehlung verlangt zusaetzlich einen eindeutigen Zeitpunkt (normalisiert: Kleinschreibung, ein Leerzeichen, leer gleich `ohne`). Ein Vergleich Gold-Zeitpunkt gegen Vorhersage-Zeitpunkt ist nicht moeglich: das Gold traegt je Zelle keinen, und der Record-Zeitpunkt beschreibt in Yun-699 nur eine Regel.
+
+Beide Zaehlungen stimmen ueberein: keine der 102 bewertbaren Zeilen streut einen Feld/Arm-Schluessel ueber mehrere Zeitpunkte.
+
+0 vorhergesagte Zellen tragen einen Zeitpunkt; das Gold kann ihn weder bestaetigen noch widerlegen.
 
 ## Nicht bewertbar
 
