@@ -11,8 +11,8 @@ versionierte Quelle ist `yun_full/records/yun699.jsonl`. Fuer eine Messung unter
 P5 muss vorher feststehen, welche Records woher kommen.
 
 Aufruf:
-    python yun_full/pruefe_aufloesbarkeit.py                     # Lesekopie, glm
-    python yun_full/pruefe_aufloesbarkeit.py --schreibe-records runs/_ausfaelle.jsonl
+    python yun_full/pruefe_aufloesbarkeit.py            # Lesekopie, glm
+    python yun_full/pruefe_aufloesbarkeit.py --modell qwen30
 """
 
 from __future__ import annotations
@@ -119,7 +119,6 @@ def main() -> int:
     parser.add_argument("--modell", default="glm")
     parser.add_argument("--records-dir", default=str(RECORDS))
     parser.add_argument("--zusatz", nargs="*", default=[str(p) for p in ZUSATZ])
-    parser.add_argument("--schreibe-records", default="", help="Ausfall-Records hierher schreiben")
     parser.add_argument("--json", default="")
     parser.add_argument("--md", default="")
     args = parser.parse_args()
@@ -144,17 +143,6 @@ def main() -> int:
         ],
         "gruppen": pruefe(zeilen, direkt, zusatz),
     }
-
-    if args.schreibe_records:
-        ausfaelle = [z["record_id"] for z in zeilen if z.get("fehlerklasse")]
-        alle = {**zusatz, **direkt}
-        vorhanden = [alle[rid][1] for rid in ausfaelle if rid in alle]
-        ziel = Path(args.schreibe_records)
-        ziel.parent.mkdir(parents=True, exist_ok=True)
-        ziel.write_text(
-            "\n".join(json.dumps(r, ensure_ascii=False) for r in vorhanden) + "\n", encoding="utf-8"
-        )
-        bericht["geschrieben"] = {"pfad": str(ziel), "records": len(vorhanden), "erwartet": len(ausfaelle)}
 
     a, e = bericht["gruppen"]["ausfall"], bericht["gruppen"]["erfolg"]
     zeilen_md = [
@@ -184,9 +172,6 @@ def main() -> int:
             "",
             "Ohne Goldzellen (nicht bewertbar): " + ", ".join(a["beispiele_ohne_gold"]),
         ]
-    if bericht.get("geschrieben"):
-        g = bericht["geschrieben"]
-        zeilen_md += ["", f"Record-Datei geschrieben: `{g['pfad']}` mit {g['records']} von {g['erwartet']} Records."]
 
     if args.json:
         Path(args.json).parent.mkdir(parents=True, exist_ok=True)

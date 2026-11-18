@@ -368,6 +368,13 @@ Tokenverbrauch schwankt stark (443 → 1.195 bei `yun2024:698`). Bericht:
    konkurrierenden Dateien.
 4. Vergleichstabelle alt/neu auf **denselben** Records und Goldzellen; Ergebnis in
    `docs/internal/reliability_validierung.md`.
+5. Vorbereitung (offline, erledigt): `yun_full/bereite_p5_vor.py` erzeugt aus der
+   Lesekopie die Auswahl der 103 ids gegen `yun_full/records/yun699.jsonl` samt
+   fertiger Kommandozeile. Ergebnis: 103 von 103 Records vorhanden, alle mit
+   Dokumentdatei; 102 sind bewertbar und tragen 423 Goldzellen, `yun2024:653`
+   hat keine und fällt aus Recall und MAE. Der Trockenlauf derselben Zeile wählt
+   103 Aufträge und sendet nichts. Artefakt:
+   `iterativ/ergebnisse/p5_vorbereitung_20261118.json` und `.md`.
 
 ## 7. Erwartbare Wirkung, ehrlich beziffert
 

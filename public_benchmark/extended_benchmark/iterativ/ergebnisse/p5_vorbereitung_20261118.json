@@ -1,0 +1,533 @@
+{
+  "modell": "glm",
+  "budget": 24000,
+  "run_id": "yun699_p5_24000_20261118",
+  "ausfaelle": 103,
+  "ids": [
+    "yun2024:6",
+    "yun2024:120",
+    "yun2024:30",
+    "yun2024:228",
+    "yun2024:32",
+    "yun2024:52",
+    "yun2024:54",
+    "yun2024:68",
+    "yun2024:84",
+    "yun2024:85",
+    "yun2024:86",
+    "yun2024:110",
+    "yun2024:113",
+    "yun2024:114",
+    "yun2024:117",
+    "yun2024:119",
+    "yun2024:128",
+    "yun2024:130",
+    "yun2024:133",
+    "yun2024:136",
+    "yun2024:137",
+    "yun2024:149",
+    "yun2024:151",
+    "yun2024:152",
+    "yun2024:154",
+    "yun2024:158",
+    "yun2024:159",
+    "yun2024:160",
+    "yun2024:162",
+    "yun2024:161",
+    "yun2024:163",
+    "yun2024:164",
+    "yun2024:169",
+    "yun2024:171",
+    "yun2024:173",
+    "yun2024:174",
+    "yun2024:178",
+    "yun2024:183",
+    "yun2024:203",
+    "yun2024:212",
+    "yun2024:204",
+    "yun2024:213",
+    "yun2024:214",
+    "yun2024:215",
+    "yun2024:232",
+    "yun2024:233",
+    "yun2024:251",
+    "yun2024:252",
+    "yun2024:269",
+    "yun2024:268",
+    "yun2024:270",
+    "yun2024:273",
+    "yun2024:291",
+    "yun2024:304",
+    "yun2024:313",
+    "yun2024:344",
+    "yun2024:347",
+    "yun2024:349",
+    "yun2024:356",
+    "yun2024:357",
+    "yun2024:367",
+    "yun2024:362",
+    "yun2024:376",
+    "yun2024:380",
+    "yun2024:384",
+    "yun2024:405",
+    "yun2024:420",
+    "yun2024:421",
+    "yun2024:427",
+    "yun2024:447",
+    "yun2024:446",
+    "yun2024:448",
+    "yun2024:449",
+    "yun2024:450",
+    "yun2024:451",
+    "yun2024:523",
+    "yun2024:525",
+    "yun2024:533",
+    "yun2024:557",
+    "yun2024:556",
+    "yun2024:558",
+    "yun2024:559",
+    "yun2024:582",
+    "yun2024:601",
+    "yun2024:602",
+    "yun2024:616",
+    "yun2024:615",
+    "yun2024:617",
+    "yun2024:624",
+    "yun2024:626",
+    "yun2024:625",
+    "yun2024:653",
+    "yun2024:662",
+    "yun2024:668",
+    "yun2024:672",
+    "yun2024:673",
+    "yun2024:671",
+    "yun2024:674",
+    "yun2024:677",
+    "yun2024:678",
+    "yun2024:686",
+    "yun2024:685",
+    "yun2024:687"
+  ],
+  "bewertbar": [
+    {
+      "record_id": "yun2024:6",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:120",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:30",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:228",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:32",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:52",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:54",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:68",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:84",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:85",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:86",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:110",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:113",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:114",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:117",
+      "goldzellen": 3
+    },
+    {
+      "record_id": "yun2024:119",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:128",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:130",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:133",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:136",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:137",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:149",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:151",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:152",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:154",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:158",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:159",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:160",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:162",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:161",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:163",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:164",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:169",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:171",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:173",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:174",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:178",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:183",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:203",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:212",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:204",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:213",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:214",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:215",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:232",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:233",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:251",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:252",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:269",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:268",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:270",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:273",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:291",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:304",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:313",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:344",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:347",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:349",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:356",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:357",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:367",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:362",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:376",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:380",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:384",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:405",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:420",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:421",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:427",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:447",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:446",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:448",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:449",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:450",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:451",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:523",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:525",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:533",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:557",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:556",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:558",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:559",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:582",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:601",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:602",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:616",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:615",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:617",
+      "goldzellen": 4
+    },
+    {
+      "record_id": "yun2024:624",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:626",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:625",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:662",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:668",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:672",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:673",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:671",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:674",
+      "goldzellen": 6
+    },
+    {
+      "record_id": "yun2024:677",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:678",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:686",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:685",
+      "goldzellen": 2
+    },
+    {
+      "record_id": "yun2024:687",
+      "goldzellen": 2
+    }
+  ],
+  "nicht_bewertbar": [
+    {
+      "record_id": "yun2024:653",
+      "goldzellen": 0,
+      "grund": "keine Goldzellen"
+    }
+  ],
+  "goldzellen_bewertbar": 423,
+  "records_datei": "public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl",
+  "in_records_datei_fehlt": [],
+  "ohne_dokumentdatei": [],
+  "befehl": ".venv/bin/python public_benchmark/extended_benchmark/run_extended_extraction.py --records public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl --split \"\" --ids yun2024:6,yun2024:120,yun2024:30,yun2024:228,yun2024:32,yun2024:52,yun2024:54,yun2024:68,yun2024:84,yun2024:85,yun2024:86,yun2024:110,yun2024:113,yun2024:114,yun2024:117,yun2024:119,yun2024:128,yun2024:130,yun2024:133,yun2024:136,yun2024:137,yun2024:149,yun2024:151,yun2024:152,yun2024:154,yun2024:158,yun2024:159,yun2024:160,yun2024:162,yun2024:161,yun2024:163,yun2024:164,yun2024:169,yun2024:171,yun2024:173,yun2024:174,yun2024:178,yun2024:183,yun2024:203,yun2024:212,yun2024:204,yun2024:213,yun2024:214,yun2024:215,yun2024:232,yun2024:233,yun2024:251,yun2024:252,yun2024:269,yun2024:268,yun2024:270,yun2024:273,yun2024:291,yun2024:304,yun2024:313,yun2024:344,yun2024:347,yun2024:349,yun2024:356,yun2024:357,yun2024:367,yun2024:362,yun2024:376,yun2024:380,yun2024:384,yun2024:405,yun2024:420,yun2024:421,yun2024:427,yun2024:447,yun2024:446,yun2024:448,yun2024:449,yun2024:450,yun2024:451,yun2024:523,yun2024:525,yun2024:533,yun2024:557,yun2024:556,yun2024:558,yun2024:559,yun2024:582,yun2024:601,yun2024:602,yun2024:616,yun2024:615,yun2024:617,yun2024:624,yun2024:626,yun2024:625,yun2024:653,yun2024:662,yun2024:668,yun2024:672,yun2024:673,yun2024:671,yun2024:674,yun2024:677,yun2024:678,yun2024:686,yun2024:685,yun2024:687 --models glm --workers 2 --max-tokens 24000 --run-id yun699_p5_24000_20261118 --retry-strategie neu --quelle p5_24000"
+}
