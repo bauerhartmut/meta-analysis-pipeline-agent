@@ -1,0 +1,312 @@
+{
+  "created": "2026-11-18T09:50:53+00:00",
+  "role": "dev",
+  "target": 40,
+  "frozen": true,
+  "records_file": "public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl",
+  "records_sha256": "c22ed3fb42dbaaff7051a89cdb327c4b250a134db0a62a19d3877d5ba311c0b1",
+  "selection_method": "Round-Robin ueber Schwierigkeitsschichten, Reihenfolge je Schicht durch sha256(Schicht:Tabellen-ID); keine Goldwerte in der Auswahl.",
+  "n_candidates": 26,
+  "n_tables": 6,
+  "require_bound": true,
+  "arm_order_fallback": false,
+  "gold_reachable_total": 12,
+  "strata_order": [
+    "einfach",
+    "mittel",
+    "komplex",
+    "sehr_komplex",
+    "mehrarm",
+    "mehrzeitpunkt",
+    "mehrstufiger_kopf",
+    "fussnoten",
+    "komplexe_pdf",
+    "ohne_armzuordnung"
+  ],
+  "strata_counts": {
+    "einfach": 2,
+    "komplex": 3,
+    "mehrarm": 2,
+    "mehrstufiger_kopf": 4,
+    "fussnoten": 2,
+    "sehr_komplex": 1,
+    "mehrzeitpunkt": 2
+  },
+  "record_ids": [
+    "yun2024:187",
+    "yun2024:188",
+    "yun2024:261",
+    "yun2024:263",
+    "yun2024:5"
+  ],
+  "n_records": 5,
+  "n_documents": 3,
+  "max_per_document": 2,
+  "max_per_record": 3,
+  "tables": [
+    {
+      "candidate_id": "yun2024:263|PMC5771543:T6",
+      "table_id": "PMC5771543:T6",
+      "doc_id": "PMC5771543",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5771543.md",
+      "record_ids": [
+        "yun2024:263"
+      ],
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "parser": "pandoc-rule/1",
+      "rows": 16,
+      "columns": 5,
+      "complexity": {
+        "score": 0.205,
+        "class": "einfach",
+        "features": {
+          "n_rows": 16,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 64
+        },
+        "drivers": [
+          "16 Datenzeilen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:5|PMC1216327:T2",
+      "table_id": "PMC1216327:T2",
+      "doc_id": "PMC1216327",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC1216327.md",
+      "record_ids": [
+        "yun2024:5"
+      ],
+      "caption": "Laboratory Data of Patients on Admission*",
+      "parser": "pandoc-rule/1",
+      "rows": 9,
+      "columns": 7,
+      "complexity": {
+        "score": 0.63,
+        "class": "komplex",
+        "features": {
+          "n_rows": 9,
+          "n_data_columns": 6,
+          "n_columns": 7,
+          "n_header_levels": 2,
+          "n_group_headers": 3,
+          "n_column_groups": 3,
+          "n_footnotes": 4,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 54
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "4 Fussnoten",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrarm",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 4,
+      "gold_cells": 6,
+      "gold_reachable": 4
+    },
+    {
+      "candidate_id": "yun2024:5|PMC1216327:T3",
+      "table_id": "PMC1216327:T3",
+      "doc_id": "PMC1216327",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC1216327.md",
+      "record_ids": [
+        "yun2024:5"
+      ],
+      "caption": "Daily intake of patients throughout the study (Kcal/Kg/day)",
+      "parser": "pandoc-rule/1",
+      "rows": 8,
+      "columns": 8,
+      "complexity": {
+        "score": 0.6518,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 8,
+          "n_data_columns": 7,
+          "n_columns": 8,
+          "n_header_levels": 2,
+          "n_group_headers": 3,
+          "n_column_groups": 3,
+          "n_footnotes": 5,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 3,
+          "has_timepoints": false,
+          "n_data_cells": 56
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "5 Fussnoten",
+          "3 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrarm",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 4,
+      "gold_cells": 6,
+      "gold_reachable": 4
+    },
+    {
+      "candidate_id": "yun2024:187|PMC5244530:T1",
+      "table_id": "PMC5244530:T1",
+      "doc_id": "PMC5244530",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5244530.md",
+      "record_ids": [
+        "yun2024:187"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 4,
+      "columns": 5,
+      "complexity": {
+        "score": 0.4625,
+        "class": "komplex",
+        "features": {
+          "n_rows": 4,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 3,
+          "has_timepoints": true,
+          "n_data_cells": 14
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "gold_cells": 2,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:188|PMC5244530:T1",
+      "table_id": "PMC5244530:T1",
+      "doc_id": "PMC5244530",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5244530.md",
+      "record_ids": [
+        "yun2024:188"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 4,
+      "columns": 5,
+      "complexity": {
+        "score": 0.4625,
+        "class": "komplex",
+        "features": {
+          "n_rows": 4,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 3,
+          "has_timepoints": true,
+          "n_data_cells": 14
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "gold_cells": 2,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:261|PMC5771543:T6",
+      "table_id": "PMC5771543:T6",
+      "doc_id": "PMC5771543",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5771543.md",
+      "record_ids": [
+        "yun2024:261"
+      ],
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "parser": "pandoc-rule/1",
+      "rows": 16,
+      "columns": 5,
+      "complexity": {
+        "score": 0.205,
+        "class": "einfach",
+        "features": {
+          "n_rows": 16,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 64
+        },
+        "drivers": [
+          "16 Datenzeilen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "gold_cells": 4,
+      "gold_reachable": 1
+    }
+  ]
+}

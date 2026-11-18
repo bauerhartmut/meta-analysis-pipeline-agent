@@ -1013,3 +1013,44 @@ bleibt die erste Schicht; Job-Limits nur zweite Schicht auf Windows.
 'smoke test failed: timeout'), Sandbox-Suiten gruen; Fokus-Lauf
 185 passed, 2 skipped (test_simulations + test_win_job +
 test_components). Commits 81ee6f8 + d05f46e (Briefing-Satz), gepusht.
+
+## Sprint 32 (18.11.2026): Table Decomposition & Reconstruction Engine
+
+**Lieferumfang:** neues Paket `research_agent/table_decomposition/` (model.py,
+parser.py, semantics.py, complexity.py, crops.py, strategies.py, backend.py,
+reconstruct.py, validation.py, engine.py). Zerlegt wissenschaftliche Tabellen in
+kontextbewahrende Einheiten (Verfahren A Full-Table, B Vertical, C Horizontal,
+D Bidirectional, E Adaptive Recursive mit Nachlese nur fuer unbelegte oder
+konfliktiaere Zellen), extrahiert je Einheit ueber ein modellunabhaengiges
+Backend-Protocol und setzt die Teilresultate zu einer Tabelle zusammen
+(agreed/single/conflict, Konflikte werden nie ueberschrieben). Jede Zelle bleibt
+ueber table_id, doc_id, row/col, Seite, Einheit, Verfahren, Richtung, Modell und
+Zitat zurueckfuehrbar. Aktivierung optional via `table_decomposition: true`
+(Konfiguration oder `TABLE_DECOMPOSITION`), Pipeline-Haken
+`augment_prompt_text` haengt strukturierte Tabellenansichten an, ohne den
+Originaltext zu veraendern. Keine geschuetzte Kerndatei angefasst.
+
+**Befund (Parser):** zwei echte Defekte gefunden und behoben. (1) Header-Spannen
+ueberlappten, wenn Gruppenkoepfe um eine Spalte versetzt sind - jetzt
+Deduplizierung doppelter Blattanker plus gleichmaessige Teilung, Nicht-Teilbares
+wird als Irregularitaet markiert. (2) Fuehrende Labelspalten mit Ziffern
+("Visit 5:", "5 min") wurden als Datenspalten gelesen; neu entscheidet neben der
+Ziffernquote auch die Nicht-Lesbarkeit als Zahl bei leerem Kopf. Damit
+verschwinden 395 Warnungen `zeilenlabel_fehlt` je Lauf.
+
+**Benchmark:** `public_benchmark/extended_benchmark/table_decomposition/`
+(select_tables, run_benchmark, evaluate, report). Kandidat ist ein Paar
+(Record, Tabelle); Auswahl nur nach Struktur (Anzahl belegter Zielspalten,
+Hash), geschichtet, mit Dokument- und Record-Deckel, eingefroren mit
+`records_sha256`. Test: 60 Tabellen aus 537 Kandidaten (58 Records, 31
+Dokumente). Offline gemessen: strukturell 60/60 komplett fuer alle Verfahren,
+0 Fehler; Aufwand gegenueber A 1,62x (B), 3,95x (C), 4,83x (D), 3,12x (E).
+Armzuordnung ist der Engpass: nur 76 von 268 Goldzellen (28,4 %) sind ueber eine
+ausgewaehlte Tabelle erreichbar, mit Reihenfolge-Annahme 84 (31,3 %).
+
+**Tests:** `research_agent/tests/test_table_decomposition.py` (30) plus
+`public_benchmark/tests/test_table_decomposition_benchmark.py` (4) - 34 gruen.
+
+**Nicht gemacht:** Modelllauf (Precision/Recall/Kosten). Er braucht
+ausdrueckliche Freigabe und Guthaben; `run_benchmark.py` verlangt dafuer
+`--allow-network` und `--confirm-kosten`.
