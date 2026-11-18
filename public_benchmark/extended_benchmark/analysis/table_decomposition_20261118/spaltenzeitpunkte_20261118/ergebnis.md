@@ -1,7 +1,8 @@
 # Spaltenzeitpunkte: was die vier Tabellen heute liefern
 
-Offline-Messung, 2026-11-18. Read-only: keine Produktionsdatei, kein Gold und
-keine eingefrorene Messung veraendert, `primary_tables` **nicht** verdrahtet.
+Offline-Messung, 2026-11-18 (neu gerechnet mit normalisiertem Wertvergleich).
+Read-only: keine Produktionsdatei, kein Gold und keine eingefrorene Messung
+veraendert, `primary_tables` **nicht** verdrahtet.
 
 Werkzeug: `public_benchmark/extended_benchmark/table_decomposition/diagnose_spaltenzeitpunkte.py`
 Rohdaten: `messung.json` (dieses Verzeichnis)
@@ -18,6 +19,15 @@ traegt - vier Paare aus zwei Tabellen:
 
 Beide Tabellen haben **keine** Zeilenzeitpunkte (`_timepoint_key` leer) - die
 Zeitpunkte stehen ausschliesslich in den Kopfbaendern.
+
+**Wertvergleich normalisiert:** Dezimalkomma (`4,1`) gilt wie `4.1`, Unicode-
+und doppelte Minuszeichen (`--0.38`) wie `-0.38`, `1` wie `1.0`. Eine Zelle mit
+Verbundwert (`4.1 ±1.0`, `--0.38 (0.37)`) wird auf **alle** ihre Zahlen geprueft,
+damit die Streuung nicht an der Schreibweise scheitert. Sonderfall Null: eine
+Ereigniszahl `0` zaehlt nur, wenn sie als Ganzzahl `0` gedruckt ist, nicht als
+Dezimalnull `0.00` - sonst meldet die Messung Treffer, die dort nicht stehen.
+Stichprobengroessen werden zusaetzlich in den Kopfbändern (`(n=16)`) gesucht,
+weil sie dort und nicht in Zellen stehen.
 
 ## 1. Was heute geliefert wird
 
@@ -56,33 +66,40 @@ Dazu kommt eine Messgrenze: die Goldzellen tragen **kein Zeitpunktfeld**
 Zeitpunkt, sonst letzter"). Ein Nutzen je Zeitpunkt waere auf dieser Auswahl
 also nicht einmal bewertbar.
 
-## 3. Gold-Abgleich: wo die Werte wirklich stehen
+## 3. Gold-Abgleich: fast jeder Wert steht gedruckt da
 
-18 Goldzellen, davon 4 mit erreichbarem Feld und 4 mit woertlich gedrucktem
-Wert. Die zwei Muster:
+18 Goldzellen, davon **4** mit erreichbarem Feld und **16** mit woertlich
+gedrucktem Wert. Nur die beiden Ereigniszahlen (`0` und `2`) stehen in dieser
+Tabelle gar nicht - sie stammen aus der "at risk"-Auswertung, nicht aus `T2`.
 
-| Paar | Goldzelle | Wert gedruckt in | Befund |
+| Paar | Goldzelle | gedruckt in | Befund |
 | --- | --- | --- | --- |
-| `PMC5777419:T2` / `682` | `intervention_mean` 4.1 | `r0/c9`, `r0/c12`, `r0/c13` | Wert steht in Zeile 0 (`CAL (mm)`), nicht in der Outcome-Zeile `attachment gain`; Zelle `4.1 ±1.0` traegt Mittel und Streuung zusammen |
-| `PMC5777419:T2` / `682` | `comparator_mean` 4.3 | `r0/c14` | ebenso |
-| `PMC3278655:T2` / `390` | `intervention_mean` -0.38 | `r3/c7` | Wert steht in `Superior/inferior translation`, nicht in der als `subsidence` gesuchten Zeile; Zelle `--0.38 (0.37)` traegt beide Zahlen |
-| `PMC3278655:T2` / `390` | `comparator_mean` -0.04 | `r3/c8` | ebenso |
+| `PMC5777419:T2` / `682` | `intervention_mean` 4.1 | `r0/c9`, `r0/c12`, `r0/c13` | Zeile 0 (`CAL (mm)`), nicht die Outcome-Zeile `attachment gain`; Zelle `4.1 ±1.0` |
+| `PMC5777419:T2` / `682` | `intervention_standard_deviation` 1 | `r0/c7`, `r0/c8`, `r0/c9` | zweiter Teil derselben Verbundzellen (`4.0 ± 1.0`, `3.9 ± 1.0`, `4.1 ±1.0`) |
+| `PMC5777419:T2` / `682` | `comparator_mean` 4.3 | `r0/c14` | ebenso, Zeile 0 statt Outcome-Zeile |
+| `PMC5777419:T2` / `682` | `comparator_standard_deviation` 1.4 | `r0/c12`, `r0/c13`, `r0/c14` | `4.1 ± 1.4` und `4.1 ± 1,4` (Dezimalkomma) |
+| `PMC3278655:T2` / `390` | `intervention_mean` -0.38 | `r3/c7` | Zeile `Superior/inferior translation`, nicht `subsidence` |
+| `PMC3278655:T2` / `390` | `intervention_standard_deviation` 0.37 | `r3/c7` | dieselbe Zelle `--0.38 (0.37)` (doppeltes Minus) |
+| `PMC3278655:T2` / `390` | `comparator_mean` -0.04 | `r3/c8` | Zelle `--0.04 (0.11)` |
+| `PMC3278655:T2` / `390` | `comparator_standard_deviation` 0.11 | `r3/c4`, `r3/c8` | zweiter Wert der Verbundzelle, auch in c4 |
+| `PMC5777419:T2` / beide | `intervention_group_size` 16 | `band:L1c2`, `band:L1c5` | Band `(n=16)` ueber Spalten ohne Arm |
+| `PMC5777419:T2` / beide | `comparator_group_size` 15 | `band:L1c6` | Band `(n=15)`, heute dem Arm `intervention` zugeordnet |
+| `PMC3278655:T2` / beide | `intervention_group_size` 27 | `band:L2c7` | Band `(n=27)` ueber einer `TM`-Spalte ohne Arm |
+| `PMC3278655:T2` / beide | `comparator_group_size` 18 | `band:L2c8` | Band `(n=18)`, heute erreichbar |
 
-Die uebrigen Goldwerte (Standardabweichungen, Interventions-Stichproben,
-Ereigniszahlen) stehen nicht als eigener Zahlenwert in der Tabelle: sie sind
-entweder der zweite Teil einer Verbundzelle (`4.1 ±1.0`, `--0.38 (0.37)`) oder
-liegen in einem Kopfband ohne Arm (`(n=30)`, `(n=27)` ueber den TM-Spalten,
-deren Arm nicht erkannt ist).
+Damit ist die Blockade klar verortet: die Werte sind gedruckt, es fehlt die
+Zuordnung - Rolle (Verbundzelle `Mittel ± Streuung`), Arm (Spalte ohne
+Armband) oder Outcome-Zeile (Zeile 0 bzw. Zeile 3 statt der gesuchten
+Outcome-Zeile).
 
 ## 4. Zwei Praezisionsbefunde am Rande
 
 - **Feld richtig, Wert falsch.** Bei `PMC5777419:T2` wird dem Arm
-  `intervention` die Kopfangabe 15 zugeordnet (Band `(n=15)` unter
-  `Antibiotic group`), waehrend Gold fuer `intervention` 16 und fuer
-  `comparator` 15 erwartet. Die Kennzahl `gold_reachable` zaehlt nur Felder,
-  nicht Werte - der Fehlgriff bleibt in der 56 unsichtbar. Der Comparator-Wert
-  15 ist umgekehrt nicht erreichbar, weil die `(n=...)`-Baender der
-  `Placebo group` fehlen.
+  `intervention` die Kopfangabe 15 aus Band `(n=15)` zugeordnet, waehrend Gold
+  fuer `intervention` 16 und fuer `comparator` 15 erwartet. Die Kennzahl
+  `gold_reachable` zaehlt nur Felder, nicht Werte - der Fehlgriff bleibt in der
+  56 unsichtbar. Beide Zahlen stehen gedruckt da (`(n=16)` in c2/c5,
+  `(n=15)` in c6); es fehlt allein die richtige Armzuordnung.
 - **Arm fehlt fuer halbe Tabelle.** Bei `PMC3278655:T2` bekommen nur die
   `Cemented`-Spalten den Arm `comparator`; die `TM`-Spalten (c1/c3/c5/c7)
   bleiben ohne Arm, obwohl `(n=30)`, `(n=29)`, `(n=28)`, `(n=27)` dort stehen.

@@ -81,13 +81,18 @@
           "field": "intervention_group_size",
           "wert": "16",
           "erreichbar": true,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "band:L1c2",
+            "band:L1c5"
+          ]
         },
         {
           "field": "comparator_group_size",
           "wert": "15",
           "erreichbar": false,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "band:L1c6"
+          ]
         }
       ]
     },
@@ -166,7 +171,10 @@
           "field": "intervention_group_size",
           "wert": "16",
           "erreichbar": true,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "band:L1c2",
+            "band:L1c5"
+          ]
         },
         {
           "field": "intervention_mean",
@@ -182,13 +190,19 @@
           "field": "intervention_standard_deviation",
           "wert": "1",
           "erreichbar": false,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "r0/c7",
+            "r0/c8",
+            "r0/c9"
+          ]
         },
         {
           "field": "comparator_group_size",
           "wert": "15",
           "erreichbar": false,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "band:L1c6"
+          ]
         },
         {
           "field": "comparator_mean",
@@ -202,7 +216,11 @@
           "field": "comparator_standard_deviation",
           "wert": "1.4",
           "erreichbar": false,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "r0/c12",
+            "r0/c13",
+            "r0/c14"
+          ]
         }
       ]
     },
@@ -291,7 +309,9 @@
           "field": "intervention_group_size",
           "wert": "27",
           "erreichbar": false,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "band:L2c7"
+          ]
         },
         {
           "field": "intervention_mean",
@@ -305,13 +325,17 @@
           "field": "intervention_standard_deviation",
           "wert": "0.37",
           "erreichbar": false,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "r3/c7"
+          ]
         },
         {
           "field": "comparator_group_size",
           "wert": "18",
           "erreichbar": true,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "band:L2c8"
+          ]
         },
         {
           "field": "comparator_mean",
@@ -325,7 +349,10 @@
           "field": "comparator_standard_deviation",
           "wert": "0.11",
           "erreichbar": false,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "r3/c4",
+            "r3/c8"
+          ]
         }
       ]
     },
@@ -414,7 +441,9 @@
           "field": "intervention_group_size",
           "wert": "27",
           "erreichbar": false,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "band:L2c7"
+          ]
         },
         {
           "field": "intervention_events",
@@ -426,7 +455,9 @@
           "field": "comparator_group_size",
           "wert": "18",
           "erreichbar": true,
-          "wert_gedruckt_in": []
+          "wert_gedruckt_in": [
+            "band:L2c8"
+          ]
         },
         {
           "field": "comparator_events",
@@ -445,6 +476,6 @@
     "tabellen_mit_neuer_verdraengung": 0,
     "goldzellen": 18,
     "goldzellen_feld_erreichbar": 4,
-    "goldzellen_wert_gedruckt": 4
+    "goldzellen_wert_gedruckt": 16
   }
 }

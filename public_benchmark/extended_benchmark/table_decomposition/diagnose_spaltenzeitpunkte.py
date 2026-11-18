@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
@@ -67,12 +68,54 @@ from research_agent.table_decomposition.semantics import (  # noqa: E402
 DEFAULT_TABLES = ("PMC5777419:T2", "PMC3278655:T2")
 
 
-def _zahl(text: str) -> Optional[str]:
-    """Erster Zahlenwert einer Zelle als Text (nur fuer den Wertvergleich)."""
-    import re
+_ZAHL_RE = re.compile(r"[-+]?\d+(?:[.,]\d+)?")
+# Minus- und Gedankenstriche, die in den Abzuegen als Vorzeichen auftreten.
+_MINUS = str.maketrans({"\u2212": "-", "\u2013": "-", "\u2014": "-"})
 
-    match = re.search(r"[-+]?\d+(?:[.,]\d+)?", text or "")
-    return match.group(0) if match else None
+
+def _zahl_paare(text: str) -> List[Tuple[float, str]]:
+    """Alle Zahlen einer Zelle als (Wert, gedrucktes Zeichen).
+
+    Dezimalkomma wird zum Punkt, Unicode-Minus zum ASCII-Minus; Fussnotenzeichen
+    (``[\u2020](#)``, ``[*](#)``) fallen weg, weil sie nicht im Zahlmuster stehen.
+    Eine Zelle wie ``4.1 \u00b11.0`` oder ``--0.38 (0.37)`` liefert damit **beide**
+    Werte - Mittel und Streuung -, sodass der Vergleich nicht an der Verbundzelle
+    scheitert. ``1`` und ``1.0`` sind derselbe Wert; das gedruckte Zeichen bleibt
+    erhalten, damit eine Null nicht mit jedem Dezimalnullwert gleichgesetzt wird.
+    """
+    paare: List[Tuple[float, str]] = []
+    for treffer in _ZAHL_RE.findall((text or "").translate(_MINUS)):
+        try:
+            paare.append((float(treffer.replace(",", ".")), treffer))
+        except ValueError:
+            continue
+    return paare
+
+
+def _zahlen(text: str) -> List[float]:
+    """Nur die Werte aus ``_zahl_paare``."""
+    return [wert for wert, _zeichen in _zahl_paare(text)]
+
+
+def _gleich(a: float, b: float) -> bool:
+    """Gleicher Wert trotz Schreibweise (``1`` gegen ``1.0``)."""
+    return abs(a - b) <= 1e-9 * max(1.0, abs(b))
+
+
+def _zelltreffer(text: str, soll: float) -> bool:
+    """Steht ``soll`` in dieser Zelle?
+
+    Sonderfall Null: eine Ereigniszahl ``0`` darf nicht in jeder Zelle mit
+    Dezimalnull (``0.00``, ``--0.00``) "gefunden" werden - sonst behauptet die
+    Messung einen gedruckten Wert, der dort nicht steht.
+    """
+    for wert, zeichen in _zahl_paare(text):
+        if not _gleich(wert, soll):
+            continue
+        if soll == 0 and ("." in zeichen or "," in zeichen):
+            continue
+        return True
+    return False
 
 
 def _spaltenfeld(column, row) -> Optional[str]:
@@ -196,13 +239,20 @@ def _gold_abgleich(table: Table, record: Dict[str, Any]) -> List[Dict[str, Any]]
     for cell in record["gold"]["cells"]:
         wert = cell.get("raw")
         treffer = []
+        soll = _zahlen(str(wert)) if wert is not None else []
         for row in table.rows:
             for column in table.columns:
                 zelle = row.cells.get(column.col_id)
-                if zelle is None:
+                if zelle is None or not soll:
                     continue
-                if wert is not None and _zahl(zelle.text or "") == _zahl(str(wert)):
+                if _zelltreffer(zelle.text or "", soll[0]):
                     treffer.append(f"r{row.row_id}/c{column.col_id}")
+        # Stichprobengroessen stehen in Kopfbändern (``(n=16)``), nicht in
+        # Zellen; ohne diesen Blick meldet die Messung "nicht gedruckt", obwohl
+        # der Wert dasteht - nur ohne zugeordneten Arm.
+        for band in table.header_bands:
+            if _zelltreffer(band.text or "", soll[0]):
+                treffer.append(f"band:L{band.level}c{band.col_start}")
         ergebnis.append({
             "field": cell["field"],
             "wert": cell.get("raw"),
