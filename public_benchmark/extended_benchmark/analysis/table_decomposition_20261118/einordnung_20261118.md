@@ -162,6 +162,7 @@ der Modelllauf.
 | `diagnose_erreichbarkeit_20261118.json` | Klassifikation jeder nicht erreichbaren Goldzelle |
 | `strukturbericht_20261118.md` | maschinell erzeugter Bericht |
 | `einordnung_20261118.md` | dieser Text |
+| `ergebnisbericht_20261118.md` | konsolidierter Ergebnisbericht (Tabellen, Diagnose, Reproduzierbarkeit) |
 
 ## Grenzen
 
