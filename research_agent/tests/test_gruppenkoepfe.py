@@ -1,14 +1,13 @@
-"""Tests der Sprint-47-Luecken: Caption, Gruppenkopf-Zeile, Zielwahl.
+"""Tests der Sprint-47-Luecken: Gruppenkopf-Zeile und Zielwahl.
 
 Geprueft wird die Regel, nicht die Messung:
 
-- die beschreibende Caption bleibt erhalten, auch wenn zwischen ihr und der
-  Tabelle eine Bildzeile steht (``PMC2430617:T4``) oder nur ``Table 6``
-  darueber steht (``PMC5360580:T6``),
 - ein Gruppenkopf in einer Datenzeile wird zur Kopfangabe (79/83/80) und
   behaelt seinen gedruckten Arm,
-- eine gewoehnliche Datenzeile wird nicht zur Kopfangabe,
-- der Caption-Beleg waehlt die AE-Tabelle, ohne einen Arm umzuhaengen.
+- eine gewoehnliche Datenzeile wird nicht zur Kopfangabe.
+
+Die Caption-Tests liegen in diesem Zwischenstand noch nicht bei; sie kommen mit
+der eigenen Caption-Aenderung.
 
 Die Dokumenttests lesen die eingefrorenen Benchmark-Dokumente nur.
 """
@@ -21,7 +20,6 @@ from pathlib import Path
 import pytest
 
 from research_agent.table_decomposition import provenienz as pv
-from research_agent.table_decomposition import tabellenwahl as tw
 from research_agent.table_decomposition.parser import parse_document
 from research_agent.table_decomposition.semantics import (
     enrich_table,
@@ -62,20 +60,6 @@ def _tables(record_id: str):
     return {table.table_id: table for table in parsed.tables}, context
 
 
-def test_caption_steht_hinter_bildzeile_ueber_der_tabelle():
-    tables, _context = _tables("yun2024:265")
-    caption = tables["PMC2430617:T4"].caption
-
-    assert caption == ("Occurrence of most common adverse events during "
-                       "treatment and follow-up.")
-
-
-def test_caption_steht_ueber_einer_blossen_tabellennummer():
-    tables, _context = _tables("yun2024:194")
-
-    assert tables["PMC5360580:T6"].caption == "List of reported adverse events."
-
-
 def test_gruppenkopf_in_datenzeile_wird_kopfangabe():
     tables, context = _tables("yun2024:265")
     t4 = tables["PMC2430617:T4"]
@@ -101,16 +85,3 @@ def test_datenzeile_wird_keine_kopfangabe():
 
     assert not [f for f in t1.header_facts if f["basis"] == "zeile_angabe"]
     assert [f["value"] for f in t1.header_facts] == [145, 140]
-
-
-def test_caption_beleg_waehlt_die_ae_tabelle_ohne_armwechsel():
-    tables, context = _tables("yun2024:194")
-    wahl = tw.waehle([tables["PMC5360580:T1"]], list(tables.values()), context)
-
-    assert wahl is not None and wahl.wechsel
-    assert wahl.tabelle.table_id == "PMC5360580:T6"
-    stellen = pv.feld_stellen([wahl.tabelle], context)
-    assert {s.wert for s in stellen["intervention_group_size"]} == {169.0}
-    assert {s.arm for s in stellen["comparator_group_size"]} == {"comparator"}
-    assert pv.feld_arm(stellen["intervention_group_size"]) == "eindeutig"
-    assert pv.feld_arm(stellen["comparator_group_size"]) == "eindeutig"

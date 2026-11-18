@@ -466,101 +466,42 @@ def _include_wrapper(lines: Sequence[str], fence_index: int) -> int:
     return fence_index
 
 
-_IMAGE_ONLY_RE = re.compile(r"^!\[[^\]]*\]\([^)]*\)$")
-
-
-def _heading_clean(text: str) -> str:
-    """Markdown-Ueberschriftzeichen vor dem Caption-Text entfernen."""
-    return re.sub(r"^#{1,6}\s*", "", (text or "").strip()).strip()
-
-
-def _skip_over(lines: Sequence[str], index: int) -> int:
-    """Blanke Zeilen und reine Bildzeilen ueberspringen.
-
-    Zwischen Caption-Block und Kopfzeile steht in den Yun-Dokumenten oft eine
-    Bildzeile (``![]()``). Wer sie nicht ueberspringt, verliert die Caption -
-    belegt an ``PMC2430617:T4`` (``Occurrence of most common adverse events
-    during treatment and follow-up.``).
-    """
-    while index >= 0:
-        stripped = lines[index].strip()
-        if not stripped or _IMAGE_ONLY_RE.match(stripped):
-            index -= 1
-            continue
-        break
-    return index
-
-
-def _caption_block(
-    lines: Sequence[str], fence_index: int
-) -> Tuple[str, int, Tuple[int, int]]:
-    """Pandoc-Caption-Block, dessen schliessende ``:::``-Zeile ``fence_index`` ist."""
-    parts: List[str] = []
-    j = fence_index - 1
-    while j >= 0 and not _FENCE_RE.match(lines[j]):
-        if lines[j].strip():
-            parts.append(_heading_clean(lines[j]))
-        j -= 1
-    if j < 0:
-        return "", -1, (-1, -1)
-    start = _include_wrapper(lines, j)
-    caption = " ".join(parts[::-1]).strip()
-    return caption, start, (start, fence_index)
-
-
-def _is_label_only(caption: str) -> bool:
-    """Steht in der Caption nur die Tabellennummer (``Table 6``)?"""
-    text = (caption or "").strip()
-    match = _CAPTION_HINT_RE.match(text)
-    if not match:
-        return False
-    return not text[match.end():].strip(" .:-")
-
-
-def _caption_above_label(
-    lines: Sequence[str], label_index: int
-) -> Tuple[str, int, Tuple[int, int]]:
-    """Beschreibende Caption oberhalb einer blossen ``Table N``-Zeile."""
-    i = _skip_over(lines, label_index - 1)
-    if i < 0 or not re.fullmatch(r"\s*:+\s*", lines[i] or ""):
-        return "", -1, (-1, -1)
-    return _caption_block(lines, i)
-
-
 def _walk_back_to_caption(
     lines: Sequence[str], start_index: int
 ) -> Tuple[str, int, Tuple[int, int]]:
     """Caption oberhalb der Header-Zeilen suchen.
 
     Erkannt werden der Pandoc-Block (``::: caption`` + Text + ``:::``) und
-    eine Zeile, die mit ``Table N`` beginnt. Traegt diese Zeile nur die Nummer
-    (``Table 6``), zaehlt die beschreibende Caption darueber - sonst bliebe
-    ``List of reported adverse events.`` ungenutzt. Sonst bleibt die Caption
-    leer - eine erfundene Caption waere schlimmer als keine.
+    eine Zeile, die mit ``Table N`` beginnt. Sonst bleibt die Caption leer -
+    eine erfundene Caption waere schlimmer als keine.
     """
-    i = _skip_over(lines, start_index - 1)
+    i = start_index - 1
+    while i >= 0 and not lines[i].strip():
+        i -= 1
     if i < 0:
         return "", start_index, (-1, -1)
     if re.fullmatch(r"\s*:+\s*", lines[i] or ""):
-        caption, index, span = _caption_block(lines, i)
-        if caption:
-            return caption, index, span
+        parts: List[str] = []
+        j = i - 1
+        while j >= 0 and not _FENCE_RE.match(lines[j]):
+            if lines[j].strip():
+                parts.append(lines[j].strip())
+            j -= 1
+        if j >= 0:
+            caption = " ".join(reversed(parts)).strip()
+            return caption, _include_wrapper(lines, j), (_include_wrapper(lines, j), i)
         return "", start_index, (-1, -1)
     stripped = lines[i].strip()
     if _CAPTION_HINT_RE.match(stripped):
-        if _is_label_only(stripped):
-            caption, index, span = _caption_above_label(lines, i)
-            if caption:
-                return caption, index, (span[0], i)
         return stripped, i, (i, i)
     if stripped.startswith(":") and "caption" in stripped.lower():
         j = i - 1
         parts = []
         while j >= 0 and not _FENCE_RE.match(lines[j]):
             if lines[j].strip():
-                parts.append(_heading_clean(lines[j]))
+                parts.append(lines[j].strip())
             j -= 1
-        return " ".join(parts[::-1]).strip(), max(j, 0), (max(j, 0), i)
+        return " ".join(reversed(parts)).strip(), max(j, 0), (max(j, 0), i)
     return "", start_index, (-1, -1)
 
 
