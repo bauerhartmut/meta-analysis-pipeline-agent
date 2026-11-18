@@ -49,7 +49,7 @@ die Auswahl; `require_bound` zaehlt Feldnamen, keine Werte.
 
 | Auswahl | Records | Tabellen | Dokumente | erreichbar | wertgleich vorher -> nachher | Wechsel | verloren | Armwechsel |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Test (Bau der Regel) | 48 | 60 | 31 | 94 | 58 -> 68 | 9 | 0 | 0 |
+| Test (Bau der Regel) | 59 | 60 | 31 | 94 | 58 -> 68 | 9 | 0 | 0 |
 | Gegenprobe (unbenutzte Dokumente) | 25 | 26 | 9 | 42 | 27 -> **29** | 2 | 0 | 0 |
 | dev-Split (echter Held-out) | 4 | 4 | 3 | 8 | 5 -> 5 | 0 | 0 | 0 |
 

@@ -59,7 +59,7 @@ Die beiden in Sprint 46 benannten Parser-Luecken waren groesser als gedacht:
 * neu wertgleich gegen Sprint 45: **10** Felder, gegen Sprint 46: **6**.
 * verloren: **0** Felder (gegen beide Staende).
 * Armwechsel: **0**.
-* Tabellenwechsel: **9** von 48 Records (Sprint 46: 4).
+* Tabellenwechsel: **9** von 59 Records (60 Tabellen; Sprint 46: 4).
 * Von den 15 `population_mismatch`-Feldern werden **10** wertgleich.
 
 Die zehn Felder sind genau die erwarteten: vier aus `PMC4675066` (Sprint 46)
@@ -100,8 +100,9 @@ Vier weitere Records wechseln ohne Feldwirkung:
 
 ## Grenzen
 
-* Gemessen auf demselben 48-Record-Satz, auf dem die Regel entstanden ist. Eine
-  Gegenprobe auf anderen Records steht aus.
+* Gemessen auf demselben Record-Satz, auf dem die Regel entstanden ist. Die
+  Gegenprobe auf unbenutzten Dokumenten steht in
+  `../nachpruefung_20261118/ergebnis.md` (26 Tabellen, +2 Felder, 0 verloren).
 * Die Caption-Aenderung betrifft 31 Tabellen und damit auch Stellen ausserhalb
   der Tabellenwahl. Sie ist hier nur ueber die 94 Goldfelder und die 130 Tests
   geprueft, nicht ueber einen Modelllauf.
