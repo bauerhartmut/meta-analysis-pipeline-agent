@@ -1122,3 +1122,62 @@ Reichweite je Zeile, fokussierter Plan) plus 4 Benchmark-Tests - 42 gruen.
 **Nicht gemacht:** Modelllauf (Freigabe offen), Neueinfrierung der Auswahl,
 Rollen aus Zeilenlabels (deshalb weiterhin 0 Zellen fuer `PMC4319071:T1`).
 Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/erwartete_zellen_20261118.md`.
+
+## Sprint 35 (18.11.2026): Matcher auf dev geprueft, Kopf-Fakten extrahierbar
+
+**Anlass:** Der Outcome-Zeilen-Matcher war nur am Testsplit gemessen; ausserdem
+waren Kopfangaben wie `n = 434` zwar als Fakt gefuehrt, aber nicht als Wert
+lesbar.
+
+**Aenderungen:** (1) `Reconstruction.add_header_facts` uebernimmt jede
+Kopfangabe mit belegtem Arm als Beleg ohne Modellaufruf (Adresse
+`(-1, col_start)`, `origin="kopf_fakt"`, Rohwert = Kopftext); `by_address`
+bleibt zellbasiert, die Validierung meldet `gruppengroesse_aus_kopf`.
+(2) `reachable_cells` zaehlt solche Fakten als erwartbar, unabhaengig von der
+Outcome-Zeile. (3) Neues read-only Werkzeug `pruefe_outcome_matching.py`
+(`--selection` oder `--all-records --role dev`) klassifiziert die Matcher-Treffer
+je Record und schreibt nur die angeforderte JSON-Datei.
+
+**Beleg:** `PMC4319071:T1` liefert jetzt `comparator_group_size = 434` mit
+Rohwert `n=434` und `row_id = -1`; `n=456` bleibt ohne Arm (der Record nennt
+`Plus` nicht). Dev (alle 38 Records mit Gold, 8 Dokumente): 3 `trifft`, 11
+`zeile_nicht_erkannt`, 24 `dokument_ohne_zeile`; 35 Kopfangaben, 18 mit Arm,
+6 Gold-Gruppengroessen dadurch erwartbar. Dev-Auswahl offline: 5 von 10
+Goldzellen erreichbar (4 davon aus Kopfangaben), Tokens A 7.922 / B 10.866 /
+E 29.169, 6/6 Tabellen vollstaendig.
+
+**Testsplit:** nicht neu gemessen, keine Datei angefasst. Hashes von
+`selection_test.json`, `offline_struktur_20261118/structure.json`,
+`offline_fokus_20261118/structure.json` und `erwartete_zellen_20261118.md`
+vorher/nachher identisch; `git status` fuer diese Pfade leer.
+
+**Tests:** 39 Engine- plus 4 Benchmark-Tests - 43 gruen.
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/dev_pruefung_20261118.md`.
+
+## Sprint 36 (18.11.2026): Spaltenrollen aus dem Zeilenlabel - ohne Gewinn belegt
+
+**Anlass:** Tabellen wie `PMC4319071:T1` nennen die Rolle im Zeilenlabel
+(`Mean (SD)`, `n (%)`), nicht im Spaltenkopf (`Control`, `Plus`).
+
+**Aenderungen:** `semantics.row_roles` leitet Rolle und Zweitrolle aus dem
+Zeilenlabel ab (`Row.value_role`/`secondary_role`); `row_fields` und
+`Reconstruction._resolve_field` nutzen sie nur, wenn die Spalte die Rolle
+`unknown` hat, und nur bei vorhandener Zelle. `_add_secondary` nimmt die
+Zweitrolle aus Spaltenkopf oder Zeilenlabel; die Validierung meldet
+`rolle_aus_zeilenlabel`. Tests: 2 neu, 45 gruen.
+
+**Offline-Ergebnis (ehrlich negativ):** `PMC4319071:T1` hat 9 Zeilenrollen
+(5x mean, 4x events), Fokus `[19, 20]` - erwartbar bleibt nur
+`comparator_group_size`. Grund: die Wertspalten liegen nicht unter den
+Armkoepfen (erstes Zahlzeichen in Zeile 13 bei x=98, in Zeile 19 bei x=120 bei
+denselben Regelspalten), und `Plus` ist im Record nicht benannt. Die
+Gold-Mittelwerte `158.67`/`167.61` stehen in `PMC4319071:T2` (Zeilen 107/113),
+wo die **Arme Zeilenlabels** sind und der Kopf nur `Mean (SE)` traegt; T2 hat 0
+Zeilenrollen und 0 Armspalten. Auf dev (38 Records): 12 Tabellen mit
+Zeilenrolle, 1 mit Armspalte ohne Rolle, **0** Records mit Gewinn; dev-Messung
+5/10 unveraendert. Testsplit nicht neu gemessen, Artefakt-Hashes gleich.
+
+**Naechster Hebel (belegt):** Arm aus dem Zeilenlabel plus Outcome-Spalte aus
+dem Kopf fuer Tabellen mit Armen als Zeilen, dazu ein Prosa-Guard fuer
+Kopfzeilen mit vielen Woertern (Zeile 81 in `PMC4319071`).
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/zeilenrollen_20261118.md`.

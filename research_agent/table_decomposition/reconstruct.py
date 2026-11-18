@@ -22,7 +22,7 @@ from .parser import parse_value
 import re
 
 from .backend import PredictedCell, UnitResult
-from .model import ROLE_LABEL, ROLE_SD, Table, field_for, header_path_text
+from .model import ROLE_LABEL, ROLE_N, ROLE_SD, ROLE_UNKNOWN, Table, field_for, header_path_text
 
 _NUMBER_RE = re.compile(r"-?\d+(?:[.,]\d+)?")
 from .strategies import DIRECTION_COLUMN, DIRECTION_ROW, ExtractionUnit
@@ -57,6 +57,9 @@ class Evidence:
     source_value: Optional[float] = None
     source_present: bool = False
     derived: bool = False   # zweiter Wert aus derselben Zelle (Verbundwert)
+    # Herkunft: ``zelle`` (Modelllesung), ``verbundwert`` (zweite Zahl derselben
+    # Zelle) oder ``kopf_fakt`` (feste Angabe im Kopf, z. B. ``n = 434``).
+    origin: str = "zelle"
 
     @property
     def address(self) -> Tuple[int, int]:
@@ -87,6 +90,7 @@ class Evidence:
             "source_value": self.source_value,
             "source_present": self.source_present,
             "derived": self.derived,
+            "origin": self.origin,
         }
 
 
@@ -107,6 +111,7 @@ class CellResult:
     header_path: Tuple[str, ...] = ()
     page: Optional[int] = None
     derived: bool = False
+    origin: str = "zelle"
 
     @property
     def address(self) -> Tuple[int, int]:
@@ -133,6 +138,7 @@ class CellResult:
             "header_path": list(self.header_path),
             "page": self.page,
             "derived": self.derived,
+            "origin": self.origin,
             "evidence": [e.to_dict() for e in self.evidence],
         }
 
@@ -147,8 +153,8 @@ class ReconstructionResult:
     notes: List[str] = dc_field(default_factory=list)
 
     def by_address(self) -> Dict[Tuple[int, int], CellResult]:
-        """Zelle je Adresse; abgeleitete Zweitwerte bleiben aussen vor."""
-        return {(c.row_id, c.col_id): c for c in self.cells if not c.derived}
+        """Zelle je Adresse; Verbund- und Kopfwerte bleiben aussen vor."""
+        return {(c.row_id, c.col_id): c for c in self.cells if c.origin == "zelle"}
 
     def values_by_address(self) -> Dict[Tuple[int, int], List[float]]:
         result: Dict[Tuple[int, int], List[float]] = {}
@@ -202,6 +208,48 @@ class Reconstruction:
     def register_table(self, table: Table) -> None:
         self._table = table
 
+    def add_header_facts(self, table: Table) -> int:
+        """Feste Gruppengroessen aus dem Kopf als Beleg uebernehmen.
+
+        ``n = 434`` steht woertlich im Kopf und gilt fuer die ganze
+        Spaltengruppe; der Wert ist damit ohne Modell lesbar. Der Beleg traegt
+        Kopftext, Spanne und Arm. Ohne belegten Arm entsteht kein Feld - die
+        Spalte waere geraten. Adresse ist ``(-1, col_start)``: der Wert haengt
+        an keiner Datenzeile.
+        """
+        added = 0
+        for fact in table.header_facts:
+            arm = fact.get("arm")
+            field = field_for(ROLE_N, arm if isinstance(arm, str) else None)
+            value = fact.get("value")
+            if not field or not isinstance(value, (int, float)):
+                continue
+            text = str(fact.get("text") or "")
+            self._evidence.append(
+                Evidence(
+                    row_id=-1,
+                    col_id=int(fact.get("col_start") or 0),
+                    value=float(value),
+                    raw=text,
+                    quote=text,
+                    table_id=table.table_id,
+                    doc_id=table.doc_id,
+                    field=field,
+                    arm=str(arm),
+                    role=ROLE_N,
+                    page=table.page,
+                    unit_id=f"{table.table_id}/kopf",
+                    direction="header",
+                    row_label="",
+                    header_path=(text,),
+                    source_value=float(value),
+                    source_present=True,
+                    origin="kopf_fakt",
+                )
+            )
+            added += 1
+        return added
+
     def add_result(self, table: Table, unit: ExtractionUnit, result: UnitResult) -> int:
         """Alle Zellen einer Einheit als Belege uebernehmen; Anzahl zurueck."""
         added = 0
@@ -227,6 +275,7 @@ class Reconstruction:
             )
             return False
         source_cell = row.cells.get(cell.col_id)
+        field, role = self._resolve_field(column, row)
         self._evidence.append(
             Evidence(
                 row_id=cell.row_id,
@@ -236,9 +285,9 @@ class Reconstruction:
                 quote=cell.quote,
                 table_id=table.table_id,
                 doc_id=table.doc_id,
-                field=column.field,
+                field=field,
                 arm=column.arm,
-                role=column.role,
+                role=role,
                 unit=column.unit,
                 page=table.page,
                 unit_id=unit.unit_id,
@@ -256,6 +305,20 @@ class Reconstruction:
         self._add_secondary(table, unit, cell, column, row, model)
         return True
 
+    @staticmethod
+    def _resolve_field(column: Any, row: Any) -> tuple:
+        """Feld und Rolle einer Zelle: Spaltenkopf zuerst, dann Zeilenlabel.
+
+        ``Control`` allein traegt keine Rolle; die Zeile ``Mean (SD)`` schon.
+        Die Ableitung greift nur, wenn der Spaltenkopf keine Rolle hat und die
+        Zelle eine Zahl traegt - eine erfundene Rolle gaebe es sonst.
+        """
+        if column.field:
+            return column.field, column.role
+        if column.role == ROLE_UNKNOWN and getattr(row, "value_role", ""):
+            return field_for(row.value_role, column.arm), row.value_role
+        return None, column.role
+
     def _add_secondary(self, table: Table, unit: ExtractionUnit, cell: PredictedCell,
                        column: Any, row: Any, model: str) -> None:
         """Zweiten Wert einer Verbundzelle (``12.4 (3.1)``) als eigenen Beleg.
@@ -264,7 +327,9 @@ class Reconstruction:
         gelesen, das das Modell zurueckgibt; die Fundstelle bleibt dieselbe
         Zelle. Ohne zweite Zahl entsteht kein Beleg.
         """
-        if not column.secondary_role or not column.arm:
+        # Zweitrolle: Spaltenkopf (``Mean (SD)``) oder Zeilenlabel (``Mean (SD)``).
+        secondary_role = column.secondary_role or getattr(row, "secondary_role", "")
+        if not secondary_role or not column.arm:
             return
         text = (cell.raw or "").strip() or (cell.quote or "").strip()
         numbers = _NUMBER_RE.findall(text)
@@ -286,9 +351,9 @@ class Reconstruction:
                 quote=cell.quote,
                 table_id=table.table_id,
                 doc_id=table.doc_id,
-                field=field_for(column.secondary_role, column.arm),
+                field=field_for(secondary_role, column.arm),
                 arm=column.arm,
-                role=column.secondary_role,
+                role=secondary_role,
                 unit=column.unit,
                 page=table.page,
                 unit_id=unit.unit_id,
@@ -302,6 +367,7 @@ class Reconstruction:
                 source_value=None,
                 source_present=True,
                 derived=True,
+                origin="verbundwert",
             )
         )
 
@@ -349,6 +415,7 @@ class Reconstruction:
                 header_path=first.header_path,
                 page=first.page,
                 derived=first.derived,
+                origin=first.origin,
             )
             cells.append(cell)
             if status == STATUS_CONFLICT:
@@ -375,6 +442,7 @@ class Reconstruction:
             "n_with_value": len([c for c in cells if c.value is not None]),
             "n_field_cells": len([c for c in cells if c.field]),
             "n_derived": len([c for c in cells if c.derived]),
+            "n_header_facts": len([c for c in cells if c.origin == "kopf_fakt"]),
             "evidence_by_direction": by_direction,
             "bidirectional": direction_pairs,
         }

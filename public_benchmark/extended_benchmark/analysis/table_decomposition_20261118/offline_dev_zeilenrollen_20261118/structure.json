@@ -1,0 +1,699 @@
+{
+  "mode": "offline",
+  "strategy_summary": {
+    "A": {
+      "strategy_label": "Full-Table Extraction",
+      "records": 6,
+      "tables": 6,
+      "tables_complete": 6,
+      "units": 6,
+      "units_per_record": 1.0,
+      "expected_cells": 210,
+      "prompt_chars": 31689,
+      "prompt_chars_per_record": 5281.5,
+      "prompt_chars_per_unit": 5281.5,
+      "est_tokens": 7922,
+      "gold_reachable": 5,
+      "errors": 0,
+      "warnings": 0
+    },
+    "B": {
+      "strategy_label": "Vertical Decomposition",
+      "records": 6,
+      "tables": 6,
+      "tables_complete": 6,
+      "units": 14,
+      "units_per_record": 2.33,
+      "expected_cells": 112,
+      "prompt_chars": 43463,
+      "prompt_chars_per_record": 7243.8,
+      "prompt_chars_per_unit": 3104.5,
+      "est_tokens": 10866,
+      "gold_reachable": 5,
+      "errors": 0,
+      "warnings": 0
+    },
+    "E": {
+      "strategy_label": "Adaptive Recursive Decomposition",
+      "records": 6,
+      "tables": 6,
+      "tables_complete": 6,
+      "units": 37,
+      "units_per_record": 6.17,
+      "expected_cells": 210,
+      "prompt_chars": 116675,
+      "prompt_chars_per_record": 19445.8,
+      "prompt_chars_per_unit": 3153.4,
+      "est_tokens": 29169,
+      "gold_reachable": 5,
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "records": {
+    "A": [
+      {
+        "record_id": "yun2024:187",
+        "strategy": "A",
+        "tables": 1,
+        "table_ids": [
+          "PMC5244530:T1"
+        ],
+        "complexity": "komplex",
+        "units": 1,
+        "expected_cells": 14,
+        "in_scope_cells": 14,
+        "prompt_chars": 3265,
+        "prompt_chars_per_unit": 3265.0,
+        "est_tokens_zeichen_durch_4": 816,
+        "gold_cells_record": 2,
+        "gold_reachable": 0,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC5244530:T1",
+            "units": 1,
+            "prompt_chars": 3265,
+            "in_scope_cells": 14,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:188",
+        "strategy": "A",
+        "tables": 1,
+        "table_ids": [
+          "PMC5244530:T1"
+        ],
+        "complexity": "komplex",
+        "units": 1,
+        "expected_cells": 14,
+        "in_scope_cells": 14,
+        "prompt_chars": 3276,
+        "prompt_chars_per_unit": 3276.0,
+        "est_tokens_zeichen_durch_4": 819,
+        "gold_cells_record": 2,
+        "gold_reachable": 0,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC5244530:T1",
+            "units": 1,
+            "prompt_chars": 3276,
+            "in_scope_cells": 14,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:261",
+        "strategy": "A",
+        "tables": 1,
+        "table_ids": [
+          "PMC5771543:T6"
+        ],
+        "complexity": "einfach",
+        "units": 1,
+        "expected_cells": 64,
+        "in_scope_cells": 64,
+        "prompt_chars": 7506,
+        "prompt_chars_per_unit": 7506.0,
+        "est_tokens_zeichen_durch_4": 1876,
+        "gold_cells_record": 4,
+        "gold_reachable": 0,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC5771543:T6",
+            "units": 1,
+            "prompt_chars": 7506,
+            "in_scope_cells": 64,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:263",
+        "strategy": "A",
+        "tables": 1,
+        "table_ids": [
+          "PMC5771543:T6"
+        ],
+        "complexity": "einfach",
+        "units": 1,
+        "expected_cells": 8,
+        "in_scope_cells": 64,
+        "prompt_chars": 6035,
+        "prompt_chars_per_unit": 6035.0,
+        "est_tokens_zeichen_durch_4": 1509,
+        "gold_cells_record": 4,
+        "gold_reachable": 1,
+        "focus_rows": 2,
+        "no_outcome_row": false,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {
+          "zelle_ausserhalb_scope": 1
+        },
+        "per_table": [
+          {
+            "table_id": "PMC5771543:T6",
+            "units": 1,
+            "prompt_chars": 6035,
+            "in_scope_cells": 64,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:3",
+        "strategy": "A",
+        "tables": 1,
+        "table_ids": [
+          "PMC1216327:T3"
+        ],
+        "complexity": "sehr_komplex",
+        "units": 1,
+        "expected_cells": 56,
+        "in_scope_cells": 56,
+        "prompt_chars": 6144,
+        "prompt_chars_per_unit": 6144.0,
+        "est_tokens_zeichen_durch_4": 1536,
+        "gold_cells_record": 4,
+        "gold_reachable": 2,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC1216327:T3",
+            "units": 1,
+            "prompt_chars": 6144,
+            "in_scope_cells": 56,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:5",
+        "strategy": "A",
+        "tables": 1,
+        "table_ids": [
+          "PMC1216327:T2"
+        ],
+        "complexity": "komplex",
+        "units": 1,
+        "expected_cells": 54,
+        "in_scope_cells": 54,
+        "prompt_chars": 5463,
+        "prompt_chars_per_unit": 5463.0,
+        "est_tokens_zeichen_durch_4": 1366,
+        "gold_cells_record": 6,
+        "gold_reachable": 2,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC1216327:T2",
+            "units": 1,
+            "prompt_chars": 5463,
+            "in_scope_cells": 54,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      }
+    ],
+    "B": [
+      {
+        "record_id": "yun2024:187",
+        "strategy": "B",
+        "tables": 1,
+        "table_ids": [
+          "PMC5244530:T1"
+        ],
+        "complexity": "komplex",
+        "units": 1,
+        "expected_cells": 4,
+        "in_scope_cells": 4,
+        "prompt_chars": 2423,
+        "prompt_chars_per_unit": 2423.0,
+        "est_tokens_zeichen_durch_4": 606,
+        "gold_cells_record": 2,
+        "gold_reachable": 0,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {
+          "zelle_ausserhalb_scope": 1
+        },
+        "per_table": [
+          {
+            "table_id": "PMC5244530:T1",
+            "units": 1,
+            "prompt_chars": 2423,
+            "in_scope_cells": 4,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:188",
+        "strategy": "B",
+        "tables": 1,
+        "table_ids": [
+          "PMC5244530:T1"
+        ],
+        "complexity": "komplex",
+        "units": 1,
+        "expected_cells": 4,
+        "in_scope_cells": 4,
+        "prompt_chars": 2434,
+        "prompt_chars_per_unit": 2434.0,
+        "est_tokens_zeichen_durch_4": 608,
+        "gold_cells_record": 2,
+        "gold_reachable": 0,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {
+          "zelle_ausserhalb_scope": 1
+        },
+        "per_table": [
+          {
+            "table_id": "PMC5244530:T1",
+            "units": 1,
+            "prompt_chars": 2434,
+            "in_scope_cells": 4,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:261",
+        "strategy": "B",
+        "tables": 1,
+        "table_ids": [
+          "PMC5771543:T6"
+        ],
+        "complexity": "einfach",
+        "units": 2,
+        "expected_cells": 32,
+        "in_scope_cells": 32,
+        "prompt_chars": 6836,
+        "prompt_chars_per_unit": 3418.0,
+        "est_tokens_zeichen_durch_4": 1709,
+        "gold_cells_record": 4,
+        "gold_reachable": 0,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {
+          "zelle_ausserhalb_scope": 1
+        },
+        "per_table": [
+          {
+            "table_id": "PMC5771543:T6",
+            "units": 2,
+            "prompt_chars": 6836,
+            "in_scope_cells": 32,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:263",
+        "strategy": "B",
+        "tables": 1,
+        "table_ids": [
+          "PMC5771543:T6"
+        ],
+        "complexity": "einfach",
+        "units": 2,
+        "expected_cells": 4,
+        "in_scope_cells": 32,
+        "prompt_chars": 5278,
+        "prompt_chars_per_unit": 2639.0,
+        "est_tokens_zeichen_durch_4": 1320,
+        "gold_cells_record": 4,
+        "gold_reachable": 1,
+        "focus_rows": 2,
+        "no_outcome_row": false,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {
+          "zelle_ausserhalb_scope": 1
+        },
+        "per_table": [
+          {
+            "table_id": "PMC5771543:T6",
+            "units": 2,
+            "prompt_chars": 5278,
+            "in_scope_cells": 32,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:3",
+        "strategy": "B",
+        "tables": 1,
+        "table_ids": [
+          "PMC1216327:T3"
+        ],
+        "complexity": "sehr_komplex",
+        "units": 4,
+        "expected_cells": 32,
+        "in_scope_cells": 32,
+        "prompt_chars": 14758,
+        "prompt_chars_per_unit": 3689.5,
+        "est_tokens_zeichen_durch_4": 3690,
+        "gold_cells_record": 4,
+        "gold_reachable": 2,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {
+          "zelle_ausserhalb_scope": 1
+        },
+        "per_table": [
+          {
+            "table_id": "PMC1216327:T3",
+            "units": 4,
+            "prompt_chars": 14758,
+            "in_scope_cells": 32,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:5",
+        "strategy": "B",
+        "tables": 1,
+        "table_ids": [
+          "PMC1216327:T2"
+        ],
+        "complexity": "komplex",
+        "units": 4,
+        "expected_cells": 36,
+        "in_scope_cells": 36,
+        "prompt_chars": 11734,
+        "prompt_chars_per_unit": 2933.5,
+        "est_tokens_zeichen_durch_4": 2934,
+        "gold_cells_record": 6,
+        "gold_reachable": 2,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {
+          "zelle_ausserhalb_scope": 1
+        },
+        "per_table": [
+          {
+            "table_id": "PMC1216327:T2",
+            "units": 4,
+            "prompt_chars": 11734,
+            "in_scope_cells": 36,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": []
+          }
+        ]
+      }
+    ],
+    "E": [
+      {
+        "record_id": "yun2024:187",
+        "strategy": "E",
+        "tables": 1,
+        "table_ids": [
+          "PMC5244530:T1"
+        ],
+        "complexity": "komplex",
+        "units": 5,
+        "expected_cells": 14,
+        "in_scope_cells": 14,
+        "prompt_chars": 11880,
+        "prompt_chars_per_unit": 2376.0,
+        "est_tokens_zeichen_durch_4": 2970,
+        "gold_cells_record": 2,
+        "gold_reachable": 0,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC5244530:T1",
+            "units": 5,
+            "prompt_chars": 11880,
+            "in_scope_cells": 14,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": [
+              "Komplexitaet 0.46 (komplex).",
+              "Komplexe Tabelle: beidseitige Zerlegung (Zeile und Spalte)."
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:188",
+        "strategy": "E",
+        "tables": 1,
+        "table_ids": [
+          "PMC5244530:T1"
+        ],
+        "complexity": "komplex",
+        "units": 5,
+        "expected_cells": 14,
+        "in_scope_cells": 14,
+        "prompt_chars": 11935,
+        "prompt_chars_per_unit": 2387.0,
+        "est_tokens_zeichen_durch_4": 2984,
+        "gold_cells_record": 2,
+        "gold_reachable": 0,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC5244530:T1",
+            "units": 5,
+            "prompt_chars": 11935,
+            "in_scope_cells": 14,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": [
+              "Komplexitaet 0.46 (komplex).",
+              "Komplexe Tabelle: beidseitige Zerlegung (Zeile und Spalte)."
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:261",
+        "strategy": "E",
+        "tables": 1,
+        "table_ids": [
+          "PMC5771543:T6"
+        ],
+        "complexity": "einfach",
+        "units": 1,
+        "expected_cells": 64,
+        "in_scope_cells": 64,
+        "prompt_chars": 7506,
+        "prompt_chars_per_unit": 7506.0,
+        "est_tokens_zeichen_durch_4": 1876,
+        "gold_cells_record": 4,
+        "gold_reachable": 0,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC5771543:T6",
+            "units": 1,
+            "prompt_chars": 7506,
+            "in_scope_cells": 64,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": [
+              "Komplexitaet 0.21 (einfach).",
+              "Einfache Tabelle: eine Volltabellen-Einheit."
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:263",
+        "strategy": "E",
+        "tables": 1,
+        "table_ids": [
+          "PMC5771543:T6"
+        ],
+        "complexity": "einfach",
+        "units": 1,
+        "expected_cells": 8,
+        "in_scope_cells": 64,
+        "prompt_chars": 6035,
+        "prompt_chars_per_unit": 6035.0,
+        "est_tokens_zeichen_durch_4": 1509,
+        "gold_cells_record": 4,
+        "gold_reachable": 1,
+        "focus_rows": 2,
+        "no_outcome_row": false,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {
+          "zelle_ausserhalb_scope": 1
+        },
+        "per_table": [
+          {
+            "table_id": "PMC5771543:T6",
+            "units": 1,
+            "prompt_chars": 6035,
+            "in_scope_cells": 64,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": [
+              "Komplexitaet 0.21 (einfach).",
+              "Einfache Tabelle: eine Volltabellen-Einheit."
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:3",
+        "strategy": "E",
+        "tables": 1,
+        "table_ids": [
+          "PMC1216327:T3"
+        ],
+        "complexity": "sehr_komplex",
+        "units": 12,
+        "expected_cells": 56,
+        "in_scope_cells": 56,
+        "prompt_chars": 43175,
+        "prompt_chars_per_unit": 3597.9,
+        "est_tokens_zeichen_durch_4": 10794,
+        "gold_cells_record": 4,
+        "gold_reachable": 2,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC1216327:T3",
+            "units": 12,
+            "prompt_chars": 43175,
+            "in_scope_cells": 56,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": [
+              "Komplexitaet 0.65 (sehr_komplex).",
+              "Komplexe Tabelle: beidseitige Zerlegung (Zeile und Spalte).",
+              "Sehr komplex: Zellennacharbeit fuer ungeklaerte Zellen vorgesehen."
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:5",
+        "strategy": "E",
+        "tables": 1,
+        "table_ids": [
+          "PMC1216327:T2"
+        ],
+        "complexity": "komplex",
+        "units": 13,
+        "expected_cells": 54,
+        "in_scope_cells": 54,
+        "prompt_chars": 36144,
+        "prompt_chars_per_unit": 2780.3,
+        "est_tokens_zeichen_durch_4": 9036,
+        "gold_cells_record": 6,
+        "gold_reachable": 2,
+        "focus_rows": 0,
+        "no_outcome_row": true,
+        "structural_complete_tables": 1,
+        "validation_errors": 0,
+        "validation_warnings": 0,
+        "finding_codes": {},
+        "per_table": [
+          {
+            "table_id": "PMC1216327:T2",
+            "units": 13,
+            "prompt_chars": 36144,
+            "in_scope_cells": 54,
+            "validation_status": "strukturell_vollstaendig",
+            "notes": [
+              "Komplexitaet 0.63 (komplex).",
+              "Komplexe Tabelle: beidseitige Zerlegung (Zeile und Spalte)."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hinweise": [
+    "est_tokens ist eine Schaetzung aus Zeichen/4, kein gemessener Tokenverbrauch.",
+    "Ohne Modellaufruf gibt es keine Precision, keinen Recall und keinen F1.",
+    "gold_reachable ist die Obergrenze des Tabellenpfads: Goldzellen, deren Feld eine Spalte der Tabelle traegt."
+  ],
+  "selection": "../analysis/table_decomposition_20261118/selection_dev.json",
+  "selection_role": "dev",
+  "selection_sha256": "c22ed3fb42dbaaff7051a89cdb327c4b250a134db0a62a19d3877d5ba311c0b1",
+  "created": "2026-11-18T11:07:32+00:00"
+}

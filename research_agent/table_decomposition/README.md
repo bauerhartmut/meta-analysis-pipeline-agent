@@ -61,6 +61,12 @@ Schreibt Header-Pfade, Rollen (`label`, `n`, `mean`, `sd`, `events`, `p`,
   `arm=None`, `basis` sagt warum (`kein_treffer`, `ambiguous`).
 - `assume_order` — Reihenfolge-Annahme bei genau zwei Armspalten, markiert als
   `arm_basis="reihenfolge"` (Standard aus; im Benchmark separat gemessen).
+- `row_roles(label)` / `Row.value_role` — Rolle aus dem Zeilenlabel
+  (`Mean (SD)` → mean + sd, `Not complying, n (%)` → events). Sie greift nur,
+  wenn der Spaltenkopf keine Rolle trägt; ein Spaltenfeld hat Vorrang, und ohne
+  Zellwert entsteht kein Feld. Auf dem eingefrorenen Material derzeit ohne
+  messbaren Gewinn: bei den betroffenen Tabellen liegen die Wertspalten nicht
+  unter den Armköpfen bzw. sind die Arme Zeilen (`PMC4319071:T2`).
 
 Zwei weitere Mechanismen laufen dokumentweit bzw. zellgenau:
 
@@ -82,6 +88,9 @@ Zwei weitere Mechanismen laufen dokumentweit bzw. zellgenau:
   aus dem Kopf (`n = 456`) werden als Kopf-Fakt mit Wert und (falls belegbar)
   Arm geführt, **nicht** als Spaltenrolle `n`. Sonst liest der Extraktor
   Zeilenwerte als Gruppengröße (belegt: `PMC4319071:T1`).
+  `Reconstruction.add_header_facts(table)` macht daraus ohne Modellaufruf einen
+  Beleg (Adresse `(-1, col_start)`, `origin="kopf_fakt"`, Rohwert = Kopftext);
+  ein Fakt ohne belegten Arm erzeugt kein Feld.
 
 Fette Zeilengruppen (`**Dietary intake**`) sind Zeilenlabels, keine Kopfzeilen:
  sie beenden die Tabelle nicht, sondern bilden den Label-Pfad. Kopfzeilen, die

@@ -274,6 +274,20 @@ def _check_structure(table: Table, units: Sequence[ExtractionUnit],
             )
         )
 
+    row_roles = sorted({row.value_role for row in table.rows if row.value_role})
+    if row_roles:
+        findings.append(
+            Finding(
+                code="rolle_aus_zeilenlabel",
+                severity=SEVERITY_INFO,
+                message=(
+                    f"Rollen aus Zeilenlabels: {row_roles}. Sie greifen nur, wo "
+                    "der Spaltenkopf keine Rolle traegt."
+                ),
+                table_id=table.table_id,
+            )
+        )
+
     transferred = [c.col_id for c in table.columns if c.arm_basis == "uebertrag"]
     if transferred:
         findings.append(
@@ -540,6 +554,24 @@ def _check_content(table: Table, units: Sequence[ExtractionUnit],
             )
         )
 
+    header_facts = [cell for cell in recon.cells if cell.origin == "kopf_fakt"]
+    if header_facts:
+        findings.append(
+            Finding(
+                code="gruppengroesse_aus_kopf",
+                severity=SEVERITY_INFO,
+                message=(
+                    f"{len(header_facts)} Gruppengroessen aus Kopfangaben "
+                    "(z. B. n = 434) ohne Modellaufruf gelesen: "
+                    + ", ".join(
+                        f"{cell.field}={cell.value}" for cell in header_facts
+                    )
+                    + "."
+                ),
+                table_id=table.table_id,
+            )
+        )
+
     if recon.stats.get("n_conflict"):
         findings.append(
             Finding(
@@ -586,6 +618,7 @@ def _check_content(table: Table, units: Sequence[ExtractionUnit],
         "sd_vs_mean_odd": n_sd_odd,
         "inconsistent_units": len(inconsistent),
         "columns_without_field": without_field,
+        "header_facts": len(header_facts),
     }
 
 

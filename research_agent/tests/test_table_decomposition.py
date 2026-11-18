@@ -248,6 +248,9 @@ GROUPED_DOCUMENT = "\n".join([
     "",
     _grouped_line([(0, "Mean (SD)"), (1, "159.12 (69.24)"), (2, "157.73 (64.54)"),
                    (3, "162.68 (72.76)"), (4, "156.91 (69.94)")]),
+    "",
+    _grouped_line([(0, "Not complying, n (%)"), (1, "1014 (75.17)"),
+                   (2, "330 (76.0)"), (3, "338 (74.1)"), (4, "346 (75.4)")]),
 ])
 
 GROUPED_CONTEXT = {"intervention": "Plus", "comparator": "Control",
@@ -285,9 +288,11 @@ def test_header_group_size_is_a_fact_not_a_column_role():
     assert ("intervention", 459) not in sizes      # Basic ist nicht der Arm
     assert all(column.role != "n" for column in table.columns)
     assert all(column.field is None for column in table.columns[:5])
-    # Kopfangaben sind kein gelesener Zellwert und zaehlen nicht als erwartbar.
-    fields = {name for _row_id, name in reachable_cells(table, GROUPED_CONTEXT)}
-    assert "comparator_group_size" not in fields
+    # Die Kopfangabe ist erwartbar - aber als Kopfwert, nicht als Zeilenzelle.
+    cells = reachable_cells(table, GROUPED_CONTEXT)
+    assert (-1, "comparator_group_size") in cells
+    assert not any(name.endswith("_group_size") and row_id >= 0
+                   for row_id, name in cells)
 
 
 def test_group_labels_extend_the_table_and_carry_a_label_path():
@@ -300,17 +305,78 @@ def test_group_labels_extend_the_table_and_carry_a_label_path():
     below = table.rows[table.rows.index(vegetable) + 1]
     assert below.label_path == ("Dietary intake", "Vegetable intake (grams)",
                                 "Mean (SD)")
-    assert outcome_rows(table, "Vegetable intake") == [below.row_id]
+    assert outcome_rows(table, "Vegetable intake") == [below.row_id, below.row_id + 1]
     assert outcome_rows(table, "Age") == [1]
     assert outcome_rows(table, "Quality of life") == []
+
+
+def test_header_fact_is_extracted_without_a_model_call():
+    """``n = 434`` und ``n = 456`` werden zu Gruppengroessen, ``n = 459`` nicht."""
+    table = _grouped_table()
+    cells = reachable_cells(table, GROUPED_CONTEXT)
+    assert (-1, "comparator_group_size") in cells
+    assert (-1, "intervention_group_size") in cells
+
+    engine = TableDecompositionEngine(
+        backend=None,
+        config=TableDecompositionConfig(enabled=True, strategy=STRATEGY_FULL),
+    )
+    run = engine.run_table(table, GROUPED_DOCUMENT)
+    predicted = {(c["field"], c["value"], c["quote"])
+                 for c in run.reconstruction.prediction_cells()}
+    assert ("comparator_group_size", 434.0, "n=434") in predicted
+    assert ("intervention_group_size", 456.0, "n=456") in predicted
+    assert all(value != 459.0 for _field, value, _quote in predicted)
+    assert run.reconstruction.stats["n_header_facts"] == 2
+    assert (-1, 2) not in run.reconstruction.by_address()
+    assert "gruppengroesse_aus_kopf" in {f.code for f in run.validation.findings}
+
+
+def test_row_label_supplies_role_when_the_column_header_has_none():
+    """``Mean (SD)`` macht aus der Armspalte ein Mittelfeld."""
+    table = _grouped_table()
+    mean_row = next(row for row in table.rows
+                    if row.value_role == "mean" and row.row_id in table.focus_rows)
+    events_row = next(row for row in table.rows if row.value_role == "events")
+    assert mean_row.secondary_role == "sd"
+    assert events_row.secondary_role == ""
+
+    cells = reachable_cells(table, GROUPED_CONTEXT)
+    assert (mean_row.row_id, "comparator_mean") in cells
+    assert (mean_row.row_id, "comparator_standard_deviation") in cells
+    assert (mean_row.row_id, "intervention_mean") in cells
+    assert (mean_row.row_id, "intervention_standard_deviation") in cells
+    assert (events_row.row_id, "comparator_events") in cells
+    # Ohne belegten Arm (Total, Basic) entsteht kein Feld.
+    assert all(name.split("_", 1)[1] != "mean" or row_id >= 0
+               for row_id, name in cells)
+
+
+def test_row_role_values_reach_the_prediction():
+    table = _grouped_table()
+    engine = TableDecompositionEngine(
+        backend=perfect_backend(table),
+        config=TableDecompositionConfig(enabled=True, strategy=STRATEGY_FULL),
+    )
+    run = engine.run_table(table, GROUPED_DOCUMENT)
+    predicted = {(cell["field"], cell["value"])
+                 for cell in run.reconstruction.prediction_cells()}
+    assert ("comparator_mean", 157.73) in predicted
+    assert ("comparator_standard_deviation", 64.54) in predicted
+    assert ("intervention_mean", 156.91) in predicted
+    assert ("comparator_events", 330.0) in predicted
+    assert ("intervention_group_size", 456.0) in predicted
 
 
 def test_reachable_cells_are_limited_to_the_outcome_row():
     table = _table()
     cells = reachable_cells(table, CONTEXT)
-    assert {row_id for row_id, _field in cells} == {0}
-    assert "intervention_mean" in {name for _row_id, name in cells}
-    assert reachable_cells(table, {"outcome": "Quality of life"}) == set()
+    row_cells = {(row_id, name) for row_id, name in cells if row_id >= 0}
+    assert {row_id for row_id, _name in row_cells} == {0}
+    assert "intervention_mean" in {name for _row_id, name in row_cells}
+    # Kopfangaben haengen an keiner Zeile; ohne Outcome-Zeile bleiben nur sie.
+    assert reachable_cells(table, {"outcome": "Quality of life"}) == {
+        (-1, "intervention_group_size"), (-1, "comparator_group_size")}
 
 
 def test_focused_plan_reads_only_the_outcome_row():
@@ -637,7 +703,9 @@ def test_backend_failure_does_not_break_the_run():
     run = engine.run_table(table, DOCUMENT)
     assert run.results[0].error.startswith("backend_exception")
     assert run.telemetry["errors"] == 1
-    assert run.reconstruction.stats["n_cells"] == 0
+    # Ohne Modelllesung bleibt nur, was deterministisch im Kopf steht.
+    assert all(cell.origin == "kopf_fakt" for cell in run.reconstruction.cells)
+    assert run.reconstruction.stats["n_header_facts"] == 2
 
 
 # --- Validierung ----------------------------------------------------------

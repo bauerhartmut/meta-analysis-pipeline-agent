@@ -192,6 +192,10 @@ class Row:
     # Gruppenpfad plus eigenes Zeilenlabel; erst zusammen ist eine Zeile
     # eindeutig (``Dietary intake`` > ``Vegetable intake`` > ``Mean (SD)``).
     label_path: Tuple[str, ...] = ()
+    # Rolle aus dem Zeilenlabel, wenn der Spaltenkopf keine traegt:
+    # ``Mean (SD)`` -> mean + sd, ``Not complying, n (%)`` -> events.
+    value_role: str = ""
+    secondary_role: str = ""
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -200,6 +204,8 @@ class Row:
             "label": self.label,
             "group_label": self.group_label,
             "label_path": list(self.label_path),
+            "value_role": self.value_role,
+            "secondary_role": self.secondary_role,
             "line": self.line,
             "start_char": self.start_char,
             "end_char": self.end_char,

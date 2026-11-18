@@ -247,6 +247,12 @@ def enrich_table(table: Table, context: Optional[Dict[str, object]] = None,
     if assume_order:
         _assume_arm_order(table)
     table.context = dict(context)
+    for row in table.rows:
+        if row.group_label:
+            row.value_role, row.secondary_role = "", ""
+            continue
+        label = row.label_path[-1] if row.label_path else row.label
+        row.value_role, row.secondary_role = row_roles(label)
     table.header_facts = _group_size_facts(table, intervention, comparator)
     table.focus_rows = outcome_rows(table, str(context.get("outcome") or ""))
     return table
@@ -408,6 +414,33 @@ def _group_size_facts(table: Table, intervention: str,
     return facts
 
 
+_ROW_MEAN_RE = re.compile(r"\bmean\b|\bmittelwert\b|\baverage\b", re.IGNORECASE)
+_ROW_SD_RE = re.compile(r"\(\s*s\.?\s*d\.?\s*\)|\bstandard deviation\b", re.IGNORECASE)
+_ROW_EVENTS_RE = re.compile(r"\bn\s*\(\s*%\s*\)", re.IGNORECASE)
+_ROW_N_RE = re.compile(r"^\(?\s*n\s*\)?$", re.IGNORECASE)
+
+
+def row_roles(row_label: str) -> Tuple[str, str]:
+    """Rolle und Zweitrolle aus einem Zeilenlabel.
+
+    In Tabellen wie ``PMC4319071:T1`` steht die Rolle nicht im Spaltenkopf
+    (die Spalten heissen ``Control``, ``Basic``, ``Plus``), sondern in der
+    Zeile: ``Mean (SD)`` traegt Mittelwert und Streuung, ``Not complying,
+    n (%)`` eine Ereigniszahl. Ohne diese Ableitung bleiben solche Tabellen
+    ohne jedes Feld.
+    """
+    text = (row_label or "").strip()
+    if not text:
+        return "", ""
+    if _ROW_MEAN_RE.search(text):
+        return ROLE_MEAN, (ROLE_SD if _ROW_SD_RE.search(text) else "")
+    if _ROW_EVENTS_RE.search(text):
+        return ROLE_EVENTS, ""
+    if _ROW_N_RE.match(text):
+        return ROLE_N, ""
+    return "", ""
+
+
 _MIN_OUTCOME_SCORE = 0.5
 
 
@@ -467,18 +500,61 @@ def outcome_rows(table: Table, outcome: str) -> List[int]:
 
 def reachable_cells(table: Table,
                     context: Optional[Dict[str, object]] = None) -> set:
-    """Erwartbare Zellen: Spaltenfeld **und** Outcome-Zeile.
+    """Erwartbare Werte: Zellen der Outcome-Zeile **und** Kopfangaben.
 
-    Die Obergrenze des Tabellenpfads je Record. Werte aus dem Kopf
-    (``header_facts``, etwa ``n = 456``) zaehlen nicht mit: sie sind kein
-    gelesener Zellwert, sondern eine Angabe ueber die Spaltengruppe.
+    Zellwerte zaehlen nur in der Outcome-Zeile (Spaltenfeld **und** Zeile).
+    Feste Kopfangaben (``header_facts``, etwa ``n = 456``) haengen an keiner
+    Zeile; sie sind erwartbar, sobald der Arm belegt ist, und werden ohne
+    Modellaufruf als Beleg gefuehrt (Adresse ``(-1, col_start)``).
     """
     context = context if context is not None else (table.context or {})
+    cells = set()
+    for fact in table.header_facts:
+        arm = fact.get("arm")
+        field = field_for(ROLE_N, arm if isinstance(arm, str) else None)
+        if field:
+            cells.add((-1, field))
     rows = outcome_rows(table, str(context.get("outcome") or ""))
-    if not rows:
-        return set()
-    fields = reachable_fields(table)
-    return {(row_id, name) for row_id in rows for name in fields}
+    if rows:
+        column_fields = reachable_fields(table)
+        for row_id in rows:
+            row = table.row(row_id)
+            cells |= {(row_id, name) for name in column_fields}
+            if row is not None:
+                cells |= {(row_id, name) for name in row_fields(table, row)}
+    return cells
+
+
+def row_fields(table: Table, row) -> set:
+    """Felder, die eine Zeile aus ihren Zellen hergibt.
+
+    Spaltenfeld zuerst. Traegt der Spaltenkopf keine Rolle (``Control``), gilt
+    die Rolle aus dem Zeilenlabel (``Mean (SD)`` -> mean + sd, ``n (%)`` ->
+    events) - aber nur dann, und nur bei vorhandener Zelle: eine leere Zelle
+    belegt nichts.
+    """
+    fields: set = set()
+    role = getattr(row, "value_role", "")
+    secondary = getattr(row, "secondary_role", "")
+    for column in table.columns:
+        if column.role == ROLE_LABEL:
+            continue
+        cell = row.cells.get(column.col_id)
+        text = (cell.text or "") if cell is not None else ""
+        if not text.strip():
+            continue
+        if column.field:
+            fields.add(column.field)
+            continue
+        if column.role == ROLE_UNKNOWN and role:
+            field = field_for(role, column.arm)
+            if field:
+                fields.add(field)
+        if secondary and column.arm and len(_NUMBER_RE.findall(text)) >= 2:
+            second = field_for(secondary, column.arm)
+            if second:
+                fields.add(second)
+    return fields
 
 
 def reachable_fields(table: Table) -> set:
