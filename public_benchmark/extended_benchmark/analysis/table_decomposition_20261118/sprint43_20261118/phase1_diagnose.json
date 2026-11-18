@@ -1,0 +1,9345 @@
+{
+ "mode": "diagnose",
+ "selection": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/selection_test.json",
+ "tabellen": {
+  "PMC4319071:T1": {
+   "record_ids": [
+    "yun2024:112"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Characteristic",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "Total",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Control",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Basic",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Plus",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Group comparison, OR (95% CI)^a^",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 1,
+     "text": "n=1349",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "n=434",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "n=459",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "n=456",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Characteristic",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "Total",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Control",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Basic",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Plus",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Group comparison, OR (95% CI)^a^",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 1,
+     "text": "n=1349",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "n=434",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "n=459",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "n=456",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Characteristic"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Total"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Control"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Basic"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Plus"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "Group comparison, OR (95% CI)^a^"
+     ],
+     "rolle": "ci",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "8": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "9": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Characteristic"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Total"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Control"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Basic"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Plus"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "Group comparison, OR (95% CI)^a^"
+     ],
+     "rolle": "ci",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "8": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "9": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC2667135:T4": {
+   "record_ids": [
+    "yun2024:16"
+   ],
+   "gold_felder": [
+    "comparator_events",
+    "comparator_group_size",
+    "intervention_events",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Clinical outcome 6 weeks after end of therapy",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "CoPAT^a^ (*n* = 103)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "IPAT (*n* = 97)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*P*^b^",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Clinical outcome 6 weeks after end of therapy",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "CoPAT^a^ (*n* = 103)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "IPAT (*n* = 97)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*P*^b^",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Clinical outcome 6 weeks after end of therapy"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "CoPAT^a^ (*n* = 103)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "IPAT (*n* = 97)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "*P*^b^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Clinical outcome 6 weeks after end of therapy"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "CoPAT^a^ (*n* = 103)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "IPAT (*n* = 97)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "*P*^b^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5079604:T1": {
+   "record_ids": [
+    "yun2024:174"
+   ],
+   "gold_felder": [
+    "comparator_events",
+    "comparator_group_size",
+    "intervention_events",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Metformin (*n* = 17)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Sitagliptin (*n* = 16)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (*n* = 15)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*P* value",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Metformin (*n* = 17)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Sitagliptin (*n* = 16)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (*n* = 15)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*P* value",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Metformin (*n* = 17)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Sitagliptin (*n* = 16)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Placebo (*n* = 15)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "4": {
+     "pfad": [
+      "*P* value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Metformin (*n* = 17)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Sitagliptin (*n* = 16)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Placebo (*n* = 15)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "4": {
+     "pfad": [
+      "*P* value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5122613:T1": {
+   "record_ids": [
+    "yun2024:185"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Placebo (*n* = 33)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "RMD (*n* = 33)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Total (*n* = 66)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Placebo (*n* = 33)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "RMD (*n* = 33)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Total (*n* = 66)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo (*n* = 33)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "RMD (*n* = 33)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Total (*n* = 66)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo (*n* = 33)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "RMD (*n* = 33)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Total (*n* = 66)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5360580:T1": {
+   "record_ids": [
+    "yun2024:194"
+   ],
+   "gold_felder": [
+    "comparator_events",
+    "comparator_group_size",
+    "intervention_events",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Variable",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Pls group (n = 145)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo group (n = 140)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "P value[a](#)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Variable",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Pls group (n = 145)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo group (n = 140)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "P value[a](#)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Variable"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Pls group (n = 145)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Placebo group (n = 140)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "P value[a](#)"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Variable"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Pls group (n = 145)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Placebo group (n = 140)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "P value[a](#)"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5360580:T6": {
+   "record_ids": [
+    "yun2024:196"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Pls group (n = 169)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo group (n = 167)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Pls group (n = 169)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo group (n = 167)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Pls group (n = 169)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Placebo group (n = 167)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Pls group (n = 169)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Placebo group (n = 167)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   }
+  },
+  "PMC5380326:T2": {
+   "record_ids": [
+    "yun2024:205"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Variables (Unit in pg/mL)",
+     "col_start": 0,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (40)",
+     "col_start": 2,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Vitamin D (40)",
+     "col_start": 4,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Pre: Mean (SE)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Post: Mean (SE)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "P-value",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Pre: Mean (SE)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Post: Mean (SE)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "P-value",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Variables (Unit in pg/mL)",
+     "col_start": 0,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (40)",
+     "col_start": 2,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Vitamin D (40)",
+     "col_start": 4,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Pre: Mean (SE)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Post: Mean (SE)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "P-value",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Pre: Mean (SE)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Post: Mean (SE)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "P-value",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Variables (Unit in pg/mL)",
+      "Pre: Mean (SE)"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Variables (Unit in pg/mL)",
+      "Post: Mean (SE)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Placebo (40)",
+      "P-value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Placebo (40)",
+      "Pre: Mean (SE)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Vitamin D (40)",
+      "Post: Mean (SE)"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "5": {
+     "pfad": [
+      "Vitamin D (40)",
+      "P-value"
+     ],
+     "rolle": "p_value",
+     "arm": "intervention",
+     "feld": null
+    },
+    "6": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Variables (Unit in pg/mL)",
+      "Pre: Mean (SE)"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Variables (Unit in pg/mL)",
+      "Post: Mean (SE)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Placebo (40)",
+      "P-value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Placebo (40)",
+      "Pre: Mean (SE)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Vitamin D (40)",
+      "Post: Mean (SE)"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "5": {
+     "pfad": [
+      "Vitamin D (40)",
+      "P-value"
+     ],
+     "rolle": "p_value",
+     "arm": "intervention",
+     "feld": null
+    },
+    "6": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5614421:T2": {
+   "record_ids": [
+    "yun2024:253"
+   ],
+   "gold_felder": [
+    "comparator_events",
+    "comparator_group_size",
+    "intervention_events",
+    "intervention_group_size"
+   ],
+   "baender_original": [],
+   "baender_kandidat": [],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5711682:T1": {
+   "record_ids": [
+    "yun2024:258"
+   ],
+   "gold_felder": [
+    "comparator_events",
+    "comparator_group_size",
+    "intervention_events",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Genoss DES™ (n=38)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Promus Element™ (n=39)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "p",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Genoss DES™ (n=38)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Promus Element™ (n=39)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "p",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Genoss DES™ (n=38)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Promus Element™ (n=39)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "p"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Genoss DES™ (n=38)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Promus Element™ (n=39)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "p"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC2430617:T1": {
+   "record_ids": [
+    "yun2024:266"
+   ],
+   "gold_felder": [
+    "comparator_events",
+    "comparator_group_size",
+    "intervention_events",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Characteristics",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo group (N = 78)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "30 µg YIC group (N = 81)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "60 µg YIC group (N = 78)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Characteristics",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo group (N = 78)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "30 µg YIC group (N = 81)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "60 µg YIC group (N = 78)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Characteristics"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo group (N = 78)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "30 µg YIC group (N = 81)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "60 µg YIC group (N = 78)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Characteristics"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo group (N = 78)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "30 µg YIC group (N = 81)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "60 µg YIC group (N = 78)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   }
+  },
+  "PMC3654355:T1": {
+   "record_ids": [
+    "yun2024:275"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "ILI ( *n* = 71)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Control ( *n* = 33)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "*P*value",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*N*",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "%",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "%",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": ""
+    },
+    {
+     "level": 1,
+     "text": "*N*",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "verschoben"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "ILI ( *n* = 71)",
+     "col_start": 0,
+     "col_end": 5,
+     "basis": "ordnung"
+    },
+    {
+     "level": 0,
+     "text": "Control ( *n* = 33)",
+     "col_start": 1,
+     "col_end": 2,
+     "basis": "ordnung"
+    },
+    {
+     "level": 0,
+     "text": "*P*value",
+     "col_start": 3,
+     "col_end": 4,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "*N*",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "%",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "*N*",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "%",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ordnung"
+    }
+   ],
+   "ueberlappungen_kandidat": [
+    {
+     "level": 0,
+     "links": "ILI ( *n* = 71)",
+     "rechts": "Control ( *n* = 33)",
+     "links_spanne": [
+      0,
+      5
+     ],
+     "rechts_spanne": [
+      1,
+      2
+     ]
+    }
+   ],
+   "felder_original": [
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "ILI ( *n* = 71)",
+      "*N*"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Control ( *n* = 33)",
+      "%"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "*P*value",
+      "%"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "*N*"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "ILI ( *n* = 71)"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "ILI ( *n* = 71)",
+      "Control ( *n* = 33)",
+      "*N*"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "ILI ( *n* = 71)",
+      "Control ( *n* = 33)",
+      "%"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "ILI ( *n* = 71)",
+      "*P*value",
+      "*N*"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "ILI ( *n* = 71)",
+      "*P*value",
+      "%"
+     ],
+     "rolle": "p_value",
+     "arm": "intervention",
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "ILI ( *n* = 71)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   }
+  },
+  "PMC3654355:T2": {
+   "record_ids": [
+    "yun2024:282"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "ILI",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Control",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Between-group differences, mean (95% CI)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "*P*value ^a^",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 1,
+     "text": "( *n* = 71)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "( *n* = 33)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "ILI",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Control",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Between-group differences, mean (95% CI)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "*P*value ^a^",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 1,
+     "text": "( *n* = 71)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "( *n* = 33)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "ILI",
+      "( *n* = 71)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Control",
+      "( *n* = 33)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Between-group differences, mean (95% CI)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "*P*value ^a^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "ILI",
+      "( *n* = 71)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Control",
+      "( *n* = 33)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Between-group differences, mean (95% CI)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "*P*value ^a^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC4355974:T2": {
+   "record_ids": [
+    "yun2024:298"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "intervention_group_size",
+    "intervention_mean"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "**Intervention, N = 28**",
+     "col_start": 0,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "**Control, N = 14**",
+     "col_start": 4,
+     "col_end": 7,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "**Symptoms over previous 2 weeks**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Mean at baseline**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Mean change at 6 months**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**P-value**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Mean at baseline**",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Mean change at 6 month**",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**P-value**",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**P-value for differences in changes**",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "**Intervention, N = 28**",
+     "col_start": 0,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "**Control, N = 14**",
+     "col_start": 4,
+     "col_end": 7,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "**Symptoms over previous 2 weeks**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Mean at baseline**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Mean change at 6 months**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**P-value**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Mean at baseline**",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Mean change at 6 month**",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**P-value**",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**P-value for differences in changes**",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "comparator_mean"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "comparator_mean"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "comparator_mean"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "comparator_mean"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "**Intervention, N = 28**",
+      "**Symptoms over previous 2 weeks**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "**Intervention, N = 28**",
+      "**Mean at baseline**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "**Intervention, N = 28**",
+      "**Mean change at 6 months**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "**Intervention, N = 28**",
+      "**P-value**"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "**Control, N = 14**",
+      "**Mean at baseline**"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    },
+    "5": {
+     "pfad": [
+      "**Control, N = 14**",
+      "**Mean change at 6 month**"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    },
+    "6": {
+     "pfad": [
+      "**Control, N = 14**",
+      "**P-value**"
+     ],
+     "rolle": "p_value",
+     "arm": "comparator",
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "**Control, N = 14**",
+      "**P-value for differences in changes**"
+     ],
+     "rolle": "p_value",
+     "arm": "comparator",
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "**Intervention, N = 28**",
+      "**Symptoms over previous 2 weeks**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "**Intervention, N = 28**",
+      "**Mean at baseline**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "**Intervention, N = 28**",
+      "**Mean change at 6 months**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "**Intervention, N = 28**",
+      "**P-value**"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "**Control, N = 14**",
+      "**Mean at baseline**"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    },
+    "5": {
+     "pfad": [
+      "**Control, N = 14**",
+      "**Mean change at 6 month**"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    },
+    "6": {
+     "pfad": [
+      "**Control, N = 14**",
+      "**P-value**"
+     ],
+     "rolle": "p_value",
+     "arm": "comparator",
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "**Control, N = 14**",
+      "**P-value for differences in changes**"
+     ],
+     "rolle": "p_value",
+     "arm": "comparator",
+     "feld": null
+    }
+   }
+  },
+  "PMC3003523:T1": {
+   "record_ids": [
+    "yun2024:30"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Characteristic, mean (SD)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "CZP 200 mg + MTX",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "CZP 400 mg + MTX",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "PBO + MTX",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "(n = 393)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "(n = 390)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "(n = 199)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Characteristic, mean (SD)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "CZP 200 mg + MTX",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "CZP 400 mg + MTX",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "PBO + MTX",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "(n = 393)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "(n = 390)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "(n = 199)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Characteristic, mean (SD)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "CZP 200 mg + MTX"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "2": {
+     "pfad": [
+      "CZP 400 mg + MTX"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "PBO + MTX"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Characteristic, mean (SD)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "CZP 200 mg + MTX"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "2": {
+     "pfad": [
+      "CZP 400 mg + MTX"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "PBO + MTX"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5617873:T2": {
+   "record_ids": [
+    "yun2024:336"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Placebo (n = 45)",
+     "col_start": 0,
+     "col_end": 1,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Aripiprazole (n = 47)",
+     "col_start": 2,
+     "col_end": 3,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Difference or ratio (95% confidence interval) P value",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "Mean baseline",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean change from baseline",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean baseline",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean change from baseline",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Placebo (n = 45)",
+     "col_start": 0,
+     "col_end": 1,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Aripiprazole (n = 47)",
+     "col_start": 2,
+     "col_end": 3,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Difference or ratio (95% confidence interval) P value",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "Mean baseline",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean change from baseline",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean baseline",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean change from baseline",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Placebo (n = 45)",
+      "Mean baseline"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo (n = 45)",
+      "Mean change from baseline"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Aripiprazole (n = 47)",
+      "Mean baseline"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "3": {
+     "pfad": [
+      "Aripiprazole (n = 47)",
+      "Mean change from baseline"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "4": {
+     "pfad": [
+      "Difference or ratio (95% confidence interval) P value"
+     ],
+     "rolle": "ci",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Placebo (n = 45)",
+      "Mean baseline"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo (n = 45)",
+      "Mean change from baseline"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Aripiprazole (n = 47)",
+      "Mean baseline"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "3": {
+     "pfad": [
+      "Aripiprazole (n = 47)",
+      "Mean change from baseline"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "4": {
+     "pfad": [
+      "Difference or ratio (95% confidence interval) P value"
+     ],
+     "rolle": "ci",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5874317:T1": {
+   "record_ids": [
+    "yun2024:352"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "**Bilateral ( *n* = 9)**",
+     "col_start": 1,
+     "col_end": 6,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "**Unilateral ( *n* = 9)**",
+     "col_start": 7,
+     "col_end": 12,
+     "basis": "periode"
+    },
+    {
+     "level": 1,
+     "text": "**Pre-test**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Post-test**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**% (CL90%)**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**ES (CL90%)**",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Chances**",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Outcome**",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Pre-test**",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Post-test**",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**% (CL90%)**",
+     "col_start": 9,
+     "col_end": 9,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**ES (CL90%)**",
+     "col_start": 10,
+     "col_end": 10,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Chances**",
+     "col_start": 11,
+     "col_end": 11,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Outcome**",
+     "col_start": 12,
+     "col_end": 12,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "**Bilateral ( *n* = 9)**",
+     "col_start": 1,
+     "col_end": 6,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "**Unilateral ( *n* = 9)**",
+     "col_start": 7,
+     "col_end": 12,
+     "basis": "periode"
+    },
+    {
+     "level": 1,
+     "text": "**Pre-test**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Post-test**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**% (CL90%)**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**ES (CL90%)**",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Chances**",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Outcome**",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Pre-test**",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Post-test**",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**% (CL90%)**",
+     "col_start": 9,
+     "col_end": 9,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**ES (CL90%)**",
+     "col_start": 10,
+     "col_end": 10,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Chances**",
+     "col_start": 11,
+     "col_end": 11,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Outcome**",
+     "col_start": 12,
+     "col_end": 12,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**Pre-test**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**Post-test**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**% (CL90%)**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**ES (CL90%)**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**Chances**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "6": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**Outcome**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**Pre-test**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "8": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**Post-test**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "9": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**% (CL90%)**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "10": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**ES (CL90%)**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "11": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**Chances**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "12": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**Outcome**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**Pre-test**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**Post-test**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**% (CL90%)**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**ES (CL90%)**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**Chances**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "6": {
+     "pfad": [
+      "**Bilateral ( *n* = 9)**",
+      "**Outcome**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**Pre-test**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "8": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**Post-test**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "9": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**% (CL90%)**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "10": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**ES (CL90%)**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "11": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**Chances**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "12": {
+     "pfad": [
+      "**Unilateral ( *n* = 9)**",
+      "**Outcome**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC3278655:T2": {
+   "record_ids": [
+    "yun2024:391"
+   ],
+   "gold_felder": [
+    "comparator_events",
+    "comparator_group_size",
+    "intervention_events",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "6-month follow-up",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "12-month follow-up",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "24-month follow-up",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "60-month follow-up",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "p-value**[^a^](#)**",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "TM",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Cemented",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "TM",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Cemented",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "TM",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Cemented",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": ""
+    },
+    {
+     "level": 1,
+     "text": "TM",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": ""
+    },
+    {
+     "level": 1,
+     "text": "Cemented",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": ""
+    },
+    {
+     "level": 2,
+     "text": "(n=30)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=24)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=29)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=23)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=28)",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=21)",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=27)",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=18)",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "6-month follow-up",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "12-month follow-up",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "24-month follow-up",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "60-month follow-up",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "p-value**[^a^](#)**",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "TM",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Cemented",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "TM",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Cemented",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "TM",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Cemented",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": ""
+    },
+    {
+     "level": 1,
+     "text": "TM",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": ""
+    },
+    {
+     "level": 1,
+     "text": "Cemented",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": ""
+    },
+    {
+     "level": 2,
+     "text": "(n=30)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=24)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=29)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=23)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=28)",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=21)",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=27)",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(n=18)",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "6-month follow-up",
+      "TM"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "12-month follow-up",
+      "Cemented"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "24-month follow-up",
+      "TM"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "60-month follow-up",
+      "Cemented"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "p-value**[^a^](#)**",
+      "TM"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "Cemented"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "TM"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "8": {
+     "pfad": [
+      "Cemented"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "9": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "6-month follow-up",
+      "TM"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "12-month follow-up",
+      "Cemented"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "24-month follow-up",
+      "TM"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "60-month follow-up",
+      "Cemented"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "p-value**[^a^](#)**",
+      "TM"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "Cemented"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "TM"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "8": {
+     "pfad": [
+      "Cemented"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "9": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5781260:T1": {
+   "record_ids": [
+    "yun2024:403"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Parameter",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "Lemon verbena",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "Placebo",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "Inclusion criteria/Reference range",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 1,
+     "text": "[unit]",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "(*N* = 20 59% men, 41% women)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "(*N* = 20 40% men, 60% women)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Parameter",
+     "col_start": 0,
+     "col_end": 1,
+     "basis": "ordnung"
+    },
+    {
+     "level": 0,
+     "text": "Lemon verbena",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "ordnung"
+    },
+    {
+     "level": 0,
+     "text": "Placebo",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "ordnung"
+    },
+    {
+     "level": 0,
+     "text": "Inclusion criteria/Reference range",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "[unit]",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "(*N* = 20 59% men, 41% women)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "(*N* = 20 40% men, 60% women)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ordnung"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Parameter",
+      "[unit]"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Lemon verbena",
+      "(*N* = 20 59% men, 41% women)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Placebo",
+      "(*N* = 20 40% men, 60% women)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "4": {
+     "pfad": [
+      "Inclusion criteria/Reference range"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Parameter"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Parameter"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Lemon verbena",
+      "[unit]"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Placebo",
+      "(*N* = 20 59% men, 41% women)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "4": {
+     "pfad": [
+      "Inclusion criteria/Reference range",
+      "(*N* = 20 40% men, 60% women)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC3475525:T2": {
+   "record_ids": [
+    "yun2024:408"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Outcome",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "No Label, Control Group(n = 99)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Choices (n = 98)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "MTL (n = 98)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "MTL+ Caloric Intake (n = 90)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "TL+SNL (n = 95)",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*P^c^*",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "η^2 d^",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Outcome",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "No Label, Control Group(n = 99)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Choices (n = 98)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "MTL (n = 98)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "MTL+ Caloric Intake (n = 90)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "TL+SNL (n = 95)",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*P^c^*",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "η^2 d^",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Outcome"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "No Label, Control Group(n = 99)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Choices (n = 98)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "MTL (n = 98)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "MTL+ Caloric Intake (n = 90)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "TL+SNL (n = 95)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "*P^c^*"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "η^2 d^"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Outcome"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "No Label, Control Group(n = 99)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Choices (n = 98)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "MTL (n = 98)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "MTL+ Caloric Intake (n = 90)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "TL+SNL (n = 95)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "*P^c^*"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "η^2 d^"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC3877023:T3": {
+   "record_ids": [
+    "yun2024:421"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Cervicothoracic Spine",
+     "col_start": 0,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Thoracolumbar Spine",
+     "col_start": 3,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Short-Bore MR Imaging",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "Open MR Imaging",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "*P* Value",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Short-Bore MR Imaging",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Open MR Imaging",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*P* Value",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 2,
+     "text": "Arithmetic mean (SD)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 2,
+     "text": "Arithmetic mean (SD)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 3,
+     "text": "**T2w sagittal**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 3,
+     "text": "n = 18",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 3,
+     "text": "n = 21",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 3,
+     "text": "n = 30",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 3,
+     "text": "n = 34",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Cervicothoracic Spine",
+     "col_start": 0,
+     "col_end": 6,
+     "basis": "ordnung"
+    },
+    {
+     "level": 0,
+     "text": "Thoracolumbar Spine",
+     "col_start": 1,
+     "col_end": 5,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "Arithmetic mean (SD)",
+     "col_start": 0,
+     "col_end": 6,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "Arithmetic mean (SD)",
+     "col_start": 1,
+     "col_end": 5,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "**T2w sagittal**",
+     "col_start": 0,
+     "col_end": 6,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "n = 18",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "n = 21",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "n = 30",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "n = 34",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "ordnung"
+    }
+   ],
+   "ueberlappungen_kandidat": [
+    {
+     "level": 0,
+     "links": "Cervicothoracic Spine",
+     "rechts": "Thoracolumbar Spine",
+     "links_spanne": [
+      0,
+      6
+     ],
+     "rechts_spanne": [
+      1,
+      5
+     ]
+    },
+    {
+     "level": 2,
+     "links": "Arithmetic mean (SD)",
+     "rechts": "Arithmetic mean (SD)",
+     "links_spanne": [
+      0,
+      6
+     ],
+     "rechts_spanne": [
+      1,
+      5
+     ]
+    },
+    {
+     "level": 3,
+     "links": "**T2w sagittal**",
+     "rechts": "n = 18",
+     "links_spanne": [
+      0,
+      6
+     ],
+     "rechts_spanne": [
+      1,
+      1
+     ]
+    }
+   ],
+   "felder_original": [
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "felder_kandidat": [],
+   "gold_original": [
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "gold_kandidat": [],
+   "verloren": [
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "**T2w sagittal**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Short-Bore MR Imaging",
+      "Arithmetic mean (SD)"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "2": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Open MR Imaging"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Thoracolumbar Spine",
+      "*P* Value",
+      "Arithmetic mean (SD)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Thoracolumbar Spine",
+      "Short-Bore MR Imaging"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "Thoracolumbar Spine",
+      "Open MR Imaging"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "*P* Value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC3877023:T4": {
+   "record_ids": [
+    "yun2024:426"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Cervicothoracic Spine",
+     "col_start": 0,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Thoracolumbar Spine",
+     "col_start": 3,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Short-Bore MR Imaging",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "Open MR Imaging",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "*P* Value",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Short-Bore MR Imaging",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "Open MR Imaging",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*P* Value",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 2,
+     "text": "Arithmetic mean (SD)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 2,
+     "text": "Arithmetic mean (SD)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 3,
+     "text": "**T2w sagittal**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 3,
+     "text": "n = 18",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 3,
+     "text": "n = 21",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 3,
+     "text": "n = 30",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 3,
+     "text": "n = 34",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Cervicothoracic Spine",
+     "col_start": 0,
+     "col_end": 6,
+     "basis": "ordnung"
+    },
+    {
+     "level": 0,
+     "text": "Thoracolumbar Spine",
+     "col_start": 1,
+     "col_end": 5,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "Arithmetic mean (SD)",
+     "col_start": 0,
+     "col_end": 6,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "Arithmetic mean (SD)",
+     "col_start": 1,
+     "col_end": 5,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "**T2w sagittal**",
+     "col_start": 0,
+     "col_end": 6,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "n = 18",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "n = 21",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "n = 30",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ordnung"
+    },
+    {
+     "level": 3,
+     "text": "n = 34",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "ordnung"
+    }
+   ],
+   "ueberlappungen_kandidat": [
+    {
+     "level": 0,
+     "links": "Cervicothoracic Spine",
+     "rechts": "Thoracolumbar Spine",
+     "links_spanne": [
+      0,
+      6
+     ],
+     "rechts_spanne": [
+      1,
+      5
+     ]
+    },
+    {
+     "level": 2,
+     "links": "Arithmetic mean (SD)",
+     "rechts": "Arithmetic mean (SD)",
+     "links_spanne": [
+      0,
+      6
+     ],
+     "rechts_spanne": [
+      1,
+      5
+     ]
+    },
+    {
+     "level": 3,
+     "links": "**T2w sagittal**",
+     "rechts": "n = 18",
+     "links_spanne": [
+      0,
+      6
+     ],
+     "rechts_spanne": [
+      1,
+      1
+     ]
+    }
+   ],
+   "felder_original": [
+    "comparator_group_size"
+   ],
+   "felder_kandidat": [],
+   "gold_original": [
+    "comparator_group_size"
+   ],
+   "gold_kandidat": [],
+   "verloren": [
+    "comparator_group_size"
+   ],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "**T2w sagittal**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Short-Bore MR Imaging",
+      "Arithmetic mean (SD)"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    },
+    "2": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Open MR Imaging"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Thoracolumbar Spine",
+      "*P* Value",
+      "Arithmetic mean (SD)"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Thoracolumbar Spine",
+      "Short-Bore MR Imaging"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "Thoracolumbar Spine",
+      "Open MR Imaging"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "*P* Value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Thoracolumbar Spine",
+      "Arithmetic mean (SD)",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "Cervicothoracic Spine",
+      "Arithmetic mean (SD)",
+      "**T2w sagittal**"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC3475525:T1": {
+   "record_ids": [
+    "yun2024:438"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Product Comparison (Nutrient Profile Model Score)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "No Label (n = 99)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Choices (n = 98)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "MTL (n = 98)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "MTL+Caloric Intake (n = 90)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "TL+SNL (n = 95)",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "χ^2^",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*P*^b^",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Product Comparison (Nutrient Profile Model Score)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "No Label (n = 99)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Choices (n = 98)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "MTL (n = 98)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "MTL+Caloric Intake (n = 90)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "TL+SNL (n = 95)",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "χ^2^",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*P*^b^",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Product Comparison (Nutrient Profile Model Score)"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "No Label (n = 99)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Choices (n = 98)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "MTL (n = 98)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "MTL+Caloric Intake (n = 90)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "TL+SNL (n = 95)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "χ^2^"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "*P*^b^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Product Comparison (Nutrient Profile Model Score)"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "No Label (n = 99)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Choices (n = 98)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "MTL (n = 98)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "MTL+Caloric Intake (n = 90)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "TL+SNL (n = 95)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "χ^2^"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "*P*^b^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC4140238:T2": {
+   "record_ids": [
+    "yun2024:445"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "intervention_group_size",
+    "intervention_mean"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Time of itching grading post-CAC",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo mean score (n)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "BBOS 1.5% mean score (n)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Difference in mean itching score (placebo -- BBOS 1.5%)[*](#)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Time of itching grading post-CAC",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo mean score (n)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "BBOS 1.5% mean score (n)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Difference in mean itching score (placebo -- BBOS 1.5%)[*](#)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_mean"
+   ],
+   "felder_kandidat": [
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_mean"
+   ],
+   "gold_original": [
+    "comparator_mean",
+    "intervention_mean"
+   ],
+   "gold_kandidat": [
+    "comparator_mean",
+    "intervention_mean"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Time of itching grading post-CAC"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Placebo mean score (n)"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    },
+    "3": {
+     "pfad": [
+      "BBOS 1.5% mean score (n)"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "4": {
+     "pfad": [
+      "Difference in mean itching score (placebo -- BBOS 1.5%)[*](#)"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Time of itching grading post-CAC"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Placebo mean score (n)"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    },
+    "3": {
+     "pfad": [
+      "BBOS 1.5% mean score (n)"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "4": {
+     "pfad": [
+      "Difference in mean itching score (placebo -- BBOS 1.5%)[*](#)"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    }
+   }
+  },
+  "PMC4140238:T1": {
+   "record_ids": [
+    "yun2024:445"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "intervention_group_size",
+    "intervention_mean"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "BBOS 1.5% (N=70)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (N=70)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "All subjects (N=140)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "BBOS 1.5% (N=70)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (N=70)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "All subjects (N=140)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "BBOS 1.5% (N=70)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Placebo (N=70)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "All subjects (N=140)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "BBOS 1.5% (N=70)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Placebo (N=70)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "All subjects (N=140)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5726464:T1": {
+   "record_ids": [
+    "yun2024:463"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Parameter",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "Vitamin D/Calcium",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Placebo",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "(n = 79)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "(n = 86)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Parameter",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "Vitamin D/Calcium",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Placebo",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "(n = 79)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "(n = 86)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Parameter"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Vitamin D/Calcium"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Placebo"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Parameter"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Vitamin D/Calcium"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Placebo"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    }
+   }
+  },
+  "PMC4144850:T1": {
+   "record_ids": [
+    "yun2024:478"
+   ],
+   "gold_felder": [
+    "comparator_events",
+    "comparator_group_size",
+    "intervention_events",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Characteristics",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "Intervention (I)",
+     "col_start": 1,
+     "col_end": 2,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Control (C)",
+     "col_start": 3,
+     "col_end": 4,
+     "basis": "periode"
+    },
+    {
+     "level": 1,
+     "text": "N[a](#)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean or Percent",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "N[a](#)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean or Percent",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Characteristics",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "Intervention (I)",
+     "col_start": 1,
+     "col_end": 2,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Control (C)",
+     "col_start": 3,
+     "col_end": 4,
+     "basis": "periode"
+    },
+    {
+     "level": 1,
+     "text": "N[a](#)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean or Percent",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "N[a](#)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean or Percent",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Characteristics"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Intervention (I)",
+      "N[a](#)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Intervention (I)",
+      "Mean or Percent"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Control (C)",
+      "N[a](#)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "4": {
+     "pfad": [
+      "Control (C)",
+      "Mean or Percent"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Characteristics"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Intervention (I)",
+      "N[a](#)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Intervention (I)",
+      "Mean or Percent"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Control (C)",
+      "N[a](#)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "4": {
+     "pfad": [
+      "Control (C)",
+      "Mean or Percent"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    }
+   }
+  },
+  "PMC3786549:T3": {
+   "record_ids": [
+    "yun2024:489"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "*Entry*",
+     "col_start": 0,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "*C1*",
+     "col_start": 2,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "*C2*",
+     "col_start": 4,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Estriol--lactobacilli*",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Placebo*",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Estriol--lactobacilli*",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Placebo*",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Estriol--lactobacilli*",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Placebo*",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 43)",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "*Entry*",
+     "col_start": 0,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "*C1*",
+     "col_start": 2,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "*C2*",
+     "col_start": 4,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Estriol--lactobacilli*",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Placebo*",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Estriol--lactobacilli*",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Placebo*",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Estriol--lactobacilli*",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "*Placebo*",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 44)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "(*n* = 43)",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "*Entry*",
+      "*Estriol--lactobacilli*",
+      "(*n* = 44)"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "*Entry*",
+      "*Placebo*",
+      "(*n* = 44)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "*C1*",
+      "*Estriol--lactobacilli*",
+      "(*n* = 44)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "*C1*",
+      "*Placebo*",
+      "(*n* = 44)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "4": {
+     "pfad": [
+      "*C2*",
+      "*Estriol--lactobacilli*",
+      "(*n* = 44)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "5": {
+     "pfad": [
+      "*C2*",
+      "*Placebo*",
+      "(*n* = 43)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "6": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "*Entry*",
+      "*Estriol--lactobacilli*",
+      "(*n* = 44)"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "*Entry*",
+      "*Placebo*",
+      "(*n* = 44)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "*C1*",
+      "*Estriol--lactobacilli*",
+      "(*n* = 44)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "*C1*",
+      "*Placebo*",
+      "(*n* = 44)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "4": {
+     "pfad": [
+      "*C2*",
+      "*Estriol--lactobacilli*",
+      "(*n* = 44)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "5": {
+     "pfad": [
+      "*C2*",
+      "*Placebo*",
+      "(*n* = 43)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "6": {
+     "pfad": [],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC5419060:T3": {
+   "record_ids": [
+    "yun2024:494"
+   ],
+   "gold_felder": [
+    "comparator_events",
+    "comparator_group_size",
+    "intervention_events",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Reasons for rejection",
+     "col_start": 0,
+     "col_end": 3,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Before the phlebotomy training May 2014 *n* (%)",
+     "col_start": 4,
+     "col_end": 7,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "After the phlebotomy training July 2014 *n* (%)",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "CHC A",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CHC B",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CDC C",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CDC D",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CHC A",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CHC B",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CDC C",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CDC D",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Reasons for rejection",
+     "col_start": 0,
+     "col_end": 3,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Before the phlebotomy training May 2014 *n* (%)",
+     "col_start": 4,
+     "col_end": 7,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "After the phlebotomy training July 2014 *n* (%)",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "CHC A",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CHC B",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CDC C",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CDC D",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CHC A",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CHC B",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CDC C",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "CDC D",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Reasons for rejection",
+      "CHC A"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Reasons for rejection",
+      "CHC B"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Reasons for rejection",
+      "CDC C"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Reasons for rejection",
+      "CDC D"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Before the phlebotomy training May 2014 *n* (%)",
+      "CHC A"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "Before the phlebotomy training May 2014 *n* (%)",
+      "CHC B"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "6": {
+     "pfad": [
+      "Before the phlebotomy training May 2014 *n* (%)",
+      "CDC C"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "7": {
+     "pfad": [
+      "Before the phlebotomy training May 2014 *n* (%)",
+      "CDC D"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "8": {
+     "pfad": [
+      "After the phlebotomy training July 2014 *n* (%)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Reasons for rejection",
+      "CHC A"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Reasons for rejection",
+      "CHC B"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Reasons for rejection",
+      "CDC C"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Reasons for rejection",
+      "CDC D"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Before the phlebotomy training May 2014 *n* (%)",
+      "CHC A"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "Before the phlebotomy training May 2014 *n* (%)",
+      "CHC B"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "6": {
+     "pfad": [
+      "Before the phlebotomy training May 2014 *n* (%)",
+      "CDC C"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "7": {
+     "pfad": [
+      "Before the phlebotomy training May 2014 *n* (%)",
+      "CDC D"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "8": {
+     "pfad": [
+      "After the phlebotomy training July 2014 *n* (%)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   }
+  },
+  "PMC5419060:T2": {
+   "record_ids": [
+    "yun2024:504"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Before the phlebotomy training May 2014",
+     "col_start": 0,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "After the phlebotomy training July 2014",
+     "col_start": 3,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "CHC/CDC",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Blood registrations",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Blood rejections *n* (%)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Blood registrations",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Blood rejections *n* (%)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "*p*",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Before the phlebotomy training May 2014",
+     "col_start": 0,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "After the phlebotomy training July 2014",
+     "col_start": 3,
+     "col_end": 5,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "CHC/CDC",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Blood registrations",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Blood rejections *n* (%)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Blood registrations",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Blood rejections *n* (%)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "*p*",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Before the phlebotomy training May 2014",
+      "CHC/CDC"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Before the phlebotomy training May 2014",
+      "Blood registrations"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Before the phlebotomy training May 2014",
+      "Blood rejections *n* (%)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "After the phlebotomy training July 2014",
+      "Blood registrations"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "After the phlebotomy training July 2014",
+      "Blood rejections *n* (%)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "After the phlebotomy training July 2014",
+      "*p*"
+     ],
+     "rolle": "p_value",
+     "arm": "intervention",
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Before the phlebotomy training May 2014",
+      "CHC/CDC"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Before the phlebotomy training May 2014",
+      "Blood registrations"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Before the phlebotomy training May 2014",
+      "Blood rejections *n* (%)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "After the phlebotomy training July 2014",
+      "Blood registrations"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "After the phlebotomy training July 2014",
+      "Blood rejections *n* (%)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "After the phlebotomy training July 2014",
+      "*p*"
+     ],
+     "rolle": "p_value",
+     "arm": "intervention",
+     "feld": null
+    }
+   }
+  },
+  "PMC4230312:T3": {
+   "record_ids": [
+    "yun2024:531"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Adverse event, ***N*** (%)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Quetiapine 300 mg/day (***n*** = 298)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Quetiapine 600 mg/day (***n*** = 307)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (***n*** = 214)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Adverse event, ***N*** (%)",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Quetiapine 300 mg/day (***n*** = 298)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Quetiapine 600 mg/day (***n*** = 307)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (***n*** = 214)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Adverse event, ***N*** (%)"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Quetiapine 300 mg/day (***n*** = 298)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Quetiapine 600 mg/day (***n*** = 307)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Placebo (***n*** = 214)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Adverse event, ***N*** (%)"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Quetiapine 300 mg/day (***n*** = 298)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Quetiapine 600 mg/day (***n*** = 307)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Placebo (***n*** = 214)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   }
+  },
+  "PMC4230312:T1": {
+   "record_ids": [
+    "yun2024:532"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Quetiapine 300 mg/day ( ***n***  = 298)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Quetiapine 600 mg/day ( ***n***  = 307)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (***n*** = 214)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Quetiapine 300 mg/day ( ***n***  = 298)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Quetiapine 600 mg/day ( ***n***  = 307)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (***n*** = 214)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Quetiapine 300 mg/day ( ***n***  = 298)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Quetiapine 600 mg/day ( ***n***  = 307)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Placebo (***n*** = 214)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Quetiapine 300 mg/day ( ***n***  = 298)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Quetiapine 600 mg/day ( ***n***  = 307)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Placebo (***n*** = 214)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   }
+  },
+  "PMC3648394:T1": {
+   "record_ids": [
+    "yun2024:550"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "**Characteristic**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "**Total cohort (n = 37)**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "**Yoga group (n = 18)**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "**Control group (n = 19)**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "**Characteristic**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "**Total cohort (n = 37)**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "**Yoga group (n = 18)**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "**Control group (n = 19)**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "**Characteristic**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "**Total cohort (n = 37)**"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "**Yoga group (n = 18)**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "**Control group (n = 19)**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "**Characteristic**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "**Total cohort (n = 37)**"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "**Yoga group (n = 18)**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "**Control group (n = 19)**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   }
+  },
+  "PMC4511433:T2": {
+   "record_ids": [
+    "yun2024:640"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Placebo (*N* = 12)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "A3309 - 2.5 mg (*N*  = 12)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "A3309 - 5 mg (*N*  = 12)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "MedDRA system organ class",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "MedDRA preferred term",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "n (%)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "n (%)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "n (%)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Placebo (*N* = 12)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "ordnung"
+    },
+    {
+     "level": 0,
+     "text": "A3309 - 2.5 mg (*N*  = 12)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "ordnung"
+    },
+    {
+     "level": 0,
+     "text": "A3309 - 5 mg (*N*  = 12)",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ordnung"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "MedDRA system organ class"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo (*N* = 12)",
+      "MedDRA preferred term"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "A3309 - 2.5 mg (*N*  = 12)",
+      "n (%)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "A3309 - 5 mg (*N*  = 12)",
+      "n (%)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "n (%)"
+     ],
+     "rolle": "n",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Placebo (*N* = 12)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "3": {
+     "pfad": [
+      "A3309 - 2.5 mg (*N*  = 12)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "A3309 - 5 mg (*N*  = 12)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   }
+  },
+  "PMC4675066:T1": {
+   "record_ids": [
+    "yun2024:647"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Iodine (*n* = 29)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (*n* = 30)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Iodine (*n* = 29)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (*n* = 30)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Iodine (*n* = 29)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Placebo (*n* = 30)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Iodine (*n* = 29)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Placebo (*n* = 30)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    }
+   }
+  },
+  "PMC4987981:T1": {
+   "record_ids": [
+    "yun2024:662"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Baseline characteristics",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (*n* = 23)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Metformin (*n* = 21)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Pioglitazone (*n* = 16)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*p*-value",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Baseline characteristics",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (*n* = 23)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Metformin (*n* = 21)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "Pioglitazone (*n* = 16)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 0,
+     "text": "*p*-value",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Baseline characteristics"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo (*n* = 23)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Metformin (*n* = 21)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Pioglitazone (*n* = 16)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "*p*-value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Baseline characteristics"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo (*n* = 23)"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Metformin (*n* = 21)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Pioglitazone (*n* = 16)"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "*p*-value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC4987981:T2": {
+   "record_ids": [
+    "yun2024:665"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Treatment",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "Placebo (*n*  = 23)",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "Metformin (*n*  = 21)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "Pioglitazone (*n*  = 16)",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 0,
+     "text": "ANOVA with post hoc Tukey's ^b^",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "Parameters",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean change [Mean ± SD]",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "*p* value^a^",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean change [Mean ± SD]",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "*p* value^a^",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Mean change [Mean ± SD]",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "*p* value^a^",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "Between groups, df = 2, *p* value",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 1,
+     "text": "Parameters",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "Mean change [Mean ± SD]",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "*p* value^a^",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "Mean change [Mean ± SD]",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "*p* value^a^",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "Mean change [Mean ± SD]",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "*p* value^a^",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "ordnung"
+    },
+    {
+     "level": 1,
+     "text": "Between groups, df = 2, *p* value",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "ordnung"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "felder_kandidat": [],
+   "gold_original": [
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "gold_kandidat": [],
+   "verloren": [
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Treatment",
+      "Parameters"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Placebo (*n*  = 23)",
+      "Mean change [Mean ± SD]"
+     ],
+     "rolle": "mean",
+     "arm": "comparator",
+     "feld": "comparator_mean"
+    },
+    "2": {
+     "pfad": [
+      "Metformin (*n*  = 21)",
+      "*p* value^a^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Pioglitazone (*n*  = 16)",
+      "Mean change [Mean ± SD]"
+     ],
+     "rolle": "mean",
+     "arm": "intervention",
+     "feld": "intervention_mean"
+    },
+    "4": {
+     "pfad": [
+      "ANOVA with post hoc Tukey's ^b^",
+      "*p* value^a^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "Mean change [Mean ± SD]"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "*p* value^a^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "Between groups, df = 2, *p* value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Parameters"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Mean change [Mean ± SD]"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "*p* value^a^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Mean change [Mean ± SD]"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "*p* value^a^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "Mean change [Mean ± SD]"
+     ],
+     "rolle": "mean",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "*p* value^a^"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "Between groups, df = 2, *p* value"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC4550271:T1": {
+   "record_ids": [
+    "yun2024:675"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Characteristics",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Control",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Provider arm",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Provider-school arm",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "**CLUSTER LEVEL**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**N**~**c**~**= 12**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**N**~**c**~**= 14**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**N**~**c**~**= 14**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "Characteristics",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Control",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Provider arm",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "Provider-school arm",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "**CLUSTER LEVEL**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**N**~**c**~**= 12**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**N**~**c**~**= 14**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**N**~**c**~**= 14**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [],
+   "felder_kandidat": [],
+   "gold_original": [],
+   "gold_kandidat": [],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "Characteristics",
+      "**CLUSTER LEVEL**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Control",
+      "**N**~**c**~**= 12**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Provider arm",
+      "**N**~**c**~**= 14**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Provider-school arm",
+      "**N**~**c**~**= 14**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "Characteristics",
+      "**CLUSTER LEVEL**"
+     ],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Control",
+      "**N**~**c**~**= 12**"
+     ],
+     "rolle": "n",
+     "arm": "comparator",
+     "feld": "comparator_group_size"
+    },
+    "2": {
+     "pfad": [
+      "Provider arm",
+      "**N**~**c**~**= 14**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "Provider-school arm",
+      "**N**~**c**~**= 14**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   }
+  },
+  "PMC5777419:T2": {
+   "record_ids": [
+    "yun2024:682"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "Probiotic group",
+     "col_start": 1,
+     "col_end": 5,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Antibiotic group",
+     "col_start": 6,
+     "col_end": 10,
+     "basis": "periode"
+    },
+    {
+     "level": 0,
+     "text": "Placebo group",
+     "col_start": 11,
+     "col_end": 15,
+     "basis": "periode"
+    },
+    {
+     "level": 1,
+     "text": "(n=16)",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "(n=16)",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "einzelspalte"
+    },
+    {
+     "level": 1,
+     "text": "(n=15)",
+     "col_start": 6,
+     "col_end": 10,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 2,
+     "text": "Baseline",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "3 months",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "6 months",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "9 months",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "P",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "Baseline",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "3 months",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "6 months",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "9 months",
+     "col_start": 9,
+     "col_end": 9,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "P",
+     "col_start": 10,
+     "col_end": 10,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "Baseline",
+     "col_start": 11,
+     "col_end": 11,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "3 months",
+     "col_start": 12,
+     "col_end": 12,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "6 months",
+     "col_start": 13,
+     "col_end": 13,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "9 months",
+     "col_start": 14,
+     "col_end": 14,
+     "basis": "blatt"
+    },
+    {
+     "level": 2,
+     "text": "P",
+     "col_start": 15,
+     "col_end": 15,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 2,
+     "text": "Baseline",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "3 months",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "6 months",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "9 months",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "P",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "Baseline",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "3 months",
+     "col_start": 7,
+     "col_end": 7,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "6 months",
+     "col_start": 8,
+     "col_end": 8,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "9 months",
+     "col_start": 9,
+     "col_end": 9,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "P",
+     "col_start": 10,
+     "col_end": 10,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "Baseline",
+     "col_start": 11,
+     "col_end": 11,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "3 months",
+     "col_start": 12,
+     "col_end": 12,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "6 months",
+     "col_start": 13,
+     "col_end": 13,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "9 months",
+     "col_start": 14,
+     "col_end": 14,
+     "basis": "ordnung"
+    },
+    {
+     "level": 2,
+     "text": "P",
+     "col_start": 15,
+     "col_end": 15,
+     "basis": "ordnung"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [],
+   "gold_original": [
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [],
+   "verloren": [
+    "intervention_group_size"
+   ],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Probiotic group",
+      "Baseline"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "Probiotic group",
+      "3 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "Probiotic group",
+      "6 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "Probiotic group",
+      "9 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "Probiotic group",
+      "P"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "Antibiotic group",
+      "Baseline"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "Antibiotic group",
+      "3 months"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "8": {
+     "pfad": [
+      "Antibiotic group",
+      "6 months"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "9": {
+     "pfad": [
+      "Antibiotic group",
+      "9 months"
+     ],
+     "rolle": "unknown",
+     "arm": "intervention",
+     "feld": null
+    },
+    "10": {
+     "pfad": [
+      "Antibiotic group",
+      "P"
+     ],
+     "rolle": "p_value",
+     "arm": "intervention",
+     "feld": null
+    },
+    "11": {
+     "pfad": [
+      "Placebo group",
+      "Baseline"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "12": {
+     "pfad": [
+      "Placebo group",
+      "3 months"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "13": {
+     "pfad": [
+      "Placebo group",
+      "6 months"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "14": {
+     "pfad": [
+      "Placebo group",
+      "9 months"
+     ],
+     "rolle": "unknown",
+     "arm": "comparator",
+     "feld": null
+    },
+    "15": {
+     "pfad": [
+      "Placebo group",
+      "P"
+     ],
+     "rolle": "p_value",
+     "arm": "comparator",
+     "feld": null
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [],
+     "rolle": "label",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "Baseline"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "2": {
+     "pfad": [
+      "3 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "3": {
+     "pfad": [
+      "6 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "4": {
+     "pfad": [
+      "9 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "5": {
+     "pfad": [
+      "P"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "6": {
+     "pfad": [
+      "Baseline"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "7": {
+     "pfad": [
+      "3 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "8": {
+     "pfad": [
+      "6 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "9": {
+     "pfad": [
+      "9 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "10": {
+     "pfad": [
+      "P"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    },
+    "11": {
+     "pfad": [
+      "Baseline"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "12": {
+     "pfad": [
+      "3 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "13": {
+     "pfad": [
+      "6 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "14": {
+     "pfad": [
+      "9 months"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "15": {
+     "pfad": [
+      "P"
+     ],
+     "rolle": "p_value",
+     "arm": null,
+     "feld": null
+    }
+   }
+  },
+  "PMC3546023:T4": {
+   "record_ids": [
+    "yun2024:79"
+   ],
+   "gold_felder": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "baender_original": [
+    {
+     "level": 0,
+     "text": "**Weeks**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "**S1**",
+     "col_start": 1,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "**S2**",
+     "col_start": 3,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "**S3**",
+     "col_start": 5,
+     "col_end": 6,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "**Placebo, n = 4**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Palmvitee, n = 3**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Placebo, n = 17**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Palmvitee,n = 19**",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Placebo, n = 7**",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Palmvitee,n = 8**",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    }
+   ],
+   "baender_kandidat": [
+    {
+     "level": 0,
+     "text": "**Weeks**",
+     "col_start": 0,
+     "col_end": 0,
+     "basis": "ausserhalb"
+    },
+    {
+     "level": 0,
+     "text": "**S1**",
+     "col_start": 1,
+     "col_end": 2,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "**S2**",
+     "col_start": 3,
+     "col_end": 4,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 0,
+     "text": "**S3**",
+     "col_start": 5,
+     "col_end": 6,
+     "basis": "gleichverteilung"
+    },
+    {
+     "level": 1,
+     "text": "**Placebo, n = 4**",
+     "col_start": 1,
+     "col_end": 1,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Palmvitee, n = 3**",
+     "col_start": 2,
+     "col_end": 2,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Placebo, n = 17**",
+     "col_start": 3,
+     "col_end": 3,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Palmvitee,n = 19**",
+     "col_start": 4,
+     "col_end": 4,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Placebo, n = 7**",
+     "col_start": 5,
+     "col_end": 5,
+     "basis": "blatt"
+    },
+    {
+     "level": 1,
+     "text": "**Palmvitee,n = 8**",
+     "col_start": 6,
+     "col_end": 6,
+     "basis": "blatt"
+    }
+   ],
+   "ueberlappungen_kandidat": [],
+   "felder_original": [
+    "intervention_group_size"
+   ],
+   "felder_kandidat": [
+    "intervention_group_size"
+   ],
+   "gold_original": [
+    "intervention_group_size"
+   ],
+   "gold_kandidat": [
+    "intervention_group_size"
+   ],
+   "verloren": [],
+   "gewonnen": [],
+   "spalten_original": {
+    "0": {
+     "pfad": [
+      "**Weeks**"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "**S1**",
+      "**Placebo, n = 4**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "**S1**",
+      "**Palmvitee, n = 3**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "**S2**",
+      "**Placebo, n = 17**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "**S2**",
+      "**Palmvitee,n = 19**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "**S3**",
+      "**Placebo, n = 7**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "6": {
+     "pfad": [
+      "**S3**",
+      "**Palmvitee,n = 8**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   },
+   "spalten_kandidat": {
+    "0": {
+     "pfad": [
+      "**Weeks**"
+     ],
+     "rolle": "unknown",
+     "arm": null,
+     "feld": null
+    },
+    "1": {
+     "pfad": [
+      "**S1**",
+      "**Placebo, n = 4**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "2": {
+     "pfad": [
+      "**S1**",
+      "**Palmvitee, n = 3**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "3": {
+     "pfad": [
+      "**S2**",
+      "**Placebo, n = 17**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "4": {
+     "pfad": [
+      "**S2**",
+      "**Palmvitee,n = 19**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "5": {
+     "pfad": [
+      "**S3**",
+      "**Placebo, n = 7**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    },
+    "6": {
+     "pfad": [
+      "**S3**",
+      "**Palmvitee,n = 8**"
+     ],
+     "rolle": "n",
+     "arm": "intervention",
+     "feld": "intervention_group_size"
+    }
+   }
+  }
+ }
+}

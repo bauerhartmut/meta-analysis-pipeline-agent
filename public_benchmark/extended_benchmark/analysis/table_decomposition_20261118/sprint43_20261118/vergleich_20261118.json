@@ -1,0 +1,296 @@
+{
+ "mode": "offline",
+ "generiert": "2026-11-18",
+ "strategien": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "summen": {
+  "A": {
+   "vorher": {
+    "gold_reachable": 46,
+    "tables_complete": 57,
+    "errors": 7,
+    "expected_cells": 1748,
+    "warnings": 136
+   },
+   "ohne_neuordnung": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1748,
+    "warnings": 137
+   },
+   "nachher": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1748,
+    "warnings": 137
+   }
+  },
+  "B": {
+   "vorher": {
+    "gold_reachable": 46,
+    "tables_complete": 57,
+    "errors": 7,
+    "expected_cells": 1358,
+    "warnings": 103
+   },
+   "ohne_neuordnung": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1335,
+    "warnings": 103
+   },
+   "nachher": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1335,
+    "warnings": 103
+   }
+  },
+  "C": {
+   "vorher": {
+    "gold_reachable": 46,
+    "tables_complete": 57,
+    "errors": 7,
+    "expected_cells": 1748,
+    "warnings": 242
+   },
+   "ohne_neuordnung": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1748,
+    "warnings": 244
+   },
+   "nachher": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1748,
+    "warnings": 244
+   }
+  },
+  "D": {
+   "vorher": {
+    "gold_reachable": 46,
+    "tables_complete": 57,
+    "errors": 7,
+    "expected_cells": 1748,
+    "warnings": 323
+   },
+   "ohne_neuordnung": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1748,
+    "warnings": 325
+   },
+   "nachher": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1748,
+    "warnings": 325
+   }
+  },
+  "E": {
+   "vorher": {
+    "gold_reachable": 46,
+    "tables_complete": 57,
+    "errors": 7,
+    "expected_cells": 1735,
+    "warnings": 258
+   },
+   "ohne_neuordnung": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1735,
+    "warnings": 260
+   },
+   "nachher": {
+    "gold_reachable": 56,
+    "tables_complete": 60,
+    "errors": 0,
+    "expected_cells": 1735,
+    "warnings": 260
+   }
+  }
+ },
+ "betroffene_tabellen": {
+  "PMC4319071:T2": [
+   {
+    "record": "yun2024:112",
+    "entscheidung": "kandidat:uebernommen:ordnung_mit_gedruckten_ebenen",
+    "felder": [
+     "comparator_mean",
+     "intervention_mean"
+    ],
+    "gold_felder": [
+     "comparator_mean",
+     "intervention_mean"
+    ],
+    "ueberlappung": false
+   }
+  ],
+  "PMC4319071:T4": [
+   {
+    "record": "yun2024:112",
+    "entscheidung": "kandidat:uebernommen:ordnung_mit_gedruckten_ebenen",
+    "felder": [
+     "comparator_mean",
+     "intervention_mean"
+    ],
+    "gold_felder": [
+     "comparator_mean",
+     "intervention_mean"
+    ],
+    "ueberlappung": false
+   }
+  ],
+  "PMC3877023:T3": [
+   {
+    "record": "yun2024:421",
+    "entscheidung": "original:ueberlappung",
+    "felder": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation"
+    ],
+    "gold_felder": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation"
+    ],
+    "ueberlappung": false
+   },
+   {
+    "record": "yun2024:426",
+    "entscheidung": "original:ueberlappung",
+    "felder": [
+     "comparator_group_size"
+    ],
+    "gold_felder": [
+     "comparator_group_size"
+    ],
+    "ueberlappung": false
+   }
+  ],
+  "PMC3877023:T4": [
+   {
+    "record": "yun2024:421",
+    "entscheidung": "original:ueberlappung",
+    "felder": [
+     "intervention_group_size"
+    ],
+    "gold_felder": [
+     "intervention_group_size"
+    ],
+    "ueberlappung": false
+   },
+   {
+    "record": "yun2024:426",
+    "entscheidung": "original:ueberlappung",
+    "felder": [
+     "comparator_group_size"
+    ],
+    "gold_felder": [
+     "comparator_group_size"
+    ],
+    "ueberlappung": false
+   }
+  ],
+  "PMC4987981:T2": [
+   {
+    "record": "yun2024:665",
+    "entscheidung": "original:kein_gewinn",
+    "felder": [
+     "comparator_mean",
+     "comparator_standard_deviation",
+     "intervention_mean",
+     "intervention_standard_deviation"
+    ],
+    "gold_felder": [
+     "comparator_mean",
+     "comparator_standard_deviation",
+     "intervention_mean",
+     "intervention_standard_deviation"
+    ],
+    "ueberlappung": false
+   }
+  ],
+  "PMC5777419:T1": [
+   {
+    "record": "yun2024:678",
+    "entscheidung": "original:mehrfachzuordnung",
+    "felder": [
+     "comparator_group_size",
+     "intervention_group_size"
+    ],
+    "gold_felder": [
+     "comparator_group_size",
+     "intervention_group_size"
+    ],
+    "ueberlappung": false
+   }
+  ],
+  "PMC5777419:T2": [
+   {
+    "record": "yun2024:678",
+    "entscheidung": "original:kein_gewinn",
+    "felder": [
+     "intervention_group_size"
+    ],
+    "gold_felder": [
+     "intervention_group_size"
+    ],
+    "ueberlappung": false
+   }
+  ],
+  "PMC5777419:T3": [
+   {
+    "record": "yun2024:678",
+    "entscheidung": "original:kein_gewinn",
+    "felder": [
+     "comparator_group_size",
+     "intervention_group_size"
+    ],
+    "gold_felder": [
+     "comparator_group_size",
+     "intervention_group_size"
+    ],
+    "ueberlappung": false
+   }
+  ],
+  "PMC3654355:T1": [
+   {
+    "record": "yun2024:275",
+    "entscheidung": "original:ueberlappung",
+    "felder": [
+     "intervention_group_size"
+    ],
+    "gold_felder": [
+     "intervention_group_size"
+    ],
+    "ueberlappung": false
+   }
+  ],
+  "PMC3654355:T5": [
+   {
+    "record": "yun2024:275",
+    "entscheidung": "original:kein_gewinn",
+    "felder": [],
+    "gold_felder": [],
+    "ueberlappung": false
+   }
+  ]
+ }
+}

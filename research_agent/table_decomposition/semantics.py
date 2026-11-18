@@ -9,7 +9,9 @@ ausgewiesen - nie stillschweigend dem Interventionsarm zugeschlagen.
 
 from __future__ import annotations
 
+import copy
 import re
+from collections import Counter
 from dataclasses import dataclass
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
@@ -328,6 +330,124 @@ def _arm_slots(table: Table) -> List[Tuple[str, List[int]]]:
     return [(c.header or f"col {c.col_id}", [c.col_id]) for c in columns]
 
 
+def _bands_overlap(bands: Sequence[object]) -> bool:
+    """Ueberlappen sich zwei Kopfbaender derselben Ebene?"""
+    for level in sorted({band.level for band in bands}):
+        ordered = sorted(
+            (band for band in bands if band.level == level),
+            key=lambda band: band.col_start,
+        )
+        for left, right in zip(ordered, ordered[1:]):
+            if right.col_start <= left.col_end:
+                return True
+    return False
+
+
+def _field_counts(table: Table) -> Counter:
+    return Counter(column.field for column in table.columns if column.field)
+
+
+def consider_header_band_candidate(table: Table,
+                                   context: Optional[Dict[str, object]] = None,
+                                   assume_order: bool = False) -> str:
+    """Kandidat der ordinalen Kopfzuordnung pruefen und nur mit Beleg uebernehmen.
+
+    Die gedruckte Geometrie bleibt der Standard. Jeder Kandidat wird an einer
+    Kopie durchgerechnet und nur uebernommen, wenn er
+
+    1. keine Baender derselben Ebene ueberlappen laesst,
+    2. alle Baender innerhalb der Spalten haelt,
+    3. kein bisher erreichbares Feld verliert,
+    4. keine Spalte mit Feld auf ein anderes Feld oder einen anderen Arm
+       verschiebt und
+    5. kein Feld auf mehr Spalten als vorher legt.
+
+    Geprueft werden alle Kandidaten; uebernommen wird der gueltige mit den
+    meisten Feldern - und nur, wenn er mindestens ein Feld hinzugewinnt. Ein
+    Umbau ohne Gewinn bleibt aussen vor, sonst aendert sich die Geometrie ohne
+    Beleg. Ist keiner gueltig, bleibt die gedruckte Geometrie.
+
+    Rueckgabe: Begruendung (``kandidat:uebernommen:<variante>`` oder
+    ``original:<grund>``); leer, wenn es keinen Kandidaten gibt.
+    """
+    candidates = list(table.header_band_candidates)
+    if not candidates:
+        return ""
+    gruende: List[str] = []
+    before_counts = _field_counts(table)
+    before_fields = {name for _row_id, name in reachable_cells(table, context)}
+    best: Optional[Tuple[str, object, set]] = None
+    for name, bands in candidates:
+        if not bands:
+            gruende.append("kein_band")
+            continue
+        if any(band.col_end >= len(table.columns) for band in bands):
+            gruende.append("spanne_ausserhalb")
+            continue
+        if _bands_overlap(bands):
+            gruende.append("ueberlappung")
+            continue
+        probe = copy.deepcopy(table)
+        probe.header_band_candidates = []
+        probe.header_bands = list(bands)
+        # Der Kandidat ersetzt die unaufloesbare Geometrie: erst danach ist die
+        # Kopfgeometrie fuer die Outcome-Markierung wieder belastbar.
+        probe.irregularities = [
+            irregularity
+            for irregularity in probe.irregularities
+            if not any(code in irregularity for code in _HEADER_GEOMETRY_BROKEN)
+        ]
+        probe.irregularities.append("spalten_ordnung:kopf_nach_wertspalten")
+        enrich_table(probe, context, assume_order=assume_order)
+        after_fields = {name_ for _row_id, name_ in reachable_cells(probe, context)}
+        if not before_fields <= after_fields:
+            gruende.append("feldverlust")
+            continue
+        verschoben = False
+        for column in table.columns:
+            twin = probe.column(column.col_id)
+            if twin is None:
+                gruende.append("spalte_fehlt")
+                verschoben = True
+                break
+            if column.field and twin.field != column.field:
+                gruende.append("feld_verschoben")
+                verschoben = True
+                break
+            if column.arm and twin.arm != column.arm:
+                gruende.append("arm_verschoben")
+                verschoben = True
+                break
+        if verschoben:
+            continue
+        if any(count > before_counts[field]
+               for field, count in _field_counts(probe).items()
+               if field in before_counts):
+            gruende.append("mehrfachzuordnung")
+            continue
+        if best is None or len(after_fields) > len(best[2]):
+            best = (name, probe, after_fields)
+    if best is None:
+        return "original:" + (gruende[0] if gruende else "kein_kandidat")
+    name, probe, after_fields = best
+    if len(after_fields) <= len(before_fields):
+        return "original:kein_gewinn"
+    table.header_bands = probe.header_bands
+    table.columns = probe.columns
+    table.rows = probe.rows
+    table.irregularities = [
+        irregularity
+        for irregularity in probe.irregularities
+        if not any(code in irregularity for code in _HEADER_GEOMETRY_BROKEN)
+    ]
+    if "spalten_ordnung:kopf_nach_wertspalten" not in table.irregularities:
+        table.irregularities.append("spalten_ordnung:kopf_nach_wertspalten")
+    table.header_facts = probe.header_facts
+    table.focus_rows = probe.focus_rows
+    table.context = probe.context
+    return f"kandidat:uebernommen:{name}"
+
+
 def enrich_table(table: Table, context: Optional[Dict[str, object]] = None,
                  assume_order: bool = False) -> Table:
     """Spaltenpfade, Rollen, Arme und Zielfelder in die Tabelle schreiben.
@@ -372,6 +492,11 @@ def enrich_table(table: Table, context: Optional[Dict[str, object]] = None,
     _mark_outcome_columns(table, str(context.get("outcome") or ""))
     table.header_facts = _group_size_facts(table, intervention, comparator)
     table.focus_rows = outcome_rows(table, str(context.get("outcome") or ""))
+    if table.header_band_candidates:
+        table.band_decision = consider_header_band_candidate(
+            table, context, assume_order=assume_order
+        )
+        table.header_band_candidates = []
     return table
 
 
@@ -881,6 +1006,51 @@ def primary_tables(tables: Sequence[Table],
         for table in ordered[1:]:
             redundant[table.table_id] = first.table_id
     return redundant
+
+
+_TIMEPOINT_RE = re.compile(
+    r"(?i)\b(baselines?|follow[\s-]?ups?|weeks?|wks?|days?|months?|mths?|years?|yrs?"
+    r"|visits?|endpoints?|screenings?|t0|t1|t2)\b"
+)
+
+
+def column_timepoints(table: Table) -> Tuple[str, ...]:
+    """Zeitpunkte, die im **Spaltenkopf** stehen, in Leserichtung.
+
+    Getrennt von der Zeilenlogik (``_timepoint_key``): dort stehen Zeitpunkte in
+    Gruppenzeilen, hier in den Kopfbaendern. Erkannt wird ein Band nur, wenn
+
+    1. sein Text ein Zeitpunktwort traegt (``baseline``, ``3 months``, ``week 4``),
+    2. es ueber mindestens eine Wertspalte laeuft,
+    3. es weder Rollen- noch Armtext ist (``Mean (SD)``, ``n = 45``,
+       ``Placebo`` werden nicht zu Zeitpunkten).
+
+    Rueckgabe: normalisierte Zeitpunkte in Leserichtung; leer, wenn weniger als
+    zwei verschiedene Zeitpunkte im Kopf stehen. Die Auswahlregel
+    (``primary_tables``) nutzt weiterhin nur die Zeilenlogik - die Erweiterung
+    ist absichtlich noch nicht verdrahtet, weil sie die eingefrorene Messung
+    veraendern wuerde.
+    """
+    found: List[Tuple[int, str]] = []
+    for band in sorted(table.header_bands, key=lambda b: (b.col_start, b.level)):
+        text = (band.text or "").strip()
+        if not text or band.col_end < band.col_start:
+            continue
+        if group_size_declaration(text) is not None:
+            continue
+        if role_for_header((text,)) != ROLE_UNKNOWN:
+            continue
+        match = _TIMEPOINT_RE.search(text)
+        if not match:
+            continue
+        label = _norm_label(text)
+        if not label:
+            continue
+        if label not in [name for _start, name in found]:
+            found.append((band.col_start, label))
+    if len(found) < 2:
+        return ()
+    return tuple(name for _start, name in found)
 
 
 def column_summary(column: Column) -> str:

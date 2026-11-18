@@ -265,6 +265,12 @@ class Table:
     # Tabelle, die dasselbe Outcome zum selben Zeitpunkt druckt (Auswahlregel:
     # ``PMC4319071:T4`` ist redundant zu ``T2``). Leer = eigenstaendig.
     redundant_of: str = ""
+    # Kandidaten der ordinalen Kopfband-Zuordnung: berechnet, aber nicht
+    # angewendet; bester zuerst. Ueber die Uebernahme entscheidet
+    # ``semantics.enrich_table`` anhand von Ueberlappung und Feldverlust.
+    header_band_candidates: List[Tuple[str, List[HeaderBand]]] = field(default_factory=list)
+    # Begruendung der Entscheidung (``kandidat:uebernommen:...``, ``original:...``).
+    band_decision: str = ""
 
     # --- Zugriff ---------------------------------------------------------
     @property
@@ -341,6 +347,7 @@ class Table:
             "context": dict(self.context),
             "header_facts": [dict(fact) for fact in self.header_facts],
             "redundant_of": self.redundant_of,
+            "band_decision": self.band_decision,
             "focus_rows": list(self.focus_rows),
         }
 

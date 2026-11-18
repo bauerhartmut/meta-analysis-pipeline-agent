@@ -21,6 +21,7 @@ Alle Positionen sind Zeichen-Offsets im uebergebenen Text; ``page`` bleibt
 from __future__ import annotations
 
 import re
+from dataclasses import replace as dc_replace
 from typing import Callable, Dict, Iterable, List, Optional, Sequence, Tuple
 
 from .model import (
@@ -719,8 +720,104 @@ _GEOMETRY_CODES = (
 )
 
 
+def _candidate_header_bands(table: Table) -> Optional[List[HeaderBand]]:
+    """Kandidat der ordinalen Kopfzuordnung; ``None`` = kein Kandidat.
+
+    Die Kandidaten werden nur berechnet, nie angewendet: ob einer die gedruckte
+    Geometrie ersetzen darf, entscheidet ``semantics.enrich_table`` anhand von
+    Ueberlappungen, Feldverlust und Spaltenzuordnung.
+
+    Zwei Alternativen, beste zuerst:
+
+    1. ``ordnung_mit_gedruckten_ebenen``: teilbare Ebenen werden neu verteilt,
+       nicht teilbare behalten ihre gedruckte Spanne.
+    2. ``ordnung_ohne_unteilbare_ebenen``: nicht teilbare Ebenen entfallen
+       (das entspricht der Zuordnung aus Sprint 38, die ``PMC4319071:T2``
+       den exakten Wert liefert).
+
+    Welche Variante gilt, entscheidet die Validierung - nicht der Studienname.
+    """
+    if not any(
+        code in irregularity
+        for irregularity in table.irregularities
+        for code in _GEOMETRY_CODES
+    ):
+        return None
+    if len(table.columns) < 3 or not table.header_bands:
+        return None
+    numeric = {
+        column.col_id
+        for column in table.columns
+        if any(
+            row.cells.get(column.col_id) is not None
+            and row.cells[column.col_id].value is not None
+            for row in table.rows
+        )
+    }
+    value_cols = sorted(numeric)
+    label_cols = [column.col_id for column in table.columns if column.col_id not in numeric]
+    if len(value_cols) < 2 or not label_cols:
+        return None
+
+    def build(keep_unplaced: bool) -> Tuple[List[HeaderBand], bool]:
+        kept: List[HeaderBand] = []
+        changed = False
+        for level in sorted({band.level for band in table.header_bands}):
+            bands = sorted(
+                (band for band in table.header_bands if band.level == level),
+                key=lambda band: (band.anchor, band.start_char),
+            )
+            m = len(bands)
+            spans: List[Tuple[int, int]] = []
+            if m == len(value_cols):
+                spans = [(col, col) for col in value_cols]
+            elif m > 1 and len(value_cols) % (m - 1) == 0:
+                size = len(value_cols) // (m - 1)
+                spans = [(label_cols[0], label_cols[-1])] + [
+                    (value_cols[position * size], value_cols[position * size + size - 1])
+                    for position in range(m - 1)
+                ]
+            elif keep_unplaced:
+                kept.extend(dc_replace(band) for band in bands)
+                continue
+            else:
+                continue
+            for band, (start, end) in zip(bands, spans):
+                kept.append(
+                    dc_replace(band, col_start=start, col_end=end, anchor=start,
+                               basis="ordnung")
+                )
+                changed = True
+        return kept, changed
+
+    candidates: List[Tuple[str, List[HeaderBand]]] = []
+    for name, keep in (("ordnung_mit_gedruckten_ebenen", True),
+                       ("ordnung_ohne_unteilbare_ebenen", False)):
+        bands, changed = build(keep)
+        if changed and bands:
+            candidates.append((name, bands))
+    return candidates
+
+
+def _header_band_candidates(table: Table) -> List[Tuple[str, List[HeaderBand]]]:
+    """Wie ``_candidate_header_bands``, aber immer eine Liste."""
+    return _candidate_header_bands(table) or []
+
+
+def _apply_header_bands(table: Table, bands: Sequence[HeaderBand]) -> None:
+    """Kandidat uebernehmen: Baender setzen, Geometriemaengel streichen."""
+    table.header_bands = list(bands)
+    table.irregularities = [
+        irregularity
+        for irregularity in table.irregularities
+        if not any(code in irregularity for code in _GEOMETRY_CODES)
+    ]
+    if "spalten_ordnung:kopf_nach_wertspalten" not in table.irregularities:
+        table.irregularities.append("spalten_ordnung:kopf_nach_wertspalten")
+
+
 def _reassign_header_bands_by_order(table: Table) -> bool:
-    """Kopfebenen den Wertspalten nach Leserichtung zuordnen.
+    """Nimmt den ersten Kandidaten ohne Pruefung (nur fuer Altaufrufer).
 
     Die Markdown-Abzuege stehen nicht auf dem Strichraster: in
     ``PMC4319071:T2`` endet ``158.93`` rechtsbuendig bei x=93 (Ende der vierten
@@ -735,64 +832,10 @@ def _reassign_header_bands_by_order(table: Table) -> bool:
     die Ebene unzugeordnet und wird notiert; Zellen und Spalten werden **nicht**
     umnummeriert.
     """
-    if not any(
-        code in irregularity
-        for irregularity in table.irregularities
-        for code in _GEOMETRY_CODES
-    ):
+    candidates = _candidate_header_bands(table)
+    if not candidates:
         return False
-    if len(table.columns) < 3 or not table.header_bands:
-        return False
-    numeric = {
-        column.col_id
-        for column in table.columns
-        if any(
-            row.cells.get(column.col_id) is not None
-            and row.cells[column.col_id].value is not None
-            for row in table.rows
-        )
-    }
-    value_cols = sorted(numeric)
-    label_cols = [column.col_id for column in table.columns if column.col_id not in numeric]
-    if len(value_cols) < 2 or not label_cols:
-        return False
-
-    kept: List[HeaderBand] = []
-    changed = False
-    for level in sorted({band.level for band in table.header_bands}):
-        bands = sorted(
-            (band for band in table.header_bands if band.level == level),
-            key=lambda band: (band.anchor, band.start_char),
-        )
-        m = len(bands)
-        spans: List[Tuple[int, int]] = []
-        if m == len(value_cols):
-            spans = [(col, col) for col in value_cols]
-        elif m > 1 and (m - 1) > 0 and len(value_cols) % (m - 1) == 0:
-            size = len(value_cols) // (m - 1)
-            spans = [(label_cols[0], label_cols[-1])] + [
-                (value_cols[position * size], value_cols[position * size + size - 1])
-                for position in range(m - 1)
-            ]
-        else:
-            table.irregularities.append(f"kopf_ebene_ohne_spalte:{level}")
-            continue
-        for band, (start, end) in zip(bands, spans):
-            band.col_start = start
-            band.col_end = end
-            band.anchor = start
-            band.basis = "ordnung"
-            kept.append(band)
-            changed = True
-    if not changed:
-        return False
-    table.header_bands = kept
-    table.irregularities = [
-        irregularity
-        for irregularity in table.irregularities
-        if not any(code in irregularity for code in _GEOMETRY_CODES)
-    ]
-    table.irregularities.append("spalten_ordnung:kopf_nach_wertspalten")
+    _apply_header_bands(table, candidates[0][1])
     return True
 
 
@@ -993,7 +1036,7 @@ def _parse_rule_table(
         row_id += 1
 
     _resolve_header_spans(table)
-    _reassign_header_bands_by_order(table)
+    table.header_band_candidates = _header_band_candidates(table)
     table = _finish_table(table)
     footnotes, block = _collect_footnotes(lines, starts, body_lines[-1][0] + 1)
     table.footnotes = footnotes
@@ -1084,6 +1127,7 @@ def _parse_pipe_table(
         table.rows.append(row)
         row_id += 1
     _resolve_header_spans(table)
+    table.header_band_candidates = _header_band_candidates(table)
     table = _finish_table(table)
     footnotes, block = _collect_footnotes(lines, starts, body[-1] + 1)
     table.footnotes, table.footnote_block = footnotes, block
@@ -1193,6 +1237,7 @@ def _parse_whitespace_table(
     if not table.rows:
         return None
     _resolve_header_spans(table)
+    table.header_band_candidates = _header_band_candidates(table)
     table = _finish_table(table)
     footnotes, block = _collect_footnotes(lines, starts, candidate_lines[-1] + 1)
     table.footnotes, table.footnote_block = footnotes, block
