@@ -1817,3 +1817,16 @@ Annahme - offen ausgewiesen, nicht geloest.
 
 Tests: `research_agent/tests/test_zeitpunkt.py` (4). Kein Eingriff in den
 Tabellenpfad; die Regel liest nur Fundstellen und Spaltenkoepfe.
+
+### Pruefung Sprint 48 - volle Suite und Nebenwirkungen
+
+Volle Suite (`python -m pytest research_agent/tests public_benchmark/tests -q`,
+1941 gesammelt): **1935 passed, 2 skipped**, Exit 0, 10:40. Keine
+Fehlschläge, keine Sammelfehler.
+
+Nebenwirkungen der neuen Merkmale geprueft: die `belegt`-Fahne und die
+Dosis-Bindung liegen ausschliesslich an `Provenienz`-Fundstellen aus
+`fliesstext`; ausserhalb der Tabellenzerlegung liest sie nur die
+Diagnoseskripte. `arm_basis` an Spalten und Kopffakten ist ein anderes Feld und
+unveraendert. `Provenienz.to_dict()` bekommt einen zusaetzlichen Schluessel
+(`belegt`), der nur in Messartefakte fliesst.
