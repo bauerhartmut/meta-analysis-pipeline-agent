@@ -34,9 +34,9 @@ Der Record `yun2024:390` sucht `subsidence`. Gedruckt heisst die Zeile
 **nicht** `Mean maximum total point motion`. Beleg aus der Tabelle selbst
 (60-Monats-Spalten: TM = c7, Cemented = c8):
 
-| Zeile | c7 | c8 |
+| Zeile | c7 (TM, 60 Monate) | c8 (Cemented, 60 Monate) |
 | --- | --- | --- |
-| `Mean maximum total point motion (range)` | `0.98` (r0) / `0.79` (Fortsetzung r1) | `0.79` / `0.9` |
+| `Mean maximum total point motion (range)` | `0.79` | `0.9` |
 | `Superior/inferior translation (SD)` | `--0.38 (0.37)` | `--0.04 (0.11)` |
 
 Die Goldzellen von `yun2024:390` sind `intervention_mean = -0.38`,
