@@ -1,0 +1,92 @@
+{
+  "quelle": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/runs/_lesekopie_20261118/predictions.jsonl",
+  "modell": "glm",
+  "records_dateien": [
+    "ebm_nlp.jsonl",
+    "evidence_inference.jsonl",
+    "yun.jsonl",
+    "yun_dev.jsonl",
+    "yun_kandidaten.jsonl",
+    "yun_test186.jsonl",
+    "yun_test76_ohne_ziel.jsonl",
+    "yun_test76_ziel.jsonl"
+  ],
+  "zusatzquellen": [
+    {
+      "pfad": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl",
+      "vorhanden": true,
+      "versioniert": true
+    },
+    {
+      "pfad": "D:/daswu/AIResearch/handoff_20261116/daten/yun699.jsonl",
+      "vorhanden": true,
+      "versioniert": false
+    },
+    {
+      "pfad": "D:/daswu/AIResearch/benchmark_analysis_handoff_20261116/goldstandard/yun699.jsonl",
+      "vorhanden": true,
+      "versioniert": false
+    }
+  ],
+  "gruppen": {
+    "ausfall": {
+      "zeilen": 104,
+      "in_records": 81,
+      "nur_in_zusatzquelle": 23,
+      "gar_nicht_gefunden": 0,
+      "ohne_dokumentdatei": 0,
+      "ohne_goldzellen": 1,
+      "goldzellen": 427,
+      "beispiele_nur_zusatz": [
+        "yun2024:128",
+        "yun2024:130",
+        "yun2024:133",
+        "yun2024:152",
+        "yun2024:212",
+        "yun2024:213",
+        "yun2024:214",
+        "yun2024:215",
+        "yun2024:251",
+        "yun2024:30"
+      ],
+      "beispiele_fehlt": [],
+      "beispiele_ohne_gold": [
+        "yun2024:653"
+      ]
+    },
+    "erfolg": {
+      "zeilen": 595,
+      "in_records": 369,
+      "nur_in_zusatzquelle": 226,
+      "gar_nicht_gefunden": 0,
+      "ohne_dokumentdatei": 0,
+      "ohne_goldzellen": 30,
+      "goldzellen": 2346,
+      "beispiele_nur_zusatz": [
+        "yun2024:100",
+        "yun2024:107",
+        "yun2024:108",
+        "yun2024:109",
+        "yun2024:12",
+        "yun2024:121",
+        "yun2024:122",
+        "yun2024:123",
+        "yun2024:124",
+        "yun2024:127"
+      ],
+      "beispiele_fehlt": [],
+      "beispiele_ohne_gold": [
+        "yun2024:1",
+        "yun2024:17",
+        "yun2024:18",
+        "yun2024:19",
+        "yun2024:2",
+        "yun2024:319",
+        "yun2024:320",
+        "yun2024:321",
+        "yun2024:322",
+        "yun2024:323"
+      ]
+    }
+  }
+}

@@ -178,6 +178,37 @@ Ausgangspunkt für eine Messung ist eine Rettungsquote um 40 %, nicht um 100 %.
 Damit ist „mehr Budget" **keine Zuverlässigkeitsmaßnahme** und bleibt aus P1–P4
 heraus; sie ist eine Konfigurationsfrage, die P5 messen muss.
 
+## 3b. Sind die 103 vor P5 überhaupt auflösbar?
+
+`records/yun.jsonl` ist eine abgeleitete, **unversionierte** Datei mit heute 450
+Records (Stand 15.11., 19:52); der Lauf hatte 699. Der im Live-Vergleich
+aufgefallene Abstand von 226 erfolgreichen Zeilen ist damit kein Verlust: die
+versionierte Quelle des Laufs ist `yun_full/records/yun699.jsonl` (699 Records,
+im Repo).
+
+| Gruppe | Zeilen | in `records/` | nur über `yun699.jsonl` | nicht gefunden | ohne Dokument | ohne Gold | Goldzellen |
+|---|---|---|---|---|---|---|---|
+| Ausfall | 104 | 81 | 23 | 0 | 0 | 1 | 427 |
+| Erfolg | 595 | 369 | 226 | 0 | 0 | 30 | 2.346 |
+
+Alle 23 nur über die Ersatzquelle erreichbaren Ausfälle liegen in
+`yun_full/records/yun699.jsonl` und haben dort eine vorhandene Dokumentdatei und
+Gold; die beiden Handoff-Dumps braucht es dafür nicht. Der Probelauf mit
+`--records …/yun699.jsonl --ids yun2024:128,yun2024:30,yun2024:674` wählt die
+Records im Trockenlauf korrekt aus.
+
+**Für P5 konkret:** ein Lauf auf `yun_full/records/yun699.jsonl` mit den 103 ids
+erreicht jeden Ausfall. Zwei Einschränkungen: `yun2024:653` hat **keine
+Goldzellen** — die 103 tragen 423 Zellen, bewertbar sind also 102 Records mit
+419 Zellen; und die frühere Angabe „427 Goldzellen für die 104" bleibt richtig,
+weil darin die 4 Zellen der Timeout-Zeile `yun2024:87` stecken.
+
+Offen bleibt, warum `records/yun.jsonl` nur 450 Records hat: die 249 entfernten
+liegen ausschließlich im `test`-Split, und weder `issues` noch der Split erklärt
+die Auswahl (146 der entfernten tragen `issues`, aber 370 behaltene auch).
+Quelle: `yun_full/pruefe_aufloesbarkeit.py`,
+`iterativ/ergebnisse/aufloesbarkeit_20261118.json` und `.md`.
+
 ## 4. Mängel im Code, die daraus folgen
 
 | Nr. | Stelle | Mangel | Wirkung |
