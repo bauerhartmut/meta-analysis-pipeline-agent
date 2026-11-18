@@ -4,8 +4,25 @@
   "goldzellen_wert_in_kopf": 26,
   "goldzellen_wert_in_zelle": 6,
   "goldzellen_wert_belegend": 32,
-  "goldzellen_wert_in_zeile": 34,
-  "goldzellen_wert_nirgends": 28,
+  "goldzellen_wert_in_messzelle_der_zeile": 8,
+  "goldzellen_nirgends": 18,
+  "kategorien": {
+    "belegende_kopfangabe": 26,
+    "belegende_zelle": 6,
+    "nirgends": 18,
+    "nur_anderswo": 10,
+    "zeile_andere_spalte": 2
+  },
+  "je_quelle": {
+    "kopf": {
+      "gesamt": 37,
+      "gedruckt_dort": 22
+    },
+    "zelle": {
+      "gesamt": 25,
+      "gedruckt_dort": 6
+    }
+  },
   "tabellen_je_record": {
     "yun2024:111": [
       "PMC4319071:T1"
@@ -198,10 +215,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -226,10 +244,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -254,10 +273,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -283,10 +303,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -312,10 +333,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -338,10 +360,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -364,10 +387,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -390,10 +414,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -416,10 +441,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -444,10 +470,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -472,10 +499,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -500,10 +528,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -528,10 +557,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -560,10 +590,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -586,10 +617,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -620,10 +652,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -647,10 +680,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -681,10 +715,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -709,10 +744,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -737,10 +773,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "belegende_zelle",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": true,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": true,
       "zeilen_mit_wert": [
         "r0/c5"
       ],
@@ -771,10 +808,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -799,10 +837,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "belegende_zelle",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": true,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": true,
       "zeilen_mit_wert": [
         "r3/c5"
       ],
@@ -833,10 +872,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -861,10 +901,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -889,10 +930,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -917,10 +959,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -963,10 +1006,11 @@
       ],
       "belegte_zeile": true,
       "quelle": "zelle",
+      "kategorie": "belegende_zelle",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": true,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": true,
       "zeilen_mit_wert": [
         "r3/c7"
       ],
@@ -1003,10 +1047,11 @@
       ],
       "belegte_zeile": true,
       "quelle": "zelle",
+      "kategorie": "belegende_zelle",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": true,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": true,
       "zeilen_mit_wert": [
         "r3/c7"
       ],
@@ -1043,10 +1088,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1089,10 +1135,11 @@
       ],
       "belegte_zeile": true,
       "quelle": "zelle",
+      "kategorie": "belegende_zelle",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": true,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": true,
       "zeilen_mit_wert": [
         "r3/c8"
       ],
@@ -1135,10 +1182,11 @@
       ],
       "belegte_zeile": true,
       "quelle": "zelle",
+      "kategorie": "belegende_zelle",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": true,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": true,
       "zeilen_mit_wert": [
         "r3/c4",
         "r3/c8"
@@ -1182,10 +1230,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1228,10 +1277,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1275,10 +1325,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1323,10 +1374,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1357,10 +1409,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1392,10 +1445,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1430,10 +1484,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1462,10 +1517,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1494,10 +1550,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1529,10 +1586,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1559,10 +1617,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1603,10 +1662,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "zeile_andere_spalte",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": true,
       "zeilen_mit_wert": [
         "r8/c2"
       ],
@@ -1647,10 +1707,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1691,10 +1752,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "zeile_andere_spalte",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": true,
       "zeilen_mit_wert": [
         "r5/c1",
         "r8/c1"
@@ -1737,10 +1799,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1765,10 +1828,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1793,10 +1857,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1821,10 +1886,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1851,10 +1917,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1949,10 +2016,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -1977,10 +2045,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "belegende_kopfangabe",
       "gedruckt_in_kopf": true,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": true,
-      "gedruckt_in_zeile": true,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2006,10 +2075,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2051,10 +2121,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2085,10 +2156,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2111,10 +2183,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2137,10 +2210,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2163,10 +2237,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "zelle",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2189,10 +2264,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2217,10 +2293,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nur_anderswo",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2245,10 +2322,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {
@@ -2283,10 +2361,11 @@
       ],
       "belegte_zeile": false,
       "quelle": "kopf",
+      "kategorie": "nirgends",
       "gedruckt_in_kopf": false,
       "gedruckt_in_zelle": false,
       "gedruckt_belegend": false,
-      "gedruckt_in_zeile": false,
+      "gedruckt_in_messzelle_der_zeile": false,
       "zeilen_mit_wert": [],
       "gepruefte_stellen": [
         {

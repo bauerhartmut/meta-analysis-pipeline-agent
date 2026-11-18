@@ -1495,12 +1495,29 @@ gesamt 92.
 Feld belegt (Spiegel von `row_fields` und `reachable_fields`, inklusive
 `secondary_role` fuer `-0.38 (0.37)`), und vergleicht dort den gedruckten Wert.
 Von **62** erreichbaren Goldfeldern steht der Wert bei **32** an einer
-belegenden Stelle (26 Kopfangabe, 6 Zelle), bei **30** nicht: 9 nur anderswo im
-Kopf/in einer Fussnote, 3 anderswo im Rumpf (davon 2 in der belegten Zeile,
-aber falscher Spalte), 18 nirgends in der Tabelle. Feldarten der 30: 22
-`*_group_size`, 5 `*_mean`, 3 `*_standard_deviation`. Die vier Felder der
-p-Wert-belegten Zeile (`yun2024:390`) stehen alle woertlich in der belegenden
-Zelle (`r3/c7`, `r3/c8`, `r3/c4`).
+belegenden Stelle (26 Kopfangabe, 6 Messzelle), bei **30** nicht: 10 nur
+anderswo gedruckt (Kopf/Fussnote/Rumpf), 2 in einer Messzelle der belegten
+Zeile, aber falscher Spalte (`yun2024:445`), 18 nirgends in der Tabelle.
+Feldarten der 30: 22 `*_group_size`, 5 `*_mean`, 3 `*_standard_deviation`.
+Die vier Felder der p-Wert-belegten Zeile (`yun2024:390`) stehen alle
+woertlich in der belegenden Messzelle (`r3/c7`, `r3/c8`, `r3/c4`).
+
+Korrektur der Trennung: Kopfangabe, belegende Messzelle und "Messzelle der
+belegten Zeile in falscher Spalte" sind jetzt getrennte, disjunkte Kategorien;
+"in belegter Zeile" zaehlt keine Kopfangabe mehr mit. In Messzellen der
+belegten Zeile steht der Wert bei **8** Feldern, nicht bei 34. Nach Weg:
+37 Kopffelder (22 gedruckt, 15 nicht), 25 Zellfelder (6 gedruckt, 19 nicht).
+
+Pruefung der vier Kopfangaben mit Armkonflikt: nur **zwei** sind wirklich an
+einen anderen Arm gebunden - `Aripiprazole (n = 47)` in `PMC5617873:T2`
+(Gold nennt 47 als comparator, Fakt haengt an intervention) und `(n=15)` in
+`PMC5777419:T2` (Gold comparator, Fakt intervention). `Placebo (n = 45)` und
+`(n=16)` sind gedruckt, aber ohne Arm; `CoPAT (*n* = 103)` und
+`Placebo (*n* = 23)` erzeugen gar keinen `header_fact`, weil `*n*` weder
+`group_size_declaration` noch `_GROUP_SIZE_ANY_RE` trifft - ihre Beschriftung
+stimmt mit dem Goldarm ueberein. In `PMC5617873:T2` stehen 45/47 unter den
+entgegengesetzten Armnamen (Record-Vergleichsarm `Placbeo`, Band `Placebo`);
+in `PMC4987981:T1` ist das Goldfeld 37 die Summe der gedruckten 21 und 16.
 
 Einheiten-Rueckgang `yun2024:390` (Plan mit/ohne Korroboration verglichen):
 vorher ist `focus_rows` leer, der Plan liest alle 8 Zeilen; nachher `[3]`. Die 7

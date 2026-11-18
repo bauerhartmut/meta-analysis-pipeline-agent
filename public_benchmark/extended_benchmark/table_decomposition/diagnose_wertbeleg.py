@@ -195,6 +195,20 @@ def _felder(record: Dict[str, Any], tables: List[Any],
             ort for table in tables
             for ort in _anderswo(table, gold_cell["value"], ausschluss)
         })
+        # Genau eine Kategorie je Feld: belegende Messzelle, belegende
+        # Kopfangabe, Messzelle der belegten Zeile in falscher Spalte, nur
+        # anderswo gedruckt, oder nirgends. Kopfangaben zaehlen nicht als
+        # "in der Zeile" - sie haengen an keiner Zeile.
+        if zell_gedruckt:
+            kategorie = "belegende_zelle"
+        elif kopf_gedruckt:
+            kategorie = "belegende_kopfangabe"
+        elif in_zeile:
+            kategorie = "zeile_andere_spalte"
+        elif anderswo:
+            kategorie = "nur_anderswo"
+        else:
+            kategorie = "nirgends"
         felder.append({
             "record_id": record["record_id"],
             "table_id": next(iter({t.table_id for t, _r in stellen})),
@@ -204,10 +218,11 @@ def _felder(record: Dict[str, Any], tables: List[Any],
             "zeilen": sorted({r for _t, r in stellen}),
             "belegte_zeile": any(r in belegte_zeilen for _t, r in stellen),
             "quelle": quelle,
+            "kategorie": kategorie,
             "gedruckt_in_kopf": kopf_gedruckt,
             "gedruckt_in_zelle": zell_gedruckt,
             "gedruckt_belegend": gedruckt,
-            "gedruckt_in_zeile": bool(in_zeile) or gedruckt,
+            "gedruckt_in_messzelle_der_zeile": bool(in_zeile),
             "zeilen_mit_wert": sorted(set(in_zeile)),
             "gepruefte_stellen": geprueft,
             "wert_sonst_gedruckt": anderswo,
@@ -408,8 +423,23 @@ def main() -> int:
         "goldzellen_wert_in_kopf": sum(1 for f in felder if f["gedruckt_in_kopf"]),
         "goldzellen_wert_in_zelle": sum(1 for f in felder if f["gedruckt_in_zelle"]),
         "goldzellen_wert_belegend": sum(1 for f in felder if f["gedruckt_belegend"]),
-        "goldzellen_wert_in_zeile": sum(1 for f in felder if f["gedruckt_in_zeile"]),
-        "goldzellen_wert_nirgends": sum(1 for f in felder if not f["gedruckt_in_zeile"]),
+        "goldzellen_wert_in_messzelle_der_zeile": sum(
+            1 for f in felder if f["gedruckt_in_messzelle_der_zeile"]),
+        "goldzellen_nirgends": sum(1 for f in felder if f["kategorie"] == "nirgends"),
+        "kategorien": dict(sorted(Counter(f["kategorie"] for f in felder).items())),
+        # Je Weg: wie viele Felder kommen darueber, und bei wie vielen steht
+        # der Wert an genau dieser Stelle (nicht an der anderen).
+        "je_quelle": {
+            quelle: {
+                "gesamt": sum(1 for f in felder if f["quelle"] == quelle),
+                "gedruckt_dort": sum(
+                    1 for f in felder
+                    if f["quelle"] == quelle
+                    and (f["gedruckt_in_kopf"] if quelle == "kopf"
+                         else f["gedruckt_in_zelle"])),
+            }
+            for quelle in ("kopf", "zelle")
+        },
         "tabellen_je_record": tabellen_je_record,
         "felder": felder,
         "einheiten_diff": diffs,
@@ -419,18 +449,18 @@ def main() -> int:
         json.dumps(bericht, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print(f"Goldzellen {bericht['goldzellen_erreichbar']}/{gold_gesamt} erreichbar, "
-          f"Wert in belegender Stelle {bericht['goldzellen_wert_belegend']} "
-          f"(Kopf {bericht['goldzellen_wert_in_kopf']}, "
-          f"Zelle {bericht['goldzellen_wert_in_zelle']}), "
-          f"in belegter Zeile {bericht['goldzellen_wert_in_zeile']}, "
-          f"nirgends {bericht['goldzellen_wert_nirgends']}")
+          f"Kategorien {bericht['kategorien']}")
+    print(f"  belegende Stelle {bericht['goldzellen_wert_belegend']} "
+          f"(Kopfangabe {bericht['goldzellen_wert_in_kopf']}, "
+          f"Messzelle {bericht['goldzellen_wert_in_zelle']}), "
+          f"Messzelle der belegten Zeile {bericht['goldzellen_wert_in_messzelle_der_zeile']}")
     for feld in felder:
-        if not feld["gedruckt_belegend"]:
-            print(f"  FEHLT {feld['record_id']} {feld['table_id']} {feld['field']}"
-                  f"={feld['raw']} zeilen={feld['zeilen']} "
-                  f"sonst={feld['wert_sonst_gedruckt']}")
-        elif not feld["gedruckt_in_zelle"]:
-            print(f"  ZEILE-OK/ZELLE-NEIN {feld['record_id']} {feld['table_id']} "
+        if feld["kategorie"] in ("nur_anderswo", "nirgends"):
+            print(f"  {feld['kategorie'].upper()} {feld['record_id']} "
+                  f"{feld['table_id']} {feld['field']}={feld['raw']} "
+                  f"zeilen={feld['zeilen']} sonst={feld['wert_sonst_gedruckt']}")
+        elif feld["kategorie"] == "zeile_andere_spalte":
+            print(f"  ZEILE-ANDERE-SPALTE {feld['record_id']} {feld['table_id']} "
                   f"{feld['field']}={feld['raw']} zeilen={feld['zeilen']} "
                   f"wert_in={feld['zeilen_mit_wert']}")
     for diff in diffs:
