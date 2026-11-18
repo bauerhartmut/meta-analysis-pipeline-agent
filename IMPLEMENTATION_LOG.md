@@ -1711,3 +1711,27 @@ zweite, abweichende Zahl (`:645`/`:647` Tabelle 27/26 gegen Text 29/30,
 Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/fliesstext_20261118/`
 (`messung.json`, `ergebnis.md`). Tests: `research_agent/tests/test_fliesstext.py`
 (6), zusammen 136 gruen. Der Tabellenpfad ist unveraendert.
+
+### Nachtrag Sprint 48 - strikte Kennzahl
+
+Die 101/83 zaehlen ein Feld auch dann als wertgleich, wenn daneben eine zweite,
+abweichende Zahl gedruckt steht. Deshalb misst `diagnose_fliesstext.py` jetzt
+zusaetzlich **streng**: genau eine gedruckte Zahl im Feld, und sie trifft den
+Goldwert.
+
+Ergebnis derselben Auswahl: **49 -> 46 streng** (erreichbar 94 -> 101,
+wertgleich 68 -> 83). Neu streng 5 (alle neu erreichbar: `:202`/`:205` 40,
+`:265`/`:266` comparator_events 4, `:682` comparator 15), aber **8 vorher
+eindeutige Felder werden mehrdeutig**: `:174` 15 -> 11/15, `:445` 70 -> 70/140,
+`:639`/`:640` 12 -> 12/13, `:645`/`:647` je 26 -> 26/30 und 27 -> 27/29. Alle
+acht bleiben wertgleich - kein Feld wurde falsch, sie verlieren nur die
+Eindeutigkeit. `population_mismatch` streng **8 -> 4**; die fuenf Zielfelder
+werden wertgleich, aber keines streng.
+
+Verteilung der gedruckten Zahlen je Feld (ohne -> mit): 0 Zahlen 11 -> 11,
+eine 59 -> 50, zwei 17 -> 31, drei und mehr 7 -> 9. Unter der strikten Kennzahl
+kostet der Text also drei Felder netto.
+
+Grenze der Kennzahl: sie zaehlt nur Zahlen, die der Leser findet - eine
+gedruckte Zahl in einer ungelesenen Form bleibt unsichtbar und macht das Feld
+im Bericht eindeutiger, als es ist.

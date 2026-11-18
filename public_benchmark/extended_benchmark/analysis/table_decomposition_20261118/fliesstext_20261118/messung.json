@@ -8,11 +8,13 @@
   "bilanz": {
     "ohne_text": {
       "erreichbar": 94,
-      "wertgleich": 68
+      "wertgleich": 68,
+      "streng": 49
     },
     "mit_text": {
       "erreichbar": 101,
-      "wertgleich": 83
+      "wertgleich": 83,
+      "streng": 46
     },
     "neu_wertgleich": [
       "yun2024:185.comparator_group_size",
@@ -49,6 +51,111 @@
       "yun2024:682.intervention_group_size",
       "yun2024:78.intervention_group_size",
       "yun2024:79.intervention_group_size"
+    ],
+    "neu_streng": [
+      "yun2024:202.intervention_group_size",
+      "yun2024:205.intervention_group_size",
+      "yun2024:265.comparator_events",
+      "yun2024:266.comparator_events",
+      "yun2024:682.comparator_group_size"
+    ],
+    "streng_verloren": [
+      {
+        "record_id": "yun2024:174",
+        "feld": "comparator_group_size",
+        "vorher": [
+          15.0
+        ],
+        "nachher": [
+          11.0,
+          15.0
+        ],
+        "noch_wertgleich": true
+      },
+      {
+        "record_id": "yun2024:445",
+        "feld": "comparator_group_size",
+        "vorher": [
+          70.0
+        ],
+        "nachher": [
+          70.0,
+          140.0
+        ],
+        "noch_wertgleich": true
+      },
+      {
+        "record_id": "yun2024:639",
+        "feld": "comparator_group_size",
+        "vorher": [
+          12.0
+        ],
+        "nachher": [
+          12.0,
+          13.0
+        ],
+        "noch_wertgleich": true
+      },
+      {
+        "record_id": "yun2024:640",
+        "feld": "comparator_group_size",
+        "vorher": [
+          12.0
+        ],
+        "nachher": [
+          12.0,
+          13.0
+        ],
+        "noch_wertgleich": true
+      },
+      {
+        "record_id": "yun2024:645",
+        "feld": "comparator_group_size",
+        "vorher": [
+          26.0
+        ],
+        "nachher": [
+          26.0,
+          30.0
+        ],
+        "noch_wertgleich": true
+      },
+      {
+        "record_id": "yun2024:645",
+        "feld": "intervention_group_size",
+        "vorher": [
+          27.0
+        ],
+        "nachher": [
+          27.0,
+          29.0
+        ],
+        "noch_wertgleich": true
+      },
+      {
+        "record_id": "yun2024:647",
+        "feld": "comparator_group_size",
+        "vorher": [
+          26.0
+        ],
+        "nachher": [
+          26.0,
+          30.0
+        ],
+        "noch_wertgleich": true
+      },
+      {
+        "record_id": "yun2024:647",
+        "feld": "intervention_group_size",
+        "vorher": [
+          27.0
+        ],
+        "nachher": [
+          27.0,
+          29.0
+        ],
+        "noch_wertgleich": true
+      }
     ],
     "verloren": [],
     "arm_wechsel": [],
@@ -250,7 +357,21 @@
           30.0
         ]
       }
-    ]
+    ],
+    "gedruckte_zahlen_je_feld": {
+      "ohne_text": {
+        "0": 11,
+        "1": 59,
+        "2": 17,
+        "3+": 7
+      },
+      "mit_text": {
+        "0": 11,
+        "1": 50,
+        "2": 31,
+        "3+": 9
+      }
+    }
   },
   "felder_nur_aus_text": [
     "yun2024:202.intervention_group_size",
@@ -265,27 +386,37 @@
     "population_mismatch": {
       "gesamt": 15,
       "vorher": 10,
-      "nachher": 15
+      "nachher": 15,
+      "streng_vorher": 8,
+      "streng_nachher": 4
     },
     "subgroup_vs_total": {
       "gesamt": 3,
       "vorher": 0,
-      "nachher": 2
+      "nachher": 2,
+      "streng_vorher": 0,
+      "streng_nachher": 0
     },
     "sum_of_subgroups": {
       "gesamt": 3,
       "vorher": 0,
-      "nachher": 0
+      "nachher": 0,
+      "streng_vorher": 0,
+      "streng_nachher": 0
     },
     "timepoint_mismatch": {
       "gesamt": 6,
       "vorher": 0,
-      "nachher": 0
+      "nachher": 0,
+      "streng_vorher": 0,
+      "streng_nachher": 0
     },
     "unexplained": {
       "gesamt": 9,
       "vorher": 0,
-      "nachher": 1
+      "nachher": 1,
+      "streng_vorher": 0,
+      "streng_nachher": 0
     }
   },
   "records": [
@@ -295,6 +426,11 @@
       "tabelle": "PMC4319071:T1",
       "fliesstext": {},
       "fundstellen": {
+        "comparator_group_size": [
+          434.0
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           434.0
         ]
@@ -390,6 +526,11 @@
           434.0
         ]
       },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          434.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -481,6 +622,11 @@
           103.0
         ]
       },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          103.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -548,6 +694,11 @@
           103.0
         ]
       },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          103.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -611,12 +762,21 @@
       "tabelle": "PMC5079604:T1",
       "fliesstext": {},
       "fundstellen": {
+        "comparator_group_size": [
+          15.0
+        ],
         "intervention_group_size": [
           16.0,
           17.0
-        ],
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           15.0
+        ],
+        "intervention_group_size": [
+          16.0,
+          17.0
         ]
       },
       "vorher": {
@@ -680,13 +840,22 @@
         ]
       },
       "fundstellen": {
-        "intervention_group_size": [
-          16.0,
-          17.0
-        ],
         "comparator_group_size": [
           11.0,
           15.0
+        ],
+        "intervention_group_size": [
+          16.0,
+          17.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          15.0
+        ],
+        "intervention_group_size": [
+          16.0,
+          17.0
         ]
       },
       "vorher": {
@@ -756,6 +925,11 @@
       "tabelle": "PMC5122613:T1",
       "fliesstext": {},
       "fundstellen": {
+        "comparator_group_size": [
+          33.0
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           33.0
         ]
@@ -870,6 +1044,11 @@
           33.0
         ]
       },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          33.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -957,11 +1136,19 @@
       "tabelle": "PMC5360580:T6",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
-          169.0
-        ],
         "comparator_group_size": [
           167.0
+        ],
+        "intervention_group_size": [
+          169.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          167.0
+        ],
+        "intervention_group_size": [
+          169.0
         ]
       },
       "vorher": {
@@ -1066,13 +1253,21 @@
         ]
       },
       "fundstellen": {
-        "intervention_group_size": [
-          145.0,
-          169.0
-        ],
         "comparator_group_size": [
           140.0,
           167.0
+        ],
+        "intervention_group_size": [
+          145.0,
+          169.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          167.0
+        ],
+        "intervention_group_size": [
+          169.0
         ]
       },
       "vorher": {
@@ -1188,6 +1383,7 @@
           40.0
         ]
       },
+      "fundstellen_vorher": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -1295,6 +1491,7 @@
           40.0
         ]
       },
+      "fundstellen_vorher": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -1380,6 +1577,7 @@
       "tabelle": "PMC5614421:T2",
       "fliesstext": {},
       "fundstellen": {},
+      "fundstellen_vorher": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -1415,6 +1613,7 @@
       "tabelle": "PMC5614421:T2",
       "fliesstext": {},
       "fundstellen": {},
+      "fundstellen_vorher": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -1474,11 +1673,19 @@
       "tabelle": "PMC5711682:T5",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
-          38.0
-        ],
         "comparator_group_size": [
           39.0
+        ],
+        "intervention_group_size": [
+          38.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          39.0
+        ],
+        "intervention_group_size": [
+          38.0
         ]
       },
       "vorher": {
@@ -1548,6 +1755,16 @@
       "tabelle": "PMC5711682:T5",
       "fliesstext": {},
       "fundstellen": {
+        "comparator_group_size": [
+          0.0,
+          39.0
+        ],
+        "intervention_group_size": [
+          0.0,
+          38.0
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           0.0,
           39.0
@@ -1723,19 +1940,28 @@
         ]
       },
       "fundstellen": {
-        "intervention_group_size": [
-          80.0,
-          83.0
+        "comparator_events": [
+          4.0
         ],
         "comparator_group_size": [
           79.0
         ],
-        "comparator_events": [
-          4.0
-        ],
         "intervention_events": [
           3.0,
           4.0
+        ],
+        "intervention_group_size": [
+          80.0,
+          83.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          79.0
+        ],
+        "intervention_group_size": [
+          80.0,
+          83.0
         ]
       },
       "vorher": {
@@ -1908,19 +2134,28 @@
         ]
       },
       "fundstellen": {
-        "intervention_group_size": [
-          80.0,
-          83.0
+        "comparator_events": [
+          4.0
         ],
         "comparator_group_size": [
           79.0
         ],
-        "comparator_events": [
-          4.0
-        ],
         "intervention_events": [
           3.0,
           4.0
+        ],
+        "intervention_group_size": [
+          80.0,
+          83.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          79.0
+        ],
+        "intervention_group_size": [
+          80.0,
+          83.0
         ]
       },
       "vorher": {
@@ -1994,6 +2229,11 @@
       "tabelle": "PMC3654355:T1",
       "fliesstext": {},
       "fundstellen": {
+        "intervention_group_size": [
+          71.0
+        ]
+      },
+      "fundstellen_vorher": {
         "intervention_group_size": [
           71.0
         ]
@@ -2107,6 +2347,11 @@
           71.0
         ]
       },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          71.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2194,12 +2439,21 @@
       "tabelle": "PMC4355974:T2",
       "fliesstext": {},
       "fundstellen": {
+        "comparator_group_size": [
+          14.0
+        ],
         "comparator_mean": [
           -4.2,
           5.1
-        ],
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           14.0
+        ],
+        "comparator_mean": [
+          -4.2,
+          5.1
         ]
       },
       "vorher": {
@@ -2269,12 +2523,21 @@
       "tabelle": "PMC4355974:T2",
       "fliesstext": {},
       "fundstellen": {
+        "comparator_group_size": [
+          14.0
+        ],
         "comparator_mean": [
           -1.8,
           2.0
-        ],
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           14.0
+        ],
+        "comparator_mean": [
+          -1.8,
+          2.0
         ]
       },
       "vorher": {
@@ -2344,6 +2607,11 @@
       "tabelle": "PMC3003523:T1",
       "fliesstext": {},
       "fundstellen": {
+        "intervention_group_size": [
+          393.0
+        ]
+      },
+      "fundstellen_vorher": {
         "intervention_group_size": [
           393.0
         ]
@@ -2439,6 +2707,11 @@
           47.0
         ]
       },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          47.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2530,6 +2803,11 @@
           47.0
         ]
       },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          47.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2617,10 +2895,18 @@
       "tabelle": "PMC5874317:T1",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
+        "comparator_group_size": [
           9.0
         ],
+        "intervention_group_size": [
+          9.0
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
+          9.0
+        ],
+        "intervention_group_size": [
           9.0
         ]
       },
@@ -2715,10 +3001,18 @@
       "tabelle": "PMC5874317:T1",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
+        "comparator_group_size": [
           9.0
         ],
+        "intervention_group_size": [
+          9.0
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
+          9.0
+        ],
+        "intervention_group_size": [
           9.0
         ]
       },
@@ -2813,9 +3107,14 @@
       "tabelle": "PMC3278655:T2",
       "fliesstext": {},
       "fundstellen": {
-        "comparator_standard_deviation": [],
+        "comparator_group_size": [
+          18.0,
+          21.0,
+          23.0,
+          24.0
+        ],
         "comparator_mean": [],
-        "intervention_standard_deviation": [],
+        "comparator_standard_deviation": [],
         "intervention_group_size": [
           27.0,
           28.0,
@@ -2823,12 +3122,25 @@
           30.0
         ],
         "intervention_mean": [],
+        "intervention_standard_deviation": []
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           18.0,
           21.0,
           23.0,
           24.0
-        ]
+        ],
+        "comparator_mean": [],
+        "comparator_standard_deviation": [],
+        "intervention_group_size": [
+          27.0,
+          28.0,
+          29.0,
+          30.0
+        ],
+        "intervention_mean": [],
+        "intervention_standard_deviation": []
       },
       "vorher": {
         "intervention_group_size": {
@@ -2937,17 +3249,31 @@
       "tabelle": "PMC3278655:T2",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
-          27.0,
-          28.0,
-          29.0,
-          30.0
-        ],
         "comparator_group_size": [
           18.0,
           21.0,
           23.0,
           24.0
+        ],
+        "intervention_group_size": [
+          27.0,
+          28.0,
+          29.0,
+          30.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          18.0,
+          21.0,
+          23.0,
+          24.0
+        ],
+        "intervention_group_size": [
+          27.0,
+          28.0,
+          29.0,
+          30.0
         ]
       },
       "vorher": {
@@ -3017,10 +3343,18 @@
       "tabelle": "PMC5781260:T1",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
+        "comparator_group_size": [
           20.0
         ],
+        "intervention_group_size": [
+          20.0
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
+          20.0
+        ],
+        "intervention_group_size": [
           20.0
         ]
       },
@@ -3067,10 +3401,18 @@
       "tabelle": "PMC5781260:T1",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
+        "comparator_group_size": [
           20.0
         ],
+        "intervention_group_size": [
+          20.0
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
+          20.0
+        ],
+        "intervention_group_size": [
           20.0
         ]
       },
@@ -3167,6 +3509,15 @@
         ]
       },
       "fundstellen": {
+        "comparator_group_size": [
+          99.0
+        ],
+        "intervention_group_size": [
+          90.0,
+          98.0
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           99.0
         ],
@@ -3273,6 +3624,14 @@
         "intervention_mean": [],
         "intervention_standard_deviation": []
       },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          18.0,
+          30.0
+        ],
+        "intervention_mean": [],
+        "intervention_standard_deviation": []
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -3368,6 +3727,12 @@
       "tabelle": "PMC3877023:T4",
       "fliesstext": {},
       "fundstellen": {
+        "comparator_group_size": [
+          18.0,
+          30.0
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           18.0,
           30.0
@@ -3495,11 +3860,20 @@
         ]
       },
       "fundstellen": {
+        "comparator_group_size": [
+          98.0
+        ],
         "intervention_group_size": [
           90.0,
           98.0
-        ],
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
+          98.0
+        ],
+        "intervention_group_size": [
+          90.0,
           98.0
         ]
       },
@@ -3646,6 +4020,8 @@
           70.0,
           140.0
         ],
+        "comparator_mean": [],
+        "comparator_standard_deviation": [],
         "intervention_group_size": [
           70.0
         ],
@@ -3653,9 +4029,22 @@
           0.9,
           1.3,
           1.4
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          70.0
         ],
         "comparator_mean": [],
-        "comparator_standard_deviation": []
+        "comparator_standard_deviation": [],
+        "intervention_group_size": [
+          70.0
+        ],
+        "intervention_mean": [
+          0.9,
+          1.3,
+          1.4
+        ]
       },
       "vorher": {
         "intervention_group_size": {
@@ -3732,11 +4121,19 @@
       "tabelle": "PMC5726464:T1",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
-          79.0
-        ],
         "comparator_group_size": [
           86.0
+        ],
+        "intervention_group_size": [
+          79.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          86.0
+        ],
+        "intervention_group_size": [
+          79.0
         ]
       },
       "vorher": {
@@ -3782,11 +4179,19 @@
       "tabelle": "PMC5726464:T1",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
-          79.0
-        ],
         "comparator_group_size": [
           86.0
+        ],
+        "intervention_group_size": [
+          79.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          86.0
+        ],
+        "intervention_group_size": [
+          79.0
         ]
       },
       "vorher": {
@@ -3832,6 +4237,7 @@
       "tabelle": "PMC4144850:T1",
       "fliesstext": {},
       "fundstellen": {},
+      "fundstellen_vorher": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -3891,6 +4297,7 @@
       "tabelle": "PMC4144850:T1",
       "fliesstext": {},
       "fundstellen": {},
+      "fundstellen_vorher": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -3950,11 +4357,20 @@
       "tabelle": "PMC3786549:T3",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
-          44.0
-        ],
         "comparator_group_size": [
           43.0,
+          44.0
+        ],
+        "intervention_group_size": [
+          44.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          43.0,
+          44.0
+        ],
+        "intervention_group_size": [
           44.0
         ]
       },
@@ -4049,11 +4465,20 @@
       "tabelle": "PMC3786549:T3",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
-          44.0
-        ],
         "comparator_group_size": [
           43.0,
+          44.0
+        ],
+        "intervention_group_size": [
+          44.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          43.0,
+          44.0
+        ],
+        "intervention_group_size": [
           44.0
         ]
       },
@@ -4152,6 +4577,11 @@
           0.0
         ]
       },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          0.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -4215,6 +4645,7 @@
       "tabelle": "PMC5419060:T2",
       "fliesstext": {},
       "fundstellen": {},
+      "fundstellen_vorher": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -4438,15 +4869,24 @@
         ]
       },
       "fundstellen": {
+        "comparator_group_size": [
+          204.0,
+          214.0
+        ],
         "intervention_group_size": [
           283.0,
           289.0,
           298.0,
           307.0
-        ],
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
-          204.0,
           214.0
+        ],
+        "intervention_group_size": [
+          298.0,
+          307.0
         ]
       },
       "vorher": {
@@ -4635,15 +5075,24 @@
         ]
       },
       "fundstellen": {
+        "comparator_group_size": [
+          204.0,
+          214.0
+        ],
         "intervention_group_size": [
           283.0,
           289.0,
           298.0,
           307.0
-        ],
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
-          204.0,
           214.0
+        ],
+        "intervention_group_size": [
+          298.0,
+          307.0
         ]
       },
       "vorher": {
@@ -4737,11 +5186,19 @@
       "tabelle": "PMC3648394:T1",
       "fliesstext": {},
       "fundstellen": {
-        "intervention_group_size": [
-          18.0
-        ],
         "comparator_group_size": [
           19.0
+        ],
+        "intervention_group_size": [
+          18.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          19.0
+        ],
+        "intervention_group_size": [
+          18.0
         ]
       },
       "vorher": {
@@ -4868,12 +5325,20 @@
         ]
       },
       "fundstellen": {
-        "intervention_group_size": [
-          12.0
-        ],
         "comparator_group_size": [
           12.0,
           13.0
+        ],
+        "intervention_group_size": [
+          12.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          12.0
+        ],
+        "intervention_group_size": [
+          12.0
         ]
       },
       "vorher": {
@@ -4952,12 +5417,20 @@
         ]
       },
       "fundstellen": {
-        "intervention_group_size": [
-          12.0
-        ],
         "comparator_group_size": [
           12.0,
           13.0
+        ],
+        "intervention_group_size": [
+          12.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          12.0
+        ],
+        "intervention_group_size": [
+          12.0
         ]
       },
       "vorher": {
@@ -5045,6 +5518,14 @@
         "intervention_group_size": [
           27.0,
           29.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          26.0
+        ],
+        "intervention_group_size": [
+          27.0
         ]
       },
       "vorher": {
@@ -5173,13 +5654,21 @@
         ]
       },
       "fundstellen": {
-        "intervention_group_size": [
-          27.0,
-          29.0
-        ],
         "comparator_group_size": [
           26.0,
           30.0
+        ],
+        "intervention_group_size": [
+          27.0,
+          29.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "comparator_group_size": [
+          26.0
+        ],
+        "intervention_group_size": [
+          27.0
         ]
       },
       "vorher": {
@@ -5323,12 +5812,21 @@
         ]
       },
       "fundstellen": {
+        "comparator_group_size": [
+          23.0
+        ],
         "intervention_group_size": [
           16.0,
           21.0
-        ],
+        ]
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           23.0
+        ],
+        "intervention_group_size": [
+          16.0,
+          21.0
         ]
       },
       "vorher": {
@@ -5409,16 +5907,28 @@
         ]
       },
       "fundstellen": {
-        "comparator_standard_deviation": [],
+        "comparator_group_size": [
+          23.0
+        ],
         "comparator_mean": [],
-        "intervention_standard_deviation": [],
+        "comparator_standard_deviation": [],
         "intervention_group_size": [
           16.0
         ],
         "intervention_mean": [],
+        "intervention_standard_deviation": []
+      },
+      "fundstellen_vorher": {
         "comparator_group_size": [
           23.0
-        ]
+        ],
+        "comparator_mean": [],
+        "comparator_standard_deviation": [],
+        "intervention_group_size": [
+          16.0
+        ],
+        "intervention_mean": [],
+        "intervention_standard_deviation": []
       },
       "vorher": {
         "intervention_group_size": {
@@ -5527,6 +6037,7 @@
       "tabelle": "PMC4550271:T4",
       "fliesstext": {},
       "fundstellen": {},
+      "fundstellen_vorher": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -5562,6 +6073,7 @@
       "tabelle": "PMC4550271:T2",
       "fliesstext": {},
       "fundstellen": {},
+      "fundstellen_vorher": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -5649,6 +6161,11 @@
           15.0
         ]
       },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          15.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -5723,11 +6240,16 @@
         ]
       },
       "fundstellen": {
+        "comparator_group_size": [
+          15.0
+        ],
         "intervention_group_size": [
           15.0,
           16.0
-        ],
-        "comparator_group_size": [
+        ]
+      },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
           15.0
         ]
       },
@@ -5861,6 +6383,13 @@
           30.0
         ]
       },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          3.0,
+          8.0,
+          19.0
+        ]
+      },
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -5987,6 +6516,13 @@
           19.0,
           29.0,
           30.0
+        ]
+      },
+      "fundstellen_vorher": {
+        "intervention_group_size": [
+          3.0,
+          8.0,
+          19.0
         ]
       },
       "vorher": {

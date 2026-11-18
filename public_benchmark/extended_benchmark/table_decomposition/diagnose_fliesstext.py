@@ -14,6 +14,19 @@ gedruckte Formen:
   Population,
 * ``5.1% (4/79) ... respectively`` (Zaehler = Ereignisse, Nenner = Groesse).
 
+Zwei Kennzahlen:
+
+* **wertgleich** - irgendeine Fundstelle trifft den Goldwert (bisherige Zahl,
+  94/68). Sie zaehlt ein Feld auch dann, wenn daneben eine zweite, abweichende
+  Zahl gedruckt steht.
+* **streng** - im Feld steht **genau eine** gedruckte Zahl und sie trifft den
+  Goldwert. Das ist die Kennzahl, die eine Mehrdeutigkeit nicht verdeckt:
+  ein Feld mit zwei Populationen ist wertgleich, aber nicht streng.
+
+Zusaetzlich wird ausgewiesen, wie viele vorher eindeutige Felder der Text
+mehrdeutig macht (streng vorher, nicht streng nachher) - die Differenz
+101/83 darf diese Regression nicht verdecken.
+
 Read-only: Gold und eingefrorene Eingaben werden nur gelesen.
 Aufruf:
 
@@ -67,6 +80,17 @@ def _zusammengelegt(*quellen: Dict[str, List[pv.Provenienz]]
     return out
 
 
+def _werte(stellen: List[pv.Provenienz]) -> List[float]:
+    """Gedruckte Zahlen eines Feldes, entdoppelt und sortiert."""
+    return sorted({round(stelle.wert, 2) for stelle in stellen
+                   if stelle.wert is not None})
+
+
+def _streng(lage: Dict[str, Any], werte: List[float]) -> bool:
+    """Genau eine gedruckte Zahl, und sie trifft den Goldwert."""
+    return bool(lage.get("wertgleich")) and len(werte) == 1
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", required=True)
@@ -78,16 +102,19 @@ def main() -> int:
     records = rb.load_records(rb.DEFAULT_RECORDS)
     grouped = rb.group_by_record(selection, None)
 
-    ohne_erreichbar = ohne_gleich = 0
-    mit_erreichbar = mit_gleich = 0
+    ohne_erreichbar = ohne_gleich = ohne_streng = 0
+    mit_erreichbar = mit_gleich = mit_streng = 0
     ohne_felder: set = set()
     mit_felder: set = set()
+    streng_felder: set = set()
     neu_erreichbar: List[str] = []
     verloren: List[str] = []
+    streng_verloren: List[Dict[str, Any]] = []
     arm_wechsel: List[Dict[str, Any]] = []
     konflikte: List[Dict[str, Any]] = []
     regeln: Counter = Counter()
     wert_index: Dict[str, List[float]] = {}
+    verteilung: Dict[str, Counter] = {"ohne_text": Counter(), "mit_text": Counter()}
     je_kategorie: Dict[str, Dict[str, int]] = {}
     record_berichte: List[Dict[str, Any]] = []
 
@@ -106,73 +133,84 @@ def main() -> int:
 
         tabellen_stellen = pv.feld_stellen(gelesen, context)
         text_stellen = fl.stellen(text, context, gelesen)
+        alle_stellen = _zusammengelegt(tabellen_stellen, text_stellen)
+        werte_vorher = {feld: _werte(stellen)
+                        for feld, stellen in tabellen_stellen.items()}
+        werte_nachher = {feld: _werte(stellen)
+                         for feld, stellen in alle_stellen.items()}
+        gold = _gold(record)
+        vorher = _lage(gold, tabellen_stellen)
+        nachher = _lage(gold, alle_stellen)
+        for feld, werte in werte_nachher.items():
+            wert_index[f"{record_id}.{feld}"] = werte
+
         for feld, stellen in text_stellen.items():
             for stelle in stellen:
                 regeln[stelle.regel] += 1
             if not tabellen_stellen.get(feld):
                 neu_erreichbar.append(f"{record_id}.{feld}")
-            tabellen_werte = {stelle.wert for stelle in tabellen_stellen.get(feld, [])
-                              if stelle.wert is not None}
-            fremd = sorted({stelle.wert for stelle in stellen
-                            if stelle.wert is not None} - tabellen_werte)
+            tabellen_werte = set(werte_vorher.get(feld) or [])
+            fremd = [wert for wert in werte_nachher.get(feld) or []
+                     if wert not in tabellen_werte]
             if tabellen_werte and fremd:
                 konflikte.append({"record_id": record_id, "feld": feld,
                                   "tabelle": sorted(tabellen_werte),
                                   "text": fremd})
 
-        gold = _gold(record)
-        alle_stellen = _zusammengelegt(tabellen_stellen, text_stellen)
-        vorher = _lage(gold, tabellen_stellen)
-        nachher = _lage(gold, alle_stellen)
-        for feld, stellen in alle_stellen.items():
-            wert_index[f"{record_id}.{feld}"] = sorted({
-                round(stelle.wert, 2) for stelle in stellen
-                if stelle.wert is not None})
+        for feld in sorted(set(vorher) | set(nachher)):
+            schluessel = f"{record_id}.{feld}"
+            v = vorher.get(feld) or {"erreichbar": False, "wertgleich": False,
+                                     "arme": []}
+            n = nachher.get(feld) or {"erreichbar": False, "wertgleich": False,
+                                      "arme": []}
+            v_werte = werte_vorher.get(feld) or []
+            n_werte = werte_nachher.get(feld) or []
+            v_streng = _streng(v, v_werte)
+            n_streng = _streng(n, n_werte)
 
-        for feld, lage in vorher.items():
-            if not lage["erreichbar"]:
+            if v.get("erreichbar"):
+                ohne_erreichbar += 1
+                verteilung["ohne_text"][min(len(v_werte), 3)] += 1
+                if v.get("wertgleich"):
+                    ohne_gleich += 1
+                    ohne_felder.add(schluessel)
+                if v_streng:
+                    ohne_streng += 1
+            if n.get("erreichbar"):
+                mit_erreichbar += 1
+                verteilung["mit_text"][min(len(n_werte), 3)] += 1
+                if n.get("wertgleich"):
+                    mit_gleich += 1
+                    mit_felder.add(schluessel)
+                if n_streng:
+                    mit_streng += 1
+                    streng_felder.add(schluessel)
+
+            if v.get("erreichbar") and not n.get("erreichbar"):
+                verloren.append(schluessel)
                 continue
-            ohne_erreichbar += 1
-            if lage["wertgleich"]:
-                ohne_gleich += 1
-                ohne_felder.add(f"{record_id}.{feld}")
-            neu = nachher[feld]
-            if not neu["erreichbar"]:
-                verloren.append(f"{record_id}.{feld}")
+            if not v.get("erreichbar"):
                 continue
-            mit_erreichbar += 1
-            if neu["wertgleich"]:
-                mit_gleich += 1
-                mit_felder.add(f"{record_id}.{feld}")
-            if lage["arme"] and neu["arme"] != lage["arme"]:
+            if v.get("arme") and n.get("arme") != v.get("arme"):
                 arm_wechsel.append({"record_id": record_id, "feld": feld,
-                                    "vorher": lage["arme"], "nachher": neu["arme"]})
+                                    "vorher": v.get("arme"),
+                                    "nachher": n.get("arme")})
+            if v_streng and not n_streng:
+                streng_verloren.append({
+                    "record_id": record_id, "feld": feld,
+                    "vorher": v_werte, "nachher": n_werte,
+                    "noch_wertgleich": bool(n.get("wertgleich")),
+                })
             kategorie = kategorien.get((record_id, feld))
             if kategorie:
                 zaehler = je_kategorie.setdefault(
-                    kategorie, {"gesamt": 0, "vorher": 0, "nachher": 0})
+                    kategorie, {"gesamt": 0, "vorher": 0, "nachher": 0,
+                                "streng_vorher": 0, "streng_nachher": 0})
                 zaehler["gesamt"] += 1
-                zaehler["vorher"] += 1 if lage["wertgleich"] else 0
-                zaehler["nachher"] += 1 if neu["wertgleich"] else 0
-
-        # Felder, die erst durch den Text erreichbar werden, zaehlen mit.
-        for feld in text_stellen:
-            if vorher.get(feld, {}).get("erreichbar"):
-                continue
-            neu = nachher[feld]
-            if not neu["erreichbar"]:
-                continue
-            mit_erreichbar += 1
-            if neu["wertgleich"]:
-                mit_gleich += 1
-                mit_felder.add(f"{record_id}.{feld}")
-            kategorie = kategorien.get((record_id, feld))
-            if kategorie:
-                zaehler = je_kategorie.setdefault(
-                    kategorie, {"gesamt": 0, "vorher": 0, "nachher": 0})
-                zaehler["gesamt"] += 1
-                zaehler["vorher"] += 1 if vorher[feld]["wertgleich"] else 0
-                zaehler["nachher"] += 1 if neu["wertgleich"] else 0
+                zaehler["vorher"] += 1 if v.get("wertgleich") else 0
+                zaehler["nachher"] += 1 if n.get("wertgleich") else 0
+                zaehler["streng_vorher"] += 1 if v_streng else 0
+                zaehler["streng_nachher"] += 1 if n_streng else 0
 
         record_berichte.append({
             "record_id": record_id,
@@ -180,8 +218,11 @@ def main() -> int:
             "tabelle": ziel.table_id,
             "fliesstext": {feld: [stelle.to_dict() for stelle in stellen]
                            for feld, stellen in sorted(text_stellen.items())},
-            "fundstellen": {feld: wert_index[f"{record_id}.{feld}"]
-                            for feld in alle_stellen},
+            # sortiert, damit die Datei zwischen Laeufen byte-gleich bleibt
+            "fundstellen": {feld: werte_nachher[feld]
+                            for feld in sorted(alle_stellen)},
+            "fundstellen_vorher": {feld: werte_vorher[feld]
+                                   for feld in sorted(tabellen_stellen)},
             "vorher": vorher,
             "nachher": nachher,
         })
@@ -196,9 +237,11 @@ def main() -> int:
         },
         "bilanz": {
             "ohne_text": {"erreichbar": ohne_erreichbar,
-                          "wertgleich": ohne_gleich},
+                          "wertgleich": ohne_gleich,
+                          "streng": ohne_streng},
             "mit_text": {"erreichbar": mit_erreichbar,
-                         "wertgleich": mit_gleich},
+                         "wertgleich": mit_gleich,
+                         "streng": mit_streng},
             "neu_wertgleich": sorted(mit_felder - ohne_felder),
             # Ein Feld mit zwei gedruckten Zahlen ist wertgleich, aber nicht
             # eindeutig - das wird getrennt ausgewiesen.
@@ -208,10 +251,16 @@ def main() -> int:
             "neu_wertgleich_mehrdeutig": [
                 feld for feld in sorted(mit_felder - ohne_felder)
                 if len(wert_index.get(feld) or []) > 1],
+            "neu_streng": sorted(streng_felder - ohne_felder),
+            "streng_verloren": streng_verloren,
             "verloren": sorted(set(verloren)),
             "arm_wechsel": arm_wechsel,
             "text_fakten": dict(sorted(regeln.items())),
             "konflikte": konflikte,
+            "gedruckte_zahlen_je_feld": {
+                name: {("3+" if k == 3 else str(k)): v
+                       for k, v in sorted(zaehler.items())}
+                for name, zaehler in verteilung.items()},
         },
         "felder_nur_aus_text": sorted(set(neu_erreichbar)),
         "je_kategorie": dict(sorted(je_kategorie.items())),
@@ -221,19 +270,27 @@ def main() -> int:
         json.dumps(bericht, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     bilanz = bericht["bilanz"]
-    print(f"ohne Text {ohne_erreichbar} erreichbar / {ohne_gleich} wertgleich")
-    print(f"mit Text  {mit_erreichbar} erreichbar / {mit_gleich} wertgleich")
+    ohne, mit = bilanz["ohne_text"], bilanz["mit_text"]
+    print(f"ohne Text {ohne['erreichbar']} erreichbar / "
+          f"{ohne['wertgleich']} wertgleich / {ohne['streng']} streng")
+    print(f"mit Text  {mit['erreichbar']} erreichbar / "
+          f"{mit['wertgleich']} wertgleich / {mit['streng']} streng")
     print("je Kategorie:", bericht["je_kategorie"])
     print("neu wertgleich:", len(bilanz["neu_wertgleich"]),
           "(eindeutig", len(bilanz["neu_wertgleich_eindeutig"]),
           "/ mehrdeutig", len(bilanz["neu_wertgleich_mehrdeutig"]), ")",
+          "| neu streng:", len(bilanz["neu_streng"]),
+          "| streng verloren:", len(bilanz["streng_verloren"]),
           "| verloren:", len(bilanz["verloren"]),
           "| Armwechsel:", len(arm_wechsel))
+    print("gedruckte Zahlen je Feld:",
+          bilanz["gedruckte_zahlen_je_feld"])
     print("Felder nur aus Text:", len(bericht["felder_nur_aus_text"]))
     print("Text-Fakten:", bilanz["text_fakten"])
     print("Konflikte (Textwert weicht von der Tabelle ab):", len(konflikte))
-    for eintrag in konflikte[:10]:
-        print("  ", eintrag)
+    for eintrag in bilanz["streng_verloren"]:
+        print("  streng verloren:", eintrag["record_id"], eintrag["feld"],
+              eintrag["vorher"], "->", eintrag["nachher"])
     return 0
 
 
