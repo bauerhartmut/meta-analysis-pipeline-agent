@@ -1594,3 +1594,27 @@ vertauscht, der Parser bindet wie der Text. `PMC5777419` nennt "probiotic
 und die Baseline-Tabelle mit denselben Zahlen - das Gold ist richtig, die
 Kopfbaender liegen verschoben (das `(n=15)` ueber den Antibiotika-Spalten).
 Keine Armzuordnung geaendert.
+
+## Sprint 46 - Tabellenwahl aus der Kopfbeschriftung
+
+`research_agent/table_decomposition/tabellenwahl.py` waehlt die Tabelle aus dem
+Dokument statt aus der eingefrorenen Auswahl: traegt eine aktuelle Tabelle eine
+Outcome-Zeile, bleibt es bei ihr; sonst gewinnt nur dann eine andere Tabelle,
+wenn die aktuelle eine Baseline-Tabelle ist (Caption/Kopfband nennt "baseline",
+"demographic", "characteristics") und die andere die meisten Outcome-Zeilen
+hat. Kein Gold steuert die Wahl, kein Arm wird umgehaengt.
+
+Messung (`diagnose_populationswahl.py`, offline): **94/58 -> 94/62**. Vier
+Records wechseln, vier Felder werden wertgleich (`yun2024:645`/`:647`, Bayley-
+Gruppengroessen 27/26 statt Baseline 29/30), kein Feld verliert die
+Wertgleichheit, **kein Armwechsel**. Von den 15 `population_mismatch`-Feldern
+werden 4 erreicht; die uebrigen scheitern an fehlender Population in der
+Beschriftung (PMC5360580), an einer Gruppenkopfzeile in einer Datenzeile
+(PMC2430617) oder an Zahlen, die nur im Fließtext stehen (PMC4230312,
+PMC5122613). Zwei weitere Wechsel (PMC4550271) aendern an den 94 Feldern
+nichts.
+
+Nebenbei vereinfacht: die Adressierung liegt jetzt als `pv.feld_stellen` im
+Provenienzmodul, und die Belegsuche reichert die Dokumenttabellen je Record an
+statt in einem Cache, der den Kontext des ersten Records festhielt.
+Tests: `research_agent/tests/test_tabellenwahl.py` (4).

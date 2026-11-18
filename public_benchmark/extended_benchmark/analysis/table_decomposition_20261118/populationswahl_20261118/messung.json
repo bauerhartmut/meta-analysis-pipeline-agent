@@ -1,0 +1,5151 @@
+{
+  "bilanz": {
+    "vorher": {
+      "erreichbar": 94,
+      "wertgleich": 58
+    },
+    "nachher": {
+      "erreichbar": 94,
+      "wertgleich": 62
+    },
+    "neu_wertgleich": [
+      "yun2024:645.comparator_group_size",
+      "yun2024:645.intervention_group_size",
+      "yun2024:647.comparator_group_size",
+      "yun2024:647.intervention_group_size"
+    ],
+    "neu_nicht_wertgleich": [],
+    "arm_wechsel": []
+  },
+  "tabellenwechsel": 4,
+  "gruende": {
+    "aktuelle_tabelle_ist_nicht_baseline": 27,
+    "aktuelle_tabelle_traegt_outcome": 15,
+    "keine_wahl": 13,
+    "outcome_tabelle": 4
+  },
+  "je_kategorie": {
+    "population_mismatch": {
+      "gesamt": 15,
+      "vorher": 0,
+      "nachher": 4
+    },
+    "subgroup_vs_total": {
+      "gesamt": 3,
+      "vorher": 0,
+      "nachher": 0
+    },
+    "sum_of_subgroups": {
+      "gesamt": 3,
+      "vorher": 0,
+      "nachher": 0
+    },
+    "timepoint_mismatch": {
+      "gesamt": 6,
+      "vorher": 0,
+      "nachher": 0
+    },
+    "unexplained": {
+      "gesamt": 9,
+      "vorher": 0,
+      "nachher": 0
+    }
+  },
+  "records": [
+    {
+      "record_id": "yun2024:111",
+      "outcome": "High-energy snack intake",
+      "aktuelle_tabellen": [
+        "PMC4319071:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4319071:T1",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 2,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:112",
+      "outcome": "Vegetable intake",
+      "aktuelle_tabellen": [
+        "PMC4319071:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4319071:T1",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 2,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:15",
+      "outcome": "rate of clinical success at the test-of-cure visit",
+      "aktuelle_tabellen": [
+        "PMC2667135:T4"
+      ],
+      "gewaehlte_tabelle": "PMC2667135:T4",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:16",
+      "outcome": "deaths",
+      "aktuelle_tabellen": [
+        "PMC2667135:T4"
+      ],
+      "gewaehlte_tabelle": "PMC2667135:T4",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:172",
+      "outcome": "Hyperglycemia relapse-free survival",
+      "aktuelle_tabellen": [
+        "PMC5079604:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5079604:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:174",
+      "outcome": "The probability of relapse",
+      "aktuelle_tabellen": [
+        "PMC5079604:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5079604:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:184",
+      "outcome": "Improvement in faeces consistency",
+      "aktuelle_tabellen": [
+        "PMC5122613:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5122613:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:185",
+      "outcome": "Colonic transit time",
+      "aktuelle_tabellen": [
+        "PMC5122613:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5122613:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:194",
+      "outcome": "occurrence of adverse events",
+      "aktuelle_tabellen": [
+        "PMC5360580:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5360580:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:196",
+      "outcome": "WMS-R (0 min)",
+      "aktuelle_tabellen": [
+        "PMC5360580:T6"
+      ],
+      "gewaehlte_tabelle": "PMC5360580:T6",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:202",
+      "outcome": "Interferon gamma-induced protein 10",
+      "aktuelle_tabellen": [
+        "PMC5380326:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5380326:T2",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:205",
+      "outcome": "Interleukin 2",
+      "aktuelle_tabellen": [
+        "PMC5380326:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5380326:T2",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:252",
+      "outcome": "other respiratory morbidities",
+      "aktuelle_tabellen": [
+        "PMC5614421:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5614421:T2",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:253",
+      "outcome": "adverse infant outcomes, including serious infant composite outcome",
+      "aktuelle_tabellen": [
+        "PMC5614421:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5614421:T2",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:257",
+      "outcome": "target lesion revascularization (TLR)",
+      "aktuelle_tabellen": [
+        "PMC5711682:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5711682:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:258",
+      "outcome": "stent thrombosis",
+      "aktuelle_tabellen": [
+        "PMC5711682:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5711682:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:265",
+      "outcome": "adverse events",
+      "aktuelle_tabellen": [
+        "PMC2430617:T1"
+      ],
+      "gewaehlte_tabelle": "PMC2430617:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:266",
+      "outcome": "adverse events",
+      "aktuelle_tabellen": [
+        "PMC2430617:T1"
+      ],
+      "gewaehlte_tabelle": "PMC2430617:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:275",
+      "outcome": "Fat mass",
+      "aktuelle_tabellen": [
+        "PMC3654355:T1"
+      ],
+      "gewaehlte_tabelle": "PMC3654355:T1",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 2,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:282",
+      "outcome": "baseline skeletal muscle mass",
+      "aktuelle_tabellen": [
+        "PMC3654355:T2"
+      ],
+      "gewaehlte_tabelle": "PMC3654355:T2",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:296",
+      "outcome": "Days of wheeze",
+      "aktuelle_tabellen": [
+        "PMC4355974:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4355974:T2",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:298",
+      "outcome": "Days limited activity from asthma",
+      "aktuelle_tabellen": [
+        "PMC4355974:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4355974:T2",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:30",
+      "outcome": "Short-Form 36-Items improvement",
+      "aktuelle_tabellen": [
+        "PMC3003523:T1"
+      ],
+      "gewaehlte_tabelle": "PMC3003523:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:335",
+      "outcome": "Social withdrawal",
+      "aktuelle_tabellen": [
+        "PMC5617873:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5617873:T2",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:336",
+      "outcome": "Compulsion scale",
+      "aktuelle_tabellen": [
+        "PMC5617873:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5617873:T2",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:350",
+      "outcome": "Knee extension (1-rep Max)",
+      "aktuelle_tabellen": [
+        "PMC5874317:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5874317:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:352",
+      "outcome": "Change of direction improvement",
+      "aktuelle_tabellen": [
+        "PMC5874317:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5874317:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:390",
+      "outcome": "subsidence",
+      "aktuelle_tabellen": [
+        "PMC3278655:T2"
+      ],
+      "gewaehlte_tabelle": "PMC3278655:T2",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:391",
+      "outcome": "The proportion of \"at risk\" components at 5 years",
+      "aktuelle_tabellen": [
+        "PMC3278655:T2"
+      ],
+      "gewaehlte_tabelle": "PMC3278655:T2",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:402",
+      "outcome": "Exercise-induced Creatine kinase (CK)",
+      "aktuelle_tabellen": [
+        "PMC5781260:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5781260:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:403",
+      "outcome": "exercise-related loss of muscle strength",
+      "aktuelle_tabellen": [
+        "PMC5781260:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5781260:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:408",
+      "outcome": "Correct selection of the healthier product",
+      "aktuelle_tabellen": [
+        "PMC3475525:T2"
+      ],
+      "gewaehlte_tabelle": "PMC3475525:T2",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:421",
+      "outcome": "quantitative contour sharpness of the thoracolumbar spine",
+      "aktuelle_tabellen": [
+        "PMC3877023:T3"
+      ],
+      "gewaehlte_tabelle": "PMC3877023:T3",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:426",
+      "outcome": "Scanning times",
+      "aktuelle_tabellen": [
+        "PMC3877023:T4"
+      ],
+      "gewaehlte_tabelle": "PMC3877023:T4",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:438",
+      "outcome": "Scores on sodium quiz",
+      "aktuelle_tabellen": [
+        "PMC3475525:T1"
+      ],
+      "gewaehlte_tabelle": "PMC3475525:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:445",
+      "outcome": "ocular itching for visit 3B at 7 min",
+      "aktuelle_tabellen": [
+        "PMC4140238:T1",
+        "PMC4140238:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4140238:T1",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:453",
+      "outcome": "Glucose",
+      "aktuelle_tabellen": [
+        "PMC5726464:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5726464:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:463",
+      "outcome": "Lipid profile: HDL-c",
+      "aktuelle_tabellen": [
+        "PMC5726464:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5726464:T1",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:474",
+      "outcome": "Independent household latrines number",
+      "aktuelle_tabellen": [
+        "PMC4144850:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4144850:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:478",
+      "outcome": "Helminth infections",
+      "aktuelle_tabellen": [
+        "PMC4144850:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4144850:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:486",
+      "outcome": "Improvement in Vaginal Maturation Index",
+      "aktuelle_tabellen": [
+        "PMC3786549:T3"
+      ],
+      "gewaehlte_tabelle": "PMC3786549:T3",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:489",
+      "outcome": "Baseline characteristics: weight",
+      "aktuelle_tabellen": [
+        "PMC3786549:T3"
+      ],
+      "gewaehlte_tabelle": "PMC3786549:T3",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:494",
+      "outcome": "Sample rejection rate: CDC D",
+      "aktuelle_tabellen": [
+        "PMC5419060:T3"
+      ],
+      "gewaehlte_tabelle": "PMC5419060:T3",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 3,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_events": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:504",
+      "outcome": "Phlebotomy questionnaire score: CHC B",
+      "aktuelle_tabellen": [
+        "PMC5419060:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5419060:T2",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:531",
+      "outcome": "improvement of disorder",
+      "aktuelle_tabellen": [
+        "PMC4230312:T3"
+      ],
+      "gewaehlte_tabelle": "PMC4230312:T3",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:532",
+      "outcome": "improvement of disorder",
+      "aktuelle_tabellen": [
+        "PMC4230312:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4230312:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:550",
+      "outcome": "LF:HF component of HRV",
+      "aktuelle_tabellen": [
+        "PMC3648394:T1"
+      ],
+      "gewaehlte_tabelle": "PMC3648394:T1",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:639",
+      "outcome": "LDL cholesterol",
+      "aktuelle_tabellen": [
+        "PMC4511433:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4511433:T2",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:640",
+      "outcome": "LDL cholesterol",
+      "aktuelle_tabellen": [
+        "PMC4511433:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4511433:T2",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:645",
+      "outcome": "The mean cognitive score on the Bayley-III",
+      "aktuelle_tabellen": [
+        "PMC4675066:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4675066:T2",
+      "grund": "outcome_tabelle",
+      "wechsel": true,
+      "outcome_zeilen_gewaehlt": 3,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:647",
+      "outcome": "The mean motor score on the Bayley-III",
+      "aktuelle_tabellen": [
+        "PMC4675066:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4675066:T2",
+      "grund": "outcome_tabelle",
+      "wechsel": true,
+      "outcome_zeilen_gewaehlt": 3,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:662",
+      "outcome": "Psoriasis Area and Severity Index (PASI), Erythema, Scaling and Induration (ESI) and Physician global assessment (PGA) scores",
+      "aktuelle_tabellen": [
+        "PMC4987981:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4987981:T1",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 2,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "mehrfach"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:665",
+      "outcome": "FPG",
+      "aktuelle_tabellen": [
+        "PMC4987981:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4987981:T2",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "abgeleitet"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "abgeleitet"
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "abgeleitet"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "abgeleitet"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": true,
+            "arme": [
+              "comparator"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "abgeleitet"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "abgeleitet"
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "abgeleitet"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "comparator"
+            ],
+            "art": "abgeleitet"
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:672",
+      "outcome": "Community knowledge",
+      "aktuelle_tabellen": [
+        "PMC4550271:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4550271:T4",
+      "grund": "outcome_tabelle",
+      "wechsel": true,
+      "outcome_zeilen_gewaehlt": 12,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:675",
+      "outcome": "the proportion of patients who tested positive and received (or were prescribed) an ACT",
+      "aktuelle_tabellen": [
+        "PMC4550271:T1"
+      ],
+      "gewaehlte_tabelle": "PMC4550271:T2",
+      "grund": "outcome_tabelle",
+      "wechsel": true,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:678",
+      "outcome": "the total cultivable microbiota",
+      "aktuelle_tabellen": [
+        "PMC5777419:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5777419:T2",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 1,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:682",
+      "outcome": "attachment gain",
+      "aktuelle_tabellen": [
+        "PMC5777419:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5777419:T2",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": true,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "direkt"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:78",
+      "outcome": "tocopherol levels",
+      "aktuelle_tabellen": [
+        "PMC3546023:T4"
+      ],
+      "gewaehlte_tabelle": "PMC3546023:T4",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:79",
+      "outcome": "tocotrienol levels",
+      "aktuelle_tabellen": [
+        "PMC3546023:T4"
+      ],
+      "gewaehlte_tabelle": "PMC3546023:T4",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "outcome_zeilen_gewaehlt": 0,
+      "baseline_gewaehlt": false,
+      "felder": {
+        "intervention_group_size": {
+          "vorher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          },
+          "nachher": {
+            "erreichbar": true,
+            "wertgleich": false,
+            "arme": [
+              "intervention"
+            ],
+            "art": "mehrfach"
+          }
+        },
+        "intervention_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "intervention_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_group_size": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_mean": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        },
+        "comparator_standard_deviation": {
+          "vorher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          },
+          "nachher": {
+            "erreichbar": false,
+            "wertgleich": false,
+            "arme": [],
+            "art": ""
+          }
+        }
+      }
+    }
+  ]
+}
