@@ -79,7 +79,7 @@ def main() -> int:
         wahl = tw.waehle(tables, alle, context)
         gelesen = [wahl.tabelle] if (wahl and wahl.wechsel) else list(tables)
         stellen = pv.feld_stellen(gelesen, context)
-        gebunden = zp.stellen(stellen, gelesen, context)
+        gebunden = zp.stellen(stellen, context)
 
         for orte in stellen.values():
             for stelle in orte:

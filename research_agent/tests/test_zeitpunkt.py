@@ -42,5 +42,5 @@ def test_ohne_zielzeitpunkt_keine_bindung():
 def test_stellen_ohne_outcome_zeitpunkt_bleiben_leer():
     orte = {"intervention_mean": [_stelle("baseline")]}
 
-    assert zp.stellen(orte, [], {"outcome": "FPG"}) == {}
-    assert zp.stellen(orte, [], {"outcome": "FPG at baseline"})
+    assert zp.stellen(orte, {"outcome": "FPG"}) == {}
+    assert zp.stellen(orte, {"outcome": "FPG at baseline"})

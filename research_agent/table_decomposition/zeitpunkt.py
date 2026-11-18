@@ -73,14 +73,9 @@ def gebunden(stellen: Iterable[Provenienz], ziel: Sequence[str]
     return treffer
 
 
-def stellen(stellen_je_feld: Dict[str, List[Provenienz]], tabellen: Sequence[Any],
+def stellen(stellen_je_feld: Dict[str, List[Provenienz]],
             context: Dict[str, Any]) -> Dict[str, List[Provenienz]]:
-    """Je Feld die zeitpunktgebundenen Fundstellen eines Dokuments.
-
-    ``tabellen`` dient nur der Vollstaendigkeit der Signatur - gelesen werden
-    ausschliesslich die Fundstellen und ihr Spaltenkopf.
-    """
-    del tabellen
+    """Je Feld die zeitpunktgebundenen Fundstellen eines Dokuments."""
     ziel = ziele(str(context.get("outcome") or ""))
     if not ziel:
         return {}
