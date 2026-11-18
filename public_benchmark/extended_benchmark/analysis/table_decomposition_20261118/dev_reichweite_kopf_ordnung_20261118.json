@@ -1,0 +1,221 @@
+{
+ "mode": "offline",
+ "role": "dev",
+ "n_records": 38,
+ "tables": {
+  "vorher": 134,
+  "nachher": 134
+ },
+ "gold_felder_erreichbar": {
+  "vorher": 16,
+  "nachher": 16
+ },
+ "records_mit_treffer": {
+  "vorher": 5,
+  "nachher": 5
+ },
+ "tabellen_mit_kopf_ordnung": [
+  "PMC3751573:T3"
+ ],
+ "records": {
+  "yun2024:3": {
+   "vorher": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "nachher": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ]
+  },
+  "yun2024:4": {
+   "vorher": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "nachher": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ]
+  },
+  "yun2024:5": {
+   "vorher": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "nachher": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ]
+  },
+  "yun2024:55": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:56": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:57": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:58": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:59": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:60": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:83": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:88": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:120": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:186": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:187": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:188": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:189": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:190": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:191": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:192": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:224": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:225": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:226": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:227": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:228": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:229": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:230": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:231": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:232": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:233": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:234": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:235": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:236": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:237": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:238": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:260": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:261": {
+   "vorher": [],
+   "nachher": []
+  },
+  "yun2024:262": {
+   "vorher": [
+    "comparator_group_size"
+   ],
+   "nachher": [
+    "comparator_group_size"
+   ]
+  },
+  "yun2024:263": {
+   "vorher": [
+    "comparator_group_size"
+   ],
+   "nachher": [
+    "comparator_group_size"
+   ]
+  }
+ },
+ "hinweise": [
+  "ohne Modellaufruf, ohne Testdaten",
+  "nur strukturelle Reichweite (Obergrenze), keine Precision/Recall",
+  "vorher = ohne Kopf-Ordnung, nachher = mit _reassign_header_bands_by_order"
+ ]
+}

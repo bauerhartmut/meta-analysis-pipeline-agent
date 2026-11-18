@@ -32,6 +32,11 @@ from research_agent.table_decomposition.engine import (
 from research_agent.table_decomposition.model import (
     ARM_COMPARATOR,
     ARM_INTERVENTION,
+    Cell,
+    Column,
+    HeaderBand,
+    Row,
+    Table,
     ROLE_LABEL,
     ROLE_MEAN,
     ROLE_PVALUE,
@@ -40,6 +45,7 @@ from research_agent.table_decomposition.model import (
 )
 from research_agent.table_decomposition.parser import (
     _looks_prose,
+    _reassign_header_bands_by_order,
     normalise_number_text,
     parse_document,
     parse_value,
@@ -997,3 +1003,38 @@ def test_outcome_column_is_refused_when_the_header_grid_is_broken():
     enrich_table(table, ROW_ARM_CONTEXT)
     assert not any(column.is_outcome for column in table.columns)
     assert reachable_cells(table, ROW_ARM_CONTEXT) == set()
+
+
+def test_header_bands_are_reassigned_to_value_columns():
+    """Verschobenes Strichraster: Kopfebenen folgen den Wertspalten."""
+    table = Table(table_id="SHIFT:T1", doc_id="SHIFT", index=1)
+    table.columns = [Column(col_id=index, x_start=index * 10, x_end=index * 10 + 9)
+                     for index in range(10)]
+    row = Row(row_id=0, index=0)
+    row.cells = {0: Cell(row_id=0, col_id=0, text="", x_start=-1, x_end=-1),
+                 1: Cell(row_id=0, col_id=1, text="Control", x_start=25, x_end=32)}
+    for col_id in range(2, 10):
+        row.cells[col_id] = Cell(row_id=0, col_id=col_id, text="1.0", value=1.0,
+                                 x_start=col_id * 10, x_end=col_id * 10 + 3)
+    table.rows = [row]
+    for level, texts in enumerate((
+        ["Time point", "Fruit (pieces)", "Vegetables (grams)",
+         "High-energy snacks (pieces)", "Saturated fat (fat points)"],
+        ["Mean (SE)", "Mean change"] * 4,
+        ["(95% CI)"] * 4,
+    )):
+        for position, text in enumerate(texts):
+            table.header_bands.append(HeaderBand(level=level, text=text,
+                                                 col_start=position, col_end=position,
+                                                 anchor=position))
+    table.irregularities.append("header_gruppe_nicht_teilbar:ebene0")
+
+    assert _reassign_header_bands_by_order(table)
+    vegetables = next(b for b in table.header_bands if b.text == "Vegetables (grams)")
+    assert (vegetables.col_start, vegetables.col_end) == (4, 5)
+    assert "header_gruppe_nicht_teilbar:ebene0" not in table.irregularities
+    assert any(i.startswith("spalten_ordnung") for i in table.irregularities)
+    # Ohne den Notfall-Code bleibt das Strichraster unangetastet.
+    fresh = Table(table_id="SHIFT:T2", doc_id="SHIFT", index=2)
+    fresh.columns = [Column(col_id=0, x_start=0, x_end=9)]
+    assert not _reassign_header_bands_by_order(fresh)

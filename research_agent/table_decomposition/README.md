@@ -66,6 +66,10 @@ Schreibt Header-Pfade, Rollen (`label`, `n`, `mean`, `sd`, `events`, `p`,
   0.6, weil Zeilenlabels kurz sind; ein dritter Arm (`Apple Juice`) bleibt ohne
   Arm. Zusammen mit `Column.is_outcome` (Outcome-Name im Spaltenkopf) entsteht
   das Feld: Arm aus der Zeile, Rolle aus dem Kopf.
+- `_reassign_header_bands_by_order(table)` (Parser) — ist die Kopfspanne
+  unauflösbar, folgen die Kopfebenen den **Wertspalten** in Leserichtung;
+  Zellen und Spalten bleiben unangetastet. Belegt: `PMC4319071:T2`, wo das
+  Strichraster eine Spalte neben dem Kopf liegt (Vegetables-Mittelwert 158.67).
 - `header_geometry_trustworthy(table)` — ohne belegte Kopfspanne
   (`header_gruppe_nicht_teilbar` usw.) wird keine Spalte zum Outcome erklaert;
   das verhindert Felder auf der falschen Spalte (belegt: `PMC4319071:T2`).

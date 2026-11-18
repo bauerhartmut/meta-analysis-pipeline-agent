@@ -711,6 +711,91 @@ def _looks_numeric(text: str) -> bool:
     return parsed is not None and getattr(parsed, "value", None) is not None
 
 
+_GEOMETRY_CODES = (
+    "header_gruppe_nicht_teilbar",
+    "header_ohne_spalte",
+    "header_ueberzaehlig_ohne_spalte",
+    "header_doppelter_anker",
+)
+
+
+def _reassign_header_bands_by_order(table: Table) -> bool:
+    """Kopfebenen den Wertspalten nach Leserichtung zuordnen.
+
+    Die Markdown-Abzuege stehen nicht auf dem Strichraster: in
+    ``PMC4319071:T2`` endet ``158.93`` rechtsbuendig bei x=93 (Ende der vierten
+    Rasterspalte), die Kopfzelle ``Vegetables (grams)`` beginnt bei x=43 (Anfang
+    der dritten). Das Strichraster ist damit unbrauchbar; die Reihenfolge der
+    Kopfzellen ist es nicht.
+
+    Vorgehen, nur wenn die Kopfgeometrie bereits als unaufloesbar notiert ist:
+    Wertspalten sind die Spalten mit mindestens einer Zahl. Jede Kopfebene wird
+    ordinal verteilt - eine Zelle je Wertspalte, sonst erste Zelle ans Label und
+    gleiche Gruppen ueber die Wertspalten. Geht die Teilung nicht auf, bleibt
+    die Ebene unzugeordnet und wird notiert; Zellen und Spalten werden **nicht**
+    umnummeriert.
+    """
+    if not any(
+        code in irregularity
+        for irregularity in table.irregularities
+        for code in _GEOMETRY_CODES
+    ):
+        return False
+    if len(table.columns) < 3 or not table.header_bands:
+        return False
+    numeric = {
+        column.col_id
+        for column in table.columns
+        if any(
+            row.cells.get(column.col_id) is not None
+            and row.cells[column.col_id].value is not None
+            for row in table.rows
+        )
+    }
+    value_cols = sorted(numeric)
+    label_cols = [column.col_id for column in table.columns if column.col_id not in numeric]
+    if len(value_cols) < 2 or not label_cols:
+        return False
+
+    kept: List[HeaderBand] = []
+    changed = False
+    for level in sorted({band.level for band in table.header_bands}):
+        bands = sorted(
+            (band for band in table.header_bands if band.level == level),
+            key=lambda band: (band.anchor, band.start_char),
+        )
+        m = len(bands)
+        spans: List[Tuple[int, int]] = []
+        if m == len(value_cols):
+            spans = [(col, col) for col in value_cols]
+        elif m > 1 and (m - 1) > 0 and len(value_cols) % (m - 1) == 0:
+            size = len(value_cols) // (m - 1)
+            spans = [(label_cols[0], label_cols[-1])] + [
+                (value_cols[position * size], value_cols[position * size + size - 1])
+                for position in range(m - 1)
+            ]
+        else:
+            table.irregularities.append(f"kopf_ebene_ohne_spalte:{level}")
+            continue
+        for band, (start, end) in zip(bands, spans):
+            band.col_start = start
+            band.col_end = end
+            band.anchor = start
+            band.basis = "ordnung"
+            kept.append(band)
+            changed = True
+    if not changed:
+        return False
+    table.header_bands = kept
+    table.irregularities = [
+        irregularity
+        for irregularity in table.irregularities
+        if not any(code in irregularity for code in _GEOMETRY_CODES)
+    ]
+    table.irregularities.append("spalten_ordnung:kopf_nach_wertspalten")
+    return True
+
+
 def _finish_table(table: Table) -> Table:
     """Rollen, Labels, Vererbung leerer Zeilenlabels, Irregularitaeten."""
     label_cols = _label_columns(table)
@@ -908,6 +993,7 @@ def _parse_rule_table(
         row_id += 1
 
     _resolve_header_spans(table)
+    _reassign_header_bands_by_order(table)
     table = _finish_table(table)
     footnotes, block = _collect_footnotes(lines, starts, body_lines[-1][0] + 1)
     table.footnotes = footnotes

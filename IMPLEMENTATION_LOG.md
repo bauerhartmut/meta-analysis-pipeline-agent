@@ -1214,3 +1214,30 @@ nichts bei, `T1` weiter nur `comparator_group_size`.
 Zellende = Spaltenende) statt am Strichraster; danach `T2` erneut pruefen, dann
 Pilotlauf und neue Auswahl-Einfrierung.
 Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/zeilenarme_20261118.md`.
+
+## Sprint 38 (18.11.2026): Kopfebenen folgen den Wertspalten
+
+**Anlass:** `PMC4319071:T2` war nach dem Prosa-Fix strukturell lesbar, die
+Zuordnung wurde aber verweigert, weil Kopf und Strichraster um eine Spalte
+versetzt sind.
+
+**Messung:** Die Annahme "rechtsbuendige Werte, Zellende = Spaltenende" traegt
+nicht: `158.93 (3.31)` beginnt bei x=93 (Ende von Spalte 3) und laeuft bis 105;
+`Vegetables (grams)` steht bei x=43 (Anfang von Spalte 2); die Datenzeilen
+streuen um 1-3 Zeichen. Positional ist die Tabelle nicht aufloesbar.
+
+**Aenderung:** `parser._reassign_header_bands_by_order` ordnet die Kopfebenen
+ordinal den Wertspalten zu - nur bei bereits notierter, unaufloesbarer
+Kopfgeometrie. Zellen und Spalten bleiben unveraendert; nicht aufgehende Ebenen
+werden als `kopf_ebene_ohne_spalte` notiert, die Notfall-Codes durch
+`spalten_ordnung:kopf_nach_wertspalten` ersetzt. Test: 1 neu, 50 gruen.
+
+**Ergebnis:** `PMC4319071:T2` liefert `comparator_mean` mit der Zelle
+`158.67 (3.76)` (`yun2024:112`) bzw. `2.84 (0.13)` (`yun2024:111`) - beide
+exakt Gold. dev unveraendert: 134 Tabellen, 16 erreichbare Goldfelder, 5
+Records mit Treffer, eine Tabelle (`PMC3751573:T3`) neu geordnet, kein Verlust.
+Interventionsarm bleibt offen, weil `Plus` im Record nicht benannt ist.
+
+**Naechster Hebel:** Armnamen aus dem Dokument belegen (`Basic`/`Plus` stehen in
+`T1`-Kopf und `T2`-Zeilen) und als `arm_basis="dokument"` markieren.
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/kopf_ordnung_20261118.md`.
