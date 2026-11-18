@@ -1448,3 +1448,23 @@ Warnungen B 103 -> 101.
 **Tests:** 2 neu in `research_agent/tests/test_armabkuerzung.py`, 4 in
 `research_agent/tests/test_zellform_rolle.py`, gesamt 80.
 Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/zellform_20261118/ergebnis.md`.
+
+## Nachtrag Sprint 43 - Outcome-Zeile aus der Zellform (Vorschlag, keine Uebernahme)
+
+`semantics.consider_outcome_row_candidate` prueft, ob genau eine vollstaendige
+Datenzeile (in jeder Messspalte eine Zahl) vorliegt, und fuehrt das Ergebnis in
+`Table.outcome_row_decision` (`original:treffer`, `original:mehrdeutig`,
+`vorschlag:r<id>`, `original:kein_kandidat`). Gesetzt wird nichts: die
+Validierung der Kopfbänder/Arme/Rollen verlangt Feldgewinn, und eine Zeilenwahl
+erzeugt kein Feld; ein Gewinn an erwartbaren Zellen waere selbstbestaetigend.
+
+Messung (`outcome_zeile_20261118/`): 16 Treffer, 26 mehrdeutig, 7 Vorschlaege,
+11 ohne Kandidat. In `PMC3278655:T2` sind acht Zeilen vollstaendig; die
+Goldwerte `-0.38 (0.37)`/`-0.04 (0.11)` stehen in
+`Superior/inferior translation (SD)`, nicht in der MTPM-Zeile (`0.79`/`0.9`).
+Zwangslauf: jede vollstaendige Zeile macht dieselben sechs Goldfelder
+erreichbar, nur die Subsidence-Zeile druckt die vier Goldwerte - Feldebene ist
+hier kein Beleg. A-E unveraendert (58 Goldfelder, 0 Fehler, 60/60),
+`records` identisch.
+
+**Tests:** 5 neu in `research_agent/tests/test_outcome_zeile.py`, gesamt 85.

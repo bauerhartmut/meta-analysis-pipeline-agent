@@ -490,6 +490,9 @@ def enrich_table(table: Table, context: Optional[Dict[str, object]] = None,
             table, context, assume_order=assume_order
         )
         table.header_band_candidates = []
+    # Outcome-Zeile aus der Zellform - zuletzt, damit sie auf der uebernommenen
+    # Geometrie und den uebernommenen Rollen aufsetzt.
+    table.outcome_row_decision = consider_outcome_row_candidate(table, context)
     return table
 
 
@@ -1016,6 +1019,65 @@ def outcome_rows(table: Table, outcome: str) -> List[int]:
         return []
     best = max(score for score, _row_id in scored)
     return [row_id for score, row_id in scored if score == best]
+
+
+def _messspalten(table: Table) -> List[Column]:
+    """Spalten, die ein Feld tragen - die Messspalten einer Datenzeile."""
+    return [
+        column for column in table.columns
+        if column.field and column.role != ROLE_LABEL
+    ]
+
+
+def _zeile_vollstaendig(table: Table, row, spalten: Sequence[Column]) -> bool:
+    """Steht in jeder Messspalte eine Zahl?"""
+    for column in spalten:
+        cell = row.cells.get(column.col_id)
+        text = (cell.text or "") if cell is not None else ""
+        if not _NUMBER_RE.search(text.translate(
+                {"\u2212": "-", "\u2013": "-", "\u2014": "-"})):
+            return False
+    return True
+
+
+def consider_outcome_row_candidate(table: Table,
+                                   context: Optional[Dict[str, object]] = None) -> str:
+    """Outcome-Zeile aus der Zellform - als Vorschlag, nicht als Uebernahme.
+
+    Nennt kein Zeilenlabel das Outcome, bleibt die Tabelle ohne erwartbare
+    Zelle. Kandidat ist eine **vollstaendige Datenzeile**: in jeder Messspalte
+    (Spalte mit Feld) steht eine Zahl. Diese Form trennt eine Ergebniszeile von
+    Zwischenueberschriften, Definitions- und Leerzeilen - mehr nicht.
+
+    Deshalb wird hier nichts gesetzt: die Pruefung der Kopfbänder, Arme und
+    Rollen verlangt einen Gewinn an **Feldern**, und ein Feld entsteht durch die
+    Zeilenwahl nicht. Wollte man stattdessen erwartbare Zellen als Gewinn
+    nehmen, waere die Pruefung selbstbestaetigend - jede gesetzte Zeile gewinnt
+    Zellen. Eine Zeile braucht daher einen gedruckten Beleg ueber die Form
+    hinaus; die Entscheidung haelt nur fest, was die Form hergibt
+    (``original:treffer``, ``original:mehrdeutig``, ``vorschlag:r<id>``).
+    """
+    context = context or {}
+    outcome = str(context.get("outcome") or "")
+    if not outcome:
+        return "original:kein_outcome"
+    if outcome_rows(table, outcome):
+        return "original:treffer"
+    spalten = _messspalten(table)
+    if len(spalten) < 2:
+        return "original:kein_kandidat"
+    voll = [
+        row for row in table.rows
+        if not row.group_label and _zeile_vollstaendig(table, row, spalten)
+    ]
+    if not voll:
+        return "original:kein_kandidat"
+    if len(voll) > 1:
+        table.irregularities.append(
+            "outcome_zeile_mehrdeutig:" + "|".join(str(row.row_id) for row in voll)
+        )
+        return "original:mehrdeutig"
+    return f"vorschlag:r{voll[0].row_id}"
 
 
 def reachable_cells(table: Table,

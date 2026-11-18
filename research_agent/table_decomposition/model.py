@@ -289,6 +289,8 @@ class Table:
     arm_decision: str = ""
     # Entscheidung ueber Rollenkandidaten aus der Zellform (``Mittel (Streuung)``).
     role_decision: str = ""
+    # Entscheidung ueber die Outcome-Zeile aus der Zellform (vollstaendige Datenzeile).
+    outcome_row_decision: str = ""
 
     # --- Zugriff ---------------------------------------------------------
     @property
@@ -384,6 +386,7 @@ class Table:
             "band_decision": self.band_decision,
             "arm_decision": self.arm_decision,
             "role_decision": self.role_decision,
+            "outcome_row_decision": self.outcome_row_decision,
             "focus_rows": list(self.focus_rows),
         }
 
