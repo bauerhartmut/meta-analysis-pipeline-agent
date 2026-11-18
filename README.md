@@ -123,8 +123,21 @@ Tests:
 
 ```bash
 export PYTHONIOENCODING=utf-8
-python -m pytest research_agent/tests -q
-python -m pytest public_benchmark/tests -q
+python -m pytest -q                            # gesamte Suite aus der Wurzel
+```
+
+Aus der Wurzel laufen beide Suiten zusammen; am 18.11.2026 waren das 1931
+bestandene und 2 übersprungene Tests in rund 10 Minuten. Die `pytest.ini` nimmt
+dabei `export_clean_*`, `handoff_*`, die venvs und `public_benchmark/raw_data`
+vom Einsammeln aus: Diese Verzeichnisse enthalten fremde Kopien von
+`research_agent` und fremde Suiten, die sonst schon beim Sammeln mit
+`ModuleNotFoundError` abbrechen.
+
+Für einen schnellen Blick genügt eine Suite einzeln:
+
+```bash
+python -m pytest research_agent/tests -q       # 1543 bestanden, 2 übersprungen
+python -m pytest public_benchmark/tests -q     # 382 bestanden
 ```
 
 ## Struktur
