@@ -1,0 +1,47 @@
+{
+  "auftraege": 10,
+  "zeilen_mit_versuchsspur": 10,
+  "job_status": {
+    "completed": 10,
+    "failed": 0,
+    "abgeleitet": 0
+  },
+  "finale_klassen": {
+    "ok": 10
+  },
+  "transportfehler": 0,
+  "erfolg_im_ersten_versuch": 10,
+  "erfolg_nach_wiederholung": 0,
+  "endgueltig_fehlgeschlagen": 0,
+  "quote_erfolg": 1.0,
+  "versuche_je_auftrag": {
+    "n": 10,
+    "mittel": 1,
+    "median": 1.0,
+    "max": 1
+  },
+  "http_versuche": {
+    "n": 10,
+    "mittel": 1,
+    "median": 1.0,
+    "max": 1
+  },
+  "wartezeit_s": null,
+  "latenz_s": {
+    "n": 10,
+    "mittel": 4.45,
+    "median": 2.8,
+    "max": 15.58,
+    "p90": 6.27
+  },
+  "tokens": {
+    "gesamt": 7218,
+    "je_auftrag": 721.8,
+    "je_erfolgreichem_auftrag": 721.8
+  },
+  "extraktion": {
+    "mit_zellen": 10,
+    "leere_antworten": 0,
+    "anteil_leer": 0.0
+  }
+}

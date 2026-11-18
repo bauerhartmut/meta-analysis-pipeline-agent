@@ -319,6 +319,16 @@ Artefakt zum Stand: `iterativ/ergebnisse/reliabilitaets_metriken_20261118.json`
 und `.md` (GLM, Lesekopie: 699 Aufträge, 595/104, Erfolgsquote 0,8512,
 1.931.140 Tokens, 559 mit Zellen, 36 leer, keine Versuchsspur).
 
+**Erster Live-Lauf unter `neu` (18.11.) — durchgeführt.** Zehn günstige Records
+gegen das echte Gateway, eigener run-id, zwei Threads: 10/10 `completed`, je ein
+HTTP-Versuch, Versuchsspur in allen Zeilen, `jobs.jsonl` mit 20 Zeilen
+(`running` vor `completed`, auch bei zwei gleichzeitigen Aufträgen), Sperre
+während des Laufs vorhanden und danach entfernt. Es trat **kein** Fehler auf,
+also ist der `Retry-After`-/Backoff-Pfad live nicht beansprucht worden; er
+bleibt offline geprüft. Zellenzahl gegenüber der `alt`-Zeile 10/10 gleich, der
+Tokenverbrauch schwankt stark (443 → 1.195 bei `yun2024:698`). Bericht:
+`iterativ/ergebnisse/neu_live_20261118.md`.
+
 **P5 — Validierung an Yun-699 (erst nach Nachtlauf und Nachzug)**
 1. Endgültige Zahl der technischen Ausfälle aus der dann aktuellen Datei.
 2. Die 36 leeren Antworten separat auswerten (eigener Block).
