@@ -1,0 +1,861 @@
+{
+  "selection": "public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/selection_test.json",
+  "dokumente": 31,
+  "zaehler": {
+    "caption_alt_im_ausschnitt": 6,
+    "caption_geaendert": 31,
+    "caption_neu_im_ausschnitt": 28,
+    "caption_unveraendert": 89,
+    "crop_kuerzer": 0,
+    "crop_spanne_geaendert": 31,
+    "einheiten_alt": 729,
+    "einheiten_neu": 729,
+    "einheiten_ohne_caption_alt": 0,
+    "einheiten_ohne_caption_neu": 0,
+    "includes_caption_neu": 31,
+    "prompt_geaendert": 31,
+    "tabellen": 120
+  },
+  "max_prompt_delta": 4276,
+  "max_crop_delta": 164,
+  "crop_kuerzer": [],
+  "tabellen": [
+    {
+      "table_id": "PMC5360580:T1",
+      "record_id": "yun2024:194",
+      "caption_alt": "Table 1",
+      "caption_neu": "Baseline characteristics.",
+      "prompt_delta": 18,
+      "prompt_zeichen_delta": 507,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 43,
+      "crop_alt": {
+        "char_start": 5967,
+        "char_end": 6820,
+        "laenge": 853,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "Table 1 Variable Pls group (n = 145) Placebo group (n = 140) P"
+      },
+      "crop_neu": {
+        "char_start": 5924,
+        "char_end": 6820,
+        "laenge": 896,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption Baseline characteristics. ::: Table 1 Variable Pls gr"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5360580:T1 | Baseline characteristics.]]"
+    },
+    {
+      "table_id": "PMC5360580:T2",
+      "record_id": "yun2024:194",
+      "caption_alt": "Table 2",
+      "caption_neu": "Mean difference from the baseline.",
+      "prompt_delta": 27,
+      "prompt_zeichen_delta": 1238,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 52,
+      "crop_alt": {
+        "char_start": 7252,
+        "char_end": 10257,
+        "laenge": 3005,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "Table 2 Variable Week Pls group Placebo group P value"
+      },
+      "crop_neu": {
+        "char_start": 7200,
+        "char_end": 10257,
+        "laenge": 3057,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption Mean difference from the baseline. ::: Table 2 Variable"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5360580:T2 | Mean difference from the baseline.]]"
+    },
+    {
+      "table_id": "PMC5360580:T3",
+      "record_id": "yun2024:194",
+      "caption_alt": "Table 3",
+      "caption_neu": "Mean difference from the baseline, in patients with MMSE-J score 20 to 23.",
+      "prompt_delta": 67,
+      "prompt_zeichen_delta": 2730,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 92,
+      "crop_alt": {
+        "char_start": 10582,
+        "char_end": 12382,
+        "laenge": 1800,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "Table 3 Variable Week Pls group Placebo group P value"
+      },
+      "crop_neu": {
+        "char_start": 10490,
+        "char_end": 12382,
+        "laenge": 1892,
+        "includes_caption": true,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "::: caption Mean difference from the baseline, in patients with MMSE-J score 20"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5360580:T3 | Mean difference from the baseline, in patients with MMSE-J score 20 to 23.]]"
+    },
+    {
+      "table_id": "PMC5360580:T4",
+      "record_id": "yun2024:194",
+      "caption_alt": "Table 4",
+      "caption_neu": "Mean difference from the baseline, by gender and age, in patients with MMSE-J score 20 to 23.",
+      "prompt_delta": 86,
+      "prompt_zeichen_delta": 3404,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 111,
+      "crop_alt": {
+        "char_start": 12678,
+        "char_end": 15461,
+        "laenge": 2783,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "Table 4 Gender/age Week Pls group Placebo group P value"
+      },
+      "crop_neu": {
+        "char_start": 12567,
+        "char_end": 15461,
+        "laenge": 2894,
+        "includes_caption": true,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "::: caption Mean difference from the baseline, by gender and age, in patients wi"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5360580:T4 | Mean difference from the baseline, by gender and age, in patients with MMSE-J score 20 to 23.]]"
+    },
+    {
+      "table_id": "PMC5360580:T5",
+      "record_id": "yun2024:194",
+      "caption_alt": "Table 5",
+      "caption_neu": "Mean difference from the baseline, in patients with MMSE-J score 20 to 23.",
+      "prompt_delta": 67,
+      "prompt_zeichen_delta": 2127,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 92,
+      "crop_alt": {
+        "char_start": 15554,
+        "char_end": 17042,
+        "laenge": 1488,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "Table 5 Variable Week Pls group Placebo group P value"
+      },
+      "crop_neu": {
+        "char_start": 15462,
+        "char_end": 17042,
+        "laenge": 1580,
+        "includes_caption": true,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "::: caption Mean difference from the baseline, in patients with MMSE-J score 20"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5360580:T5 | Mean difference from the baseline, in patients with MMSE-J score 20 to 23.]]"
+    },
+    {
+      "table_id": "PMC5360580:T6",
+      "record_id": "yun2024:194",
+      "caption_alt": "Table 6",
+      "caption_neu": "List of reported adverse events.",
+      "prompt_delta": 25,
+      "prompt_zeichen_delta": 375,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 50,
+      "crop_alt": {
+        "char_start": 17093,
+        "char_end": 17524,
+        "laenge": 431,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "Table 6 Pls group (n = 169) Placebo gr"
+      },
+      "crop_neu": {
+        "char_start": 17043,
+        "char_end": 17524,
+        "laenge": 481,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption List of reported adverse events. ::: Table 6"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5360580:T6 | List of reported adverse events.]]"
+    },
+    {
+      "table_id": "PMC5380326:T1",
+      "record_id": "yun2024:202",
+      "caption_alt": "",
+      "caption_neu": "Baseline characteristics of CHC patients in the placebo and vitamin D groups.",
+      "prompt_delta": 71,
+      "prompt_zeichen_delta": 2386,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 109,
+      "crop_alt": {
+        "char_start": 2462,
+        "char_end": 4137,
+        "laenge": 1675,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Variables Placebo group (n = 40) Vitamin D group (n = 40"
+      },
+      "crop_neu": {
+        "char_start": 2353,
+        "char_end": 4137,
+        "laenge": 1784,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Baseline characteristics of CHC patients in the placebo and v"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5380326:T1 | Baseline characteristics of CHC patients in the placebo and vitamin D groups.]]"
+    },
+    {
+      "table_id": "PMC5380326:T2",
+      "record_id": "yun2024:202",
+      "caption_alt": "",
+      "caption_neu": "Comparing mean serum levels of each parameter between pre-and post-supplements in placebo and vitamin D groups.",
+      "prompt_delta": 105,
+      "prompt_zeichen_delta": 4276,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 143,
+      "crop_alt": {
+        "char_start": 7093,
+        "char_end": 9082,
+        "laenge": 1989,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Variables (Unit in pg/mL) Placebo (40) Vitamin D (40)"
+      },
+      "crop_neu": {
+        "char_start": 6950,
+        "char_end": 9082,
+        "laenge": 2132,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Comparing mean serum levels of each parameter between pre-and"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5380326:T2 | Comparing mean serum levels of each parameter between pre-and post-supplements in placebo and vitamin D groups.]]"
+    },
+    {
+      "table_id": "PMC5614421:T1",
+      "record_id": "yun2024:252",
+      "caption_alt": "",
+      "caption_neu": "Comparability of randomised study groups at trial entry and use of study treatment.",
+      "prompt_delta": 77,
+      "prompt_zeichen_delta": 884,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 115,
+      "crop_alt": {
+        "char_start": 6021,
+        "char_end": 6407,
+        "laenge": 386,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Characteristic Progesterone (*n* = 398)"
+      },
+      "crop_neu": {
+        "char_start": 5906,
+        "char_end": 6407,
+        "laenge": 501,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Comparability of randomised study groups at trial entry and u"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5614421:T1 | Comparability of randomised study groups at trial entry and use of study treatment.]]"
+    },
+    {
+      "table_id": "PMC5711682:T1",
+      "record_id": "yun2024:257",
+      "caption_alt": "",
+      "caption_neu": "Baseline clinical characteristics",
+      "prompt_delta": 27,
+      "prompt_zeichen_delta": 816,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 65,
+      "crop_alt": {
+        "char_start": 2783,
+        "char_end": 3646,
+        "laenge": 863,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Genoss DES™ (n=38) Promus Element™ (n=39) p -----------"
+      },
+      "crop_neu": {
+        "char_start": 2718,
+        "char_end": 3646,
+        "laenge": 928,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Baseline clinical characteristics ::: ![]()"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5711682:T1 | Baseline clinical characteristics]]"
+    },
+    {
+      "table_id": "PMC5711682:T2",
+      "record_id": "yun2024:257",
+      "caption_alt": "",
+      "caption_neu": "Angiographic and procedural characteristics",
+      "prompt_delta": 37,
+      "prompt_zeichen_delta": 1076,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 75,
+      "crop_alt": {
+        "char_start": 3827,
+        "char_end": 5127,
+        "laenge": 1300,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Genoss DES™ (n=38) Promus Element™ (n=39) p"
+      },
+      "crop_neu": {
+        "char_start": 3752,
+        "char_end": 5127,
+        "laenge": 1375,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Angiographic and procedural characteristics ::: ![]()"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5711682:T2 | Angiographic and procedural characteristics]]"
+    },
+    {
+      "table_id": "PMC5711682:T3",
+      "record_id": "yun2024:257",
+      "caption_alt": "",
+      "caption_neu": "QCA analysis",
+      "prompt_delta": 6,
+      "prompt_zeichen_delta": 186,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 44,
+      "crop_alt": {
+        "char_start": 6625,
+        "char_end": 7282,
+        "laenge": 657,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Genoss DES™ (n=38) Promus Element™ (n=39) p"
+      },
+      "crop_neu": {
+        "char_start": 6581,
+        "char_end": 7282,
+        "laenge": 701,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### QCA analysis ::: ![]() Geno"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5711682:T3 | QCA analysis]]"
+    },
+    {
+      "table_id": "PMC5711682:T4",
+      "record_id": "yun2024:257",
+      "caption_alt": "",
+      "caption_neu": "IVUS analysis results",
+      "prompt_delta": 15,
+      "prompt_zeichen_delta": 264,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 53,
+      "crop_alt": {
+        "char_start": 10369,
+        "char_end": 10840,
+        "laenge": 471,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Genoss DES™ (n=35) Promus Element™ (n=37) p"
+      },
+      "crop_neu": {
+        "char_start": 10316,
+        "char_end": 10840,
+        "laenge": 524,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### IVUS analysis results ::: ![]()"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5711682:T4 | IVUS analysis results]]"
+    },
+    {
+      "table_id": "PMC5711682:T5",
+      "record_id": "yun2024:257",
+      "caption_alt": "",
+      "caption_neu": "Clinical outcomes",
+      "prompt_delta": 11,
+      "prompt_zeichen_delta": 334,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 49,
+      "crop_alt": {
+        "char_start": 11613,
+        "char_end": 12313,
+        "laenge": 700,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Genoss DES™ (n=38) Promus Element™ (n=39) p --"
+      },
+      "crop_neu": {
+        "char_start": 11564,
+        "char_end": 12313,
+        "laenge": 749,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Clinical outcomes ::: ![]() Genoss DES"
+      },
+      "engine_zeile_neu": "[[table_structure PMC5711682:T5 | Clinical outcomes]]"
+    },
+    {
+      "table_id": "PMC2430617:T1",
+      "record_id": "yun2024:265",
+      "caption_alt": "",
+      "caption_neu": "Characteristics of participants.",
+      "prompt_delta": 26,
+      "prompt_zeichen_delta": 634,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 64,
+      "crop_alt": {
+        "char_start": 3112,
+        "char_end": 4092,
+        "laenge": 980,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Characteristics Placebo group (N = 78) 30 µg YIC g"
+      },
+      "crop_neu": {
+        "char_start": 3048,
+        "char_end": 4092,
+        "laenge": 1044,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Characteristics of participants. ::: ![]() Characteristic"
+      },
+      "engine_zeile_neu": "[[table_structure PMC2430617:T1 | Characteristics of participants.]]"
+    },
+    {
+      "table_id": "PMC2430617:T2",
+      "record_id": "yun2024:265",
+      "caption_alt": "",
+      "caption_neu": "Virologic response at the end of treatment and the end of follow-up.",
+      "prompt_delta": 62,
+      "prompt_zeichen_delta": 1106,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 100,
+      "crop_alt": {
+        "char_start": 5136,
+        "char_end": 6685,
+        "laenge": 1549,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "End of treatment (week 24) End of fo"
+      },
+      "crop_neu": {
+        "char_start": 5036,
+        "char_end": 6685,
+        "laenge": 1649,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Virologic response at the end of treatment and the end of fol"
+      },
+      "engine_zeile_neu": "[[table_structure PMC2430617:T2 | Virologic response at the end of treatment and the end of follow-up.]]"
+    },
+    {
+      "table_id": "PMC2430617:T3",
+      "record_id": "yun2024:265",
+      "caption_alt": "",
+      "caption_neu": "Repeated measures analysis for time and group effects controlling by baseline ALT and HBV DNA.",
+      "prompt_delta": 88,
+      "prompt_zeichen_delta": 1748,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 126,
+      "crop_alt": {
+        "char_start": 8518,
+        "char_end": 11523,
+        "laenge": 3005,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Group Primary endpoint Secondary en"
+      },
+      "crop_neu": {
+        "char_start": 8392,
+        "char_end": 11523,
+        "laenge": 3131,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Repeated measures analysis for time and group effects control"
+      },
+      "engine_zeile_neu": "[[table_structure PMC2430617:T3 | Repeated measures analysis for time and group effects controlling by baseline ALT and HBV DNA.]]"
+    },
+    {
+      "table_id": "PMC2430617:T4",
+      "record_id": "yun2024:265",
+      "caption_alt": "",
+      "caption_neu": "Occurrence of most common adverse events during treatment and follow-up.",
+      "prompt_delta": 66,
+      "prompt_zeichen_delta": 642,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 104,
+      "crop_alt": {
+        "char_start": 11663,
+        "char_end": 11991,
+        "laenge": 328,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Adverse events No. of patients (%) p value"
+      },
+      "crop_neu": {
+        "char_start": 11559,
+        "char_end": 11991,
+        "laenge": 432,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Occurrence of most common adverse events during treatment and"
+      },
+      "engine_zeile_neu": "[[table_structure PMC2430617:T4 | Occurrence of most common adverse events during treatment and follow-up.]]"
+    },
+    {
+      "table_id": "PMC3877023:T1",
+      "record_id": "yun2024:421",
+      "caption_alt": "",
+      "caption_neu": "Characteristics of the 93 Randomized Patients who Underwent Spinal MR Imaging.",
+      "prompt_delta": 72,
+      "prompt_zeichen_delta": 834,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 110,
+      "crop_alt": {
+        "char_start": 3073,
+        "char_end": 3476,
+        "laenge": 403,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Short-Bore MR (n = 44) Open"
+      },
+      "crop_neu": {
+        "char_start": 2963,
+        "char_end": 3476,
+        "laenge": 513,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Characteristics of the 93 Randomized Patients who Underwent S"
+      },
+      "engine_zeile_neu": "[[table_structure PMC3877023:T1 | Characteristics of the 93 Randomized Patients who Underwent Spinal MR Imaging.]]"
+    },
+    {
+      "table_id": "PMC3877023:T2",
+      "record_id": "yun2024:421",
+      "caption_alt": "",
+      "caption_neu": "Characteristics of the MR Examinations.",
+      "prompt_delta": 33,
+      "prompt_zeichen_delta": 510,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 71,
+      "crop_alt": {
+        "char_start": 7135,
+        "char_end": 7541,
+        "laenge": 406,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Short-Bore MR Group Open MR *P*"
+      },
+      "crop_neu": {
+        "char_start": 7064,
+        "char_end": 7541,
+        "laenge": 477,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Characteristics of the MR Examinations. ::: ![]()"
+      },
+      "engine_zeile_neu": "[[table_structure PMC3877023:T2 | Characteristics of the MR Examinations.]]"
+    },
+    {
+      "table_id": "PMC3877023:T3",
+      "record_id": "yun2024:421",
+      "caption_alt": "",
+      "caption_neu": "Qualitative Image Quality Parameters.",
+      "prompt_delta": 31,
+      "prompt_zeichen_delta": 665,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 69,
+      "crop_alt": {
+        "char_start": 14884,
+        "char_end": 16267,
+        "laenge": 1383,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Cervicothoracic Spine Thoracolumba"
+      },
+      "crop_neu": {
+        "char_start": 14815,
+        "char_end": 16267,
+        "laenge": 1452,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Qualitative Image Quality Parameters. ::: ![]()"
+      },
+      "engine_zeile_neu": "[[table_structure PMC3877023:T3 | Qualitative Image Quality Parameters.]]"
+    },
+    {
+      "table_id": "PMC3877023:T4",
+      "record_id": "yun2024:421",
+      "caption_alt": "",
+      "caption_neu": "Quantitative Image Quality Parameters.",
+      "prompt_delta": 32,
+      "prompt_zeichen_delta": 300,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 70,
+      "crop_alt": {
+        "char_start": 21075,
+        "char_end": 22053,
+        "laenge": 978,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Cervicothoracic Spine"
+      },
+      "crop_neu": {
+        "char_start": 21005,
+        "char_end": 22053,
+        "laenge": 1048,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Quantitative Image Quality Parameters. ::: ![]()"
+      },
+      "engine_zeile_neu": "[[table_structure PMC3877023:T4 | Quantitative Image Quality Parameters.]]"
+    },
+    {
+      "table_id": "PMC4144850:T1",
+      "record_id": "yun2024:474",
+      "caption_alt": "",
+      "caption_neu": "Baseline characteristics by randomized intervention groups, 2009.",
+      "prompt_delta": 59,
+      "prompt_zeichen_delta": 2790,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 97,
+      "crop_alt": {
+        "char_start": 4152,
+        "char_end": 9326,
+        "laenge": 5174,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Characteristics"
+      },
+      "crop_neu": {
+        "char_start": 4055,
+        "char_end": 9326,
+        "laenge": 5271,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Baseline characteristics by randomized intervention groups, 2"
+      },
+      "engine_zeile_neu": "[[table_structure PMC4144850:T1 | Baseline characteristics by randomized intervention groups, 2009.]]"
+    },
+    {
+      "table_id": "PMC4144850:T2",
+      "record_id": "yun2024:474",
+      "caption_alt": "",
+      "caption_neu": "Effect of the intervention on program outputs, behavioral outcomes, and water quality, 2011.",
+      "prompt_delta": 86,
+      "prompt_zeichen_delta": 3860,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 124,
+      "crop_alt": {
+        "char_start": 13511,
+        "char_end": 18962,
+        "laenge": 5451,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Outputs and Outcomes"
+      },
+      "crop_neu": {
+        "char_start": 13387,
+        "char_end": 18962,
+        "laenge": 5575,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Effect of the intervention on program outputs, behavioral out"
+      },
+      "engine_zeile_neu": "[[table_structure PMC4144850:T2 | Effect of the intervention on program outputs, behavioral outcomes, and water quality, 2011.]]"
+    },
+    {
+      "table_id": "PMC4144850:T3",
+      "record_id": "yun2024:474",
+      "caption_alt": "",
+      "caption_neu": "Effect of the intervention on health outcomes, 2011.",
+      "prompt_delta": 46,
+      "prompt_zeichen_delta": 674,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 84,
+      "crop_alt": {
+        "char_start": 23497,
+        "char_end": 24970,
+        "laenge": 1473,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Health Outcomes Control Group[a](#)"
+      },
+      "crop_neu": {
+        "char_start": 23413,
+        "char_end": 24970,
+        "laenge": 1557,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Effect of the intervention on health outcomes, 2011. ::: ![]"
+      },
+      "engine_zeile_neu": "[[table_structure PMC4144850:T3 | Effect of the intervention on health outcomes, 2011.]]"
+    },
+    {
+      "table_id": "PMC4144850:T4",
+      "record_id": "yun2024:474",
+      "caption_alt": "",
+      "caption_neu": "Differential effect of the intervention by population subgroups, 2011.",
+      "prompt_delta": 64,
+      "prompt_zeichen_delta": 2636,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 102,
+      "crop_alt": {
+        "char_start": 31989,
+        "char_end": 35200,
+        "laenge": 3211,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Characteristics Control Group[a](#)"
+      },
+      "crop_neu": {
+        "char_start": 31887,
+        "char_end": 35200,
+        "laenge": 3313,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Differential effect of the intervention by population subgrou"
+      },
+      "engine_zeile_neu": "[[table_structure PMC4144850:T4 | Differential effect of the intervention by population subgroups, 2011.]]"
+    },
+    {
+      "table_id": "PMC4550271:T1",
+      "record_id": "yun2024:672",
+      "caption_alt": "",
+      "caption_neu": "Characteristics of clusters and patients, by study arm.",
+      "prompt_delta": 49,
+      "prompt_zeichen_delta": 1791,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 87,
+      "crop_alt": {
+        "char_start": 5018,
+        "char_end": 8488,
+        "laenge": 3470,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Characteristics Control"
+      },
+      "crop_neu": {
+        "char_start": 4931,
+        "char_end": 8488,
+        "laenge": 3557,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Characteristics of clusters and patients, by study arm. :::"
+      },
+      "engine_zeile_neu": "[[table_structure PMC4550271:T1 | Characteristics of clusters and patients, by study arm.]]"
+    },
+    {
+      "table_id": "PMC4550271:T2",
+      "record_id": "yun2024:672",
+      "caption_alt": "",
+      "caption_neu": "Effects of the interventions on the primary outcome compared with control, by stratum.",
+      "prompt_delta": 80,
+      "prompt_zeichen_delta": 3756,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 118,
+      "crop_alt": {
+        "char_start": 11939,
+        "char_end": 20743,
+        "laenge": 8804,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Outcome Study arm and stratum"
+      },
+      "crop_neu": {
+        "char_start": 11821,
+        "char_end": 20743,
+        "laenge": 8922,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Effects of the interventions on the primary outcome compared"
+      },
+      "engine_zeile_neu": "[[table_structure PMC4550271:T2 | Effects of the interventions on the primary outcome compared with control, by stratum.]]"
+    },
+    {
+      "table_id": "PMC4550271:T3",
+      "record_id": "yun2024:672",
+      "caption_alt": "",
+      "caption_neu": "Effects of the interventions on the primary outcome compared with control, by facility type.",
+      "prompt_delta": 86,
+      "prompt_zeichen_delta": 3516,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 124,
+      "crop_alt": {
+        "char_start": 23064,
+        "char_end": 26920,
+        "laenge": 3856,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Outcome Study arm Clusters[^†"
+      },
+      "crop_neu": {
+        "char_start": 22940,
+        "char_end": 26920,
+        "laenge": 3980,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Effects of the interventions on the primary outcome compared"
+      },
+      "engine_zeile_neu": "[[table_structure PMC4550271:T3 | Effects of the interventions on the primary outcome compared with control, by facility type.]]"
+    },
+    {
+      "table_id": "PMC4550271:T4",
+      "record_id": "yun2024:672",
+      "caption_alt": "",
+      "caption_neu": "Impact on provider and community knowledge of malaria diagnosis and treatment, by study arm.",
+      "prompt_delta": 86,
+      "prompt_zeichen_delta": 3210,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 124,
+      "crop_alt": {
+        "char_start": 28423,
+        "char_end": 35859,
+        "laenge": 7436,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Arm C"
+      },
+      "crop_neu": {
+        "char_start": 28299,
+        "char_end": 35859,
+        "laenge": 7560,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Impact on provider and community knowledge of malaria diagnos"
+      },
+      "engine_zeile_neu": "[[table_structure PMC4550271:T4 | Impact on provider and community knowledge of malaria diagnosis and treatment, by study arm.]]"
+    },
+    {
+      "table_id": "PMC4550271:T5",
+      "record_id": "yun2024:672",
+      "caption_alt": "",
+      "caption_neu": "Financial Costs of Intervention Design and Implementation, and costs of diagnosing and treating suspected malaria (USD 2011 prices).",
+      "prompt_delta": 126,
+      "prompt_zeichen_delta": 3894,
+      "einheiten_ohne_caption_neu": 0,
+      "crop_delta": 164,
+      "crop_alt": {
+        "char_start": 37699,
+        "char_end": 39798,
+        "laenge": 2099,
+        "includes_caption": false,
+        "caption_im_ausschnitt": false,
+        "ausschnitt_beginnt": "Con"
+      },
+      "crop_neu": {
+        "char_start": 37535,
+        "char_end": 39798,
+        "laenge": 2263,
+        "includes_caption": true,
+        "caption_im_ausschnitt": true,
+        "ausschnitt_beginnt": "::: caption ###### Financial Costs of Intervention Design and Implementation, an"
+      },
+      "engine_zeile_neu": "[[table_structure PMC4550271:T5 | Financial Costs of Intervention Design and Implementation, and costs of diagnosing and treating suspected malaria (USD 2]]"
+    }
+  ]
+}
