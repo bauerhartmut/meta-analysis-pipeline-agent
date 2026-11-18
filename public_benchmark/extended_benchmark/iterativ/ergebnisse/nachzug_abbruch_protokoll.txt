@@ -1,0 +1,7 @@
+GLM-Ausfaelle vor dem Nachzug: 103
+Nachzug gestartet, PID 1043 (Log: public_benchmark/extended_benchmark/runs/_nachzug_abbruch/konsole_nachzug.log)
+Warte auf den Nachzug (max 1 min, Takt 1 s).
+FEHLER: Nachzug nach 1 Minuten nicht abgeschlossen, Dedupe unterlassen.
+Kind laeuft moeglicherweise weiter (PID 1043, Log: public_benchmark/extended_benchmark/runs/_nachzug_abbruch/konsole_nachzug.log).
+Sperre public_benchmark/extended_benchmark/runs/_nachzug_abbruch/nachzug.lock bleibt liegen, damit kein zweiter Nachzug parallel startet
+(sie gilt nach 90 Minuten als abgelaufen).

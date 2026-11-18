@@ -99,6 +99,31 @@ Geprueft gegen eine Kopie von `yun699_8000_alle_20261117` (1.507 Zeilen):
 Die 98 % sind **kein Messwert**: Die Ersatzzeilen sind konstruiert. Geprueft ist
 der Ablauf, nicht die Rettungsquote.
 
+## Eine Grenze fuer beide Wartezeiten
+
+Die Warteschleife auf den Nachzug war auf 240 Abfragen a 30 s festgenagelt
+(2 h), waehrend das Warten auf den Hauptlauf 720 min (12 h) erlaubte. Fuer 140
+Auftraege mit Reparaturaufruf war das zu kurz: Der Nachzug waere abgeschnitten
+worden, waehrend er noch schrieb, und der Dedupe waere unterblieben.
+
+Jetzt leiten beide Wartezeiten ihre Schrittzahl aus derselben Grenze ab:
+`SCHRITTE = MAXWARTE * 60 / TAKT`, Standard `--max-warte 720 --takt 30` ergibt
+1.440 Abfragen (12 h) statt 240 (2 h). `--max-warte` und `--takt` sind
+Parameter, keine Konstanten im Code.
+
+Abbruchpfad offline geprueft (`nachzug_abbruch_protokoll.txt`), mit
+`NACHZUG_KINDBEFEHL` als Ersatz fuer den Harness-Aufruf:
+
+| Fall | Erwartung | Ergebnis |
+|---|---|---|
+| Kind meldet nie `fertig:` | Abbruch, Exit 1, kein Dedupe, Sperre bleibt | Exit 1, keine `predictions.jsonl.bak`, Sperre liegt |
+| Kind meldet `fertig:` | weiter zu Dedupe und Zusammenfassung | „fertig nach 3 Abfragen“, Dedupe lief, Sperre entfernt |
+| Trockenlauf nach dem Umbau | unveraendert | 103 vorher, 2 gerettet, 101 erneut length |
+
+Die Sperre bleibt im Abbruchfall absichtlich liegen: Das Kind schreibt
+moeglicherweise noch in dieselbe Datei, ein zweiter Nachzug wuerde parallel
+laufen. Nach 90 Minuten gilt sie von selbst als abgelaufen.
+
 ## Zwei Fallen
 
 1. **`nachzug_ausfaelle.sh` ist angepasst.** Es wartet nicht mehr auf

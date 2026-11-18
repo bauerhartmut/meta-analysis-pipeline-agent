@@ -17,6 +17,12 @@
 #   --dry-run     Durchgriff ohne Netzlauf: sichert, zeigt die Auswahl, haengt
 #                 Ersatzzeilen an, dedupliziert und rechnet die Zusammenfassung.
 #                 Nur auf einer Kopie des Run-Verzeichnisses zulaessig.
+#   --max-warte MIN  Wartezeit-Grenze in Minuten (Standard 720 = 12 h), gilt fuer
+#                 das Warten auf den Hauptlauf UND fuer das Warten auf den Nachzug.
+#   --takt SEK    Abfrageintervall in Sekunden (Standard 30).
+#
+# Nur fuer die offline-Uebung des Abbruchpfads: NACHZUG_KINDBEFEHL ersetzt den
+# Harness-Aufruf durch einen beliebigen Befehl (erzeugt keine Anfrage).
 #
 # Ergebnis: runs/$RUN/konsole_nachzug.log, runs/$RUN/nachzug_zusammenfassung.txt
 set -u
@@ -34,7 +40,8 @@ REPAIR=""
 JETZT=0
 TROCKEN=0
 ECHT="yun699_8000_alle_20261117"
-MAXWARTE=${MAXWARTE:-720}   # 720 x 60 s = 12 h; endet frueher, sobald kein Prozess mehr laeuft
+MAXWARTE=${MAXWARTE:-720}   # Minuten; gilt fuer das Warten auf den Hauptlauf und auf den Nachzug
+TAKT=${TAKT:-30}            # Sekunden zwischen zwei Abfragen
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -43,10 +50,23 @@ while [ $# -gt 0 ]; do
     --repair) REPAIR="--repair"; shift ;;
     --jetzt) JETZT=1; shift ;;
     --dry-run) TROCKEN=1; JETZT=1; shift ;;
+    --max-warte) MAXWARTE="${2:-}"; shift 2 ;;
+    --takt) TAKT="${2:-}"; shift 2 ;;
     *) echo "Unbekannter Parameter: $1"; exit 2 ;;
   esac
 done
 [ -n "$LOG" ] || LOG="$R/$RUN/konsole.log"
+
+case "$MAXWARTE" in ''|*[!0-9]*) echo "FEHLER: --max-warte braucht eine Minutenzahl, nicht '$MAXWARTE'."; exit 2 ;; esac
+case "$TAKT" in ''|*[!0-9]*) echo "FEHLER: --takt braucht eine Sekundenzahl, nicht '$TAKT'."; exit 2 ;; esac
+if [ "$TAKT" -lt 1 ]; then
+  echo "FEHLER: --takt muss mindestens 1 Sekunde sein."
+  exit 2
+fi
+# Anzahl der Abfragen aus derselben Grenze ableiten, damit Warten auf den
+# Hauptlauf und Warten auf den Nachzug nicht auseinanderlaufen.
+SCHRITTE=$(( MAXWARTE * 60 / TAKT ))
+if [ "$SCHRITTE" -lt 1 ]; then SCHRITTE=1; fi
 
 if [ "$TROCKEN" -eq 1 ] && [ "$RUN" = "$ECHT" ]; then
   echo "FEHLER: --dry-run nur auf einer Kopie (--run <kopie>) ausfuehren."
@@ -124,6 +144,15 @@ print(n)
 echo "GLM-Ausfaelle vor dem Nachzug: $vorher"
 
 # --- Nachzug ----------------------------------------------------------------
+KINDBEFEHL=(
+  .venv/bin/python public_benchmark/extended_benchmark/run_extended_extraction.py
+  --models glm
+  --records public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl
+  --split "" --max-tokens 24000 --cell-timepoint --cache-buster
+  --workers 1 --retry-failed $REPAIR
+  --run-id "$RUN" --quelle v7_nachzug
+)
+
 if [ "$TROCKEN" -eq 1 ]; then
   echo "=== TROCKENLAUF: kein Netzlauf, keine Anfrage ==="
   echo "Sicherung: $R/$RUN/predictions.vor_nachzug.jsonl"
@@ -139,25 +168,33 @@ if [ "$TROCKEN" -eq 1 ]; then
   .venv/bin/python public_benchmark/extended_benchmark/yun_full/nachzug_trocken_schreibe.py \
     --run-verzeichnis "$R/$RUN" --anzahl 2
 else
-  nohup .venv/bin/python public_benchmark/extended_benchmark/run_extended_extraction.py \
-    --models glm \
-    --records public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl \
-    --split "" --max-tokens 24000 --cell-timepoint --cache-buster \
-    --workers 1 --retry-failed $REPAIR \
-    --run-id "$RUN" --quelle v7_nachzug \
-    > "$NLOG" 2>&1 &
+  if [ -n "${NACHZUG_KINDBEFEHL:-}" ]; then
+    nohup bash -c "$NACHZUG_KINDBEFEHL" > "$NLOG" 2>&1 &
+  else
+    nohup "${KINDBEFEHL[@]}" > "$NLOG" 2>&1 &
+  fi
   NPID=$!
   echo "Nachzug gestartet, PID $NPID (Log: $NLOG)"
 
   # --- Auf den Nachzug warten -----------------------------------------------
-  for i in $(seq 1 240); do
-    if grep -q "^fertig:" "$NLOG" 2>/dev/null; then break; fi
-    sleep 30
+  # Dieselbe Grenze wie beim Warten auf den Hauptlauf: 720 min bei Takt 30 s
+  # sind 1440 Abfragen. Frueher stand hier 240 (2 h), das war kuerzer als die
+  # eigene Prozess-Grenze und haette einen laufenden Nachzug abgeschnitten.
+  echo "Warte auf den Nachzug (max ${MAXWARTE} min, Takt ${TAKT} s)."
+  erreicht=0
+  for i in $(seq 1 "$SCHRITTE"); do
+    if grep -q "^fertig:" "$NLOG" 2>/dev/null; then erreicht=$i; break; fi
+    sleep "$TAKT"
   done
   if ! grep -q "^fertig:" "$NLOG" 2>/dev/null; then
-    echo "FEHLER: Nachzug nicht abgeschlossen, Dedupe unterlassen."
+    echo "FEHLER: Nachzug nach ${MAXWARTE} Minuten nicht abgeschlossen, Dedupe unterlassen."
+    echo "Kind laeuft moeglicherweise weiter (PID $NPID, Log: $NLOG)."
+    echo "Sperre $LOCK bleibt liegen, damit kein zweiter Nachzug parallel startet"
+    echo "(sie gilt nach 90 Minuten als abgelaufen)."
+    trap - EXIT
     exit 1
   fi
+  echo "Nachzug fertig nach ${erreicht} Abfragen ($(( erreicht * TAKT )) s)."
 fi
 
 # --- Dedupe und Zaehlung ----------------------------------------------------
