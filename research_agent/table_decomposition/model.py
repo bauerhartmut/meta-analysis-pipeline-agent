@@ -7,7 +7,11 @@ die Zeichenposition im Dokument. Jede Zelle kennt ihre Adresse
 (``row_id``/``col_id``) und ihre Fundstelle, damit jedes Teilresultat auf die
 Originalstelle zurueckfuehrbar bleibt.
 
-Bewusst schlicht: reine Datentraeger, keine Logik, kein Modellbezug.
+Bewusst schlicht: Datentraeger ohne Modellbezug. Ausnahmen sind Methoden, die
+ausschliesslich den eigenen Zustand pflegen - ``Table.apply_header_bands``
+setzt Kopfbaender und streicht die Geometriemaengel, ``Table.data_cells`` und
+die Zugriffshelfer lesen nur. Rollen, Arme und Zielfelder setzt
+``semantics.enrich_table``.
 """
 
 from __future__ import annotations
