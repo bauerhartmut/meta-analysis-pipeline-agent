@@ -6,7 +6,10 @@ Record, ein im neuen Lauf fehlender Record, ein Record ohne Goldzellen und eine
 Vorhersage, die denselben Feld/Arm-Schluessel ueber zwei Zeitpunkte streut.
 
 Der Lauf prueft, ob `werte_p5_aus.auswerten()` genau die vorher ausgerechneten
-Summen liefert, und schreibt Ist und Soll nebeneinander. Weicht etwas ab, endet
+Summen liefert, und schreibt Ist und Soll nebeneinander. Das gilt auch fuer die
+Zellbilanz: k3 nennt denselben Schluessel zweimal und muss deshalb einen Treffer
+und eine falsch positive Zelle ergeben, k8 hat keine Goldzellen und darf nicht
+in die Bilanz eingehen. Weicht etwas ab, endet
 das Skript mit Exit 1 — die Kontrolle kann also nicht stillschweigend kippen.
 
 Aufruf:
@@ -119,6 +122,21 @@ ERWARTET: dict[str, Any] = {
     "wertgleich": 5,
     "wertgleich_zeitpunkt": 4,
     "zeitpunkt_mehrdeutig": 1,
+    # Zellbilanz ueber die bewertbaren k1..k7: k1 3 TP, k3 1 TP und 1 Dublette,
+    # k7 1 TP, k2 2 FN und 2 FP, k4 2 FN, k5 und k6 je 1 FN.
+    "zellbilanz": {
+        "records": 7,
+        "tp": 5,
+        "fp": 3,
+        "fn": 6,
+        "ueberzaehlig": 3,
+        "fremdschluessel": 0,
+        "goldzellen_ohne_wert": 0,
+        "precision": 0.625,
+        "recall": 0.454545,
+        "f1": 0.526316,
+    },
+    "zellen_ohne_gold": 1,
     "nach_klasse": {
         "length_ohne_ergebnis": {
             "ids": 7,
@@ -232,6 +250,16 @@ def pruefe(werte: dict[str, Any]) -> list[str]:
                             f"nach_klasse[{klasse}].{name}: ist {klassen_ist.get(name)}, soll {wert}"
                         )
             continue
+        if isinstance(soll, dict):
+            # Auch die Zellbilanz wird Feld fuer Feld verglichen, damit eine
+            # Abweichung benannt wird und nicht als ganzer Block erscheint.
+            if not isinstance(ist, dict):
+                abweichungen.append(f"{feld}: fehlt")
+                continue
+            for name, wert in soll.items():
+                if ist.get(name) != wert:
+                    abweichungen.append(f"{feld}.{name}: ist {ist.get(name)}, soll {wert}")
+            continue
         if ist != soll:
             abweichungen.append(f"{feld}: ist {ist}, soll {soll}")
     return abweichungen
@@ -260,10 +288,15 @@ def bericht(werte: dict[str, Any], abweichungen: list[str], alt: Path, neu: Path
         "|---|---:|---:|",
     ]
     for feld, soll in ERWARTET.items():
-        if feld == "nach_klasse":
+        if isinstance(soll, dict):
             continue
         ist = werte.get(feld)
         zeilen.append(f"| `{feld}` | {soll} | {ist} |")
+
+    zeilen += ["", "### Zellbilanz", "", "| Groesse | Soll | Ist |", "|---|---:|---:|"]
+    bilanz_ist = werte.get("zellbilanz") or {}
+    for name, wert in ERWARTET["zellbilanz"].items():
+        zeilen.append(f"| `{name}` | {wert} | {bilanz_ist.get(name)} |")
 
     for klasse, klassen_soll in ERWARTET["nach_klasse"].items():
         zeilen += ["", f"### Klasse `{klasse}`", "", "| Groesse | Soll | Ist |", "|---|---:|---:|"]
@@ -276,8 +309,9 @@ def bericht(werte: dict[str, Any], abweichungen: list[str], alt: Path, neu: Path
         "## Ergebnis",
         "",
         (
-            f"**Alle {sum(1 for f in ERWARTET if f != 'nach_klasse')} Kennzahlen und "
-            f"{sum(len(v) for v in ERWARTET['nach_klasse'].values())} Klassenzahlen stimmen.**"
+            f"**Alle {sum(1 for v in ERWARTET.values() if not isinstance(v, dict))} Kennzahlen, "
+            f"{sum(len(v) for v in ERWARTET['nach_klasse'].values())} Klassenzahlen und "
+            f"{len(ERWARTET['zellbilanz'])} Bilanzwerte stimmen.**"
             if not abweichungen
             else "**Abweichungen:**"
         ),
@@ -291,7 +325,9 @@ def bericht(werte: dict[str, Any], abweichungen: list[str], alt: Path, neu: Path
         "eine leere Antwort, ein weiter ausgefallener Record, ein fehlender Record, "
         "ein Record ohne Goldzellen und eine Vorhersage mit zwei Zeitpunkten auf "
         "demselben Feld/Arm-Schluessel. Genau dort muss die grosszuegige Zaehlung "
-        "einen Treffer melden und die strenge keinen.",
+        "einen Treffer melden und die strenge keinen. In der Zellbilanz muss die "
+        "zweite Zelle desselben Schluessels als falsch positiv erscheinen, und die "
+        "Zelle des Records ohne Gold darf die Bilanz nicht erreichen.",
         "",
     ]
     return "\n".join(zeilen) + "\n"

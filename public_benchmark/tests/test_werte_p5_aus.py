@@ -327,3 +327,61 @@ def test_main_ohne_nonce_verweigert_trotz_gueltiger_marke(tmp_path: Path, monkey
     ])
     assert p5.main() == 3
     assert not md.exists()
+
+
+def test_bilanz_zaehlt_dublette_als_falsch_positiv() -> None:
+    gold = [
+        {"field": "a", "arm": "intervention", "value": 1.0},
+        {"field": "b", "arm": "comparator", "value": 2.0},
+    ]
+    vorhergesagt = [
+        {"field": "a", "arm": "intervention", "value": 1.0},
+        {"field": "a", "arm": "intervention", "value": 1.0},  # Dublette
+        {"field": "c", "arm": "comparator", "value": 9.0},  # fremder Schluessel
+    ]
+    b = p5.bilanz(gold, vorhergesagt)
+
+    assert (b["tp"], b["fp"], b["fn"]) == (1, 2, 1)
+    assert (b["ueberzaehlig"], b["fremdschluessel"]) == (1, 1)
+
+
+def test_goldzelle_ohne_wert_faellt_aus_der_bilanz() -> None:
+    gold = [{"field": "a", "arm": "intervention", "value": None}]
+    b = p5.bilanz(gold, [{"field": "a", "arm": "intervention", "value": 1.0}])
+
+    assert b["goldzellen_ohne_wert"] == 1
+    assert (b["tp"], b["fn"]) == (0, 0)
+    assert b["fp"] == 1  # die Vorhersage bleibt eine Zelle ohne Trefferflaeche
+
+
+def test_quote_ohne_nenner_ist_nicht_null() -> None:
+    assert p5.quote(0, 0, 0) == {"precision": None, "recall": None, "f1": None}
+
+
+def test_653_bleibt_aus_der_zellbilanz() -> None:
+    alt = [_alt("yun2024:653")]
+    neu = [_neu("yun2024:653", [{"field": "f", "arm": "intervention", "value": 1.0}])]
+    werte = p5.auswerten(alt, neu, {"yun2024:653": _record("yun2024:653", [])})
+
+    assert werte["zellbilanz"]["records"] == 0
+    assert werte["zellbilanz"]["fp"] == 0
+    assert werte["zellbilanz"]["precision"] is None
+    assert werte["zellen_ohne_gold"] == 1
+
+
+def test_bericht_weist_precision_und_obergrenze_aus() -> None:
+    alt = [_alt("a")]
+    neu = [_neu("a", [
+        {"field": "intervention_mean", "arm": "intervention", "value": 0.77},
+        {"field": "intervention_mean", "arm": "intervention", "value": 0.77},
+    ])]
+    gold = {"a": _record("a", [("intervention_mean", "intervention", 0.77)])}
+    werte = p5.auswerten(alt, neu, gold, ids=["a"])
+    text = p5.bericht(werte, "x/predictions.jsonl", False)
+
+    assert werte["zellbilanz"]["tp"] == 1
+    assert werte["zellbilanz"]["fp"] == 1
+    assert werte["zellbilanz"]["precision"] == 0.5
+    assert "Precision, Recall, F1 auf Zellebene" in text
+    assert "Obergrenze" in text
+    assert "nicht als FP gezaehlt" in text

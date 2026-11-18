@@ -51,3 +51,29 @@ def test_bericht_nennt_das_ergebnis() -> None:
     assert "stimmen" in text
     assert "`zellen_neu_mit_zeitpunkt`" in text
     assert "`wertgleich_zeitpunkt`" in text
+
+
+def test_zellbilanz_trifft_die_sollwerte() -> None:
+    b = pk.werte()["zellbilanz"]
+    assert (b["tp"], b["fp"], b["fn"]) == (5, 3, 6)
+    assert (b["precision"], b["recall"], b["f1"]) == (0.625, 0.454545, 0.526316)
+
+
+def test_dublette_zaehlt_als_falsch_positiv_nicht_als_treffer() -> None:
+    b = pk.werte()["zellbilanz"]
+    # k3 nennt denselben Schluessel zweimal: ein Treffer, eine falsch positive
+    # Zelle. Ohne die 1:1-Zuordnung waere fp hier 2 und tp 6.
+    assert b["ueberzaehlig"] == 3
+    assert b["fremdschluessel"] == 0
+
+
+def test_record_ohne_gold_bleibt_aussen_vor() -> None:
+    werte = pk.werte()
+    assert werte["zellen_ohne_gold"] == 1
+    assert sum(e["zellen_neu"] for e in werte["nicht_bewertbar"]) == 1
+
+
+def test_bilanzabweichung_wird_gemeldet() -> None:
+    werte = pk.werte()
+    werte["zellbilanz"]["fp"] = 99
+    assert any("zellbilanz.fp" in text for text in pk.pruefe(werte))

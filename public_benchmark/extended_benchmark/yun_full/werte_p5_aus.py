@@ -12,6 +12,12 @@ Bewertungslauf und wird hier nicht nachgebaut. Sie wird zweimal gezaehlt: einmal
 nur ueber Feld und Arm und einmal zusaetzlich ueber einen eindeutigen Zeitpunkt
 je Feld und Arm, weil die grosszuegige Variante Rettungen zu gut aussehen laesst.
 
+Dazu steht eine Zellbilanz mit Precision, Recall und F1: Treffer, falsch positive
+und nicht getroffene Goldzellen, jede Vorhersagezelle hoechstens einmal
+zugeordnet. Records ohne Goldzellen (`yun2024:653`) bleiben daraus und werden mit
+ihrer Zellzahl getrennt ausgewiesen; ihre Zellen waeren zwangslaeufig falsch
+positiv, ohne dass die Antwort etwas falsch gemacht haette.
+
 Vor dem ersten Lesen prueft das Skript die Erfolgsmarke der Positivkontrolle
 (`iterativ/kontrolle/p5_positivkontrolle/ok.json`, Alter hoechstens 600 s). Fehlt
 sie, ist sie alt oder meldet sie keinen Erfolg, endet das Skript mit Exit 3 und
@@ -171,6 +177,75 @@ def deckung_mit_zeitpunkt(
     return _deckung(gold, vorhergesagt, streng=True)
 
 
+def bilanz(
+    gold: list[dict[str, Any]], vorhergesagt: list[dict[str, Any]]
+) -> dict[str, int]:
+    """Treffer, falsch positive und nicht getroffene Zellen, 1:1 zugeordnet.
+
+    Grundlage fuer Precision, Recall und F1. Eine Goldzelle ohne numerischen Wert
+    kann nicht getroffen werden und faellt aus der Bilanz (`goldzellen_ohne_wert`),
+    ebenso Vorhersagezellen ohne Zahl. Nennt eine Antwort denselben Feld/Arm-
+    Schluessel mehrfach, trifft nur eine Zelle: jede Vorhersagezelle wird
+    hoechstens einmal verbraucht, die uebrigen sind falsch positiv. Ohne diese
+    Zuordnung koennte eine Antwort einen Schluessel zehnmal wiederholen, den
+    Recall erfuellen und die Precision beliebig aufblaehen.
+
+    `ueberzaehlig` sind falsch positive Zellen, deren Schluessel im Gold vorkommt
+    (Dublette oder falscher Wert), `fremdschluessel` solche ohne Goldschluessel.
+    """
+    verbraucht = [False] * len(vorhergesagt)
+    tp = fn = ohne_wert = 0
+    for zelle in gold:
+        soll = zahl(zelle.get("value"))
+        if soll is None:
+            ohne_wert += 1
+            continue
+        schluessel_gold = schluessel(zelle)
+        treffer = None
+        for i, kandidat in enumerate(vorhergesagt):
+            if verbraucht[i] or schluessel(kandidat) != schluessel_gold:
+                continue
+            ist = zahl(kandidat.get("value"))
+            if ist is not None and abs(ist - soll) < 1e-6:
+                treffer = i
+                break
+        if treffer is None:
+            fn += 1
+        else:
+            verbraucht[treffer] = True
+            tp += 1
+    gold_schluessel = {schluessel(z) for z in gold}
+    ueberzaehlig = sum(
+        1
+        for i, frei in enumerate(verbraucht)
+        if not frei and schluessel(vorhergesagt[i]) in gold_schluessel
+    )
+    fp = sum(1 for frei in verbraucht if not frei)
+    return {
+        "tp": tp,
+        "fp": fp,
+        "fn": fn,
+        "ueberzaehlig": ueberzaehlig,
+        "fremdschluessel": fp - ueberzaehlig,
+        "goldzellen_ohne_wert": ohne_wert,
+    }
+
+
+def quote(tp: int, fp: int, fn: int) -> dict[str, float | None]:
+    """Precision, Recall und F1; ohne Nenner `None` statt einer erfundenen Null."""
+    precision = tp / (tp + fp) if tp + fp else None
+    recall = tp / (tp + fn) if tp + fn else None
+    if precision is None or recall is None or precision + recall == 0:
+        f1 = None
+    else:
+        f1 = 2 * precision * recall / (precision + recall)
+    return {
+        "precision": round(precision, 6) if precision is not None else None,
+        "recall": round(recall, 6) if recall is not None else None,
+        "f1": round(f1, 6) if f1 is not None else None,
+    }
+
+
 def status(zeile: dict[str, Any] | None) -> str:
     if zeile is None:
         return "fehlt"
@@ -213,6 +288,7 @@ def auswerten(
         nachher = zellen(neu_zeile)
         adressiert, wertgleich = deckung(gold, nachher)
         adressiert_zp, wertgleich_zp = deckung_mit_zeitpunkt(gold, nachher)
+        zellbilanz = bilanz(gold, nachher)
         eintrag = {
             "record_id": rid,
             "status": status(neu_zeile),
@@ -226,6 +302,7 @@ def auswerten(
             "wertgleich": wertgleich,
             "adressiert_zeitpunkt": adressiert_zp,
             "wertgleich_zeitpunkt": wertgleich_zp,
+            "bilanz": zellbilanz,
             "goldzellen_mit_zeitpunkt": sum(1 for z in gold if zeitpunkt(z) != "ohne"),
             "zellen_neu_mit_zeitpunkt": sum(1 for z in nachher if zeitpunkt(z) != "ohne"),
             "zeitpunkt_mehrdeutig": mehrdeutig(nachher),
@@ -243,6 +320,16 @@ def auswerten(
         zaehlung[eintrag["status"]] += 1
 
     alle = bewertbar + nicht_bewertbar
+
+    # Zellbilanz nur ueber die bewertbaren Records: ohne Goldzellen waeren alle
+    # Vorhersagezellen falsch positiv, obwohl die Antwort nichts falsch macht.
+    summen = {"tp": 0, "fp": 0, "fn": 0, "ueberzaehlig": 0, "fremdschluessel": 0,
+              "goldzellen_ohne_wert": 0}
+    for eintrag in bewertbar:
+        for name in summen:
+            summen[name] += eintrag["bilanz"][name]
+    zellbilanz = {"records": len(bewertbar), **summen,
+                  **quote(summen["tp"], summen["fp"], summen["fn"])}
 
     # Drei Stufen, ausdruecklich getrennt: Antwort da, verwertbar, inhaltlich richtig.
     stufen = {
@@ -308,11 +395,20 @@ def auswerten(
         "zellen_neu_mit_zeitpunkt": summe(bewertbar + nicht_bewertbar, "zellen_neu_mit_zeitpunkt"),
         "zeitpunkt_mehrdeutig": summe(bewertbar, "zeitpunkt_mehrdeutig"),
         "tokens_neu": summe(bewertbar + nicht_bewertbar, "tokens_neu"),
+        "zellbilanz": zellbilanz,
+        # Zellen von Records ohne Gold: getrennt, damit sie nicht als falsch
+        # positiv in der Precision landen.
+        "zellen_ohne_gold": summe(nicht_bewertbar, "zellen_neu"),
     }
+
+
+def _zahltext(wert: float | None) -> str:
+    return "nicht definiert" if wert is None else f"{wert:.3f}"
 
 
 def bericht(werte: dict[str, Any], neu_pfad: str, nullprobe: bool) -> str:
     s = werte["status"]
+    b = werte["zellbilanz"]
     bewertbar = werte["bewertbar"]
     nicht = werte["nicht_bewertbar"]
     zeilen = [
@@ -434,6 +530,31 @@ def bericht(werte: dict[str, Any], neu_pfad: str, nullprobe: bool) -> str:
         "",
         f"{werte['zellen_neu_mit_zeitpunkt']} vorhergesagte Zellen tragen einen Zeitpunkt; "
         "das Gold kann ihn weder bestaetigen noch widerlegen.",
+        "",
+        "## Precision, Recall, F1 auf Zellebene",
+        "",
+        "| Groesse | Wert |",
+        "|---|---:|",
+        f"| Treffer (TP) | {b['tp']} |",
+        f"| falsch positiv, Schluessel im Gold, aber Dublette oder falscher Wert | {b['ueberzaehlig']} |",
+        f"| falsch positiv, Schluessel nicht im Gold | {b['fremdschluessel']} |",
+        f"| **falsch positiv gesamt (FP)** | **{b['fp']}** |",
+        f"| nicht getroffen (FN) | {b['fn']} |",
+        f"| **Precision** = TP/(TP+FP) | **{_zahltext(b['precision'])}** |",
+        f"| **Recall** = TP/(TP+FN) | **{_zahltext(b['recall'])}** |",
+        f"| **F1** | **{_zahltext(b['f1'])}** |",
+        f"| Goldzellen ohne numerischen Wert (ausserhalb der Bilanz) | {b['goldzellen_ohne_wert']} |",
+        f"| bewertbare Records in der Bilanz | {b['records']} |",
+        f"| ausgenommen: Records ohne Goldzellen | {len(nicht)} mit {werte['zellen_ohne_gold']} Zellen, nicht als FP gezaehlt |",
+        "",
+        "Die Zuordnung ist schluesselbasiert und 1:1: Jede Goldzelle trifft "
+        "hoechstens einmal, jede Vorhersagezelle wird hoechstens einmal verbraucht. "
+        "Nennt eine Antwort denselben Feld/Arm-Schluessel mehrfach, trifft nur eine "
+        "Zelle; die uebrigen zaehlen als falsch positiv. Das Gold traegt keinen "
+        "Zeitpunkt, ein Treffer auf den falschen Zeitpunkt ist also nicht erkennbar: "
+        "die Precision ist eine **Obergrenze**. Records ohne Goldzellen bleiben aussen "
+        "vor, weil ihre Zellen zwangslaeufig falsch positiv waeren. Die offizielle "
+        "Bewertung bleibt der geschuetzte Bewertungslauf.",
     ]
     zeilen += [
     ]
