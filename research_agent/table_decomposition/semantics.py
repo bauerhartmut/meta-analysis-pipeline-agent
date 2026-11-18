@@ -464,12 +464,14 @@ def enrich_table(table: Table, context: Optional[Dict[str, object]] = None,
         column.arm_basis = binding.basis
         column.field = field_for(column.role, binding.arm)
 
-    _detect_combined_columns(table)
     if assume_order:
         _assume_arm_order(table)
-    # Arme aus gedruckten Abkuerzungen (``TM``) - gleiche Pruefung wie bei den
-    # Kopfbändern: Kandidat rechnen, nur mit Feldgewinn uebernehmen.
+    # Arme aus gedruckten Abkuerzungen (``TM``) und Rollen aus der Zellform
+    # (``Mittel (Streuung)``) - gleiche Pruefung wie bei den Kopfbändern:
+    # Kandidat rechnen, nur mit Feldgewinn uebernehmen.
     table.arm_decision = consider_arm_candidate(table, context)
+    table.role_decision = consider_role_candidate(table, context)
+    _detect_combined_columns(table)
     table.context = dict(context)
     for row in table.rows:
         if row.group_label:
@@ -556,6 +558,90 @@ def _mark_outcome_columns(table: Table, outcome: str) -> None:
         table.irregularities.append(
             f"outcome_spalte_mehrdeutig:{column.role}:{first}|{column.col_id}"
         )
+
+
+# Zellform eines Mittelwerts mit Streuung in Klammern (``--0.38 (0.37)``).
+_MEAN_FORM_RE = re.compile(
+    r"^[-+]?\d+(?:[.,]\d+)?\s*\(\s*[-+]?\d+(?:[.,]\d+)?\s*\)$"
+)
+# Formen, die *nicht* als Mittelwert gelesen werden duerfen: Ereignis mit
+# Prozentbeigabe, Anteil, p-Wert.
+_KEIN_MEAN_RE = re.compile(
+    r"\bn\s*\(\s*%\s*\)|\bpercent|%|\bevents?\b|\bp\s*-?\s*value|\banteil",
+    re.IGNORECASE,
+)
+
+
+def _zellform_mean(table: Table, column: Column) -> bool:
+    """Sprechen die Zellen einer Spalte fuer ``Mittel (Streuung)``?
+
+    Beleg ist die gedruckte Form: mindestens zwei gefuellte Zellen, davon 60
+    Prozent genau ``Zahl (Zahl)``. Sobald eine Zelle nach Ereignis oder Prozent
+    aussieht (``n (%)``, ``%``) oder ein Zeilenlabel das sagt (``Not complying,
+    n (%)``), faellt der Kandidat weg - ``12 (34)`` sieht sonst wie ein Mittel
+    mit Streuung aus.
+    """
+    if _KEIN_MEAN_RE.search(_column_header_text(column)):
+        return False
+    for row in table.rows:
+        if _KEIN_MEAN_RE.search(row.label or "") or _KEIN_MEAN_RE.search(
+                " ".join(row.label_path or ())):
+            return False
+    gefuellt = 0
+    doppelt = 0
+    for row in table.rows:
+        zelle = row.cells.get(column.col_id)
+        text = (zelle.text or "").strip() if zelle is not None else ""
+        if not text:
+            continue
+        gefuellt += 1
+        sauber = re.sub(r"\[([^\]]*)\]\(#[^)]*\)|[*\u2020\u2021]+", " ", text)
+        sauber = re.sub(r"-{2,}", "-", sauber.translate({
+            "\u2212": "-", "\u2013": "-", "\u2014": "-"})).strip()
+        if _MEAN_FORM_RE.match(sauber):
+            doppelt += 1
+    return gefuellt >= 2 and doppelt / gefuellt >= 0.6
+
+
+def consider_role_candidate(table: Table,
+                            context: Optional[Dict[str, object]] = None) -> str:
+    """Rolle ``mean`` aus der Zellform - nur mit Beleg und Feldgewinn.
+
+    Der Kopf nennt in solchen Spalten keine Rolle (``TM``, ``Cemented``); die
+    Zellen tragen aber ``Mittel (Streuung)``. Wie bei den Kopfbändern und den
+    Armen entscheidet die Validierung an einer Kopie: die Rolle wird nur
+    uebernommen, wenn dadurch ein Feld entsteht und keines verloren geht. Ohne
+    Arm entsteht kein Feld - dann bleibt die Rolle unbekannt.
+    """
+    context = context or {}
+    intervention = str(context.get("intervention") or "")
+    comparator = str(context.get("comparator") or "")
+    kandidaten = [
+        column for column in table.columns
+        if column.role == ROLE_UNKNOWN and column.arm and _zellform_mean(table, column)
+    ]
+    if not kandidaten:
+        return "original:kein_kandidat"
+    probe = copy.deepcopy(table)
+    for column in kandidaten:
+        twin = probe.column(column.col_id)
+        if twin is None:
+            continue
+        twin.role = ROLE_MEAN
+        twin.field = field_for(ROLE_MEAN, twin.arm)
+    _detect_combined_columns(probe)
+    vorher = _felder_mit_fakten(table, intervention, comparator)
+    nachher = _felder_mit_fakten(probe, intervention, comparator)
+    if not vorher <= nachher:
+        return "original:feldverlust"
+    if len(nachher) <= len(vorher):
+        return "original:kein_gewinn"
+    for column in kandidaten:
+        column.role = ROLE_MEAN
+        column.field = field_for(ROLE_MEAN, column.arm)
+    _detect_combined_columns(table)
+    return "kandidat:uebernommen:" + ",".join(
+        f"c{column.col_id}" for column in kandidaten)
 
 
 def _detect_combined_columns(table: Table) -> None:
@@ -682,6 +768,10 @@ def _assume_arm_order(table: Table) -> None:
             column.field = field_for(column.role, arm)
 
 
+# Armzuordnungen, die als Beleg zaehlen. ``reihenfolge`` fehlt bewusst: die
+# Zuordnung aus der Spaltenposition ist eine Annahme, kein Nachweis.
+_BELEGTE_ARM_BASIS = {"header_treffer", "abkuerzung", "uebertrag", "dokument"}
+
 _ARM_ABKUERZUNG_RE = re.compile(r"\(([A-Za-z][A-Za-z0-9\-]{1,9})\)")
 
 
@@ -722,8 +812,8 @@ def _abkuerzungs_arm(header_path: Sequence[str], intervention: str,
 
 
 def _felder_mit_fakten(table: Table, intervention: str, comparator: str) -> set:
-    """Felder aus Spalten **und** Kopfangaben - der Gewinn, den ein Arm bringt."""
-    felder = set(_field_counts(table))
+    """Felder aus Spalten **und** Kopfangaben - der Gewinn eines Kandidaten."""
+    felder = set(reachable_fields(table))
     for fact in _group_size_facts(table, intervention, comparator):
         feld = field_for(ROLE_N, fact.get("arm") or None)
         if feld:
@@ -802,13 +892,20 @@ def _group_size_facts(table: Table, intervention: str,
         if arm is None:
             # Der Arm kann auch an den Spalten unter dem Band belegt sein
             # (etwa ``TM``-Spalten ueber eine gedruckte Abkuerzung); dann gilt
-            # er fuer diese Kopfangabe. Bei gemischten Armen bleibt er leer.
-            arme = {
-                column.arm for column in table.columns
+            # er fuer diese Kopfangabe. Ein nur aus der Reihenfolge stammender
+            # Arm ist kein Beleg, und gemischte Arme unter dem Band lassen die
+            # Angabe ohne Arm - sie gilt dann fuer keine Gruppe eindeutig.
+            betroffen = [
+                column for column in table.columns
                 if band.col_start <= column.col_id <= band.col_end and column.arm
+            ]
+            gesetzt = {column.arm for column in betroffen}
+            belegt = {
+                column.arm for column in betroffen
+                if column.arm_basis in _BELEGTE_ARM_BASIS
             }
-            if len(arme) == 1:
-                arm, arm_basis = arme.pop(), "spalte"
+            if len(gesetzt) == 1 and len(belegt) == 1:
+                arm, arm_basis = belegt.pop(), "spalte"
         facts.append({
             "kind": "group_size",
             "text": band.text,

@@ -287,6 +287,8 @@ class Table:
     band_decision: str = ""
     # Entscheidung ueber Armkandidaten aus gedruckten Abkuerzungen (``TM``).
     arm_decision: str = ""
+    # Entscheidung ueber Rollenkandidaten aus der Zellform (``Mittel (Streuung)``).
+    role_decision: str = ""
 
     # --- Zugriff ---------------------------------------------------------
     @property
@@ -381,6 +383,7 @@ class Table:
             "redundant_of": self.redundant_of,
             "band_decision": self.band_decision,
             "arm_decision": self.arm_decision,
+            "role_decision": self.role_decision,
             "focus_rows": list(self.focus_rows),
         }
 

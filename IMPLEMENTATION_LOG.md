@@ -1422,3 +1422,29 @@ Warnungen 137, A-E gleich. Von 60 Eintraegen uebernehmen 2 einen Kandidaten.
 
 **Tests:** 5 neu in `research_agent/tests/test_armabkuerzung.py`, gesamt 74.
 Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/spaltenzeitpunkte_20261118/armzuordnung.md`.
+
+## Nachtrag Sprint 43 - Armvererbung abgesichert, Rolle aus der Zellform
+
+**Absicherung:** Eine Kopfangabe erbt den Arm der Spalten unter ihrem Band nur
+noch aus belegten Zuordnungen (`header_treffer`, `abkuerzung`, `uebertrag`,
+`dokument`) und nur, wenn dort genau ein Arm gesetzt ist. Ein Arm aus der
+Spaltenreihenfolge (`reihenfolge`) ist eine Annahme und traegt keine
+Stichprobengroesse mehr.
+
+**Rollenkandidat:** `consider_role_candidate` schlaegt `role="mean"` vor, wenn
+die Spalte einen belegten Arm hat und mindestens 60 Prozent ihrer Zellen die
+Form `Zahl (Zahl)` zeigen (normalisiert gegen Dezimalkomma, Unicode-Minus,
+Fussnotenzeichen); Kopf- und Zeilenlabels mit `n (%)`, `%`, `events`,
+`p-value` schliessen den Kandidaten aus. Uebernahme nur mit Feldgewinn und ohne
+Feldverlust, Streuung aus `_detect_combined_columns`. Neu:
+`Table.role_decision`.
+
+**Ergebnis:** 3 von 60 Eintraegen uebernehmen einen Rollenkandidaten
+(`PMC3278655:T2` fuer zwei Records, `PMC3877023:T3`). Goldfelder bleiben bei
+58, Strukturfehler 0, komplett 60/60; Einheiten/Zellen verschieben sich nur in
+den Strategien mit Spalteneinheiten (B 1335 -> 1310 Zellen, D/E +17 Einheiten),
+Warnungen B 103 -> 101.
+
+**Tests:** 2 neu in `research_agent/tests/test_armabkuerzung.py`, 4 in
+`research_agent/tests/test_zellform_rolle.py`, gesamt 80.
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/zellform_20261118/ergebnis.md`.

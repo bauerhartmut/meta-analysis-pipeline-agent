@@ -127,3 +127,57 @@ def test_tm_table_reaches_all_four_group_sizes():
     cells = reachable_cells(table, context)
     assert (-1, "intervention_group_size") in cells
     assert (-1, "comparator_group_size") in cells
+
+
+def test_order_based_arm_does_not_prove_a_group_size():
+    """Ein Arm aus der Spaltenreihenfolge traegt keine Stichprobengroesse."""
+    from research_agent.table_decomposition.semantics import reachable_cells
+
+    table = Table(table_id="ORD:T1", doc_id="ORD", index=1)
+    table.columns = [
+        Column(col_id=0, x_start=0, x_end=9),
+        Column(col_id=1, x_start=10, x_end=19),
+        Column(col_id=2, x_start=20, x_end=29),
+    ]
+    row = Row(row_id=0, index=0, label="Subsidence", label_path=("Subsidence",))
+    row.cells = {
+        0: Cell(row_id=0, col_id=0, text="Subsidence"),
+        1: Cell(row_id=0, col_id=1, text="0.4 (0.1)"),
+        2: Cell(row_id=0, col_id=2, text="0.5 (0.2)"),
+    }
+    table.rows = [row]
+    table.header_bands = [
+        HeaderBand(level=0, text="Arm X", col_start=1, col_end=1),
+        HeaderBand(level=0, text="Arm Y", col_start=2, col_end=2),
+        HeaderBand(level=1, text="Mean (SD)", col_start=1, col_end=1),
+        HeaderBand(level=1, text="Mean (SD)", col_start=2, col_end=2),
+        HeaderBand(level=2, text="(n=27)", col_start=1, col_end=1),
+    ]
+    context = {"intervention": "Plus", "comparator": "Control"}
+    enrich_table(table, context, assume_order=True)
+    assert (table.column(1).arm, table.column(1).arm_basis) == ("intervention", "reihenfolge")
+    assert [(f["text"], f["arm"], f["arm_basis"]) for f in table.header_facts] == [
+        ("(n=27)", None, "kein_treffer")]
+    assert (-1, "intervention_group_size") not in reachable_cells(table, context)
+
+
+def test_mixed_arms_under_a_group_size_band_leave_the_arm_empty():
+    """Zwei belegte, aber verschiedene Arme unter einem Band: kein Arm."""
+    from research_agent.table_decomposition.semantics import _group_size_facts
+
+    table = Table(table_id="MIX:T1", doc_id="MIX", index=1)
+    table.columns = [
+        Column(col_id=0, x_start=0, x_end=9),
+        Column(col_id=1, x_start=10, x_end=19, arm="comparator",
+               arm_basis="header_treffer"),
+        Column(col_id=2, x_start=20, x_end=29, arm="intervention",
+               arm_basis="header_treffer"),
+    ]
+    table.header_bands = [
+        HeaderBand(level=0, text="Group A", col_start=1, col_end=1),
+        HeaderBand(level=0, text="Group B", col_start=2, col_end=2),
+        HeaderBand(level=1, text="(n=20)", col_start=1, col_end=2),
+    ]
+    facts = _group_size_facts(table, "Plus", "Control")
+    assert [(f["text"], f["arm"], f["arm_basis"]) for f in facts] == [
+        ("(n=20)", None, "kein_treffer")]
