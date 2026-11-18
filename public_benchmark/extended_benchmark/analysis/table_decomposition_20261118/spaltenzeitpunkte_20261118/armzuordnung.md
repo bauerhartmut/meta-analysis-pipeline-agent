@@ -44,7 +44,7 @@ Spaltenarme: c1/c3/c5/c7 = `intervention` mit `arm_basis="abkuerzung"`
 | Paar | Felder vorher | Felder nachher | Goldzellen mit erreichbarem Feld |
 | --- | --- | --- | --- |
 | `PMC3278655:T2` / `390` | `comparator_group_size` | + `intervention_group_size` | 2 von 6 (vorher 1) |
-| `PMC3278655:T2` / `391` | `comparator_group_size` | + `intervention_group_size` | 3 von 4 (vorher 2) |
+| `PMC3278655:T2` / `391` | `comparator_group_size` | + `intervention_group_size` | 2 von 4 (vorher 1) |
 | `PMC5777419:T2` / `678`, `/682` | `intervention_group_size` | unveraendert | unveraendert |
 
 Die vier `(n=…)`-Baender sind damit **erreichbar**: Gold 27 (intervention) und
@@ -76,7 +76,7 @@ ein Beleg dasteht.
   Streuung (`--0.38 (0.37)`) werden deshalb nicht zu Feldern. Der Arm allein
   erzeugt keine Rolle.
 - **Outcome-Zeile:** `subsidence` ist in `T2` nicht als Zeile erkannt
-  (`outcome_menge: []`), die Goldwerte stehen in `Superior/inferior
+  (`outcome_zeilen: []`), die Goldwerte stehen in `Superior/inferior
   translation`.
 - **Zeitpunktauswahl:** unveraendert wirkungslos - je Zeitpunkt 0 Felder, keine
   Verdraengung (Abschnitt 2 der ersten Messung gilt weiter).
