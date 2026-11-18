@@ -17,7 +17,11 @@
 #
 # Ergebnis: runs/$RUN/konsole_nachzug.log, runs/$RUN/nachzug_zusammenfassung.txt
 set -u
-cd /d/daswu/AIResearch || exit 1
+# Projektwurzel aus dem Skriptort ableiten (dieses Skript liegt in
+# public_benchmark/extended_benchmark/yun_full), damit kein privater
+# Absolutpfad im Repo steht.
+HIER="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$HIER/../../.." || exit 1
 export PYTHONIOENCODING=utf-8
 
 R=public_benchmark/extended_benchmark/runs
@@ -25,7 +29,7 @@ RUN=yun699_8000_alle_20261117
 LOG=""
 REPAIR=""
 JETZT=0
-MAXWARTE=${MAXWARTE:-480}   # 480 x 60 s = 8 h
+MAXWARTE=${MAXWARTE:-720}   # 720 x 60 s = 12 h; endet frueher, sobald kein Prozess mehr laeuft
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -52,9 +56,16 @@ fi
 echo $$ > "$LOCK"
 trap 'rm -f "$LOCK"' EXIT
 
+if [ ! -f "$R/$RUN/predictions.jsonl" ]; then
+  echo "FEHLER: $R/$RUN/predictions.jsonl fehlt, nichts zu nachzuziehen."
+  exit 1
+fi
+
 # --- Warten, bis kein Extraktionsprozess mehr laeuft ------------------------
 # lauf_status.py prueft den Prozessstand unabhaengig davon, in welche Datei
-# der Lauf schreibt. "Prozesse: 0" ist die Bedingung, nicht ein Logtext.
+# der Lauf schreibt, und zwar nur fuer DIESE run-id: Ein fremder Lauf mit
+# anderer run-id wird als "Fremde Laeufe" gemeldet und blockiert nicht.
+# "Prozesse: 0" ist die Bedingung, nicht ein Logtext.
 laeuft_noch() {
   local status
   status=$(.venv/bin/python public_benchmark/extended_benchmark/yun_full/lauf_status.py \

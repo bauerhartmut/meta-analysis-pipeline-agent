@@ -21,6 +21,7 @@ import argparse
 import collections
 import json
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -29,23 +30,59 @@ RUNS = Path(__file__).resolve().parent.parent / "runs"
 MUSTER = "run_extended_extraction"
 
 
-def laufende_prozesse() -> list[str]:
-    """PIDs aller Prozesse, die run_extended_extraction ausfuehren."""
+RUN_ID_MUSTER = re.compile(r"--run-id[= ]([^\s\"']+)")
+
+
+def run_id_aus_cmdline(cmdline: str) -> str:
+    """Liest den Wert von --run-id aus einer Kommandozeile; leer, wenn keiner da ist."""
+    treffer = RUN_ID_MUSTER.search(cmdline or "")
+    return treffer.group(1) if treffer else ""
+
+
+def laufende_prozesse(nur_run: str | None = None) -> list[str]:
+    """PIDs der laufenden Extraktionsprozesse.
+
+    Ohne `nur_run`: alle Prozesse, die `run_extended_extraction` ausfuehren.
+    Mit `nur_run`: nur diejenigen, deren Kommandozeile `--run-id <nur_run>`
+    traegt. Das ist der Unterschied zwischen "irgendein Lauf arbeitet" und
+    "dieser Lauf arbeitet": ein fremder Lauf darf einen Nachzug nicht blockieren.
+    """
     if os.name == "nt":
         cmd = [
             "powershell", "-NoProfile", "-Command",
             "Get-CimInstance Win32_Process -Filter \"name='python.exe'\" | "
             f"Where-Object {{ $_.CommandLine -like '*{MUSTER}*' }} | "
-            "ForEach-Object { $_.ProcessId }",
+            'ForEach-Object { "$($_.ProcessId)|$($_.CommandLine)" }',
         ]
+        try:
+            out = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        except (OSError, subprocess.TimeoutExpired) as fehler:
+            print(f"Prozessabfrage fehlgeschlagen: {fehler}")
+            return []
+        paare = []
+        for zeile in out.stdout.splitlines():
+            pid, _, cmdline = zeile.partition("|")
+            if pid.strip().isdigit():
+                paare.append((pid.strip(), cmdline))
     else:
-        cmd = ["pgrep", "-f", MUSTER]
-    try:
-        out = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-    except (OSError, subprocess.TimeoutExpired) as fehler:
-        print(f"Prozessabfrage fehlgeschlagen: {fehler}")
-        return []
-    return [teil.strip() for teil in out.stdout.split() if teil.strip().isdigit()]
+        try:
+            out = subprocess.run(["pgrep", "-f", MUSTER], capture_output=True, text=True, timeout=30)
+        except (OSError, subprocess.TimeoutExpired) as fehler:
+            print(f"Prozessabfrage fehlgeschlagen: {fehler}")
+            return []
+        paare = []
+        for teil in out.stdout.split():
+            if not teil.isdigit():
+                continue
+            try:
+                cmdline = Path(f"/proc/{teil}/cmdline").read_bytes().replace(b"\x00", b" ").decode("utf-8", "replace")
+            except OSError:
+                cmdline = ""
+            paare.append((teil, cmdline))
+
+    if nur_run is None:
+        return [pid for pid, _ in paare]
+    return [pid for pid, cmdline in paare if run_id_aus_cmdline(cmdline) == nur_run]
 
 
 def main() -> int:
@@ -56,12 +93,14 @@ def main() -> int:
     args = ap.parse_args()
 
     pfad = RUNS / args.run / "predictions.jsonl"
-    if not pfad.exists():
-        print(f"FEHLER: {pfad} fehlt")
-        return 2
 
+    # Der Prozessstand wird zuerst geprueft: Er haengt nicht davon ab, ob die
+    # Datei existiert, und ein Aufrufer (z.B. der Nachzug) liest die erste
+    # Zeile als Zustandssignal.
     warnung = False
-    pids = laufende_prozesse()
+    pids = laufende_prozesse(args.run)
+    alle = laufende_prozesse()
+    fremd = [pid for pid in alle if pid not in pids]
     if len(pids) == 1:
         print(f"Prozesse: 1 (PID {pids[0]})  ok")
     elif not pids:
@@ -70,6 +109,13 @@ def main() -> int:
     else:
         print(f"Prozesse: {len(pids)}  ACHTUNG, mehrere Laeufe schreiben in dieselbe Datei: {', '.join(pids)}")
         warnung = True
+    if fremd:
+        # Fremde Laeufe sind kein Warnfall fuer diesen Run.
+        print(f"Fremde Laeufe: {len(fremd)} (andere run-id)  - blockieren diesen Lauf nicht")
+
+    if not pfad.exists():
+        print(f"FEHLER: {pfad} fehlt")
+        return 2
 
     zeilen = [z for z in pfad.read_text(encoding="utf-8").splitlines() if z.strip()]
     reihen: list[dict] = []

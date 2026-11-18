@@ -82,7 +82,10 @@ gegen den laufenden Lauf geprueft:
    `^fertig:` in einer fest verdrahteten Datei, sondern fragt den Prozessstand
    ueber `lauf_status.py` ab (`Prozesse: 0`) und nimmt den Logpfad als
    Parameter (`--log`). `--jetzt` bricht jetzt ab, wenn doch noch ein Prozess
-   laeuft.
+   laeuft. Die Prozessabfrage ist **run-spezifisch**: Gezaehlt werden nur
+   Prozesse mit `--run-id yun699_8000_alle_20261117`; ein fremder Lauf wird als
+   "Fremde Laeufe" gemeldet und blockiert den Nachzug nicht. Fehlt
+   `predictions.jsonl`, bricht das Skript sofort ab, statt zu warten.
 2. **`--retry-failed` ersetzt keine Zeilen, es haengt an.** Die alten
    Fehlzeilen bleiben stehen; erst `dedupe_predictions.py --write` macht die
    Auswertung eindeutig. Bis dahin zeigen `lauf_status.py` und

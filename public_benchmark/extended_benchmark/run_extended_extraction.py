@@ -672,16 +672,8 @@ def main() -> int:
     if args.cache_buster:
         SESSION_TAG = uuid.uuid4().hex[:12]
 
-    config = get_config()
-    key = config.tudagpt_api_key
-    base = config.tudagpt_api_base.rstrip("/")
-    if not key:
-        print("FEHLER: kein API-Schluessel in der Konfiguration", flush=True)
-        return 2
-
     records = waehle_records(load_records(args.split, args.limit, path=records_datei), args.ids)
     run_dir = HERE / "runs" / args.run_id
-    run_dir.mkdir(parents=True, exist_ok=True)
     out_path = run_dir / "predictions.jsonl"
     done = done_keys(out_path, retry_failed=args.retry_failed)
 
@@ -697,6 +689,16 @@ def main() -> int:
             print(f"{model}: {len(ids)} Auftraege", flush=True)
             print(",".join(ids), flush=True)
         return 0
+
+    # Erst nach dem Trockenlauf: Schluessel und Verzeichnis sind fuer die
+    # Auswahl nicht noetig, und ein Trockenlauf soll nichts anlegen.
+    config = get_config()
+    key = config.tudagpt_api_key
+    base = config.tudagpt_api_base.rstrip("/")
+    if not key:
+        print("FEHLER: kein API-Schluessel in der Konfiguration", flush=True)
+        return 2
+    run_dir.mkdir(parents=True, exist_ok=True)
 
     def work(record: dict[str, Any], model: str) -> dict[str, Any]:
         path = record["document"].get("path") or ""
