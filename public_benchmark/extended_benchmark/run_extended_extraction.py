@@ -421,6 +421,20 @@ def fehlerklasse_aus(response: dict[str, Any], parse_error: str) -> str:
     return ""
 
 
+def content_felder(inhalt: str, primaer_content: str) -> dict[str, str]:
+    """Rohantwort fuer die Fehleranalyse: der Text, aus dem die Zellen stammen.
+
+    `content` ist bewusst der wirksame Text (`inhalt`), nicht der Primaeraufruf:
+    Nach einem Reparaturaufruf stammen die Zellen aus einer anderen Antwort, und
+    nur dieser Text erklaert sie. Weicht er ab, bleibt der Primaeraufruf als
+    `content_primaer` erhalten, damit sich Formatfehler und Reparatur trennen.
+    """
+    felder = {"content": inhalt}
+    if inhalt != primaer_content:
+        felder["content_primaer"] = primaer_content
+    return felder
+
+
 def parse_cells(content: str) -> tuple[list[dict[str, Any]], str]:
     """Liest die Zellen aus der Modellantwort; gibt (cells, fehler) zurueck."""
     payload, error = _load_payload(content)
@@ -587,7 +601,13 @@ def main() -> int:
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--workers", type=int, default=3)
     parser.add_argument("--ids", default=None, help="Komma-getrennte record_ids, nur diese laufen")
-    parser.add_argument("--save-content", action="store_true", help="Rohantwort im Ergebnis mitspeichern")
+    parser.add_argument(
+        "--save-content",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Rohantwort je Record mitspeichern (Standard; mit --no-save-content aus). "
+        "Ohne sie laesst sich ein Parserfehler nicht von einer Modellauslassung trennen.",
+    )
     parser.add_argument(
         "--retry-failed",
         action="store_true",
@@ -824,7 +844,7 @@ def main() -> int:
             "rows": cells,
         }
         if args.save_content:
-            row["content"] = response.get("content") or ""
+            row.update(content_felder(inhalt, primaer_content))
         with LOCK:
             with out_path.open("a", encoding="utf-8", newline="\n") as handle:
                 handle.write(json.dumps(row, ensure_ascii=False) + "\n")
