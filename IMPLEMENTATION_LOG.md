@@ -1650,4 +1650,19 @@ Feldmodell nicht. Die Ereigniszahlen 3/4 stehen nur im Fliesstext. Die fuenf
 restlichen Felder (`PMC4230312` 4, `PMC5122613` 1) brauchen diese
 Fliesstext-Zahlen.
 Tests: `research_agent/tests/test_gruppenkoepfe.py` (5), zusammen 130 gruen.
-Grenze: derselbe 48-Record-Satz, keine Gegenprobe auf fremden Records.
+
+Die Caption-Korrektur ist als **eigene Aenderung** abgetrennt (eigener Commit
+mit zwei Caption-Tests): sie verschiebt alle 31 Tabellenprompts und Crops,
+unabhaengig von der Tabellenwahl. Nachweis
+(`diagnose_caption_leser.py`): 31 Captions neu, 729 Einheiten-Prompts mit
+0 Caption-Fehlern vorher und nachher, Crops 31-mal frueher und laenger
+(0 kuerzer, `includes_caption` 6 -> 31), 31 Engine-Strukturzeilen. Drei
+mehrzeilige Captions sind kein zusammenhaengender Teilstring des
+Verbatim-Blocks (Kopfzeile traegt sie trotzdem).
+
+Gegenprobe der Wahl auf unbenutzten Dokumenten
+(`pruefe_tabellenwahl_gegenprobe.py` + `diagnose_gruppenkoepfe.py
+--selection`, 25 Records / 26 Tabellen / 9 Dokumente ausserhalb der
+Test-Auswahl): **42/27 -> 42/29**, 2 Wechsel (`PMC5686687:T1` -> `:T2`),
+0 verloren, 0 Armwechsel. dev-Split mit 4 Tabellen: 8/5 -> 8/5, 0 Wechsel.
+Die Gegenprobe ist bestanden, aber schwach belegt (26 Tabellen).

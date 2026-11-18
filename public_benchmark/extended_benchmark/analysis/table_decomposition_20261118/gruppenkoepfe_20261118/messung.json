@@ -1,4 +1,10 @@
 {
+  "selection": {
+    "pfad": "public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/selection_test.json",
+    "role": "test",
+    "n_tables": 60,
+    "n_records": 59
+  },
   "bilanz": {
     "sprint45": {
       "erreichbar": 94,

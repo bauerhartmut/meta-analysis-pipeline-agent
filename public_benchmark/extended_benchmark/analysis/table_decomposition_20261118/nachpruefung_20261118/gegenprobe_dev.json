@@ -1,0 +1,343 @@
+{
+  "selection": {
+    "pfad": "public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/nachpruefung_20261118/selection_dev.json",
+    "role": "dev",
+    "n_tables": 4,
+    "n_records": 4
+  },
+  "bilanz": {
+    "sprint45": null,
+    "sprint46": null,
+    "ohne_wahl": {
+      "erreichbar": 8,
+      "wertgleich": 5
+    },
+    "mit_wahl": {
+      "erreichbar": 8,
+      "wertgleich": 5
+    },
+    "neu_wertgleich": [],
+    "verloren": [],
+    "neu_gegen_sprint46": null,
+    "verloren_gegen_sprint46": null,
+    "arm_wechsel": []
+  },
+  "tabellenwechsel": [],
+  "gruende": {
+    "aktuelle_tabelle_ist_nicht_baseline": 2,
+    "aktuelle_tabelle_traegt_outcome": 1,
+    "keine_wahl": 1
+  },
+  "je_kategorie": {},
+  "captions": {},
+  "records": [
+    {
+      "record_id": "yun2024:261",
+      "outcome": "CGI-I response rate",
+      "aktuelle_tabellen": [
+        "PMC5771543:T6"
+      ],
+      "gewaehlte_tabelle": "PMC5771543:T6",
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:263",
+      "outcome": "Treatment-emergent adverse events (TEAEs)",
+      "aktuelle_tabellen": [
+        "PMC5771543:T6"
+      ],
+      "gewaehlte_tabelle": "PMC5771543:T6",
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:3",
+      "outcome": "The mean body weight gain",
+      "aktuelle_tabellen": [
+        "PMC1216327:T3"
+      ],
+      "gewaehlte_tabelle": "PMC1216327:T3",
+      "caption": "Daily intake of patients throughout the study (Kcal/Kg/day)",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:5",
+      "outcome": "The fecal losses",
+      "aktuelle_tabellen": [
+        "PMC1216327:T2"
+      ],
+      "gewaehlte_tabelle": "PMC1216327:T2",
+      "caption": "Laboratory Data of Patients on Admission*",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    }
+  ]
+}

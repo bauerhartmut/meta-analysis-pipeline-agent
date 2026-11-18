@@ -1,0 +1,1854 @@
+{
+  "selection": {
+    "pfad": "public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/nachpruefung_20261118/selection_gegenprobe.json",
+    "role": "gegenprobe",
+    "n_tables": 26,
+    "n_records": 25
+  },
+  "bilanz": {
+    "sprint45": null,
+    "sprint46": null,
+    "ohne_wahl": {
+      "erreichbar": 42,
+      "wertgleich": 27
+    },
+    "mit_wahl": {
+      "erreichbar": 42,
+      "wertgleich": 29
+    },
+    "neu_wertgleich": [
+      "yun2024:345.intervention_group_size",
+      "yun2024:347.intervention_group_size"
+    ],
+    "verloren": [],
+    "neu_gegen_sprint46": null,
+    "verloren_gegen_sprint46": null,
+    "arm_wechsel": []
+  },
+  "tabellenwechsel": [
+    {
+      "record_id": "yun2024:345",
+      "von": [
+        "PMC5686687:T1"
+      ],
+      "nach": "PMC5686687:T2",
+      "outcome": "Pain",
+      "caption": "**Outcomes Measured in Both Groups**",
+      "outcome_zeilen": 1,
+      "baseline": false
+    },
+    {
+      "record_id": "yun2024:347",
+      "von": [
+        "PMC5686687:T1"
+      ],
+      "nach": "PMC5686687:T2",
+      "outcome": "Need for Ibuprofen",
+      "caption": "**Outcomes Measured in Both Groups**",
+      "outcome_zeilen": 1,
+      "baseline": false
+    }
+  ],
+  "gruende": {
+    "aktuelle_tabelle_ist_nicht_baseline": 15,
+    "aktuelle_tabelle_traegt_outcome": 6,
+    "keine_wahl": 2,
+    "outcome_tabelle": 2
+  },
+  "je_kategorie": {},
+  "captions": {},
+  "records": [
+    {
+      "record_id": "yun2024:149",
+      "outcome": "a\" vowel improvement",
+      "aktuelle_tabellen": [
+        "PMC4996097:T5"
+      ],
+      "gewaehlte_tabelle": "PMC4996097:T5",
+      "caption": "Comparison of /mini/ word's voice analysis results of study group in their own and with control group",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:150",
+      "outcome": "Total nasal resistance",
+      "aktuelle_tabellen": [
+        "PMC4996097:T4"
+      ],
+      "gewaehlte_tabelle": "PMC4996097:T4",
+      "caption": "Comparison of /n/ nasal consonant's voice analysis results of study group in their own and with control group",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:151",
+      "outcome": "n\" consonant improvement",
+      "aktuelle_tabellen": [
+        "PMC4996097:T3"
+      ],
+      "gewaehlte_tabelle": "PMC4996097:T3",
+      "caption": "Comparison of /a/ vowel's voice analysis results of study group in their own and with control group",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:260",
+      "outcome": "CGI-I response rate",
+      "aktuelle_tabellen": [
+        "PMC5771543:T6"
+      ],
+      "gewaehlte_tabelle": "PMC5771543:T6",
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:261",
+      "outcome": "CGI-I response rate",
+      "aktuelle_tabellen": [
+        "PMC5771543:T6"
+      ],
+      "gewaehlte_tabelle": "PMC5771543:T6",
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "grund": "keine_wahl",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:262",
+      "outcome": "Treatment-emergent adverse events (TEAEs)",
+      "aktuelle_tabellen": [
+        "PMC5771543:T6"
+      ],
+      "gewaehlte_tabelle": "PMC5771543:T6",
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:263",
+      "outcome": "Treatment-emergent adverse events (TEAEs)",
+      "aktuelle_tabellen": [
+        "PMC5771543:T6"
+      ],
+      "gewaehlte_tabelle": "PMC5771543:T6",
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:267",
+      "outcome": "GERD-knowledge",
+      "aktuelle_tabellen": [
+        "PMC2596788:T1"
+      ],
+      "gewaehlte_tabelle": "PMC2596788:T1",
+      "caption": "Socio-demographic and disease characteristics of patients allocated to GERD-education vs. control groups, recorded at baseline.",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:3",
+      "outcome": "The mean body weight gain",
+      "aktuelle_tabellen": [
+        "PMC1216327:T3"
+      ],
+      "gewaehlte_tabelle": "PMC1216327:T3",
+      "caption": "Daily intake of patients throughout the study (Kcal/Kg/day)",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:345",
+      "outcome": "Pain",
+      "aktuelle_tabellen": [
+        "PMC5686687:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5686687:T2",
+      "caption": "**Outcomes Measured in Both Groups**",
+      "grund": "outcome_tabelle",
+      "wechsel": true,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:346",
+      "outcome": "Need for dipyrone",
+      "aktuelle_tabellen": [
+        "PMC5686687:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5686687:T2",
+      "caption": "**Outcomes Measured in Both Groups**",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:347",
+      "outcome": "Need for Ibuprofen",
+      "aktuelle_tabellen": [
+        "PMC5686687:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5686687:T2",
+      "caption": "**Outcomes Measured in Both Groups**",
+      "grund": "outcome_tabelle",
+      "wechsel": true,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:349",
+      "outcome": "CA-125 levels",
+      "aktuelle_tabellen": [
+        "PMC5686687:T2"
+      ],
+      "gewaehlte_tabelle": "PMC5686687:T2",
+      "caption": "**Outcomes Measured in Both Groups**",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:397",
+      "outcome": "progression-free-survival (PFS)",
+      "aktuelle_tabellen": [
+        "PMC4678179:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4678179:T2",
+      "caption": "Grade 3 to 5 Toxicities at Least Possibly Related to Treatment",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:398",
+      "outcome": "Median overall survival (OS)",
+      "aktuelle_tabellen": [
+        "PMC4678179:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4678179:T2",
+      "caption": "Grade 3 to 5 Toxicities at Least Possibly Related to Treatment",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:399",
+      "outcome": "Response rates",
+      "aktuelle_tabellen": [
+        "PMC4678179:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4678179:T2",
+      "caption": "Grade 3 to 5 Toxicities at Least Possibly Related to Treatment",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:4",
+      "outcome": "The duration of the illness",
+      "aktuelle_tabellen": [
+        "PMC1216327:T1",
+        "PMC1216327:T3"
+      ],
+      "gewaehlte_tabelle": "PMC1216327:T1",
+      "caption": "Clinical Characteristics of Patients on Admission",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:400",
+      "outcome": "rate of adverse events",
+      "aktuelle_tabellen": [
+        "PMC4678179:T2"
+      ],
+      "gewaehlte_tabelle": "PMC4678179:T2",
+      "caption": "Grade 3 to 5 Toxicities at Least Possibly Related to Treatment",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:401",
+      "outcome": "score on the general dimension scale of negative affects (referred to as NA from here onward)",
+      "aktuelle_tabellen": [
+        "PMC5268424:T3"
+      ],
+      "gewaehlte_tabelle": "PMC5268424:T3",
+      "caption": "Average and Standard Deviation of Negative Affect Scales, by Treatment.",
+      "grund": "aktuelle_tabelle_traegt_outcome",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:483",
+      "outcome": "Amsterdam-Nijmegen everyday language test (ANELT)",
+      "aktuelle_tabellen": [
+        "PMC3343759:T2"
+      ],
+      "gewaehlte_tabelle": "PMC3343759:T2",
+      "caption": "Effects of SLT at day 21 according to ANELT",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:5",
+      "outcome": "The fecal losses",
+      "aktuelle_tabellen": [
+        "PMC1216327:T2"
+      ],
+      "gewaehlte_tabelle": "PMC1216327:T2",
+      "caption": "Laboratory Data of Patients on Admission*",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:641",
+      "outcome": "objective response rate (ORR)",
+      "aktuelle_tabellen": [
+        "PMC5830087:T4"
+      ],
+      "gewaehlte_tabelle": "PMC5830087:T4",
+      "caption": "",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:642",
+      "outcome": "disease control rate",
+      "aktuelle_tabellen": [
+        "PMC5830087:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5830087:T1",
+      "caption": "",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:643",
+      "outcome": "duration of objective response",
+      "aktuelle_tabellen": [
+        "PMC5830087:T1"
+      ],
+      "gewaehlte_tabelle": "PMC5830087:T1",
+      "caption": "",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:644",
+      "outcome": "progression-free survival",
+      "aktuelle_tabellen": [
+        "PMC5830087:T4"
+      ],
+      "gewaehlte_tabelle": "PMC5830087:T4",
+      "caption": "",
+      "grund": "aktuelle_tabelle_ist_nicht_baseline",
+      "wechsel": false,
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    }
+  ]
+}

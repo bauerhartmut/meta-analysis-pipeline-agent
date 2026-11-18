@@ -123,16 +123,21 @@ def _caption_klassen() -> Dict[str, int]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", required=True)
+    parser.add_argument("--selection", type=Path, default=rb.DEFAULT_SELECTION,
+                        help="eingefrorene Auswahl; Standard ist die Test-Auswahl")
     args = parser.parse_args()
 
-    kategorien = _kategorien()
+    ist_test = args.selection.resolve() == rb.DEFAULT_SELECTION.resolve()
+    # Die Saetze aus Sprint 45/46 gehoeren zur Test-Auswahl; auf einer anderen
+    # Auswahl waeren es fremde Records und der Vergleich irrefuehrend.
+    kategorien = _kategorien() if ist_test else {}
     sprint45 = (json.loads(SPRINT45.read_text(encoding="utf-8"))
-                if SPRINT45.exists() else None)
+                if SPRINT45.exists() and ist_test else None)
     sprint46 = (json.loads(SPRINT46.read_text(encoding="utf-8"))
-                if SPRINT46.exists() else None)
+                if SPRINT46.exists() and ist_test else None)
     vorher46 = _feldsatz(sprint46)
 
-    selection = json.loads(rb.DEFAULT_SELECTION.read_text(encoding="utf-8"))
+    selection = json.loads(args.selection.read_text(encoding="utf-8"))
     records = rb.load_records(rb.DEFAULT_RECORDS)
     grouped = rb.group_by_record(selection, None)
 
@@ -215,6 +220,13 @@ def main() -> int:
         })
 
     bericht = {
+        "selection": {
+            "pfad": str(args.selection.relative_to(REPO))
+                    if args.selection.is_absolute() else str(args.selection),
+            "role": selection.get("role"),
+            "n_tables": len(selection.get("tables") or []),
+            "n_records": len(selection.get("record_ids") or []),
+        },
         "bilanz": {
             "sprint45": ({"erreichbar": sprint45["bilanz"]
                           ["strukturell_erreichbar"],
@@ -227,14 +239,18 @@ def main() -> int:
                          "wertgleich": mit_gleich},
             "neu_wertgleich": sorted(mit_felder - ohne_felder),
             "verloren": sorted(ohne_felder - mit_felder),
-            "neu_gegen_sprint46": sorted(mit_felder - vorher46),
-            "verloren_gegen_sprint46": sorted(vorher46 - mit_felder),
+            # Nur auf der Test-Auswahl vergleichbar; auf fremden Records sind
+            # die Feldnamen andere und der Unterschied waere irrefuehrend.
+            "neu_gegen_sprint46": (sorted(mit_felder - vorher46)
+                                   if ist_test else None),
+            "verloren_gegen_sprint46": (sorted(vorher46 - mit_felder)
+                                        if ist_test else None),
             "arm_wechsel": arm_wechsel,
         },
         "tabellenwechsel": wechsel,
         "gruende": dict(sorted(gruende.items())),
         "je_kategorie": dict(sorted(je_kategorie.items())),
-        "captions": _caption_klassen(),
+        "captions": _caption_klassen() if ist_test else {},
         "records": record_berichte,
     }
     Path(args.out).write_text(
@@ -248,8 +264,9 @@ def main() -> int:
     print("je Kategorie:", bericht["je_kategorie"])
     print("neu wertgleich:", len(bilanz["neu_wertgleich"]),
           "verloren:", len(bilanz["verloren"]))
-    print("gegen Sprint 46 neu:", len(bilanz["neu_gegen_sprint46"]),
-          "verloren:", len(bilanz["verloren_gegen_sprint46"]))
+    if ist_test:
+        print("gegen Sprint 46 neu:", len(bilanz["neu_gegen_sprint46"]),
+              "verloren:", len(bilanz["verloren_gegen_sprint46"]))
     print("Armwechsel:", arm_wechsel)
     print("Captions:", bericht["captions"])
     for eintrag in wechsel:

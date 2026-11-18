@@ -1,0 +1,1311 @@
+{
+  "created": "2026-11-18T16:10:20+00:00",
+  "role": "gegenprobe",
+  "target": 60,
+  "frozen": true,
+  "zweck": "Gegenprobe der Tabellenwahl auf Records, deren Dokumente in der Test-Auswahl nicht vorkommen",
+  "records_file": "public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl",
+  "records_sha256": "c22ed3fb42dbaaff7051a89cdb327c4b250a134db0a62a19d3877d5ba311c0b1",
+  "exclude_selection": "public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/selection_test.json",
+  "ausgeschlossene_dokumente": 31,
+  "ausgeschlossene_records": 59,
+  "n_candidates": 194,
+  "n_tables": 26,
+  "require_bound": true,
+  "gold_reachable_total": 44,
+  "strata_order": [
+    "einfach",
+    "mittel",
+    "komplex",
+    "sehr_komplex",
+    "mehrarm",
+    "mehrzeitpunkt",
+    "mehrstufiger_kopf",
+    "fussnoten",
+    "komplexe_pdf",
+    "ohne_armzuordnung"
+  ],
+  "strata_counts": {
+    "einfach": 10,
+    "mittel": 8,
+    "mehrstufiger_kopf": 12,
+    "komplex": 5,
+    "mehrarm": 4,
+    "fussnoten": 10,
+    "sehr_komplex": 3,
+    "mehrzeitpunkt": 5,
+    "ohne_armzuordnung": 4
+  },
+  "record_ids": [
+    "yun2024:149",
+    "yun2024:150",
+    "yun2024:151",
+    "yun2024:260",
+    "yun2024:261",
+    "yun2024:262",
+    "yun2024:263",
+    "yun2024:267",
+    "yun2024:3",
+    "yun2024:345",
+    "yun2024:346",
+    "yun2024:347",
+    "yun2024:349",
+    "yun2024:397",
+    "yun2024:398",
+    "yun2024:399",
+    "yun2024:4",
+    "yun2024:400",
+    "yun2024:401",
+    "yun2024:483",
+    "yun2024:5",
+    "yun2024:641",
+    "yun2024:642",
+    "yun2024:643",
+    "yun2024:644"
+  ],
+  "n_records": 25,
+  "n_documents": 9,
+  "max_per_document": 4,
+  "max_per_record": 6,
+  "tables": [
+    {
+      "candidate_id": "yun2024:263|PMC5771543:T6",
+      "table_id": "PMC5771543:T6",
+      "doc_id": "PMC5771543",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5771543.md",
+      "record_ids": [
+        "yun2024:263"
+      ],
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "parser": "pandoc-rule/1",
+      "rows": 16,
+      "columns": 5,
+      "complexity": {
+        "score": 0.205,
+        "class": "einfach",
+        "features": {
+          "n_rows": 16,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 64
+        },
+        "drivers": [
+          "16 Datenzeilen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size",
+        "intervention_mean"
+      ],
+      "focus_rows": 2,
+      "gold_cells": 4,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:400|PMC4678179:T2",
+      "table_id": "PMC4678179:T2",
+      "doc_id": "PMC4678179",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4678179.md",
+      "record_ids": [
+        "yun2024:400"
+      ],
+      "caption": "Grade 3 to 5 Toxicities at Least Possibly Related to Treatment",
+      "parser": "pandoc-rule/1",
+      "rows": 2,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3275,
+        "class": "mittel",
+        "features": {
+          "n_rows": 2,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 6
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:5|PMC1216327:T2",
+      "table_id": "PMC1216327:T2",
+      "doc_id": "PMC1216327",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC1216327.md",
+      "record_ids": [
+        "yun2024:5"
+      ],
+      "caption": "Laboratory Data of Patients on Admission*",
+      "parser": "pandoc-rule/1",
+      "rows": 9,
+      "columns": 7,
+      "complexity": {
+        "score": 0.63,
+        "class": "komplex",
+        "features": {
+          "n_rows": 9,
+          "n_data_columns": 6,
+          "n_columns": 7,
+          "n_header_levels": 2,
+          "n_group_headers": 3,
+          "n_column_groups": 3,
+          "n_footnotes": 4,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 54
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "4 Fussnoten",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrarm",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 4,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:3|PMC1216327:T3",
+      "table_id": "PMC1216327:T3",
+      "doc_id": "PMC1216327",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC1216327.md",
+      "record_ids": [
+        "yun2024:3"
+      ],
+      "caption": "Daily intake of patients throughout the study (Kcal/Kg/day)",
+      "parser": "pandoc-rule/1",
+      "rows": 8,
+      "columns": 8,
+      "complexity": {
+        "score": 0.6518,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 8,
+          "n_data_columns": 7,
+          "n_columns": 8,
+          "n_header_levels": 2,
+          "n_group_headers": 3,
+          "n_column_groups": 3,
+          "n_footnotes": 5,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 3,
+          "has_timepoints": false,
+          "n_data_cells": 56
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "5 Fussnoten",
+          "3 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrarm",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 4,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:4|PMC1216327:T3",
+      "table_id": "PMC1216327:T3",
+      "doc_id": "PMC1216327",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC1216327.md",
+      "record_ids": [
+        "yun2024:4"
+      ],
+      "caption": "Daily intake of patients throughout the study (Kcal/Kg/day)",
+      "parser": "pandoc-rule/1",
+      "rows": 8,
+      "columns": 8,
+      "complexity": {
+        "score": 0.6518,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 8,
+          "n_data_columns": 7,
+          "n_columns": 8,
+          "n_header_levels": 2,
+          "n_group_headers": 3,
+          "n_column_groups": 3,
+          "n_footnotes": 5,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 3,
+          "has_timepoints": false,
+          "n_data_cells": 56
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "5 Fussnoten",
+          "3 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrarm",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 4,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:4|PMC1216327:T1",
+      "table_id": "PMC1216327:T1",
+      "doc_id": "PMC1216327",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC1216327.md",
+      "record_ids": [
+        "yun2024:4"
+      ],
+      "caption": "Clinical Characteristics of Patients on Admission",
+      "parser": "pandoc-rule/1",
+      "rows": 9,
+      "columns": 7,
+      "complexity": {
+        "score": 0.73,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 9,
+          "n_data_columns": 6,
+          "n_columns": 7,
+          "n_header_levels": 2,
+          "n_group_headers": 3,
+          "n_column_groups": 3,
+          "n_footnotes": 2,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 2,
+          "has_timepoints": true,
+          "n_data_cells": 54
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "2 Fussnoten",
+          "2 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrarm",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 4,
+      "fields": [
+        "comparator_group_size",
+        "comparator_mean",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "intervention_mean",
+        "intervention_standard_deviation"
+      ],
+      "focus_rows": 2,
+      "gold_cells": 6,
+      "gold_reachable": 6
+    },
+    {
+      "candidate_id": "yun2024:643|PMC5830087:T1",
+      "table_id": "PMC5830087:T1",
+      "doc_id": "PMC5830087",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5830087.md",
+      "record_ids": [
+        "yun2024:643"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 1,
+      "columns": 3,
+      "complexity": {
+        "score": 0.465,
+        "class": "komplex",
+        "features": {
+          "n_rows": 1,
+          "n_data_columns": 2,
+          "n_columns": 3,
+          "n_header_levels": 4,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 2
+        },
+        "drivers": [
+          "4 Header-Ebenen",
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 2,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:644|PMC5830087:T4",
+      "table_id": "PMC5830087:T4",
+      "doc_id": "PMC5830087",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5830087.md",
+      "record_ids": [
+        "yun2024:644"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 3,
+      "columns": 3,
+      "complexity": {
+        "score": 0.555,
+        "class": "komplex",
+        "features": {
+          "n_rows": 3,
+          "n_data_columns": 2,
+          "n_columns": 3,
+          "n_header_levels": 4,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 1,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 6
+        },
+        "drivers": [
+          "4 Header-Ebenen",
+          "1 Fussnoten",
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 2,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:151|PMC4996097:T3",
+      "table_id": "PMC4996097:T3",
+      "doc_id": "PMC4996097",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4996097.md",
+      "record_ids": [
+        "yun2024:151"
+      ],
+      "caption": "Comparison of /a/ vowel's voice analysis results of study group in their own and with control group",
+      "parser": "pandoc-rule/1",
+      "rows": 4,
+      "columns": 4,
+      "complexity": {
+        "score": 0.375,
+        "class": "mittel",
+        "features": {
+          "n_rows": 4,
+          "n_data_columns": 2,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 3,
+          "n_irregular_rows": 0,
+          "n_target_columns": 0,
+          "n_unassigned_columns": 2,
+          "has_timepoints": true,
+          "n_data_cells": 7
+        },
+        "drivers": [
+          "3 Fussnoten",
+          "2 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrzeitpunkt",
+        "fussnoten",
+        "ohne_armzuordnung"
+      ],
+      "n_target_columns": 0,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:346|PMC5686687:T2",
+      "table_id": "PMC5686687:T2",
+      "doc_id": "PMC5686687",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5686687.md",
+      "record_ids": [
+        "yun2024:346"
+      ],
+      "caption": "**Outcomes Measured in Both Groups**",
+      "parser": "pandoc-rule/1",
+      "rows": 4,
+      "columns": 4,
+      "complexity": {
+        "score": 0.1075,
+        "class": "einfach",
+        "features": {
+          "n_rows": 4,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 10
+        },
+        "drivers": [
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 1,
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:399|PMC4678179:T2",
+      "table_id": "PMC4678179:T2",
+      "doc_id": "PMC4678179",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4678179.md",
+      "record_ids": [
+        "yun2024:399"
+      ],
+      "caption": "Grade 3 to 5 Toxicities at Least Possibly Related to Treatment",
+      "parser": "pandoc-rule/1",
+      "rows": 2,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3275,
+        "class": "mittel",
+        "features": {
+          "n_rows": 2,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 6
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:642|PMC5830087:T1",
+      "table_id": "PMC5830087:T1",
+      "doc_id": "PMC5830087",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5830087.md",
+      "record_ids": [
+        "yun2024:642"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 1,
+      "columns": 3,
+      "complexity": {
+        "score": 0.465,
+        "class": "komplex",
+        "features": {
+          "n_rows": 1,
+          "n_data_columns": 2,
+          "n_columns": 3,
+          "n_header_levels": 4,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 2
+        },
+        "drivers": [
+          "4 Header-Ebenen",
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:267|PMC2596788:T1",
+      "table_id": "PMC2596788:T1",
+      "doc_id": "PMC2596788",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2596788.md",
+      "record_ids": [
+        "yun2024:267"
+      ],
+      "caption": "Socio-demographic and disease characteristics of patients allocated to GERD-education vs. control groups, recorded at baseline.",
+      "parser": "pandoc-rule/1",
+      "rows": 13,
+      "columns": 3,
+      "complexity": {
+        "score": 0.1775,
+        "class": "einfach",
+        "features": {
+          "n_rows": 13,
+          "n_data_columns": 1,
+          "n_columns": 3,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 0,
+          "has_timepoints": true,
+          "n_data_cells": 13
+        },
+        "drivers": [
+          "13 Datenzeilen",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "einfach",
+        "mehrzeitpunkt"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 1,
+      "gold_cells": 4,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:641|PMC5830087:T4",
+      "table_id": "PMC5830087:T4",
+      "doc_id": "PMC5830087",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5830087.md",
+      "record_ids": [
+        "yun2024:641"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 3,
+      "columns": 3,
+      "complexity": {
+        "score": 0.555,
+        "class": "komplex",
+        "features": {
+          "n_rows": 3,
+          "n_data_columns": 2,
+          "n_columns": 3,
+          "n_header_levels": 4,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 1,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 6
+        },
+        "drivers": [
+          "4 Header-Ebenen",
+          "1 Fussnoten",
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:149|PMC4996097:T5",
+      "table_id": "PMC4996097:T5",
+      "doc_id": "PMC4996097",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4996097.md",
+      "record_ids": [
+        "yun2024:149"
+      ],
+      "caption": "Comparison of /mini/ word's voice analysis results of study group in their own and with control group",
+      "parser": "pandoc-rule/1",
+      "rows": 4,
+      "columns": 4,
+      "complexity": {
+        "score": 0.375,
+        "class": "mittel",
+        "features": {
+          "n_rows": 4,
+          "n_data_columns": 2,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 3,
+          "n_irregular_rows": 0,
+          "n_target_columns": 0,
+          "n_unassigned_columns": 2,
+          "has_timepoints": true,
+          "n_data_cells": 7
+        },
+        "drivers": [
+          "3 Fussnoten",
+          "2 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrzeitpunkt",
+        "fussnoten",
+        "ohne_armzuordnung"
+      ],
+      "n_target_columns": 0,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:401|PMC5268424:T3",
+      "table_id": "PMC5268424:T3",
+      "doc_id": "PMC5268424",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5268424.md",
+      "record_ids": [
+        "yun2024:401"
+      ],
+      "caption": "Average and Standard Deviation of Negative Affect Scales, by Treatment.",
+      "parser": "pandoc-rule/1",
+      "rows": 32,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3675,
+        "class": "mittel",
+        "features": {
+          "n_rows": 32,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 1,
+          "n_irregular_rows": 0,
+          "n_target_columns": 0,
+          "n_unassigned_columns": 3,
+          "has_timepoints": false,
+          "n_data_cells": 72
+        },
+        "drivers": [
+          "32 Datenzeilen",
+          "1 Fussnoten",
+          "3 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "fussnoten",
+        "ohne_armzuordnung"
+      ],
+      "n_target_columns": 0,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "focus_rows": 3,
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:349|PMC5686687:T2",
+      "table_id": "PMC5686687:T2",
+      "doc_id": "PMC5686687",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5686687.md",
+      "record_ids": [
+        "yun2024:349"
+      ],
+      "caption": "**Outcomes Measured in Both Groups**",
+      "parser": "pandoc-rule/1",
+      "rows": 4,
+      "columns": 4,
+      "complexity": {
+        "score": 0.1075,
+        "class": "einfach",
+        "features": {
+          "n_rows": 4,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 10
+        },
+        "drivers": [
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 2,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:398|PMC4678179:T2",
+      "table_id": "PMC4678179:T2",
+      "doc_id": "PMC4678179",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4678179.md",
+      "record_ids": [
+        "yun2024:398"
+      ],
+      "caption": "Grade 3 to 5 Toxicities at Least Possibly Related to Treatment",
+      "parser": "pandoc-rule/1",
+      "rows": 2,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3275,
+        "class": "mittel",
+        "features": {
+          "n_rows": 2,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 6
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:150|PMC4996097:T4",
+      "table_id": "PMC4996097:T4",
+      "doc_id": "PMC4996097",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4996097.md",
+      "record_ids": [
+        "yun2024:150"
+      ],
+      "caption": "Comparison of /n/ nasal consonant's voice analysis results of study group in their own and with control group",
+      "parser": "pandoc-rule/1",
+      "rows": 4,
+      "columns": 4,
+      "complexity": {
+        "score": 0.375,
+        "class": "mittel",
+        "features": {
+          "n_rows": 4,
+          "n_data_columns": 2,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 1,
+          "n_irregular_rows": 0,
+          "n_target_columns": 0,
+          "n_unassigned_columns": 2,
+          "has_timepoints": true,
+          "n_data_cells": 7
+        },
+        "drivers": [
+          "1 Fussnoten",
+          "2 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrzeitpunkt",
+        "fussnoten",
+        "ohne_armzuordnung"
+      ],
+      "n_target_columns": 0,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:397|PMC4678179:T2",
+      "table_id": "PMC4678179:T2",
+      "doc_id": "PMC4678179",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4678179.md",
+      "record_ids": [
+        "yun2024:397"
+      ],
+      "caption": "Grade 3 to 5 Toxicities at Least Possibly Related to Treatment",
+      "parser": "pandoc-rule/1",
+      "rows": 2,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3275,
+        "class": "mittel",
+        "features": {
+          "n_rows": 2,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 6
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 2,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:347|PMC5686687:T1",
+      "table_id": "PMC5686687:T1",
+      "doc_id": "PMC5686687",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5686687.md",
+      "record_ids": [
+        "yun2024:347"
+      ],
+      "caption": "**Demographic and Clinical Characteristic of the Studied Population**",
+      "parser": "pandoc-rule/1",
+      "rows": 1,
+      "columns": 4,
+      "complexity": {
+        "score": 0.0925,
+        "class": "einfach",
+        "features": {
+          "n_rows": 1,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 3
+        },
+        "drivers": [
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:345|PMC5686687:T1",
+      "table_id": "PMC5686687:T1",
+      "doc_id": "PMC5686687",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5686687.md",
+      "record_ids": [
+        "yun2024:345"
+      ],
+      "caption": "**Demographic and Clinical Characteristic of the Studied Population**",
+      "parser": "pandoc-rule/1",
+      "rows": 1,
+      "columns": 4,
+      "complexity": {
+        "score": 0.0925,
+        "class": "einfach",
+        "features": {
+          "n_rows": 1,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 3
+        },
+        "drivers": [
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:261|PMC5771543:T6",
+      "table_id": "PMC5771543:T6",
+      "doc_id": "PMC5771543",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5771543.md",
+      "record_ids": [
+        "yun2024:261"
+      ],
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "parser": "pandoc-rule/1",
+      "rows": 16,
+      "columns": 5,
+      "complexity": {
+        "score": 0.205,
+        "class": "einfach",
+        "features": {
+          "n_rows": 16,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 64
+        },
+        "drivers": [
+          "16 Datenzeilen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:262|PMC5771543:T6",
+      "table_id": "PMC5771543:T6",
+      "doc_id": "PMC5771543",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5771543.md",
+      "record_ids": [
+        "yun2024:262"
+      ],
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "parser": "pandoc-rule/1",
+      "rows": 16,
+      "columns": 5,
+      "complexity": {
+        "score": 0.205,
+        "class": "einfach",
+        "features": {
+          "n_rows": 16,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 64
+        },
+        "drivers": [
+          "16 Datenzeilen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size",
+        "intervention_mean"
+      ],
+      "focus_rows": 2,
+      "gold_cells": 4,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:260|PMC5771543:T6",
+      "table_id": "PMC5771543:T6",
+      "doc_id": "PMC5771543",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5771543.md",
+      "record_ids": [
+        "yun2024:260"
+      ],
+      "caption": "[Summary of Treatment-Emergent Suicidal Ideation and Behavior Reported on the Columbia-Suicide Severity Rating Scale at Any Postbaseline Assessment, Safety Population]{.smallcaps}",
+      "parser": "pandoc-rule/1",
+      "rows": 16,
+      "columns": 5,
+      "complexity": {
+        "score": 0.205,
+        "class": "einfach",
+        "features": {
+          "n_rows": 16,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 64
+        },
+        "drivers": [
+          "16 Datenzeilen",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 4,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:483|PMC3343759:T2",
+      "table_id": "PMC3343759:T2",
+      "doc_id": "PMC3343759",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3343759.md",
+      "record_ids": [
+        "yun2024:483"
+      ],
+      "caption": "Effects of SLT at day 21 according to ANELT",
+      "parser": "pandoc-rule/1",
+      "rows": 2,
+      "columns": 4,
+      "complexity": {
+        "score": 0.1475,
+        "class": "einfach",
+        "features": {
+          "n_rows": 2,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 5
+        },
+        "drivers": [
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "einfach"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "focus_rows": 0,
+      "gold_cells": 2,
+      "gold_reachable": 2
+    }
+  ]
+}
