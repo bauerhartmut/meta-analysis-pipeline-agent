@@ -1,249 +1,131 @@
 {
   "run": "_lesekopie_20261118",
-  "parser": [
-    {
-      "fall": "vorschrift",
-      "zelle": {
-        "field": "intervention_group_size",
-        "arm": "intervention",
-        "value": 120
-      },
+  "parser": {
+    "vorschrift": {
       "durchgekommen": true,
-      "fehler": "",
-      "geparst": [
-        {
-          "field": "intervention_group_size",
-          "arm": "intervention",
-          "value": 120.0,
-          "timepoint": ""
-        }
-      ]
+      "fehler": ""
     },
-    {
-      "fall": "vorschrift_komparator",
-      "zelle": {
-        "field": "comparator_group_size",
-        "arm": "comparator",
-        "value": 118
-      },
+    "vorschrift_komparator": {
       "durchgekommen": true,
-      "fehler": "",
-      "geparst": [
-        {
-          "field": "comparator_group_size",
-          "arm": "comparator",
-          "value": 118.0,
-          "timepoint": ""
-        }
-      ]
+      "fehler": ""
     },
-    {
-      "fall": "wert_mit_komma",
-      "zelle": {
-        "field": "intervention_group_size",
-        "arm": "intervention",
-        "value": "120,5"
-      },
+    "wert_mit_komma": {
       "durchgekommen": true,
-      "fehler": "",
-      "geparst": [
-        {
-          "field": "intervention_group_size",
-          "arm": "intervention",
-          "value": 120.5,
-          "timepoint": ""
-        }
-      ]
+      "fehler": ""
     },
-    {
-      "fall": "wert_als_text",
-      "zelle": {
-        "field": "intervention_group_size",
-        "arm": "intervention",
-        "value": "120 patients"
-      },
-      "durchgekommen": false,
-      "fehler": "keine_verwertbaren_zellen",
-      "geparst": []
-    },
-    {
-      "fall": "feld_n",
-      "zelle": {
-        "field": "n",
-        "arm": "intervention",
-        "value": 120
-      },
-      "durchgekommen": false,
-      "fehler": "keine_verwertbaren_zellen",
-      "geparst": []
-    },
-    {
-      "fall": "feld_intervention_n",
-      "zelle": {
-        "field": "intervention_n",
-        "arm": "intervention",
-        "value": 120
-      },
-      "durchgekommen": false,
-      "fehler": "keine_verwertbaren_zellen",
-      "geparst": []
-    },
-    {
-      "fall": "feld_group_size",
-      "zelle": {
-        "field": "group_size",
-        "arm": "intervention",
-        "value": 120
-      },
-      "durchgekommen": false,
-      "fehler": "keine_verwertbaren_zellen",
-      "geparst": []
-    },
-    {
-      "fall": "arm_control",
-      "zelle": {
-        "field": "comparator_group_size",
-        "arm": "control",
-        "value": 118
-      },
-      "durchgekommen": false,
-      "fehler": "keine_verwertbaren_zellen",
-      "geparst": []
-    },
-    {
-      "fall": "arm_fehlt",
-      "zelle": {
-        "field": "intervention_group_size",
-        "value": 120
-      },
-      "durchgekommen": false,
-      "fehler": "keine_verwertbaren_zellen",
-      "geparst": []
-    },
-    {
-      "fall": "wert_als_string_zahl",
-      "zelle": {
-        "field": "intervention_group_size",
-        "arm": "intervention",
-        "value": "120"
-      },
+    "wert_als_string_zahl": {
       "durchgekommen": true,
-      "fehler": "",
-      "geparst": [
-        {
-          "field": "intervention_group_size",
-          "arm": "intervention",
-          "value": 120.0,
-          "timepoint": ""
-        }
-      ]
+      "fehler": ""
+    },
+    "wert_als_text": {
+      "durchgekommen": false,
+      "fehler": "keine_verwertbaren_zellen"
+    },
+    "feld_n": {
+      "durchgekommen": false,
+      "fehler": "keine_verwertbaren_zellen"
+    },
+    "feld_intervention_n": {
+      "durchgekommen": false,
+      "fehler": "keine_verwertbaren_zellen"
+    },
+    "feld_group_size": {
+      "durchgekommen": false,
+      "fehler": "keine_verwertbaren_zellen"
+    },
+    "arm_control": {
+      "durchgekommen": false,
+      "fehler": "keine_verwertbaren_zellen"
+    },
+    "arm_fehlt": {
+      "durchgekommen": false,
+      "fehler": "keine_verwertbaren_zellen"
     }
-  ],
+  },
   "modelle": {
     "qwen30": {
-      "records_mit_gold_n": 643,
-      "records_davon_mit_gemeldetem_n": 119,
-      "anteil_n_gemeldet": 0.1851,
-      "zellen_je_record_median": 4,
-      "content_chars_median": 377,
-      "chars_je_zelle_median": 102.5,
-      "gruppen_zellen": 224,
-      "gruppen_zellen_mit_zeitpunkt": 224,
-      "sonstige_zellen": 1744,
-      "sonstige_zellen_mit_zeitpunkt": 1744,
-      "feldnamen": {
-        "intervention_mean": 466,
-        "comparator_mean": 457,
-        "intervention_standard_deviation": 269,
-        "comparator_standard_deviation": 264,
-        "comparator_events": 152,
-        "intervention_events": 136,
-        "comparator_group_size": 117,
-        "intervention_group_size": 107
-      },
-      "beispiele_ohne_n": [
-        {
-          "record_id": "yun2024:3",
-          "felder": [
-            "intervention_mean",
-            "comparator_mean"
-          ],
-          "content_chars": 223,
-          "komplett_leer": false
-        },
-        {
-          "record_id": "yun2024:4",
-          "felder": [
-            "intervention_mean",
-            "intervention_standard_deviation",
-            "comparator_mean",
-            "comparator_standard_deviation"
-          ],
-          "content_chars": 495,
-          "komplett_leer": false
-        },
-        {
-          "record_id": "yun2024:6",
-          "felder": [
-            "intervention_mean",
-            "comparator_mean"
-          ],
-          "content_chars": 265,
-          "komplett_leer": false
+      "mit_gold_n": {
+        "records": 643,
+        "records_mit_gemeldetem_n": 119,
+        "zellen_je_record_median": 4,
+        "zellen": 1968,
+        "zeichen": 211840,
+        "zeichen_je_zelle": 107.6,
+        "zeichen_je_zelle_median": 102.5,
+        "zeichen_je_zelle_streuung": [
+          98.8,
+          102.5,
+          109.3
+        ],
+        "gruppen_zellen": 224,
+        "gruppen_zellen_mit_zeitpunkt": 224,
+        "sonstige_zellen": 1744,
+        "sonstige_zellen_mit_zeitpunkt": 1744,
+        "geschaetzt_verlorene_zellen": {
+          "gesamt": 43.8,
+          "median": 78.8
         }
-      ]
+      },
+      "ohne_gold_n": {
+        "records": 56,
+        "records_mit_gemeldetem_n": 8,
+        "zellen_je_record_median": 2.0,
+        "zellen": 142,
+        "zeichen": 14946,
+        "zeichen_je_zelle": 105.3,
+        "zeichen_je_zelle_median": 103.5,
+        "zeichen_je_zelle_streuung": [
+          99.5,
+          103.5,
+          107.0
+        ],
+        "gruppen_zellen": 16,
+        "gruppen_zellen_mit_zeitpunkt": 16,
+        "sonstige_zellen": 126,
+        "sonstige_zellen_mit_zeitpunkt": 126
+      }
     },
     "glm": {
-      "records_mit_gold_n": 643,
-      "records_davon_mit_gemeldetem_n": 497,
-      "anteil_n_gemeldet": 0.7729,
-      "zellen_je_record_median": 4,
-      "content_chars_median": 391,
-      "chars_je_zelle_median": 98.5,
-      "gruppen_zellen": 990,
-      "gruppen_zellen_mit_zeitpunkt": 675,
-      "sonstige_zellen": 1164,
-      "sonstige_zellen_mit_zeitpunkt": 912,
-      "feldnamen": {
-        "intervention_group_size": 499,
-        "comparator_group_size": 491,
-        "intervention_mean": 268,
-        "comparator_mean": 260,
-        "intervention_standard_deviation": 192,
-        "comparator_standard_deviation": 187,
-        "intervention_events": 129,
-        "comparator_events": 128
-      },
-      "beispiele_ohne_n": [
-        {
-          "record_id": "yun2024:10",
-          "felder": [
-            "intervention_events"
-          ],
-          "content_chars": 80,
-          "komplett_leer": false
-        },
-        {
-          "record_id": "yun2024:11",
-          "felder": [
-            "intervention_mean",
-            "comparator_mean"
-          ],
-          "content_chars": 203,
-          "komplett_leer": false
-        },
-        {
-          "record_id": "yun2024:83",
-          "felder": [
-            "intervention_mean",
-            "intervention_standard_deviation",
-            "comparator_mean",
-            "comparator_standard_deviation"
-          ],
-          "content_chars": 408,
-          "komplett_leer": false
+      "mit_gold_n": {
+        "records": 643,
+        "records_mit_gemeldetem_n": 497,
+        "zellen_je_record_median": 4,
+        "zellen": 2154,
+        "zeichen": 210983,
+        "zeichen_je_zelle": 97.9,
+        "zeichen_je_zelle_median": 98.5,
+        "zeichen_je_zelle_streuung": [
+          92.8,
+          98.5,
+          103.5
+        ],
+        "gruppen_zellen": 990,
+        "gruppen_zellen_mit_zeitpunkt": 675,
+        "sonstige_zellen": 1164,
+        "sonstige_zellen_mit_zeitpunkt": 912,
+        "geschaetzt_verlorene_zellen": {
+          "gesamt": -3.3,
+          "median": -33.6
         }
-      ]
+      },
+      "ohne_gold_n": {
+        "records": 56,
+        "records_mit_gemeldetem_n": 10,
+        "zellen_je_record_median": 1.5,
+        "zellen": 100,
+        "zeichen": 9806,
+        "zeichen_je_zelle": 98.1,
+        "zeichen_je_zelle_median": 99.5,
+        "zeichen_je_zelle_streuung": [
+          77.8,
+          99.5,
+          103.3
+        ],
+        "gruppen_zellen": 20,
+        "gruppen_zellen_mit_zeitpunkt": 8,
+        "sonstige_zellen": 80,
+        "sonstige_zellen_mit_zeitpunkt": 54
+      }
     }
   }
 }

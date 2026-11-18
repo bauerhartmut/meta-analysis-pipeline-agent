@@ -1,19 +1,19 @@
 #!/usr/bin/env python
-"""Prueft offline, warum qwen30 fast keine Gruppengroessen liefert.
+"""Prueft offline, ob qwen30 Gruppengroessen auslaesst oder der Parser sie verwirft.
 
-Zwei moegliche Ursachen, die sich trennen lassen:
+Rohantworten speichert der Lauf nicht, deshalb zwei Messungen:
 
-1. Der Parser verwirft die Zellen (Feldname, Arm oder Wert passen nicht).
-2. Das Modell nennt die Gruppengroesse gar nicht.
+1. Der echte Parser (`run_extended_extraction.parse_cells`) wird mit typischen
+   Schreibweisen einer Gruppengroesse gefuettert. Damit steht fest, welche Formen
+   durchkommen und welche stillschweigend verschwinden.
+2. Die Antworten der Lesekopie werden je Modell in zwei Gruppen geteilt: Records,
+   deren Gold eine Gruppengroesse traegt, und solche ohne. Die zweite Gruppe ist
+   die Vergleichsbasis: Dort ist nichts zu melden, also zeigt sie, wie viele
+   Zeichen das Modell je gelieferter Zelle ohnehin braucht.
 
-Dafuer wird zuerst der echte Parser (`run_extended_extraction.parse_cells`) mit
-typischen Schreibweisen gefuettert. Danach werden die gespeicherten Antworten
-der Lesekopie ausgewertet: Wie oft nennt ein Modell bei vorhandenem Gold-N
-ueberhaupt eine Gruppengroesse, wie viele Zellen kommen je Record, wie lang ist
-die Antwort, und tragen die Gruppen-Zellen einen Zeitpunkt?
-
-Rohantworten speichert der Lauf nicht, deshalb ist der Parsertest der einzige
-direkte Beleg; alles Weitere sind Messungen am gespeicherten Bestand.
+Weicht die erste Gruppe davon ab, steckt ungenutzter Text in der Antwort — das
+waere das Signal fuer still verworfene Zellen. Bleibt sie gleich, hat das Modell
+die Zellen nicht geschrieben.
 
 Aufruf:
     python pruefe_gruppengroesse_qwen30.py --run _lesekopie_20261118 \
@@ -36,20 +36,20 @@ RECORDS = HERE / "records" / "yun699.jsonl"
 HARNESS = BENCH / "run_extended_extraction.py"
 GRUPPENFELDER = {"intervention_group_size", "comparator_group_size"}
 
-# Schreibweisen, die ein Modell fuer eine Gruppengroesse liefern koennte.
-# Die ersten beiden sind die vorgeschriebene Form und muessen durchkommen.
-PARSER_FAELLE = [
-    ("vorschrift", {"field": "intervention_group_size", "arm": "intervention", "value": 120}),
-    ("vorschrift_komparator", {"field": "comparator_group_size", "arm": "comparator", "value": 118}),
-    ("wert_mit_komma", {"field": "intervention_group_size", "arm": "intervention", "value": "120,5"}),
-    ("wert_als_text", {"field": "intervention_group_size", "arm": "intervention", "value": "120 patients"}),
-    ("feld_n", {"field": "n", "arm": "intervention", "value": 120},),
-    ("feld_intervention_n", {"field": "intervention_n", "arm": "intervention", "value": 120}),
-    ("feld_group_size", {"field": "group_size", "arm": "intervention", "value": 120}),
-    ("arm_control", {"field": "comparator_group_size", "arm": "control", "value": 118}),
-    ("arm_fehlt", {"field": "intervention_group_size", "value": 120}),
-    ("wert_als_string_zahl", {"field": "intervention_group_size", "arm": "intervention", "value": "120"}),
-]
+# Schreibweisen, die ein Modell fuer eine Gruppengroesse liefern koennte. Die
+# ersten vier sind die vorgeschriebene Form und muessen durchkommen.
+PARSER_FAELLE = {
+    "vorschrift": {"field": "intervention_group_size", "arm": "intervention", "value": 120},
+    "vorschrift_komparator": {"field": "comparator_group_size", "arm": "comparator", "value": 118},
+    "wert_mit_komma": {"field": "intervention_group_size", "arm": "intervention", "value": "120,5"},
+    "wert_als_string_zahl": {"field": "intervention_group_size", "arm": "intervention", "value": "120"},
+    "wert_als_text": {"field": "intervention_group_size", "arm": "intervention", "value": "120 patients"},
+    "feld_n": {"field": "n", "arm": "intervention", "value": 120},
+    "feld_intervention_n": {"field": "intervention_n", "arm": "intervention", "value": 120},
+    "feld_group_size": {"field": "group_size", "arm": "intervention", "value": 120},
+    "arm_control": {"field": "comparator_group_size", "arm": "control", "value": 118},
+    "arm_fehlt": {"field": "intervention_group_size", "value": 120},
+}
 
 
 def lies(pfad: Path) -> list[dict]:
@@ -65,22 +65,61 @@ def lade_parser():
     return modul.parse_cells
 
 
-def parser_test(parse_cells) -> list[dict]:
-    ergebnisse = []
-    for fall in PARSER_FAELLE:
-        name, zelle = fall[0], fall[1]
+def parser_test(parse_cells) -> dict:
+    ergebnisse = {}
+    for name, zelle in PARSER_FAELLE.items():
         roh = json.dumps({"timepoint": "24", "cells": [zelle]})
         cells, fehler = parse_cells(roh)
-        ergebnisse.append(
-            {
-                "fall": name,
-                "zelle": zelle,
-                "durchgekommen": bool(cells),
-                "fehler": fehler,
-                "geparst": cells,
-            }
-        )
+        ergebnisse[name] = {"durchgekommen": bool(cells), "fehler": fehler}
     return ergebnisse
+
+
+def messe(zeilen: list[dict]) -> dict:
+    """Kennzahlen einer Record-Gruppe eines Modells."""
+    zellen_je_record: list[int] = []
+    zeichen_je_zelle_record: list[float] = []
+    zeichen_summe = zellen_summe = 0
+    gruppen_zellen = gruppen_zeitpunkt = 0
+    sonstige_zellen = sonstige_zeitpunkt = 0
+    meldet_n = 0
+
+    for row in zeilen:
+        cells = row.get("rows") or []
+        zellen_je_record.append(len(cells))
+        zeichen = row.get("content_chars") or 0
+        if cells and zeichen:
+            zeichen_je_zelle_record.append(zeichen / len(cells))
+        zeichen_summe += zeichen
+        zellen_summe += len(cells)
+        if any(c["field"] in GRUPPENFELDER for c in cells):
+            meldet_n += 1
+        for c in cells:
+            mit_zeitpunkt = bool((c.get("timepoint") or "").strip())
+            if c["field"] in GRUPPENFELDER:
+                gruppen_zellen += 1
+                gruppen_zeitpunkt += mit_zeitpunkt
+            else:
+                sonstige_zellen += 1
+                sonstige_zeitpunkt += mit_zeitpunkt
+
+    return {
+        "records": len(zeilen),
+        "records_mit_gemeldetem_n": meldet_n,
+        "zellen_je_record_median": statistics.median(zellen_je_record) if zellen_je_record else None,
+        "zellen": zellen_summe,
+        "zeichen": zeichen_summe,
+        "zeichen_je_zelle": round(zeichen_summe / zellen_summe, 1) if zellen_summe else None,
+        "zeichen_je_zelle_median": round(statistics.median(zeichen_je_zelle_record), 1)
+        if zeichen_je_zelle_record else None,
+        "zeichen_je_zelle_streuung": (
+            [round(q, 1) for q in statistics.quantiles(zeichen_je_zelle_record, n=4)]
+            if len(zeichen_je_zelle_record) > 3 else None
+        ),
+        "gruppen_zellen": gruppen_zellen,
+        "gruppen_zellen_mit_zeitpunkt": gruppen_zeitpunkt,
+        "sonstige_zellen": sonstige_zellen,
+        "sonstige_zellen_mit_zeitpunkt": sonstige_zeitpunkt,
+    }
 
 
 def main() -> int:
@@ -90,89 +129,50 @@ def main() -> int:
     ap.add_argument("--modelle", nargs="+", default=["qwen30", "glm"])
     args = ap.parse_args()
 
-    parse_cells = lade_parser()
-    pt = parser_test(parse_cells)
+    pt = parser_test(lade_parser())
     print("--- Parsertest ---")
-    for fall in pt:
-        print(f"  {'JA ' if fall['durchgekommen'] else 'NEIN'} {fall['fall']:<24} {fall['fehler'] or ''}")
+    for name, fall in pt.items():
+        print(f"  {'JA ' if fall['durchgekommen'] else 'NEIN'} {name}")
 
     rows = lies(RUNS / args.run / "predictions.jsonl")
-    gold = {r["record_id"]: r for r in lies(RECORDS)}
-
-    # Records, deren Gold ueberhaupt eine Gruppengroesse traegt.
     mit_gold_n = {
-        rid for rid, rec in gold.items()
+        rid for rid, rec in ((r["record_id"], r) for r in lies(RECORDS))
         if any(c["field"] in GRUPPENFELDER for c in rec["gold"]["cells"])
     }
 
     bericht: dict = {"run": args.run, "parser": pt, "modelle": {}}
     for modell in args.modelle:
         eigene = [r for r in rows if r["model"] == modell]
-        zellen_je_record: list[int] = []
-        zeichen_je_zelle: list[float] = []
-        zeichen: list[int] = []
-        n_gemeldet = 0
-        n_cells_mit_zeitpunkt = 0
-        n_cells_gesamt = 0
-        sonstige_mit_zeitpunkt = 0
-        sonstige_gesamt = 0
-        feldnamen = Counter()
-        beispiele: list[dict] = []
+        mit_n = messe([r for r in eigene if r["record_id"] in mit_gold_n])
+        ohne_n = messe([r for r in eigene if r["record_id"] not in mit_gold_n])
 
-        for row in eigene:
-            if row["record_id"] not in mit_gold_n:
-                continue
-            cells = row.get("rows") or []
-            zellen_je_record.append(len(cells))
-            if row.get("content_chars"):
-                zeichen.append(row["content_chars"])
-                if cells:
-                    zeichen_je_zelle.append(row["content_chars"] / len(cells))
-            gruppen = [c for c in cells if c["field"] in GRUPPENFELDER]
-            n_gemeldet += 1 if gruppen else 0
-            for c in gruppen:
-                n_cells_gesamt += 1
-                if (c.get("timepoint") or "").strip():
-                    n_cells_mit_zeitpunkt += 1
-            for c in cells:
-                if c["field"] in GRUPPENFELDER:
-                    continue
-                sonstige_gesamt += 1
-                if (c.get("timepoint") or "").strip():
-                    sonstige_mit_zeitpunkt += 1
-            for c in cells:
-                feldnamen[c["field"]] += 1
-            if not gruppen and len(beispiele) < 3 and cells:
-                beispiele.append(
-                    {
-                        "record_id": row["record_id"],
-                        "felder": [c["field"] for c in cells],
-                        "content_chars": row.get("content_chars"),
-                        "komplett_leer": False,
-                    }
-                )
+        # Wie viele Zellen steckten in der Antwort, wenn sie je Zelle so viele
+        # Zeichen braucht wie in der Gruppe ohne Gold-N? Alles ueber der
+        # gelieferten Zellzahl waere Text, der beim Parsen verloren ging. Die
+        # Schaetzung ist eine grobe Schranke: Eine Gruppen-Zelle ist im JSON nur
+        # rund 75 Zeichen lang, also nahe am Durchschnitt; ihr Verlust bewegt die
+        # Kennzahl deshalb kaum, und 56 Baseline-Records schwanken.
+        # Zwei Baselines, weil die Gruppen unterschiedlich gross sind: der
+        # Gesamtquotient gewichtet lange Antworten stark, der Median je Record
+        # nicht. Die Spanne der beiden ist die ehrliche Unsicherheit.
+        schaetzungen = {}
+        for name, basis in (
+            ("gesamt", ohne_n["zeichen_je_zelle"]),
+            ("median", ohne_n["zeichen_je_zelle_median"]),
+        ):
+            schaetzungen[name] = (
+                round(mit_n["zeichen"] / basis - mit_n["zellen"], 1) if basis else None
+            )
+        mit_n["geschaetzt_verlorene_zellen"] = schaetzungen
 
-        bericht["modelle"][modell] = {
-            "records_mit_gold_n": len(zellen_je_record),
-            "records_davon_mit_gemeldetem_n": n_gemeldet,
-            "anteil_n_gemeldet": round(n_gemeldet / len(zellen_je_record), 4) if zellen_je_record else None,
-            "zellen_je_record_median": statistics.median(zellen_je_record) if zellen_je_record else None,
-            "content_chars_median": statistics.median(zeichen) if zeichen else None,
-            "chars_je_zelle_median": round(statistics.median(zeichen_je_zelle), 1) if zeichen_je_zelle else None,
-            "gruppen_zellen": n_cells_gesamt,
-            "gruppen_zellen_mit_zeitpunkt": n_cells_mit_zeitpunkt,
-            "sonstige_zellen": sonstige_gesamt,
-            "sonstige_zellen_mit_zeitpunkt": sonstige_mit_zeitpunkt,
-            "feldnamen": dict(feldnamen.most_common()),
-            "beispiele_ohne_n": beispiele,
-        }
-        z = bericht["modelle"][modell]
-        print(f"\n--- {modell} (Records mit Gold-N: {z['records_mit_gold_n']}) ---")
-        print(f"  N gemeldet: {z['records_davon_mit_gemeldetem_n']} ({z['anteil_n_gemeldet']:.1%})")
-        print(f"  Zellen je Record (Median): {z['zellen_je_record_median']}, "
-              f"Zeichen je Zelle (Median): {z['chars_je_zelle_median']}")
-        print(f"  Gruppen-Zellen: {z['gruppen_zellen']}, davon mit Zeitpunkt: {z['gruppen_zellen_mit_zeitpunkt']}")
-        print(f"  sonstige Zellen: {z['sonstige_zellen']}, davon mit Zeitpunkt: {z['sonstige_zellen_mit_zeitpunkt']}")
+        bericht["modelle"][modell] = {"mit_gold_n": mit_n, "ohne_gold_n": ohne_n}
+        print(f"\n--- {modell} ---")
+        for gruppe, k in (("mit Gold-N", mit_n), ("ohne Gold-N", ohne_n)):
+            print(f"  {gruppe:<12} Records {k['records']:4d} | N gemeldet {k['records_mit_gemeldetem_n']:4d} "
+                  f"| Zellen/Record {k['zellen_je_record_median']} | Zeichen je Zelle {k['zeichen_je_zelle']}")
+        print(f"  Median je Record {mit_n['zeichen_je_zelle_median']} (mit) / {ohne_n['zeichen_je_zelle_median']} (ohne) "
+              f"| Quartile mit {mit_n['zeichen_je_zelle_streuung']}")
+        print(f"  geschaetzt beim Parsen verlorene Zellen: {schaetzungen}")
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(bericht, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

@@ -231,14 +231,6 @@
         "aus": 699
       }
     },
-    "pfade": {
-      "qwen30": {
-        "standard": 699
-      },
-      "glm": {
-        "standard": 699
-      }
-    },
     "fehlend_zerlegt": {
       "nicht_gemeldet": 1231,
       "leere_antwort": 168
