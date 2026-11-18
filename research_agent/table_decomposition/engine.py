@@ -280,7 +280,7 @@ class TableDecompositionEngine:
             )
         # Auswahlregel: je Outcome und Zeitpunkt eine Tabelle. Ein ausdruecklich
         # angeforderter ``table_ids``-Satz gewinnt gegen die Regel.
-        _chosen, redundant = primary_tables(parsed.tables, context)
+        redundant = primary_tables(parsed.tables, context)
         result.telemetry["redundant_tables"] = sorted(redundant)
         for table in parsed.tables:
             if table.table_id in redundant:

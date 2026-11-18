@@ -1,0 +1,35 @@
+{
+ "mode": "offline",
+ "generiert": "2026-11-18",
+ "frage": "Beleg, dass die Auswahlregel an einem dev-Dokument mit zwei Zeitpunkttabellen greift und kein Feld verliert",
+ "dokumente_mit_mehreren_zeitpunkttabellen": {
+  "yun2024:120": {
+   "doc": "PMC4450164",
+   "outcome": "ureteropelvic junction obstruction",
+   "tables": {
+    "PMC4450164:T1": {
+     "zeitpunkte": [
+      "sonography",
+      "ivp"
+     ],
+     "felder": []
+    },
+    "PMC4450164:T2": {
+     "zeitpunkte": [
+      "drain removal"
+     ],
+     "felder": []
+    }
+   },
+   "verdraengt": {},
+   "gold_felder_vorher": [],
+   "gold_felder_nachher": []
+  }
+ },
+ "dev_summe": {
+  "gold_vorher": 16,
+  "gold_nachher": 16,
+  "records": 38
+ },
+ "ergebnis": "Kein dev-Dokument druckt dasselbe Outcome zu denselben Zeitpunkten in zwei Tabellen. Das einzige Dokument mit zwei Zeitpunkttabellen (PMC4450164) hat verschiedene Zeitpunktmengen und keine Zielfelder, die Regel verdraengt dort nichts. Die Verdraengung selbst ist an PMC4319071 (test) und im Unit-Test belegt."
+}

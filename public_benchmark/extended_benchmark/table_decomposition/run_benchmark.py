@@ -107,7 +107,7 @@ def load_tables(selection_entries: Sequence[Dict[str, Any]],
     transfer_arms_from_document(parsed.tables, context, text)
     # Auswahlregel: je Outcome und Zeitpunkt eine Tabelle (``T4`` faellt
     # hinter ``T2`` zurueck). Bleibt sonst keine uebrig, bleiben alle stehen.
-    _chosen, redundant = primary_tables(parsed.tables, context)
+    redundant = primary_tables(parsed.tables, context)
     for table in parsed.tables:
         if table.table_id in redundant:
             table.redundant_of = redundant[table.table_id]

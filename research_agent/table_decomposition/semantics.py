@@ -830,7 +830,7 @@ def _timepoint_key(table: Table) -> Tuple[str, ...]:
 
 
 def primary_tables(tables: Sequence[Table],
-                   context: Optional[Dict[str, object]] = None) -> Tuple[set, Dict[str, str]]:
+                   context: Optional[Dict[str, object]] = None) -> Dict[str, str]:
     """Je Outcome und Zeitpunkt nur eine Tabelle - die erste gedruckte.
 
     ``PMC4319071`` druckt dieselben Outcomes und Zeitpunkte zweimal:
@@ -844,8 +844,8 @@ def primary_tables(tables: Sequence[Table],
     bleiben alle stehen, sonst ginge ein Feld verloren. Tabellen ohne
     Zielfeld sind keine Kandidaten.
 
-    Rueckgabe: Menge der gewaehlten Tabellen-IDs (alle Tabellen ausser den
-    verdraengten) und Zuordnung ``redundant -> gewaehlt``.
+    Rueckgabe: Zuordnung ``verdraengt -> gewaehlt``; leer, wenn nichts
+    verdraengt wird.
     """
     context = context or {}
 
@@ -867,7 +867,6 @@ def primary_tables(tables: Sequence[Table],
         if not key or not served(table):
             continue
         groups.setdefault(key, []).append(table)
-    chosen: set = {table.table_id for table in tables}
     redundant: Dict[str, str] = {}
     for group in groups.values():
         if len(group) < 2:
@@ -881,8 +880,7 @@ def primary_tables(tables: Sequence[Table],
             continue
         for table in ordered[1:]:
             redundant[table.table_id] = first.table_id
-            chosen.discard(table.table_id)
-    return chosen, redundant
+    return redundant
 
 
 def column_summary(column: Column) -> str:

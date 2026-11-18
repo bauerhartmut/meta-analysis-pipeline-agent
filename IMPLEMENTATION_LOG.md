@@ -1299,3 +1299,32 @@ Tabelle, A/B identisch, 0 verdraengt).
 `ac3b4c9` (95 erreichbare Goldfelder); der aktuelle Code liefert 46, unabhaengig
 von dieser Regel. Das Artefakt ist vor dem naechsten Zitat neu zu erzeugen.
 Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/auswahl_20261118.md`.
+
+## Sprint 41 - Auswahlregel vereinfacht und Struktur neu gemessen
+
+**Aenderung:** `primary_tables` gibt nur noch die Zuordnung
+`verdraengt -> gewaehlt` zurueck. Das zusaetzliche `chosen`-Set hat kein
+Aufrufer gelesen (geprueft in Engine, Benchmark, Test); Docstring und Test
+sind angepasst.
+
+**Beleg dev:** Alle 38 dev-Records einzeln geparst und angereichert
+(`dev_auswahlregel_20261118.json`): genau ein Dokument hat zwei Tabellen mit
+Zeitpunkt-Gruppenzeilen (`PMC4450164`, `yun2024:120`), beide mit
+verschiedenen Zeitpunktmengen (`sonography`/`ivp` gegen `drain removal`) und
+ohne Zielfelder. Die Regel verdraengt dort nichts, Goldfelder vorher =
+nachher. Ein dev-Dokument mit zwei Tabellen fuer dasselbe Outcome und
+dieselben Zeitpunkte existiert nicht; die Verdraengung ist an `PMC4319071`
+(test) und im Unit-Test belegt. dev gesamt unveraendert: 16 erreichbare
+Goldfelder, 5 Records mit Treffer, 0 Rueckfaelle.
+
+**Neues Artefakt:** `offline_struktur_20261118b/structure.json` (gleiche
+Auswahl, fuenf Strategien, aktueller Code). Gold erreichbar 46 (alt 95),
+erwartete Zellen 1748 (alt 2022), strukturell komplett 57/60 (alt 60/60),
+Strukturfehler 7 (alt 0). 25 der 35 geaenderten Records haben gleiche
+Zellzahl und verlieren nur die Feldmarkierung, also Folge der Guards aus
+Sprint 37, nicht dieser Regel (A/B identisch). Offen: Bisect ueber
+`737142c`, `718d291`, `79556dc`.
+
+**Naechster Hebel:** Bisect der Reichweite (95 -> 46), damit die Messlatte
+wieder belastbar ist. Bericht:
+`public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/auswahl_20261118.md`.

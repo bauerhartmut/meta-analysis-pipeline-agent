@@ -1094,13 +1094,9 @@ def test_one_table_per_outcome_and_timepoint():
     """Zwei Tabellen mit gleichem Zeitpunkt und gleichem Feld: die erste gilt."""
     first = _timepoint_table("D:T1", 1, "158.67")
     second = _timepoint_table("D:T2", 2, "143.25")
-    chosen, redundant = primary_tables([first, second], {"outcome": "Vegetable intake"})
-    assert chosen == {"D:T1"}
-    assert redundant == {"D:T2": "D:T1"}
+    assert primary_tables([first, second], {"outcome": "Vegetable intake"}) == {"D:T2": "D:T1"}
 
     # Ohne Zeitpunkt-Gruppen wird nicht verdraengt.
     first = _timepoint_table("D:T3", 1, "158.67", group="")
     second = _timepoint_table("D:T4", 2, "143.25", group="")
-    chosen, redundant = primary_tables([first, second], {"outcome": "Vegetable intake"})
-    assert redundant == {}
-    assert chosen == {"D:T3", "D:T4"}
+    assert primary_tables([first, second], {"outcome": "Vegetable intake"}) == {}
