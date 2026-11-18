@@ -1,0 +1,3667 @@
+{
+  "goldzellen_gesamt": 278,
+  "goldzellen_erreichbar": 62,
+  "goldzellen_wert_in_kopf": 26,
+  "goldzellen_wert_in_zelle": 6,
+  "goldzellen_wert_belegend": 32,
+  "goldzellen_wert_in_zeile": 34,
+  "goldzellen_wert_nirgends": 28,
+  "tabellen_je_record": {
+    "yun2024:111": [
+      "PMC4319071:T1"
+    ],
+    "yun2024:112": [
+      "PMC4319071:T1"
+    ],
+    "yun2024:15": [
+      "PMC2667135:T4"
+    ],
+    "yun2024:16": [
+      "PMC2667135:T4"
+    ],
+    "yun2024:172": [
+      "PMC5079604:T1"
+    ],
+    "yun2024:174": [
+      "PMC5079604:T1"
+    ],
+    "yun2024:184": [
+      "PMC5122613:T1"
+    ],
+    "yun2024:185": [
+      "PMC5122613:T1"
+    ],
+    "yun2024:194": [
+      "PMC5360580:T1"
+    ],
+    "yun2024:196": [
+      "PMC5360580:T6"
+    ],
+    "yun2024:202": [
+      "PMC5380326:T2"
+    ],
+    "yun2024:205": [
+      "PMC5380326:T2"
+    ],
+    "yun2024:252": [
+      "PMC5614421:T2"
+    ],
+    "yun2024:253": [
+      "PMC5614421:T2"
+    ],
+    "yun2024:257": [
+      "PMC5711682:T1"
+    ],
+    "yun2024:258": [
+      "PMC5711682:T1"
+    ],
+    "yun2024:265": [
+      "PMC2430617:T1"
+    ],
+    "yun2024:266": [
+      "PMC2430617:T1"
+    ],
+    "yun2024:275": [
+      "PMC3654355:T1"
+    ],
+    "yun2024:282": [
+      "PMC3654355:T2"
+    ],
+    "yun2024:296": [
+      "PMC4355974:T2"
+    ],
+    "yun2024:298": [
+      "PMC4355974:T2"
+    ],
+    "yun2024:30": [
+      "PMC3003523:T1"
+    ],
+    "yun2024:335": [
+      "PMC5617873:T2"
+    ],
+    "yun2024:336": [
+      "PMC5617873:T2"
+    ],
+    "yun2024:350": [
+      "PMC5874317:T1"
+    ],
+    "yun2024:352": [
+      "PMC5874317:T1"
+    ],
+    "yun2024:390": [
+      "PMC3278655:T2"
+    ],
+    "yun2024:391": [
+      "PMC3278655:T2"
+    ],
+    "yun2024:402": [
+      "PMC5781260:T1"
+    ],
+    "yun2024:403": [
+      "PMC5781260:T1"
+    ],
+    "yun2024:408": [
+      "PMC3475525:T2"
+    ],
+    "yun2024:421": [
+      "PMC3877023:T3"
+    ],
+    "yun2024:426": [
+      "PMC3877023:T4"
+    ],
+    "yun2024:438": [
+      "PMC3475525:T1"
+    ],
+    "yun2024:445": [
+      "PMC4140238:T1",
+      "PMC4140238:T2"
+    ],
+    "yun2024:453": [
+      "PMC5726464:T1"
+    ],
+    "yun2024:463": [
+      "PMC5726464:T1"
+    ],
+    "yun2024:474": [
+      "PMC4144850:T1"
+    ],
+    "yun2024:478": [
+      "PMC4144850:T1"
+    ],
+    "yun2024:486": [
+      "PMC3786549:T3"
+    ],
+    "yun2024:489": [
+      "PMC3786549:T3"
+    ],
+    "yun2024:494": [
+      "PMC5419060:T3"
+    ],
+    "yun2024:504": [
+      "PMC5419060:T2"
+    ],
+    "yun2024:531": [
+      "PMC4230312:T3"
+    ],
+    "yun2024:532": [
+      "PMC4230312:T1"
+    ],
+    "yun2024:550": [
+      "PMC3648394:T1"
+    ],
+    "yun2024:639": [
+      "PMC4511433:T2"
+    ],
+    "yun2024:640": [
+      "PMC4511433:T2"
+    ],
+    "yun2024:645": [
+      "PMC4675066:T1"
+    ],
+    "yun2024:647": [
+      "PMC4675066:T1"
+    ],
+    "yun2024:662": [
+      "PMC4987981:T1"
+    ],
+    "yun2024:665": [
+      "PMC4987981:T2"
+    ],
+    "yun2024:672": [
+      "PMC4550271:T1"
+    ],
+    "yun2024:675": [
+      "PMC4550271:T1"
+    ],
+    "yun2024:678": [
+      "PMC5777419:T2"
+    ],
+    "yun2024:682": [
+      "PMC5777419:T2"
+    ],
+    "yun2024:78": [
+      "PMC3546023:T4"
+    ],
+    "yun2024:79": [
+      "PMC3546023:T4"
+    ]
+  },
+  "felder": [
+    {
+      "record_id": "yun2024:111",
+      "table_id": "PMC4319071:T1",
+      "field": "comparator_group_size",
+      "raw": "434",
+      "value": 434.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "n=434",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:n=434"
+      ]
+    },
+    {
+      "record_id": "yun2024:112",
+      "table_id": "PMC4319071:T1",
+      "field": "comparator_group_size",
+      "raw": "434",
+      "value": 434.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "n=434",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:n=434"
+      ]
+    },
+    {
+      "record_id": "yun2024:15",
+      "table_id": "PMC2667135:T4",
+      "field": "intervention_group_size",
+      "raw": "103",
+      "value": 103.0,
+      "zeilen": [
+        0
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 0,
+          "col": 1,
+          "text": "89 (86.4%)^c^",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "fussnote:^",
+        "kopf:CoPAT^a^ (*n* = 103)"
+      ]
+    },
+    {
+      "record_id": "yun2024:16",
+      "table_id": "PMC2667135:T4",
+      "field": "intervention_group_size",
+      "raw": "103",
+      "value": 103.0,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 1,
+          "text": "4 (3.9%)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "fussnote:^",
+        "kopf:CoPAT^a^ (*n* = 103)"
+      ]
+    },
+    {
+      "record_id": "yun2024:194",
+      "table_id": "PMC5360580:T1",
+      "field": "intervention_group_size",
+      "raw": "169",
+      "value": 169.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "Pls group (n = 145)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:194",
+      "table_id": "PMC5360580:T1",
+      "field": "comparator_group_size",
+      "raw": "167",
+      "value": 167.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "Placebo group (n = 140)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:196",
+      "table_id": "PMC5360580:T6",
+      "field": "intervention_group_size",
+      "raw": "24",
+      "value": 24.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "Pls group (n = 169)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:196",
+      "table_id": "PMC5360580:T6",
+      "field": "comparator_group_size",
+      "raw": "24",
+      "value": 24.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "Placebo group (n = 167)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:257",
+      "table_id": "PMC5711682:T1",
+      "field": "intervention_group_size",
+      "raw": "38",
+      "value": 38.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "Genoss DES™ (n=38)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:Genoss DES™ (n=38)"
+      ]
+    },
+    {
+      "record_id": "yun2024:257",
+      "table_id": "PMC5711682:T1",
+      "field": "comparator_group_size",
+      "raw": "39",
+      "value": 39.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "Promus Element™ (n=39)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:Promus Element™ (n=39)"
+      ]
+    },
+    {
+      "record_id": "yun2024:258",
+      "table_id": "PMC5711682:T1",
+      "field": "intervention_group_size",
+      "raw": "38",
+      "value": 38.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "Genoss DES™ (n=38)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:Genoss DES™ (n=38)"
+      ]
+    },
+    {
+      "record_id": "yun2024:258",
+      "table_id": "PMC5711682:T1",
+      "field": "comparator_group_size",
+      "raw": "39",
+      "value": 39.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "Promus Element™ (n=39)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:Promus Element™ (n=39)"
+      ]
+    },
+    {
+      "record_id": "yun2024:265",
+      "table_id": "PMC2430617:T1",
+      "field": "intervention_group_size",
+      "raw": "83",
+      "value": 83.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "30 µg YIC group (N = 81)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 3,
+          "text": "60 µg YIC group (N = 78)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:265",
+      "table_id": "PMC2430617:T1",
+      "field": "comparator_group_size",
+      "raw": "79",
+      "value": 79.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "Placebo group (N = 78)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:266",
+      "table_id": "PMC2430617:T1",
+      "field": "intervention_group_size",
+      "raw": "80",
+      "value": 80.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "30 µg YIC group (N = 81)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 3,
+          "text": "60 µg YIC group (N = 78)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "r5/c1"
+      ]
+    },
+    {
+      "record_id": "yun2024:266",
+      "table_id": "PMC2430617:T1",
+      "field": "comparator_group_size",
+      "raw": "79",
+      "value": 79.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "Placebo group (N = 78)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:275",
+      "table_id": "PMC3654355:T1",
+      "field": "intervention_group_size",
+      "raw": "71",
+      "value": 71.0,
+      "zeilen": [
+        5,
+        6
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 5,
+          "col": 1,
+          "text": "60.5 (11.0)",
+          "gedruckt": false
+        },
+        {
+          "row": 6,
+          "col": 1,
+          "text": "68.3 (13.2)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:ILI ( *n* = 71)"
+      ]
+    },
+    {
+      "record_id": "yun2024:282",
+      "table_id": "PMC3654355:T2",
+      "field": "intervention_group_size",
+      "raw": "71",
+      "value": 71.0,
+      "zeilen": [
+        4
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 4,
+          "col": 1,
+          "text": "−1.2 (1.5)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:( *n* = 71)"
+      ]
+    },
+    {
+      "record_id": "yun2024:296",
+      "table_id": "PMC4355974:T2",
+      "field": "comparator_group_size",
+      "raw": "14",
+      "value": 14.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 4,
+          "text": "**Control, N = 14**",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:**Control, N = 14**"
+      ]
+    },
+    {
+      "record_id": "yun2024:296",
+      "table_id": "PMC4355974:T2",
+      "field": "comparator_mean",
+      "raw": "-4.2",
+      "value": -4.2,
+      "zeilen": [
+        0
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": true,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [
+        "r0/c5"
+      ],
+      "gepruefte_stellen": [
+        {
+          "row": 0,
+          "col": 4,
+          "text": "5.1",
+          "gedruckt": false
+        },
+        {
+          "row": 0,
+          "col": 5,
+          "text": "−4.2",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:298",
+      "table_id": "PMC4355974:T2",
+      "field": "comparator_group_size",
+      "raw": "14",
+      "value": 14.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 4,
+          "text": "**Control, N = 14**",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:**Control, N = 14**"
+      ]
+    },
+    {
+      "record_id": "yun2024:298",
+      "table_id": "PMC4355974:T2",
+      "field": "comparator_mean",
+      "raw": "-1.8",
+      "value": -1.8,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": true,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [
+        "r3/c5"
+      ],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 4,
+          "text": "2.0",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 5,
+          "text": "−1.8",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:30",
+      "table_id": "PMC3003523:T1",
+      "field": "intervention_group_size",
+      "raw": "393",
+      "value": 393.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "(n = 393)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n = 393)"
+      ]
+    },
+    {
+      "record_id": "yun2024:335",
+      "table_id": "PMC5617873:T2",
+      "field": "intervention_group_size",
+      "raw": "45",
+      "value": 45.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "Aripiprazole (n = 47)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:Placebo (n = 45)"
+      ]
+    },
+    {
+      "record_id": "yun2024:336",
+      "table_id": "PMC5617873:T2",
+      "field": "intervention_group_size",
+      "raw": "45",
+      "value": 45.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "Aripiprazole (n = 47)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:Placebo (n = 45)"
+      ]
+    },
+    {
+      "record_id": "yun2024:390",
+      "table_id": "PMC3278655:T2",
+      "field": "intervention_group_size",
+      "raw": "27",
+      "value": 27.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "(n=30)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 3,
+          "text": "(n=29)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 5,
+          "text": "(n=28)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 7,
+          "text": "(n=27)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n=27)"
+      ]
+    },
+    {
+      "record_id": "yun2024:390",
+      "table_id": "PMC3278655:T2",
+      "field": "intervention_mean",
+      "raw": "-0.38",
+      "value": -0.38,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": true,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": true,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [
+        "r3/c7"
+      ],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 1,
+          "text": "--0.34 (0.31)",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "text": "--0.34 (0.34)",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 7,
+          "text": "--0.38 (0.37)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:390",
+      "table_id": "PMC3278655:T2",
+      "field": "intervention_standard_deviation",
+      "raw": "0.37",
+      "value": 0.37,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": true,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": true,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [
+        "r3/c7"
+      ],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 1,
+          "text": "--0.34 (0.31)",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "text": "--0.34 (0.34)",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 7,
+          "text": "--0.38 (0.37)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:390",
+      "table_id": "PMC3278655:T2",
+      "field": "comparator_group_size",
+      "raw": "18",
+      "value": 18.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "(n=24)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 4,
+          "text": "(n=23)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 6,
+          "text": "(n=21)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 8,
+          "text": "(n=18)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n=18)"
+      ]
+    },
+    {
+      "record_id": "yun2024:390",
+      "table_id": "PMC3278655:T2",
+      "field": "comparator_mean",
+      "raw": "-0.04",
+      "value": -0.04,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": true,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": true,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [
+        "r3/c8"
+      ],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 2,
+          "text": "0.00 (0.08)",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 4,
+          "text": "--0.01 (0.11)",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 6,
+          "text": "--0.03 (0.10)",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 8,
+          "text": "--0.04 (0.11)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:390",
+      "table_id": "PMC3278655:T2",
+      "field": "comparator_standard_deviation",
+      "raw": "0.11",
+      "value": 0.11,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": true,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": true,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [
+        "r3/c4",
+        "r3/c8"
+      ],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 2,
+          "text": "0.00 (0.08)",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 4,
+          "text": "--0.01 (0.11)",
+          "gedruckt": true
+        },
+        {
+          "row": 3,
+          "col": 6,
+          "text": "--0.03 (0.10)",
+          "gedruckt": false
+        },
+        {
+          "row": 3,
+          "col": 8,
+          "text": "--0.04 (0.11)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:391",
+      "table_id": "PMC3278655:T2",
+      "field": "intervention_group_size",
+      "raw": "27",
+      "value": 27.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "(n=30)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 3,
+          "text": "(n=29)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 5,
+          "text": "(n=28)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 7,
+          "text": "(n=27)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n=27)"
+      ]
+    },
+    {
+      "record_id": "yun2024:391",
+      "table_id": "PMC3278655:T2",
+      "field": "comparator_group_size",
+      "raw": "18",
+      "value": 18.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "(n=24)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 4,
+          "text": "(n=23)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 6,
+          "text": "(n=21)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 8,
+          "text": "(n=18)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n=18)"
+      ]
+    },
+    {
+      "record_id": "yun2024:408",
+      "table_id": "PMC3475525:T2",
+      "field": "intervention_group_size",
+      "raw": "90",
+      "value": 90.0,
+      "zeilen": [
+        -1,
+        0
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 3,
+          "text": "MTL (n = 98)",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 4,
+          "text": "MTL+ Caloric Intake (n = 90)",
+          "gedruckt": true
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "text": "71.0 (7.7)^i^",
+          "gedruckt": false
+        },
+        {
+          "row": 0,
+          "col": 4,
+          "text": "73.3 (6.9)^e,i^",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:MTL+ Caloric Intake (n = 90)",
+        "r2/c3"
+      ]
+    },
+    {
+      "record_id": "yun2024:408",
+      "table_id": "PMC3475525:T2",
+      "field": "comparator_group_size",
+      "raw": "99",
+      "value": 99.0,
+      "zeilen": [
+        -1,
+        0
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "No Label, Control Group(n = 99)",
+          "gedruckt": true
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "text": "67.8 (10.3)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:No Label, Control Group(n = 99)"
+      ]
+    },
+    {
+      "record_id": "yun2024:421",
+      "table_id": "PMC3877023:T3",
+      "field": "intervention_group_size",
+      "raw": "30",
+      "value": 30.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "n = 18",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 4,
+          "text": "n = 30",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "fussnote:*",
+        "kopf:n = 30"
+      ]
+    },
+    {
+      "record_id": "yun2024:421",
+      "table_id": "PMC3877023:T3",
+      "field": "intervention_mean",
+      "raw": "0.83",
+      "value": 0.83,
+      "zeilen": [
+        2
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 2,
+          "col": 1,
+          "text": "2.2 (1)",
+          "gedruckt": false
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "text": ".03",
+          "gedruckt": false
+        },
+        {
+          "row": 2,
+          "col": 4,
+          "text": "1.7 (0.7)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:421",
+      "table_id": "PMC3877023:T3",
+      "field": "intervention_standard_deviation",
+      "raw": "0.22",
+      "value": 0.22,
+      "zeilen": [
+        2
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 2,
+          "col": 1,
+          "text": "2.2 (1)",
+          "gedruckt": false
+        },
+        {
+          "row": 2,
+          "col": 4,
+          "text": "1.7 (0.7)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:426",
+      "table_id": "PMC3877023:T4",
+      "field": "comparator_group_size",
+      "raw": "44",
+      "value": 44.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "n = 18",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 4,
+          "text": "n = 30",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:438",
+      "table_id": "PMC3475525:T1",
+      "field": "intervention_group_size",
+      "raw": "98",
+      "value": 98.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 3,
+          "text": "MTL (n = 98)",
+          "gedruckt": true
+        },
+        {
+          "row": -1,
+          "col": 4,
+          "text": "MTL+Caloric Intake (n = 90)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:Choices (n = 98)",
+        "kopf:MTL (n = 98)"
+      ]
+    },
+    {
+      "record_id": "yun2024:438",
+      "table_id": "PMC3475525:T1",
+      "field": "comparator_group_size",
+      "raw": "98",
+      "value": 98.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "Choices (n = 98)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:Choices (n = 98)",
+        "kopf:MTL (n = 98)"
+      ]
+    },
+    {
+      "record_id": "yun2024:445",
+      "table_id": "PMC4140238:T1",
+      "field": "intervention_group_size",
+      "raw": "70",
+      "value": 70.0,
+      "zeilen": [
+        -1,
+        2
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "BBOS 1.5% (N=70)",
+          "gedruckt": true
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "text": "11--73",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:BBOS 1.5% (N=70)",
+        "kopf:Placebo (N=70)",
+        "r0/c2",
+        "r0/c3",
+        "r1/c1",
+        "r1/c2",
+        "r2/c2",
+        "r6/c2",
+        "r7/c1"
+      ]
+    },
+    {
+      "record_id": "yun2024:445",
+      "table_id": "PMC4140238:T2",
+      "field": "intervention_mean",
+      "raw": "1.2",
+      "value": 1.2,
+      "zeilen": [
+        2,
+        5,
+        8
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [
+        "r8/c2"
+      ],
+      "gepruefte_stellen": [
+        {
+          "row": 2,
+          "col": 3,
+          "text": "1.4",
+          "gedruckt": false
+        },
+        {
+          "row": 5,
+          "col": 3,
+          "text": "1.3",
+          "gedruckt": false
+        },
+        {
+          "row": 8,
+          "col": 3,
+          "text": "0.9",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "r6/c3",
+        "r8/c2"
+      ]
+    },
+    {
+      "record_id": "yun2024:445",
+      "table_id": "PMC4140238:T1",
+      "field": "comparator_group_size",
+      "raw": "70",
+      "value": 70.0,
+      "zeilen": [
+        -1,
+        2
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "Placebo (N=70)",
+          "gedruckt": true
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "text": "13--65",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:BBOS 1.5% (N=70)",
+        "kopf:Placebo (N=70)",
+        "r0/c2",
+        "r0/c3",
+        "r1/c1",
+        "r1/c2",
+        "r2/c1",
+        "r6/c2",
+        "r7/c1"
+      ]
+    },
+    {
+      "record_id": "yun2024:445",
+      "table_id": "PMC4140238:T2",
+      "field": "comparator_mean",
+      "raw": "2.1",
+      "value": 2.1,
+      "zeilen": [
+        2,
+        5,
+        8
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [
+        "r5/c1",
+        "r8/c1"
+      ],
+      "gepruefte_stellen": [
+        {
+          "row": 2,
+          "col": 2,
+          "text": "0.5 (70)",
+          "gedruckt": false
+        },
+        {
+          "row": 5,
+          "col": 2,
+          "text": "0.8 (64)",
+          "gedruckt": false
+        },
+        {
+          "row": 8,
+          "col": 2,
+          "text": "1.2 (68)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "r1/c1",
+        "r3/c2",
+        "r5/c1",
+        "r8/c1"
+      ]
+    },
+    {
+      "record_id": "yun2024:453",
+      "table_id": "PMC5726464:T1",
+      "field": "intervention_group_size",
+      "raw": "79",
+      "value": 79.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "(n = 79)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n = 79)"
+      ]
+    },
+    {
+      "record_id": "yun2024:453",
+      "table_id": "PMC5726464:T1",
+      "field": "comparator_group_size",
+      "raw": "86",
+      "value": 86.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "(n = 86)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n = 86)"
+      ]
+    },
+    {
+      "record_id": "yun2024:463",
+      "table_id": "PMC5726464:T1",
+      "field": "intervention_group_size",
+      "raw": "79",
+      "value": 79.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 1,
+          "text": "(n = 79)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n = 79)"
+      ]
+    },
+    {
+      "record_id": "yun2024:463",
+      "table_id": "PMC5726464:T1",
+      "field": "comparator_group_size",
+      "raw": "86",
+      "value": 86.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "(n = 86)",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n = 86)"
+      ]
+    },
+    {
+      "record_id": "yun2024:494",
+      "table_id": "PMC5419060:T3",
+      "field": "intervention_group_size",
+      "raw": "630",
+      "value": 630.0,
+      "zeilen": [
+        11,
+        15,
+        16
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 11,
+          "col": 4,
+          "text": "**-**",
+          "gedruckt": false
+        },
+        {
+          "row": 11,
+          "col": 5,
+          "text": "2 (0.02)",
+          "gedruckt": false
+        },
+        {
+          "row": 11,
+          "col": 6,
+          "text": "5 (0.12)",
+          "gedruckt": false
+        },
+        {
+          "row": 11,
+          "col": 7,
+          "text": "3 (0.13)",
+          "gedruckt": false
+        },
+        {
+          "row": 11,
+          "col": 8,
+          "text": "**-**",
+          "gedruckt": false
+        },
+        {
+          "row": 15,
+          "col": 5,
+          "text": "1 (0.01)",
+          "gedruckt": false
+        },
+        {
+          "row": 15,
+          "col": 6,
+          "text": "1 (0.02)",
+          "gedruckt": false
+        },
+        {
+          "row": 15,
+          "col": 7,
+          "text": "0",
+          "gedruckt": false
+        },
+        {
+          "row": 16,
+          "col": 4,
+          "text": "4(0.68)",
+          "gedruckt": false
+        },
+        {
+          "row": 16,
+          "col": 5,
+          "text": "5 (0.05)",
+          "gedruckt": false
+        },
+        {
+          "row": 16,
+          "col": 6,
+          "text": "6 (0.15)",
+          "gedruckt": false
+        },
+        {
+          "row": 16,
+          "col": 7,
+          "text": "3 (0.13)",
+          "gedruckt": false
+        },
+        {
+          "row": 16,
+          "col": 8,
+          "text": "1 (0.16)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:550",
+      "table_id": "PMC3648394:T1",
+      "field": "intervention_group_size",
+      "raw": "18",
+      "value": 18.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "**Yoga group (n = 18)**",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:**Yoga group (n = 18)**"
+      ]
+    },
+    {
+      "record_id": "yun2024:550",
+      "table_id": "PMC3648394:T1",
+      "field": "comparator_group_size",
+      "raw": "19",
+      "value": 19.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": true,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": true,
+      "gedruckt_in_zeile": true,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 3,
+          "text": "**Control group (n = 19)**",
+          "gedruckt": true
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:**Control group (n = 19)**"
+      ]
+    },
+    {
+      "record_id": "yun2024:662",
+      "table_id": "PMC4987981:T1",
+      "field": "intervention_group_size",
+      "raw": "37",
+      "value": 37.0,
+      "zeilen": [
+        16,
+        17
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 16,
+          "col": 2,
+          "text": "5.3 (±1.5)",
+          "gedruckt": false
+        },
+        {
+          "row": 16,
+          "col": 3,
+          "text": "5.4 (±1.3)",
+          "gedruckt": false
+        },
+        {
+          "row": 17,
+          "col": 2,
+          "text": "3.1 (±0.8)",
+          "gedruckt": false
+        },
+        {
+          "row": 17,
+          "col": 3,
+          "text": "3.2 (±0.8)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:662",
+      "table_id": "PMC4987981:T1",
+      "field": "comparator_group_size",
+      "raw": "23",
+      "value": 23.0,
+      "zeilen": [
+        16,
+        17
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 16,
+          "col": 1,
+          "text": "5.9 (±1.6)",
+          "gedruckt": false
+        },
+        {
+          "row": 17,
+          "col": 1,
+          "text": "3.4 (±0.9)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:Placebo (*n* = 23)"
+      ]
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "field": "intervention_mean",
+      "raw": "103.4",
+      "value": 103.4,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 3,
+          "text": "15.2 ± 19.2",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "field": "intervention_standard_deviation",
+      "raw": "28.9",
+      "value": 28.9,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 3,
+          "text": "15.2 ± 19.2",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "field": "comparator_mean",
+      "raw": "97.6",
+      "value": 97.6,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 1,
+          "text": "2.2 ± 10.0",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "field": "comparator_standard_deviation",
+      "raw": "20.8",
+      "value": 20.8,
+      "zeilen": [
+        3
+      ],
+      "belegte_zeile": false,
+      "quelle": "zelle",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": 3,
+          "col": 1,
+          "text": "2.2 ± 10.0",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:678",
+      "table_id": "PMC5777419:T2",
+      "field": "intervention_group_size",
+      "raw": "16",
+      "value": 16.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 6,
+          "text": "(n=15)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n=16)"
+      ]
+    },
+    {
+      "record_id": "yun2024:682",
+      "table_id": "PMC5777419:T2",
+      "field": "intervention_group_size",
+      "raw": "16",
+      "value": 16.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 6,
+          "text": "(n=15)",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": [
+        "kopf:(n=16)"
+      ]
+    },
+    {
+      "record_id": "yun2024:78",
+      "table_id": "PMC3546023:T4",
+      "field": "intervention_group_size",
+      "raw": "30",
+      "value": 30.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "**Palmvitee, n = 3**",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 4,
+          "text": "**Palmvitee,n = 19**",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 6,
+          "text": "**Palmvitee,n = 8**",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    },
+    {
+      "record_id": "yun2024:79",
+      "table_id": "PMC3546023:T4",
+      "field": "intervention_group_size",
+      "raw": "30",
+      "value": 30.0,
+      "zeilen": [
+        -1
+      ],
+      "belegte_zeile": false,
+      "quelle": "kopf",
+      "gedruckt_in_kopf": false,
+      "gedruckt_in_zelle": false,
+      "gedruckt_belegend": false,
+      "gedruckt_in_zeile": false,
+      "zeilen_mit_wert": [],
+      "gepruefte_stellen": [
+        {
+          "row": -1,
+          "col": 2,
+          "text": "**Palmvitee, n = 3**",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 4,
+          "text": "**Palmvitee,n = 19**",
+          "gedruckt": false
+        },
+        {
+          "row": -1,
+          "col": 6,
+          "text": "**Palmvitee,n = 8**",
+          "gedruckt": false
+        }
+      ],
+      "wert_sonst_gedruckt": []
+    }
+  ],
+  "einheiten_diff": [
+    {
+      "record_id": "yun2024:390",
+      "vorher_focus_rows": {
+        "PMC3278655:T2": []
+      },
+      "nachher_focus_rows": {
+        "PMC3278655:T2": [
+          3
+        ]
+      },
+      "nachher_corroborated": {
+        "PMC3278655:T2": {
+          "subsidence": 3
+        }
+      },
+      "verfahren": {
+        "C": {
+          "einheiten_vorher": 8,
+          "einheiten_nachher": 1,
+          "goldabdeckung_vorher": [
+            "comparator_mean",
+            "comparator_standard_deviation",
+            "intervention_mean",
+            "intervention_standard_deviation"
+          ],
+          "goldabdeckung_nachher": [
+            "comparator_mean",
+            "comparator_standard_deviation",
+            "intervention_mean",
+            "intervention_standard_deviation"
+          ],
+          "entfernt": [
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                0
+              ],
+              "labels": [
+                "Mean maximum total"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                1
+              ],
+              "labels": [
+                "point motion (range)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                2
+              ],
+              "labels": [
+                "Lateral/medial translation (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                4
+              ],
+              "labels": [
+                "Anterior/posterior translation (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                5
+              ],
+              "labels": [
+                "Anterior/posterior tilt (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                6
+              ],
+              "labels": [
+                "Internal/external rotation (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                7
+              ],
+              "labels": [
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            }
+          ],
+          "hinzugekommen": []
+        },
+        "D": {
+          "einheiten_vorher": 15,
+          "einheiten_nachher": 8,
+          "goldabdeckung_vorher": [
+            "comparator_mean",
+            "comparator_standard_deviation",
+            "intervention_mean",
+            "intervention_standard_deviation"
+          ],
+          "goldabdeckung_nachher": [
+            "comparator_mean",
+            "comparator_standard_deviation",
+            "intervention_mean",
+            "intervention_standard_deviation"
+          ],
+          "entfernt": [
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                0
+              ],
+              "labels": [
+                "Mean maximum total"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                1
+              ],
+              "labels": [
+                "point motion (range)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                2
+              ],
+              "labels": [
+                "Lateral/medial translation (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                4
+              ],
+              "labels": [
+                "Anterior/posterior translation (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                5
+              ],
+              "labels": [
+                "Anterior/posterior tilt (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                6
+              ],
+              "labels": [
+                "Internal/external rotation (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                7
+              ],
+              "labels": [
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                1
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    1
+                  ]
+                ]
+              ],
+              "urteil": "spalteneinheit_ohne_goldwert"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                2
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    2
+                  ]
+                ]
+              ],
+              "urteil": "spalteneinheit_ohne_goldwert"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                3
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    3
+                  ]
+                ]
+              ],
+              "urteil": "spalteneinheit_ohne_goldwert"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                4
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [
+                "comparator_standard_deviation=0.11@r3/c4"
+              ],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    4
+                  ]
+                ]
+              ],
+              "urteil": "eingeengt_weiter_abgedeckt"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                6
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    6
+                  ]
+                ]
+              ],
+              "urteil": "spalteneinheit_ohne_goldwert"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                7
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [
+                "intervention_mean=-0.38@r3/c7",
+                "intervention_standard_deviation=0.37@r3/c7"
+              ],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    7
+                  ]
+                ]
+              ],
+              "urteil": "eingeengt_weiter_abgedeckt"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                8
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [
+                "comparator_mean=-0.04@r3/c8",
+                "comparator_standard_deviation=0.11@r3/c8"
+              ],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    8
+                  ]
+                ]
+              ],
+              "urteil": "eingeengt_weiter_abgedeckt"
+            }
+          ],
+          "hinzugekommen": [
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                1
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                2
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                3
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                4
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                6
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                7
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                8
+              ]
+            }
+          ]
+        },
+        "E": {
+          "einheiten_vorher": 15,
+          "einheiten_nachher": 8,
+          "goldabdeckung_vorher": [
+            "comparator_mean",
+            "comparator_standard_deviation",
+            "intervention_mean",
+            "intervention_standard_deviation"
+          ],
+          "goldabdeckung_nachher": [
+            "comparator_mean",
+            "comparator_standard_deviation",
+            "intervention_mean",
+            "intervention_standard_deviation"
+          ],
+          "entfernt": [
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                0
+              ],
+              "labels": [
+                "Mean maximum total"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                1
+              ],
+              "labels": [
+                "point motion (range)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                2
+              ],
+              "labels": [
+                "Lateral/medial translation (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                4
+              ],
+              "labels": [
+                "Anterior/posterior translation (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                5
+              ],
+              "labels": [
+                "Anterior/posterior tilt (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                6
+              ],
+              "labels": [
+                "Internal/external rotation (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "row",
+              "row_ids": [
+                7
+              ],
+              "labels": [
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "expected_cells": 9,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [],
+              "urteil": "unbelegte_messzeile"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                1
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    1
+                  ]
+                ]
+              ],
+              "urteil": "spalteneinheit_ohne_goldwert"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                2
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    2
+                  ]
+                ]
+              ],
+              "urteil": "spalteneinheit_ohne_goldwert"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                3
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    3
+                  ]
+                ]
+              ],
+              "urteil": "spalteneinheit_ohne_goldwert"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                4
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [
+                "comparator_standard_deviation=0.11@r3/c4"
+              ],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    4
+                  ]
+                ]
+              ],
+              "urteil": "eingeengt_weiter_abgedeckt"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                6
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    6
+                  ]
+                ]
+              ],
+              "urteil": "spalteneinheit_ohne_goldwert"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                7
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [
+                "intervention_mean=-0.38@r3/c7",
+                "intervention_standard_deviation=0.37@r3/c7"
+              ],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    7
+                  ]
+                ]
+              ],
+              "urteil": "eingeengt_weiter_abgedeckt"
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "labels": [
+                "Mean maximum total",
+                "point motion (range)",
+                "Lateral/medial translation (SD)",
+                "Superior/inferior translation (SD)",
+                "Anterior/posterior translation (SD)",
+                "Anterior/posterior tilt (SD)",
+                "Internal/external rotation (SD)",
+                "Varus/valgus tilt (SD)"
+              ],
+              "col_ids": [
+                8
+              ],
+              "expected_cells": 8,
+              "goldwerte_gedruckt": [
+                "comparator_mean=-0.04@r3/c8",
+                "comparator_standard_deviation=0.11@r3/c8"
+              ],
+              "ersetzt_von": [
+                [
+                  "PMC3278655:T2",
+                  "column",
+                  [
+                    3
+                  ],
+                  [
+                    8
+                  ]
+                ]
+              ],
+              "urteil": "eingeengt_weiter_abgedeckt"
+            }
+          ],
+          "hinzugekommen": [
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                1
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                2
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                3
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                4
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                6
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                7
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "direction": "column",
+              "row_ids": [
+                3
+              ],
+              "col_ids": [
+                8
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "urteile": {
+    "eingeengt_weiter_abgedeckt": 6,
+    "spalteneinheit_ohne_goldwert": 8,
+    "unbelegte_messzeile": 21
+  }
+}

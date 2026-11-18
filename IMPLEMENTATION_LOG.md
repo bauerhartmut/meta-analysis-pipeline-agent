@@ -1488,3 +1488,25 @@ Ergebnis: 1 Uebernahme (`PMC3278655:T2`, `yun2024:390`, r3), 8 ohne Treffer,
 `yun2024:390` aendert sich (Zellen 70 -> 9, Einheiten C 8 -> 1, D/E 15 -> 8,
 Warnungen 8 -> 1). Test: 7 neu in `research_agent/tests/test_pwert_korroboration.py`,
 gesamt 92.
+
+## Nachtrag Sprint 43 - Wertabgleich je Goldfeld und Einheiten-Rueckgang
+
+`diagnose_wertbeleg.py` prueft je erreichbarer Goldzelle die Stelle, die das
+Feld belegt (Spiegel von `row_fields` und `reachable_fields`, inklusive
+`secondary_role` fuer `-0.38 (0.37)`), und vergleicht dort den gedruckten Wert.
+Von **62** erreichbaren Goldfeldern steht der Wert bei **32** an einer
+belegenden Stelle (26 Kopfangabe, 6 Zelle), bei **30** nicht: 9 nur anderswo im
+Kopf/in einer Fussnote, 3 anderswo im Rumpf (davon 2 in der belegten Zeile,
+aber falscher Spalte), 18 nirgends in der Tabelle. Feldarten der 30: 22
+`*_group_size`, 5 `*_mean`, 3 `*_standard_deviation`. Die vier Felder der
+p-Wert-belegten Zeile (`yun2024:390`) stehen alle woertlich in der belegenden
+Zelle (`r3/c7`, `r3/c8`, `r3/c4`).
+
+Einheiten-Rueckgang `yun2024:390` (Plan mit/ohne Korroboration verglichen):
+vorher ist `focus_rows` leer, der Plan liest alle 8 Zeilen; nachher `[3]`. Die 7
+entfernten Zeileneinheiten tragen **keinen** Goldwert (7/7 unbelegte
+Messzeilen, keine ist r3). In D/E fallen zusaetzlich 8 Spalteneinheiten weg:
+5 ohne Goldwert, 3 mit Goldwert werden durch schmalere Einheiten ueber nur r3
+ersetzt; die Goldabdeckung bleibt 4 -> 4 Felder in jedem Verfahren. A-E neu
+gemessen und unveraendert (62 Goldfelder, 0 Fehler, 60/60, Zellen
+1687/1261/1687/1687/1674, Einheiten 60/159/329/442/273).
