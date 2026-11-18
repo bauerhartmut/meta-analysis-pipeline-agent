@@ -1767,3 +1767,28 @@ Tests: `research_agent/tests/test_fliesstext.py` 8 (2 neu: Korroboration
 markiert ITT und nicht Safety; Korroboration braucht `n = X` im Ergebnissatz),
 `test_provenienz.py` 5, zusammen 13 gruen. Messung byte-gleich ueber zwei
 Laeufe. Kein Quellcode der Kerndateien beruehrt.
+
+### Nachtrag Sprint 48 - Dosis-Bindung im selben Satz
+
+Aufgeraeumt: die zweite strenge Fassung ueber `wertgleich` und der ungenutzte
+Zaehler sind raus. Die verbliebenen Werte sind deckungsgleich mit dem vorigen
+Bericht (94/68/49 vor, 101/83/46 nach, acht Verluste, `streng_gewaehlt` 49) -
+geprueft durch Vergleich mit der committeten `messung.json` nach Entfernen der
+redundanten Schluessel.
+
+Neu: `_arm_basis` bindet die Dosis, wenn das gedruckte Label dieselbe Dosis
+traegt wie der Arm des Records (`quetiapine 600 mg/day` neben `n = 289`). Die
+Kennzahl `streng_gewaehlt` schneidet Dosis und Ergebnissatz: erst die Dosis,
+dann `n = X` im Rest; leerer Schnitt heisst, der Rest bleibt stehen.
+
+Ergebnis: **9 Felder aufgeloest, alle richtig** - `streng_gewaehlt` **46 -> 55**,
+`population_mismatch` streng 4 -> **11** von 15. Die fuenf Zielfelder sind
+damit streng: `:531` 289 und `:532` 283 (Dosis ∩ ITT), `:531`/`:532` comparator
+204 (`n = 204`), `:185` 28. Die Dosis allein haette bei `:531`/`:532` nicht
+gereicht - 289 (ITT) und 307 (Safety) tragen beide 600 mg/day, erst der Schnitt
+mit `n = X` trennt die Population. Zusaetzlich geloest: `:265`/`:266` je
+Gruppengroesse (83/80) und Ereigniszahl (3/4) ueber die Dosis.
+
+Tests: `test_fliesstext.py` 10 (2 neu: Dosis bindet nur die gedruckte Dosis;
+ohne gedruckte Dosis keine Bindung), `test_provenienz.py` 5. Messung
+byte-gleich ueber zwei Laeufe.

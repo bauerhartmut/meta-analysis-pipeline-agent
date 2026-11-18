@@ -124,6 +124,26 @@ def test_korroboration_markiert_itt_und_nicht_safety():
     assert belegt == {204.0}
 
 
+def test_dosis_bindet_nur_die_gedruckte_dosis():
+    text, context, tables = _record_text_context("yun2024:531")
+    stellen = fl.stellen(text, context, tables)
+
+    # Der Record traegt 600 mg/day; die ITT-Liste druckt 283 (300 mg/day) und
+    # 289 (600 mg/day) - nur 289 ist ueber die Dosis gebunden.
+    gebunden = {stelle.wert: stelle.arm_basis
+                for stelle in stellen["intervention_group_size"]}
+    assert gebunden[289.0] == "fliesstext_dosis:600mg/day"
+    assert gebunden[283.0] == "fliesstext"
+
+
+def test_ohne_gedruckte_dosis_keine_dosisbindung():
+    text, context, tables = _record_text_context("yun2024:185")
+    stellen = fl.stellen(text, context, tables)
+
+    assert {stelle.arm_basis for stelle in stellen["comparator_group_size"]} == {
+        "fliesstext"}
+
+
 def test_korroboration_braucht_das_n_im_ergebnis():
     context = {"outcome": "pain"}
 

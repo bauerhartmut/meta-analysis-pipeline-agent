@@ -128,6 +128,7 @@ def main() -> int:
     verloren: List[str] = []
     streng_verloren: List[Dict[str, Any]] = []
     aufgeloest: List[Dict[str, Any]] = []
+    dosis_aufgeloest: List[Dict[str, Any]] = []
     arm_wechsel: List[Dict[str, Any]] = []
     konflikte: List[Dict[str, Any]] = []
     regeln: Counter = Counter()
@@ -192,7 +193,18 @@ def main() -> int:
             gold_wert = gold_werte.get(feld)
             v_streng = _streng(v_werte, gold_wert)
             n_streng = _streng(n_werte, gold_wert)
-            gewaehlt = dosis.get(feld) or belegte.get(feld) or n_werte
+            # Dosis und Population schneiden sich: die Dosis grenzt den Arm ein,
+            # der Ergebnissatz die Population. Zwei Dosen beziehungsweise zwei
+            # Populationen bleiben beide stehen, wenn der Schnitt leer ist.
+            kandidaten = list(n_werte)
+            if dosis.get(feld):
+                kandidaten = [wert for wert in kandidaten
+                              if wert in dosis[feld]]
+            if belegte.get(feld):
+                gemeinsam = [wert for wert in kandidaten
+                             if wert in belegte[feld]]
+                kandidaten = gemeinsam or kandidaten
+            gewaehlt = kandidaten
             n_gewaehlt = _streng(gewaehlt, gold_wert)
 
             if v.get("erreichbar"):
@@ -215,6 +227,21 @@ def main() -> int:
                     zaehler_mit["streng_gewaehlt"] += 1
                     gewaehlt_felder.add(schluessel)
 
+            # Aufloesungen gelten auch fuer Felder, die erst der Text
+            # erreichbar macht - dort gibt es keinen Vorher-Stand.
+            if belegte.get(feld) and len(n_werte) > 1 and n_gewaehlt:
+                aufgeloest.append({
+                    "record_id": record_id, "feld": feld, "gold": gold_wert,
+                    "alle": n_werte, "belegt": belegte[feld],
+                })
+            if dosis.get(feld) and len(n_werte) > 1:
+                dosis_aufgeloest.append({
+                    "record_id": record_id, "feld": feld, "gold": gold_wert,
+                    "alle": n_werte, "dosis": dosis[feld],
+                    "belegt": belegte.get(feld) or [],
+                    "gewaehlt": gewaehlt, "streng": n_gewaehlt,
+                })
+
             if v.get("erreichbar") and not n.get("erreichbar"):
                 verloren.append(schluessel)
                 continue
@@ -229,11 +256,6 @@ def main() -> int:
                     "record_id": record_id, "feld": feld,
                     "vorher": v_werte, "nachher": n_werte,
                     "noch_wertgleich": bool(n.get("wertgleich")),
-                })
-            if belegte.get(feld) and len(n_werte) > 1 and n_gewaehlt:
-                aufgeloest.append({
-                    "record_id": record_id, "feld": feld, "gold": gold_wert,
-                    "alle": n_werte, "belegt": belegte[feld],
                 })
             kategorie = kategorien.get((record_id, feld))
             if kategorie:
@@ -293,6 +315,7 @@ def main() -> int:
                     for feld in r["belegt"]}),
                 "mehrdeutig_aufgeloest": aufgeloest,
             },
+            "dosis_aufgeloest": dosis_aufgeloest,
             "verloren": sorted(set(verloren)),
             "arm_wechsel": arm_wechsel,
             "text_fakten": dict(sorted(regeln.items())),
@@ -331,6 +354,9 @@ def main() -> int:
           "Felder mit belegter Zahl, davon mehrdeutig aufgeloest:",
           len(aufgeloest))
     for eintrag in aufgeloest:
+        print("  ", eintrag)
+    print("Dosis-Bindung:", len(dosis_aufgeloest), "Felder")
+    for eintrag in dosis_aufgeloest:
         print("  ", eintrag)
     for eintrag in streng_verloren:
         print("  streng verloren:", eintrag["record_id"], eintrag["feld"],

@@ -63,6 +63,12 @@ _TRENNER_RE = re.compile(r",\s*|\s+and\s+", re.IGNORECASE)
 _FUEHREND_RE = re.compile(r"^(?:in\s+the|the|in|or|and)\s+", re.IGNORECASE)
 _SCHLUSS_RE = re.compile(r"\s+(?:groups?|arms?)$", re.IGNORECASE)
 
+# Gedruckte Dosisangabe: ``600 mg/day``, ``30 µg YIC``, ``0.5 mg/kg``.
+_DOSIS_RE = re.compile(
+    r"\d+(?:[.,]\d+)?\s*(?:mg|mcg|µg|μg|g|ml|iu|units?)(?:\s*/\s*[A-Za-z]+)?",
+    re.IGNORECASE,
+)
+
 _POPULATION_ITT = re.compile(r"\bITT\b|intent[\s-]*to[\s-]*treat", re.IGNORECASE)
 _POPULATION_SAFETY = re.compile(r"\bsafety\s+population\b", re.IGNORECASE)
 
@@ -128,11 +134,31 @@ def _regel(basis: str, satz: str) -> str:
     return f"{basis}:{population}" if population else basis
 
 
+def _dosis(text: str) -> str:
+    """Gedruckte Dosisangabe, normiert (``600 mg/day`` -> ``600mg/day``)."""
+    treffer = _DOSIS_RE.search(text or "")
+    return re.sub(r"\s+", "", treffer.group(0)).lower() if treffer else ""
+
+
+def _arm_basis(label: str, arm: str, context: Dict[str, Any]) -> str:
+    """Grund der Armbindung.
+
+    Traegt das gedruckte Label dieselbe Dosis wie der Arm dieses Records, ist
+    die Zuordnung im selben Satz belegt (``quetiapine 600 mg/day`` neben
+    ``n = 289``). Ohne gedruckte Dosis bleibt es bei ``fliesstext`` - eine
+    Dosis wird nie aus der Reihenfolge oder aus dem Goldwert geraten.
+    """
+    dosis = _dosis(label)
+    if dosis and dosis == _dosis(str(context.get(arm) or "")):
+        return f"fliesstext_dosis:{dosis}"
+    return "fliesstext"
+
+
 def _stelle(feld: str, text: str, wert: int, arm: str, regel: str,
-            sicherheit: str = MITTEL) -> Provenienz:
+            sicherheit: str = MITTEL, arm_basis: str = "fliesstext") -> Provenienz:
     return Provenienz(
         feld=feld, quelle=QUELLE_TEXT, text=text, wert=float(wert), arm=arm,
-        arm_basis="fliesstext", zeitpunkt="", art=DIREKT, regel=regel,
+        arm_basis=arm_basis, zeitpunkt="", art=DIREKT, regel=regel,
         sicherheit=sicherheit, tabelle="", zeile=None, spalten=[],
     )
 
@@ -232,7 +258,8 @@ def _fakten_label(text: str, context: Dict[str, Any],
         if not _outcome_im_satz(satz, str(context.get("outcome") or "")):
             continue
         stellen.append(_stelle(feld, " ".join(treffer.group(0).split()), wert, arm,
-                               _regel(REGEL_LABEL, satz)))
+                               _regel(REGEL_LABEL, satz),
+                               arm_basis=_arm_basis(label, arm, context)))
     return stellen
 
 
@@ -259,7 +286,8 @@ def _fakten_liste(text: str, context: Dict[str, Any],
             if not feld:
                 continue
             stellen.append(_stelle(feld, f"{wert} patients received {label}", wert,
-                                   arm, _regel(REGEL_LISTE, satz)))
+                                   arm, _regel(REGEL_LISTE, satz),
+                                   arm_basis=_arm_basis(label, arm, context)))
     return stellen
 
 
@@ -292,14 +320,17 @@ def _fakten_bruch(text: str, context: Dict[str, Any],
                 continue
             zaehler, nenner = int(bruch.group(2)), int(bruch.group(3))
             text_teil = " ".join(bruch.group(0).split())
+            basis = _arm_basis(label, arm, context)
             ereignis = field_for(ROLE_EVENTS, arm)
             if ereignis:
                 stellen.append(_stelle(ereignis, text_teil, zaehler, arm,
-                                       _regel(REGEL_BRUCH, satz)))
+                                       _regel(REGEL_BRUCH, satz),
+                                       arm_basis=basis))
             feld = field_for(ROLE_N, arm)
             if feld:
                 stellen.append(_stelle(feld, text_teil, nenner, arm,
-                                       _regel(REGEL_BRUCH, satz)))
+                                       _regel(REGEL_BRUCH, satz),
+                                       arm_basis=basis))
     return stellen
 
 

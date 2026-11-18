@@ -15,7 +15,7 @@
       "erreichbar": 101,
       "wertgleich": 83,
       "streng": 46,
-      "streng_gewaehlt": 49
+      "streng_gewaehlt": 55
     },
     "neu_wertgleich": [
       "yun2024:185.comparator_group_size",
@@ -58,9 +58,13 @@
       "yun2024:202.intervention_group_size",
       "yun2024:205.intervention_group_size",
       "yun2024:265.comparator_events",
+      "yun2024:265.intervention_events",
       "yun2024:266.comparator_events",
+      "yun2024:266.intervention_events",
       "yun2024:531.comparator_group_size",
+      "yun2024:531.intervention_group_size",
       "yun2024:532.comparator_group_size",
+      "yun2024:532.intervention_group_size",
       "yun2024:682.comparator_group_size"
     ],
     "streng_verloren": [
@@ -189,6 +193,21 @@
           ]
         },
         {
+          "record_id": "yun2024:531",
+          "feld": "intervention_group_size",
+          "gold": 289.0,
+          "alle": [
+            283.0,
+            289.0,
+            298.0,
+            307.0
+          ],
+          "belegt": [
+            283.0,
+            289.0
+          ]
+        },
+        {
           "record_id": "yun2024:532",
           "feld": "comparator_group_size",
           "gold": 204.0,
@@ -199,9 +218,140 @@
           "belegt": [
             204.0
           ]
+        },
+        {
+          "record_id": "yun2024:532",
+          "feld": "intervention_group_size",
+          "gold": 283.0,
+          "alle": [
+            283.0,
+            289.0,
+            298.0,
+            307.0
+          ],
+          "belegt": [
+            283.0,
+            289.0
+          ]
         }
       ]
     },
+    "dosis_aufgeloest": [
+      {
+        "record_id": "yun2024:265",
+        "feld": "intervention_events",
+        "gold": 3.0,
+        "alle": [
+          3.0,
+          4.0
+        ],
+        "dosis": [
+          3.0
+        ],
+        "belegt": [],
+        "gewaehlt": [
+          3.0
+        ],
+        "streng": true
+      },
+      {
+        "record_id": "yun2024:265",
+        "feld": "intervention_group_size",
+        "gold": 83.0,
+        "alle": [
+          80.0,
+          83.0
+        ],
+        "dosis": [
+          83.0
+        ],
+        "belegt": [],
+        "gewaehlt": [
+          83.0
+        ],
+        "streng": true
+      },
+      {
+        "record_id": "yun2024:266",
+        "feld": "intervention_events",
+        "gold": 4.0,
+        "alle": [
+          3.0,
+          4.0
+        ],
+        "dosis": [
+          4.0
+        ],
+        "belegt": [],
+        "gewaehlt": [
+          4.0
+        ],
+        "streng": true
+      },
+      {
+        "record_id": "yun2024:266",
+        "feld": "intervention_group_size",
+        "gold": 80.0,
+        "alle": [
+          80.0,
+          83.0
+        ],
+        "dosis": [
+          80.0
+        ],
+        "belegt": [],
+        "gewaehlt": [
+          80.0
+        ],
+        "streng": true
+      },
+      {
+        "record_id": "yun2024:531",
+        "feld": "intervention_group_size",
+        "gold": 289.0,
+        "alle": [
+          283.0,
+          289.0,
+          298.0,
+          307.0
+        ],
+        "dosis": [
+          289.0,
+          307.0
+        ],
+        "belegt": [
+          283.0,
+          289.0
+        ],
+        "gewaehlt": [
+          289.0
+        ],
+        "streng": true
+      },
+      {
+        "record_id": "yun2024:532",
+        "feld": "intervention_group_size",
+        "gold": 283.0,
+        "alle": [
+          283.0,
+          289.0,
+          298.0,
+          307.0
+        ],
+        "dosis": [
+          283.0,
+          298.0
+        ],
+        "belegt": [
+          283.0,
+          289.0
+        ],
+        "gewaehlt": [
+          283.0
+        ],
+        "streng": true
+      }
+    ],
     "verloren": [],
     "arm_wechsel": [],
     "text_fakten": {
@@ -469,7 +619,7 @@
       "nachher": 15,
       "streng_vorher": 8,
       "streng_nachher": 4,
-      "streng_gewaehlt": 7
+      "streng_gewaehlt": 11
     },
     "subgroup_vs_total": {
       "gesamt": 3,
@@ -1998,7 +2148,7 @@
             "text": "3.6% (3/83)",
             "wert": 3.0,
             "arm": "intervention",
-            "arm_basis": "fliesstext",
+            "arm_basis": "fliesstext_dosis:30µg",
             "zeitpunkt": "",
             "art": "direkt",
             "regel": "fliesstext_bruchliste_beziehungsweise:itt",
@@ -2032,7 +2182,7 @@
             "text": "3.6% (3/83)",
             "wert": 83.0,
             "arm": "intervention",
-            "arm_basis": "fliesstext",
+            "arm_basis": "fliesstext_dosis:30µg",
             "zeitpunkt": "",
             "art": "direkt",
             "regel": "fliesstext_bruchliste_beziehungsweise:itt",
@@ -2215,7 +2365,7 @@
             "text": "5.0% (4/80)",
             "wert": 4.0,
             "arm": "intervention",
-            "arm_basis": "fliesstext",
+            "arm_basis": "fliesstext_dosis:60µg",
             "zeitpunkt": "",
             "art": "direkt",
             "regel": "fliesstext_bruchliste_beziehungsweise:itt",
@@ -2249,7 +2399,7 @@
             "text": "5.0% (4/80)",
             "wert": 80.0,
             "arm": "intervention",
-            "arm_basis": "fliesstext",
+            "arm_basis": "fliesstext_dosis:60µg",
             "zeitpunkt": "",
             "art": "direkt",
             "regel": "fliesstext_bruchliste_beziehungsweise:itt",
@@ -5010,7 +5160,7 @@
             "text": "289 patients received quetiapine 600 mg/day",
             "wert": 289.0,
             "arm": "intervention",
-            "arm_basis": "fliesstext",
+            "arm_basis": "fliesstext_dosis:600mg/day",
             "zeitpunkt": "",
             "art": "direkt",
             "regel": "fliesstext_zahlenliste_beziehungsweise:itt",
@@ -5042,7 +5192,7 @@
             "text": "307 patients received quetiapine 600 mg/day",
             "wert": 307.0,
             "arm": "intervention",
-            "arm_basis": "fliesstext",
+            "arm_basis": "fliesstext_dosis:600mg/day",
             "zeitpunkt": "",
             "art": "direkt",
             "regel": "fliesstext_zahlenliste_beziehungsweise:sicherheit",
@@ -5215,7 +5365,7 @@
             "text": "283 patients received quetiapine 300 mg/day",
             "wert": 283.0,
             "arm": "intervention",
-            "arm_basis": "fliesstext",
+            "arm_basis": "fliesstext_dosis:300mg/day",
             "zeitpunkt": "",
             "art": "direkt",
             "regel": "fliesstext_zahlenliste_beziehungsweise:itt",
@@ -5247,7 +5397,7 @@
             "text": "298 patients received quetiapine 300 mg/day",
             "wert": 298.0,
             "arm": "intervention",
-            "arm_basis": "fliesstext",
+            "arm_basis": "fliesstext_dosis:300mg/day",
             "zeitpunkt": "",
             "art": "direkt",
             "regel": "fliesstext_zahlenliste_beziehungsweise:sicherheit",
