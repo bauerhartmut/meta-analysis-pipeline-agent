@@ -1,0 +1,5641 @@
+{
+  "bilanz": {
+    "vorher": {
+      "erreichbar": 62,
+      "wertgleich": 32,
+      "armkonflikt": 0
+    },
+    "nachher": {
+      "erreichbar": 94,
+      "wertgleich": 58,
+      "armkonflikt": 0
+    }
+  },
+  "neue_fakten_eindeutig": 35,
+  "fokus": [
+    {
+      "record_id": "yun2024:15",
+      "table_id": "PMC2667135:T4",
+      "baender": [
+        {
+          "text": "CoPAT^a^ (*n* = 103)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 103,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        },
+        {
+          "text": "IPAT (*n* = 97)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 97,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        {
+          "kind": "group_size",
+          "text": "CoPAT^a^ (*n* = 103)",
+          "value": 103,
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "basis": "kopf_angabe",
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC2667135:T4"
+        },
+        {
+          "kind": "group_size",
+          "text": "IPAT (*n* = 97)",
+          "value": 97,
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "basis": "kopf_angabe",
+          "arm": null,
+          "arm_basis": "kein_treffer",
+          "table_id": "PMC2667135:T4"
+        }
+      ],
+      "spalten": [
+        {
+          "col": 0,
+          "arm": null,
+          "basis": "label",
+          "role": "label",
+          "field": null,
+          "header": [
+            "Clinical outcome 6 weeks after end of therapy"
+          ]
+        },
+        {
+          "col": 1,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "n",
+          "field": "intervention_group_size",
+          "header": [
+            "CoPAT^a^ (*n* = 103)"
+          ]
+        },
+        {
+          "col": 2,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "n",
+          "field": null,
+          "header": [
+            "IPAT (*n* = 97)"
+          ]
+        },
+        {
+          "col": 3,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "p_value",
+          "field": null,
+          "header": [
+            "*P*^b^"
+          ]
+        }
+      ],
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "raw": "103",
+          "value": 103.0
+        },
+        {
+          "field": "comparator_group_size",
+          "raw": "97",
+          "value": 97.0
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:662",
+      "table_id": "PMC4987981:T1",
+      "baender": [
+        {
+          "text": "Placebo (*n* = 23)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 23,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        },
+        {
+          "text": "Metformin (*n* = 21)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 21,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        },
+        {
+          "text": "Pioglitazone (*n* = 16)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 16,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        {
+          "kind": "group_size",
+          "text": "Placebo (*n* = 23)",
+          "value": 23,
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "basis": "kopf_angabe",
+          "arm": "comparator",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC4987981:T1"
+        },
+        {
+          "kind": "group_size",
+          "text": "Metformin (*n* = 21)",
+          "value": 21,
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "basis": "kopf_angabe",
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC4987981:T1"
+        },
+        {
+          "kind": "group_size",
+          "text": "Pioglitazone (*n* = 16)",
+          "value": 16,
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "basis": "kopf_angabe",
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC4987981:T1"
+        }
+      ],
+      "spalten": [
+        {
+          "col": 0,
+          "arm": null,
+          "basis": "label",
+          "role": "label",
+          "field": null,
+          "header": [
+            "Baseline characteristics"
+          ]
+        },
+        {
+          "col": 1,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "n",
+          "field": "comparator_group_size",
+          "header": [
+            "Placebo (*n* = 23)"
+          ]
+        },
+        {
+          "col": 2,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "n",
+          "field": "intervention_group_size",
+          "header": [
+            "Metformin (*n* = 21)"
+          ]
+        },
+        {
+          "col": 3,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "n",
+          "field": "intervention_group_size",
+          "header": [
+            "Pioglitazone (*n* = 16)"
+          ]
+        },
+        {
+          "col": 4,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "p_value",
+          "field": null,
+          "header": [
+            "*p*-value"
+          ]
+        }
+      ],
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "raw": "37",
+          "value": 37.0
+        },
+        {
+          "field": "comparator_group_size",
+          "raw": "23",
+          "value": 23.0
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:275",
+      "table_id": "PMC3654355:T1",
+      "baender": [
+        {
+          "text": "ILI ( *n* = 71)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 71,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        },
+        {
+          "text": "Control ( *n* = 33)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 33,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        {
+          "kind": "group_size",
+          "text": "ILI ( *n* = 71)",
+          "value": 71,
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "basis": "kopf_angabe",
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC3654355:T1"
+        },
+        {
+          "kind": "group_size",
+          "text": "Control ( *n* = 33)",
+          "value": 33,
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "basis": "kopf_angabe",
+          "arm": null,
+          "arm_basis": "kein_treffer",
+          "table_id": "PMC3654355:T1"
+        }
+      ],
+      "spalten": [
+        {
+          "col": 0,
+          "arm": null,
+          "basis": "label",
+          "role": "label",
+          "field": null,
+          "header": []
+        },
+        {
+          "col": 1,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "n",
+          "field": "intervention_group_size",
+          "header": [
+            "ILI ( *n* = 71)",
+            "*N*"
+          ]
+        },
+        {
+          "col": 2,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "n",
+          "field": null,
+          "header": [
+            "Control ( *n* = 33)",
+            "%"
+          ]
+        },
+        {
+          "col": 3,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "p_value",
+          "field": null,
+          "header": [
+            "*P*value",
+            "%"
+          ]
+        },
+        {
+          "col": 4,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "n",
+          "field": null,
+          "header": [
+            "*N*"
+          ]
+        },
+        {
+          "col": 5,
+          "arm": null,
+          "basis": "kein_header",
+          "role": "unknown",
+          "field": null,
+          "header": []
+        }
+      ],
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "raw": "71",
+          "value": 71.0
+        },
+        {
+          "field": "comparator_group_size",
+          "raw": "33",
+          "value": 33.0
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:282",
+      "table_id": "PMC3654355:T2",
+      "baender": [
+        {
+          "text": "( *n* = 71)",
+          "level": 1,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 71,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "ILI"
+          ]
+        },
+        {
+          "text": "( *n* = 33)",
+          "level": 1,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 33,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "Control"
+          ]
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        {
+          "kind": "group_size",
+          "text": "( *n* = 71)",
+          "value": 71,
+          "level": 1,
+          "col_start": 1,
+          "col_end": 1,
+          "basis": "kopf_angabe",
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC3654355:T2"
+        },
+        {
+          "kind": "group_size",
+          "text": "( *n* = 33)",
+          "value": 33,
+          "level": 1,
+          "col_start": 2,
+          "col_end": 2,
+          "basis": "kopf_angabe",
+          "arm": null,
+          "arm_basis": "kein_treffer",
+          "table_id": "PMC3654355:T2"
+        }
+      ],
+      "spalten": [
+        {
+          "col": 0,
+          "arm": null,
+          "basis": "label",
+          "role": "label",
+          "field": null,
+          "header": []
+        },
+        {
+          "col": 1,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null,
+          "header": [
+            "ILI"
+          ]
+        },
+        {
+          "col": 2,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "unknown",
+          "field": null,
+          "header": [
+            "Control"
+          ]
+        },
+        {
+          "col": 3,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "mean",
+          "field": null,
+          "header": [
+            "Between-group differences, mean (95% CI)"
+          ]
+        },
+        {
+          "col": 4,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "p_value",
+          "field": null,
+          "header": [
+            "*P*value ^a^"
+          ]
+        }
+      ],
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "raw": "71",
+          "value": 71.0
+        },
+        {
+          "field": "comparator_group_size",
+          "raw": "33",
+          "value": 33.0
+        }
+      ]
+    }
+  ],
+  "tabellen_geaendert": [
+    {
+      "record_id": "yun2024:15",
+      "table_id": "PMC2667135:T4",
+      "baender_geaendert": [
+        {
+          "text": "CoPAT^a^ (*n* = 103)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 103,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "CoPAT^a^ (*n* = 103)"
+        },
+        {
+          "text": "IPAT (*n* = 97)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 97,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "IPAT (*n* = 97)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "CoPAT^a^ (*n* = 103)|103",
+        "IPAT (*n* = 97)|97"
+      ],
+      "felder_vorher": [
+        "intervention_group_size"
+      ],
+      "felder_nachher": [
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:16",
+      "table_id": "PMC2667135:T4",
+      "baender_geaendert": [
+        {
+          "text": "CoPAT^a^ (*n* = 103)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 103,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "CoPAT^a^ (*n* = 103)"
+        },
+        {
+          "text": "IPAT (*n* = 97)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 97,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "IPAT (*n* = 97)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "CoPAT^a^ (*n* = 103)|103",
+        "IPAT (*n* = 97)|97"
+      ],
+      "felder_vorher": [
+        "intervention_group_size"
+      ],
+      "felder_nachher": [
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:172",
+      "table_id": "PMC5079604:T1",
+      "baender_geaendert": [
+        {
+          "text": "Metformin (*n* = 17)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 17,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Metformin (*n* = 17)"
+        },
+        {
+          "text": "Sitagliptin (*n* = 16)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 16,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Sitagliptin (*n* = 16)"
+        },
+        {
+          "text": "Placebo (*n* = 15)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 15,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*n* = 15)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Metformin (*n* = 17)|17",
+        "Placebo (*n* = 15)|15",
+        "Sitagliptin (*n* = 16)|16"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:174",
+      "table_id": "PMC5079604:T1",
+      "baender_geaendert": [
+        {
+          "text": "Metformin (*n* = 17)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 17,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Metformin (*n* = 17)"
+        },
+        {
+          "text": "Sitagliptin (*n* = 16)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 16,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Sitagliptin (*n* = 16)"
+        },
+        {
+          "text": "Placebo (*n* = 15)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 15,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*n* = 15)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Metformin (*n* = 17)|17",
+        "Placebo (*n* = 15)|15",
+        "Sitagliptin (*n* = 16)|16"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:184",
+      "table_id": "PMC5122613:T1",
+      "baender_geaendert": [
+        {
+          "text": "Placebo (*n* = 33)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 33,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*n* = 33)"
+        },
+        {
+          "text": "RMD (*n* = 33)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 33,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "RMD (*n* = 33)"
+        },
+        {
+          "text": "Total (*n* = 66)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 66,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Total (*n* = 66)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Placebo (*n* = 33)|33",
+        "RMD (*n* = 33)|33",
+        "Total (*n* = 66)|66"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:185",
+      "table_id": "PMC5122613:T1",
+      "baender_geaendert": [
+        {
+          "text": "Placebo (*n* = 33)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 33,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*n* = 33)"
+        },
+        {
+          "text": "RMD (*n* = 33)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 33,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "RMD (*n* = 33)"
+        },
+        {
+          "text": "Total (*n* = 66)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 66,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Total (*n* = 66)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Placebo (*n* = 33)|33",
+        "RMD (*n* = 33)|33",
+        "Total (*n* = 66)|66"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:275",
+      "table_id": "PMC3654355:T1",
+      "baender_geaendert": [
+        {
+          "text": "ILI ( *n* = 71)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 71,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "ILI ( *n* = 71)"
+        },
+        {
+          "text": "Control ( *n* = 33)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 33,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Control ( *n* = 33)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Control ( *n* = 33)|33",
+        "ILI ( *n* = 71)|71"
+      ],
+      "felder_vorher": [
+        "intervention_group_size"
+      ],
+      "felder_nachher": [
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:282",
+      "table_id": "PMC3654355:T2",
+      "baender_geaendert": [
+        {
+          "text": "( *n* = 71)",
+          "level": 1,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 71,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "ILI"
+          ],
+          "alt_text": "( *n* = 71)"
+        },
+        {
+          "text": "( *n* = 33)",
+          "level": 1,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 33,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "Control"
+          ],
+          "alt_text": "( *n* = 33)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "( *n* = 33)|33",
+        "( *n* = 71)|71"
+      ],
+      "felder_vorher": [
+        "intervention_group_size"
+      ],
+      "felder_nachher": [
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:350",
+      "table_id": "PMC5874317:T1",
+      "baender_geaendert": [
+        {
+          "text": "**Bilateral ( *n* = 9)**",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 6,
+          "alt_wert": null,
+          "neu_wert": 9,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "**Bilateral ( *n* = 9)**"
+        },
+        {
+          "text": "**Unilateral ( *n* = 9)**",
+          "level": 0,
+          "col_start": 7,
+          "col_end": 12,
+          "alt_wert": null,
+          "neu_wert": 9,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "**Unilateral ( *n* = 9)**"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "**Bilateral ( *n* = 9)**|9",
+        "**Unilateral ( *n* = 9)**|9"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:352",
+      "table_id": "PMC5874317:T1",
+      "baender_geaendert": [
+        {
+          "text": "**Bilateral ( *n* = 9)**",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 6,
+          "alt_wert": null,
+          "neu_wert": 9,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "**Bilateral ( *n* = 9)**"
+        },
+        {
+          "text": "**Unilateral ( *n* = 9)**",
+          "level": 0,
+          "col_start": 7,
+          "col_end": 12,
+          "alt_wert": null,
+          "neu_wert": 9,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "**Unilateral ( *n* = 9)**"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "**Bilateral ( *n* = 9)**|9",
+        "**Unilateral ( *n* = 9)**|9"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:402",
+      "table_id": "PMC5781260:T1",
+      "baender_geaendert": [
+        {
+          "text": "(*N* = 20 59% men, 41% women)",
+          "level": 1,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 20,
+          "reine_angabe": false,
+          "uebergeordnet": [
+            "Lemon verbena"
+          ],
+          "alt_text": "(*N* = 20 59% men, 41% women)"
+        },
+        {
+          "text": "(*N* = 20 40% men, 60% women)",
+          "level": 1,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 20,
+          "reine_angabe": false,
+          "uebergeordnet": [
+            "Placebo"
+          ],
+          "alt_text": "(*N* = 20 40% men, 60% women)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "(*N* = 20 40% men, 60% women)|20",
+        "(*N* = 20 59% men, 41% women)|20"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:403",
+      "table_id": "PMC5781260:T1",
+      "baender_geaendert": [
+        {
+          "text": "(*N* = 20 59% men, 41% women)",
+          "level": 1,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 20,
+          "reine_angabe": false,
+          "uebergeordnet": [
+            "Lemon verbena"
+          ],
+          "alt_text": "(*N* = 20 59% men, 41% women)"
+        },
+        {
+          "text": "(*N* = 20 40% men, 60% women)",
+          "level": 1,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 20,
+          "reine_angabe": false,
+          "uebergeordnet": [
+            "Placebo"
+          ],
+          "alt_text": "(*N* = 20 40% men, 60% women)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "(*N* = 20 40% men, 60% women)|20",
+        "(*N* = 20 59% men, 41% women)|20"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:486",
+      "table_id": "PMC3786549:T3",
+      "baender_geaendert": [
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 0,
+          "col_end": 0,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*Entry*",
+            "*Estriol--lactobacilli*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*Entry*",
+            "*Placebo*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*C1*",
+            "*Estriol--lactobacilli*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*C1*",
+            "*Placebo*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 4,
+          "col_end": 4,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*C2*",
+            "*Estriol--lactobacilli*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 43)",
+          "level": 2,
+          "col_start": 5,
+          "col_end": 5,
+          "alt_wert": null,
+          "neu_wert": 43,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*C2*",
+            "*Placebo*"
+          ],
+          "alt_text": "(*n* = 43)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "(*n* = 43)|43",
+        "(*n* = 44)|44"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:489",
+      "table_id": "PMC3786549:T3",
+      "baender_geaendert": [
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 0,
+          "col_end": 0,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*Entry*",
+            "*Estriol--lactobacilli*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*Entry*",
+            "*Placebo*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*C1*",
+            "*Estriol--lactobacilli*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*C1*",
+            "*Placebo*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 44)",
+          "level": 2,
+          "col_start": 4,
+          "col_end": 4,
+          "alt_wert": null,
+          "neu_wert": 44,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*C2*",
+            "*Estriol--lactobacilli*"
+          ],
+          "alt_text": "(*n* = 44)"
+        },
+        {
+          "text": "(*n* = 43)",
+          "level": 2,
+          "col_start": 5,
+          "col_end": 5,
+          "alt_wert": null,
+          "neu_wert": 43,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "*C2*",
+            "*Placebo*"
+          ],
+          "alt_text": "(*n* = 43)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "(*n* = 43)|43",
+        "(*n* = 44)|44"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:531",
+      "table_id": "PMC4230312:T3",
+      "baender_geaendert": [
+        {
+          "text": "Quetiapine 300 mg/day (***n*** = 298)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 298,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Quetiapine 300 mg/day (***n*** = 298)"
+        },
+        {
+          "text": "Quetiapine 600 mg/day (***n*** = 307)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 307,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Quetiapine 600 mg/day (***n*** = 307)"
+        },
+        {
+          "text": "Placebo (***n*** = 214)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 214,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (***n*** = 214)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Placebo (***n*** = 214)|214",
+        "Quetiapine 300 mg/day (***n*** = 298)|298",
+        "Quetiapine 600 mg/day (***n*** = 307)|307"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:532",
+      "table_id": "PMC4230312:T1",
+      "baender_geaendert": [
+        {
+          "text": "Quetiapine 300 mg/day ( ***n***  = 298)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 298,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Quetiapine 300 mg/day ( ***n***  = 298)"
+        },
+        {
+          "text": "Quetiapine 600 mg/day ( ***n***  = 307)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 307,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Quetiapine 600 mg/day ( ***n***  = 307)"
+        },
+        {
+          "text": "Placebo (***n*** = 214)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 214,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (***n*** = 214)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Placebo (***n*** = 214)|214",
+        "Quetiapine 300 mg/day ( ***n***  = 298)|298",
+        "Quetiapine 600 mg/day ( ***n***  = 307)|307"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:639",
+      "table_id": "PMC4511433:T2",
+      "baender_geaendert": [
+        {
+          "text": "Placebo (*N* = 12)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 12,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*N* = 12)"
+        },
+        {
+          "text": "A3309 - 2.5 mg (*N*  = 12)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 12,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "A3309 - 2.5 mg (*N*  = 12)"
+        },
+        {
+          "text": "A3309 - 5 mg (*N*  = 12)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 12,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "A3309 - 5 mg (*N*  = 12)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "A3309 - 2.5 mg (*N*  = 12)|12",
+        "A3309 - 5 mg (*N*  = 12)|12",
+        "Placebo (*N* = 12)|12"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:640",
+      "table_id": "PMC4511433:T2",
+      "baender_geaendert": [
+        {
+          "text": "Placebo (*N* = 12)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 12,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*N* = 12)"
+        },
+        {
+          "text": "A3309 - 2.5 mg (*N*  = 12)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 12,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "A3309 - 2.5 mg (*N*  = 12)"
+        },
+        {
+          "text": "A3309 - 5 mg (*N*  = 12)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 12,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "A3309 - 5 mg (*N*  = 12)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "A3309 - 2.5 mg (*N*  = 12)|12",
+        "A3309 - 5 mg (*N*  = 12)|12",
+        "Placebo (*N* = 12)|12"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:645",
+      "table_id": "PMC4675066:T1",
+      "baender_geaendert": [
+        {
+          "text": "Iodine (*n* = 29)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 29,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Iodine (*n* = 29)"
+        },
+        {
+          "text": "Placebo (*n* = 30)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 30,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*n* = 30)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Iodine (*n* = 29)|29",
+        "Placebo (*n* = 30)|30"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:647",
+      "table_id": "PMC4675066:T1",
+      "baender_geaendert": [
+        {
+          "text": "Iodine (*n* = 29)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 29,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Iodine (*n* = 29)"
+        },
+        {
+          "text": "Placebo (*n* = 30)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 30,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*n* = 30)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Iodine (*n* = 29)|29",
+        "Placebo (*n* = 30)|30"
+      ],
+      "felder_vorher": [],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:662",
+      "table_id": "PMC4987981:T1",
+      "baender_geaendert": [
+        {
+          "text": "Placebo (*n* = 23)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 23,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*n* = 23)"
+        },
+        {
+          "text": "Metformin (*n* = 21)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 21,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Metformin (*n* = 21)"
+        },
+        {
+          "text": "Pioglitazone (*n* = 16)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 16,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Pioglitazone (*n* = 16)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Metformin (*n* = 21)|21",
+        "Pioglitazone (*n* = 16)|16",
+        "Placebo (*n* = 23)|23"
+      ],
+      "felder_vorher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "felder_nachher": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ]
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "baender_geaendert": [
+        {
+          "text": "Placebo (*n*  = 23)",
+          "level": 0,
+          "col_start": 1,
+          "col_end": 1,
+          "alt_wert": null,
+          "neu_wert": 23,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Placebo (*n*  = 23)"
+        },
+        {
+          "text": "Metformin (*n*  = 21)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": null,
+          "neu_wert": 21,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Metformin (*n*  = 21)"
+        },
+        {
+          "text": "Pioglitazone (*n*  = 16)",
+          "level": 0,
+          "col_start": 3,
+          "col_end": 3,
+          "alt_wert": null,
+          "neu_wert": 16,
+          "reine_angabe": false,
+          "uebergeordnet": [],
+          "alt_text": "Pioglitazone (*n*  = 16)"
+        }
+      ],
+      "facts_vorher": [],
+      "facts_nachher": [
+        "Metformin (*n*  = 21)|21",
+        "Pioglitazone (*n*  = 16)|16",
+        "Placebo (*n*  = 23)|23"
+      ],
+      "felder_vorher": [
+        "comparator_mean",
+        "comparator_standard_deviation",
+        "intervention_mean",
+        "intervention_standard_deviation"
+      ],
+      "felder_nachher": [
+        "comparator_group_size",
+        "comparator_mean",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "intervention_mean",
+        "intervention_standard_deviation"
+      ]
+    }
+  ],
+  "neue_fakten": [
+    {
+      "record_id": "yun2024:15",
+      "table_id": "PMC2667135:T4",
+      "text": "CoPAT^a^ (*n* = 103)",
+      "value": 103,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:15",
+      "table_id": "PMC2667135:T4",
+      "text": "IPAT (*n* = 97)",
+      "value": 97,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:16",
+      "table_id": "PMC2667135:T4",
+      "text": "CoPAT^a^ (*n* = 103)",
+      "value": 103,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:16",
+      "table_id": "PMC2667135:T4",
+      "text": "IPAT (*n* = 97)",
+      "value": 97,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:172",
+      "table_id": "PMC5079604:T1",
+      "text": "Metformin (*n* = 17)",
+      "value": 17,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:172",
+      "table_id": "PMC5079604:T1",
+      "text": "Sitagliptin (*n* = 16)",
+      "value": 16,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:172",
+      "table_id": "PMC5079604:T1",
+      "text": "Placebo (*n* = 15)",
+      "value": 15,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:174",
+      "table_id": "PMC5079604:T1",
+      "text": "Metformin (*n* = 17)",
+      "value": 17,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:174",
+      "table_id": "PMC5079604:T1",
+      "text": "Sitagliptin (*n* = 16)",
+      "value": 16,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:174",
+      "table_id": "PMC5079604:T1",
+      "text": "Placebo (*n* = 15)",
+      "value": 15,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:184",
+      "table_id": "PMC5122613:T1",
+      "text": "Placebo (*n* = 33)",
+      "value": 33,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:184",
+      "table_id": "PMC5122613:T1",
+      "text": "RMD (*n* = 33)",
+      "value": 33,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:184",
+      "table_id": "PMC5122613:T1",
+      "text": "Total (*n* = 66)",
+      "value": 66,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:185",
+      "table_id": "PMC5122613:T1",
+      "text": "Placebo (*n* = 33)",
+      "value": 33,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:185",
+      "table_id": "PMC5122613:T1",
+      "text": "RMD (*n* = 33)",
+      "value": 33,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:185",
+      "table_id": "PMC5122613:T1",
+      "text": "Total (*n* = 66)",
+      "value": 66,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:275",
+      "table_id": "PMC3654355:T1",
+      "text": "ILI ( *n* = 71)",
+      "value": 71,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:275",
+      "table_id": "PMC3654355:T1",
+      "text": "Control ( *n* = 33)",
+      "value": 33,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:282",
+      "table_id": "PMC3654355:T2",
+      "text": "( *n* = 71)",
+      "value": 71,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 1,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:282",
+      "table_id": "PMC3654355:T2",
+      "text": "( *n* = 33)",
+      "value": 33,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 1,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:350",
+      "table_id": "PMC5874317:T1",
+      "text": "**Bilateral ( *n* = 9)**",
+      "value": 9,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        6
+      ]
+    },
+    {
+      "record_id": "yun2024:350",
+      "table_id": "PMC5874317:T1",
+      "text": "**Unilateral ( *n* = 9)**",
+      "value": 9,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        7,
+        12
+      ]
+    },
+    {
+      "record_id": "yun2024:352",
+      "table_id": "PMC5874317:T1",
+      "text": "**Bilateral ( *n* = 9)**",
+      "value": 9,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        6
+      ]
+    },
+    {
+      "record_id": "yun2024:352",
+      "table_id": "PMC5874317:T1",
+      "text": "**Unilateral ( *n* = 9)**",
+      "value": 9,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        7,
+        12
+      ]
+    },
+    {
+      "record_id": "yun2024:402",
+      "table_id": "PMC5781260:T1",
+      "text": "(*N* = 20 59% men, 41% women)",
+      "value": 20,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 1,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:402",
+      "table_id": "PMC5781260:T1",
+      "text": "(*N* = 20 40% men, 60% women)",
+      "value": 20,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 1,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:403",
+      "table_id": "PMC5781260:T1",
+      "text": "(*N* = 20 59% men, 41% women)",
+      "value": 20,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 1,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:403",
+      "table_id": "PMC5781260:T1",
+      "text": "(*N* = 20 40% men, 60% women)",
+      "value": 20,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 1,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:486",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 2,
+      "cols": [
+        0,
+        0
+      ]
+    },
+    {
+      "record_id": "yun2024:486",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:486",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:486",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:486",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        4,
+        4
+      ]
+    },
+    {
+      "record_id": "yun2024:486",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 43)",
+      "value": 43,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        5,
+        5
+      ]
+    },
+    {
+      "record_id": "yun2024:489",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 2,
+      "cols": [
+        0,
+        0
+      ]
+    },
+    {
+      "record_id": "yun2024:489",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:489",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:489",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:489",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 44)",
+      "value": 44,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        4,
+        4
+      ]
+    },
+    {
+      "record_id": "yun2024:489",
+      "table_id": "PMC3786549:T3",
+      "text": "(*n* = 43)",
+      "value": 43,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 2,
+      "cols": [
+        5,
+        5
+      ]
+    },
+    {
+      "record_id": "yun2024:531",
+      "table_id": "PMC4230312:T3",
+      "text": "Quetiapine 300 mg/day (***n*** = 298)",
+      "value": 298,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:531",
+      "table_id": "PMC4230312:T3",
+      "text": "Quetiapine 600 mg/day (***n*** = 307)",
+      "value": 307,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:531",
+      "table_id": "PMC4230312:T3",
+      "text": "Placebo (***n*** = 214)",
+      "value": 214,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:532",
+      "table_id": "PMC4230312:T1",
+      "text": "Quetiapine 300 mg/day ( ***n***  = 298)",
+      "value": 298,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:532",
+      "table_id": "PMC4230312:T1",
+      "text": "Quetiapine 600 mg/day ( ***n***  = 307)",
+      "value": 307,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:532",
+      "table_id": "PMC4230312:T1",
+      "text": "Placebo (***n*** = 214)",
+      "value": 214,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:639",
+      "table_id": "PMC4511433:T2",
+      "text": "Placebo (*N* = 12)",
+      "value": 12,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:639",
+      "table_id": "PMC4511433:T2",
+      "text": "A3309 - 2.5 mg (*N*  = 12)",
+      "value": 12,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:639",
+      "table_id": "PMC4511433:T2",
+      "text": "A3309 - 5 mg (*N*  = 12)",
+      "value": 12,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:640",
+      "table_id": "PMC4511433:T2",
+      "text": "Placebo (*N* = 12)",
+      "value": 12,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:640",
+      "table_id": "PMC4511433:T2",
+      "text": "A3309 - 2.5 mg (*N*  = 12)",
+      "value": 12,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:640",
+      "table_id": "PMC4511433:T2",
+      "text": "A3309 - 5 mg (*N*  = 12)",
+      "value": 12,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:645",
+      "table_id": "PMC4675066:T1",
+      "text": "Iodine (*n* = 29)",
+      "value": 29,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:645",
+      "table_id": "PMC4675066:T1",
+      "text": "Placebo (*n* = 30)",
+      "value": 30,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:647",
+      "table_id": "PMC4675066:T1",
+      "text": "Iodine (*n* = 29)",
+      "value": 29,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:647",
+      "table_id": "PMC4675066:T1",
+      "text": "Placebo (*n* = 30)",
+      "value": 30,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:662",
+      "table_id": "PMC4987981:T1",
+      "text": "Placebo (*n* = 23)",
+      "value": 23,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:662",
+      "table_id": "PMC4987981:T1",
+      "text": "Metformin (*n* = 21)",
+      "value": 21,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:662",
+      "table_id": "PMC4987981:T1",
+      "text": "Pioglitazone (*n* = 16)",
+      "value": 16,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "text": "Placebo (*n*  = 23)",
+      "value": 23,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        1,
+        1
+      ]
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "text": "Metformin (*n*  = 21)",
+      "value": 21,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "level": 0,
+      "cols": [
+        2,
+        2
+      ]
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "text": "Pioglitazone (*n*  = 16)",
+      "value": 16,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "level": 0,
+      "cols": [
+        3,
+        3
+      ]
+    }
+  ],
+  "neue_felder": [
+    {
+      "record_id": "yun2024:172",
+      "field": "intervention_group_size",
+      "raw": "33",
+      "value": 33.0
+    },
+    {
+      "record_id": "yun2024:172",
+      "field": "comparator_group_size",
+      "raw": "15",
+      "value": 15.0
+    },
+    {
+      "record_id": "yun2024:174",
+      "field": "intervention_group_size",
+      "raw": "33",
+      "value": 33.0
+    },
+    {
+      "record_id": "yun2024:174",
+      "field": "comparator_group_size",
+      "raw": "15",
+      "value": 15.0
+    },
+    {
+      "record_id": "yun2024:184",
+      "field": "comparator_group_size",
+      "raw": "33",
+      "value": 33.0
+    },
+    {
+      "record_id": "yun2024:185",
+      "field": "comparator_group_size",
+      "raw": "28",
+      "value": 28.0
+    },
+    {
+      "record_id": "yun2024:350",
+      "field": "intervention_group_size",
+      "raw": "9",
+      "value": 9.0
+    },
+    {
+      "record_id": "yun2024:350",
+      "field": "comparator_group_size",
+      "raw": "9",
+      "value": 9.0
+    },
+    {
+      "record_id": "yun2024:352",
+      "field": "intervention_group_size",
+      "raw": "9",
+      "value": 9.0
+    },
+    {
+      "record_id": "yun2024:352",
+      "field": "comparator_group_size",
+      "raw": "9",
+      "value": 9.0
+    },
+    {
+      "record_id": "yun2024:402",
+      "field": "intervention_group_size",
+      "raw": "20",
+      "value": 20.0
+    },
+    {
+      "record_id": "yun2024:402",
+      "field": "comparator_group_size",
+      "raw": "20",
+      "value": 20.0
+    },
+    {
+      "record_id": "yun2024:403",
+      "field": "intervention_group_size",
+      "raw": "20",
+      "value": 20.0
+    },
+    {
+      "record_id": "yun2024:403",
+      "field": "comparator_group_size",
+      "raw": "20",
+      "value": 20.0
+    },
+    {
+      "record_id": "yun2024:486",
+      "field": "intervention_group_size",
+      "raw": "44",
+      "value": 44.0
+    },
+    {
+      "record_id": "yun2024:486",
+      "field": "comparator_group_size",
+      "raw": "44",
+      "value": 44.0
+    },
+    {
+      "record_id": "yun2024:489",
+      "field": "intervention_group_size",
+      "raw": "44",
+      "value": 44.0
+    },
+    {
+      "record_id": "yun2024:489",
+      "field": "comparator_group_size",
+      "raw": "44",
+      "value": 44.0
+    },
+    {
+      "record_id": "yun2024:531",
+      "field": "intervention_group_size",
+      "raw": "289",
+      "value": 289.0
+    },
+    {
+      "record_id": "yun2024:531",
+      "field": "comparator_group_size",
+      "raw": "204",
+      "value": 204.0
+    },
+    {
+      "record_id": "yun2024:532",
+      "field": "intervention_group_size",
+      "raw": "283",
+      "value": 283.0
+    },
+    {
+      "record_id": "yun2024:532",
+      "field": "comparator_group_size",
+      "raw": "204",
+      "value": 204.0
+    },
+    {
+      "record_id": "yun2024:639",
+      "field": "intervention_group_size",
+      "raw": "12",
+      "value": 12.0
+    },
+    {
+      "record_id": "yun2024:639",
+      "field": "comparator_group_size",
+      "raw": "12",
+      "value": 12.0
+    },
+    {
+      "record_id": "yun2024:640",
+      "field": "intervention_group_size",
+      "raw": "12",
+      "value": 12.0
+    },
+    {
+      "record_id": "yun2024:640",
+      "field": "comparator_group_size",
+      "raw": "12",
+      "value": 12.0
+    },
+    {
+      "record_id": "yun2024:645",
+      "field": "intervention_group_size",
+      "raw": "27",
+      "value": 27.0
+    },
+    {
+      "record_id": "yun2024:645",
+      "field": "comparator_group_size",
+      "raw": "26",
+      "value": 26.0
+    },
+    {
+      "record_id": "yun2024:647",
+      "field": "intervention_group_size",
+      "raw": "27",
+      "value": 27.0
+    },
+    {
+      "record_id": "yun2024:647",
+      "field": "comparator_group_size",
+      "raw": "26",
+      "value": 26.0
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "intervention_group_size",
+      "raw": "16",
+      "value": 16.0
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "comparator_group_size",
+      "raw": "23",
+      "value": 23.0
+    }
+  ],
+  "korrekt_adressiert": [
+    {
+      "record_id": "yun2024:172",
+      "field": "comparator_group_size",
+      "raw": "15",
+      "value": 15.0,
+      "adresse": "Placebo (*n* = 15)",
+      "stelle": "kopf c3-c3"
+    },
+    {
+      "record_id": "yun2024:174",
+      "field": "comparator_group_size",
+      "raw": "15",
+      "value": 15.0,
+      "adresse": "Placebo (*n* = 15)",
+      "stelle": "kopf c3-c3"
+    },
+    {
+      "record_id": "yun2024:184",
+      "field": "comparator_group_size",
+      "raw": "33",
+      "value": 33.0,
+      "adresse": "Placebo (*n* = 33)",
+      "stelle": "kopf c1-c1"
+    },
+    {
+      "record_id": "yun2024:350",
+      "field": "intervention_group_size",
+      "raw": "9",
+      "value": 9.0,
+      "adresse": "**Bilateral ( *n* = 9)**",
+      "stelle": "kopf c1-c6"
+    },
+    {
+      "record_id": "yun2024:350",
+      "field": "comparator_group_size",
+      "raw": "9",
+      "value": 9.0,
+      "adresse": "**Unilateral ( *n* = 9)**",
+      "stelle": "kopf c7-c12"
+    },
+    {
+      "record_id": "yun2024:352",
+      "field": "intervention_group_size",
+      "raw": "9",
+      "value": 9.0,
+      "adresse": "**Bilateral ( *n* = 9)**",
+      "stelle": "kopf c1-c6"
+    },
+    {
+      "record_id": "yun2024:352",
+      "field": "comparator_group_size",
+      "raw": "9",
+      "value": 9.0,
+      "adresse": "**Unilateral ( *n* = 9)**",
+      "stelle": "kopf c7-c12"
+    },
+    {
+      "record_id": "yun2024:402",
+      "field": "intervention_group_size",
+      "raw": "20",
+      "value": 20.0,
+      "adresse": "(*N* = 20 59% men, 41% women)",
+      "stelle": "kopf c2-c2"
+    },
+    {
+      "record_id": "yun2024:402",
+      "field": "comparator_group_size",
+      "raw": "20",
+      "value": 20.0,
+      "adresse": "(*N* = 20 40% men, 60% women)",
+      "stelle": "kopf c3-c3"
+    },
+    {
+      "record_id": "yun2024:403",
+      "field": "intervention_group_size",
+      "raw": "20",
+      "value": 20.0,
+      "adresse": "(*N* = 20 59% men, 41% women)",
+      "stelle": "kopf c2-c2"
+    },
+    {
+      "record_id": "yun2024:403",
+      "field": "comparator_group_size",
+      "raw": "20",
+      "value": 20.0,
+      "adresse": "(*N* = 20 40% men, 60% women)",
+      "stelle": "kopf c3-c3"
+    },
+    {
+      "record_id": "yun2024:486",
+      "field": "intervention_group_size",
+      "raw": "44",
+      "value": 44.0,
+      "adresse": "(*n* = 44)",
+      "stelle": "kopf c2-c2"
+    },
+    {
+      "record_id": "yun2024:486",
+      "field": "comparator_group_size",
+      "raw": "44",
+      "value": 44.0,
+      "adresse": "(*n* = 44)",
+      "stelle": "kopf c1-c1"
+    },
+    {
+      "record_id": "yun2024:489",
+      "field": "intervention_group_size",
+      "raw": "44",
+      "value": 44.0,
+      "adresse": "(*n* = 44)",
+      "stelle": "kopf c2-c2"
+    },
+    {
+      "record_id": "yun2024:489",
+      "field": "comparator_group_size",
+      "raw": "44",
+      "value": 44.0,
+      "adresse": "(*n* = 44)",
+      "stelle": "kopf c1-c1"
+    },
+    {
+      "record_id": "yun2024:639",
+      "field": "intervention_group_size",
+      "raw": "12",
+      "value": 12.0,
+      "adresse": "A3309 - 2.5 mg (*N*  = 12)",
+      "stelle": "kopf c2-c2"
+    },
+    {
+      "record_id": "yun2024:639",
+      "field": "comparator_group_size",
+      "raw": "12",
+      "value": 12.0,
+      "adresse": "Placebo (*N* = 12)",
+      "stelle": "kopf c1-c1"
+    },
+    {
+      "record_id": "yun2024:640",
+      "field": "intervention_group_size",
+      "raw": "12",
+      "value": 12.0,
+      "adresse": "A3309 - 2.5 mg (*N*  = 12)",
+      "stelle": "kopf c2-c2"
+    },
+    {
+      "record_id": "yun2024:640",
+      "field": "comparator_group_size",
+      "raw": "12",
+      "value": 12.0,
+      "adresse": "Placebo (*N* = 12)",
+      "stelle": "kopf c1-c1"
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "intervention_group_size",
+      "raw": "16",
+      "value": 16.0,
+      "adresse": "Pioglitazone (*n*  = 16)",
+      "stelle": "kopf c3-c3"
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "comparator_group_size",
+      "raw": "23",
+      "value": 23.0,
+      "adresse": "Placebo (*n*  = 23)",
+      "stelle": "kopf c1-c1"
+    }
+  ],
+  "wertgleich": [
+    {
+      "record_id": "yun2024:172",
+      "field": "comparator_group_size",
+      "raw": "15",
+      "value": 15.0,
+      "adresse": "Placebo (*n* = 15)"
+    },
+    {
+      "record_id": "yun2024:174",
+      "field": "comparator_group_size",
+      "raw": "15",
+      "value": 15.0,
+      "adresse": "Placebo (*n* = 15)"
+    },
+    {
+      "record_id": "yun2024:184",
+      "field": "comparator_group_size",
+      "raw": "33",
+      "value": 33.0,
+      "adresse": "Placebo (*n* = 33)"
+    },
+    {
+      "record_id": "yun2024:350",
+      "field": "intervention_group_size",
+      "raw": "9",
+      "value": 9.0,
+      "adresse": "**Bilateral ( *n* = 9)**"
+    },
+    {
+      "record_id": "yun2024:350",
+      "field": "comparator_group_size",
+      "raw": "9",
+      "value": 9.0,
+      "adresse": "**Unilateral ( *n* = 9)**"
+    },
+    {
+      "record_id": "yun2024:352",
+      "field": "intervention_group_size",
+      "raw": "9",
+      "value": 9.0,
+      "adresse": "**Bilateral ( *n* = 9)**"
+    },
+    {
+      "record_id": "yun2024:352",
+      "field": "comparator_group_size",
+      "raw": "9",
+      "value": 9.0,
+      "adresse": "**Unilateral ( *n* = 9)**"
+    },
+    {
+      "record_id": "yun2024:402",
+      "field": "intervention_group_size",
+      "raw": "20",
+      "value": 20.0,
+      "adresse": "(*N* = 20 59% men, 41% women)"
+    },
+    {
+      "record_id": "yun2024:402",
+      "field": "comparator_group_size",
+      "raw": "20",
+      "value": 20.0,
+      "adresse": "(*N* = 20 40% men, 60% women)"
+    },
+    {
+      "record_id": "yun2024:403",
+      "field": "intervention_group_size",
+      "raw": "20",
+      "value": 20.0,
+      "adresse": "(*N* = 20 59% men, 41% women)"
+    },
+    {
+      "record_id": "yun2024:403",
+      "field": "comparator_group_size",
+      "raw": "20",
+      "value": 20.0,
+      "adresse": "(*N* = 20 40% men, 60% women)"
+    },
+    {
+      "record_id": "yun2024:486",
+      "field": "intervention_group_size",
+      "raw": "44",
+      "value": 44.0,
+      "adresse": "(*n* = 44)"
+    },
+    {
+      "record_id": "yun2024:486",
+      "field": "comparator_group_size",
+      "raw": "44",
+      "value": 44.0,
+      "adresse": "(*n* = 44)"
+    },
+    {
+      "record_id": "yun2024:489",
+      "field": "intervention_group_size",
+      "raw": "44",
+      "value": 44.0,
+      "adresse": "(*n* = 44)"
+    },
+    {
+      "record_id": "yun2024:489",
+      "field": "comparator_group_size",
+      "raw": "44",
+      "value": 44.0,
+      "adresse": "(*n* = 44)"
+    },
+    {
+      "record_id": "yun2024:639",
+      "field": "intervention_group_size",
+      "raw": "12",
+      "value": 12.0,
+      "adresse": "A3309 - 2.5 mg (*N*  = 12)"
+    },
+    {
+      "record_id": "yun2024:639",
+      "field": "comparator_group_size",
+      "raw": "12",
+      "value": 12.0,
+      "adresse": "Placebo (*N* = 12)"
+    },
+    {
+      "record_id": "yun2024:640",
+      "field": "intervention_group_size",
+      "raw": "12",
+      "value": 12.0,
+      "adresse": "A3309 - 2.5 mg (*N*  = 12)"
+    },
+    {
+      "record_id": "yun2024:640",
+      "field": "comparator_group_size",
+      "raw": "12",
+      "value": 12.0,
+      "adresse": "Placebo (*N* = 12)"
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "intervention_group_size",
+      "raw": "16",
+      "value": 16.0,
+      "adresse": "Pioglitazone (*n*  = 16)"
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "comparator_group_size",
+      "raw": "23",
+      "value": 23.0,
+      "adresse": "Placebo (*n*  = 23)"
+    }
+  ],
+  "verloren": [],
+  "armkonflikte": [
+    {
+      "table_id": "PMC4319071:T1",
+      "text": "n=456",
+      "value": 456,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC4319071:T1",
+      "text": "n=456",
+      "value": 456,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC2667135:T4",
+      "text": "IPAT (*n* = 97)",
+      "value": 97,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    },
+    {
+      "table_id": "PMC2667135:T4",
+      "text": "IPAT (*n* = 97)",
+      "value": 97,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    },
+    {
+      "table_id": "PMC5122613:T1",
+      "text": "Placebo (*n* = 33)",
+      "value": 33,
+      "arm": "comparator",
+      "arm_basis": "header_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC5122613:T1",
+      "text": "RMD (*n* = 33)",
+      "value": 33,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC3654355:T1",
+      "text": "Control ( *n* = 33)",
+      "value": 33,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    },
+    {
+      "table_id": "PMC3654355:T2",
+      "text": "( *n* = 33)",
+      "value": 33,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    },
+    {
+      "table_id": "PMC4355974:T2",
+      "text": "**Intervention, N = 28**",
+      "value": 28,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC4355974:T2",
+      "text": "**Intervention, N = 28**",
+      "value": 28,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC3003523:T1",
+      "text": "(n = 199)",
+      "value": 199,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    },
+    {
+      "table_id": "PMC5617873:T2",
+      "text": "Placebo (n = 45)",
+      "value": 45,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC5617873:T2",
+      "text": "Aripiprazole (n = 47)",
+      "value": 47,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    },
+    {
+      "table_id": "PMC5617873:T2",
+      "text": "Placebo (n = 45)",
+      "value": 45,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC5617873:T2",
+      "text": "Aripiprazole (n = 47)",
+      "value": 47,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    },
+    {
+      "table_id": "PMC3877023:T3",
+      "text": "n = 34",
+      "value": 34,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    },
+    {
+      "table_id": "PMC5777419:T2",
+      "text": "(n=16)",
+      "value": 16,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC5777419:T2",
+      "text": "(n=16)",
+      "value": 16,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC5777419:T2",
+      "text": "(n=15)",
+      "value": 15,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    },
+    {
+      "table_id": "PMC5777419:T2",
+      "text": "(n=16)",
+      "value": 16,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC5777419:T2",
+      "text": "(n=16)",
+      "value": 16,
+      "arm": null,
+      "arm_basis": "kein_treffer",
+      "gold_feld": "intervention_group_size",
+      "gold_arm": "intervention"
+    },
+    {
+      "table_id": "PMC5777419:T2",
+      "text": "(n=15)",
+      "value": 15,
+      "arm": "intervention",
+      "arm_basis": "header_treffer",
+      "gold_feld": "comparator_group_size",
+      "gold_arm": "comparator"
+    }
+  ],
+  "records_gold": [
+    {
+      "record_id": "yun2024:172",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:174",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:184",
+      "gold_vorher": 0,
+      "gold_nachher": 1
+    },
+    {
+      "record_id": "yun2024:185",
+      "gold_vorher": 0,
+      "gold_nachher": 1
+    },
+    {
+      "record_id": "yun2024:350",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:352",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:402",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:403",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:486",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:489",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:531",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:532",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:639",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:640",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:645",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:647",
+      "gold_vorher": 0,
+      "gold_nachher": 2
+    },
+    {
+      "record_id": "yun2024:665",
+      "gold_vorher": 4,
+      "gold_nachher": 6
+    }
+  ],
+  "lauf": {
+    "vorher": {
+      "A": {
+        "strategy_label": "Full-Table Extraction",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 60,
+        "units_per_record": 1.02,
+        "expected_cells": 1687,
+        "prompt_chars": 362773,
+        "prompt_chars_per_record": 6148.7,
+        "prompt_chars_per_unit": 6046.2,
+        "est_tokens": 90693,
+        "redundant_tables": 0,
+        "gold_reachable": 62,
+        "errors": 0,
+        "warnings": 137
+      },
+      "B": {
+        "strategy_label": "Vertical Decomposition",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 159,
+        "units_per_record": 2.69,
+        "expected_cells": 1261,
+        "prompt_chars": 657244,
+        "prompt_chars_per_record": 11139.7,
+        "prompt_chars_per_unit": 4133.6,
+        "est_tokens": 164311,
+        "redundant_tables": 0,
+        "gold_reachable": 62,
+        "errors": 0,
+        "warnings": 101
+      },
+      "C": {
+        "strategy_label": "Horizontal Decomposition",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 329,
+        "units_per_record": 5.58,
+        "expected_cells": 1687,
+        "prompt_chars": 1117972,
+        "prompt_chars_per_record": 18948.7,
+        "prompt_chars_per_unit": 3398.1,
+        "est_tokens": 279493,
+        "redundant_tables": 0,
+        "gold_reachable": 62,
+        "errors": 0,
+        "warnings": 237
+      },
+      "D": {
+        "strategy_label": "Bidirectional Decomposition",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 442,
+        "units_per_record": 7.49,
+        "expected_cells": 1687,
+        "prompt_chars": 1547130,
+        "prompt_chars_per_record": 26222.5,
+        "prompt_chars_per_unit": 3500.3,
+        "est_tokens": 386782,
+        "redundant_tables": 0,
+        "gold_reachable": 62,
+        "errors": 0,
+        "warnings": 318
+      },
+      "E": {
+        "strategy_label": "Adaptive Recursive Decomposition",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 273,
+        "units_per_record": 4.63,
+        "expected_cells": 1674,
+        "prompt_chars": 1122373,
+        "prompt_chars_per_record": 19023.3,
+        "prompt_chars_per_unit": 4111.3,
+        "est_tokens": 280593,
+        "redundant_tables": 0,
+        "gold_reachable": 62,
+        "errors": 0,
+        "warnings": 253
+      }
+    },
+    "nachher": {
+      "A": {
+        "strategy_label": "Full-Table Extraction",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 60,
+        "units_per_record": 1.02,
+        "expected_cells": 1687,
+        "prompt_chars": 361991,
+        "prompt_chars_per_record": 6135.4,
+        "prompt_chars_per_unit": 6033.2,
+        "est_tokens": 90498,
+        "redundant_tables": 0,
+        "gold_reachable": 94,
+        "errors": 0,
+        "warnings": 137
+      },
+      "B": {
+        "strategy_label": "Vertical Decomposition",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 151,
+        "units_per_record": 2.56,
+        "expected_cells": 1266,
+        "prompt_chars": 636616,
+        "prompt_chars_per_record": 10790.1,
+        "prompt_chars_per_unit": 4216.0,
+        "est_tokens": 159154,
+        "redundant_tables": 0,
+        "gold_reachable": 94,
+        "errors": 0,
+        "warnings": 103
+      },
+      "C": {
+        "strategy_label": "Horizontal Decomposition",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 329,
+        "units_per_record": 5.58,
+        "expected_cells": 1687,
+        "prompt_chars": 1116518,
+        "prompt_chars_per_record": 18924.0,
+        "prompt_chars_per_unit": 3393.7,
+        "est_tokens": 279130,
+        "redundant_tables": 0,
+        "gold_reachable": 94,
+        "errors": 0,
+        "warnings": 237
+      },
+      "D": {
+        "strategy_label": "Bidirectional Decomposition",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 431,
+        "units_per_record": 7.31,
+        "expected_cells": 1687,
+        "prompt_chars": 1514698,
+        "prompt_chars_per_record": 25672.8,
+        "prompt_chars_per_unit": 3514.4,
+        "est_tokens": 378674,
+        "redundant_tables": 0,
+        "gold_reachable": 94,
+        "errors": 0,
+        "warnings": 318
+      },
+      "E": {
+        "strategy_label": "Adaptive Recursive Decomposition",
+        "records": 59,
+        "tables": 60,
+        "tables_complete": 60,
+        "units": 262,
+        "units_per_record": 4.44,
+        "expected_cells": 1674,
+        "prompt_chars": 1089941,
+        "prompt_chars_per_record": 18473.6,
+        "prompt_chars_per_unit": 4160.1,
+        "est_tokens": 272485,
+        "redundant_tables": 0,
+        "gold_reachable": 94,
+        "errors": 0,
+        "warnings": 253
+      }
+    }
+  },
+  "record_unterschiede": [
+    {
+      "record_id": "yun2024:172",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:174",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:184",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:185",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:350",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:352",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:402",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:403",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:486",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 1,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 1,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:489",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 1,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 1,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:531",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:532",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:639",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:640",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:645",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:647",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:665",
+      "strategy": "A",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 7,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 4
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 7,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 6
+      }
+    },
+    {
+      "record_id": "yun2024:172",
+      "strategy": "B",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:174",
+      "strategy": "B",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:184",
+      "strategy": "B",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 6,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 6,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:185",
+      "strategy": "B",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 6,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 6,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:282",
+      "strategy": "B",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 1,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 4,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:350",
+      "strategy": "B",
+      "vorher": {
+        "units": 10,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 10,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:352",
+      "strategy": "B",
+      "vorher": {
+        "units": 10,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 10,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:402",
+      "strategy": "B",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 2,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 2,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:403",
+      "strategy": "B",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 2,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 2,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:486",
+      "strategy": "B",
+      "vorher": {
+        "units": 5,
+        "expected_cells": 8,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 1,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:489",
+      "strategy": "B",
+      "vorher": {
+        "units": 5,
+        "expected_cells": 8,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 1,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:531",
+      "strategy": "B",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:532",
+      "strategy": "B",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:639",
+      "strategy": "B",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 6,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 6,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:640",
+      "strategy": "B",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 6,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 6,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:645",
+      "strategy": "B",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:647",
+      "strategy": "B",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:665",
+      "strategy": "B",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 2,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 4
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 2,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 6
+      }
+    },
+    {
+      "record_id": "yun2024:172",
+      "strategy": "C",
+      "vorher": {
+        "units": 4,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 4,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:174",
+      "strategy": "C",
+      "vorher": {
+        "units": 4,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 4,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:184",
+      "strategy": "C",
+      "vorher": {
+        "units": 6,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 6,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:185",
+      "strategy": "C",
+      "vorher": {
+        "units": 6,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 6,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:350",
+      "strategy": "C",
+      "vorher": {
+        "units": 19,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 19,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:352",
+      "strategy": "C",
+      "vorher": {
+        "units": 19,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 19,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:402",
+      "strategy": "C",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:403",
+      "strategy": "C",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:486",
+      "strategy": "C",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:489",
+      "strategy": "C",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:531",
+      "strategy": "C",
+      "vorher": {
+        "units": 11,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 11,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:532",
+      "strategy": "C",
+      "vorher": {
+        "units": 5,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 5,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:639",
+      "strategy": "C",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:640",
+      "strategy": "C",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:645",
+      "strategy": "C",
+      "vorher": {
+        "units": 11,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 11,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:647",
+      "strategy": "C",
+      "vorher": {
+        "units": 11,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 11,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:665",
+      "strategy": "C",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 7,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 4
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 7,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 6
+      }
+    },
+    {
+      "record_id": "yun2024:172",
+      "strategy": "D",
+      "vorher": {
+        "units": 7,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 7,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:174",
+      "strategy": "D",
+      "vorher": {
+        "units": 7,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 7,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:184",
+      "strategy": "D",
+      "vorher": {
+        "units": 7,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 7,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:185",
+      "strategy": "D",
+      "vorher": {
+        "units": 7,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 7,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:282",
+      "strategy": "D",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 4,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 4,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:350",
+      "strategy": "D",
+      "vorher": {
+        "units": 20,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 20,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:352",
+      "strategy": "D",
+      "vorher": {
+        "units": 20,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 20,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:402",
+      "strategy": "D",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:403",
+      "strategy": "D",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:486",
+      "strategy": "D",
+      "vorher": {
+        "units": 7,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:489",
+      "strategy": "D",
+      "vorher": {
+        "units": 7,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:531",
+      "strategy": "D",
+      "vorher": {
+        "units": 14,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 14,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:532",
+      "strategy": "D",
+      "vorher": {
+        "units": 8,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 8,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:639",
+      "strategy": "D",
+      "vorher": {
+        "units": 5,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 5,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:640",
+      "strategy": "D",
+      "vorher": {
+        "units": 5,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 5,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:645",
+      "strategy": "D",
+      "vorher": {
+        "units": 13,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 13,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:647",
+      "strategy": "D",
+      "vorher": {
+        "units": 13,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 13,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:665",
+      "strategy": "D",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 7,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 4
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 7,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 6
+      }
+    },
+    {
+      "record_id": "yun2024:172",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:174",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 11,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:184",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:185",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 18,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:282",
+      "strategy": "E",
+      "vorher": {
+        "units": 2,
+        "expected_cells": 4,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 4,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 1
+      }
+    },
+    {
+      "record_id": "yun2024:350",
+      "strategy": "E",
+      "vorher": {
+        "units": 20,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 20,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:352",
+      "strategy": "E",
+      "vorher": {
+        "units": 20,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 20,
+        "expected_cells": 190,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:402",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:403",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 3,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:486",
+      "strategy": "E",
+      "vorher": {
+        "units": 7,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:489",
+      "strategy": "E",
+      "vorher": {
+        "units": 7,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 2,
+        "expected_cells": 9,
+        "validation_warnings": 2,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:531",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 33,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:532",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 15,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:639",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:640",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 9,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:645",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:647",
+      "strategy": "E",
+      "vorher": {
+        "units": 1,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 0
+      },
+      "nachher": {
+        "units": 1,
+        "expected_cells": 22,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 2
+      }
+    },
+    {
+      "record_id": "yun2024:665",
+      "strategy": "E",
+      "vorher": {
+        "units": 3,
+        "expected_cells": 7,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 4
+      },
+      "nachher": {
+        "units": 3,
+        "expected_cells": 7,
+        "validation_warnings": 0,
+        "validation_errors": 0,
+        "gold_reachable": 6
+      }
+    }
+  ],
+  "armdiagnosen": [
+    {
+      "record_id": "yun2024:678",
+      "table_id": "PMC5777419:T2",
+      "kontext": {
+        "intervention": "antibiotic",
+        "comparator": "placebo"
+      },
+      "facts": [
+        {
+          "kind": "group_size",
+          "text": "(n=16)",
+          "value": 16,
+          "level": 1,
+          "col_start": 2,
+          "col_end": 2,
+          "basis": "kopf_angabe",
+          "arm": null,
+          "arm_basis": "kein_treffer",
+          "table_id": "PMC5777419:T2"
+        },
+        {
+          "kind": "group_size",
+          "text": "(n=16)",
+          "value": 16,
+          "level": 1,
+          "col_start": 5,
+          "col_end": 5,
+          "basis": "kopf_angabe",
+          "arm": null,
+          "arm_basis": "kein_treffer",
+          "table_id": "PMC5777419:T2"
+        },
+        {
+          "kind": "group_size",
+          "text": "(n=15)",
+          "value": 15,
+          "level": 1,
+          "col_start": 6,
+          "col_end": 10,
+          "basis": "kopf_angabe",
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC5777419:T2"
+        }
+      ],
+      "baender": [
+        {
+          "text": "(n=16)",
+          "level": 1,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": 16,
+          "neu_wert": 16,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "Probiotic group"
+          ]
+        },
+        {
+          "text": "(n=16)",
+          "level": 1,
+          "col_start": 5,
+          "col_end": 5,
+          "alt_wert": 16,
+          "neu_wert": 16,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "Probiotic group"
+          ]
+        },
+        {
+          "text": "(n=15)",
+          "level": 1,
+          "col_start": 6,
+          "col_end": 10,
+          "alt_wert": 15,
+          "neu_wert": 15,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "Antibiotic group"
+          ]
+        }
+      ],
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "raw": "16",
+          "value": 16.0
+        },
+        {
+          "field": "comparator_group_size",
+          "raw": "15",
+          "value": 15.0
+        }
+      ],
+      "fussnoten": [],
+      "caption": "###### Intra- and intergroup comparisons of clinical and microbiological parameters (mean ± SD or median, IQ score)",
+      "spalten": [
+        {
+          "col": 0,
+          "arm": null,
+          "basis": "label",
+          "role": "label",
+          "field": null
+        },
+        {
+          "col": 1,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 2,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 3,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 4,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 5,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "p_value",
+          "field": null
+        },
+        {
+          "col": 6,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 7,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 8,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 9,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 10,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "p_value",
+          "field": null
+        },
+        {
+          "col": 11,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 12,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 13,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 14,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 15,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "p_value",
+          "field": null
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:682",
+      "table_id": "PMC5777419:T2",
+      "kontext": {
+        "intervention": "antibiotic",
+        "comparator": "placebo"
+      },
+      "facts": [
+        {
+          "kind": "group_size",
+          "text": "(n=16)",
+          "value": 16,
+          "level": 1,
+          "col_start": 2,
+          "col_end": 2,
+          "basis": "kopf_angabe",
+          "arm": null,
+          "arm_basis": "kein_treffer",
+          "table_id": "PMC5777419:T2"
+        },
+        {
+          "kind": "group_size",
+          "text": "(n=16)",
+          "value": 16,
+          "level": 1,
+          "col_start": 5,
+          "col_end": 5,
+          "basis": "kopf_angabe",
+          "arm": null,
+          "arm_basis": "kein_treffer",
+          "table_id": "PMC5777419:T2"
+        },
+        {
+          "kind": "group_size",
+          "text": "(n=15)",
+          "value": 15,
+          "level": 1,
+          "col_start": 6,
+          "col_end": 10,
+          "basis": "kopf_angabe",
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC5777419:T2"
+        }
+      ],
+      "baender": [
+        {
+          "text": "(n=16)",
+          "level": 1,
+          "col_start": 2,
+          "col_end": 2,
+          "alt_wert": 16,
+          "neu_wert": 16,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "Probiotic group"
+          ]
+        },
+        {
+          "text": "(n=16)",
+          "level": 1,
+          "col_start": 5,
+          "col_end": 5,
+          "alt_wert": 16,
+          "neu_wert": 16,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "Probiotic group"
+          ]
+        },
+        {
+          "text": "(n=15)",
+          "level": 1,
+          "col_start": 6,
+          "col_end": 10,
+          "alt_wert": 15,
+          "neu_wert": 15,
+          "reine_angabe": true,
+          "uebergeordnet": [
+            "Antibiotic group"
+          ]
+        }
+      ],
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "raw": "16",
+          "value": 16.0
+        },
+        {
+          "field": "comparator_group_size",
+          "raw": "15",
+          "value": 15.0
+        }
+      ],
+      "fussnoten": [],
+      "caption": "###### Intra- and intergroup comparisons of clinical and microbiological parameters (mean ± SD or median, IQ score)",
+      "spalten": [
+        {
+          "col": 0,
+          "arm": null,
+          "basis": "label",
+          "role": "label",
+          "field": null
+        },
+        {
+          "col": 1,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 2,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 3,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 4,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 5,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "p_value",
+          "field": null
+        },
+        {
+          "col": 6,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 7,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 8,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 9,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 10,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "p_value",
+          "field": null
+        },
+        {
+          "col": 11,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 12,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 13,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 14,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "unknown",
+          "field": null
+        },
+        {
+          "col": 15,
+          "arm": "comparator",
+          "basis": "header_treffer",
+          "role": "p_value",
+          "field": null
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:335",
+      "table_id": "PMC5617873:T2",
+      "kontext": {
+        "intervention": "Aripiprazole",
+        "comparator": "Placbeo"
+      },
+      "facts": [
+        {
+          "kind": "group_size",
+          "text": "Placebo (n = 45)",
+          "value": 45,
+          "level": 0,
+          "col_start": 0,
+          "col_end": 1,
+          "basis": "kopf_angabe",
+          "arm": null,
+          "arm_basis": "kein_treffer",
+          "table_id": "PMC5617873:T2"
+        },
+        {
+          "kind": "group_size",
+          "text": "Aripiprazole (n = 47)",
+          "value": 47,
+          "level": 0,
+          "col_start": 2,
+          "col_end": 3,
+          "basis": "kopf_angabe",
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC5617873:T2"
+        }
+      ],
+      "baender": [
+        {
+          "text": "Placebo (n = 45)",
+          "level": 0,
+          "col_start": 0,
+          "col_end": 1,
+          "alt_wert": 45,
+          "neu_wert": 45,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        },
+        {
+          "text": "Aripiprazole (n = 47)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 3,
+          "alt_wert": 47,
+          "neu_wert": 47,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        }
+      ],
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "raw": "45",
+          "value": 45.0
+        },
+        {
+          "field": "comparator_group_size",
+          "raw": "47",
+          "value": 47.0
+        }
+      ],
+      "fussnoten": [],
+      "caption": "",
+      "spalten": [
+        {
+          "col": 0,
+          "arm": null,
+          "basis": "label",
+          "role": "label",
+          "field": null
+        },
+        {
+          "col": 1,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "mean",
+          "field": null
+        },
+        {
+          "col": 2,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "mean",
+          "field": "intervention_mean"
+        },
+        {
+          "col": 3,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "mean",
+          "field": "intervention_mean"
+        },
+        {
+          "col": 4,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "ci",
+          "field": null
+        },
+        {
+          "col": 5,
+          "arm": null,
+          "basis": "kein_header",
+          "role": "unknown",
+          "field": null
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:336",
+      "table_id": "PMC5617873:T2",
+      "kontext": {
+        "intervention": "Aripiprazole",
+        "comparator": "Placbeo"
+      },
+      "facts": [
+        {
+          "kind": "group_size",
+          "text": "Placebo (n = 45)",
+          "value": 45,
+          "level": 0,
+          "col_start": 0,
+          "col_end": 1,
+          "basis": "kopf_angabe",
+          "arm": null,
+          "arm_basis": "kein_treffer",
+          "table_id": "PMC5617873:T2"
+        },
+        {
+          "kind": "group_size",
+          "text": "Aripiprazole (n = 47)",
+          "value": 47,
+          "level": 0,
+          "col_start": 2,
+          "col_end": 3,
+          "basis": "kopf_angabe",
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "table_id": "PMC5617873:T2"
+        }
+      ],
+      "baender": [
+        {
+          "text": "Placebo (n = 45)",
+          "level": 0,
+          "col_start": 0,
+          "col_end": 1,
+          "alt_wert": 45,
+          "neu_wert": 45,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        },
+        {
+          "text": "Aripiprazole (n = 47)",
+          "level": 0,
+          "col_start": 2,
+          "col_end": 3,
+          "alt_wert": 47,
+          "neu_wert": 47,
+          "reine_angabe": false,
+          "uebergeordnet": []
+        }
+      ],
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "raw": "45",
+          "value": 45.0
+        },
+        {
+          "field": "comparator_group_size",
+          "raw": "47",
+          "value": 47.0
+        }
+      ],
+      "fussnoten": [],
+      "caption": "",
+      "spalten": [
+        {
+          "col": 0,
+          "arm": null,
+          "basis": "label",
+          "role": "label",
+          "field": null
+        },
+        {
+          "col": 1,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "mean",
+          "field": null
+        },
+        {
+          "col": 2,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "mean",
+          "field": "intervention_mean"
+        },
+        {
+          "col": 3,
+          "arm": "intervention",
+          "basis": "header_treffer",
+          "role": "mean",
+          "field": "intervention_mean"
+        },
+        {
+          "col": 4,
+          "arm": null,
+          "basis": "kein_treffer",
+          "role": "ci",
+          "field": null
+        },
+        {
+          "col": 5,
+          "arm": null,
+          "basis": "kein_header",
+          "role": "unknown",
+          "field": null
+        }
+      ]
+    }
+  ]
+}

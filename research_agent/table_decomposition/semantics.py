@@ -56,8 +56,22 @@ _ROLE_PATTERNS: Tuple[Tuple[str, str], ...] = (
 )
 
 
-_GROUP_SIZE_DECL_RE = re.compile(r"^\(?\s*n\s*=\s*(\d{1,6})\s*\)?$", re.IGNORECASE)
-_GROUP_SIZE_ANY_RE = re.compile(r"\bn\s*=\s*(\d{1,6})\b", re.IGNORECASE)
+# Kursiv-/Fettauszeichnung um das ``n`` und um den Wert (``*n*``, ``**N**``,
+# ``***n***``). Die Auszeichnung ist Dekoration: fuer die Erkennung gilt
+# derselbe Text wie ohne sie, damit ``(*n* = 103)`` genauso zaehlt wie
+# ``(n = 103)``. Verlangt bleiben das ``n``, das Gleichheitszeichen und eine
+# Zahl mit hoechstens sechs Ziffern - eine beliebige Zahl ist keine
+# Gruppengroesse.
+_EMPHASIS = r"[*_]{0,3}"
+_GROUP_SIZE_DECL_RE = re.compile(
+    r"^\(?\s*{e}\s*n\s*{e}\s*=\s*{e}\s*(\d{{1,6}})\s*{e}\s*\)?$".format(
+        e=_EMPHASIS),
+    re.IGNORECASE,
+)
+_GROUP_SIZE_ANY_RE = re.compile(
+    r"(?:^|[^\w]){e}\s*n\s*{e}\s*=\s*{e}\s*(\d{{1,6}})\b".format(e=_EMPHASIS),
+    re.IGNORECASE,
+)
 
 
 def group_size_declaration(text: str) -> Optional[int]:

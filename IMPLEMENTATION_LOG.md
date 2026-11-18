@@ -1489,6 +1489,38 @@ Ergebnis: 1 Uebernahme (`PMC3278655:T2`, `yun2024:390`, r3), 8 ohne Treffer,
 Warnungen 8 -> 1). Test: 7 neu in `research_agent/tests/test_pwert_korroboration.py`,
 gesamt 92.
 
+## Sprint 44 - Kursiv gesetzte Gruppengroessen
+
+`_GROUP_SIZE_DECL_RE` und `_GROUP_SIZE_ANY_RE` akzeptieren jetzt
+`*`/`_`-Auszeichnung um das `n` und um den Wert (`*n* = 103`, `( *n* = 71)`,
+`***n*** = 298`). Verlangt bleiben ein eigenstaendiges `n`, ein `=` und
+hoechstens sechs Ziffern; `season = 5`, `df = 2` und der tiefgestellte Zaehler
+`**N**~**c**~**= 12**` bleiben draussen. Die Kopfgeometrie ist fuer alle 60
+Tabellen der Auswahl unveraendert (Ebene, Spannen, Texte); Arme, `bind_arm`
+und `_BELEGTE_ARM_BASIS` sind unberuehrt.
+
+Ergebnis (`kursiv_n_20261118/`): 35 neue Gruppengroessen in 14 Tabellen,
+Goldfelder 62 -> **94** (kein Verlust), wertgleich an der Adresse 32 -> **58**,
+Armkonflikte 0, Strukturfehler 0. Von den 32 neuen Feldern sind 21 wertgleich;
+11 sind erreichbar, aber nicht wertgleich (Summen oder fremde Tabellen, etwa
+`PMC5079604:T1` 17+16=33). Lauf A-E: Einheiten B 159 -> 151, D 442 -> 431,
+E 273 -> 262, B-Warnungen 101 -> 103 (reine kursive Angaben sind jetzt
+Kopfangaben statt Spaltenkoepfe, `PMC3786549:T3`); Gold und Fehler unveraendert.
+
+Die vier Zieltabellen: `PMC2667135:T4` (103/97), `PMC4987981:T1` (23/21/16),
+`PMC3654355:T1` (71/33) und `T2` (`( *n* = 71)`, `( *n* = 33)`) erhalten ihre
+Fakten; fuenf Goldzellen werden dadurch wertgleich (103, 103, 71, 71, 23).
+Kein Feldgewinn dort, weil die Felder schon ueber die Spalten erreichbar waren.
+
+Armkonflikte `PMC5617873:T2` und `PMC5777419:T2` sind nur diagnostiziert: die
+gedruckten Zahlen (45/47 bzw. 16/15) stehen unter den entgegengesetzten
+Armnamen, der Dokumenttext nennt keine Zuordnung. Beide bleiben **ungeklaert**,
+die Armzuordnung wurde nicht geaendert.
+
+**Tests:** 24 neu in `research_agent/tests/test_gruppengroesse_kursiv.py`, ein
+bestehender Test in `test_kopfbaender.py` an die neuen Felder angepasst;
+gesamt **116 gruen**.
+
 ## Nachtrag Sprint 43 - Wertabgleich je Goldfeld und Einheiten-Rueckgang
 
 `diagnose_wertbeleg.py` prueft je erreichbarer Goldzelle die Stelle, die das

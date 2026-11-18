@@ -159,9 +159,14 @@ def test_candidate_without_gain_keeps_the_printed_geometry():
     tables, context = _tables("yun2024:665")
     table = tables["PMC4987981:T2"]
     assert table.band_decision == "original:kein_gewinn"
+    # Seit Sprint 44 tragen die kursiven Kopfangaben (``Placebo (*n* = 23)``,
+    # ``Metformin (*n* = 21)``, ``Pioglitazon (*n* = 16)``) ihre Gruppengroesse;
+    # die Spaltengeometrie selbst bleibt unveraendert.
     assert sorted(_fields(table, context)) == [
+        "comparator_group_size",
         "comparator_mean",
         "comparator_standard_deviation",
+        "intervention_group_size",
         "intervention_mean",
         "intervention_standard_deviation",
     ]
