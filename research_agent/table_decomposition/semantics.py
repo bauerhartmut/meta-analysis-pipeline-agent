@@ -934,7 +934,65 @@ def _group_size_facts(table: Table, intervention: str,
             "arm": arm,
             "arm_basis": arm_basis,
         })
+    vorhanden = {(fact["arm"], fact["value"]) for fact in facts}
+    for fact in _row_group_facts(table, intervention, comparator):
+        if (fact["arm"], fact["value"]) in vorhanden:
+            continue
+        vorhanden.add((fact["arm"], fact["value"]))
+        facts.append(fact)
     return facts
+
+
+def _row_group_facts(table: Table, intervention: str,
+                     comparator: str) -> List[Dict[str, object]]:
+    """Gruppengroessen aus einer gedruckten Gruppenkopf-Zeile im Tabellenkoerper.
+
+    In ``PMC2430617:T4`` steht der Gruppenkopf (``Placebo group (N = 79)``,
+    ``30 µg YIC group (N = 83)``) nicht im Kopfband, sondern in der ersten
+    Datenzeile. Gelesen wird eine Zeile nur, wenn **jede** gefuellte Zelle eine
+    Gruppenangabe mit belegtem Arm ist. Eine Datenzeile (``6 (7.6)``), eine
+    p-Wert-Zelle oder eine Zeile ohne Armbeleg erfuellt das nicht; das erste
+    zutreffende Zeilenband gilt fuer die ganze Tabelle.
+
+    Der Wert steht woertlich im Dokument, der Arm kommt aus dem gedruckten
+    Gruppenlabel - kein Arm aus der Spaltenposition.
+    """
+    for row in table.rows:
+        if row.group_label:
+            continue
+        zellen: List[Tuple[Column, str, int, ArmBinding]] = []
+        for column in table.columns:
+            zelle = row.cells.get(column.col_id)
+            text = (zelle.text or "").strip() if zelle is not None else ""
+            if not text:
+                continue
+            match = _GROUP_SIZE_ANY_RE.search(text)
+            if not match:
+                zellen = []
+                break
+            binding = bind_arm((text,), intervention, comparator)
+            if binding.arm is None:
+                zellen = []
+                break
+            zellen.append((column, text, int(match.group(1)), binding))
+        if len(zellen) < 2:
+            continue
+        return [
+            {
+                "kind": "group_size",
+                "text": text,
+                "value": value,
+                "level": 0,
+                "col_start": column.col_id,
+                "col_end": column.col_id,
+                "basis": "zeile_angabe",
+                "arm": binding.arm,
+                "arm_basis": binding.basis,
+                "zeile": row.row_id,
+            }
+            for column, text, value, binding in zellen
+        ]
+    return []
 
 
 _ROW_MEAN_RE = re.compile(r"\bmean\b|\bmittelwert\b|\baverage\b", re.IGNORECASE)
@@ -1033,6 +1091,21 @@ def outcome_rows(table: Table, outcome: str) -> List[int]:
         return []
     best = max(score for score, _row_id in scored)
     return [row_id for score, row_id in scored if score == best]
+
+
+def caption_matches_outcome(table: Table, outcome: str,
+                            min_score: float = _MIN_OUTCOME_SCORE) -> bool:
+    """Nennt die gedruckte Caption das Outcome der Tabelle?
+
+    Die Caption ist ein gedruckter Beleg fuer den Tabelleninhalt (``List of
+    reported adverse events.``). Sie ist der **schwaechere** Beleg: sie sagt
+    nichts ueber die Zeile, in der der Wert steht. Sie darf deshalb nur dort
+    zaehlen, wo keine Tabelle eine Zeile zum Outcome traegt.
+    """
+    caption = str(getattr(table, "caption", "") or "")
+    if not caption or not outcome:
+        return False
+    return _outcome_match_score(outcome, caption) >= min_score
 
 
 def _messspalten(table: Table) -> List[Column]:

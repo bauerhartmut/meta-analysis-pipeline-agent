@@ -90,13 +90,18 @@ def _kopf(table: Any, feld: str) -> List[Provenienz]:
         arm = fact.get("arm") or None
         if field_for(ROLE_N, arm) != feld:
             continue
+        basis = str(fact.get("basis") or "kopf_angabe")
+        zeile = fact.get("zeile")
         stellen.append(Provenienz(
             feld=feld, quelle=QUELLE_KOPF, text=str(fact.get("text") or ""),
             wert=float(fact["value"]), arm=arm,
-            arm_basis="kopfangabe" if arm else "",
-            zeitpunkt="", art=DIREKT, regel="gruppengroesse_im_kopf",
+            arm_basis=("zeile_angabe" if basis == "zeile_angabe"
+                       else ("kopfangabe" if arm else "")),
+            zeitpunkt="", art=DIREKT,
+            regel=("gruppengroesse_in_datenzeile" if basis == "zeile_angabe"
+                   else "gruppengroesse_im_kopf"),
             sicherheit=HOCH if arm else NIEDRIG, tabelle=table.table_id,
-            zeile=None,
+            zeile=int(zeile) if zeile is not None else None,
             spalten=[int(fact.get("col_start") or 0), int(fact.get("col_end") or 0)],
         ))
     return stellen

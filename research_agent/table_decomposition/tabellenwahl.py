@@ -9,7 +9,8 @@ Modul waehlt sie anhand des Dokuments:
   ihr - auch wenn die Kopfbeschriftung nach Baseline klingt.
 * Sonst gewinnt nur dann eine andere Tabelle, wenn die aktuelle eine
   Baseline-Tabelle ist (Kopfbeschriftung nennt "baseline", "demographic" oder
-  "characteristics") und die andere die meisten Outcome-Zeilen hat.
+  "characteristics") und die andere die meisten Outcome-Zeilen hat. Traegt
+  keine Tabelle eine Outcome-Zeile, zaehlt die gedruckte Caption als Beleg.
 
 Damit wechselt die Wahl nur dort, wo die Auswahl nachweislich eine
 Charakteristik-Tabelle ohne Outcome-Zeile als Ergebnisquelle nimmt.
@@ -24,7 +25,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Optional, Sequence
 
-from .semantics import outcome_rows
+from .semantics import caption_matches_outcome, outcome_rows
 
 BASELINE_WOERTER = ("baseline", "demographic", "characteristics",
                     "at study entry", "study entry")
@@ -50,22 +51,39 @@ def beschriftung(table: Any) -> str:
 
 
 def ist_baseline(table: Any) -> bool:
-    """Nennt die Kopfbeschriftung eine Baseline-/Charakteristik-Tabelle?"""
+    """Nennt die Kopfbeschriftung eine Baseline-/Charakteristik-Tabelle?
+
+    Die Beschriftung ist Caption **und** Kopfband. Eine Regel ueber die
+    Zeilenlabels (Alter, Geschlecht, MMSE, ...) wurde geprueft und verworfen:
+    sie aendert keinen der 9 Tabellenwechsel, weil ``PMC5360580:T1`` seine
+    Caption ``Baseline characteristics.`` gedruckt traegt.
+    """
     text = beschriftung(table)
     return any(wort in text for wort in BASELINE_WOERTER)
 
 
+def _rang(table: Any, outcome: str):
+    """Rang einer Tabelle: erst Outcome-Zeilen, dann der Caption-Beleg."""
+    return (len(outcome_rows(table, outcome)),
+            1 if caption_matches_outcome(table, outcome) else 0)
+
+
 def outcome_tabelle(tabellen: Sequence[Any],
                     outcome: str) -> Optional[Any]:
-    """Tabelle mit den meisten Outcome-Zeilen, Baseline ausgenommen."""
+    """Beste Tabelle ohne Baseline-Beschriftung: Zeilen vor Caption.
+
+    Der Caption-Beleg ist schwaecher als eine Outcome-Zeile und zaehlt deshalb
+    nur, wenn keine Tabelle eine solche Zeile traegt (``PMC2430617:T4``:
+    ``Occurrence of most common adverse events ...``).
+    """
     beste = None
-    beste_zahl = 0
+    bester = (0, 0)
     for table in tabellen:
         if ist_baseline(table):
             continue
-        zahl = len(outcome_rows(table, outcome))
-        if zahl > beste_zahl:
-            beste, beste_zahl = table, zahl
+        rang = _rang(table, outcome)
+        if rang > bester:
+            beste, bester = table, rang
     return beste
 
 

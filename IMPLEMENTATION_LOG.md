@@ -1618,3 +1618,36 @@ Nebenbei vereinfacht: die Adressierung liegt jetzt als `pv.feld_stellen` im
 Provenienzmodul, und die Belegsuche reichert die Dokumenttabellen je Record an
 statt in einem Cache, der den Kontext des ersten Records festhielt.
 Tests: `research_agent/tests/test_tabellenwahl.py` (4).
+
+## Sprint 47 - Caption, Gruppenkopf-Zeile und Zielwahl
+
+Drei Luecken geschlossen, alle offline und ohne Gold in der Regel:
+
+1. `parser.py` behaelt die beschreibende Caption: `_skip_over` ueberspringt
+   reine Bildzeilen (`PMC2430617:T4`), `_is_label_only`/`_caption_above_label`
+   liest bei einer blossen `Table N`-Zeile die Caption darueber
+   (`PMC5360580:T6`). 120 Tabellen: 96 beschreibend, 24 ohne (vorher 65/6/49).
+2. `semantics._row_group_facts` liest eine Datenzeile als Gruppenkopf, wenn
+   jede gefuellte Zelle eine Gruppenangabe mit belegtem Arm ist
+   (`PMC2430617:T4`: 79/83/80); `provenienz._kopf` fuehrt sie als
+   `gruppengroesse_in_datenzeile` mit Zeilennummer. Datenzeilen erfuellen die
+   Bedingung nicht und bleiben Datenzeilen.
+3. `tabellenwahl.outcome_tabelle` laesst die gedruckte Caption als Beleg zu,
+   aber nur wenn keine Tabelle eine Outcome-Zeile zum Outcome traegt.
+
+Verworfen: Baseline ueber Zeilenlabels (Alter, Geschlecht, MMSE). Mit und ohne
+Regel gemessen - identische 9 Wechsel, identische 68 wertgleiche Felder; ohne
+Beleg keine Regel. `PMC5360580:T1` traegt seine Caption `Baseline
+characteristics.` gedruckt, sie war nur nicht gelesen.
+
+Messung (`diagnose_gruppenkoepfe.py`): **94/58 -> 94/68**, gegen Sprint 46
++6 Felder, 0 verloren, **0 Armwechsel**, 9 Tabellenwechsel. Von den 15
+`population_mismatch`-Feldern werden **10** wertgleich: `PMC5360580` 2
+(169/167 statt Baseline 145/140), `PMC2430617` 4 (79/83/80 aus der Datenzeile).
+`yun2024:265.intervention_group_size` ist wertgleich, aber `mehrfach` (83 und
+80 unter demselben Arm) - der Wert ist gedruckt, die Dosis trennt das
+Feldmodell nicht. Die Ereigniszahlen 3/4 stehen nur im Fliesstext. Die fuenf
+restlichen Felder (`PMC4230312` 4, `PMC5122613` 1) brauchen diese
+Fliesstext-Zahlen.
+Tests: `research_agent/tests/test_gruppenkoepfe.py` (5), zusammen 130 gruen.
+Grenze: derselbe 48-Record-Satz, keine Gegenprobe auf fremden Records.
