@@ -1370,3 +1370,35 @@ wirkungslos.
 Baender erzeugt und keine Felder entfernt - sonst zuruecknehmen. Erwartung:
 56 Goldfelder, 0 Fehler, `PMC4319071`-Gewinn (158.67) bleibt. Bericht:
 `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/auswahl_20261118.md`.
+
+## Sprint 43 - Kopfband-Zuordnung abgesichert
+
+**Ursache:** `718d291` ordnete Kopfbaender ordinal zu und wandte das Ergebnis
+immer an. Zwei Folgen, je Tabelle belegt: Ueberlappungen, wenn die Labelspanne
+und der Wertblock uebereinander lagen (`PMC3877023:T3/T4`,
+`PMC3654355:T1`), und verworfene Kopfebenen, wenn sich eine Ebene nicht teilen
+liess - damit fielen die Armkoepfe weg (`PMC4987981:T2`, `PMC5777419:T2`).
+
+**Aenderung:** Der Parser berechnet nur noch zwei Kandidaten
+(`ordnung_mit_gedruckten_ebenen`, `ordnung_ohne_unteilbare_ebenen`) und laesst
+die gedruckte Geometrie stehen. `semantics.consider_header_band_candidate`
+rechnet jeden Kandidaten an einer Kopie durch und uebernimmt ihn nur ohne
+Ueberlappung, ohne Feldverlust, ohne verschobene Feld-/Armzuordnung, ohne
+Feld auf mehr Spalten und nur bei mindestens einem gewonnenen Feld. Sonst
+Rueckfall auf das Original; die Entscheidung steht als `Table.band_decision`.
+Neu: `column_timepoints` liest Zeitpunkte aus Spaltenkoepfen (Phase 5, noch
+nicht in der Auswahlregel verdrahtet). Tests: 17 neu in
+`research_agent/tests/test_kopfbaender.py`, gesamt 69 gruen.
+
+**Ergebnis (eingefrorene Auswahl, A-E):** erreichbare Goldfelder 46 -> 56,
+strukturell komplett 57/60 -> 60/60, Strukturfehler 7 -> 0, erwartete Zellen
+unveraendert 1748, Warnungen 136 -> 137 (`spaltenkopf_fehlt` +1,
+`armzuordnung_uebertragen` -1). `PMC4319071:T2/T4` behalten die ordinale
+Zuordnung mit 158.67 und 167.61.
+
+**Phase 5 (Befund):** 4 von 60 Tabellen tragen Zeitpunkte im Kopf
+(`PMC5777419:T2`, `PMC3278655:T2`), 10 in Gruppenzeilen, keine beides.
+
+**Naechster Hebel:** Spaltenzeitpunkte in `primary_tables` einbinden, nachdem
+die vier betroffenen Tabellen einzeln gemessen sind. Bericht:
+`public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/sprint43_20261118/bericht_20261118.md`.
