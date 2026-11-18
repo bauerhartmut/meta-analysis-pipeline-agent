@@ -28,6 +28,7 @@ from .parser import parse_document
 from .reconstruct import Reconstruction, ReconstructionResult, unreported_addresses
 from .semantics import (
     enrich_table,
+    primary_tables,
     transfer_arms_from_document,
     transfer_arms_within_document,
 )
@@ -257,7 +258,9 @@ class TableDecompositionEngine:
         """Alle Tabellen eines Dokuments verarbeiten.
 
         ``table_ids`` beschraenkt den Lauf auf bestimmte Tabellen (Benchmark-
-        auswahl), gespart wird der Aufruf, nicht die Pruefung.
+        auswahl), gespart wird der Aufruf, nicht die Pruefung. Ohne diese
+        Vorgabe greift die Auswahlregel ``primary_tables``: je Outcome und
+        Zeitpunkt wird nur die erste gedruckte Tabelle verarbeitet.
         """
         parsed = parse_document(text, doc_id)
         result = EngineResult(doc_id=doc_id, parse=parsed)
@@ -275,8 +278,17 @@ class TableDecompositionEngine:
             result.telemetry["document_arms"] = transfer_arms_from_document(
                 parsed.tables, context, text
             )
+        # Auswahlregel: je Outcome und Zeitpunkt eine Tabelle. Ein ausdruecklich
+        # angeforderter ``table_ids``-Satz gewinnt gegen die Regel.
+        _chosen, redundant = primary_tables(parsed.tables, context)
+        result.telemetry["redundant_tables"] = sorted(redundant)
+        for table in parsed.tables:
+            if table.table_id in redundant:
+                table.redundant_of = redundant[table.table_id]
         for table in parsed.tables:
             if allowed is not None and table.table_id not in allowed:
+                continue
+            if table.redundant_of and allowed is None:
                 continue
             run = self.run_table(table, text)
             result.tables.append(run)

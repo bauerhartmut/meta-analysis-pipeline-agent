@@ -262,6 +262,9 @@ class Table:
     header_facts: List[Dict[str, Any]] = field(default_factory=list)
     # Zeilen, die das Outcome des Records tragen (Zeilenlabel-Pfad, kein Gold).
     focus_rows: List[int] = field(default_factory=list)
+    # Tabelle, die dasselbe Outcome zum selben Zeitpunkt druckt (Auswahlregel:
+    # ``PMC4319071:T4`` ist redundant zu ``T2``). Leer = eigenstaendig.
+    redundant_of: str = ""
 
     # --- Zugriff ---------------------------------------------------------
     @property
@@ -337,6 +340,7 @@ class Table:
             "complexity": dict(self.complexity),
             "context": dict(self.context),
             "header_facts": [dict(fact) for fact in self.header_facts],
+            "redundant_of": self.redundant_of,
             "focus_rows": list(self.focus_rows),
         }
 

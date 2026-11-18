@@ -1,0 +1,74 @@
+{
+ "mode": "offline",
+ "generiert": "2026-11-18",
+ "regel": "je Outcome und Zeitpunkt die erste gedruckte Tabelle, nur wenn sie die Felder der uebrigen abdeckt; Tabellen ohne Zeitpunkt-Gruppen werden nie verdraengt",
+ "dev": {
+  "n_records": 38,
+  "rueckfaelle": {},
+  "gold_felder": {
+   "vorher": 16,
+   "nachher": 16
+  },
+  "records_mit_treffer": {
+   "vorher": 5,
+   "nachher": 5
+  }
+ },
+ "pmc4319071": {
+  "yun2024:111": {
+   "redundant": {
+    "PMC4319071:T4": "PMC4319071:T2"
+   },
+   "gold_vorher": [
+    "comparator_group_size",
+    "comparator_mean",
+    "intervention_mean"
+   ],
+   "gold_nachher": [
+    "comparator_group_size",
+    "comparator_mean",
+    "intervention_mean"
+   ],
+   "verlust": [],
+   "hinweis": "T4 (Risikogruppen n=803/n=1014) konkurriert nicht mehr mit T2 (Gesamtstichprobe)"
+  },
+  "yun2024:112": {
+   "redundant": {
+    "PMC4319071:T4": "PMC4319071:T2"
+   },
+   "gold_vorher": [
+    "comparator_group_size",
+    "comparator_mean",
+    "intervention_mean"
+   ],
+   "gold_nachher": [
+    "comparator_group_size",
+    "comparator_mean",
+    "intervention_mean"
+   ],
+   "verlust": [],
+   "hinweis": "T4 (Risikogruppen n=803/n=1014) konkurriert nicht mehr mit T2 (Gesamtstichprobe)"
+  }
+ },
+ "test_auswahl": {
+  "n_tabellen": 60,
+  "redundant_je_strategie": {
+   "A": 0,
+   "B": 0,
+   "C": 0
+  },
+  "abgleich_ohne_regel_gleich": true,
+  "hinweis": "Die eingefrorene Auswahl enthaelt je Record genau eine Tabelle; die Regel ist dort wirkungslos und aendert keinen Wert. Sie wirkt im Dokumentpfad ohne table_ids.",
+  "gold_reachable_neu": [
+   46,
+   46,
+   46
+  ],
+  "gold_reachable_gespeichert_alt": [
+   95,
+   95,
+   95
+  ],
+  "alt_stand": "structure.json aus ac3b4c9, also vor den Guards aus Sprint 37-39"
+ }
+}

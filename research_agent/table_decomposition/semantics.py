@@ -817,6 +817,74 @@ def reachable_fields(table: Table) -> set:
     return fields
 
 
+def _timepoint_key(table: Table) -> Tuple[str, ...]:
+    """Zeitpunkte einer Tabelle aus ihren Gruppenzeilen (normalisiert)."""
+    labels: List[str] = []
+    for row in table.rows:
+        if not row.group_label:
+            continue
+        label = _norm_label(row.group_label)
+        if label and label not in labels:
+            labels.append(label)
+    return tuple(labels)
+
+
+def primary_tables(tables: Sequence[Table],
+                   context: Optional[Dict[str, object]] = None) -> Tuple[set, Dict[str, str]]:
+    """Je Outcome und Zeitpunkt nur eine Tabelle - die erste gedruckte.
+
+    ``PMC4319071`` druckt dieselben Outcomes und Zeitpunkte zweimal:
+    ``T2`` (Gesamtstichprobe) und ``T4`` (Risikogruppen, ``n=803``/``n=1014``).
+    Beide liefern ``intervention_mean`` und ``comparator_mean`` mit anderen
+    Werten (158.67 gegen 143.25); zwei Kandidaten fuer ein Feld kosten
+    Precision.
+
+    Gewaehlt wird je Zeitpunktmenge die erste gedruckte Tabelle - und nur
+    dann, wenn sie die Felder der uebrigen abdeckt. Deckt sie sie nicht ab,
+    bleiben alle stehen, sonst ginge ein Feld verloren. Tabellen ohne
+    Zielfeld sind keine Kandidaten.
+
+    Rueckgabe: Menge der gewaehlten Tabellen-IDs (alle Tabellen ausser den
+    verdraengten) und Zuordnung ``redundant -> gewaehlt``.
+    """
+    context = context or {}
+
+    def served(table: Table) -> set:
+        """Felder, die diese Tabelle fuer **dieses** Outcome hergibt.
+
+        Nicht ``reachable_fields``: das zaehlt alle Spaltenfelder der Tabelle,
+        auch die fremder Outcomes. In ``PMC1216327`` deckt die
+        Baseline-Charakteristik-Tabelle sonst scheinbar alles ab und verdraengt
+        die Ergebnistabelle.
+        """
+        return {name for _row_id, name in reachable_cells(table, context)}
+
+    groups: Dict[Tuple[str, ...], List[Table]] = {}
+    for table in tables:
+        key = _timepoint_key(table)
+        # Ohne Zeitpunkt-Gruppen ist die Tabelle keine Zeitpunkt-Tabelle
+        # (Baseline-Charakteristika, Elektrolyte, ...). Sie wird nie verdraengt.
+        if not key or not served(table):
+            continue
+        groups.setdefault(key, []).append(table)
+    chosen: set = {table.table_id for table in tables}
+    redundant: Dict[str, str] = {}
+    for group in groups.values():
+        if len(group) < 2:
+            continue
+        ordered = sorted(group, key=lambda table: (table.index, table.table_id))
+        first = ordered[0]
+        first_fields = served(first)
+        # Nur verdraengen, wenn die erste Tabelle alle Felder der uebrigen
+        # abdeckt - sonst ginge ein Feld verloren.
+        if not all(served(table) <= first_fields for table in ordered[1:]):
+            continue
+        for table in ordered[1:]:
+            redundant[table.table_id] = first.table_id
+            chosen.discard(table.table_id)
+    return chosen, redundant
+
+
 def column_summary(column: Column) -> str:
     """Einzeilige Spaltenbeschreibung fuer Prompt und Bericht."""
     path = header_path_text(column.header_path) or "(ohne Kopf)"

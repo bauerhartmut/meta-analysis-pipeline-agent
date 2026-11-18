@@ -1269,3 +1269,33 @@ erreichbare Goldfelder, 5 Records mit Treffer.
 **Naechster Hebel:** Auswahlregel "eine Tabelle je Outcome und Zeitpunkt" -
 `T4` liefert dieselben Felder mit anderen Werten (143.25 statt 158.67).
 Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/dokumentarm_20261118.md`.
+
+## Sprint 40 - Auswahlregel: eine Tabelle je Outcome und Zeitpunkt
+
+**Beleg:** `PMC4319071` druckt dieselben Felder zweimal - `T2`
+(Gesamtstichprobe, `158.67`) und `T4` (Risikogruppen `n=803`/`n=1014`,
+`143.25`). Zwei Kandidaten je Feld kosten Precision.
+
+**Aenderung:** `semantics.primary_tables` waehlt je normalisierter
+Zeitpunktmenge die erste gedruckte Tabelle (`table.index`), aber nur wenn sie
+die Felder der uebrigen abdeckt; sonst bleiben alle stehen. Kandidaten sind
+nur Tabellen mit Zeitpunkt-Gruppen und mindestens einem Outcome-Feld aus
+`reachable_cells` (nicht `reachable_fields`: damit verdraengte die
+Baseline-Tabelle in `PMC1216327` die Ergebnistabelle `T5`, dev 16 -> 12
+Felder, gemessen und verworfen). `Table.redundant_of` haelt die Entscheidung
+fest; Engine und `run_benchmark.load_tables` ueberspringen verdraengte
+Tabellen, ein ausdruecklicher `table_ids`-Satz gewinnt. `load_tables` gibt die
+verdraengten IDs als dritten Wert zurueck, damit kein Lauf eine Auswahl still
+verkleinert. Test: 1 neu, 52 gruen.
+
+**Ergebnis:** `PMC4319071:T4` faellt hinter `T2` zurueck, beide Records ohne
+Feldverlust (`comparator_mean`, `intervention_mean`,
+`comparator_group_size` unveraendert erreichbar). dev unveraendert: 38
+Records, 0 Rueckfaelle, 16 erreichbare Goldfelder, 5 Records mit Treffer. Auf
+der eingefrorenen Testauswahl ist die Regel wirkungslos (je Record genau eine
+Tabelle, A/B identisch, 0 verdraengt).
+
+**Nebenbefund:** `offline_struktur_20261118/structure.json` stammt aus
+`ac3b4c9` (95 erreichbare Goldfelder); der aktuelle Code liefert 46, unabhaengig
+von dieser Regel. Das Artefakt ist vor dem naechsten Zitat neu zu erzeugen.
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/auswahl_20261118.md`.

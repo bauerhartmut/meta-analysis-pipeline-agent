@@ -45,6 +45,7 @@ from research_agent.table_decomposition.parser import parse_document  # noqa: E4
 from research_agent.table_decomposition.reconstruct import Reconstruction  # noqa: E402
 from research_agent.table_decomposition.semantics import (
     enrich_table,
+    primary_tables,
     reachable_cells,
     transfer_arms_from_document,
     transfer_arms_within_document,
@@ -83,7 +84,13 @@ def context_of(record: Dict[str, Any]) -> Dict[str, Any]:
 
 def load_tables(selection_entries: Sequence[Dict[str, Any]],
                 record: Dict[str, Any], assume_order: bool = False) -> tuple:
-    """Alle ausgewaehlten Tabellen eines Records, mit dessen Kontext."""
+    """Ausgewaehlte Tabellen eines Records, mit dessen Kontext.
+
+    Verdraengte Tabellen (``redundant_of``, siehe ``primary_tables``) fallen
+    heraus; sind alle ausgewaehlten verdraengt, bleiben sie stehen. Die
+    verdraengten IDs kommen als dritter Wert zurueck, damit kein Lauf eine
+    Auswahl still verkleinert.
+    """
     entries = [entry for entry in selection_entries
                if record["record_id"] in entry["record_ids"]]
     if not entries:
@@ -98,13 +105,23 @@ def load_tables(selection_entries: Sequence[Dict[str, Any]],
         enrich_table(table, context, assume_order=assume_order)
     transfer_arms_within_document(parsed.tables, context)
     transfer_arms_from_document(parsed.tables, context, text)
+    # Auswahlregel: je Outcome und Zeitpunkt eine Tabelle (``T4`` faellt
+    # hinter ``T2`` zurueck). Bleibt sonst keine uebrig, bleiben alle stehen.
+    _chosen, redundant = primary_tables(parsed.tables, context)
+    for table in parsed.tables:
+        if table.table_id in redundant:
+            table.redundant_of = redundant[table.table_id]
     tables = []
     for table in parsed.tables:
         if table.table_id not in wanted:
             continue
         table.complexity = assess(table).to_dict()
         tables.append(table)
-    return tables, text
+    kept = [table for table in tables if not table.redundant_of]
+    if not kept:
+        return tables, text, []
+    dropped = [table.table_id for table in tables if table.redundant_of]
+    return kept, text, dropped
 
 
 def group_by_record(selection: Dict[str, Any],
@@ -135,7 +152,8 @@ def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
         record = records.get(record_id)
         if record is None:
             continue
-        tables, text = load_tables(entries, record, assume_order=assume_order)
+        tables, text, redundant = load_tables(entries, record,
+                                              assume_order=assume_order)
         context = context_of(record)
         fields = {name for table in tables
                   for _row_id, name in reachable_cells(table, context)}
@@ -200,6 +218,7 @@ def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
                 "validation_warnings": warnings,
                 "finding_codes": dict(findings),
                 "per_table": per_table,
+                "redundant_tables": redundant,
             }
             per_strategy[strategy]["records"].append(entry)
             totals = per_strategy[strategy]["totals"]
@@ -212,6 +231,7 @@ def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
             totals["gold_reachable"] += reachable
             totals["errors"] += errors
             totals["warnings"] += warnings
+            totals["redundant"] += len(redundant)
     summary = {}
     for strategy, data in per_strategy.items():
         totals = data["totals"]
@@ -229,6 +249,7 @@ def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
             "prompt_chars_per_unit": round(
                 totals.get("prompt_chars", 0) / max(totals.get("units", 0), 1), 1),
             "est_tokens": round(totals.get("prompt_chars", 0) / 4),
+            "redundant_tables": totals.get("redundant", 0),
             "gold_reachable": totals.get("gold_reachable", 0),
             "errors": totals.get("errors", 0),
             "warnings": totals.get("warnings", 0),
@@ -333,8 +354,8 @@ def model_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
         record = records.get(record_id)
         if record is None or not record["gold"]["cells"]:
             continue
-        tables, text = load_tables(entries, record,
-                                   assume_order=config.arm_order_fallback)
+        tables, text, redundant = load_tables(entries, record,
+                                              assume_order=config.arm_order_fallback)
         if not tables:
             continue
         table_ids = [table.table_id for table in tables]
@@ -371,6 +392,7 @@ def model_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
                     "strategy": strategy,
                     "model": model_id,
                     "table_ids": table_ids,
+                    "redundant_tables": redundant,
                     "complexity": complexities.most_common(1)[0][0] if complexities else "unbekannt",
                     "cells": result.prediction_cells(),
                     "conflicts": result.conflicts(),

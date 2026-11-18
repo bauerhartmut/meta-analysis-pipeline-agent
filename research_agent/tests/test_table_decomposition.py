@@ -61,6 +61,7 @@ from research_agent.table_decomposition.semantics import (
     header_geometry_trustworthy,
     group_size_declaration,
     outcome_rows,
+    primary_tables,
     reachable_cells,
     reachable_fields,
     role_for_header,
@@ -1067,3 +1068,39 @@ def test_document_definition_proves_the_intervention_arm():
     for row in table.rows:
         row.arm, row.arm_basis = None, ""
     assert transfer_arms_from_document([table], context, "Keine Definition.") == 0
+
+
+def _timepoint_table(table_id, index, values, group="Baseline"):
+    table = Table(table_id=table_id, doc_id="T", index=index)
+    table.columns = [Column(col_id=0, x_start=0, x_end=9),
+                     Column(col_id=1, x_start=10, x_end=19)]
+    header = Row(row_id=0, index=0)
+    header.group_label = group
+    header.cells = {0: Cell(row_id=0, col_id=0, text=group)}
+    row = Row(row_id=1, index=1)
+    row.cells = {0: Cell(row_id=1, col_id=0, text="Control"),
+                 1: Cell(row_id=1, col_id=1, text=values, value=float(values.split()[0]))}
+    table.rows = [header, row]
+    enrich_table(table, {"intervention": "Plus", "comparator": "Control",
+                         "outcome": "Vegetable intake"})
+    table.columns[0].role = ROLE_LABEL
+    table.columns[1].is_outcome = True
+    table.columns[1].role = ROLE_MEAN
+    table.rows[1].arm = ARM_COMPARATOR
+    return table
+
+
+def test_one_table_per_outcome_and_timepoint():
+    """Zwei Tabellen mit gleichem Zeitpunkt und gleichem Feld: die erste gilt."""
+    first = _timepoint_table("D:T1", 1, "158.67")
+    second = _timepoint_table("D:T2", 2, "143.25")
+    chosen, redundant = primary_tables([first, second], {"outcome": "Vegetable intake"})
+    assert chosen == {"D:T1"}
+    assert redundant == {"D:T2": "D:T1"}
+
+    # Ohne Zeitpunkt-Gruppen wird nicht verdraengt.
+    first = _timepoint_table("D:T3", 1, "158.67", group="")
+    second = _timepoint_table("D:T4", 2, "143.25", group="")
+    chosen, redundant = primary_tables([first, second], {"outcome": "Vegetable intake"})
+    assert redundant == {}
+    assert chosen == {"D:T3", "D:T4"}
