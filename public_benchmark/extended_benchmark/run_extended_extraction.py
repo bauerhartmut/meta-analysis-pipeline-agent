@@ -633,6 +633,11 @@ def main() -> int:
         action="store_true",
         help="letzten berichteten Messzeitpunkt verlangen und Zeitpunkte mitliefern (v4_last_timepoint)",
     )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="nur die Auswahl zeigen (Records, Auftraege, ids) und beenden; keine Anfrage, kein Schreiben",
+    )
     parser.add_argument("--run-id", default=datetime.now(timezone.utc).strftime("extended_%Y%m%d"))
     parser.add_argument(
         "--quelle",
@@ -682,6 +687,16 @@ def main() -> int:
 
     jobs = [(record, model) for model in args.models for record in records if (record["record_id"], model) not in done]
     print(f"{len(records)} Records, {len(jobs)} offene Auftraege, {args.workers} Threads", flush=True)
+
+    if args.dry_run:
+        # Pruefpfad: zeigt genau die Auswahl, die ein echter Lauf anfassen
+        # wuerde, ohne eine Anfrage zu senden oder eine Zeile zu schreiben.
+        print("DRY-RUN: keine Anfrage, kein Schreiben", flush=True)
+        for model in args.models:
+            ids = [record["record_id"] for record, name in jobs if name == model]
+            print(f"{model}: {len(ids)} Auftraege", flush=True)
+            print(",".join(ids), flush=True)
+        return 0
 
     def work(record: dict[str, Any], model: str) -> dict[str, Any]:
         path = record["document"].get("path") or ""

@@ -1,25 +1,44 @@
 #!/bin/bash
-# Nachzug der Length-Ausfaelle, sobald der Hauptlauf beendet ist.
+# Nachzug der Ausfaelle, sobald kein Extraktionsprozess mehr laeuft.
 #
-# Warum warten: `--retry-failed` liest die Fehlzeilen aus den eigenen
-# predictions.jsonl. Laeuft der Hauptlauf noch, wuerden zwei Prozesse in
-# dieselbe Datei schreiben (Vorfall vom 16.11. vormittags: verschenkte
-# Zeilen, Duplikate, zerrissene Logzeilen).
+# Warum nicht auf "fertig:" warten: Der Lauf kann in mehreren Etappen gelaufen
+# sein (Fortsetzung nach einem Abbruch), und dann steht "fertig:" in einer
+# anderen Datei als der, die dieses Skript beobachtet. Beobachtet wird deshalb
+# der Prozessstand ueber lauf_status.py ("Prozesse: 0"), das Log dient nur der
+# Protokollierung und ist als Parameter waehlbar.
 #
-# Aufruf:  bash nachzug_ausfaelle.sh [--jetzt]
-#          --jetzt ueberspringt die Wartephase (nur wenn sicher fertig).
+# Aufruf:
+#   bash nachzug_ausfaelle.sh [--log PFAD] [--run NAME] [--repair] [--jetzt]
 #
-# Ergebnis: runs/<run>/konsole_nachzug.log, runs/<run>/nachzug_zusammenfassung.txt
+#   --log PFAD    Logdatei des Hauptlaufs (Standard: runs/$RUN/konsole.log)
+#   --run NAME    Run-Verzeichnis (Standard: yun699_8000_alle_20261117)
+#   --repair      Reparaturaufruf fuer Length-Faelle aktivieren (6.000 Tokens)
+#   --jetzt       nicht warten, sofort starten (nur wenn sicher kein Prozess laeuft)
+#
+# Ergebnis: runs/$RUN/konsole_nachzug.log, runs/$RUN/nachzug_zusammenfassung.txt
 set -u
 cd /d/daswu/AIResearch || exit 1
 export PYTHONIOENCODING=utf-8
 
 R=public_benchmark/extended_benchmark/runs
 RUN=yun699_8000_alle_20261117
-LOG=$R/$RUN/konsole.log
-NLOG=$R/$RUN/konsole_nachzug.log
-LOCK=$R/$RUN/nachzug.lock
+LOG=""
+REPAIR=""
+JETZT=0
 MAXWARTE=${MAXWARTE:-480}   # 480 x 60 s = 8 h
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --log) LOG="${2:-}"; shift 2 ;;
+    --run) RUN="${2:-}"; shift 2 ;;
+    --repair) REPAIR="--repair"; shift ;;
+    --jetzt) JETZT=1; shift ;;
+    *) echo "Unbekannter Parameter: $1"; exit 2 ;;
+  esac
+done
+[ -n "$LOG" ] || LOG="$R/$RUN/konsole.log"
+NLOG="$R/$RUN/konsole_nachzug.log"
+LOCK="$R/$RUN/nachzug.lock"
 
 # --- Doppelstart-Schutz -----------------------------------------------------
 if [ -f "$LOCK" ]; then
@@ -33,21 +52,40 @@ fi
 echo $$ > "$LOCK"
 trap 'rm -f "$LOCK"' EXIT
 
-# --- Warten auf das Ende des Hauptlaufs -------------------------------------
-if [ "${1:-}" != "--jetzt" ]; then
-  echo "Warte auf 'fertig:' in $LOG (max ${MAXWARTE} min)"
+# --- Warten, bis kein Extraktionsprozess mehr laeuft ------------------------
+# lauf_status.py prueft den Prozessstand unabhaengig davon, in welche Datei
+# der Lauf schreibt. "Prozesse: 0" ist die Bedingung, nicht ein Logtext.
+laeuft_noch() {
+  local status
+  status=$(.venv/bin/python public_benchmark/extended_benchmark/yun_full/lauf_status.py \
+             --run "$RUN" 2>/dev/null | head -1)
+  case "$status" in
+    "Prozesse: 0"*) return 1 ;;
+    "Prozesse: "*) return 0 ;;
+    *) return 0 ;;   # unklare Ausgabe: im Zweifel weiter warten
+  esac
+}
+
+if [ "$JETZT" -eq 0 ]; then
+  echo "Warte, bis kein Extraktionsprozess mehr laeuft (max ${MAXWARTE} min)."
+  echo "Log (nur zur Information): $LOG"
   for i in $(seq 1 "$MAXWARTE"); do
-    if grep -q "^fertig:" "$LOG" 2>/dev/null; then
-      echo "Hauptlauf beendet nach ${i} Minuten."
+    if ! laeuft_noch; then
+      echo "Kein Prozess mehr aktiv nach ${i} Minuten."
       break
     fi
     sleep 60
   done
-  if ! grep -q "^fertig:" "$LOG" 2>/dev/null; then
-    echo "FEHLER: Hauptlauf nach ${MAXWARTE} Minuten nicht beendet, kein Nachzug gestartet."
+  if laeuft_noch; then
+    echo "FEHLER: nach ${MAXWARTE} Minuten laeuft noch ein Prozess, kein Nachzug gestartet."
     exit 1
   fi
   sleep 30
+else
+  if laeuft_noch; then
+    echo "FEHLER: --jetzt gesetzt, aber es laeuft noch ein Prozess. Abbruch."
+    exit 1
+  fi
 fi
 
 # --- Ausgangsstand sichern --------------------------------------------------
@@ -67,12 +105,12 @@ echo "GLM-Ausfaelle vor dem Nachzug: $vorher"
 nohup .venv/bin/python public_benchmark/extended_benchmark/run_extended_extraction.py \
   --models glm \
   --records public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl \
-  --split "" --max-tokens 8000 --cell-timepoint --cache-buster \
-  --workers 1 --retry-failed \
+  --split "" --max-tokens 24000 --cell-timepoint --cache-buster \
+  --workers 1 --retry-failed $REPAIR \
   --run-id "$RUN" --quelle v7_nachzug \
   > "$NLOG" 2>&1 &
 NPID=$!
-echo "Nachzug gestartet, PID $NPID"
+echo "Nachzug gestartet, PID $NPID (Log: $NLOG)"
 
 # --- Auf den Nachzug warten -------------------------------------------------
 for i in $(seq 1 240); do

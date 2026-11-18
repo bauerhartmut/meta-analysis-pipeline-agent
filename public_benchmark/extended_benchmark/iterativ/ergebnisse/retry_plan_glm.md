@@ -62,13 +62,27 @@ RUN=yun699_8000_alle_20261117
 .venv/bin/python $R/yun_full/auswerte_yun699.py --run $RUN
 ```
 
+## Auswahl geprueft (ohne Netzlauf)
+
+Der Harness hat jetzt `--dry-run`: Er zeigt die Auswahl und beendet, ohne eine
+Anfrage zu senden oder eine Zeile zu schreiben. Damit ist der Repair-Befehl
+gegen den laufenden Lauf geprueft:
+
+| Pruefung | Ergebnis |
+|---|---|
+| Auswahl mit `--retry-failed --ids <Liste>` | 103 Records, 103 Auftraege |
+| Setvergleich mit `retry_repair_ids.txt` | identisch (103 = 103, keine Abweichung) |
+| Deckung mit den aktuellen GLM-Length-Records | 103 von 103 |
+| Gegenprobe ohne `--retry-failed` | 103 Records, **0** Auftraege |
+| `predictions.jsonl` vor/nach | gleiche MD5, gleiche Zeilenzahl (1.497) |
+
 ## Zwei Fallen
 
-1. **`nachzug_ausfaelle.sh` wartet auf das falsche Log.** Das Skript sucht
-   `^fertig:` in `runs/$RUN/konsole.log`; der fortgesetzte Lauf schreibt nach
-   `konsole_fortsetzung2.log`. Ohne Anpassung wartet es acht Stunden und bricht
-   dann ab. Entweder `LOG=` auf die Fortsetzungsdatei zeigen lassen oder nach
-   `Prozesse: 0` mit `--jetzt` starten.
+1. **`nachzug_ausfaelle.sh` ist angepasst.** Es wartet nicht mehr auf
+   `^fertig:` in einer fest verdrahteten Datei, sondern fragt den Prozessstand
+   ueber `lauf_status.py` ab (`Prozesse: 0`) und nimmt den Logpfad als
+   Parameter (`--log`). `--jetzt` bricht jetzt ab, wenn doch noch ein Prozess
+   laeuft.
 2. **`--retry-failed` ersetzt keine Zeilen, es haengt an.** Die alten
    Fehlzeilen bleiben stehen; erst `dedupe_predictions.py --write` macht die
    Auswertung eindeutig. Bis dahin zeigen `lauf_status.py` und
