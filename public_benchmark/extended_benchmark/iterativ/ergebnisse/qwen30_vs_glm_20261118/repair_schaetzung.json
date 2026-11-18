@@ -7,40 +7,55 @@
     "richtig": 1840,
     "falsch": 281,
     "fehlend": 652,
+    "zuwachs": 0,
     "recall": 0.6635,
     "precision": 0.8675,
-    "f1": 0.7519,
-    "zuwachs": 0
+    "f1": 0.7519
   },
   "ausfaelle": {
     "records": 104,
     "goldzellen": 427,
-    "richtige_zellen_je_brauchbarem_record": 3.09
+    "bereits_richtig": 0,
+    "gewinnbar": 427,
+    "gelieferte_zellen": 0
+  },
+  "anker": {
+    "richtige_zellen_je_record_mittel": 3.09,
+    "median": 2,
+    "anteil_ohne_treffer": 0.113
   },
   "szenarien": {
-    "konservativ (40 % Erfolg, 60 % Zelltreffer)": {
-      "richtig": 1942,
+    "zurueckhaltend: 50 % der 104 Records brauchbar, je 2 richtige Zellen": {
+      "zuwachs": 104,
+      "richtig": 1944,
       "falsch": 297,
-      "recall": 0.7003,
+      "recall": 0.701,
+      "precision": 0.8675,
+      "f1": 0.7754
+    },
+    "mittel: 75 % brauchbar, je 2 richtige Zellen": {
+      "zuwachs": 156,
+      "richtig": 1996,
+      "falsch": 305,
+      "recall": 0.7198,
       "precision": 0.8674,
-      "f1": 0.7749,
-      "zuwachs": 102
+      "f1": 0.7868
     },
-    "mittel (60 % Erfolg, 78 % Zelltreffer)": {
-      "richtig": 2040,
-      "falsch": 312,
-      "recall": 0.7357,
-      "precision": 0.8673,
-      "f1": 0.7961,
-      "zuwachs": 200
-    },
-    "Anker wie die brauchbaren Zeilen (3,09 richtige Zellen je Record)": {
+    "optimistisch: alle brauchbar, je 3.09 richtige Zellen": {
+      "zuwachs": 322,
       "richtig": 2162,
       "falsch": 330,
       "recall": 0.7797,
       "precision": 0.8676,
-      "f1": 0.8213,
-      "zuwachs": 322
+      "f1": 0.8213
+    },
+    "Obergrenze: alle Goldzellen der Ausfaelle (427 gewinnbar)": {
+      "zuwachs": 427,
+      "richtig": 2267,
+      "falsch": 346,
+      "recall": 0.8175,
+      "precision": 0.8676,
+      "f1": 0.8418
     }
   }
 }
