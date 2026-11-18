@@ -196,7 +196,34 @@ Je Regel:
 Damit ist belegt: Nur die Konsistenzregeln (Ereignisse ≤ N, ganzzahlige
 Ereignisse) trennen zuverlaessig. Die „weichen" Regeln markieren ueberwiegend
 korrekte Zellen und duerfen hoechstens warnen, nicht verwerfen. `zell_pruefung.py`
-setzt das jetzt ueber `HARTE_REGELN` um.
+setzt das jetzt ueber `HARTE_REGELN` um; dazu gehoert auch
+`gruppengroesse_nicht_positiv`, das erst der Synthetiktest als Luecke zeigte
+(eine negative Gruppengroesse war zuvor von keiner Regel erfasst).
+
+### Auswertungspfad A–D geprueft (synthetisch, ohne Netz)
+
+`synthetik_test.py` schreibt 130 gezielt konstruierte Antworten auf die 65
+Stichprobenzellen (Faelle: beide richtig, Streit mit Armbezug, nur ein Modell
+belegt, Streit ohne Armbezug, beide gleich falsch, harter Verstoss) und laesst
+denselben Auswertungscode laufen. Ergebnis:
+
+| Variante | richtig | falsch | fehlend | Precision | Recall | F1 | hinzugefuegt |
+|---|---|---|---|---|---|---|---|
+| A | 10 | 0 | 65 | 1,000 | 0,133 | 0,235 | 0 |
+| B | 41 | 24 | 10 | 0,631 | 0,547 | 0,586 | 55 |
+| C | 51 | 13 | 11 | 0,797 | 0,680 | 0,734 | 54 |
+| D | 50 | 10 | 15 | 0,833 | 0,667 | 0,741 | 50 |
+
+Alle neun Pruefungen bestanden: A ergaenzt nichts, B nur belegte Antworten, C
+ist nicht schlechter als B, C enthaelt sich beim Streit ohne Armbezug, D
+verwirft genau die Zellen mit hartem Verstoss (2 negative Ereignisse, 2
+Ereignisse bei kontinuierlichem Outcome) und wird dadurch nicht schlechter als
+A.
+
+Die Zahlen sind **kein Modellergebnis**: Die Antworten sind erfunden, geprueft
+wurde ausschliesslich, dass jede Verzweigung des Auswertungscodes laeuft und
+plausible Werte liefert. Die echte Stichprobe unter `ergebnisse/exp1` bleibt
+unberuehrt.
 
 ## 6. Empfehlung fuer den produktiven Einsatz
 
@@ -231,6 +258,10 @@ cd public_benchmark/extended_benchmark/iterativ
 ../../../.venv/bin/python pruefung_offline.py \
     --out ergebnisse/pruefung_offline.json
 
+# Auswertungspfad ohne Netz pruefen (synthetische Antworten)
+../../../.venv/bin/python synthetik_test.py --quelle ergebnisse/exp1 \
+    --out-dir ergebnisse/exp1_synthetisch
+
 # Experiment: Stichprobe, dann Netzphase, dann Auswertung
 ../../../.venv/bin/python experiment.py --plan --n-records 20 --seed 20261117 \
     --out-dir ergebnisse/exp1
@@ -253,9 +284,10 @@ Tokenverbrauch). Beides ist noch nicht erzeugt.
   ob sie an der richtigen Stelle steht. 83,1 % ist deshalb eine Obergrenze.
 - Die Messung der Pruefregeln nutzt die Modellzellen als Bezugsgroesse fuer N.
   Fehlt N in einer Antwort, greifen die N-abhaengigen Regeln nicht.
-- Variante B/C/D ist ungemessen. Ohne Netzmessung ist keine Aussage ueber den
-  tatsaechlichen Recall-Gewinn moeglich; die Zahlen oben sind Obergrenzen und
-  Regelguete, keine Ergebnisse des Experiments.
+- Variante B/C/D ist auf echten Modellantworten ungemessen. Der Auswertungspfad
+  ist synthetisch belegt (9/9 Pruefungen), aber ohne Netzmessung ist keine
+  Aussage ueber den tatsaechlichen Recall-Gewinn moeglich; die Zahlen oben sind
+  Obergrenzen und Regelguete, keine Ergebnisse des Experiments.
 - GPT-6 Astra steht auf dem Gateway nicht zur Verfuegung (27 Modelle, u. a.
   `gwdg/glm-5.3`, `gwdg/qwen3.5-397b-a17b`, `gwdg/qwen3-30b-a3b-instruct-2507`,
   `gwdg/qwen3.6-35b-a3b`). Die dritte Modellstimme muesste ersetzt werden.

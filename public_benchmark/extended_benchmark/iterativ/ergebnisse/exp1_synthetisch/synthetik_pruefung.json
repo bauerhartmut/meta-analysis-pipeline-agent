@@ -1,0 +1,87 @@
+{
+ "pruefungen": {
+  "A_unveraendert": true,
+  "B_gewinn_moeglich": true,
+  "B_nur_belegte": true,
+  "C_nicht_schlechter_als_B": true,
+  "C_enthaltung_bei_streit": true,
+  "D_verwirft_nur_den_harten_fall": true,
+  "D_verwirft_harten_verstoss": true,
+  "D_nicht_mehr_falsch_als_C": true,
+  "D_nicht_weniger_richtig_als_A": true
+ },
+ "varianten": {
+  "A": {
+   "zellen": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65
+   },
+   "metriken": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65,
+    "precision": 1.0,
+    "recall": 0.1333,
+    "f1": 0.2353
+   },
+   "hinzugefuegt": 0
+  },
+  "B": {
+   "zellen": {
+    "richtig": 41,
+    "falsch": 24,
+    "fehlend": 10
+   },
+   "metriken": {
+    "richtig": 41,
+    "falsch": 24,
+    "fehlend": 10,
+    "precision": 0.6308,
+    "recall": 0.5467,
+    "f1": 0.5857
+   },
+   "hinzugefuegt": 55
+  },
+  "C": {
+   "zellen": {
+    "richtig": 51,
+    "falsch": 13,
+    "fehlend": 11
+   },
+   "metriken": {
+    "richtig": 51,
+    "falsch": 13,
+    "fehlend": 11,
+    "precision": 0.7969,
+    "recall": 0.68,
+    "f1": 0.7338
+   },
+   "hinzugefuegt": 54
+  },
+  "D": {
+   "zellen": {
+    "richtig": 50,
+    "falsch": 10,
+    "fehlend": 15
+   },
+   "metriken": {
+    "richtig": 50,
+    "falsch": 10,
+    "fehlend": 15,
+    "precision": 0.8333,
+    "recall": 0.6667,
+    "f1": 0.7407
+   },
+   "hinzugefuegt": 50
+  }
+ },
+ "faelle": {
+  "beide_richtig": 20,
+  "streit_armbezug_glm": 11,
+  "nur_qwen_belegt": 10,
+  "streit_ohne_armbezug_enthaltung": 11,
+  "beide_gleich_falsch": 11,
+  "harter_verstoss_negativ": 2
+ }
+}

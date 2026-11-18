@@ -183,7 +183,7 @@ def auswerten(args: argparse.Namespace) -> int:
                 )
 
         # D: C mit Pruefregeln
-        akzeptiert, abgelehnt = pruefung.filtere(record, zellen_c_neu)
+        akzeptiert, abgelehnt = pruefung.filtere(record, zellen_c_neu, basis=zellen_c)
         verworfen.extend({"record_id": rid, **eintrag} for eintrag in abgelehnt)
         zellen_d = dict(basis)
         gemischt = pruefung.pruefe_zeitpunkt(list(akzeptiert.values()))

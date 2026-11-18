@@ -1,0 +1,1214 @@
+{
+ "stichprobe": {
+  "seed": 20261117,
+  "n_records": 20,
+  "records": [
+   {
+    "record_id": "yun2024:11",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:117",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size",
+     "comparator_mean"
+    ]
+   },
+   {
+    "record_id": "yun2024:130",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_events",
+     "comparator_group_size",
+     "comparator_events"
+    ]
+   },
+   {
+    "record_id": "yun2024:161",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:174",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_events",
+     "comparator_group_size",
+     "comparator_events"
+    ]
+   },
+   {
+    "record_id": "yun2024:180",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:183",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:204",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:23",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:248",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:252",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:291",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:30",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:326",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:420",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:455",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_mean",
+     "comparator_events"
+    ]
+   },
+   {
+    "record_id": "yun2024:459",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_mean",
+     "comparator_events"
+    ]
+   },
+   {
+    "record_id": "yun2024:630",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_mean",
+     "comparator_mean"
+    ]
+   },
+   {
+    "record_id": "yun2024:688",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:694",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_mean",
+     "comparator_mean"
+    ]
+   }
+  ]
+ },
+ "varianten": {
+  "A": {
+   "zellen": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65
+   },
+   "metriken": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65,
+    "precision": 1.0,
+    "recall": 0.1333,
+    "f1": 0.2353
+   },
+   "hinzugefuegt": 0
+  },
+  "B": {
+   "zellen": {
+    "richtig": 41,
+    "falsch": 24,
+    "fehlend": 10
+   },
+   "metriken": {
+    "richtig": 41,
+    "falsch": 24,
+    "fehlend": 10,
+    "precision": 0.6308,
+    "recall": 0.5467,
+    "f1": 0.5857
+   },
+   "hinzugefuegt": 55
+  },
+  "C": {
+   "zellen": {
+    "richtig": 51,
+    "falsch": 13,
+    "fehlend": 11
+   },
+   "metriken": {
+    "richtig": 51,
+    "falsch": 13,
+    "fehlend": 11,
+    "precision": 0.7969,
+    "recall": 0.68,
+    "f1": 0.7338
+   },
+   "hinzugefuegt": 54
+  },
+  "D": {
+   "zellen": {
+    "richtig": 50,
+    "falsch": 10,
+    "fehlend": 15
+   },
+   "metriken": {
+    "richtig": 50,
+    "falsch": 10,
+    "fehlend": 15,
+    "precision": 0.8333,
+    "recall": 0.6667,
+    "f1": 0.7407
+   },
+   "hinzugefuegt": 50
+  }
+ },
+ "auffindbarkeit": {
+  "fehlende_zellen": 65,
+  "wert_im_auszug_vorhanden": 54,
+  "anteil": 0.8308
+ },
+ "verworfen_durch_pruefung": [
+  {
+   "record_id": "yun2024:130",
+   "feld": "intervention_events",
+   "wert": -5,
+   "gruende": [
+    "negatives_ereignis"
+   ]
+  },
+  {
+   "record_id": "yun2024:130",
+   "feld": "comparator_events",
+   "wert": -5,
+   "gruende": [
+    "negatives_ereignis"
+   ]
+  },
+  {
+   "record_id": "yun2024:455",
+   "feld": "comparator_events",
+   "wert": 20.0,
+   "gruende": [
+    "ereignisse_bei_kontinuierlichem_outcome"
+   ]
+  },
+  {
+   "record_id": "yun2024:459",
+   "feld": "comparator_events",
+   "wert": 25.0,
+   "gruende": [
+    "ereignisse_bei_kontinuierlichem_outcome"
+   ]
+  }
+ ],
+ "detail": {
+  "B": [
+   {
+    "record_id": "yun2024:11",
+    "feld": "intervention_group_size",
+    "wert": 20.0
+   },
+   {
+    "record_id": "yun2024:11",
+    "feld": "comparator_group_size",
+    "wert": 20.0
+   },
+   {
+    "record_id": "yun2024:117",
+    "feld": "comparator_group_size",
+    "wert": 14.0
+   },
+   {
+    "record_id": "yun2024:117",
+    "feld": "comparator_mean",
+    "wert": 20.4
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "intervention_group_size",
+    "wert": 49.0
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "intervention_events",
+    "wert": -5
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "comparator_group_size",
+    "wert": 50.0
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "comparator_events",
+    "wert": -5
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "intervention_group_size",
+    "wert": 561.0
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "intervention_mean",
+    "wert": 66.08
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "intervention_standard_deviation",
+    "wert": 15.15
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "comparator_group_size",
+    "wert": 425.0
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "comparator_mean",
+    "wert": 61.94
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "intervention_group_size",
+    "wert": 34.0
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "intervention_events",
+    "wert": 14.0
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "comparator_group_size",
+    "wert": 15.0
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "comparator_events",
+    "wert": 11.0
+   },
+   {
+    "record_id": "yun2024:180",
+    "feld": "comparator_group_size",
+    "wert": 26.0
+   },
+   {
+    "record_id": "yun2024:180",
+    "feld": "comparator_standard_deviation",
+    "wert": 8.83
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "intervention_group_size",
+    "wert": 38.0
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "intervention_mean",
+    "wert": 10.0
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "intervention_standard_deviation",
+    "wert": 4.6
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "comparator_group_size",
+    "wert": 33.0
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "comparator_standard_deviation",
+    "wert": 5.6
+   },
+   {
+    "record_id": "yun2024:204",
+    "feld": "intervention_group_size",
+    "wert": 45.0
+   },
+   {
+    "record_id": "yun2024:204",
+    "feld": "comparator_group_size",
+    "wert": 40.0
+   },
+   {
+    "record_id": "yun2024:23",
+    "feld": "intervention_group_size",
+    "wert": 30.0
+   },
+   {
+    "record_id": "yun2024:23",
+    "feld": "comparator_group_size",
+    "wert": 22.0
+   },
+   {
+    "record_id": "yun2024:248",
+    "feld": "comparator_group_size",
+    "wert": 11.0
+   },
+   {
+    "record_id": "yun2024:252",
+    "feld": "intervention_group_size",
+    "wert": 407.0
+   },
+   {
+    "record_id": "yun2024:252",
+    "feld": "comparator_group_size",
+    "wert": 388.0
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "intervention_group_size",
+    "wert": 19.0
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "intervention_mean",
+    "wert": 49.4
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "comparator_group_size",
+    "wert": 20.0
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "comparator_mean",
+    "wert": 51.5
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "comparator_standard_deviation",
+    "wert": 9.8
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "intervention_group_size",
+    "wert": 393.0
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "intervention_mean",
+    "wert": 38.1
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "comparator_group_size",
+    "wert": 200.0
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "comparator_mean",
+    "wert": 36.5
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "comparator_standard_deviation",
+    "wert": 7.4
+   },
+   {
+    "record_id": "yun2024:326",
+    "feld": "comparator_group_size",
+    "wert": 4.0
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "intervention_group_size",
+    "wert": 18.0
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "intervention_standard_deviation",
+    "wert": 1.24
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "comparator_group_size",
+    "wert": 26.0
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "comparator_mean",
+    "wert": 1.43
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "comparator_standard_deviation",
+    "wert": 0.48
+   },
+   {
+    "record_id": "yun2024:455",
+    "feld": "intervention_mean",
+    "wert": 20.0
+   },
+   {
+    "record_id": "yun2024:459",
+    "feld": "intervention_mean",
+    "wert": 21.0
+   },
+   {
+    "record_id": "yun2024:459",
+    "feld": "comparator_events",
+    "wert": 25.0
+   },
+   {
+    "record_id": "yun2024:630",
+    "feld": "intervention_mean",
+    "wert": 3.5
+   },
+   {
+    "record_id": "yun2024:630",
+    "feld": "comparator_mean",
+    "wert": 3.6
+   },
+   {
+    "record_id": "yun2024:688",
+    "feld": "intervention_group_size",
+    "wert": 17.0
+   },
+   {
+    "record_id": "yun2024:694",
+    "feld": "intervention_mean",
+    "wert": 4.5
+   },
+   {
+    "record_id": "yun2024:694",
+    "feld": "comparator_mean",
+    "wert": 8.0
+   }
+  ],
+  "C": [
+   {
+    "record_id": "yun2024:11",
+    "feld": "intervention_group_size",
+    "wert": 20.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:11",
+    "feld": "comparator_group_size",
+    "wert": 20.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:117",
+    "feld": "intervention_group_size",
+    "wert": 9.0,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:117",
+    "feld": "comparator_mean",
+    "wert": 20.4,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "intervention_group_size",
+    "wert": 49.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "intervention_events",
+    "wert": -5,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "comparator_group_size",
+    "wert": 50.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "comparator_events",
+    "wert": -5,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "intervention_mean",
+    "wert": 66.08,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "intervention_standard_deviation",
+    "wert": 15.15,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "comparator_group_size",
+    "wert": 425.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "comparator_mean",
+    "wert": 61.94,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "comparator_standard_deviation",
+    "wert": 14.25,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "intervention_events",
+    "wert": 14.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "comparator_group_size",
+    "wert": 15.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "comparator_events",
+    "wert": 11.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:180",
+    "feld": "comparator_group_size",
+    "wert": 26.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:180",
+    "feld": "comparator_mean",
+    "wert": 50.46,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "intervention_group_size",
+    "wert": 38.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "intervention_mean",
+    "wert": 10.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "intervention_standard_deviation",
+    "wert": 4.6,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "comparator_group_size",
+    "wert": 33.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "comparator_mean",
+    "wert": 11.5,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:204",
+    "feld": "intervention_group_size",
+    "wert": 45.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:204",
+    "feld": "comparator_group_size",
+    "wert": 40.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:23",
+    "feld": "intervention_group_size",
+    "wert": 30.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:23",
+    "feld": "comparator_group_size",
+    "wert": 22.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:248",
+    "feld": "intervention_group_size",
+    "wert": 10.0,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:252",
+    "feld": "intervention_group_size",
+    "wert": 407.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:252",
+    "feld": "comparator_group_size",
+    "wert": 388.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "intervention_group_size",
+    "wert": 19.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "intervention_mean",
+    "wert": 49.4,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "intervention_standard_deviation",
+    "wert": 12.8,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "comparator_mean",
+    "wert": 51.5,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "comparator_standard_deviation",
+    "wert": 9.8,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "intervention_group_size",
+    "wert": 393.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "intervention_mean",
+    "wert": 38.1,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "intervention_standard_deviation",
+    "wert": 9.5,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "comparator_mean",
+    "wert": 36.5,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "comparator_standard_deviation",
+    "wert": 7.4,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:326",
+    "feld": "comparator_group_size",
+    "wert": 4.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "intervention_group_size",
+    "wert": 18.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "intervention_mean",
+    "wert": 0.95,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "comparator_group_size",
+    "wert": 26.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "comparator_mean",
+    "wert": 1.43,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "comparator_standard_deviation",
+    "wert": 0.48,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:455",
+    "feld": "intervention_mean",
+    "wert": 20.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:455",
+    "feld": "comparator_events",
+    "wert": 20.0,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:459",
+    "feld": "comparator_events",
+    "wert": 25.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:630",
+    "feld": "intervention_mean",
+    "wert": 3.5,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:630",
+    "feld": "comparator_mean",
+    "wert": 3.6,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:688",
+    "feld": "intervention_group_size",
+    "wert": 17.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:688",
+    "feld": "comparator_group_size",
+    "wert": 17.0,
+    "modell": "qwen30",
+    "zitat": "synthetisch"
+   },
+   {
+    "record_id": "yun2024:694",
+    "feld": "comparator_mean",
+    "wert": 8.0,
+    "modell": "glm",
+    "zitat": "synthetisch"
+   }
+  ],
+  "D": [
+   {
+    "record_id": "yun2024:11",
+    "feld": "intervention_group_size",
+    "wert": 20.0
+   },
+   {
+    "record_id": "yun2024:11",
+    "feld": "comparator_group_size",
+    "wert": 20.0
+   },
+   {
+    "record_id": "yun2024:117",
+    "feld": "intervention_group_size",
+    "wert": 9.0
+   },
+   {
+    "record_id": "yun2024:117",
+    "feld": "comparator_mean",
+    "wert": 20.4
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "intervention_group_size",
+    "wert": 49.0
+   },
+   {
+    "record_id": "yun2024:130",
+    "feld": "comparator_group_size",
+    "wert": 50.0
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "intervention_mean",
+    "wert": 66.08
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "intervention_standard_deviation",
+    "wert": 15.15
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "comparator_group_size",
+    "wert": 425.0
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "comparator_mean",
+    "wert": 61.94
+   },
+   {
+    "record_id": "yun2024:161",
+    "feld": "comparator_standard_deviation",
+    "wert": 14.25
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "intervention_events",
+    "wert": 14.0
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "comparator_group_size",
+    "wert": 15.0
+   },
+   {
+    "record_id": "yun2024:174",
+    "feld": "comparator_events",
+    "wert": 11.0
+   },
+   {
+    "record_id": "yun2024:180",
+    "feld": "comparator_group_size",
+    "wert": 26.0
+   },
+   {
+    "record_id": "yun2024:180",
+    "feld": "comparator_mean",
+    "wert": 50.46
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "intervention_group_size",
+    "wert": 38.0
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "intervention_mean",
+    "wert": 10.0
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "intervention_standard_deviation",
+    "wert": 4.6
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "comparator_group_size",
+    "wert": 33.0
+   },
+   {
+    "record_id": "yun2024:183",
+    "feld": "comparator_mean",
+    "wert": 11.5
+   },
+   {
+    "record_id": "yun2024:204",
+    "feld": "intervention_group_size",
+    "wert": 45.0
+   },
+   {
+    "record_id": "yun2024:204",
+    "feld": "comparator_group_size",
+    "wert": 40.0
+   },
+   {
+    "record_id": "yun2024:23",
+    "feld": "intervention_group_size",
+    "wert": 30.0
+   },
+   {
+    "record_id": "yun2024:23",
+    "feld": "comparator_group_size",
+    "wert": 22.0
+   },
+   {
+    "record_id": "yun2024:248",
+    "feld": "intervention_group_size",
+    "wert": 10.0
+   },
+   {
+    "record_id": "yun2024:252",
+    "feld": "intervention_group_size",
+    "wert": 407.0
+   },
+   {
+    "record_id": "yun2024:252",
+    "feld": "comparator_group_size",
+    "wert": 388.0
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "intervention_group_size",
+    "wert": 19.0
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "intervention_mean",
+    "wert": 49.4
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "intervention_standard_deviation",
+    "wert": 12.8
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "comparator_mean",
+    "wert": 51.5
+   },
+   {
+    "record_id": "yun2024:291",
+    "feld": "comparator_standard_deviation",
+    "wert": 9.8
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "intervention_group_size",
+    "wert": 393.0
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "intervention_mean",
+    "wert": 38.1
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "intervention_standard_deviation",
+    "wert": 9.5
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "comparator_mean",
+    "wert": 36.5
+   },
+   {
+    "record_id": "yun2024:30",
+    "feld": "comparator_standard_deviation",
+    "wert": 7.4
+   },
+   {
+    "record_id": "yun2024:326",
+    "feld": "comparator_group_size",
+    "wert": 4.0
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "intervention_group_size",
+    "wert": 18.0
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "intervention_mean",
+    "wert": 0.95
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "comparator_group_size",
+    "wert": 26.0
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "comparator_mean",
+    "wert": 1.43
+   },
+   {
+    "record_id": "yun2024:420",
+    "feld": "comparator_standard_deviation",
+    "wert": 0.48
+   },
+   {
+    "record_id": "yun2024:455",
+    "feld": "intervention_mean",
+    "wert": 20.0
+   },
+   {
+    "record_id": "yun2024:630",
+    "feld": "intervention_mean",
+    "wert": 3.5
+   },
+   {
+    "record_id": "yun2024:630",
+    "feld": "comparator_mean",
+    "wert": 3.6
+   },
+   {
+    "record_id": "yun2024:688",
+    "feld": "intervention_group_size",
+    "wert": 17.0
+   },
+   {
+    "record_id": "yun2024:688",
+    "feld": "comparator_group_size",
+    "wert": 17.0
+   },
+   {
+    "record_id": "yun2024:694",
+    "feld": "comparator_mean",
+    "wert": 8.0
+   }
+  ]
+ },
+ "tokens": {
+  "glm": 650,
+  "qwen30": 650
+ },
+ "zeit_summiert_s": 13.0
+}

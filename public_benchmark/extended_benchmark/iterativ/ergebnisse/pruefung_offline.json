@@ -17,6 +17,7 @@
    "ereignis_nicht_ganzzahlig",
    "ereignisse_bei_kontinuierlichem_outcome",
    "ereignisse_ueber_gruppengroesse",
+   "gruppengroesse_nicht_positiv",
    "mittelwert_bei_binaerem_outcome",
    "negatives_ereignis",
    "prozent_statt_anzahl",

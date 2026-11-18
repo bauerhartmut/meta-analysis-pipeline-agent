@@ -28,6 +28,7 @@ HARTE_REGELN = {
     "negatives_ereignis",
     "prozent_statt_anzahl",
     "sd_nicht_positiv",
+    "gruppengroesse_nicht_positiv",
     "ereignisse_bei_kontinuierlichem_outcome",
     "mittelwert_bei_binaerem_outcome",
 }
@@ -72,6 +73,9 @@ def pruefe_zelle(record: dict, feld: str, wert: float, zellen: dict[str, float],
         if wert is not None and mittel and abs(mittel) > 0 and wert > 5 * abs(mittel):
             verstoesse.append("sd_gegen_mittelwert")
 
+    if feld.endswith("_group_size") and wert is not None and wert <= 0:
+        verstoesse.append("gruppengroesse_nicht_positiv")
+
     if feld.endswith("_group_size") and wert is not None and n_anderer and wert > 0 and n_anderer > 0:
         verhaeltnis = max(wert, n_anderer) / min(wert, n_anderer)
         if verhaeltnis > 3:
@@ -98,13 +102,18 @@ def filtere(
     record: dict,
     kandidaten: dict[str, dict[str, Any]],
     nur_harte: bool = True,
+    basis: dict[str, float] | None = None,
 ) -> tuple[dict[str, dict], list[dict]]:
     """Prueft Kandidatenzellen und verwirft nur die mit hartem Verstoss.
 
-    `kandidaten` bildet Feld -> {wert, zitat, ...}. Rueckgabe: akzeptierte
-    Zellen und Liste der Verwerfungen mit Begruendung.
+    `kandidaten` bildet Feld -> {wert, zitat, ...}. `basis` sind die bereits
+    vorhandenen Zellen des Records; sie gehen in die Pruefung ein, damit eine
+    neue Ereigniszahl gegen die vorhandene Gruppengroesse geprueft wird und
+    nicht gegen eine leere Menge. Rueckgabe: akzeptierte Zellen und Liste der
+    Verwerfungen mit Begruendung.
     """
-    werte = {feld: eintrag["wert"] for feld, eintrag in kandidaten.items() if eintrag.get("wert") is not None}
+    werte: dict[str, float] = dict(basis or {})
+    werte.update({feld: eintrag["wert"] for feld, eintrag in kandidaten.items() if eintrag.get("wert") is not None})
     akzeptiert: dict[str, dict] = {}
     verworfen: list[dict] = []
     for feld, eintrag in kandidaten.items():
