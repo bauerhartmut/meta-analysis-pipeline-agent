@@ -1,0 +1,6315 @@
+{
+  "bilanz": {
+    "strukturell_erreichbar": 94,
+    "wertgleich": 58,
+    "nicht_wertgleich": 36
+  },
+  "fehlerklassen": {
+    "population_mismatch": 15,
+    "subgroup_vs_total": 3,
+    "sum_of_subgroups": 3,
+    "timepoint_mismatch": 6,
+    "unexplained": 9
+  },
+  "provenienz": {
+    "je_art": {
+      "abgeleitet": 4,
+      "direkt": 49,
+      "mehrfach": 41
+    },
+    "je_sicherheit": {
+      "hoch": 73,
+      "mittel": 21
+    },
+    "je_arm": {
+      "eindeutig": 94
+    },
+    "felder": [
+      {
+        "record_id": "yun2024:111",
+        "feld": "comparator_group_size",
+        "raw": "434",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "n=434",
+            "wert": 434.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4319071:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:112",
+        "feld": "comparator_group_size",
+        "raw": "434",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "n=434",
+            "wert": 434.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4319071:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:15",
+        "feld": "intervention_group_size",
+        "raw": "103",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "89 (86.4%)^c^",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC2667135:T4",
+            "zeile": 0,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "CoPAT^a^ (*n* = 103)",
+            "wert": 103.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC2667135:T4",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:16",
+        "feld": "intervention_group_size",
+        "raw": "103",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "4 (3.9%)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC2667135:T4",
+            "zeile": 3,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "CoPAT^a^ (*n* = 103)",
+            "wert": 103.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC2667135:T4",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:172",
+        "feld": "intervention_group_size",
+        "raw": "33",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Metformin (*n* = 17)",
+            "wert": 17.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5079604:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Sitagliptin (*n* = 16)",
+            "wert": 16.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5079604:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:172",
+        "feld": "comparator_group_size",
+        "raw": "15",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*n* = 15)",
+            "wert": 15.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5079604:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:174",
+        "feld": "intervention_group_size",
+        "raw": "33",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Metformin (*n* = 17)",
+            "wert": 17.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5079604:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Sitagliptin (*n* = 16)",
+            "wert": 16.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5079604:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:174",
+        "feld": "comparator_group_size",
+        "raw": "15",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*n* = 15)",
+            "wert": 15.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5079604:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:184",
+        "feld": "comparator_group_size",
+        "raw": "33",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*n* = 33)",
+            "wert": 33.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5122613:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:185",
+        "feld": "comparator_group_size",
+        "raw": "28",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*n* = 33)",
+            "wert": 33.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5122613:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:194",
+        "feld": "intervention_group_size",
+        "raw": "169",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Pls group (n = 145)",
+            "wert": 145.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5360580:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:194",
+        "feld": "comparator_group_size",
+        "raw": "167",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo group (n = 140)",
+            "wert": 140.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5360580:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:196",
+        "feld": "intervention_group_size",
+        "raw": "24",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Pls group (n = 169)",
+            "wert": 169.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5360580:T6",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:196",
+        "feld": "comparator_group_size",
+        "raw": "24",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo group (n = 167)",
+            "wert": 167.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5360580:T6",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:257",
+        "feld": "intervention_group_size",
+        "raw": "38",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Genoss DES™ (n=38)",
+            "wert": 38.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5711682:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:257",
+        "feld": "comparator_group_size",
+        "raw": "39",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Promus Element™ (n=39)",
+            "wert": 39.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5711682:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:258",
+        "feld": "intervention_group_size",
+        "raw": "38",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Genoss DES™ (n=38)",
+            "wert": 38.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5711682:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:258",
+        "feld": "comparator_group_size",
+        "raw": "39",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Promus Element™ (n=39)",
+            "wert": 39.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5711682:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:265",
+        "feld": "intervention_group_size",
+        "raw": "83",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "30 µg YIC group (N = 81)",
+            "wert": 81.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC2430617:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "60 µg YIC group (N = 78)",
+            "wert": 78.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC2430617:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:265",
+        "feld": "comparator_group_size",
+        "raw": "79",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo group (N = 78)",
+            "wert": 78.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC2430617:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:266",
+        "feld": "intervention_group_size",
+        "raw": "80",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "30 µg YIC group (N = 81)",
+            "wert": 81.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC2430617:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "60 µg YIC group (N = 78)",
+            "wert": 78.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC2430617:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:266",
+        "feld": "comparator_group_size",
+        "raw": "79",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo group (N = 78)",
+            "wert": 78.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC2430617:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:275",
+        "feld": "intervention_group_size",
+        "raw": "71",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "60.5 (11.0)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3654355:T1",
+            "zeile": 5,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "68.3 (13.2)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3654355:T1",
+            "zeile": 6,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "ILI ( *n* = 71)",
+            "wert": 71.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3654355:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:282",
+        "feld": "intervention_group_size",
+        "raw": "71",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "( *n* = 71)",
+            "wert": 71.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3654355:T2",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:296",
+        "feld": "comparator_group_size",
+        "raw": "14",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Control, N = 14**",
+            "wert": 14.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4355974:T2",
+            "zeile": null,
+            "spalten": [
+              4,
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:296",
+        "feld": "comparator_mean",
+        "raw": "-4.2",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "5.1",
+            "wert": 5.1,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "baseline",
+            "art": "direkt",
+            "regel": "spaltenfeld",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4355974:T2",
+            "zeile": 0,
+            "spalten": [
+              4
+            ]
+          },
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "−4.2",
+            "wert": -4.2,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "month",
+            "art": "direkt",
+            "regel": "spaltenfeld",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4355974:T2",
+            "zeile": 0,
+            "spalten": [
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:298",
+        "feld": "comparator_group_size",
+        "raw": "14",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Control, N = 14**",
+            "wert": 14.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4355974:T2",
+            "zeile": null,
+            "spalten": [
+              4,
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:298",
+        "feld": "comparator_mean",
+        "raw": "-1.8",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "2.0",
+            "wert": 2.0,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "baseline",
+            "art": "direkt",
+            "regel": "spaltenfeld",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4355974:T2",
+            "zeile": 3,
+            "spalten": [
+              4
+            ]
+          },
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "−1.8",
+            "wert": -1.8,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "month",
+            "art": "direkt",
+            "regel": "spaltenfeld",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4355974:T2",
+            "zeile": 3,
+            "spalten": [
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:30",
+        "feld": "intervention_group_size",
+        "raw": "393",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n = 393)",
+            "wert": 393.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3003523:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:335",
+        "feld": "intervention_group_size",
+        "raw": "45",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Aripiprazole (n = 47)",
+            "wert": 47.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5617873:T2",
+            "zeile": null,
+            "spalten": [
+              2,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:336",
+        "feld": "intervention_group_size",
+        "raw": "45",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Aripiprazole (n = 47)",
+            "wert": 47.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5617873:T2",
+            "zeile": null,
+            "spalten": [
+              2,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:350",
+        "feld": "intervention_group_size",
+        "raw": "9",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Bilateral ( *n* = 9)**",
+            "wert": 9.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5874317:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              6
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:350",
+        "feld": "comparator_group_size",
+        "raw": "9",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Unilateral ( *n* = 9)**",
+            "wert": 9.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5874317:T1",
+            "zeile": null,
+            "spalten": [
+              7,
+              12
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:352",
+        "feld": "intervention_group_size",
+        "raw": "9",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Bilateral ( *n* = 9)**",
+            "wert": 9.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5874317:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              6
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:352",
+        "feld": "comparator_group_size",
+        "raw": "9",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Unilateral ( *n* = 9)**",
+            "wert": 9.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5874317:T1",
+            "zeile": null,
+            "spalten": [
+              7,
+              12
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:390",
+        "feld": "intervention_group_size",
+        "raw": "27",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=30)",
+            "wert": 30.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=29)",
+            "wert": 29.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=28)",
+            "wert": 28.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              5,
+              5
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=27)",
+            "wert": 27.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              7,
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:390",
+        "feld": "intervention_mean",
+        "raw": "-0.38",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": "--0.34 (0.31)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "abkuerzung",
+            "zeitpunkt": "month",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": "--0.34 (0.34)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "abkuerzung",
+            "zeitpunkt": "month",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              3
+            ]
+          },
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": "--0.38 (0.37)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "abkuerzung",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:390",
+        "feld": "intervention_standard_deviation",
+        "raw": "0.37",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_standard_deviation",
+            "quelle": "messzelle",
+            "text": "--0.34 (0.31)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "abkuerzung",
+            "zeitpunkt": "month",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "intervention_standard_deviation",
+            "quelle": "messzelle",
+            "text": "--0.34 (0.34)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "abkuerzung",
+            "zeitpunkt": "month",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              3
+            ]
+          },
+          {
+            "feld": "intervention_standard_deviation",
+            "quelle": "messzelle",
+            "text": "--0.38 (0.37)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "abkuerzung",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:390",
+        "feld": "comparator_group_size",
+        "raw": "18",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=24)",
+            "wert": 24.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=23)",
+            "wert": 23.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=21)",
+            "wert": 21.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              6,
+              6
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=18)",
+            "wert": 18.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              8,
+              8
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:390",
+        "feld": "comparator_mean",
+        "raw": "-0.04",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "0.00 (0.08)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "month",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              2
+            ]
+          },
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "--0.01 (0.11)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "month",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              4
+            ]
+          },
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "--0.03 (0.10)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              6
+            ]
+          },
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "--0.04 (0.11)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              8
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:390",
+        "feld": "comparator_standard_deviation",
+        "raw": "0.11",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_standard_deviation",
+            "quelle": "messzelle",
+            "text": "0.00 (0.08)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "month",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              2
+            ]
+          },
+          {
+            "feld": "comparator_standard_deviation",
+            "quelle": "messzelle",
+            "text": "--0.01 (0.11)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "month",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              4
+            ]
+          },
+          {
+            "feld": "comparator_standard_deviation",
+            "quelle": "messzelle",
+            "text": "--0.03 (0.10)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              6
+            ]
+          },
+          {
+            "feld": "comparator_standard_deviation",
+            "quelle": "messzelle",
+            "text": "--0.04 (0.11)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3278655:T2",
+            "zeile": 3,
+            "spalten": [
+              8
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:391",
+        "feld": "intervention_group_size",
+        "raw": "27",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=30)",
+            "wert": 30.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=29)",
+            "wert": 29.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=28)",
+            "wert": 28.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              5,
+              5
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=27)",
+            "wert": 27.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              7,
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:391",
+        "feld": "comparator_group_size",
+        "raw": "18",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=24)",
+            "wert": 24.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=23)",
+            "wert": 23.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=21)",
+            "wert": 21.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              6,
+              6
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=18)",
+            "wert": 18.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3278655:T2",
+            "zeile": null,
+            "spalten": [
+              8,
+              8
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:402",
+        "feld": "intervention_group_size",
+        "raw": "20",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*N* = 20 59% men, 41% women)",
+            "wert": 20.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5781260:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:402",
+        "feld": "comparator_group_size",
+        "raw": "20",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*N* = 20 40% men, 60% women)",
+            "wert": 20.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5781260:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:403",
+        "feld": "intervention_group_size",
+        "raw": "20",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*N* = 20 59% men, 41% women)",
+            "wert": 20.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5781260:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:403",
+        "feld": "comparator_group_size",
+        "raw": "20",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*N* = 20 40% men, 60% women)",
+            "wert": 20.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5781260:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:408",
+        "feld": "intervention_group_size",
+        "raw": "90",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "71.0 (7.7)^i^",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3475525:T2",
+            "zeile": 0,
+            "spalten": [
+              3
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "73.3 (6.9)^e,i^",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3475525:T2",
+            "zeile": 0,
+            "spalten": [
+              4
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "MTL (n = 98)",
+            "wert": 98.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3475525:T2",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "MTL+ Caloric Intake (n = 90)",
+            "wert": 90.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3475525:T2",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:408",
+        "feld": "comparator_group_size",
+        "raw": "99",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "messzelle",
+            "text": "67.8 (10.3)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3475525:T2",
+            "zeile": 0,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "No Label, Control Group(n = 99)",
+            "wert": 99.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3475525:T2",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:421",
+        "feld": "intervention_group_size",
+        "raw": "30",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "n = 18",
+            "wert": 18.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3877023:T3",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "n = 30",
+            "wert": 30.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3877023:T3",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:421",
+        "feld": "intervention_mean",
+        "raw": "0.83",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": "2.2 (1)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3877023:T3",
+            "zeile": 2,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": ".03",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "uebertrag",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3877023:T3",
+            "zeile": 2,
+            "spalten": [
+              3
+            ]
+          },
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": "1.7 (0.7)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3877023:T3",
+            "zeile": 2,
+            "spalten": [
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:421",
+        "feld": "intervention_standard_deviation",
+        "raw": "0.22",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_standard_deviation",
+            "quelle": "messzelle",
+            "text": "2.2 (1)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3877023:T3",
+            "zeile": 2,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "intervention_standard_deviation",
+            "quelle": "messzelle",
+            "text": "1.7 (0.7)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC3877023:T3",
+            "zeile": 2,
+            "spalten": [
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:426",
+        "feld": "comparator_group_size",
+        "raw": "44",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "n = 18",
+            "wert": 18.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3877023:T4",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "n = 30",
+            "wert": 30.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3877023:T4",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:438",
+        "feld": "intervention_group_size",
+        "raw": "98",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "MTL (n = 98)",
+            "wert": 98.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3475525:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "MTL+Caloric Intake (n = 90)",
+            "wert": 90.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3475525:T1",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:438",
+        "feld": "comparator_group_size",
+        "raw": "98",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Choices (n = 98)",
+            "wert": 98.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3475525:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:445",
+        "feld": "intervention_group_size",
+        "raw": "70",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "11--73",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4140238:T1",
+            "zeile": 2,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "BBOS 1.5% (N=70)",
+            "wert": 70.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4140238:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:445",
+        "feld": "intervention_mean",
+        "raw": "1.2",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": "1.4",
+            "wert": 1.4,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "spaltenfeld",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4140238:T2",
+            "zeile": 2,
+            "spalten": [
+              3
+            ]
+          },
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": "1.3",
+            "wert": 1.3,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "spaltenfeld",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4140238:T2",
+            "zeile": 5,
+            "spalten": [
+              3
+            ]
+          },
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": "0.9",
+            "wert": 0.9,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "spaltenfeld",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4140238:T2",
+            "zeile": 8,
+            "spalten": [
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:445",
+        "feld": "comparator_group_size",
+        "raw": "70",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "messzelle",
+            "text": "13--65",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4140238:T1",
+            "zeile": 2,
+            "spalten": [
+              2
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (N=70)",
+            "wert": 70.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4140238:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:445",
+        "feld": "comparator_mean",
+        "raw": "2.1",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "1.2 (68)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4140238:T2",
+            "zeile": 8,
+            "spalten": [
+              2
+            ]
+          },
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "0.5 (70)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4140238:T2",
+            "zeile": 2,
+            "spalten": [
+              2
+            ]
+          },
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "0.8 (64)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4140238:T2",
+            "zeile": 5,
+            "spalten": [
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:453",
+        "feld": "intervention_group_size",
+        "raw": "79",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n = 79)",
+            "wert": 79.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5726464:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:453",
+        "feld": "comparator_group_size",
+        "raw": "86",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n = 86)",
+            "wert": 86.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5726464:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:463",
+        "feld": "intervention_group_size",
+        "raw": "79",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n = 79)",
+            "wert": 79.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5726464:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:463",
+        "feld": "comparator_group_size",
+        "raw": "86",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n = 86)",
+            "wert": 86.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5726464:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:486",
+        "feld": "intervention_group_size",
+        "raw": "44",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 44)",
+            "wert": 44.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 44)",
+            "wert": 44.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:486",
+        "feld": "comparator_group_size",
+        "raw": "44",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 44)",
+            "wert": 44.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 44)",
+            "wert": 44.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 43)",
+            "wert": 43.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              5,
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:489",
+        "feld": "intervention_group_size",
+        "raw": "44",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 44)",
+            "wert": 44.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 44)",
+            "wert": 44.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:489",
+        "feld": "comparator_group_size",
+        "raw": "44",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 44)",
+            "wert": 44.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 44)",
+            "wert": 44.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "(*n* = 43)",
+            "wert": 43.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3786549:T3",
+            "zeile": null,
+            "spalten": [
+              5,
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:494",
+        "feld": "intervention_group_size",
+        "raw": "630",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "4(0.68)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 16,
+            "spalten": [
+              4
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "5 (0.05)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 16,
+            "spalten": [
+              5
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "6 (0.15)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 16,
+            "spalten": [
+              6
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "3 (0.13)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 16,
+            "spalten": [
+              7
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "1 (0.16)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 16,
+            "spalten": [
+              8
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "**-**",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 11,
+            "spalten": [
+              4
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "2 (0.02)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 11,
+            "spalten": [
+              5
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "5 (0.12)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 11,
+            "spalten": [
+              6
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "3 (0.13)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 11,
+            "spalten": [
+              7
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "**-**",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 11,
+            "spalten": [
+              8
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "1 (0.01)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 15,
+            "spalten": [
+              5
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "1 (0.02)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 15,
+            "spalten": [
+              6
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "0",
+            "wert": 0.0,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "spaltenfeld",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5419060:T3",
+            "zeile": 15,
+            "spalten": [
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:531",
+        "feld": "intervention_group_size",
+        "raw": "289",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Quetiapine 300 mg/day (***n*** = 298)",
+            "wert": 298.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4230312:T3",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Quetiapine 600 mg/day (***n*** = 307)",
+            "wert": 307.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4230312:T3",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:531",
+        "feld": "comparator_group_size",
+        "raw": "204",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (***n*** = 214)",
+            "wert": 214.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4230312:T3",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:532",
+        "feld": "intervention_group_size",
+        "raw": "283",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Quetiapine 300 mg/day ( ***n***  = 298)",
+            "wert": 298.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4230312:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Quetiapine 600 mg/day ( ***n***  = 307)",
+            "wert": 307.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4230312:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:532",
+        "feld": "comparator_group_size",
+        "raw": "204",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (***n*** = 214)",
+            "wert": 214.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4230312:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:550",
+        "feld": "intervention_group_size",
+        "raw": "18",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Yoga group (n = 18)**",
+            "wert": 18.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3648394:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:550",
+        "feld": "comparator_group_size",
+        "raw": "19",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Control group (n = 19)**",
+            "wert": 19.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3648394:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:639",
+        "feld": "intervention_group_size",
+        "raw": "12",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "A3309 - 2.5 mg (*N*  = 12)",
+            "wert": 12.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4511433:T2",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "A3309 - 5 mg (*N*  = 12)",
+            "wert": 12.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4511433:T2",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:639",
+        "feld": "comparator_group_size",
+        "raw": "12",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*N* = 12)",
+            "wert": 12.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4511433:T2",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:640",
+        "feld": "intervention_group_size",
+        "raw": "12",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "A3309 - 2.5 mg (*N*  = 12)",
+            "wert": 12.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4511433:T2",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "A3309 - 5 mg (*N*  = 12)",
+            "wert": 12.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4511433:T2",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:640",
+        "feld": "comparator_group_size",
+        "raw": "12",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*N* = 12)",
+            "wert": 12.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4511433:T2",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:645",
+        "feld": "intervention_group_size",
+        "raw": "27",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Iodine (*n* = 29)",
+            "wert": 29.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4675066:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:645",
+        "feld": "comparator_group_size",
+        "raw": "26",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*n* = 30)",
+            "wert": 30.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4675066:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:647",
+        "feld": "intervention_group_size",
+        "raw": "27",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Iodine (*n* = 29)",
+            "wert": 29.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4675066:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:647",
+        "feld": "comparator_group_size",
+        "raw": "26",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*n* = 30)",
+            "wert": 30.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4675066:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:662",
+        "feld": "intervention_group_size",
+        "raw": "37",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "5.3 (±1.5)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T1",
+            "zeile": 16,
+            "spalten": [
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "5.4 (±1.3)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T1",
+            "zeile": 16,
+            "spalten": [
+              3
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "3.1 (±0.8)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T1",
+            "zeile": 17,
+            "spalten": [
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "messzelle",
+            "text": "3.2 (±0.8)",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T1",
+            "zeile": 17,
+            "spalten": [
+              3
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Metformin (*n* = 21)",
+            "wert": 21.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4987981:T1",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Pioglitazone (*n* = 16)",
+            "wert": 16.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4987981:T1",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:662",
+        "feld": "comparator_group_size",
+        "raw": "23",
+        "wertgleich": true,
+        "art": "mehrfach",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "messzelle",
+            "text": "3.4 (±0.9)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T1",
+            "zeile": 17,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "messzelle",
+            "text": "5.9 (±1.6)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T1",
+            "zeile": 16,
+            "spalten": [
+              1
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*n* = 23)",
+            "wert": 23.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4987981:T1",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:665",
+        "feld": "intervention_group_size",
+        "raw": "16",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "Pioglitazone (*n*  = 16)",
+            "wert": 16.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4987981:T2",
+            "zeile": null,
+            "spalten": [
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:665",
+        "feld": "intervention_mean",
+        "raw": "103.4",
+        "wertgleich": false,
+        "art": "abgeleitet",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_mean",
+            "quelle": "messzelle",
+            "text": "15.2 ± 19.2",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T2",
+            "zeile": 3,
+            "spalten": [
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:665",
+        "feld": "intervention_standard_deviation",
+        "raw": "28.9",
+        "wertgleich": false,
+        "art": "abgeleitet",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_standard_deviation",
+            "quelle": "messzelle",
+            "text": "15.2 ± 19.2",
+            "wert": null,
+            "arm": "intervention",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T2",
+            "zeile": 3,
+            "spalten": [
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:665",
+        "feld": "comparator_group_size",
+        "raw": "23",
+        "wertgleich": true,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "kopfangabe",
+            "text": "Placebo (*n*  = 23)",
+            "wert": 23.0,
+            "arm": "comparator",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC4987981:T2",
+            "zeile": null,
+            "spalten": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:665",
+        "feld": "comparator_mean",
+        "raw": "97.6",
+        "wertgleich": false,
+        "art": "abgeleitet",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "2.2 ± 10.0",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T2",
+            "zeile": 3,
+            "spalten": [
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:665",
+        "feld": "comparator_standard_deviation",
+        "raw": "20.8",
+        "wertgleich": false,
+        "art": "abgeleitet",
+        "sicherheit": "mittel",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "comparator_standard_deviation",
+            "quelle": "messzelle",
+            "text": "2.2 ± 10.0",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "zweitwert_der_spalte",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T2",
+            "zeile": 3,
+            "spalten": [
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:678",
+        "feld": "intervention_group_size",
+        "raw": "16",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=15)",
+            "wert": 15.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5777419:T2",
+            "zeile": null,
+            "spalten": [
+              6,
+              10
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:682",
+        "feld": "intervention_group_size",
+        "raw": "16",
+        "wertgleich": false,
+        "art": "direkt",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "(n=15)",
+            "wert": 15.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC5777419:T2",
+            "zeile": null,
+            "spalten": [
+              6,
+              10
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:78",
+        "feld": "intervention_group_size",
+        "raw": "30",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Palmvitee, n = 3**",
+            "wert": 3.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3546023:T4",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Palmvitee,n = 19**",
+            "wert": 19.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3546023:T4",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Palmvitee,n = 8**",
+            "wert": 8.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3546023:T4",
+            "zeile": null,
+            "spalten": [
+              6,
+              6
+            ]
+          }
+        ]
+      },
+      {
+        "record_id": "yun2024:79",
+        "feld": "intervention_group_size",
+        "raw": "30",
+        "wertgleich": false,
+        "art": "mehrfach",
+        "sicherheit": "hoch",
+        "arm": "eindeutig",
+        "stellen": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Palmvitee, n = 3**",
+            "wert": 3.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3546023:T4",
+            "zeile": null,
+            "spalten": [
+              2,
+              2
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Palmvitee,n = 19**",
+            "wert": 19.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3546023:T4",
+            "zeile": null,
+            "spalten": [
+              4,
+              4
+            ]
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "kopfangabe",
+            "text": "**Palmvitee,n = 8**",
+            "wert": 8.0,
+            "arm": "intervention",
+            "arm_basis": "kopfangabe",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "gruppengroesse_im_kopf",
+            "sicherheit": "hoch",
+            "tabelle": "PMC3546023:T4",
+            "zeile": null,
+            "spalten": [
+              6,
+              6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "nicht_wertgleich": [
+    {
+      "record_id": "yun2024:172",
+      "table_id": "PMC5079604:T1",
+      "feld": "intervention_group_size",
+      "raw": "33",
+      "wert": 33.0,
+      "kategorie": "sum_of_subgroups",
+      "befund": "Metformin 17 + Sitagliptin 16; im Dokument steht keine gedruckte Gruppengroesse 33.",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [
+        17.0,
+        16.0
+      ],
+      "summe_kopfwerte": 33.0,
+      "wert_sonst_gedruckt": [],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Metformin (*n* = 17)",
+          "wert": 17.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5079604:T1",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Sitagliptin (*n* = 16)",
+          "wert": 16.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5079604:T1",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:174",
+      "table_id": "PMC5079604:T1",
+      "feld": "intervention_group_size",
+      "raw": "33",
+      "wert": 33.0,
+      "kategorie": "sum_of_subgroups",
+      "befund": "Metformin 17 + Sitagliptin 16; im Dokument steht keine gedruckte Gruppengroesse 33.",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [
+        17.0,
+        16.0
+      ],
+      "summe_kopfwerte": 33.0,
+      "wert_sonst_gedruckt": [],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Metformin (*n* = 17)",
+          "wert": 17.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5079604:T1",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Sitagliptin (*n* = 16)",
+          "wert": 16.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5079604:T1",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:185",
+      "table_id": "PMC5122613:T1",
+      "feld": "comparator_group_size",
+      "raw": "28",
+      "wert": 28.0,
+      "kategorie": "population_mismatch",
+      "befund": "Die Baseline-Tabelle druckt Placebo 33; die CTT-Auswertung umfasst 28.",
+      "zitat": "Fifty-seven subjects were assessed for CTT (placebo, n = 28; RMD, n = 29).",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        33.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "Placebo (*n* = 33)",
+          "wert": 33.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5122613:T1",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:194",
+      "table_id": "PMC5360580:T1",
+      "feld": "comparator_group_size",
+      "raw": "167",
+      "wert": 167.0,
+      "kategorie": "population_mismatch",
+      "befund": "Tabelle 6 druckt 169/167, die gewaehlte Tabelle 145/140.",
+      "zitat": "Of 328 patients enrolled, 276 patients completed the trial (140 in the treatment group and 136 in the placebo group).",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        140.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC5360580:T6:kopf c2-2",
+        "PMC5360580:T6:kopfangabe Placebo group (n = 167)"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "Placebo group (n = 140)",
+          "wert": 140.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5360580:T1",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:194",
+      "table_id": "PMC5360580:T1",
+      "feld": "intervention_group_size",
+      "raw": "169",
+      "wert": 169.0,
+      "kategorie": "population_mismatch",
+      "befund": "Tabelle 6 druckt 169/167, die gewaehlte Tabelle 145/140; Fließtext: 328 eingeschlossen, 276 beendet.",
+      "zitat": "Of 328 patients enrolled, 276 patients completed the trial (140 in the treatment group and 136 in the placebo group).",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        145.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC5360580:T6:kopf c1-1",
+        "PMC5360580:T6:kopfangabe Pls group (n = 169)"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Pls group (n = 145)",
+          "wert": 145.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5360580:T1",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:196",
+      "table_id": "PMC5360580:T6",
+      "feld": "comparator_group_size",
+      "raw": "24",
+      "wert": 24.0,
+      "kategorie": "unexplained",
+      "befund": "Wie intervention_group_size: keine Kopfangabe 24.",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [
+        167.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC5360580:T1:r3/c1",
+        "PMC5360580:T2:r1/c0",
+        "PMC5360580:T2:r10/c0",
+        "PMC5360580:T2:r14/c0",
+        "PMC5360580:T2:r18/c0",
+        "PMC5360580:T2:r4/c0"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "Placebo group (n = 167)",
+          "wert": 167.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5360580:T6",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:196",
+      "table_id": "PMC5360580:T6",
+      "feld": "intervention_group_size",
+      "raw": "24",
+      "wert": 24.0,
+      "kategorie": "unexplained",
+      "befund": "Die gewaehlte Tabelle druckt Krebsereignisse mit 169/167; 24 erscheint im Dokument nur als Wochenzahl.",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [
+        169.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC5360580:T1:r3/c1",
+        "PMC5360580:T2:r1/c0",
+        "PMC5360580:T2:r10/c0",
+        "PMC5360580:T2:r14/c0",
+        "PMC5360580:T2:r18/c0",
+        "PMC5360580:T2:r4/c0"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Pls group (n = 169)",
+          "wert": 169.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5360580:T6",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:265",
+      "table_id": "PMC2430617:T1",
+      "feld": "comparator_group_size",
+      "raw": "79",
+      "wert": 79.0,
+      "kategorie": "population_mismatch",
+      "befund": "Placebo 79 randomisiert, 78 in der ITT-Tabelle.",
+      "zitat": "242 patients were eligible and assigned randomly to placebo, 30 µg YIC and 60 µg YIC groups in a three-month period.",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        78.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC2430617:T4:r0/c1"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "Placebo group (N = 78)",
+          "wert": 78.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC2430617:T1",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:265",
+      "table_id": "PMC2430617:T1",
+      "feld": "intervention_group_size",
+      "raw": "83",
+      "wert": 83.0,
+      "kategorie": "population_mismatch",
+      "befund": "242 randomisiert (83/80/79), 5 von der ITT-Analyse ausgeschlossen; die gewaehlte Tabelle druckt 81/78/78.",
+      "zitat": "Five patients were found ineligible during the batch assay at the end of treatment (week 24) at the central laboratory, and therefore were excluded from the intent-to-treat analysis.",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        81.0,
+        78.0
+      ],
+      "summe_kopfwerte": 159.0,
+      "wert_sonst_gedruckt": [
+        "PMC2430617:T4:r0/c2"
+      ],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "30 µg YIC group (N = 81)",
+          "wert": 81.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC2430617:T1",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "60 µg YIC group (N = 78)",
+          "wert": 78.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC2430617:T1",
+          "zeile": null,
+          "spalten": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:266",
+      "table_id": "PMC2430617:T1",
+      "feld": "comparator_group_size",
+      "raw": "79",
+      "wert": 79.0,
+      "kategorie": "population_mismatch",
+      "befund": "Placebo 79 randomisiert, 78 in der ITT-Tabelle.",
+      "zitat": "242 patients were eligible and assigned randomly to placebo, 30 µg YIC and 60 µg YIC groups in a three-month period.",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        78.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC2430617:T4:r0/c1"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "Placebo group (N = 78)",
+          "wert": 78.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC2430617:T1",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:266",
+      "table_id": "PMC2430617:T1",
+      "feld": "intervention_group_size",
+      "raw": "80",
+      "wert": 80.0,
+      "kategorie": "population_mismatch",
+      "befund": "60 µg YIC 80 randomisiert, 78 in der ITT-Tabelle.",
+      "zitat": "242 patients were eligible and assigned randomly to placebo, 30 µg YIC and 60 µg YIC groups in a three-month period.",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        81.0,
+        78.0
+      ],
+      "summe_kopfwerte": 159.0,
+      "wert_sonst_gedruckt": [
+        "PMC2430617:T1:r5/c1",
+        "PMC2430617:T4:r0/c3"
+      ],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "30 µg YIC group (N = 81)",
+          "wert": 81.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC2430617:T1",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "60 µg YIC group (N = 78)",
+          "wert": 78.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC2430617:T1",
+          "zeile": null,
+          "spalten": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:335",
+      "table_id": "PMC5617873:T2",
+      "feld": "intervention_group_size",
+      "raw": "45",
+      "wert": 45.0,
+      "kategorie": "unexplained",
+      "befund": "Armvertauschung im Gold: der Text nennt dreimal Placebo 45 und Aripiprazol 47; der Parser bindet wie der Text.",
+      "zitat": "Ninety-two patients were randomized to placebo (n = 45) or aripiprazole (n = 47).",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        47.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC5617873:T1:kopf c1-1",
+        "PMC5617873:T2:kopf c0-1",
+        "PMC5617873:T3:kopf c1-1"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Aripiprazole (n = 47)",
+          "wert": 47.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5617873:T2",
+          "zeile": null,
+          "spalten": [
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:336",
+      "table_id": "PMC5617873:T2",
+      "feld": "intervention_group_size",
+      "raw": "45",
+      "wert": 45.0,
+      "kategorie": "unexplained",
+      "befund": "Armvertauschung im Gold (Placebo 45, Aripiprazol 47).",
+      "zitat": "Ninety-two patients were randomized to placebo (n = 45) or aripiprazole (n = 47).",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        47.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC5617873:T1:kopf c1-1",
+        "PMC5617873:T2:kopf c0-1",
+        "PMC5617873:T3:kopf c1-1"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Aripiprazole (n = 47)",
+          "wert": 47.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5617873:T2",
+          "zeile": null,
+          "spalten": [
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:421",
+      "table_id": "PMC3877023:T3",
+      "feld": "intervention_mean",
+      "raw": "0.83",
+      "wert": 0.83,
+      "kategorie": "unexplained",
+      "befund": "Wert nur im Fließtext (0.83 [SD, 0.22]); die Tabelle druckt 2.2 (1) / 2.7 (0.7).",
+      "zitat": "0.83 [SD, 0.22]",
+      "zitat_geprueft": true,
+      "kopfwerte": [],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [],
+      "art": "mehrfach",
+      "sicherheit": "mittel",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_mean",
+          "quelle": "messzelle",
+          "text": "2.2 (1)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC3877023:T3",
+          "zeile": 2,
+          "spalten": [
+            1
+          ]
+        },
+        {
+          "feld": "intervention_mean",
+          "quelle": "messzelle",
+          "text": ".03",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "uebertrag",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC3877023:T3",
+          "zeile": 2,
+          "spalten": [
+            3
+          ]
+        },
+        {
+          "feld": "intervention_mean",
+          "quelle": "messzelle",
+          "text": "1.7 (0.7)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC3877023:T3",
+          "zeile": 2,
+          "spalten": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:421",
+      "table_id": "PMC3877023:T3",
+      "feld": "intervention_standard_deviation",
+      "raw": "0.22",
+      "wert": 0.22,
+      "kategorie": "unexplained",
+      "befund": "Streuung nur im Fließtext (0.83 [SD, 0.22]).",
+      "zitat": "0.83 [SD, 0.22]",
+      "zitat_geprueft": true,
+      "kopfwerte": [],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [],
+      "art": "mehrfach",
+      "sicherheit": "mittel",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_standard_deviation",
+          "quelle": "messzelle",
+          "text": "2.2 (1)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "zweitwert_der_spalte",
+          "sicherheit": "mittel",
+          "tabelle": "PMC3877023:T3",
+          "zeile": 2,
+          "spalten": [
+            1
+          ]
+        },
+        {
+          "feld": "intervention_standard_deviation",
+          "quelle": "messzelle",
+          "text": "1.7 (0.7)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "zweitwert_der_spalte",
+          "sicherheit": "mittel",
+          "tabelle": "PMC3877023:T3",
+          "zeile": 2,
+          "spalten": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:426",
+      "table_id": "PMC3877023:T4",
+      "feld": "comparator_group_size",
+      "raw": "44",
+      "wert": 44.0,
+      "kategorie": "unexplained",
+      "befund": "Die gewaehlte Tabelle druckt SNR-Werte; 44/49 stammen aus einer anderen Tabelle (Short-Bore MR n = 44, Open MR n = 49).",
+      "zitat": "examinations performed on the open MR scanner",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        18.0,
+        30.0
+      ],
+      "summe_kopfwerte": 48.0,
+      "wert_sonst_gedruckt": [
+        "PMC3877023:T1:kopf c1-1"
+      ],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "n = 18",
+          "wert": 18.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC3877023:T4",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        },
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "n = 30",
+          "wert": 30.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC3877023:T4",
+          "zeile": null,
+          "spalten": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:445",
+      "table_id": "PMC4140238:T2",
+      "feld": "comparator_mean",
+      "raw": "2.1",
+      "wert": 2.1,
+      "kategorie": "timepoint_mismatch",
+      "befund": "Der Wert steht in derselben Tabelle in einer anderen Zeitpunktspalte (r1/c1, r3/c2, r5/c1, r8/c1).",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4140238:T2:r1/c1",
+        "PMC4140238:T2:r3/c2",
+        "PMC4140238:T2:r5/c1",
+        "PMC4140238:T2:r8/c1"
+      ],
+      "art": "mehrfach",
+      "sicherheit": "mittel",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_mean",
+          "quelle": "messzelle",
+          "text": "1.2 (68)",
+          "wert": null,
+          "arm": "comparator",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4140238:T2",
+          "zeile": 8,
+          "spalten": [
+            2
+          ]
+        },
+        {
+          "feld": "comparator_mean",
+          "quelle": "messzelle",
+          "text": "0.5 (70)",
+          "wert": null,
+          "arm": "comparator",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4140238:T2",
+          "zeile": 2,
+          "spalten": [
+            2
+          ]
+        },
+        {
+          "feld": "comparator_mean",
+          "quelle": "messzelle",
+          "text": "0.8 (64)",
+          "wert": null,
+          "arm": "comparator",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4140238:T2",
+          "zeile": 5,
+          "spalten": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:445",
+      "table_id": "PMC4140238:T2",
+      "feld": "intervention_mean",
+      "raw": "1.2",
+      "wert": 1.2,
+      "kategorie": "timepoint_mismatch",
+      "befund": "Der Wert steht in derselben Tabelle in einer anderen Zeitpunktspalte (r6/c3, r8/c2), nicht an der belegten.",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4140238:T2:r6/c3",
+        "PMC4140238:T2:r8/c2"
+      ],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_mean",
+          "quelle": "messzelle",
+          "text": "1.4",
+          "wert": 1.4,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "spaltenfeld",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4140238:T2",
+          "zeile": 2,
+          "spalten": [
+            3
+          ]
+        },
+        {
+          "feld": "intervention_mean",
+          "quelle": "messzelle",
+          "text": "1.3",
+          "wert": 1.3,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "spaltenfeld",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4140238:T2",
+          "zeile": 5,
+          "spalten": [
+            3
+          ]
+        },
+        {
+          "feld": "intervention_mean",
+          "quelle": "messzelle",
+          "text": "0.9",
+          "wert": 0.9,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "spaltenfeld",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4140238:T2",
+          "zeile": 8,
+          "spalten": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:494",
+      "table_id": "PMC5419060:T3",
+      "feld": "intervention_group_size",
+      "raw": "630",
+      "wert": 630.0,
+      "kategorie": "subgroup_vs_total",
+      "befund": "Die Tabelle druckt Ablehnungsgruende (4 (0.68) usw.); 630 ist die Gesamtzahl der Proben (2/630 = 0.32).",
+      "zitat": "The total number of blood samples included in the study during July 2014 (post-training): 10 218 from CHC A, 4114 from CHC B, 2279 from CDC C and 630 from CDC D.",
+      "zitat_geprueft": true,
+      "kopfwerte": [],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC5419060:T2:r3/c3"
+      ],
+      "art": "mehrfach",
+      "sicherheit": "mittel",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "4(0.68)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 16,
+          "spalten": [
+            4
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "5 (0.05)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 16,
+          "spalten": [
+            5
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "6 (0.15)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 16,
+          "spalten": [
+            6
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "3 (0.13)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 16,
+          "spalten": [
+            7
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "1 (0.16)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 16,
+          "spalten": [
+            8
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "**-**",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 11,
+          "spalten": [
+            4
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "2 (0.02)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 11,
+          "spalten": [
+            5
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "5 (0.12)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 11,
+          "spalten": [
+            6
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "3 (0.13)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 11,
+          "spalten": [
+            7
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "**-**",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 11,
+          "spalten": [
+            8
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "1 (0.01)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 15,
+          "spalten": [
+            5
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "1 (0.02)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 15,
+          "spalten": [
+            6
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "0",
+          "wert": 0.0,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "spaltenfeld",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5419060:T3",
+          "zeile": 15,
+          "spalten": [
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:531",
+      "table_id": "PMC4230312:T3",
+      "feld": "comparator_group_size",
+      "raw": "204",
+      "wert": 204.0,
+      "kategorie": "population_mismatch",
+      "befund": "ITT Placebo = 204, Safety-Population 214.",
+      "zitat": "A total of 776 (35.2%) patients with bipolar II depression were included in the ITT population (283, 289, and 204 patients received quetiapine 300 mg/day, quetiapine 600 mg/day, or placebo, respectively).",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        214.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "Placebo (***n*** = 214)",
+          "wert": 214.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4230312:T3",
+          "zeile": null,
+          "spalten": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:531",
+      "table_id": "PMC4230312:T3",
+      "feld": "intervention_group_size",
+      "raw": "289",
+      "wert": 289.0,
+      "kategorie": "population_mismatch",
+      "befund": "ITT 600 mg = 289, Safety-Population 307; die gewaehlte Tabelle ist die Safety-Population.",
+      "zitat": "A total of 776 (35.2%) patients with bipolar II depression were included in the ITT population (283, 289, and 204 patients received quetiapine 300 mg/day, quetiapine 600 mg/day, or placebo, respectively).",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        298.0,
+        307.0
+      ],
+      "summe_kopfwerte": 605.0,
+      "wert_sonst_gedruckt": [],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Quetiapine 300 mg/day (***n*** = 298)",
+          "wert": 298.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4230312:T3",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Quetiapine 600 mg/day (***n*** = 307)",
+          "wert": 307.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4230312:T3",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:532",
+      "table_id": "PMC4230312:T1",
+      "feld": "comparator_group_size",
+      "raw": "204",
+      "wert": 204.0,
+      "kategorie": "population_mismatch",
+      "befund": "ITT Placebo = 204, Safety-Population 214.",
+      "zitat": "A total of 776 (35.2%) patients with bipolar II depression were included in the ITT population (283, 289, and 204 patients received quetiapine 300 mg/day, quetiapine 600 mg/day, or placebo, respectively).",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        214.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "Placebo (***n*** = 214)",
+          "wert": 214.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4230312:T1",
+          "zeile": null,
+          "spalten": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:532",
+      "table_id": "PMC4230312:T1",
+      "feld": "intervention_group_size",
+      "raw": "283",
+      "wert": 283.0,
+      "kategorie": "population_mismatch",
+      "befund": "ITT 300 mg = 283, Safety-Population 298.",
+      "zitat": "A total of 776 (35.2%) patients with bipolar II depression were included in the ITT population (283, 289, and 204 patients received quetiapine 300 mg/day, quetiapine 600 mg/day, or placebo, respectively).",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        298.0,
+        307.0
+      ],
+      "summe_kopfwerte": 605.0,
+      "wert_sonst_gedruckt": [],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Quetiapine 300 mg/day ( ***n***  = 298)",
+          "wert": 298.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4230312:T1",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Quetiapine 600 mg/day ( ***n***  = 307)",
+          "wert": 307.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4230312:T1",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:645",
+      "table_id": "PMC4675066:T1",
+      "feld": "comparator_group_size",
+      "raw": "26",
+      "wert": 26.0,
+      "kategorie": "population_mismatch",
+      "befund": "Baseline 29/30, Ergebnis-Tabelle 27/26.",
+      "zitat": "Developmental outcomes from the Bayley Scales of Infant and Toddler Development",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        30.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4675066:T2:kopf c2-2",
+        "PMC4675066:T2:kopfangabe Placebo (*n* = 26)"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "Placebo (*n* = 30)",
+          "wert": 30.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4675066:T1",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:645",
+      "table_id": "PMC4675066:T1",
+      "feld": "intervention_group_size",
+      "raw": "27",
+      "wert": 27.0,
+      "kategorie": "population_mismatch",
+      "befund": "Baseline 29/30, Ergebnis-Tabelle 27/26 (analysierte Population).",
+      "zitat": "Developmental outcomes from the Bayley Scales of Infant and Toddler Development",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        29.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4675066:T2:kopf c1-1",
+        "PMC4675066:T2:kopfangabe Iodine (*n* = 27)"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Iodine (*n* = 29)",
+          "wert": 29.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4675066:T1",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:647",
+      "table_id": "PMC4675066:T1",
+      "feld": "comparator_group_size",
+      "raw": "26",
+      "wert": 26.0,
+      "kategorie": "population_mismatch",
+      "befund": "Baseline 29/30, Ergebnis-Tabelle 27/26.",
+      "zitat": "Developmental outcomes from the Bayley Scales of Infant and Toddler Development",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        30.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4675066:T2:kopf c2-2",
+        "PMC4675066:T2:kopfangabe Placebo (*n* = 26)"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_group_size",
+          "quelle": "kopfangabe",
+          "text": "Placebo (*n* = 30)",
+          "wert": 30.0,
+          "arm": "comparator",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4675066:T1",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:647",
+      "table_id": "PMC4675066:T1",
+      "feld": "intervention_group_size",
+      "raw": "27",
+      "wert": 27.0,
+      "kategorie": "population_mismatch",
+      "befund": "Baseline 29/30, Ergebnis-Tabelle 27/26.",
+      "zitat": "Developmental outcomes from the Bayley Scales of Infant and Toddler Development",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        29.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4675066:T2:kopf c1-1",
+        "PMC4675066:T2:kopfangabe Iodine (*n* = 27)"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Iodine (*n* = 29)",
+          "wert": 29.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4675066:T1",
+          "zeile": null,
+          "spalten": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:662",
+      "table_id": "PMC4987981:T1",
+      "feld": "intervention_group_size",
+      "raw": "37",
+      "wert": 37.0,
+      "kategorie": "sum_of_subgroups",
+      "befund": "Metformin 21 + Pioglitazon 16; das Dokument nennt 21 und 16, keine Summe 37.",
+      "zitat": "23, 16 and 21 patients were randomized to placebo, pioglitazone and metformin treatment groups respectively.",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        21.0,
+        16.0
+      ],
+      "summe_kopfwerte": 37.0,
+      "wert_sonst_gedruckt": [],
+      "art": "mehrfach",
+      "sicherheit": "mittel",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "5.3 (±1.5)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4987981:T1",
+          "zeile": 16,
+          "spalten": [
+            2
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "5.4 (±1.3)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4987981:T1",
+          "zeile": 16,
+          "spalten": [
+            3
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "3.1 (±0.8)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4987981:T1",
+          "zeile": 17,
+          "spalten": [
+            2
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "messzelle",
+          "text": "3.2 (±0.8)",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4987981:T1",
+          "zeile": 17,
+          "spalten": [
+            3
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Metformin (*n* = 21)",
+          "wert": 21.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4987981:T1",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "Pioglitazone (*n* = 16)",
+          "wert": 16.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC4987981:T1",
+          "zeile": null,
+          "spalten": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "feld": "comparator_mean",
+      "raw": "97.6",
+      "wert": 97.6,
+      "kategorie": "timepoint_mismatch",
+      "befund": "T1 druckt den Baselinewert 97.6 (±20.8).",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4987981:T1:r18/c1"
+      ],
+      "art": "abgeleitet",
+      "sicherheit": "mittel",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_mean",
+          "quelle": "messzelle",
+          "text": "2.2 ± 10.0",
+          "wert": null,
+          "arm": "comparator",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4987981:T2",
+          "zeile": 3,
+          "spalten": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "feld": "comparator_standard_deviation",
+      "raw": "20.8",
+      "wert": 20.8,
+      "kategorie": "timepoint_mismatch",
+      "befund": "Baseline-Streuung aus T1 (97.6 (±20.8)).",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4987981:T1:r18/c1"
+      ],
+      "art": "abgeleitet",
+      "sicherheit": "mittel",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "comparator_standard_deviation",
+          "quelle": "messzelle",
+          "text": "2.2 ± 10.0",
+          "wert": null,
+          "arm": "comparator",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "zweitwert_der_spalte",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4987981:T2",
+          "zeile": 3,
+          "spalten": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "feld": "intervention_mean",
+      "raw": "103.4",
+      "wert": 103.4,
+      "kategorie": "timepoint_mismatch",
+      "befund": "T1 druckt den Baselinewert 103.4 (±28.9); die gewaehlte Tabelle druckt die Aenderung.",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4987981:T1:r18/c3"
+      ],
+      "art": "abgeleitet",
+      "sicherheit": "mittel",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_mean",
+          "quelle": "messzelle",
+          "text": "15.2 ± 19.2",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4987981:T2",
+          "zeile": 3,
+          "spalten": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:665",
+      "table_id": "PMC4987981:T2",
+      "feld": "intervention_standard_deviation",
+      "raw": "28.9",
+      "wert": 28.9,
+      "kategorie": "timepoint_mismatch",
+      "befund": "Baseline-Streuung aus T1 (103.4 (±28.9)).",
+      "zitat": "",
+      "zitat_geprueft": false,
+      "kopfwerte": [],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC4987981:T1:r18/c3"
+      ],
+      "art": "abgeleitet",
+      "sicherheit": "mittel",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_standard_deviation",
+          "quelle": "messzelle",
+          "text": "15.2 ± 19.2",
+          "wert": null,
+          "arm": "intervention",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "zweitwert_der_spalte",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4987981:T2",
+          "zeile": 3,
+          "spalten": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:678",
+      "table_id": "PMC5777419:T2",
+      "feld": "intervention_group_size",
+      "raw": "16",
+      "wert": 16.0,
+      "kategorie": "unexplained",
+      "befund": "Bandgeometrie: (n=15) liegt ueber den Antibiotika-Spalten 6-10, das Probiotic-(n=16) ist auf c2/c5 zerlegt; der Text nennt Antibiotika 16.",
+      "zitat": "probiotic (n=16), antibiotic (n = 16) or placebo (n = 15)",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        15.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC5777419:T1:kopf c1-1",
+        "PMC5777419:T1:kopf c2-2",
+        "PMC5777419:T1:kopfangabe Antibiotic group (n=16)",
+        "PMC5777419:T2:kopf c2-2",
+        "PMC5777419:T2:kopf c5-5",
+        "PMC5777419:T3:kopf c2-2"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "(n=15)",
+          "wert": 15.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5777419:T2",
+          "zeile": null,
+          "spalten": [
+            6,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:682",
+      "table_id": "PMC5777419:T2",
+      "feld": "intervention_group_size",
+      "raw": "16",
+      "wert": 16.0,
+      "kategorie": "unexplained",
+      "befund": "Bandgeometrie wie yun2024:678 (verschobene Kopfzeile).",
+      "zitat": "probiotic (n=16), antibiotic (n = 16) or placebo (n = 15)",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        15.0
+      ],
+      "summe_kopfwerte": null,
+      "wert_sonst_gedruckt": [
+        "PMC5777419:T1:kopf c1-1",
+        "PMC5777419:T1:kopf c2-2",
+        "PMC5777419:T1:kopfangabe Antibiotic group (n=16)",
+        "PMC5777419:T2:kopf c2-2",
+        "PMC5777419:T2:kopf c5-5",
+        "PMC5777419:T3:kopf c2-2"
+      ],
+      "art": "direkt",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "(n=15)",
+          "wert": 15.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC5777419:T2",
+          "zeile": null,
+          "spalten": [
+            6,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:78",
+      "table_id": "PMC3546023:T4",
+      "feld": "intervention_group_size",
+      "raw": "30",
+      "wert": 30.0,
+      "kategorie": "subgroup_vs_total",
+      "befund": "Die gewaehlte Tabelle druckt drei Raucherstrata (3/19/8); die Gesamtgruppe 30 steht als Kopfangabe in T1.",
+      "zitat": "Palmvitee,n = 30",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        3.0,
+        19.0,
+        8.0
+      ],
+      "summe_kopfwerte": 30.0,
+      "wert_sonst_gedruckt": [
+        "PMC3546023:T1:kopf c4-4",
+        "PMC3546023:T1:kopfangabe Palmvitee,n = 30",
+        "PMC3546023:T2:r19/c3",
+        "PMC3546023:T3:kopf c4-4",
+        "PMC3546023:T3:kopfangabe Palmvitee, n = 30",
+        "PMC3546023:T3:r0/c4"
+      ],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "**Palmvitee, n = 3**",
+          "wert": 3.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC3546023:T4",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "**Palmvitee,n = 19**",
+          "wert": 19.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC3546023:T4",
+          "zeile": null,
+          "spalten": [
+            4,
+            4
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "**Palmvitee,n = 8**",
+          "wert": 8.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC3546023:T4",
+          "zeile": null,
+          "spalten": [
+            6,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:79",
+      "table_id": "PMC3546023:T4",
+      "feld": "intervention_group_size",
+      "raw": "30",
+      "wert": 30.0,
+      "kategorie": "subgroup_vs_total",
+      "befund": "Die gewaehlte Tabelle druckt drei Raucherstrata (3/19/8); die Gesamtgruppe 30 steht als Kopfangabe in T1.",
+      "zitat": "Palmvitee,n = 30",
+      "zitat_geprueft": true,
+      "kopfwerte": [
+        3.0,
+        19.0,
+        8.0
+      ],
+      "summe_kopfwerte": 30.0,
+      "wert_sonst_gedruckt": [
+        "PMC3546023:T1:kopf c4-4",
+        "PMC3546023:T1:kopfangabe Palmvitee,n = 30",
+        "PMC3546023:T2:r19/c3",
+        "PMC3546023:T3:kopf c4-4",
+        "PMC3546023:T3:kopfangabe Palmvitee, n = 30",
+        "PMC3546023:T3:r0/c4"
+      ],
+      "art": "mehrfach",
+      "sicherheit": "hoch",
+      "arm": "eindeutig",
+      "stellen": [
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "**Palmvitee, n = 3**",
+          "wert": 3.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC3546023:T4",
+          "zeile": null,
+          "spalten": [
+            2,
+            2
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "**Palmvitee,n = 19**",
+          "wert": 19.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC3546023:T4",
+          "zeile": null,
+          "spalten": [
+            4,
+            4
+          ]
+        },
+        {
+          "feld": "intervention_group_size",
+          "quelle": "kopfangabe",
+          "text": "**Palmvitee,n = 8**",
+          "wert": 8.0,
+          "arm": "intervention",
+          "arm_basis": "kopfangabe",
+          "zeitpunkt": "",
+          "art": "direkt",
+          "regel": "gruppengroesse_im_kopf",
+          "sicherheit": "hoch",
+          "tabelle": "PMC3546023:T4",
+          "zeile": null,
+          "spalten": [
+            6,
+            6
+          ]
+        }
+      ]
+    }
+  ],
+  "armkonflikte": {
+    "PMC5617873:T2": {
+      "record_ids": [
+        "yun2024:335",
+        "yun2024:336"
+      ],
+      "druck": [
+        "Placebo (n = 45) Aripiprazole (n = 47)",
+        "Aripiprazole (n = 47)"
+      ],
+      "belege": [
+        [
+          "Abstract",
+          "Ninety-two patients were randomized to placebo (n = 45) or aripiprazole (n = 47)."
+        ],
+        [
+          "Ergebnisse",
+          "92 patients were randomly assigned to receive placebo (n = 45) or aripiprazole (n = 47)."
+        ],
+        [
+          "Baseline-Tabelle",
+          "Placebo (n = 45) Aripiprazole (n = 47) Total (n = 92)"
+        ],
+        [
+          "Gegenprobe",
+          "Forty-two (93.3%) patients in the placebo group"
+        ],
+        [
+          "Gegenprobe",
+          "the last dose of placebo corresponding to aripiprazole (n = 45)"
+        ],
+        [
+          "Methoden",
+          "Patients received flexibly dosed aripiprazole (1--15 mg/day) or placebo."
+        ]
+      ],
+      "befund": "45 = Placebo (Vergleichsarm), 47 = Aripiprazol (Interventionsarm); das Goldfeld fuehrt es umgekehrt."
+    },
+    "PMC5777419:T2": {
+      "record_ids": [
+        "yun2024:678",
+        "yun2024:682"
+      ],
+      "druck": [
+        "(n=16) (n=16) (n=15)"
+      ],
+      "belege": [
+        [
+          "Methoden",
+          "randomly assigned to a probiotic (n=16), antibiotic (n = 16) or placebo (n = 15) group"
+        ],
+        [
+          "Analyse",
+          "Forty-seven patients, 16 in the probiotic group, 16 in the antibiotic group and 15 in the placebo group were analyzed."
+        ],
+        [
+          "Baseline-Tabelle",
+          "Probiotic group (n=16) Antibiotic group (n=16) Placebo group (n=15)"
+        ],
+        [
+          "Ergebnis-Tabelle",
+          "Day 0 16 (100%) 16 (100%) 15 (100%)"
+        ]
+      ],
+      "befund": "Antibiotika = 16, Placebo = 15 (Gold richtig); die Kopfbaender liegen verschoben ueber den Spalten."
+    }
+  }
+}

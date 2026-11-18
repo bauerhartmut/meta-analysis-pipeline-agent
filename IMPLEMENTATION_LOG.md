@@ -1566,3 +1566,31 @@ Messzeilen, keine ist r3). In D/E fallen zusaetzlich 8 Spalteneinheiten weg:
 ersetzt; die Goldabdeckung bleibt 4 -> 4 Felder in jedem Verfahren. A-E neu
 gemessen und unveraendert (62 Goldfelder, 0 Fehler, 60/60, Zellen
 1687/1261/1687/1687/1674, Einheiten 60/159/329/442/273).
+
+## Sprint 45 - Provenienz und Fehlerklassen der 36 nicht wertgleichen Felder
+
+Neu: `research_agent/table_decomposition/provenienz.py` beschreibt je
+Fundstelle Tabelle, Zeile/Kopfband, Spalten, Originaltext, gedruckten Wert,
+Arm, Zeitpunkt, Art (`direkt`/`abgeleitet`/`mehrfach`), Regel und Sicherheit.
+Es liest nur die angereicherte Tabelle und aendert keine Produktionslogik.
+Mehrere Fundstellen ergeben `mehrfach`; damit ist eine Summe aus Untergruppen
+nie eine gedruckte Gruppengroesse (17/16 -> mehrfach, nicht 33).
+`research_agent/tests/test_provenienz.py` prueft die Summenregel, die einzelne
+Kopfangabe, das verschobene Band und zwei Verbundzellen (5 Tests).
+
+`diagnose_provenienz.py` misst offline: **94** erreichbar, **58** wertgleich,
+**36** nicht wertgleich (identisch zur Kursiv-Messung). Klassen:
+`population_mismatch` 15, `timepoint_mismatch` 6, `subgroup_vs_total` 3,
+`sum_of_subgroups` 3, `unexplained` 9, `exact_value` 0. Eine Klasse gilt nur
+mit geprueftem Beleg (Zitat im Dokument, Summe der Kopfangaben oder Wert an
+anderer Stelle), sonst `unexplained`. Provenienz der 94: 49 direkt, 4
+abgeleitet, 41 mehrfach; Sicherheit 73 hoch, 21 mittel; Arm 94 eindeutig.
+
+Volltextpruefung der beiden Armkonflikte: `PMC5617873` nennt dreimal "placebo
+(n = 45) or aripiprazole (n = 47)" (Abstract, Ergebnisse, Baseline- und
+Nebenwirkungstabelle), 42/45 = 93,3 % stuetzt Placebo 45 - das Goldfeld ist
+vertauscht, der Parser bindet wie der Text. `PMC5777419` nennt "probiotic
+(n=16), antibiotic (n = 16) or placebo (n = 15)", "16 in the antibiotic group"
+und die Baseline-Tabelle mit denselben Zahlen - das Gold ist richtig, die
+Kopfbaender liegen verschoben (das `(n=15)` ueber den Antibiotika-Spalten).
+Keine Armzuordnung geaendert.
