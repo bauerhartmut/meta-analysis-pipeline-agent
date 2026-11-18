@@ -61,6 +61,14 @@ Schreibt Header-Pfade, Rollen (`label`, `n`, `mean`, `sd`, `events`, `p`,
   `arm=None`, `basis` sagt warum (`kein_treffer`, `ambiguous`).
 - `assume_order` — Reihenfolge-Annahme bei genau zwei Armspalten, markiert als
   `arm_basis="reihenfolge"` (Standard aus; im Benchmark separat gemessen).
+- `bind_row_arm(label)` / `Row.arm` — Arm aus dem Zeilenlabel, wenn die
+  Tabelle die Arme als Zeilen fuehrt (`Control`, `White Grape Juice`). Schwelle
+  0.6, weil Zeilenlabels kurz sind; ein dritter Arm (`Apple Juice`) bleibt ohne
+  Arm. Zusammen mit `Column.is_outcome` (Outcome-Name im Spaltenkopf) entsteht
+  das Feld: Arm aus der Zeile, Rolle aus dem Kopf.
+- `header_geometry_trustworthy(table)` — ohne belegte Kopfspanne
+  (`header_gruppe_nicht_teilbar` usw.) wird keine Spalte zum Outcome erklaert;
+  das verhindert Felder auf der falschen Spalte (belegt: `PMC4319071:T2`).
 - `row_roles(label)` / `Row.value_role` — Rolle aus dem Zeilenlabel
   (`Mean (SD)` → mean + sd, `Not complying, n (%)` → events). Sie greift nur,
   wenn der Spaltenkopf keine Rolle trägt; ein Spaltenfeld hat Vorrang, und ohne

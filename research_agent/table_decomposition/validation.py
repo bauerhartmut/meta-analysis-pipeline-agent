@@ -288,6 +288,20 @@ def _check_structure(table: Table, units: Sequence[ExtractionUnit],
             )
         )
 
+    row_arms = sorted({row.arm for row in table.rows if getattr(row, "arm", None)})
+    if row_arms and not any(c.arm for c in table.columns):
+        findings.append(
+            Finding(
+                code="arm_aus_zeilenlabel",
+                severity=SEVERITY_INFO,
+                message=(
+                    f"Arm aus Zeilenlabels: {row_arms}. Die Spalten tragen das "
+                    "Outcome; ohne belegten Outcome-Namen entsteht kein Feld."
+                ),
+                table_id=table.table_id,
+            )
+        )
+
     transferred = [c.col_id for c in table.columns if c.arm_basis == "uebertrag"]
     if transferred:
         findings.append(

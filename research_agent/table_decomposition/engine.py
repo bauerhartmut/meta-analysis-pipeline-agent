@@ -282,6 +282,9 @@ class TableDecompositionEngine:
         run = TableRun(table=table, plan=plan, units=list(plan.units))
         recon = Reconstruction()
         recon.register_table(table)
+        # Feste Kopfangaben (``n = 434``) sind deterministisch lesbar und
+        # werden ohne Modellaufruf als Beleg gefuehrt.
+        recon.add_header_facts(table)
 
         for unit in list(plan.units):
             unit_result = self._extract(unit)

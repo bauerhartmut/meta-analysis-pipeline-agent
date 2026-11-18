@@ -1,0 +1,272 @@
+{
+ "mode": "offline",
+ "role": "dev",
+ "n_records": 38,
+ "tables": {
+  "alt": 134,
+  "nur_prosa_fix": 134,
+  "neu": 134
+ },
+ "gold_felder_erreichbar": {
+  "alt": 12,
+  "nur_prosa_fix": 12,
+  "neu": 16
+ },
+ "records_mit_treffer": {
+  "alt": 5,
+  "nur_prosa_fix": 5,
+  "neu": 5
+ },
+ "records": {
+  "yun2024:3": {
+   "alt": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "nur_prosa_fix": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "neu": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ]
+  },
+  "yun2024:4": {
+   "alt": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "nur_prosa_fix": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ],
+   "neu": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ]
+  },
+  "yun2024:5": {
+   "alt": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "nur_prosa_fix": [
+    "comparator_group_size",
+    "intervention_group_size"
+   ],
+   "neu": [
+    "comparator_group_size",
+    "comparator_mean",
+    "comparator_standard_deviation",
+    "intervention_group_size",
+    "intervention_mean",
+    "intervention_standard_deviation"
+   ]
+  },
+  "yun2024:55": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:56": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:57": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:58": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:59": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:60": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:83": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:88": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:120": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:186": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:187": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:188": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:189": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:190": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:191": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:192": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:224": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:225": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:226": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:227": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:228": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:229": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:230": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:231": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:232": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:233": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:234": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:235": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:236": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:237": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:238": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:260": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:261": {
+   "alt": [],
+   "nur_prosa_fix": [],
+   "neu": []
+  },
+  "yun2024:262": {
+   "alt": [
+    "comparator_group_size"
+   ],
+   "nur_prosa_fix": [
+    "comparator_group_size"
+   ],
+   "neu": [
+    "comparator_group_size"
+   ]
+  },
+  "yun2024:263": {
+   "alt": [
+    "comparator_group_size"
+   ],
+   "nur_prosa_fix": [
+    "comparator_group_size"
+   ],
+   "neu": [
+    "comparator_group_size"
+   ]
+  }
+ },
+ "hinweise": [
+  "ohne Modellaufruf, ohne Testdaten",
+  "nur strukturelle Reichweite (Obergrenze), keine Precision/Recall",
+  "alt = Prosa-Guard und Zeilenarm/Outcome-Spalte aus; nur_prosa_fix = nur Parser neu; neu = beides"
+ ]
+}

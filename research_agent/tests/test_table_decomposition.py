@@ -39,6 +39,7 @@ from research_agent.table_decomposition.model import (
     field_for,
 )
 from research_agent.table_decomposition.parser import (
+    _looks_prose,
     normalise_number_text,
     parse_document,
     parse_value,
@@ -50,6 +51,7 @@ from research_agent.table_decomposition.reconstruct import (
 from research_agent.table_decomposition.semantics import (
     bind_arm,
     enrich_table,
+    header_geometry_trustworthy,
     group_size_declaration,
     outcome_rows,
     reachable_cells,
@@ -918,3 +920,80 @@ def test_unit_prompt_never_leaks_gold_like_extra_fields():
     prompt = decomposition.units[0].prompt
     assert "intervention_mean" in prompt  # Zielfeld ist erlaubt und gewollt
     assert "gold" not in prompt.lower()
+
+
+# --- Arme als Zeilen, Outcome als Spalte ----------------------------------
+
+ROW_ARM_WIDTHS = [16, 14, 14, 14, 14, 14, 14]
+
+ROW_ARM_DOCUMENT = "\n\n".join([
+    "# Results",
+    "Estimated marginal means are reported in Table 2.",
+    render_dash_table(
+        groups=((1, 3, 5), ("Fruit (pieces)", "Vegetables (grams)",
+                            "Saturated fat (points)")),
+        subheaders=((1, 2, 3, 4, 5, 6), ("Mean (SE)", "Mean change", "Mean (SE)",
+                                         "Mean change", "Mean (SE)", "Mean change")),
+        rows=[
+            ("Control", [(1, "1.81 (0.06)"), (2, "0.19"), (3, "158.93 (3.31)"),
+                         (4, "0.27"), (5, "3.21 (0.14)"), (6, "0.10")]),
+            ("Plus", [(1, "1.83 (0.06)"), (2, "0.21"), (3, "158.96 (3.23)"),
+                      (4, "0.31"), (5, "3.10 (0.15)"), (6, "0.11")]),
+        ],
+        widths=ROW_ARM_WIDTHS,
+        caption="Estimated marginal means at baseline",
+    ),
+])
+
+ROW_ARM_CONTEXT = {"intervention": "Plus", "comparator": "Control",
+                   "outcome": "Vegetable intake", "outcome_type": "continuous"}
+
+
+def _row_arm_table():
+    parsed = parse_document(ROW_ARM_DOCUMENT, "ROWARM")
+    assert parsed.tables, "Fixture wurde nicht als Tabelle erkannt"
+    table = parsed.tables[0]
+    enrich_table(table, ROW_ARM_CONTEXT)
+    return table
+
+
+def test_prose_guard_keeps_a_structured_header_line():
+    """Viele Woerter in mehreren kurzen Zellen sind ein Kopf, keine Prosa."""
+    assert not _looks_prose(
+        "Time point      Fruit (pieces)      Vegetables (grams)      "
+        "High-energy snacks (pieces)      Saturated fat (fat points)"
+    )
+    assert _looks_prose(
+        "Participants were randomised to one of three groups and followed for "
+        "twelve months in total."
+    )
+
+
+def test_row_label_supplies_the_arm_for_an_outcome_column():
+    """``Control`` in der Zeile plus Outcome im Kopf ergibt ein Mittelfeld."""
+    table = _row_arm_table()
+    control = next(row for row in table.rows if row.label == "Control")
+    assert control.arm == ARM_COMPARATOR
+    assert control.arm_basis == "header_treffer"
+
+    cells = reachable_cells(table, ROW_ARM_CONTEXT)
+    assert (control.row_id, "comparator_mean") in cells
+    # Das Outcome steht in der Spalte ``Vegetables (grams)``.
+    vegetables = next(c for c in table.columns if c.is_outcome)
+    assert vegetables.header_path[0] == "Vegetables (grams)"
+
+
+def test_standard_error_is_not_reported_as_standard_deviation():
+    """``Mean (SE)`` traegt keine Streuung; 3.31 ist kein SD-Wert."""
+    table = _row_arm_table()
+    assert "comparator_standard_deviation" not in reachable_fields(table)
+
+
+def test_outcome_column_is_refused_when_the_header_grid_is_broken():
+    """Ohne belegte Kopfspanne wird keine Spalte zum Outcome erklaert."""
+    table = _row_arm_table()
+    assert header_geometry_trustworthy(table)
+    table.irregularities.append("header_gruppe_nicht_teilbar:ebene0")
+    enrich_table(table, ROW_ARM_CONTEXT)
+    assert not any(column.is_outcome for column in table.columns)
+    assert reachable_cells(table, ROW_ARM_CONTEXT) == set()

@@ -1181,3 +1181,36 @@ Zeilenrolle, 1 mit Armspalte ohne Rolle, **0** Records mit Gewinn; dev-Messung
 dem Kopf fuer Tabellen mit Armen als Zeilen, dazu ein Prosa-Guard fuer
 Kopfzeilen mit vielen Woertern (Zeile 81 in `PMC4319071`).
 Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/zeilenrollen_20261118.md`.
+
+## Sprint 37 (18.11.2026): Arme als Zeilen, Outcome als Spalte
+
+**Anlass:** `PMC4319071` fuehrt die Arme als Zeilen (`Control`, `Basic`, `Plus`)
+und die Outcomes als Spalten; der Kopf nennt `Vegetables (grams)`, aber keine
+Rolle. Die Gold-Mittelwerte stehen in `T2` (Zeilen 107/113).
+
+**Aenderungen:** Prosa-Guard nimmt Kopfzeilen aus kurzen Zellen nicht mehr als
+Prosa (`_looks_prose`); `bind_row_arm` bindet den Arm aus dem Zeilenlabel
+(Schwelle 0.6, dritter Arm bleibt frei); `_mark_outcome_columns` erkennt die
+Outcome-Spalte im Kopf (nur Vorwaertsrichtung, Mehrdeutigkeit wird notiert) und
+verweigert die Zuordnung ohne belegte Kopfspanne (`header_geometry_trustworthy`);
+`(SE)`/`(95% CI)` erzeugen keine Standardabweichung; Rekonstruktion, Reichweite
+und Validierung (`arm_aus_zeilenlabel`) nutzen dieselbe Regel. Tests: 4 neu, 49
+gruen.
+
+**dev-Ergebnis:** 134 Tabellen unveraendert; erreichbare Goldfelder 12 -> 16,
+alles in `yun2024:5` (`PMC1216327:T5`, Arme als Zeilen); die gelesenen Werte
+3.59/2.35 (Intervention) und 2.19/1.63 (Comparator) stimmen exakt mit dem Gold.
+Der Prosa-Fix allein ist auf dev neutral (12), weil die betroffenen dev-Tabellen
+ihren Kopf schon hatten.
+
+**Ehrlich negativ fuer das Zielobjekt:** `PMC4319071:T2` bekommt seine
+Outcome-Kopfzeile zurueck, aber Kopf und Strichraster sind um eine Spalte
+verschoben (Kopf `Vegetables (grams)` bei x=43, Wert `158.93` rechtsbuendig bei
+x=93; 10 Strichspalten gegen 5 Kopfzellen). Deshalb
+`outcome_spalte_ohne_kopfgeometrie` statt einer geratenen Zuordnung; `T2` traegt
+nichts bei, `T1` weiter nur `comparator_group_size`.
+
+**Naechster Hebel:** Kopfzellen an den Datenzellen ankern (rechtsbuendige Werte,
+Zellende = Spaltenende) statt am Strichraster; danach `T2` erneut pruefen, dann
+Pilotlauf und neue Auswahl-Einfrierung.
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/zeilenarme_20261118.md`.

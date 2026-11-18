@@ -23,6 +23,7 @@ import re
 
 from .backend import PredictedCell, UnitResult
 from .model import ROLE_LABEL, ROLE_N, ROLE_SD, ROLE_UNKNOWN, Table, field_for, header_path_text
+from .semantics import cell_arm
 
 _NUMBER_RE = re.compile(r"-?\d+(?:[.,]\d+)?")
 from .strategies import DIRECTION_COLUMN, DIRECTION_ROW, ExtractionUnit
@@ -276,6 +277,7 @@ class Reconstruction:
             return False
         source_cell = row.cells.get(cell.col_id)
         field, role = self._resolve_field(column, row)
+        arm = cell_arm(column, row)
         self._evidence.append(
             Evidence(
                 row_id=cell.row_id,
@@ -286,7 +288,7 @@ class Reconstruction:
                 table_id=table.table_id,
                 doc_id=table.doc_id,
                 field=field,
-                arm=column.arm,
+                arm=arm,
                 role=role,
                 unit=column.unit,
                 page=table.page,
@@ -309,14 +311,18 @@ class Reconstruction:
     def _resolve_field(column: Any, row: Any) -> tuple:
         """Feld und Rolle einer Zelle: Spaltenkopf zuerst, dann Zeilenlabel.
 
-        ``Control`` allein traegt keine Rolle; die Zeile ``Mean (SD)`` schon.
-        Die Ableitung greift nur, wenn der Spaltenkopf keine Rolle hat und die
-        Zelle eine Zahl traegt - eine erfundene Rolle gaebe es sonst.
+        Drei belegte Wege, in dieser Reihenfolge: Spalte traegt Rolle und Arm;
+        Spaltenkopf ohne Rolle, Zeilenlabel nennt sie (``Mean (SD)``); oder
+        Spaltenkopf nennt das Outcome und das Zeilenlabel den Arm. Ohne Beleg
+        entsteht kein Feld.
         """
         if column.field:
             return column.field, column.role
+        arm = cell_arm(column, row)
         if column.role == ROLE_UNKNOWN and getattr(row, "value_role", ""):
-            return field_for(row.value_role, column.arm), row.value_role
+            return field_for(row.value_role, arm), row.value_role
+        if getattr(column, "is_outcome", False) and column.role != ROLE_UNKNOWN:
+            return field_for(column.role, arm), column.role
         return None, column.role
 
     def _add_secondary(self, table: Table, unit: ExtractionUnit, cell: PredictedCell,
@@ -329,7 +335,8 @@ class Reconstruction:
         """
         # Zweitrolle: Spaltenkopf (``Mean (SD)``) oder Zeilenlabel (``Mean (SD)``).
         secondary_role = column.secondary_role or getattr(row, "secondary_role", "")
-        if not secondary_role or not column.arm:
+        arm = cell_arm(column, row)
+        if not secondary_role or not arm:
             return
         text = (cell.raw or "").strip() or (cell.quote or "").strip()
         numbers = _NUMBER_RE.findall(text)
@@ -351,8 +358,8 @@ class Reconstruction:
                 quote=cell.quote,
                 table_id=table.table_id,
                 doc_id=table.doc_id,
-                field=field_for(secondary_role, column.arm),
-                arm=column.arm,
+                field=field_for(secondary_role, arm),
+                arm=arm,
                 role=secondary_role,
                 unit=column.unit,
                 page=table.page,

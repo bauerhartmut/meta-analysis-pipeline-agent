@@ -113,6 +113,9 @@ class Column:
     unit: str = ""
     field: Optional[str] = None  # Zielfeld, nur bei role+arm gesetzt
     secondary_role: str = ""     # zweite Rolle aus derselben Zelle (z. B. sd in "12.4 (3.1)")
+    # Der Spaltenkopf nennt das Outcome des Records (``Vegetables (grams)``);
+    # der Arm steht dann im Zeilenlabel. Nur dann traegt die Zelle ein Feld.
+    is_outcome: bool = False
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -127,6 +130,7 @@ class Column:
             "unit": self.unit,
             "field": self.field,
             "secondary_role": self.secondary_role,
+            "is_outcome": self.is_outcome,
         }
 
 
@@ -196,6 +200,10 @@ class Row:
     # ``Mean (SD)`` -> mean + sd, ``Not complying, n (%)`` -> events.
     value_role: str = ""
     secondary_role: str = ""
+    # Arm aus dem Zeilenlabel, wenn die Tabelle die Arme als Zeilen fuehrt
+    # (``Control``/``Basic``); die Spalte traegt dann das Outcome.
+    arm: Optional[str] = None
+    arm_basis: str = ""
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -206,6 +214,8 @@ class Row:
             "label_path": list(self.label_path),
             "value_role": self.value_role,
             "secondary_role": self.secondary_role,
+            "arm": self.arm,
+            "arm_basis": self.arm_basis,
             "line": self.line,
             "start_char": self.start_char,
             "end_char": self.end_char,

@@ -397,9 +397,31 @@ def _nearest(span: Tuple[int, int], intervals: Sequence[Tuple[int, int]]) -> Opt
     return best
 
 
+_HEADER_CELL_MAX_WORDS = 4
+
+
+def _looks_like_header_row(line: str) -> bool:
+    """Zeile aus mehreren kurzen Zellen - ein Tabellenkopf, keine Prosa.
+
+    ``Time point  Fruit (pieces)  Vegetables (grams)  ...`` traegt viele
+    Woerter, aber keine Satzstruktur: jede Zelle bleibt kurz. Ohne diese
+    Ausnahme verwirft ``_looks_prose`` die Outcome-Kopfzeile, und die Spalten
+    verlieren ihren Outcome-Namen (belegt: ``PMC4319071:T2``).
+    """
+    cells = split_cells(line)
+    if len(cells) < 3:
+        return False
+    return all(
+        len(_WORD_RE.findall(text)) <= _HEADER_CELL_MAX_WORDS
+        for _start, _end, text in cells
+    )
+
+
 def _looks_prose(line: str) -> bool:
     stripped = (line or "").strip()
     if len(stripped) < 90:
+        return False
+    if _looks_like_header_row(stripped):
         return False
     return len(_WORD_RE.findall(stripped)) >= 10 and len(_DIGIT_RE.findall(stripped)) <= 3
 

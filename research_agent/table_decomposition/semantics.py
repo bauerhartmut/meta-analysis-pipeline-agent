@@ -179,6 +179,34 @@ def bind_arm(
     return ArmBinding(best_arm, "header_treffer", round(best, 3))
 
 
+def bind_row_arm(row_label: str, intervention: str = "",
+                 comparator: str = "") -> ArmBinding:
+    """Arm aus dem Zeilenlabel - nur bei belegtem Vorsprung.
+
+    Manche Tabellen fuehren die Arme als Zeilen (``Control``, ``Basic``,
+    ``Plus``) und die Outcomes als Spalten. Dann traegt der Spaltenkopf keinen
+    Arm, das Zeilenlabel schon. Es gelten dieselben Grenzen wie im Kopf:
+    ohne belegten Vorsprung bleibt der Arm leer.
+
+    Die Schwelle liegt hier bei 0.6 statt 0.5: Zeilenlabels sind kurz und
+    generisch, ein einzelnes gemeinsames Wort reicht nicht. ``Apple Juice``
+    teilt mit ``White Grape Juice (WGJ)`` nur ``juice`` (0.5) und ist ein
+    dritter Arm, kein Interventionsarm; ``Water`` gegen ``colored and flavored
+    water (WA)`` trifft dagegen das ganze Label (1.0).
+    """
+    label = (row_label or "").strip()
+    if not label:
+        return ArmBinding(None, "kein_label", 0.0)
+    return bind_arm((label,), intervention, comparator, min_score=0.6)
+
+
+def cell_arm(column: Column, row) -> Optional[str]:
+    """Arm einer Zelle: Spaltenkopf zuerst, sonst das Zeilenlabel."""
+    if column.arm:
+        return column.arm
+    return getattr(row, "arm", None)
+
+
 def header_unit(header_path: Sequence[str]) -> str:
     """Einheit aus der Header-Hierarchie, wenn sie dort gedruckt steht."""
     for text in reversed(list(header_path)):
@@ -250,15 +278,91 @@ def enrich_table(table: Table, context: Optional[Dict[str, object]] = None,
     for row in table.rows:
         if row.group_label:
             row.value_role, row.secondary_role = "", ""
+            row.arm, row.arm_basis = None, ""
             continue
         label = row.label_path[-1] if row.label_path else row.label
         row.value_role, row.secondary_role = row_roles(label)
+        binding = bind_row_arm(label, intervention, comparator)
+        row.arm, row.arm_basis = binding.arm, binding.basis
+    _mark_outcome_columns(table, str(context.get("outcome") or ""))
     table.header_facts = _group_size_facts(table, intervention, comparator)
     table.focus_rows = outcome_rows(table, str(context.get("outcome") or ""))
     return table
 
 
 _NUMBER_RE = re.compile(r"-?\d+(?:[.,]\d+)?")
+
+
+def _column_header_text(column: Column) -> str:
+    return " ".join(t for t in column.header_path if t) or (column.header or "")
+
+
+_HEADER_GEOMETRY_BROKEN = (
+    "header_gruppe_nicht_teilbar",
+    "header_ohne_spalte",
+    "header_ueberzaehlig_ohne_spalte",
+    "header_doppelter_anker",
+)
+
+
+def header_geometry_trustworthy(table: Table) -> bool:
+    """Sind die Kopfspannen belegt - oder nur notduerftig verteilt?
+
+    Ohne belegte Spanne landet ein Kopfname auf irgendeiner Spalte. In
+    ``PMC4319071:T2`` steht ``Vegetables (grams)`` bei x=43 (Spaltenstart),
+    der zugehoerige Wert ``158.93`` aber rechtsbuendig bei x=93 in der
+    Folgespalte; das Strichraster (10 Spalten) und der Kopf (5 Zellen) passen
+    nicht zusammen. Eine Outcome-Zuordnung waere dort geraten - deshalb wird
+    sie verweigert, statt einen falschen Wert an ein Feld zu haengen.
+    """
+    return not any(
+        code in irregularity
+        for irregularity in table.irregularities
+        for code in _HEADER_GEOMETRY_BROKEN
+    )
+
+
+def _mark_outcome_columns(table: Table, outcome: str) -> None:
+    """Spalten, deren Kopf das Outcome des Records nennt.
+
+    Fuer Tabellen mit Armen als Zeilen (``PMC4319071:T2``): der Arm steht im
+    Zeilenlabel (``Control``), das Outcome im Spaltenkopf
+    (``Vegetables (grams)``). Nur solche Spalten duerfen mit einem Zeilenarm
+    ein Feld bilden; ohne belegten Outcome-Namen bleibt die Spalte neutral.
+    """
+    for column in table.columns:
+        column.is_outcome = False
+    if not outcome:
+        return
+    if not header_geometry_trustworthy(table):
+        table.irregularities.append("outcome_spalte_ohne_kopfgeometrie")
+        return
+    scored: List[Tuple[float, Column]] = []
+    for column in table.columns:
+        if column.role == ROLE_LABEL:
+            continue
+        score = _outcome_match_score(
+            outcome, _column_header_text(column), forward_only=True
+        )
+        if score >= _MIN_OUTCOME_SCORE:
+            scored.append((score, column))
+    if not scored:
+        return
+    best = max(score for score, _column in scored)
+    kept: Dict[str, int] = {}
+    for score, column in sorted(scored, key=lambda item: item[1].col_id):
+        if score != best:
+            continue
+        first = kept.setdefault(column.role, column.col_id)
+        if first == column.col_id:
+            column.is_outcome = True
+            continue
+        # Zwei gedruckte Spalten nennen dasselbe Outcome (``Total losses`` und
+        # ``First day losses``): es gilt die erste, der Rest wird notiert statt
+        # stillschweigend mitgelesen.
+        table.irregularities.append(
+            f"outcome_spalte_mehrdeutig:{column.role}:{first}|{column.col_id}"
+        )
 
 
 def _detect_combined_columns(table: Table) -> None:
@@ -273,6 +377,12 @@ def _detect_combined_columns(table: Table) -> None:
     for column in table.columns:
         column.secondary_role = ""
         if column.role != ROLE_MEAN:
+            continue
+        # ``Mean (SE)`` und ``Mean (95% CI)``: die zweite Zahl ist keine
+        # Streuung. Sie als Standardabweichung zu fuehren waere ein falscher
+        # Wert am richtigen Feld.
+        if re.search(r"\bse\b|standard error|\bci\b|confidence",
+                     _column_header_text(column).lower()):
             continue
         filled = 0
         double = 0
@@ -464,6 +574,33 @@ def _row_text(row) -> str:
     return row.group_label or row.label or ""
 
 
+def _outcome_match_score(outcome: str, text: str,
+                         forward_only: bool = False) -> float:
+    """Belegte Uebereinstimmung zwischen Outcome und Label/Kopfzeile.
+
+    Zwei Richtungen wie bei der Armzuordnung: das Outcome darf lang sein
+    (``rate of clinical success at the test-of-cure visit``), das Label kurz
+    (``Clinical success``). Eine reine Zahlenuebereinstimmung (``10``) belegt
+    kein Outcome und ergibt 0.
+
+    ``forward_only`` gilt fuer Spaltenkoepfe: dort ist die Rueckwaertsrichtung
+    schaedlich, weil ein kurzer Kopf sonst schon mit einem gemeinsamen Wort
+    gewinnt. ``6 months follow-up`` traf so das Outcome ``continued
+    antidepressants until the 6-month`` und lieferte eine falsche Zelle.
+    """
+    target = {_stem(token) for token in _tokens(outcome)}
+    tokens = {_stem(token) for token in _tokens(text)}
+    if not target or not tokens:
+        return 0.0
+    shared = target & tokens
+    if not shared or not any(not token.isdigit() for token in shared):
+        return 0.0
+    forward = len(shared) / len(target)
+    if forward_only:
+        return forward
+    return max(forward, len(shared) / len(tokens))
+
+
 def outcome_rows(table: Table, outcome: str) -> List[int]:
     """Zeilen, die das gesuchte Outcome tragen (Zeilenlabel-Pfad, kein Gold).
 
@@ -472,24 +609,11 @@ def outcome_rows(table: Table, outcome: str) -> List[int]:
     die Zeile eindeutig. Ohne Treffer bleibt die Liste leer - dann ist keine
     Zelle erwartbar, und der Lauf meldet das, statt alle Zeilen zu lesen.
     """
-    target = {_stem(token) for token in _tokens(outcome)}
-    if not target:
-        return []
     scored: List[Tuple[float, int]] = []
     for row in table.rows:
         if row.group_label:
             continue
-        tokens = {_stem(token) for token in _tokens(_row_text(row))}
-        if not tokens:
-            continue
-        shared = target & tokens
-        # Eine reine Zahlenuebereinstimmung (``10``) belegt kein Outcome.
-        if not shared or not any(not token.isdigit() for token in shared):
-            continue
-        # Zwei Richtungen wie bei der Armzuordnung: das Outcome darf lang sein
-        # (``rate of clinical success at the test-of-cure visit``), das
-        # Zeilenlabel kurz (``Clinical success``).
-        score = max(len(shared) / len(target), len(shared) / len(tokens))
+        score = _outcome_match_score(outcome, _row_text(row))
         if score >= _MIN_OUTCOME_SCORE:
             scored.append((score, row.row_id))
     if not scored:
@@ -522,6 +646,22 @@ def reachable_cells(table: Table,
             cells |= {(row_id, name) for name in column_fields}
             if row is not None:
                 cells |= {(row_id, name) for name in row_fields(table, row)}
+    # Arme als Zeilen: die Zeile traegt den Arm, die Spalte das Outcome. Der
+    # Wert steht woertlich in der Zelle, nur die Zuordnung kommt aus Label und
+    # Kopf; ohne belegten Arm entsteht kein Feld.
+    for row in table.rows:
+        arm = getattr(row, "arm", None)
+        if not arm:
+            continue
+        for column in table.columns:
+            if not column.is_outcome or column.role == ROLE_UNKNOWN:
+                continue
+            cell = row.cells.get(column.col_id)
+            if cell is None or not (cell.text or "").strip():
+                continue
+            field = field_for(column.role, arm)
+            if field:
+                cells.add((row.row_id, field))
     return cells
 
 
@@ -543,15 +683,21 @@ def row_fields(table: Table, row) -> set:
         text = (cell.text or "") if cell is not None else ""
         if not text.strip():
             continue
+        arm = cell_arm(column, row)
         if column.field:
             fields.add(column.field)
             continue
         if column.role == ROLE_UNKNOWN and role:
-            field = field_for(role, column.arm)
+            field = field_for(role, arm)
             if field:
                 fields.add(field)
-        if secondary and column.arm and len(_NUMBER_RE.findall(text)) >= 2:
-            second = field_for(secondary, column.arm)
+        elif column.is_outcome and column.role != ROLE_UNKNOWN:
+            # Arme als Zeilen, Outcome als Spalte: der Arm kommt aus der Zeile.
+            field = field_for(column.role, arm)
+            if field:
+                fields.add(field)
+        if secondary and arm and len(_NUMBER_RE.findall(text)) >= 2:
+            second = field_for(secondary, arm)
             if second:
                 fields.add(second)
     return fields
@@ -573,6 +719,16 @@ def reachable_fields(table: Table) -> set:
             secondary = field_for(column.secondary_role, column.arm)
             if secondary:
                 fields.add(secondary)
+        if not column.is_outcome or column.role == ROLE_UNKNOWN:
+            continue
+        for row in table.rows:
+            arm = getattr(row, "arm", None)
+            cell = row.cells.get(column.col_id)
+            if not arm or cell is None or not (cell.text or "").strip():
+                continue
+            field = field_for(column.role, arm)
+            if field:
+                fields.add(field)
     return fields
 
 
