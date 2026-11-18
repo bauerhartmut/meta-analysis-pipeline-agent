@@ -1666,3 +1666,48 @@ Gegenprobe der Wahl auf unbenutzten Dokumenten
 Test-Auswahl): **42/27 -> 42/29**, 2 Wechsel (`PMC5686687:T1` -> `:T2`),
 0 verloren, 0 Armwechsel. dev-Split mit 4 Tabellen: 8/5 -> 8/5, 0 Wechsel.
 Die Gegenprobe ist bestanden, aber schwach belegt (26 Tabellen).
+
+## Sprint 48 - Zahlen aus dem Fliesstext als Fundstelle
+
+Neu: `research_agent/table_decomposition/fliesstext.py`. Drei gedruckte Formen,
+jede mit belegter Bindung:
+
+1. `Label, n = X` - der Arm steht an der Zahl (`placebo, n = 28` in
+   `PMC5122613`); zusaetzlich muss der Satz das Outcome nennen.
+2. Zahlenliste + Armliste + `respectively`, nur mit genannter Population
+   (`283, 289, and 204 patients received quetiapine 300 mg/day, ...,
+   respectively` = ITT; dieselbe Form fuer die Safety-Population 298/307/214).
+   Die Population steht in der Regel (`:itt`, `:sicherheit`).
+3. Bruchliste + Armliste + `respectively`: `5.1% (4/79), 3.6% (3/83), and 5.0%
+   (4/80) in the placebo, 30 µg YIC and 60 µg YIC groups respectively`
+   (`PMC2430617`). Zaehler = Ereignisse, Nenner = Gruppengroesse.
+
+Ohne belegten Arm entsteht kein Fakt; Tabellenzonen (`char_start..char_end`)
+bleiben aussen vor; Listen nur bei gleicher Laenge. Der Satz wird ueber das
+gedruckte `respectively` gesucht, nicht ueber ein Satzzeichenmuster - der
+Dezimalpunkt in `5.1%` brach `[^.!?]`.
+
+Ein Fehler, der die Messung kippte: das Akronym des Outcomes entstand aus einem
+`set`, das Kuerzel hing damit an der Hash-Reihenfolge (`CTT` in einem Lauf,
+`TTC` im naechsten) und der CTT-Satz fiel zufaellig durch. Jetzt folgt es der
+gedruckten Wortstellung; zwei Laeufe liefern identische Zahlen.
+
+Messung (`diagnose_fliesstext.py`, 59 Records der Auswahl, Tabellenstand
+Sprint 47): **94/68 -> 101/83**. Neu wertgleich **15** - davon **5 eindeutig**
+(`:202`/`:205` 40, `:265`/`:266` comparator 4, `:682` comparator 15) und **10
+mehrdeutig**. 7 Felder werden erst durch den Text erreichbar (Ereigniszahlen und
+drei Gruppengroessen), 0 verloren, 0 Armwechsel. `population_mismatch` **15 von
+15** (vorher 10), `subgroup_vs_total` 2 von 3, `unexplained` 1 von 9.
+67 Text-Fundstellen in 22 Records.
+
+Die fuenf Zielfelder sind wertgleich, aber **nicht eindeutig**: in allen steht
+die zweite Population gedruckt (ITT 283/289/204 gegen Safety 298/307/214;
+Baseline 33 gegen CTT 28). Die Fundstelle nennt die Population in der Regel,
+das Feldmodell kennt sie nicht. Eine Regel "ITT gilt" waere fuer dieses Outcome
+nicht gedruckt belegt und steht deshalb nicht drin. 18 Felder tragen jetzt eine
+zweite, abweichende Zahl (`:645`/`:647` Tabelle 27/26 gegen Text 29/30,
+`:196` 169/167 gegen 145/140); alle in `messung.json` aufgelistet.
+
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/fliesstext_20261118/`
+(`messung.json`, `ergebnis.md`). Tests: `research_agent/tests/test_fliesstext.py`
+(6), zusammen 136 gruen. Der Tabellenpfad ist unveraendert.

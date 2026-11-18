@@ -32,6 +32,7 @@ from .semantics import _NUMBER_RE, cell_arm, reachable_cells
 
 QUELLE_KOPF = "kopfangabe"
 QUELLE_ZELLE = "messzelle"
+QUELLE_TEXT = "fliesstext"
 
 DIREKT = "direkt"
 ABGELEITET = "abgeleitet"

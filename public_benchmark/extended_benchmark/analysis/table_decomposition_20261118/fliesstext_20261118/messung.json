@@ -1,0 +1,6074 @@
+{
+  "selection": {
+    "pfad": "public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/selection_test.json",
+    "role": "test",
+    "n_tables": 60,
+    "n_records": 59
+  },
+  "bilanz": {
+    "ohne_text": {
+      "erreichbar": 94,
+      "wertgleich": 68
+    },
+    "mit_text": {
+      "erreichbar": 101,
+      "wertgleich": 83
+    },
+    "neu_wertgleich": [
+      "yun2024:185.comparator_group_size",
+      "yun2024:202.intervention_group_size",
+      "yun2024:205.intervention_group_size",
+      "yun2024:265.comparator_events",
+      "yun2024:265.intervention_events",
+      "yun2024:266.comparator_events",
+      "yun2024:266.intervention_events",
+      "yun2024:531.comparator_group_size",
+      "yun2024:531.intervention_group_size",
+      "yun2024:532.comparator_group_size",
+      "yun2024:532.intervention_group_size",
+      "yun2024:682.comparator_group_size",
+      "yun2024:682.intervention_group_size",
+      "yun2024:78.intervention_group_size",
+      "yun2024:79.intervention_group_size"
+    ],
+    "neu_wertgleich_eindeutig": [
+      "yun2024:202.intervention_group_size",
+      "yun2024:205.intervention_group_size",
+      "yun2024:265.comparator_events",
+      "yun2024:266.comparator_events",
+      "yun2024:682.comparator_group_size"
+    ],
+    "neu_wertgleich_mehrdeutig": [
+      "yun2024:185.comparator_group_size",
+      "yun2024:265.intervention_events",
+      "yun2024:266.intervention_events",
+      "yun2024:531.comparator_group_size",
+      "yun2024:531.intervention_group_size",
+      "yun2024:532.comparator_group_size",
+      "yun2024:532.intervention_group_size",
+      "yun2024:682.intervention_group_size",
+      "yun2024:78.intervention_group_size",
+      "yun2024:79.intervention_group_size"
+    ],
+    "verloren": [],
+    "arm_wechsel": [],
+    "text_fakten": {
+      "fliesstext_bruchliste_beziehungsweise:itt": 12,
+      "fliesstext_label_n": 34,
+      "fliesstext_label_n:sicherheit": 3,
+      "fliesstext_zahlenliste_beziehungsweise:itt": 6,
+      "fliesstext_zahlenliste_beziehungsweise:sicherheit": 6
+    },
+    "konflikte": [
+      {
+        "record_id": "yun2024:174",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          15.0
+        ],
+        "text": [
+          11.0
+        ]
+      },
+      {
+        "record_id": "yun2024:185",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          33.0
+        ],
+        "text": [
+          28.0
+        ]
+      },
+      {
+        "record_id": "yun2024:196",
+        "feld": "intervention_group_size",
+        "tabelle": [
+          169.0
+        ],
+        "text": [
+          145.0
+        ]
+      },
+      {
+        "record_id": "yun2024:196",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          167.0
+        ],
+        "text": [
+          140.0
+        ]
+      },
+      {
+        "record_id": "yun2024:445",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          70.0
+        ],
+        "text": [
+          140.0
+        ]
+      },
+      {
+        "record_id": "yun2024:531",
+        "feld": "intervention_group_size",
+        "tabelle": [
+          298.0,
+          307.0
+        ],
+        "text": [
+          283.0,
+          289.0
+        ]
+      },
+      {
+        "record_id": "yun2024:531",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          214.0
+        ],
+        "text": [
+          204.0
+        ]
+      },
+      {
+        "record_id": "yun2024:532",
+        "feld": "intervention_group_size",
+        "tabelle": [
+          298.0,
+          307.0
+        ],
+        "text": [
+          283.0,
+          289.0
+        ]
+      },
+      {
+        "record_id": "yun2024:532",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          214.0
+        ],
+        "text": [
+          204.0
+        ]
+      },
+      {
+        "record_id": "yun2024:639",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          12.0
+        ],
+        "text": [
+          13.0
+        ]
+      },
+      {
+        "record_id": "yun2024:640",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          12.0
+        ],
+        "text": [
+          13.0
+        ]
+      },
+      {
+        "record_id": "yun2024:645",
+        "feld": "intervention_group_size",
+        "tabelle": [
+          27.0
+        ],
+        "text": [
+          29.0
+        ]
+      },
+      {
+        "record_id": "yun2024:645",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          26.0
+        ],
+        "text": [
+          30.0
+        ]
+      },
+      {
+        "record_id": "yun2024:647",
+        "feld": "intervention_group_size",
+        "tabelle": [
+          27.0
+        ],
+        "text": [
+          29.0
+        ]
+      },
+      {
+        "record_id": "yun2024:647",
+        "feld": "comparator_group_size",
+        "tabelle": [
+          26.0
+        ],
+        "text": [
+          30.0
+        ]
+      },
+      {
+        "record_id": "yun2024:682",
+        "feld": "intervention_group_size",
+        "tabelle": [
+          15.0
+        ],
+        "text": [
+          16.0
+        ]
+      },
+      {
+        "record_id": "yun2024:78",
+        "feld": "intervention_group_size",
+        "tabelle": [
+          3.0,
+          8.0,
+          19.0
+        ],
+        "text": [
+          29.0,
+          30.0
+        ]
+      },
+      {
+        "record_id": "yun2024:79",
+        "feld": "intervention_group_size",
+        "tabelle": [
+          3.0,
+          8.0,
+          19.0
+        ],
+        "text": [
+          29.0,
+          30.0
+        ]
+      }
+    ]
+  },
+  "felder_nur_aus_text": [
+    "yun2024:202.intervention_group_size",
+    "yun2024:205.intervention_group_size",
+    "yun2024:265.comparator_events",
+    "yun2024:265.intervention_events",
+    "yun2024:266.comparator_events",
+    "yun2024:266.intervention_events",
+    "yun2024:682.comparator_group_size"
+  ],
+  "je_kategorie": {
+    "population_mismatch": {
+      "gesamt": 15,
+      "vorher": 10,
+      "nachher": 15
+    },
+    "subgroup_vs_total": {
+      "gesamt": 3,
+      "vorher": 0,
+      "nachher": 2
+    },
+    "sum_of_subgroups": {
+      "gesamt": 3,
+      "vorher": 0,
+      "nachher": 0
+    },
+    "timepoint_mismatch": {
+      "gesamt": 6,
+      "vorher": 0,
+      "nachher": 0
+    },
+    "unexplained": {
+      "gesamt": 9,
+      "vorher": 0,
+      "nachher": 1
+    }
+  },
+  "records": [
+    {
+      "record_id": "yun2024:111",
+      "outcome": "High-energy snack intake",
+      "tabelle": "PMC4319071:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "comparator_group_size": [
+          434.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:112",
+      "outcome": "Vegetable intake",
+      "tabelle": "PMC4319071:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "comparator_group_size": [
+          434.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:15",
+      "outcome": "rate of clinical success at the test-of-cure visit",
+      "tabelle": "PMC2667135:T4",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          103.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:16",
+      "outcome": "deaths",
+      "tabelle": "PMC2667135:T4",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          103.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:172",
+      "outcome": "Hyperglycemia relapse-free survival",
+      "tabelle": "PMC5079604:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          16.0,
+          17.0
+        ],
+        "comparator_group_size": [
+          15.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:174",
+      "outcome": "The probability of relapse",
+      "tabelle": "PMC5079604:T1",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "compared with placebo (*n* = 11",
+            "wert": 11.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          16.0,
+          17.0
+        ],
+        "comparator_group_size": [
+          11.0,
+          15.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:184",
+      "outcome": "Improvement in faeces consistency",
+      "tabelle": "PMC5122613:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "comparator_group_size": [
+          33.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:185",
+      "outcome": "Colonic transit time",
+      "tabelle": "PMC5122613:T1",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "placebo, *n* = 28",
+            "wert": 28.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "comparator_group_size": [
+          28.0,
+          33.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:194",
+      "outcome": "occurrence of adverse events",
+      "tabelle": "PMC5360580:T6",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          169.0
+        ],
+        "comparator_group_size": [
+          167.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:196",
+      "outcome": "WMS-R (0 min)",
+      "tabelle": "PMC5360580:T6",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo group (n = 140",
+            "wert": 140.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Variable Pls group (n = 145",
+            "wert": 145.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          145.0,
+          169.0
+        ],
+        "comparator_group_size": [
+          140.0,
+          167.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:202",
+      "outcome": "Interferon gamma-induced protein 10",
+      "tabelle": "PMC5380326:T2",
+      "fliesstext": {
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Vitamin D group (n = 40",
+            "wert": 40.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          40.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:205",
+      "outcome": "Interleukin 2",
+      "tabelle": "PMC5380326:T2",
+      "fliesstext": {
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Vitamin D group (n = 40",
+            "wert": 40.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          40.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:252",
+      "outcome": "other respiratory morbidities",
+      "tabelle": "PMC5614421:T2",
+      "fliesstext": {},
+      "fundstellen": {},
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:253",
+      "outcome": "adverse infant outcomes, including serious infant composite outcome",
+      "tabelle": "PMC5614421:T2",
+      "fliesstext": {},
+      "fundstellen": {},
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:257",
+      "outcome": "target lesion revascularization (TLR)",
+      "tabelle": "PMC5711682:T5",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          38.0
+        ],
+        "comparator_group_size": [
+          39.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:258",
+      "outcome": "stent thrombosis",
+      "tabelle": "PMC5711682:T5",
+      "fliesstext": {},
+      "fundstellen": {
+        "comparator_group_size": [
+          0.0,
+          39.0
+        ],
+        "intervention_group_size": [
+          0.0,
+          38.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:265",
+      "outcome": "adverse events",
+      "tabelle": "PMC2430617:T4",
+      "fliesstext": {
+        "comparator_events": [
+          {
+            "feld": "comparator_events",
+            "quelle": "fliesstext",
+            "text": "5.1% (4/79)",
+            "wert": 4.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "5.1% (4/79)",
+            "wert": 79.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_events": [
+          {
+            "feld": "intervention_events",
+            "quelle": "fliesstext",
+            "text": "3.6% (3/83)",
+            "wert": 3.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_events",
+            "quelle": "fliesstext",
+            "text": "5.0% (4/80)",
+            "wert": 4.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "3.6% (3/83)",
+            "wert": 83.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "5.0% (4/80)",
+            "wert": 80.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          80.0,
+          83.0
+        ],
+        "comparator_group_size": [
+          79.0
+        ],
+        "comparator_events": [
+          4.0
+        ],
+        "intervention_events": [
+          3.0,
+          4.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:266",
+      "outcome": "adverse events",
+      "tabelle": "PMC2430617:T4",
+      "fliesstext": {
+        "comparator_events": [
+          {
+            "feld": "comparator_events",
+            "quelle": "fliesstext",
+            "text": "5.1% (4/79)",
+            "wert": 4.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "5.1% (4/79)",
+            "wert": 79.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_events": [
+          {
+            "feld": "intervention_events",
+            "quelle": "fliesstext",
+            "text": "3.6% (3/83)",
+            "wert": 3.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_events",
+            "quelle": "fliesstext",
+            "text": "5.0% (4/80)",
+            "wert": 4.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "3.6% (3/83)",
+            "wert": 83.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "5.0% (4/80)",
+            "wert": 80.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_bruchliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          80.0,
+          83.0
+        ],
+        "comparator_group_size": [
+          79.0
+        ],
+        "comparator_events": [
+          4.0
+        ],
+        "intervention_events": [
+          3.0,
+          4.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:275",
+      "outcome": "Fat mass",
+      "tabelle": "PMC3654355:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          71.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:282",
+      "outcome": "baseline skeletal muscle mass",
+      "tabelle": "PMC3654355:T2",
+      "fliesstext": {
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "ILI ( *n* = 71",
+            "wert": 71.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          71.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:296",
+      "outcome": "Days of wheeze",
+      "tabelle": "PMC4355974:T2",
+      "fliesstext": {},
+      "fundstellen": {
+        "comparator_mean": [
+          -4.2,
+          5.1
+        ],
+        "comparator_group_size": [
+          14.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:298",
+      "outcome": "Days limited activity from asthma",
+      "tabelle": "PMC4355974:T2",
+      "fliesstext": {},
+      "fundstellen": {
+        "comparator_mean": [
+          -1.8,
+          2.0
+        ],
+        "comparator_group_size": [
+          14.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:30",
+      "outcome": "Short-Form 36-Items improvement",
+      "tabelle": "PMC3003523:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          393.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:335",
+      "outcome": "Social withdrawal",
+      "tabelle": "PMC5617873:T2",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          47.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:336",
+      "outcome": "Compulsion scale",
+      "tabelle": "PMC5617873:T2",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          47.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:350",
+      "outcome": "Knee extension (1-rep Max)",
+      "tabelle": "PMC5874317:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          9.0
+        ],
+        "comparator_group_size": [
+          9.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:352",
+      "outcome": "Change of direction improvement",
+      "tabelle": "PMC5874317:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          9.0
+        ],
+        "comparator_group_size": [
+          9.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:390",
+      "outcome": "subsidence",
+      "tabelle": "PMC3278655:T2",
+      "fliesstext": {},
+      "fundstellen": {
+        "comparator_standard_deviation": [],
+        "comparator_mean": [],
+        "intervention_standard_deviation": [],
+        "intervention_group_size": [
+          27.0,
+          28.0,
+          29.0,
+          30.0
+        ],
+        "intervention_mean": [],
+        "comparator_group_size": [
+          18.0,
+          21.0,
+          23.0,
+          24.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:391",
+      "outcome": "The proportion of \"at risk\" components at 5 years",
+      "tabelle": "PMC3278655:T2",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          27.0,
+          28.0,
+          29.0,
+          30.0
+        ],
+        "comparator_group_size": [
+          18.0,
+          21.0,
+          23.0,
+          24.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:402",
+      "outcome": "Exercise-induced Creatine kinase (CK)",
+      "tabelle": "PMC5781260:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          20.0
+        ],
+        "comparator_group_size": [
+          20.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:403",
+      "outcome": "exercise-related loss of muscle strength",
+      "tabelle": "PMC5781260:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          20.0
+        ],
+        "comparator_group_size": [
+          20.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:408",
+      "outcome": "Correct selection of the healthier product",
+      "tabelle": "PMC3475525:T2",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "No Label (n = 99",
+            "wert": 99.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "MTL (n = 98",
+            "wert": 98.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Caloric Intake (n = 90",
+            "wert": 90.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "comparator_group_size": [
+          99.0
+        ],
+        "intervention_group_size": [
+          90.0,
+          98.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:421",
+      "outcome": "quantitative contour sharpness of the thoracolumbar spine",
+      "tabelle": "PMC3877023:T3",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          18.0,
+          30.0
+        ],
+        "intervention_mean": [],
+        "intervention_standard_deviation": []
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:426",
+      "outcome": "Scanning times",
+      "tabelle": "PMC3877023:T4",
+      "fliesstext": {},
+      "fundstellen": {
+        "comparator_group_size": [
+          18.0,
+          30.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:438",
+      "outcome": "Scores on sodium quiz",
+      "tabelle": "PMC3475525:T1",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Choices (n = 98",
+            "wert": 98.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "MTL (n = 98",
+            "wert": 98.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          90.0,
+          98.0
+        ],
+        "comparator_group_size": [
+          98.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:445",
+      "outcome": "ocular itching for visit 3B at 7 min",
+      "tabelle": "PMC4140238:T1",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo (n=140",
+            "wert": 140.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "placebo treatment group (n=70",
+            "wert": 70.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo (N=70",
+            "wert": 70.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "comparator_group_size": [
+          70.0,
+          140.0
+        ],
+        "intervention_group_size": [
+          70.0
+        ],
+        "intervention_mean": [
+          0.9,
+          1.3,
+          1.4
+        ],
+        "comparator_mean": [],
+        "comparator_standard_deviation": []
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:453",
+      "outcome": "Glucose",
+      "tabelle": "PMC5726464:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          79.0
+        ],
+        "comparator_group_size": [
+          86.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:463",
+      "outcome": "Lipid profile: HDL-c",
+      "tabelle": "PMC5726464:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          79.0
+        ],
+        "comparator_group_size": [
+          86.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:474",
+      "outcome": "Independent household latrines number",
+      "tabelle": "PMC4144850:T1",
+      "fliesstext": {},
+      "fundstellen": {},
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:478",
+      "outcome": "Helminth infections",
+      "tabelle": "PMC4144850:T1",
+      "fliesstext": {},
+      "fundstellen": {},
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:486",
+      "outcome": "Improvement in Vaginal Maturation Index",
+      "tabelle": "PMC3786549:T3",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          44.0
+        ],
+        "comparator_group_size": [
+          43.0,
+          44.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:489",
+      "outcome": "Baseline characteristics: weight",
+      "tabelle": "PMC3786549:T3",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          44.0
+        ],
+        "comparator_group_size": [
+          43.0,
+          44.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:494",
+      "outcome": "Sample rejection rate: CDC D",
+      "tabelle": "PMC5419060:T3",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          0.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_events": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:504",
+      "outcome": "Phlebotomy questionnaire score: CHC B",
+      "tabelle": "PMC5419060:T2",
+      "fliesstext": {},
+      "fundstellen": {},
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:531",
+      "outcome": "improvement of disorder",
+      "tabelle": "PMC4230312:T3",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo (***n*** = 214",
+            "wert": 214.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n:sicherheit",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "204 patients received or placebo",
+            "wert": 204.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "214 patients received or placebo",
+            "wert": 214.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:sicherheit",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "mg/day ( ***n*** = 298",
+            "wert": 298.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n:sicherheit",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "mg/day ( ***n*** = 307",
+            "wert": 307.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n:sicherheit",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "283 patients received quetiapine 300 mg/day",
+            "wert": 283.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "289 patients received quetiapine 600 mg/day",
+            "wert": 289.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "298 patients received quetiapine 300 mg/day",
+            "wert": 298.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:sicherheit",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "307 patients received quetiapine 600 mg/day",
+            "wert": 307.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:sicherheit",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          283.0,
+          289.0,
+          298.0,
+          307.0
+        ],
+        "comparator_group_size": [
+          204.0,
+          214.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:532",
+      "outcome": "improvement of disorder",
+      "tabelle": "PMC4230312:T1",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "204 patients received or placebo",
+            "wert": 204.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "214 patients received or placebo",
+            "wert": 214.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:sicherheit",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "283 patients received quetiapine 300 mg/day",
+            "wert": 283.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "289 patients received quetiapine 600 mg/day",
+            "wert": 289.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:itt",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "298 patients received quetiapine 300 mg/day",
+            "wert": 298.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:sicherheit",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "307 patients received quetiapine 600 mg/day",
+            "wert": 307.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_zahlenliste_beziehungsweise:sicherheit",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          283.0,
+          289.0,
+          298.0,
+          307.0
+        ],
+        "comparator_group_size": [
+          204.0,
+          214.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:550",
+      "outcome": "LF:HF component of HRV",
+      "tabelle": "PMC3648394:T1",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          18.0
+        ],
+        "comparator_group_size": [
+          19.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:639",
+      "outcome": "LDL cholesterol",
+      "tabelle": "PMC4511433:T2",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo (*N* = 12",
+            "wert": 12.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo (*N* = 13",
+            "wert": 13.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          12.0
+        ],
+        "comparator_group_size": [
+          12.0,
+          13.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:640",
+      "outcome": "LDL cholesterol",
+      "tabelle": "PMC4511433:T2",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo (*N* = 12",
+            "wert": 12.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo (*N* = 13",
+            "wert": 13.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          12.0
+        ],
+        "comparator_group_size": [
+          12.0,
+          13.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:645",
+      "outcome": "The mean cognitive score on the Bayley-III",
+      "tabelle": "PMC4675066:T2",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo (*n* = 30",
+            "wert": 30.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Iodine (*n* = 29",
+            "wert": 29.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "comparator_group_size": [
+          26.0,
+          30.0
+        ],
+        "intervention_group_size": [
+          27.0,
+          29.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:647",
+      "outcome": "The mean motor score on the Bayley-III",
+      "tabelle": "PMC4675066:T2",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo (*n* = 30",
+            "wert": 30.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Iodine (*n* = 29",
+            "wert": 29.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          27.0,
+          29.0
+        ],
+        "comparator_group_size": [
+          26.0,
+          30.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:662",
+      "outcome": "Psoriasis Area and Severity Index (PASI), Erythema, Scaling and Induration (ESI) and Physician global assessment (PGA) scores",
+      "tabelle": "PMC4987981:T1",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Treatment Placebo (*n* = 23",
+            "wert": 23.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Metformin (*n* = 21",
+            "wert": 21.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Pioglitazone (*n* = 16",
+            "wert": 16.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          16.0,
+          21.0
+        ],
+        "comparator_group_size": [
+          23.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:665",
+      "outcome": "FPG",
+      "tabelle": "PMC4987981:T2",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "acteristics Placebo (*n* = 23",
+            "wert": 23.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Pioglitazone (*n* = 16",
+            "wert": 16.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "comparator_standard_deviation": [],
+        "comparator_mean": [],
+        "intervention_standard_deviation": [],
+        "intervention_group_size": [
+          16.0
+        ],
+        "intervention_mean": [],
+        "comparator_group_size": [
+          23.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "abgeleitet"
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "abgeleitet"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "abgeleitet"
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "abgeleitet"
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "abgeleitet"
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "abgeleitet"
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "mehrfach"
+        },
+        "comparator_mean": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "abgeleitet"
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "comparator"
+          ],
+          "art": "abgeleitet"
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:672",
+      "outcome": "Community knowledge",
+      "tabelle": "PMC4550271:T4",
+      "fliesstext": {},
+      "fundstellen": {},
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:675",
+      "outcome": "the proportion of patients who tested positive and received (or were prescribed) an ACT",
+      "tabelle": "PMC4550271:T2",
+      "fliesstext": {},
+      "fundstellen": {},
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:678",
+      "outcome": "the total cultivable microbiota",
+      "tabelle": "PMC5777419:T2",
+      "fliesstext": {},
+      "fundstellen": {
+        "intervention_group_size": [
+          15.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:682",
+      "outcome": "attachment gain",
+      "tabelle": "PMC5777419:T2",
+      "fliesstext": {
+        "comparator_group_size": [
+          {
+            "feld": "comparator_group_size",
+            "quelle": "fliesstext",
+            "text": "Placebo group (n=15",
+            "wert": 15.0,
+            "arm": "comparator",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ],
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Antibiotic group (n=16",
+            "wert": 16.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          15.0,
+          16.0
+        ],
+        "comparator_group_size": [
+          15.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "direkt"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "comparator"
+          ],
+          "art": "direkt"
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:78",
+      "outcome": "tocopherol levels",
+      "tabelle": "PMC3546023:T4",
+      "fliesstext": {
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Palmvitee, n = 29",
+            "wert": 29.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Palmvitee,n = 30",
+            "wert": 30.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          3.0,
+          8.0,
+          19.0,
+          29.0,
+          30.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    },
+    {
+      "record_id": "yun2024:79",
+      "outcome": "tocotrienol levels",
+      "tabelle": "PMC3546023:T4",
+      "fliesstext": {
+        "intervention_group_size": [
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Palmvitee, n = 29",
+            "wert": 29.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          },
+          {
+            "feld": "intervention_group_size",
+            "quelle": "fliesstext",
+            "text": "Palmvitee,n = 30",
+            "wert": 30.0,
+            "arm": "intervention",
+            "arm_basis": "fliesstext",
+            "zeitpunkt": "",
+            "art": "direkt",
+            "regel": "fliesstext_label_n",
+            "sicherheit": "mittel",
+            "tabelle": "",
+            "zeile": null,
+            "spalten": []
+          }
+        ]
+      },
+      "fundstellen": {
+        "intervention_group_size": [
+          3.0,
+          8.0,
+          19.0,
+          29.0,
+          30.0
+        ]
+      },
+      "vorher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": false,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      },
+      "nachher": {
+        "intervention_group_size": {
+          "erreichbar": true,
+          "wertgleich": true,
+          "arme": [
+            "intervention"
+          ],
+          "art": "mehrfach"
+        },
+        "intervention_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "intervention_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_group_size": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_mean": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        },
+        "comparator_standard_deviation": {
+          "erreichbar": false,
+          "wertgleich": false,
+          "arme": [],
+          "art": ""
+        }
+      }
+    }
+  ]
+}
