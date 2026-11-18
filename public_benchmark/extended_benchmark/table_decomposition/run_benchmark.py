@@ -309,9 +309,15 @@ class GatewayBackend:
 
 def model_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
               strategies: List[str], model_id: str, base: str, key: str,
-              max_tables: Optional[int], config: TableDecompositionConfig) -> List[Dict[str, Any]]:
-    """Echter Extraktionslauf je Record ueber dessen ausgewaehlte Tabellen."""
-    backend = GatewayBackend(model_id, base, key)
+              max_tables: Optional[int], config: TableDecompositionConfig,
+              max_tokens: int = 24000,
+              sink: Optional[Any] = None) -> List[Dict[str, Any]]:
+    """Echter Extraktionslauf je Record ueber dessen ausgewaehlte Tabellen.
+
+    ``sink`` bekommt jede Zeile sofort, damit ein langer Lauf bei einem
+    Abbruch nicht die bereits bezahlten Ergebnisse verliert.
+    """
+    backend = GatewayBackend(model_id, base, key, max_tokens=max_tokens)
     rows: List[Dict[str, Any]] = []
     for record_id, entries in sorted(group_by_record(selection, max_tables).items()):
         record = records.get(record_id)
@@ -366,6 +372,8 @@ def model_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
                     "unit_results": [r.to_dict() for run in runs for r in run.results],
                 }
             )
+            if sink is not None:
+                sink(rows[-1])
             print(f"{record_id} {strategy}: {len(rows[-1]['cells'])} Zellen, "
                   f"{result.telemetry['errors']} Ausfaelle, "
                   f"{result.telemetry['total_tokens']} Tokens", flush=True)
@@ -390,6 +398,9 @@ def main() -> int:
     parser.add_argument("--arm-order-fallback", action="store_true",
                         help="Arm aus der Leserichtung annehmen, wenn genau zwei "
                              "Armspalten vorliegen (markiert und pruefpflichtig)")
+    parser.add_argument("--max-tokens", type=int, default=24000,
+                        help="Completion-Limit je Aufruf (fuer alle Verfahren "
+                             "identisch); 8000 reicht bei grossen Tabellen nicht")
     args = parser.parse_args()
 
     if not args.selection.exists():
@@ -427,16 +438,23 @@ def main() -> int:
             max_calls_per_table=args.max_calls, max_depth=args.max_depth,
             arm_order_fallback=args.arm_order_fallback,
         )
-        rows = model_run(selection, records, args.strategies, args.model, base, key,
-                         args.max_tables, config)
         target = out_dir / "predictions.jsonl"
         with target.open("w", encoding="utf-8") as handle:
-            for row in rows:
+            def sink(row: Dict[str, Any]) -> None:
                 handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+                handle.flush()
+
+            rows = model_run(selection, records, args.strategies, args.model, base, key,
+                             args.max_tables, config, max_tokens=args.max_tokens,
+                             sink=sink)
         payload = {
             "mode": "model",
             "model": args.model,
+            "max_tokens": args.max_tokens,
+            "strategies": list(args.strategies),
+            "arm_order_fallback": bool(args.arm_order_fallback),
             "selection": str(args.selection),
+            "selection_sha256": selection.get("records_sha256"),
             "records": len(rows),
             "created": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         }

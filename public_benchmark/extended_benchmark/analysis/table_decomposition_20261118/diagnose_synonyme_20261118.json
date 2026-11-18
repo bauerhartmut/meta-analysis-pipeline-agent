@@ -1,0 +1,104 @@
+{
+  "erklaerung": "Zaehlt, wie viele nicht erreichbare Goldzellen in einem Dokument liegen, dessen Tabellen einen nicht zugeordneten Kopf mit Synonymwort (change/post/follow/week/...) tragen. Nur Hinweis auf fehlendes Rollen-Vokabular, kein Beweis.",
+  "verteilung": {
+    "mean/kein_synonym_kopf": 38,
+    "sd/kein_synonym_kopf": 36,
+    "events/kein_synonym_kopf": 22,
+    "mean/synonym_kopf_vorhanden": 19,
+    "sd/synonym_kopf_vorhanden": 18,
+    "n/kein_synonym_kopf": 16,
+    "n/synonym_kopf_vorhanden": 9,
+    "events/synonym_kopf_vorhanden": 4
+  },
+  "dokumente_mit_synonym": 8,
+  "beispiele": [
+    {
+      "record_id": "yun2024:78",
+      "field": "intervention_mean",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:78",
+      "field": "intervention_standard_deviation",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:78",
+      "field": "comparator_group_size",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:78",
+      "field": "comparator_mean",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:78",
+      "field": "comparator_standard_deviation",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:79",
+      "field": "intervention_mean",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:79",
+      "field": "intervention_standard_deviation",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:79",
+      "field": "comparator_group_size",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:79",
+      "field": "comparator_mean",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:79",
+      "field": "comparator_standard_deviation",
+      "headers": [
+        "**Weeks**"
+      ]
+    },
+    {
+      "record_id": "yun2024:486",
+      "field": "intervention_group_size",
+      "headers": [
+        "*Follow-up 1*",
+        "*Follow-up 2*",
+        "*Follow-up 3*"
+      ]
+    },
+    {
+      "record_id": "yun2024:486",
+      "field": "intervention_mean",
+      "headers": [
+        "*Follow-up 1*",
+        "*Follow-up 2*",
+        "*Follow-up 3*"
+      ]
+    }
+  ]
+}

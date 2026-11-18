@@ -65,22 +65,29 @@ Validierungsstatus. Kein Modellaufruf, keine Precision/Recall.
 
 ```
 python public_benchmark/extended_benchmark/table_decomposition/run_benchmark.py \
-    --model glm-5.3 --strategies A B C D E \
-    --allow-network --confirm-kosten --run-id modell_20261119
+    --model gwdg/glm-5.3 --strategies A B E --max-tokens 24000 \
+    --allow-network --confirm-kosten --run-id modell_glm53_abe_20261118
 ```
 
 Ohne **beide** Flags bricht das Werkzeug ab. Der Lauf schreibt
-`predictions.jsonl` je Record und Verfahren (Zellen mit Feld, Arm, Wert, Zitat,
-Seite, Support, Status, Konfliktliste, Telemetrie, Validierung) — nichts wird
-überschrieben, jede `run-id` ist ein eigener Ordner.
+`predictions.jsonl` **zeilenweise** (jede fertige Record-Zeile sofort, damit ein
+Abbruch keine bezahlten Ergebnisse verliert) und `run.json` mit Modell,
+Strategien und `max_tokens` — nichts wird überschrieben, jede `run-id` ist ein
+eigener Ordner.
+
+`--max-tokens` (Standard 24000) gilt für alle Verfahren gleich. Bei 8000 endet
+GLM-5.3 auf großen Tabellen mit `finish_reason=length` und leerem Inhalt, also
+ohne verwertbare Antwort — gemessen im Smoke-Lauf vom 18.11.2026.
 
 ## Auswertung
 
 ```
 python public_benchmark/extended_benchmark/table_decomposition/evaluate.py \
-    --predictions <run>/predictions.jsonl --out <run>/evaluation.json
+    --run-dir <run>
+# schreibt <run>/evaluation.json
+
 python public_benchmark/extended_benchmark/table_decomposition/report.py \
-    --structure <run>/structure.json --evaluation <run>/evaluation.json \
+    --structure <offline-run>/structure.json --evaluation <run>/evaluation.json \
     --selection ../analysis/table_decomposition_20261118/selection_test.json \
     --out <run>/bericht.md
 ```
@@ -92,9 +99,9 @@ Tokens, Laufzeit, Kosten und Kosten pro 100 richtige Zellen. Zusätzlich
 Aufschlüsselung nach Komplexität, Fehlerklassen, Validierungsbefunde und
 Kontextabdeckung (Anteil Zellen mit Zitat, Zeilenlabel, Seite).
 
-Toleranz und Preise sind Parameter (`--toleranz`, `--preis-in`, `--preis-out`),
-damit derselbe Lauf mit anderen Annahmen nachgerechnet werden kann, ohne neu zu
-extrahieren.
+Preise sind Parameter (`--preis-in-pro-1k`, `--preis-out-pro-1k`), damit
+derselbe Lauf mit anderen Annahmen nachgerechnet werden kann, ohne neu zu
+extrahieren. Ohne Preise bleibt `kosten` leer — es wird keine Zahl erfunden.
 
 ## Regeln
 

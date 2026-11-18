@@ -182,9 +182,22 @@ def evaluate(rows: Sequence[Dict[str, Any]], records: Dict[str, Dict[str, Any]],
             conflicts += len(row.get("conflicts") or [])
             models[row.get("model") or "?"] += 1
             validation = row.get("validation") or {}
-            validation_status[validation.get("status", "ohne")] += 1
+            # Zwei Formen: je Record ein Status-Zaehler (Modelllauf, mehrere
+            # Tabellen) oder ein einzelner Status plus Befundliste (aeltere
+            # Laeufe). Beide werden gleich gezaehlt.
+            status_value = validation.get("status", "ohne")
+            if isinstance(status_value, dict):
+                for key, count in status_value.items():
+                    validation_status[str(key)] += int(count)
+            elif isinstance(status_value, str):
+                validation_status[status_value] += 1
+            codes_value = validation.get("codes")
+            if isinstance(codes_value, dict):
+                for key, count in codes_value.items():
+                    validation_codes[str(key)] += int(count)
             for finding in validation.get("findings") or []:
-                validation_codes[finding["code"]] += 1
+                if isinstance(finding, dict) and finding.get("code"):
+                    validation_codes[finding["code"]] += 1
 
             for cell in row.get("cells") or []:
                 context["zellen"] += 1

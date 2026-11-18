@@ -98,6 +98,30 @@ def test_evaluate_computes_precision_recall_and_cost():
     assert "outcome_zuordnung" in result["nicht_messbar"]
 
 
+def test_evaluate_counts_per_record_status_and_code_dicts():
+    """Modelllauf-Zeilen tragen Status und Codes als Zaehler je Record."""
+    records = {
+        "yun2024:1": {"record_id": "yun2024:1", "document": {"split": "test"},
+                      "context": {}, "gold": {"cells": GOLD[:1]}},
+    }
+    rows = [{
+        "record_id": "yun2024:1", "strategy": "B", "model": "m", "complexity": "mittel",
+        "cells": [{"field": "intervention_group_size", "arm": "intervention",
+                   "value": 30.0, "quote": "30", "row_label": "Weight"}],
+        "conflicts": [],
+        "telemetry": {"prompt_tokens": 10, "completion_tokens": 5, "runtime_s": 1.0},
+        "validation": {"status": {"strukturell_vollstaendig": 2},
+                       "codes": {"zeilenlabel_fehlt": 3},
+                       "tables": []},
+        "unit_results": [],
+    }]
+    result = bench_evaluate.evaluate(rows, records, None, None)
+    data = result["strategies"]["B"]
+    assert data["validierung"]["status"] == {"strukturell_vollstaendig": 2}
+    assert data["validierung"]["codes"] == {"zeilenlabel_fehlt": 3}
+    assert data["cells"]["richtig"] == 1
+
+
 def test_report_states_that_model_metrics_are_missing():
     structure = {
         "strategy_summary": {
