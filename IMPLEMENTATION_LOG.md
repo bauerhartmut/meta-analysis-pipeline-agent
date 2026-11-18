@@ -1735,3 +1735,35 @@ kostet der Text also drei Felder netto.
 Grenze der Kennzahl: sie zaehlt nur Zahlen, die der Leser findet - eine
 gedruckte Zahl in einer ungelesenen Form bleibt unsichtbar und macht das Feld
 im Bericht eindeutiger, als es ist.
+
+### Nachtrag Sprint 48 - Zahl direkt gegen Gold, Korroboration aus dem Ergebnissatz
+
+Zwei Fragen in einem Durchgang:
+
+1. **Strikte Zahl direkt gegen Gold.** `streng_direkt` vergleicht die eine
+   gedruckte Zahl mit dem Goldwert, ohne Umweg ueber `wertgleich`. Ergebnis
+   unveraendert: **49 -> 46**, dieselben acht Verluste, kein Gewinn. Der Grund
+   steht als `definition_abweichungen` (leer) im Bericht: es gibt kein Feld mit
+   genau einer gedruckten Zahl, das wertgleich waere, ohne dass diese Zahl der
+   Goldwert ist. Bei genau einer Zahl prueft der Textabgleich dieselbe Zahl wie
+   der direkte Vergleich - die Fassungen koennen hier nicht auseinanderlaufen.
+2. **Korroboration aus dem Ergebnissatz** (`fliesstext.im_ergebnis`, Merkmal
+   `belegt` an der Fundstelle): eine Textzahl ist belegt, wenn sie als
+   `n = X` in einem Fenster von 260 Zeichen steht und dieses Fenster - ohne
+   Tabellenzonen - das Outcome nennt. Markup-tolerant (`*n* = 289`).
+   Ergebnis: 9 Felder mit belegter Zahl, **3 mehrdeutige Felder aufgeloest**,
+   alle richtig (`:185` 28 statt 33, `:531`/`:532` comparator 204 statt 214).
+   `streng_gewaehlt` **49** (46 + 3), `population_mismatch` streng 4 -> **7**
+   von 15. Offen bleiben `:531`/`:532` intervention: dort sind 283 **und** 289
+   belegt - zwei Dosen im selben Ergebnissatz. Die Korroboration belegt die
+   Population, nicht die Dosis.
+
+Ohne Anker war die Korroboration zu breit: `_satz_um` liefert um Tabellenmarkup
+herum riesige Bloecke, in denen irgendein Wort das Outcome traf - damit war
+zunaechst jede Zahl "belegt". Deshalb `n = X` als Anker und ein bereinigtes
+Zeichenfenster statt des ganzen Satzes.
+
+Tests: `research_agent/tests/test_fliesstext.py` 8 (2 neu: Korroboration
+markiert ITT und nicht Safety; Korroboration braucht `n = X` im Ergebnissatz),
+`test_provenienz.py` 5, zusammen 13 gruen. Messung byte-gleich ueber zwei
+Laeufe. Kein Quellcode der Kerndateien beruehrt.

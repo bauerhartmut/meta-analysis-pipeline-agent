@@ -1,15 +1,17 @@
 # Sprint 48 - Zahlen aus dem Fliesstext als Fundstelle
 
-Stand 18.11.2026, zweite Messung mit strikter Kennzahl. Offline, rein lesend:
-kein Modelllauf, kein Netz, Gold und eingefrorene Auswahl unveraendert. Alle
-Zahlen aus `messung.json` (Skript `diagnose_fliesstext.py`, Laeufe identisch).
+Stand 18.11.2026, dritte Messung: strikte Zahl direkt gegen Gold und
+Korroboration aus dem Ergebnissatz. Offline, rein lesend: kein Modelllauf, kein
+Netz, Gold und eingefrorene Auswahl unveraendert. Alle Zahlen aus
+`messung.json` (zwei Laeufe byte-gleich).
 
 ## Frage
 
 Werden die fuenf noch offenen `population_mismatch`-Felder erreichbar und
 wertgleich, wenn der gedruckte Fliesstext als Fundstelle zaehlt - ohne
-Armumkehr und ohne Gold in der Regel? Und: verdeckt die Zahl 101/83, dass der
-Text Felder mehrdeutig macht?
+Armumkehr und ohne Gold in der Regel? Verdeckt die Zahl 83, dass der Text
+Felder mehrdeutig macht - und laesst sich die Population aus dem Ergebnissatz
+belegen statt raten?
 
 ## Regel (`research_agent/table_decomposition/fliesstext.py`)
 
@@ -30,34 +32,40 @@ Bindung: Form 1 am Label; Form 2 und 3 nur ueber das gedruckte `respectively`
 und nur bei gleich langen Listen. Ohne belegten Arm entsteht kein Fakt.
 Form 1 und 3 verlangen zusaetzlich den Outcome im Satz (ausgeschrieben oder als
 gedruckte Abkuerzung, `colonic transit time` -> `CTT`); Form 2 verlangt eine
-genannte Population. Tabellenzonen (`char_start`..`char_end` der Tabelle)
-bleiben aussen vor.
+genannte Population. Tabellenzonen (`char_start`..`char_end`) bleiben aussen
+vor.
 
-## Zwei Kennzahlen
+## Kennzahlen
 
-* **wertgleich** (bisher): irgendeine Fundstelle trifft den Goldwert. Ein Feld
-  zaehlt auch dann, wenn daneben eine zweite, abweichende Zahl gedruckt steht.
-* **streng** (neu): im Feld steht **genau eine** gedruckte Zahl, und sie trifft
-  den Goldwert. Diese Kennzahl verdeckt keine Mehrdeutigkeit.
+* **wertgleich** - irgendeine Fundstelle trifft den Goldwert, auch wenn daneben
+  eine zweite, abweichende Zahl steht.
+* **streng** - genau eine gedruckte Zahl im Feld **und** das Feld ist
+  wertgleich (die Fassung aus dem vorigen Bericht).
+* **streng_direkt** - genau eine gedruckte Zahl, und **diese Zahl** trifft den
+  Goldwert (Vergleich Zahl gegen Gold, ohne Umweg ueber `wertgleich`).
 
 | Groesse | ohne Text | mit Text |
 | --- | --- | --- |
 | erreichbare Goldfelder | 94 | **101** |
 | wertgleich | 68 | **83** |
-| **streng** | **49** | **46** |
+| streng | 49 | **46** |
+| streng_direkt | 49 | **46** |
 
-Neu wertgleich **15**, davon neu streng **5** - aber **8 Felder verlieren ihre
-Eindeutigkeit**. Unter dem Strich: **49 -> 46 streng**, also drei Felder
-weniger als vor dem Textleser.
+**Die beiden strengen Fassungen sind auf dieser Auswahl identisch** - 49 vor,
+46 nach, dieselben acht Verluste, kein Gewinn. Der Grund steht als Feld in
+`messung.json`: `definition_abweichungen` ist leer, also gibt es kein Feld mit
+genau einer gedruckten Zahl, das wertgleich waere, ohne dass diese Zahl der
+Goldwert ist. Bei genau einer Zahl entscheidet der Textabgleich ueber dieselbe
+Zahl wie der direkte Vergleich; die Fassungen koennen hier nicht
+auseinanderlaufen.
+
+Neu wertgleich **15**, davon **5 eindeutig**; **8 Felder verlieren ihre
+Eindeutigkeit** - kein Feld wird falsch, alle acht bleiben wertgleich.
 
 Gedruckte Zahlen je Feld (ohne -> mit): 0 Zahlen 11 -> 11, genau eine
-59 -> 50, zwei 17 -> 31, drei und mehr 7 -> 9. Von den 50 Feldern mit genau
-einer Zahl treffen 46 den Goldwert (4 nicht); vorher trafen 49 von 59.
+59 -> 50, zwei 17 -> 31, drei und mehr 7 -> 9.
 
 ## Die Regression im Einzelnen
-
-Acht Felder, die vorher eindeutig und richtig waren, tragen jetzt eine zweite
-gedruckte Zahl:
 
 | Record | Feld | vorher | nachher | noch wertgleich |
 | --- | --- | --- | --- | --- |
@@ -70,33 +78,32 @@ gedruckte Zahl:
 | yun2024:647 | comparator_group_size | 26 | 26, 30 | ja |
 | yun2024:647 | intervention_group_size | 27 | 27, 29 | ja |
 
-**Kein Feld wurde falsch** - alle acht bleiben wertgleich, sie verlieren nur die
-Eindeutigkeit. Die zweite Zahl ist meist eine andere gedruckte Population
-(Baseline gegen Outcome-Population: 645/647 drucken 29/30 als Baseline und
-27/26 in der Ergebnistabelle, 639/640 drucken 13 und 12). Bei :174 (11 gegen
-15) und :445 (140 gegen 70) ist die Zuordnung ohne den Satz nicht entscheidbar;
-die Fundstelle traegt den Satz.
+Von den fuenf neu strengen Feldern sind alle neu erreichbar: `:202`/`:205`
+intervention 40, `:265`/`:266` comparator_events 4, `:682` comparator 15.
 
-Von den fuenf neu strengen Feldern sind alle **neu erreichbar**, keines war
-vorher schon wertgleich: `:202`/`:205` intervention 40, `:265`/`:266`
-comparator_events 4, `:682` comparator 15.
+## Korroboration aus dem Ergebnissatz
 
-## Die fuenf Zielfelder
+Neue Regel in `fliesstext.im_ergebnis`: eine Fliesstext-Zahl ist **belegt**,
+wenn dieselbe Zahl in einem Fenster von 260 Zeichen um sie als `n = X` steht
+(markup-tolerant: `*n* = 289`, `***n*** = 298`) und dieses Fenster - ohne die
+Tabellenzonen - das Outcome nennt. Ein blosses Vorkommen der Zahl belegt
+nichts; eine Tabellenzelle belegte sich sonst selbst.
 
-| Record | Feld | gedruckt | Fundstelle | streng |
-| --- | --- | --- | --- | --- |
-| yun2024:531 | intervention_group_size | 289 | ITT-Liste (283, 289, 204) | nein |
-| yun2024:531 | comparator_group_size | 204 | ITT-Liste | nein |
-| yun2024:532 | intervention_group_size | 283 | ITT-Liste | nein |
-| yun2024:532 | comparator_group_size | 204 | ITT-Liste | nein |
-| yun2024:185 | comparator_group_size | 28 | `placebo, n = 28` | nein |
+Damit laesst sich die Population aus dem Dokument waehlen, ohne sie zu raten:
+`streng_gewaehlt` nimmt je Feld die belegten Zahlen (gibt es keine, alle) und
+prueft, ob genau eine uebrig bleibt und sie den Goldwert trifft.
 
-Alle fuenf werden **wertgleich, keines streng**: in allen steht die zweite
-Population gedruckt (ITT 283/289/204 gegen Safety 298/307/214; Baseline 33
-gegen CTT 28). Die Fundstelle nennt die Population in der Regel, das Feldmodell
-kennt sie nicht. Eine Regel "ITT gilt" waere fuer dieses Outcome nicht gedruckt
-belegt und steht deshalb nicht drin. `population_mismatch` insgesamt: 15 von 15
-wertgleich (vorher 10), aber **streng 8 -> 4**.
+* **9 Felder** tragen eine belegte Zahl.
+* **3 mehrdeutige Felder werden aufgeloest**, alle richtig:
+  `:185` comparator 28 statt 33 (CTT-Satz gegen Baseline-Kopf),
+  `:531` und `:532` comparator 204 statt 214 (ITT-`n` im Ergebnissatz gegen
+  Safety-Liste).
+* `streng_gewaehlt`: **49** (46 + 3). `population_mismatch` streng: 4 -> **7**
+  von 15.
+* **Nicht aufgeloest**: `:531`/`:532` intervention. Dort sind **beide** Zahlen
+  belegt - 283 und 289 stehen als zwei Dosen im selben Ergebnissatz. Die
+  Korroboration belegt die Population, nicht die Dosis; das Feld bleibt
+  mehrdeutig, und die Regel behauptet nichts.
 
 ## Was das nicht loest
 
@@ -107,31 +114,27 @@ in `messung.json`. Die 18 decken sich nicht mit den 8 Verlusten: 10 Konflikte
 treffen Felder, die schon vorher zwei Zahlen trugen oder am Goldwert vorbei
 zeigten (`:196`, `:531`/`:532`, `:78`/`:79`).
 
-Ein Sonderfall: `yun2024:78`/`:79` drucken in der Tabelle nur Untergruppen
-(3, 8, 19), im Text die Summen 29/30. Beide Felder werden wertgleich, aber
-mehrdeutig - und bleiben es unter der strikten Kennzahl.
+`yun2024:78`/`:79` drucken in der Tabelle nur Untergruppen (3, 8, 19), im Text
+die Summen 29/30; beide bleiben mehrdeutig.
 
 ## Grenzen
 
-* Die Textformen sind bewusst eng: drei Muster, keine freie Zahlensuche. Was
-  anders formuliert ist (etwa `n = 12 of 40`), bleibt unerreichbar.
-* Das Akronym-Gate braucht Grossschreibung (`CTT`); kleingeschriebene
-  Abkuerzungen und andere Synonyme fallen durch.
-* **Die strikte Kennzahl ist eine Obergrenze der Eindeutigkeit**: sie zaehlt nur
-  Zahlen, die der Leser findet. Eine gedruckte Zahl in einer ungelesenen Form
-  macht ein Feld nicht mehrdeutig - fuer den Leser, aber sehr wohl fuer den
-  Text.
-* Das Modul extrahiert nichts und aendert den Tabellenpfad nicht: die 136
-  Tests der Tabellenzerlegung bleiben gruen, die 94/68 sind identisch mit
-  Sprint 47.
-* Mehrdeutigkeit ist ausgewiesen, nicht aufgeloest.
+* Die Textformen sind bewusst eng: drei Muster, keine freie Zahlensuche.
+* Das Akronym-Gate braucht Grossschreibung (`CTT`).
+* Die strikte Kennzahl ist eine **Obergrenze der Eindeutigkeit**: sie zaehlt nur
+  Zahlen, die der Leser findet.
+* Die Korroboration erkennt nur `n = X`. Andere gedruckte Belege fuer die
+  Analyspopulation (etwa `analysed`, `evaluable`) bleiben ungenutzt.
+* Das Modul extrahiert nichts und aendert den Tabellenpfad nicht; die 136
+  Tests der Tabellenzerlegung bleiben gruen.
 
 ## Empfehlung
 
-**Naechster Hebel: die Population entscheiden, nicht weitere Formen sammeln.**
-Eine Textzahl im selben Satz wie das Outcome (`−14.88 [n = 289]` im
-MADRS-Satz) ist der gedruckte Beleg fuer die Analyspopulation. Wer sie als
-Korroboration fuehrt, kann die 10 mehrdeutigen Felder auf die
-Analyspopulation eingrenzen und die 8 verlorenen Felder zurueckgewinnen - ohne
-Gold, ohne Netzlauf, offline messbar. Danach bleiben `timepoint_mismatch` (6)
-und `sum_of_subgroups` (3) als naechste Klassen.
+**Naechster Hebel: die Dosis trennen, nicht weitere Populationen sammeln.** Die
+Korroboration hat die Populationsfrage fuer 3 von 5 Zielfeldern entschieden; die
+beiden offenen Felder (`:531`/`:532` intervention) scheitern nicht an der
+Population, sondern an zwei Dosen im selben Satz. Eine zweite, ebenso billige
+Regel - Arm aus der Dosisangabe des Satzes (`300 mg/day` vor `[n = 283]`) -
+wuerde sie schliessen. Risiko: Dosisangaben sind vielfaeltig; ohne gedruckte
+Zuordnung im selben Satz darf nichts gebunden werden. Danach bleiben
+`timepoint_mismatch` (6) und `sum_of_subgroups` (3).

@@ -72,6 +72,10 @@ class Provenienz:
     tabelle: str
     zeile: Optional[int]
     spalten: List[int]
+    # Nur fuer Fliesstext-Fundstellen: dieselbe Zahl steht auch in einem Satz,
+    # der das Outcome nennt (``−14.88 [n = 289]``). Das ist der gedruckte
+    # Beleg fuer die Analyspopulation - keine Armumkehr, keine Extraktion.
+    belegt: bool = False
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

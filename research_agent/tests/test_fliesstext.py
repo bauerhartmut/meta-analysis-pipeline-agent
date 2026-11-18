@@ -111,6 +111,30 @@ def test_ohne_outcome_im_satz_kein_fakt():
     assert "comparator_group_size" not in stellen
 
 
+def test_korroboration_markiert_itt_und_nicht_safety():
+    text, context, tables = _record_text_context("yun2024:531")
+    stellen = fl.stellen(text, context, tables)
+
+    # 204 steht im Ergebnissatz als n = 204 (ITT), 214 nur in der
+    # Safety-Liste.
+    alle = {stelle.wert for stelle in stellen["comparator_group_size"]}
+    belegt = {stelle.wert for stelle in stellen["comparator_group_size"]
+              if stelle.belegt}
+    assert alle == {204.0, 214.0}
+    assert belegt == {204.0}
+
+
+def test_korroboration_braucht_das_n_im_ergebnis():
+    context = {"outcome": "pain"}
+
+    assert fl.im_ergebnis("Pain scores fell (−14.88 [n = 289]).", context, 289)
+    assert not fl.im_ergebnis("Pain scores fell (−14.88 [n = 289]).",
+                              {"outcome": "sleep"}, 289)
+    # Dieselbe Zahl, aber nicht als Stichprobengroesse im Ergebnissatz.
+    assert not fl.im_ergebnis("289 patients were included in the study.",
+                              context, 289)
+
+
 def test_ungleiche_listen_ergeben_keinen_fakt():
     context = {"intervention": "drug", "comparator": "placebo",
                "outcome": "pain"}

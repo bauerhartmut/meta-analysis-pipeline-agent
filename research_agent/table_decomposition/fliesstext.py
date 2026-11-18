@@ -21,11 +21,17 @@ Tabellenpfad. Kein Arm wird aus einer Spaltenposition geraten: Form 1 bindet
 den Arm am Label, Form 2 und 3 nur ueber das gedruckte ``respectively`` und nur,
 wenn Zahlen- und Armliste gleich lang sind. Ohne belegten Arm entsteht kein
 Fakt. Es wird kein Gold gelesen und nichts extrahiert.
+
+Zusaetzlich wird jede Fundstelle geprueft, ob dieselbe Zahl in einem Satz
+steht, der das Outcome nennt (``−14.88 [n = 289]``). Das unterscheidet die
+Analyspopulation von einer zweiten gedruckten Population, ohne dass eine
+Population geraten wird: das Merkmal steht als ``belegt`` an der Fundstelle.
 """
 
 from __future__ import annotations
 
 import re
+from dataclasses import replace
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 from .model import ROLE_EVENTS, ROLE_N, field_for
@@ -63,6 +69,9 @@ _POPULATION_SAFETY = re.compile(r"\bsafety\s+population\b", re.IGNORECASE)
 
 _AKRONYM_STOPP = {"the", "of", "in", "and", "for", "with", "on", "at",
                  "by", "to", "a", "an"}
+
+# Zeichenfenster um eine als ``n = X`` gedruckte Zahl; deckt einen Satz.
+_FENSTER = 260
 
 
 def _akronym(outcome: str) -> str:
@@ -136,6 +145,66 @@ def _gebunden(label: str, context: Dict[str, Any]) -> Optional[str]:
         str(context.get("comparator") or ""),
     )
     return binding.arm
+
+
+def _zahl_muster(wert: float) -> str:
+    """Dieselbe Zahl in gedruckter Schreibweise, als eigenes Zahlwort."""
+    zahl = str(int(wert)) if float(wert).is_integer() else f"{wert:g}"
+    return rf"(?<![\d.,]){re.escape(zahl)}(?![\d])"
+
+
+def _als_n_muster(wert: float) -> str:
+    """Dieselbe Zahl als gedruckte Stichprobengroesse: ``n = 289``.
+
+    Markup-tolerant (``*n* = 289``, ``***n*** = 298``, ``<em>n</em> = 5``);
+    ein blosses Vorkommen der Zahl belegt nichts.
+    """
+    zahl = str(int(wert)) if float(wert).is_integer() else f"{wert:g}"
+    tag = r"(?:<[^>]{1,16}>)*"
+    return (rf"[*_]{{0,3}}{tag}[nN]{tag}[*_]{{0,3}}\s*=\s*"
+            rf"{re.escape(zahl)}(?![\d])")
+
+
+def _ohne_tabellen(text: str, start: int, ende: int,
+                   tabellen: Sequence[Any]) -> str:
+    """Textstueck ohne die Zeichenspannen der Tabellen."""
+    teile: List[str] = []
+    pos = start
+    for table in sorted(tabellen, key=lambda t: getattr(t, "char_start", -1)):
+        t_start = getattr(table, "char_start", -1)
+        t_ende = getattr(table, "char_end", -1)
+        if t_start < 0 or t_ende <= t_start or t_ende <= pos or t_start >= ende:
+            continue
+        if t_start > pos:
+            teile.append(text[pos:t_start])
+        pos = max(pos, min(t_ende, ende))
+    if pos < ende:
+        teile.append(text[pos:ende])
+    return " ".join(teile)
+
+
+def im_ergebnis(text: str, context: Dict[str, Any], wert: float,
+                tabellen: Sequence[Any] = ()) -> bool:
+    """Steht diese Zahl als Stichprobengroesse im Satz zum Outcome?
+
+    Gesucht wird ``n = <Zahl>`` in einem Fenster um die Zahl, aus dem die
+    Tabellenzonen herausgeschnitten sind, und das Outcome muss in diesem
+    Fenster genannt sein (ausgeschrieben oder als gedruckte Abkuerzung).
+    Nur so unterscheidet sich ``−14.88 [n = 289]`` im Ergebnissatz von einer
+    beilaeufigen Erwaehnung derselben Zahl.
+    """
+    outcome = str(context.get("outcome") or "")
+    if not text or not outcome or wert is None:
+        return False
+    for treffer in re.finditer(_als_n_muster(wert), text):
+        if _in_tabelle(treffer.start(), tabellen):
+            continue
+        start = max(0, treffer.start() - _FENSTER)
+        ende = min(len(text), treffer.end() + _FENSTER)
+        fenster = _ohne_tabellen(text, start, ende, tabellen)
+        if _outcome_im_satz(fenster, outcome):
+            return True
+    return False
 
 
 def _in_tabelle(position: int, tabellen: Sequence[Any]) -> bool:
@@ -256,5 +325,8 @@ def stellen(text: str, context: Optional[Dict[str, Any]] = None,
         if schluessel in gesehen:
             continue
         gesehen.add(schluessel)
+        if stelle.wert is not None and im_ergebnis(text, context, stelle.wert,
+                                                  tabellen):
+            stelle = replace(stelle, belegt=True)
         out.setdefault(stelle.feld, []).append(stelle)
     return out

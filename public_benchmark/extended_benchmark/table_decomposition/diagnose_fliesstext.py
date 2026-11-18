@@ -14,18 +14,22 @@ gedruckte Formen:
   Population,
 * ``5.1% (4/79) ... respectively`` (Zaehler = Ereignisse, Nenner = Groesse).
 
-Zwei Kennzahlen:
+Drei Kennzahlen:
 
-* **wertgleich** - irgendeine Fundstelle trifft den Goldwert (bisherige Zahl,
-  94/68). Sie zaehlt ein Feld auch dann, wenn daneben eine zweite, abweichende
-  Zahl gedruckt steht.
-* **streng** - im Feld steht **genau eine** gedruckte Zahl und sie trifft den
-  Goldwert. Das ist die Kennzahl, die eine Mehrdeutigkeit nicht verdeckt:
-  ein Feld mit zwei Populationen ist wertgleich, aber nicht streng.
+* **wertgleich** - irgendeine Fundstelle trifft den Goldwert, auch wenn daneben
+  eine zweite, abweichende Zahl gedruckt steht (94/68).
+* **streng** - genau eine gedruckte Zahl im Feld **und** das Feld ist
+  wertgleich (bisherige strenge Kennzahl; die Eindeutigkeit haengt damit an
+  `wertgleich`).
+* **streng_direkt** - genau eine gedruckte Zahl im Feld und **diese Zahl**
+  trifft den Goldwert (Vergleich Zahl gegen Gold, ohne Umweg ueber
+  `wertgleich`).
 
-Zusaetzlich wird ausgewiesen, wie viele vorher eindeutige Felder der Text
-mehrdeutig macht (streng vorher, nicht streng nachher) - die Differenz
-101/83 darf diese Regression nicht verdecken.
+Dazu die **Korroboration aus dem Ergebnissatz**: steht die Zahl als
+``n = X`` in einem Satz, der das Outcome nennt, ist sie fuer die
+Analyspopulation belegt. ``streng_gewaehlt`` waehlt je Feld die belegten Zahlen
+(sonst alle) und prueft, ob genau eine uebrig bleibt und sie den Goldwert
+trifft.
 
 Read-only: Gold und eingefrorene Eingaben werden nur gelesen.
 Aufruf:
@@ -41,7 +45,7 @@ import json
 import sys
 from collections import Counter
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 HIER = Path(__file__).resolve()
 BENCH = HIER.parent.parent
@@ -86,9 +90,25 @@ def _werte(stellen: List[pv.Provenienz]) -> List[float]:
                    if stelle.wert is not None})
 
 
-def _streng(lage: Dict[str, Any], werte: List[float]) -> bool:
-    """Genau eine gedruckte Zahl, und sie trifft den Goldwert."""
+def _belegte_werte(stellen: List[pv.Provenienz]) -> List[float]:
+    """Gedruckte Zahlen, die im Ergebnissatz als ``n = X`` stehen."""
+    return sorted({round(stelle.wert, 2) for stelle in stellen
+                   if stelle.wert is not None and getattr(stelle, "belegt", False)})
+
+
+def _gleich_zahl(wert: float, gold: Optional[float]) -> bool:
+    """Zahl gegen Gold, ohne Umweg ueber eine Fundstellenpruefung."""
+    return gold is not None and abs(wert - gold) <= 1e-9 * max(1.0, abs(gold))
+
+
+def _streng_wertgleich(lage: Dict[str, Any], werte: List[float]) -> bool:
+    """Bisherige strenge Kennzahl: eine Zahl, Feld wertgleich."""
     return bool(lage.get("wertgleich")) and len(werte) == 1
+
+
+def _streng_direkt(werte: List[float], gold: Optional[float]) -> bool:
+    """Strenge Kennzahl neu: eine Zahl, und diese Zahl trifft Gold."""
+    return len(werte) == 1 and _gleich_zahl(werte[0], gold)
 
 
 def main() -> int:
@@ -102,14 +122,20 @@ def main() -> int:
     records = rb.load_records(rb.DEFAULT_RECORDS)
     grouped = rb.group_by_record(selection, None)
 
-    ohne_erreichbar = ohne_gleich = ohne_streng = 0
-    mit_erreichbar = mit_gleich = mit_streng = 0
+    zaehler_ohne = Counter()
+    zaehler_mit = Counter()
+    zaehler_gewaehlt = Counter()
     ohne_felder: set = set()
     mit_felder: set = set()
-    streng_felder: set = set()
+    direkt_felder: set = set()
+    gewaehlt_felder: set = set()
     neu_erreichbar: List[str] = []
     verloren: List[str] = []
     streng_verloren: List[Dict[str, Any]] = []
+    direkt_gewonnen: List[str] = []
+    direkt_verloren: List[Dict[str, Any]] = []
+    korroboriert_aufgeloest: List[Dict[str, Any]] = []
+    definition_abweichungen: List[Dict[str, Any]] = []
     arm_wechsel: List[Dict[str, Any]] = []
     konflikte: List[Dict[str, Any]] = []
     regeln: Counter = Counter()
@@ -138,7 +164,10 @@ def main() -> int:
                         for feld, stellen in tabellen_stellen.items()}
         werte_nachher = {feld: _werte(stellen)
                          for feld, stellen in alle_stellen.items()}
+        belegte = {feld: _belegte_werte(stellen)
+                   for feld, stellen in alle_stellen.items()}
         gold = _gold(record)
+        gold_werte = {zelle["field"]: zelle["value"] for zelle in gold}
         vorher = _lage(gold, tabellen_stellen)
         nachher = _lage(gold, alle_stellen)
         for feld, werte in werte_nachher.items():
@@ -155,7 +184,8 @@ def main() -> int:
             if tabellen_werte and fremd:
                 konflikte.append({"record_id": record_id, "feld": feld,
                                   "tabelle": sorted(tabellen_werte),
-                                  "text": fremd})
+                                  "text": fremd,
+                                  "belegt": belegte.get(feld) or []})
 
         for feld in sorted(set(vorher) | set(nachher)):
             schluessel = f"{record_id}.{feld}"
@@ -165,26 +195,37 @@ def main() -> int:
                                       "arme": []}
             v_werte = werte_vorher.get(feld) or []
             n_werte = werte_nachher.get(feld) or []
-            v_streng = _streng(v, v_werte)
-            n_streng = _streng(n, n_werte)
+            gold_wert = gold_werte.get(feld)
+            v_direkt = _streng_direkt(v_werte, gold_wert)
+            n_direkt = _streng_direkt(n_werte, gold_wert)
+            gewaehlt = belegte.get(feld) or n_werte
+            n_gewaehlt = len(gewaehlt) == 1 and _gleich_zahl(gewaehlt[0], gold_wert)
 
             if v.get("erreichbar"):
-                ohne_erreichbar += 1
+                zaehler_ohne["erreichbar"] += 1
                 verteilung["ohne_text"][min(len(v_werte), 3)] += 1
                 if v.get("wertgleich"):
-                    ohne_gleich += 1
+                    zaehler_ohne["wertgleich"] += 1
                     ohne_felder.add(schluessel)
-                if v_streng:
-                    ohne_streng += 1
+                if _streng_wertgleich(v, v_werte):
+                    zaehler_ohne["streng"] += 1
+                if v_direkt:
+                    zaehler_ohne["streng_direkt"] += 1
             if n.get("erreichbar"):
-                mit_erreichbar += 1
+                zaehler_mit["erreichbar"] += 1
                 verteilung["mit_text"][min(len(n_werte), 3)] += 1
                 if n.get("wertgleich"):
-                    mit_gleich += 1
+                    zaehler_mit["wertgleich"] += 1
                     mit_felder.add(schluessel)
-                if n_streng:
-                    mit_streng += 1
-                    streng_felder.add(schluessel)
+                if _streng_wertgleich(n, n_werte):
+                    zaehler_mit["streng"] += 1
+                if n_direkt:
+                    zaehler_mit["streng_direkt"] += 1
+                    direkt_felder.add(schluessel)
+                if n_gewaehlt:
+                    zaehler_mit["streng_gewaehlt"] += 1
+                    zaehler_gewaehlt["streng"] += 1
+                    gewaehlt_felder.add(schluessel)
 
             if v.get("erreichbar") and not n.get("erreichbar"):
                 verloren.append(schluessel)
@@ -195,22 +236,49 @@ def main() -> int:
                 arm_wechsel.append({"record_id": record_id, "feld": feld,
                                     "vorher": v.get("arme"),
                                     "nachher": n.get("arme")})
-            if v_streng and not n_streng:
+            if _streng_wertgleich(v, v_werte) and not _streng_wertgleich(n, n_werte):
                 streng_verloren.append({
                     "record_id": record_id, "feld": feld,
                     "vorher": v_werte, "nachher": n_werte,
                     "noch_wertgleich": bool(n.get("wertgleich")),
                 })
+            # Wo die beiden strengen Definitionen auseinanderlaufen: eine
+            # einzige gedruckte Zahl, wertgleich, aber nicht der Goldwert.
+            for phase, lage, werte in (("vorher", v, v_werte),
+                                       ("nachher", n, n_werte)):
+                if (lage.get("wertgleich") and len(werte) == 1
+                        and not _gleich_zahl(werte[0], gold_wert)):
+                    definition_abweichungen.append({
+                        "record_id": record_id, "feld": feld, "phase": phase,
+                        "zahl": werte[0], "gold": gold_wert})
+            if v_direkt and not n_direkt:
+                direkt_verloren.append({
+                    "record_id": record_id, "feld": feld, "gold": gold_wert,
+                    "vorher": v_werte, "nachher": n_werte,
+                })
+            if not v_direkt and n_direkt:
+                direkt_gewonnen.append(schluessel)
+            if belegte.get(feld) and len(n_werte) > 1 and n_gewaehlt:
+                korroboriert_aufgeloest.append({
+                    "record_id": record_id, "feld": feld, "gold": gold_wert,
+                    "alle": n_werte, "belegt": belegte[feld],
+                })
             kategorie = kategorien.get((record_id, feld))
             if kategorie:
-                zaehler = je_kategorie.setdefault(
+                eintrag = je_kategorie.setdefault(
                     kategorie, {"gesamt": 0, "vorher": 0, "nachher": 0,
-                                "streng_vorher": 0, "streng_nachher": 0})
-                zaehler["gesamt"] += 1
-                zaehler["vorher"] += 1 if v.get("wertgleich") else 0
-                zaehler["nachher"] += 1 if n.get("wertgleich") else 0
-                zaehler["streng_vorher"] += 1 if v_streng else 0
-                zaehler["streng_nachher"] += 1 if n_streng else 0
+                                "streng_vorher": 0, "streng_nachher": 0,
+                                "streng_direkt_vorher": 0,
+                                "streng_direkt_nachher": 0,
+                                "streng_gewaehlt": 0})
+                eintrag["gesamt"] += 1
+                eintrag["vorher"] += 1 if v.get("wertgleich") else 0
+                eintrag["nachher"] += 1 if n.get("wertgleich") else 0
+                eintrag["streng_vorher"] += 1 if _streng_wertgleich(v, v_werte) else 0
+                eintrag["streng_nachher"] += 1 if _streng_wertgleich(n, n_werte) else 0
+                eintrag["streng_direkt_vorher"] += 1 if v_direkt else 0
+                eintrag["streng_direkt_nachher"] += 1 if n_direkt else 0
+                eintrag["streng_gewaehlt"] += 1 if n_gewaehlt else 0
 
         record_berichte.append({
             "record_id": record_id,
@@ -223,6 +291,8 @@ def main() -> int:
                             for feld in sorted(alle_stellen)},
             "fundstellen_vorher": {feld: werte_vorher[feld]
                                    for feld in sorted(tabellen_stellen)},
+            "belegt": {feld: belegte[feld] for feld in sorted(belegte)
+                       if belegte[feld]},
             "vorher": vorher,
             "nachher": nachher,
         })
@@ -236,12 +306,8 @@ def main() -> int:
             "n_records": len(selection.get("record_ids") or []),
         },
         "bilanz": {
-            "ohne_text": {"erreichbar": ohne_erreichbar,
-                          "wertgleich": ohne_gleich,
-                          "streng": ohne_streng},
-            "mit_text": {"erreichbar": mit_erreichbar,
-                         "wertgleich": mit_gleich,
-                         "streng": mit_streng},
+            "ohne_text": dict(zaehler_ohne),
+            "mit_text": dict(zaehler_mit),
             "neu_wertgleich": sorted(mit_felder - ohne_felder),
             # Ein Feld mit zwei gedruckten Zahlen ist wertgleich, aber nicht
             # eindeutig - das wird getrennt ausgewiesen.
@@ -251,8 +317,22 @@ def main() -> int:
             "neu_wertgleich_mehrdeutig": [
                 feld for feld in sorted(mit_felder - ohne_felder)
                 if len(wert_index.get(feld) or []) > 1],
-            "neu_streng": sorted(streng_felder - ohne_felder),
+            "neu_streng": sorted(gewaehlt_felder - ohne_felder),
             "streng_verloren": streng_verloren,
+            "streng_direkt_gewonnen": direkt_gewonnen,
+            "streng_direkt_verloren": direkt_verloren,
+            "streng_direkt_differenz": (
+                zaehler_mit["streng_direkt"] - zaehler_ohne["streng_direkt"]),
+            # Leer heisst: beide strengen Definitionen stimmen auf dieser
+            # Auswahl ueberein - keine einzige Zahl weicht bei einem Feld mit
+            # genau einer Zahl vom Goldwert ab.
+            "definition_abweichungen": definition_abweichungen,
+            "korroboration": {
+                "felder_mit_belegter_zahl": len({
+                    f"{r['record_id']}.{feld}" for r in record_berichte
+                    for feld in r["belegt"]}),
+                "mehrdeutig_aufgeloest": korroboriert_aufgeloest,
+            },
             "verloren": sorted(set(verloren)),
             "arm_wechsel": arm_wechsel,
             "text_fakten": dict(sorted(regeln.items())),
@@ -271,26 +351,32 @@ def main() -> int:
 
     bilanz = bericht["bilanz"]
     ohne, mit = bilanz["ohne_text"], bilanz["mit_text"]
-    print(f"ohne Text {ohne['erreichbar']} erreichbar / "
-          f"{ohne['wertgleich']} wertgleich / {ohne['streng']} streng")
-    print(f"mit Text  {mit['erreichbar']} erreichbar / "
-          f"{mit['wertgleich']} wertgleich / {mit['streng']} streng")
+    print(f"ohne Text {ohne['erreichbar']} erreichbar / {ohne['wertgleich']} "
+          f"wertgleich / {ohne.get('streng', 0)} streng / "
+          f"{ohne.get('streng_direkt', 0)} streng_direkt")
+    print(f"mit Text  {mit['erreichbar']} erreichbar / {mit['wertgleich']} "
+          f"wertgleich / {mit.get('streng', 0)} streng / "
+          f"{mit.get('streng_direkt', 0)} streng_direkt / "
+          f"{mit.get('streng_gewaehlt', 0)} streng_gewaehlt")
     print("je Kategorie:", bericht["je_kategorie"])
     print("neu wertgleich:", len(bilanz["neu_wertgleich"]),
           "(eindeutig", len(bilanz["neu_wertgleich_eindeutig"]),
           "/ mehrdeutig", len(bilanz["neu_wertgleich_mehrdeutig"]), ")",
-          "| neu streng:", len(bilanz["neu_streng"]),
-          "| streng verloren:", len(bilanz["streng_verloren"]),
-          "| verloren:", len(bilanz["verloren"]),
+          "| streng_direkt gewonnen:", len(direkt_gewonnen),
+          "| verloren:", len(direkt_verloren),
           "| Armwechsel:", len(arm_wechsel))
-    print("gedruckte Zahlen je Feld:",
-          bilanz["gedruckte_zahlen_je_feld"])
+    print("gedruckte Zahlen je Feld:", bilanz["gedruckte_zahlen_je_feld"])
+    print("Korroboration:", bilanz["korroboration"]["felder_mit_belegter_zahl"],
+          "Felder mit belegter Zahl, davon mehrdeutig aufgeloest:",
+          len(korroboriert_aufgeloest))
+    for eintrag in korroboriert_aufgeloest:
+        print("  ", eintrag)
     print("Felder nur aus Text:", len(bericht["felder_nur_aus_text"]))
     print("Text-Fakten:", bilanz["text_fakten"])
-    print("Konflikte (Textwert weicht von der Tabelle ab):", len(konflikte))
-    for eintrag in bilanz["streng_verloren"]:
-        print("  streng verloren:", eintrag["record_id"], eintrag["feld"],
-              eintrag["vorher"], "->", eintrag["nachher"])
+    print("Konflikte:", len(konflikte))
+    for eintrag in direkt_verloren:
+        print("  streng_direkt verloren:", eintrag["record_id"], eintrag["feld"],
+              eintrag["vorher"], "->", eintrag["nachher"], "| gold", eintrag["gold"])
     return 0
 
 

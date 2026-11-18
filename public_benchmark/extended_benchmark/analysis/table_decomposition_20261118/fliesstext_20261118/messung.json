@@ -9,12 +9,15 @@
     "ohne_text": {
       "erreichbar": 94,
       "wertgleich": 68,
-      "streng": 49
+      "streng": 49,
+      "streng_direkt": 49
     },
     "mit_text": {
       "erreichbar": 101,
       "wertgleich": 83,
-      "streng": 46
+      "streng": 46,
+      "streng_direkt": 46,
+      "streng_gewaehlt": 49
     },
     "neu_wertgleich": [
       "yun2024:185.comparator_group_size",
@@ -53,10 +56,13 @@
       "yun2024:79.intervention_group_size"
     ],
     "neu_streng": [
+      "yun2024:185.comparator_group_size",
       "yun2024:202.intervention_group_size",
       "yun2024:205.intervention_group_size",
       "yun2024:265.comparator_events",
       "yun2024:266.comparator_events",
+      "yun2024:531.comparator_group_size",
+      "yun2024:532.comparator_group_size",
       "yun2024:682.comparator_group_size"
     ],
     "streng_verloren": [
@@ -157,6 +163,148 @@
         "noch_wertgleich": true
       }
     ],
+    "streng_direkt_gewonnen": [],
+    "streng_direkt_verloren": [
+      {
+        "record_id": "yun2024:174",
+        "feld": "comparator_group_size",
+        "gold": 15.0,
+        "vorher": [
+          15.0
+        ],
+        "nachher": [
+          11.0,
+          15.0
+        ]
+      },
+      {
+        "record_id": "yun2024:445",
+        "feld": "comparator_group_size",
+        "gold": 70.0,
+        "vorher": [
+          70.0
+        ],
+        "nachher": [
+          70.0,
+          140.0
+        ]
+      },
+      {
+        "record_id": "yun2024:639",
+        "feld": "comparator_group_size",
+        "gold": 12.0,
+        "vorher": [
+          12.0
+        ],
+        "nachher": [
+          12.0,
+          13.0
+        ]
+      },
+      {
+        "record_id": "yun2024:640",
+        "feld": "comparator_group_size",
+        "gold": 12.0,
+        "vorher": [
+          12.0
+        ],
+        "nachher": [
+          12.0,
+          13.0
+        ]
+      },
+      {
+        "record_id": "yun2024:645",
+        "feld": "comparator_group_size",
+        "gold": 26.0,
+        "vorher": [
+          26.0
+        ],
+        "nachher": [
+          26.0,
+          30.0
+        ]
+      },
+      {
+        "record_id": "yun2024:645",
+        "feld": "intervention_group_size",
+        "gold": 27.0,
+        "vorher": [
+          27.0
+        ],
+        "nachher": [
+          27.0,
+          29.0
+        ]
+      },
+      {
+        "record_id": "yun2024:647",
+        "feld": "comparator_group_size",
+        "gold": 26.0,
+        "vorher": [
+          26.0
+        ],
+        "nachher": [
+          26.0,
+          30.0
+        ]
+      },
+      {
+        "record_id": "yun2024:647",
+        "feld": "intervention_group_size",
+        "gold": 27.0,
+        "vorher": [
+          27.0
+        ],
+        "nachher": [
+          27.0,
+          29.0
+        ]
+      }
+    ],
+    "streng_direkt_differenz": -3,
+    "definition_abweichungen": [],
+    "korroboration": {
+      "felder_mit_belegter_zahl": 9,
+      "mehrdeutig_aufgeloest": [
+        {
+          "record_id": "yun2024:185",
+          "feld": "comparator_group_size",
+          "gold": 28.0,
+          "alle": [
+            28.0,
+            33.0
+          ],
+          "belegt": [
+            28.0
+          ]
+        },
+        {
+          "record_id": "yun2024:531",
+          "feld": "comparator_group_size",
+          "gold": 204.0,
+          "alle": [
+            204.0,
+            214.0
+          ],
+          "belegt": [
+            204.0
+          ]
+        },
+        {
+          "record_id": "yun2024:532",
+          "feld": "comparator_group_size",
+          "gold": 204.0,
+          "alle": [
+            204.0,
+            214.0
+          ],
+          "belegt": [
+            204.0
+          ]
+        }
+      ]
+    },
     "verloren": [],
     "arm_wechsel": [],
     "text_fakten": {
@@ -175,6 +323,9 @@
         ],
         "text": [
           11.0
+        ],
+        "belegt": [
+          11.0
         ]
       },
       {
@@ -184,6 +335,9 @@
           33.0
         ],
         "text": [
+          28.0
+        ],
+        "belegt": [
           28.0
         ]
       },
@@ -195,7 +349,8 @@
         ],
         "text": [
           145.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:196",
@@ -205,7 +360,8 @@
         ],
         "text": [
           140.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:445",
@@ -214,6 +370,10 @@
           70.0
         ],
         "text": [
+          140.0
+        ],
+        "belegt": [
+          70.0,
           140.0
         ]
       },
@@ -227,6 +387,10 @@
         "text": [
           283.0,
           289.0
+        ],
+        "belegt": [
+          283.0,
+          289.0
         ]
       },
       {
@@ -236,6 +400,9 @@
           214.0
         ],
         "text": [
+          204.0
+        ],
+        "belegt": [
           204.0
         ]
       },
@@ -249,6 +416,10 @@
         "text": [
           283.0,
           289.0
+        ],
+        "belegt": [
+          283.0,
+          289.0
         ]
       },
       {
@@ -258,6 +429,9 @@
           214.0
         ],
         "text": [
+          204.0
+        ],
+        "belegt": [
           204.0
         ]
       },
@@ -269,7 +443,8 @@
         ],
         "text": [
           13.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:640",
@@ -279,7 +454,8 @@
         ],
         "text": [
           13.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:645",
@@ -289,7 +465,8 @@
         ],
         "text": [
           29.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:645",
@@ -299,7 +476,8 @@
         ],
         "text": [
           30.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:647",
@@ -309,7 +487,8 @@
         ],
         "text": [
           29.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:647",
@@ -319,7 +498,8 @@
         ],
         "text": [
           30.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:682",
@@ -329,7 +509,8 @@
         ],
         "text": [
           16.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:78",
@@ -342,7 +523,8 @@
         "text": [
           29.0,
           30.0
-        ]
+        ],
+        "belegt": []
       },
       {
         "record_id": "yun2024:79",
@@ -355,7 +537,8 @@
         "text": [
           29.0,
           30.0
-        ]
+        ],
+        "belegt": []
       }
     ],
     "gedruckte_zahlen_je_feld": {
@@ -388,35 +571,50 @@
       "vorher": 10,
       "nachher": 15,
       "streng_vorher": 8,
-      "streng_nachher": 4
+      "streng_nachher": 4,
+      "streng_direkt_vorher": 8,
+      "streng_direkt_nachher": 4,
+      "streng_gewaehlt": 7
     },
     "subgroup_vs_total": {
       "gesamt": 3,
       "vorher": 0,
       "nachher": 2,
       "streng_vorher": 0,
-      "streng_nachher": 0
+      "streng_nachher": 0,
+      "streng_direkt_vorher": 0,
+      "streng_direkt_nachher": 0,
+      "streng_gewaehlt": 0
     },
     "sum_of_subgroups": {
       "gesamt": 3,
       "vorher": 0,
       "nachher": 0,
       "streng_vorher": 0,
-      "streng_nachher": 0
+      "streng_nachher": 0,
+      "streng_direkt_vorher": 0,
+      "streng_direkt_nachher": 0,
+      "streng_gewaehlt": 0
     },
     "timepoint_mismatch": {
       "gesamt": 6,
       "vorher": 0,
       "nachher": 0,
       "streng_vorher": 0,
-      "streng_nachher": 0
+      "streng_nachher": 0,
+      "streng_direkt_vorher": 0,
+      "streng_direkt_nachher": 0,
+      "streng_gewaehlt": 0
     },
     "unexplained": {
       "gesamt": 9,
       "vorher": 0,
       "nachher": 1,
       "streng_vorher": 0,
-      "streng_nachher": 0
+      "streng_nachher": 0,
+      "streng_direkt_vorher": 0,
+      "streng_direkt_nachher": 0,
+      "streng_gewaehlt": 0
     }
   },
   "records": [
@@ -435,6 +633,7 @@
           434.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -531,6 +730,7 @@
           434.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -627,6 +827,7 @@
           103.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -699,6 +900,7 @@
           103.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -779,6 +981,7 @@
           17.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -835,7 +1038,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           }
         ]
       },
@@ -856,6 +1060,11 @@
         "intervention_group_size": [
           16.0,
           17.0
+        ]
+      },
+      "belegt": {
+        "comparator_group_size": [
+          11.0
         ]
       },
       "vorher": {
@@ -934,6 +1143,7 @@
           33.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -1034,7 +1244,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           }
         ]
       },
@@ -1047,6 +1258,11 @@
       "fundstellen_vorher": {
         "comparator_group_size": [
           33.0
+        ]
+      },
+      "belegt": {
+        "comparator_group_size": [
+          28.0
         ]
       },
       "vorher": {
@@ -1151,6 +1367,7 @@
           169.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -1231,7 +1448,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -1248,7 +1466,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -1270,6 +1489,7 @@
           169.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -1374,7 +1594,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -1384,6 +1605,7 @@
         ]
       },
       "fundstellen_vorher": {},
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -1482,7 +1704,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -1492,6 +1715,7 @@
         ]
       },
       "fundstellen_vorher": {},
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -1578,6 +1802,7 @@
       "fliesstext": {},
       "fundstellen": {},
       "fundstellen_vorher": {},
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -1614,6 +1839,7 @@
       "fliesstext": {},
       "fundstellen": {},
       "fundstellen_vorher": {},
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -1688,6 +1914,7 @@
           38.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -1774,6 +2001,7 @@
           38.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -1854,7 +2082,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "comparator_group_size": [
@@ -1871,7 +2100,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_events": [
@@ -1888,7 +2118,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_events",
@@ -1903,7 +2134,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -1920,7 +2152,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_group_size",
@@ -1935,7 +2168,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -1964,6 +2198,7 @@
           83.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2048,7 +2283,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "comparator_group_size": [
@@ -2065,7 +2301,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_events": [
@@ -2082,7 +2319,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_events",
@@ -2097,7 +2335,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -2114,7 +2353,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_group_size",
@@ -2129,7 +2369,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -2158,6 +2399,7 @@
           83.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2238,6 +2480,7 @@
           71.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2338,7 +2581,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -2352,6 +2596,7 @@
           71.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2456,6 +2701,7 @@
           5.1
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -2540,6 +2786,7 @@
           2.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -2616,6 +2863,7 @@
           393.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2712,6 +2960,7 @@
           47.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2808,6 +3057,7 @@
           47.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -2910,6 +3160,7 @@
           9.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -3016,6 +3267,7 @@
           9.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -3142,6 +3394,7 @@
         "intervention_mean": [],
         "intervention_standard_deviation": []
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -3276,6 +3529,7 @@
           30.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -3358,6 +3612,7 @@
           20.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -3416,6 +3671,7 @@
           20.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -3472,7 +3728,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           }
         ],
         "intervention_group_size": [
@@ -3489,7 +3746,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           },
           {
             "feld": "intervention_group_size",
@@ -3504,7 +3762,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           }
         ]
       },
@@ -3518,6 +3777,15 @@
         ]
       },
       "fundstellen_vorher": {
+        "comparator_group_size": [
+          99.0
+        ],
+        "intervention_group_size": [
+          90.0,
+          98.0
+        ]
+      },
+      "belegt": {
         "comparator_group_size": [
           99.0
         ],
@@ -3632,6 +3900,7 @@
         "intervention_mean": [],
         "intervention_standard_deviation": []
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -3738,6 +4007,7 @@
           30.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -3838,7 +4108,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -3855,7 +4126,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -3877,6 +4149,7 @@
           98.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -3981,7 +4254,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           },
           {
             "feld": "comparator_group_size",
@@ -3996,7 +4270,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           },
           {
             "feld": "comparator_group_size",
@@ -4011,7 +4286,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           }
         ]
       },
@@ -4044,6 +4320,12 @@
           0.9,
           1.3,
           1.4
+        ]
+      },
+      "belegt": {
+        "comparator_group_size": [
+          70.0,
+          140.0
         ]
       },
       "vorher": {
@@ -4136,6 +4418,7 @@
           79.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -4194,6 +4477,7 @@
           79.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -4238,6 +4522,7 @@
       "fliesstext": {},
       "fundstellen": {},
       "fundstellen_vorher": {},
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -4298,6 +4583,7 @@
       "fliesstext": {},
       "fundstellen": {},
       "fundstellen_vorher": {},
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -4374,6 +4660,7 @@
           44.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -4482,6 +4769,7 @@
           44.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -4582,6 +4870,7 @@
           0.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -4646,6 +4935,7 @@
       "fliesstext": {},
       "fundstellen": {},
       "fundstellen_vorher": {},
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -4742,7 +5032,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "comparator_group_size",
@@ -4757,7 +5048,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           },
           {
             "feld": "comparator_group_size",
@@ -4772,7 +5064,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -4789,7 +5082,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_group_size",
@@ -4804,7 +5098,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_group_size",
@@ -4819,7 +5114,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           },
           {
             "feld": "intervention_group_size",
@@ -4834,7 +5130,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           },
           {
             "feld": "intervention_group_size",
@@ -4849,7 +5146,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_group_size",
@@ -4864,7 +5162,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -4887,6 +5186,15 @@
         "intervention_group_size": [
           298.0,
           307.0
+        ]
+      },
+      "belegt": {
+        "comparator_group_size": [
+          204.0
+        ],
+        "intervention_group_size": [
+          283.0,
+          289.0
         ]
       },
       "vorher": {
@@ -4993,7 +5301,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           },
           {
             "feld": "comparator_group_size",
@@ -5008,7 +5317,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -5025,7 +5335,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           },
           {
             "feld": "intervention_group_size",
@@ -5040,7 +5351,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": true
           },
           {
             "feld": "intervention_group_size",
@@ -5055,7 +5367,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_group_size",
@@ -5070,7 +5383,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -5093,6 +5407,15 @@
         "intervention_group_size": [
           298.0,
           307.0
+        ]
+      },
+      "belegt": {
+        "comparator_group_size": [
+          204.0
+        ],
+        "intervention_group_size": [
+          283.0,
+          289.0
         ]
       },
       "vorher": {
@@ -5201,6 +5524,7 @@
           18.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -5305,7 +5629,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "comparator_group_size",
@@ -5320,7 +5645,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -5341,6 +5667,7 @@
           12.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -5397,7 +5724,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "comparator_group_size",
@@ -5412,7 +5740,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -5433,6 +5762,7 @@
           12.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -5489,7 +5819,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -5506,7 +5837,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -5528,6 +5860,7 @@
           27.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -5632,7 +5965,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -5649,7 +5983,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -5671,6 +6006,7 @@
           27.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -5775,7 +6111,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -5792,7 +6129,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_group_size",
@@ -5807,7 +6145,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -5829,6 +6168,7 @@
           21.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -5885,7 +6225,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -5902,7 +6243,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -5930,6 +6272,7 @@
         "intervention_mean": [],
         "intervention_standard_deviation": []
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -6038,6 +6381,7 @@
       "fliesstext": {},
       "fundstellen": {},
       "fundstellen_vorher": {},
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -6074,6 +6418,7 @@
       "fliesstext": {},
       "fundstellen": {},
       "fundstellen_vorher": {},
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": false,
@@ -6166,6 +6511,7 @@
           15.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -6218,7 +6564,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ],
         "intervention_group_size": [
@@ -6235,7 +6582,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -6253,6 +6601,7 @@
           15.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -6355,7 +6704,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_group_size",
@@ -6370,7 +6720,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -6390,6 +6741,7 @@
           19.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
@@ -6490,7 +6842,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           },
           {
             "feld": "intervention_group_size",
@@ -6505,7 +6858,8 @@
             "sicherheit": "mittel",
             "tabelle": "",
             "zeile": null,
-            "spalten": []
+            "spalten": [],
+            "belegt": false
           }
         ]
       },
@@ -6525,6 +6879,7 @@
           19.0
         ]
       },
+      "belegt": {},
       "vorher": {
         "intervention_group_size": {
           "erreichbar": true,
