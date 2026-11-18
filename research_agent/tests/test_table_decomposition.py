@@ -56,6 +56,7 @@ from research_agent.table_decomposition.reconstruct import (
 )
 from research_agent.table_decomposition.semantics import (
     bind_arm,
+    document_arm_definitions,
     enrich_table,
     header_geometry_trustworthy,
     group_size_declaration,
@@ -64,6 +65,7 @@ from research_agent.table_decomposition.semantics import (
     reachable_fields,
     role_for_header,
     target_columns,
+    transfer_arms_from_document,
     transfer_arms_within_document,
 )
 from research_agent.table_decomposition.strategies import (
@@ -1038,3 +1040,30 @@ def test_header_bands_are_reassigned_to_value_columns():
     fresh = Table(table_id="SHIFT:T2", doc_id="SHIFT", index=2)
     fresh.columns = [Column(col_id=0, x_start=0, x_end=9)]
     assert not _reassign_header_bands_by_order(fresh)
+
+
+def test_document_definition_proves_the_intervention_arm():
+    """Die Definition im Text belegt ``Plus`` als Interventionsarm."""
+    text = (
+        "A randomized controlled trial was conducted with a basic (tailored "
+        "intervention targeting individual cognition and self-regulation "
+        "processes; n=456), plus (basic intervention additionally targeting "
+        "environmental-level factors; n=459), and control (generic nutrition "
+        "information; n=434) group."
+    )
+    definitions = document_arm_definitions(text)
+    assert set(definitions) == {"basic", "plus", "control"}
+
+    context = {"intervention": "Intervention + targeting environmental-level factors",
+               "comparator": "Control"}
+    table = _row_arm_table()
+    for row in table.rows:
+        row.arm, row.arm_basis = None, ""
+    assert transfer_arms_from_document([table], context, text) == 1
+    plus = next(row for row in table.rows if row.label == "Plus")
+    assert plus.arm == ARM_INTERVENTION
+    assert plus.arm_basis == "dokument"
+    # Ohne Definition im Text bleibt der Arm leer.
+    for row in table.rows:
+        row.arm, row.arm_basis = None, ""
+    assert transfer_arms_from_document([table], context, "Keine Definition.") == 0

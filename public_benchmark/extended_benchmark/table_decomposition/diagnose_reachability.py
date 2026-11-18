@@ -34,6 +34,7 @@ from research_agent.table_decomposition.semantics import (  # noqa: E402
     enrich_table,
     outcome_rows,
     reachable_cells,
+    transfer_arms_from_document,
     transfer_arms_within_document,
 )
 
@@ -128,6 +129,7 @@ def main() -> int:
         for table in document_tables[doc_id]:
             enrich_table(table, context)
         transfer_arms_within_document(document_tables[doc_id], context)
+        transfer_arms_from_document(document_tables[doc_id], context, documents[doc_id])
 
         focus = {table.table_id: outcome_rows(table, str(context.get("outcome") or ""))
                  for table in chosen}

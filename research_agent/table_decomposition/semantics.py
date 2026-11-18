@@ -207,6 +207,91 @@ def cell_arm(column: Column, row) -> Optional[str]:
     return getattr(row, "arm", None)
 
 
+_DEFINITION_RE = re.compile(r"\b([A-Za-z][A-Za-z\-]{2,24})\s*\(([^()]{15,400})\)")
+_ARM_DEFINITION_RE = re.compile(
+    r"\bn\s*=\s*\d+|\bintervention\b|\bcontrol\b|\bgroup\b|\binstruction\b|\busual\b",
+    re.IGNORECASE,
+)
+_COMPARISON_RE = re.compile(r"\bvs\b|\bversus\b|\bcomparison\b", re.IGNORECASE)
+
+
+def document_arm_definitions(text: str) -> Dict[str, str]:
+    """Armname -> gedruckte Definition aus dem Dokumenttext.
+
+    ``PMC4319071`` definiert im Abstract: ``basic (tailored intervention
+    targeting individual cognition and self-regulation processes; n=456),
+    plus (basic intervention additionally targeting environmental-level
+    factors; n=459), and control (generic nutrition information; n=434)``.
+    Der Record nennt nur ``Intervention + targeting environmental-level
+    factors``; erst die Definition im Dokument belegt, dass ``Plus`` der
+    Interventionsarm ist und nicht ``Basic``.
+
+    Aufgenommen wird nur, was wie eine Armdefinition aussieht (``n =``,
+    ``intervention``, ``control``, ``group``, ``instruction``, ``usual``);
+    andere Klammerzusaetze sind keine Arme.
+    """
+    definitions: Dict[str, str] = {}
+    for match in _DEFINITION_RE.finditer(text or ""):
+        label = match.group(1).strip().lower()
+        body = " ".join(match.group(2).split())
+        if len(body) < 15 or not _ARM_DEFINITION_RE.search(body):
+            continue
+        definitions.setdefault(label, body)
+    return definitions
+
+
+def _document_label(text: str) -> str:
+    """Erstes Wort eines Labels, ohne Klammerzusatz und Vergleichsform."""
+    cleaned = re.sub(r"\([^)]*\)", " ", text or "")
+    if _COMPARISON_RE.search(cleaned):
+        return ""
+    cleaned = re.sub(r"[^0-9A-Za-z\-\s]", " ", cleaned).strip().lower()
+    return cleaned.split()[0] if cleaned else ""
+
+
+def transfer_arms_from_document(tables: Sequence[Table],
+                                context: Optional[Dict[str, object]] = None,
+                                document_text: str = "") -> int:
+    """Arm aus der gedruckten Armdefinition belegen (``arm_basis="dokument"``).
+
+    Der Armname steht in der Tabelle (``Plus`` als Zeilenlabel), die Definition
+    im Text. Nur wenn die Definition den Arm des Records belegt, bekommen
+    Zeilen mit diesem Label den Arm; ohne Definition bleibt er leer. Es gelten
+    dieselben Schwellen wie im Kopf.
+
+    Nur **Zeilenlabels** werden gesetzt, keine Spaltenkoepfe: der Armname einer
+    Zeile benennt die Zeile selbst, ihre Werte gehoeren also zu diesem Arm -
+    auch wenn das Strichraster verschoben ist. Bei Spalten haengt der Arm an
+    der Spaltenposition; in ``PMC4319071:T1`` traegt die Spalte unter ``Plus``
+    den Wert von ``Control`` (157.73), ein Arm daraus waere ein falscher Wert.
+    """
+    context = context or {}
+    intervention = str(context.get("intervention") or "")
+    comparator = str(context.get("comparator") or "")
+    definitions = document_arm_definitions(document_text)
+    if not definitions:
+        return 0
+    proven: Dict[str, str] = {}
+    for label, body in definitions.items():
+        binding = bind_arm((body,), intervention, comparator)
+        if binding.arm and binding.basis == "header_treffer":
+            proven[label] = binding.arm
+    if not proven:
+        return 0
+    assigned = 0
+    for table in tables:
+        for row in table.rows:
+            if row.arm or not row.label_path:
+                continue
+            arm = proven.get(_document_label(row.label_path[-1]))
+            if not arm:
+                continue
+            row.arm = arm
+            row.arm_basis = "dokument"
+            assigned += 1
+    return assigned
+
+
 def header_unit(header_path: Sequence[str]) -> str:
     """Einheit aus der Header-Hierarchie, wenn sie dort gedruckt steht."""
     for text in reversed(list(header_path)):

@@ -46,6 +46,7 @@ from research_agent.table_decomposition.reconstruct import Reconstruction  # noq
 from research_agent.table_decomposition.semantics import (
     enrich_table,
     reachable_cells,
+    transfer_arms_from_document,
     transfer_arms_within_document,
 )  # noqa: E402
 from research_agent.table_decomposition.strategies import (  # noqa: E402
@@ -96,6 +97,7 @@ def load_tables(selection_entries: Sequence[Dict[str, Any]],
     for table in parsed.tables:
         enrich_table(table, context, assume_order=assume_order)
     transfer_arms_within_document(parsed.tables, context)
+    transfer_arms_from_document(parsed.tables, context, text)
     tables = []
     for table in parsed.tables:
         if table.table_id not in wanted:

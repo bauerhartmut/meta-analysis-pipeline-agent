@@ -1241,3 +1241,31 @@ Interventionsarm bleibt offen, weil `Plus` im Record nicht benannt ist.
 **Naechster Hebel:** Armnamen aus dem Dokument belegen (`Basic`/`Plus` stehen in
 `T1`-Kopf und `T2`-Zeilen) und als `arm_basis="dokument"` markieren.
 Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/kopf_ordnung_20261118.md`.
+
+## Sprint 39 (18.11.2026): Interventionsarm aus der Dokumentdefinition
+
+**Anlass:** `PMC4319071` nennt im Record nur `Intervention + targeting
+environmental-level factors`; der Armname `Plus` steht nur in der Tabelle.
+
+**Beleg:** Das Abstract definiert `basic (…; n=456)`, `plus (basic intervention
+additionally targeting environmental-level factors; n=459)` und `control (…;
+n=434)`. Die Plus-Definition deckt den Record-Interventionsarm vollstaendig
+(4/4 Tokens), die Basic-Definition nur `targeting` (0.25, unter der Schwelle).
+
+**Aenderung:** `document_arm_definitions` und `transfer_arms_from_document`
+setzen den Arm mit `arm_basis="dokument"` an **Zeilenlabels**; eingebunden in
+Engine und den drei Benchmark-Werkzeugen. Spaltenkoepfe bleiben bewusst aussen
+vor: in `T1` traegt die Spalte unter `Plus` den Control-Wert (157.73), ein
+Spaltenarm erzeugte drei falsche Felder. Test: 1 neu, 51 gruen.
+
+**Ergebnis:** Von den vier offenen Goldfeldern werden zwei erreichbar - die
+beiden Interventionsmittelwerte (`167.61` in `T2` Zeile 16 / Spalte 4 fuer
+`yun2024:112`, `2.50` fuer `yun2024:111`), jeweils exakt Gold. Die beiden
+Gold-Streuungen (83.71, 2.76) stehen nicht im Dokument (`83.71` 0 Treffer,
+`2.76` nur als Teil von `72.76`), die Tabellen drucken `Mean (SE)`. dev
+unveraendert: 11 Dokumente mit Definitionen, 0 gebundene Zeilenarme, 16
+erreichbare Goldfelder, 5 Records mit Treffer.
+
+**Naechster Hebel:** Auswahlregel "eine Tabelle je Outcome und Zeitpunkt" -
+`T4` liefert dieselben Felder mit anderen Werten (143.25 statt 158.67).
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/dokumentarm_20261118.md`.

@@ -66,6 +66,11 @@ Schreibt Header-Pfade, Rollen (`label`, `n`, `mean`, `sd`, `events`, `p`,
   0.6, weil Zeilenlabels kurz sind; ein dritter Arm (`Apple Juice`) bleibt ohne
   Arm. Zusammen mit `Column.is_outcome` (Outcome-Name im Spaltenkopf) entsteht
   das Feld: Arm aus der Zeile, Rolle aus dem Kopf.
+- `transfer_arms_from_document(tables, context, text)` — Arm aus der
+  gedruckten Armdefinition (`plus (basic intervention additionally targeting
+  environmental-level factors; n=459)`) auf **Zeilenlabels**, markiert als
+  `arm_basis="dokument"`. Spaltenköpfe bleiben draußen, weil deren Arm an der
+  Spaltenposition hängt (belegt: `PMC4319071:T1`).
 - `_reassign_header_bands_by_order(table)` (Parser) — ist die Kopfspanne
   unauflösbar, folgen die Kopfebenen den **Wertspalten** in Leserichtung;
   Zellen und Spalten bleiben unangetastet. Belegt: `PMC4319071:T2`, wo das

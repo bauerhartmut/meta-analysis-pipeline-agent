@@ -26,7 +26,11 @@ from .complexity import assess
 from .model import DocumentTables, Table
 from .parser import parse_document
 from .reconstruct import Reconstruction, ReconstructionResult, unreported_addresses
-from .semantics import enrich_table, transfer_arms_within_document
+from .semantics import (
+    enrich_table,
+    transfer_arms_from_document,
+    transfer_arms_within_document,
+)
 from .strategies import (
     DIRECTION_CELL,
     DIRECTION_COLUMN,
@@ -266,6 +270,11 @@ class TableDecompositionEngine:
         if self.config.arm_transfer:
             transferred = transfer_arms_within_document(parsed.tables, context)
             result.telemetry["transferred_arms"] = transferred
+            # Armname aus der gedruckten Armdefinition des Dokuments
+            # (``plus (basic intervention additionally targeting ...)``).
+            result.telemetry["document_arms"] = transfer_arms_from_document(
+                parsed.tables, context, text
+            )
         for table in parsed.tables:
             if allowed is not None and table.table_id not in allowed:
                 continue
