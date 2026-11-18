@@ -375,6 +375,14 @@ Tokenverbrauch schwankt stark (443 → 1.195 bei `yun2024:698`). Bericht:
    hat keine und fällt aus Recall und MAE. Der Trockenlauf derselben Zeile wählt
    103 Aufträge und sendet nichts. Artefakt:
    `iterativ/ergebnisse/p5_vorbereitung_20261118.json` und `.md`.
+6. Auswertung vorbereitet (offline, noch ohne Lauf): `yun_full/werte_p5_aus.py`
+   stellt die künftigen Zeilen aus `runs/yun699_p5_24000_20261118` je
+   `record_id` gegen die 103 Ausfallzeilen, zählt je Record Rettung, Zellgewinn
+   und die adressierten Goldzellen und führt `yun2024:653` getrennt als nicht
+   bewertbar. Die Zellzaehlung ist eine grobe Selbstpruefung (Feld und Arm, Wert
+   auf 1e-6), nicht die offizielle Bewertung. Nullprobe gegen die eigene
+   Lesekopie: 0 Rettungen, 0 Zellgewinn, 423 Goldzellen; ohne Laufdatei endet das
+   Skript mit Exit 2.
 
 ## 7. Erwartbare Wirkung, ehrlich beziffert
 
