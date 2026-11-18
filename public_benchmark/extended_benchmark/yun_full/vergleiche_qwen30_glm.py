@@ -37,10 +37,6 @@ def lies(pfad: Path) -> list[dict]:
     return [json.loads(z) for z in pfad.read_text(encoding="utf-8").splitlines() if z.strip()]
 
 
-def arm(feld: str) -> str:
-    return "intervention" if feld.startswith("intervention") else "comparator"
-
-
 def ist_leer(row: dict) -> bool:
     return not row.get("rows") and not row.get("fehlerklasse")
 
@@ -56,7 +52,6 @@ def main() -> int:
     lauf = RUNS / args.run
     rows = lies(lauf / "predictions.jsonl")
     gold_records = {r["record_id"]: r for r in lies(RECORDS)}
-    text = (lauf / "predictions.jsonl").read_text(encoding="utf-8")
 
     res = {}
     for modell in (args.modell_a, args.modell_b):
@@ -100,21 +95,16 @@ def main() -> int:
                 "richtig": richtig,
                 "falsch": falsch,
                 "fehlend": fehlend,
-                "gold": len(gold),
                 "leer": ist_leer(row),
-                "typen": record["context"]["outcome_type"],
             }
 
     # Zerlegung der fehlenden Zellen des Modells A.
     a = args.modell_a
     fehlend_zerlegt = Counter()
-    for rid, stand in je_record.items():
+    for stand in je_record.values():
         info = stand[a]
         if info["fehlend"] == 0:
             continue
-        # Wie viele der Goldfelder des Records liegen in einem Gruppenfeld?
-        gold = {c["field"]: c["value"] for c in gold_records[rid]["gold"]["cells"]}
-        fehlende_gruppen = sum(1 for f in gold if f in GRUPPENFELDER)
         if info["leer"]:
             fehlend_zerlegt["leere_antwort"] += info["fehlend"]
         else:
@@ -122,7 +112,7 @@ def main() -> int:
 
     # Aufteilung nach Gruppenfeld / Nicht-Gruppenfeld aus Sicht des Modells A.
     gruppenanalyse = Counter()
-    for rid, stand in je_record.items():
+    for rid in je_record:
         gold = {c["field"]: c["value"] for c in gold_records[rid]["gold"]["cells"]}
         row = next(r for r in rows if r["record_id"] == rid and r["model"] == a)
         gesehen = {}
@@ -174,7 +164,12 @@ def main() -> int:
         "tokens": {m: tokens_je_record[m] for m in (a, args.modell_b)},
     }
 
-    ausgabe = {"run": args.run, "modelle": [a, args.modell_b], "auswertung": res, "zusatz": zus}
+    # Die Abweichungsliste steht vollstaendig in den Modell-JSONs; hier wird sie
+    # nicht noch einmal dupliziert, sondern nur auf die Kennzahlen verwiesen.
+    auswertung = {
+        m: {k: v for k, v in z.items() if k != "abweichungen"} for m, z in res.items()
+    }
+    ausgabe = {"run": args.run, "modelle": [a, args.modell_b], "auswertung": auswertung, "zusatz": zus}
     args.out_dir.mkdir(parents=True, exist_ok=True)
     (args.out_dir / "vergleich.json").write_text(
         json.dumps(ausgabe, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
