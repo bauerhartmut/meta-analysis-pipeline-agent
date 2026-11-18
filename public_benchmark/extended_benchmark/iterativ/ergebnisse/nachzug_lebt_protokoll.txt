@@ -1,0 +1,11 @@
+GLM-Ausfaelle vor dem Nachzug: 103
+Nachzug gestartet, PID 1263 (Log: public_benchmark/extended_benchmark/runs/_nachzug_lebt/konsole_nachzug.log)
+Warte auf den Nachzug (max 1 min, Takt 1 s).
+FEHLER: Nachzug nach 1 Minuten noch nicht fertig.
+Kind laeuft weiter (PID 1263): 0 neue Zeilen, letzte Logaenderung vor 0 s.
+Dedupe unterlassen, damit kein halber Stand als Ergebnis gilt.
+Das Kind wird nicht beendet; es schreibt weiter in public_benchmark/extended_benchmark/runs/_nachzug_lebt/predictions.jsonl.
+Sperre public_benchmark/extended_benchmark/runs/_nachzug_lebt/nachzug.lock bleibt liegen (gilt nach 90 Minuten als abgelaufen).
+PID notiert in public_benchmark/extended_benchmark/runs/_nachzug_lebt/nachzug_kind.pid.
+Wenn es von selbst endet, den Rest von Hand:
+  .venv/bin/python public_benchmark/extended_benchmark/yun_full/dedupe_predictions.py --run _nachzug_lebt --write

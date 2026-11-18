@@ -63,10 +63,7 @@ if [ "$TAKT" -lt 1 ]; then
   echo "FEHLER: --takt muss mindestens 1 Sekunde sein."
   exit 2
 fi
-# Anzahl der Abfragen aus derselben Grenze ableiten, damit Warten auf den
-# Hauptlauf und Warten auf den Nachzug nicht auseinanderlaufen.
-SCHRITTE=$(( MAXWARTE * 60 / TAKT ))
-if [ "$SCHRITTE" -lt 1 ]; then SCHRITTE=1; fi
+GRENZE=$(( MAXWARTE * 60 ))   # Sekunden; beide Wartephasen messen damit dieselbe Frist
 
 if [ "$TROCKEN" -eq 1 ] && [ "$RUN" = "$ECHT" ]; then
   echo "FEHLER: --dry-run nur auf einer Kopie (--run <kopie>) ausfuehren."
@@ -111,9 +108,10 @@ laeuft_noch() {
 if [ "$JETZT" -eq 0 ]; then
   echo "Warte, bis kein Extraktionsprozess mehr laeuft (max ${MAXWARTE} min)."
   echo "Log (nur zur Information): $LOG"
-  for i in $(seq 1 "$MAXWARTE"); do
+  start=$SECONDS
+  while [ $(( SECONDS - start )) -lt "$GRENZE" ]; do
     if ! laeuft_noch; then
-      echo "Kein Prozess mehr aktiv nach ${i} Minuten."
+      echo "Kein Prozess mehr aktiv nach $(( (SECONDS - start) / 60 )) Minuten."
       break
     fi
     sleep 60
@@ -177,24 +175,70 @@ else
   echo "Nachzug gestartet, PID $NPID (Log: $NLOG)"
 
   # --- Auf den Nachzug warten -----------------------------------------------
-  # Dieselbe Grenze wie beim Warten auf den Hauptlauf: 720 min bei Takt 30 s
-  # sind 1440 Abfragen. Frueher stand hier 240 (2 h), das war kuerzer als die
-  # eigene Prozess-Grenze und haette einen laufenden Nachzug abgeschnitten.
+  # Dieselbe Frist wie beim Warten auf den Hauptlauf (MAXWARTE Minuten),
+  # gemessen in echter Zeit: Ein Schlafintervall dauert auf einem belasteten
+  # Rechner laenger als angefordert, eine Schrittzaehlung wuerde die Frist
+  # dadurch still ueberschreiten.
+  zeilen_anzahl() {
+    if [ -f "$R/$RUN/predictions.jsonl" ]; then
+      wc -l < "$R/$RUN/predictions.jsonl" | tr -d '[:space:]'
+    else
+      echo 0
+    fi
+  }
+  zeilen_start=$(zeilen_anzahl)
+  log_stand=$(stat -c %s "$NLOG" 2>/dev/null || echo 0)
+  letzte_aenderung=""
+
   echo "Warte auf den Nachzug (max ${MAXWARTE} min, Takt ${TAKT} s)."
-  erreicht=0
-  for i in $(seq 1 "$SCHRITTE"); do
-    if grep -q "^fertig:" "$NLOG" 2>/dev/null; then erreicht=$i; break; fi
+  start=$SECONDS
+  while [ $(( SECONDS - start )) -lt "$GRENZE" ]; do
+    if grep -q "^fertig:" "$NLOG" 2>/dev/null; then break; fi
+    # Ein gestorbenes Kind nicht bis zum Ablauf der Frist beobachten.
+    if ! kill -0 "$NPID" 2>/dev/null; then break; fi
     sleep "$TAKT"
+    groesse=$(stat -c %s "$NLOG" 2>/dev/null || echo 0)
+    if [ "$groesse" != "$log_stand" ]; then
+      log_stand=$groesse
+      letzte_aenderung=$SECONDS
+    fi
   done
+
   if ! grep -q "^fertig:" "$NLOG" 2>/dev/null; then
-    echo "FEHLER: Nachzug nach ${MAXWARTE} Minuten nicht abgeschlossen, Dedupe unterlassen."
-    echo "Kind laeuft moeglicherweise weiter (PID $NPID, Log: $NLOG)."
-    echo "Sperre $LOCK bleibt liegen, damit kein zweiter Nachzug parallel startet"
-    echo "(sie gilt nach 90 Minuten als abgelaufen)."
+    neu=$(( $(zeilen_anzahl) - zeilen_start ))
+    if [ -n "$letzte_aenderung" ]; then
+      still=$(( SECONDS - letzte_aenderung ))
+    else
+      still=$(( SECONDS - start ))
+    fi
+    if kill -0 "$NPID" 2>/dev/null; then
+      # Kind lebt: nicht beenden (ein Abbruch braucht Freigabe), aber den
+      # Zustand belegen und den Rest von Hand nachholbar machen.
+      echo "FEHLER: Nachzug nach ${MAXWARTE} Minuten noch nicht fertig."
+      echo "Kind laeuft weiter (PID $NPID): ${neu} neue Zeilen, letzte Logaenderung vor ${still} s."
+      echo "Dedupe unterlassen, damit kein halber Stand als Ergebnis gilt."
+      echo "Das Kind wird nicht beendet; es schreibt weiter in $R/$RUN/predictions.jsonl."
+      echo "Sperre $LOCK bleibt liegen (gilt nach 90 Minuten als abgelaufen)."
+      echo "PID notiert in $R/$RUN/nachzug_kind.pid."
+      echo "$NPID" > "$R/$RUN/nachzug_kind.pid"
+      echo "Wenn es von selbst endet, den Rest von Hand:"
+      echo "  .venv/bin/python public_benchmark/extended_benchmark/yun_full/dedupe_predictions.py --run $RUN --write"
+      trap - EXIT
+      exit 1
+    fi
+    wait "$NPID"
+    code=$?
+    echo "FEHLER: Nachzug endete ohne Abschlusszeile (Exitcode $code, ${neu} neue Zeilen)."
+    echo "Letzte Zeilen aus $NLOG:"
+    tail -n 15 "$NLOG" 2>/dev/null | sed 's/^/  /'
+    echo "Dedupe unterlassen."
+    if [ "$code" -eq 0 ]; then
+      echo "Exitcode 0: moeglicherweise fertig, aber ohne 'fertig:'-Zeile. Stand pruefen, dann von Hand deduplizieren."
+    fi
     trap - EXIT
-    exit 1
+    exit 2
   fi
-  echo "Nachzug fertig nach ${erreicht} Abfragen ($(( erreicht * TAKT )) s)."
+  echo "Nachzug fertig nach $(( SECONDS - start )) s ($(( $(zeilen_anzahl) - zeilen_start )) neue Zeilen)."
 fi
 
 # --- Dedupe und Zaehlung ----------------------------------------------------

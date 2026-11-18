@@ -106,19 +106,31 @@ Die Warteschleife auf den Nachzug war auf 240 Abfragen a 30 s festgenagelt
 Auftraege mit Reparaturaufruf war das zu kurz: Der Nachzug waere abgeschnitten
 worden, waehrend er noch schrieb, und der Dedupe waere unterblieben.
 
-Jetzt leiten beide Wartezeiten ihre Schrittzahl aus derselben Grenze ab:
-`SCHRITTE = MAXWARTE * 60 / TAKT`, Standard `--max-warte 720 --takt 30` ergibt
-1.440 Abfragen (12 h) statt 240 (2 h). `--max-warte` und `--takt` sind
-Parameter, keine Konstanten im Code.
+Jetzt messen beide Wartezeiten dieselbe Frist in echter Zeit
+(`GRENZE = MAXWARTE * 60` Sekunden gegen `$SECONDS`), Standard 720 Minuten.
+Eine Schrittzaehlung waere hier falsch: `sleep 30` dauert auf einem belasteten
+Rechner laenger, 1.440 Schritte waeren dann mehr als 12 h. `--max-warte` und
+`--takt` sind Parameter, keine Konstanten im Code.
 
-Abbruchpfad offline geprueft (`nachzug_abbruch_protokoll.txt`), mit
-`NACHZUG_KINDBEFEHL` als Ersatz fuer den Harness-Aufruf:
+Abbruchpfad offline geprueft, mit `NACHZUG_KINDBEFEHL` als Ersatz fuer den
+Harness-Aufruf (Protokolle `nachzug_abbruch_protokoll.txt`,
+`nachzug_lebt_protokoll.txt`, `nachzug_stirbt_protokoll.txt`):
 
 | Fall | Erwartung | Ergebnis |
 |---|---|---|
-| Kind meldet nie `fertig:` | Abbruch, Exit 1, kein Dedupe, Sperre bleibt | Exit 1, keine `predictions.jsonl.bak`, Sperre liegt |
-| Kind meldet `fertig:` | weiter zu Dedupe und Zusammenfassung | „fertig nach 3 Abfragen“, Dedupe lief, Sperre entfernt |
+| Kind laeuft ueber die Frist hinaus (`sleep`-Schleife, 100 s) | Exit 1, kein Dedupe, Sperre bleibt, Kind lebt weiter | Exit 1, PID 1263 notiert und nachweislich am Leben, 13 Log-Zeilen waehrend der Frist, keine `predictions.jsonl.bak`, Sperre liegt |
+| Kind stirbt ohne `fertig:` (Exit 7 nach 2 s, Frist 5 min) | sofortiger Abbruch mit Exitcode und Logrest, Exit 2 | nach **3 s** statt 300 s, Exit 2, Exitcode 7 und letzte Logzeilen im Protokoll, kein Dedupe |
+| Kind meldet `fertig:` | weiter zu Dedupe und Zusammenfassung | „fertig nach 2 s“, Dedupe lief, Sperre entfernt |
+| Warten auf den Hauptlauf ohne Prozess | sofort weiter | „Kein Prozess mehr aktiv nach 0 Minuten“ |
 | Trockenlauf nach dem Umbau | unveraendert | 103 vorher, 2 gerettet, 101 erneut length |
+
+Was der Abbruch jetzt anders macht: Er **raet nicht mehr**, ob das Kind noch
+laeuft, sondern prueft es mit `kill -0` und holt sich bei einem toten Kind mit
+`wait` den Exitcode. Ein lebendes Kind wird nicht beendet — ein Abbruch
+braucht Freigabe — sondern mit PID-Datei, Fortschrittszahl und dem genauen
+Dedupe-Befehl fuer danach hinterlassen, damit die Arbeit nicht verloren geht.
+Ein gestorbenes Kind bricht die Wartephase sofort ab, statt die Frist
+abzusitzen: Ein Absturz nach zehn Minuten haette sonst zwoelf Stunden gewartet.
 
 Die Sperre bleibt im Abbruchfall absichtlich liegen: Das Kind schreibt
 moeglicherweise noch in dieselbe Datei, ein zweiter Nachzug wuerde parallel

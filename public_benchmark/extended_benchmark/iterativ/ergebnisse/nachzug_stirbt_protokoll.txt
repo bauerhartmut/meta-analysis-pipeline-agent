@@ -1,0 +1,8 @@
+GLM-Ausfaelle vor dem Nachzug: 103
+Nachzug gestartet, PID 1557 (Log: public_benchmark/extended_benchmark/runs/_nachzug_stirbt/konsole_nachzug.log)
+Warte auf den Nachzug (max 5 min, Takt 1 s).
+FEHLER: Nachzug endete ohne Abschlusszeile (Exitcode 7, 0 neue Zeilen).
+Letzte Zeilen aus public_benchmark/extended_benchmark/runs/_nachzug_stirbt/konsole_nachzug.log:
+  anfang
+  Traceback: irgendwas
+Dedupe unterlassen.
