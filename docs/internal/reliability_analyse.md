@@ -415,13 +415,16 @@ Tokenverbrauch schwankt stark (443 → 1.195 bei `yun2024:698`). Bericht:
    Lesekopie: 0 Rettungen, 0 Zellgewinn, 423 Goldzellen; ohne Laufdatei endet das
    Skript mit Exit 2.
 7. Start erst bei echter Ruhe: `yun_full/starte_p5_wenn_frei.sh` wartet, bis
-   `lauf_status.py` für `yun699_8000_alle_20261117` "Prozesse: 0" meldet, keine
-   `nachzug.lock` jünger als 90 Minuten liegt und 180 Sekunden lang keine Zeile
-   mehr an `predictions.jsonl` hängt; erst dann startet es den Lauf und ruft
-   `werte_p5_aus.py` auf. Grund: `kill -0` meldet unter Git Bash einen laufenden
-   Windows-Prozess als beendet (am 18.11. für PID 3952 beobachtet), und ein
-   mehrteiliger Lauf setzt zwischen zwei Etappen kurz aus. Protokoll:
-   `runs/p5_start_20261118.log`.
+   `lauf_status.py` für `yun699_8000_alle_20261117` "Prozesse: 0" meldet, der in
+   `nachzug.lock` eingetragene Prozess nicht mehr lebt und 180 Sekunden lang
+   keine Zeile mehr an `predictions.jsonl` hängt; erst dann startet es den Lauf
+   und ruft `werte_p5_aus.py` auf. Gründe: `kill -0` meldet unter Git Bash einen
+   laufenden Windows-Prozess als beendet (am 18.11. für die Windows-PID 3952
+   beobachtet). Und das Alter der Sperre taugt nicht als Signal: sie gilt nach 90
+   Minuten als alt, die Steuerung wartet aber bis zu 720 Minuten und startet ihr
+   Kind erst danach — eine Altersprüfung allein ließe P5 mitten in den Nachzug
+   laufen. Die Lebendprüfung nutzt `ps -W` (msys- und Windows-PID), `--pruefen`
+   zeigt das Lagebild ohne Start. Protokoll: `runs/p5_start_20261118.log`.
 
 ## 7. Erwartbare Wirkung, ehrlich beziffert
 
