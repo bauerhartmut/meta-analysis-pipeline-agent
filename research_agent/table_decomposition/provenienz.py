@@ -23,11 +23,12 @@ nur die angereicherte Tabelle (``enrich_table``) und ihre Kopfangaben.
 from __future__ import annotations
 
 import re
+from collections import defaultdict
 from dataclasses import asdict, dataclass
 from typing import Any, Dict, List, Optional, Sequence
 
 from .model import ROLE_LABEL, ROLE_N, ROLE_UNKNOWN, field_for
-from .semantics import _NUMBER_RE, cell_arm
+from .semantics import _NUMBER_RE, cell_arm, reachable_cells
 
 QUELLE_KOPF = "kopfangabe"
 QUELLE_ZELLE = "messzelle"
@@ -171,6 +172,28 @@ def stellen(table: Any, row_id: int, feld: str) -> List[Provenienz]:
     if row_id == -1:
         return _kopf(table, feld)
     return _zellen(table, row_id, feld)
+
+
+def feld_stellen(tables: Sequence[Any], context: Dict[str, Any]
+                 ) -> Dict[str, List[Provenienz]]:
+    """Je Feld alle Fundstellen der Tabellen, je Feld entdoppelt.
+
+    Dieselbe Stelle kann fuer zwei Felder tragen (eine Verbundzelle
+    ``1.3 (0.6)`` liefert Mittelwert und Streuung); entdoppelt wird deshalb je
+    Feld, nicht global.
+    """
+    out: Dict[str, List[Provenienz]] = defaultdict(list)
+    gesehen = set()
+    for table in tables:
+        for row_id, feld in reachable_cells(table, context):
+            for stelle in stellen(table, row_id, feld):
+                schluessel = (feld, stelle.tabelle, stelle.quelle,
+                              stelle.zeile, tuple(stelle.spalten), stelle.text)
+                if schluessel in gesehen:
+                    continue
+                gesehen.add(schluessel)
+                out[feld].append(stelle)
+    return dict(out)
 
 
 def feld_art(stellen: Sequence[Provenienz]) -> str:

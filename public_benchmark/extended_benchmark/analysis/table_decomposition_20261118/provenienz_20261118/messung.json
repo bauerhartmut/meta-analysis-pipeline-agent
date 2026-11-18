@@ -2512,23 +2512,6 @@
           {
             "feld": "comparator_mean",
             "quelle": "messzelle",
-            "text": "1.2 (68)",
-            "wert": null,
-            "arm": "comparator",
-            "arm_basis": "header_treffer",
-            "zeitpunkt": "",
-            "art": "abgeleitet",
-            "regel": "spaltenfeld",
-            "sicherheit": "mittel",
-            "tabelle": "PMC4140238:T2",
-            "zeile": 8,
-            "spalten": [
-              2
-            ]
-          },
-          {
-            "feld": "comparator_mean",
-            "quelle": "messzelle",
             "text": "0.5 (70)",
             "wert": null,
             "arm": "comparator",
@@ -2539,6 +2522,23 @@
             "sicherheit": "mittel",
             "tabelle": "PMC4140238:T2",
             "zeile": 2,
+            "spalten": [
+              2
+            ]
+          },
+          {
+            "feld": "comparator_mean",
+            "quelle": "messzelle",
+            "text": "1.2 (68)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4140238:T2",
+            "zeile": 8,
             "spalten": [
               2
             ]
@@ -3755,23 +3755,6 @@
           },
           {
             "feld": "comparator_group_size",
-            "quelle": "messzelle",
-            "text": "5.9 (±1.6)",
-            "wert": null,
-            "arm": "comparator",
-            "arm_basis": "header_treffer",
-            "zeitpunkt": "",
-            "art": "abgeleitet",
-            "regel": "spaltenfeld",
-            "sicherheit": "mittel",
-            "tabelle": "PMC4987981:T1",
-            "zeile": 16,
-            "spalten": [
-              1
-            ]
-          },
-          {
-            "feld": "comparator_group_size",
             "quelle": "kopfangabe",
             "text": "Placebo (*n* = 23)",
             "wert": 23.0,
@@ -3785,6 +3768,23 @@
             "zeile": null,
             "spalten": [
               1,
+              1
+            ]
+          },
+          {
+            "feld": "comparator_group_size",
+            "quelle": "messzelle",
+            "text": "5.9 (±1.6)",
+            "wert": null,
+            "arm": "comparator",
+            "arm_basis": "header_treffer",
+            "zeitpunkt": "",
+            "art": "abgeleitet",
+            "regel": "spaltenfeld",
+            "sicherheit": "mittel",
+            "tabelle": "PMC4987981:T1",
+            "zeile": 16,
+            "spalten": [
               1
             ]
           }
@@ -4910,7 +4910,8 @@
       ],
       "summe_kopfwerte": 48.0,
       "wert_sonst_gedruckt": [
-        "PMC3877023:T1:kopf c1-1"
+        "PMC3877023:T1:kopf c1-1",
+        "PMC3877023:T1:kopfangabe Short-Bore MR (n = 44)"
       ],
       "art": "mehrfach",
       "sicherheit": "hoch",
@@ -4979,23 +4980,6 @@
         {
           "feld": "comparator_mean",
           "quelle": "messzelle",
-          "text": "1.2 (68)",
-          "wert": null,
-          "arm": "comparator",
-          "arm_basis": "header_treffer",
-          "zeitpunkt": "",
-          "art": "abgeleitet",
-          "regel": "spaltenfeld",
-          "sicherheit": "mittel",
-          "tabelle": "PMC4140238:T2",
-          "zeile": 8,
-          "spalten": [
-            2
-          ]
-        },
-        {
-          "feld": "comparator_mean",
-          "quelle": "messzelle",
           "text": "0.5 (70)",
           "wert": null,
           "arm": "comparator",
@@ -5006,6 +4990,23 @@
           "sicherheit": "mittel",
           "tabelle": "PMC4140238:T2",
           "zeile": 2,
+          "spalten": [
+            2
+          ]
+        },
+        {
+          "feld": "comparator_mean",
+          "quelle": "messzelle",
+          "text": "1.2 (68)",
+          "wert": null,
+          "arm": "comparator",
+          "arm_basis": "header_treffer",
+          "zeitpunkt": "",
+          "art": "abgeleitet",
+          "regel": "spaltenfeld",
+          "sicherheit": "mittel",
+          "tabelle": "PMC4140238:T2",
+          "zeile": 8,
           "spalten": [
             2
           ]

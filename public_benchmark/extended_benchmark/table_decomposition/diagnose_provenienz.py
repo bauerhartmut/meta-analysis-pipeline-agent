@@ -25,9 +25,9 @@ import argparse
 import json
 import re
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Sequence, Tuple
 
 HIER = Path(__file__).resolve()
 BENCH = HIER.parent.parent
@@ -45,7 +45,6 @@ from research_agent.table_decomposition.parser import parse_document  # noqa: E4
 from research_agent.table_decomposition.semantics import (  # noqa: E402
     enrich_table,
     field_for,
-    reachable_cells,
     transfer_arms_from_document,
     transfer_arms_within_document,
 )
@@ -346,25 +345,6 @@ def _gedruckt(stelle: pv.Provenienz, wert: float) -> bool:
     return _zelltreffer(stelle.text, wert)
 
 
-def _stellen(tables: Sequence[Any], context: Dict[str, Any]
-             ) -> Dict[str, List[pv.Provenienz]]:
-    """Je Feld alle Fundstellen der geladenen Tabellen, ohne Doppel."""
-    out: Dict[str, List[pv.Provenienz]] = defaultdict(list)
-    gesehen = set()
-    for table in tables:
-        for row_id, feld in reachable_cells(table, context):
-            for stelle in pv.stellen(table, row_id, feld):
-                # Je Feld entdoppeln: eine Verbundzelle ("1.3 (0.6)") traegt
-                # Mittelwert und Streuung, das sind zwei Fundstellen.
-                schluessel = (feld, stelle.tabelle, stelle.quelle,
-                              stelle.zeile, tuple(stelle.spalten), stelle.text)
-                if schluessel in gesehen:
-                    continue
-                gesehen.add(schluessel)
-                out[feld].append(stelle)
-    return dict(out)
-
-
 def _dokument_tabellen(text: str, doc_id: str,
                        context: Dict[str, Any]) -> List[Any]:
     """Alle Tabellen des Dokuments, angereichert - nur fuer den Belegnachweis."""
@@ -461,7 +441,6 @@ def main() -> int:
     je_art: Counter = Counter()
     je_sicherheit: Counter = Counter()
     je_arm: Counter = Counter()
-    dokumente: Dict[str, Dict[str, Any]] = {}
 
     for record_id, entries in sorted(grouped.items()):
         record = records.get(record_id)
@@ -471,13 +450,11 @@ def main() -> int:
         if not tables:
             continue
         context = rb.context_of(record)
-        stellen = _stellen(tables, context)
-        doc_id = str(record["document"]["id"])
-        if doc_id not in dokumente:
-            dokumente[doc_id] = {"text": text, "tabellen": None}
-        if dokumente[doc_id]["tabellen"] is None:
-            dokumente[doc_id]["tabellen"] = _dokument_tabellen(text, doc_id, context)
-        alle = dokumente[doc_id]["tabellen"]
+        stellen = pv.feld_stellen(tables, context)
+        # Alle Tabellen des Dokuments, mit dem Kontext **dieses** Records
+        # angereichert - nur fuer den Belegnachweis. Kein Zwischenspeicher:
+        # zwei Records desselben Dokuments haben verschiedene Kontexte.
+        alle = _dokument_tabellen(text, str(record["document"]["id"]), context)
 
         for gold_cell in _gold(record):
             feld = gold_cell["field"]
