@@ -209,6 +209,30 @@ die Auswahl (146 der entfernten tragen `issues`, aber 370 behaltene auch).
 Quelle: `yun_full/pruefe_aufloesbarkeit.py`,
 `iterativ/ergebnisse/aufloesbarkeit_20261118.json` und `.md`.
 
+## 3c. Wie stark bläht die Feld/Arm-Zählung Treffer auf?
+
+Offline an den 559 erfolgreichen `glm`-Zeilen mit Zellen der Lesekopie gemessen
+(`yun_full/messe_aufblaehung.py`, Artefakt `iterativ/ergebnisse/aufblaehung_20261118.*`):
+
+| Größe | Wert |
+|---|---|
+| Goldzellen | 2.306 |
+| adressiert, großzügig | 2.121 |
+| adressiert, mit eindeutigem Zeitpunkt | 2.103 |
+| Aufblähung | 18 (0,8 % der großzügig adressierten) |
+| betroffene Zeilen | 4 von 559 |
+
+Die 18 Treffer stecken in vier Zeilen, in denen die Vorhersage denselben
+Feld/Arm-Schlüssel über mehrere Zeitpunkte streut: `yun2024:419` (6 adressiert,
+0 streng), `yun2024:121` (4 auf 0), `yun2024:418` und `yun2024:586` (je 6 auf 2).
+Dieselbe Differenz steht bei den wertgleichen Treffern (1.844 auf 1.826).
+
+Die Zahl ist eine **Untergrenze**: geprüft wird nur Mehrdeutigkeit, nicht ob der
+Zeitpunkt stimmt — das Gold trägt keinen. Eine Vorhersage mit falschem, aber
+eindeutigem Zeitpunkt zählt hier als Treffer; 1.649 von 2.254 Zellen nennen
+überhaupt einen Zeitpunkt. Auf den 103 Ausfällen kann die Aufblähung also größer
+sein als 0,8 %, aber nicht kleiner.
+
 ## 4. Mängel im Code, die daraus folgen
 
 | Nr. | Stelle | Mangel | Wirkung |

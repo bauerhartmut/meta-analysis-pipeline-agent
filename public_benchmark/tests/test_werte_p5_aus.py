@@ -116,6 +116,12 @@ def test_fertig_ohne_zellen_ist_keine_rettung() -> None:
     assert werte["status"]["gerettet"] == 0
 
 
+def test_ok_ist_kein_ausfall() -> None:
+    zeile = {"record_id": "x", "model": "glm", "failed": False, "fehlerklasse": "ok",
+             "predicted": {"cells": [{"field": "f", "arm": "intervention", "value": 1.0}]}}
+    assert p5.status(zeile) == "gerettet"
+
+
 def test_mehrdeutiger_zeitpunkt_faellt_aus_der_strengen_zaehlung() -> None:
     gold = [
         {"field": "intervention_mean", "arm": "intervention", "value": 0.77},

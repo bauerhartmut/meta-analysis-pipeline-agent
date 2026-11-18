@@ -129,7 +129,9 @@ def deckung_mit_zeitpunkt(
 def status(zeile: dict[str, Any] | None) -> str:
     if zeile is None:
         return "fehlt"
-    if bool(zeile.get("failed")) or bool(zeile.get("fehlerklasse")):
+    # "ok" ist die Transportklasse einer angekommenen Antwort und kein Ausfall.
+    klasse = str(zeile.get("fehlerklasse") or "").strip().lower()
+    if bool(zeile.get("failed")) or (klasse and klasse != "ok"):
         return "weiter_ausfall"
     return "gerettet" if zellen(zeile) else "fertig_ohne_zellen"
 
@@ -262,7 +264,10 @@ def bericht(werte: dict[str, Any], neu_pfad: str, nullprobe: bool) -> str:
         "nur eine Regel.",
         "",
     ]
-    if werte["adressiert"] != werte["adressiert_zeitpunkt"]:
+    if (werte["adressiert"], werte["wertgleich"]) != (
+        werte["adressiert_zeitpunkt"],
+        werte["wertgleich_zeitpunkt"],
+    ):
         zeilen += [
             f"Abweichung: {werte['adressiert'] - werte['adressiert_zeitpunkt']} adressierte und "
             f"{werte['wertgleich'] - werte['wertgleich_zeitpunkt']} wertgleiche Treffer haengen an "
