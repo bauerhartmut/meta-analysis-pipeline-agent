@@ -1512,10 +1512,17 @@ Die vier Zieltabellen: `PMC2667135:T4` (103/97), `PMC4987981:T1` (23/21/16),
 Fakten; fuenf Goldzellen werden dadurch wertgleich (103, 103, 71, 71, 23).
 Kein Feldgewinn dort, weil die Felder schon ueber die Spalten erreichbar waren.
 
-Armkonflikte `PMC5617873:T2` und `PMC5777419:T2` sind nur diagnostiziert: die
-gedruckten Zahlen (45/47 bzw. 16/15) stehen unter den entgegengesetzten
-Armnamen, der Dokumenttext nennt keine Zuordnung. Beide bleiben **ungeklaert**,
-die Armzuordnung wurde nicht geaendert.
+Armkonflikte `PMC5617873:T2` und `PMC5777419:T2` sind nur diagnostiziert und im
+Volltext belegt: `PMC5617873` schreibt dreimal "placebo (n = 45) or aripiprazole
+(n = 47)", das Gold fuehrt es umgekehrt - der Konflikt liegt im Goldfeld, der
+Parser bindet wie der Text. `PMC5777419` schreibt "probiotic (n=16), antibiotic
+(n = 16) or placebo (n = 15)" und bestaetigt damit das Gold; dort legt der
+Parser die drei Gruppengroessen der whitespace-aufgeblaehten Kopfzeile auf die
+falschen Spalten. Beide Faelle bleiben ohne Aenderung der Armzuordnung.
+
+`diagnose_kursiv_n.py` ist anschliessend auf einen Durchlauf zusammengezogen
+worden (274 statt 423 Zeilen, dieselben Zahlen): eine Adressauswertung je
+Record, daraus Bilanz, neue/verlorene Felder und neue Fakten.
 
 **Tests:** 24 neu in `research_agent/tests/test_gruppengroesse_kursiv.py`, ein
 bestehender Test in `test_kopfbaender.py` an die neuen Felder angepasst;

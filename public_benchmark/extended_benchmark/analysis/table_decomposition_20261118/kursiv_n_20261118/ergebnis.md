@@ -119,28 +119,61 @@ wertgleich: `103` (`yun2024:15`, `:16`), `71` (`:275`, `:282`) und `23`
 (`yun2024:662`). Die Summe 37 in `PMC4987981:T1` und die 33 aus
 `PMC3654355:T1/T2` bleiben ohne gedruckten Wert.
 
-## 6. Phase 6 - Armkonflikte (nur Diagnose)
+## 6. Phase 6 - Armkonflikte: Volltextbefund
 
-**`PMC5617873:T2`** (`yun2024:335`, `:336`): Baender `Placebo (n = 45)`
-(c0-1) und `Aripiprazole (n = 47)` (c2-3). Kontext: intervention
-`Aripiprazole`, comparator `Placbeo`. Gold: intervention 45, comparator 47 -
-also genau die gedruckten Zahlen, aber unter den entgegengesetzten Armnamen.
-Keine Caption, keine Fussnote, kein umgebender Text mit einer Zuordnung. Die
-Spalte `Placebo` bindet keinen Arm, weil der Vergleichsarm im Record
-`Placbeo` heisst; `Aripiprazole` bindet `intervention`. **Urteil: ungeklaert.**
+Gesucht wurde im Volltext der beiden Dokumente (Markdown, offline, rein
+lesend) nach einer Zuordnung der Zahlen zu den Gruppen. Beide Faelle sind damit
+aufgeklaert - aber nicht in dieselbe Richtung, und keiner ueber die
+Armzuordnung.
 
-**`PMC5777419:T2`** (`yun2024:678`, `:682`): Gruppen `Probiotic group`
-(c1-5), `Antibiotic group` (c6-10), `Placebo group` (c11-15). Die
-Gruppengroessen: `(n=16)` ueber c2 (3 Monate) und c5 (P) innerhalb der
-Probiotic-Gruppe, `(n=15)` ueber c6-10 (Antibiotic). Kontext: intervention
-`antibiotic`, comparator `placebo`. Gold: intervention 16, comparator 15. Der
-Kopf druckt 16 bei der Probiotic-Gruppe und 15 bei der Antibiotika-Gruppe;
-fuer die Placebo-Gruppe steht keine Groesse. **Urteil: ungeklaert** - die
-gedruckte Gruppierung und das Gold widersprechen sich, und der Dokumenttext
-nennt keine Zahl zu den Gruppen.
+### `PMC5617873:T2` (`yun2024:335`, `:336`) - Text widerspricht dem Gold
+
+* Abstract: "Ninety-two patients were randomized to placebo (n = 45) or
+  aripiprazole (n = 47)."
+* Ergebnisse: "92 patients were randomly assigned to receive placebo (n = 45)
+  or aripiprazole (n = 47)."
+* Baseline-Tabelle: "Placebo (n = 45) Aripiprazole (n = 47) Total (n = 92)".
+* Gegenprobe: "Forty-two (93.3%) patients in the placebo group" (42/45 = 93,3 %)
+  und "the last dose of placebo corresponding to aripiprazole (n = 45)".
+
+Dreimal unabhaengig belegt: **45 gehoert zu Placebo (Vergleichsarm), 47 zu
+Aripiprazol (Interventionsarm)**. Der Parser bindet genau so: `Aripiprazole
+(n = 47)` haengt an `intervention`, das Placebo-Band bleibt ohne Arm, weil der
+Vergleichsarm im Record `Placbeo` heisst. Der Widerspruch liegt also im
+**Goldfeld**, das 45 als `intervention_group_size` und 47 als
+`comparator_group_size` fuehrt - nicht in der Armzuordnung des Parsers. Eine
+automatische Umkehrung findet nicht statt.
+
+### `PMC5777419:T2` (`yun2024:678`, `:682`) - Text bestaetigt das Gold
+
+* Methoden: "randomly assigned to a probiotic (n=16), antibiotic (n = 16) or
+  placebo (n = 15) group."
+* Analyse: "Forty-seven patients, 16 in the probiotic group, 16 in the
+  antibiotic group and 15 in the placebo group were analyzed."
+* Baseline-Tabelle: "Probiotic group (n=16) Antibiotic group (n=16) Placebo
+  group (n=15)".
+
+Damit ist **Antibiotika = 16, Placebo = 15** - genau das Gold (intervention 16,
+comparator 15). Der Konflikt entsteht im **Kopfband**: Im Rohtext stehen die
+drei Gruppengroessen zeilenweise unter `Probiotic group` / `Antibiotic group` /
+`Placebo group`, der Parser legt `(n=15)` aber ueber die Spalten 6-10
+(Antibiotic) und zerlegt das Probiotic-`(n=16)` in zwei Baender ueber c2 und c5.
+Die Zahlen sind also richtig gelesen, aber dem falschen Band zugeordnet; das ist
+ein Geometrieproblem der stark whitespace-aufgeblaehten Kopfzeile, keine
+Armfrage. In diesem Sprint nicht geaendert.
 
 In beiden Faellen bleibt die Armzuordnung unveraendert; es gibt keine
 automatische Umkehrung und keine Uebernahme aus dem Goldwert.
+
+### Vereinfachung des Messwerkzeugs
+
+`diagnose_kursiv_n.py` ist nach dem Sprint-44-Diff auf einen Durchlauf
+zusammengezogen: eine Adressauswertung je Record (Kopfangabe und Messzelle
+zusammen), daraus Bilanz, neue/verlorene Felder und neue Fakten; die frueheren
+Doppellisten (`_bilanz`, `_konflikte`, `korrekt_adressiert`, `wertgleich`,
+`records_gold`, `neue_fakten`, `armdiagnosen`) sind weg. 274 statt 423 Zeilen,
+die Messung liefert dieselben Zahlen (62/32/0 -> 94/58/0, 35 Fakten, 32 neue
+Felder, 21 wertgleich, 0 verloren).
 
 ## 7. Grenzen
 
@@ -155,13 +188,20 @@ automatische Umkehrung und keine Uebernahme aus dem Goldwert.
 
 ## 8. Empfehlung fuer den naechsten Schritt
 
-Die zwei ungeklaerten Armkonflikte nicht ueber die Armzuordnung loesen, sondern
-ueber die **Dokumentbelege**: fuer `PMC5617873:T2` und `PMC5777419:T2` im
-Volltext nach einer Gruppentabelle oder einer Fussnote suchen, die 45/47 bzw.
-15/16 einer Gruppe zuordnet (offline, rein lesend). Erst wenn ein solcher Satz
-existiert, ist eine Regel ueber den gedruckten Beleg moeglich; ohne ihn bleibt
-es bei "ungeklaert". Der groessere Hebel liegt finanziell bei null: Die 11
-strukturell erreichbaren, aber nicht wertgleichen Felder zeigen, dass dort
-Summen oder fremde Tabellen die Quelle sind - die naechste Messung sollte
-deshalb die 58 wertgleichen Felder gegen die Marke von 94 stellen, nicht die
-Feldzahl weiter aufblaehen.
+Zwei konkrete, offline pruefbare Hebel - beide ohne Netz und ohne Modell:
+
+1. **Bandgeometrie bei whitespace-aufgeblaehten Kopfzeilen**
+   (`PMC5777419:T2`): die drei Gruppengroessen stehen im Rohtext unter drei
+   Gruppen, der Parser legt sie verschoben ab. Eine Messung ueber alle Tabellen
+   mit mehr als drei Leerzeichen zwischen Kopfzellen zeigt, wie viele Baender
+   betroffen sind; erst dann eine Regel, die die Spaltengrenzen aus der
+   Trennzeile nimmt. Das ist der groesste Hebel, weil hier gedruckte Werte
+   falsch adressiert werden, ohne dass ein Wert fehlt.
+2. **Gold/Record-Abgleich `PMC5617873`**: 45/47 sind im Record vertauscht.
+   Nicht automatisch korrigieren - aber als Datenbefund fuehren, damit die
+   Auswahl solche Records markiert statt sie stillschweigend zu zaehlen.
+
+Der groessere Hebel liegt finanziell bei null: Die 11 strukturell erreichbaren,
+aber nicht wertgleichen Felder zeigen, dass dort Summen oder fremde Tabellen
+die Quelle sind - die naechste Messung sollte deshalb die 58 wertgleichen
+Felder gegen die Marke von 94 stellen, nicht die Feldzahl weiter aufblaehen.
