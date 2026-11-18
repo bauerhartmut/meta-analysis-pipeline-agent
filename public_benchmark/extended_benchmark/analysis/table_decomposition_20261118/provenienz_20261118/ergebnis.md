@@ -266,10 +266,12 @@ fuenf Dokumenten und haben ein gemeinsames Muster: die gewaehlte Tabelle
 druckt Safety- beziehungsweise Baseline-Zahlen, das Gold die analysierte
 Population (ITT, "assessed", "analyzed"). Ein Sprint 46 sollte offline messen,
 wie oft ein Dokument die passende Population in einer **anderen Tabelle
-desselben Dokuments** druckt (das ist bei 8 der 15 Felder bereits der Fall:
-PMC5360580 T6, PMC2430617 T4, PMC4675066 T2) und ob eine Regel "Population aus
-der Kopfbeschriftung waehlen" diese Tabelle trifft, ohne die Armzuordnung
-anzufassen. Kosten: null Guthaben, rein offline.
+desselben Dokuments** druckt - das ist bei 10 der 15 Felder bereits der Fall
+(PMC5360580 T6 mit 169/167, PMC2430617 T4-Kopf mit 79/83/80, PMC4675066 T2 mit
+27/26); bei den uebrigen fuenf steht die Zahl nur im Fließtext (PMC4230312,
+PMC5122613). Dann pruefen, ob eine Regel "Population aus der Kopfbeschriftung
+waehlen" diese Tabelle trifft, ohne die Armzuordnung anzufassen. Kosten: null
+Guthaben, rein offline.
 
 Zweiter Hebel, kleiner: die **Bandgeometrie** bei whitespace-aufgeblaehten
 Kopfzeilen (PMC5777419, 2 Felder) - die Zahl ist gedruckt, nur falsch
