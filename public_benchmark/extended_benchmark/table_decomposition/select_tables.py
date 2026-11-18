@@ -28,7 +28,8 @@ from research_agent.table_decomposition.complexity import assess  # noqa: E402
 from research_agent.table_decomposition.parser import parse_document  # noqa: E402
 from research_agent.table_decomposition.semantics import (  # noqa: E402
     enrich_table,
-    reachable_fields,
+    outcome_rows,
+    reachable_cells,
     transfer_arms_within_document,
 )
 
@@ -144,7 +145,10 @@ def build_candidates(records: Sequence[Dict[str, Any]], role: str,
         for table in tables:
             complexity = assess(table)
             table.complexity = complexity.to_dict()
-            fields = reachable_fields(table)
+            # Feld **und** Outcome-Zeile: ein Feld in einer anderen Zeile ist
+            # fuer diesen Record kein erwarteter Wert.
+            fields = {name for _row_id, name in reachable_cells(table, context)}
+            focus = outcome_rows(table, str(context.get("outcome") or ""))
             reachable = sum(1 for cell in record["gold"]["cells"] if cell["field"] in fields)
             if require_bound and reachable == 0:
                 continue
@@ -162,6 +166,7 @@ def build_candidates(records: Sequence[Dict[str, Any]], role: str,
                 "strata": strata_for(table, complexity),
                 "n_target_columns": complexity.features["n_target_columns"],
                 "fields": sorted(fields),
+                "focus_rows": len(focus),
                 "gold_cells": len(record["gold"]["cells"]),
                 "gold_reachable": reachable,
             })

@@ -8,6 +8,9 @@ Read-only. Klassifiziert jede nicht erreichbare Goldzelle eines Records:
   traegt die Rolle, teils sogar mit passendem Armnamen im Kopf.
 * ``arm_nicht_gebunden`` - eine ausgewaehlte Tabelle traegt die Rolle, aber der
   Arm liess sich aus dem Kopf nicht belegen (Spalte ohne Feld).
+* ``outcome_zeile_nicht_erkannt`` - keine ausgewaehlte Tabelle hat eine Zeile,
+  deren Zeilenlabel-Pfad das Outcome nennt; ohne sie ist kein Zellwert
+  erwartbar (die Zelle bleibt trotzdem als nicht erreichbar gezaehlt).
 
 Die Zuordnung ist eine Heuristik auf Header-Text, kein Modellurteil; sie dient
 nur der Priorisierung der naechsten Aenderung.
@@ -29,6 +32,8 @@ if str(REPO) not in sys.path:
 from research_agent.table_decomposition.parser import parse_document  # noqa: E402
 from research_agent.table_decomposition.semantics import (  # noqa: E402
     enrich_table,
+    outcome_rows,
+    reachable_cells,
     transfer_arms_within_document,
 )
 
@@ -124,9 +129,10 @@ def main() -> int:
             enrich_table(table, context)
         transfer_arms_within_document(document_tables[doc_id], context)
 
-        from research_agent.table_decomposition.semantics import reachable_fields
-
-        reachable = {name for table in chosen for name in reachable_fields(table)}
+        focus = {table.table_id: outcome_rows(table, str(context.get("outcome") or ""))
+                 for table in chosen}
+        reachable = {name for table in chosen
+                     for _row_id, name in reachable_cells(table, context)}
         for cell in record["gold"]["cells"]:
             if cell["field"] in reachable:
                 continue
@@ -149,7 +155,9 @@ def main() -> int:
                 (table_id, column) for table_id, column in matching_others
                 if header_mentions_arm(column.header, str(arm_name or ""))
             ]
-            if matching_chosen:
+            if not any(focus.values()):
+                reason = "outcome_zeile_nicht_erkannt"
+            elif matching_chosen:
                 reason = "arm_nicht_gebunden"
                 if not any(header_mentions_arm(c.header, str(arm_name or ""))
                            for c in matching_chosen):

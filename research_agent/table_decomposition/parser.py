@@ -103,6 +103,47 @@ _DIGIT_RE = re.compile(r"\d")
 _NUMBER_RE = re.compile(r"-?\d+(?:[.,]\d+)?")
 _DECIMAL_RE = re.compile(r"\d[.,]\d")
 _FOOTNOTE_MARK_RE = re.compile(r"^\s*([*†‡§¶^]|\(?[a-z]\)|\(?[ivx]+\)|\d\))\s*")
+_COMPARISON_LABEL_RE = re.compile(r"\bvs\.?\b|\bversus\b", re.IGNORECASE)
+_BOLD_LABEL_RE = re.compile(r"^\*\*[^*]+\*\*[.,]?$")
+
+
+def _plain_label(text: str) -> str:
+    """Labeltext ohne Fett- und Fussnotenzeichen."""
+    value = (text or "").strip()
+    value = re.sub(r"^\*\*|\*\*$", "", value)
+    value = value.strip("*^ ")
+    return " ".join(value.split())
+
+
+def _is_group_label_row(line: str, cells: Sequence[Tuple[int, int, str]]) -> bool:
+    """Fette Zeilengruppe (``**Dietary intake**``) ist Label, keine Kopfzeile.
+
+    Solche Zeilen tragen genau eine Zelle. Wird die Zeile als Tabellenende
+    gelesen, fehlen alle Datenzeilen darunter (belegt: ``PMC4319071:T1`` mit
+    nur einer gelesenen Zeile).
+    """
+    if len(cells) != 1:
+        return False
+    if not _BOLD_LABEL_RE.match((cells[0][2] or "").strip()):
+        return False
+    return not _looks_prose(line)
+
+
+def _is_row_label_header(cells: Sequence[Tuple[int, int, str]]) -> bool:
+    """Kopfzeile, die in Wahrheit Zeilenlabels traegt.
+
+    Vergleichszeilen (``Basic vs control``) stehen in PDF-Abzuegen an
+    Kopfposition, bezeichnen aber Auswertungen, nicht Spalten. Wird eine solche
+    Zeile als Kopf gelesen, bekommen die ersten Spalten einen falschen
+    Header-Pfad - und damit einen falschen Arm. Sie wird deshalb weder Kopf
+    noch Datenzeile, sondern als unregelmaessig notiert.
+    """
+    texts = [(cell[2] or "").strip() for cell in cells]
+    if not texts:
+        return False
+    if any(_COMPARISON_LABEL_RE.search(text) for text in texts):
+        return True
+    return len(texts) == 1 and bool(_BOLD_LABEL_RE.match(texts[0]))
 
 
 def split_cells(line: str) -> List[Tuple[int, int, str]]:
@@ -685,6 +726,41 @@ def _finish_table(table: Table) -> Table:
                 row.label = text
                 previous_label = text
                 previous_row_id = row.row_id
+
+    # Zeilenpfad: Gruppenlabels (fette Zeilen) plus eigenes Label. Erst der
+    # Pfad macht eine Zeile eindeutig; ``Mean (SD)`` allein nennt kein Outcome.
+    ordered_labels = sorted(label_cols)
+    stack: List[Tuple[int, str]] = []
+    for row in table.rows:
+        if row.group_label:
+            # Die Spalte des Gruppenlabels zeigt seine Tiefe: gleiche Spalte =
+            # Geschwister (``Background characteristics`` / ``Dietary intake``),
+            # weiter rechts = Untergruppe (``Vegetable intake``).
+            col_id = next(
+                (col for col, cell in sorted(row.cells.items())
+                 if (cell.text or "").strip()),
+                0,
+            )
+            while stack and stack[-1][0] >= col_id:
+                stack.pop()
+            stack.append((col_id, row.group_label))
+            row.label_path = tuple(text for _col, text in stack)
+            continue
+        specific = ""
+        for col_id in ordered_labels:
+            cell = row.cells.get(col_id)
+            if cell is None or cell.inherited_from_row is not None:
+                continue
+            text = (cell.text or "").strip()
+            if text:
+                specific = _plain_label(text)
+                break
+        path = [text for _col, text in stack]
+        if specific:
+            path.append(specific)
+        elif (row.label or "").strip():
+            path.append(_plain_label(row.label))
+        row.label_path = tuple(path)
     return table
 
 
@@ -708,6 +784,8 @@ def _parse_rule_table(
         cells = split_cells(lines[j])
         if len(cells) < 2:
             break
+        if _is_row_label_header(cells):
+            break
         header_lines.insert(0, j)
         j -= 1
 
@@ -715,8 +793,10 @@ def _parse_rule_table(
         lines, header_lines[0] if header_lines else rule_index
     )
 
-    # Koerper unterhalb der Regel
-    body_lines: List[Tuple[int, str, List[Tuple[int, int, str]], bool]] = []
+    # Koerper unterhalb der Regel. ``kind`` ist ``header``, ``data`` oder
+    # ``group`` (fette Zeilengruppe ohne Werte).
+    body_lines: List[Tuple[int, str, List[Tuple[int, int, str]], str]] = []
+    skipped_header_lines: List[int] = []
     i = rule_index + 1
     data_seen = 0
     blanks = 0
@@ -736,6 +816,12 @@ def _parse_rule_table(
         blanks = 0
         cells = split_cells(line)
         if len(cells) < 2:
+            if _is_group_label_row(line, cells):
+                # Fette Zeilengruppe: gehoert zum Koerper, nicht zum Tabellenende.
+                body_lines.append((i, line, cells, "group"))
+                data_seen += 1
+                i += 1
+                continue
             if data_seen:
                 break
             i += 1
@@ -743,10 +829,17 @@ def _parse_rule_table(
         if _looks_prose(line) and data_seen:
             break
         is_header = _is_subheader(cells)
+        if is_header and _is_row_label_header(cells):
+            # Kopfzeile mit Zeilenlabels (Vergleichszeilen): nicht als
+            # Spaltenkopf lesen, sonst bekommt die erste Spalte einen falschen
+            # Arm. Die Zeile traegt keine Zahlen und wird nur notiert.
+            skipped_header_lines.append(i)
+            i += 1
+            continue
         if is_header and data_seen:
             # Header nach Datenzeilen ist kein Header mehr - Tabelle endet.
             break
-        body_lines.append((i, line, cells, is_header))
+        body_lines.append((i, line, cells, "header" if is_header else "data"))
         if not is_header:
             data_seen += 1
         i += 1
@@ -780,13 +873,15 @@ def _parse_rule_table(
         level += 1
 
     row_id = 0
-    for line_no, line, cells, is_header in body_lines:
-        if is_header:
+    for line_no, line, cells, kind in body_lines:
+        if kind == "header":
             bands = builder.header_band(line, level, line_no, cells, starts[line_no])
             table.header_bands.extend(bands)
             level += 1
             continue
         row = builder.data_row(line, line_no, starts[line_no], cells, row_id, [])
+        if kind == "group" and cells:
+            row.group_label = _plain_label(cells[0][2])
         table.rows.append(row)
         row_id += 1
 
@@ -809,6 +904,8 @@ def _parse_rule_table(
     for row in table.rows:
         if row.irregular:
             table.irregularities.append(f"unregelmaessige_zeile:{row.row_id}")
+    for line_no in skipped_header_lines:
+        table.irregularities.append(f"kopfzeile_ist_zeilenlabel:{line_no}")
     return table
 
 

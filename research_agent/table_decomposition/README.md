@@ -71,6 +71,27 @@ Zwei weitere Mechanismen laufen dokumentweit bzw. zellgenau:
 - `reachable_fields(table)` — Felder, die eine Tabelle hergibt: Spaltenfeld plus
   der zweite Wert einer Verbundzelle. Diese Menge ist die Obergrenze des
   Tabellenpfads, keine Modellleistung.
+- `outcome_rows(table, outcome)` — Zeilen, deren Label-Pfad das Outcome nennt
+  (Gruppenlabels plus eigenes Label, z. B. `Dietary intake` > `Vegetable
+  intake (grams)` > `Mean (SD)`). Beidseitiger Token-Abgleich mit einfacher
+  Pluralnormalisierung; ohne Treffer bleibt die Liste leer.
+- `reachable_cells(table, context)` — erwartbare Zellen: Spaltenfeld **und**
+  Outcome-Zeile. Nur diese Menge zählt als erwartbar; Felder in anderen Zeilen
+  sind für den Record kein Wert.
+- `group_size_declaration(text)` / `Table.header_facts` — feste Gruppengrößen
+  aus dem Kopf (`n = 456`) werden als Kopf-Fakt mit Wert und (falls belegbar)
+  Arm geführt, **nicht** als Spaltenrolle `n`. Sonst liest der Extraktor
+  Zeilenwerte als Gruppengröße (belegt: `PMC4319071:T1`).
+
+Fette Zeilengruppen (`**Dietary intake**`) sind Zeilenlabels, keine Kopfzeilen:
+ sie beenden die Tabelle nicht, sondern bilden den Label-Pfad. Kopfzeilen, die
+in Wahrheit Zeilenlabels tragen (Vergleichszeilen wie `Basic vs control`),
+werden nicht als Spaltenkopf gelesen und als `kopfzeile_ist_zeilenlabel`
+notiert.
+
+`PlanOptions.focus_outcome=True` beschränkt den Auftrag auf die Outcome-Zeile
+(übrige Zeilen laufen als Kontext mit); Standard ist `False`, damit die
+produktive Pipeline unverändert bleibt.
 
 ### `complexity.assess(table) -> ComplexityScore`
 

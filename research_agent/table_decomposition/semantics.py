@@ -53,6 +53,23 @@ _ROLE_PATTERNS: Tuple[Tuple[str, str], ...] = (
 )
 
 
+_GROUP_SIZE_DECL_RE = re.compile(r"^\(?\s*n\s*=\s*(\d{1,6})\s*\)?$", re.IGNORECASE)
+_GROUP_SIZE_ANY_RE = re.compile(r"\bn\s*=\s*(\d{1,6})\b", re.IGNORECASE)
+
+
+def group_size_declaration(text: str) -> Optional[int]:
+    """Zahl aus einer reinen Kopfangabe ``n = 456`` (sonst ``None``).
+
+    Eine solche Kopfzelle ist eine feste Gruppengroesse, keine Spalte mit
+    Zeilenwerten. Sie wird als Kopf-Fakt gefuehrt (``Table.header_facts``) und
+    darf keine Spaltenrolle ``n`` erzeugen - sonst liest der Extraktor
+    Zeilenwerte als Gruppengroesse (belegt: ``PMC4319071:T1``, dort wurde
+    ``49.05`` aus der Zeile ``Age (years)`` zur Gruppengroesse).
+    """
+    match = _GROUP_SIZE_DECL_RE.match((text or "").strip())
+    return int(match.group(1)) if match else None
+
+
 @dataclass
 class ArmBinding:
     arm: Optional[str]
@@ -69,6 +86,8 @@ def role_for_header(header_path: Sequence[str]) -> str:
     """
     texts = [t for t in reversed(list(header_path)) if t]
     for text in texts:
+        if group_size_declaration(text) is not None:
+            continue
         lowered = text.lower()
         for role, pattern in _ROLE_PATTERNS:
             if re.search(pattern, lowered):
@@ -175,6 +194,10 @@ def _column_path(table: Table, column: Column) -> Tuple[str, ...]:
     path: List[str] = []
     for band in sorted(table.header_bands, key=lambda b: b.level):
         if band.col_start <= column.col_id <= band.col_end:
+            # ``n = 434`` ist eine Kopfangabe, kein Spaltenkopf: sie darf den
+            # Header-Pfad (und damit Arm und Rolle) nicht besetzen.
+            if group_size_declaration(band.text) is not None:
+                continue
             path.append(band.text)
     return tuple(path)
 
@@ -224,6 +247,8 @@ def enrich_table(table: Table, context: Optional[Dict[str, object]] = None,
     if assume_order:
         _assume_arm_order(table)
     table.context = dict(context)
+    table.header_facts = _group_size_facts(table, intervention, comparator)
+    table.focus_rows = outcome_rows(table, str(context.get("outcome") or ""))
     return table
 
 
@@ -346,6 +371,114 @@ def _assume_arm_order(table: Table) -> None:
             column.arm = arm
             column.arm_basis = "reihenfolge"
             column.field = field_for(column.role, arm)
+
+
+def _group_size_facts(table: Table, intervention: str,
+                      comparator: str) -> List[Dict[str, object]]:
+    """Feste Gruppengroessen aus Kopfangaben (``n = 456``).
+
+    Der Wert steht woertlich im Kopf und gilt fuer die ganze Spaltengruppe.
+    Der Arm kommt aus dem uebrigen Header-Pfad an dieser Stelle; laesst er sich
+    nicht belegen, bleibt ``arm`` leer (kein Raten aus der Spaltenposition).
+    """
+    facts: List[Dict[str, object]] = []
+    ordered = sorted(table.header_bands, key=lambda b: b.level)
+    for band in sorted(table.header_bands, key=lambda b: (b.level, b.col_start)):
+        match = _GROUP_SIZE_ANY_RE.search(band.text or "")
+        if not match:
+            continue
+        path = [
+            other.text for other in ordered
+            if other.level <= band.level
+            and other.col_start <= band.col_start <= other.col_end
+            and group_size_declaration(other.text) is None
+        ]
+        binding = bind_arm(path, intervention, comparator)
+        facts.append({
+            "kind": "group_size",
+            "text": band.text,
+            "value": int(match.group(1)),
+            "level": band.level,
+            "col_start": band.col_start,
+            "col_end": band.col_end,
+            "basis": "kopf_angabe",
+            "arm": binding.arm,
+            "arm_basis": binding.basis,
+        })
+    return facts
+
+
+_MIN_OUTCOME_SCORE = 0.5
+
+
+def _stem(token: str) -> str:
+    """Einfache Pluralnormalisierung fuer den Outcome-Abgleich.
+
+    ``deaths``/``Death`` und ``events``/``event`` sind dasselbe Outcome; ohne
+    diese Normalisierung faellt die haeufigste Schreibweise durch. Nur der
+    Outcome-Abgleich nutzt sie - die Armzuordnung bleibt unveraendert.
+    """
+    if len(token) > 4 and token.endswith("ies"):
+        return token[:-3] + "y"
+    if len(token) > 3 and token.endswith("s") and not token.endswith("ss"):
+        return token[:-1]
+    return token
+
+
+def _row_text(row) -> str:
+    if row.label_path:
+        return " ".join(row.label_path)
+    return row.group_label or row.label or ""
+
+
+def outcome_rows(table: Table, outcome: str) -> List[int]:
+    """Zeilen, die das gesuchte Outcome tragen (Zeilenlabel-Pfad, kein Gold).
+
+    Der Pfad enthaelt die Zeilengruppen (``Dietary intake``, ``Vegetable
+    intake (grams)``) und das eigene Label (``Mean (SD)``); erst zusammen ist
+    die Zeile eindeutig. Ohne Treffer bleibt die Liste leer - dann ist keine
+    Zelle erwartbar, und der Lauf meldet das, statt alle Zeilen zu lesen.
+    """
+    target = {_stem(token) for token in _tokens(outcome)}
+    if not target:
+        return []
+    scored: List[Tuple[float, int]] = []
+    for row in table.rows:
+        if row.group_label:
+            continue
+        tokens = {_stem(token) for token in _tokens(_row_text(row))}
+        if not tokens:
+            continue
+        shared = target & tokens
+        # Eine reine Zahlenuebereinstimmung (``10``) belegt kein Outcome.
+        if not shared or not any(not token.isdigit() for token in shared):
+            continue
+        # Zwei Richtungen wie bei der Armzuordnung: das Outcome darf lang sein
+        # (``rate of clinical success at the test-of-cure visit``), das
+        # Zeilenlabel kurz (``Clinical success``).
+        score = max(len(shared) / len(target), len(shared) / len(tokens))
+        if score >= _MIN_OUTCOME_SCORE:
+            scored.append((score, row.row_id))
+    if not scored:
+        return []
+    best = max(score for score, _row_id in scored)
+    return [row_id for score, row_id in scored if score == best]
+
+
+def reachable_cells(table: Table,
+                    context: Optional[Dict[str, object]] = None) -> set:
+    """Erwartbare Zellen: Spaltenfeld **und** Outcome-Zeile.
+
+    Die Obergrenze des Tabellenpfads je Record. Werte aus dem Kopf
+    (``header_facts``, etwa ``n = 456``) zaehlen nicht mit: sie sind kein
+    gelesener Zellwert, sondern eine Angabe ueber die Spaltengruppe.
+    """
+    context = context if context is not None else (table.context or {})
+    rows = outcome_rows(table, str(context.get("outcome") or ""))
+    if not rows:
+        return set()
+    fields = reachable_fields(table)
+    return {(row_id, name) for row_id in rows for name in fields}
 
 
 def reachable_fields(table: Table) -> set:

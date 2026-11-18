@@ -57,6 +57,9 @@ class PlanOptions:
     include_verbatim: bool = True
     min_columns_for_split: int = 3
     max_refinement_units: int = 8
+    # Nur die Outcome-Zeile in den Auftrag nehmen (Benchmark). Ohne erkannte
+    # Outcome-Zeile bleibt der Auftrag die ganze Tabelle.
+    focus_outcome: bool = False
 
 
 @dataclass
@@ -316,6 +319,30 @@ def _chunk(items: Sequence[int], limit: int) -> List[List[int]]:
     return [list(items[i:i + size]) for i in range(0, len(items), size)]
 
 
+def _row_scope(table: Table, options: PlanOptions) -> Tuple[List[int], List[int]]:
+    """Zeilen im Auftrag und Kontextzeilen.
+
+    Mit ``focus_outcome`` wird nur die Outcome-Zeile gelesen; die uebrigen
+    Zeilen laufen als Kontext mit (gedeckelt), damit der Ausschnitt die Tabelle
+    nicht verfaelscht. Ist keine Outcome-Zeile erkannt, bleibt der Auftrag die
+    ganze Tabelle - der Plan traegt das als Notiz.
+    """
+    all_rows = [row.row_id for row in table.rows]
+    focus = [row_id for row_id in all_rows if row_id in set(table.focus_rows)]
+    if options.focus_outcome and focus:
+        context = [row_id for row_id in all_rows if row_id not in set(focus)]
+        return focus, context[:3]
+    return all_rows, []
+
+
+def _focus_note(options: PlanOptions, table: Table) -> List[str]:
+    if options.focus_outcome and table.focus_rows:
+        return [f"Auftrag auf die Outcome-Zeile(n) {table.focus_rows} begrenzt."]
+    if options.focus_outcome:
+        return ["Keine Outcome-Zeile erkannt: Auftrag bleibt die ganze Tabelle."]
+    return []
+
+
 def _present_cells(table: Table, row_ids: Sequence[int], col_ids: Sequence[int]) -> List[Tuple[int, int]]:
     cells: List[Tuple[int, int]] = []
     for row_id in row_ids:
@@ -361,10 +388,12 @@ def _make_unit(table: Table, strategy: str, direction: str, unit_id: str,
 def _full_units(table: Table, strategy: str, options: PlanOptions,
                 document_text: str) -> List[ExtractionUnit]:
     col_ids = table.data_columns
-    row_ids = [r.row_id for r in table.rows]
+    row_ids, context_rows = _row_scope(table, options)
     return [_make_unit(table, strategy, DIRECTION_FULL,
                        unit_id=f"{table.table_id}/{strategy}/full", row_ids=row_ids,
-                       col_ids=col_ids, options=options, document_text=document_text)]
+                       col_ids=col_ids, options=options, document_text=document_text,
+                       context_row_ids=context_rows,
+                       notes=_focus_note(options, table))]
 
 
 def _column_units(table: Table, strategy: str, options: PlanOptions,
@@ -372,7 +401,7 @@ def _column_units(table: Table, strategy: str, options: PlanOptions,
     columns = [c.col_id for c in target_columns(table)]
     if not columns:
         return []
-    row_ids = [r.row_id for r in table.rows]
+    row_ids, context_rows = _row_scope(table, options)
     chunks = _chunk(columns, options.max_units_per_table)
     units: List[ExtractionUnit] = []
     for position, chunk in enumerate(chunks, start=1):
@@ -387,7 +416,8 @@ def _column_units(table: Table, strategy: str, options: PlanOptions,
                 unit_id=f"{table.table_id}/{strategy}/col/{suffix}",
                 row_ids=row_ids, col_ids=chunk, options=options,
                 document_text=document_text, context_col_ids=[],
-                notes=notes,
+                context_row_ids=context_rows,
+                notes=notes + _focus_note(options, table),
             )
         )
     return units
@@ -396,18 +426,20 @@ def _column_units(table: Table, strategy: str, options: PlanOptions,
 def _row_units(table: Table, strategy: str, options: PlanOptions,
                document_text: str) -> List[ExtractionUnit]:
     col_ids = table.data_columns
-    row_ids = [r.row_id for r in table.rows]
+    row_ids, outer_context = _row_scope(table, options)
     chunks = _chunk(row_ids, options.max_units_per_table)
     units: List[ExtractionUnit] = []
     for chunk in chunks:
         suffix = f"r{chunk[0]}" if len(chunk) == 1 else f"r{chunk[0]}-r{chunk[-1]}"
+        context = [r for r in row_ids if r not in chunk] + outer_context
         units.append(
             _make_unit(
                 table, strategy, DIRECTION_ROW,
                 unit_id=f"{table.table_id}/{strategy}/row/{suffix}",
                 row_ids=chunk, col_ids=col_ids, options=options,
                 document_text=document_text,
-                context_row_ids=[r for r in row_ids if r not in chunk][:3],
+                context_row_ids=context[:3],
+                notes=_focus_note(options, table),
             )
         )
     return units

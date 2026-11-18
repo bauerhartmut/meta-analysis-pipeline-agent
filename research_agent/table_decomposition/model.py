@@ -186,12 +186,20 @@ class Row:
     start_char: int = -1
     end_char: int = -1
     irregular: bool = False       # Zellen fehlen oder doppelt zugeordnet
+    # Fette Zeilengruppe (``**Dietary intake**``): Label ohne Werte. Sie gliedert
+    # die Zeilen und darf die Tabelle nicht beenden.
+    group_label: str = ""
+    # Gruppenpfad plus eigenes Zeilenlabel; erst zusammen ist eine Zeile
+    # eindeutig (``Dietary intake`` > ``Vegetable intake`` > ``Mean (SD)``).
+    label_path: Tuple[str, ...] = ()
 
     def to_dict(self) -> Dict[str, Any]:
         return {
             "row_id": self.row_id,
             "index": self.index,
             "label": self.label,
+            "group_label": self.group_label,
+            "label_path": list(self.label_path),
             "line": self.line,
             "start_char": self.start_char,
             "end_char": self.end_char,
@@ -234,6 +242,10 @@ class Table:
     irregularities: List[str] = field(default_factory=list)
     complexity: Dict[str, Any] = field(default_factory=dict)
     context: Dict[str, Any] = field(default_factory=dict)
+    # Feste Angaben aus dem Kopf (``n = 456``): Wert und Arm, woertlich belegt.
+    header_facts: List[Dict[str, Any]] = field(default_factory=list)
+    # Zeilen, die das Outcome des Records tragen (Zeilenlabel-Pfad, kein Gold).
+    focus_rows: List[int] = field(default_factory=list)
 
     # --- Zugriff ---------------------------------------------------------
     @property
@@ -308,6 +320,8 @@ class Table:
             "irregularities": list(self.irregularities),
             "complexity": dict(self.complexity),
             "context": dict(self.context),
+            "header_facts": [dict(fact) for fact in self.header_facts],
+            "focus_rows": list(self.focus_rows),
         }
 
 

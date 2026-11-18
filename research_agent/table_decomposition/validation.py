@@ -116,11 +116,13 @@ def _check_structure(table: Table, units: Sequence[ExtractionUnit],
     """
     present = _present_data_cells(table)
     scope_cols = {col_id for unit in units for col_id in unit.col_ids}
+    scope_rows = {row_id for unit in units for row_id in unit.row_ids}
     covered: set = set()
     for unit in units:
         covered.update(unit.expected_cells)
-    in_scope = [c for c in present if c[1] in scope_cols]
-    outside = [c for c in present if c[1] not in scope_cols]
+    in_scope = [c for c in present if c[1] in scope_cols and c[0] in scope_rows]
+    outside = [c for c in present
+               if c[1] not in scope_cols or c[0] not in scope_rows]
     missing = [c for c in in_scope if c not in covered]
     coverage = (len(in_scope) - len(missing)) / len(in_scope) if in_scope else 1.0
     coverage_total = (len(present) - len(missing) - len(outside)) / len(present) if present else 1.0
@@ -156,9 +158,10 @@ def _check_structure(table: Table, units: Sequence[ExtractionUnit],
                 code="zelle_ausserhalb_scope",
                 severity=SEVERITY_INFO,
                 message=(
-                    f"{len(outside)} Zellen in Spalten ohne belegten Arm "
-                    f"({sorted({c[1] for c in outside})}) liegen ausserhalb des "
-                    "Ausschnitts; sie werden nicht gelesen und nicht bewertet."
+                    f"{len(outside)} Zellen ausserhalb des Auftrags (Spalten ohne "
+                    f"belegten Arm oder Zeilen ausserhalb der Outcome-Zeile; "
+                    f"Spalten {sorted({c[1] for c in outside})}) werden nicht "
+                    "gelesen und nicht bewertet."
                 ),
                 table_id=table.table_id,
             )
@@ -363,6 +366,7 @@ def _check_structure(table: Table, units: Sequence[ExtractionUnit],
         "cells_covered": len(in_scope) - len(missing),
         "cells_uncovered": len(missing),
         "cells_outside_scope": len(outside),
+        "cells_outside_rows": len([c for c in outside if c[0] not in scope_rows]),
         "coverage": round(coverage, 4),
         "coverage_total": round(coverage_total, 4),
         "n_units": len(units),

@@ -50,6 +50,9 @@ from research_agent.table_decomposition.reconstruct import (
 from research_agent.table_decomposition.semantics import (
     bind_arm,
     enrich_table,
+    group_size_declaration,
+    outcome_rows,
+    reachable_cells,
     reachable_fields,
     role_for_header,
     target_columns,
@@ -203,6 +206,126 @@ Visit 4:
     assert table.rows[0].label == "5 min"
     assert table.rows[1].label == "7 min"
     assert 0 not in table.data_columns
+
+
+# --- Erwartete Zellen: Kopf, Gruppengroesse, Outcome-Zeile ----------------
+
+GROUPED_WIDTHS = [26, 16, 16, 16, 16, 16, 16]
+GROUPED_STARTS = [0, 28, 46, 64, 82, 100, 118]
+
+
+def _grouped_line(cells):
+    """Zellen an feste Spaltenpositionen setzen (PDF-Abzug als Fixture)."""
+    line = ""
+    for index, text in cells:
+        if len(line) < GROUPED_STARTS[index]:
+            line += " " * (GROUPED_STARTS[index] - len(line))
+        else:
+            line += "  "
+        line += text
+    return line
+
+
+GROUPED_DOCUMENT = "\n".join([
+    "Table 1. Participant characteristics at baseline.",
+    "",
+    _grouped_line([(0, "Characteristic"), (1, "Total"), (2, "Control"),
+                   (3, "Basic"), (4, "Plus"),
+                   (5, "Group comparison, OR (95% CI)")]),
+    _grouped_line([(1, "n=1349"), (2, "n=434"), (3, "n=459"), (4, "n=456")]),
+    "  ".join("-" * width for width in GROUPED_WIDTHS),
+    "",
+    _grouped_line([(0, "Basic vs control"), (1, "Plus vs control"), (2, "Plus vs basic")]),
+    "",
+    "**Background characteristics**",
+    "",
+    _grouped_line([(0, "Age (years), mean (SD)"), (1, "49.05 (10.62)"),
+                   (2, "50.01 (10.40)"), (3, "48.63 (11.10)"), (4, "48.54 (10.30)")]),
+    "",
+    "**Dietary intake**",
+    "",
+    _grouped_line([(1, "**Vegetable intake (grams)**")]),
+    "",
+    _grouped_line([(0, "Mean (SD)"), (1, "159.12 (69.24)"), (2, "157.73 (64.54)"),
+                   (3, "162.68 (72.76)"), (4, "156.91 (69.94)")]),
+])
+
+GROUPED_CONTEXT = {"intervention": "Plus", "comparator": "Control",
+                   "outcome": "Vegetable intake", "outcome_type": "continuous"}
+
+
+def _grouped_table(context=GROUPED_CONTEXT):
+    parsed = parse_document(GROUPED_DOCUMENT, "GROUPED")
+    assert parsed.tables, "Fixture wurde nicht als Tabelle erkannt"
+    table = parsed.tables[0]
+    enrich_table(table, context)
+    return table
+
+
+def test_comparison_line_is_not_a_column_header():
+    """``Basic vs control`` ist eine Auswertung, kein Spaltenkopf."""
+    table = _grouped_table()
+    assert not any("vs" in band.text for band in table.header_bands)
+    assert all("vs" not in " ".join(column.header_path) for column in table.columns)
+    assert table.columns[2].header_path == ("Control",)
+    assert any(item.startswith("kopfzeile_ist_zeilenlabel")
+               for item in table.irregularities)
+
+
+def test_header_group_size_is_a_fact_not_a_column_role():
+    """``n = 456`` ist eine Kopfangabe, keine Spalte mit Zeilenwerten."""
+    table = _grouped_table()
+    assert group_size_declaration("n=434") == 434
+    assert group_size_declaration("n = 12") == 12
+    assert group_size_declaration("Arm B (n = 12)") is None
+
+    sizes = {(fact["arm"], fact["value"]) for fact in table.header_facts}
+    assert ("comparator", 434) in sizes
+    assert ("intervention", 456) in sizes
+    assert ("intervention", 459) not in sizes      # Basic ist nicht der Arm
+    assert all(column.role != "n" for column in table.columns)
+    assert all(column.field is None for column in table.columns[:5])
+    # Kopfangaben sind kein gelesener Zellwert und zaehlen nicht als erwartbar.
+    fields = {name for _row_id, name in reachable_cells(table, GROUPED_CONTEXT)}
+    assert "comparator_group_size" not in fields
+
+
+def test_group_labels_extend_the_table_and_carry_a_label_path():
+    """Fette Zeilengruppen beenden die Tabelle nicht und bilden den Pfad."""
+    table = _grouped_table()
+    labels = [row.group_label for row in table.rows if row.group_label]
+    assert labels == ["Background characteristics", "Dietary intake",
+                      "Vegetable intake (grams)"]
+    vegetable = next(row for row in table.rows if "Vegetable" in row.group_label)
+    below = table.rows[table.rows.index(vegetable) + 1]
+    assert below.label_path == ("Dietary intake", "Vegetable intake (grams)",
+                                "Mean (SD)")
+    assert outcome_rows(table, "Vegetable intake") == [below.row_id]
+    assert outcome_rows(table, "Age") == [1]
+    assert outcome_rows(table, "Quality of life") == []
+
+
+def test_reachable_cells_are_limited_to_the_outcome_row():
+    table = _table()
+    cells = reachable_cells(table, CONTEXT)
+    assert {row_id for row_id, _field in cells} == {0}
+    assert "intervention_mean" in {name for _row_id, name in cells}
+    assert reachable_cells(table, {"outcome": "Quality of life"}) == set()
+
+
+def test_focused_plan_reads_only_the_outcome_row():
+    table = _table()
+    focused = plan(table, STRATEGY_FULL, PlanOptions(focus_outcome=True), DOCUMENT)
+    unit = focused.units[0]
+    assert {row_id for row_id, _col_id in unit.expected_cells} == {0}
+    assert 1 in unit.context_row_ids
+    assert "Outcome-Zeile" in " ".join(unit.notes)
+    report = validate(table, focused.units, None)
+    assert report.structural["cells_outside_rows"] > 0
+    assert report.status == STATUS_COMPLETE
+
+    unfocused = plan(table, STRATEGY_FULL, PlanOptions(), DOCUMENT)
+    assert len(unfocused.units[0].expected_cells) > len(unit.expected_cells)
 
 
 # --- Parser ---------------------------------------------------------------

@@ -62,6 +62,9 @@ class TableDecompositionConfig:
     include_verbatim: bool = True
     arm_transfer: bool = True
     arm_order_fallback: bool = False
+    # Nur die Outcome-Zeile lesen. Standard aus, damit die produktive Pipeline
+    # unveraendert bleibt; der Benchmark setzt es gezielt.
+    focus_outcome: bool = False
     model_name: str = ""
 
     def options(self) -> PlanOptions:
@@ -71,6 +74,7 @@ class TableDecompositionConfig:
             include_verbatim=self.include_verbatim,
             min_columns_for_split=self.min_columns_for_split,
             max_refinement_units=self.max_refinement_units,
+            focus_outcome=self.focus_outcome,
         )
 
     @classmethod
@@ -119,6 +123,9 @@ class TableDecompositionConfig:
             config.arm_order_fallback = bool(
                 value.get("arm_order_fallback", config.arm_order_fallback)
             )
+            config.focus_outcome = bool(
+                value.get("focus_outcome", config.focus_outcome)
+            )
             config.model_name = str(value.get("model") or config.model_name)
         return config
 
@@ -133,6 +140,9 @@ class TableDecompositionConfig:
         depth = environment.get("TABLE_DECOMPOSITION_MAX_DEPTH")
         if depth and depth.isdigit():
             config.max_depth = int(depth)
+        focus = environment.get("TABLE_DECOMPOSITION_FOCUS_OUTCOME")
+        if focus is not None:
+            config.focus_outcome = focus.strip().lower() in _TRUTHY
         return config
 
     @classmethod

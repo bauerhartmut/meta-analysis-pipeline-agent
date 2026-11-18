@@ -45,7 +45,7 @@ from research_agent.table_decomposition.parser import parse_document  # noqa: E4
 from research_agent.table_decomposition.reconstruct import Reconstruction  # noqa: E402
 from research_agent.table_decomposition.semantics import (
     enrich_table,
-    reachable_fields,
+    reachable_cells,
     transfer_arms_within_document,
 )  # noqa: E402
 from research_agent.table_decomposition.strategies import (  # noqa: E402
@@ -116,13 +116,15 @@ def group_by_record(selection: Dict[str, Any],
 
 def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
                 strategies: List[str], max_tables: Optional[int],
-                assume_order: bool = False) -> Dict[str, Any]:
+                assume_order: bool = False,
+                focus_outcome: bool = True) -> Dict[str, Any]:
     """Struktur und Aufwand je Record ueber alle ausgewaehlten Tabellen.
 
     Die Pipeline verarbeitet je Record mehrere Tabellen eines Dokuments; der
-    Benchmark misst dieselbe Einheit. ``gold_reachable`` ist die Vereinigung
-    der Zielfelder aller ausgewaehlten Tabellen - die Obergrenze des
-    Tabellenpfads, nicht die Modellleistung.
+    Benchmark misst dieselbe Einheit. ``gold_reachable`` zaehlt nur Zellen der
+    Outcome-Zeile (Spaltenfeld **und** Zeile) - die Obergrenze des
+    Tabellenpfads, nicht die Modellleistung. Gruppenangaben aus dem Kopf
+    (``n = 456``) zaehlen nicht mit: sie sind noch kein gelesener Zellwert.
     """
     per_strategy: Dict[str, Dict[str, Any]] = {
         strategy: {"records": [], "totals": Counter()} for strategy in strategies
@@ -132,7 +134,10 @@ def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
         if record is None:
             continue
         tables, text = load_tables(entries, record, assume_order=assume_order)
-        fields = {name for table in tables for name in reachable_fields(table)}
+        context = context_of(record)
+        fields = {name for table in tables
+                  for _row_id, name in reachable_cells(table, context)}
+        focus_rows = {row_id for table in tables for row_id in table.focus_rows}
         reachable = sum(1 for cell in record["gold"]["cells"] if cell["field"] in fields)
         for strategy in strategies:
             units = 0
@@ -146,7 +151,8 @@ def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
             complexity: Counter = Counter()
             per_table: List[Dict[str, Any]] = []
             for table in tables:
-                decomposition = plan_table(table, strategy, PlanOptions(), text)
+                decomposition = plan_table(
+                    table, strategy, PlanOptions(focus_outcome=focus_outcome), text)
                 report = validate(table, decomposition.units, None)
                 chars = sum(len(unit.prompt) for unit in decomposition.units)
                 scope_cols = {col for unit in decomposition.units for col in unit.col_ids}
@@ -185,6 +191,8 @@ def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
                 "est_tokens_zeichen_durch_4": round(prompt_chars / 4),
                 "gold_cells_record": len(record["gold"]["cells"]),
                 "gold_reachable": reachable,
+                "focus_rows": len(focus_rows),
+                "no_outcome_row": not focus_rows,
                 "structural_complete_tables": complete,
                 "validation_errors": errors,
                 "validation_warnings": warnings,
@@ -338,6 +346,7 @@ def model_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
                 max_refinement_units=config.max_refinement_units,
                 include_footnotes=config.include_footnotes,
                 include_verbatim=config.include_verbatim,
+                focus_outcome=config.focus_outcome,
                 model_name=model_id,
             )
             engine = TableDecompositionEngine(backend=backend, config=run_config)
@@ -401,6 +410,9 @@ def main() -> int:
     parser.add_argument("--max-tokens", type=int, default=24000,
                         help="Completion-Limit je Aufruf (fuer alle Verfahren "
                              "identisch); 8000 reicht bei grossen Tabellen nicht")
+    parser.add_argument("--all-rows", dest="all_rows", action="store_true",
+                        help="ganze Tabelle lesen statt nur der Outcome-Zeile "
+                             "(Vergleichsmessung; Standard ist die Outcome-Zeile)")
     args = parser.parse_args()
 
     if not args.selection.exists():
@@ -437,6 +449,7 @@ def main() -> int:
             enabled=True, max_units_per_table=args.max_units,
             max_calls_per_table=args.max_calls, max_depth=args.max_depth,
             arm_order_fallback=args.arm_order_fallback,
+            focus_outcome=not args.all_rows,
         )
         target = out_dir / "predictions.jsonl"
         with target.open("w", encoding="utf-8") as handle:
@@ -453,6 +466,7 @@ def main() -> int:
             "max_tokens": args.max_tokens,
             "strategies": list(args.strategies),
             "arm_order_fallback": bool(args.arm_order_fallback),
+            "focus_outcome": bool(not args.all_rows),
             "selection": str(args.selection),
             "selection_sha256": selection.get("records_sha256"),
             "records": len(rows),
@@ -464,7 +478,8 @@ def main() -> int:
         return 0
 
     result = offline_run(selection, records, args.strategies, args.max_tables,
-                         assume_order=args.arm_order_fallback)
+                         assume_order=args.arm_order_fallback,
+                         focus_outcome=not args.all_rows)
     result.update({
         "selection": str(args.selection),
         "selection_role": selection.get("role"),

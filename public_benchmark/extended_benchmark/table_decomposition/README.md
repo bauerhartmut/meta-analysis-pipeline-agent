@@ -58,8 +58,15 @@ python public_benchmark/extended_benchmark/table_decomposition/run_benchmark.py 
 
 Misst je Record und Verfahren: Einheiten, Prompt-Zeichen, geschätzte Tokens
 (Zeichen / 4, als Schätzung markiert), erwartete Zellen, Zellen im Ausschnitt,
-Goldzellen erreichbar (Vereinigung über die ausgewählten Tabellen) und den
-Validierungsstatus. Kein Modellaufruf, keine Precision/Recall.
+Goldzellen erreichbar und den Validierungsstatus. Kein Modellaufruf, keine
+Precision/Recall.
+
+„Goldzelle erreichbar“ heißt seit dem 18.11.2026: das Feld trägt eine Spalte
+**und** die Zelle steht in der Outcome-Zeile des Records (`focus_rows`). Eine
+Spalte mit dem Feld in irgendeiner Zeile zählt nicht mehr. Gruppengrößen aus
+dem Kopf (`n = 434`) sind Kopf-Fakten und zählen nicht als gelesener Zellwert.
+Der Auftrag ist entsprechend auf die Outcome-Zeile begrenzt; `--all-rows`
+misst zum Vergleich weiter die ganze Tabelle.
 
 ## Modelllauf (kostenpflichtig, nur mit Freigabe)
 

@@ -1088,3 +1088,37 @@ Provenienz) plus 4 Benchmark-Tests - 36 gruen.
 
 **Nicht gemacht:** Modelllauf. Die 34-%-Obergrenze des Tabellenpfads ist jetzt
 bekannt und begrenzt den erwartbaren Recall-Gewinn.
+
+## Sprint 34 (18.11.2026): Erwartete Zellen berichtigt (Kopf, Gruppengroesse, Outcome-Zeile)
+
+**Anlass:** Der Pilotlauf mit GLM-5.3 lieferte 0 richtige von 12 erwarteten
+Zellen. Ursache war nicht das Modell, sondern der Erwartungswert: Kopfzeilen
+waren falsch zusammengesetzt, `n = 434` wurde zur Spaltenrolle, und erwartet
+wurden Zellen aller Zeilen statt der Outcome-Zeile.
+
+**Aenderungen (ohne Netzlauf):** (1) Vergleichszeilen wie `Basic vs control`
+gelten nicht mehr als Spaltenkopf (`kopfzeile_ist_zeilenlabel`); fette
+Zeilengruppen beenden die Tabelle nicht mehr und bilden den Label-Pfad
+(`Row.label_path`, Tiefe aus der Spalte des Gruppenlabels). (2) `n = 456` ist
+Kopf-Fakt (`Table.header_facts`, Wert/Spanne/Arm) und keine Spaltenrolle `n`
+mehr; reine Kopfangaben fallen aus Header-Pfad und Rollenbestimmung heraus.
+(3) `semantics.outcome_rows` + `reachable_cells` definieren erwartbare Zellen
+als Spaltenfeld **und** Outcome-Zeile; `PlanOptions.focus_outcome` begrenzt den
+Auftrag darauf (Standard aus, produktive Pipeline unveraendert). Die
+Validierung unterscheidet jetzt Zellen ausserhalb der Zeilen (`cells_outside_rows`).
+
+**Beleg:** `PMC4319071:T1` 1 -> 30 gelesene Zeilen (10 Gruppenzeilen), 3 -> 0
+Kopf-Baender mit `vs`, 3 -> 0 Spalten mit Rolle `n`, Kopf-Fakten 1349/434/459/456
+(434 als comparator gebunden, 456 ohne Armbeleg, weil der Record `Plus` nicht
+nennt). Testsplit: erreichbar 95/278 -> 21/278, jetzt zeilengenau; 60/60
+Tabellen strukturell vollstaendig, 0 Fehler; Tokens A 84.733 -> 90.872,
+B 157.828 -> 148.523, E 295.279 -> 268.059 (Schaetzung Zeichen/4).
+Verbleibende Luecke: 29 Records ohne erkannte Outcome-Zeile (Abkuerzungen wie
+`IP-10`), 8 mit falsch ausgewaehlter Tabelle, 10 ohne Tabelle im Dokument.
+
+**Tests:** 38 Engine-Tests (6 neu: Vergleichszeile, Kopf-Fakt, Gruppenpfad,
+Reichweite je Zeile, fokussierter Plan) plus 4 Benchmark-Tests - 42 gruen.
+
+**Nicht gemacht:** Modelllauf (Freigabe offen), Neueinfrierung der Auswahl,
+Rollen aus Zeilenlabels (deshalb weiterhin 0 Zellen fuer `PMC4319071:T1`).
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/erwartete_zellen_20261118.md`.
