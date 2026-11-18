@@ -242,7 +242,7 @@ def auswerten(
 
     return {
         "modell": modell,
-        "ausfallzeilen": len(alt),
+        "grundgesamtheit": len(alt),
         "ids_ohne_altzeile": ohne_altzeile,
         "bewertbar": bewertbar,
         "nicht_bewertbar": nicht_bewertbar,
@@ -258,7 +258,9 @@ def auswerten(
         "adressiert_zeitpunkt": summe(bewertbar, "adressiert_zeitpunkt"),
         "wertgleich_zeitpunkt": summe(bewertbar, "wertgleich_zeitpunkt"),
         "goldzellen_mit_zeitpunkt": summe(bewertbar, "goldzellen_mit_zeitpunkt"),
-        "zellen_neu_mit_zeitpunkt": summe(bewertbar, "zellen_neu_mit_zeitpunkt"),
+        # Ueber alle Records, damit die Zeile zur Gesamtzahl der Zellen passt
+        # (`zellen_neu` zaehlt ebenfalls alle, auch die ohne Gold).
+        "zellen_neu_mit_zeitpunkt": summe(bewertbar + nicht_bewertbar, "zellen_neu_mit_zeitpunkt"),
         "zeitpunkt_mehrdeutig": summe(bewertbar, "zeitpunkt_mehrdeutig"),
         "tokens_neu": summe(bewertbar + nicht_bewertbar, "tokens_neu"),
     }
@@ -271,7 +273,7 @@ def bericht(werte: dict[str, Any], neu_pfad: str, nullprobe: bool) -> str:
     zeilen = [
         "# P5-Auswertung: Rettung und Zellgewinn",
         "",
-        f"Neu: `{neu_pfad}`. Vergleich: {werte['ausfallzeilen']} IDs der P5-Auswahl "
+        f"Neu: `{neu_pfad}`. Vergleich: {werte['grundgesamtheit']} IDs der P5-Auswahl "
         f"gegen ihre Zeilen in der Lesekopie, Modell {werte['modell']}.",
         "",
     ]
@@ -458,7 +460,7 @@ def main() -> int:
     if auswahl.exists():
         ids = list(json.loads(auswahl.read_text(encoding="utf-8")).get("ids") or [])
     werte = auswerten(lade(Path(args.alt)), lade(neu_pfad), records, args.modell, ids=ids)
-    if not werte["ausfallzeilen"]:
+    if not werte["grundgesamtheit"]:
         print(f"FEHLER: keine {KLASSE}-Zeilen in {args.alt}")
         return 2
 

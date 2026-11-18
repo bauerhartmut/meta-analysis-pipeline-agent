@@ -1,0 +1,8 @@
+{"record_id": "k1", "model": "glm", "fehlerklasse": "length_ohne_ergebnis", "failed": true, "completion_tokens": 24000, "predicted": {"cells": []}}
+{"record_id": "k2", "model": "glm", "fehlerklasse": "length_ohne_ergebnis", "failed": true, "completion_tokens": 24000, "predicted": {"cells": []}}
+{"record_id": "k3", "model": "glm", "fehlerklasse": "length_ohne_ergebnis", "failed": true, "completion_tokens": 24000, "predicted": {"cells": []}}
+{"record_id": "k4", "model": "glm", "fehlerklasse": "length_ohne_ergebnis", "failed": true, "completion_tokens": 24000, "predicted": {"cells": []}}
+{"record_id": "k5", "model": "glm", "fehlerklasse": "length_ohne_ergebnis", "failed": true, "completion_tokens": 24000, "predicted": {"cells": []}}
+{"record_id": "k6", "model": "glm", "fehlerklasse": "length_ohne_ergebnis", "failed": true, "completion_tokens": 24000, "predicted": {"cells": []}}
+{"record_id": "k7", "model": "glm", "fehlerklasse": "json_kaputt", "failed": true, "completion_tokens": 24000, "predicted": {"cells": []}}
+{"record_id": "k8", "model": "glm", "fehlerklasse": "length_ohne_ergebnis", "failed": true, "completion_tokens": 24000, "predicted": {"cells": []}}

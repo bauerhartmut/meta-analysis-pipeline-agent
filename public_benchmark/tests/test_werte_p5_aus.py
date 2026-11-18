@@ -78,7 +78,7 @@ def test_status_und_zellgewinn() -> None:
     alt, neu, records = _bestand()
     werte = p5.auswerten(alt, neu, records)
 
-    assert werte["ausfallzeilen"] == 4
+    assert werte["grundgesamtheit"] == 4
     assert werte["status"] == {"gerettet": 2, "fertig_ohne_zellen": 0, "weiter_ausfall": 1, "fehlt": 1}
     assert werte["zellen_alt"] == 0
     assert werte["zellen_neu"] == 3
@@ -240,7 +240,7 @@ def test_drei_stufen_bleiben_getrennt() -> None:
 def test_ids_ohne_altzeile_werden_gemeldet() -> None:
     werte = p5.auswerten([_alt("a")], [_neu("a", [])], {}, ids=["a", "z"])
     assert werte["ids_ohne_altzeile"] == ["z"]
-    assert werte["ausfallzeilen"] == 1
+    assert werte["grundgesamtheit"] == 1
 
 
 def test_bericht_nennt_stufen_klassen_und_schaetzung() -> None:

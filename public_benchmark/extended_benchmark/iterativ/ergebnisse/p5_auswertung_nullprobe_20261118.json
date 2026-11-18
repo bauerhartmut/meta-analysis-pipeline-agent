@@ -1,6 +1,6 @@
 {
   "modell": "glm",
-  "ausfallzeilen": 103,
+  "grundgesamtheit": 103,
   "ids_ohne_altzeile": [],
   "bewertbar": [
     {

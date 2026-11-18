@@ -1,0 +1,114 @@
+{
+  "soll": {
+    "grundgesamtheit": 8,
+    "ids_ohne_altzeile": [],
+    "status": {
+      "gerettet": 5,
+      "fertig_ohne_zellen": 1,
+      "weiter_ausfall": 1,
+      "fehlt": 1
+    },
+    "stufen": {
+      "ids": 8,
+      "technisch": 6,
+      "auswertbar": 5,
+      "inhaltlich": 3,
+      "inhaltlich_zeitpunkt": 2
+    },
+    "zellen_neu": 9,
+    "zellen_neu_mit_zeitpunkt": 9,
+    "goldzellen_bewertbar": 11,
+    "goldzellen_mit_zeitpunkt": 0,
+    "adressiert": 7,
+    "adressiert_zeitpunkt": 6,
+    "wertgleich": 5,
+    "wertgleich_zeitpunkt": 4,
+    "zeitpunkt_mehrdeutig": 1,
+    "nach_klasse": {
+      "length_ohne_ergebnis": {
+        "ids": 7,
+        "technisch": 5,
+        "auswertbar": 4,
+        "leer": 1,
+        "weiter_ausfall": 1,
+        "fehlt": 1,
+        "goldzellen": 10,
+        "adressiert": 6,
+        "adressiert_zeitpunkt": 5,
+        "wertgleich": 4,
+        "wertgleich_zeitpunkt": 3
+      },
+      "json_kaputt": {
+        "ids": 1,
+        "technisch": 1,
+        "auswertbar": 1,
+        "leer": 0,
+        "weiter_ausfall": 0,
+        "fehlt": 0,
+        "goldzellen": 1,
+        "adressiert": 1,
+        "adressiert_zeitpunkt": 1,
+        "wertgleich": 1,
+        "wertgleich_zeitpunkt": 1
+      }
+    }
+  },
+  "ist": {
+    "modell": "glm",
+    "grundgesamtheit": 8,
+    "ids_ohne_altzeile": [],
+    "status": {
+      "gerettet": 5,
+      "fertig_ohne_zellen": 1,
+      "weiter_ausfall": 1,
+      "fehlt": 1
+    },
+    "stufen": {
+      "ids": 8,
+      "technisch": 6,
+      "auswertbar": 5,
+      "inhaltlich": 3,
+      "inhaltlich_zeitpunkt": 2
+    },
+    "nach_klasse": {
+      "length_ohne_ergebnis": {
+        "ids": 7,
+        "technisch": 5,
+        "auswertbar": 4,
+        "leer": 1,
+        "weiter_ausfall": 1,
+        "fehlt": 1,
+        "goldzellen": 10,
+        "adressiert": 6,
+        "wertgleich": 4,
+        "adressiert_zeitpunkt": 5,
+        "wertgleich_zeitpunkt": 3
+      },
+      "json_kaputt": {
+        "ids": 1,
+        "technisch": 1,
+        "auswertbar": 1,
+        "leer": 0,
+        "weiter_ausfall": 0,
+        "fehlt": 0,
+        "goldzellen": 1,
+        "adressiert": 1,
+        "wertgleich": 1,
+        "adressiert_zeitpunkt": 1,
+        "wertgleich_zeitpunkt": 1
+      }
+    },
+    "zellen_alt": 0,
+    "zellen_neu": 9,
+    "zellgewinn": 9,
+    "goldzellen_bewertbar": 11,
+    "adressiert": 7,
+    "wertgleich": 5,
+    "adressiert_zeitpunkt": 6,
+    "wertgleich_zeitpunkt": 4,
+    "goldzellen_mit_zeitpunkt": 0,
+    "zellen_neu_mit_zeitpunkt": 9,
+    "zeitpunkt_mehrdeutig": 1,
+    "tokens_neu": 8400
+  }
+}

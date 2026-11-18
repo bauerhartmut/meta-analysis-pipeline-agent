@@ -413,8 +413,16 @@ Tokenverbrauch schwankt stark (443 → 1.195 bei `yun2024:698`). Bericht:
    genau der Fall, in dem ein Treffer ohne Zeitpunktprüfung zu gut aussieht.
    Nullprobe gegen die eigene
    Lesekopie: 0 Rettungen, 0 Zellgewinn, 423 Goldzellen; ohne Laufdatei endet das
-   Skript mit Exit 2.
-7. Start erst bei echter Ruhe: `yun_full/starte_p5_wenn_frei.sh` wartet, bis
+   Skript mit Exit 2. Die Kennzahl der verglichenen Zeilen heißt seit dem Umbau
+   `grundgesamtheit` statt `ausfallzeilen`; sie kommt aus der P5-Auswahl, nicht
+   aus einem Klassenfilter.
+8. Positivkontrolle (offline): `yun_full/positivkontrolle_p5.py` rechnet eine
+   erfundene Prediction-Datei mit von Hand bestimmten Sollwerten durch —
+   Rettungen mit richtigen und falschen Werten, eine leere Antwort, ein weiter
+   ausgefallener Record, ein im neuen Lauf fehlender Record, ein Record ohne
+   Goldzellen und eine Vorhersage, die denselben Feld/Arm-Schlüssel über zwei
+   Zeitpunkte streut. Weicht eine Summe ab, endet das Skript mit Exit 1.
+9. Start erst bei echter Ruhe: `yun_full/starte_p5_wenn_frei.sh` wartet, bis
    `lauf_status.py` für `yun699_8000_alle_20261117` "Prozesse: 0" meldet, der in
    `nachzug.lock` eingetragene Prozess nicht mehr lebt und 180 Sekunden lang
    keine Zeile mehr an `predictions.jsonl` hängt; erst dann startet es den Lauf
