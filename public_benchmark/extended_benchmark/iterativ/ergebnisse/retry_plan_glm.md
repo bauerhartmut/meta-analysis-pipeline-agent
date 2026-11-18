@@ -76,6 +76,29 @@ gegen den laufenden Lauf geprueft:
 | Gegenprobe ohne `--retry-failed` | 103 Records, **0** Auftraege |
 | `predictions.jsonl` vor/nach | gleiche MD5, gleiche Zeilenzahl (1.497) |
 
+## Trockenlauf des Nachzugs (ohne Netzlauf)
+
+`nachzug_ausfaelle.sh --dry-run` fuehrt den ganzen Ablauf aus, laesst nur den
+Start weg: Sicherung, Auswahlpruefung, Ersatzzeilen statt Modellantworten,
+Dedupe und Zusammenfassung. Er verweigert die echte run-id und laeuft nur auf
+einer Kopie. Protokoll: `nachzug_trocken_protokoll.txt`.
+
+Geprueft gegen eine Kopie von `yun699_8000_alle_20261117` (1.507 Zeilen):
+
+| Schritt | Ergebnis |
+|---|---|
+| Sicherung | `predictions.vor_nachzug.jsonl` angelegt, 103 Length-Ausfaelle |
+| Auswahl im Harness | 140 offene Auftraege (103 length + 36 leer + 1 json_kaputt) |
+| Ersatzzeilen | 2 angehaengt, als `dry_run` markiert |
+| Dedupe | 1.509 roh → 1.507 eindeutig, 2 Duplikate, 0 unlesbar |
+| Zusammenfassung | 103 vorher, 2 gerettet, 101 erneut length (98 %) |
+| Duplikate danach | 0 |
+| Prozess gestartet | keiner |
+| echte Datei | unveraendert (die neue Zeile dort ist eine qwen-Zeile des laufenden Nachtlaufs) |
+
+Die 98 % sind **kein Messwert**: Die Ersatzzeilen sind konstruiert. Geprueft ist
+der Ablauf, nicht die Rettungsquote.
+
 ## Zwei Fallen
 
 1. **`nachzug_ausfaelle.sh` ist angepasst.** Es wartet nicht mehr auf

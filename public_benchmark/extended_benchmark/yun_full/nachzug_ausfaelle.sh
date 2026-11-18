@@ -14,6 +14,9 @@
 #   --run NAME    Run-Verzeichnis (Standard: yun699_8000_alle_20261117)
 #   --repair      Reparaturaufruf fuer Length-Faelle aktivieren (6.000 Tokens)
 #   --jetzt       nicht warten, sofort starten (nur wenn sicher kein Prozess laeuft)
+#   --dry-run     Durchgriff ohne Netzlauf: sichert, zeigt die Auswahl, haengt
+#                 Ersatzzeilen an, dedupliziert und rechnet die Zusammenfassung.
+#                 Nur auf einer Kopie des Run-Verzeichnisses zulaessig.
 #
 # Ergebnis: runs/$RUN/konsole_nachzug.log, runs/$RUN/nachzug_zusammenfassung.txt
 set -u
@@ -29,6 +32,8 @@ RUN=yun699_8000_alle_20261117
 LOG=""
 REPAIR=""
 JETZT=0
+TROCKEN=0
+ECHT="yun699_8000_alle_20261117"
 MAXWARTE=${MAXWARTE:-720}   # 720 x 60 s = 12 h; endet frueher, sobald kein Prozess mehr laeuft
 
 while [ $# -gt 0 ]; do
@@ -37,10 +42,16 @@ while [ $# -gt 0 ]; do
     --run) RUN="${2:-}"; shift 2 ;;
     --repair) REPAIR="--repair"; shift ;;
     --jetzt) JETZT=1; shift ;;
+    --dry-run) TROCKEN=1; JETZT=1; shift ;;
     *) echo "Unbekannter Parameter: $1"; exit 2 ;;
   esac
 done
 [ -n "$LOG" ] || LOG="$R/$RUN/konsole.log"
+
+if [ "$TROCKEN" -eq 1 ] && [ "$RUN" = "$ECHT" ]; then
+  echo "FEHLER: --dry-run nur auf einer Kopie (--run <kopie>) ausfuehren."
+  exit 2
+fi
 NLOG="$R/$RUN/konsole_nachzug.log"
 LOCK="$R/$RUN/nachzug.lock"
 
@@ -113,24 +124,40 @@ print(n)
 echo "GLM-Ausfaelle vor dem Nachzug: $vorher"
 
 # --- Nachzug ----------------------------------------------------------------
-nohup .venv/bin/python public_benchmark/extended_benchmark/run_extended_extraction.py \
-  --models glm \
-  --records public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl \
-  --split "" --max-tokens 24000 --cell-timepoint --cache-buster \
-  --workers 1 --retry-failed $REPAIR \
-  --run-id "$RUN" --quelle v7_nachzug \
-  > "$NLOG" 2>&1 &
-NPID=$!
-echo "Nachzug gestartet, PID $NPID (Log: $NLOG)"
+if [ "$TROCKEN" -eq 1 ]; then
+  echo "=== TROCKENLAUF: kein Netzlauf, keine Anfrage ==="
+  echo "Sicherung: $R/$RUN/predictions.vor_nachzug.jsonl"
+  echo "Auswahl, die ein echter Lauf anfassen wuerde:"
+  # Der Trockenlauf des Harness prueft die Auswahl gegen die Kopie.
+  .venv/bin/python public_benchmark/extended_benchmark/run_extended_extraction.py \
+    --models glm \
+    --records public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl \
+    --split "" --max-tokens 24000 --cell-timepoint --cache-buster \
+    --workers 1 --retry-failed $REPAIR \
+    --run-id "$RUN" --quelle v7_nachzug --dry-run
+  # Ersatzzeilen, damit Dedupe und Zusammenfassung echten Stoff haben.
+  .venv/bin/python public_benchmark/extended_benchmark/yun_full/nachzug_trocken_schreibe.py \
+    --run-verzeichnis "$R/$RUN" --anzahl 2
+else
+  nohup .venv/bin/python public_benchmark/extended_benchmark/run_extended_extraction.py \
+    --models glm \
+    --records public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl \
+    --split "" --max-tokens 24000 --cell-timepoint --cache-buster \
+    --workers 1 --retry-failed $REPAIR \
+    --run-id "$RUN" --quelle v7_nachzug \
+    > "$NLOG" 2>&1 &
+  NPID=$!
+  echo "Nachzug gestartet, PID $NPID (Log: $NLOG)"
 
-# --- Auf den Nachzug warten -------------------------------------------------
-for i in $(seq 1 240); do
-  if grep -q "^fertig:" "$NLOG" 2>/dev/null; then break; fi
-  sleep 30
-done
-if ! grep -q "^fertig:" "$NLOG" 2>/dev/null; then
-  echo "FEHLER: Nachzug nicht abgeschlossen, Dedupe unterlassen."
-  exit 1
+  # --- Auf den Nachzug warten -----------------------------------------------
+  for i in $(seq 1 240); do
+    if grep -q "^fertig:" "$NLOG" 2>/dev/null; then break; fi
+    sleep 30
+  done
+  if ! grep -q "^fertig:" "$NLOG" 2>/dev/null; then
+    echo "FEHLER: Nachzug nicht abgeschlossen, Dedupe unterlassen."
+    exit 1
+  fi
 fi
 
 # --- Dedupe und Zaehlung ----------------------------------------------------
