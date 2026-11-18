@@ -9,14 +9,12 @@
     "ohne_text": {
       "erreichbar": 94,
       "wertgleich": 68,
-      "streng": 49,
-      "streng_direkt": 49
+      "streng": 49
     },
     "mit_text": {
       "erreichbar": 101,
       "wertgleich": 83,
       "streng": 46,
-      "streng_direkt": 46,
       "streng_gewaehlt": 49
     },
     "neu_wertgleich": [
@@ -163,107 +161,6 @@
         "noch_wertgleich": true
       }
     ],
-    "streng_direkt_gewonnen": [],
-    "streng_direkt_verloren": [
-      {
-        "record_id": "yun2024:174",
-        "feld": "comparator_group_size",
-        "gold": 15.0,
-        "vorher": [
-          15.0
-        ],
-        "nachher": [
-          11.0,
-          15.0
-        ]
-      },
-      {
-        "record_id": "yun2024:445",
-        "feld": "comparator_group_size",
-        "gold": 70.0,
-        "vorher": [
-          70.0
-        ],
-        "nachher": [
-          70.0,
-          140.0
-        ]
-      },
-      {
-        "record_id": "yun2024:639",
-        "feld": "comparator_group_size",
-        "gold": 12.0,
-        "vorher": [
-          12.0
-        ],
-        "nachher": [
-          12.0,
-          13.0
-        ]
-      },
-      {
-        "record_id": "yun2024:640",
-        "feld": "comparator_group_size",
-        "gold": 12.0,
-        "vorher": [
-          12.0
-        ],
-        "nachher": [
-          12.0,
-          13.0
-        ]
-      },
-      {
-        "record_id": "yun2024:645",
-        "feld": "comparator_group_size",
-        "gold": 26.0,
-        "vorher": [
-          26.0
-        ],
-        "nachher": [
-          26.0,
-          30.0
-        ]
-      },
-      {
-        "record_id": "yun2024:645",
-        "feld": "intervention_group_size",
-        "gold": 27.0,
-        "vorher": [
-          27.0
-        ],
-        "nachher": [
-          27.0,
-          29.0
-        ]
-      },
-      {
-        "record_id": "yun2024:647",
-        "feld": "comparator_group_size",
-        "gold": 26.0,
-        "vorher": [
-          26.0
-        ],
-        "nachher": [
-          26.0,
-          30.0
-        ]
-      },
-      {
-        "record_id": "yun2024:647",
-        "feld": "intervention_group_size",
-        "gold": 27.0,
-        "vorher": [
-          27.0
-        ],
-        "nachher": [
-          27.0,
-          29.0
-        ]
-      }
-    ],
-    "streng_direkt_differenz": -3,
-    "definition_abweichungen": [],
     "korroboration": {
       "felder_mit_belegter_zahl": 9,
       "mehrdeutig_aufgeloest": [
@@ -572,8 +469,6 @@
       "nachher": 15,
       "streng_vorher": 8,
       "streng_nachher": 4,
-      "streng_direkt_vorher": 8,
-      "streng_direkt_nachher": 4,
       "streng_gewaehlt": 7
     },
     "subgroup_vs_total": {
@@ -582,8 +477,6 @@
       "nachher": 2,
       "streng_vorher": 0,
       "streng_nachher": 0,
-      "streng_direkt_vorher": 0,
-      "streng_direkt_nachher": 0,
       "streng_gewaehlt": 0
     },
     "sum_of_subgroups": {
@@ -592,8 +485,6 @@
       "nachher": 0,
       "streng_vorher": 0,
       "streng_nachher": 0,
-      "streng_direkt_vorher": 0,
-      "streng_direkt_nachher": 0,
       "streng_gewaehlt": 0
     },
     "timepoint_mismatch": {
@@ -602,8 +493,6 @@
       "nachher": 0,
       "streng_vorher": 0,
       "streng_nachher": 0,
-      "streng_direkt_vorher": 0,
-      "streng_direkt_nachher": 0,
       "streng_gewaehlt": 0
     },
     "unexplained": {
@@ -612,8 +501,6 @@
       "nachher": 1,
       "streng_vorher": 0,
       "streng_nachher": 0,
-      "streng_direkt_vorher": 0,
-      "streng_direkt_nachher": 0,
       "streng_gewaehlt": 0
     }
   },
