@@ -70,6 +70,7 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=None)
     parser.add_argument("--split", default=None, help="nur Records dieses Splits zaehlen")
     parser.add_argument("--ids", default=None, help="Komma-getrennte record_ids (sonst alle im Lauf)")
+    parser.add_argument("--model", default=None, help="nur diesen Modellnamen zaehlen (z. B. qwen30)")
     args = parser.parse_args()
 
     lauf = RUNS / args.run
@@ -81,6 +82,8 @@ def main() -> int:
     if args.ids:
         gewuenscht = {wert.strip() for wert in args.ids.split(",") if wert.strip()}
         rows = [z for z in rows if z["record_id"] in gewuenscht]
+    if args.model:
+        rows = [z for z in rows if z["model"] == args.model]
 
     richtig = falsch = fehlend = ohne_gold = 0
     summe_abw = 0.0
@@ -131,13 +134,17 @@ def main() -> int:
                 je_typ[typ]["falsch"] += 1
                 summe_abw += abs(gesehen[feld] - wert)
                 record_komplett = False
+                # Der freie Outcome-Text bleibt draussen: Er ist fuer die
+                # Auswertung nicht noetig (die record_id identifiziert den
+                # Datensatz) und traegt Studientitel in den Bericht, die der
+                # Sperrbegriff-Scan zu Recht nicht in getrackten Dateien sieht.
                 abweichungen.append(
                     {
                         "record_id": row["record_id"],
                         "field": feld,
                         "gold": wert,
                         "modell": gesehen[feld],
-                        "outcome": record["context"]["outcome"],
+                        "outcome_typ": typ,
                     }
                 )
         for feld in gesehen:
@@ -180,6 +187,7 @@ def main() -> int:
     f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
     ergebnis = {
         "run": args.run,
+        "model": args.model,
         "records": len(rows),
         "tokens": tokens,
         "zeit_summiert_s": round(zeit, 1),
@@ -204,7 +212,7 @@ def main() -> int:
         "je_outcome_typ": {t: dict(z) for t, z in sorted(je_typ.items())},
         "abweichungen": abweichungen,
     }
-    print(f"{args.run}: {len(rows)} Records, {goldzellen} Goldzellen")
+    print(f"{args.run}" + (f" [{args.model}]" if args.model else "") + f": {len(rows)} Records, {goldzellen} Goldzellen")
     print(
         f"  richtig {richtig} | falsch {falsch} | fehlend {fehlend} | ohne Gold {ohne_gold}"
     )

@@ -1,0 +1,2075 @@
+{
+  "run": "_lesekopie_20261118",
+  "model": "glm",
+  "records": 699,
+  "tokens": 1934079,
+  "zeit_summiert_s": 14631.4,
+  "zellen": {
+    "gold": 2773,
+    "richtig": 1840,
+    "falsch": 281,
+    "fehlend": 652,
+    "ohne_gold": 115
+  },
+  "precision": 0.8675,
+  "precision_inkl_zellen_ohne_gold": 0.8229,
+  "recall": 0.6635,
+  "f1": 0.7519,
+  "abdeckung": 0.6635,
+  "mae": 5.0573,
+  "records_status": {
+    "ohne_treffer": 31,
+    "exakt_yun": 366,
+    "exakt_strict": 346,
+    "teilweise": 182,
+    "leere_antwort": 36,
+    "technischer_ausfall": 104
+  },
+  "technische_ausfaelle": 104,
+  "leere_antworten": 36,
+  "je_feld": {
+    "comparator_events": {
+      "ohne_gold": 12,
+      "fehlend": 38,
+      "richtig": 92,
+      "falsch": 28
+    },
+    "comparator_group_size": {
+      "richtig": 456,
+      "fehlend": 154,
+      "falsch": 33,
+      "ohne_gold": 10
+    },
+    "comparator_mean": {
+      "richtig": 194,
+      "fehlend": 64,
+      "ohne_gold": 30,
+      "falsch": 52
+    },
+    "comparator_standard_deviation": {
+      "richtig": 160,
+      "fehlend": 80,
+      "falsch": 35,
+      "ohne_gold": 4
+    },
+    "intervention_events": {
+      "ohne_gold": 12,
+      "richtig": 94,
+      "falsch": 27,
+      "fehlend": 31
+    },
+    "intervention_group_size": {
+      "richtig": 465,
+      "fehlend": 146,
+      "falsch": 32,
+      "ohne_gold": 10
+    },
+    "intervention_mean": {
+      "richtig": 208,
+      "ohne_gold": 34,
+      "falsch": 44,
+      "fehlend": 64
+    },
+    "intervention_standard_deviation": {
+      "richtig": 171,
+      "fehlend": 75,
+      "falsch": 30,
+      "ohne_gold": 3
+    }
+  },
+  "je_arm": {
+    "comparator": {
+      "ohne_gold": 56,
+      "richtig": 902,
+      "fehlend": 336,
+      "falsch": 148
+    },
+    "intervention": {
+      "ohne_gold": 59,
+      "richtig": 938,
+      "falsch": 133,
+      "fehlend": 316
+    }
+  },
+  "je_outcome_typ": {
+    "binary": {
+      "fehlend": 127,
+      "richtig": 449,
+      "falsch": 70
+    },
+    "continuous": {
+      "richtig": 1391,
+      "falsch": 211,
+      "fehlend": 525
+    }
+  },
+  "abweichungen": [
+    {
+      "record_id": "yun2024:3",
+      "field": "intervention_mean",
+      "gold": 50.6,
+      "modell": 50.7,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:12",
+      "field": "intervention_standard_deviation",
+      "gold": 23.34,
+      "modell": 12.34,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:14",
+      "field": "comparator_events",
+      "gold": 54.0,
+      "modell": 53.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:190",
+      "field": "intervention_events",
+      "gold": 52.0,
+      "modell": 64.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:190",
+      "field": "comparator_events",
+      "gold": 51.0,
+      "modell": 73.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:22",
+      "field": "intervention_mean",
+      "gold": 48.13,
+      "modell": 44.33,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:22",
+      "field": "intervention_standard_deviation",
+      "gold": 22.1,
+      "modell": 2.8,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:22",
+      "field": "comparator_mean",
+      "gold": 40.99,
+      "modell": 36.39,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:22",
+      "field": "comparator_standard_deviation",
+      "gold": 20.98,
+      "modell": 20.53,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:191",
+      "field": "intervention_events",
+      "gold": 49.0,
+      "modell": 31.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:191",
+      "field": "comparator_events",
+      "gold": 64.0,
+      "modell": 48.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:31",
+      "field": "intervention_mean",
+      "gold": 38.9,
+      "modell": 6.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:31",
+      "field": "comparator_mean",
+      "gold": 31.5,
+      "modell": 2.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:33",
+      "field": "intervention_mean",
+      "gold": 38.1,
+      "modell": 6.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:33",
+      "field": "comparator_mean",
+      "gold": 31.5,
+      "modell": 2.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:34",
+      "field": "intervention_mean",
+      "gold": 45.4,
+      "modell": 6.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:34",
+      "field": "comparator_mean",
+      "gold": 41.1,
+      "modell": 2.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:64",
+      "field": "intervention_events",
+      "gold": 14.0,
+      "modell": 61.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:64",
+      "field": "comparator_events",
+      "gold": 4.0,
+      "modell": 21.1,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:62",
+      "field": "intervention_events",
+      "gold": 23.0,
+      "modell": 100.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:62",
+      "field": "comparator_events",
+      "gold": 9.0,
+      "modell": 47.4,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:63",
+      "field": "intervention_events",
+      "gold": 23.0,
+      "modell": 100.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:63",
+      "field": "comparator_events",
+      "gold": 5.0,
+      "modell": 26.3,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:65",
+      "field": "intervention_events",
+      "gold": 14.0,
+      "modell": 61.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:65",
+      "field": "comparator_events",
+      "gold": 3.0,
+      "modell": 16.7,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:66",
+      "field": "intervention_events",
+      "gold": 14.0,
+      "modell": 61.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:66",
+      "field": "comparator_events",
+      "gold": 4.0,
+      "modell": 21.1,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:73",
+      "field": "intervention_group_size",
+      "gold": 30.0,
+      "modell": 20.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:75",
+      "field": "intervention_mean",
+      "gold": 11.97,
+      "modell": 13.72,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:75",
+      "field": "intervention_standard_deviation",
+      "gold": 4.0,
+      "modell": 4.53,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:75",
+      "field": "comparator_mean",
+      "gold": 13.72,
+      "modell": 11.97,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:75",
+      "field": "comparator_standard_deviation",
+      "gold": 4.53,
+      "modell": 4.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:76",
+      "field": "intervention_mean",
+      "gold": 14.06,
+      "modell": 14.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:76",
+      "field": "intervention_standard_deviation",
+      "gold": 3.81,
+      "modell": 4.03,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:76",
+      "field": "comparator_mean",
+      "gold": 14.4,
+      "modell": 14.06,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:76",
+      "field": "comparator_standard_deviation",
+      "gold": 4.03,
+      "modell": 3.81,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:99",
+      "field": "intervention_group_size",
+      "gold": 40.0,
+      "modell": 453.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:99",
+      "field": "comparator_group_size",
+      "gold": 37.0,
+      "modell": 451.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:98",
+      "field": "intervention_group_size",
+      "gold": 40.0,
+      "modell": 453.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:98",
+      "field": "comparator_group_size",
+      "gold": 37.0,
+      "modell": 451.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:100",
+      "field": "intervention_group_size",
+      "gold": 40.0,
+      "modell": 453.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:100",
+      "field": "comparator_group_size",
+      "gold": 37.0,
+      "modell": 451.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:111",
+      "field": "intervention_group_size",
+      "gold": 456.0,
+      "modell": 459.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:111",
+      "field": "intervention_mean",
+      "gold": 2.5,
+      "modell": 2.66,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:111",
+      "field": "comparator_mean",
+      "gold": 2.84,
+      "modell": 3.06,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:112",
+      "field": "intervention_group_size",
+      "gold": 456.0,
+      "modell": 459.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:112",
+      "field": "intervention_mean",
+      "gold": 167.61,
+      "modell": 170.63,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:112",
+      "field": "comparator_mean",
+      "gold": 158.67,
+      "modell": 164.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:118",
+      "field": "intervention_group_size",
+      "gold": 10.0,
+      "modell": 19.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:115",
+      "field": "intervention_group_size",
+      "gold": 456.0,
+      "modell": 459.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:115",
+      "field": "intervention_mean",
+      "gold": 2.17,
+      "modell": 2.22,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:115",
+      "field": "comparator_group_size",
+      "gold": 459.0,
+      "modell": 456.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:115",
+      "field": "comparator_mean",
+      "gold": 2.14,
+      "modell": 2.25,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:121",
+      "field": "intervention_group_size",
+      "gold": 23.0,
+      "modell": 65.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:121",
+      "field": "intervention_events",
+      "gold": 17.0,
+      "modell": 45.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:121",
+      "field": "comparator_group_size",
+      "gold": 24.0,
+      "modell": 60.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:121",
+      "field": "comparator_events",
+      "gold": 2.0,
+      "modell": 35.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:127",
+      "field": "intervention_events",
+      "gold": 11.0,
+      "modell": 5.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:127",
+      "field": "comparator_events",
+      "gold": 21.0,
+      "modell": 17.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:139",
+      "field": "intervention_group_size",
+      "gold": 74.0,
+      "modell": 672.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:139",
+      "field": "comparator_group_size",
+      "gold": 60.0,
+      "modell": 700.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:150",
+      "field": "intervention_mean",
+      "gold": 0.25,
+      "modell": 0.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:153",
+      "field": "intervention_events",
+      "gold": 17.0,
+      "modell": 42.5,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:153",
+      "field": "comparator_events",
+      "gold": 7.0,
+      "modell": 17.5,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:182",
+      "field": "intervention_events",
+      "gold": 0.0,
+      "modell": 4.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:182",
+      "field": "comparator_events",
+      "gold": 0.0,
+      "modell": 2.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:193",
+      "field": "intervention_group_size",
+      "gold": 138.0,
+      "modell": 140.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:193",
+      "field": "intervention_mean",
+      "gold": -0.59,
+      "modell": -0.24,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:193",
+      "field": "comparator_group_size",
+      "gold": 131.0,
+      "modell": 136.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:193",
+      "field": "comparator_mean",
+      "gold": -0.63,
+      "modell": -0.38,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:196",
+      "field": "intervention_group_size",
+      "gold": 24.0,
+      "modell": 140.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:196",
+      "field": "intervention_mean",
+      "gold": 1.29,
+      "modell": 1.41,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:196",
+      "field": "comparator_group_size",
+      "gold": 24.0,
+      "modell": 135.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:196",
+      "field": "comparator_mean",
+      "gold": 1.08,
+      "modell": 1.39,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:221",
+      "field": "intervention_mean",
+      "gold": 0.34,
+      "modell": 0.33,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:221",
+      "field": "intervention_standard_deviation",
+      "gold": 0.12,
+      "modell": 0.11,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:221",
+      "field": "comparator_mean",
+      "gold": 7.47,
+      "modell": 7.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:221",
+      "field": "comparator_standard_deviation",
+      "gold": 1.45,
+      "modell": 1.33,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:223",
+      "field": "comparator_mean",
+      "gold": 1.62,
+      "modell": 1.53,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:223",
+      "field": "comparator_standard_deviation",
+      "gold": 0.47,
+      "modell": 0.42,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:222",
+      "field": "intervention_standard_deviation",
+      "gold": 0.02,
+      "modell": 0.01,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:222",
+      "field": "comparator_mean",
+      "gold": 2.67,
+      "modell": 2.53,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:222",
+      "field": "comparator_standard_deviation",
+      "gold": 0.68,
+      "modell": 0.67,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:240",
+      "field": "intervention_mean",
+      "gold": 6.0,
+      "modell": 0.11,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:240",
+      "field": "intervention_standard_deviation",
+      "gold": 0.9,
+      "modell": 0.81,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:240",
+      "field": "comparator_mean",
+      "gold": 4.8,
+      "modell": -0.25,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:240",
+      "field": "comparator_standard_deviation",
+      "gold": 0.9,
+      "modell": 0.71,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:241",
+      "field": "intervention_mean",
+      "gold": 6.0,
+      "modell": 0.11,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:241",
+      "field": "intervention_standard_deviation",
+      "gold": 0.9,
+      "modell": 0.81,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:241",
+      "field": "comparator_mean",
+      "gold": 6.2,
+      "modell": 0.13,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:241",
+      "field": "comparator_standard_deviation",
+      "gold": 1.8,
+      "modell": 0.82,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:242",
+      "field": "intervention_mean",
+      "gold": 6.2,
+      "modell": 0.13,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:242",
+      "field": "intervention_standard_deviation",
+      "gold": 1.8,
+      "modell": 0.82,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:242",
+      "field": "comparator_mean",
+      "gold": 4.8,
+      "modell": -0.25,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:242",
+      "field": "comparator_standard_deviation",
+      "gold": 0.9,
+      "modell": 0.71,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:246",
+      "field": "intervention_mean",
+      "gold": 0.74,
+      "modell": 74.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:246",
+      "field": "intervention_standard_deviation",
+      "gold": 0.05,
+      "modell": 5.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:246",
+      "field": "comparator_mean",
+      "gold": 0.83,
+      "modell": 83.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:246",
+      "field": "comparator_standard_deviation",
+      "gold": 0.05,
+      "modell": 5.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:244",
+      "field": "intervention_mean",
+      "gold": 0.82,
+      "modell": 82.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:244",
+      "field": "intervention_standard_deviation",
+      "gold": 0.05,
+      "modell": 5.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:244",
+      "field": "comparator_mean",
+      "gold": 0.92,
+      "modell": 92.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:244",
+      "field": "comparator_standard_deviation",
+      "gold": 0.07,
+      "modell": 7.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:264",
+      "field": "intervention_events",
+      "gold": 17.0,
+      "modell": 6.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:264",
+      "field": "comparator_events",
+      "gold": 7.0,
+      "modell": 6.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:267",
+      "field": "intervention_mean",
+      "gold": 17.1,
+      "modell": 17.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:267",
+      "field": "comparator_mean",
+      "gold": 14.0,
+      "modell": 13.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:289",
+      "field": "comparator_mean",
+      "gold": 48.2,
+      "modell": 39.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:289",
+      "field": "comparator_standard_deviation",
+      "gold": 12.3,
+      "modell": 10.6,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:292",
+      "field": "comparator_mean",
+      "gold": 50.8,
+      "modell": 44.6,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:292",
+      "field": "comparator_standard_deviation",
+      "gold": 12.1,
+      "modell": 10.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:293",
+      "field": "comparator_mean",
+      "gold": 47.3,
+      "modell": 46.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:293",
+      "field": "comparator_standard_deviation",
+      "gold": 10.4,
+      "modell": 9.9,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:294",
+      "field": "comparator_mean",
+      "gold": 46.5,
+      "modell": 44.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:294",
+      "field": "comparator_standard_deviation",
+      "gold": 9.8,
+      "modell": 10.7,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:295",
+      "field": "intervention_standard_deviation",
+      "gold": 11.1,
+      "modell": 10.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:295",
+      "field": "comparator_mean",
+      "gold": 42.8,
+      "modell": 39.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:295",
+      "field": "comparator_standard_deviation",
+      "gold": 11.7,
+      "modell": 11.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:290",
+      "field": "comparator_mean",
+      "gold": 41.3,
+      "modell": 33.6,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:290",
+      "field": "comparator_standard_deviation",
+      "gold": 10.1,
+      "modell": 11.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:303",
+      "field": "intervention_mean",
+      "gold": 1.0,
+      "modell": 93.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:303",
+      "field": "comparator_mean",
+      "gold": 5.3,
+      "modell": 92.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:302",
+      "field": "intervention_mean",
+      "gold": 0.2,
+      "modell": 93.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:302",
+      "field": "comparator_mean",
+      "gold": 0.8,
+      "modell": 92.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:305",
+      "field": "intervention_events",
+      "gold": 1.0,
+      "modell": 6.7,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:305",
+      "field": "comparator_events",
+      "gold": 5.0,
+      "modell": 33.3,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:314",
+      "field": "comparator_mean",
+      "gold": 78.0,
+      "modell": 78.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:316",
+      "field": "intervention_mean",
+      "gold": 4.3,
+      "modell": 6.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:316",
+      "field": "intervention_standard_deviation",
+      "gold": 1.0,
+      "modell": 1.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:316",
+      "field": "comparator_mean",
+      "gold": 3.6,
+      "modell": 5.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:316",
+      "field": "comparator_standard_deviation",
+      "gold": 1.2,
+      "modell": 1.6,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:332",
+      "field": "intervention_mean",
+      "gold": 2.4,
+      "modell": 2.7,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:331",
+      "field": "intervention_group_size",
+      "gold": 45.0,
+      "modell": 47.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:331",
+      "field": "comparator_group_size",
+      "gold": 47.0,
+      "modell": 45.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:334",
+      "field": "intervention_group_size",
+      "gold": 45.0,
+      "modell": 47.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:334",
+      "field": "comparator_group_size",
+      "gold": 47.0,
+      "modell": 45.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:336",
+      "field": "intervention_group_size",
+      "gold": 45.0,
+      "modell": 47.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:336",
+      "field": "intervention_mean",
+      "gold": -1.3,
+      "modell": -2.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:336",
+      "field": "comparator_group_size",
+      "gold": 47.0,
+      "modell": 45.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:336",
+      "field": "comparator_mean",
+      "gold": -2.0,
+      "modell": -1.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:335",
+      "field": "intervention_group_size",
+      "gold": 45.0,
+      "modell": 47.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:335",
+      "field": "intervention_mean",
+      "gold": -4.7,
+      "modell": -5.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:335",
+      "field": "comparator_group_size",
+      "gold": 47.0,
+      "modell": 45.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:335",
+      "field": "comparator_mean",
+      "gold": -5.2,
+      "modell": -4.7,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:346",
+      "field": "intervention_group_size",
+      "gold": 22.0,
+      "modell": 5.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:346",
+      "field": "comparator_group_size",
+      "gold": 22.0,
+      "modell": 5.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:345",
+      "field": "intervention_mean",
+      "gold": 2.3,
+      "modell": 3.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:355",
+      "field": "intervention_mean",
+      "gold": 5.71,
+      "modell": 6.29,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:355",
+      "field": "intervention_standard_deviation",
+      "gold": 0.71,
+      "modell": 0.31,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:355",
+      "field": "comparator_mean",
+      "gold": 5.7,
+      "modell": 6.35,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:355",
+      "field": "comparator_standard_deviation",
+      "gold": 0.45,
+      "modell": 0.34,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:359",
+      "field": "intervention_group_size",
+      "gold": 720.0,
+      "modell": 919.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:359",
+      "field": "comparator_group_size",
+      "gold": 682.0,
+      "modell": 922.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:358",
+      "field": "intervention_events",
+      "gold": 188.0,
+      "modell": 65.5,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:358",
+      "field": "comparator_events",
+      "gold": 144.0,
+      "modell": 52.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:365",
+      "field": "comparator_group_size",
+      "gold": 45.0,
+      "modell": 20.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:361",
+      "field": "intervention_group_size",
+      "gold": 720.0,
+      "modell": 919.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:361",
+      "field": "intervention_events",
+      "gold": 140.0,
+      "modell": 19.4,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:361",
+      "field": "comparator_group_size",
+      "gold": 682.0,
+      "modell": 922.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:361",
+      "field": "comparator_events",
+      "gold": 169.0,
+      "modell": 24.8,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:369",
+      "field": "intervention_events",
+      "gold": 51.0,
+      "modell": 86.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:369",
+      "field": "comparator_events",
+      "gold": 57.0,
+      "modell": 89.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:370",
+      "field": "intervention_events",
+      "gold": 35.0,
+      "modell": 59.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:370",
+      "field": "comparator_events",
+      "gold": 33.0,
+      "modell": 52.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:373",
+      "field": "intervention_events",
+      "gold": 32.0,
+      "modell": 54.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:373",
+      "field": "comparator_events",
+      "gold": 46.0,
+      "modell": 72.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:375",
+      "field": "intervention_events",
+      "gold": 23.0,
+      "modell": 39.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:375",
+      "field": "comparator_events",
+      "gold": 28.0,
+      "modell": 44.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:379",
+      "field": "intervention_events",
+      "gold": 25.0,
+      "modell": 68.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:379",
+      "field": "comparator_events",
+      "gold": 39.0,
+      "modell": 111.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:389",
+      "field": "intervention_events",
+      "gold": 86.0,
+      "modell": 80.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:389",
+      "field": "comparator_events",
+      "gold": 175.0,
+      "modell": 71.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:417",
+      "field": "intervention_standard_deviation",
+      "gold": 1.4,
+      "modell": 1.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:426",
+      "field": "intervention_group_size",
+      "gold": 49.0,
+      "modell": 55.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:426",
+      "field": "intervention_mean",
+      "gold": 32.0,
+      "modell": 31.7,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:426",
+      "field": "intervention_standard_deviation",
+      "gold": 22.0,
+      "modell": 21.6,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:426",
+      "field": "comparator_group_size",
+      "gold": 44.0,
+      "modell": 48.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:426",
+      "field": "comparator_mean",
+      "gold": 20.0,
+      "modell": 19.8,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:426",
+      "field": "comparator_standard_deviation",
+      "gold": 9.0,
+      "modell": 8.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:441",
+      "field": "intervention_mean",
+      "gold": 68.6,
+      "modell": 0.37,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:441",
+      "field": "intervention_standard_deviation",
+      "gold": 7.7,
+      "modell": 0.22,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:441",
+      "field": "comparator_mean",
+      "gold": 68.8,
+      "modell": 0.41,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:441",
+      "field": "comparator_standard_deviation",
+      "gold": 7.5,
+      "modell": 0.07,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:445",
+      "field": "intervention_group_size",
+      "gold": 70.0,
+      "modell": 68.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:445",
+      "field": "comparator_group_size",
+      "gold": 70.0,
+      "modell": 69.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:499",
+      "field": "intervention_events",
+      "gold": 27.0,
+      "modell": 79.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:499",
+      "field": "comparator_events",
+      "gold": 17.0,
+      "modell": 60.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:500",
+      "field": "intervention_events",
+      "gold": 12.0,
+      "modell": 48.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:500",
+      "field": "comparator_events",
+      "gold": 10.0,
+      "modell": 45.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:502",
+      "field": "intervention_events",
+      "gold": 2.0,
+      "modell": 7.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:502",
+      "field": "comparator_events",
+      "gold": 4.0,
+      "modell": 8.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:501",
+      "field": "intervention_events",
+      "gold": 10.0,
+      "modell": 37.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:501",
+      "field": "comparator_events",
+      "gold": 15.0,
+      "modell": 38.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:512",
+      "field": "intervention_group_size",
+      "gold": 123.0,
+      "modell": 122.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:512",
+      "field": "comparator_group_size",
+      "gold": 122.0,
+      "modell": 121.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:518",
+      "field": "comparator_group_size",
+      "gold": 30.0,
+      "modell": 32.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:519",
+      "field": "comparator_group_size",
+      "gold": 30.0,
+      "modell": 32.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:520",
+      "field": "comparator_group_size",
+      "gold": 30.0,
+      "modell": 32.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:521",
+      "field": "comparator_group_size",
+      "gold": 30.0,
+      "modell": 32.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:522",
+      "field": "comparator_group_size",
+      "gold": 30.0,
+      "modell": 32.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:524",
+      "field": "intervention_standard_deviation",
+      "gold": 0.46,
+      "modell": 1.09,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:524",
+      "field": "comparator_standard_deviation",
+      "gold": 0.47,
+      "modell": 2.29,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:546",
+      "field": "intervention_group_size",
+      "gold": 73.0,
+      "modell": 74.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:546",
+      "field": "comparator_group_size",
+      "gold": 71.0,
+      "modell": 72.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:548",
+      "field": "intervention_group_size",
+      "gold": 69.0,
+      "modell": 74.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:548",
+      "field": "comparator_group_size",
+      "gold": 68.0,
+      "modell": 72.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:547",
+      "field": "intervention_group_size",
+      "gold": 69.0,
+      "modell": 74.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:547",
+      "field": "comparator_group_size",
+      "gold": 68.0,
+      "modell": 72.0,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:567",
+      "field": "intervention_mean",
+      "gold": -0.7,
+      "modell": 0.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:567",
+      "field": "intervention_standard_deviation",
+      "gold": 1.5,
+      "modell": 2.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:567",
+      "field": "comparator_mean",
+      "gold": 1.0,
+      "modell": 4.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:567",
+      "field": "comparator_standard_deviation",
+      "gold": 1.1,
+      "modell": 2.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:572",
+      "field": "intervention_mean",
+      "gold": -1.4,
+      "modell": 0.7,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:572",
+      "field": "intervention_standard_deviation",
+      "gold": 4.2,
+      "modell": 5.9,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:572",
+      "field": "comparator_mean",
+      "gold": -3.3,
+      "modell": -4.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:572",
+      "field": "comparator_standard_deviation",
+      "gold": 5.3,
+      "modell": 3.9,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:573",
+      "field": "intervention_mean",
+      "gold": -3.7,
+      "modell": -1.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:573",
+      "field": "intervention_standard_deviation",
+      "gold": 3.4,
+      "modell": 5.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:573",
+      "field": "comparator_mean",
+      "gold": -0.8,
+      "modell": -2.7,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:573",
+      "field": "comparator_standard_deviation",
+      "gold": 3.5,
+      "modell": 4.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:587",
+      "field": "intervention_events",
+      "gold": 44.0,
+      "modell": 12.5,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:587",
+      "field": "comparator_events",
+      "gold": 90.0,
+      "modell": 25.2,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:588",
+      "field": "intervention_events",
+      "gold": 19.0,
+      "modell": 10.5,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:588",
+      "field": "comparator_events",
+      "gold": 90.0,
+      "modell": 25.2,
+      "outcome_typ": "binary"
+    },
+    {
+      "record_id": "yun2024:619",
+      "field": "intervention_group_size",
+      "gold": 754.0,
+      "modell": 769.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:619",
+      "field": "comparator_group_size",
+      "gold": 656.0,
+      "modell": 667.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:618",
+      "field": "intervention_group_size",
+      "gold": 754.0,
+      "modell": 769.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:618",
+      "field": "comparator_group_size",
+      "gold": 656.0,
+      "modell": 667.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:620",
+      "field": "intervention_group_size",
+      "gold": 754.0,
+      "modell": 769.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:620",
+      "field": "comparator_group_size",
+      "gold": 656.0,
+      "modell": 667.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:634",
+      "field": "intervention_mean",
+      "gold": 1.05,
+      "modell": -1.05,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:634",
+      "field": "comparator_mean",
+      "gold": 0.15,
+      "modell": -0.15,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:644",
+      "field": "intervention_group_size",
+      "gold": 48.0,
+      "modell": 50.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:643",
+      "field": "intervention_group_size",
+      "gold": 48.0,
+      "modell": 29.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:643",
+      "field": "comparator_group_size",
+      "gold": 23.0,
+      "modell": 10.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:657",
+      "field": "intervention_mean",
+      "gold": 7.4,
+      "modell": 7.28,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:657",
+      "field": "intervention_standard_deviation",
+      "gold": 1.93,
+      "modell": 1.59,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:657",
+      "field": "comparator_mean",
+      "gold": 7.28,
+      "modell": 7.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:657",
+      "field": "comparator_standard_deviation",
+      "gold": 1.59,
+      "modell": 1.93,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:661",
+      "field": "comparator_mean",
+      "gold": 6.9,
+      "modell": 5.9,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:664",
+      "field": "intervention_mean",
+      "gold": 101.9,
+      "modell": 15.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:664",
+      "field": "intervention_standard_deviation",
+      "gold": 35.1,
+      "modell": 19.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:664",
+      "field": "comparator_mean",
+      "gold": 97.6,
+      "modell": 2.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:664",
+      "field": "comparator_standard_deviation",
+      "gold": 20.8,
+      "modell": 10.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:666",
+      "field": "intervention_mean",
+      "gold": 206.9,
+      "modell": 21.8,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:666",
+      "field": "intervention_standard_deviation",
+      "gold": 36.2,
+      "modell": 25.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:666",
+      "field": "comparator_mean",
+      "gold": 184.4,
+      "modell": 1.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:666",
+      "field": "comparator_standard_deviation",
+      "gold": 37.5,
+      "modell": 29.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "intervention_mean",
+      "gold": 103.4,
+      "modell": 20.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "intervention_standard_deviation",
+      "gold": 28.9,
+      "modell": 17.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "comparator_mean",
+      "gold": 97.6,
+      "modell": 2.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:665",
+      "field": "comparator_standard_deviation",
+      "gold": 20.8,
+      "modell": 10.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:667",
+      "field": "intervention_mean",
+      "gold": 207.2,
+      "modell": 24.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:667",
+      "field": "intervention_standard_deviation",
+      "gold": 42.3,
+      "modell": 29.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:667",
+      "field": "comparator_mean",
+      "gold": 184.4,
+      "modell": 1.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:667",
+      "field": "comparator_standard_deviation",
+      "gold": 37.5,
+      "modell": 29.2,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:669",
+      "field": "intervention_mean",
+      "gold": 200.1,
+      "modell": 53.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:669",
+      "field": "intervention_standard_deviation",
+      "gold": 55.9,
+      "modell": 36.9,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:669",
+      "field": "comparator_mean",
+      "gold": 181.8,
+      "modell": 1.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:669",
+      "field": "comparator_standard_deviation",
+      "gold": 61.3,
+      "modell": 43.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:676",
+      "field": "intervention_group_size",
+      "gold": 14.0,
+      "modell": 98.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:676",
+      "field": "comparator_group_size",
+      "gold": 12.0,
+      "modell": 320.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:675",
+      "field": "intervention_group_size",
+      "gold": 14.0,
+      "modell": 142.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:675",
+      "field": "comparator_group_size",
+      "gold": 12.0,
+      "modell": 320.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:679",
+      "field": "comparator_mean",
+      "gold": 4.3,
+      "modell": 4.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:680",
+      "field": "intervention_mean",
+      "gold": 2.2,
+      "modell": 2.1,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:680",
+      "field": "comparator_mean",
+      "gold": 2.5,
+      "modell": 2.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:680",
+      "field": "comparator_standard_deviation",
+      "gold": 0.6,
+      "modell": 0.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:681",
+      "field": "intervention_mean",
+      "gold": 28.1,
+      "modell": 24.7,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:681",
+      "field": "intervention_standard_deviation",
+      "gold": 14.6,
+      "modell": 11.3,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:681",
+      "field": "comparator_mean",
+      "gold": 27.4,
+      "modell": 32.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:681",
+      "field": "comparator_standard_deviation",
+      "gold": 13.0,
+      "modell": 13.9,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:683",
+      "field": "intervention_standard_deviation",
+      "gold": 0.3,
+      "modell": 0.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:683",
+      "field": "comparator_mean",
+      "gold": 2.5,
+      "modell": 2.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:683",
+      "field": "comparator_standard_deviation",
+      "gold": 0.6,
+      "modell": 0.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:684",
+      "field": "intervention_mean",
+      "gold": 31.8,
+      "modell": 28.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:684",
+      "field": "intervention_standard_deviation",
+      "gold": 14.8,
+      "modell": 17.5,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:684",
+      "field": "comparator_mean",
+      "gold": 27.4,
+      "modell": 32.4,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:684",
+      "field": "comparator_standard_deviation",
+      "gold": 13.0,
+      "modell": 13.9,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:682",
+      "field": "intervention_mean",
+      "gold": 4.1,
+      "modell": 4.0,
+      "outcome_typ": "continuous"
+    },
+    {
+      "record_id": "yun2024:682",
+      "field": "comparator_mean",
+      "gold": 4.3,
+      "modell": 4.1,
+      "outcome_typ": "continuous"
+    }
+  ]
+}
