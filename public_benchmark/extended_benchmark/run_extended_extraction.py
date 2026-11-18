@@ -30,8 +30,10 @@ HERE = Path(__file__).resolve().parent
 BENCH = HERE.parent
 REPO = BENCH.parent
 sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(BENCH))
 
 from research_agent.config import get_config  # noqa: E402
+from extended_benchmark.yun_full import fehlerklassen  # noqa: E402
 
 RECORDS = HERE / "records" / "yun.jsonl"
 
@@ -617,6 +619,15 @@ def main() -> int:
         help="Fehlzeilen (z. B. length) gezielt wiederholen statt zu ueberspringen",
     )
     parser.add_argument("--max-tokens", type=int, default=None, help="Tokenbudget fuer alle Modelle ueberschreiben")
+    parser.add_argument(
+        "--retry-strategie",
+        choices=("alt", "neu"),
+        default="alt",
+        help=(
+            "alt = bisheriges Verhalten (Standard, Zeilen unveraendert); "
+            "neu = zentrale Fehlerklassen und Versuchsspur in der Zeile"
+        ),
+    )
     parser.add_argument("--cache-buster", action="store_true", help="eindeutigen Session-Tag in den Systemprompt haengen")
     parser.add_argument("--absolute-counts", action="store_true", help="Prompt-Zusatz aus v3_abs_count aktivieren")
     parser.add_argument(
@@ -765,18 +776,45 @@ def main() -> int:
         timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
         retry: dict[str, Any] | None = None
         retry_grund = ""
-        fehlerklasse = fehlerklasse_aus(response, parse_error)
+        # `alt` entscheidet wie bisher ueber `fehlerklasse_aus`; `neu` nutzt die
+        # zentrale Einordnung und schreibt zusaetzlich die Versuchsspur. Die
+        # Zeilenklasse bleibt in beiden Faellen kompatibel, weil `done_keys`, die
+        # Auswertung und `nachzug_ausfaelle.sh` das Feld direkt lesen.
+        neu = args.retry_strategie == "neu"
+        versuche: list[dict[str, Any]] = []
+
+        def einordnen(antwort: dict[str, Any], p_fehler: str, n_zellen: int) -> tuple[str, str]:
+            """Gibt (Zeilenklasse, Diagnoseklasse) zurueck."""
+            if neu:
+                diagnose = fehlerklassen.klassifiziere(antwort, p_fehler, n_zellen)
+                return fehlerklassen.zeilen_klasse(diagnose), diagnose
+            klasse = fehlerklasse_aus(antwort, p_fehler)
+            return klasse, klasse
+
+        fehlerklasse, diagnose = einordnen(response, parse_error, len(cells))
+        if neu:
+            versuche.append(fehlerklassen.versuch_eintrag(1, "primaer", response, diagnose))
         # Nur strukturell kaputtes JSON bekommt einen zweiten Versuch (gleiches
         # Limit): die Ursache ist Format. Reasoning-Schleifen ("length") werden
         # nicht wiederholt, sie kosten nur Tokens ohne Ergebnis.
-        if fehlerklasse == "json_kaputt":
+        if diagnose == "json_kaputt":
             retry_grund = "json"
             retry = call(models[model], prompt, key, base)
+            r_cells, r_parse = parse_cells(retry.get("content") or "")
+            if neu:
+                versuche.append(
+                    fehlerklassen.versuch_eintrag(
+                        len(versuche) + 1,
+                        "json",
+                        retry,
+                        fehlerklassen.klassifiziere(retry, r_parse, len(r_cells)),
+                    )
+                )
             if retry.get("content"):
                 response = retry
-                cells, parse_error = parse_cells(response.get("content") or "")
-                timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
-                fehlerklasse = fehlerklasse_aus(response, parse_error)
+                cells, parse_error = r_cells, r_parse
+                timepoints, timepoint_error = parse_timepoints(retry.get("content") or "")
+                fehlerklasse, diagnose = einordnen(response, parse_error, len(cells))
         # Gedeckelter Reparaturaufruf: nur nach einem Length-Ausfall, mit
         # kleinem Budget und kurzem Text. Ersetzt die Zellen nur bei Erfolg.
         repair: dict[str, Any] | None = None
@@ -788,17 +826,26 @@ def main() -> int:
         # in `erste_antwort`. `content_len`/`content_chars` zaehlen deshalb denselben
         # Text wie das Feld `content`; vorher stand dort der Stand vor der Reparatur.
         inhalt = response.get("content") or ""
-        if args.repair and fehlerklasse == "length_ohne_ergebnis":
+        if args.repair and diagnose in ("length_ohne_ergebnis", "budget_im_reasoning"):
             budget = dict(models[model])
             budget["max_tokens"] = min(REPAIR_MAX_TOKENS, int(budget.get("max_tokens") or REPAIR_MAX_TOKENS))
             repair = call(budget, _prompt_repair(record, text, target), key, base)
             pfad = "repair"
             inhalt_repair = repair.get("content") or ""
             r_cells, r_parse = parse_cells(inhalt_repair)
-            repair_fehlerklasse = fehlerklasse_aus(repair, r_parse)
+            repair_fehlerklasse, _ = einordnen(repair, r_parse, len(r_cells))
+            if neu:
+                versuche.append(
+                    fehlerklassen.versuch_eintrag(
+                        len(versuche) + 1,
+                        "repair",
+                        repair,
+                        fehlerklassen.klassifiziere(repair, r_parse, len(r_cells)),
+                    )
+                )
             if r_cells:
                 cells, parse_error, inhalt = r_cells, r_parse, inhalt_repair
-                fehlerklasse = ""
+                fehlerklasse, diagnose = "", "ok"
         # v7 stellt den Zeitpunkt je Antwort; er wird hier auf die Zellen
         # verteilt, damit die Auswertung beide Schemata gleich liest.
         v7 = {"timepoint": "", "header": "", "fallback": None, "error": ""}
@@ -850,6 +897,9 @@ def main() -> int:
             "predicted": {"cells": cells},
             "rows": cells,
         }
+        if neu:
+            row["attempts"] = versuche
+            row["job_status"] = "failed" if fehlerklasse else "completed"
         if args.save_content:
             row.update(content_felder(inhalt, erste_antwort, (retry.get("content") or "") if retry else ""))
         with LOCK:

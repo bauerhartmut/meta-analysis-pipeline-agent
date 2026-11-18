@@ -54,8 +54,9 @@ Das ist eine Budgeterschöpfung im Reasoning, keine Störung der Übertragung.
 
 Zum Vergleich: erfolgreiche GLM-Zeilen haben `reasoning_chars` im Median 4.657
 und `content_chars` 387 bei 1.278 Completion-Tokens. Die Ausfälle liegen also
-beim Siebenfachen an Reasoning — der Lauf hieß `yun699_8000_alle`, und die
-8.000 Token waren für diese Records zu knapp.
+beim Siebenfachen an Reasoning, und die 8.000 Token des Laufs `yun699_8000_alle`
+waren an der Grenze. Ob **mehr** Budget diese Records gerettet hätte, ist damit
+noch nicht gesagt — das prüft Abschnitt 3a.
 
 Die eine Zeile mit echtem Transportfehler ist `yun2024:87`: `http_status 0`,
 `TimeoutError: The read operation timed out` nach **300,03 s** — also genau das
@@ -124,6 +125,59 @@ die Aussage auf `content_chars`, `finish_reason` und `completion_tokens`.
   engeren Sinn — genau das macht der vorhandene Reparaturpfad mit 6.000 Tokens
   übrigens in die falsche Richtung (kleiner statt größer).
 
+## 3a. Die Budget-Hypothese, an den vorhandenen Daten geprüft
+
+Die Hypothese in der Fassung „8.000 Token waren zu knapp, mehr Budget hätte die
+103 gerettet" wurde nicht nur an der Lesekopie, sondern an **allen** GLM-Zeilen
+des Arbeitsbaums geprüft: 2.707 Zeilen aus 43 Läufen, dazu die 699 Zeilen der
+Lesekopie. Skript: `yun_full/pruefe_budget_hypothese.py`, Ergebnis:
+`iterativ/ergebnisse/budget_hypothese_20261118.json` (kein Netzaufruf, keine
+Datei im Laufverzeichnis angefasst).
+
+**A — Mechanik: bestätigt.** 395 abgeschnittene Zeilen mit bekannter Grenze,
+davon **395** mit `completion_tokens` genau gleich der Grenze und 391 ohne
+Inhalt. Reasoning-Zeichen je Token: Median 4,0 (min 2,8, max 4,6, n = 390). In
+der Lesekopie: 103 von 103, 101 ohne Inhalt, Median 4,1. Der Schnitt liegt also
+immer exakt an der Obergrenze, und das Reasoning hat sie gefüllt. Die
+Bezeichnung `budget_im_reasoning` beschreibt den Mechanismus korrekt.
+
+**B/C — Rettung: nur teilweise, und für die 103 gar nicht belegt.**
+
+| Vergleich (gleicher Record, zwei Budgets) | Ergebnis |
+|---|---|
+| 8.000 → 19.000 | `length` → Zellen 15, `length` → `length` 16, `length` → leer 5 |
+| 8.000 → 16.000 | `length` → `length` 18 |
+| 8.000 → 24.000 | `length` → `length` 10 |
+| 24.000 → 32.000 | `length` → `length` 1 |
+
+Von 237 `length`-Ausfällen bei 8.000 haben nur 38 überhaupt eine Beobachtung mit
+mehr Budget; davon enden 15 mit Zellen (39 %), 20 erneut in `length` (53 %),
+3 leer. Alle 15 Rettungen stammen aus den 19.000er-Zeilen der v7-Fassung; bei
+16.000 und 24.000 wurde keiner gerettet — dort wurden aber auch gezielt schon
+gescheiterte Records wiederholt, was die Quote nach unten zieht. **Für die 103 Zeilen der Lesekopie existiert keine einzige Beobachtung
+über 8.000** — sie stammen alle aus `v2_timepoint_cb`, und von diesem Prompt gibt
+es keinen Lauf mit größerem Budget. Die Rettungsquote ist damit ein Analogieschluss
+aus anderen Prompt-Fassungen, keine Messung an diesen Records.
+
+**D — Skalierung: gegen die Hypothese.** Bei 184 Records mit zwei Budgets wächst
+die Reasoning-Länge mit dem Budget, im Median auf das **2,3-fache**. Die
+Ausfallquote je Stufe: 4.000 → 25,0 % (30/120), 8.000 → 15,8 % (237/1.503),
+19.000 → 21,8 % (47/216). Die 16.000er- und 24.000er-Zeilen sind ausschließlich
+Wiederholungen bereits gescheiterter Records (v6); ihre 100 % sind Auswahl, keine
+Quote. Die 19.000-Zeilen stammen aus der v7-Fassung und sind damit ebenfalls
+nicht bereinigt vergleichbar — die Richtung bleibt aber: mehr Budget
+verschiebt die Grenze, statt das Verhalten zu ändern. Einzelbeleg: `yun2024:228`
+lief mit Standardbudget in 3.728 Tokens zu Zellen, mit 24.000 in eine
+Reasoning-Spur von 104.614 Zeichen ohne Inhalt.
+
+**Urteil.** Die Hypothese ist **mechanisch bestätigt und als Rettung
+unbestätigt**: das Budget ist die abgeschnittene Größe, aber mehr Budget löst den
+Fall nicht zuverlässig, weil das Modell die zusätzliche Spanne wieder im
+Reasoning verbraucht. Für die 103 Records fehlt jede Beobachtung; realistischer
+Ausgangspunkt für eine Messung ist eine Rettungsquote um 40 %, nicht um 100 %.
+Damit ist „mehr Budget" **keine Zuverlässigkeitsmaßnahme** und bleibt aus P1–P4
+heraus; sie ist eine Konfigurationsfrage, die P5 messen muss.
+
 ## 4. Mängel im Code, die daraus folgen
 
 | Nr. | Stelle | Mangel | Wirkung |
@@ -158,34 +212,44 @@ Reihenfolge nach Nutzen pro Risiko. **Alle Harness-Änderungen laufen hinter
 Nachzug-Steuerung (PID 2153) den Harness erst beim Start lädt: Ohne diesen Riegel
 würde der Reparaturlauf ungeprüften Code ausführen.
 
-**P0 — Diagnose und Telemetrie (kein Verhaltensrisiko)**
-1. `yun_full/fehlerklassen.py`: zentrale `klassifiziere()` mit den Klassen
+**P0 — Diagnose und Telemetrie (kein Verhaltensrisiko) — umgesetzt**
+1. `yun_full/fehlerklassen.py`: zentrale `klassifiziere()` mit zehn Klassen —
    `ok`, `leer`, `timeout`, `verbindungsfehler`, `rate_limit`, `server_fehler`,
-   `auth`, `anfrage_ungueltig`, `budget_im_reasoning`, `json_kaputt`,
-   `json_abgeschnitten`; je Klasse `temporaer: bool`.
-2. `fehlerklasse_aus` delegiert dorthin; neue Klasse `budget_im_reasoning`
-   (Bedingung: `finish_reason=length` ∧ `content` leer ∧ `reasoning_chars>0`).
-3. Zeile erweitert um `attempts: [{attempt_id, dauer_s, http_status, fehlerklasse,
-   retry_grund, wartete_s, tokens, content_chars}]` und `job_status`.
-4. Prüfung: die 104 Zeilen der Lesekopie durch die neue Klassifikation schicken;
-   erwartet 103 × `budget_im_reasoning`, 1 × `timeout`.
+   `auth`, `anfrage_ungueltig`, `budget_im_reasoning`, `json_kaputt` —, je
+   Klasse `temporaer: bool`. `json_abgeschnitten` ist gestrichen: null Fälle.
+2. `budget_im_reasoning` = `finish_reason=length` ∧ keine verwertbaren Zellen.
+   `fehlerklasse_aus` bleibt für den Altpfad unverändert daneben stehen; die
+   Zeilenklasse bleibt kompatibel (`length_ohne_ergebnis`), weil `done_keys`,
+   die Auswertung und `nachzug_ausfaelle.sh` das Feld direkt lesen.
+3. Zeile erweitert um `attempts: [{attempt_id, rolle, http_status, dauer_s,
+   wartete_s, finish_reason, completion_tokens, reasoning_chars, content_chars,
+   fehlerklasse, temporaer}]` und `job_status` (`completed`/`failed`) — **nur**
+   bei `--retry-strategie neu`; `alt` schreibt byte-gleich weiter.
+4. Prüfung: `tests/test_fehlerklassen.py::test_befund_der_lesekopie` schickt die
+   104 Ausfallzeilen durch die neue Klassifikation und erwartet
+   103 × `budget_im_reasoning`, 1 × `timeout`.
 
 **P1 — Retry-Manager (`yun_full/retry_manager.py`, synchron, ohne Netz testbar)**
-1. `RetryPolicy(max_versuche=3, timeout_s=300, timeout_faktor=1.5,
-   basis_s=2.0, faktor=2.0, max_delay_s=60, jitter=0.25)`.
+Gekürzt nach Abschnitt 3a: **kein** `timeout_faktor`, **keine** getrennten
+Verbindungs- und Lesezeitgrenzen, **keine** Klasse `json_abgeschnitten`. Diese
+Teile hätten nur den einen Timeout-Fall bedient; der Timeout ist im Manager eine
+temporäre Klasse wie jede andere Transportstörung, ohne eigene Mechanik.
+1. `RetryPolicy(max_versuche=3, timeout_s=300, basis_s=2.0, faktor=2.0,
+   max_delay_s=60, jitter=0.25)`.
 2. `wartezeit(versuch, retry_after)` — Retry-After hat Vorrang, sonst Backoff mit
-   Jitter, gedeckelt.
-3. `fuehre_aus(aufruf, policy)` — ruft `aufruf(timeout)`, klassifiziert, wiederholt
-   nur bei temporären Klassen, protokolliert jeden Versuch, gibt
-   `(ergebnis, versuche)` zurück; permanent (auth, ungültige Anfrage) bricht ab.
+   Jitter, gedeckelt. Das ist der einzige heute messbare Gewinn: 43 × 429, alle
+   bei `qwen30`.
+3. `fuehre_aus(aufruf, policy)` — klassifiziert über `fehlerklassen`, wiederholt
+   nur temporäre Klassen, protokolliert jeden Versuch; nicht-temporäre (auth,
+   ungültige Anfrage, Budget im Reasoning) enden sofort.
 4. `call()` nutzt den Manager bei `--retry-strategie neu`; `alt` bleibt
    byte-gleich zum heutigen Verhalten.
 
 **P2 — Persistenz und Crash-Recovery (ohne neue Datenbank)**
 1. `runs/<run>/jobs.jsonl` (append-only): je Paar `record_id`, `model`, `status`
-   (`pending`/`running`/`retry_pending`/`completed`/`failed_permanent`),
-   `attempt_count`, `last_error`, `created_at`, `updated_at`, `next_retry_at`,
-   `result_reference`.
+   (`pending`/`running`/`completed`/`failed_permanent`), `attempt_count`,
+   `last_error`, `created_at`, `updated_at`, `result_reference`. Kein
+   `next_retry_at`: es gibt keinen Planer, der es lesen würde.
 2. `done_keys` liest künftig Jobs **und** Predictions: `completed` zählt,
    `failed_permanent` zählt nicht, `pending`/`retry_pending` werden aufgenommen.
 3. Schreiben mit `flush` + `os.fsync` je Zeile; Statuswechsel vor und nach dem
@@ -210,8 +274,9 @@ würde der Reparaturlauf ungeprüften Code ausführen.
 
 **P4 — Zuverlässigkeitsmetriken (`yun_full/reliabilitaets_metriken.py`)**
 Anfragen, Erfolg im ersten Versuch, Erfolg nach Retry, endgültig fehlgeschlagen,
-Timeout-/HTTP-/JSON-Raten, Retry-Erfolgsquote, mittlere Versuche, Latenz
-(Mittel/Median), Tokens je erfolgreichem Record. Getrennt ausgewiesen:
+Transportfehler als **eine** Kennzahl (Timeout, Verbindungsabbruch), HTTP- und
+JSON-Raten, Retry-Erfolgsquote, mittlere Versuche, Latenz (Mittel/Median),
+Tokens je erfolgreichem Record. Getrennt ausgewiesen:
 technische Zuverlässigkeit und Extraktionsqualität.
 
 **P5 — Validierung an Yun-699 (erst nach Nachtlauf und Nachzug)**
@@ -225,11 +290,14 @@ technische Zuverlässigkeit und Extraktionsqualität.
 
 ## 7. Erwartbare Wirkung, ehrlich beziffert
 
-- Die 103 Budget-Fälle sind mit Retry **nicht** zu retten; sie brauchen mehr
-  Budget. Der Reparaturlauf mit `--repair` und 6.000 Tokens geht in die falsche
-  Richtung: kleinere Budgets für ein Modell, das im Reasoning 32.000 Zeichen
-  erzeugt.
-- Der eine Timeout ist mit dem neuen Manager sicher rettbar (4 Goldzellen).
+- Die 103 Budget-Fälle sind mit Retry **nicht** zu retten (die Klasse ist
+  bewusst nicht temporär). Ob mehr Budget hilft, ist nach Abschnitt 3a offen bis
+  zu einer Quote um 40 % — nicht die 100 %, die die Reparaturschätzung vom 18.11.
+  als Obergrenze benutzt hat. Der Reparaturlauf mit `--repair` und 6.000 Tokens
+  geht in die falsche Richtung: kleineres Budget für ein Modell, das im Reasoning
+  32.000 Zeichen erzeugt.
+- Der eine Timeout ist mit einem zweiten Versuch wahrscheinlich rettbar, aber
+  unbelegt (4 Goldzellen). Er ist kein Grund für eigene Timeout-Mechanik.
 - Die 43 × 429 wurden schon heute behandelt; der Gewinn liegt dort in der
   Wartezeit, nicht in der Quote.
 - Der größte Hebel für den Recall liegt damit **nicht** im Retry-Manager, sondern
@@ -244,9 +312,10 @@ technische Zuverlässigkeit und Extraktionsqualität.
    Rohantwort nicht entscheidbar; ab `586dd18` ist das Feld vorhanden.
 2. Ob der Anbieter `Retry-After` überhaupt setzt, ist unbekannt — der Harness
    liest die Header heute nicht. P0/P1 erfassen sie, dann ist es messbar.
-3. Ob 24.000 Tokens die Budget-Fälle lösen, ist eine **Hypothese** aus der
-   Reasoning-Länge (Median 32.448 Zeichen ≈ 8.000 Tokens). Sie ist erst nach
-   einem kontrollierten Lauf belegt.
+3. Ob 24.000 Tokens die 103 Budget-Fälle lösen, ist **offen**. Abschnitt 3a
+   stützt die Mechanik (Schnitt exakt an der Grenze), aber nicht die Rettung:
+   im beobachteten Teil retten 39 % der Fälle, und die Reasoning-Länge wächst mit
+   dem Budget. Belegt ist das erst durch einen kontrollierten Lauf (P5).
 4. Die Latenz von 42 s im Median ist nicht in Modell- und Übertragungszeit
    zerlegbar, weil kein Zeitstempel je Versuch existiert.
 

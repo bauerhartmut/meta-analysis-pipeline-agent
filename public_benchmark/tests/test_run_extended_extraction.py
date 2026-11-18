@@ -139,7 +139,9 @@ def test_repair_fasst_nur_nach_length_nach_und_mit_kleinem_budget(tmp_path: Path
     assert zeile["pfad"] == "repair"
     assert zeile["repair_tokens"] == 900
     assert zeile["fehlerklasse"] == ""  # Reparatur liefert Zellen
-    assert zeile["content_len"] == 0  # zaehlt weiter die Primaerantwort
+    # Seit 586dd18 zaehlen `content_len` und `content_chars` den wirksamen Text,
+    # also die Reparaturantwort — dieselbe, aus der die Zellen stammen.
+    assert zeile["content_len"] == zeile["content_chars"] == len(zeile["content"])
     assert len(zeile["rows"]) == 1
     assert zeile["rows"][0]["timepoint"] == "24"
 
@@ -401,3 +403,79 @@ def test_zeitpunkt_parser_liest_labels() -> None:
     leer, fehler = runner.parse_timepoints('{"cells": []}')
     assert leer["chosen"] == "" and fehler == "kein_zeitpunkt"
     assert runner.parse_timepoints("keine antwort")[1] == "kein_json"
+
+
+def _timeout_antwort() -> dict:
+    return {
+        "http_status": 0,
+        "content": "",
+        "finish_reason": "",
+        "completion_tokens": None,
+        "elapsed_s": 300.03,
+        "error": "TimeoutError: The read operation timed out",
+    }
+
+
+def test_standardstrategie_schreibt_keine_neuen_felder(tmp_path: Path, monkeypatch) -> None:
+    # Ohne Schalter bleibt die Zeile wie bisher: kein `attempts`, kein `job_status`.
+    lang = {
+        "http_status": 200, "content": "", "finish_reason": "length",
+        "completion_tokens": 24000, "elapsed_s": 1.0, "error": "",
+    }
+    _, zeile = _auftrag(tmp_path, monkeypatch, [lang])
+    assert "attempts" not in zeile
+    assert "job_status" not in zeile
+
+
+def test_neue_strategie_schreibt_versuchsspur(tmp_path: Path, monkeypatch) -> None:
+    lang = {
+        "http_status": 200, "content": "", "finish_reason": "length",
+        "completion_tokens": 8000, "reasoning_chars": 32448, "elapsed_s": 42.0, "error": "",
+    }
+    _, zeile = _auftrag(tmp_path, monkeypatch, [lang], extra=["--retry-strategie", "neu"])
+    assert zeile["fehlerklasse"] == "length_ohne_ergebnis"
+    assert zeile["job_status"] == "failed"
+    assert [v["rolle"] for v in zeile["attempts"]] == ["primaer"]
+    assert zeile["attempts"][0]["fehlerklasse"] == "budget_im_reasoning"
+    assert zeile["attempts"][0]["temporaer"] is False
+    assert zeile["attempts"][0]["completion_tokens"] == 8000
+
+
+def test_neue_strategie_versucht_timeout_nicht_als_json(tmp_path: Path, monkeypatch) -> None:
+    # Bisher: Timeout -> leere Antwort -> json_kaputt -> zweiter Aufruf, der
+    # dieselben 300 s erneut abwartet. Neu: eigene Klasse, kein JSON-Retry.
+    aufrufe_alt, zeile_alt = _auftrag(tmp_path, monkeypatch, [_timeout_antwort()])
+    assert len(aufrufe_alt) == 2
+    assert zeile_alt["fehlerklasse"] == "json_kaputt"
+
+    monkeypatch.setattr(runner, "HERE", tmp_path / "neu")
+    (tmp_path / "neu").mkdir()
+    aufrufe_neu, zeile_neu = _auftrag(
+        tmp_path / "neu", monkeypatch, [_timeout_antwort()], extra=["--retry-strategie", "neu"]
+    )
+    assert len(aufrufe_neu) == 1
+    assert zeile_neu["fehlerklasse"] == "timeout"
+    assert zeile_neu["job_status"] == "failed"
+    assert [v["fehlerklasse"] for v in zeile_neu["attempts"]] == ["timeout"]
+
+
+def test_neue_strategie_protokolliert_json_wiederholung(tmp_path: Path, monkeypatch) -> None:
+    kaputt = {
+        "http_status": 200, "content": "kein json", "finish_reason": "stop",
+        "completion_tokens": 10, "elapsed_s": 1.0, "error": "",
+    }
+    gut = {
+        "http_status": 200,
+        "content": json.dumps({"cells": [{"field": "intervention_mean", "arm": "intervention", "value": 1.0}]}),
+        "finish_reason": "stop",
+        "completion_tokens": 20,
+        "elapsed_s": 1.0,
+        "error": "",
+    }
+    _, zeile = _auftrag(tmp_path, monkeypatch, [kaputt, gut], extra=["--retry-strategie", "neu"])
+    assert zeile["fehlerklasse"] == ""
+    assert zeile["job_status"] == "completed"
+    assert [(v["rolle"], v["fehlerklasse"]) for v in zeile["attempts"]] == [
+        ("primaer", "json_kaputt"),
+        ("json", "ok"),
+    ]

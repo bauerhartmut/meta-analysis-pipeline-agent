@@ -1,0 +1,444 @@
+{
+  "datenbasis": {
+    "glm_zeilen_alle_laeufe": 2707,
+    "laeufe": 43,
+    "glm_zeilen_lesekopie": 699
+  },
+  "A_mechanik": {
+    "abgeschnittene_zeilen": 395,
+    "davon_completion_tokens_gleich_budget": 395,
+    "davon_ohne_inhalt": 391,
+    "reasoning_zeichen_je_token": {
+      "n": 390,
+      "min": 2.8,
+      "median": 4.0,
+      "max": 4.6
+    }
+  },
+  "B_dosis_wirkung": {
+    "paare": {
+      "16000->19000: length->leer": 7,
+      "16000->19000: length->length": 20,
+      "16000->19000: length->ok": 23,
+      "19000->24000: length->length": 2,
+      "19000->24000: ok->length": 4,
+      "24000->32000: length->length": 1,
+      "4000->16000: length->length": 2,
+      "4000->16000: ok->length": 2,
+      "4000->19000: leer->leer": 1,
+      "4000->19000: leer->ok": 1,
+      "4000->19000: length->leer": 1,
+      "4000->19000: length->length": 2,
+      "4000->19000: length->ok": 2,
+      "4000->19000: ok->leer": 1,
+      "4000->19000: ok->length": 3,
+      "4000->19000: ok->ok": 4,
+      "4000->8000: leer->leer": 4,
+      "4000->8000: leer->length": 1,
+      "4000->8000: leer->ok": 2,
+      "4000->8000: length->leer": 1,
+      "4000->8000: length->length": 10,
+      "4000->8000: length->ok": 11,
+      "4000->8000: ok->ok": 38,
+      "8000->16000: length->length": 18,
+      "8000->16000: ok->length": 26,
+      "8000->19000: length->leer": 5,
+      "8000->19000: length->length": 16,
+      "8000->19000: length->ok": 15,
+      "8000->19000: ok->leer": 36,
+      "8000->19000: ok->length": 25,
+      "8000->19000: ok->ok": 57,
+      "8000->24000: length->length": 10,
+      "8000->24000: ok->length": 9,
+      "8000->32000: ok->length": 1
+    },
+    "wechsel": [
+      {
+        "record_id": "yun2024:291",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "length",
+        "nach_zustand": "ok"
+      },
+      {
+        "record_id": "yun2024:292",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:292",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:57",
+        "von": 8000,
+        "nach": 24000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:10",
+        "von": 4000,
+        "nach": 8000,
+        "von_zustand": "leer",
+        "nach_zustand": "ok"
+      },
+      {
+        "record_id": "yun2024:10",
+        "von": 4000,
+        "nach": 19000,
+        "von_zustand": "leer",
+        "nach_zustand": "ok"
+      },
+      {
+        "record_id": "yun2024:11",
+        "von": 4000,
+        "nach": 8000,
+        "von_zustand": "length",
+        "nach_zustand": "ok"
+      },
+      {
+        "record_id": "yun2024:11",
+        "von": 4000,
+        "nach": 19000,
+        "von_zustand": "length",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:11",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:83",
+        "von": 8000,
+        "nach": 24000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:120",
+        "von": 8000,
+        "nach": 24000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:30",
+        "von": 4000,
+        "nach": 8000,
+        "von_zustand": "leer",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:231",
+        "von": 8000,
+        "nach": 24000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:231",
+        "von": 8000,
+        "nach": 32000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:44",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:53",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:51",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:51",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:52",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "length",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:71",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:71",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:79",
+        "von": 8000,
+        "nach": 24000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:81",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:76",
+        "von": 4000,
+        "nach": 8000,
+        "von_zustand": "length",
+        "nach_zustand": "ok"
+      },
+      {
+        "record_id": "yun2024:76",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:89",
+        "von": 4000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:89",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:90",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:91",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:101",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:102",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:104",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:103",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:105",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:106",
+        "von": 4000,
+        "nach": 8000,
+        "von_zustand": "leer",
+        "nach_zustand": "ok"
+      },
+      {
+        "record_id": "yun2024:106",
+        "von": 8000,
+        "nach": 19000,
+        "von_zustand": "ok",
+        "nach_zustand": "leer"
+      },
+      {
+        "record_id": "yun2024:110",
+        "von": 4000,
+        "nach": 8000,
+        "von_zustand": "length",
+        "nach_zustand": "ok"
+      },
+      {
+        "record_id": "yun2024:114",
+        "von": 8000,
+        "nach": 24000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      },
+      {
+        "record_id": "yun2024:118",
+        "von": 4000,
+        "nach": 8000,
+        "von_zustand": "length",
+        "nach_zustand": "ok"
+      },
+      {
+        "record_id": "yun2024:115",
+        "von": 8000,
+        "nach": 24000,
+        "von_zustand": "ok",
+        "nach_zustand": "length"
+      }
+    ]
+  },
+  "C_rettung": {
+    "ausfaelle_bei_8000": 237,
+    "davon_mit_beobachtung_ueber_schwelle": 38,
+    "davon_mit_zellen_gerettet": 15,
+    "davon_erneut_length": 20,
+    "davon_nur_leer": 3,
+    "beispiele_gerettet": [
+      "yun2024:117",
+      "yun2024:119",
+      "yun2024:149",
+      "yun2024:151",
+      "yun2024:154",
+      "yun2024:160",
+      "yun2024:161",
+      "yun2024:162",
+      "yun2024:204",
+      "yun2024:291",
+      "yun2024:357",
+      "yun2024:384",
+      "yun2024:533",
+      "yun2024:626",
+      "yun2024:678"
+    ],
+    "beispiele_weiter_length": [
+      "yun2024:114",
+      "yun2024:120",
+      "yun2024:158",
+      "yun2024:159",
+      "yun2024:163",
+      "yun2024:169",
+      "yun2024:228",
+      "yun2024:232",
+      "yun2024:233",
+      "yun2024:252",
+      "yun2024:349",
+      "yun2024:356",
+      "yun2024:405",
+      "yun2024:54",
+      "yun2024:582"
+    ]
+  },
+  "D_skalierung": {
+    "reasoning_wachstum_bei_mehr_budget": {
+      "n": 184,
+      "min": 0.1,
+      "median": 2.3,
+      "max": 46.6
+    },
+    "quota_je_budget": {
+      "4000": {
+        "n": 120,
+        "ok": 79,
+        "leer": 11,
+        "length": 30,
+        "anteil_length": 0.25
+      },
+      "8000": {
+        "n": 1503,
+        "ok": 1185,
+        "leer": 81,
+        "length": 237,
+        "anteil_length": 0.1577
+      },
+      "16000": {
+        "n": 59,
+        "ok": 0,
+        "leer": 0,
+        "length": 59,
+        "anteil_length": 1.0
+      },
+      "19000": {
+        "n": 216,
+        "ok": 115,
+        "leer": 54,
+        "length": 47,
+        "anteil_length": 0.2176
+      },
+      "24000": {
+        "n": 21,
+        "ok": 0,
+        "leer": 0,
+        "length": 21,
+        "anteil_length": 1.0
+      }
+    }
+  },
+  "A_mechanik_lesekopie": {
+    "abgeschnittene_zeilen": 103,
+    "davon_completion_tokens_gleich_budget": 103,
+    "davon_ohne_inhalt": 101,
+    "reasoning_zeichen_je_token": {
+      "n": 103,
+      "min": 3.0,
+      "median": 4.1,
+      "max": 4.6
+    }
+  },
+  "C_rettung_lesekopie": {
+    "ausfaelle_bei_8000": 103,
+    "davon_mit_beobachtung_ueber_schwelle": 0,
+    "davon_mit_zellen_gerettet": 0,
+    "davon_erneut_length": 0,
+    "davon_nur_leer": 0,
+    "beispiele_gerettet": [],
+    "beispiele_weiter_length": []
+  }
+}
