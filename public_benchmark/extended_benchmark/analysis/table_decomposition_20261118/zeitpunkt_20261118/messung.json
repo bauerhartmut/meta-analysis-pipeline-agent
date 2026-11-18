@@ -7,13 +7,45 @@
   "bilanz": {
     "stellen": 194,
     "stellen_mit_gedrucktem_zeitpunkt": 12,
-    "felder_gebunden": 0,
+    "felder_gebunden": 3,
     "timepoint_mismatch": 6,
     "davon_mit_zielzeitpunkt": 2,
     "davon_mit_zeitpunkt_im_kopf": 0,
-    "davon_entschieden": 0
+    "davon_mit_zeitpunkt_im_zeilenlabel": 2,
+    "davon_entschieden": 0,
+    "davon_entschieden_zeile_allein": 0
   },
-  "felder_gebunden": {},
+  "felder_gebunden": {
+    "yun2024:445.intervention_mean": {
+      "tabellen": [
+        "PMC4140238:T2"
+      ],
+      "werte": [
+        0.9
+      ],
+      "zeitpunkte": [
+        "zeitpunkt:7 min"
+      ]
+    },
+    "yun2024:445.comparator_mean": {
+      "tabellen": [
+        "PMC4140238:T2"
+      ],
+      "werte": [],
+      "zeitpunkte": [
+        "zeitpunkt:7 min"
+      ]
+    },
+    "yun2024:445.comparator_standard_deviation": {
+      "tabellen": [
+        "PMC4140238:T2"
+      ],
+      "werte": [],
+      "zeitpunkte": [
+        "zeitpunkt:7 min"
+      ]
+    }
+  },
   "timepoint_mismatch": [
     {
       "record_id": "yun2024:445",
@@ -33,9 +65,16 @@
         "visit 3b"
       ],
       "koepfe": [],
-      "gebunden": 0,
+      "zeilen": [
+        "7 min"
+      ],
+      "gebunden": 3,
+      "gebunden_mit_gruppe": 1,
       "werte": [],
-      "entschieden": false
+      "werte_zeile": [],
+      "werte_mit_gruppe": [],
+      "entschieden": false,
+      "entschieden_zeile_allein": false
     },
     {
       "record_id": "yun2024:445",
@@ -55,13 +94,26 @@
         "visit 3b"
       ],
       "koepfe": [],
-      "gebunden": 0,
+      "zeilen": [
+        "7 min"
+      ],
+      "gebunden": 3,
+      "gebunden_mit_gruppe": 1,
       "werte": [
         0.9,
         1.3,
         1.4
       ],
-      "entschieden": false
+      "werte_zeile": [
+        0.9,
+        1.3,
+        1.4
+      ],
+      "werte_mit_gruppe": [
+        0.9
+      ],
+      "entschieden": false,
+      "entschieden_zeile_allein": false
     },
     {
       "record_id": "yun2024:665",
@@ -78,9 +130,14 @@
       },
       "ziel": [],
       "koepfe": [],
+      "zeilen": [],
       "gebunden": 0,
+      "gebunden_mit_gruppe": 0,
       "werte": [],
-      "entschieden": false
+      "werte_zeile": [],
+      "werte_mit_gruppe": [],
+      "entschieden": false,
+      "entschieden_zeile_allein": false
     },
     {
       "record_id": "yun2024:665",
@@ -97,9 +154,14 @@
       },
       "ziel": [],
       "koepfe": [],
+      "zeilen": [],
       "gebunden": 0,
+      "gebunden_mit_gruppe": 0,
       "werte": [],
-      "entschieden": false
+      "werte_zeile": [],
+      "werte_mit_gruppe": [],
+      "entschieden": false,
+      "entschieden_zeile_allein": false
     },
     {
       "record_id": "yun2024:665",
@@ -116,9 +178,14 @@
       },
       "ziel": [],
       "koepfe": [],
+      "zeilen": [],
       "gebunden": 0,
+      "gebunden_mit_gruppe": 0,
       "werte": [],
-      "entschieden": false
+      "werte_zeile": [],
+      "werte_mit_gruppe": [],
+      "entschieden": false,
+      "entschieden_zeile_allein": false
     },
     {
       "record_id": "yun2024:665",
@@ -135,9 +202,14 @@
       },
       "ziel": [],
       "koepfe": [],
+      "zeilen": [],
       "gebunden": 0,
+      "gebunden_mit_gruppe": 0,
       "werte": [],
-      "entschieden": false
+      "werte_zeile": [],
+      "werte_mit_gruppe": [],
+      "entschieden": false,
+      "entschieden_zeile_allein": false
     }
   ]
 }

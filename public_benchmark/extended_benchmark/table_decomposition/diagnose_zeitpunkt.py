@@ -79,7 +79,7 @@ def main() -> int:
         wahl = tw.waehle(tables, alle, context)
         gelesen = [wahl.tabelle] if (wahl and wahl.wechsel) else list(tables)
         stellen = pv.feld_stellen(gelesen, context)
-        gebunden = zp.stellen(stellen, context)
+        gebunden = zp.stellen(stellen, context, gelesen)
 
         for orte in stellen.values():
             for stelle in orte:
@@ -89,11 +89,10 @@ def main() -> int:
         for feld in gebunden:
             felder_gebunden.append(f"{record_id}.{feld}")
             felder_zeitpunkt[f"{record_id}.{feld}"] = {
-                "tabelle": wahl.tabelle.table_id if wahl and wahl.wechsel
-                else gelesen[0].table_id,
+                "tabellen": sorted({stelle.tabelle for stelle in gebunden[feld]}),
                 "werte": sorted({stelle.wert for stelle in gebunden[feld]
                                  if stelle.wert is not None}),
-                "koepfe": sorted({stelle.zeitpunkt for stelle in gebunden[feld]}),
+                "zeitpunkte": sorted({stelle.arm_basis for stelle in gebunden[feld]}),
             }
 
     sechs: List[Dict[str, Any]] = []
@@ -108,7 +107,7 @@ def main() -> int:
         wahl = tw.waehle(tables, alle, context)
         gelesen = [wahl.tabelle] if (wahl and wahl.wechsel) else list(tables)
         stellen = pv.feld_stellen(gelesen, context)
-        befund = zp.lage(str(context.get("outcome") or ""), stellen, feld)
+        befund = zp.lage(str(context.get("outcome") or ""), stellen, feld, gelesen)
         sechs.append({
             "record_id": record_id,
             "feld": feld,
@@ -118,10 +117,19 @@ def main() -> int:
             "zeitpunkt_zitat": record.get("timepoint"),
             "ziel": befund["ziel"],
             "koepfe": befund["koepfe"],
+            "zeilen": befund["zeilen"],
             "gebunden": befund["gebunden"],
+            "gebunden_mit_gruppe": befund["gebunden_mit_gruppe"],
             "werte": sorted({stelle.wert for stelle in stellen.get(feld) or []
                              if stelle.wert is not None}),
-            "entschieden": befund["gebunden"] > 0,
+            "werte_zeile": befund["werte"],
+            "werte_mit_gruppe": befund["werte_mit_gruppe"],
+            "entschieden": (len(befund["werte_mit_gruppe"]) == 1
+                            and abs(befund["werte_mit_gruppe"][0]
+                                    - float(eintrag["wert"])) <= 1e-9),
+            "entschieden_zeile_allein": (len(befund["werte"]) == 1
+                                         and abs(befund["werte"][0]
+                                                 - float(eintrag["wert"])) <= 1e-9),
         })
 
     bericht = {
@@ -137,7 +145,11 @@ def main() -> int:
             "timepoint_mismatch": len(sechs),
             "davon_mit_zielzeitpunkt": sum(1 for e in sechs if e["ziel"]),
             "davon_mit_zeitpunkt_im_kopf": sum(1 for e in sechs if e["koepfe"]),
+            "davon_mit_zeitpunkt_im_zeilenlabel": sum(
+                1 for e in sechs if e.get("zeilen")),
             "davon_entschieden": sum(1 for e in sechs if e["entschieden"]),
+            "davon_entschieden_zeile_allein": sum(
+                1 for e in sechs if e["entschieden_zeile_allein"]),
         },
         "felder_gebunden": felder_zeitpunkt,
         "timepoint_mismatch": sechs,
@@ -156,7 +168,10 @@ def main() -> int:
     for eintrag in sechs:
         print(f"  {eintrag['record_id']} {eintrag['feld']:<30} "
               f"gold={eintrag['gold']} ziel={eintrag['ziel']} "
-              f"koepfe={eintrag['koepfe']} gebunden={eintrag['gebunden']}")
+              f"zeilen={eintrag['zeilen']} gebunden={eintrag['gebunden']} "
+              f"werte_zeile={eintrag['werte_zeile']} "
+              f"werte_gruppe={eintrag['werte_mit_gruppe']} "
+              f"entschieden={eintrag['entschieden']}")
     return 0
 
 
