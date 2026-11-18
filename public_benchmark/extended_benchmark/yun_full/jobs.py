@@ -8,9 +8,12 @@ Zwei kleine Dateien im Laufverzeichnis, keine Datenbank:
   in `predictions.jsonl`; das Journal erklaert nur, was dazwischen passiert ist.
 * `harness.lock` verhindert den Doppelstart, der am 17.11. Duplikate erzeugt hat.
 
-Bewusst ohne PID-Lebendpruefung: `os.kill(pid, 0)` beendet unter Windows den
-Prozess, statt ihn zu testen. Die Sperre gilt deshalb nach Alter, wie die
-90-Minuten-Regel in `nachzug_ausfaelle.sh`.
+Die Sperre prueft, ob der eingetragene Prozess noch lebt, und uebernimmt sie
+sonst sofort — ein harter Abbruch (`os._exit`) laesst sie naemlich stehen. Unter
+Windows geschieht das ueber `OpenProcess` mit Leserecht, **nicht** ueber
+`os.kill(pid, 0)`: das wuerde den Prozess dort beenden statt ihn zu testen. Nur
+wenn sich das nicht entscheiden laesst, gilt die Sperre nach Alter (90 min) als
+verwaist.
 """
 
 from __future__ import annotations
@@ -78,6 +81,51 @@ class JobJournal:
         return sorted(offen.values(), key=lambda e: (e["record_id"], e["model"]))
 
 
+def _lebt(pid: str | int) -> bool | None:
+    """Laeuft der Prozess? `None` heisst: nicht entscheidbar.
+
+    POSIX: `os.kill(pid, 0)` prueft nur. Windows: `OpenProcess` mit
+    `PROCESS_QUERY_LIMITED_INFORMATION` und `GetExitCodeProcess`; Fehler 5 heisst
+    "existiert, aber fremd", Fehler 87 heisst "gibt es nicht".
+    """
+    try:
+        nummer = int(pid)
+    except (TypeError, ValueError):
+        return None
+    if nummer <= 0:
+        return None
+    if os.name == "posix":
+        try:
+            os.kill(nummer, 0)
+        except ProcessLookupError:
+            return False
+        except PermissionError:
+            return True
+        except OSError:
+            return None
+        return True
+    if os.name == "nt":
+        import ctypes
+
+        kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+        griff = kernel.OpenProcess(0x1000, False, nummer)  # PROCESS_QUERY_LIMITED_INFORMATION
+        if not griff:
+            fehler = ctypes.get_last_error()
+            if fehler == 5:  # ERROR_ACCESS_DENIED: laeuft, gehoert aber jemand anders
+                return True
+            if fehler == 87:  # ERROR_INVALID_PARAMETER: Prozess existiert nicht
+                return False
+            return None
+        try:
+            code = ctypes.c_ulong()
+            if not kernel.GetExitCodeProcess(griff, ctypes.byref(code)):
+                return None
+            return code.value == 259  # STILL_ACTIVE
+        finally:
+            kernel.CloseHandle(griff)
+    return None
+
+
 class SperreBelegt(RuntimeError):
     """Ein anderer Prozess haelt die Sperre."""
 
@@ -96,7 +144,7 @@ class RunSperre:
         try:
             griff = os.open(self.pfad, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
         except FileExistsError:
-            if not self._abgelaufen():
+            if not self._verwaist():
                 raise SperreBelegt(f"gehalten von PID {self.pid()}") from None
             self.pfad.write_text(inhalt, encoding="utf-8")
             return False
@@ -116,6 +164,13 @@ class RunSperre:
             return str(json.loads(self.pfad.read_text(encoding="utf-8")).get("pid"))
         except (OSError, json.JSONDecodeError):
             return "unbekannt"
+
+    def _verwaist(self) -> bool:
+        """Wahr, wenn der Besitzer nicht mehr laeuft; sonst entscheidet das Alter."""
+        lebt = _lebt(self.pid())
+        if lebt is not None:
+            return not lebt
+        return self._abgelaufen()
 
     def _abgelaufen(self) -> bool:
         if not self.pfad.exists():

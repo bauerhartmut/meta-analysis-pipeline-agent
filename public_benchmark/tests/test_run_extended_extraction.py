@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -598,7 +599,8 @@ def test_zweiter_lauf_schreibt_keine_zweite_zeile(tmp_path: Path, monkeypatch) -
 def test_belegte_sperre_bricht_mit_drei_ab(tmp_path: Path, monkeypatch) -> None:
     lauf = tmp_path / "runs" / "t1"
     lauf.mkdir(parents=True)
-    (lauf / "harness.lock").write_text(json.dumps({"pid": 999999}), encoding="utf-8")
+    # Lebende PID: der eigene Prozess haelt die Sperre, also kein Uebernehmen.
+    (lauf / "harness.lock").write_text(json.dumps({"pid": os.getpid()}), encoding="utf-8")
     aufrufe, zeile = _auftrag(
         tmp_path, monkeypatch, [_ok_antwort()], extra=["--retry-strategie", "neu"], erwarte=3
     )

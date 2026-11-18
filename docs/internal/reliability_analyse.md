@@ -270,15 +270,26 @@ Planer. Neues Modul `yun_full/jobs.py`, wirksam nur unter `--retry-strategie neu
    `completed`/`failed`. Ein Absturz dazwischen hinterlässt `running`, und die
    Zeile entscheidet beim nächsten Start — also kein Verlust und keine Dublette.
 4. `runs/<run>/harness.lock`; ein zweiter Prozess bricht mit Exit 3 ab und
-   schreibt keine Zeile. Die Sperre gilt nach Alter (90 min) statt nach
-   PID-Lebendprüfung, weil `os.kill(pid, 0)` unter Windows den Prozess beendet
-   statt ihn zu prüfen. `nachzug_ausfaelle.sh` bleibt unverändert und behält
-   seine eigene Sperre.
+   schreibt keine Zeile. Die Sperre prüft, ob der eingetragene Prozess noch
+   lebt, und wird sonst **sofort** übernommen. Das war nötig, weil der echte
+   Abbruchtest gezeigt hat: `os._exit` überspringt das `finally`, die Sperre
+   bleibt stehen, und mit reiner Altersregel wäre ein Neustart 90 Minuten
+   blockiert. Unter Windows prüft `OpenProcess` mit Leserecht — `os.kill(pid, 0)`
+   würde den Prozess dort beenden statt ihn zu testen. Nur wenn sich das nicht
+   entscheiden lässt (fremde PID, unbekannter Wert), gilt die 90-Minuten-Regel.
+   `nachzug_ausfaelle.sh` bleibt unverändert und behält seine eigene Sperre.
 5. Geprüft offline: `tests/test_jobs.py` (Journal-Replay, halb geschriebene
-   Zeile, Sperre/Freigabe, fremde Sperre, abgelaufene Sperre) und fünf Pfadtests
-   am Harness (Journal und Freigabe, `alt` legt nichts an, zweiter Lauf schreibt
-   keine zweite Zeile, belegte Sperre → Exit 3, unterbrochener Auftrag läuft
-   erneut und wird abgeschlossen).
+   Zeile, Sperre/Freigabe, fremde Sperre, lebende und beendete PID,
+   Altersregel als Rückfall) und fünf Pfadtests am Harness (Journal und Freigabe,
+   `alt` legt nichts an, zweiter Lauf schreibt keine zweite Zeile, belegte
+   Sperre → Exit 3, unterbrochener Auftrag läuft erneut und wird abgeschlossen).
+6. **Echter Abbruchtest** in `tests/test_crash_recovery.py`: ein Subprozess
+   führt den echten Harness mit gefälschtem Aufruf aus, schreibt die erste
+   Zeile, beginnt den zweiten Auftrag und beendet sich mit `os._exit(1)`. Danach
+   liegen genau die Zustände eines Absturzes vor (eine Zeile, `running` ohne
+   Abschluss, stehende Sperre). Ein zweiter Prozess meldet den unterbrochenen
+   Auftrag, holt ihn nach, überspringt den fertigen und schreibt je Auftrag genau
+   eine Zeile. Unter `alt` entsteht dabei weder Journal noch Sperre.
 
 **P3 — Tests, offline und über den echten Pfad (`public_benchmark/tests/`)**
 1. `test_retry_manager.py`: die 14 Szenarien aus dem Auftrag gegen `fuehre_aus`

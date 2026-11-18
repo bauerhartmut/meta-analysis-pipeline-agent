@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -84,14 +85,43 @@ def test_zweite_sperre_wird_abgelehnt(tmp_path: Path) -> None:
     raise AssertionError("zweite Sperre muss abgelehnt werden")
 
 
-def test_abgelaufene_sperre_wird_uebernommen(tmp_path: Path) -> None:
+def test_eigene_pid_gilt_als_lebendig() -> None:
+    assert jobs._lebt(os.getpid()) is True
+
+
+def test_beendeter_prozess_gilt_als_tot() -> None:
+    # Genau der Zustand nach `os._exit`: der Prozess ist weg.
+    lauf = subprocess.Popen([sys.executable, "-c", "pass"])
+    lauf.wait()
+    assert jobs._lebt(lauf.pid) is False
+
+
+def test_sperre_eines_beendeten_prozesses_wird_sofort_uebernommen(tmp_path: Path) -> None:
+    lauf = subprocess.Popen([sys.executable, "-c", "pass"])
+    lauf.wait()
     pfad = tmp_path / "harness.lock"
-    pfad.write_text(json.dumps({"pid": 1}), encoding="utf-8")
+    pfad.write_text(json.dumps({"pid": lauf.pid}), encoding="utf-8")
+    sperre = jobs.RunSperre(pfad)
+    assert sperre.nehmen() is False  # uebernommen, ohne 90 Minuten zu warten
+    assert sperre.pid() == str(os.getpid())
+
+
+def test_altersregel_gilt_wenn_sich_das_leben_nicht_entscheiden_laesst(
+    tmp_path: Path, monkeypatch
+) -> None:
+    monkeypatch.setattr(jobs, "_lebt", lambda pid: None)
+    pfad = tmp_path / "harness.lock"
+    pfad.write_text(json.dumps({"pid": 4242}), encoding="utf-8")
+    try:
+        jobs.RunSperre(pfad).nehmen()
+    except jobs.SperreBelegt:
+        pass
+    else:
+        raise AssertionError("junge Sperre muss halten, wenn das Leben unklar ist")
+
     alt = time.time() - 91 * 60
     os.utime(pfad, (alt, alt))
-    sperre = jobs.RunSperre(pfad)
-    assert sperre.nehmen() is False  # uebernommen, nicht frisch genommen
-    assert sperre.pid() == str(os.getpid())
+    assert jobs.RunSperre(pfad).nehmen() is False
 
 
 def test_freigeben_laesst_fremde_sperre_stehen(tmp_path: Path) -> None:
