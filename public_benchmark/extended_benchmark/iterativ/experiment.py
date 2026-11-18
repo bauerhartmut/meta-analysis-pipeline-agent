@@ -133,7 +133,21 @@ def auswerten(args: argparse.Namespace) -> int:
     zeilen = g.lade_modell(g.lies(g.VORLAUF), "glm")
     plan_daten = json.loads((args.out_dir / "stichprobe.json").read_text(encoding="utf-8"))
     gewaehlt = [e["record_id"] for e in plan_daten["records"]]
-    antworten = g.lies(args.out_dir / "antworten.jsonl")
+
+    # Fehlende Antwortdatei ist kein Fehler, sondern der Fall "noch nichts
+    # gelaufen": dann bleiben B, C und D gleich A.
+    antwort_pfad = args.out_dir / "antworten.jsonl"
+    roh = g.lies(antwort_pfad) if antwort_pfad.exists() else []
+    # Doppelte Zeilen (z. B. nach einem abgebrochenen und neu gestarteten
+    # Durchlauf) werden auf die letzte Zeile je Zelle und Modell reduziert.
+    gesehen: dict[tuple[str, str, str], dict] = {}
+    doppelt = 0
+    for antwort in roh:
+        schluessel = (antwort["record_id"], antwort["feld"], str(antwort.get("modell")))
+        if schluessel in gesehen:
+            doppelt += 1
+        gesehen[schluessel] = antwort
+    antworten = list(gesehen.values())
 
     nach_zelle: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for antwort in antworten:
@@ -221,12 +235,14 @@ def auswerten(args: argparse.Namespace) -> int:
         doc = g.dokument(record)
         gold = g.gold_werte(record)
         basis = g.modell_werte(zeilen.get(rid, {}))
-        roh = g.gold_roh(record)
+        # Nicht `roh` nennen: der Name traegt oben die eingelesenen
+        # Antwortzeilen und wird hier sonst ueberschrieben.
+        gold_roh = g.gold_roh(record)
         for feld in gold:
             if feld in basis:
                 continue
             zellen_gesamt += 1
-            if g.finde_zahl(doc, roh.get(feld, "")):
+            if g.finde_zahl(doc, gold_roh.get(feld, "")):
                 auffindbar += 1
 
     token = Counter()
@@ -235,6 +251,12 @@ def auswerten(args: argparse.Namespace) -> int:
     zeit = sum(float(a.get("elapsed_s") or 0) for a in antworten)
 
     ergebnis = {
+        "antworten": {
+            "zeilen_roh": len(roh),
+            "eindeutig": len(antworten),
+            "doppelte_verworfen": doppelt,
+            "datei_vorhanden": antwort_pfad.exists(),
+        },
         "stichprobe": plan_daten,
         "varianten": erg,
         "auffindbarkeit": {

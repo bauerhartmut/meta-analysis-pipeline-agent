@@ -220,6 +220,14 @@ verwirft genau die Zellen mit hartem Verstoss (2 negative Ereignisse, 2
 Ereignisse bei kontinuierlichem Outcome) und wird dadurch nicht schlechter als
 A.
 
+Zusaetzlich sind drei Dateizustaende belegt (17 von 17 Pruefungen bestanden):
+**unvollstaendig** (jede dritte Zeile fehlt) laeuft ohne Fehler und gewinnt
+hoechstens so viel wie die vollstaendige Datei, **doppelt** (jede Zeile zweimal)
+wird auf die letzte Zeile je Zelle reduziert und liefert exakt dieselben
+Metriken, **leer** laesst B, C und D gleich A. Dabei fiel ein echter Fehler auf:
+Die Zahl der eingelesenen Antwortzeilen wurde von einer gleichnamigen Variablen
+in der Auffindbarkeits-Schleife ueberschrieben und stand bei 4 statt 0.
+
 Die Zahlen sind **kein Modellergebnis**: Die Antworten sind erfunden, geprueft
 wurde ausschliesslich, dass jede Verzweigung des Auswertungscodes laeuft und
 plausible Werte liefert. Die echte Stichprobe unter `ergebnisse/exp1` bleibt
@@ -229,9 +237,12 @@ unberuehrt.
 
 1. **Zuerst Record-Nachzug, nicht Zell-Retrieval.** 467 der 652 fehlenden Zellen
    (71,6 %) haengen an 140 Records mit technischem Ausfall oder leerer Antwort.
-   Ein `--retry-failed` mit `--repair` ist billiger und wirkt auf alle Zellen
-   eines Records gleichzeitig. Erwartung: Der Recall steigt ohne neue
-   Architektur, die Precision bleibt unberuehrt.
+   Die Telemetrie beziffert den Block: 103 Length-Records tragen 423 fehlende
+   Zellen und haben 824.000 Tokens ohne Ergebnis verbraucht; 36 leere Antworten
+   tragen 40 Zellen bei nur 55.011 Tokens. Alle 139 Ausfaelle haben Reasoning
+   produziert, aber nichts Verwertbares geliefert. Ein `--retry-failed` mit
+   `--repair` wirkt auf alle Zellen eines Records gleichzeitig; Einzelheiten und
+   fertige Befehle: `public_benchmark/extended_benchmark/iterativ/ergebnisse/retry_plan_glm.md`.
 2. **Zell-Retrieval nur fuer die 114 inhaltlich klaren Auslassungen** (Tabelle,
    Zeitpunkt, Armkonflikt, Prozent-statt-Anzahl, Fliesstext). Das sind die
    Faelle mit belegbarer Fundstelle.

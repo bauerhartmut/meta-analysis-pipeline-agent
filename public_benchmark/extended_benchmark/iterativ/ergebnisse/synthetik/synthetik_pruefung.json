@@ -1,0 +1,321 @@
+{
+ "pruefungen": {
+  "A_unveraendert": true,
+  "B_gewinn_moeglich": true,
+  "B_nur_belegte": true,
+  "C_nicht_schlechter_als_B": true,
+  "C_enthaltung_bei_streit": true,
+  "D_verwirft_nur_den_harten_fall": true,
+  "D_verwirft_harten_verstoss": true,
+  "D_nicht_mehr_falsch_als_C": true,
+  "D_nicht_weniger_richtig_als_A": true,
+  "U_laeuft_ohne_fehler": true,
+  "U_hoechstens_so_viel_wie_vollstaendig": true,
+  "U_B_bleibt_bei_A_ohne_beleg": true,
+  "V_duplikate_erkannt": true,
+  "V_ergebnis_wie_vollstaendig": true,
+  "W_leer_laeuft_ohne_fehler": true,
+  "W_leer_gleich_A": true,
+  "W_leer_ohne_zuwachs": true
+ },
+ "varianten": {
+  "vollstaendig": {
+   "A": {
+    "zellen": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65
+    },
+    "metriken": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65,
+     "precision": 1.0,
+     "recall": 0.1333,
+     "f1": 0.2353
+    },
+    "hinzugefuegt": 0
+   },
+   "B": {
+    "zellen": {
+     "richtig": 41,
+     "falsch": 24,
+     "fehlend": 10
+    },
+    "metriken": {
+     "richtig": 41,
+     "falsch": 24,
+     "fehlend": 10,
+     "precision": 0.6308,
+     "recall": 0.5467,
+     "f1": 0.5857
+    },
+    "hinzugefuegt": 55
+   },
+   "C": {
+    "zellen": {
+     "richtig": 51,
+     "falsch": 13,
+     "fehlend": 11
+    },
+    "metriken": {
+     "richtig": 51,
+     "falsch": 13,
+     "fehlend": 11,
+     "precision": 0.7969,
+     "recall": 0.68,
+     "f1": 0.7338
+    },
+    "hinzugefuegt": 54
+   },
+   "D": {
+    "zellen": {
+     "richtig": 50,
+     "falsch": 10,
+     "fehlend": 15
+    },
+    "metriken": {
+     "richtig": 50,
+     "falsch": 10,
+     "fehlend": 15,
+     "precision": 0.8333,
+     "recall": 0.6667,
+     "f1": 0.7407
+    },
+    "hinzugefuegt": 50
+   }
+  },
+  "unvollstaendig": {
+   "A": {
+    "zellen": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65
+    },
+    "metriken": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65,
+     "precision": 1.0,
+     "recall": 0.1333,
+     "f1": 0.2353
+    },
+    "hinzugefuegt": 0
+   },
+   "B": {
+    "zellen": {
+     "richtig": 30,
+     "falsch": 13,
+     "fehlend": 32
+    },
+    "metriken": {
+     "richtig": 30,
+     "falsch": 13,
+     "fehlend": 32,
+     "precision": 0.6977,
+     "recall": 0.4,
+     "f1": 0.5085
+    },
+    "hinzugefuegt": 33
+   },
+   "C": {
+    "zellen": {
+     "richtig": 30,
+     "falsch": 24,
+     "fehlend": 21
+    },
+    "metriken": {
+     "richtig": 30,
+     "falsch": 24,
+     "fehlend": 21,
+     "precision": 0.5556,
+     "recall": 0.4,
+     "f1": 0.4651
+    },
+    "hinzugefuegt": 44
+   },
+   "D": {
+    "zellen": {
+     "richtig": 30,
+     "falsch": 21,
+     "fehlend": 24
+    },
+    "metriken": {
+     "richtig": 30,
+     "falsch": 21,
+     "fehlend": 24,
+     "precision": 0.5882,
+     "recall": 0.4,
+     "f1": 0.4762
+    },
+    "hinzugefuegt": 41
+   }
+  },
+  "doppelt": {
+   "A": {
+    "zellen": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65
+    },
+    "metriken": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65,
+     "precision": 1.0,
+     "recall": 0.1333,
+     "f1": 0.2353
+    },
+    "hinzugefuegt": 0
+   },
+   "B": {
+    "zellen": {
+     "richtig": 41,
+     "falsch": 24,
+     "fehlend": 10
+    },
+    "metriken": {
+     "richtig": 41,
+     "falsch": 24,
+     "fehlend": 10,
+     "precision": 0.6308,
+     "recall": 0.5467,
+     "f1": 0.5857
+    },
+    "hinzugefuegt": 55
+   },
+   "C": {
+    "zellen": {
+     "richtig": 51,
+     "falsch": 13,
+     "fehlend": 11
+    },
+    "metriken": {
+     "richtig": 51,
+     "falsch": 13,
+     "fehlend": 11,
+     "precision": 0.7969,
+     "recall": 0.68,
+     "f1": 0.7338
+    },
+    "hinzugefuegt": 54
+   },
+   "D": {
+    "zellen": {
+     "richtig": 50,
+     "falsch": 10,
+     "fehlend": 15
+    },
+    "metriken": {
+     "richtig": 50,
+     "falsch": 10,
+     "fehlend": 15,
+     "precision": 0.8333,
+     "recall": 0.6667,
+     "f1": 0.7407
+    },
+    "hinzugefuegt": 50
+   }
+  },
+  "leer": {
+   "A": {
+    "zellen": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65
+    },
+    "metriken": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65,
+     "precision": 1.0,
+     "recall": 0.1333,
+     "f1": 0.2353
+    },
+    "hinzugefuegt": 0
+   },
+   "B": {
+    "zellen": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65
+    },
+    "metriken": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65,
+     "precision": 1.0,
+     "recall": 0.1333,
+     "f1": 0.2353
+    },
+    "hinzugefuegt": 0
+   },
+   "C": {
+    "zellen": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65
+    },
+    "metriken": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65,
+     "precision": 1.0,
+     "recall": 0.1333,
+     "f1": 0.2353
+    },
+    "hinzugefuegt": 0
+   },
+   "D": {
+    "zellen": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65
+    },
+    "metriken": {
+     "richtig": 10,
+     "falsch": 0,
+     "fehlend": 65,
+     "precision": 1.0,
+     "recall": 0.1333,
+     "f1": 0.2353
+    },
+    "hinzugefuegt": 0
+   }
+  }
+ },
+ "antworten": {
+  "vollstaendig": {
+   "zeilen_roh": 130,
+   "eindeutig": 130,
+   "doppelte_verworfen": 0,
+   "datei_vorhanden": true
+  },
+  "unvollstaendig": {
+   "zeilen_roh": 87,
+   "eindeutig": 87,
+   "doppelte_verworfen": 0,
+   "datei_vorhanden": true
+  },
+  "doppelt": {
+   "zeilen_roh": 260,
+   "eindeutig": 130,
+   "doppelte_verworfen": 130,
+   "datei_vorhanden": true
+  },
+  "leer": {
+   "zeilen_roh": 0,
+   "eindeutig": 0,
+   "doppelte_verworfen": 0,
+   "datei_vorhanden": true
+  }
+ },
+ "faelle": {
+  "beide_richtig": 20,
+  "streit_armbezug_glm": 11,
+  "nur_qwen_belegt": 10,
+  "streit_ohne_armbezug_enthaltung": 11,
+  "beide_gleich_falsch": 11,
+  "harter_verstoss_negativ": 2
+ }
+}

@@ -1,0 +1,262 @@
+[
+ {
+  "record_id": "yun2024:11",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:11",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:117",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:117",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:117",
+  "feld": "comparator_mean"
+ },
+ {
+  "record_id": "yun2024:130",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:130",
+  "feld": "intervention_events"
+ },
+ {
+  "record_id": "yun2024:130",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:130",
+  "feld": "comparator_events"
+ },
+ {
+  "record_id": "yun2024:161",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:161",
+  "feld": "intervention_mean"
+ },
+ {
+  "record_id": "yun2024:161",
+  "feld": "intervention_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:161",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:161",
+  "feld": "comparator_mean"
+ },
+ {
+  "record_id": "yun2024:161",
+  "feld": "comparator_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:174",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:174",
+  "feld": "intervention_events"
+ },
+ {
+  "record_id": "yun2024:174",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:174",
+  "feld": "comparator_events"
+ },
+ {
+  "record_id": "yun2024:180",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:180",
+  "feld": "comparator_mean"
+ },
+ {
+  "record_id": "yun2024:180",
+  "feld": "comparator_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:183",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:183",
+  "feld": "intervention_mean"
+ },
+ {
+  "record_id": "yun2024:183",
+  "feld": "intervention_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:183",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:183",
+  "feld": "comparator_mean"
+ },
+ {
+  "record_id": "yun2024:183",
+  "feld": "comparator_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:204",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:204",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:23",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:23",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:248",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:248",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:252",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:252",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:291",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:291",
+  "feld": "intervention_mean"
+ },
+ {
+  "record_id": "yun2024:291",
+  "feld": "intervention_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:291",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:291",
+  "feld": "comparator_mean"
+ },
+ {
+  "record_id": "yun2024:291",
+  "feld": "comparator_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:30",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:30",
+  "feld": "intervention_mean"
+ },
+ {
+  "record_id": "yun2024:30",
+  "feld": "intervention_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:30",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:30",
+  "feld": "comparator_mean"
+ },
+ {
+  "record_id": "yun2024:30",
+  "feld": "comparator_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:326",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:420",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:420",
+  "feld": "intervention_mean"
+ },
+ {
+  "record_id": "yun2024:420",
+  "feld": "intervention_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:420",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:420",
+  "feld": "comparator_mean"
+ },
+ {
+  "record_id": "yun2024:420",
+  "feld": "comparator_standard_deviation"
+ },
+ {
+  "record_id": "yun2024:455",
+  "feld": "intervention_mean"
+ },
+ {
+  "record_id": "yun2024:455",
+  "feld": "comparator_events"
+ },
+ {
+  "record_id": "yun2024:459",
+  "feld": "intervention_mean"
+ },
+ {
+  "record_id": "yun2024:459",
+  "feld": "comparator_events"
+ },
+ {
+  "record_id": "yun2024:630",
+  "feld": "intervention_mean"
+ },
+ {
+  "record_id": "yun2024:630",
+  "feld": "comparator_mean"
+ },
+ {
+  "record_id": "yun2024:688",
+  "feld": "intervention_group_size"
+ },
+ {
+  "record_id": "yun2024:688",
+  "feld": "comparator_group_size"
+ },
+ {
+  "record_id": "yun2024:694",
+  "feld": "intervention_mean"
+ },
+ {
+  "record_id": "yun2024:694",
+  "feld": "comparator_mean"
+ }
+]

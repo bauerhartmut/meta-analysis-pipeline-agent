@@ -1,0 +1,274 @@
+{
+ "antworten": {
+  "zeilen_roh": 0,
+  "eindeutig": 0,
+  "doppelte_verworfen": 0,
+  "datei_vorhanden": true
+ },
+ "stichprobe": {
+  "seed": 20261117,
+  "n_records": 20,
+  "records": [
+   {
+    "record_id": "yun2024:11",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:117",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size",
+     "comparator_mean"
+    ]
+   },
+   {
+    "record_id": "yun2024:130",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_events",
+     "comparator_group_size",
+     "comparator_events"
+    ]
+   },
+   {
+    "record_id": "yun2024:161",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:174",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_events",
+     "comparator_group_size",
+     "comparator_events"
+    ]
+   },
+   {
+    "record_id": "yun2024:180",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:183",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:204",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:23",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:248",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:252",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:291",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:30",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:326",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:420",
+    "technischer_ausfall": true,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "intervention_mean",
+     "intervention_standard_deviation",
+     "comparator_group_size",
+     "comparator_mean",
+     "comparator_standard_deviation"
+    ]
+   },
+   {
+    "record_id": "yun2024:455",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_mean",
+     "comparator_events"
+    ]
+   },
+   {
+    "record_id": "yun2024:459",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_mean",
+     "comparator_events"
+    ]
+   },
+   {
+    "record_id": "yun2024:630",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_mean",
+     "comparator_mean"
+    ]
+   },
+   {
+    "record_id": "yun2024:688",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_group_size",
+     "comparator_group_size"
+    ]
+   },
+   {
+    "record_id": "yun2024:694",
+    "technischer_ausfall": false,
+    "fehlende_zellen": [
+     "intervention_mean",
+     "comparator_mean"
+    ]
+   }
+  ]
+ },
+ "varianten": {
+  "A": {
+   "zellen": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65
+   },
+   "metriken": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65,
+    "precision": 1.0,
+    "recall": 0.1333,
+    "f1": 0.2353
+   },
+   "hinzugefuegt": 0
+  },
+  "B": {
+   "zellen": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65
+   },
+   "metriken": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65,
+    "precision": 1.0,
+    "recall": 0.1333,
+    "f1": 0.2353
+   },
+   "hinzugefuegt": 0
+  },
+  "C": {
+   "zellen": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65
+   },
+   "metriken": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65,
+    "precision": 1.0,
+    "recall": 0.1333,
+    "f1": 0.2353
+   },
+   "hinzugefuegt": 0
+  },
+  "D": {
+   "zellen": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65
+   },
+   "metriken": {
+    "richtig": 10,
+    "falsch": 0,
+    "fehlend": 65,
+    "precision": 1.0,
+    "recall": 0.1333,
+    "f1": 0.2353
+   },
+   "hinzugefuegt": 0
+  }
+ },
+ "auffindbarkeit": {
+  "fehlende_zellen": 65,
+  "wert_im_auszug_vorhanden": 54,
+  "anteil": 0.8308
+ },
+ "verworfen_durch_pruefung": [],
+ "detail": {},
+ "tokens": {},
+ "zeit_summiert_s": 0
+}
