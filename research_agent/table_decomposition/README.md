@@ -71,10 +71,19 @@ Schreibt Header-Pfade, Rollen (`label`, `n`, `mean`, `sd`, `events`, `p`,
   environmental-level factors; n=459)`) auf **Zeilenlabels**, markiert als
   `arm_basis="dokument"`. Spaltenköpfe bleiben draußen, weil deren Arm an der
   Spaltenposition hängt (belegt: `PMC4319071:T1`).
-- `_reassign_header_bands_by_order(table)` (Parser) — ist die Kopfspanne
-  unauflösbar, folgen die Kopfebenen den **Wertspalten** in Leserichtung;
-  Zellen und Spalten bleiben unangetastet. Belegt: `PMC4319071:T2`, wo das
-  Strichraster eine Spalte neben dem Kopf liegt (Vegetables-Mittelwert 158.67).
+- `_candidate_header_bands(table)` (Parser) — ist die Kopfspanne unauflösbar,
+  werden zwei Kandidaten für die Kopfebenen berechnet (nach **Wertspalten** in
+  Leserichtung: einmal mit den gedruckten, unteilbaren Ebenen, einmal ohne).
+  Die gedruckte Geometrie bleibt stehen; Zellen und Spalten werden nie
+  umnummeriert. Übernommen wird nur über
+  `consider_header_band_candidate(table, context)` (Semantik): ohne
+  Bandüberlappung, ohne Feldverlust, ohne verschobene Feld- oder
+  Armzuordnung, ohne Feld auf mehr Spalten und nur bei mindestens einem
+  gewonnenen Feld; sonst Rückfall auf das Original. Die Entscheidung steht als
+  `Table.band_decision`, das Setzen der Bänder samt streichen der
+  Geometriemängel macht `Table.apply_header_bands`. Belegt: `PMC4319071:T2`
+  (Vegetables-Mittelwert 158.67, Intervention 167.61), ohne die Überlappungen
+  aus `PMC3877023`.
 - `header_geometry_trustworthy(table)` — ohne belegte Kopfspanne
   (`header_gruppe_nicht_teilbar` usw.) wird keine Spalte zum Outcome erklaert;
   das verhindert Felder auf der falschen Spalte (belegt: `PMC4319071:T2`).
