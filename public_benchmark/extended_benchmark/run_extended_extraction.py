@@ -421,17 +421,20 @@ def fehlerklasse_aus(response: dict[str, Any], parse_error: str) -> str:
     return ""
 
 
-def content_felder(inhalt: str, primaer_content: str) -> dict[str, str]:
-    """Rohantwort fuer die Fehleranalyse: der Text, aus dem die Zellen stammen.
+def content_felder(inhalt: str, primaer: str, wiederholung: str = "") -> dict[str, str]:
+    """Rohantworten fuer die Fehleranalyse, jede unter ihrem richtigen Namen.
 
-    `content` ist bewusst der wirksame Text (`inhalt`), nicht der Primaeraufruf:
-    Nach einem Reparaturaufruf stammen die Zellen aus einer anderen Antwort, und
-    nur dieser Text erklaert sie. Weicht er ab, bleibt der Primaeraufruf als
-    `content_primaer` erhalten, damit sich Formatfehler und Reparatur trennen.
+    `content` ist der wirksame Text (`inhalt`) — der, aus dem die Zellen stammen.
+    `content_primaer` ist immer der Text des **ersten** Aufrufs, auch wenn danach
+    ein JSON-Retry oder eine Reparatur kam. `content_retry` haelt die
+    Wiederholung fest, wenn sie weder die wirksame Antwort noch der Primaeraufruf
+    ist (also nach einem Retry, den eine Reparatur ersetzt hat).
     """
     felder = {"content": inhalt}
-    if inhalt != primaer_content:
-        felder["content_primaer"] = primaer_content
+    if primaer and primaer != inhalt:
+        felder["content_primaer"] = primaer
+    if wiederholung and wiederholung not in (inhalt, primaer):
+        felder["content_retry"] = wiederholung
     return felder
 
 
@@ -755,6 +758,9 @@ def main() -> int:
         if args.quellenzeile:
             prompt_version = VERSION_QUELLENZEILE
         response = call(models[model], prompt, key, base)
+        # Vor dem Retry festhalten: `response` zeigt danach auf die Wiederholung,
+        # und die erste Antwort waere sonst verloren.
+        erste_antwort = response.get("content") or ""
         cells, parse_error = parse_cells(response.get("content") or "")
         timepoints, timepoint_error = parse_timepoints(response.get("content") or "")
         retry: dict[str, Any] | None = None
@@ -776,11 +782,12 @@ def main() -> int:
         repair: dict[str, Any] | None = None
         pfad = "standard"
         repair_fehlerklasse = ""
-        # `content_len`/`content_chars` beschreiben immer die Antwort des
-        # Primaeraufrufs (Vergleichbarkeit mit den alten Zeilen); der Inhalt, aus
-        # dem der v7-Header gelesen wird, kann nach einer Reparatur ein anderer sein.
-        primaer_content = response.get("content") or ""
-        inhalt = primaer_content
+        # `inhalt` ist der Text, aus dem die Zellen stammen: nach einem JSON-Retry
+        # die Wiederholung, nach erfolgreicher Reparatur deren Antwort. `response`
+        # zeigt nach dem Retry bereits auf die Wiederholung, der erste Aufruf steht
+        # in `erste_antwort`. `content_len`/`content_chars` zaehlen deshalb denselben
+        # Text wie das Feld `content`; vorher stand dort der Stand vor der Reparatur.
+        inhalt = response.get("content") or ""
         if args.repair and fehlerklasse == "length_ohne_ergebnis":
             budget = dict(models[model])
             budget["max_tokens"] = min(REPAIR_MAX_TOKENS, int(budget.get("max_tokens") or REPAIR_MAX_TOKENS))
@@ -819,7 +826,7 @@ def main() -> int:
             "retry_finish_reason": retry.get("finish_reason", "") if retry else "",
             "retry_tokens": retry.get("completion_tokens") if retry else None,
             "elapsed_s": response.get("elapsed_s"),
-            "content_len": len(primaer_content),
+            "content_len": len(inhalt),
             "parse_error": parse_error,
             "timepoints": timepoints
             if (args.last_timepoint or args.target_timepoint or args.target_fallback)
@@ -832,7 +839,7 @@ def main() -> int:
             "schema_version": VERSION_CELL_TIMEPOINT if args.cell_timepoint else "v6_percell_timepoint",
             "timepoint_header": v7["header"],
             "fallback": v7["fallback"],
-            "content_chars": len(primaer_content),
+            "content_chars": len(inhalt),
             "pfad": pfad,
             "group_size_mode": args.group_size_mode,
             "repair_tokens": repair.get("completion_tokens") if repair else None,
@@ -844,7 +851,7 @@ def main() -> int:
             "rows": cells,
         }
         if args.save_content:
-            row.update(content_felder(inhalt, primaer_content))
+            row.update(content_felder(inhalt, erste_antwort, (retry.get("content") or "") if retry else ""))
         with LOCK:
             with out_path.open("a", encoding="utf-8", newline="\n") as handle:
                 handle.write(json.dumps(row, ensure_ascii=False) + "\n")
