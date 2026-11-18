@@ -191,3 +191,66 @@ def test_bericht_nennt_offene_und_gerettete() -> None:
     assert "`a`" in text and "weiter ausgefallen" in text
     assert "Nicht bewertbar" in text
     assert "Beide Zaehlungen stimmen ueberein" in text
+
+
+def test_aufteilung_nach_ursprungsklasse() -> None:
+    alt = [_alt("a"), {**_alt("b"), "fehlerklasse": "json_kaputt"}]
+    neu = [
+        _neu("a", [{"field": "intervention_mean", "arm": "intervention", "value": 0.77}]),
+        _neu("b", [], fehler="json_kaputt"),
+    ]
+    gold = {"a": _record("a", [("intervention_mean", "intervention", 0.77)])}
+
+    werte = p5.auswerten(alt, neu, gold, ids=["a", "b"])
+    klassen = werte["nach_klasse"]
+
+    assert set(klassen) == {"length_ohne_ergebnis", "json_kaputt"}
+    gerettet = klassen["length_ohne_ergebnis"]
+    assert (gerettet["ids"], gerettet["technisch"], gerettet["auswertbar"]) == (1, 1, 1)
+    assert (gerettet["adressiert"], gerettet["wertgleich"]) == (1, 1)
+    kaputt = klassen["json_kaputt"]
+    assert (kaputt["ids"], kaputt["technisch"], kaputt["weiter_ausfall"]) == (1, 0, 1)
+
+
+def test_drei_stufen_bleiben_getrennt() -> None:
+    alt = [_alt("a"), _alt("b"), _alt("c")]
+    neu = [
+        _neu("a", [{"field": "intervention_mean", "arm": "intervention", "value": 0.77}]),
+        _neu("b", []),
+        _neu("c", [], fehler="length_ohne_ergebnis"),
+    ]
+    gold = {
+        "a": _record("a", [("intervention_mean", "intervention", 0.77),
+                           ("comparator_mean", "comparator", 0.04)]),
+        "b": _record("b", []),
+        "c": _record("c", []),
+    }
+
+    stufen = p5.auswerten(alt, neu, gold, ids=["a", "b", "c"])["stufen"]
+
+    assert stufen == {
+        "ids": 3,
+        "technisch": 2,
+        "auswertbar": 1,
+        "inhaltlich": 1,
+        "inhaltlich_zeitpunkt": 1,
+    }
+
+
+def test_ids_ohne_altzeile_werden_gemeldet() -> None:
+    werte = p5.auswerten([_alt("a")], [_neu("a", [])], {}, ids=["a", "z"])
+    assert werte["ids_ohne_altzeile"] == ["z"]
+    assert werte["ausfallzeilen"] == 1
+
+
+def test_bericht_nennt_stufen_klassen_und_schaetzung() -> None:
+    alt = [_alt("a")]
+    neu = [_neu("a", [{"field": "intervention_mean", "arm": "intervention", "value": 0.77}])]
+    gold = {"a": _record("a", [("intervention_mean", "intervention", 0.77)])}
+    text = p5.bericht(p5.auswerten(alt, neu, gold, ids=["a"]), "x/predictions.jsonl", False)
+
+    assert "adressierte IDs" in text
+    assert "Drei Stufen der Rettung" in text
+    assert "Nach urspruenglicher Fehlerklasse" in text
+    assert "kein gemessener Erfolg" in text
+    assert "`length_ohne_ergebnis` | 1 |" in text

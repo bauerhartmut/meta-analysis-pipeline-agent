@@ -141,12 +141,22 @@ def auswerten(
     neu_zeilen: list[dict[str, Any]],
     records: dict[str, dict[str, Any]],
     modell: str = MODELL,
+    ids: list[str] | None = None,
 ) -> dict[str, Any]:
-    alt = {
-        z["record_id"]: z
-        for z in alt_zeilen
-        if z.get("model") == modell and z.get("fehlerklasse") == KLASSE
-    }
+    """Vergleicht die P5-Zeilen mit den Ausfallzeilen der Lesekopie.
+
+    Grundgesamtheit ist die P5-Auswahl (`ids`), sonst wie bisher alle
+    `KLASSE`-Zeilen. Die Zeilen selbst werden **nicht** nach Klasse gefiltert,
+    damit die Auswertung nach der urspruenglichen Fehlerklasse gruppieren kann.
+    """
+    alle_alt = {z["record_id"]: z for z in alt_zeilen if z.get("model") == modell}
+    if ids is not None:
+        grund = [rid for rid in ids if rid in alle_alt]
+        ohne_altzeile = [rid for rid in ids if rid not in alle_alt]
+    else:
+        grund = [rid for rid in sorted(alle_alt) if alle_alt[rid].get("fehlerklasse") == KLASSE]
+        ohne_altzeile = []
+    alt = {rid: alle_alt[rid] for rid in grund}
     neu = {z["record_id"]: z for z in neu_zeilen if z.get("model") == modell}
 
     bewertbar: list[dict[str, Any]] = []
@@ -161,6 +171,7 @@ def auswerten(
         eintrag = {
             "record_id": rid,
             "status": status(neu_zeile),
+            "fehlerklasse_alt": alt[rid].get("fehlerklasse") or "ohne Klasse",
             "fehlerklasse_neu": (neu_zeile or {}).get("fehlerklasse", ""),
             "zellen_alt": len(vorher),
             "zellen_neu": len(nachher),
@@ -186,12 +197,58 @@ def auswerten(
     for eintrag in bewertbar + nicht_bewertbar:
         zaehlung[eintrag["status"]] += 1
 
+    alle = bewertbar + nicht_bewertbar
+
+    # Drei Stufen, ausdruecklich getrennt: Antwort da, verwertbar, inhaltlich richtig.
+    stufen = {
+        "ids": len(alle),
+        "technisch": sum(1 for e in alle if e["status"] in {"gerettet", "fertig_ohne_zellen"}),
+        "auswertbar": sum(1 for e in alle if e["zellen_neu"] > 0),
+        "inhaltlich": sum(1 for e in bewertbar if e["wertgleich"] > 0),
+        "inhaltlich_zeitpunkt": sum(1 for e in bewertbar if e["wertgleich_zeitpunkt"] > 0),
+    }
+
+    # Aufteilung nach der Fehlerklasse aus der Lesekopie, nicht nach der neuen.
+    nach_klasse: dict[str, dict[str, Any]] = {}
+    for eintrag in alle:
+        klasse = eintrag["fehlerklasse_alt"]
+        werte = nach_klasse.setdefault(
+            klasse,
+            {
+                "ids": 0,
+                "technisch": 0,
+                "auswertbar": 0,
+                "leer": 0,
+                "weiter_ausfall": 0,
+                "fehlt": 0,
+                "goldzellen": 0,
+                "adressiert": 0,
+                "wertgleich": 0,
+                "adressiert_zeitpunkt": 0,
+                "wertgleich_zeitpunkt": 0,
+            },
+        )
+        werte["ids"] += 1
+        werte["technisch"] += 1 if eintrag["status"] in {"gerettet", "fertig_ohne_zellen"} else 0
+        werte["auswertbar"] += 1 if eintrag["zellen_neu"] > 0 else 0
+        werte["leer"] += 1 if eintrag["status"] == "fertig_ohne_zellen" else 0
+        werte["weiter_ausfall"] += 1 if eintrag["status"] == "weiter_ausfall" else 0
+        werte["fehlt"] += 1 if eintrag["status"] == "fehlt" else 0
+        werte["goldzellen"] += eintrag["goldzellen"]
+        werte["adressiert"] += eintrag["adressiert"]
+        werte["wertgleich"] += eintrag["wertgleich"]
+        werte["adressiert_zeitpunkt"] += eintrag["adressiert_zeitpunkt"]
+        werte["wertgleich_zeitpunkt"] += eintrag["wertgleich_zeitpunkt"]
+
     return {
         "modell": modell,
         "ausfallzeilen": len(alt),
+        "ids_ohne_altzeile": ohne_altzeile,
         "bewertbar": bewertbar,
         "nicht_bewertbar": nicht_bewertbar,
         "status": zaehlung,
+        "stufen": stufen,
+        "nach_klasse": nach_klasse,
         "zellen_alt": summe(bewertbar + nicht_bewertbar, "zellen_alt"),
         "zellen_neu": summe(bewertbar + nicht_bewertbar, "zellen_neu"),
         "zellgewinn": summe(bewertbar + nicht_bewertbar, "zellgewinn"),
@@ -214,14 +271,31 @@ def bericht(werte: dict[str, Any], neu_pfad: str, nullprobe: bool) -> str:
     zeilen = [
         "# P5-Auswertung: Rettung und Zellgewinn",
         "",
-        f"Neu: `{neu_pfad}`. Vergleich: die {werte['ausfallzeilen']} "
-        f"`{KLASSE}`-Zeilen der Lesekopie, Modell {werte['modell']}.",
+        f"Neu: `{neu_pfad}`. Vergleich: {werte['ausfallzeilen']} IDs der P5-Auswahl "
+        f"gegen ihre Zeilen in der Lesekopie, Modell {werte['modell']}.",
         "",
     ]
     if nullprobe:
         zeilen += ["> **Nullprobe:** neu und alt sind dieselbe Datei. Erwartet sind "
                    "0 Rettungen, 0 Zellgewinn und die volle Goldzahl.", ""]
+    st = werte["stufen"]
     zeilen += [
+        "## Grundgesamtheit",
+        "",
+        "| Groesse | Wert |",
+        "|---|---|",
+        f"| adressierte IDs | {st['ids']} |",
+        f"| davon bewertbar (Goldzellen vorhanden) | {len(bewertbar)} |",
+        f"| davon nicht bewertbar | {len(nicht)} |",
+    ]
+    if werte.get("ids_ohne_altzeile"):
+        zeilen.append(f"| IDs ohne Zeile in der Lesekopie | {len(werte['ids_ohne_altzeile'])} |")
+    zeilen += [
+        "",
+        "Verglichen wird ausschliesslich auf diesen IDs. Fehlt eine Zeile im neuen "
+        "Lauf oder im alten, steht das als solcher Status in der Tabelle und wird "
+        "nicht als Ausfall oder als Rettung gezaehlt.",
+        "",
         "## Status je Record",
         "",
         "| Status | Records |",
@@ -230,11 +304,42 @@ def bericht(werte: dict[str, Any], neu_pfad: str, nullprobe: bool) -> str:
         f"| fertig, aber ohne Zellen | {s['fertig_ohne_zellen']} |",
         f"| weiter ausgefallen | {s['weiter_ausfall']} |",
         f"| im neuen Lauf nicht enthalten | {s['fehlt']} |",
+        f"| **Antwort technisch erhalten** | **{st['technisch']} von {st['ids']}** |",
+        f"| **auswertbar (mindestens eine Zelle)** | **{st['auswertbar']} von {st['ids']}** |",
         "",
         f"Rettungsquote auf den **{len(bewertbar)} bewertbaren** Records: "
         f"**{sum(1 for e in bewertbar if e['status'] == 'gerettet')} von {len(bewertbar)}**"
         + (f" ({sum(1 for e in bewertbar if e['status'] == 'gerettet') / len(bewertbar):.1%})"
            if bewertbar else ""),
+        "",
+        "## Drei Stufen der Rettung",
+        "",
+        "| Stufe | Definition | Records |",
+        "|---|---|---|",
+        f"| 1 technische Rettung | Antwort ohne Fehlerklasse erhalten | {st['technisch']} von {st['ids']} |",
+        f"| 2 auswertbar | Antwort enthaelt mindestens eine Zelle | {st['auswertbar']} von {st['ids']} |",
+        f"| 3 inhaltliche Rettung | mindestens eine Goldzelle wertgleich (Feld und Arm) | "
+        f"{st['inhaltlich']} von {len(bewertbar)} |",
+        f"| 3b inhaltlich, streng | zusaetzlich eindeutiger Zeitpunkt | "
+        f"{st['inhaltlich_zeitpunkt']} von {len(bewertbar)} |",
+        "",
+        "Die Stufen sind keine Steigerung derselben Quote: Stufe 1 sagt nur, dass eine "
+        "Antwort ankam, Stufe 2 dass sie Zellen enthaelt, Stufe 3 dass ein Wert stimmt. "
+        "Die Reparaturschaetzung von 39 % aus der Materialanalyse ist eine Schaetzung "
+        "und kein gemessener Erfolg.",
+        "",
+        "## Nach urspruenglicher Fehlerklasse",
+        "",
+        "| Klasse alt | IDs | technisch | auswertbar | leer | weiter ausgefallen | Goldzellen | adressiert F/A | adressiert +ZP | wertgleich F/A | wertgleich +ZP |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for klasse, k in sorted(werte["nach_klasse"].items()):
+        zeilen.append(
+            f"| `{klasse}` | {k['ids']} | {k['technisch']} | {k['auswertbar']} | {k['leer']} | "
+            f"{k['weiter_ausfall']} | {k['goldzellen']} | {k['adressiert']} | "
+            f"{k['adressiert_zeitpunkt']} | {k['wertgleich']} | {k['wertgleich_zeitpunkt']} |"
+        )
+    zeilen += [
         "",
         "## Zellen und Gold",
         "",
@@ -332,6 +437,11 @@ def main() -> int:
     parser.add_argument("--alt", default=str(ALT))
     parser.add_argument("--records", default=str(RECORDS))
     parser.add_argument("--modell", default=MODELL)
+    parser.add_argument(
+        "--ids-auswahl",
+        default=str(BENCH / "iterativ" / "ergebnisse" / "p5_vorbereitung_20261118.json"),
+        help="JSON mit der P5-Auswahl; bestimmt die Grundgesamtheit",
+    )
     parser.add_argument("--json", default=str(BENCH / "iterativ" / "ergebnisse" / "p5_auswertung_20261118.json"))
     parser.add_argument("--md", default=str(BENCH / "iterativ" / "ergebnisse" / "p5_auswertung_20261118.md"))
     args = parser.parse_args()
@@ -343,7 +453,11 @@ def main() -> int:
         return 2
 
     records = {r["record_id"]: r for r in lade(Path(args.records))}
-    werte = auswerten(lade(Path(args.alt)), lade(neu_pfad), records, args.modell)
+    ids: list[str] | None = None
+    auswahl = Path(args.ids_auswahl)
+    if auswahl.exists():
+        ids = list(json.loads(auswahl.read_text(encoding="utf-8")).get("ids") or [])
+    werte = auswerten(lade(Path(args.alt)), lade(neu_pfad), records, args.modell, ids=ids)
     if not werte["ausfallzeilen"]:
         print(f"FEHLER: keine {KLASSE}-Zeilen in {args.alt}")
         return 2

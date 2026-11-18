@@ -1,8 +1,18 @@
 # P5-Auswertung: Rettung und Zellgewinn
 
-Neu: `runs/_lesekopie_20261118/predictions.jsonl`. Vergleich: die 103 `length_ohne_ergebnis`-Zeilen der Lesekopie, Modell glm.
+Neu: `runs/_lesekopie_20261118/predictions.jsonl`. Vergleich: 103 IDs der P5-Auswahl gegen ihre Zeilen in der Lesekopie, Modell glm.
 
 > **Nullprobe:** neu und alt sind dieselbe Datei. Erwartet sind 0 Rettungen, 0 Zellgewinn und die volle Goldzahl.
+
+## Grundgesamtheit
+
+| Groesse | Wert |
+|---|---|
+| adressierte IDs | 103 |
+| davon bewertbar (Goldzellen vorhanden) | 102 |
+| davon nicht bewertbar | 1 |
+
+Verglichen wird ausschliesslich auf diesen IDs. Fehlt eine Zeile im neuen Lauf oder im alten, steht das als solcher Status in der Tabelle und wird nicht als Ausfall oder als Rettung gezaehlt.
 
 ## Status je Record
 
@@ -12,8 +22,27 @@ Neu: `runs/_lesekopie_20261118/predictions.jsonl`. Vergleich: die 103 `length_oh
 | fertig, aber ohne Zellen | 0 |
 | weiter ausgefallen | 103 |
 | im neuen Lauf nicht enthalten | 0 |
+| **Antwort technisch erhalten** | **0 von 103** |
+| **auswertbar (mindestens eine Zelle)** | **0 von 103** |
 
 Rettungsquote auf den **102 bewertbaren** Records: **0 von 102** (0.0%)
+
+## Drei Stufen der Rettung
+
+| Stufe | Definition | Records |
+|---|---|---|
+| 1 technische Rettung | Antwort ohne Fehlerklasse erhalten | 0 von 103 |
+| 2 auswertbar | Antwort enthaelt mindestens eine Zelle | 0 von 103 |
+| 3 inhaltliche Rettung | mindestens eine Goldzelle wertgleich (Feld und Arm) | 0 von 102 |
+| 3b inhaltlich, streng | zusaetzlich eindeutiger Zeitpunkt | 0 von 102 |
+
+Die Stufen sind keine Steigerung derselben Quote: Stufe 1 sagt nur, dass eine Antwort ankam, Stufe 2 dass sie Zellen enthaelt, Stufe 3 dass ein Wert stimmt. Die Reparaturschaetzung von 39 % aus der Materialanalyse ist eine Schaetzung und kein gemessener Erfolg.
+
+## Nach urspruenglicher Fehlerklasse
+
+| Klasse alt | IDs | technisch | auswertbar | leer | weiter ausgefallen | Goldzellen | adressiert F/A | adressiert +ZP | wertgleich F/A | wertgleich +ZP |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `length_ohne_ergebnis` | 103 | 0 | 0 | 0 | 103 | 423 | 0 | 0 | 0 | 0 |
 
 ## Zellen und Gold
 

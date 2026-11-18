@@ -1,10 +1,12 @@
 {
   "modell": "glm",
   "ausfallzeilen": 103,
+  "ids_ohne_altzeile": [],
   "bewertbar": [
     {
       "record_id": "yun2024:110",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -24,6 +26,7 @@
     {
       "record_id": "yun2024:113",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -43,6 +46,7 @@
     {
       "record_id": "yun2024:114",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -62,6 +66,7 @@
     {
       "record_id": "yun2024:117",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -81,6 +86,7 @@
     {
       "record_id": "yun2024:119",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -100,6 +106,7 @@
     {
       "record_id": "yun2024:120",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -119,6 +126,7 @@
     {
       "record_id": "yun2024:128",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -138,6 +146,7 @@
     {
       "record_id": "yun2024:130",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -157,6 +166,7 @@
     {
       "record_id": "yun2024:133",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -176,6 +186,7 @@
     {
       "record_id": "yun2024:136",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -195,6 +206,7 @@
     {
       "record_id": "yun2024:137",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -214,6 +226,7 @@
     {
       "record_id": "yun2024:149",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -233,6 +246,7 @@
     {
       "record_id": "yun2024:151",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -252,6 +266,7 @@
     {
       "record_id": "yun2024:152",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -271,6 +286,7 @@
     {
       "record_id": "yun2024:154",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -290,6 +306,7 @@
     {
       "record_id": "yun2024:158",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -309,6 +326,7 @@
     {
       "record_id": "yun2024:159",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -328,6 +346,7 @@
     {
       "record_id": "yun2024:160",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -347,6 +366,7 @@
     {
       "record_id": "yun2024:161",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -366,6 +386,7 @@
     {
       "record_id": "yun2024:162",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -385,6 +406,7 @@
     {
       "record_id": "yun2024:163",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -404,6 +426,7 @@
     {
       "record_id": "yun2024:164",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -423,6 +446,7 @@
     {
       "record_id": "yun2024:169",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -442,6 +466,7 @@
     {
       "record_id": "yun2024:171",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -461,6 +486,7 @@
     {
       "record_id": "yun2024:173",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -480,6 +506,7 @@
     {
       "record_id": "yun2024:174",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -499,6 +526,7 @@
     {
       "record_id": "yun2024:178",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -518,6 +546,7 @@
     {
       "record_id": "yun2024:183",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -537,6 +566,7 @@
     {
       "record_id": "yun2024:203",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -556,6 +586,7 @@
     {
       "record_id": "yun2024:204",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -575,6 +606,7 @@
     {
       "record_id": "yun2024:212",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -594,6 +626,7 @@
     {
       "record_id": "yun2024:213",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -613,6 +646,7 @@
     {
       "record_id": "yun2024:214",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -632,6 +666,7 @@
     {
       "record_id": "yun2024:215",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -651,6 +686,7 @@
     {
       "record_id": "yun2024:228",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -670,6 +706,7 @@
     {
       "record_id": "yun2024:232",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -689,6 +726,7 @@
     {
       "record_id": "yun2024:233",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -708,6 +746,7 @@
     {
       "record_id": "yun2024:251",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -727,6 +766,7 @@
     {
       "record_id": "yun2024:252",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -746,6 +786,7 @@
     {
       "record_id": "yun2024:268",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -765,6 +806,7 @@
     {
       "record_id": "yun2024:269",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -784,6 +826,7 @@
     {
       "record_id": "yun2024:270",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -803,6 +846,7 @@
     {
       "record_id": "yun2024:273",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -822,6 +866,7 @@
     {
       "record_id": "yun2024:291",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -841,6 +886,7 @@
     {
       "record_id": "yun2024:30",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -860,6 +906,7 @@
     {
       "record_id": "yun2024:304",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -879,6 +926,7 @@
     {
       "record_id": "yun2024:313",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -898,6 +946,7 @@
     {
       "record_id": "yun2024:32",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -917,6 +966,7 @@
     {
       "record_id": "yun2024:344",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -936,6 +986,7 @@
     {
       "record_id": "yun2024:347",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -955,6 +1006,7 @@
     {
       "record_id": "yun2024:349",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -974,6 +1026,7 @@
     {
       "record_id": "yun2024:356",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -993,6 +1046,7 @@
     {
       "record_id": "yun2024:357",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1012,6 +1066,7 @@
     {
       "record_id": "yun2024:362",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1031,6 +1086,7 @@
     {
       "record_id": "yun2024:367",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1050,6 +1106,7 @@
     {
       "record_id": "yun2024:376",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1069,6 +1126,7 @@
     {
       "record_id": "yun2024:380",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1088,6 +1146,7 @@
     {
       "record_id": "yun2024:384",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1107,6 +1166,7 @@
     {
       "record_id": "yun2024:405",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1126,6 +1186,7 @@
     {
       "record_id": "yun2024:420",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1145,6 +1206,7 @@
     {
       "record_id": "yun2024:421",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1164,6 +1226,7 @@
     {
       "record_id": "yun2024:427",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1183,6 +1246,7 @@
     {
       "record_id": "yun2024:446",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1202,6 +1266,7 @@
     {
       "record_id": "yun2024:447",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1221,6 +1286,7 @@
     {
       "record_id": "yun2024:448",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1240,6 +1306,7 @@
     {
       "record_id": "yun2024:449",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1259,6 +1326,7 @@
     {
       "record_id": "yun2024:450",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1278,6 +1346,7 @@
     {
       "record_id": "yun2024:451",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1297,6 +1366,7 @@
     {
       "record_id": "yun2024:52",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1316,6 +1386,7 @@
     {
       "record_id": "yun2024:523",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1335,6 +1406,7 @@
     {
       "record_id": "yun2024:525",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1354,6 +1426,7 @@
     {
       "record_id": "yun2024:533",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1373,6 +1446,7 @@
     {
       "record_id": "yun2024:54",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1392,6 +1466,7 @@
     {
       "record_id": "yun2024:556",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1411,6 +1486,7 @@
     {
       "record_id": "yun2024:557",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1430,6 +1506,7 @@
     {
       "record_id": "yun2024:558",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1449,6 +1526,7 @@
     {
       "record_id": "yun2024:559",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1468,6 +1546,7 @@
     {
       "record_id": "yun2024:582",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1487,6 +1566,7 @@
     {
       "record_id": "yun2024:6",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1506,6 +1586,7 @@
     {
       "record_id": "yun2024:601",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1525,6 +1606,7 @@
     {
       "record_id": "yun2024:602",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1544,6 +1626,7 @@
     {
       "record_id": "yun2024:615",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1563,6 +1646,7 @@
     {
       "record_id": "yun2024:616",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1582,6 +1666,7 @@
     {
       "record_id": "yun2024:617",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1601,6 +1686,7 @@
     {
       "record_id": "yun2024:624",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1620,6 +1706,7 @@
     {
       "record_id": "yun2024:625",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1639,6 +1726,7 @@
     {
       "record_id": "yun2024:626",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1658,6 +1746,7 @@
     {
       "record_id": "yun2024:662",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1677,6 +1766,7 @@
     {
       "record_id": "yun2024:668",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1696,6 +1786,7 @@
     {
       "record_id": "yun2024:671",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1715,6 +1806,7 @@
     {
       "record_id": "yun2024:672",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1734,6 +1826,7 @@
     {
       "record_id": "yun2024:673",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1753,6 +1846,7 @@
     {
       "record_id": "yun2024:674",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1772,6 +1866,7 @@
     {
       "record_id": "yun2024:677",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1791,6 +1886,7 @@
     {
       "record_id": "yun2024:678",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1810,6 +1906,7 @@
     {
       "record_id": "yun2024:68",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1829,6 +1926,7 @@
     {
       "record_id": "yun2024:685",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1848,6 +1946,7 @@
     {
       "record_id": "yun2024:686",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1867,6 +1966,7 @@
     {
       "record_id": "yun2024:687",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1886,6 +1986,7 @@
     {
       "record_id": "yun2024:84",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1905,6 +2006,7 @@
     {
       "record_id": "yun2024:85",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1924,6 +2026,7 @@
     {
       "record_id": "yun2024:86",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1945,6 +2048,7 @@
     {
       "record_id": "yun2024:653",
       "status": "weiter_ausfall",
+      "fehlerklasse_alt": "length_ohne_ergebnis",
       "fehlerklasse_neu": "length_ohne_ergebnis",
       "zellen_alt": 0,
       "zellen_neu": 0,
@@ -1967,6 +2071,28 @@
     "fertig_ohne_zellen": 0,
     "weiter_ausfall": 103,
     "fehlt": 0
+  },
+  "stufen": {
+    "ids": 103,
+    "technisch": 0,
+    "auswertbar": 0,
+    "inhaltlich": 0,
+    "inhaltlich_zeitpunkt": 0
+  },
+  "nach_klasse": {
+    "length_ohne_ergebnis": {
+      "ids": 103,
+      "technisch": 0,
+      "auswertbar": 0,
+      "leer": 0,
+      "weiter_ausfall": 103,
+      "fehlt": 0,
+      "goldzellen": 423,
+      "adressiert": 0,
+      "wertgleich": 0,
+      "adressiert_zeitpunkt": 0,
+      "wertgleich_zeitpunkt": 0
+    }
   },
   "zellen_alt": 0,
   "zellen_neu": 0,
