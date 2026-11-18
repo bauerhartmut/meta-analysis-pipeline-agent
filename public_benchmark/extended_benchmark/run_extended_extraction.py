@@ -33,6 +33,7 @@ sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(BENCH))
 
 from research_agent.config import get_config  # noqa: E402
+from research_agent.llm import token_zaehler  # noqa: E402
 from extended_benchmark.yun_full import fehlerklassen, jobs as jobprotokoll, retry_manager  # noqa: E402
 
 RECORDS = HERE / "records" / "yun.jsonl"
@@ -565,6 +566,15 @@ def _call_once(
         data = json.loads(body)
         choice = (data.get("choices") or [{}])[0]
         content = (choice.get("message") or {}).get("content") or ""
+        # Alle Aufrufe laufen hier durch, auch Retry und Reparatur; damit ist das
+        # der einzige Ort, an dem Input- und Output-Tokens vollstaendig anfallen.
+        # Die Buchfuehrung darf den Lauf nie stoppen (zaehle wirft nicht).
+        token_zaehler.zaehle(
+            model["id"],
+            (data.get("usage") or {}).get("prompt_tokens"),
+            (data.get("usage") or {}).get("completion_tokens"),
+            quelle="extended_extraction",
+        )
         return {
             "http_status": status,
             "elapsed_s": round(time.monotonic() - started, 2),

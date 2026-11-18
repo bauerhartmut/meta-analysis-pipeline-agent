@@ -1,0 +1,1028 @@
+[
+  {
+    "tag": "2026-10-27",
+    "stunde": "11",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 11,
+    "prompt_tokens": 16367,
+    "completion_tokens": 2310,
+    "total_tokens": 18677
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "11",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 564,
+    "prompt_tokens": 570622,
+    "completion_tokens": 188142,
+    "total_tokens": 758764
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "12",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 11,
+    "prompt_tokens": 16494,
+    "completion_tokens": 2253,
+    "total_tokens": 18747
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "12",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 256,
+    "prompt_tokens": 264906,
+    "completion_tokens": 116894,
+    "total_tokens": 381800
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "13",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 15,
+    "prompt_tokens": 22841,
+    "completion_tokens": 2497,
+    "total_tokens": 25338
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "13",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 260,
+    "prompt_tokens": 242493,
+    "completion_tokens": 99530,
+    "total_tokens": 342023
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "14",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 17,
+    "prompt_tokens": 25313,
+    "completion_tokens": 2969,
+    "total_tokens": 28282
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "14",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 181,
+    "prompt_tokens": 181228,
+    "completion_tokens": 58404,
+    "total_tokens": 239632
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "15",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 23,
+    "prompt_tokens": 34431,
+    "completion_tokens": 4315,
+    "total_tokens": 38746
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "15",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 216,
+    "prompt_tokens": 226555,
+    "completion_tokens": 56637,
+    "total_tokens": 283192
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "15",
+    "modell": "unbekannt",
+    "aufrufe": 3,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "16",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 37,
+    "prompt_tokens": 54903,
+    "completion_tokens": 6191,
+    "total_tokens": 61094
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "16",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 418,
+    "prompt_tokens": 397462,
+    "completion_tokens": 102416,
+    "total_tokens": 499878
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "17",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 40,
+    "prompt_tokens": 58996,
+    "completion_tokens": 6612,
+    "total_tokens": 65608
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "17",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 437,
+    "prompt_tokens": 444650,
+    "completion_tokens": 114196,
+    "total_tokens": 558846
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "18",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 43,
+    "prompt_tokens": 63544,
+    "completion_tokens": 7141,
+    "total_tokens": 70685
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "18",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 505,
+    "prompt_tokens": 497417,
+    "completion_tokens": 131131,
+    "total_tokens": 628548
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "19",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 33,
+    "prompt_tokens": 49423,
+    "completion_tokens": 5205,
+    "total_tokens": 54628
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "19",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 430,
+    "prompt_tokens": 454818,
+    "completion_tokens": 126620,
+    "total_tokens": 581438
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "19",
+    "modell": "unbekannt",
+    "aufrufe": 11,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "20",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 35,
+    "prompt_tokens": 52806,
+    "completion_tokens": 6167,
+    "total_tokens": 58973
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "20",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 501,
+    "prompt_tokens": 520626,
+    "completion_tokens": 142040,
+    "total_tokens": 662666
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "21",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 31,
+    "prompt_tokens": 46834,
+    "completion_tokens": 5139,
+    "total_tokens": 51973
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "21",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 466,
+    "prompt_tokens": 467486,
+    "completion_tokens": 130862,
+    "total_tokens": 598348
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "22",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 27,
+    "prompt_tokens": 41279,
+    "completion_tokens": 4727,
+    "total_tokens": 46006
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "22",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 383,
+    "prompt_tokens": 404075,
+    "completion_tokens": 111394,
+    "total_tokens": 515469
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "23",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 8,
+    "prompt_tokens": 12368,
+    "completion_tokens": 1188,
+    "total_tokens": 13556
+  },
+  {
+    "tag": "2026-10-27",
+    "stunde": "23",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 120,
+    "prompt_tokens": 118326,
+    "completion_tokens": 35522,
+    "total_tokens": 153848
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "15",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 1,
+    "prompt_tokens": 13,
+    "completion_tokens": 14,
+    "total_tokens": 27
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "16",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 39,
+    "prompt_tokens": 58185,
+    "completion_tokens": 7671,
+    "total_tokens": 65856
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "16",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 528,
+    "prompt_tokens": 562549,
+    "completion_tokens": 157760,
+    "total_tokens": 720309
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "17",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 33,
+    "prompt_tokens": 50904,
+    "completion_tokens": 6437,
+    "total_tokens": 57341
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "17",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 525,
+    "prompt_tokens": 554412,
+    "completion_tokens": 147871,
+    "total_tokens": 702283
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "18",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 27,
+    "prompt_tokens": 40639,
+    "completion_tokens": 4485,
+    "total_tokens": 45124
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "18",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 396,
+    "prompt_tokens": 457323,
+    "completion_tokens": 100886,
+    "total_tokens": 558209
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "19",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 33,
+    "prompt_tokens": 50132,
+    "completion_tokens": 5247,
+    "total_tokens": 55379
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "19",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 544,
+    "prompt_tokens": 699067,
+    "completion_tokens": 138333,
+    "total_tokens": 837400
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "20",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 27,
+    "prompt_tokens": 41400,
+    "completion_tokens": 4237,
+    "total_tokens": 45637
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "20",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 444,
+    "prompt_tokens": 558433,
+    "completion_tokens": 116057,
+    "total_tokens": 674490
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "21",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 28,
+    "prompt_tokens": 43175,
+    "completion_tokens": 4901,
+    "total_tokens": 48076
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "21",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 583,
+    "prompt_tokens": 700865,
+    "completion_tokens": 147117,
+    "total_tokens": 847982
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "22",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 34,
+    "prompt_tokens": 52526,
+    "completion_tokens": 6246,
+    "total_tokens": 58772
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "22",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 546,
+    "prompt_tokens": 671935,
+    "completion_tokens": 126659,
+    "total_tokens": 798594
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "23",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 34,
+    "prompt_tokens": 52851,
+    "completion_tokens": 6275,
+    "total_tokens": 59126
+  },
+  {
+    "tag": "2026-10-28",
+    "stunde": "23",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 643,
+    "prompt_tokens": 817570,
+    "completion_tokens": 170626,
+    "total_tokens": 988196
+  },
+  {
+    "tag": "2026-10-29",
+    "stunde": "00",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 7,
+    "prompt_tokens": 10866,
+    "completion_tokens": 1715,
+    "total_tokens": 12581
+  },
+  {
+    "tag": "2026-10-29",
+    "stunde": "00",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 140,
+    "prompt_tokens": 183837,
+    "completion_tokens": 38909,
+    "total_tokens": 222746
+  },
+  {
+    "tag": "2026-10-29",
+    "stunde": "10",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 24,
+    "prompt_tokens": 31254,
+    "completion_tokens": 4124,
+    "total_tokens": 35378
+  },
+  {
+    "tag": "2026-10-29",
+    "stunde": "10",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 344,
+    "prompt_tokens": 371320,
+    "completion_tokens": 106096,
+    "total_tokens": 477416
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "18",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 1,
+    "prompt_tokens": 13,
+    "completion_tokens": 14,
+    "total_tokens": 27
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "19",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 5,
+    "prompt_tokens": 7013,
+    "completion_tokens": 1075,
+    "total_tokens": 8088
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "19",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 62,
+    "prompt_tokens": 67324,
+    "completion_tokens": 18097,
+    "total_tokens": 85421
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "20",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 8,
+    "prompt_tokens": 11134,
+    "completion_tokens": 1524,
+    "total_tokens": 12658
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "20",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 110,
+    "prompt_tokens": 136241,
+    "completion_tokens": 25512,
+    "total_tokens": 161753
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "20",
+    "modell": "unbekannt",
+    "aufrufe": 1,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "21",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 21,
+    "prompt_tokens": 29463,
+    "completion_tokens": 4890,
+    "total_tokens": 34353
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "21",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 288,
+    "prompt_tokens": 294635,
+    "completion_tokens": 74157,
+    "total_tokens": 368792
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "22",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 56,
+    "prompt_tokens": 79446,
+    "completion_tokens": 14522,
+    "total_tokens": 93968
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "22",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 824,
+    "prompt_tokens": 914683,
+    "completion_tokens": 242305,
+    "total_tokens": 1156988
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "23",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 57,
+    "prompt_tokens": 81461,
+    "completion_tokens": 13051,
+    "total_tokens": 94512
+  },
+  {
+    "tag": "2026-10-31",
+    "stunde": "23",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 634,
+    "prompt_tokens": 673066,
+    "completion_tokens": 191615,
+    "total_tokens": 864681
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "00",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 11,
+    "prompt_tokens": 15940,
+    "completion_tokens": 2197,
+    "total_tokens": 18137
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "00",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 114,
+    "prompt_tokens": 99976,
+    "completion_tokens": 30177,
+    "total_tokens": 130153
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "10",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 29,
+    "prompt_tokens": 41563,
+    "completion_tokens": 5368,
+    "total_tokens": 46931
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "10",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 341,
+    "prompt_tokens": 385265,
+    "completion_tokens": 120377,
+    "total_tokens": 505642
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "11",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 58,
+    "prompt_tokens": 84120,
+    "completion_tokens": 12731,
+    "total_tokens": 96851
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "11",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 802,
+    "prompt_tokens": 1121414,
+    "completion_tokens": 241906,
+    "total_tokens": 1363320
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "12",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 74,
+    "prompt_tokens": 109580,
+    "completion_tokens": 15507,
+    "total_tokens": 125087
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "12",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 737,
+    "prompt_tokens": 836256,
+    "completion_tokens": 213937,
+    "total_tokens": 1050193
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "13",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 39,
+    "prompt_tokens": 58434,
+    "completion_tokens": 7364,
+    "total_tokens": 65798
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "13",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 262,
+    "prompt_tokens": 248018,
+    "completion_tokens": 70166,
+    "total_tokens": 318184
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "16",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 66,
+    "prompt_tokens": 58732,
+    "completion_tokens": 24467,
+    "total_tokens": 83199
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "17",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 39,
+    "prompt_tokens": 59562,
+    "completion_tokens": 7123,
+    "total_tokens": 66685
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "17",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 640,
+    "prompt_tokens": 665229,
+    "completion_tokens": 202053,
+    "total_tokens": 867282
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "18",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 55,
+    "prompt_tokens": 83341,
+    "completion_tokens": 11561,
+    "total_tokens": 94902
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "18",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 749,
+    "prompt_tokens": 889351,
+    "completion_tokens": 221012,
+    "total_tokens": 1110363
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "19",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 56,
+    "prompt_tokens": 85645,
+    "completion_tokens": 10253,
+    "total_tokens": 95898
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "19",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 687,
+    "prompt_tokens": 909465,
+    "completion_tokens": 207241,
+    "total_tokens": 1116706
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "20",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 82,
+    "prompt_tokens": 127539,
+    "completion_tokens": 15455,
+    "total_tokens": 142994
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "20",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 523,
+    "prompt_tokens": 636156,
+    "completion_tokens": 159109,
+    "total_tokens": 795265
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "21",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 5,
+    "prompt_tokens": 7684,
+    "completion_tokens": 725,
+    "total_tokens": 8409
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "21",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 76,
+    "prompt_tokens": 107901,
+    "completion_tokens": 27336,
+    "total_tokens": 135237
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "22",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 35,
+    "prompt_tokens": 54219,
+    "completion_tokens": 7772,
+    "total_tokens": 61991
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "22",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 348,
+    "prompt_tokens": 408614,
+    "completion_tokens": 121873,
+    "total_tokens": 530487
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "23",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 30,
+    "prompt_tokens": 46185,
+    "completion_tokens": 5260,
+    "total_tokens": 51445
+  },
+  {
+    "tag": "2026-11-01",
+    "stunde": "23",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 316,
+    "prompt_tokens": 361813,
+    "completion_tokens": 107962,
+    "total_tokens": 469775
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "12",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 11,
+    "prompt_tokens": 16908,
+    "completion_tokens": 2057,
+    "total_tokens": 18965
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "12",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 250,
+    "prompt_tokens": 253864,
+    "completion_tokens": 73443,
+    "total_tokens": 327307
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "13",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 40,
+    "prompt_tokens": 59018,
+    "completion_tokens": 7459,
+    "total_tokens": 66477
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "13",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 541,
+    "prompt_tokens": 589894,
+    "completion_tokens": 136912,
+    "total_tokens": 726806
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "14",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 16,
+    "prompt_tokens": 23859,
+    "completion_tokens": 3902,
+    "total_tokens": 27761
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "14",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 371,
+    "prompt_tokens": 381652,
+    "completion_tokens": 107448,
+    "total_tokens": 489100
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "15",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 25,
+    "prompt_tokens": 36974,
+    "completion_tokens": 6733,
+    "total_tokens": 43707
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "15",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 387,
+    "prompt_tokens": 445420,
+    "completion_tokens": 112924,
+    "total_tokens": 558344
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "16",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 8,
+    "prompt_tokens": 12232,
+    "completion_tokens": 2168,
+    "total_tokens": 14400
+  },
+  {
+    "tag": "2026-11-03",
+    "stunde": "16",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 133,
+    "prompt_tokens": 148142,
+    "completion_tokens": 39290,
+    "total_tokens": 187432
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "15",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 12,
+    "prompt_tokens": 18010,
+    "completion_tokens": 2426,
+    "total_tokens": 20436
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "15",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 802,
+    "prompt_tokens": 659129,
+    "completion_tokens": 222103,
+    "total_tokens": 881232
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "15",
+    "modell": "unbekannt",
+    "aufrufe": 1,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "16",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 64,
+    "prompt_tokens": 95365,
+    "completion_tokens": 15191,
+    "total_tokens": 110556
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "16",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 1024,
+    "prompt_tokens": 993132,
+    "completion_tokens": 252298,
+    "total_tokens": 1245430
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "17",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 80,
+    "prompt_tokens": 120657,
+    "completion_tokens": 17474,
+    "total_tokens": 138131
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "17",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 743,
+    "prompt_tokens": 780014,
+    "completion_tokens": 198473,
+    "total_tokens": 978487
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "17",
+    "modell": "unbekannt",
+    "aufrufe": 1,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "18",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 88,
+    "prompt_tokens": 134744,
+    "completion_tokens": 23533,
+    "total_tokens": 158277
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "18",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 854,
+    "prompt_tokens": 868847,
+    "completion_tokens": 232690,
+    "total_tokens": 1101537
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "19",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 47,
+    "prompt_tokens": 71483,
+    "completion_tokens": 11009,
+    "total_tokens": 82492
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "19",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 386,
+    "prompt_tokens": 350807,
+    "completion_tokens": 100874,
+    "total_tokens": 451681
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "20",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 23,
+    "prompt_tokens": 35909,
+    "completion_tokens": 6528,
+    "total_tokens": 42437
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "20",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 386,
+    "prompt_tokens": 363479,
+    "completion_tokens": 106832,
+    "total_tokens": 470311
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "21",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 21,
+    "prompt_tokens": 32561,
+    "completion_tokens": 5952,
+    "total_tokens": 38513
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "21",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 350,
+    "prompt_tokens": 333165,
+    "completion_tokens": 97502,
+    "total_tokens": 430667
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "22",
+    "modell": "gwdg/meta-llama-3.1-8b-instruct",
+    "aufrufe": 32,
+    "prompt_tokens": 49299,
+    "completion_tokens": 6821,
+    "total_tokens": 56120
+  },
+  {
+    "tag": "2026-11-05",
+    "stunde": "22",
+    "modell": "gwdg/qwen3.5-397b-a17b",
+    "aufrufe": 331,
+    "prompt_tokens": 304044,
+    "completion_tokens": 70580,
+    "total_tokens": 374624
+  }
+]
