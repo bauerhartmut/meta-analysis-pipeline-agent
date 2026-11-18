@@ -220,10 +220,100 @@ def enrich_table(table: Table, context: Optional[Dict[str, object]] = None,
         column.arm_basis = binding.basis
         column.field = field_for(column.role, binding.arm)
 
+    _detect_combined_columns(table)
     if assume_order:
         _assume_arm_order(table)
     table.context = dict(context)
     return table
+
+
+_NUMBER_RE = re.compile(r"-?\d+(?:[.,]\d+)?")
+
+
+def _detect_combined_columns(table: Table) -> None:
+    """Spalten, deren Zellen zwei Zahlen tragen (``12.4 (3.1)``).
+
+    In vielen Tabellen steht die Streuung nicht in einer eigenen Spalte,
+    sondern in Klammern hinter dem Mittelwert. Die zweite Zahl ist damit
+    woertlich belegt, nicht geschaetzt: sie wird beim Rekonstruieren als
+    eigener Wert mit derselben Fundstelle gefuehrt. Die Regel greift nur,
+    wenn mindestens 60 Prozent der gefuellten Zellen zwei Zahlen zeigen.
+    """
+    for column in table.columns:
+        column.secondary_role = ""
+        if column.role != ROLE_MEAN:
+            continue
+        filled = 0
+        double = 0
+        for row in table.rows:
+            cell = row.cells.get(column.col_id)
+            text = (cell.text or "") if cell is not None else ""
+            if not text.strip():
+                continue
+            filled += 1
+            if len(_NUMBER_RE.findall(text)) >= 2:
+                double += 1
+        if filled and double / filled >= 0.6:
+            column.secondary_role = ROLE_SD
+
+
+def _norm_label(text: str) -> str:
+    """Vergleichsform eines Gruppenlabels (Klammerzusatz und Satzzeichen weg)."""
+    value = re.sub(r"\([^)]*\)", " ", text or "")
+    value = re.sub(r"[^0-9A-Za-z]+", " ", value).strip().lower()
+    return value
+
+
+def _group_label(table: Table, column: Column) -> str:
+    """Tiefster Gruppenkopf ueber einer Spalte (nur mehrspaltige Baender)."""
+    bands = [
+        band for band in table.header_bands
+        if band.span > 1 and band.col_start <= column.col_id <= band.col_end
+    ]
+    if not bands:
+        return ""
+    return max(bands, key=lambda band: band.level).text
+
+
+def transfer_arms_within_document(tables: Sequence[Table],
+                                  context: Optional[Dict[str, object]] = None) -> int:
+    """Arm einer Spalte aus einer Schwestertabelle desselben Dokuments belegen.
+
+    Traegt eine Tabelle den Gruppenkopf ``Verum`` belegt und eine andere
+    denselben Gruppenkopf unbelegt, gilt der Arm auch dort: gleicher Kontext,
+    gleiches Dokument, gleiches Label. Der Beleg wird als ``uebertrag``
+    markiert und in der Validierung gezaehlt. Ohne identisches Label wird
+    nichts uebertragen; es wird kein Arm aus der Position geraten.
+    """
+    context = context or {}
+    proven: Dict[Tuple[str, str], str] = {}
+    for table in tables:
+        for column in table.columns:
+            if not column.field or not column.arm:
+                continue
+            label = _norm_label(_group_label(table, column))
+            if label:
+                proven.setdefault((label, column.role), column.arm)
+    if not proven:
+        return 0
+    transferred = 0
+    for table in tables:
+        for column in table.columns:
+            if column.field is not None:
+                continue
+            if column.role not in {ROLE_N, ROLE_MEAN, ROLE_SD, ROLE_EVENTS}:
+                continue
+            label = _norm_label(_group_label(table, column))
+            if not label:
+                continue
+            arm = proven.get((label, column.role))
+            if not arm:
+                continue
+            column.arm = arm
+            column.arm_basis = "uebertrag"
+            column.field = field_for(column.role, arm)
+            transferred += 1
+    return transferred
 
 
 def _assume_arm_order(table: Table) -> None:
@@ -256,6 +346,25 @@ def _assume_arm_order(table: Table) -> None:
             column.arm = arm
             column.arm_basis = "reihenfolge"
             column.field = field_for(column.role, arm)
+
+
+def reachable_fields(table: Table) -> set:
+    """Felder, die diese Tabelle hergeben kann.
+
+    Spaltenfeld plus der zweite Wert einer Verbundzelle (``12.4 (3.1)``): der
+    Streuungswert steht woertlich in der Zelle und wird beim Rekonstruieren
+    als eigener Beleg gefuehrt. Beides zusammen ist die Obergrenze des
+    Tabellenpfads - keine Modellleistung.
+    """
+    fields = set()
+    for column in table.columns:
+        if column.field:
+            fields.add(column.field)
+        if column.secondary_role and column.arm:
+            secondary = field_for(column.secondary_role, column.arm)
+            if secondary:
+                fields.add(secondary)
+    return fields
 
 
 def column_summary(column: Column) -> str:

@@ -257,6 +257,34 @@ def _check_structure(table: Table, units: Sequence[ExtractionUnit],
                     )
                 )
 
+    combined = [c.col_id for c in table.columns if c.secondary_role]
+    if combined:
+        findings.append(
+            Finding(
+                code="verbundwert_getrennt",
+                severity=SEVERITY_INFO,
+                message=(
+                    f"Spalten {combined} tragen zwei Zahlen je Zelle; der zweite "
+                    "Wert wird als eigener Beleg mit derselben Fundstelle gefuehrt."
+                ),
+                table_id=table.table_id,
+            )
+        )
+
+    transferred = [c.col_id for c in table.columns if c.arm_basis == "uebertrag"]
+    if transferred:
+        findings.append(
+            Finding(
+                code="armzuordnung_uebertragen",
+                severity=SEVERITY_INFO,
+                message=(
+                    f"Spalten {transferred} haben ihren Arm aus einer Schwestertabelle "
+                    "desselben Dokuments (identischer Gruppenkopf)."
+                ),
+                table_id=table.table_id,
+            )
+        )
+
     assumed = [c.col_id for c in table.columns if c.arm_basis == "reihenfolge"]
     if assumed:
         findings.append(

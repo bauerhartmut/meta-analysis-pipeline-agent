@@ -112,6 +112,7 @@ class Column:
     arm_basis: str = ""          # wie der Arm gebunden wurde (Nachvollziehbarkeit)
     unit: str = ""
     field: Optional[str] = None  # Zielfeld, nur bei role+arm gesetzt
+    secondary_role: str = ""     # zweite Rolle aus derselben Zelle (z. B. sd in "12.4 (3.1)")
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -125,6 +126,7 @@ class Column:
             "arm_basis": self.arm_basis,
             "unit": self.unit,
             "field": self.field,
+            "secondary_role": self.secondary_role,
         }
 
 

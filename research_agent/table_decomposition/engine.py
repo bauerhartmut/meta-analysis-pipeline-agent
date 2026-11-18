@@ -26,7 +26,7 @@ from .complexity import assess
 from .model import DocumentTables, Table
 from .parser import parse_document
 from .reconstruct import Reconstruction, ReconstructionResult, unreported_addresses
-from .semantics import enrich_table
+from .semantics import enrich_table, transfer_arms_within_document
 from .strategies import (
     DIRECTION_CELL,
     DIRECTION_COLUMN,
@@ -60,6 +60,7 @@ class TableDecompositionConfig:
     min_columns_for_split: int = 3
     include_footnotes: bool = True
     include_verbatim: bool = True
+    arm_transfer: bool = True
     arm_order_fallback: bool = False
     model_name: str = ""
 
@@ -114,6 +115,7 @@ class TableDecompositionConfig:
             config.include_verbatim = bool(
                 value.get("include_verbatim", config.include_verbatim)
             )
+            config.arm_transfer = bool(value.get("arm_transfer", config.arm_transfer))
             config.arm_order_fallback = bool(
                 value.get("arm_order_fallback", config.arm_order_fallback)
             )
@@ -246,11 +248,17 @@ class TableDecompositionEngine:
         parsed = parse_document(text, doc_id)
         result = EngineResult(doc_id=doc_id, parse=parsed)
         allowed = set(table_ids) if table_ids is not None else None
+        # Erst alle Tabellen des Dokuments anreichern, dann Arme uebertragen:
+        # der Transfer braucht die belegten Gruppenkoepfe der Geschwister.
+        for table in parsed.tables:
+            table_context = (contexts or {}).get(table.table_id, context) or {}
+            enrich_table(table, table_context, assume_order=self.config.arm_order_fallback)
+        if self.config.arm_transfer:
+            transferred = transfer_arms_within_document(parsed.tables, context)
+            result.telemetry["transferred_arms"] = transferred
         for table in parsed.tables:
             if allowed is not None and table.table_id not in allowed:
                 continue
-            table_context = (contexts or {}).get(table.table_id, context) or {}
-            enrich_table(table, table_context, assume_order=self.config.arm_order_fallback)
             run = self.run_table(table, text)
             result.tables.append(run)
         result.telemetry = _aggregate([run.telemetry for run in result.tables])
@@ -397,6 +405,9 @@ def augment_prompt_text(text: str, doc_id: str,
     tables: List[Dict[str, Any]] = []
     for table in parsed.tables[:max_tables]:
         enrich_table(table, context or {}, assume_order=config.arm_order_fallback)
+    if config.arm_transfer:
+        transfer_arms_within_document(parsed.tables[:max_tables], context)
+    for table in parsed.tables[:max_tables]:
         complexity = assess(table)
         table.complexity = complexity.to_dict()
         blocks.append(f"[[table_structure {table.table_id} | {table.caption[:120]}]]")

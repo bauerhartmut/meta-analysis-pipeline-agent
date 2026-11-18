@@ -50,8 +50,10 @@ from research_agent.table_decomposition.reconstruct import (
 from research_agent.table_decomposition.semantics import (
     bind_arm,
     enrich_table,
+    reachable_fields,
     role_for_header,
     target_columns,
+    transfer_arms_within_document,
 )
 from research_agent.table_decomposition.strategies import (
     DIRECTION_CELL,
@@ -67,7 +69,7 @@ from research_agent.table_decomposition.strategies import (
     plan,
     refinement_units,
 )
-from research_agent.table_decomposition.validation import STATUS_COMPLETE
+from research_agent.table_decomposition.validation import STATUS_COMPLETE, validate
 
 CONTEXT = {
     "intervention": "Arm B (AB)",
@@ -598,6 +600,84 @@ def test_validation_flags_events_over_group_size():
 
 
 # --- Konfiguration und Pipeline-Haken ------------------------------------
+
+COMBINED_DOCUMENT = render_dash_table(
+    groups=((1, 3), ("Verum (n = 12)", "Placebo (n = 11)")),
+    subheaders=((1, 2, 3, 4), ("Mean (SD)", "Mean (SD)", "Mean (SD)", "Mean (SD)")),
+    rows=[
+        ("HbA1c (%)", [(1, "12.4 (3.1)"), (2, "1.2 (0.4)"), (3, "11.9 (2.8)"), (4, "1.1 (0.3)")]),
+        ("BMI", [(1, "27.5 (4.2)"), (2, "0.9 (0.3)"), (3, "27.1 (3.9)"), (4, "0.8 (0.4)")]),
+    ],
+    widths=[20, 16, 16, 16, 16],
+    caption="Changes by arm",
+)
+
+COMBINED_CONTEXT = {"intervention": "Verum", "comparator": "Placebo",
+                    "outcome": "HbA1c", "outcome_type": "continuous"}
+
+
+def test_combined_cell_yields_secondary_value_with_same_source():
+    """``12.4 (3.1)`` traegt Mittelwert und Streuung; beide bleiben belegt."""
+    parsed = parse_document(COMBINED_DOCUMENT, "COMBINED")
+    table = parsed.tables[0]
+    enrich_table(table, COMBINED_CONTEXT)
+    mean_column = table.columns[1]
+    assert mean_column.role == ROLE_MEAN
+    assert mean_column.secondary_role == ROLE_SD
+    assert mean_column.field == field_for(ROLE_MEAN, ARM_INTERVENTION)
+    assert field_for(ROLE_SD, ARM_INTERVENTION) in reachable_fields(table)
+
+    engine = TableDecompositionEngine(
+        backend=perfect_backend(table),
+        config=TableDecompositionConfig(enabled=True, strategy=STRATEGY_FULL),
+    )
+    run = engine.run_table(table, COMBINED_DOCUMENT)
+    fields = {(cell["field"], cell["value"]) for cell in run.reconstruction.prediction_cells()}
+    assert (field_for(ROLE_MEAN, ARM_INTERVENTION), 12.4) in fields
+    assert (field_for(ROLE_SD, ARM_INTERVENTION), 3.1) in fields
+    codes = {finding.code for finding in run.validation.findings}
+    assert "verbundwert_getrennt" in codes
+
+
+def test_arm_transfer_marks_columns_and_keeps_provenance():
+    """Ein belegter Gruppenkopf belegt denselben Kopf in der Schwestertabelle."""
+    document = "\n\n".join([
+        render_dash_table(
+            groups=((1, 3), ("Verum (n = 12)", "Placebo (n = 11)")),
+            subheaders=((1, 2, 3, 4), ("Mean", "SD", "Mean", "SD")),
+            rows=[("HbA1c (%)", [(1, "12.4"), (2, "3.1"), (3, "11.9"), (4, "2.8")])],
+            widths=[20, 14, 14, 14, 14],
+            caption="First table",
+        ),
+        render_dash_table(
+            groups=((1, 3), ("Verum (n = 12)", "Placebo (n = 11)")),
+            subheaders=((1, 2, 3, 4), ("Mean", "SD", "Mean", "SD")),
+            rows=[("BMI", [(1, "27.5"), (2, "4.2"), (3, "27.1"), (4, "3.9")])],
+            widths=[20, 14, 14, 14, 14],
+            caption="Second table",
+        ),
+    ])
+    parsed = parse_document(document, "SIBLINGS")
+    assert len(parsed.tables) == 2
+    context = {"intervention": "Initiative X", "comparator": "Control"}
+    for table in parsed.tables:
+        enrich_table(table, context)
+    # Der Kopf nennt den Arm nicht; ohne Beleg bleibt die Spalte ohne Feld.
+    assert not any(column.field for column in parsed.tables[1].columns)
+
+    proven = parsed.tables[0].columns[1]
+    proven.arm = ARM_INTERVENTION
+    proven.arm_basis = "header_treffer"
+    proven.field = field_for(proven.role, ARM_INTERVENTION)
+    transferred = transfer_arms_within_document(parsed.tables, context)
+    assert transferred >= 1
+    moved = [column for column in parsed.tables[1].columns if column.arm_basis == "uebertrag"]
+    assert moved and all(column.arm == ARM_INTERVENTION for column in moved)
+    assert all(column.field for column in moved)
+
+    report = validate(parsed.tables[1], [], None)
+    assert "armzuordnung_uebertragen" in {finding.code for finding in report.findings}
+
 
 def test_config_reads_switch_from_bool_dict_and_env():
     assert TableDecompositionConfig.from_value(True).enabled

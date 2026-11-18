@@ -100,6 +100,8 @@ _CAPTION_HINT_RE = re.compile(
 _GAP_RE = re.compile(r"[ \t]{2,}")
 _WORD_RE = re.compile(r"[A-Za-z]{3,}")
 _DIGIT_RE = re.compile(r"\d")
+_NUMBER_RE = re.compile(r"-?\d+(?:[.,]\d+)?")
+_DECIMAL_RE = re.compile(r"\d[.,]\d")
 _FOOTNOTE_MARK_RE = re.compile(r"^\s*([*†‡§¶^]|\(?[a-z]\)|\(?[ivx]+\)|\d\))\s*")
 
 
@@ -551,7 +553,7 @@ class _Builder:
                 row_id=row_id,
                 col_id=col_id,
                 text=text,
-                value=parse_value(text) if col_id not in label_set else None,
+                value=_cell_value(text, col_id in label_set),
                 line=line_no,
                 start_char=start_char + start,
                 end_char=start_char + end,
@@ -563,6 +565,31 @@ class _Builder:
             used[col_id] = cell
         row.cells = used
         return row
+
+
+def _cell_value(text: str, is_label: bool) -> Optional[float]:
+    """Zahlenwert einer Zelle; Verbundwerte tragen den ersten Wert.
+
+    ``12.4 (3.1)`` ist ein Messwert mit Streuung in Klammern. Der erste Wert
+    ist der Zellwert; der zweite wird beim Rekonstruieren als eigener Beleg
+    mit derselben Fundstelle gefuehrt. Ohne diese Regel bliebe die ganze
+    Zelle wertlos.
+    """
+    if is_label:
+        return None
+    parsed = parse_value(text)
+    if isinstance(parsed, (int, float)):
+        return float(parsed)
+    if parsed is not None and getattr(parsed, "value", None) is not None:
+        return float(parsed.value)
+    numbers = _NUMBER_RE.findall(text or "")
+    if len(numbers) >= 2:
+        first = parse_value(numbers[0])
+        if isinstance(first, (int, float)):
+            return float(first)
+        if first is not None and getattr(first, "value", None) is not None:
+            return float(first.value)
+    return None
 
 
 def _label_columns(table: Table) -> List[int]:
@@ -582,7 +609,7 @@ def _label_columns(table: Table) -> List[int]:
     for column in table.columns:
         filled = 0
         texty = 0
-        numeric = 0
+        strong = 0
         for row in table.rows:
             cell = row.cells.get(column.col_id)
             if not cell or not cell.text.strip():
@@ -590,20 +617,35 @@ def _label_columns(table: Table) -> List[int]:
             filled += 1
             if not _DIGIT_RE.search(cell.text):
                 texty += 1
-            parsed_value = parse_value(cell.text)
-            if isinstance(parsed_value, (int, float)):
-                numeric += 1
-            elif parsed_value is not None and getattr(parsed_value, "value", None) is not None:
-                numeric += 1
+            if _looks_numeric(cell.text):
+                strong += 1
         if not filled:
             continue
         if texty / filled >= 0.6:
             label_cols.append(column.col_id)
             continue
         if (column.col_id in leading and not (column.header or "").strip()
-                and numeric / filled < 0.5):
+                and strong / filled < 0.5):
             label_cols.append(column.col_id)
     return label_cols
+
+
+def _looks_numeric(text: str) -> bool:
+    """Traegt die Zelle einen echten Messwert (nicht nur eine Ordnungszahl)?
+
+    ``5 min`` und ``Visit 5:`` sind Text mit Ziffer; ``12.4``, ``12,4`` und
+    ``12.4 (3.1)`` sind Werte. Kriterium: Dezimalzahl oder zwei Zahlen in einer
+    Zelle - das trennt Zeitpunkt- und Gruppenzellen von Messwerten.
+    """
+    stripped = text.strip().strip("*^")
+    if _PLAIN_NUMBER_RE.match(stripped) or _DECIMAL_RE.search(stripped):
+        return True
+    if len(_NUMBER_RE.findall(stripped)) >= 2:
+        return True
+    parsed = parse_value(stripped)
+    if isinstance(parsed, (int, float)):
+        return True
+    return parsed is not None and getattr(parsed, "value", None) is not None
 
 
 def _finish_table(table: Table) -> Table:

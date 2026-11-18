@@ -17,8 +17,14 @@ from __future__ import annotations
 from dataclasses import dataclass, field as dc_field
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
+from .parser import parse_value
+
+import re
+
 from .backend import PredictedCell, UnitResult
-from .model import ROLE_LABEL, Table, header_path_text
+from .model import ROLE_LABEL, ROLE_SD, Table, field_for, header_path_text
+
+_NUMBER_RE = re.compile(r"-?\d+(?:[.,]\d+)?")
 from .strategies import DIRECTION_COLUMN, DIRECTION_ROW, ExtractionUnit
 
 STATUS_AGREED = "agreed"
@@ -50,6 +56,7 @@ class Evidence:
     header_path: Tuple[str, ...] = ()
     source_value: Optional[float] = None
     source_present: bool = False
+    derived: bool = False   # zweiter Wert aus derselben Zelle (Verbundwert)
 
     @property
     def address(self) -> Tuple[int, int]:
@@ -79,6 +86,7 @@ class Evidence:
             "header_path": list(self.header_path),
             "source_value": self.source_value,
             "source_present": self.source_present,
+            "derived": self.derived,
         }
 
 
@@ -98,6 +106,7 @@ class CellResult:
     row_label: str = ""
     header_path: Tuple[str, ...] = ()
     page: Optional[int] = None
+    derived: bool = False
 
     @property
     def address(self) -> Tuple[int, int]:
@@ -123,6 +132,7 @@ class CellResult:
             "row_label": self.row_label,
             "header_path": list(self.header_path),
             "page": self.page,
+            "derived": self.derived,
             "evidence": [e.to_dict() for e in self.evidence],
         }
 
@@ -137,7 +147,8 @@ class ReconstructionResult:
     notes: List[str] = dc_field(default_factory=list)
 
     def by_address(self) -> Dict[Tuple[int, int], CellResult]:
-        return {(c.row_id, c.col_id): c for c in self.cells}
+        """Zelle je Adresse; abgeleitete Zweitwerte bleiben aussen vor."""
+        return {(c.row_id, c.col_id): c for c in self.cells if not c.derived}
 
     def values_by_address(self) -> Dict[Tuple[int, int], List[float]]:
         result: Dict[Tuple[int, int], List[float]] = {}
@@ -242,17 +253,70 @@ class Reconstruction:
                 source_present=bool(source_cell is not None and (source_cell.text or "").strip()),
             )
         )
+        self._add_secondary(table, unit, cell, column, row, model)
         return True
 
+    def _add_secondary(self, table: Table, unit: ExtractionUnit, cell: PredictedCell,
+                       column: Any, row: Any, model: str) -> None:
+        """Zweiten Wert einer Verbundzelle (``12.4 (3.1)``) als eigenen Beleg.
+
+        Der Wert wird nicht geschaetzt, sondern woertlich aus dem Zitat
+        gelesen, das das Modell zurueckgibt; die Fundstelle bleibt dieselbe
+        Zelle. Ohne zweite Zahl entsteht kein Beleg.
+        """
+        if not column.secondary_role or not column.arm:
+            return
+        text = (cell.raw or "").strip() or (cell.quote or "").strip()
+        numbers = _NUMBER_RE.findall(text)
+        if len(numbers) < 2:
+            return
+        value = parse_value(numbers[1])
+        if isinstance(value, (int, float)):
+            secondary_value = float(value)
+        elif value is not None and getattr(value, "value", None) is not None:
+            secondary_value = float(value.value)
+        else:
+            return
+        self._evidence.append(
+            Evidence(
+                row_id=cell.row_id,
+                col_id=cell.col_id,
+                value=secondary_value,
+                raw=cell.raw or text,
+                quote=cell.quote,
+                table_id=table.table_id,
+                doc_id=table.doc_id,
+                field=field_for(column.secondary_role, column.arm),
+                arm=column.arm,
+                role=column.secondary_role,
+                unit=column.unit,
+                page=table.page,
+                unit_id=unit.unit_id,
+                strategy=unit.strategy,
+                direction=unit.direction,
+                model=model,
+                crop_id=unit.crop.crop_id if unit.crop else "",
+                depth=unit.depth,
+                row_label=row.label,
+                header_path=column.header_path,
+                source_value=None,
+                source_present=True,
+                derived=True,
+            )
+        )
+
     def build(self) -> ReconstructionResult:
-        grouped: Dict[Tuple[int, int], List[Evidence]] = {}
+        grouped: Dict[Tuple[int, int, str], List[Evidence]] = {}
         for evidence in self._evidence:
-            grouped.setdefault(evidence.address, []).append(evidence)
+            grouped.setdefault(
+                (evidence.address[0], evidence.address[1], evidence.role), []
+            ).append(evidence)
 
         cells: List[CellResult] = []
         conflicts: List[CellResult] = []
         direction_pairs: Dict[str, int] = {"both": 0, "agreed": 0, "differ": 0}
-        for address, evidences in sorted(grouped.items()):
+        for _key, evidences in sorted(grouped.items()):
+            address = evidences[0].address
             values = [e.value for e in evidences if e.value is not None]
             distinct = sorted(set(values))
             first = evidences[0]
@@ -284,6 +348,7 @@ class Reconstruction:
                 row_label=first.row_label,
                 header_path=first.header_path,
                 page=first.page,
+                derived=first.derived,
             )
             cells.append(cell)
             if status == STATUS_CONFLICT:
@@ -309,6 +374,7 @@ class Reconstruction:
             "n_conflict": len(conflicts),
             "n_with_value": len([c for c in cells if c.value is not None]),
             "n_field_cells": len([c for c in cells if c.field]),
+            "n_derived": len([c for c in cells if c.derived]),
             "evidence_by_direction": by_direction,
             "bidirectional": direction_pairs,
         }

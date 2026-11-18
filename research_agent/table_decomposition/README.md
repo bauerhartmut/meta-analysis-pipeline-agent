@@ -62,6 +62,16 @@ Schreibt Header-Pfade, Rollen (`label`, `n`, `mean`, `sd`, `events`, `p`,
 - `assume_order` — Reihenfolge-Annahme bei genau zwei Armspalten, markiert als
   `arm_basis="reihenfolge"` (Standard aus; im Benchmark separat gemessen).
 
+Zwei weitere Mechanismen laufen dokumentweit bzw. zellgenau:
+
+- `transfer_arms_within_document(tables, context)` — trägt der Gruppenkopf
+  `Verum` in einer Tabelle einen belegten Arm, gilt derselbe Kopf in der
+  Schwestertabelle desselben Dokuments als belegt (`arm_basis="uebertrag"`).
+  Ohne identisches Label wird nichts übertragen.
+- `reachable_fields(table)` — Felder, die eine Tabelle hergibt: Spaltenfeld plus
+  der zweite Wert einer Verbundzelle. Diese Menge ist die Obergrenze des
+  Tabellenpfads, keine Modellleistung.
+
 ### `complexity.assess(table) -> ComplexityScore`
 
 Score, Klasse (`einfach`, `mittel`, `komplex`, `sehr_komplex`) und benannte
@@ -139,10 +149,21 @@ Schweregrad `error`/`warning`/`info` und Code:
 | Kopf und Kontext | `caption_fehlt`, `fussnote_fehlt`, `spalte_unbekannt`, `header_kontext_fehlt`, `spaltenkopf_fehlt`, `zeilenlabel_fehlt`, `header_span_ueberlappt`, `mehrere_zeitpunkte_im_kopf`, `spalte_ohne_feld` |
 | Crops | `crop_fehlt`, `crop_spanne_unbelegt`, `crop_ohne_caption` |
 | Inhalt | `ohne_rohwert`, `beleg_nicht_im_ausschnitt`, `abweichend_von_quellzelle`, `ereignisse_ueber_gruppengroesse`, `sd_gegen_mittel`, `einheit_inkonsistent`, `konflikt` |
-| Zuordnung | `armzuordnung_angenommen` |
+| Zuordnung | `armzuordnung_angenommen`, `armzuordnung_uebertragen`, `verbundwert_getrennt` |
 
 `beleg_nicht_im_ausschnitt` ist hart: das `quote` einer Zelle muss wörtlich im
 Prompt der Einheit stehen, sonst gilt der Beleg als nicht prüfbar.
+
+### Verbundwerte (`12.4 (3.1)`)
+
+Viele Tabellen drucken die Streuung in Klammern hinter dem Mittelwert. Trägt
+mindestens 60 % der gefüllten Zellen einer Mittelwertspalte zwei Zahlen, setzt
+`semantics` `column.secondary_role = "sd"`. Der erste Wert ist der Zellwert, der
+zweite wird beim Rekonstruieren als **eigener Beleg mit derselben Fundstelle**
+geführt (`evidence.derived = true`, `cell.derived = true`) und erscheint in
+`prediction_cells()` als `*_standard_deviation`. Der Wert wird aus dem Zitat des
+Modells gelesen, nicht geschätzt; ohne zweite Zahl entsteht kein Beleg.
+Der Befund `verbundwert_getrennt` zählt diese Spalten.
 
 ### `engine.augment_prompt_text(text, doc_id, context, config, max_tables=4)`
 
@@ -165,6 +186,7 @@ Zitatprüfung weiter greift. Rückgabe: `(text, {"enabled", "tables",
 | `min_columns_for_split` | 3 | darunter wird nicht spaltenweise zerlegt |
 | `include_footnotes` | `True` | Fußnoten im Prompt |
 | `include_verbatim` | `True` | Originaltext-Ausschnitt im Prompt |
+| `arm_transfer` | `True` | Arm aus einer Schwestertabelle desselben Dokuments belegen (markiert) |
 | `arm_order_fallback` | `False` | Arm aus der Leserichtung annehmen (markiert) |
 | `model_name` | `""` | Kennung für die Provenienz |
 
@@ -178,7 +200,8 @@ Agentenkonfiguration.
 python -m pytest research_agent/tests/test_table_decomposition.py -q
 ```
 
-Deckt Parser (Strichregel, Pipe, Whitespace, Spannen, Labelspalten mit Ziffern),
-Rollen und Armbindung, alle fünf Verfahren, Budget-Chunking, Crops,
-Rekonstruktion, adaptive Nachlese, Backend-Ausfall, Validierungsregeln,
-Konfiguration und den Pipeline-Haken ab.
+32 Tests: Parser (Strichregel, Pipe, Whitespace, Spannen, Labelspalten mit
+Ziffern), Rollen und Armbindung, Arm-Transfer, Verbundwerte, alle fünf
+Verfahren, Budget-Chunking, Crops, Rekonstruktion (agreed/single/conflict),
+adaptive Nachlese, Backend-Ausfall, Validierungsregeln, Konfiguration und den
+Pipeline-Haken.
