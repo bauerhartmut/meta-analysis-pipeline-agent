@@ -1792,3 +1792,28 @@ Gruppengroesse (83/80) und Ereigniszahl (3/4) ueber die Dosis.
 Tests: `test_fliesstext.py` 10 (2 neu: Dosis bindet nur die gedruckte Dosis;
 ohne gedruckte Dosis keine Bindung), `test_provenienz.py` 5. Messung
 byte-gleich ueber zwei Laeufe.
+
+### Nachtrag Sprint 48 - gedruckter Zeitpunkt als Filter
+
+Neu: `research_agent/table_decomposition/zeitpunkt.py`. Eine Fundstelle wird nur
+dann an einen Zeitpunkt gebunden, wenn **beides gedruckt** ist: der Zielzeitpunkt
+im Outcome (``7 min``, ``week 8``, ``baseline``, ``visit 3B``) und derselbe
+Zeitpunkt in der Beschriftungskette der Spalte. Fehlt eine Seite, entsteht keine
+Bindung; gebundene Fundstellen tragen `arm_basis = zeitpunkt:<zeitpunkt>`.
+
+Messung (`diagnose_zeitpunkt.py`, 59 Records): 194 Stellen, davon **12 mit
+gedrucktem Zeitpunkt im Spaltenkopf** - aber **0 Felder gebunden**. Von den
+sechs `timepoint_mismatch`-Feldern drucken **2** einen Zielzeitpunkt
+(`:445`), **0** haben einen passenden Kopfzeitpunkt, **0** sind entschieden.
+
+Begruendung je Feld, aus dem Dokument: `PMC4140238:T2` (`:445`) druckt die
+Zeitpunkte in den **Zeilenlabels** (`Visit 3B: 16-hour persistence of action`,
+darunter `3 min`/`5 min`/`7 min`), die Spaltenkoepfe tragen nur Armnamen. Bei
+`:665` druckt das Outcome `FPG` gar keinen Zeitpunkt; der Zeitpunkt des Records
+ist eine **Regel** (`quelle: "regel"`, "primary time point ... last reported"),
+und der Goldwert 103.4 ± 28.9 ist der Baseline-Wert aus T1, waehrend T2 die
+Aenderung druckt. Dort entscheidet kein gedruckter Zeitpunkt, sondern eine
+Annahme - offen ausgewiesen, nicht geloest.
+
+Tests: `research_agent/tests/test_zeitpunkt.py` (4). Kein Eingriff in den
+Tabellenpfad; die Regel liest nur Fundstellen und Spaltenkoepfe.
