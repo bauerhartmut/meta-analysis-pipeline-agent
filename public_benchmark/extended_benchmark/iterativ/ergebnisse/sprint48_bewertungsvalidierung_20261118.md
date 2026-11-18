@@ -125,17 +125,23 @@ die Ziehung passiert nach dem Lauf.
 
 | Schicht | Umfang | Auswahl |
 |---|---|---|
-| Treffer mit richtigem Wert und Arm (TP) | 10 | zufällig, `seed = 48` über die sortierten Record-IDs |
+| Treffer mit richtigem Wert und Arm (TP) | 10 | zufällig, `seed = 48` über die sortierten Zellen |
 | Richtiger Schlüssel, falscher Wert | bis 10 | gezielt: alle FP mit `ueberzaehlig`-Merkmal, dann Zufall bis zur Grenze |
-| Richtiger Schlüssel mehrfach extrahiert | bis 5 | gezielt: Records mit `zellen_neu > goldzellen` |
+| Richtiger Schlüssel mehrfach extrahiert | bis 5 | gezielt: Feld/Arm-Schlüssel mit mehr als einer Vorhersagezelle. Im Trockenlauf 18 Gruppen in 4 Records; der frühere Proxy `zellen_neu > goldzellen` hätte 46 Records gewählt, davon nur 4 mit echter Dublette |
 | Richtiger Wert, falscher Arm | bis 10 | gezielt: FP mit `fremdschluessel`, deren Wert im Gold derselben Zelle vorkommt |
 | Falscher Zeitpunkt | bis 10 | gezielt: adressiert, aber nicht wertgleich in der strengen Zählung |
 | Fehlender Goldwert | alle | Goldzellen mit `value` ohne Zahl |
 | Vorhersage ohne Goldzelle | alle | Zellen von `yun2024:653` |
 
-Regel: Gezogen wird über deterministische Sortierschlüssel
-`(record_id, field, arm)`, damit dieselbe Ziehung reproduzierbar ist; die
-gezogenen IDs und der Seed werden im P5-Bericht protokolliert.
+Leere Schichten bleiben leer und werden im Bericht als leer ausgewiesen. Im
+Trockenlauf trifft das die Schicht „Richtiger Wert, falscher Arm“ (0 Fälle); sie
+wird nicht mit konstruierten Beispielen aufgefüllt.
+
+Regel: Grundlage ist `werte_p5_aus.bilanzzellen()`, das je Zelle `TP`, `FP`
+(mit `grund`) oder `FN` liefert. Gezogen wird über den Sortierschlüssel
+`(record_id, field, arm, zellindex)` — der Zellindex ist nötig, weil Dubletten
+dasselbe Tripel tragen und die Ziehung sonst nicht reproduzierbar wäre. Die
+gezogenen Zellen und der Seed werden im P5-Bericht protokolliert.
 
 ### Schema je Fall
 

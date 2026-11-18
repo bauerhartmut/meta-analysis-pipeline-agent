@@ -177,6 +177,87 @@ def deckung_mit_zeitpunkt(
     return _deckung(gold, vorhergesagt, streng=True)
 
 
+def bilanzzellen(
+    gold: list[dict[str, Any]], vorhergesagt: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """Zellebene der Bilanz: welche Zelle traegt TP, FP oder FN, und warum.
+
+    Je Goldzelle eine Zeile mit `seite="gold"` und `bewertung` = `TP`,
+    `FN` oder `ausser_bilanz` (kein numerischer Wert). Je Vorhersagezelle eine
+    Zeile mit `seite="vorhersage"`, `bewertung` = `TP` oder `FP` und bei FP dem
+    `grund` `ueberzaehlig` (Schluessel kommt im Gold vor: Dublette oder falscher
+    Wert) oder `fremdschluessel`. Feld, Arm, Wert und Zeitpunkt stehen im
+    Wortlaut der Quelle.
+
+    Gedacht fuer die Stichprobenpruefung: `bilanz()` liefert nur Summen, hier
+    steht, welche Zelle welchen Beitrag leistet. Die Zuordnung ist dieselbe:
+    Goldzellen in Eingabereihenfolge, je Goldzelle die erste noch freie
+    Vorhersagezelle mit gleichem Feld und Arm und einem Wert auf 1e-6.
+    """
+    verbraucht = [False] * len(vorhergesagt)
+    gold_schluessel = {schluessel(z) for z in gold}
+    zeilen: list[dict[str, Any]] = []
+    for zelle in gold:
+        soll = zahl(zelle.get("value"))
+        eintrag: dict[str, Any] = {
+            "seite": "gold",
+            "field": str(zelle.get("field") or ""),
+            "arm": str(zelle.get("arm") or ""),
+            "value": zelle.get("value"),
+            "bewertung": "ausser_bilanz",
+        }
+        if soll is not None:
+            schluessel_gold = schluessel(zelle)
+            treffer = None
+            for i, kandidat in enumerate(vorhergesagt):
+                if verbraucht[i] or schluessel(kandidat) != schluessel_gold:
+                    continue
+                ist = zahl(kandidat.get("value"))
+                if ist is not None and abs(ist - soll) < 1e-6:
+                    treffer = i
+                    break
+            if treffer is None:
+                eintrag["bewertung"] = "FN"
+            else:
+                verbraucht[treffer] = True
+                eintrag["bewertung"] = "TP"
+        zeilen.append(eintrag)
+    for i, zelle in enumerate(vorhergesagt):
+        getroffen = verbraucht[i]
+        zeilen.append(
+            {
+                "seite": "vorhersage",
+                "field": str(zelle.get("field") or ""),
+                "arm": str(zelle.get("arm") or ""),
+                "value": zelle.get("value"),
+                "timepoint": str(zelle.get("timepoint") or ""),
+                "bewertung": "TP" if getroffen else "FP",
+                "grund": ""
+                if getroffen
+                else ("ueberzaehlig" if schluessel(zelle) in gold_schluessel else "fremdschluessel"),
+            }
+        )
+    return zeilen
+
+
+def _summen(zeilen: list[dict[str, Any]]) -> dict[str, int]:
+    """Summen aus einem Zellprotokoll — die einzige Stelle, die TP/FP/FN zaehlt."""
+    gold_zeilen = [z for z in zeilen if z["seite"] == "gold"]
+    vor_zeilen = [z for z in zeilen if z["seite"] == "vorhersage"]
+    fp = sum(1 for z in vor_zeilen if z["bewertung"] == "FP")
+    ueberzaehlig = sum(1 for z in vor_zeilen if z.get("grund") == "ueberzaehlig")
+    return {
+        "tp": sum(1 for z in gold_zeilen if z["bewertung"] == "TP"),
+        "fp": fp,
+        "fn": sum(1 for z in gold_zeilen if z["bewertung"] == "FN"),
+        "ueberzaehlig": ueberzaehlig,
+        "fremdschluessel": fp - ueberzaehlig,
+        "goldzellen_ohne_wert": sum(
+            1 for z in gold_zeilen if z["bewertung"] == "ausser_bilanz"
+        ),
+    }
+
+
 def bilanz(
     gold: list[dict[str, Any]], vorhergesagt: list[dict[str, Any]]
 ) -> dict[str, int]:
@@ -192,43 +273,11 @@ def bilanz(
 
     `ueberzaehlig` sind falsch positive Zellen, deren Schluessel im Gold vorkommt
     (Dublette oder falscher Wert), `fremdschluessel` solche ohne Goldschluessel.
+
+    Die Summen stammen aus `bilanzzellen()`, damit Einzel- und Summenrechnung
+    nicht auseinanderlaufen koennen.
     """
-    verbraucht = [False] * len(vorhergesagt)
-    tp = fn = ohne_wert = 0
-    for zelle in gold:
-        soll = zahl(zelle.get("value"))
-        if soll is None:
-            ohne_wert += 1
-            continue
-        schluessel_gold = schluessel(zelle)
-        treffer = None
-        for i, kandidat in enumerate(vorhergesagt):
-            if verbraucht[i] or schluessel(kandidat) != schluessel_gold:
-                continue
-            ist = zahl(kandidat.get("value"))
-            if ist is not None and abs(ist - soll) < 1e-6:
-                treffer = i
-                break
-        if treffer is None:
-            fn += 1
-        else:
-            verbraucht[treffer] = True
-            tp += 1
-    gold_schluessel = {schluessel(z) for z in gold}
-    ueberzaehlig = sum(
-        1
-        for i, frei in enumerate(verbraucht)
-        if not frei and schluessel(vorhergesagt[i]) in gold_schluessel
-    )
-    fp = sum(1 for frei in verbraucht if not frei)
-    return {
-        "tp": tp,
-        "fp": fp,
-        "fn": fn,
-        "ueberzaehlig": ueberzaehlig,
-        "fremdschluessel": fp - ueberzaehlig,
-        "goldzellen_ohne_wert": ohne_wert,
-    }
+    return _summen(bilanzzellen(gold, vorhergesagt))
 
 
 def quote(tp: int, fp: int, fn: int) -> dict[str, float | None]:
@@ -288,7 +337,30 @@ def auswerten(
         nachher = zellen(neu_zeile)
         adressiert, wertgleich = deckung(gold, nachher)
         adressiert_zp, wertgleich_zp = deckung_mit_zeitpunkt(gold, nachher)
-        zellbilanz = bilanz(gold, nachher)
+        zellbilanz_zeilen = bilanzzellen(gold, nachher)
+        zellbilanz = _summen(zellbilanz_zeilen)
+        # Zellprotokoll je Record; in die Gesamtsumme geht nur, was bewertbar
+        # ist — sonst erschienen die Zellen eines Records ohne Gold als FP.
+        protokoll = {
+            "zeilen": len(zellbilanz_zeilen),
+            "gold_tp": 0,
+            "gold_fn": 0,
+            "gold_ausser_bilanz": 0,
+            "vorhersage_tp": 0,
+            "vorhersage_fp": 0,
+        }
+        for zeile in zellbilanz_zeilen:
+            if zeile["seite"] == "gold":
+                if zeile["bewertung"] == "TP":
+                    protokoll["gold_tp"] += 1
+                elif zeile["bewertung"] == "FN":
+                    protokoll["gold_fn"] += 1
+                else:
+                    protokoll["gold_ausser_bilanz"] += 1
+            elif zeile["bewertung"] == "TP":
+                protokoll["vorhersage_tp"] += 1
+            else:
+                protokoll["vorhersage_fp"] += 1
         eintrag = {
             "record_id": rid,
             "status": status(neu_zeile),
@@ -303,6 +375,7 @@ def auswerten(
             "adressiert_zeitpunkt": adressiert_zp,
             "wertgleich_zeitpunkt": wertgleich_zp,
             "bilanz": zellbilanz,
+            "zellprotokoll": protokoll,
             "goldzellen_mit_zeitpunkt": sum(1 for z in gold if zeitpunkt(z) != "ohne"),
             "zellen_neu_mit_zeitpunkt": sum(1 for z in nachher if zeitpunkt(z) != "ohne"),
             "zeitpunkt_mehrdeutig": mehrdeutig(nachher),
@@ -330,6 +403,17 @@ def auswerten(
             summen[name] += eintrag["bilanz"][name]
     zellbilanz = {"records": len(bewertbar), **summen,
                   **quote(summen["tp"], summen["fp"], summen["fn"])}
+    protokoll_summe = {
+        "zeilen": 0,
+        "gold_tp": 0,
+        "gold_fn": 0,
+        "gold_ausser_bilanz": 0,
+        "vorhersage_tp": 0,
+        "vorhersage_fp": 0,
+    }
+    for eintrag in bewertbar:
+        for name in protokoll_summe:
+            protokoll_summe[name] += eintrag["zellprotokoll"][name]
 
     # Drei Stufen, ausdruecklich getrennt: Antwort da, verwertbar, inhaltlich richtig.
     stufen = {
@@ -399,6 +483,7 @@ def auswerten(
         # Zellen von Records ohne Gold: getrennt, damit sie nicht als falsch
         # positiv in der Precision landen.
         "zellen_ohne_gold": summe(nicht_bewertbar, "zellen_neu"),
+        "zellprotokoll": protokoll_summe,
     }
 
 

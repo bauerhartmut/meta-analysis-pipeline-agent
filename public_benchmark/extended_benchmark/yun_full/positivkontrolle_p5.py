@@ -137,6 +137,16 @@ ERWARTET: dict[str, Any] = {
         "f1": 0.526316,
     },
     "zellen_ohne_gold": 1,
+    # Zellprotokoll ueber k1..k7: 11 Goldzellen (5 TP, 6 FN) und 8
+    # Vorhersagezellen (5 TP, 3 FP); k8 hat kein Gold und steht nicht darin.
+    "zellprotokoll": {
+        "zeilen": 19,
+        "gold_tp": 5,
+        "gold_fn": 6,
+        "gold_ausser_bilanz": 0,
+        "vorhersage_tp": 5,
+        "vorhersage_fp": 3,
+    },
     "nach_klasse": {
         "length_ohne_ergebnis": {
             "ids": 7,
@@ -298,6 +308,11 @@ def bericht(werte: dict[str, Any], abweichungen: list[str], alt: Path, neu: Path
     for name, wert in ERWARTET["zellbilanz"].items():
         zeilen.append(f"| `{name}` | {wert} | {bilanz_ist.get(name)} |")
 
+    zeilen += ["", "### Zellprotokoll", "", "| Groesse | Soll | Ist |", "|---|---:|---:|"]
+    protokoll_ist = werte.get("zellprotokoll") or {}
+    for name, wert in ERWARTET["zellprotokoll"].items():
+        zeilen.append(f"| `{name}` | {wert} | {protokoll_ist.get(name)} |")
+
     for klasse, klassen_soll in ERWARTET["nach_klasse"].items():
         zeilen += ["", f"### Klasse `{klasse}`", "", "| Groesse | Soll | Ist |", "|---|---:|---:|"]
         klassen_ist = (werte.get("nach_klasse") or {}).get(klasse) or {}
@@ -311,7 +326,8 @@ def bericht(werte: dict[str, Any], abweichungen: list[str], alt: Path, neu: Path
         (
             f"**Alle {sum(1 for v in ERWARTET.values() if not isinstance(v, dict))} Kennzahlen, "
             f"{sum(len(v) for v in ERWARTET['nach_klasse'].values())} Klassenzahlen und "
-            f"{len(ERWARTET['zellbilanz'])} Bilanzwerte stimmen.**"
+            f"{sum(len(v) for k, v in ERWARTET.items() if isinstance(v, dict) and k != 'nach_klasse')} "
+            f"Werte in Bilanz und Zellprotokoll stimmen.**"
             if not abweichungen
             else "**Abweichungen:**"
         ),
@@ -327,7 +343,8 @@ def bericht(werte: dict[str, Any], abweichungen: list[str], alt: Path, neu: Path
         "demselben Feld/Arm-Schluessel. Genau dort muss die grosszuegige Zaehlung "
         "einen Treffer melden und die strenge keinen. In der Zellbilanz muss die "
         "zweite Zelle desselben Schluessels als falsch positiv erscheinen, und die "
-        "Zelle des Records ohne Gold darf die Bilanz nicht erreichen.",
+        "Zelle des Records ohne Gold darf die Bilanz nicht erreichen. Im "
+        "Zellprotokoll steht je Zelle, ob sie TP, FP oder FN ist.",
         "",
     ]
     return "\n".join(zeilen) + "\n"

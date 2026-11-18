@@ -77,3 +77,27 @@ def test_bilanzabweichung_wird_gemeldet() -> None:
     werte = pk.werte()
     werte["zellbilanz"]["fp"] = 99
     assert any("zellbilanz.fp" in text for text in pk.pruefe(werte))
+
+
+def test_zellprotokoll_trifft_die_sollwerte() -> None:
+    p = pk.werte()["zellprotokoll"]
+    assert p == {
+        "zeilen": 19,
+        "gold_tp": 5,
+        "gold_fn": 6,
+        "gold_ausser_bilanz": 0,
+        "vorhersage_tp": 5,
+        "vorhersage_fp": 3,
+    }
+
+
+def test_zellprotokoll_zaehlt_die_dublette_als_eine_zelle() -> None:
+    # k3: eine Goldzelle, zwei Vorhersagezellen -> 1 TP und 1 FP im Protokoll.
+    assert pk.werte()["zellprotokoll"]["vorhersage_tp"] == 5
+    assert pk.werte()["zellprotokoll"]["vorhersage_fp"] == 3
+
+
+def test_protokollabweichung_wird_gemeldet() -> None:
+    werte = pk.werte()
+    werte["zellprotokoll"]["gold_fn"] = 0
+    assert any("zellprotokoll.gold_fn" in text for text in pk.pruefe(werte))
