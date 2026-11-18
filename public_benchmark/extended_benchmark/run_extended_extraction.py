@@ -33,7 +33,7 @@ sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(BENCH))
 
 from research_agent.config import get_config  # noqa: E402
-from extended_benchmark.yun_full import fehlerklassen  # noqa: E402
+from extended_benchmark.yun_full import fehlerklassen, retry_manager  # noqa: E402
 
 RECORDS = HERE / "records" / "yun.jsonl"
 
@@ -95,6 +95,8 @@ GROUP_SIZE_TEXTE = {
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
 SESSION_TAG = ""
+# Wird in main() aus `--retry-strategie` gesetzt; `alt` ist das Bestandsverhalten.
+RETRY_STRATEGIE = "alt"
 
 SYSTEM = (
     "You extract numerical results from randomised controlled trial publications. "
@@ -466,7 +468,34 @@ def parse_cells(content: str) -> tuple[list[dict[str, Any]], str]:
     return cleaned, "" if cleaned else "keine_verwertbaren_zellen"
 
 
+def _retry_after(headers: Any) -> float | None:
+    """`Retry-After` in Sekunden; ein HTTP-Datum wird bewusst ignoriert."""
+    roh = headers.get("Retry-After") if hasattr(headers, "get") else None
+    if not roh:
+        return None
+    try:
+        sekunden = float(str(roh).strip())
+    except ValueError:
+        return None
+    return sekunden if sekunden > 0 else None
+
+
 def call(model: dict[str, Any], prompt: str, key: str, base: str, attempts: int = 4) -> dict[str, Any]:
+    if RETRY_STRATEGIE == "neu":
+        # Gedeckelt auf die Standardgrenze; `attempts` bleibt in der Signatur,
+        # damit der Aufrufer nicht zwischen zwei Schnittstellen waehlen muss.
+        policy = retry_manager.RetryPolicy(
+            max_versuche=max(1, min(attempts, retry_manager.STANDARD.max_versuche))
+        )
+        antwort, versuche = retry_manager.fuehre_aus(
+            lambda timeout: _call_once(model, prompt, key, base, timeout=timeout),
+            policy,
+            melde=lambda klasse, nummer, warte: print(
+                f"  {model['id']} {klasse}, warte {warte:.1f}s (Versuch {nummer})", flush=True
+            ),
+        )
+        antwort["versuche"] = versuche
+        return antwort
     last: dict[str, Any] | None = None
     for attempt in range(1, attempts + 1):
         last = _call_once(model, prompt, key, base)
@@ -482,7 +511,9 @@ def call(model: dict[str, Any], prompt: str, key: str, base: str, attempts: int 
     return last or {"http_status": 0, "error": "kein Versuch", "content": ""}
 
 
-def _call_once(model: dict[str, Any], prompt: str, key: str, base: str) -> dict[str, Any]:
+def _call_once(
+    model: dict[str, Any], prompt: str, key: str, base: str, timeout: float = 300.0
+) -> dict[str, Any]:
     payload = {
         "model": model["id"],
         "messages": [
@@ -500,9 +531,10 @@ def _call_once(model: dict[str, Any], prompt: str, key: str, base: str) -> dict[
     )
     started = time.monotonic()
     try:
-        with urllib.request.urlopen(request, timeout=300) as response:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
             body = response.read().decode("utf-8", errors="replace")
             status = response.status
+            retry_after = _retry_after(response.headers)
     except urllib.error.HTTPError as exc:
         return {
             "http_status": exc.code,
@@ -511,6 +543,7 @@ def _call_once(model: dict[str, Any], prompt: str, key: str, base: str) -> dict[
             "content": "",
             "finish_reason": "",
             "completion_tokens": None,
+            "retry_after": _retry_after(exc.headers),
         }
     except Exception as exc:  # noqa: BLE001 - Lauf soll weiterlaufen
         return {
@@ -520,6 +553,7 @@ def _call_once(model: dict[str, Any], prompt: str, key: str, base: str) -> dict[
             "content": "",
             "finish_reason": "",
             "completion_tokens": None,
+            "retry_after": None,
         }
     try:
         data = json.loads(body)
@@ -533,6 +567,7 @@ def _call_once(model: dict[str, Any], prompt: str, key: str, base: str) -> dict[
             "finish_reason": choice.get("finish_reason", ""),
             "completion_tokens": (data.get("usage") or {}).get("completion_tokens"),
             "reasoning_chars": len((choice.get("message") or {}).get("reasoning_content") or ""),
+            "retry_after": retry_after,
         }
     except json.JSONDecodeError:
         return {
@@ -542,6 +577,7 @@ def _call_once(model: dict[str, Any], prompt: str, key: str, base: str) -> dict[
             "content": "",
             "finish_reason": "",
             "completion_tokens": None,
+            "retry_after": retry_after,
         }
 
 
@@ -695,7 +731,8 @@ def main() -> int:
         for spec in models.values():
             spec["max_tokens"] = args.max_tokens
 
-    global SESSION_TAG
+    global SESSION_TAG, RETRY_STRATEGIE
+    RETRY_STRATEGIE = args.retry_strategie
     prompt_version = (
         VERSION_CELL_TIMEPOINT
         if args.cell_timepoint
@@ -769,6 +806,7 @@ def main() -> int:
         if args.quellenzeile:
             prompt_version = VERSION_QUELLENZEILE
         response = call(models[model], prompt, key, base)
+        primaer = response
         # Vor dem Retry festhalten: `response` zeigt danach auf die Wiederholung,
         # und die erste Antwort waere sonst verloren.
         erste_antwort = response.get("content") or ""
@@ -900,6 +938,11 @@ def main() -> int:
         if neu:
             row["attempts"] = versuche
             row["job_status"] = "failed" if fehlerklasse else "completed"
+            # Alle HTTP-Versuche des Auftrags, damit P4 die mittlere Versuchszahl
+            # ohne Rohdaten rechnen kann.
+            row["http_versuche"] = sum(
+                len(eintrag.get("versuche") or []) for eintrag in (primaer, retry, repair) if eintrag
+            )
         if args.save_content:
             row.update(content_felder(inhalt, erste_antwort, (retry.get("content") or "") if retry else ""))
         with LOCK:

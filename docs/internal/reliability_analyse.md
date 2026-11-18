@@ -229,7 +229,7 @@ würde der Reparaturlauf ungeprüften Code ausführen.
    104 Ausfallzeilen durch die neue Klassifikation und erwartet
    103 × `budget_im_reasoning`, 1 × `timeout`.
 
-**P1 — Retry-Manager (`yun_full/retry_manager.py`, synchron, ohne Netz testbar)**
+**P1 — Retry-Manager (`yun_full/retry_manager.py`, synchron, ohne Netz testbar) — umgesetzt**
 Gekürzt nach Abschnitt 3a: **kein** `timeout_faktor`, **keine** getrennten
 Verbindungs- und Lesezeitgrenzen, **keine** Klasse `json_abgeschnitten`. Diese
 Teile hätten nur den einen Timeout-Fall bedient; der Timeout ist im Manager eine
@@ -238,12 +238,18 @@ temporäre Klasse wie jede andere Transportstörung, ohne eigene Mechanik.
    max_delay_s=60, jitter=0.25)`.
 2. `wartezeit(versuch, retry_after)` — Retry-After hat Vorrang, sonst Backoff mit
    Jitter, gedeckelt. Das ist der einzige heute messbare Gewinn: 43 × 429, alle
-   bei `qwen30`.
+   bei `qwen30`. `_call_once` liest dafür den Header in Sekunden; ein HTTP-Datum
+   wird ignoriert, und der Deckel gilt auch für `Retry-After`.
 3. `fuehre_aus(aufruf, policy)` — klassifiziert über `fehlerklassen`, wiederholt
    nur temporäre Klassen, protokolliert jeden Versuch; nicht-temporäre (auth,
    ungültige Anfrage, Budget im Reasoning) enden sofort.
 4. `call()` nutzt den Manager bei `--retry-strategie neu`; `alt` bleibt
-   byte-gleich zum heutigen Verhalten.
+   byte-gleich zum heutigen Verhalten. Die Zeile trägt unter `neu` zusätzlich
+   `http_versuche` (Summe aller HTTP-Versuche des Auftrags) als Grundlage für P4.
+5. Geprüft: 13 Szenarien in `tests/test_retry_manager.py` (Erfolg im ersten und
+   zweiten Versuch, Retry-After vor Backoff, Deckel, 503 dauerhaft, Timeout,
+   Verbindungsabbruch, endgültige Klassen, Backoff-Reihe, Jitter-Grenzen,
+   Versuchsnummer, Meldung) und zwei Verdrahtungstests am echten `call`-Pfad.
 
 **P2 — Persistenz und Crash-Recovery (ohne neue Datenbank)**
 1. `runs/<run>/jobs.jsonl` (append-only): je Paar `record_id`, `model`, `status`

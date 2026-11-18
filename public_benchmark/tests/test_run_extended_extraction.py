@@ -479,3 +479,65 @@ def test_neue_strategie_protokolliert_json_wiederholung(tmp_path: Path, monkeypa
         ("primaer", "json_kaputt"),
         ("json", "ok"),
     ]
+
+
+def test_neue_strategie_nutzt_den_retry_manager(monkeypatch) -> None:
+    # `call` wird hier nicht ersetzt: geprueft wird die Verdrahtung auf
+    # `_call_once`, also der echte Pfad bis zur HTTP-Schicht.
+    from extended_benchmark.yun_full import retry_manager
+
+    monkeypatch.setattr(runner, "RETRY_STRATEGIE", "neu")
+    monkeypatch.setattr(retry_manager, "wartezeit", lambda *a, **k: 0.0)
+    antworten = [
+        {"http_status": 503, "content": "", "finish_reason": "", "completion_tokens": None,
+         "elapsed_s": 1.0, "error": "HTTPError 503", "retry_after": None},
+        {"http_status": 200, "content": '{"cells": []}', "finish_reason": "stop",
+         "completion_tokens": 800, "elapsed_s": 1.0, "error": "", "retry_after": None},
+    ]
+    gesehen: list[float] = []
+
+    def fake_once(model, prompt, key, base, timeout=300.0):
+        gesehen.append(timeout)
+        return dict(antworten[min(len(gesehen) - 1, len(antworten) - 1)])
+
+    monkeypatch.setattr(runner, "_call_once", fake_once)
+    antwort = runner.call({"id": "gwdg/glm-5.3", "max_tokens": 8000}, "p", "k", "http://127.0.0.1:9")
+
+    assert len(gesehen) == 2
+    assert gesehen == [300.0, 300.0]  # kein Timeout-Faktor, kein eigenes Limit
+    assert [v["fehlerklasse"] for v in antwort["versuche"]] == ["server_fehler", "ok"]
+
+
+def test_standardstrategie_behaelt_den_alten_aufrufpfad(monkeypatch) -> None:
+    # `main()` setzt den Schalter pro Lauf; hier ausdruecklich auf `alt`.
+    monkeypatch.setattr(runner, "RETRY_STRATEGIE", "alt")
+    gesehen: list[float] = []
+
+    def fake_once(model, prompt, key, base, timeout=300.0):
+        gesehen.append(timeout)
+        return {"http_status": 200, "content": '{"cells": []}', "finish_reason": "stop",
+                "completion_tokens": 1, "elapsed_s": 1.0, "error": ""}
+
+    monkeypatch.setattr(runner, "_call_once", fake_once)
+    antwort = runner.call({"id": "gwdg/glm-5.3", "max_tokens": 8000}, "p", "k", "http://127.0.0.1:9")
+    assert gesehen == [300.0]
+    assert "versuche" not in antwort
+
+
+def test_neue_strategie_zaehlt_alle_http_versuche(tmp_path: Path, monkeypatch) -> None:
+    # Was der Manager an den Aufruf haengt, muss in der Zeile ankommen; P4
+    # rechnet daraus die mittlere Versuchszahl.
+    antwort = {
+        "http_status": 200, "content": "", "finish_reason": "length",
+        "completion_tokens": 8000, "elapsed_s": 42.0, "error": "",
+        "versuche": [{"attempt_id": 1, "rolle": "http"}, {"attempt_id": 2, "rolle": "http"}],
+    }
+    _, zeile = _auftrag(tmp_path, monkeypatch, [antwort], extra=["--retry-strategie", "neu"])
+    assert zeile["http_versuche"] == 2
+    assert zeile["attempts"][0]["fehlerklasse"] == "budget_im_reasoning"
+
+    monkeypatch.setattr(runner, "HERE", tmp_path / "alt")
+    (tmp_path / "alt").mkdir()
+    ohne = {k: v for k, v in antwort.items() if k != "versuche"}
+    _, zeile_alt = _auftrag(tmp_path / "alt", monkeypatch, [ohne])
+    assert "http_versuche" not in zeile_alt
