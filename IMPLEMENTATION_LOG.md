@@ -1328,3 +1328,45 @@ Sprint 37, nicht dieser Regel (A/B identisch). Offen: Bisect ueber
 **Naechster Hebel:** Bisect der Reichweite (95 -> 46), damit die Messlatte
 wieder belastbar ist. Bericht:
 `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/auswahl_20261118.md`.
+
+## Sprint 42 - Bisect der Reichweite (95 auf 46)
+
+**Frage:** Welcher Guard kostet 49 erreichbare Goldfelder und erzeugt die 7
+Strukturfehler?
+
+**Methode:** Je Stand ein vollstaendiger `offline_struktur`-Lauf mit
+derselben eingefrorenen Auswahl und denselben Parametern, Arbeitsbaum
+temporaer auf den Commit zurueckgesetzt und danach wiederhergestellt. Kein
+Netzlauf, Testartefakte unveraendert. Belege:
+`bisect_20261118/` (neun Laeufe plus `bisect_20261118.json`).
+
+**Ergebnis (Strategie A, alle fuenf Strategien gleichsinnig):**
+
+| Stufe | Commit | Gold | Zellen | komplett | Fehler |
+| --- | --- | --- | --- | --- | --- |
+| alter Stand | `ac3b4c9` | 95 | 2022 | 60/60 | 0 |
+| vor der Zellkorrektur | `811ae9d~1` | 95 | 2022 | 60/60 | 0 |
+| Zellzaehlung berichtigt | `811ae9d` | 21 | 1748 | 60/60 | 0 |
+| vor den Zeilenrollen | `dca0bb9~1` | 21 | 1748 | 60/60 | 0 |
+| Zeilenrollen (Sprint 36) | `dca0bb9` | 56 | 1748 | 60/60 | 0 |
+| Guards (Sprint 37) | `737142c` | 56 | 1748 | 60/60 | 0 |
+| Kopfbaender (Sprint 38) | `718d291` | 46 | 1748 | 57/60 | 7 |
+| Dokumentarm (Sprint 39) | `79556dc` | 46 | 1748 | 57/60 | 7 |
+| Auswahlregel (HEAD) | `80c9948` | 46 | 1748 | 57/60 | 7 |
+
+**Zuordnung:** Die 95 war eine Ueberzaehlung; `811ae9d` (berichtigte
+Zellzaehlung, 2022 -> 1748) senkt auf 21, `dca0bb9` (Zeilenrollen) hebt auf
+56. Die 7 Strukturfehler und 10 Goldfelder (56 -> 46) verursacht
+`718d291` (Sprint 38), und dort `_reassign_header_bands_by_order` im Parser:
+Gegenprobe mit `return False` im Speicher ergibt 56 Goldfelder, 60/60, 0
+Fehler. Sprint 37 und Sprint 39 sind auf der eingefrorenen Auswahl
+wirkungslos.
+
+**Betroffen:** `PMC3877023:T3/T4` (3 und 1 Goldfeld, je 3 Fehler),
+`PMC4987981:T2` (4), `PMC5777419:T2` (je 1 fuer zwei Records),
+`PMC3654355:T1` (kein Goldverlust, ein Fehler `header_span_ueberlappt`).
+
+**Naechster Hebel:** Neuordnung nur behalten, wenn sie keine ueberlappenden
+Baender erzeugt und keine Felder entfernt - sonst zuruecknehmen. Erwartung:
+56 Goldfelder, 0 Fehler, `PMC4319071`-Gewinn (158.67) bleibt. Bericht:
+`public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/auswahl_20261118.md`.

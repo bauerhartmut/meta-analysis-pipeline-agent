@@ -1,0 +1,203 @@
+{
+ "mode": "offline",
+ "generiert": "2026-11-18",
+ "frage": "Welcher Guard verursacht den Rueckgang von 95 auf 46 erreichbare Goldfelder und die 7 Strukturfehler?",
+ "stufen": [
+  {
+   "stufe": "ac3b4c9",
+   "commit": "ac3b4c9",
+   "was": "alter Stand des gespeicherten Artefakts",
+   "gold_erreichbar": 95,
+   "erwartete_zellen": 2022,
+   "tabellen_komplett": 60,
+   "tabellen": 60,
+   "strukturfehler": 0,
+   "warnungen": 79,
+   "alle_strategien_gold": [
+    95,
+    95,
+    95,
+    95,
+    95
+   ]
+  },
+  {
+   "stufe": "vor_811ae9d",
+   "commit": "811ae9d~1",
+   "was": "letzter Stand vor der Zellkorrektur",
+   "gold_erreichbar": 95,
+   "erwartete_zellen": 2022,
+   "tabellen_komplett": 60,
+   "tabellen": 60,
+   "strukturfehler": 0,
+   "warnungen": 79,
+   "alle_strategien_gold": [
+    95,
+    95,
+    95,
+    95,
+    95
+   ]
+  },
+  {
+   "stufe": "811ae9d",
+   "commit": "811ae9d",
+   "was": "Zellzaehlung berichtigt (Kopf, Gruppengroesse, Outcome-Zeile)",
+   "gold_erreichbar": 21,
+   "erwartete_zellen": 1748,
+   "tabellen_komplett": 60,
+   "tabellen": 60,
+   "strukturfehler": 0,
+   "warnungen": 137,
+   "alle_strategien_gold": [
+    21,
+    21,
+    21,
+    21,
+    21
+   ]
+  },
+  {
+   "stufe": "sprint35",
+   "commit": "dca0bb9~1",
+   "was": "vor den Zeilenrollen",
+   "gold_erreichbar": 21,
+   "erwartete_zellen": 1748,
+   "tabellen_komplett": 60,
+   "tabellen": 60,
+   "strukturfehler": 0,
+   "warnungen": 137,
+   "alle_strategien_gold": [
+    21,
+    21,
+    21,
+    21,
+    21
+   ]
+  },
+  {
+   "stufe": "sprint36",
+   "commit": "dca0bb9",
+   "was": "Zeilenrollen aus dem Zeilenlabel",
+   "gold_erreichbar": 56,
+   "erwartete_zellen": 1748,
+   "tabellen_komplett": 60,
+   "tabellen": 60,
+   "strukturfehler": 0,
+   "warnungen": 137,
+   "alle_strategien_gold": [
+    56,
+    56,
+    56,
+    56,
+    56
+   ]
+  },
+  {
+   "stufe": "sprint37",
+   "commit": "737142c",
+   "was": "Prosa-Guard, Armbindung, Outcome-Spalten, SE-Guard",
+   "gold_erreichbar": 56,
+   "erwartete_zellen": 1748,
+   "tabellen_komplett": 60,
+   "tabellen": 60,
+   "strukturfehler": 0,
+   "warnungen": 137,
+   "alle_strategien_gold": [
+    56,
+    56,
+    56,
+    56,
+    56
+   ]
+  },
+  {
+   "stufe": "sprint38",
+   "commit": "718d291",
+   "was": "Kopfbaender nach Wertspalten neu zugeordnet",
+   "gold_erreichbar": 46,
+   "erwartete_zellen": 1748,
+   "tabellen_komplett": 57,
+   "tabellen": 60,
+   "strukturfehler": 7,
+   "warnungen": 136,
+   "alle_strategien_gold": [
+    46,
+    46,
+    46,
+    46,
+    46
+   ]
+  },
+  {
+   "stufe": "sprint39",
+   "commit": "79556dc",
+   "was": "Arm aus der Dokumentdefinition",
+   "gold_erreichbar": 46,
+   "erwartete_zellen": 1748,
+   "tabellen_komplett": 57,
+   "tabellen": 60,
+   "strukturfehler": 7,
+   "warnungen": 136,
+   "alle_strategien_gold": [
+    46,
+    46,
+    46,
+    46,
+    46
+   ]
+  },
+  {
+   "stufe": "HEAD",
+   "commit": "80c9948",
+   "was": "Auswahlregel (Sprint 40/41)",
+   "gold_erreichbar": 46,
+   "erwartete_zellen": 1748,
+   "tabellen_komplett": 57,
+   "tabellen": 60,
+   "strukturfehler": 7,
+   "warnungen": 136,
+   "alle_strategien_gold": [
+    46,
+    46,
+    46,
+    46,
+    46
+   ]
+  }
+ ],
+ "befund": [
+  "95 -> 21 passiert in 811ae9d (Zellzaehlung berichtigt, 2022 -> 1748 erwartete Zellen). Die 95 war eine Ueberzaehlung, kein Guard.",
+  "21 -> 56 in dca0bb9 (Zeilenrollen), also ein Gewinn.",
+  "56 -> 46 und 0 -> 7 Fehler in 718d291 (Sprint 38): _reassign_header_bands_by_order im Parser.",
+  "737142c (Sprint 37) und 79556dc (Sprint 39) sind auf der eingefrorenen Auswahl wirkungslos."
+ ],
+ "gegenprobe": {
+  "methode": "_reassign_header_bands_by_order im Speicher auf 'return False' gesetzt, gleiche Auswahl, Strategie A",
+  "mit_guard": {
+   "gold": 46,
+   "komplett": "57/60",
+   "fehler": 7
+  },
+  "ohne_guard": {
+   "gold": 56,
+   "komplett": "60/60",
+   "fehler": 0
+  },
+  "records_mit_unterschied": {
+   "yun2024:421": 3,
+   "yun2024:426": 1,
+   "yun2024:665": 4,
+   "yun2024:678": 1,
+   "yun2024:682": 1
+  },
+  "hinweis": "yun2024:275 verliert kein Goldfeld, wird aber durch header_span_ueberlappt strukturell unvollstaendig."
+ },
+ "betroffene_tabellen": {
+  "PMC3654355:T1": "yun2024:275, ein Fehler, kein Goldverlust",
+  "PMC3877023:T3": "yun2024:421, 3 Goldfelder verloren, 3 Fehler",
+  "PMC3877023:T4": "yun2024:426, 1 Goldfeld verloren, 3 Fehler",
+  "PMC4987981:T2": "yun2024:665, 4 Goldfelder verloren",
+  "PMC5777419:T2": "yun2024:678/682, je 1 Goldfeld verloren"
+ }
+}
