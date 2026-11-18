@@ -1,0 +1,7 @@
+{
+  "mode": "model",
+  "model": "gwdg/glm-5.3",
+  "selection": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/selection_test.json",
+  "records": 2,
+  "created": "2026-11-18T10:18:24+00:00"
+}
