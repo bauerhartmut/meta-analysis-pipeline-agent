@@ -135,7 +135,11 @@ if [ -f "$GATE" ]; then
   rm -f "$GATE"
 fi
 
-if grep -q "^\[.*\] P5 fertig" "$LOG" 2>/dev/null; then
+# Nur ein wirklich geschriebener Bericht gilt als "durch". Eine alte
+# "P5 fertig"-Zeile ohne Bericht (etwa nach einer gescheiterten Auswertung) darf
+# einen spaeteren Lauf nicht blockieren.
+BERICHT=public_benchmark/extended_benchmark/iterativ/ergebnisse/p5_auswertung_20261118.md
+if grep -q "^\[.*\] P5 fertig" "$LOG" 2>/dev/null && [ -s "$BERICHT" ]; then
   echo "P5 ist laut $LOG bereits durch; kein zweiter Lauf."
   exit 0
 fi
@@ -191,8 +195,14 @@ if [ "$code" -ne 0 ]; then
   exit "$code"
 fi
 
-.venv/bin/python public_benchmark/extended_benchmark/yun_full/werte_p5_aus.py >> "$LOG" 2>&1
+# Erst die Positivkontrolle, dann die Auswertung; der Wrapper ist fail-closed und
+# bricht bei jedem unklaren Ausgang ab, bevor ein Bericht entsteht.
+bash public_benchmark/extended_benchmark/yun_full/werte_p5_mit_kontrolle.sh >> "$LOG" 2>&1
 wcode=$?
-log "Auswertung beendet mit Exitcode $wcode (Artefakte: iterativ/ergebnisse/p5_auswertung_20261118.{json,md})"
-log "P5 fertig"
+if [ "$wcode" -eq 0 ]; then
+  log "Auswertung beendet mit Exitcode 0 (Artefakte: iterativ/ergebnisse/p5_auswertung_20261118.{json,md})"
+  log "P5 fertig"
+else
+  log "ABBRUCH: Positivkontrolle oder Auswertung Exitcode $wcode, kein Bericht"
+fi
 exit "$wcode"

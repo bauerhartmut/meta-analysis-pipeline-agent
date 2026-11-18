@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+import json
+import os
 import sys
+import time
 from pathlib import Path
 
 BENCH = Path(__file__).resolve().parents[1]
@@ -254,3 +257,73 @@ def test_bericht_nennt_stufen_klassen_und_schaetzung() -> None:
     assert "Nach urspruenglicher Fehlerklasse" in text
     assert "kein gemessener Erfolg" in text
     assert "`length_ohne_ergebnis` | 1 |" in text
+
+
+def _marke_schreiben(pfad: Path, ok: bool = True, alter_s: int = 0, nonce: str = "") -> Path:
+    pfad.parent.mkdir(parents=True, exist_ok=True)
+    pfad.write_text(json.dumps({"ok": ok, "nonce": nonce}), encoding="utf-8")
+    zeit = time.time() - alter_s
+    os.utime(pfad, (zeit, zeit))
+    return pfad
+
+
+def test_marke_fehlt_gilt_als_nicht_belegt(tmp_path: Path) -> None:
+    ok, text = p5.pruefe_marke(tmp_path / "fehlt.json")
+    assert not ok
+    assert "keine Marke" in text
+
+
+def test_frische_marke_ist_gueltig(tmp_path: Path) -> None:
+    ok, text = p5.pruefe_marke(_marke_schreiben(tmp_path / "ok.json", True, 10), 600)
+    assert ok
+    assert "gueltig" in text
+
+
+def test_marke_ohne_erfolg_gilt_als_nicht_belegt(tmp_path: Path) -> None:
+    assert not p5.pruefe_marke(_marke_schreiben(tmp_path / "ok.json", False))[0]
+
+
+def test_alte_marke_gilt_als_nicht_belegt(tmp_path: Path) -> None:
+    ok, text = p5.pruefe_marke(_marke_schreiben(tmp_path / "ok.json", True, 1200), 600)
+    assert not ok
+    assert "alt" in text
+
+
+def test_kaputte_marke_gilt_als_nicht_belegt(tmp_path: Path) -> None:
+    pfad = tmp_path / "ok.json"
+    pfad.write_text("{kein json", encoding="utf-8")
+    assert not p5.pruefe_marke(pfad)[0]
+
+
+def test_main_ohne_marke_schreibt_keinen_bericht(tmp_path: Path, monkeypatch) -> None:
+    md = tmp_path / "bericht.md"
+    js = tmp_path / "bericht.json"
+    monkeypatch.setattr(sys, "argv", [
+        "werte_p5_aus.py", "--md", str(md), "--json", str(js),
+        "--kontrolle-marke", str(tmp_path / "fehlt.json"),
+    ])
+    assert p5.main() == 3
+    assert not md.exists()
+    assert not js.exists()
+
+
+def test_marke_mit_fremdem_nonce_wird_abgelehnt(tmp_path: Path) -> None:
+    pfad = _marke_schreiben(tmp_path / "ok.json", True, 5, "fremd")
+    ok, text = p5.pruefe_marke(pfad, 600, nonce="meins")
+    assert not ok
+    assert "Nonce" in text
+
+
+def test_marke_mit_passendem_nonce_ist_gueltig(tmp_path: Path) -> None:
+    pfad = _marke_schreiben(tmp_path / "ok.json", True, 5, "meins")
+    assert p5.pruefe_marke(pfad, 600, nonce="meins")[0]
+
+
+def test_main_ohne_nonce_verweigert_trotz_gueltiger_marke(tmp_path: Path, monkeypatch) -> None:
+    marke = _marke_schreiben(tmp_path / "ok.json", True, 5, "gleich")
+    md = tmp_path / "bericht.md"
+    monkeypatch.setattr(sys, "argv", [
+        "werte_p5_aus.py", "--md", str(md), "--kontrolle-marke", str(marke),
+    ])
+    assert p5.main() == 3
+    assert not md.exists()

@@ -1,6 +1,6 @@
 # P5-Auswertung: Rettung und Zellgewinn
 
-Neu: `runs/_lesekopie_20261118/predictions.jsonl`. Vergleich: 103 IDs der P5-Auswahl gegen ihre Zeilen in der Lesekopie, Modell glm.
+Neu: `public_benchmark/extended_benchmark/runs/_lesekopie_20261118/predictions.jsonl`. Vergleich: 103 IDs der P5-Auswahl gegen ihre Zeilen in der Lesekopie, Modell glm.
 
 > **Nullprobe:** neu und alt sind dieselbe Datei. Erwartet sind 0 Rettungen, 0 Zellgewinn und die volle Goldzahl.
 

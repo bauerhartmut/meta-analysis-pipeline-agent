@@ -12,16 +12,24 @@ Bewertungslauf und wird hier nicht nachgebaut. Sie wird zweimal gezaehlt: einmal
 nur ueber Feld und Arm und einmal zusaetzlich ueber einen eindeutigen Zeitpunkt
 je Feld und Arm, weil die grosszuegige Variante Rettungen zu gut aussehen laesst.
 
+Vor dem ersten Lesen prueft das Skript die Erfolgsmarke der Positivkontrolle
+(`iterativ/kontrolle/p5_positivkontrolle/ok.json`, Alter hoechstens 600 s). Fehlt
+sie, ist sie alt oder meldet sie keinen Erfolg, endet das Skript mit Exit 3 und
+schreibt keinen Bericht. Es gibt keinen Schalter, der das umgeht.
+
 Aufruf:
-    python yun_full/werte_p5_aus.py                          # nach dem Lauf
+    bash yun_full/werte_p5_mit_kontrolle.sh                    # Kontrolle + Auswertung
+    python yun_full/werte_p5_aus.py                            # nur mit frischer Marke
     python yun_full/werte_p5_aus.py --neu <predictions.jsonl>
-    python yun_full/werte_p5_aus.py --neu <lesekopie>         # Nullprobe
+    python yun_full/werte_p5_aus.py --neu <lesekopie>          # Nullprobe
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import sys
+import time
 from pathlib import Path
 from typing import Any
 
@@ -33,6 +41,43 @@ RECORDS = HIER / "records" / "yun699.jsonl"
 MODELL = "glm"
 KLASSE = "length_ohne_ergebnis"
 NICHT_BEWERTBAR = "yun2024:653"
+# Erfolgsmarke der Positivkontrolle. Ohne frische Marke schreibt dieses Skript
+# keinen Bericht: ein Bericht aus einer ungepruefften Rechnung waere schlimmer
+# als kein Bericht.
+MARKE = BENCH / "iterativ" / "kontrolle" / "p5_positivkontrolle" / "ok.json"
+MARKE_MAX_ALTER = 600
+
+
+def pruefe_marke(
+    pfad: str | Path | None = None,
+    max_alter_s: int = MARKE_MAX_ALTER,
+    jetzt: float | None = None,
+    nonce: str | None = None,
+) -> tuple[bool, str]:
+    """Ist die Positivkontrolle frisch und erfolgreich belegt?
+
+    Fail-closed: fehlende, unlesbare, erfolglose, zu alte oder datierte Marken
+    gelten als nicht belegt. Ist `nonce` gesetzt, muss die Marke denselben Wert
+    tragen — damit kann eine Marke aus einem anderen Lauf keine Auswertung
+    autorisieren.
+    """
+    ziel = Path(pfad) if pfad else MARKE
+    if not ziel.exists():
+        return False, f"keine Marke ({ziel})"
+    try:
+        daten = json.loads(ziel.read_text(encoding="utf-8"))
+        alter = (jetzt or time.time()) - ziel.stat().st_mtime
+    except (OSError, json.JSONDecodeError) as exc:
+        return False, f"Marke nicht lesbar: {exc}"
+    if not isinstance(daten, dict) or daten.get("ok") is not True:
+        return False, "Marke meldet keinen Erfolg"
+    if nonce is not None and str(daten.get("nonce") or "") != nonce:
+        return False, "Marke gehoert zu einem anderen Lauf (Nonce passt nicht)"
+    if alter > max_alter_s:
+        return False, f"Marke ist {alter:.0f} s alt (Grenze {max_alter_s} s)"
+    if alter < -60:
+        return False, "Marke liegt in der Zukunft"
+    return True, f"Marke gueltig ({alter:.0f} s alt)"
 
 
 def lade(pfad: Path) -> list[dict[str, Any]]:
@@ -446,7 +491,34 @@ def main() -> int:
     )
     parser.add_argument("--json", default=str(BENCH / "iterativ" / "ergebnisse" / "p5_auswertung_20261118.json"))
     parser.add_argument("--md", default=str(BENCH / "iterativ" / "ergebnisse" / "p5_auswertung_20261118.md"))
+    parser.add_argument("--kontrolle-marke", default=str(MARKE))
+    parser.add_argument("--kontrolle-max-alter", type=int, default=MARKE_MAX_ALTER)
+    parser.add_argument(
+        "--kontrolle-nonce",
+        default="",
+        help="Nonce aus werte_p5_mit_kontrolle.sh; ohne ihn laeuft die Auswertung nicht",
+    )
     args = parser.parse_args()
+
+    # Vor jedem Lesen und Schreiben: ohne belegte Positivkontrolle kein Bericht.
+    if not args.kontrolle_nonce:
+        print(
+            "ABBRUCH: kein Kontroll-Nonce uebergeben. Die Auswertung laeuft nur ueber "
+            "`yun_full/werte_p5_mit_kontrolle.sh`, damit die Positivkontrolle bei jedem "
+            "Bericht wirklich gelaufen ist.",
+            file=sys.stderr,
+        )
+        return 3
+    marke_ok, marke_text = pruefe_marke(
+        args.kontrolle_marke, args.kontrolle_max_alter, nonce=args.kontrolle_nonce
+    )
+    if not marke_ok:
+        print(
+            f"ABBRUCH: Positivkontrolle nicht belegt ({marke_text}). "
+            "Kein Bericht geschrieben; erst `yun_full/werte_p5_mit_kontrolle.sh` laufen lassen.",
+            file=sys.stderr,
+        )
+        return 3
 
     neu_pfad = Path(args.neu)
     if not neu_pfad.exists():

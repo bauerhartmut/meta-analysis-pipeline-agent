@@ -22,6 +22,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -296,10 +297,48 @@ def bericht(werte: dict[str, Any], abweichungen: list[str], alt: Path, neu: Path
     return "\n".join(zeilen) + "\n"
 
 
+def marke_schreiben(pfad: str | Path, ok: bool, nonce: str = "") -> Path:
+    """Erfolgsmarke fuer die Auswertung. Bei Misserfolg wird sie entfernt.
+
+    Fail-closed: ohne gueltige Marke darf `werte_p5_aus.py` keinen Bericht
+    schreiben. Deshalb wird im Fehlerfall nicht nur nichts geschrieben, sondern
+    eine alte Marke geloescht.
+    """
+    ziel = Path(pfad)
+    if not ok:
+        ziel.unlink(missing_ok=True)
+        return ziel
+    ziel.parent.mkdir(parents=True, exist_ok=True)
+    ziel.write_text(
+        json.dumps(
+            {
+                "ok": True,
+                "zeit": datetime.now().astimezone().isoformat(timespec="seconds"),
+                "quelle": "positivkontrolle_p5",
+                "nonce": str(nonce or ""),
+            },
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    return ziel
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--json", default=str(ARTEFAKT.with_suffix(".json")))
     parser.add_argument("--md", default=str(ARTEFAKT.with_suffix(".md")))
+    parser.add_argument(
+        "--marke",
+        default=str(KONTROLLE / "ok.json"),
+        help="Erfolgsmarke, die die Auswertung als Vorbedingung liest",
+    )
+    parser.add_argument(
+        "--nonce",
+        default="",
+        help="Kennung dieses Durchlaufs; die Auswertung verlangt denselben Wert",
+    )
     args = parser.parse_args()
 
     alt, neu = schreibe_fixture()
@@ -307,6 +346,7 @@ def main() -> int:
         p5.lade(alt), p5.lade(neu), _records(), modell="glm", ids=list(IDS)
     )
     abweichungen = pruefe(werte)
+    marke_schreiben(args.marke, not abweichungen, args.nonce)
     text = bericht(werte, abweichungen, alt, neu)
 
     Path(args.json).parent.mkdir(parents=True, exist_ok=True)
