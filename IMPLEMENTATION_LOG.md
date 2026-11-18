@@ -1054,3 +1054,37 @@ ausgewaehlte Tabelle erreichbar, mit Reihenfolge-Annahme 84 (31,3 %).
 **Nicht gemacht:** Modelllauf (Precision/Recall/Kosten). Er braucht
 ausdrueckliche Freigabe und Guthaben; `run_benchmark.py` verlangt dafuer
 `--allow-network` und `--confirm-kosten`.
+
+## Sprint 33 (18.11.2026): Reichweite des Tabellenpfads gemessen und gehoben
+
+**Anlass:** Sprint 32 liess offen, warum nur 76 von 268 Goldzellen ueber eine
+ausgewaehlte Tabelle erreichbar waren. Vor einem kostenpflichtigen Modelllauf
+wurde dieser Deckel zuerst ohne Netzzugriff untersucht.
+
+**Diagnose:** neues Werkzeug `diagnose_reachability.py` klassifiziert jede nicht
+erreichbare Goldzelle (read-only, ohne Goldwerte als Eingabe). Befund vor dem
+Umbau: 104 Zellen ohne passende Spalte im Dokument, 48 ohne Armbeleg im Kopf,
+40 in nicht ausgewaehlten Tabellen.
+
+**Aenderungen:** (1) `transfer_arms_within_document` belegt einen Arm aus einer
+Schwestertabelle desselben Dokuments, wenn der Gruppenkopf identisch ist
+(`arm_basis="uebertrag"`, Befund `armzuordnung_uebertragen`). (2) Verbundwerte:
+`12.4 (3.1)` wird gelesen - erster Wert als Zellwert, zweiter als eigener Beleg
+mit derselben Fundstelle (`secondary_role`, `derived`, Befund
+`verbundwert_getrennt`); vorher lehnte `parse_value` die ganze Zelle ab. (3)
+Auswahl nach Feldabdeckung: bis zu 6 Tabellen je Record, aber nur solche mit
+neuem Feld; Kandidatenzahl 537 -> 608. (4) Labelspalten-Heuristik verschaerft
+(Dezimalzahl oder zwei Zahlen je Zelle gelten als Messwert), damit
+Verbundspalten nicht als Labels gelten.
+
+**Ergebnis:** erreichbar 76/268 (28,4 %) -> 95/278 (34,2 %), mit
+Reihenfolge-Annahme 99 (35,6 %). Aufwand gegenueber Full-Table 1,86x (B), 3,92x
+(C), 5,20x (D), 3,49x (E); alle 60 Tabellen strukturell vollstaendig, 0 Fehler.
+Der Arm-Transfer allein bringt +3 Zellen (identische Labels binden meist schon
+ueber die Kopfregel) - er bleibt, weil belegbar und kostenlos.
+
+**Tests:** 32 Engine-Tests (2 neu: Verbundwert mit Zweitbeleg, Arm-Transfer mit
+Provenienz) plus 4 Benchmark-Tests - 36 gruen.
+
+**Nicht gemacht:** Modelllauf. Die 34-%-Obergrenze des Tabellenpfads ist jetzt
+bekannt und begrenzt den erwartbaren Recall-Gewinn.

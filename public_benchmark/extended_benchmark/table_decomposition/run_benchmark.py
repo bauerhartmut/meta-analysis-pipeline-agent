@@ -43,7 +43,11 @@ from research_agent.table_decomposition.engine import (  # noqa: E402
 )
 from research_agent.table_decomposition.parser import parse_document  # noqa: E402
 from research_agent.table_decomposition.reconstruct import Reconstruction  # noqa: E402
-from research_agent.table_decomposition.semantics import enrich_table  # noqa: E402
+from research_agent.table_decomposition.semantics import (
+    enrich_table,
+    reachable_fields,
+    transfer_arms_within_document,
+)  # noqa: E402
 from research_agent.table_decomposition.strategies import (  # noqa: E402
     STRATEGY_ADAPTIVE,
     STRATEGY_LABELS,
@@ -89,11 +93,13 @@ def load_tables(selection_entries: Sequence[Dict[str, Any]],
     parsed = parse_document(text, doc_id)
     context = context_of(record)
     wanted = {entry["table_id"] for entry in entries}
+    for table in parsed.tables:
+        enrich_table(table, context, assume_order=assume_order)
+    transfer_arms_within_document(parsed.tables, context)
     tables = []
     for table in parsed.tables:
         if table.table_id not in wanted:
             continue
-        enrich_table(table, context, assume_order=assume_order)
         table.complexity = assess(table).to_dict()
         tables.append(table)
     return tables, text
@@ -126,7 +132,7 @@ def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
         if record is None:
             continue
         tables, text = load_tables(entries, record, assume_order=assume_order)
-        fields = {column.field for table in tables for column in table.columns if column.field}
+        fields = {name for table in tables for name in reachable_fields(table)}
         reachable = sum(1 for cell in record["gold"]["cells"] if cell["field"] in fields)
         for strategy in strategies:
             units = 0

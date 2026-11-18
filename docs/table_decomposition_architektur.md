@@ -143,10 +143,21 @@ nicht in `orchestrator.py` verdrahtet (bewusst: erst nach Modellvergleich).
   Namensvergleich und Token-Überlappung mit Mindestvorsprung. Ohne Beleg bleibt
   `arm = None` und die Spalte bekommt kein Feld; sie geht dann nicht in die
   Bewertung ein, statt einen Wert falsch zuzuordnen.
-- **Optionale Reihenfolge-Annahme** (`arm_order_fallback`): bei genau zwei
-  Armspalten und nur einem benannten Arm wird der andere aus der Leserichtung
-  gesetzt — sichtbar als `arm_basis="reihenfolge"` und als Validierungsbefund
-  `armzuordnung_angenommen`. Standard ist aus.
+- **Arm-Transfer im Dokument** (`arm_transfer`, Standard an): trägt eine Tabelle
+den Gruppenkopf `Verum` belegt, gilt derselbe Kopf in einer Schwestertabelle
+desselben Dokuments als belegt (`arm_basis="uebertrag"`, Befund
+`armzuordnung_uebertragen`). Ohne identisches Label wird nichts übertragen; der
+Mechanismus kostet keinen Modellaufruf. Gemessene Wirkung im Benchmark: 18
+Spalten, +3 Goldzellen — kleine Wirkung, aber belegbar und billig.
+- **Verbundwerte** (`column.secondary_role`): Zellen wie `12.4 (3.1)` tragen
+  Mittelwert und Streuung. Der erste Wert ist der Zellwert (vorher blieb die
+  Zelle wertlos, weil `parse_value` den Verbund ablehnte), der zweite wird als
+  eigener Beleg mit derselben Fundstelle geführt (`derived`). Der Wert steht
+  wörtlich im Zitat des Modells; ohne zweite Zahl entsteht kein Beleg.
+- **Optionale Reihenfolge-Annahme** (`arm_order_fallback`, Standard aus): bei
+  genau zwei Armspalten und nur einem benannten Arm wird der andere aus der
+  Leserichtung gesetzt — sichtbar als `arm_basis="reihenfolge"` und als
+  Validierungsbefund `armzuordnung_angenommen`.
 - **Konflikte werden nicht überschrieben.** Widersprüchliche Werte bleiben als
   Kandidatenliste stehen (`status="conflict"`) und sind aus
   `prediction_cells()` ausgeschlossen.
@@ -160,9 +171,11 @@ nicht in `orchestrator.py` verdrahtet (bewusst: erst nach Modellvergleich).
 - Der Parser versteht die real vorliegenden Markdown-Tabellen des Korpus; für
   PDF-Layouts ohne Strichregel bleibt der Whitespace-Fallback, dessen
   Spaltengrenzen bei mehrzeiligen Zellen unsicher sind.
-- Die Armzuordnung ist der Engpass: nur ein Teil der Tabellen trägt den
-  Studienarm im Kopf, sodass je Record im Schnitt 1,3 der 4,6 Goldzellen über
-  eine ausgewählte Tabelle erreichbar sind (Messung siehe Ergebnisteil).
+- Die Armzuordnung und die Datenlage sind der Engpass: 95 von 278 Goldzellen
+  des Testsplits (34,2 %) sind über die ausgewählten Tabellen erreichbar. Davon
+  entfallen 100 auf Zellen ohne passende Spalte im Dokument, 40 auf Spalten
+  ohne Armnamen im Kopf, 42 auf nicht ausgewählte Tabellen (Messung:
+  `diagnose_erreichbarkeit_20261118.json`).
 - Ohne Modelllauf gibt es keine Precision/Recall-Aussage; der Strukturvergleich
   belegt Kontexterhalt und Aufwand, nicht Extraktionsqualität.
 
@@ -173,8 +186,9 @@ python -m pytest research_agent/tests/test_table_decomposition.py -q
 python -m pytest public_benchmark/tests/test_table_decomposition_benchmark.py -q
 ```
 
-34 Tests: Parser (Strichregel, Pipe, Whitespace, Spannen, Labelspalten mit
-Ziffern), Rollen und Armbindung, Verfahren A–E, Budget-Chunking, Crops,
-Rekonstruktion (agreed/single/conflict), adaptive Nachlese, Backend-Ausfall,
+36 Tests (32 Engine, 4 Benchmark): Parser (Strichregel, Pipe, Whitespace,
+Spannen, Labelspalten mit Ziffern), Rollen und Armbindung, Arm-Transfer,
+Verbundwerte, Verfahren A–E, Budget-Chunking, Crops, Rekonstruktion
+(agreed/single/conflict), adaptive Nachlese, Backend-Ausfall,
 Validierungsregeln, Konfiguration, Pipeline-Haken sowie Zellabgleich und
 Berichtsformat des Benchmarks.

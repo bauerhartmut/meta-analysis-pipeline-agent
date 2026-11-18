@@ -1,6 +1,6 @@
 # Table Decomposition & Reconstruction: Benchmarkbericht
 
-Erzeugt am 2026-11-18 09:50 UTC aus den unten genannten Artefakten. Alle Zahlen sind aus diesen Dateien gelesen, keine ist geschaetzt.
+Erzeugt am 2026-11-18 10:00 UTC aus den unten genannten Artefakten. Alle Zahlen sind aus diesen Dateien gelesen, keine ist geschaetzt.
 
 ## Auswahl
 
@@ -8,34 +8,34 @@ Erzeugt am 2026-11-18 09:50 UTC aus den unten genannten Artefakten. Alle Zahlen 
 |---|---|
 | Split | test |
 | Tabellen | 60 |
-| Records | 58 |
+| Records | 59 |
 | Dokumente | 31 |
-| Kandidaten | 537 |
-| Gold erreichbar (Summe je Tabelle) | 79 |
+| Kandidaten | 608 |
+| Gold erreichbar (Summe je Tabelle) | 95 |
 | Records-Hash | c22ed3fb42dbaaff |
 | eingefroren | ja |
 
 | Schicht | Tabellen |
 |---|---|
-| mehrstufiger_kopf | 34 |
-| mehrzeitpunkt | 32 |
-| fussnoten | 32 |
+| mehrzeitpunkt | 37 |
+| mehrstufiger_kopf | 36 |
+| fussnoten | 35 |
 | mittel | 19 |
 | sehr_komplex | 19 |
-| einfach | 17 |
-| komplexe_pdf | 9 |
+| einfach | 14 |
+| komplex | 8 |
+| komplexe_pdf | 8 |
 | mehrarm | 8 |
-| komplex | 5 |
 
 ## Struktur- und Aufwandsvergleich (ohne Modellaufruf)
 
 | Var | Verfahren | Records | Tabellen | Einheiten/Record | Zeichen/Record | Zeichen/Einheit | Tokens ges. (Sch.) | Gold erreichbar (Vereinigung) | strukturell komplett | Prueffeheler | Warnungen |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| A | Full-Table Extraction | 58 | 60 | 1,0 | 5598,0 | 5411,4 | 81.171 | 76 | 60/60 | 0 | 21 |
-| B | Vertical Decomposition | 58 | 60 | 2,4 | 9056,9 | 3779,1 | 131.325 | 76 | 60/60 | 0 | 0 |
-| C | Horizontal Decomposition | 58 | 60 | 6,6 | 22127,6 | 3350,9 | 320.851 | 76 | 60/60 | 0 | 67 |
-| D | Bidirectional Decomposition | 58 | 60 | 7,8 | 27041,7 | 3447,1 | 392.104 | 76 | 60/60 | 0 | 67 |
-| E | Adaptive Recursive Decomposition | 58 | 60 | 4,3 | 17462,2 | 4083,9 | 253.202 | 76 | 60/60 | 0 | 59 |
+| A | Full-Table Extraction | 59 | 60 | 1,0 | 5744,6 | 5648,9 | 84.733 | 95 | 60/60 | 0 | 79 |
+| B | Vertical Decomposition | 59 | 60 | 2,8 | 10700,2 | 3803,1 | 157.828 | 95 | 60/60 | 0 | 41 |
+| C | Horizontal Decomposition | 59 | 60 | 6,3 | 22529,3 | 3554,1 | 332.307 | 95 | 60/60 | 0 | 125 |
+| D | Bidirectional Decomposition | 59 | 60 | 8,5 | 29876,4 | 3504,4 | 440.677 | 95 | 60/60 | 0 | 166 |
+| E | Adaptive Recursive Decomposition | 59 | 60 | 5,0 | 20018,9 | 4044,9 | 295.279 | 95 | 60/60 | 0 | 161 |
 
 `Tok. (Sch.)` ist eine Schaetzung aus Prompt-Zeichen / 4 und als solche markiert; sie ersetzt keine gemessene Tokenzahl.
 

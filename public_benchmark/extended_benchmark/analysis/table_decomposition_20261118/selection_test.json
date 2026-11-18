@@ -1,16 +1,16 @@
 {
-  "created": "2026-11-18T09:50:19+00:00",
+  "created": "2026-11-18T10:00:22+00:00",
   "role": "test",
   "target": 60,
   "frozen": true,
   "records_file": "public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl",
   "records_sha256": "c22ed3fb42dbaaff7051a89cdb327c4b250a134db0a62a19d3877d5ba311c0b1",
   "selection_method": "Round-Robin ueber Schwierigkeitsschichten, Reihenfolge je Schicht durch sha256(Schicht:Tabellen-ID); keine Goldwerte in der Auswahl.",
-  "n_candidates": 537,
+  "n_candidates": 608,
   "n_tables": 60,
   "require_bound": true,
   "arm_order_fallback": false,
-  "gold_reachable_total": 79,
+  "gold_reachable_total": 95,
   "strata_order": [
     "einfach",
     "mittel",
@@ -24,23 +24,25 @@
     "ohne_armzuordnung"
   ],
   "strata_counts": {
-    "einfach": 17,
-    "mehrzeitpunkt": 32,
+    "einfach": 14,
+    "mehrzeitpunkt": 37,
     "mittel": 19,
-    "fussnoten": 32,
-    "komplex": 5,
-    "mehrstufiger_kopf": 34,
+    "fussnoten": 35,
+    "komplex": 8,
+    "mehrstufiger_kopf": 36,
     "sehr_komplex": 19,
-    "komplexe_pdf": 9,
+    "komplexe_pdf": 8,
     "mehrarm": 8
   },
   "record_ids": [
-    "yun2024:110",
     "yun2024:111",
-    "yun2024:13",
+    "yun2024:112",
     "yun2024:15",
+    "yun2024:16",
     "yun2024:172",
     "yun2024:174",
+    "yun2024:184",
+    "yun2024:185",
     "yun2024:194",
     "yun2024:196",
     "yun2024:202",
@@ -50,23 +52,22 @@
     "yun2024:257",
     "yun2024:258",
     "yun2024:265",
-    "yun2024:267",
+    "yun2024:266",
+    "yun2024:275",
+    "yun2024:282",
     "yun2024:296",
     "yun2024:298",
-    "yun2024:32",
+    "yun2024:30",
     "yun2024:335",
     "yun2024:336",
-    "yun2024:34",
-    "yun2024:346",
-    "yun2024:349",
     "yun2024:350",
     "yun2024:352",
     "yun2024:390",
     "yun2024:391",
+    "yun2024:402",
     "yun2024:403",
-    "yun2024:407",
-    "yun2024:418",
-    "yun2024:423",
+    "yun2024:408",
+    "yun2024:421",
     "yun2024:426",
     "yun2024:438",
     "yun2024:445",
@@ -76,28 +77,28 @@
     "yun2024:478",
     "yun2024:486",
     "yun2024:489",
+    "yun2024:494",
     "yun2024:504",
-    "yun2024:507",
     "yun2024:531",
     "yun2024:532",
     "yun2024:550",
-    "yun2024:554",
     "yun2024:639",
     "yun2024:640",
     "yun2024:645",
+    "yun2024:647",
     "yun2024:662",
-    "yun2024:663",
-    "yun2024:673",
+    "yun2024:665",
+    "yun2024:672",
     "yun2024:675",
     "yun2024:678",
-    "yun2024:684",
-    "yun2024:79",
-    "yun2024:81"
+    "yun2024:682",
+    "yun2024:78",
+    "yun2024:79"
   ],
-  "n_records": 58,
+  "n_records": 59,
   "n_documents": 31,
   "max_per_document": 2,
-  "max_per_record": 3,
+  "max_per_record": 6,
   "tables": [
     {
       "candidate_id": "yun2024:174|PMC5079604:T1",
@@ -138,48 +139,58 @@
         "mehrzeitpunkt"
       ],
       "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 4,
       "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:438|PMC3475525:T1",
-      "table_id": "PMC3475525:T1",
+      "candidate_id": "yun2024:408|PMC3475525:T2",
+      "table_id": "PMC3475525:T2",
       "doc_id": "PMC3475525",
       "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3475525.md",
       "record_ids": [
-        "yun2024:438"
+        "yun2024:408"
       ],
-      "caption": "###### Consumer Understanding of Front-of-Package Nutrition Labels: Percentage Correct for Healthier Product Quiz Items (N = 480)^a^, 2010--2011",
+      "caption": "###### Consumer Understanding of Front-of-Package Nutrition Labels: Food and Beverage Ratings^a^ (N = 480)^b^, 2010--2011",
       "parser": "pandoc-rule/1",
-      "rows": 1,
+      "rows": 7,
       "columns": 8,
       "complexity": {
-        "score": 0.2582,
+        "score": 0.3882,
         "class": "mittel",
         "features": {
-          "n_rows": 1,
+          "n_rows": 7,
           "n_data_columns": 7,
           "n_columns": 8,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
-          "n_footnotes": 2,
+          "n_footnotes": 1,
           "n_irregular_rows": 0,
           "n_target_columns": 3,
           "n_unassigned_columns": 4,
-          "has_timepoints": false,
-          "n_data_cells": 7
+          "has_timepoints": true,
+          "n_data_cells": 49
         },
         "drivers": [
-          "2 Fussnoten",
-          "4 Spalten ohne Zielfeld"
+          "1 Fussnoten",
+          "4 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
         ]
       },
       "strata": [
         "mittel",
+        "mehrzeitpunkt",
         "fussnoten"
       ],
       "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 6,
       "gold_reachable": 2
     },
@@ -223,6 +234,9 @@
         "mehrstufiger_kopf"
       ],
       "n_target_columns": 2,
+      "fields": [
+        "intervention_group_size"
+      ],
       "gold_cells": 6,
       "gold_reachable": 1
     },
@@ -239,26 +253,26 @@
       "rows": 19,
       "columns": 13,
       "complexity": {
-        "score": 0.6875,
+        "score": 0.7,
         "class": "sehr_komplex",
         "features": {
           "n_rows": 19,
-          "n_data_columns": 9,
+          "n_data_columns": 10,
           "n_columns": 13,
           "n_header_levels": 2,
           "n_group_headers": 2,
           "n_column_groups": 2,
           "n_footnotes": 1,
           "n_irregular_rows": 0,
-          "n_target_columns": 9,
+          "n_target_columns": 10,
           "n_unassigned_columns": 0,
           "has_timepoints": true,
-          "n_data_cells": 171
+          "n_data_cells": 190
         },
         "drivers": [
           "2 Header-Ebenen",
           "2 zusammengefuehrte Header-Zellen",
-          "9 Datenspalten",
+          "10 Datenspalten",
           "19 Datenzeilen",
           "1 Fussnoten",
           "Zeitpunktangaben in Kopf oder Zeilen"
@@ -271,45 +285,49 @@
         "fussnoten",
         "komplexe_pdf"
       ],
-      "n_target_columns": 9,
+      "n_target_columns": 10,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 6,
       "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:678|PMC5777419:T2",
-      "table_id": "PMC5777419:T2",
-      "doc_id": "PMC5777419",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5777419.md",
+      "candidate_id": "yun2024:78|PMC3546023:T4",
+      "table_id": "PMC3546023:T4",
+      "doc_id": "PMC3546023",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3546023.md",
       "record_ids": [
-        "yun2024:678"
+        "yun2024:78"
       ],
-      "caption": "###### Intra- and intergroup comparisons of clinical and microbiological parameters (mean ± SD or median, IQ score)",
+      "caption": "The effects of palmvitee supplementation on lymphocyte proliferative presented as stimulation index (S.I.) after induction with mitogen, PHA and Con A in nonsmokers and smokers according to the number",
       "parser": "pandoc-rule/1",
-      "rows": 5,
-      "columns": 16,
+      "rows": 3,
+      "columns": 7,
       "complexity": {
-        "score": 0.9421,
+        "score": 0.6839,
         "class": "sehr_komplex",
         "features": {
-          "n_rows": 5,
-          "n_data_columns": 14,
-          "n_columns": 16,
-          "n_header_levels": 3,
-          "n_group_headers": 4,
+          "n_rows": 3,
+          "n_data_columns": 7,
+          "n_columns": 7,
+          "n_header_levels": 2,
+          "n_group_headers": 3,
           "n_column_groups": 3,
-          "n_footnotes": 0,
+          "n_footnotes": 1,
           "n_irregular_rows": 0,
-          "n_target_columns": 4,
-          "n_unassigned_columns": 10,
+          "n_target_columns": 6,
+          "n_unassigned_columns": 1,
           "has_timepoints": true,
-          "n_data_cells": 70
+          "n_data_cells": 21
         },
         "drivers": [
-          "3 Header-Ebenen",
-          "4 zusammengefuehrte Header-Zellen",
+          "2 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
           "3 Spaltengruppen",
-          "14 Datenspalten",
-          "10 Spalten ohne Zielfeld",
+          "1 Fussnoten",
+          "1 Spalten ohne Zielfeld",
           "Zeitpunktangaben in Kopf oder Zeilen"
         ]
       },
@@ -318,10 +336,13 @@
         "mehrarm",
         "mehrzeitpunkt",
         "mehrstufiger_kopf",
-        "komplexe_pdf"
+        "fussnoten"
       ],
-      "n_target_columns": 4,
-      "gold_cells": 2,
+      "n_target_columns": 6,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
       "gold_reachable": 1
     },
     {
@@ -337,26 +358,26 @@
       "rows": 19,
       "columns": 13,
       "complexity": {
-        "score": 0.6875,
+        "score": 0.7,
         "class": "sehr_komplex",
         "features": {
           "n_rows": 19,
-          "n_data_columns": 9,
+          "n_data_columns": 10,
           "n_columns": 13,
           "n_header_levels": 2,
           "n_group_headers": 2,
           "n_column_groups": 2,
           "n_footnotes": 1,
           "n_irregular_rows": 0,
-          "n_target_columns": 9,
+          "n_target_columns": 10,
           "n_unassigned_columns": 0,
           "has_timepoints": true,
-          "n_data_cells": 171
+          "n_data_cells": 190
         },
         "drivers": [
           "2 Header-Ebenen",
           "2 zusammengefuehrte Header-Zellen",
-          "9 Datenspalten",
+          "10 Datenspalten",
           "19 Datenzeilen",
           "1 Fussnoten",
           "Zeitpunktangaben in Kopf oder Zeilen"
@@ -369,28 +390,134 @@
         "fussnoten",
         "komplexe_pdf"
       ],
-      "n_target_columns": 9,
+      "n_target_columns": 10,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 6,
       "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:507|PMC5419060:T3",
+      "candidate_id": "yun2024:79|PMC3546023:T4",
+      "table_id": "PMC3546023:T4",
+      "doc_id": "PMC3546023",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3546023.md",
+      "record_ids": [
+        "yun2024:79"
+      ],
+      "caption": "The effects of palmvitee supplementation on lymphocyte proliferative presented as stimulation index (S.I.) after induction with mitogen, PHA and Con A in nonsmokers and smokers according to the number",
+      "parser": "pandoc-rule/1",
+      "rows": 3,
+      "columns": 7,
+      "complexity": {
+        "score": 0.6839,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 3,
+          "n_data_columns": 7,
+          "n_columns": 7,
+          "n_header_levels": 2,
+          "n_group_headers": 3,
+          "n_column_groups": 3,
+          "n_footnotes": 1,
+          "n_irregular_rows": 0,
+          "n_target_columns": 6,
+          "n_unassigned_columns": 1,
+          "has_timepoints": true,
+          "n_data_cells": 21
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "1 Fussnoten",
+          "1 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrarm",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 6,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:486|PMC3786549:T3",
+      "table_id": "PMC3786549:T3",
+      "doc_id": "PMC3786549",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3786549.md",
+      "record_ids": [
+        "yun2024:486"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 2,
+      "columns": 7,
+      "complexity": {
+        "score": 0.75,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 2,
+          "n_data_columns": 6,
+          "n_columns": 7,
+          "n_header_levels": 3,
+          "n_group_headers": 3,
+          "n_column_groups": 3,
+          "n_footnotes": 2,
+          "n_irregular_rows": 0,
+          "n_target_columns": 5,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 9
+        },
+        "drivers": [
+          "3 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "2 Fussnoten",
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrarm",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 5,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:494|PMC5419060:T3",
       "table_id": "PMC5419060:T3",
       "doc_id": "PMC5419060",
       "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5419060.md",
       "record_ids": [
-        "yun2024:507"
+        "yun2024:494"
       ],
       "caption": "Rejection rate and reasons for blood sample rejection before and after the phlebotomy training by facility.",
       "parser": "pandoc-rule/1",
       "rows": 18,
       "columns": 9,
       "complexity": {
-        "score": 0.7537,
+        "score": 0.7796,
         "class": "sehr_komplex",
         "features": {
           "n_rows": 18,
-          "n_data_columns": 7,
+          "n_data_columns": 8,
           "n_columns": 9,
           "n_header_levels": 2,
           "n_group_headers": 2,
@@ -398,16 +525,16 @@
           "n_footnotes": 0,
           "n_irregular_rows": 12,
           "n_target_columns": 5,
-          "n_unassigned_columns": 2,
+          "n_unassigned_columns": 3,
           "has_timepoints": true,
-          "n_data_cells": 109
+          "n_data_cells": 125
         },
         "drivers": [
           "2 Header-Ebenen",
           "2 zusammengefuehrte Header-Zellen",
           "18 Datenzeilen",
           "12/18 unregelmaessige Zeilen",
-          "2 Spalten ohne Zielfeld",
+          "3 Spalten ohne Zielfeld",
           "Zeitpunktangaben in Kopf oder Zeilen"
         ]
       },
@@ -418,104 +545,10 @@
         "komplexe_pdf"
       ],
       "n_target_columns": 5,
+      "fields": [
+        "intervention_group_size"
+      ],
       "gold_cells": 4,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:391|PMC3278655:T2",
-      "table_id": "PMC3278655:T2",
-      "doc_id": "PMC3278655",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3278655.md",
-      "record_ids": [
-        "yun2024:391"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 8,
-      "columns": 10,
-      "complexity": {
-        "score": 0.78,
-        "class": "sehr_komplex",
-        "features": {
-          "n_rows": 8,
-          "n_data_columns": 8,
-          "n_columns": 10,
-          "n_header_levels": 3,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 1,
-          "n_irregular_rows": 1,
-          "n_target_columns": 4,
-          "n_unassigned_columns": 4,
-          "has_timepoints": true,
-          "n_data_cells": 62
-        },
-        "drivers": [
-          "3 Header-Ebenen",
-          "1 Fussnoten",
-          "1/8 unregelmaessige Zeilen",
-          "4 Spalten ohne Zielfeld",
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "sehr_komplex",
-        "mehrzeitpunkt",
-        "mehrstufiger_kopf",
-        "fussnoten",
-        "komplexe_pdf"
-      ],
-      "n_target_columns": 4,
-      "gold_cells": 4,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:684|PMC5777419:T2",
-      "table_id": "PMC5777419:T2",
-      "doc_id": "PMC5777419",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5777419.md",
-      "record_ids": [
-        "yun2024:684"
-      ],
-      "caption": "###### Intra- and intergroup comparisons of clinical and microbiological parameters (mean ± SD or median, IQ score)",
-      "parser": "pandoc-rule/1",
-      "rows": 5,
-      "columns": 16,
-      "complexity": {
-        "score": 0.9421,
-        "class": "sehr_komplex",
-        "features": {
-          "n_rows": 5,
-          "n_data_columns": 14,
-          "n_columns": 16,
-          "n_header_levels": 3,
-          "n_group_headers": 4,
-          "n_column_groups": 3,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 4,
-          "n_unassigned_columns": 10,
-          "has_timepoints": true,
-          "n_data_cells": 70
-        },
-        "drivers": [
-          "3 Header-Ebenen",
-          "4 zusammengefuehrte Header-Zellen",
-          "3 Spaltengruppen",
-          "14 Datenspalten",
-          "10 Spalten ohne Zielfeld",
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "sehr_komplex",
-        "mehrarm",
-        "mehrzeitpunkt",
-        "mehrstufiger_kopf",
-        "komplexe_pdf"
-      ],
-      "n_target_columns": 4,
-      "gold_cells": 6,
       "gold_reachable": 1
     },
     {
@@ -556,16 +589,20 @@
         "mehrzeitpunkt"
       ],
       "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 6,
       "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:418|PMC3475525:T1",
+      "candidate_id": "yun2024:438|PMC3475525:T1",
       "table_id": "PMC3475525:T1",
       "doc_id": "PMC3475525",
       "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3475525.md",
       "record_ids": [
-        "yun2024:418"
+        "yun2024:438"
       ],
       "caption": "###### Consumer Understanding of Front-of-Package Nutrition Labels: Percentage Correct for Healthier Product Quiz Items (N = 480)^a^, 2010--2011",
       "parser": "pandoc-rule/1",
@@ -598,6 +635,10 @@
         "fussnoten"
       ],
       "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 6,
       "gold_reachable": 2
     },
@@ -645,7 +686,261 @@
         "fussnoten"
       ],
       "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "comparator_mean"
+      ],
       "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:489|PMC3786549:T3",
+      "table_id": "PMC3786549:T3",
+      "doc_id": "PMC3786549",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3786549.md",
+      "record_ids": [
+        "yun2024:489"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 2,
+      "columns": 7,
+      "complexity": {
+        "score": 0.75,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 2,
+          "n_data_columns": 6,
+          "n_columns": 7,
+          "n_header_levels": 3,
+          "n_group_headers": 3,
+          "n_column_groups": 3,
+          "n_footnotes": 2,
+          "n_irregular_rows": 0,
+          "n_target_columns": 5,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 9
+        },
+        "drivers": [
+          "3 Header-Ebenen",
+          "3 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "2 Fussnoten",
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrarm",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 5,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:678|PMC5777419:T2",
+      "table_id": "PMC5777419:T2",
+      "doc_id": "PMC5777419",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5777419.md",
+      "record_ids": [
+        "yun2024:678"
+      ],
+      "caption": "###### Intra- and intergroup comparisons of clinical and microbiological parameters (mean ± SD or median, IQ score)",
+      "parser": "pandoc-rule/1",
+      "rows": 5,
+      "columns": 16,
+      "complexity": {
+        "score": 0.945,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 5,
+          "n_data_columns": 15,
+          "n_columns": 16,
+          "n_header_levels": 3,
+          "n_group_headers": 4,
+          "n_column_groups": 3,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 11,
+          "has_timepoints": true,
+          "n_data_cells": 75
+        },
+        "drivers": [
+          "3 Header-Ebenen",
+          "4 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "15 Datenspalten",
+          "11 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrarm",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf",
+        "komplexe_pdf"
+      ],
+      "n_target_columns": 4,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 2,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:682|PMC5777419:T2",
+      "table_id": "PMC5777419:T2",
+      "doc_id": "PMC5777419",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5777419.md",
+      "record_ids": [
+        "yun2024:682"
+      ],
+      "caption": "###### Intra- and intergroup comparisons of clinical and microbiological parameters (mean ± SD or median, IQ score)",
+      "parser": "pandoc-rule/1",
+      "rows": 5,
+      "columns": 16,
+      "complexity": {
+        "score": 0.945,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 5,
+          "n_data_columns": 15,
+          "n_columns": 16,
+          "n_header_levels": 3,
+          "n_group_headers": 4,
+          "n_column_groups": 3,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 11,
+          "has_timepoints": true,
+          "n_data_cells": 75
+        },
+        "drivers": [
+          "3 Header-Ebenen",
+          "4 zusammengefuehrte Header-Zellen",
+          "3 Spaltengruppen",
+          "15 Datenspalten",
+          "11 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrarm",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf",
+        "komplexe_pdf"
+      ],
+      "n_target_columns": 4,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:426|PMC3877023:T4",
+      "table_id": "PMC3877023:T4",
+      "doc_id": "PMC3877023",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3877023.md",
+      "record_ids": [
+        "yun2024:426"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 1,
+      "columns": 7,
+      "complexity": {
+        "score": 0.69,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 1,
+          "n_data_columns": 6,
+          "n_columns": 7,
+          "n_header_levels": 4,
+          "n_group_headers": 2,
+          "n_column_groups": 2,
+          "n_footnotes": 1,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 6
+        },
+        "drivers": [
+          "4 Header-Ebenen",
+          "2 zusammengefuehrte Header-Zellen",
+          "1 Fussnoten",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 4,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:421|PMC3877023:T3",
+      "table_id": "PMC3877023:T3",
+      "doc_id": "PMC3877023",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3877023.md",
+      "record_ids": [
+        "yun2024:421"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 5,
+      "columns": 7,
+      "complexity": {
+        "score": 0.71,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 5,
+          "n_data_columns": 6,
+          "n_columns": 7,
+          "n_header_levels": 4,
+          "n_group_headers": 2,
+          "n_column_groups": 2,
+          "n_footnotes": 2,
+          "n_irregular_rows": 0,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 2,
+          "has_timepoints": false,
+          "n_data_cells": 30
+        },
+        "drivers": [
+          "4 Header-Ebenen",
+          "2 zusammengefuehrte Header-Zellen",
+          "2 Fussnoten",
+          "2 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 4,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
       "gold_reachable": 1
     },
     {
@@ -661,11 +956,11 @@
       "rows": 8,
       "columns": 10,
       "complexity": {
-        "score": 0.78,
+        "score": 0.8008,
         "class": "sehr_komplex",
         "features": {
           "n_rows": 8,
-          "n_data_columns": 8,
+          "n_data_columns": 9,
           "n_columns": 10,
           "n_header_levels": 3,
           "n_group_headers": 0,
@@ -673,15 +968,16 @@
           "n_footnotes": 1,
           "n_irregular_rows": 1,
           "n_target_columns": 4,
-          "n_unassigned_columns": 4,
+          "n_unassigned_columns": 5,
           "has_timepoints": true,
-          "n_data_cells": 62
+          "n_data_cells": 70
         },
         "drivers": [
           "3 Header-Ebenen",
+          "9 Datenspalten",
           "1 Fussnoten",
           "1/8 unregelmaessige Zeilen",
-          "4 Spalten ohne Zielfeld",
+          "5 Spalten ohne Zielfeld",
           "Zeitpunktangaben in Kopf oder Zeilen"
         ]
       },
@@ -693,91 +989,247 @@
         "komplexe_pdf"
       ],
       "n_target_columns": 4,
+      "fields": [
+        "comparator_group_size"
+      ],
       "gold_cells": 6,
       "gold_reachable": 1
     },
     {
-      "candidate_id": "yun2024:486|PMC3786549:T3",
-      "table_id": "PMC3786549:T3",
-      "doc_id": "PMC3786549",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3786549.md",
+      "candidate_id": "yun2024:531|PMC4230312:T3",
+      "table_id": "PMC4230312:T3",
+      "doc_id": "PMC4230312",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4230312.md",
       "record_ids": [
-        "yun2024:486"
+        "yun2024:531"
       ],
-      "caption": "",
+      "caption": "**Common adverse events (≥5**% **of patients in any group; safety population)**",
       "parser": "pandoc-rule/1",
-      "rows": 2,
-      "columns": 7,
+      "rows": 11,
+      "columns": 4,
       "complexity": {
-        "score": 0.8,
-        "class": "sehr_komplex",
+        "score": 0.2107,
+        "class": "einfach",
         "features": {
-          "n_rows": 2,
-          "n_data_columns": 6,
-          "n_columns": 7,
-          "n_header_levels": 3,
-          "n_group_headers": 3,
-          "n_column_groups": 3,
+          "n_rows": 11,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 1,
+          "n_target_columns": 3,
+          "n_unassigned_columns": 0,
+          "has_timepoints": true,
+          "n_data_cells": 33
+        },
+        "drivers": [
+          "1/11 unregelmaessige Zeilen",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "einfach",
+        "mehrzeitpunkt",
+        "komplexe_pdf"
+      ],
+      "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:662|PMC4987981:T1",
+      "table_id": "PMC4987981:T1",
+      "doc_id": "PMC4987981",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4987981.md",
+      "record_ids": [
+        "yun2024:662"
+      ],
+      "caption": "Baseline characteristics of three treatment groups",
+      "parser": "pandoc-rule/1",
+      "rows": 40,
+      "columns": 5,
+      "complexity": {
+        "score": 0.3675,
+        "class": "mittel",
+        "features": {
+          "n_rows": 40,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
           "n_footnotes": 2,
           "n_irregular_rows": 0,
           "n_target_columns": 3,
-          "n_unassigned_columns": 3,
-          "has_timepoints": false,
-          "n_data_cells": 9
+          "n_unassigned_columns": 1,
+          "has_timepoints": true,
+          "n_data_cells": 160
+        },
+        "drivers": [
+          "40 Datenzeilen",
+          "2 Fussnoten",
+          "1 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrzeitpunkt",
+        "fussnoten"
+      ],
+      "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 2,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:665|PMC4987981:T2",
+      "table_id": "PMC4987981:T2",
+      "doc_id": "PMC4987981",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4987981.md",
+      "record_ids": [
+        "yun2024:665"
+      ],
+      "caption": "Mean Change in individual parameters of metabolic syndrome after 12 weeks of treatment in three treatment groups from baseline (Intention to treat Analysis)",
+      "parser": "pandoc-rule/1",
+      "rows": 10,
+      "columns": 8,
+      "complexity": {
+        "score": 0.6046,
+        "class": "komplex",
+        "features": {
+          "n_rows": 10,
+          "n_data_columns": 7,
+          "n_columns": 8,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 3,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 5,
+          "has_timepoints": true,
+          "n_data_cells": 70
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "3 Fussnoten",
+          "5 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_mean",
+        "comparator_standard_deviation",
+        "intervention_mean",
+        "intervention_standard_deviation"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 4
+    },
+    {
+      "candidate_id": "yun2024:391|PMC3278655:T2",
+      "table_id": "PMC3278655:T2",
+      "doc_id": "PMC3278655",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3278655.md",
+      "record_ids": [
+        "yun2024:391"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 8,
+      "columns": 10,
+      "complexity": {
+        "score": 0.8008,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 8,
+          "n_data_columns": 9,
+          "n_columns": 10,
+          "n_header_levels": 3,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 1,
+          "n_irregular_rows": 1,
+          "n_target_columns": 4,
+          "n_unassigned_columns": 5,
+          "has_timepoints": true,
+          "n_data_cells": 70
         },
         "drivers": [
           "3 Header-Ebenen",
-          "3 zusammengefuehrte Header-Zellen",
-          "3 Spaltengruppen",
-          "2 Fussnoten",
-          "3 Spalten ohne Zielfeld"
+          "9 Datenspalten",
+          "1 Fussnoten",
+          "1/8 unregelmaessige Zeilen",
+          "5 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
         ]
       },
       "strata": [
         "sehr_komplex",
-        "mehrarm",
+        "mehrzeitpunkt",
         "mehrstufiger_kopf",
-        "fussnoten"
+        "fussnoten",
+        "komplexe_pdf"
       ],
-      "n_target_columns": 3,
-      "gold_cells": 6,
+      "n_target_columns": 4,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "gold_cells": 4,
       "gold_reachable": 1
     },
     {
-      "candidate_id": "yun2024:79|PMC3546023:T4",
-      "table_id": "PMC3546023:T4",
-      "doc_id": "PMC3546023",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3546023.md",
+      "candidate_id": "yun2024:205|PMC5380326:T2",
+      "table_id": "PMC5380326:T2",
+      "doc_id": "PMC5380326",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5380326.md",
       "record_ids": [
-        "yun2024:79"
+        "yun2024:205"
       ],
-      "caption": "The effects of palmvitee supplementation on lymphocyte proliferative presented as stimulation index (S.I.) after induction with mitogen, PHA and Con A in nonsmokers and smokers according to the number",
+      "caption": "",
       "parser": "pandoc-rule/1",
-      "rows": 3,
+      "rows": 12,
       "columns": 7,
       "complexity": {
-        "score": 0.725,
+        "score": 0.82,
         "class": "sehr_komplex",
         "features": {
-          "n_rows": 3,
+          "n_rows": 12,
           "n_data_columns": 6,
           "n_columns": 7,
           "n_header_levels": 2,
           "n_group_headers": 3,
           "n_column_groups": 3,
-          "n_footnotes": 1,
+          "n_footnotes": 4,
           "n_irregular_rows": 0,
-          "n_target_columns": 3,
-          "n_unassigned_columns": 3,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 5,
           "has_timepoints": true,
-          "n_data_cells": 18
+          "n_data_cells": 72
         },
         "drivers": [
           "2 Header-Ebenen",
           "3 zusammengefuehrte Header-Zellen",
           "3 Spaltengruppen",
-          "1 Fussnoten",
-          "3 Spalten ohne Zielfeld",
+          "4 Fussnoten",
+          "5 Spalten ohne Zielfeld",
           "Zeitpunktangaben in Kopf oder Zeilen"
         ]
       },
@@ -788,78 +1240,33 @@
         "mehrstufiger_kopf",
         "fussnoten"
       ],
-      "n_target_columns": 3,
+      "n_target_columns": 1,
+      "fields": [
+        "intervention_mean",
+        "intervention_standard_deviation"
+      ],
       "gold_cells": 6,
-      "gold_reachable": 1
+      "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:81|PMC3546023:T4",
-      "table_id": "PMC3546023:T4",
-      "doc_id": "PMC3546023",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3546023.md",
-      "record_ids": [
-        "yun2024:81"
-      ],
-      "caption": "The effects of palmvitee supplementation on lymphocyte proliferative presented as stimulation index (S.I.) after induction with mitogen, PHA and Con A in nonsmokers and smokers according to the number",
-      "parser": "pandoc-rule/1",
-      "rows": 3,
-      "columns": 7,
-      "complexity": {
-        "score": 0.725,
-        "class": "sehr_komplex",
-        "features": {
-          "n_rows": 3,
-          "n_data_columns": 6,
-          "n_columns": 7,
-          "n_header_levels": 2,
-          "n_group_headers": 3,
-          "n_column_groups": 3,
-          "n_footnotes": 1,
-          "n_irregular_rows": 0,
-          "n_target_columns": 3,
-          "n_unassigned_columns": 3,
-          "has_timepoints": true,
-          "n_data_cells": 18
-        },
-        "drivers": [
-          "2 Header-Ebenen",
-          "3 zusammengefuehrte Header-Zellen",
-          "3 Spaltengruppen",
-          "1 Fussnoten",
-          "3 Spalten ohne Zielfeld",
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "sehr_komplex",
-        "mehrarm",
-        "mehrzeitpunkt",
-        "mehrstufiger_kopf",
-        "fussnoten"
-      ],
-      "n_target_columns": 3,
-      "gold_cells": 6,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:445|PMC4140238:T3",
-      "table_id": "PMC4140238:T3",
+      "candidate_id": "yun2024:445|PMC4140238:T2",
+      "table_id": "PMC4140238:T2",
       "doc_id": "PMC4140238",
       "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4140238.md",
       "record_ids": [
         "yun2024:445"
       ],
-      "caption": "Differences in mean conjunctival hyperemia scores (observed data only) for subjects in the per-protocol population instilling BBOS 1.5% or placebo eye drops in each eye following a CAC",
+      "caption": "Differences in mean ocular itching scores (observed data only) for subjects in the per-protocol population instilling BBOS 1.5% or placebo eye drops in each eye following a CAC",
       "parser": "pandoc-rule/1",
       "rows": 9,
-      "columns": 6,
+      "columns": 5,
       "complexity": {
         "score": 0.3125,
         "class": "mittel",
         "features": {
           "n_rows": 9,
           "n_data_columns": 4,
-          "n_columns": 6,
+          "n_columns": 5,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
@@ -882,53 +1289,105 @@
         "fussnoten"
       ],
       "n_target_columns": 3,
+      "fields": [
+        "comparator_mean",
+        "comparator_standard_deviation",
+        "intervention_mean"
+      ],
       "gold_cells": 4,
       "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:663|PMC4987981:T3",
-      "table_id": "PMC4987981:T3",
-      "doc_id": "PMC4987981",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4987981.md",
+      "candidate_id": "yun2024:675|PMC4550271:T1",
+      "table_id": "PMC4550271:T1",
+      "doc_id": "PMC4550271",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4550271.md",
       "record_ids": [
-        "yun2024:663"
+        "yun2024:675"
       ],
-      "caption": "Adverse events observed during the study in placebo, metformin and pioglitazone treatment groups in topical treatment arm",
+      "caption": "",
       "parser": "pandoc-rule/1",
-      "rows": 22,
-      "columns": 5,
+      "rows": 3,
+      "columns": 4,
       "complexity": {
-        "score": 0.3857,
+        "score": 0.3125,
         "class": "mittel",
         "features": {
-          "n_rows": 22,
-          "n_data_columns": 4,
-          "n_columns": 5,
-          "n_header_levels": 1,
+          "n_rows": 3,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 2,
           "n_group_headers": 0,
           "n_column_groups": 0,
-          "n_footnotes": 4,
-          "n_irregular_rows": 2,
+          "n_footnotes": 5,
+          "n_irregular_rows": 0,
           "n_target_columns": 3,
-          "n_unassigned_columns": 1,
-          "has_timepoints": true,
-          "n_data_cells": 86
+          "n_unassigned_columns": 0,
+          "has_timepoints": false,
+          "n_data_cells": 9
         },
         "drivers": [
-          "22 Datenzeilen",
-          "4 Fussnoten",
-          "2/22 unregelmaessige Zeilen",
-          "1 Spalten ohne Zielfeld",
-          "Zeitpunktangaben in Kopf oder Zeilen"
+          "2 Header-Ebenen",
+          "5 Fussnoten"
         ]
       },
       "strata": [
         "mittel",
-        "mehrzeitpunkt",
-        "fussnoten",
-        "komplexe_pdf"
+        "mehrstufiger_kopf",
+        "fussnoten"
       ],
       "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:672|PMC4550271:T1",
+      "table_id": "PMC4550271:T1",
+      "doc_id": "PMC4550271",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4550271.md",
+      "record_ids": [
+        "yun2024:672"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 3,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3125,
+        "class": "mittel",
+        "features": {
+          "n_rows": 3,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 5,
+          "n_irregular_rows": 0,
+          "n_target_columns": 3,
+          "n_unassigned_columns": 0,
+          "has_timepoints": false,
+          "n_data_cells": 9
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "5 Fussnoten"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
+      "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 2,
       "gold_reachable": 2
     },
@@ -971,54 +1430,57 @@
         "mehrzeitpunkt"
       ],
       "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 2,
       "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:662|PMC4987981:T3",
-      "table_id": "PMC4987981:T3",
-      "doc_id": "PMC4987981",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4987981.md",
+      "candidate_id": "yun2024:253|PMC5614421:T2",
+      "table_id": "PMC5614421:T2",
+      "doc_id": "PMC5614421",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5614421.md",
       "record_ids": [
-        "yun2024:662"
+        "yun2024:253"
       ],
-      "caption": "Adverse events observed during the study in placebo, metformin and pioglitazone treatment groups in topical treatment arm",
+      "caption": "",
       "parser": "pandoc-rule/1",
-      "rows": 22,
-      "columns": 5,
+      "rows": 6,
+      "columns": 7,
       "complexity": {
-        "score": 0.3857,
+        "score": 0.285,
         "class": "mittel",
         "features": {
-          "n_rows": 22,
-          "n_data_columns": 4,
-          "n_columns": 5,
+          "n_rows": 6,
+          "n_data_columns": 6,
+          "n_columns": 7,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
-          "n_footnotes": 4,
-          "n_irregular_rows": 2,
-          "n_target_columns": 3,
-          "n_unassigned_columns": 1,
-          "has_timepoints": true,
-          "n_data_cells": 86
+          "n_footnotes": 2,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 4,
+          "has_timepoints": false,
+          "n_data_cells": 18
         },
         "drivers": [
-          "22 Datenzeilen",
-          "4 Fussnoten",
-          "2/22 unregelmaessige Zeilen",
-          "1 Spalten ohne Zielfeld",
-          "Zeitpunktangaben in Kopf oder Zeilen"
+          "2 Fussnoten",
+          "4 Spalten ohne Zielfeld"
         ]
       },
       "strata": [
         "mittel",
-        "mehrzeitpunkt",
-        "fussnoten",
-        "komplexe_pdf"
+        "fussnoten"
       ],
-      "n_target_columns": 3,
-      "gold_cells": 2,
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 4,
       "gold_reachable": 2
     },
     {
@@ -1065,355 +1527,11 @@
         "fussnoten"
       ],
       "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "comparator_mean"
+      ],
       "gold_cells": 4,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:489|PMC3786549:T3",
-      "table_id": "PMC3786549:T3",
-      "doc_id": "PMC3786549",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3786549.md",
-      "record_ids": [
-        "yun2024:489"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 2,
-      "columns": 7,
-      "complexity": {
-        "score": 0.8,
-        "class": "sehr_komplex",
-        "features": {
-          "n_rows": 2,
-          "n_data_columns": 6,
-          "n_columns": 7,
-          "n_header_levels": 3,
-          "n_group_headers": 3,
-          "n_column_groups": 3,
-          "n_footnotes": 2,
-          "n_irregular_rows": 0,
-          "n_target_columns": 3,
-          "n_unassigned_columns": 3,
-          "has_timepoints": false,
-          "n_data_cells": 9
-        },
-        "drivers": [
-          "3 Header-Ebenen",
-          "3 zusammengefuehrte Header-Zellen",
-          "3 Spaltengruppen",
-          "2 Fussnoten",
-          "3 Spalten ohne Zielfeld"
-        ]
-      },
-      "strata": [
-        "sehr_komplex",
-        "mehrarm",
-        "mehrstufiger_kopf",
-        "fussnoten"
-      ],
-      "n_target_columns": 3,
-      "gold_cells": 6,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:205|PMC5380326:T2",
-      "table_id": "PMC5380326:T2",
-      "doc_id": "PMC5380326",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5380326.md",
-      "record_ids": [
-        "yun2024:205"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 12,
-      "columns": 7,
-      "complexity": {
-        "score": 0.8025,
-        "class": "sehr_komplex",
-        "features": {
-          "n_rows": 12,
-          "n_data_columns": 5,
-          "n_columns": 7,
-          "n_header_levels": 2,
-          "n_group_headers": 3,
-          "n_column_groups": 3,
-          "n_footnotes": 4,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 4,
-          "has_timepoints": true,
-          "n_data_cells": 60
-        },
-        "drivers": [
-          "2 Header-Ebenen",
-          "3 zusammengefuehrte Header-Zellen",
-          "3 Spaltengruppen",
-          "4 Fussnoten",
-          "4 Spalten ohne Zielfeld",
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "sehr_komplex",
-        "mehrarm",
-        "mehrzeitpunkt",
-        "mehrstufiger_kopf",
-        "fussnoten"
-      ],
-      "n_target_columns": 1,
-      "gold_cells": 6,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:531|PMC4230312:T1",
-      "table_id": "PMC4230312:T1",
-      "doc_id": "PMC4230312",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4230312.md",
-      "record_ids": [
-        "yun2024:531"
-      ],
-      "caption": "**Baseline demographic and clinical characteristics (safety population)**",
-      "parser": "pandoc-rule/1",
-      "rows": 5,
-      "columns": 4,
-      "complexity": {
-        "score": 0.1625,
-        "class": "einfach",
-        "features": {
-          "n_rows": 5,
-          "n_data_columns": 3,
-          "n_columns": 4,
-          "n_header_levels": 1,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 3,
-          "n_unassigned_columns": 0,
-          "has_timepoints": true,
-          "n_data_cells": 15
-        },
-        "drivers": [
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "einfach",
-        "mehrzeitpunkt"
-      ],
-      "n_target_columns": 3,
-      "gold_cells": 6,
-      "gold_reachable": 2
-    },
-    {
-      "candidate_id": "yun2024:675|PMC4550271:T1",
-      "table_id": "PMC4550271:T1",
-      "doc_id": "PMC4550271",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4550271.md",
-      "record_ids": [
-        "yun2024:675"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 3,
-      "columns": 4,
-      "complexity": {
-        "score": 0.3,
-        "class": "mittel",
-        "features": {
-          "n_rows": 3,
-          "n_data_columns": 2,
-          "n_columns": 4,
-          "n_header_levels": 2,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 5,
-          "n_irregular_rows": 0,
-          "n_target_columns": 2,
-          "n_unassigned_columns": 0,
-          "has_timepoints": false,
-          "n_data_cells": 6
-        },
-        "drivers": [
-          "2 Header-Ebenen",
-          "5 Fussnoten"
-        ]
-      },
-      "strata": [
-        "mittel",
-        "mehrstufiger_kopf",
-        "fussnoten"
-      ],
-      "n_target_columns": 2,
-      "gold_cells": 6,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:445|PMC4140238:T2",
-      "table_id": "PMC4140238:T2",
-      "doc_id": "PMC4140238",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4140238.md",
-      "record_ids": [
-        "yun2024:445"
-      ],
-      "caption": "Differences in mean ocular itching scores (observed data only) for subjects in the per-protocol population instilling BBOS 1.5% or placebo eye drops in each eye following a CAC",
-      "parser": "pandoc-rule/1",
-      "rows": 9,
-      "columns": 5,
-      "complexity": {
-        "score": 0.2625,
-        "class": "mittel",
-        "features": {
-          "n_rows": 9,
-          "n_data_columns": 3,
-          "n_columns": 5,
-          "n_header_levels": 1,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 3,
-          "n_irregular_rows": 0,
-          "n_target_columns": 3,
-          "n_unassigned_columns": 0,
-          "has_timepoints": true,
-          "n_data_cells": 21
-        },
-        "drivers": [
-          "3 Fussnoten",
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "mittel",
-        "mehrzeitpunkt",
-        "fussnoten"
-      ],
-      "n_target_columns": 3,
-      "gold_cells": 4,
-      "gold_reachable": 2
-    },
-    {
-      "candidate_id": "yun2024:196|PMC5360580:T6",
-      "table_id": "PMC5360580:T6",
-      "doc_id": "PMC5360580",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5360580.md",
-      "record_ids": [
-        "yun2024:196"
-      ],
-      "caption": "Table 6",
-      "parser": "pandoc-rule/1",
-      "rows": 3,
-      "columns": 3,
-      "complexity": {
-        "score": 0.04,
-        "class": "einfach",
-        "features": {
-          "n_rows": 3,
-          "n_data_columns": 2,
-          "n_columns": 3,
-          "n_header_levels": 1,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 2,
-          "n_unassigned_columns": 0,
-          "has_timepoints": false,
-          "n_data_cells": 6
-        },
-        "drivers": []
-      },
-      "strata": [
-        "einfach"
-      ],
-      "n_target_columns": 2,
-      "gold_cells": 6,
-      "gold_reachable": 2
-    },
-    {
-      "candidate_id": "yun2024:639|PMC4511433:T2",
-      "table_id": "PMC4511433:T2",
-      "doc_id": "PMC4511433",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4511433.md",
-      "record_ids": [
-        "yun2024:639"
-      ],
-      "caption": "Adverse events occurring in more than one subject in the Dyslipidemia study. No serious adverse events and no discontinuations were identified",
-      "parser": "pandoc-rule/1",
-      "rows": 3,
-      "columns": 5,
-      "complexity": {
-        "score": 0.2825,
-        "class": "mittel",
-        "features": {
-          "n_rows": 3,
-          "n_data_columns": 3,
-          "n_columns": 5,
-          "n_header_levels": 2,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 2,
-          "n_unassigned_columns": 1,
-          "has_timepoints": false,
-          "n_data_cells": 9
-        },
-        "drivers": [
-          "2 Header-Ebenen",
-          "1 Spalten ohne Zielfeld"
-        ]
-      },
-      "strata": [
-        "mittel",
-        "mehrstufiger_kopf"
-      ],
-      "n_target_columns": 2,
-      "gold_cells": 2,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:336|PMC5617873:T2",
-      "table_id": "PMC5617873:T2",
-      "doc_id": "PMC5617873",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5617873.md",
-      "record_ids": [
-        "yun2024:336"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 1,
-      "columns": 6,
-      "complexity": {
-        "score": 0.53,
-        "class": "komplex",
-        "features": {
-          "n_rows": 1,
-          "n_data_columns": 4,
-          "n_columns": 6,
-          "n_header_levels": 2,
-          "n_group_headers": 2,
-          "n_column_groups": 2,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 2,
-          "n_unassigned_columns": 2,
-          "has_timepoints": true,
-          "n_data_cells": 4
-        },
-        "drivers": [
-          "2 Header-Ebenen",
-          "2 zusammengefuehrte Header-Zellen",
-          "2 Spalten ohne Zielfeld",
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "komplex",
-        "mehrzeitpunkt",
-        "mehrstufiger_kopf"
-      ],
-      "n_target_columns": 2,
-      "gold_cells": 6,
       "gold_reachable": 1
     },
     {
@@ -1460,6 +1578,9 @@
         "fussnoten"
       ],
       "n_target_columns": 2,
+      "fields": [
+        "comparator_mean"
+      ],
       "gold_cells": 4,
       "gold_reachable": 1
     },
@@ -1476,11 +1597,11 @@
       "rows": 12,
       "columns": 7,
       "complexity": {
-        "score": 0.8025,
+        "score": 0.82,
         "class": "sehr_komplex",
         "features": {
           "n_rows": 12,
-          "n_data_columns": 5,
+          "n_data_columns": 6,
           "n_columns": 7,
           "n_header_levels": 2,
           "n_group_headers": 3,
@@ -1488,16 +1609,16 @@
           "n_footnotes": 4,
           "n_irregular_rows": 0,
           "n_target_columns": 1,
-          "n_unassigned_columns": 4,
+          "n_unassigned_columns": 5,
           "has_timepoints": true,
-          "n_data_cells": 60
+          "n_data_cells": 72
         },
         "drivers": [
           "2 Header-Ebenen",
           "3 zusammengefuehrte Header-Zellen",
           "3 Spaltengruppen",
           "4 Fussnoten",
-          "4 Spalten ohne Zielfeld",
+          "5 Spalten ohne Zielfeld",
           "Zeitpunktangaben in Kopf oder Zeilen"
         ]
       },
@@ -1509,96 +1630,104 @@
         "fussnoten"
       ],
       "n_target_columns": 1,
+      "fields": [
+        "intervention_mean",
+        "intervention_standard_deviation"
+      ],
       "gold_cells": 6,
-      "gold_reachable": 1
+      "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:335|PMC5617873:T2",
-      "table_id": "PMC5617873:T2",
-      "doc_id": "PMC5617873",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5617873.md",
+      "candidate_id": "yun2024:645|PMC4675066:T1",
+      "table_id": "PMC4675066:T1",
+      "doc_id": "PMC4675066",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4675066.md",
       "record_ids": [
-        "yun2024:335"
+        "yun2024:645"
       ],
-      "caption": "",
+      "caption": "Baseline demographic characteristics",
       "parser": "pandoc-rule/1",
-      "rows": 1,
-      "columns": 6,
+      "rows": 11,
+      "columns": 3,
       "complexity": {
-        "score": 0.53,
-        "class": "komplex",
+        "score": 0.26,
+        "class": "mittel",
         "features": {
-          "n_rows": 1,
-          "n_data_columns": 4,
-          "n_columns": 6,
-          "n_header_levels": 2,
-          "n_group_headers": 2,
-          "n_column_groups": 2,
-          "n_footnotes": 0,
+          "n_rows": 11,
+          "n_data_columns": 2,
+          "n_columns": 3,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 3,
           "n_irregular_rows": 0,
           "n_target_columns": 2,
-          "n_unassigned_columns": 2,
+          "n_unassigned_columns": 0,
           "has_timepoints": true,
-          "n_data_cells": 4
+          "n_data_cells": 22
         },
         "drivers": [
-          "2 Header-Ebenen",
-          "2 zusammengefuehrte Header-Zellen",
-          "2 Spalten ohne Zielfeld",
+          "3 Fussnoten",
           "Zeitpunktangaben in Kopf oder Zeilen"
         ]
       },
       "strata": [
-        "komplex",
+        "mittel",
         "mehrzeitpunkt",
-        "mehrstufiger_kopf"
+        "fussnoten"
       ],
       "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 6,
-      "gold_reachable": 1
+      "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:673|PMC4550271:T1",
-      "table_id": "PMC4550271:T1",
-      "doc_id": "PMC4550271",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4550271.md",
+      "candidate_id": "yun2024:463|PMC5726464:T1",
+      "table_id": "PMC5726464:T1",
+      "doc_id": "PMC5726464",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5726464.md",
       "record_ids": [
-        "yun2024:673"
+        "yun2024:463"
       ],
       "caption": "",
       "parser": "pandoc-rule/1",
-      "rows": 3,
-      "columns": 4,
+      "rows": 1,
+      "columns": 3,
       "complexity": {
-        "score": 0.3,
-        "class": "mittel",
+        "score": 0.21,
+        "class": "einfach",
         "features": {
-          "n_rows": 3,
+          "n_rows": 1,
           "n_data_columns": 2,
-          "n_columns": 4,
+          "n_columns": 3,
           "n_header_levels": 2,
           "n_group_headers": 0,
           "n_column_groups": 0,
-          "n_footnotes": 5,
+          "n_footnotes": 0,
           "n_irregular_rows": 0,
           "n_target_columns": 2,
           "n_unassigned_columns": 0,
           "has_timepoints": false,
-          "n_data_cells": 6
+          "n_data_cells": 2
         },
         "drivers": [
-          "2 Header-Ebenen",
-          "5 Fussnoten"
+          "2 Header-Ebenen"
         ]
       },
       "strata": [
-        "mittel",
-        "mehrstufiger_kopf",
-        "fussnoten"
+        "einfach",
+        "mehrstufiger_kopf"
       ],
       "n_target_columns": 2,
-      "gold_cells": 6,
-      "gold_reachable": 1
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 2,
+      "gold_reachable": 2
     },
     {
       "candidate_id": "yun2024:296|PMC4355974:T2",
@@ -1644,162 +1773,82 @@
         "fussnoten"
       ],
       "n_target_columns": 2,
+      "fields": [
+        "comparator_mean"
+      ],
       "gold_cells": 4,
       "gold_reachable": 1
     },
     {
-      "candidate_id": "yun2024:550|PMC3648394:T1",
-      "table_id": "PMC3648394:T1",
-      "doc_id": "PMC3648394",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3648394.md",
+      "candidate_id": "yun2024:265|PMC2430617:T1",
+      "table_id": "PMC2430617:T1",
+      "doc_id": "PMC2430617",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2430617.md",
       "record_ids": [
-        "yun2024:550"
+        "yun2024:265"
       ],
-      "caption": "Baseline characteristics of the total cohort and groups",
+      "caption": "",
       "parser": "pandoc-rule/1",
       "rows": 7,
       "columns": 4,
       "complexity": {
-        "score": 0.06,
+        "score": 0.0725,
         "class": "einfach",
         "features": {
           "n_rows": 7,
-          "n_data_columns": 2,
+          "n_data_columns": 3,
           "n_columns": 4,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
           "n_footnotes": 0,
           "n_irregular_rows": 0,
-          "n_target_columns": 2,
+          "n_target_columns": 3,
           "n_unassigned_columns": 0,
           "has_timepoints": false,
-          "n_data_cells": 14
+          "n_data_cells": 21
         },
         "drivers": []
       },
       "strata": [
         "einfach"
       ],
-      "n_target_columns": 2,
-      "gold_cells": 6,
+      "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 4,
       "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:407|PMC5781260:T1",
-      "table_id": "PMC5781260:T1",
-      "doc_id": "PMC5781260",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5781260.md",
-      "record_ids": [
-        "yun2024:407"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 1,
-      "columns": 5,
-      "complexity": {
-        "score": 0.2725,
-        "class": "mittel",
-        "features": {
-          "n_rows": 1,
-          "n_data_columns": 3,
-          "n_columns": 5,
-          "n_header_levels": 2,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 2,
-          "n_unassigned_columns": 1,
-          "has_timepoints": false,
-          "n_data_cells": 3
-        },
-        "drivers": [
-          "2 Header-Ebenen",
-          "1 Spalten ohne Zielfeld"
-        ]
-      },
-      "strata": [
-        "mittel",
-        "mehrstufiger_kopf"
-      ],
-      "n_target_columns": 2,
-      "gold_cells": 2,
-      "gold_reachable": 2
-    },
-    {
-      "candidate_id": "yun2024:426|PMC3877023:T3",
-      "table_id": "PMC3877023:T3",
-      "doc_id": "PMC3877023",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3877023.md",
-      "record_ids": [
-        "yun2024:426"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 5,
-      "columns": 7,
-      "complexity": {
-        "score": 0.7675,
-        "class": "sehr_komplex",
-        "features": {
-          "n_rows": 5,
-          "n_data_columns": 5,
-          "n_columns": 7,
-          "n_header_levels": 4,
-          "n_group_headers": 2,
-          "n_column_groups": 2,
-          "n_footnotes": 2,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 4,
-          "has_timepoints": false,
-          "n_data_cells": 25
-        },
-        "drivers": [
-          "4 Header-Ebenen",
-          "2 zusammengefuehrte Header-Zellen",
-          "2 Fussnoten",
-          "4 Spalten ohne Zielfeld"
-        ]
-      },
-      "strata": [
-        "sehr_komplex",
-        "mehrstufiger_kopf",
-        "fussnoten"
-      ],
-      "n_target_columns": 1,
-      "gold_cells": 6,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:645|PMC4675066:T1",
+      "candidate_id": "yun2024:647|PMC4675066:T1",
       "table_id": "PMC4675066:T1",
       "doc_id": "PMC4675066",
       "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4675066.md",
       "record_ids": [
-        "yun2024:645"
+        "yun2024:647"
       ],
       "caption": "Baseline demographic characteristics",
       "parser": "pandoc-rule/1",
       "rows": 11,
       "columns": 3,
       "complexity": {
-        "score": 0.2475,
-        "class": "einfach",
+        "score": 0.26,
+        "class": "mittel",
         "features": {
           "n_rows": 11,
-          "n_data_columns": 1,
+          "n_data_columns": 2,
           "n_columns": 3,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
           "n_footnotes": 3,
           "n_irregular_rows": 0,
-          "n_target_columns": 1,
+          "n_target_columns": 2,
           "n_unassigned_columns": 0,
           "has_timepoints": true,
-          "n_data_cells": 11
+          "n_data_cells": 22
         },
         "drivers": [
           "3 Fussnoten",
@@ -1807,13 +1856,165 @@
         ]
       },
       "strata": [
-        "einfach",
+        "mittel",
         "mehrzeitpunkt",
         "fussnoten"
       ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:336|PMC5617873:T2",
+      "table_id": "PMC5617873:T2",
+      "doc_id": "PMC5617873",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5617873.md",
+      "record_ids": [
+        "yun2024:336"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 1,
+      "columns": 6,
+      "complexity": {
+        "score": 0.5575,
+        "class": "komplex",
+        "features": {
+          "n_rows": 1,
+          "n_data_columns": 5,
+          "n_columns": 6,
+          "n_header_levels": 2,
+          "n_group_headers": 2,
+          "n_column_groups": 2,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 3,
+          "has_timepoints": true,
+          "n_data_cells": 5
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "2 zusammengefuehrte Header-Zellen",
+          "3 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "intervention_mean",
+        "intervention_standard_deviation"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:112|PMC4319071:T1",
+      "table_id": "PMC4319071:T1",
+      "doc_id": "PMC4319071",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4319071.md",
+      "record_ids": [
+        "yun2024:112"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 1,
+      "columns": 10,
+      "complexity": {
+        "score": 0.7908,
+        "class": "sehr_komplex",
+        "features": {
+          "n_rows": 1,
+          "n_data_columns": 9,
+          "n_columns": 10,
+          "n_header_levels": 3,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 1,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 8,
+          "has_timepoints": true,
+          "n_data_cells": 7
+        },
+        "drivers": [
+          "3 Header-Ebenen",
+          "9 Datenspalten",
+          "1 Fussnoten",
+          "8 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "sehr_komplex",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf",
+        "fussnoten"
+      ],
       "n_target_columns": 1,
+      "fields": [
+        "comparator_group_size"
+      ],
       "gold_cells": 6,
       "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:335|PMC5617873:T2",
+      "table_id": "PMC5617873:T2",
+      "doc_id": "PMC5617873",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5617873.md",
+      "record_ids": [
+        "yun2024:335"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 1,
+      "columns": 6,
+      "complexity": {
+        "score": 0.5575,
+        "class": "komplex",
+        "features": {
+          "n_rows": 1,
+          "n_data_columns": 5,
+          "n_columns": 6,
+          "n_header_levels": 2,
+          "n_group_headers": 2,
+          "n_column_groups": 2,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 3,
+          "has_timepoints": true,
+          "n_data_cells": 5
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "2 zusammengefuehrte Header-Zellen",
+          "3 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "intervention_mean",
+        "intervention_standard_deviation"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 2
     },
     {
       "candidate_id": "yun2024:403|PMC5781260:T1",
@@ -1854,96 +2055,108 @@
         "mehrstufiger_kopf"
       ],
       "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 2,
       "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:645|PMC4675066:T2",
-      "table_id": "PMC4675066:T2",
-      "doc_id": "PMC4675066",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4675066.md",
+      "candidate_id": "yun2024:252|PMC5614421:T2",
+      "table_id": "PMC5614421:T2",
+      "doc_id": "PMC5614421",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5614421.md",
       "record_ids": [
-        "yun2024:645"
+        "yun2024:252"
       ],
-      "caption": "Developmental outcomes from the Bayley Scales of Infant and Toddler Development (Bayley-III)",
+      "caption": "",
       "parser": "pandoc-rule/1",
-      "rows": 11,
-      "columns": 5,
+      "rows": 6,
+      "columns": 7,
       "complexity": {
-        "score": 0.2725,
+        "score": 0.285,
         "class": "mittel",
         "features": {
-          "n_rows": 11,
-          "n_data_columns": 3,
-          "n_columns": 5,
+          "n_rows": 6,
+          "n_data_columns": 6,
+          "n_columns": 7,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
-          "n_footnotes": 3,
+          "n_footnotes": 2,
           "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 2,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 4,
           "has_timepoints": false,
-          "n_data_cells": 33
+          "n_data_cells": 18
         },
         "drivers": [
-          "3 Fussnoten",
-          "2 Spalten ohne Zielfeld"
+          "2 Fussnoten",
+          "4 Spalten ohne Zielfeld"
         ]
       },
       "strata": [
         "mittel",
         "fussnoten"
       ],
-      "n_target_columns": 1,
-      "gold_cells": 6,
-      "gold_reachable": 1
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 2,
+      "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:554|PMC3648394:T1",
-      "table_id": "PMC3648394:T1",
-      "doc_id": "PMC3648394",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3648394.md",
+      "candidate_id": "yun2024:266|PMC2430617:T1",
+      "table_id": "PMC2430617:T1",
+      "doc_id": "PMC2430617",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2430617.md",
       "record_ids": [
-        "yun2024:554"
+        "yun2024:266"
       ],
-      "caption": "Baseline characteristics of the total cohort and groups",
+      "caption": "",
       "parser": "pandoc-rule/1",
       "rows": 7,
       "columns": 4,
       "complexity": {
-        "score": 0.06,
+        "score": 0.0725,
         "class": "einfach",
         "features": {
           "n_rows": 7,
-          "n_data_columns": 2,
+          "n_data_columns": 3,
           "n_columns": 4,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
           "n_footnotes": 0,
           "n_irregular_rows": 0,
-          "n_target_columns": 2,
+          "n_target_columns": 3,
           "n_unassigned_columns": 0,
           "has_timepoints": false,
-          "n_data_cells": 14
+          "n_data_cells": 21
         },
         "drivers": []
       },
       "strata": [
         "einfach"
       ],
-      "n_target_columns": 2,
-      "gold_cells": 6,
+      "n_target_columns": 3,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 4,
       "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:640|PMC4511433:T2",
+      "candidate_id": "yun2024:639|PMC4511433:T2",
       "table_id": "PMC4511433:T2",
       "doc_id": "PMC4511433",
       "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4511433.md",
       "record_ids": [
-        "yun2024:640"
+        "yun2024:639"
       ],
       "caption": "Adverse events occurring in more than one subject in the Dyslipidemia study. No serious adverse events and no discontinuations were identified",
       "parser": "pandoc-rule/1",
@@ -1976,51 +2189,56 @@
         "mehrstufiger_kopf"
       ],
       "n_target_columns": 2,
+      "fields": [
+        "intervention_group_size"
+      ],
       "gold_cells": 2,
       "gold_reachable": 1
     },
     {
-      "candidate_id": "yun2024:423|PMC3877023:T4",
-      "table_id": "PMC3877023:T4",
-      "doc_id": "PMC3877023",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3877023.md",
+      "candidate_id": "yun2024:282|PMC3654355:T2",
+      "table_id": "PMC3654355:T2",
+      "doc_id": "PMC3654355",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3654355.md",
       "record_ids": [
-        "yun2024:423"
+        "yun2024:282"
       ],
       "caption": "",
       "parser": "pandoc-rule/1",
-      "rows": 1,
-      "columns": 7,
+      "rows": 6,
+      "columns": 5,
       "complexity": {
-        "score": 0.7475,
-        "class": "sehr_komplex",
+        "score": 0.4525,
+        "class": "komplex",
         "features": {
-          "n_rows": 1,
-          "n_data_columns": 5,
-          "n_columns": 7,
-          "n_header_levels": 4,
-          "n_group_headers": 2,
-          "n_column_groups": 2,
+          "n_rows": 6,
+          "n_data_columns": 4,
+          "n_columns": 5,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
           "n_footnotes": 1,
           "n_irregular_rows": 0,
           "n_target_columns": 1,
-          "n_unassigned_columns": 4,
+          "n_unassigned_columns": 3,
           "has_timepoints": false,
-          "n_data_cells": 5
+          "n_data_cells": 24
         },
         "drivers": [
-          "4 Header-Ebenen",
-          "2 zusammengefuehrte Header-Zellen",
+          "2 Header-Ebenen",
           "1 Fussnoten",
-          "4 Spalten ohne Zielfeld"
+          "3 Spalten ohne Zielfeld"
         ]
       },
       "strata": [
-        "sehr_komplex",
+        "komplex",
         "mehrstufiger_kopf",
         "fussnoten"
       ],
       "n_target_columns": 1,
+      "fields": [
+        "intervention_group_size"
+      ],
       "gold_cells": 6,
       "gold_reachable": 1
     },
@@ -2068,383 +2286,9 @@
         "fussnoten"
       ],
       "n_target_columns": 1,
-      "gold_cells": 6,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:463|PMC5726464:T1",
-      "table_id": "PMC5726464:T1",
-      "doc_id": "PMC5726464",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5726464.md",
-      "record_ids": [
-        "yun2024:463"
+      "fields": [
+        "comparator_group_size"
       ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 1,
-      "columns": 3,
-      "complexity": {
-        "score": 0.1975,
-        "class": "einfach",
-        "features": {
-          "n_rows": 1,
-          "n_data_columns": 1,
-          "n_columns": 3,
-          "n_header_levels": 2,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 0,
-          "has_timepoints": false,
-          "n_data_cells": 1
-        },
-        "drivers": [
-          "2 Header-Ebenen"
-        ]
-      },
-      "strata": [
-        "einfach",
-        "mehrstufiger_kopf"
-      ],
-      "n_target_columns": 1,
-      "gold_cells": 2,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:110|PMC4319071:T1",
-      "table_id": "PMC4319071:T1",
-      "doc_id": "PMC4319071",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4319071.md",
-      "record_ids": [
-        "yun2024:110"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 1,
-      "columns": 10,
-      "complexity": {
-        "score": 0.7908,
-        "class": "sehr_komplex",
-        "features": {
-          "n_rows": 1,
-          "n_data_columns": 9,
-          "n_columns": 10,
-          "n_header_levels": 3,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 1,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 8,
-          "has_timepoints": true,
-          "n_data_cells": 7
-        },
-        "drivers": [
-          "3 Header-Ebenen",
-          "9 Datenspalten",
-          "1 Fussnoten",
-          "8 Spalten ohne Zielfeld",
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "sehr_komplex",
-        "mehrzeitpunkt",
-        "mehrstufiger_kopf",
-        "fussnoten"
-      ],
-      "n_target_columns": 1,
-      "gold_cells": 6,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:346|PMC5686687:T2",
-      "table_id": "PMC5686687:T2",
-      "doc_id": "PMC5686687",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5686687.md",
-      "record_ids": [
-        "yun2024:346"
-      ],
-      "caption": "**Outcomes Measured in Both Groups**",
-      "parser": "pandoc-rule/1",
-      "rows": 4,
-      "columns": 4,
-      "complexity": {
-        "score": 0.1075,
-        "class": "einfach",
-        "features": {
-          "n_rows": 4,
-          "n_data_columns": 3,
-          "n_columns": 4,
-          "n_header_levels": 1,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 2,
-          "n_unassigned_columns": 1,
-          "has_timepoints": false,
-          "n_data_cells": 10
-        },
-        "drivers": [
-          "1 Spalten ohne Zielfeld"
-        ]
-      },
-      "strata": [
-        "einfach"
-      ],
-      "n_target_columns": 2,
-      "gold_cells": 6,
-      "gold_reachable": 2
-    },
-    {
-      "candidate_id": "yun2024:253|PMC5614421:T2",
-      "table_id": "PMC5614421:T2",
-      "doc_id": "PMC5614421",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5614421.md",
-      "record_ids": [
-        "yun2024:253"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 6,
-      "columns": 7,
-      "complexity": {
-        "score": 0.2925,
-        "class": "mittel",
-        "features": {
-          "n_rows": 6,
-          "n_data_columns": 5,
-          "n_columns": 7,
-          "n_header_levels": 1,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 2,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 4,
-          "has_timepoints": false,
-          "n_data_cells": 13
-        },
-        "drivers": [
-          "2 Fussnoten",
-          "4 Spalten ohne Zielfeld"
-        ]
-      },
-      "strata": [
-        "mittel",
-        "fussnoten"
-      ],
-      "n_target_columns": 1,
-      "gold_cells": 4,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:258|PMC5711682:T3",
-      "table_id": "PMC5711682:T3",
-      "doc_id": "PMC5711682",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5711682.md",
-      "record_ids": [
-        "yun2024:258"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 3,
-      "columns": 6,
-      "complexity": {
-        "score": 0.2975,
-        "class": "mittel",
-        "features": {
-          "n_rows": 3,
-          "n_data_columns": 5,
-          "n_columns": 6,
-          "n_header_levels": 1,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 4,
-          "has_timepoints": true,
-          "n_data_cells": 9
-        },
-        "drivers": [
-          "4 Spalten ohne Zielfeld",
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "mittel",
-        "mehrzeitpunkt"
-      ],
-      "n_target_columns": 1,
-      "gold_cells": 4,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:453|PMC5726464:T1",
-      "table_id": "PMC5726464:T1",
-      "doc_id": "PMC5726464",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5726464.md",
-      "record_ids": [
-        "yun2024:453"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 1,
-      "columns": 3,
-      "complexity": {
-        "score": 0.1975,
-        "class": "einfach",
-        "features": {
-          "n_rows": 1,
-          "n_data_columns": 1,
-          "n_columns": 3,
-          "n_header_levels": 2,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 0,
-          "has_timepoints": false,
-          "n_data_cells": 1
-        },
-        "drivers": [
-          "2 Header-Ebenen"
-        ]
-      },
-      "strata": [
-        "einfach",
-        "mehrstufiger_kopf"
-      ],
-      "n_target_columns": 1,
-      "gold_cells": 2,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:252|PMC5614421:T2",
-      "table_id": "PMC5614421:T2",
-      "doc_id": "PMC5614421",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5614421.md",
-      "record_ids": [
-        "yun2024:252"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 6,
-      "columns": 7,
-      "complexity": {
-        "score": 0.2925,
-        "class": "mittel",
-        "features": {
-          "n_rows": 6,
-          "n_data_columns": 5,
-          "n_columns": 7,
-          "n_header_levels": 1,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 2,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 4,
-          "has_timepoints": false,
-          "n_data_cells": 13
-        },
-        "drivers": [
-          "2 Fussnoten",
-          "4 Spalten ohne Zielfeld"
-        ]
-      },
-      "strata": [
-        "mittel",
-        "fussnoten"
-      ],
-      "n_target_columns": 1,
-      "gold_cells": 2,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:349|PMC5686687:T2",
-      "table_id": "PMC5686687:T2",
-      "doc_id": "PMC5686687",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5686687.md",
-      "record_ids": [
-        "yun2024:349"
-      ],
-      "caption": "**Outcomes Measured in Both Groups**",
-      "parser": "pandoc-rule/1",
-      "rows": 4,
-      "columns": 4,
-      "complexity": {
-        "score": 0.1075,
-        "class": "einfach",
-        "features": {
-          "n_rows": 4,
-          "n_data_columns": 3,
-          "n_columns": 4,
-          "n_header_levels": 1,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 2,
-          "n_unassigned_columns": 1,
-          "has_timepoints": false,
-          "n_data_cells": 10
-        },
-        "drivers": [
-          "1 Spalten ohne Zielfeld"
-        ]
-      },
-      "strata": [
-        "einfach"
-      ],
-      "n_target_columns": 2,
-      "gold_cells": 2,
-      "gold_reachable": 2
-    },
-    {
-      "candidate_id": "yun2024:32|PMC3003523:T1",
-      "table_id": "PMC3003523:T1",
-      "doc_id": "PMC3003523",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3003523.md",
-      "record_ids": [
-        "yun2024:32"
-      ],
-      "caption": "",
-      "parser": "pandoc-rule/1",
-      "rows": 5,
-      "columns": 4,
-      "complexity": {
-        "score": 0.305,
-        "class": "mittel",
-        "features": {
-          "n_rows": 5,
-          "n_data_columns": 2,
-          "n_columns": 4,
-          "n_header_levels": 2,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 0,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 1,
-          "has_timepoints": false,
-          "n_data_cells": 10
-        },
-        "drivers": [
-          "2 Header-Ebenen",
-          "1 Spalten ohne Zielfeld"
-        ]
-      },
-      "strata": [
-        "mittel",
-        "mehrstufiger_kopf"
-      ],
-      "n_target_columns": 1,
       "gold_cells": 6,
       "gold_reachable": 1
     },
@@ -2461,21 +2305,21 @@
       "rows": 9,
       "columns": 4,
       "complexity": {
-        "score": 0.245,
+        "score": 0.2325,
         "class": "einfach",
         "features": {
           "n_rows": 9,
-          "n_data_columns": 2,
+          "n_data_columns": 3,
           "n_columns": 4,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
           "n_footnotes": 0,
           "n_irregular_rows": 0,
-          "n_target_columns": 1,
+          "n_target_columns": 2,
           "n_unassigned_columns": 1,
           "has_timepoints": true,
-          "n_data_cells": 18
+          "n_data_cells": 27
         },
         "drivers": [
           "1 Spalten ohne Zielfeld",
@@ -2486,38 +2330,42 @@
         "einfach",
         "mehrzeitpunkt"
       ],
-      "n_target_columns": 1,
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 4,
-      "gold_reachable": 1
+      "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:34|PMC3003523:T1",
-      "table_id": "PMC3003523:T1",
-      "doc_id": "PMC3003523",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3003523.md",
+      "candidate_id": "yun2024:402|PMC5781260:T1",
+      "table_id": "PMC5781260:T1",
+      "doc_id": "PMC5781260",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5781260.md",
       "record_ids": [
-        "yun2024:34"
+        "yun2024:402"
       ],
       "caption": "",
       "parser": "pandoc-rule/1",
-      "rows": 5,
-      "columns": 4,
+      "rows": 1,
+      "columns": 5,
       "complexity": {
-        "score": 0.305,
+        "score": 0.2725,
         "class": "mittel",
         "features": {
-          "n_rows": 5,
-          "n_data_columns": 2,
-          "n_columns": 4,
+          "n_rows": 1,
+          "n_data_columns": 3,
+          "n_columns": 5,
           "n_header_levels": 2,
           "n_group_headers": 0,
           "n_column_groups": 0,
           "n_footnotes": 0,
           "n_irregular_rows": 0,
-          "n_target_columns": 1,
+          "n_target_columns": 2,
           "n_unassigned_columns": 1,
           "has_timepoints": false,
-          "n_data_cells": 10
+          "n_data_cells": 3
         },
         "drivers": [
           "2 Header-Ebenen",
@@ -2528,42 +2376,45 @@
         "mittel",
         "mehrstufiger_kopf"
       ],
-      "n_target_columns": 1,
-      "gold_cells": 6,
-      "gold_reachable": 1
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 2,
+      "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:13|PMC2667135:T3",
-      "table_id": "PMC2667135:T3",
-      "doc_id": "PMC2667135",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2667135.md",
+      "candidate_id": "yun2024:445|PMC4140238:T1",
+      "table_id": "PMC4140238:T1",
+      "doc_id": "PMC4140238",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4140238.md",
       "record_ids": [
-        "yun2024:13"
+        "yun2024:445"
       ],
-      "caption": "Adverse events leading to discontinuation",
+      "caption": "Demographics for per-protocol population",
       "parser": "pandoc-rule/1",
-      "rows": 13,
-      "columns": 3,
+      "rows": 4,
+      "columns": 4,
       "complexity": {
-        "score": 0.245,
+        "score": 0.1875,
         "class": "einfach",
         "features": {
-          "n_rows": 13,
-          "n_data_columns": 2,
-          "n_columns": 3,
+          "n_rows": 4,
+          "n_data_columns": 3,
+          "n_columns": 4,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
-          "n_footnotes": 4,
+          "n_footnotes": 3,
           "n_irregular_rows": 0,
-          "n_target_columns": 1,
+          "n_target_columns": 2,
           "n_unassigned_columns": 1,
           "has_timepoints": false,
-          "n_data_cells": 26
+          "n_data_cells": 10
         },
         "drivers": [
-          "13 Datenzeilen",
-          "4 Fussnoten",
+          "3 Fussnoten",
           "1 Spalten ohne Zielfeld"
         ]
       },
@@ -2571,29 +2422,33 @@
         "einfach",
         "fussnoten"
       ],
-      "n_target_columns": 1,
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
       "gold_cells": 4,
-      "gold_reachable": 1
+      "gold_reachable": 2
     },
     {
-      "candidate_id": "yun2024:265|PMC2430617:T1",
-      "table_id": "PMC2430617:T1",
-      "doc_id": "PMC2430617",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2430617.md",
+      "candidate_id": "yun2024:196|PMC5360580:T6",
+      "table_id": "PMC5360580:T6",
+      "doc_id": "PMC5360580",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5360580.md",
       "record_ids": [
-        "yun2024:265"
+        "yun2024:196"
       ],
-      "caption": "",
+      "caption": "Table 6",
       "parser": "pandoc-rule/1",
-      "rows": 7,
-      "columns": 4,
+      "rows": 3,
+      "columns": 3,
       "complexity": {
-        "score": 0.06,
+        "score": 0.04,
         "class": "einfach",
         "features": {
-          "n_rows": 7,
+          "n_rows": 3,
           "n_data_columns": 2,
-          "n_columns": 4,
+          "n_columns": 3,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
@@ -2602,7 +2457,7 @@
           "n_target_columns": 2,
           "n_unassigned_columns": 0,
           "has_timepoints": false,
-          "n_data_cells": 14
+          "n_data_cells": 6
         },
         "drivers": []
       },
@@ -2610,12 +2465,108 @@
         "einfach"
       ],
       "n_target_columns": 2,
-      "gold_cells": 4,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:640|PMC4511433:T2",
+      "table_id": "PMC4511433:T2",
+      "doc_id": "PMC4511433",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4511433.md",
+      "record_ids": [
+        "yun2024:640"
+      ],
+      "caption": "Adverse events occurring in more than one subject in the Dyslipidemia study. No serious adverse events and no discontinuations were identified",
+      "parser": "pandoc-rule/1",
+      "rows": 3,
+      "columns": 5,
+      "complexity": {
+        "score": 0.2825,
+        "class": "mittel",
+        "features": {
+          "n_rows": 3,
+          "n_data_columns": 3,
+          "n_columns": 5,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 1,
+          "has_timepoints": false,
+          "n_data_cells": 9
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "1 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 2,
       "gold_reachable": 1
     },
     {
-      "candidate_id": "yun2024:257|PMC5711682:T4",
-      "table_id": "PMC5711682:T4",
+      "candidate_id": "yun2024:275|PMC3654355:T1",
+      "table_id": "PMC3654355:T1",
+      "doc_id": "PMC3654355",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3654355.md",
+      "record_ids": [
+        "yun2024:275"
+      ],
+      "caption": "Characteristics of participants and body composition at baseline in the intensive lifestyle intervention (ILI) group and control group. Data are given as mean values (standard deviation) or number of ",
+      "parser": "pandoc-rule/1",
+      "rows": 9,
+      "columns": 6,
+      "complexity": {
+        "score": 0.5075,
+        "class": "komplex",
+        "features": {
+          "n_rows": 9,
+          "n_data_columns": 5,
+          "n_columns": 6,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 4,
+          "has_timepoints": true,
+          "n_data_cells": 29
+        },
+        "drivers": [
+          "2 Header-Ebenen",
+          "4 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "komplex",
+        "mehrzeitpunkt",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:257|PMC5711682:T1",
+      "table_id": "PMC5711682:T1",
       "doc_id": "PMC5711682",
       "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5711682.md",
       "record_ids": [
@@ -2623,122 +2574,409 @@
       ],
       "caption": "",
       "parser": "pandoc-rule/1",
-      "rows": 2,
-      "columns": 5,
+      "rows": 10,
+      "columns": 4,
       "complexity": {
-        "score": 0.2725,
+        "score": 0.2375,
+        "class": "einfach",
+        "features": {
+          "n_rows": 10,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 1,
+          "has_timepoints": true,
+          "n_data_cells": 28
+        },
+        "drivers": [
+          "1 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "einfach",
+        "mehrzeitpunkt"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 4,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:453|PMC5726464:T1",
+      "table_id": "PMC5726464:T1",
+      "doc_id": "PMC5726464",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5726464.md",
+      "record_ids": [
+        "yun2024:453"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 1,
+      "columns": 3,
+      "complexity": {
+        "score": 0.21,
+        "class": "einfach",
+        "features": {
+          "n_rows": 1,
+          "n_data_columns": 2,
+          "n_columns": 3,
+          "n_header_levels": 2,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 0,
+          "has_timepoints": false,
+          "n_data_cells": 2
+        },
+        "drivers": [
+          "2 Header-Ebenen"
+        ]
+      },
+      "strata": [
+        "einfach",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 2,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:15|PMC2667135:T4",
+      "table_id": "PMC2667135:T4",
+      "doc_id": "PMC2667135",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2667135.md",
+      "record_ids": [
+        "yun2024:15"
+      ],
+      "caption": "Clinical outcomes for CoPAT patients versus IPAT patients",
+      "parser": "pandoc-rule/1",
+      "rows": 4,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3375,
         "class": "mittel",
         "features": {
-          "n_rows": 2,
-          "n_data_columns": 4,
-          "n_columns": 5,
+          "n_rows": 4,
+          "n_data_columns": 3,
+          "n_columns": 4,
           "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 3,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 2,
+          "has_timepoints": true,
+          "n_data_cells": 10
+        },
+        "drivers": [
+          "3 Fussnoten",
+          "2 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrzeitpunkt",
+        "fussnoten"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:258|PMC5711682:T1",
+      "table_id": "PMC5711682:T1",
+      "doc_id": "PMC5711682",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5711682.md",
+      "record_ids": [
+        "yun2024:258"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 10,
+      "columns": 4,
+      "complexity": {
+        "score": 0.2375,
+        "class": "einfach",
+        "features": {
+          "n_rows": 10,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 0,
+          "n_irregular_rows": 0,
+          "n_target_columns": 2,
+          "n_unassigned_columns": 1,
+          "has_timepoints": true,
+          "n_data_cells": 28
+        },
+        "drivers": [
+          "1 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "einfach",
+        "mehrzeitpunkt"
+      ],
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 4,
+      "gold_reachable": 2
+    },
+    {
+      "candidate_id": "yun2024:16|PMC2667135:T4",
+      "table_id": "PMC2667135:T4",
+      "doc_id": "PMC2667135",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2667135.md",
+      "record_ids": [
+        "yun2024:16"
+      ],
+      "caption": "Clinical outcomes for CoPAT patients versus IPAT patients",
+      "parser": "pandoc-rule/1",
+      "rows": 4,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3375,
+        "class": "mittel",
+        "features": {
+          "n_rows": 4,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 3,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 2,
+          "has_timepoints": true,
+          "n_data_cells": 10
+        },
+        "drivers": [
+          "3 Fussnoten",
+          "2 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrzeitpunkt",
+        "fussnoten"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 4,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:185|PMC5122613:T1",
+      "table_id": "PMC5122613:T1",
+      "doc_id": "PMC5122613",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5122613.md",
+      "record_ids": [
+        "yun2024:185"
+      ],
+      "caption": "Demographics and baseline characteristics of subjects",
+      "parser": "pandoc-rule/1",
+      "rows": 6,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3475,
+        "class": "mittel",
+        "features": {
+          "n_rows": 6,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 3,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 2,
+          "has_timepoints": true,
+          "n_data_cells": 18
+        },
+        "drivers": [
+          "3 Fussnoten",
+          "2 Spalten ohne Zielfeld",
+          "Zeitpunktangaben in Kopf oder Zeilen"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrzeitpunkt",
+        "fussnoten"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:30|PMC3003523:T1",
+      "table_id": "PMC3003523:T1",
+      "doc_id": "PMC3003523",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3003523.md",
+      "record_ids": [
+        "yun2024:30"
+      ],
+      "caption": "",
+      "parser": "pandoc-rule/1",
+      "rows": 5,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3675,
+        "class": "mittel",
+        "features": {
+          "n_rows": 5,
+          "n_data_columns": 4,
+          "n_columns": 4,
+          "n_header_levels": 2,
           "n_group_headers": 0,
           "n_column_groups": 0,
           "n_footnotes": 0,
           "n_irregular_rows": 0,
           "n_target_columns": 1,
           "n_unassigned_columns": 3,
-          "has_timepoints": true,
-          "n_data_cells": 6
+          "has_timepoints": false,
+          "n_data_cells": 20
         },
         "drivers": [
-          "3 Spalten ohne Zielfeld",
+          "2 Header-Ebenen",
+          "3 Spalten ohne Zielfeld"
+        ]
+      },
+      "strata": [
+        "mittel",
+        "mehrstufiger_kopf"
+      ],
+      "n_target_columns": 1,
+      "fields": [
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 1
+    },
+    {
+      "candidate_id": "yun2024:184|PMC5122613:T1",
+      "table_id": "PMC5122613:T1",
+      "doc_id": "PMC5122613",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5122613.md",
+      "record_ids": [
+        "yun2024:184"
+      ],
+      "caption": "Demographics and baseline characteristics of subjects",
+      "parser": "pandoc-rule/1",
+      "rows": 6,
+      "columns": 4,
+      "complexity": {
+        "score": 0.3475,
+        "class": "mittel",
+        "features": {
+          "n_rows": 6,
+          "n_data_columns": 3,
+          "n_columns": 4,
+          "n_header_levels": 1,
+          "n_group_headers": 0,
+          "n_column_groups": 0,
+          "n_footnotes": 3,
+          "n_irregular_rows": 0,
+          "n_target_columns": 1,
+          "n_unassigned_columns": 2,
+          "has_timepoints": true,
+          "n_data_cells": 18
+        },
+        "drivers": [
+          "3 Fussnoten",
+          "2 Spalten ohne Zielfeld",
           "Zeitpunktangaben in Kopf oder Zeilen"
         ]
       },
       "strata": [
         "mittel",
-        "mehrzeitpunkt"
+        "mehrzeitpunkt",
+        "fussnoten"
       ],
       "n_target_columns": 1,
-      "gold_cells": 4,
+      "fields": [
+        "comparator_group_size"
+      ],
+      "gold_cells": 6,
       "gold_reachable": 1
     },
     {
-      "candidate_id": "yun2024:267|PMC2596788:T1",
-      "table_id": "PMC2596788:T1",
-      "doc_id": "PMC2596788",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2596788.md",
+      "candidate_id": "yun2024:550|PMC3648394:T1",
+      "table_id": "PMC3648394:T1",
+      "doc_id": "PMC3648394",
+      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3648394.md",
       "record_ids": [
-        "yun2024:267"
+        "yun2024:550"
       ],
-      "caption": "Socio-demographic and disease characteristics of patients allocated to GERD-education vs. control groups, recorded at baseline.",
+      "caption": "Baseline characteristics of the total cohort and groups",
       "parser": "pandoc-rule/1",
-      "rows": 13,
-      "columns": 3,
+      "rows": 7,
+      "columns": 4,
       "complexity": {
-        "score": 0.1775,
+        "score": 0.1225,
         "class": "einfach",
         "features": {
-          "n_rows": 13,
-          "n_data_columns": 1,
-          "n_columns": 3,
+          "n_rows": 7,
+          "n_data_columns": 3,
+          "n_columns": 4,
           "n_header_levels": 1,
           "n_group_headers": 0,
           "n_column_groups": 0,
           "n_footnotes": 0,
           "n_irregular_rows": 0,
-          "n_target_columns": 1,
-          "n_unassigned_columns": 0,
-          "has_timepoints": true,
-          "n_data_cells": 13
-        },
-        "drivers": [
-          "13 Datenzeilen",
-          "Zeitpunktangaben in Kopf oder Zeilen"
-        ]
-      },
-      "strata": [
-        "einfach",
-        "mehrzeitpunkt"
-      ],
-      "n_target_columns": 1,
-      "gold_cells": 4,
-      "gold_reachable": 1
-    },
-    {
-      "candidate_id": "yun2024:15|PMC2667135:T3",
-      "table_id": "PMC2667135:T3",
-      "doc_id": "PMC2667135",
-      "document_path": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2667135.md",
-      "record_ids": [
-        "yun2024:15"
-      ],
-      "caption": "Adverse events leading to discontinuation",
-      "parser": "pandoc-rule/1",
-      "rows": 13,
-      "columns": 3,
-      "complexity": {
-        "score": 0.245,
-        "class": "einfach",
-        "features": {
-          "n_rows": 13,
-          "n_data_columns": 2,
-          "n_columns": 3,
-          "n_header_levels": 1,
-          "n_group_headers": 0,
-          "n_column_groups": 0,
-          "n_footnotes": 4,
-          "n_irregular_rows": 0,
-          "n_target_columns": 1,
+          "n_target_columns": 2,
           "n_unassigned_columns": 1,
           "has_timepoints": false,
-          "n_data_cells": 26
+          "n_data_cells": 21
         },
         "drivers": [
-          "13 Datenzeilen",
-          "4 Fussnoten",
           "1 Spalten ohne Zielfeld"
         ]
       },
       "strata": [
-        "einfach",
-        "fussnoten"
+        "einfach"
       ],
-      "n_target_columns": 1,
-      "gold_cells": 4,
-      "gold_reachable": 1
+      "n_target_columns": 2,
+      "fields": [
+        "comparator_group_size",
+        "intervention_group_size"
+      ],
+      "gold_cells": 6,
+      "gold_reachable": 2
     }
   ]
 }

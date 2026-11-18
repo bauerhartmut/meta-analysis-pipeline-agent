@@ -1,0 +1,209 @@
+{
+  "selection": "public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/selection_test.json",
+  "records": 59,
+  "unreachable_cells": 183,
+  "reasons": {
+    "feld_fehlt_im_dokument": 100,
+    "arm_nicht_gebunden_ohne_namensrest": 40,
+    "spalte_nicht_ausgewaehlt": 33,
+    "spalte_nicht_ausgewaehlt_mit_arm": 9,
+    "arm_nicht_gebunden": 1
+  },
+  "per_role": {
+    "mean": 60,
+    "sd": 58,
+    "n": 39,
+    "events": 26
+  },
+  "per_arm": {
+    "comparator": 96,
+    "intervention": 87
+  },
+  "kreuz_rolle_grund": {
+    "sd/feld_fehlt_im_dokument": 52,
+    "mean/feld_fehlt_im_dokument": 26,
+    "n/arm_nicht_gebunden_ohne_namensrest": 25,
+    "events/feld_fehlt_im_dokument": 22,
+    "mean/spalte_nicht_ausgewaehlt": 17,
+    "mean/arm_nicht_gebunden_ohne_namensrest": 15,
+    "n/spalte_nicht_ausgewaehlt_mit_arm": 8,
+    "n/spalte_nicht_ausgewaehlt": 6,
+    "sd/spalte_nicht_ausgewaehlt": 6,
+    "events/spalte_nicht_ausgewaehlt": 4,
+    "mean/spalte_nicht_ausgewaehlt_mit_arm": 1,
+    "mean/arm_nicht_gebunden": 1
+  },
+  "examples": {
+    "arm_nicht_gebunden_ohne_namensrest": [
+      {
+        "record_id": "yun2024:111",
+        "field": "intervention_group_size",
+        "arm_name": "Intervention + targeting environmental-level factors",
+        "selected": [
+          "PMC4319071:T1"
+        ],
+        "candidates": [],
+        "mentioned": []
+      },
+      {
+        "record_id": "yun2024:112",
+        "field": "intervention_group_size",
+        "arm_name": "Intervention + targeting environmental-level factors",
+        "selected": [
+          "PMC4319071:T1"
+        ],
+        "candidates": [],
+        "mentioned": []
+      },
+      {
+        "record_id": "yun2024:15",
+        "field": "comparator_group_size",
+        "arm_name": "full course of therapy in the hospital setting",
+        "selected": [
+          "PMC2667135:T4"
+        ],
+        "candidates": [
+          "PMC2667135:T1",
+          "PMC2667135:T2",
+          "PMC2667135:T3",
+          "PMC2667135:T5"
+        ],
+        "mentioned": []
+      }
+    ],
+    "spalte_nicht_ausgewaehlt": [
+      {
+        "record_id": "yun2024:111",
+        "field": "intervention_mean",
+        "arm_name": "Intervention + targeting environmental-level factors",
+        "selected": [
+          "PMC4319071:T1"
+        ],
+        "candidates": [
+          "PMC4319071:T2"
+        ],
+        "mentioned": []
+      },
+      {
+        "record_id": "yun2024:111",
+        "field": "comparator_mean",
+        "arm_name": "Control",
+        "selected": [
+          "PMC4319071:T1"
+        ],
+        "candidates": [
+          "PMC4319071:T2"
+        ],
+        "mentioned": []
+      },
+      {
+        "record_id": "yun2024:112",
+        "field": "intervention_mean",
+        "arm_name": "Intervention + targeting environmental-level factors",
+        "selected": [
+          "PMC4319071:T1"
+        ],
+        "candidates": [
+          "PMC4319071:T2"
+        ],
+        "mentioned": []
+      }
+    ],
+    "feld_fehlt_im_dokument": [
+      {
+        "record_id": "yun2024:111",
+        "field": "intervention_standard_deviation",
+        "arm_name": "Intervention + targeting environmental-level factors",
+        "selected": [
+          "PMC4319071:T1"
+        ],
+        "candidates": [],
+        "mentioned": []
+      },
+      {
+        "record_id": "yun2024:111",
+        "field": "comparator_standard_deviation",
+        "arm_name": "Control",
+        "selected": [
+          "PMC4319071:T1"
+        ],
+        "candidates": [],
+        "mentioned": []
+      },
+      {
+        "record_id": "yun2024:112",
+        "field": "intervention_standard_deviation",
+        "arm_name": "Intervention + targeting environmental-level factors",
+        "selected": [
+          "PMC4319071:T1"
+        ],
+        "candidates": [],
+        "mentioned": []
+      }
+    ],
+    "spalte_nicht_ausgewaehlt_mit_arm": [
+      {
+        "record_id": "yun2024:202",
+        "field": "intervention_group_size",
+        "arm_name": "Vitamin D supplementation",
+        "selected": [
+          "PMC5380326:T2"
+        ],
+        "candidates": [
+          "PMC5380326:T1"
+        ],
+        "mentioned": [
+          "PMC5380326:T1"
+        ]
+      },
+      {
+        "record_id": "yun2024:205",
+        "field": "intervention_group_size",
+        "arm_name": "Vitamin D supplementation",
+        "selected": [
+          "PMC5380326:T2"
+        ],
+        "candidates": [
+          "PMC5380326:T1"
+        ],
+        "mentioned": [
+          "PMC5380326:T1"
+        ]
+      },
+      {
+        "record_id": "yun2024:275",
+        "field": "intervention_mean",
+        "arm_name": "Intensive lifestyle intervention (ILI) group",
+        "selected": [
+          "PMC3654355:T1"
+        ],
+        "candidates": [
+          "PMC3654355:T2",
+          "PMC3654355:T3",
+          "PMC3654355:T4",
+          "PMC3654355:T5"
+        ],
+        "mentioned": [
+          "PMC3654355:T2"
+        ]
+      }
+    ],
+    "arm_nicht_gebunden": [
+      {
+        "record_id": "yun2024:282",
+        "field": "intervention_mean",
+        "arm_name": "Intensive lifestyle intervention (ILI) group",
+        "selected": [
+          "PMC3654355:T2"
+        ],
+        "candidates": [
+          "PMC3654355:T3",
+          "PMC3654355:T4",
+          "PMC3654355:T5",
+          "PMC3654355:T6"
+        ],
+        "mentioned": []
+      }
+    ]
+  }
+}

@@ -26,7 +26,11 @@ sys.path.insert(0, str(REPO))
 
 from research_agent.table_decomposition.complexity import assess  # noqa: E402
 from research_agent.table_decomposition.parser import parse_document  # noqa: E402
-from research_agent.table_decomposition.semantics import enrich_table  # noqa: E402
+from research_agent.table_decomposition.semantics import (  # noqa: E402
+    enrich_table,
+    reachable_fields,
+    transfer_arms_within_document,
+)
 
 DEFAULT_RECORDS = BENCH / "yun_full" / "records" / "yun699.jsonl"
 ANALYSIS = BENCH / "analysis"
@@ -136,9 +140,11 @@ def build_candidates(records: Sequence[Dict[str, Any]], role: str,
             continue
         for table in tables:
             enrich_table(table, context, assume_order=assume_order)
+        transfer_arms_within_document(tables, context)
+        for table in tables:
             complexity = assess(table)
             table.complexity = complexity.to_dict()
-            fields = {column.field for column in table.columns if column.field}
+            fields = reachable_fields(table)
             reachable = sum(1 for cell in record["gold"]["cells"] if cell["field"] in fields)
             if require_bound and reachable == 0:
                 continue
@@ -155,6 +161,7 @@ def build_candidates(records: Sequence[Dict[str, Any]], role: str,
                 "complexity": complexity.to_dict(),
                 "strata": strata_for(table, complexity),
                 "n_target_columns": complexity.features["n_target_columns"],
+                "fields": sorted(fields),
                 "gold_cells": len(record["gold"]["cells"]),
                 "gold_reachable": reachable,
             })
@@ -180,6 +187,7 @@ def select(candidates: Sequence[Dict[str, Any]], target: int,
     seen: set = set()
     per_document: Dict[str, int] = {}
     per_record: Dict[str, int] = {}
+    covered: Dict[str, set] = {}
 
     def take(stratum: str) -> bool:
         for entry in buckets.get(stratum, []):
@@ -191,9 +199,15 @@ def select(candidates: Sequence[Dict[str, Any]], target: int,
                 continue
             if max_per_record and per_record.get(record_id, 0) >= max_per_record:
                 continue
+            # Kein Platz fuer eine Tabelle ohne neuen Feldgewinn: die Auswahl
+            # soll Felder abdecken, nicht Tabellen sammeln.
+            new_fields = set(entry.get("fields") or []) - covered.get(record_id, set())
+            if per_record.get(record_id, 0) and not new_fields:
+                continue
             seen.add(entry["candidate_id"])
             per_document[document] = per_document.get(document, 0) + 1
             per_record[record_id] = per_record.get(record_id, 0) + 1
+            covered.setdefault(record_id, set()).update(entry.get("fields") or [])
             chosen.append(entry)
             return True
         return False
@@ -222,7 +236,7 @@ def main() -> int:
                         help="Zielzahl Tabellen (Auftrag: 50-100)")
     parser.add_argument("--max-per-document", type=int, default=2,
                         help="hoechstens so viele Tabellen je Dokument (Streuung)")
-    parser.add_argument("--max-per-record", type=int, default=3,
+    parser.add_argument("--max-per-record", type=int, default=6,
                         help="hoechstens so viele Tabellen je Record")
     parser.add_argument("--out", type=Path, default=None)
     parser.add_argument("--include-unbound", action="store_true",

@@ -3,20 +3,21 @@
 Alle Zahlen stammen aus den unten genannten Artefakten; keine ist geschätzt,
 außer der Tokenzahl, die als Zeichen/4 markiert ist. Der maschinell erzeugte
 Tabellenteil liegt in `strukturbericht_20261118.md`, die Rohdaten in
-`offline_struktur_20261118/structure.json` und
-`offline_struktur_reihenfolge_20261118/structure.json`.
+`offline_struktur_20261118/structure.json`,
+`offline_struktur_reihenfolge_20261118/structure.json` und
+`diagnose_erreichbarkeit_20261118.json`.
 
 ## Was gemessen wurde — und was nicht
 
-**Gemessen:** Struktur (Abdeckung, Kontexterhalt, Validierungsbefunde) und
-Aufwand (Einheiten, Prompt-Zeichen, geschätzte Tokens) für die Verfahren A–E auf
-einem eingefrorenen Testdatensatz, ohne Modellaufruf.
+**Gemessen:** Struktur (Abdeckung, Kontexterhalt, Validierungsbefunde), Aufwand
+(Einheiten, Prompt-Zeichen, geschätzte Tokens) und die **Reichweite des
+Tabellenpfads** (`gold_reachable`) für die Verfahren A–E auf einem eingefrorenen
+Testdatensatz, ohne Modellaufruf.
 
 **Nicht gemessen:** Precision, Recall, F1, Exact Match, Arm-/Outcome-/
 Zeitpunktzuordnung, technische Ausfallquote, Laufzeit und Kosten pro 100
 richtige Zellen. Diese Kennzahlen brauchen einen Modelllauf; er ist ohne
-ausdrückliche Freigabe und Gateway-Guthaben nicht gestartet worden. Der Bericht
-sagt das an jeder Stelle, statt Zahlen zu ersetzen.
+ausdrückliche Freigabe und Gateway-Guthaben nicht gestartet worden.
 
 ## Datensatz
 
@@ -24,141 +25,142 @@ sagt das an jeder Stelle, statt Zahlen zu ersetzen.
 |---|---|
 | Split | `test` |
 | Tabellen | 60 |
-| Records | 58 |
+| Records | 59 |
 | Dokumente | 31 |
-| Kandidaten (Record, Tabelle) | 537 |
-| Goldzellen der 58 Records | 268 |
-| Goldzellen über eine ausgewählte Tabelle erreichbar | 76 (28,4 %) |
-| `records_sha256` | `c22ed3fb42dbaaff7051a89cdb327c4b250a134db0a62a19d3877d5ba311c0b1` |
+| Kandidaten (Record, Tabelle) | 608 |
+| Goldzellen der 59 Records | 278 |
+| davon über die ausgewählten Tabellen erreichbar | 95 (34,2 %) |
+| mit Reihenfolge-Annahme | 99 (35,6 %) |
 
-Schichtverteilung: mehrzeitpunkt 37, mehrstufiger_kopf 35, fussnoten 34,
-mittel 20, sehr_komplex 19, einfach 17, komplexe_pdf 8, mehrarm 8, komplex 7.
+Der Devsplit hat nach derselben Prozedur nur 26 Kandidaten; mit `--target 40`
+wurden 6 ausgewählt. Für Schwellenoptimierung ist er zu klein — ein Befund, kein
+Versehen.
 
-Der Devsplit hat nach derselben Prozedur nur 26 Kandidaten mit belegten
-Zielspalten; mit `--target 40` wurden 6 ausgewählt. Für Schwellenoptimierung ist
-der Devsplit damit zu klein — das ist ein Befund, kein Versehen.
-
-## Struktur- und Aufwandsvergleich (Test, 58 Records, 60 Tabellen)
+## Struktur- und Aufwandsvergleich (Test, 59 Records, 60 Tabellen)
 
 Standardkonfiguration (`arm_order_fallback` aus):
 
-| Var | Verfahren | Einheiten/Record | Zeichen/Record | Tokens ges. (Sch.) | Faktor zu A | Gold erreichbar | strukturell komplett | Fehler | Warnungen |
-|---|---|---|---|---|---|---|---|---|---|
-| A | Full-Table | 1,03 | 5.598,0 | 81.171 | 1,00 | 76 | 60/60 | 0 | 21 |
-| B | Vertical | 2,40 | 9.056,9 | 131.325 | 1,62 | 76 | 60/60 | 0 | 45 |
-| C | Horizontal | 6,60 | 22.127,6 | 320.851 | 3,95 | 76 | 60/60 | 0 | 67 |
-| D | Bidirectional | 7,84 | 27.041,7 | 392.104 | 4,83 | 76 | 60/60 | 0 | 67 |
-| E | Adaptive | 4,28 | 17.462,2 | 253.202 | 3,12 | 76 | 60/60 | 0 | 59 |
+| Var | Verfahren | Einheiten/Record | Zeichen/Record | Tokens ges. (Sch.) | Faktor zu A | Gold erreichbar | strukturell komplett | Fehler |
+|---|---|---|---|---|---|---|---|---|
+| A | Full-Table | 1,02 | 5.744,6 | 84.733 | 1,00 | 95 | 60/60 | 0 |
+| B | Vertical | 2,81 | 10.700,2 | 157.828 | 1,86 | 95 | 60/60 | 0 |
+| C | Horizontal | 6,34 | 22.529,3 | 332.307 | 3,92 | 95 | 60/60 | 0 |
+| D | Bidirectional | 8,53 | 29.876,4 | 440.677 | 5,20 | 95 | 60/60 | 0 |
+| E | Adaptive | 4,95 | 20.018,9 | 295.279 | 3,49 | 95 | 60/60 | 0 |
 
-Mit Reihenfolge-Annahme (`--arm-order-fallback`, dieselbe Auswahl):
-
-| Var | Einheiten/Record | Zeichen/Record | Tokens ges. (Sch.) | Gold erreichbar | `armzuordnung_angenommen` |
-|---|---|---|---|---|---|
-| A | 1,03 | 5.600,3 | 81.204 | 84 | 8 |
-| B | 2,57 | 9.647,2 | 139.885 | 84 | 8 |
-| C | 6,60 | 22.142,9 | 321.072 | 84 | 8 |
-| D | 8,02 | 27.643,9 | 400.837 | 84 | 8 |
-| E | 4,38 | 17.867,9 | 259.085 | 84 | 8 |
+Mit Reihenfolge-Annahme (`--arm-order-fallback`, dieselbe Auswahl): erreichbar
+99, Tokens 84.749 / 163.546 / 332.387 / 446.475 / 299.304.
 
 Lesart:
 
-- **Kontexterhalt ist belegt.** In beiden Läufen sind alle 60 Tabellen für alle
-  fünf Verfahren strukturell vollständig (`60/60`), ohne einen einzigen Fehler:
-  jede Datenzelle ist genau einer Einheit zugeordnet, jeder Spaltenpfad und
-  jedes Zeilenlabel wird mitgeführt, Fußnoten sind im Ausschnitt. Nach dem
-  Labelspalten-Fix ist der frühere Befund `zeilenlabel_fehlt` (vorher 395
-  Warnungen bei A) vollständig verschwunden; übrig bleiben 21 Warnungen zu
-  Spalten ohne Header (leere Eckzelle, Gruppenkopf-Zwischenzeilen).
-- **Aufwand wächst mit der Zerlegung**, nicht linear zur Zellenzahl: C liest
-  jede Zeile mit allen Köpfen und braucht deshalb fast das Vierfache an
-  Prompt-Text, D durch die doppelte Leserichtung fast das Fünffache. B ist mit
-  1,62× der günstigste Zerlegungspfad, weil jede Spalte ihren Kopf nur einmal
-  mitführt.
-- **E liegt zwischen B und C** (3,12×) und bleibt unter dem D-Aufwand, weil die
-  Nachlese nur unbelegte oder konfliktäre Adressen anfasst.
+- **Kontexterhalt ist belegt.** Alle 60 Tabellen sind für alle fünf Verfahren
+  strukturell vollständig, ohne einen Fehler: jede Datenzelle gehört zu genau
+  einer Einheit, jeder Spaltenpfad und jedes Zeilenlabel wird mitgeführt,
+  Fußnoten sind im Ausschnitt.
+- **B bleibt der günstigste Zerlegungspfad** (1,86×), D der teuerste (5,20×),
+  E liegt mit 3,49× dazwischen, weil die Nachlese nur unbelegte oder
+  konfliktäre Zellen anfasst.
 
-## Zentraler Befund: der Engpass ist die Armzuordnung, nicht die Zerlegung
+## Der Reachability-Hebel: was gebaut wurde und was er bringt
 
-Von 268 Goldzellen der 58 Records sind über die ausgewählten Tabellen nur 76
-erreichbar (28,4 %), mit Reihenfolge-Annahme 84 (31,3 %). Zwei Ursachen, beide
-deterministisch nachweisbar:
+Ausgangspunkt war, dass nur 76 von 268 Goldzellen (28,4 %) über eine
+ausgewählte Tabelle erreichbar waren. Drei deterministische Mechanismen sind
+seitdem drin:
 
-1. **Ein Record verteilt seine Goldzellen über mehrere Tabellen.** Im Schnitt
-   trägt eine ausgewählte Tabelle 1,3 der 4,6 Goldzellen eines Records;
-   Gruppengrößen, Mittelwerte und Ereigniszahlen stehen häufig in
-   verschiedenen Tabellen desselben Dokuments.
-2. **Nur ein Teil der Tabellen benennt den Studienarm im Kopf.** Wo der Kopf
-   „Placebo“/„Verum“ nicht nennt, bleibt die Spalte ohne Feld — bewusst, statt
-   einen Arm zu raten. Die Reihenfolge-Annahme holt genau 8 Zellen (3 % der
-   Goldmenge) zurück und markiert dafür 8 Spalten als prüfpflichtig.
+1. **Dokumentweiter Arm-Transfer** (`transfer_arms_within_document`): Trägt eine
+   Tabelle den Gruppenkopf `Verum` belegt, gilt derselbe Kopf in der
+   Schwestertabelle desselben Dokuments als belegt. Markiert als
+   `arm_basis="uebertrag"`, gezählt als `armzuordnung_uebertragen`.
+   Wirkung: 18 Spalten in 215 Tabellen, aber nur +3 Goldzellen — wo ein Label
+   identisch ist, bindet die Kopfregel meist schon selbst. Der Mechanismus
+   bleibt, weil er belegbar ist und nichts kostet.
+2. **Verbundwerte** (`secondary_role`): Zellen wie `12.4 (3.1)` tragen Mittelwert
+   und Streuung. Der erste Wert ist der Zellwert, der zweite wird als eigener
+   Beleg mit derselben Fundstelle geführt (`derived`), markiert als
+   `verbundwert_getrennt`. Vorher blieb die ganze Zelle wertlos, weil
+   `parse_value` den Verbund nicht las. Wirkung: 8 Spalten in der Auswahl, ohne
+   diesen Fix wären es 0.
+3. **Auswahl nach Feldabdeckung**: Kandidaten sind Paare (Record, Tabelle); je
+   Record werden bis zu 6 Tabellen aufgenommen, aber nur solche, die mindestens
+   ein neues Feld beisteuern. Kein Goldwert, kein Modellurteil.
 
-Damit ist die Obergrenze des Tabellenpfads für Recall bekannt: selbst ein
-fehlerfreies Modell kann auf diesem Testdatensatz höchstens 28–31 % der
-Goldzellen liefern, wenn die Armzuordnung so bleibt. Die Zerlegung kann diesen
-Deckel nicht heben; sie kann nur dafür sorgen, dass die erreichbaren Zellen
-korrekt und vollständig kontextualisiert sind. Das ist die wichtigste Aussage
-dieses Berichts für die Produktionsentscheidung.
+Ergebnis: **95 von 278 Goldzellen erreichbar (34,2 %)** gegenüber 28,4 % vor dem
+Schritt. Der Zuwachs ist real, aber klein — und der Grund ist jetzt gemessen,
+nicht vermutet:
+
+| Grund (von 183 nicht erreichbaren Zellen) | Zellen | Bedeutung |
+|---|---|---|
+| `feld_fehlt_im_dokument` | 100 | keine Tabelle des Dokuments hat eine Spalte dieser Rolle (mean 60, sd 58, events 26 über alle Gründe) |
+| `arm_nicht_gebunden_ohne_namensrest` | 40 | Spalte existiert, aber der Kopf nennt den Arm nicht (Kontextnamen sind Langtext wie „Individual cognition and self-regulation processes intervention“, der Kopf sagt „IG“) |
+| `spalte_nicht_ausgewaehlt` (+ mit Arm im Kopf) | 42 | die Tabelle mit der Spalte ist nicht in der Auswahl |
+| `arm_nicht_gebunden` | 1 | Ambiguität zwischen zwei Armnamen |
+
+Damit ist die Obergrenze des Tabellenpfads für Recall bekannt: **rund 34 %** der
+Goldzellen dieses Splits sind überhaupt aus Tabellen holbar, wenn die
+Armzuordnung so bleibt. Selbst ein fehlerfreies Modell kann auf diesem Pfad
+nicht mehr liefern. Die Zerlegung hebt diesen Deckel nicht — sie sorgt dafür,
+dass die erreichbaren Zellen korrekt und vollständig kontextualisiert sind.
 
 ## Fehleranalyse der Strukturbefunde
 
 | Code | A | B | C | D | E | Bedeutung |
 |---|---|---|---|---|---|---|
-| `spaltenkopf_fehlt` | 21 | 0 | 67 | 67 | 59 | Spalte ohne Header-Pfad (leere Eckzelle, Zwischenkopf) |
-| `zelle_ausserhalb_scope` | 0 | 45 | 0 | 0 | 5 | Zelle liegt außerhalb des gelesenen Ausschnitts |
-| `zeilenlabel_fehlt` | 0 | 0 | 0 | 0 | 0 | nach dem Labelspalten-Fix behoben |
+| `zeilenlabel_fehlt` | 62 | 41 | 62 | 103 | 98 | Zeile ohne Label (Gruppen-Zwischenzeilen) |
+| `spaltenkopf_fehlt` | 17 | 0 | 63 | 63 | 63 | Spalte ohne Header-Pfad (leere Eckzelle) |
+| `verbundwert_getrennt` | 8 | 8 | 8 | 8 | 8 | Spalten mit zwei Zahlen je Zelle, zweiter Wert belegt |
+| `armzuordnung_uebertragen` | 6 | 6 | 6 | 6 | 6 | Arm aus Schwestertabelle desselben Dokuments |
+| `zelle_ausserhalb_scope` | 0 | 47 | 0 | 0 | 0 | Spalteneinheit liest nur ihre Spalte |
 
-- Die 45 `zelle_ausserhalb_scope` bei B sind erwartbar: eine Spalteneinheit liest
-  nur ihre Spalte, Zellen anderer Spalten bleiben außerhalb. Sie werden nicht
-  als Fehler gezählt, weil jede Zelle von genau einer Spalteneinheit gelesen
-  wird — die Abdeckung ist trotzdem vollständig.
-- `spaltenkopf_fehlt` bei A/C/D betrifft Spalten, deren Kopfzelle im Markdown
-  leer ist. Der Prompt führt sie als `col n: (ohne Kopf)` mit; das Modell sieht
-  die Spalte also, kann sie aber nur über die Nachbarpfade einordnen. Das ist
-  eine Quelle für Fehlzuordnungen und im Modelllauf gezielt zu prüfen.
+- `zelle_ausserhalb_scope` bei B ist erwartbar und kein Fehler: jede Zelle wird
+  von genau einer Spalteneinheit gelesen, die Abdeckung ist vollständig.
+- `spaltenkopf_fehlt` betrifft Spalten mit leerer Kopfzelle. Der Prompt führt sie
+  als `col n: (ohne Kopf)`; das Modell sieht die Spalte, kann sie aber nur über
+  die Nachbarpfade einordnen. Im Modelllauf gezielt zu prüfen.
+- `zeilenlabel_fehlt` ist nach dem Labelspalten-Fix von 395 auf 62 gefallen; die
+  verbleibenden Fälle sind Gruppen-Zwischenzeilen, die tatsächlich kein eigenes
+  Label tragen.
 
 ## Token- und Kostenvergleich
 
 Tokens sind aus Prompt-Zeichen / 4 geschätzt (markiert). Gemessene Tokens,
 Laufzeit und Kosten entstehen erst im Modelllauf; `evaluate.py` rechnet dann aus
-`prompt_tokens`/`completion_tokens` und den Preisen `--preis-in`/`--preis-out`
-Kosten und Kosten pro 100 richtige Zellen. Eine Euro-Zahl ohne Modelllauf wäre
-erfunden und steht deshalb hier nicht.
+`prompt_tokens`/`completion_tokens` und `--preis-in`/`--preis-out` Kosten und
+Kosten pro 100 richtige Zellen. Eine Euro-Zahl ohne Modelllauf wäre erfunden und
+steht deshalb hier nicht.
 
-Relativ ist die Aussage belastbar: B kostet das 1,62-Fache von A an Eingabe, E
-das 3,12-Fache, C das 3,95-Fache, D das 4,83-Fache. Bei einem Preis je Token
-skaliert das linear; ob der Recall-Gewinn das rechtfertigt, entscheidet der
-Modelllauf.
+Relativ: B kostet das 1,86-Fache von A an Eingabe, E das 3,49-Fache, C das
+3,92-Fache, D das 5,20-Fache. Ob der Recall-Gewinn das rechtfertigt, entscheidet
+der Modelllauf.
 
 ## Empfehlung für die produktive Integration
 
-1. **A bleibt Baseline, B wird der Standard für den Tabellenpfad.** B hat den
-   geringsten Aufwandsaufschlag (1,62×) bei vollständigem Kontexterhalt und
-   liefert dieselbe Abdeckung wie die anderen Verfahren. C und D erst einsetzen,
-   wenn der Modelllauf einen messbaren Recall-Vorteil zeigt, der 4–5×
-   Eingabetokens rechtfertigt.
-2. **E nur mit Nachlese-Budget** und nur auf `dev` eingestellt; die Nachlese
-   greift ausschließlich bei unbelegten oder konfliktären Zellen, nicht
-   flächendeckend.
-3. **Vor dem Modelllauf die Armzuordnung verbessern** — dort liegt der Hebel.
-   Konkrete, noch nicht gebaute Kandidaten: (a) Armnamen aus Tabellenfußnoten
-   und Legende lesen, (b) Gruppengrößen aus `n`-Spalten gegen den Record
-   abgleichen und darüber den Arm binden, (c) mehrere Tabellen eines Records
-   gemeinsam auswerten statt je Tabelle. (c) ist ohne Modellkosten messbar und
-   würde die erreichbare Goldmenge direkt erhöhen.
-4. **Reihenfolge-Annahme standardmäßig aus lassen**, im Benchmark aber
-   mitführen: sie ist billig, holt wenig und erzeugt prüfpflichtige Spalten.
-5. **Erst danach der Modelllauf** (A/B/E auf `test`, C/D nur bei Bedarf), mit
-   vorheriger Telemetrie des letzten Laufs und ausdrücklicher Freigabe.
+1. **A bleibt Baseline, B wird der Standard für den Tabellenpfad** (1,86×
+   Aufwand, vollständiger Kontexterhalt, gleiche Abdeckung). C und D nur, wenn
+   der Modelllauf einen Recall-Vorteil zeigt, der 4–5× Eingabetokens trägt.
+2. **E mit Nachlese-Budget**, eingestellt auf `dev`; die Nachlese greift nur bei
+   unbelegten oder konfliktären Zellen.
+3. **Nächster Hebel: Rollen-Vokabular.** Von 100 Zellen ohne passende Spalte
+   entfallen 60 auf Mittelwerte — vermutlich Spalten mit Köpfen wie „Change“,
+   „Post“, „Follow-up“, die `role_for_header` nicht als Mittelwert liest. Das
+   ist ohne Modellkosten messbar und würde die Reichweite direkt erhöhen; jede
+   Ergänzung gehört mit Test und Gegenprobe in `semantics.role_for_header`.
+4. **Danach der Modelllauf** (A/B/E auf `test`, C/D nur bei Bedarf), mit
+   vorheriger Telemetrie und ausdrücklicher Freigabe. Erwartung: der messbare
+   Recall-Gewinn ist durch die 34-%-Obergrenze begrenzt; die interessante Frage
+   ist, ob B/E diese 95 Zellen vollständiger und präziser holen als A.
+5. **Reihenfolge-Annahme aus lassen** (billig, +4 Zellen, prüfpflichtig); im
+   Benchmark mitführen, um den Effekt zu kennen.
 
 ## Artefakte
 
 | Datei | Inhalt |
 |---|---|
-| `selection_test.json` | eingefrorene Auswahl (60 Tabellen, 537 Kandidaten, Hash) |
+| `selection_test.json` | eingefrorene Auswahl (60 Tabellen, 608 Kandidaten, Hash) |
 | `selection_dev.json` | Devauswahl (6 Tabellen aus 26 Kandidaten) |
-| `offline_struktur_20261118/structure.json` | Struktur/Aufwand A–E, Standardkonfiguration |
+| `offline_struktur_20261118/structure.json` | Struktur/Aufwand/Reichweite A–E |
 | `offline_struktur_reihenfolge_20261118/structure.json` | dasselbe mit Reihenfolge-Annahme |
-| `strukturbericht_20261118.md` | maschinell erzeugter Bericht aus `structure.json` |
+| `diagnose_erreichbarkeit_20261118.json` | Klassifikation jeder nicht erreichbaren Goldzelle |
+| `strukturbericht_20261118.md` | maschinell erzeugter Bericht |
 | `einordnung_20261118.md` | dieser Text |
 
 ## Grenzen
@@ -166,8 +168,7 @@ Modelllauf.
 - Der Strukturvergleich sagt nichts über Extraktionsqualität. Precision/Recall
   bleiben offen, bis ein Modelllauf freigegeben ist.
 - `gold_reachable` ist eine Obergrenze des Tabellenpfads, keine Modellleistung.
-- Der Devsplit ist mit 26 Kandidaten zu klein für Schwellenoptimierung; für
-  belastbare Einstellungen muss die Devauswahl über mehr Dokumente streuen
-  (z. B. `--max-per-document 1 --target 40`).
+- Die Diagnose klassifiziert per Header-Text, nicht per Modell; sie priorisiert,
+  sie beweist nicht.
 - Outcome- und Zeitpunktzuordnung sind im Gold nicht zellweise annotiert und
-  bleiben im Benchmark nicht messbar; `evaluate.py` weist das aus.
+  bleiben nicht messbar; `evaluate.py` weist das aus.
