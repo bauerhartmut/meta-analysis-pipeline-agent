@@ -1402,3 +1402,23 @@ Zuordnung mit 158.67 und 167.61.
 **Naechster Hebel:** Spaltenzeitpunkte in `primary_tables` einbinden, nachdem
 die vier betroffenen Tabellen einzeln gemessen sind. Bericht:
 `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/sprint43_20261118/bericht_20261118.md`.
+
+## Nachtrag Sprint 43 - Arm aus gedruckter Abkuerzung
+
+**Ursache:** In `PMC3278655:T2` trennen die Kopfteile `TM` und `Cemented` die
+Arme. `TM` ist zwei Zeichen lang (Tokenregel verwirft es) und der Namensvergleich
+entfernt Klammerzusaetze - die gedruckte Abkuerzung `(TM)` aus der
+Interventionsbezeichnung war unsichtbar. Vier `(n=…)`-Baender blieben ohne Arm.
+
+**Aenderung:** `consider_arm_candidate` schlaegt einen Arm nur bei gedruckter
+Klammerabkuerzung vor und uebernimmt ihn nur nach derselben Validierung wie bei
+den Kopfbändern (nur leere Arme, kein Feldverlust, mindestens ein Feldgewinn).
+Kopfangaben erben den Arm der Spalten unter ihrem Band, wenn dort genau einer
+steht (`arm_basis="spalte"`). Neu: `Table.arm_decision`.
+
+**Ergebnis:** vier `(n=…)`-Baender erreichbar (30/29/28/27 intervention,
+24/23/21/18 comparator); Goldfelder 56 -> 58, Strukturfehler 0, Zellen 1748,
+Warnungen 137, A-E gleich. Von 60 Eintraegen uebernehmen 2 einen Kandidaten.
+
+**Tests:** 5 neu in `research_agent/tests/test_armabkuerzung.py`, gesamt 74.
+Bericht: `public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/spaltenzeitpunkte_20261118/armzuordnung.md`.

@@ -285,6 +285,8 @@ class Table:
     header_band_candidates: List[Tuple[str, List[HeaderBand]]] = field(default_factory=list)
     # Begruendung der Entscheidung (``kandidat:uebernommen:...``, ``original:...``).
     band_decision: str = ""
+    # Entscheidung ueber Armkandidaten aus gedruckten Abkuerzungen (``TM``).
+    arm_decision: str = ""
 
     # --- Zugriff ---------------------------------------------------------
     @property
@@ -378,6 +380,7 @@ class Table:
             "header_facts": [dict(fact) for fact in self.header_facts],
             "redundant_of": self.redundant_of,
             "band_decision": self.band_decision,
+            "arm_decision": self.arm_decision,
             "focus_rows": list(self.focus_rows),
         }
 

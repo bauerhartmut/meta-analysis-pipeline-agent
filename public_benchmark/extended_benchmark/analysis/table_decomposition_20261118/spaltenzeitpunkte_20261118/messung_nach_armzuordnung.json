@@ -1,0 +1,529 @@
+{
+  "tables": [
+    "PMC5777419:T2",
+    "PMC3278655:T2"
+  ],
+  "ergebnisse": [
+    {
+      "table_id": "PMC5777419:T2",
+      "record_id": "yun2024:678",
+      "outcome": "the total cultivable microbiota",
+      "zeitpunkt_ziel": "primary time point of the trial (if not stated: the last reported time point)",
+      "zeilenzeitpunkte": [],
+      "spaltenzeitpunkte": [
+        "baseline",
+        "3 months",
+        "6 months",
+        "9 months"
+      ],
+      "outcome_zeilen": [
+        4
+      ],
+      "zeilen_gesamt": 5,
+      "spalten_gesamt": 16,
+      "spalten_mit_feld": [],
+      "reachable_fields": [],
+      "heute_kandidaten": [],
+      "heute_kopfangaben": [
+        {
+          "field": "intervention_group_size",
+          "wert": 15,
+          "arm": "intervention",
+          "spalte": "c6"
+        }
+      ],
+      "je_zeitpunkt": [
+        {
+          "zeitpunkt": "baseline",
+          "spalten": [
+            "c1",
+            "c6",
+            "c11"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "3 months",
+          "spalten": [
+            "c2",
+            "c7",
+            "c12"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "6 months",
+          "spalten": [
+            "c3",
+            "c8",
+            "c13"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "9 months",
+          "spalten": [
+            "c4",
+            "c9",
+            "c14"
+          ],
+          "felder": [],
+          "kandidaten": []
+        }
+      ],
+      "auswahl_heute": {},
+      "auswahl_mit_spaltenzeitpunkten": {},
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "wert": "16",
+          "erreichbar": true,
+          "wert_gedruckt_in": [
+            "band:L1c2",
+            "band:L1c5"
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": "15",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "band:L1c6"
+          ]
+        }
+      ]
+    },
+    {
+      "table_id": "PMC5777419:T2",
+      "record_id": "yun2024:682",
+      "outcome": "attachment gain",
+      "zeitpunkt_ziel": "primary time point of the trial (if not stated: the last reported time point)",
+      "zeilenzeitpunkte": [],
+      "spaltenzeitpunkte": [
+        "baseline",
+        "3 months",
+        "6 months",
+        "9 months"
+      ],
+      "outcome_zeilen": [],
+      "zeilen_gesamt": 5,
+      "spalten_gesamt": 16,
+      "spalten_mit_feld": [],
+      "reachable_fields": [],
+      "heute_kandidaten": [],
+      "heute_kopfangaben": [
+        {
+          "field": "intervention_group_size",
+          "wert": 15,
+          "arm": "intervention",
+          "spalte": "c6"
+        }
+      ],
+      "je_zeitpunkt": [
+        {
+          "zeitpunkt": "baseline",
+          "spalten": [
+            "c1",
+            "c6",
+            "c11"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "3 months",
+          "spalten": [
+            "c2",
+            "c7",
+            "c12"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "6 months",
+          "spalten": [
+            "c3",
+            "c8",
+            "c13"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "9 months",
+          "spalten": [
+            "c4",
+            "c9",
+            "c14"
+          ],
+          "felder": [],
+          "kandidaten": []
+        }
+      ],
+      "auswahl_heute": {},
+      "auswahl_mit_spaltenzeitpunkten": {},
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "wert": "16",
+          "erreichbar": true,
+          "wert_gedruckt_in": [
+            "band:L1c2",
+            "band:L1c5"
+          ]
+        },
+        {
+          "field": "intervention_mean",
+          "wert": "4.1",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "r0/c9",
+            "r0/c12",
+            "r0/c13"
+          ]
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "wert": "1",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "r0/c7",
+            "r0/c8",
+            "r0/c9"
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": "15",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "band:L1c6"
+          ]
+        },
+        {
+          "field": "comparator_mean",
+          "wert": "4.3",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "r0/c14"
+          ]
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "wert": "1.4",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "r0/c12",
+            "r0/c13",
+            "r0/c14"
+          ]
+        }
+      ]
+    },
+    {
+      "table_id": "PMC3278655:T2",
+      "record_id": "yun2024:390",
+      "outcome": "subsidence",
+      "zeitpunkt_ziel": "primary time point of the trial (if not stated: the last reported time point)",
+      "zeilenzeitpunkte": [],
+      "spaltenzeitpunkte": [
+        "6 month follow up",
+        "12 month follow up",
+        "24 month follow up",
+        "60 month follow up"
+      ],
+      "outcome_zeilen": [],
+      "zeilen_gesamt": 8,
+      "spalten_gesamt": 10,
+      "spalten_mit_feld": [],
+      "reachable_fields": [],
+      "heute_kandidaten": [],
+      "heute_kopfangaben": [
+        {
+          "field": "intervention_group_size",
+          "wert": 30,
+          "arm": "intervention",
+          "spalte": "c1"
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": 24,
+          "arm": "comparator",
+          "spalte": "c2"
+        },
+        {
+          "field": "intervention_group_size",
+          "wert": 29,
+          "arm": "intervention",
+          "spalte": "c3"
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": 23,
+          "arm": "comparator",
+          "spalte": "c4"
+        },
+        {
+          "field": "intervention_group_size",
+          "wert": 28,
+          "arm": "intervention",
+          "spalte": "c5"
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": 21,
+          "arm": "comparator",
+          "spalte": "c6"
+        },
+        {
+          "field": "intervention_group_size",
+          "wert": 27,
+          "arm": "intervention",
+          "spalte": "c7"
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": 18,
+          "arm": "comparator",
+          "spalte": "c8"
+        }
+      ],
+      "je_zeitpunkt": [
+        {
+          "zeitpunkt": "6 month follow up",
+          "spalten": [
+            "c1"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "12 month follow up",
+          "spalten": [
+            "c2"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "24 month follow up",
+          "spalten": [
+            "c3"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "60 month follow up",
+          "spalten": [
+            "c4"
+          ],
+          "felder": [],
+          "kandidaten": []
+        }
+      ],
+      "auswahl_heute": {},
+      "auswahl_mit_spaltenzeitpunkten": {},
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "wert": "27",
+          "erreichbar": true,
+          "wert_gedruckt_in": [
+            "band:L2c7"
+          ]
+        },
+        {
+          "field": "intervention_mean",
+          "wert": "-0.38",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "r3/c7"
+          ]
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "wert": "0.37",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "r3/c7"
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": "18",
+          "erreichbar": true,
+          "wert_gedruckt_in": [
+            "band:L2c8"
+          ]
+        },
+        {
+          "field": "comparator_mean",
+          "wert": "-0.04",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "r3/c8"
+          ]
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "wert": "0.11",
+          "erreichbar": false,
+          "wert_gedruckt_in": [
+            "r3/c4",
+            "r3/c8"
+          ]
+        }
+      ]
+    },
+    {
+      "table_id": "PMC3278655:T2",
+      "record_id": "yun2024:391",
+      "outcome": "The proportion of \"at risk\" components at 5 years",
+      "zeitpunkt_ziel": "primary time point of the trial (if not stated: the last reported time point)",
+      "zeilenzeitpunkte": [],
+      "spaltenzeitpunkte": [
+        "6 month follow up",
+        "12 month follow up",
+        "24 month follow up",
+        "60 month follow up"
+      ],
+      "outcome_zeilen": [],
+      "zeilen_gesamt": 8,
+      "spalten_gesamt": 10,
+      "spalten_mit_feld": [],
+      "reachable_fields": [],
+      "heute_kandidaten": [],
+      "heute_kopfangaben": [
+        {
+          "field": "intervention_group_size",
+          "wert": 30,
+          "arm": "intervention",
+          "spalte": "c1"
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": 24,
+          "arm": "comparator",
+          "spalte": "c2"
+        },
+        {
+          "field": "intervention_group_size",
+          "wert": 29,
+          "arm": "intervention",
+          "spalte": "c3"
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": 23,
+          "arm": "comparator",
+          "spalte": "c4"
+        },
+        {
+          "field": "intervention_group_size",
+          "wert": 28,
+          "arm": "intervention",
+          "spalte": "c5"
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": 21,
+          "arm": "comparator",
+          "spalte": "c6"
+        },
+        {
+          "field": "intervention_group_size",
+          "wert": 27,
+          "arm": "intervention",
+          "spalte": "c7"
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": 18,
+          "arm": "comparator",
+          "spalte": "c8"
+        }
+      ],
+      "je_zeitpunkt": [
+        {
+          "zeitpunkt": "6 month follow up",
+          "spalten": [
+            "c1"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "12 month follow up",
+          "spalten": [
+            "c2"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "24 month follow up",
+          "spalten": [
+            "c3"
+          ],
+          "felder": [],
+          "kandidaten": []
+        },
+        {
+          "zeitpunkt": "60 month follow up",
+          "spalten": [
+            "c4"
+          ],
+          "felder": [],
+          "kandidaten": []
+        }
+      ],
+      "auswahl_heute": {},
+      "auswahl_mit_spaltenzeitpunkten": {},
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "wert": "27",
+          "erreichbar": true,
+          "wert_gedruckt_in": [
+            "band:L2c7"
+          ]
+        },
+        {
+          "field": "intervention_events",
+          "wert": "0",
+          "erreichbar": false,
+          "wert_gedruckt_in": []
+        },
+        {
+          "field": "comparator_group_size",
+          "wert": "18",
+          "erreichbar": true,
+          "wert_gedruckt_in": [
+            "band:L2c8"
+          ]
+        },
+        {
+          "field": "comparator_events",
+          "wert": "2",
+          "erreichbar": false,
+          "wert_gedruckt_in": []
+        }
+      ]
+    }
+  ],
+  "summe": {
+    "tabellen_record_paare": 4,
+    "felder_heute": 6,
+    "felder_je_zeitpunkt_summe": 0,
+    "tabellen_mit_mehrfachkandidat": 0,
+    "tabellen_mit_neuer_verdraengung": 0,
+    "goldzellen": 18,
+    "goldzellen_feld_erreichbar": 6,
+    "goldzellen_wert_gedruckt": 16
+  }
+}

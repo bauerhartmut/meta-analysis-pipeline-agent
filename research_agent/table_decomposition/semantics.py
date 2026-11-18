@@ -467,6 +467,9 @@ def enrich_table(table: Table, context: Optional[Dict[str, object]] = None,
     _detect_combined_columns(table)
     if assume_order:
         _assume_arm_order(table)
+    # Arme aus gedruckten Abkuerzungen (``TM``) - gleiche Pruefung wie bei den
+    # Kopfbändern: Kandidat rechnen, nur mit Feldgewinn uebernehmen.
+    table.arm_decision = consider_arm_candidate(table, context)
     table.context = dict(context)
     for row in table.rows:
         if row.group_label:
@@ -679,6 +682,101 @@ def _assume_arm_order(table: Table) -> None:
             column.field = field_for(column.role, arm)
 
 
+_ARM_ABKUERZUNG_RE = re.compile(r"\(([A-Za-z][A-Za-z0-9\-]{1,9})\)")
+
+
+def _arm_abkuerzungen(name: str) -> set:
+    """Gedruckte Abkuerzungen einer Armbezeichnung (``... component (TM)``)."""
+    return {
+        re.sub(r"[^a-z0-9]", "", treffer.lower())
+        for treffer in _ARM_ABKUERZUNG_RE.findall(name or "")
+    }
+
+
+def _abkuerzungs_arm(header_path: Sequence[str], intervention: str,
+                     comparator: str) -> Optional[str]:
+    """Arm, dessen gedruckte Abkuerzung als eigener Kopfteil steht.
+
+    ``TM`` allein traegt kein unterscheidendes Token (zwei Zeichen) und matcht
+    deshalb keine Armbezeichnung. Steht die Abkuerzung aber in Klammern im
+    Armnamen (``The trabecular metal tibial monoblock component (TM)``), ist sie
+    ein belegter Verweis. Fuehren beide Arme dieselbe Abkuerzung, bleibt der Arm
+    leer - dann ist nichts entschieden.
+    """
+    kurz_intervention = _arm_abkuerzungen(intervention)
+    kurz_comparator = _arm_abkuerzungen(comparator)
+    for teil in header_path or ():
+        name = _normalise_arm(teil)
+        if not name:
+            continue
+        treffer = []
+        if name in kurz_intervention:
+            treffer.append(ARM_INTERVENTION)
+        if name in kurz_comparator:
+            treffer.append(ARM_COMPARATOR)
+        if len(treffer) == 1:
+            return treffer[0]
+        if treffer:
+            return None
+    return None
+
+
+def _felder_mit_fakten(table: Table, intervention: str, comparator: str) -> set:
+    """Felder aus Spalten **und** Kopfangaben - der Gewinn, den ein Arm bringt."""
+    felder = set(_field_counts(table))
+    for fact in _group_size_facts(table, intervention, comparator):
+        feld = field_for(ROLE_N, fact.get("arm") or None)
+        if feld:
+            felder.add(feld)
+    return felder
+
+
+def consider_arm_candidate(table: Table,
+                           context: Optional[Dict[str, object]] = None) -> str:
+    """Leere Spaltenarme aus gedruckter Abkuerzung - nur mit Beleg und Gewinn.
+
+    Wie bei den Kopfbändern entscheidet die Validierung, nicht der Studienname:
+    der Kandidat wird an einer Kopie durchgerechnet und nur uebernommen, wenn er
+    mindestens ein Feld gewinnt und keines verliert. Gefuellt werden
+    ausschliesslich leere Arme; ein bereits gesetzter Arm wird nie
+    ueberschrieben, und ohne gedruckte Abkuerzung gibt es keinen Kandidaten.
+    """
+    context = context or {}
+    intervention = str(context.get("intervention") or "")
+    comparator = str(context.get("comparator") or "")
+    kandidat = {
+        column.col_id: arm
+        for column in table.columns
+        if not column.arm and column.role != ROLE_LABEL
+        for arm in (_abkuerzungs_arm(column.header_path, intervention, comparator),)
+        if arm
+    }
+    if not kandidat:
+        return "original:kein_kandidat"
+    probe = copy.deepcopy(table)
+    for col_id, arm in kandidat.items():
+        twin = probe.column(col_id)
+        if twin is None:
+            continue
+        twin.arm = arm
+        twin.arm_basis = "abkuerzung"
+        twin.field = field_for(twin.role, arm)
+    vorher = _felder_mit_fakten(table, intervention, comparator)
+    nachher = _felder_mit_fakten(probe, intervention, comparator)
+    if not vorher <= nachher:
+        return "original:feldverlust"
+    if len(nachher) <= len(vorher):
+        return "original:kein_gewinn"
+    for col_id, arm in kandidat.items():
+        column = table.column(col_id)
+        if column is None:
+            continue
+        column.arm = arm
+        column.arm_basis = "abkuerzung"
+        column.field = field_for(column.role, arm)
+    return "kandidat:uebernommen:" + ",".join(f"c{col_id}" for col_id in sorted(kandidat))
+
+
 def _group_size_facts(table: Table, intervention: str,
                       comparator: str) -> List[Dict[str, object]]:
     """Feste Gruppengroessen aus Kopfangaben (``n = 456``).
@@ -700,6 +798,17 @@ def _group_size_facts(table: Table, intervention: str,
             and group_size_declaration(other.text) is None
         ]
         binding = bind_arm(path, intervention, comparator)
+        arm, arm_basis = binding.arm, binding.basis
+        if arm is None:
+            # Der Arm kann auch an den Spalten unter dem Band belegt sein
+            # (etwa ``TM``-Spalten ueber eine gedruckte Abkuerzung); dann gilt
+            # er fuer diese Kopfangabe. Bei gemischten Armen bleibt er leer.
+            arme = {
+                column.arm for column in table.columns
+                if band.col_start <= column.col_id <= band.col_end and column.arm
+            }
+            if len(arme) == 1:
+                arm, arm_basis = arme.pop(), "spalte"
         facts.append({
             "kind": "group_size",
             "text": band.text,
@@ -708,8 +817,8 @@ def _group_size_facts(table: Table, intervention: str,
             "col_start": band.col_start,
             "col_end": band.col_end,
             "basis": "kopf_angabe",
-            "arm": binding.arm,
-            "arm_basis": binding.basis,
+            "arm": arm,
+            "arm_basis": arm_basis,
         })
     return facts
 
