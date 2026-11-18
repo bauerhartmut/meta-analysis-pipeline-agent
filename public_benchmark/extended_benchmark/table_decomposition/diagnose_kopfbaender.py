@@ -74,14 +74,7 @@ def _fields(table, context) -> List[str]:
     return sorted({name for _row_id, name in reachable_cells(table, context)})
 
 
-def _parse_original(text: str, doc_id: str):
-    """Parse ohne ordinale Neuordnung: die gedruckte Geometrie bleibt stehen."""
-    original = parser_module._reassign_header_bands_by_order
-    parser_module._reassign_header_bands_by_order = lambda table: False
-    try:
-        return parse_document(text, doc_id)
-    finally:
-        parser_module._reassign_header_bands_by_order = original
+
 
 
 def diagnose(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
@@ -95,20 +88,21 @@ def diagnose(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
         text = Path(record["document"]["path"]).read_text(encoding="utf-8",
                                                           errors="replace")
         doc_id = str(record["document"]["id"])
-        original = _parse_original(text, doc_id)
-        ordered = parse_document(text, doc_id)
+        parsed = parse_document(text, doc_id)
         for entry in entries:
             table_id = entry["table_id"]
             if only and table_id != only:
                 continue
-            base = next((t for t in original.tables if t.table_id == table_id), None)
-            moved = next((t for t in ordered.tables if t.table_id == table_id), None)
-            if base is None or moved is None:
+            base = next((t for t in parsed.tables if t.table_id == table_id), None)
+            if base is None:
                 continue
-            # Ohne Neuordnung ist der Kandidat identisch; die Verdraengung kommt
-            # allein aus dem zweiten Parse.
+            # Der Parser liefert die gedruckte Geometrie; der Kandidat wird
+            # hier bewusst ohne Validierung gesetzt, damit die Diagnose zeigt,
+            # was die ordinale Zuordnung allein anrichten wuerde.
             alt = copy.deepcopy(base)
-            parser_module._reassign_header_bands_by_order(alt)
+            candidates = parser_module._header_band_candidates(alt)
+            if candidates:
+                alt.apply_header_bands(candidates[0][1])
             for table, ctx in ((base, context), (alt, context)):
                 enrich_table(table, ctx)
                 transfer_arms_within_document([table], ctx)

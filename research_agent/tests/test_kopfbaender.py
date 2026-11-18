@@ -28,7 +28,6 @@ from research_agent.table_decomposition.model import (
     Table,
 )
 from research_agent.table_decomposition.parser import (
-    _apply_header_bands,
     _candidate_header_bands,
     _header_band_candidates,
     parse_document,
@@ -289,7 +288,7 @@ def test_first_candidate_is_applied_by_the_parser_helper():
     assert name == "ordnung_mit_gedruckten_ebenen"
     assert [(band.text, band.col_start, band.col_end) for band in bands] == [
         ("Group", 0, 1), ("Baseline", 2, 3), ("Follow-up", 4, 5)]
-    _apply_header_bands(table, bands)
+    table.apply_header_bands(bands)
     assert "header_gruppe_nicht_teilbar:ebene0" not in table.irregularities
     assert "spalten_ordnung:kopf_nach_wertspalten" in table.irregularities
 

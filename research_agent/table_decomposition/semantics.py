@@ -18,6 +18,7 @@ from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 from .model import (
     ARM_COMPARATOR,
     ARM_INTERVENTION,
+    HEADER_GEOMETRY_CODES,
     ROLE_CI,
     ROLE_EVENTS,
     ROLE_LABEL,
@@ -389,15 +390,9 @@ def consider_header_band_candidate(table: Table,
             continue
         probe = copy.deepcopy(table)
         probe.header_band_candidates = []
-        probe.header_bands = list(bands)
         # Der Kandidat ersetzt die unaufloesbare Geometrie: erst danach ist die
         # Kopfgeometrie fuer die Outcome-Markierung wieder belastbar.
-        probe.irregularities = [
-            irregularity
-            for irregularity in probe.irregularities
-            if not any(code in irregularity for code in _HEADER_GEOMETRY_BROKEN)
-        ]
-        probe.irregularities.append("spalten_ordnung:kopf_nach_wertspalten")
+        probe.apply_header_bands(bands)
         enrich_table(probe, context, assume_order=assume_order)
         after_fields = {name_ for _row_id, name_ in reachable_cells(probe, context)}
         if not before_fields <= after_fields:
@@ -432,16 +427,9 @@ def consider_header_band_candidate(table: Table,
     name, probe, after_fields = best
     if len(after_fields) <= len(before_fields):
         return "original:kein_gewinn"
-    table.header_bands = probe.header_bands
+    table.apply_header_bands(probe.header_bands)
     table.columns = probe.columns
     table.rows = probe.rows
-    table.irregularities = [
-        irregularity
-        for irregularity in probe.irregularities
-        if not any(code in irregularity for code in _HEADER_GEOMETRY_BROKEN)
-    ]
-    if "spalten_ordnung:kopf_nach_wertspalten" not in table.irregularities:
-        table.irregularities.append("spalten_ordnung:kopf_nach_wertspalten")
     table.header_facts = probe.header_facts
     table.focus_rows = probe.focus_rows
     table.context = probe.context
@@ -507,14 +495,6 @@ def _column_header_text(column: Column) -> str:
     return " ".join(t for t in column.header_path if t) or (column.header or "")
 
 
-_HEADER_GEOMETRY_BROKEN = (
-    "header_gruppe_nicht_teilbar",
-    "header_ohne_spalte",
-    "header_ueberzaehlig_ohne_spalte",
-    "header_doppelter_anker",
-)
-
-
 def header_geometry_trustworthy(table: Table) -> bool:
     """Sind die Kopfspannen belegt - oder nur notduerftig verteilt?
 
@@ -528,7 +508,7 @@ def header_geometry_trustworthy(table: Table) -> bool:
     return not any(
         code in irregularity
         for irregularity in table.irregularities
-        for code in _HEADER_GEOMETRY_BROKEN
+        for code in HEADER_GEOMETRY_CODES
     )
 
 

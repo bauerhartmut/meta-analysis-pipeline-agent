@@ -25,6 +25,7 @@ from dataclasses import replace as dc_replace
 from typing import Callable, Dict, Iterable, List, Optional, Sequence, Tuple
 
 from .model import (
+    HEADER_GEOMETRY_CODES,
     ROLE_LABEL,
     Cell,
     Column,
@@ -709,15 +710,7 @@ def _looks_numeric(text: str) -> bool:
     parsed = parse_value(stripped)
     if isinstance(parsed, (int, float)):
         return True
-    return parsed is not None and getattr(parsed, "value", None) is not None
-
-
-_GEOMETRY_CODES = (
-    "header_gruppe_nicht_teilbar",
-    "header_ohne_spalte",
-    "header_ueberzaehlig_ohne_spalte",
-    "header_doppelter_anker",
-)
+        return parsed is not None and getattr(parsed, "value", None) is not None
 
 
 def _candidate_header_bands(table: Table) -> Optional[List[HeaderBand]]:
@@ -740,7 +733,7 @@ def _candidate_header_bands(table: Table) -> Optional[List[HeaderBand]]:
     if not any(
         code in irregularity
         for irregularity in table.irregularities
-        for code in _GEOMETRY_CODES
+        for code in HEADER_GEOMETRY_CODES
     ):
         return None
     if len(table.columns) < 3 or not table.header_bands:
@@ -802,41 +795,6 @@ def _candidate_header_bands(table: Table) -> Optional[List[HeaderBand]]:
 def _header_band_candidates(table: Table) -> List[Tuple[str, List[HeaderBand]]]:
     """Wie ``_candidate_header_bands``, aber immer eine Liste."""
     return _candidate_header_bands(table) or []
-
-
-def _apply_header_bands(table: Table, bands: Sequence[HeaderBand]) -> None:
-    """Kandidat uebernehmen: Baender setzen, Geometriemaengel streichen."""
-    table.header_bands = list(bands)
-    table.irregularities = [
-        irregularity
-        for irregularity in table.irregularities
-        if not any(code in irregularity for code in _GEOMETRY_CODES)
-    ]
-    if "spalten_ordnung:kopf_nach_wertspalten" not in table.irregularities:
-        table.irregularities.append("spalten_ordnung:kopf_nach_wertspalten")
-
-
-def _reassign_header_bands_by_order(table: Table) -> bool:
-    """Nimmt den ersten Kandidaten ohne Pruefung (nur fuer Altaufrufer).
-
-    Die Markdown-Abzuege stehen nicht auf dem Strichraster: in
-    ``PMC4319071:T2`` endet ``158.93`` rechtsbuendig bei x=93 (Ende der vierten
-    Rasterspalte), die Kopfzelle ``Vegetables (grams)`` beginnt bei x=43 (Anfang
-    der dritten). Das Strichraster ist damit unbrauchbar; die Reihenfolge der
-    Kopfzellen ist es nicht.
-
-    Vorgehen, nur wenn die Kopfgeometrie bereits als unaufloesbar notiert ist:
-    Wertspalten sind die Spalten mit mindestens einer Zahl. Jede Kopfebene wird
-    ordinal verteilt - eine Zelle je Wertspalte, sonst erste Zelle ans Label und
-    gleiche Gruppen ueber die Wertspalten. Geht die Teilung nicht auf, bleibt
-    die Ebene unzugeordnet und wird notiert; Zellen und Spalten werden **nicht**
-    umnummeriert.
-    """
-    candidates = _candidate_header_bands(table)
-    if not candidates:
-        return False
-    _apply_header_bands(table, candidates[0][1])
-    return True
 
 
 def _finish_table(table: Table) -> Table:

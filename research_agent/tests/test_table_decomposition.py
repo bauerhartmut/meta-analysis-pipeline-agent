@@ -45,7 +45,7 @@ from research_agent.table_decomposition.model import (
 )
 from research_agent.table_decomposition.parser import (
     _looks_prose,
-    _reassign_header_bands_by_order,
+    _candidate_header_bands,
     normalise_number_text,
     parse_document,
     parse_value,
@@ -1008,8 +1008,12 @@ def test_outcome_column_is_refused_when_the_header_grid_is_broken():
     assert reachable_cells(table, ROW_ARM_CONTEXT) == set()
 
 
-def test_header_bands_are_reassigned_to_value_columns():
-    """Verschobenes Strichraster: Kopfebenen folgen den Wertspalten."""
+def test_header_band_candidates_follow_the_value_columns():
+    """Verschobenes Strichraster: der Kandidat folgt den Wertspalten.
+
+    Geprueft wird nur die Berechnung; ob der Kandidat die gedruckte Geometrie
+    ersetzen darf, entscheidet ``semantics.consider_header_band_candidate``.
+    """
     table = Table(table_id="SHIFT:T1", doc_id="SHIFT", index=1)
     table.columns = [Column(col_id=index, x_start=index * 10, x_end=index * 10 + 9)
                      for index in range(10)]
@@ -1032,15 +1036,19 @@ def test_header_bands_are_reassigned_to_value_columns():
                                                  anchor=position))
     table.irregularities.append("header_gruppe_nicht_teilbar:ebene0")
 
-    assert _reassign_header_bands_by_order(table)
-    vegetables = next(b for b in table.header_bands if b.text == "Vegetables (grams)")
+    candidates = _candidate_header_bands(table)
+    assert candidates
+    bands = candidates[0][1]
+    vegetables = next(b for b in bands if b.text == "Vegetables (grams)")
     assert (vegetables.col_start, vegetables.col_end) == (4, 5)
-    assert "header_gruppe_nicht_teilbar:ebene0" not in table.irregularities
-    assert any(i.startswith("spalten_ordnung") for i in table.irregularities)
-    # Ohne den Notfall-Code bleibt das Strichraster unangetastet.
+    assert vegetables.basis == "ordnung"
+    # Ebene 2 ("(95% CI)", 4 Zellen auf 8 Wertspalten) geht nicht auf und
+    # behaelt im ersten Kandidaten ihre gedruckte Spanne.
+    assert any(b.level == 2 and b.basis != "ordnung" for b in bands)
+    # Ohne den Notfall-Code gibt es keinen Kandidaten.
     fresh = Table(table_id="SHIFT:T2", doc_id="SHIFT", index=2)
     fresh.columns = [Column(col_id=0, x_start=0, x_end=9)]
-    assert not _reassign_header_bands_by_order(fresh)
+    assert _candidate_header_bands(fresh) is None
 
 
 def test_document_definition_proves_the_intervention_arm():

@@ -30,6 +30,16 @@ FIELDS: Tuple[str, ...] = (
 ARM_INTERVENTION = "intervention"
 ARM_COMPARATOR = "comparator"
 
+# Kopfgeometrie: Maengelcodes, die eine ordinale Neuordnung der Baender ersetzen darf.
+HEADER_GEOMETRY_CODES: Tuple[str, ...] = (
+    "header_gruppe_nicht_teilbar",
+    "header_ohne_spalte",
+    "header_ueberzaehlig_ohne_spalte",
+    "header_doppelter_anker",
+)
+# Marker in ``Table.irregularities``, wenn die Baender ordinal gesetzt sind.
+HEADER_BAND_ORDER_MARKER = "spalten_ordnung:kopf_nach_wertspalten"
+
 # Rollen einer Spalte. ``label`` traegt Text, alle anderen tragen Zahlen.
 ROLE_LABEL = "label"
 ROLE_N = "n"
@@ -300,6 +310,22 @@ class Table:
             if r.row_id == row_id:
                 return r
         return None
+
+    def apply_header_bands(self, bands: Sequence["HeaderBand"]) -> None:
+        """Kopfbaender uebernehmen: Maengelcodes streichen, Marker setzen.
+
+        Einzige Stelle, die die Kopfgeometrie ersetzt. Sie dokumentiert den
+        Eingriff in ``irregularities``; die Entscheidung darueber trifft
+        ``semantics.consider_header_band_candidate``.
+        """
+        self.header_bands = list(bands)
+        self.irregularities = [
+            irregularity
+            for irregularity in self.irregularities
+            if not any(code in irregularity for code in HEADER_GEOMETRY_CODES)
+        ]
+        if HEADER_BAND_ORDER_MARKER not in self.irregularities:
+            self.irregularities.append(HEADER_BAND_ORDER_MARKER)
 
     def data_cells(self) -> List[Cell]:
         """Alle Zellen der Datenspalten (die Kandidaten fuer Zahlen)."""
