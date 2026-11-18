@@ -216,8 +216,9 @@ Workplan als viele Slogans.
   `Co-Authored-By: Codebuff <noreply@codebuff.com>`; Deutsch im Committext.
 - Push nach GitHub nur nach Nutzer-Freigabe; Repo: `bauerhartmut/meta-analysis-agent`,
   Branch `master`. Backup-Log der alten Historie: `backups/pre_history_clean.bundle`.
-- Tests mit UTF-8-Ausgabe: `export PYTHONIOENCODING=utf-8; python -m pytest
-  research_agent/tests/<file>.py -q`.
+- Tests: `export PYTHONIOENCODING=utf-8; python -m pytest -q` (gesamte Suite aus
+  der Wurzel, siehe `pytest.ini`). Fuer eine schnelle Einzelpruefung genuegt
+  `python -m pytest research_agent/tests/<datei>.py -q`.
 - Standalone-Server: `python research_agent/dashboard/standalone_server.py` (Port 8080,
   BACKGROUND-Start); Cache-Buster `?v=N` manuell in `index.html` nach CSS/JS-Änderungen
   (Server hält `max-age=300` für Static).
