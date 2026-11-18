@@ -1,0 +1,179 @@
+{
+ "modell": "glm",
+ "zellen_bewertet": 2121,
+ "richtig": 1840,
+ "falsch": 281,
+ "gate": {
+  "geflaggt_gesamt": 117,
+  "geflaggt_falsch": 50,
+  "geflaggt_richtig": 67,
+  "trefferquote_des_gates": 0.4274,
+  "anteil_falscher_zellen_erkannt": 0.1779,
+  "anteil_richtiger_zellen_verworfen": 0.0364,
+  "precision_der_verbleibenden": 0.8847
+ },
+ "gate_hart": {
+  "regeln": [
+   "ereignis_nicht_ganzzahlig",
+   "ereignisse_bei_kontinuierlichem_outcome",
+   "ereignisse_ueber_gruppengroesse",
+   "mittelwert_bei_binaerem_outcome",
+   "negatives_ereignis",
+   "prozent_statt_anzahl",
+   "sd_nicht_positiv"
+  ],
+  "geflaggt_gesamt": 27,
+  "geflaggt_falsch": 26,
+  "geflaggt_richtig": 1,
+  "trefferquote_des_gates": 0.963,
+  "anteil_falscher_zellen_erkannt": 0.0925,
+  "anteil_richtiger_zellen_verworfen": 0.0005,
+  "precision_der_verbleibenden": 0.8782
+ },
+ "je_regel": {
+  "anteil_statt_mittelwert": {
+   "gesamt": 55,
+   "davon_richtig": 41
+  },
+  "sd_gegen_mittelwert": {
+   "gesamt": 19,
+   "davon_richtig": 11
+  },
+  "ereignisse_ueber_gruppengroesse": {
+   "gesamt": 16,
+   "davon_richtig": 0
+  },
+  "ereignis_nicht_ganzzahlig": {
+   "gesamt": 16,
+   "davon_richtig": 0
+  },
+  "arme_sehr_ungleich": {
+   "gesamt": 16,
+   "davon_richtig": 14
+  },
+  "sd_nicht_positiv": {
+   "gesamt": 1,
+   "davon_richtig": 1
+  }
+ },
+ "beispiele": [
+  {
+   "record_id": "yun2024:62",
+   "feld": "intervention_events",
+   "modell": 100.0,
+   "gold": 23.0,
+   "gruende": [
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  },
+  {
+   "record_id": "yun2024:62",
+   "feld": "comparator_events",
+   "modell": 47.4,
+   "gold": 9.0,
+   "gruende": [
+    "ereignis_nicht_ganzzahlig",
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  },
+  {
+   "record_id": "yun2024:63",
+   "feld": "intervention_events",
+   "modell": 100.0,
+   "gold": 23.0,
+   "gruende": [
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  },
+  {
+   "record_id": "yun2024:63",
+   "feld": "comparator_events",
+   "modell": 26.3,
+   "gold": 5.0,
+   "gruende": [
+    "ereignis_nicht_ganzzahlig",
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  },
+  {
+   "record_id": "yun2024:64",
+   "feld": "intervention_events",
+   "modell": 61.0,
+   "gold": 14.0,
+   "gruende": [
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  },
+  {
+   "record_id": "yun2024:64",
+   "feld": "comparator_events",
+   "modell": 21.1,
+   "gold": 4.0,
+   "gruende": [
+    "ereignis_nicht_ganzzahlig",
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  },
+  {
+   "record_id": "yun2024:65",
+   "feld": "intervention_events",
+   "modell": 61.0,
+   "gold": 14.0,
+   "gruende": [
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  },
+  {
+   "record_id": "yun2024:65",
+   "feld": "comparator_events",
+   "modell": 16.7,
+   "gold": 3.0,
+   "gruende": [
+    "ereignis_nicht_ganzzahlig"
+   ]
+  },
+  {
+   "record_id": "yun2024:66",
+   "feld": "intervention_events",
+   "modell": 61.0,
+   "gold": 14.0,
+   "gruende": [
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  },
+  {
+   "record_id": "yun2024:66",
+   "feld": "comparator_events",
+   "modell": 21.1,
+   "gold": 4.0,
+   "gruende": [
+    "ereignis_nicht_ganzzahlig",
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  },
+  {
+   "record_id": "yun2024:150",
+   "feld": "intervention_mean",
+   "modell": 0.3,
+   "gold": 0.25,
+   "gruende": [
+    "anteil_statt_mittelwert"
+   ]
+  },
+  {
+   "record_id": "yun2024:153",
+   "feld": "intervention_events",
+   "modell": 42.5,
+   "gold": 17.0,
+   "gruende": [
+    "ereignis_nicht_ganzzahlig",
+    "ereignisse_ueber_gruppengroesse"
+   ]
+  }
+ ],
+ "stichprobe_auffindbarkeit": {
+  "zellen": 65,
+  "im_auszug": 54,
+  "anteil": 0.8308
+ }
+}
