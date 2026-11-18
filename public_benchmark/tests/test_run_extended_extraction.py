@@ -58,8 +58,18 @@ def test_ids_waehlen_aus_der_alternativen_datei(tmp_path: Path) -> None:
     assert len(runner.waehle_records(runner.load_records("test", None, path=datei), None)) == 3
 
 
-def _auftrag(tmp_path: Path, monkeypatch, antworten: list[dict], extra: list[str] | None = None) -> tuple[list[str], dict]:
-    """Fuehrt main() mit gefaelschtem API-Aufruf aus; gibt (aufrufe, zeile)."""
+def _auftrag(
+    tmp_path: Path,
+    monkeypatch,
+    antworten: list[dict],
+    extra: list[str] | None = None,
+    erwarte: int = 0,
+) -> tuple[list[str], dict]:
+    """Fuehrt main() mit gefaelschtem API-Aufruf aus; gibt (aufrufe, zeile).
+
+    `erwarte` ist der erwartete Exit-Code; bei einem Abbruch gibt es keine Zeile
+    und der zweite Rueckgabewert ist leer.
+    """
     datei = tmp_path / "rec.jsonl"
     record = {
         "record_id": "yun2024:1",
@@ -71,7 +81,7 @@ def _auftrag(tmp_path: Path, monkeypatch, antworten: list[dict], extra: list[str
     datei.write_text(json.dumps(record) + "\n", encoding="utf-8")
     aufrufe: list[str] = []
 
-    def fake_call(model, prompt, key, base, attempts=4):
+    def fake_call(model, prompt, key, base, attempts=4, **kwargs):
         aufrufe.append(dict(model))
         return antworten[min(len(aufrufe) - 1, len(antworten) - 1)]
 
@@ -86,8 +96,11 @@ def _auftrag(tmp_path: Path, monkeypatch, antworten: list[dict], extra: list[str
         ["runner", "--records", str(datei), "--split", "test", "--ids", "yun2024:1",
          "--models", "glm", "--run-id", "t1", "--target-fallback", *(extra or [])],
     )
-    assert runner.main() == 0
-    zeile = json.loads((tmp_path / "runs" / "t1" / "predictions.jsonl").read_text(encoding="utf-8").splitlines()[0])
+    assert runner.main() == erwarte
+    pfad = tmp_path / "runs" / "t1" / "predictions.jsonl"
+    if not pfad.exists():
+        return aufrufe, {}
+    zeile = json.loads(pfad.read_text(encoding="utf-8").splitlines()[0])
     return aufrufe, zeile
 
 
@@ -243,7 +256,7 @@ def test_ids_allein_reicht_als_auswahl(tmp_path: Path, monkeypatch) -> None:
     )
     monkeypatch.setattr(runner, "HERE", tmp_path)
     monkeypatch.setattr(
-        runner, "call", lambda model, prompt, key, base, attempts=4: {
+        runner, "call", lambda model, prompt, key, base, attempts=4, **kwargs: {
             "http_status": 200, "content": '{"timepoint": "week 24", "cells": []}', "completion_tokens": 1,
             "finish_reason": "stop", "error": "",
         }
@@ -486,7 +499,6 @@ def test_neue_strategie_nutzt_den_retry_manager(monkeypatch) -> None:
     # `_call_once`, also der echte Pfad bis zur HTTP-Schicht.
     from extended_benchmark.yun_full import retry_manager
 
-    monkeypatch.setattr(runner, "RETRY_STRATEGIE", "neu")
     monkeypatch.setattr(retry_manager, "wartezeit", lambda *a, **k: 0.0)
     antworten = [
         {"http_status": 503, "content": "", "finish_reason": "", "completion_tokens": None,
@@ -501,7 +513,9 @@ def test_neue_strategie_nutzt_den_retry_manager(monkeypatch) -> None:
         return dict(antworten[min(len(gesehen) - 1, len(antworten) - 1)])
 
     monkeypatch.setattr(runner, "_call_once", fake_once)
-    antwort = runner.call({"id": "gwdg/glm-5.3", "max_tokens": 8000}, "p", "k", "http://127.0.0.1:9")
+    antwort = runner.call(
+        {"id": "gwdg/glm-5.3", "max_tokens": 8000}, "p", "k", "http://127.0.0.1:9", strategie="neu"
+    )
 
     assert len(gesehen) == 2
     assert gesehen == [300.0, 300.0]  # kein Timeout-Faktor, kein eigenes Limit
@@ -509,8 +523,6 @@ def test_neue_strategie_nutzt_den_retry_manager(monkeypatch) -> None:
 
 
 def test_standardstrategie_behaelt_den_alten_aufrufpfad(monkeypatch) -> None:
-    # `main()` setzt den Schalter pro Lauf; hier ausdruecklich auf `alt`.
-    monkeypatch.setattr(runner, "RETRY_STRATEGIE", "alt")
     gesehen: list[float] = []
 
     def fake_once(model, prompt, key, base, timeout=300.0):
@@ -519,9 +531,13 @@ def test_standardstrategie_behaelt_den_alten_aufrufpfad(monkeypatch) -> None:
                 "completion_tokens": 1, "elapsed_s": 1.0, "error": ""}
 
     monkeypatch.setattr(runner, "_call_once", fake_once)
-    antwort = runner.call({"id": "gwdg/glm-5.3", "max_tokens": 8000}, "p", "k", "http://127.0.0.1:9")
-    assert gesehen == [300.0]
-    assert "versuche" not in antwort
+    # Ohne Angabe gilt `alt`; `strategie="alt"` muss dasselbe tun.
+    for kwargs in ({}, {"strategie": "alt"}):
+        antwort = runner.call(
+            {"id": "gwdg/glm-5.3", "max_tokens": 8000}, "p", "k", "http://127.0.0.1:9", **kwargs
+        )
+        assert "versuche" not in antwort
+    assert gesehen == [300.0, 300.0]
 
 
 def test_neue_strategie_zaehlt_alle_http_versuche(tmp_path: Path, monkeypatch) -> None:
@@ -541,3 +557,68 @@ def test_neue_strategie_zaehlt_alle_http_versuche(tmp_path: Path, monkeypatch) -
     ohne = {k: v for k, v in antwort.items() if k != "versuche"}
     _, zeile_alt = _auftrag(tmp_path / "alt", monkeypatch, [ohne])
     assert "http_versuche" not in zeile_alt
+
+
+def _ok_antwort() -> dict:
+    return {
+        "http_status": 200,
+        "content": json.dumps({"cells": [{"field": "intervention_mean", "arm": "intervention", "value": 1.0}]}),
+        "finish_reason": "stop",
+        "completion_tokens": 20,
+        "elapsed_s": 1.0,
+        "error": "",
+    }
+
+
+def test_neue_strategie_fuehrt_journal_und_gibt_sperre_frei(tmp_path: Path, monkeypatch) -> None:
+    _auftrag(tmp_path, monkeypatch, [_ok_antwort()], extra=["--retry-strategie", "neu"])
+    lauf = tmp_path / "runs" / "t1"
+    status = [json.loads(z)["status"] for z in (lauf / "jobs.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert status == ["running", "completed"]
+    assert not (lauf / "harness.lock").exists()  # im finally freigegeben
+
+
+def test_standardstrategie_legt_weder_journal_noch_sperre_an(tmp_path: Path, monkeypatch) -> None:
+    _auftrag(tmp_path, monkeypatch, [_ok_antwort()])
+    lauf = tmp_path / "runs" / "t1"
+    assert not (lauf / "jobs.jsonl").exists()
+    assert not (lauf / "harness.lock").exists()
+
+
+def test_zweiter_lauf_schreibt_keine_zweite_zeile(tmp_path: Path, monkeypatch) -> None:
+    # Entspricht dem Neustart nach einem Abbruch: die vorhandene Zeile gilt.
+    _auftrag(tmp_path, monkeypatch, [_ok_antwort()], extra=["--retry-strategie", "neu"])
+    aufrufe, zeile = _auftrag(tmp_path, monkeypatch, [_ok_antwort()], extra=["--retry-strategie", "neu"])
+    assert aufrufe == []
+    assert zeile["record_id"] == "yun2024:1"
+    zeilen = (tmp_path / "runs" / "t1" / "predictions.jsonl").read_text(encoding="utf-8").splitlines()
+    assert len(zeilen) == 1
+
+
+def test_belegte_sperre_bricht_mit_drei_ab(tmp_path: Path, monkeypatch) -> None:
+    lauf = tmp_path / "runs" / "t1"
+    lauf.mkdir(parents=True)
+    (lauf / "harness.lock").write_text(json.dumps({"pid": 999999}), encoding="utf-8")
+    aufrufe, zeile = _auftrag(
+        tmp_path, monkeypatch, [_ok_antwort()], extra=["--retry-strategie", "neu"], erwarte=3
+    )
+    assert aufrufe == []
+    assert zeile == {}
+    assert not (lauf / "predictions.jsonl").exists()
+
+
+def test_unterbrochener_auftrag_laeuft_erneut_und_haelt_an(tmp_path: Path, monkeypatch) -> None:
+    # Absturz nach `running` und vor der Zeile: kein Eintrag in predictions.jsonl.
+    lauf = tmp_path / "runs" / "t1"
+    lauf.mkdir(parents=True)
+    (lauf / "jobs.jsonl").write_text(
+        json.dumps({"ts": "2026-11-18T00:00:00+00:00", "record_id": "yun2024:1",
+                    "model": "glm", "status": "running", "fehlerklasse": ""}) + "\n",
+        encoding="utf-8",
+    )
+    aufrufe, zeile = _auftrag(tmp_path, monkeypatch, [_ok_antwort()], extra=["--retry-strategie", "neu"])
+    assert len(aufrufe) == 1  # der Auftrag wird erneut versucht
+    assert zeile["record_id"] == "yun2024:1"
+    status = [json.loads(z)["status"] for z in (lauf / "jobs.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert status == ["running", "running", "completed"]  # jetzt mit Abschluss
+    assert len((lauf / "predictions.jsonl").read_text(encoding="utf-8").splitlines()) == 1

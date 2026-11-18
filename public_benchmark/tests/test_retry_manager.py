@@ -131,7 +131,7 @@ def test_verbindungsabbruch_wird_wiederholt() -> None:
 
 
 def test_endgueltige_klassen_werden_nicht_wiederholt() -> None:
-    for klasse in ("auth", "budget_im_reasoning", "ok"):
+    for klasse in ("auth", "ok"):
         p = _Protokoll([_antwort(klasse)])
         _, versuche = p.ausfuehren()
         assert len(p.aufrufe) == 1, klasse
@@ -139,11 +139,13 @@ def test_endgueltige_klassen_werden_nicht_wiederholt() -> None:
         assert len(versuche) == 1, klasse
 
 
-def test_budget_im_reasoning_kostet_keinen_zweiten_aufruf() -> None:
+def test_abgeschnittene_antwort_kostet_keinen_zweiten_aufruf() -> None:
+    # Transportebene: 200 ist angekommen, also kein zweiter Versuch. Die
+    # Inhaltsklasse `budget_im_reasoning` vergibt erst `work`.
     p = _Protokoll([_antwort("budget_im_reasoning")])
     antwort, versuche = p.ausfuehren()
     assert len(p.aufrufe) == 1
-    assert versuche[0]["fehlerklasse"] == "budget_im_reasoning"
+    assert versuche[0]["fehlerklasse"] == "ok"
     assert versuche[0]["temporaer"] is False
     assert antwort["completion_tokens"] == 8000
 

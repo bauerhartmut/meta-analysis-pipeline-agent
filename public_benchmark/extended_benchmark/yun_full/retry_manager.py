@@ -11,9 +11,10 @@ Lesezeitgrenzen, keine eigene Timeout-Behandlung. Ein Timeout ist eine
 temporaere Transportstoerung wie jede andere und bekommt denselben Versuch mit
 demselben Zeitlimit; in den vorhandenen Laeufen war genau ein Fall betroffen.
 
-Der Manager arbeitet auf Transportebene: eine Antwort mit Inhalt gilt als
-gelungen, auch wenn `work` den Inhalt spaeter als kaputtes JSON verwirft. Ob der
-Inhalt verwertbar ist, entscheidet nicht der Manager.
+Der Manager arbeitet auf Transportebene (`fehlerklassen.klassifiziere_http`):
+eine Antwort mit HTTP 200 ist angekommen, auch wenn `work` den Inhalt spaeter als
+kaputtes JSON verwirft. Ob der Inhalt verwertbar ist, entscheidet nicht der
+Manager.
 """
 
 from __future__ import annotations
@@ -88,11 +89,7 @@ def fuehre_aus(
     warte: float | None = None
     for nummer in range(1, policy.max_versuche + 1):
         antwort = aufruf(policy.timeout_s)
-        klasse = fehlerklassen.klassifiziere(
-            antwort,
-            "",
-            1 if (antwort.get("content") or "").strip() else 0,
-        )
+        klasse = fehlerklassen.klassifiziere_http(antwort)
         versuche.append(
             fehlerklassen.versuch_eintrag(
                 len(versuche) + 1, "http", antwort, klasse, wartete_s=warte

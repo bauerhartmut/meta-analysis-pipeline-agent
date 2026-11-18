@@ -135,3 +135,13 @@ def test_befund_der_lesekopie() -> None:
             fehlerklassen.klassifiziere(row, row.get("parse_error") or "", len(row.get("rows") or []))
         ] += 1
     assert zaehler == {"budget_im_reasoning": 103, "timeout": 1}
+
+
+def test_transportebene_meldet_200_als_angekommen() -> None:
+    # Der Retry-Manager fragt nur "kam eine Antwort?"; die Inhaltsklasse bleibt
+    # `work` vorbehalten.
+    abgeschnitten = _antwort(finish_reason="length", completion_tokens=8000, reasoning_chars=32448)
+    assert fehlerklassen.klassifiziere(abgeschnitten, "kein_json", 0) == "budget_im_reasoning"
+    assert fehlerklassen.klassifiziere_http(abgeschnitten) == "ok"
+    assert fehlerklassen.klassifiziere_http({"http_status": 503}) == "server_fehler"
+    assert fehlerklassen.klassifiziere_http({"http_status": 0, "error": "timed out"}) == "timeout"

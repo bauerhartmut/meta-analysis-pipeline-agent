@@ -233,7 +233,10 @@ würde der Reparaturlauf ungeprüften Code ausführen.
 Gekürzt nach Abschnitt 3a: **kein** `timeout_faktor`, **keine** getrennten
 Verbindungs- und Lesezeitgrenzen, **keine** Klasse `json_abgeschnitten`. Diese
 Teile hätten nur den einen Timeout-Fall bedient; der Timeout ist im Manager eine
-temporäre Klasse wie jede andere Transportstörung, ohne eigene Mechanik.
+temporäre Klasse wie jede andere Transportstörung, ohne eigene Mechanik. Die
+Frage „kam eine Antwort?“ beantwortet `fehlerklassen.klassifiziere_http`
+(HTTP 200 = angekommen); die Inhaltsklasse bleibt bei `work`, damit der Manager
+keine Zellenzahl vortäuschen muss.
 1. `RetryPolicy(max_versuche=3, timeout_s=300, basis_s=2.0, faktor=2.0,
    max_delay_s=60, jitter=0.25)`.
 2. `wartezeit(versuch, retry_after)` — Retry-After hat Vorrang, sonst Backoff mit
@@ -243,26 +246,39 @@ temporäre Klasse wie jede andere Transportstörung, ohne eigene Mechanik.
 3. `fuehre_aus(aufruf, policy)` — klassifiziert über `fehlerklassen`, wiederholt
    nur temporäre Klassen, protokolliert jeden Versuch; nicht-temporäre (auth,
    ungültige Anfrage, Budget im Reasoning) enden sofort.
-4. `call()` nutzt den Manager bei `--retry-strategie neu`; `alt` bleibt
-   byte-gleich zum heutigen Verhalten. Die Zeile trägt unter `neu` zusätzlich
-   `http_versuche` (Summe aller HTTP-Versuche des Auftrags) als Grundlage für P4.
+4. `call(..., strategie=...)` nutzt den Manager bei `neu`; `main()` reicht das
+   Flag als Parameter durch — kein Modulzustand, der zwischen Aufrufen stehen
+   bleibt. `alt` bleibt byte-gleich zum heutigen Verhalten. Die Zeile trägt unter
+   `neu` zusätzlich `http_versuche` (Summe aller HTTP-Versuche des Auftrags) als
+   Grundlage für P4.
 5. Geprüft: 13 Szenarien in `tests/test_retry_manager.py` (Erfolg im ersten und
    zweiten Versuch, Retry-After vor Backoff, Deckel, 503 dauerhaft, Timeout,
    Verbindungsabbruch, endgültige Klassen, Backoff-Reihe, Jitter-Grenzen,
    Versuchsnummer, Meldung) und zwei Verdrahtungstests am echten `call`-Pfad.
 
-**P2 — Persistenz und Crash-Recovery (ohne neue Datenbank)**
-1. `runs/<run>/jobs.jsonl` (append-only): je Paar `record_id`, `model`, `status`
-   (`pending`/`running`/`completed`/`failed_permanent`), `attempt_count`,
-   `last_error`, `created_at`, `updated_at`, `result_reference`. Kein
-   `next_retry_at`: es gibt keinen Planer, der es lesen würde.
-2. `done_keys` liest künftig Jobs **und** Predictions: `completed` zählt,
-   `failed_permanent` zählt nicht, `pending`/`retry_pending` werden aufgenommen.
-3. Schreiben mit `flush` + `os.fsync` je Zeile; Statuswechsel vor und nach dem
-   Aufruf, sodass ein Absturz `running` hinterlässt und beim Start als
-   `retry_pending` gilt (Unterscheidung „abgebrochen" vs. „läuft" über PID-Spalte).
-4. `runs/<run>/harness.lock` mit PID; zweiter Prozess bricht mit Exit 3 ab.
-   `nachzug_ausfaelle.sh` bleibt unverändert und behält seine eigene Sperre.
+**P2 — Persistenz und Crash-Recovery (ohne neue Datenbank) — umgesetzt**
+Geschnitten auf das, was ein Absturz wirklich braucht: keine Job-Queue, kein
+Planer. Neues Modul `yun_full/jobs.py`, wirksam nur unter `--retry-strategie neu`.
+1. `runs/<run>/jobs.jsonl` (append-only, je Zeile `flush` + `os.fsync`): `ts`,
+   `record_id`, `model`, `status` (`running`/`completed`/`failed`),
+   `fehlerklasse`. Drei Zustände statt fünf: `pending` und `retry_pending` hätte
+   niemand gelesen, weil die Auftragsliste ohnehin aus `done_keys` entsteht.
+2. `unterbrochene()` liest das Journal beim Start und meldet Aufträge mit
+   `running` ohne Abschluss. Sie laufen von selbst erneut, weil für sie keine
+   Zeile in `predictions.jsonl` steht; `done_keys` bleibt unverändert.
+3. Reihenfolge im Schreibpfad: erst `running`, dann die Zeile, dann
+   `completed`/`failed`. Ein Absturz dazwischen hinterlässt `running`, und die
+   Zeile entscheidet beim nächsten Start — also kein Verlust und keine Dublette.
+4. `runs/<run>/harness.lock`; ein zweiter Prozess bricht mit Exit 3 ab und
+   schreibt keine Zeile. Die Sperre gilt nach Alter (90 min) statt nach
+   PID-Lebendprüfung, weil `os.kill(pid, 0)` unter Windows den Prozess beendet
+   statt ihn zu prüfen. `nachzug_ausfaelle.sh` bleibt unverändert und behält
+   seine eigene Sperre.
+5. Geprüft offline: `tests/test_jobs.py` (Journal-Replay, halb geschriebene
+   Zeile, Sperre/Freigabe, fremde Sperre, abgelaufene Sperre) und fünf Pfadtests
+   am Harness (Journal und Freigabe, `alt` legt nichts an, zweiter Lauf schreibt
+   keine zweite Zeile, belegte Sperre → Exit 3, unterbrochener Auftrag läuft
+   erneut und wird abgeschlossen).
 
 **P3 — Tests, offline und über den echten Pfad (`public_benchmark/tests/`)**
 1. `test_retry_manager.py`: die 14 Szenarien aus dem Auftrag gegen `fuehre_aus`
@@ -331,8 +347,8 @@ technische Zuverlässigkeit und Extraktionsqualität.
   Eingriff zu einer gültigen Zeile.
 - Ein Abbruch nach n Zeilen und ein Neustart erzeugen genau eine Zeile je Paar,
   keine Duplikate, keinen Verlust.
-- Zwei gleichzeitige Prozesse auf derselben run-id: einer arbeitet, der andere
-  bricht mit Exit 3 ab.
+- Zwei gleichzeitige Prozesse auf derselben run-id (unter `neu`): einer
+  arbeitet, der andere bricht mit Exit 3 ab.
 - Eine erfolgreiche Zeile wird durch keinen späteren Fehler überschrieben.
 - Alle Tests laufen offline; `pytest public_benchmark/tests/ -k "retry or
   fehlerpfade"` genügt.

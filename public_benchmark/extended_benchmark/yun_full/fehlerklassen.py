@@ -73,6 +73,18 @@ def klassifiziere(response: dict[str, Any], parse_error: str = "", zellen: int =
     return "verbindungsfehler"
 
 
+def klassifiziere_http(antwort: dict[str, Any]) -> str:
+    """Transportebene: eine Antwort mit HTTP 200 ist angekommen.
+
+    Fuer die Frage "noch einmal senden?" zaehlt nur, ob eine Antwort kam — was
+    im Inhalt steht, entscheidet `work` mit dem Parse-Ergebnis. Ohne diese
+    Trennung muesste der Retry-Manager eine Zellenzahl vortaeuschen.
+    """
+    if antwort.get("http_status") == 200:
+        return "ok"
+    return klassifiziere(antwort)
+
+
 def _klassifiziere_antwort(response: dict[str, Any], parse_error: str, zellen: int) -> str:
     if (response.get("finish_reason") or "") == "length":
         # Abgeschnitten. Nur wenn danach noch Zellen lesbar waren, ist die

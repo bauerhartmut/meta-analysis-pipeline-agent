@@ -33,7 +33,7 @@ sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(BENCH))
 
 from research_agent.config import get_config  # noqa: E402
-from extended_benchmark.yun_full import fehlerklassen, retry_manager  # noqa: E402
+from extended_benchmark.yun_full import fehlerklassen, jobs as jobprotokoll, retry_manager  # noqa: E402
 
 RECORDS = HERE / "records" / "yun.jsonl"
 
@@ -95,8 +95,6 @@ GROUP_SIZE_TEXTE = {
 # Wird mit --cache-buster gesetzt; das Gateway liefert sonst die gecachte
 # Antwort einer identischen Anfrage zurueck.
 SESSION_TAG = ""
-# Wird in main() aus `--retry-strategie` gesetzt; `alt` ist das Bestandsverhalten.
-RETRY_STRATEGIE = "alt"
 
 SYSTEM = (
     "You extract numerical results from randomised controlled trial publications. "
@@ -480,8 +478,16 @@ def _retry_after(headers: Any) -> float | None:
     return sekunden if sekunden > 0 else None
 
 
-def call(model: dict[str, Any], prompt: str, key: str, base: str, attempts: int = 4) -> dict[str, Any]:
-    if RETRY_STRATEGIE == "neu":
+def call(
+    model: dict[str, Any],
+    prompt: str,
+    key: str,
+    base: str,
+    attempts: int = 4,
+    *,
+    strategie: str = "alt",
+) -> dict[str, Any]:
+    if strategie == "neu":
         # Gedeckelt auf die Standardgrenze; `attempts` bleibt in der Signatur,
         # damit der Aufrufer nicht zwischen zwei Schnittstellen waehlen muss.
         policy = retry_manager.RetryPolicy(
@@ -731,8 +737,7 @@ def main() -> int:
         for spec in models.values():
             spec["max_tokens"] = args.max_tokens
 
-    global SESSION_TAG, RETRY_STRATEGIE
-    RETRY_STRATEGIE = args.retry_strategie
+    global SESSION_TAG
     prompt_version = (
         VERSION_CELL_TIMEPOINT
         if args.cell_timepoint
@@ -771,7 +776,31 @@ def main() -> int:
         return 2
     run_dir.mkdir(parents=True, exist_ok=True)
 
+    # Crash-Recovery nur unter `neu`: eine Sperre gegen den Doppelstart und ein
+    # Journal, das nach einem Abbruch zeigt, was gerade lief.
+    sperre: jobprotokoll.RunSperre | None = None
+    journal: jobprotokoll.JobJournal | None = None
+    if args.retry_strategie == "neu":
+        sperre = jobprotokoll.RunSperre(run_dir / "harness.lock")
+        try:
+            frisch = sperre.nehmen()
+        except jobprotokoll.SperreBelegt as belegt:
+            print(f"FEHLER: {run_dir} ist gesperrt ({belegt}); kein zweiter Prozess.", flush=True)
+            return 3
+        if not frisch:
+            print(f"Hinweis: abgelaufene Sperre in {run_dir} uebernommen", flush=True)
+        journal = jobprotokoll.JobJournal(run_dir / "jobs.jsonl")
+        unterbrochen = journal.unterbrochene()
+        if unterbrochen:
+            print(
+                f"{len(unterbrochen)} Auftraege waren unterbrochen; "
+                "mit Zeile werden sie uebersprungen, ohne Zeile laufen sie erneut",
+                flush=True,
+            )
+
     def work(record: dict[str, Any], model: str) -> dict[str, Any]:
+        if journal is not None:
+            journal.schreibe(record["record_id"], model, "running")
         path = record["document"].get("path") or ""
         text = ""
         if path:
@@ -805,7 +834,7 @@ def main() -> int:
         )
         if args.quellenzeile:
             prompt_version = VERSION_QUELLENZEILE
-        response = call(models[model], prompt, key, base)
+        response = call(models[model], prompt, key, base, strategie=args.retry_strategie)
         primaer = response
         # Vor dem Retry festhalten: `response` zeigt danach auf die Wiederholung,
         # und die erste Antwort waere sonst verloren.
@@ -837,7 +866,7 @@ def main() -> int:
         # nicht wiederholt, sie kosten nur Tokens ohne Ergebnis.
         if diagnose == "json_kaputt":
             retry_grund = "json"
-            retry = call(models[model], prompt, key, base)
+            retry = call(models[model], prompt, key, base, strategie=args.retry_strategie)
             r_cells, r_parse = parse_cells(retry.get("content") or "")
             if neu:
                 versuche.append(
@@ -867,7 +896,9 @@ def main() -> int:
         if args.repair and diagnose in ("length_ohne_ergebnis", "budget_im_reasoning"):
             budget = dict(models[model])
             budget["max_tokens"] = min(REPAIR_MAX_TOKENS, int(budget.get("max_tokens") or REPAIR_MAX_TOKENS))
-            repair = call(budget, _prompt_repair(record, text, target), key, base)
+            repair = call(
+                budget, _prompt_repair(record, text, target), key, base, strategie=args.retry_strategie
+            )
             pfad = "repair"
             inhalt_repair = repair.get("content") or ""
             r_cells, r_parse = parse_cells(inhalt_repair)
@@ -948,6 +979,15 @@ def main() -> int:
         with LOCK:
             with out_path.open("a", encoding="utf-8", newline="\n") as handle:
                 handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+            # Erst die Zeile, dann der Abschluss: ein Absturz dazwischen laesst
+            # `running` stehen, und beim naechsten Start entscheidet die Zeile.
+            if journal is not None:
+                journal.schreibe(
+                    record["record_id"],
+                    model,
+                    "failed" if fehlerklasse else "completed",
+                    fehlerklasse=fehlerklasse,
+                )
         if fehlerklasse:
             status = f"FEHLER {fehlerklasse}"
             print(
@@ -961,14 +1001,18 @@ def main() -> int:
         return row
 
     completed = 0
-    with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = {pool.submit(work, record, model): (record, model) for record, model in jobs}
-        for future in as_completed(futures):
-            try:
-                future.result()
-                completed += 1
-            except Exception as error:  # noqa: BLE001
-                print(f"FEHLER {futures[future]}: {error}", flush=True)
+    try:
+        with ThreadPoolExecutor(max_workers=args.workers) as pool:
+            futures = {pool.submit(work, record, model): (record, model) for record, model in jobs}
+            for future in as_completed(futures):
+                try:
+                    future.result()
+                    completed += 1
+                except Exception as error:  # noqa: BLE001
+                    print(f"FEHLER {futures[future]}: {error}", flush=True)
+    finally:
+        if sperre is not None:
+            sperre.freigeben()
 
     print(f"fertig: {completed} Auftraege, Ausgabe {out_path}", flush=True)
     return 0
