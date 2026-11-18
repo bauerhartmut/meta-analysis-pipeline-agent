@@ -414,6 +414,14 @@ Tokenverbrauch schwankt stark (443 → 1.195 bei `yun2024:698`). Bericht:
    Nullprobe gegen die eigene
    Lesekopie: 0 Rettungen, 0 Zellgewinn, 423 Goldzellen; ohne Laufdatei endet das
    Skript mit Exit 2.
+7. Start erst bei echter Ruhe: `yun_full/starte_p5_wenn_frei.sh` wartet, bis
+   `lauf_status.py` für `yun699_8000_alle_20261117` "Prozesse: 0" meldet, keine
+   `nachzug.lock` jünger als 90 Minuten liegt und 180 Sekunden lang keine Zeile
+   mehr an `predictions.jsonl` hängt; erst dann startet es den Lauf und ruft
+   `werte_p5_aus.py` auf. Grund: `kill -0` meldet unter Git Bash einen laufenden
+   Windows-Prozess als beendet (am 18.11. für PID 3952 beobachtet), und ein
+   mehrteiliger Lauf setzt zwischen zwei Etappen kurz aus. Protokoll:
+   `runs/p5_start_20261118.log`.
 
 ## 7. Erwartbare Wirkung, ehrlich beziffert
 
