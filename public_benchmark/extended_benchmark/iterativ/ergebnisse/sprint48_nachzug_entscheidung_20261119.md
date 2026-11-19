@@ -27,6 +27,7 @@ werden hier entschieden.
 | `runs/yun699_8000_alle_20261117/predictions.jsonl` | Vorlauf mit `max_tokens = 24000` fuer dieselben 33 IDs |
 | `yun_full/records/yun699.jsonl` | Goldzellen |
 | `yun_full/werte_p5_aus.py` (`deckung()`) | Nachrechnung adressiert/wertgleich, Feld und Arm, Toleranz 1e-6 |
+| `iterativ/ergebnisse/sprint48_kopfangaben_20261119.json` | Kopfangaben je Goldzelle, Herkunft der 46 Gruppengroessen ohne passende `n = ...`-Angabe |
 
 Zwei Definitionen, die die Entscheidung tragen:
 
@@ -63,9 +64,10 @@ Der Plan ist eine **Prompt-Verkuerzung**, keine Gold-Abdeckung:
 
 - `yun2024:30`: Strategie B senkt den Prompt von 26.854 auf **2.398** Zeichen
   (91 % weniger), erreicht aber nur **1 von 6** Goldzellen.
-- `yun2024:252`, `:421`, `:672`, `:678`: erreichen **0** Goldzellen, weil die
-  Goldzellen Gruppengroessen aus dem Tabellenkopf sind — genau die Angaben, die
-  `gold_reachable` ausdruecklich nicht mitzaehlt.
+- `yun2024:252`, `:421`, `:672`, `:678`: erreichen **0** Goldzellen im Plan. Bei
+  `:252` und `:672` gibt es gar keine passende `n = ...`-Angabe (Abschnitt
+  4.1); bei `:421` und `:678` steht die Angabe zwar im Dokument, der Plan
+  weist sie aber nicht als erreichbar aus.
 - `yun2024:672` hat zusaetzlich **0 Tabellen mit Zielfeld** bei 467 Datenzellen
   und 36 Zeilen je Tabelle: der Parser ordnet das abgefragte Feld keiner Tabelle
   zu (H4b). Ein Ausschnitt dieses Dokuments kann die 2 Goldzellen nicht liefern.
@@ -74,6 +76,32 @@ Der Plan ist eine **Prompt-Verkuerzung**, keine Gold-Abdeckung:
 sich fuer **keinen** der fuenf aus der Gold-Abdeckung. Er kann hoechstens das
 Reasoning verkleinern. Die Entscheidung unten stuetzt sich deshalb auf den
 Vorlauf mit dem **unveraenderten Volltext-Prompt**.
+
+### 4.1 Kopfangaben: 16 von 132 Goldzellen
+
+Die Zaehlung in `sprint48_kopfangaben_20261119.json` (read-only, alle Tabellen
+des Dokuments) praezisiert die Gold-Abdeckung:
+
+- Von **132 Goldzellen** der 33 Budgetfaelle sind **62 Gruppengroessen**.
+- Nur **16 (12,1 %)** stehen als `n = ...` im Tabellenkopf: 8 mit belegtem Arm,
+  8 ohne. 70 Goldzellen sind Messwerte, 46 Gruppengroessen haben keine passende
+  Kopfangabe.
+- In den fuenf Planfaellen sind es **6 von 18**: `yun2024:30` 2/6, `:421` 2/6,
+  `:252` 0/2, `:672` 0/2, **`:678` 2/2 (beide mit Arm)**.
+- Von den 46 ohne Kopfangabe stehen 16 nur im Fliesstext, 1 nur in einer Caption,
+  4 nur in einer Tabellenzelle, 9 an mehreren Stellen, 7 nur ohne erkennbaren
+  Gruppen-Kontext und **9 nirgends im Markdown** (u. a. `yun2024:164`, `:171`,
+  `:523`). Ein Caption-Pfad bringt daher fast nichts; ein Prosa-Scan hoechstens
+  einzelne Gruppengroessen.
+
+**Konsequenz:** Ein Kopf-Fakten-Prompt ist kein flaechiger Hebel. Selbst wenn er
+jede `n = ...`-Angabe des Dokuments aus Kopf, Caption und Fliesstext einsammelt,
+erreicht er hoechstens **28 von 132 Goldzellen (21,2 %)** - die 16 Kopfangaben
+plus 12 weitere, deren Wert anderswo als `n = ...` steht. Vollstaendig abgedeckt
+ist unter den Planfaellen nur **`yun2024:678`**; bei `yun2024:30` und `:421`
+liefert er nur die Gruppengroessen (je 2 von 6), bei `:252` und `:672` keinen
+der beiden Goldwerte. Die Empfehlung aus Abschnitt 6 bleibt damit unveraendert:
+Nachzug nur fuer `yun2024:678`.
 
 ## 5. Der Vorlauf als Erwartungswert
 
@@ -140,8 +168,9 @@ getestet wird — nicht mit dem unveraenderten Volltext.
 ## 9. Was die Entscheidung kippen wuerde
 
 - Ein Nachweis, dass ein Ausschnitt-Prompt die Goldzellen der Outcome-Zeile
-  **und** die Kopfangaben (`n = ...`) gemeinsam mitfuehrt: dann waeren
-  `yun2024:30`, `:421` und `:678` planbasiert interessant.
+  **und** die Kopfangaben (`n = ...`) gemeinsam mitfuehrt: dann waere
+  `yun2024:678` vollstaendig, `yun2024:30` und `:421` nur bei den
+  Gruppengroessen (je 2 von 6) abgedeckt; `:252` und `:672` blieben ohne Treffer.
 - Ein Messwert, dass `yun2024:678` bei 24k **zweimal** in Folge scheitert: dann
   ist der Vorlauf ein Ausreisser und der Fall bleibt Ausfall.
 - Eine Entscheidung, die 36 Ausfaelle vollstaendig zu berichten statt sie zu

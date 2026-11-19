@@ -1,12 +1,13 @@
 # Sprint 48: Kopfangaben unter den Goldzellen der 33 Budgetfaelle
 
-Grundgesamtheit: **33** `length_ohne_ergebnis`-Records aus `yun699_p5_24000_20261118`, **132** Goldzellen. Rein lesend: keine Netzaufrufe, keine Predictions geschrieben, keine eingefrorene Eingabe beruehrt. Die Entscheidungsvorlage `sprint48_nachzug_entscheidung_20261119.md` bleibt unveraendert.
+Grundgesamtheit: **33** `length_ohne_ergebnis`-Records aus `yun699_p5_24000_20261118`, **132** Goldzellen. Rein lesend: keine Netzaufrufe, keine Predictions geschrieben, keine eingefrorene Eingabe beruehrt. Die Entscheidungsvorlage `sprint48_nachzug_entscheidung_20261119.md` wird mit dem Ergebnis nachgezogen.
 
 ## 1. Befund
 
 - **62 von 132 Goldzellen** sind Gruppengroessen (`intervention_group_size`, `comparator_group_size`). Nur diese koennen ueberhaupt eine Kopfangabe sein.
 - **16 Goldzellen (12,1 % aller Goldzellen) stehen als `n = ...` im Tabellenkopf**: 8 mit belegtem Arm und 8 ohne Arm. Weitere 0 treffen eine Kopfangabe nur mit einem anderen Arm.
-- **46 Gruppengroessen haben keine Kopfangabe** im Dokument; 70 Goldzellen sind Messwerte (Mittelwert, Streuung, Ereignisse).
+- **46 Gruppengroessen haben keine passende Kopfangabe**; 70 Goldzellen sind Messwerte (Mittelwert, Streuung, Ereignisse).
+- Herkunft der 46 ohne Kopfangabe: **16 nur im Fliesstext**, **1 nur in einer Caption**, **4 nur in einer Tabellenzelle**, **9 an mehreren Stellen**, **7 nur ohne Gruppen-Kontext** und **9 nirgends im Markdown**.
 - Ueber die Outcome-Zeile erreichbar sind **10 von 132** Goldzellen; **7** nur ueber eine Kopfangabe und **115** weder ueber Zeile noch Kopfangabe (Fliesstext, andere Tabelle oder im Markdown nicht enthalten).
 
 ## 2. Je Record
@@ -51,7 +52,7 @@ Spalten: `Kopf m. Arm` = Goldwert steht als `n = ...` im Kopf und der Arm ist be
 
 ## 3. Was das fuer den Kopf-Fakten-Prompt bedeutet
 
-Ein Kopf-Fakten-Prompt kann hoechstens die 16 Goldzellen mit belegter oder unbelegter Kopfangabe direkt liefern - das sind 12,1 % der 132 Goldzellen dieser 33 Faelle. Die uebrigen 116 Zellen sind 70 Messwerte und 46 Gruppengroessen ohne `n = ...` im Markdown; fuer sie aendert ein Kopf-Fakten-Prompt nichts.
+Ein Kopf-Fakten-Prompt kann hoechstens die 16 Goldzellen mit belegter oder unbelegter Kopfangabe direkt liefern - das sind 12,1 % der 132 Goldzellen dieser 33 Faelle. Die uebrigen 116 Zellen sind 70 Messwerte und 46 Gruppengroessen ohne passende `n = ...`-Angabe; fuer sie aendert ein Kopf-Fakten-Prompt nichts.
 
 In den fuenf Planfaellen aus der Diagnose sieht der Hebel so aus (6 von 18 Goldzellen sind Kopfangaben):
 
@@ -67,10 +68,45 @@ Vollstaendig ueber Kopfangaben abgedeckt ist nur `yun2024:678`. Ohne jeden Kopfa
 
 Der Hebel wirkt damit nur dort, wo die Aufgabe tatsaechlich nach Gruppengroessen fragt. Ob der Prompt das Reasoning entlastet, ist **nicht** gemessen: die Zaehlung zeigt nur die Obergrenze des Ertrags, nicht die Wirkung auf das Budget.
 
-## 4. Grenzen
+## 4. Wo die 46 Gruppengroessen ohne Kopfangabe stehen
+
+Gesucht wurde der jeweilige Goldwert als eigenstaendiges Zahlwort **mit Gruppen-Kontext** (`n = <wert>`, Nenner eines Bruchs wie `42/402`, Gruppenwort wie `402 women`, Randomisierungsfloskel); bare Zahlwoerter zaehlen nicht. Getrennt nach `::: caption`-Block, Tabellenbereich laut `Table.line_start`/`line_end` und allen uebrigen Zeilen (Fliesstext). Ein Wert kann an mehreren Stellen stehen.
+
+| Herkunft | Zellen | davon als `n = ...` |
+|---|---:|---:|
+| nur Fliesstext | 16 | 2 |
+| nur Caption | 1 | 1 |
+| nur Tabellenzelle | 4 | 4 |
+| mehrere Stellen | 9 | 5 |
+| nur ohne Gruppen-Kontext | 7 | 0 |
+| nirgends im Markdown | 9 | 0 |
+
+Werte, die irgendwo als `n = ...` stehen (Kategorie in Klammern):
+
+- `yun2024:52` Wert 562: tabelle, Zeile 110: "*n* = 463 *n* = 562 *P*-value (*t*-test) *n* = 305 *n* = 3"
+- `yun2024:52` Wert 463: tabelle, Zeile 110: "*n* = 463 *n* = 562 *P*-value (*t*-test) *n* = 3"
+- `yun2024:159` Wert 592: tabelle, Zeile 7: "ntervention (*n*=645)* *Control (*n*=459)* *Intervention (*n*=592)* *Control (*n*=425)* *Intervention (*n*=560)*"
+- `yun2024:159` Wert 592: tabelle, Zeile 74: "*Baseline (*n*=645) mean (95% CI)* *12 m (*n*=592) mean (95% CI)* *24 m (*n*=560) mean (95% CI)* *P-value (baseline"
+- `yun2024:159` Wert 459: tabelle, Zeile 7: "*Control (*n*=505)* *Intervention (*n*=645)* *Control (*n*=459)* *Intervention (*n*=592)* *Control (*n*=425)* *Interventio"
+- `yun2024:159` Wert 459: tabelle, Zeile 74: "line to follow-up)* *Baseline (*n*=505) mean (95% CI)* *12 m (*n*=459) mean (95% CI)* *24 m (*n*=425) mean (95% CI)* *P-value (baseline"
+- `yun2024:446` Wert 104: caption, Zeile 95: "group (I; n=104) and the control group (C; n=114)"
+- `yun2024:446` Wert 104: caption, Zeile 177: "(GHSH) intervention (I; n=104) and control groups (C; n=114)."
+
+### 4.1 Die fuenf Planfaelle
+
+| Record | ohne Kopfangabe | Herkunft |
+|---|---:|---|
+| `yun2024:30` | 0 | - |
+| `yun2024:252` | 2 | intervention_group_size=402: mehrfach; comparator_group_size=388: mehrfach |
+| `yun2024:421` | 0 | - |
+| `yun2024:672` | 2 | intervention_group_size=14: fliesstext; comparator_group_size=12: fliesstext |
+| `yun2024:678` | 0 | - |
+
+## 5. Grenzen
 
 - Gezaehlt wird gegen `Table.header_facts` des vorhandenen Parsers; eine Kopfangabe, die der Parser nicht erkennt (etwa in einer Bild-Caption), fehlt hier. Die Zahl ist damit eine Untergrenze.
 - Der Wertvergleich ist numerisch ueber `value`; dieselbe Zahl an anderer Stelle (etwa eine Stichprobe, die zufaellig `n` entspricht) kann einen Treffer erzeugen. Deshalb ist der Arm mit ausgewiesen.
+- Die Herkunft sucht das Zahlwort ohne Toleranz (`402` trifft nicht `402,5`) und nur mit Gruppen-Kontext. Steht der Wert nur gerundet, als Summe oder ohne erkennbares Gruppenwort im Text, gilt er als nicht gefunden; Zufallstreffer im Abstract sind damit ausgeschlossen.
 - `nur Kopf (Wert)` prueft den Wert, nicht nur das Feld: `reachable_cells` fuehrt eine Kopfangabe mit belegtem Arm als `(-1, feld)` und wuerde sonst auch dann einen Treffer melden, wenn die Tabelle eine andere Zahl druckt (`yun2024:252`: Tabelle `*n* = 398`, Gold 402).
 - Kopfangaben koennen kursiv gesetzt sein (`*n* = 398`); gezaehlt wird, was `Table.header_facts` liefert, nicht ein eigener Textabgleich.
 - Gezaehlt werden **alle Tabellen des Dokuments**. Die Planwerte in `offline_struktur_20261118b/structure.json` beziehen sich auf je eine ausgewaehlte Tabelle und koennen deshalb kleiner sein (etwa `yun2024:421`: Plan 0, dokumentweit 4 Goldzellen ueber die Outcome-Zeile).

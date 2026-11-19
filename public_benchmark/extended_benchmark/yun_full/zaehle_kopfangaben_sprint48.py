@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 """Zaehlt Kopfangaben unter den Goldzellen der 33 P5-Budgetfaelle (Sprint 48).
 
-Frage: Wie viele Goldzellen der 33 `length_ohne_ergebnis`-Records stehen als
+Frage 1: Wie viele Goldzellen der 33 `length_ohne_ergebnis`-Records stehen als
 feste Kopfangabe (`n = ...`) in den Tabellen und sind damit fuer den
-Tabellenpfad (Zellen der Outcome-Zeile) nicht erreichbar? Das entscheidet, ob
-ein Kopf-Fakten-Prompt der richtige Hebel ist.
+Tabellenpfad (Zellen der Outcome-Zeile) nicht erreichbar?
+
+Frage 2: Wo stehen die uebrigen Gruppengroessen - in einer Caption, im
+Fliesstext, nur in einer Tabellenzelle oder nirgends im Markdown?
 
 Rein lesend: keine Netzaufrufe, keine Predictions, kein Gold wird geschrieben.
 Gelesen werden die P5-Predictions, die Records und die Markdown-Dokumente;
@@ -18,6 +20,7 @@ Aufruf:
 from __future__ import annotations
 
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -30,7 +33,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(BENCH.parent))
 sys.path.insert(0, str(BENCH))
 
-from research_agent.table_decomposition.parser import ROLE_LABEL, parse_document  # noqa: E402
+from research_agent.table_decomposition.parser import parse_document  # noqa: E402
 from research_agent.table_decomposition.semantics import (  # noqa: E402
     enrich_table,
     reachable_cells,
@@ -64,13 +67,67 @@ def gleicher_wert(a: float, b: float) -> bool:
     return abs(float(a) - float(b)) <= 1e-6
 
 
-def kopfangaben_je_dokument(text: str, doc_id: str, context: dict) -> list[dict]:
-    """Alle festen Kopfangaben (`n = ...`) aller Tabellen eines Dokuments."""
+def wertmuster(wert: Any) -> re.Pattern:
+    """Ganze Zahl als eigenstaendiges Zahlwort (kein `1402`, kein `4021`)."""
+    zahl = int(round(float(wert)))
+    return re.compile(rf"(?<![\d.]){zahl}(?!\d)")
+
+
+#: Woerter, die eine Zahl als Gruppengroesse ausweisen (Korpus ist englisch).
+GRUPPENWORT = (
+    r"(?:women|woman|patients?|participants?|mothers?|infants?|neonates?|children|"
+    r"men|subjects?|cases?|pregnancies|clusters?|schools?|providers?|pupils?|"
+    r"households?|villages?|facilities?|sites?|practices?|units?|randomi[sz]ed|"
+    r"assigned|recruited|enrolled|included|allocated)"
+)
+
+
+def n_angabe_muster(wert: Any) -> re.Pattern:
+    """`n = 402`, `*n* = 402` vor der Zahl (auch `N~c~ = 12`)."""
+    zahl = int(round(float(wert)))
+    return re.compile(rf"\*?[nN](?:~[a-z]+~)?\*?\s*=\s*{zahl}(?!\d)")
+
+
+def gruppenkontext(zeile: str, start: int, ende: int) -> bool:
+    """Steht die Zahl in einem Zusammenhang, der sie als Gruppengroesse ausweist?
+
+    Ohne diese Pruefung treffen bare Zahlwoerter im Abstract oder in Prozent-
+    und Dezimalwerten zufaellig. Akzeptiert werden: `n = <zahl>` direkt davor,
+    die Zahl als Nenner eines Bruchs (`42/402`), ein Gruppenwort direkt danach
+    (`402 women`) und eine Randomisierungsfloskel im naechsten Satzteil.
+    """
+    vor = zeile[max(0, start - 60):start]
+    nach = zeile[ende:ende + 60]
+    if re.search(r"\*?[nN](?:~[a-z]+~)?\*?\s*=\s*$", vor):
+        return True
+    if re.search(r"\d\s*/\s*$", vor):
+        return True
+    if re.match(rf"\s*{GRUPPENWORT}\b", nach, re.I):
+        return True
+    if re.search(
+        r"(randomi[sz]ed|assigned|recruited|enrolled|included|allocated)[^.;]{0,50}$",
+        vor,
+        re.I,
+    ):
+        return True
+    if re.match(
+        rf"[^.;]{{0,40}}(randomi[sz]ed|assigned|recruited|enrolled|included|allocated)",
+        nach,
+        re.I,
+    ):
+        return True
+    return False
+
+
+def analysiere_dokument(text: str, doc_id: str, context: dict) -> tuple[Any, list, set, set]:
+    """Ein Parse je Dokument: Tabellen, Kopfangaben, erreichbare Felder."""
     try:
         parsed = parse_document(text, doc_id)
     except Exception as fehler:  # noqa: BLE001 - Parserausfall ist ein Befund
-        return [{"parser_fehler": f"{type(fehler).__name__}: {fehler}"}]
+        return None, [{"parser_fehler": f"{type(fehler).__name__}: {fehler}"}], set(), set()
     facts: list[dict] = []
+    zeilen: set = set()
+    alles: set = set()
     for tabelle in parsed.tables:
         enrich_table(tabelle, context)
         for fact in tabelle.header_facts:
@@ -84,28 +141,88 @@ def kopfangaben_je_dokument(text: str, doc_id: str, context: dict) -> list[dict]
                     "arm_basis": fact.get("arm_basis"),
                 }
             )
-    return facts
-
-
-def zeilen_und_zellfelder(text: str, doc_id: str, context: dict) -> tuple[set, set]:
-    """Felder, die die Outcome-Zeile hergibt, gegen alle erwartbaren Felder.
-
-    `reachable_cells` enthaelt seit Sprint 44 auch Kopfangaben (Adresse
-    ``(-1, feld)``). Fuer die Frage nach dem *Tabellenpfad* zaehlen hier nur
-    Zellen mit einer echten Zeile; die Differenz sind die reinen Kopffelder.
-    """
-    try:
-        parsed = parse_document(text, doc_id)
-    except Exception:  # noqa: BLE001
-        return set(), set()
-    zeilen: set = set()
-    alles: set = set()
-    for tabelle in parsed.tables:
-        enrich_table(tabelle, context)
         zellen = reachable_cells(tabelle, context)
         alles |= {name for _zeile, name in zellen}
         zeilen |= {name for zeile, name in zellen if zeile >= 0}
-    return zeilen, alles
+    return parsed, facts, zeilen, alles
+
+
+def caption_zeilen(lines: list[str]) -> list[tuple[int, int]]:
+    """Zeilenbereiche der `::: caption`-Bloecke (Start, Ende exklusiv)."""
+    bereiche: list[tuple[int, int]] = []
+    i = 0
+    while i < len(lines):
+        if lines[i].strip().startswith(":::") and "caption" in lines[i]:
+            start = i
+            i += 1
+            while i < len(lines) and not lines[i].strip().startswith(":::"):
+                i += 1
+            bereiche.append((start, i + 1))
+        i += 1
+    return bereiche
+
+
+def tabellen_zeilen(parsed: Any) -> list[tuple[int, int]]:
+    if parsed is None:
+        return []
+    return [
+        (t.line_start, t.line_end)
+        for t in parsed.tables
+        if getattr(t, "line_start", -1) >= 0 and getattr(t, "line_end", -1) >= 0
+    ]
+
+
+def in_bereichen(index: int, bereiche: list[tuple[int, int]]) -> bool:
+    return any(start <= index <= ende for start, ende in bereiche)
+
+
+def herkunft(wert: Any, lines: list[str], caption: list[tuple[int, int]],
+             tabellen: list[tuple[int, int]]) -> dict[str, Any]:
+    """Wo steht dieser Wert im Markdown?"""
+    muster = wertmuster(wert)
+    n_muster = n_angabe_muster(wert)
+    kategorien: set[str] = set()
+    roh_kategorien: set[str] = set()
+    belege: list[dict] = []
+    verworfen = 0
+    for index, zeile in enumerate(lines):
+        for treffer in muster.finditer(zeile):
+            if in_bereichen(index, caption):
+                roh = "caption"
+            elif in_bereichen(index, tabellen):
+                roh = "tabelle"
+            else:
+                roh = "fliesstext"
+            roh_kategorien.add(roh)
+            if not gruppenkontext(zeile, treffer.start(), treffer.end()):
+                verworfen += 1
+                continue
+            kategorie = roh
+            kategorien.add(kategorie)
+            belege.append(
+                {
+                    "zeile": index,
+                    "kategorie": kategorie,
+                    "als_n_angabe": bool(
+                        n_muster.search(zeile[max(0, treffer.start() - 20):treffer.end() + 5])
+                    ),
+                    "text": " ".join(zeile[max(0, treffer.start() - 70):treffer.end() + 70].split())[:180],
+                }
+            )
+    if not kategorien and roh_kategorien:
+        klasse = "ohne_kontext"
+    elif not kategorien:
+        klasse = "nicht_gefunden"
+    elif len(kategorien) > 1:
+        klasse = "mehrfach"
+    else:
+        klasse = next(iter(kategorien))
+    return {
+        "klasse": klasse,
+        "kategorien": sorted(kategorien) if kategorien else sorted(roh_kategorien),
+        "belege": belege,
+        "verworfen_ohne_kontext": verworfen,
+    }
 
 
 def klassifiziere(zelle: dict, facts: list[dict]) -> tuple[str, list[dict]]:
@@ -131,32 +248,32 @@ def klassifiziere(zelle: dict, facts: list[dict]) -> tuple[str, list[dict]]:
 def zaehle_fall(row: dict, record: dict, text: str) -> dict[str, Any]:
     doc_id = str((record.get("document") or {}).get("id") or row["record_id"])
     context = kontext(record)
-    facts = kopfangaben_je_dokument(text, doc_id, context)
+    parsed, facts, zeilen_felder, _ = analysiere_dokument(text, doc_id, context)
     parser_fehler = next((f["parser_fehler"] for f in facts if "parser_fehler" in f), "")
     facts = [f for f in facts if "parser_fehler" not in f]
-    zeilen_felder, _ = zeilen_und_zellfelder(text, doc_id, context)
+    lines = text.splitlines()
+    caption = caption_zeilen(lines)
+    tabellen = tabellen_zeilen(parsed)
 
     zellen = []
     for zelle in (record.get("gold") or {}).get("cells") or []:
         klasse, belege = klassifiziere(zelle, facts)
         ueber_zeile = zelle.get("field") in zeilen_felder
-        # Nur eine Kopfangabe mit **diesem Wert** und belegtem Arm ist fuer die
-        # Zelle ein Treffer. `reachable_cells` arbeitet feldweise und wuerde
-        # etwa in `yun2024:252` die Felder als erreichbar fuehren, obwohl die
-        # Tabelle `*n* = 398` druckt und Gold 402 verlangt.
         nur_kopf = klasse == "kopfangabe_mit_arm" and not ueber_zeile
-        zellen.append(
-            {
-                "field": zelle.get("field"),
-                "arm": zelle.get("arm"),
-                "value": zelle.get("value"),
-                "klasse": klasse,
-                "belege": belege,
-                "feld_ueber_outcome_zeile": ueber_zeile,
-                "nur_als_kopfangabe": nur_kopf,
-            }
-        )
+        eintrag = {
+            "field": zelle.get("field"),
+            "arm": zelle.get("arm"),
+            "value": zelle.get("value"),
+            "klasse": klasse,
+            "belege": belege,
+            "feld_ueber_outcome_zeile": ueber_zeile,
+            "nur_als_kopfangabe": nur_kopf,
+        }
+        if klasse == "keine_kopfangabe":
+            eintrag["herkunft"] = herkunft(zelle["value"], lines, caption, tabellen)
+        zellen.append(eintrag)
 
+    ohne_kopf = [z for z in zellen if z["klasse"] == "keine_kopfangabe"]
     return {
         "record_id": row["record_id"],
         "dokument_id": doc_id,
@@ -168,7 +285,7 @@ def zaehle_fall(row: dict, record: dict, text: str) -> dict[str, Any]:
         "kopfangabe_anderer_arm": sum(
             1 for z in zellen if z["klasse"] == "kopfangabe_anderer_arm"
         ),
-        "keine_kopfangabe": sum(1 for z in zellen if z["klasse"] == "keine_kopfangabe"),
+        "keine_kopfangabe": len(ohne_kopf),
         "kein_gruppenfeld": sum(1 for z in zellen if z["klasse"] == "kein_gruppenfeld"),
         "ueber_outcome_zeile": sum(1 for z in zellen if z["feld_ueber_outcome_zeile"]),
         "nur_als_kopfangabe": sum(1 for z in zellen if z["nur_als_kopfangabe"]),
@@ -176,6 +293,16 @@ def zaehle_fall(row: dict, record: dict, text: str) -> dict[str, Any]:
             1
             for z in zellen
             if not z["feld_ueber_outcome_zeile"] and not z["nur_als_kopfangabe"]
+        ),
+        "herkunft_fliesstext": sum(1 for z in ohne_kopf if z["herkunft"]["klasse"] == "fliesstext"),
+        "herkunft_caption": sum(1 for z in ohne_kopf if z["herkunft"]["klasse"] == "caption"),
+        "herkunft_tabelle": sum(1 for z in ohne_kopf if z["herkunft"]["klasse"] == "tabelle"),
+        "herkunft_mehrfach": sum(1 for z in ohne_kopf if z["herkunft"]["klasse"] == "mehrfach"),
+        "herkunft_ohne_kontext": sum(
+            1 for z in ohne_kopf if z["herkunft"]["klasse"] == "ohne_kontext"
+        ),
+        "herkunft_nicht_gefunden": sum(
+            1 for z in ohne_kopf if z["herkunft"]["klasse"] == "nicht_gefunden"
         ),
         "kopfangaben_im_dokument": len(facts),
         "kopfangaben_mit_arm": sum(1 for f in facts if f.get("arm")),
@@ -202,6 +329,12 @@ def schreibe_md(faelle: list[dict]) -> str:
     weder = sum(f["weder_noch"] for f in faelle)
     gezaehlt = mit_arm + ohne_arm
     quote = 100 * gezaehlt / gold if gold else 0.0
+    herkunft_summe = {
+        key: sum(f[f"herkunft_{key}"] for f in faelle)
+        for key in (
+            "fliesstext", "caption", "tabelle", "mehrfach", "ohne_kontext", "nicht_gefunden"
+        )
+    }
 
     zeilen: list[str] = []
     a = zeilen.append
@@ -212,7 +345,7 @@ def schreibe_md(faelle: list[dict]) -> str:
         f"`yun699_p5_24000_20261118`, **{gold}** Goldzellen. Rein lesend: keine "
         "Netzaufrufe, keine Predictions geschrieben, keine eingefrorene Eingabe "
         "beruehrt. Die Entscheidungsvorlage `sprint48_nachzug_entscheidung_20261119.md` "
-        "bleibt unveraendert."
+        "wird mit dem Ergebnis nachgezogen."
     )
     a("")
     a("## 1. Befund")
@@ -228,8 +361,14 @@ def schreibe_md(faelle: list[dict]) -> str:
         f"Arm. Weitere {anderer_arm} treffen eine Kopfangabe nur mit einem anderen Arm."
     )
     a(
-        f"- **{keine} Gruppengroessen haben keine Kopfangabe** im Dokument; "
+        f"- **{keine} Gruppengroessen haben keine passende Kopfangabe**; "
         f"{kein_gruppen} Goldzellen sind Messwerte (Mittelwert, Streuung, Ereignisse)."
+    )
+    a(
+        "- Herkunft der {keine} ohne Kopfangabe: **{fliesstext} nur im Fliesstext**, "
+        "**{caption} nur in einer Caption**, **{tabelle} nur in einer Tabellenzelle**, "
+        "**{mehrfach} an mehreren Stellen**, **{ohne_kontext} nur ohne Gruppen-Kontext** "
+        "und **{nicht_gefunden} nirgends im Markdown**.".format(**herkunft_summe, keine=keine)
     )
     a(
         f"- Ueber die Outcome-Zeile erreichbar sind **{outcome} von {gold}** Goldzellen; "
@@ -241,7 +380,7 @@ def schreibe_md(faelle: list[dict]) -> str:
     a("")
     a(
         "| Record | Dokument | Gold | Gruppenfeld | Kopf m. Arm | Kopf o. Arm | and. Arm | "
-                    "keine Kopfangabe | ueber Outcome-Zeile | nur Kopf (Wert) | weder/noch |"
+        "keine Kopfangabe | ueber Outcome-Zeile | nur Kopf (Wert) | weder/noch |"
     )
     a("|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
     for f in sorted(faelle, key=lambda x: (-x["gold_zellen"], x["record_id"])):
@@ -271,7 +410,7 @@ def schreibe_md(faelle: list[dict]) -> str:
         f"belegter oder unbelegter Kopfangabe direkt liefern - das sind {de(quote)} % "
         f"der {gold} Goldzellen dieser 33 Faelle. Die uebrigen {gold - gezaehlt} "
         f"Zellen sind {kein_gruppen} Messwerte und {keine} Gruppengroessen ohne "
-        "`n = ...` im Markdown; fuer sie aendert ein Kopf-Fakten-Prompt nichts."
+        "passende `n = ...`-Angabe; fuer sie aendert ein Kopf-Fakten-Prompt nichts."
     )
     a("")
     plan_ids = ("yun2024:30", "yun2024:252", "yun2024:421", "yun2024:672", "yun2024:678")
@@ -315,8 +454,73 @@ def schreibe_md(faelle: list[dict]) -> str:
             "**nicht** gemessen: die Zaehlung zeigt nur die Obergrenze des Ertrags, "
             "nicht die Wirkung auf das Budget."
         )
+        a("")
+    a("## 4. Wo die {keine} Gruppengroessen ohne Kopfangabe stehen".format(keine=keine))
     a("")
-    a("## 4. Grenzen")
+    a(
+        "Gesucht wurde der jeweilige Goldwert als eigenstaendiges Zahlwort **mit "
+        "Gruppen-Kontext** (`n = <wert>`, Nenner eines Bruchs wie `42/402`, "
+        "Gruppenwort wie `402 women`, Randomisierungsfloskel); bare Zahlwoerter "
+        "zaehlen nicht. Getrennt nach `::: caption`-Block, Tabellenbereich laut "
+        "`Table.line_start`/`line_end` und allen uebrigen Zeilen (Fliesstext). "
+        "Ein Wert kann an mehreren Stellen stehen."
+    )
+    a("")
+    a("| Herkunft | Zellen | davon als `n = ...` |")
+    a("|---|---:|---:|")
+    beispiele: dict[str, list[dict]] = {}
+    for f in faelle:
+        for z in f["zellen"]:
+            if z["klasse"] != "keine_kopfangabe":
+                continue
+            for beleg in z["herkunft"]["belege"]:
+                if beleg["als_n_angabe"]:
+                    beispiele.setdefault("n_angabe", []).append(
+                        {"record_id": f["record_id"], "value": z["value"], **beleg}
+                    )
+    for key, label in (
+        ("fliesstext", "nur Fliesstext"),
+        ("caption", "nur Caption"),
+        ("tabelle", "nur Tabellenzelle"),
+        ("mehrfach", "mehrere Stellen"),
+        ("ohne_kontext", "nur ohne Gruppen-Kontext"),
+        ("nicht_gefunden", "nirgends im Markdown"),
+    ):
+        zahl_n = sum(
+            1
+            for f in faelle
+            for z in f["zellen"]
+            if z["klasse"] == "keine_kopfangabe"
+            and z["herkunft"]["klasse"] == key
+            and any(b["als_n_angabe"] for b in z["herkunft"]["belege"])
+        )
+        a(f"| {label} | {herkunft_summe[key]} | {zahl_n} |")
+    a("")
+    if beispiele.get("n_angabe"):
+        a("Werte, die irgendwo als `n = ...` stehen (Kategorie in Klammern):")
+        a("")
+        for b in beispiele["n_angabe"][:8]:
+            a(f"- `{b['record_id']}` Wert {int(b['value'])}: {b['kategorie']}, Zeile {b['zeile']}: \"{b['text']}\"")
+        a("")
+    a("### 4.1 Die fuenf Planfaelle")
+    a("")
+    a("| Record | ohne Kopfangabe | Herkunft |")
+    a("|---|---:|---|")
+    for f in plan:
+        ohne = [z for z in f["zellen"] if z["klasse"] == "keine_kopfangabe"]
+        if not ohne:
+            a(f"| `{f['record_id']}` | 0 | - |")
+            continue
+        teile = []
+        for z in ohne:
+            h = z["herkunft"]
+            teile.append(
+                f"{z['field']}={int(z['value'])}: {h['klasse']}"
+                + (" (als n = ...)" if any(b["als_n_angabe"] for b in h["belege"]) else "")
+            )
+        a(f"| `{f['record_id']}` | {len(ohne)} | " + "; ".join(teile) + " |")
+    a("")
+    a("## 5. Grenzen")
     a("")
     a(
         "- Gezaehlt wird gegen `Table.header_facts` des vorhandenen Parsers; eine "
@@ -327,6 +531,12 @@ def schreibe_md(faelle: list[dict]) -> str:
         "- Der Wertvergleich ist numerisch ueber `value`; dieselbe Zahl an anderer "
         "Stelle (etwa eine Stichprobe, die zufaellig `n` entspricht) kann einen "
         "Treffer erzeugen. Deshalb ist der Arm mit ausgewiesen."
+    )
+    a(
+        "- Die Herkunft sucht das Zahlwort ohne Toleranz (`402` trifft nicht "
+        "`402,5`) und nur mit Gruppen-Kontext. Steht der Wert nur gerundet, als "
+        "Summe oder ohne erkennbares Gruppenwort im Text, gilt er als nicht "
+        "gefunden; Zufallstreffer im Abstract sind damit ausgeschlossen."
     )
     a(
         "- `nur Kopf (Wert)` prueft den Wert, nicht nur das Feld: `reachable_cells` "
@@ -380,14 +590,20 @@ def main() -> int:
             "ueber_outcome_zeile",
             "nur_als_kopfangabe",
             "weder_noch",
+            "herkunft_fliesstext",
+            "herkunft_caption",
+            "herkunft_tabelle",
+            "herkunft_mehrfach",
+            "herkunft_ohne_kontext",
+            "herkunft_nicht_gefunden",
         ):
             summe[key] += f[key]
 
     daten = {
         "sprint": 48,
         "frage": (
-            "Wie viele Goldzellen der 33 Budgetfaelle sind Kopfangaben (n = ...) und "
-            "damit fuer den Tabellenpfad nicht erreichbar?"
+            "Wie viele Goldzellen der 33 Budgetfaelle sind Kopfangaben (n = ...), und "
+            "wo stehen die uebrigen Gruppengroessen?"
         ),
         "erzeugt_von": "public_benchmark/extended_benchmark/yun_full/zaehle_kopfangaben_sprint48.py",
         "nur_lesend": True,
