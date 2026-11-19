@@ -145,5 +145,39 @@ Der Testhelfer `_auftrag` in `test_run_extended_extraction.py` setzt jetzt
 `--wiederaufnahme-versuche 0`: mit dem Standard von 4 schlief der
 Timeout-Test bis zu 7,5 Minuten, und der Lauf hing genau dort.
 
-Nicht geprueft: ein echter Lauf mit Wiederaufnahme gegen den Anbieter. Das
-kostet Guthaben und ist erst nach dem Abschluss des laufenden P5 sinnvoll.
+Der echte Lauf mit Wiederaufnahme gegen den Anbieter steht seit dem Nachzug
+(Abschnitt 7) aus; die 15 Wiederaufnahmen belegen, dass die Schleife unter 503
+greift.
+
+## 7. Nachzug am 19.11.2026: Ergebnis
+
+Gestartet 13:41:48 mit `--starten` (38 ausgewaehlte Records, 2 Threads, Budget
+24.000, Frist 90 Minuten), Ende 14:56:02 nach 74 Minuten. Der Anbieter war in
+der ersten Viertelstunde weiter ueberlastet (503/Timeout), danach ueberwog `ok`.
+
+| Groesse | Wert |
+|---|---|
+| Auftraege | 38 |
+| Wiederaufnahmen | 15 |
+| erfolgreich (Zellen geschrieben) | 24 |
+| endgueltig gescheitert | 14 |
+| Completion-Tokens im Nachzug | 576.082 (Obergrenze 912.000, Erwartung 297.931) |
+
+Die 14 Ausfaelle sind keine Anbieterausfaelle mehr: 13 x
+`length_ohne_ergebnis` (24.000 Tokens im Reasoning aufgebraucht) und 1 x
+Antwort ohne Zellen. Genau dieses Muster war der Grund fuer den Filter: waeren
+die 20 alten `length`-Zeilen mitgelaufen, haette derselbe Effekt 20 weitere
+volle Budgets gekostet.
+
+Aufraeumen (`eindeutig_machen`): 141 Zeilen gelesen, 38 Duplikate entfernt,
+0 unlesbar, **0 Records ohne genau eine Zeile**. Danach hat die Datei 103
+Zeilen, ein Paar je (record_id, model), keine Doppel. Sicherungen:
+`predictions.vor_nachzug_20261119.jsonl` (Stand 13:14) und
+`predictions.jsonl.bak` (Stand vor dem Aufraeumen).
+
+Stand danach: **67** brauchbare Zeilen und **36** Ausfaelle — 33 x
+`length_ohne_ergebnis`, 3 x ohne Zellen, keine 503/429/Timeout mehr. Der
+Nachzug endet mit Exitcode 4, weil Ausfaelle verbleiben.
+
+Die Auswertung `iterativ/ergebnisse/p5_auswertung_20261118.{json,md}` stammt vom
+Stand 13:14 und ist damit veraltet; `werte_p5_mit_kontrolle.sh` erzeugt sie neu.
