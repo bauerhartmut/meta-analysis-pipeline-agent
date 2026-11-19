@@ -43,7 +43,11 @@ Zwei Definitionen, die die Entscheidung tragen:
   Abschnitt 3 gibt diese Werte wieder: 30 -> 1, 252 -> 0, **421 -> 3**, 672 -> 0,
   **678 -> 1**. Der Lauf aendert mehr als die Reichweite (46 -> 94 Goldfelder,
   7 -> 0 Strukturfehler, 57/60 -> 60/60 komplett, 23 von 59 Records betroffen);
-  Details in `sprint48_planwerte_20261119.md`. Das Diagnoseartefakt
+  Details in `sprint48_planwerte_20261119.md`. Die Armpruefung der 23
+  geaenderten Records (`sprint48_armbindung_20261119.md`) findet 30 von 38
+  neuen Zellen wert- und armstimmig, 0 Arm-Fehlbindungen und 8 nur feldbelegte
+  Zellen (Untergruppen statt Gesamtarm, etwa 17+16 gegen 33); wertgeprueft
+  sind es 86 statt 94. Das Diagnoseartefakt
   `sprint48_budgetdiagnose.json` behaelt die Werte des Laufs vom 18.11.
   (historisch).
 - **`_cb`** im Feld `prompt_version` ist ein **Cache-Buster**, kein eigener

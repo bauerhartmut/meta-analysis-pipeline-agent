@@ -1830,3 +1830,19 @@ Dosis-Bindung liegen ausschliesslich an `Provenienz`-Fundstellen aus
 Diagnoseskripte. `arm_basis` an Spalten und Kopffakten ist ein anderes Feld und
 unveraendert. `Provenienz.to_dict()` bekommt einen zusaetzlichen Schluessel
 (`belegt`), der nur in Messartefakte fliesst.
+
+### Nachtrag Sprint 48 - Planwerte neu erzeugt und Armpruefung
+
+`offline_struktur_20261118b/structure.json` wurde am 19.11.2026 mit demselben
+Code neu erzeugt (`offline_struktur_20261119`, gleiche Auswahl-SHA256):
+**46 -> 94** erreichbare Goldfelder, **57/60 -> 60/60** strukturell komplett,
+**7 -> 0** Strukturfehler. Die frueheren 46/57/7 sind der Stand vom 18.11.
+
+Armpruefung der 23 Records mit geaenderter Reichweite (38 neu gezaehlte
+Goldzellen): 30 mit passendem Wert **und** Arm, 0 Arm-Fehlbindungen, 8 nur
+feldbelegt mit abweichendem Wert (Untergruppen statt Gesamtarm, etwa 17+16
+gegen 33, 298/307 gegen 289, 49 gegen 34, 33 gegen 28). Wertgeprueft sind es
+damit 86 statt 94. Von 49 geprueften Kopfbaendern sitzen 43 ueber Spalten
+desselben Arms, 6 ueber Spalten ohne Arm, 0 ueber den anderen Arm.
+Artefakte: `sprint48_planwerte_20261119.md`,
+`sprint48_armbindung_20261119.{md,json}`.

@@ -1,0 +1,2737 @@
+{
+  "sprint": 48,
+  "frage": "Gehoeren die neu gezaehlten Kopfangaben zum richtigen Arm und tragen sie den Goldwert?",
+  "erzeugt_von": "public_benchmark/extended_benchmark/yun_full/pruefe_armbindung_sprint48.py",
+  "nur_lesend": true,
+  "netzaufrufe": 0,
+  "vergleich": "911e593^",
+  "records": 23,
+  "summe": {
+    "neu_gezaehlt": 38,
+    "wert_und_arm_stimmig": 30,
+    "feld_belegt_wert_abweichend": 8,
+    "band_konkordant": 43,
+    "band_diskordant": 0,
+    "band_ohne_arm": 6
+  },
+  "aenderung": [
+    {
+      "record_id": "yun2024:172",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:174",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:184",
+      "alt": 0,
+      "neu": 1
+    },
+    {
+      "record_id": "yun2024:185",
+      "alt": 0,
+      "neu": 1
+    },
+    {
+      "record_id": "yun2024:350",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:352",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:390",
+      "alt": 1,
+      "neu": 6
+    },
+    {
+      "record_id": "yun2024:391",
+      "alt": 1,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:402",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:403",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:421",
+      "alt": 0,
+      "neu": 3
+    },
+    {
+      "record_id": "yun2024:426",
+      "alt": 0,
+      "neu": 1
+    },
+    {
+      "record_id": "yun2024:486",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:489",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:531",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:532",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:639",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:640",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:645",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:647",
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:665",
+      "alt": 0,
+      "neu": 6
+    },
+    {
+      "record_id": "yun2024:678",
+      "alt": 0,
+      "neu": 1
+    },
+    {
+      "record_id": "yun2024:682",
+      "alt": 0,
+      "neu": 1
+    }
+  ],
+  "faelle": [
+    {
+      "record_id": "yun2024:665",
+      "dokument_id": "PMC4987981",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 16.0,
+          "neu_gezaehlt": false,
+          "klasse": "nicht_ueber_kopf",
+          "passende_facts": [
+            {
+              "table_id": "PMC4987981:T1",
+              "text": "Pioglitazone (*n* = 16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4987981:T2",
+              "text": "Pioglitazone (*n* = 16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4987981:T3",
+              "text": "Pioglitazone (*N* = 16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4987981:T1",
+              "text": "Pioglitazone (*n* = 16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4987981:T2",
+              "text": "Pioglitazone (*n* = 16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4987981:T3",
+              "text": "Pioglitazone (*N* = 16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 23.0,
+          "neu_gezaehlt": false,
+          "klasse": "nicht_ueber_kopf",
+          "passende_facts": [
+            {
+              "table_id": "PMC4987981:T1",
+              "text": "Placebo (*n* = 23)",
+              "value": 23,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4987981:T2",
+              "text": "Placebo (*n* = 23)",
+              "value": 23,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4987981:T3",
+              "text": "Placebo (*N* = 23)",
+              "value": 23,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4987981:T1",
+              "text": "Placebo (*n* = 23)",
+              "value": 23,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4987981:T2",
+              "text": "Placebo (*n* = 23)",
+              "value": 23,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4987981:T3",
+              "text": "Placebo (*N* = 23)",
+              "value": 23,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 6
+    },
+    {
+      "record_id": "yun2024:390",
+      "dokument_id": "PMC3278655",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 27.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3278655:T1",
+              "text": "(n = 27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=30)",
+              "value": 30,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=29)",
+              "value": 29,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=28)",
+              "value": 28,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3278655:T1",
+              "text": "(n = 27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 18.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3278655:T1",
+              "text": "(n = 18)",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=24)",
+              "value": 24,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=23)",
+              "value": 23,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=21)",
+              "value": 21,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=18)",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3278655:T1",
+              "text": "(n = 18)",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=18)",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 1,
+      "neu": 6
+    },
+    {
+      "record_id": "yun2024:421",
+      "dokument_id": "PMC3877023",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 30.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3877023:T1",
+              "text": "Short-Bore MR (n = 44)",
+              "value": 44,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3877023:T3",
+              "text": "n = 18",
+              "value": 18,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3877023:T3",
+              "text": "n = 30",
+              "value": 30,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3877023:T4",
+              "text": "n = 18",
+              "value": 18,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3877023:T4",
+              "text": "n = 30",
+              "value": 30,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3877023:T3",
+              "text": "n = 30",
+              "value": 30,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3877023:T4",
+              "text": "n = 30",
+              "value": 30,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 34.0,
+          "neu_gezaehlt": true,
+          "klasse": "feld_belegt_wert_abweichend",
+          "passende_facts": [
+            {
+              "table_id": "PMC3877023:T1",
+              "text": "Open MR (n = 49)",
+              "value": 49,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": []
+        }
+      ],
+      "alt": 0,
+      "neu": 3
+    },
+    {
+      "record_id": "yun2024:172",
+      "dokument_id": "PMC5079604",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 33.0,
+          "neu_gezaehlt": true,
+          "klasse": "feld_belegt_wert_abweichend",
+          "passende_facts": [
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Metformin (*n* = 17)",
+              "value": 17,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Sitagliptin (*n* = 16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": []
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Placebo (*n* = 15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Placebo (*n* = 15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:174",
+      "dokument_id": "PMC5079604",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 33.0,
+          "neu_gezaehlt": true,
+          "klasse": "feld_belegt_wert_abweichend",
+          "passende_facts": [
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Metformin (*n* = 17)",
+              "value": 17,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Sitagliptin (*n* = 16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": []
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Placebo (*n* = 15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Placebo (*n* = 15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:350",
+      "dokument_id": "PMC5874317",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 9.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5874317:T1",
+              "text": "**Bilateral ( *n* = 9)**",
+              "value": 9,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5874317:T1",
+              "text": "**Bilateral ( *n* = 9)**",
+              "value": 9,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 9.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5874317:T1",
+              "text": "**Unilateral ( *n* = 9)**",
+              "value": 9,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5874317:T1",
+              "text": "**Unilateral ( *n* = 9)**",
+              "value": 9,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:352",
+      "dokument_id": "PMC5874317",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 9.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5874317:T1",
+              "text": "**Bilateral ( *n* = 9)**",
+              "value": 9,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5874317:T1",
+              "text": "**Bilateral ( *n* = 9)**",
+              "value": 9,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 9.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5874317:T1",
+              "text": "**Unilateral ( *n* = 9)**",
+              "value": 9,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5874317:T1",
+              "text": "**Unilateral ( *n* = 9)**",
+              "value": 9,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:402",
+      "dokument_id": "PMC5781260",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 20.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5781260:T1",
+              "text": "(*N* = 20 59% men, 41% women)",
+              "value": 20,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5781260:T1",
+              "text": "(*N* = 20 59% men, 41% women)",
+              "value": 20,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 20.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5781260:T1",
+              "text": "(*N* = 20 40% men, 60% women)",
+              "value": 20,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5781260:T1",
+              "text": "(*N* = 20 40% men, 60% women)",
+              "value": 20,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:403",
+      "dokument_id": "PMC5781260",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 20.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5781260:T1",
+              "text": "(*N* = 20 59% men, 41% women)",
+              "value": 20,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5781260:T1",
+              "text": "(*N* = 20 59% men, 41% women)",
+              "value": 20,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 20.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5781260:T1",
+              "text": "(*N* = 20 40% men, 60% women)",
+              "value": 20,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5781260:T1",
+              "text": "(*N* = 20 40% men, 60% women)",
+              "value": 20,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:486",
+      "dokument_id": "PMC3786549",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 44.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 44.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 43)",
+              "value": 43,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:489",
+      "dokument_id": "PMC3786549",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 44.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 44.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 43)",
+              "value": 43,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3786549:T3",
+              "text": "(*n* = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:531",
+      "dokument_id": "PMC4230312",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 289.0,
+          "neu_gezaehlt": true,
+          "klasse": "feld_belegt_wert_abweichend",
+          "passende_facts": [
+            {
+              "table_id": "PMC4230312:T1",
+              "text": "Quetiapine 300 mg/day ( ***n*** = 298)",
+              "value": 298,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T1",
+              "text": "Quetiapine 600 mg/day ( ***n*** = 307)",
+              "value": 307,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T3",
+              "text": "Quetiapine 300 mg/day (***n*** = 298)",
+              "value": 298,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T3",
+              "text": "Quetiapine 600 mg/day (***n*** = 307)",
+              "value": 307,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T4",
+              "text": "Quetiapine 300 mg/day (***n*** = 298)",
+              "value": 298,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T4",
+              "text": "Quetiapine 600 mg/day (***n*** = 307)",
+              "value": 307,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": []
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 204.0,
+          "neu_gezaehlt": true,
+          "klasse": "feld_belegt_wert_abweichend",
+          "passende_facts": [
+            {
+              "table_id": "PMC4230312:T1",
+              "text": "Placebo (***n*** = 214)",
+              "value": 214,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T3",
+              "text": "Placebo (***n*** = 214)",
+              "value": 214,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T4",
+              "text": "Placebo (***n*** = 214)",
+              "value": 214,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": []
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:532",
+      "dokument_id": "PMC4230312",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 283.0,
+          "neu_gezaehlt": true,
+          "klasse": "feld_belegt_wert_abweichend",
+          "passende_facts": [
+            {
+              "table_id": "PMC4230312:T1",
+              "text": "Quetiapine 300 mg/day ( ***n*** = 298)",
+              "value": 298,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T1",
+              "text": "Quetiapine 600 mg/day ( ***n*** = 307)",
+              "value": 307,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T3",
+              "text": "Quetiapine 300 mg/day (***n*** = 298)",
+              "value": 298,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T3",
+              "text": "Quetiapine 600 mg/day (***n*** = 307)",
+              "value": 307,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T4",
+              "text": "Quetiapine 300 mg/day (***n*** = 298)",
+              "value": 298,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T4",
+              "text": "Quetiapine 600 mg/day (***n*** = 307)",
+              "value": 307,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": []
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 204.0,
+          "neu_gezaehlt": true,
+          "klasse": "feld_belegt_wert_abweichend",
+          "passende_facts": [
+            {
+              "table_id": "PMC4230312:T1",
+              "text": "Placebo (***n*** = 214)",
+              "value": 214,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T3",
+              "text": "Placebo (***n*** = 214)",
+              "value": 214,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4230312:T4",
+              "text": "Placebo (***n*** = 214)",
+              "value": 214,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": []
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:639",
+      "dokument_id": "PMC4511433",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 12.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC4511433:T1",
+              "text": "Elobixibat 2.5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": []
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "A3309 - 2.5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "A3309 - 5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4511433:T1",
+              "text": "Elobixibat 2.5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": []
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "A3309 - 2.5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "A3309 - 5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 12.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC4511433:T1",
+              "text": "Placebo (*N* = 12)",
+              "value": 12,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": []
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "Placebo (*N* = 12)",
+              "value": 12,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": []
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4511433:T1",
+              "text": "Placebo (*N* = 12)",
+              "value": 12,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": []
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "Placebo (*N* = 12)",
+              "value": 12,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": []
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:640",
+      "dokument_id": "PMC4511433",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 12.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC4511433:T1",
+              "text": "Elobixibat 2.5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": []
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "A3309 - 2.5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "A3309 - 5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4511433:T1",
+              "text": "Elobixibat 2.5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": []
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "A3309 - 2.5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "A3309 - 5 mg (*N* = 12)",
+              "value": 12,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 12.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC4511433:T1",
+              "text": "Placebo (*N* = 12)",
+              "value": 12,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": []
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "Placebo (*N* = 12)",
+              "value": 12,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": []
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4511433:T1",
+              "text": "Placebo (*N* = 12)",
+              "value": 12,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": []
+            },
+            {
+              "table_id": "PMC4511433:T2",
+              "text": "Placebo (*N* = 12)",
+              "value": 12,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": []
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:645",
+      "dokument_id": "PMC4675066",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 27.0,
+          "neu_gezaehlt": false,
+          "klasse": "nicht_ueber_kopf",
+          "passende_facts": [
+            {
+              "table_id": "PMC4675066:T1",
+              "text": "Iodine (*n* = 29)",
+              "value": 29,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T2",
+              "text": "Iodine (*n* = 27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T3",
+              "text": "*n* = 19",
+              "value": 19,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T4",
+              "text": "*n* = 29",
+              "value": 29,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4675066:T2",
+              "text": "Iodine (*n* = 27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 26.0,
+          "neu_gezaehlt": false,
+          "klasse": "nicht_ueber_kopf",
+          "passende_facts": [
+            {
+              "table_id": "PMC4675066:T1",
+              "text": "Placebo (*n* = 30)",
+              "value": 30,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T2",
+              "text": "Placebo (*n* = 26)",
+              "value": 26,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T3",
+              "text": "*n* = 22",
+              "value": 22,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T4",
+              "text": "*n* = 29",
+              "value": 29,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4675066:T2",
+              "text": "Placebo (*n* = 26)",
+              "value": 26,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:647",
+      "dokument_id": "PMC4675066",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 27.0,
+          "neu_gezaehlt": false,
+          "klasse": "nicht_ueber_kopf",
+          "passende_facts": [
+            {
+              "table_id": "PMC4675066:T1",
+              "text": "Iodine (*n* = 29)",
+              "value": 29,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T2",
+              "text": "Iodine (*n* = 27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T3",
+              "text": "*n* = 19",
+              "value": 19,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T4",
+              "text": "*n* = 29",
+              "value": 29,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4675066:T2",
+              "text": "Iodine (*n* = 27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 26.0,
+          "neu_gezaehlt": false,
+          "klasse": "nicht_ueber_kopf",
+          "passende_facts": [
+            {
+              "table_id": "PMC4675066:T1",
+              "text": "Placebo (*n* = 30)",
+              "value": 30,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T2",
+              "text": "Placebo (*n* = 26)",
+              "value": 26,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T3",
+              "text": "*n* = 22",
+              "value": 22,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC4675066:T4",
+              "text": "*n* = 29",
+              "value": 29,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC4675066:T2",
+              "text": "Placebo (*n* = 26)",
+              "value": 26,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:184",
+      "dokument_id": "PMC5122613",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 33.0,
+          "neu_gezaehlt": false,
+          "klasse": "nicht_ueber_kopf",
+          "passende_facts": [],
+          "wertgleiche_facts": []
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 33.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5122613:T1",
+              "text": "Placebo (*n* = 33)",
+              "value": 33,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5122613:T1",
+              "text": "Placebo (*n* = 33)",
+              "value": 33,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 1
+    },
+    {
+      "record_id": "yun2024:185",
+      "dokument_id": "PMC5122613",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 29.0,
+          "neu_gezaehlt": false,
+          "klasse": "nicht_ueber_kopf",
+          "passende_facts": [],
+          "wertgleiche_facts": []
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 28.0,
+          "neu_gezaehlt": true,
+          "klasse": "feld_belegt_wert_abweichend",
+          "passende_facts": [
+            {
+              "table_id": "PMC5122613:T1",
+              "text": "Placebo (*n* = 33)",
+              "value": 33,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": []
+        }
+      ],
+      "alt": 0,
+      "neu": 1
+    },
+    {
+      "record_id": "yun2024:391",
+      "dokument_id": "PMC3278655",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 27.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3278655:T1",
+              "text": "(n = 27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=30)",
+              "value": 30,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=29)",
+              "value": 29,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=28)",
+              "value": 28,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3278655:T1",
+              "text": "(n = 27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=27)",
+              "value": 27,
+              "arm": "intervention",
+              "arm_basis": "spalte",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 18.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3278655:T1",
+              "text": "(n = 18)",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=24)",
+              "value": 24,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=23)",
+              "value": 23,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=21)",
+              "value": 21,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=18)",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3278655:T1",
+              "text": "(n = 18)",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3278655:T2",
+              "text": "(n=18)",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 1,
+      "neu": 2
+    },
+    {
+      "record_id": "yun2024:426",
+      "dokument_id": "PMC3877023",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 49.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3877023:T1",
+              "text": "Open MR (n = 49)",
+              "value": 49,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3877023:T1",
+              "text": "Open MR (n = 49)",
+              "value": 49,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 44.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC3877023:T1",
+              "text": "Short-Bore MR (n = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3877023:T3",
+              "text": "n = 18",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3877023:T3",
+              "text": "n = 30",
+              "value": 30,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3877023:T4",
+              "text": "n = 18",
+              "value": 18,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC3877023:T4",
+              "text": "n = 30",
+              "value": 30,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC3877023:T1",
+              "text": "Short-Bore MR (n = 44)",
+              "value": 44,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 1
+    },
+    {
+      "record_id": "yun2024:678",
+      "dokument_id": "PMC5777419",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 16.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T2",
+              "text": "(n=15)",
+              "value": 15,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 1
+    },
+    {
+      "record_id": "yun2024:682",
+      "dokument_id": "PMC5777419",
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 16.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T2",
+              "text": "(n=15)",
+              "value": 15,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "arm_basis": "header_treffer",
+              "field": "intervention_group_size",
+              "band_arme": [
+                "intervention"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "neu_gezaehlt": true,
+          "klasse": "wert_und_arm_stimmig",
+          "passende_facts": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ],
+          "wertgleiche_facts": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "arm_basis": "header_treffer",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ]
+            }
+          ]
+        }
+      ],
+      "alt": 0,
+      "neu": 1
+    }
+  ]
+}

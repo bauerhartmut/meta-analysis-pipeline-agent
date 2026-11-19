@@ -89,6 +89,10 @@ Zielfelder; die Regel verdraengt dort nichts. Die Verdraengung selbst ist an
 | Strukturfehler | 7 |
 | Warnungen | 136 |
 
+**Stand 18.11.2026.** Der Neulauf vom 19.11.2026 mit demselben Code liefert
+94 Goldfelder, 60/60 strukturell komplett und 0 Strukturfehler
+(`iterativ/ergebnisse/sprint48_planwerte_20261119.md`).
+
 ## 5. Bisect: woher 95 und 46 kommen
 
 | Stufe | Commit | Gold | Zellen | komplett | Fehler |
@@ -149,7 +153,7 @@ Strukturfehler. Gegenprobe: Funktion im Speicher auf `return False` gesetzt ->
 | `auswahl_20261118.md` | Regel, dev-Gegenprobe, PMC4319071, Struktur-Artefakt, Bisect |
 | `auswahlregel_20261118.json` | dev- und PMC-Messung der Auswahlregel |
 | `dev_auswahlregel_20261118.json` | Gegenprobe: dev-Dokumente mit mehreren Zeitpunkttabellen |
-| `offline_struktur_20261118b/structure.json` | aktuelles Struktur-Artefakt (46 Goldfelder) |
+| `offline_struktur_20261118b/structure.json` | Struktur-Artefakt; Neulauf 19.11.2026: 94 Goldfelder, 60/60, 0 Fehler (Stand 18.11.: 46/57/7) |
 | `bisect_20261118/bisect_20261118.json` | Stufen, Befund, Gegenprobe |
 | `bisect_20261118/<stufe>/structure.json` | neun Einzellaeufe des Bisects |
 | `zeilenrollen_20261118.md`, `zeilenarme_20261118.md`, `kopf_ordnung_20261118.md`, `dokumentarm_20261118.md` | Berichte der Sprints 36-39 |
