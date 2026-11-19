@@ -1108,3 +1108,17 @@ def test_one_table_per_outcome_and_timepoint():
     first = _timepoint_table("D:T3", 1, "158.67", group="")
     second = _timepoint_table("D:T4", 2, "143.25", group="")
     assert primary_tables([first, second], {"outcome": "Vegetable intake"}) == {}
+
+
+def test_arm_alias_curated_only_for_record():
+    """Kuratierte Aliasse gelten nur im benannten Record (Control -> PBO, Definition -> IPAT)."""
+    intervention = "Certolizumab 200 mg"
+    ohne = bind_arm(("PBO + MTX",), intervention, "Control")
+    assert ohne.arm is None
+    mit = bind_arm(("PBO + MTX",), intervention, "Control", record_id="yun2024:30")
+    assert mit.arm == ARM_COMPARATOR
+
+    definition = "full course of therapy in the hospital setting"
+    assert bind_arm(("IPAT (n = 97)",), "CoPAT (n = 103)", definition).arm is None
+    assert bind_arm(("IPAT (n = 97)",), "CoPAT (n = 103)", definition,
+                    record_id="yun2024:15").arm == ARM_COMPARATOR

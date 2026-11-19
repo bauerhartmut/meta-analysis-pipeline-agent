@@ -78,6 +78,7 @@ def load_records(path: Path) -> Dict[str, Dict[str, Any]]:
 
 def context_of(record: Dict[str, Any]) -> Dict[str, Any]:
     return {
+        "record_id": record["record_id"],
         "intervention": record["context"].get("intervention"),
         "comparator": record["context"].get("comparator"),
         "outcome": record["context"].get("outcome"),
