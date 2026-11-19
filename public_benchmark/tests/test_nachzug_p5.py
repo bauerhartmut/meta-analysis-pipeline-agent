@@ -137,3 +137,83 @@ def test_aufraeumen_ist_wiederholbar(tmp_path: Path) -> None:
     assert zweiter.duplikate == 0 and zweiter.sicherung is None
     assert datei.read_text(encoding="utf-8") == inhalt
     assert zweiter.fehlend == [] and zweiter.verbleibende_ausfaelle == []
+
+
+def _fehlzeile(
+    record_id: str, klasse: str, status: int | None, tokens: int | None = None
+) -> dict:
+    return {
+        "record_id": record_id,
+        "model": "glm",
+        "rows": [],
+        "failed": True,
+        "fehlerklasse": klasse,
+        "http_status": status,
+        "completion_tokens": tokens,
+    }
+
+
+def test_auswahl_nimmt_nur_503_429_und_timeout() -> None:
+    """Budgetgrenzen und Antworten ohne Zellen werden nicht erneut bezahlt."""
+    zeilen = [
+        _fehlzeile("a", "server_fehler", 503),
+        _fehlzeile("b", "rate_limit", 429),
+        _fehlzeile("c", "timeout", 0),
+        _fehlzeile("d", "length_ohne_ergebnis", 200, 24000),
+        _fehlzeile("e", "", 200),
+        _fehlzeile("f", "server_fehler", 500),  # nicht 503
+        _fehlzeile("g", "rate_limit", 503),  # Klasse und Code passen nicht
+    ]
+
+    ja, nein = nachzug_p5.auswahl(zeilen)
+
+    assert [row["record_id"] for row in ja] == ["a", "b", "c"]
+    assert [row["record_id"] for row in nein] == ["d", "e", "f", "g"]
+
+
+def test_kostenschaetzung_nutzt_budget_und_mittel() -> None:
+    zeilen = [
+        _fehlzeile("a", "server_fehler", 503),
+        {"record_id": "ok1", "model": "glm", "rows": [{"zeitpunkt": "t"}],
+         "fehlerklasse": "", "completion_tokens": 1000},
+        {"record_id": "ok2", "model": "glm", "rows": [{"zeitpunkt": "t"}],
+         "fehlerklasse": "", "completion_tokens": 2000},
+    ]
+
+    obergrenze, erwartet, mittel = nachzug_p5.kostenschaetzung(4, zeilen)
+
+    assert obergrenze == 4 * nachzug_p5.BUDGET
+    assert mittel == 1500.0
+    assert erwartet == 6000
+
+
+def test_pruefen_zeigt_auswahl_und_kosten(tmp_path: Path, monkeypatch, capsys) -> None:
+    """`--pruefen` nennt je Zeile die Entscheidung und den Befehl mit Auswahl."""
+    zeilen = [
+        _fehlzeile("yun2024:6", "rate_limit", 429),
+        _fehlzeile("yun2024:30", "server_fehler", 503),
+        _fehlzeile("yun2024:110", "length_ohne_ergebnis", 200, 24000),
+        _fehlzeile("yun2024:700", "", 200),
+        # Erfolgreiche Zeile: liefert das Mittel fuer den Erwartungswert.
+        {"record_id": "yun2024:1", "model": "glm", "rows": [{"zeitpunkt": "t"}],
+         "fehlerklasse": "", "completion_tokens": 1500},
+    ]
+    (tmp_path / "predictions.jsonl").write_text(
+        "".join(json.dumps(zeile) + "\n" for zeile in zeilen), encoding="utf-8"
+    )
+    monkeypatch.setattr(nachzug_p5, "RUN", tmp_path)
+    monkeypatch.setattr(nachzug_p5, "laeuft_noch", lambda: "")
+    monkeypatch.setattr(sys, "argv", ["nachzug_p5.py", "--pruefen"])
+
+    assert nachzug_p5.main() == 0
+    ausgabe = capsys.readouterr().out
+
+    assert "Auswahl: 2 von 4 Fehlzeilen werden wiederholt" in ausgabe
+    assert "yun2024:110: HTTP 200 length_ohne_ergebnis, 24000 Tokens -> ausgelassen" in ausgabe
+    assert "yun2024:30: HTTP 503 server_fehler, 0 Tokens -> wiederholen" in ausgabe
+    assert f"hoechstens {nachzug_p5.tausender(2 * nachzug_p5.BUDGET)} Completion-Tokens" in ausgabe
+    assert "erwartbar rund 3.000 (2 x 1500 Mittel der erfolgreichen Zeilen)" in ausgabe
+    befehlszeile = next(z for z in ausgabe.splitlines() if z.startswith("Befehl:"))
+    assert "yun2024:6,yun2024:30" in befehlszeile
+    assert "yun2024:110" not in befehlszeile
+    assert "yun2024:700" not in befehlszeile

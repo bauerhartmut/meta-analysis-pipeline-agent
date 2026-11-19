@@ -15,6 +15,14 @@ Skript nach dem Harness-Lauf selbst auf (`eindeutig_machen`): je
 Datei wird gesichert und erst dann ersetzt; hat danach ein Record nicht genau
 eine brauchbare Zeile, endet das Skript mit Exitcode 4.
 
+Wiederholt werden nur echte Anbieterausfaelle: 503 (`server_fehler`), 429
+(`rate_limit`) und Timeout. `length_ohne_ergebnis` (HTTP 200, Budget im
+Reasoning aufgebraucht) und Antworten ohne Zellen bleiben stehen — derselbe
+Aufruf endet mit demselben Budget reproduzierbar gleich und kostet nur erneut
+das volle Budget. `--pruefen` markiert deshalb jede Fehlzeile mit
+`wiederholen` oder `ausgelassen` und nennt die Kostenschaetzung, damit
+`--starten` nicht unbemerkt 20 length-Faelle erneut bezahlt.
+
 Das Skript startet nichts von selbst. `--pruefen` (Standard) zeigt Auswahl,
 Sperrlage, Eindeutigkeit und den Befehl; `--starten` verlangt, dass kein
 P5-Prozess und keine Wache mehr laufen, sichert die Datei und haengt die neuen
@@ -74,25 +82,87 @@ class Aufraeumbericht:
     verbleibende_ausfaelle: list[str]
 
 
+def alle_zeilen() -> list[dict]:
+    """Alle lesbaren Zeilen der `predictions.jsonl` des Laufs."""
+    pfad = RUN / "predictions.jsonl"
+    if not pfad.exists():
+        return []
+    rows = []
+    for zeile in pfad.read_text(encoding="utf-8").splitlines():
+        if not zeile.strip():
+            continue
+        try:
+            rows.append(json.loads(zeile))
+        except json.JSONDecodeError:
+            continue
+    return rows
+
+
 def fehlzeilen() -> list[dict]:
     """Zeilen des P5-Laufs, die als Ausfall zaehlen.
 
     Gleiche Definition wie `done_keys`: Fehlerklasse gesetzt oder keine Zellen.
     """
-    pfad = RUN / "predictions.jsonl"
-    if not pfad.exists():
-        return []
-    treffer = []
-    for zeile in pfad.read_text(encoding="utf-8").splitlines():
-        if not zeile.strip():
-            continue
-        try:
-            row = json.loads(zeile)
-        except json.JSONDecodeError:
-            continue
-        if row.get("fehlerklasse") or not row.get("rows"):
-            treffer.append(row)
-    return treffer
+    return [row for row in alle_zeilen() if row.get("fehlerklasse") or not row.get("rows")]
+
+
+#: Fehlerklasse -> HTTP-Codes, die ein Nachzug erneut versuchen darf.
+#:
+#: Nur Anbieterausfaelle: 503 (keine Kapazitaet), 429 (Drossel), Timeout (keine
+#: Antwort). `length_ohne_ergebnis` (HTTP 200) und Antworten ohne Zellen fehlen
+#: bewusst: derselbe Aufruf mit demselben Budget endet reproduzierbar gleich.
+WIEDERHOLBAR: dict[str, tuple[int, ...]] = {
+    "server_fehler": (503,),
+    "rate_limit": (429,),
+    "timeout": (0,),
+}
+
+
+def wiederholbar(row: dict) -> bool:
+    """Wahr nur fuer 503, 429 und Timeout."""
+    klasse = row.get("fehlerklasse") or ""
+    status = row.get("http_status")
+    if klasse == "timeout":
+        return status in (0, None)
+    return status in WIEDERHOLBAR.get(klasse, ())
+
+
+def auswahl(zeilen: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Teilt Fehlzeilen in wiederholbare und ausgelassene."""
+    ja: list[dict] = []
+    nein: list[dict] = []
+    for row in zeilen:
+        (ja if wiederholbar(row) else nein).append(row)
+    return ja, nein
+
+
+def klassen(zeilen: list[dict]) -> str:
+    """Kurzform der Fehlerklassen, etwa `2 x timeout, 1 x ohne Zellen`."""
+    zaehler = Counter(row.get("fehlerklasse") or "ohne Zellen" for row in zeilen)
+    return ", ".join(f"{zahl} x {klasse}" for klasse, zahl in zaehler.most_common())
+
+
+def tausender(zahl: int) -> str:
+    """Zahl mit Punkt als Tausendertrenner, etwa 912000 -> `912.000`."""
+    return f"{zahl:,}".replace(",", ".")
+
+
+def kostenschaetzung(anzahl: int, zeilen: list[dict]) -> tuple[int, int, float]:
+    """Completion-Tokens fuer `anzahl` Records: Obergrenze, Erwartung, Mittel.
+
+    Obergrenze ist `anzahl * BUDGET`, weil jeder Auftrag hoechstens das Budget
+    anfordert. Der Erwartungswert nutzt das Mittel der bereits erfolgreichen
+    Zeilen desselben Laufs; ohne Erfolg bleibt er 0. Beides sind Schaetzungen:
+    fuer den Endpunkt gibt es keinen Preisaushang, Geldbetraege nennt das
+    Skript deshalb nicht.
+    """
+    erfolge = [
+        row.get("completion_tokens") or 0
+        for row in zeilen
+        if not row.get("fehlerklasse") and row.get("rows")
+    ]
+    mittel = sum(erfolge) / len(erfolge) if erfolge else 0.0
+    return anzahl * BUDGET, int(round(anzahl * mittel)), mittel
 
 
 def laeuft_noch() -> str:
@@ -178,24 +248,46 @@ def befehl(ids: list[str]) -> list[str]:
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__)
     g = p.add_mutually_exclusive_group()
-    g.add_argument("--pruefen", action="store_true", help="nur Lagebild (Standard)")
+    g.add_argument(
+        "--pruefen",
+        action="store_true",
+        help="nur Lagebild mit Auswahl und Kostenschaetzung (Standard)",
+    )
     g.add_argument("--starten", action="store_true", help="Nachzug wirklich starten")
     args = p.parse_args()
 
-    zeilen = fehlzeilen()
-    ids = [row["record_id"] for row in zeilen]
+    laufzeilen = alle_zeilen()
+    zeilen = [row for row in laufzeilen if row.get("fehlerklasse") or not row.get("rows")]
     print(f"Lauf: {RUN_ID}", flush=True)
-    print(f"Fehlzeilen: {len(ids)}", flush=True)
+    print(f"Fehlzeilen: {len(zeilen)}", flush=True)
     for row in zeilen:
         print(
             f"  {row['record_id']}: HTTP {row.get('http_status')} "
             f"{row.get('fehlerklasse') or 'ohne Zellen'}, "
-            f"{row.get('completion_tokens') or 0} Tokens",
+            f"{row.get('completion_tokens') or 0} Tokens -> "
+            f"{'wiederholen' if wiederholbar(row) else 'ausgelassen'}",
             flush=True,
         )
-    if not ids:
-        print("nichts zu tun: keine Fehlzeile im Lauf.", flush=True)
+    ja, nein = auswahl(zeilen)
+    if not ja:
+        print("nichts zu tun: keine Zeile mit 503, 429 oder Timeout.", flush=True)
         return 1
+    ids = list(dict.fromkeys(row["record_id"] for row in ja))
+    print(f"Auswahl: {len(ids)} von {len(zeilen)} Fehlzeilen werden wiederholt", flush=True)
+    print(
+        f"Ausgelassen: {len(nein)} Zeilen ({klassen(nein)}), "
+        f"{tausender(sum(row.get('completion_tokens') or 0 for row in nein))} "
+        f"Completion-Tokens darin bereits verbraucht",
+        flush=True,
+    )
+    obergrenze, erwartet, mittel = kostenschaetzung(len(ids), laufzeilen)
+    print(
+        f"Kostenschaetzung: hoechstens {tausender(obergrenze)} Completion-Tokens "
+        f"({len(ids)} x {tausender(BUDGET)} Budget), erwartbar rund "
+        f"{tausender(erwartet)} ({len(ids)} x {mittel:.0f} Mittel der "
+        f"erfolgreichen Zeilen) - Schaetzung, kein Preisaushang",
+        flush=True,
+    )
 
     bereinigt, duplikate, kaputt = eindeutigkeit(RUN / "predictions.jsonl")
     print(

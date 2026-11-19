@@ -86,18 +86,24 @@ selbst:
   ein Record nicht eindeutig oder seine einzige Zeile weiterhin ein Ausfall,
   endet das Skript mit Exitcode 4.
 
-Stand beim Schreiben (`--pruefen`, P5 bei 96 Zeilen): **55**
-Fehlzeilen — 28 x `server_fehler` (503),
-8 x `timeout`, 2 x `rate_limit`
-(429), 15 x `length_ohne_ergebnis` mit
-24.000 Tokens und 2 Antworten ohne Zellen. Die
-Eindeutigkeit ist unauffaellig: 96 Zeilen, 0 Duplikate.
+Stand nach Abschluss des Laufs (103 Zeilen): **60** Fehlzeilen — 28 x
+`server_fehler` (503), 8 x `timeout` (0), 2 x `rate_limit` (429), 20 x
+`length_ohne_ergebnis` (HTTP 200, je 24.000 Tokens) und 2 Antworten ohne Zellen.
+Die Eindeutigkeit ist unauffaellig: 103 Zeilen, 0 Duplikate.
 
-Die Liste waechst mit dem Lauf und enthaelt damit nicht nur Anbieterausfaelle,
-sondern auch Budget- und Formatgrenzen. Ein Nachzug ueber alle Zeilen kostet
-je `length`-Fall erneut das volle Budget von 24.000 Tokens. Vor `--starten`
-ist deshalb eine Auswahl noetig; das Skript filtert bewusst nicht selbst,
-damit die Entscheidung sichtbar bleibt.
+`--retry-failed` wiederholt nur Anbieterausfaelle. `wiederholbar` prueft Klasse
+**und** HTTP-Code: 503 bei `server_fehler`, 429 bei `rate_limit`, 0 oder kein
+Status bei `timeout`. Alles andere bleibt stehen, insbesondere
+`length_ohne_ergebnis`: derselbe Aufruf mit demselben Budget endet
+reproduzierbar gleich und kostet erneut 24.000 Tokens. `--pruefen` markiert
+jede Zeile mit `wiederholen` oder `ausgelassen` und nennt die
+Kostenschaetzung: Obergrenze `Auswahl x 24.000` Completion-Tokens,
+Erwartungswert aus dem Mittel der erfolgreichen Zeilen. Geldbetraege nennt das
+Skript nicht, weil fuer den Endpunkt kein Preisaushang vorliegt.
+
+Am 19.11.2026 nach Abschluss: 38 von 60 Zeilen ausgewaehlt (912.000 Tokens
+Obergrenze, rund 298.000 erwartbar beim Mittel von 7.840 Tokens), 22
+ausgelassen mit 486.343 bereits verbrauchten Completion-Tokens.
 
 ## 5. Genau eine Zeile je Record
 
@@ -116,7 +122,11 @@ deckt beides offline ab:
   wird gemeldet.
 - `test_schleife_reiht_nur_wiederaufnahmen_erneut_ein`,
   `test_ausnahme_beendet_die_schleife_nicht`,
-  `test_aufraeumen_ist_wiederholbar`.
+  `test_aufraeumen_ist_wiederholbar`,
+  `test_auswahl_nimmt_nur_503_429_und_timeout`,
+  `test_kostenschaetzung_nutzt_budget_und_mittel`,
+  `test_pruefen_zeigt_auswahl_und_kosten` (fuehrt `main --pruefen` gegen eine
+  temporaere Datei aus und prueft, dass der Befehl nur die Auswahl enthaelt).
 
 ## 6. Pruefung
 
@@ -124,10 +134,12 @@ deckt beides offline ab:
   Test.
 - `pytest test_run_extended_extraction.py test_crash_recovery.py
   test_nachzug_p5.py test_wiederaufnahme.py test_dedupe_predictions.py
-  test_jobs.py test_fehlerklassen.py` — 91 passed (1,5 s).
+  test_jobs.py test_fehlerklassen.py` — 94 passed (1,4 s).
 - `run_extended_extraction.py --dry-run` mit zwei ids: Auswahl korrekt, kein
   Verzeichnis angelegt, keine Anfrage gesendet.
-- `nachzug_p5.py --pruefen`: Exitcode 0, Sperrlage erkannt, nichts geschrieben.
+- `nachzug_p5.py --pruefen` gegen den abgeschlossenen Lauf: Exitcode 0, 60
+  Fehlzeilen, davon 38 ausgewaehlt und 22 ausgelassen, 103 Zeilen ohne Duplikat,
+  Sperrlage frei, nichts geschrieben.
 
 Der Testhelfer `_auftrag` in `test_run_extended_extraction.py` setzt jetzt
 `--wiederaufnahme-versuche 0`: mit dem Standard von 4 schlief der
