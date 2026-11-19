@@ -41,15 +41,22 @@ Alle drei neuen Zellen tragen Wert **und** Arm. Damit:
   und ist auf `(record_id, Armtext)` geschluesselt; `record_id` kommt ueber
   `context_of` in den Tabellenkontext. `bind_arm`/`_score` und `_group_size_facts`
   reichen sie durch, damit sowohl Spaltenarme als auch Kopfangaben greifen.
+- Haertung (19.11.): Schluessel und Armtext laufen beide durch `_normalise_arm`,
+  damit Satzzeichen, Fussnotenmarker oder doppelte Leerzeichen den Alias nicht
+  stillschweigend abschalten; die fachliche Begruendung steht als Kommentar an
+  der Tabelle (`Control` = `PBO + MTX`, n = 199; Definition = `IPAT`, n = 97,
+  Interventionsarm `CoPAT`, n = 103). Testfall: `Control.` bindet weiter.
 - Generisch bleibt es bei der Textbewertung: ohne passenden Record-Schluessel
   aendert sich nichts (`test_arm_alias_curated_only_for_record`).
 
 Gemessen am neu erzeugten `structure.json` (`offline_struktur_20261118b`,
-Lauf `offline_struktur_20261119c`):
+Lauf `offline_struktur_20261119d`):
 
 - Goldfelder: **97** in allen fuenf Verfahren; 60/60 Tabellen komplett, 0 Fehler.
 - Nicht widerlegt: **71 von 97** (45 Wert und Arm, 4 Arm vertauscht, 22 anderer Wert).
 - Warnungen: A **144** (137 + 7 Armkontext-Befunde), B 115, C 244, D 330, E 260.
+- Nach der Haertung erneut erzeugt (`offline_struktur_20261119d`): dieselben
+  Zahlen; `structure.json` unterscheidet sich nur im Zeitstempel `created`.
 - Nur drei Records aendern sich: `yun2024:15` 1 -> 2, `:16` 1 -> 2, `:30` 1 -> 2.
 - Plan-Audit (`pruefe_armbindung_sprint48.py`): Summe 97 = Sollwert 97, 71
   kopf-basierte Feldtreffer, Bandpruefung 113 ok / 4 ohne Arm.
