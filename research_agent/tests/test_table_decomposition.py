@@ -1117,6 +1117,9 @@ def test_arm_alias_curated_only_for_record():
     assert ohne.arm is None
     mit = bind_arm(("PBO + MTX",), intervention, "Control", record_id="yun2024:30")
     assert mit.arm == ARM_COMPARATOR
+    # Satzzeichen und Fussnoten im Kontext duerfen den Alias nicht abschalten.
+    assert bind_arm(("PBO + MTX",), intervention, "Control.",
+                    record_id="yun2024:30").arm == ARM_COMPARATOR
 
     definition = "full course of therapy in the hospital setting"
     assert bind_arm(("IPAT (n = 97)",), "CoPAT (n = 103)", definition).arm is None

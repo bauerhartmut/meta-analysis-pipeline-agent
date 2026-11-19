@@ -141,10 +141,16 @@ def _normalise_arm(text: str) -> str:
     return re.sub(r"[^a-z0-9]", "", without_brackets)
 
 
+# Kuratierte Aliasse: Kontextbezeichnung -> gedruckte Armabkuerzung im Kopf.
+# Nur fuer den jeweiligen Record, weil eine generische Regel ("control" heisst
+# immer Placebo) einen dritten Arm treffen koennte. Belegt am Gold:
+#   yun2024:30 - "Control" ist die Placebo-Gruppe ("PBO + MTX", n = 199).
+#   yun2024:15/16 - die Definition "full course of therapy in the hospital
+#     setting" ist "IPAT" (n = 97); Interventionsarm ist "CoPAT" (n = 103).
 _ARM_ALIASEN = {
-    ("yun2024:30", "control"): ("pbo",),
-    ("yun2024:15", "full course of therapy in the hospital setting"): ("ipat",),
-    ("yun2024:16", "full course of therapy in the hospital setting"): ("ipat",),
+    ("yun2024:30", _normalise_arm("Control")): ("pbo",),
+    ("yun2024:15", _normalise_arm("full course of therapy in the hospital setting")): ("ipat",),
+    ("yun2024:16", _normalise_arm("full course of therapy in the hospital setting")): ("ipat",),
 }
 
 
@@ -157,7 +163,7 @@ def _score(arm_text: str, header_text: str, record_id: str = "") -> float:
     (Anteil der Header-Tokens in der Armbezeichnung) trifft es. Es zaehlt die
     staerkere Richtung; mindestens ein unterscheidendes Token muss passen.
     """
-    alias = _ARM_ALIASEN.get((record_id, (arm_text or "").strip().lower()))
+    alias = _ARM_ALIASEN.get((record_id, _normalise_arm(arm_text)))
     if alias and any(token in _tokens(header_text) for token in alias):
         return 1.0
     arm_name = _normalise_arm(arm_text)
