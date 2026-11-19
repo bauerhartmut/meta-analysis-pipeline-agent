@@ -16,6 +16,7 @@ Aufruf:
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -44,6 +45,28 @@ def lies_jsonl(pfad: Path) -> list[dict]:
     return [json.loads(z) for z in pfad.read_text(encoding="utf-8").splitlines() if z.strip()]
 
 
+def belege_523(text: str) -> dict:
+    """Warum die 15 bei 523/525 fehlt: Text und Tabelle nennen nur Summanden."""
+    satz = ""
+    treffer = re.search(
+        r"\d+\s+emergency medicine residents.{0,160}?equal groups \([^)]*\)", text
+    )
+    if treffer:
+        satz = " ".join(treffer.group(0).split())
+    zeilen: dict[str, list[int]] = {}
+    for name in ("Male", "Female"):
+        muster = re.search(
+            rf"{name}\s+(\d+)\s*\(([\d.]+)\)\s+(\d+)\s*\(([\d.]+)\)", text
+        )
+        if muster:
+            zeilen[name] = [int(muster.group(1)), int(muster.group(3))]
+    summen = []
+    if "Male" in zeilen and "Female" in zeilen:
+        summen = [zeilen["Male"][0] + zeilen["Female"][0],
+                  zeilen["Male"][1] + zeilen["Female"][1]]
+    return {"satz": satz, "zeilen": zeilen, "summen": summen, "haelfte_von_30": 15}
+
+
 def urteil(zeile: dict) -> str:
     """Kurzurteil, ob ein Textpfad den Wert liefern kann."""
     if str(zeile.get("is_table_in_graphic_format")).upper() == "TRUE":
@@ -55,7 +78,7 @@ def urteil(zeile: dict) -> str:
     return "Wert fehlt im Markdown, obwohl der Datensatz vollstaendig ist"
 
 
-def schreibe_md(faelle: list[dict]) -> str:
+def schreibe_md(faelle: list[dict], belege: dict) -> str:
     zeilen: list[str] = []
     a = zeilen.append
     a("# Sprint 48: Herkunft der neun Goldwerte ohne Fundstelle")
@@ -124,7 +147,31 @@ def schreibe_md(faelle: list[dict]) -> str:
         "kann."
     )
     a("")
-    a("## 4. Grenzen")
+    a("## 4. Warum die 15 bei 523/525 fehlt")
+    a("")
+    a(
+        "Beide Records teilen das Dokument `PMC5325897`. Die 15 steht nirgends "
+        "gedruckt; sie ist aus dem Text und der Baseline-Tabelle ableitbar:"
+    )
+    a("")
+    if belege.get("satz"):
+        a(f'- Text: "{belege["satz"]}"')
+    for name, werte in (belege.get("zeilen") or {}).items():
+        a(f'- Tabelle 1, {name}: {werte[0]} und {werte[1]}')
+    if belege.get("summen"):
+        a(
+            f'- Summe je Gruppe: {belege["summen"][0]} und {belege["summen"][1]}; '
+            f'30 / 2 = {belege["haelfte_von_30"]}'
+        )
+    a("")
+    a(
+        "Die Prozentwerte in der Tabelle (60/40 und 53,3/46,7) bestaetigen den "
+        "Nenner 15. Ein Textpfad muesste die Groesse also rechnen (Summe der "
+        "Geschlechter oder 30/2), nicht lesen; deshalb fehlt sie im Markdown, "
+        "obwohl der Datensatz als vollstaendig markiert ist."
+    )
+    a("")
+    a("## 5. Grenzen")
     a("")
     a(
         "- Die Flags sind Selbstauskuenfte des Datensatzes, keine Nachpruefung am "
@@ -143,6 +190,10 @@ def main() -> int:
     quelle = json.loads(QUELLE.read_text(encoding="utf-8"))
     records = {r["record_id"]: r for r in lies_jsonl(RECORDS)}
     roh = {str(x["id"]): x for x in json.loads(ROH.read_text(encoding="utf-8"))}
+    text_523 = (ROOT / (records["yun2024:523"].get("document") or {}).get("path", "")).read_text(
+        encoding="utf-8", errors="replace"
+    )
+    belege = belege_523(text_523)
 
     faelle = []
     for fall in quelle["faelle"]:
@@ -180,12 +231,13 @@ def main() -> int:
         "zellen": len(faelle),
         "records": sorted({f["record_id"] for f in faelle}),
         "source_ist_feldname": all(f["source"] == f["field"] for f in faelle),
+        "belege_523_525": belege,
         "faelle": faelle,
     }
     AUSGABE.with_suffix(".json").write_text(
         json.dumps(daten, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    AUSGABE.with_suffix(".md").write_text(schreibe_md(faelle), encoding="utf-8")
+    AUSGABE.with_suffix(".md").write_text(schreibe_md(faelle, belege), encoding="utf-8")
     print(json.dumps(
         {
             "zellen": len(faelle),

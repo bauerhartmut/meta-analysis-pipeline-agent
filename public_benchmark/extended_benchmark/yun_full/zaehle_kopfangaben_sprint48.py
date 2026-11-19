@@ -553,7 +553,8 @@ def schreibe_md(faelle: list[dict]) -> str:
         "- Gezaehlt werden **alle Tabellen des Dokuments**. Die Planwerte in "
         "`offline_struktur_20261118b/structure.json` beziehen sich auf je eine "
         "ausgewaehlte Tabelle und koennen deshalb kleiner sein (etwa `yun2024:421`: "
-        "Plan 0, dokumentweit 4 Goldzellen ueber die Outcome-Zeile)."
+        "Plan 3 = 2 Zeilen + 1 Kopfangabe, dokumentweit 4 Goldzellen ueber die "
+        "Outcome-Zeile)."
     )
     parser = [f for f in faelle if f["parser_fehler"]]
     if parser:

@@ -14,6 +14,24 @@
     "yun2024:525"
   ],
   "source_ist_feldname": true,
+  "belege_523_525": {
+    "satz": "30 emergency medicine residents with the mean age of 36.63 ± 30.30 years were allocated to two equal groups (56.7% male)",
+    "zeilen": {
+      "Male": [
+        9,
+        8
+      ],
+      "Female": [
+        6,
+        7
+      ]
+    },
+    "summen": [
+      15,
+      15
+    ],
+    "haelfte_von_30": 15
+  },
   "faelle": [
     {
       "record_id": "yun2024:164",

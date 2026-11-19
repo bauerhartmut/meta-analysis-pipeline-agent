@@ -29,7 +29,18 @@ Fuer **jede** dieser neun Zellen ist ein Textpfad ausgeschlossen: der Wert steht
 
 Fuer die Entscheidung heisst das: Diese neun Zellen senken die Obergrenze jeder Prompt-Variante und duerfen nicht als Prompt-Luecke gezaehlt werden. Die betroffenen Records bleiben Ausfall, ohne dass ein Nachzug sie heilen kann.
 
-## 4. Grenzen
+## 4. Warum die 15 bei 523/525 fehlt
+
+Beide Records teilen das Dokument `PMC5325897`. Die 15 steht nirgends gedruckt; sie ist aus dem Text und der Baseline-Tabelle ableitbar:
+
+- Text: "30 emergency medicine residents with the mean age of 36.63 ± 30.30 years were allocated to two equal groups (56.7% male)"
+- Tabelle 1, Male: 9 und 8
+- Tabelle 1, Female: 6 und 7
+- Summe je Gruppe: 15 und 15; 30 / 2 = 15
+
+Die Prozentwerte in der Tabelle (60/40 und 53,3/46,7) bestaetigen den Nenner 15. Ein Textpfad muesste die Groesse also rechnen (Summe der Geschlechter oder 30/2), nicht lesen; deshalb fehlt sie im Markdown, obwohl der Datensatz als vollstaendig markiert ist.
+
+## 5. Grenzen
 
 - Die Flags sind Selbstauskuenfte des Datensatzes, keine Nachpruefung am PDF. `is_data_complete = TRUE` schliesst einen Markdown-Verlust nicht aus (523/525).
 - Geprueft ist das Markdown, das der P5-Prompt liest; eine andere Quelle fuer Tabelleninhalt (PDF, XML) ist damit nicht ausgeschlossen, aber nicht Teil dieses Pfads.

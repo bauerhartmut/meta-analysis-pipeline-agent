@@ -38,11 +38,14 @@ Zwei Definitionen, die die Entscheidung tragen:
   Kopfangabe `n = 393` mit belegtem Arm (`PMC3003523:T1`). Der Docstring in
   `table_decomposition/run_benchmark.py` ("Gruppenangaben ... zaehlen nicht
   mit") ist an dieser Stelle veraltet.
-  Mit dem heutigen Stand sind die gespeicherten Planwerte nur fuer `yun2024:30`
-  reproduzierbar: `load_tables` + `reachable_cells` liefern 30 -> 1, 252 -> 0,
-  **421 -> 3**, 672 -> 0, **678 -> 1** (unabhaengig von `assume_order`). Die
-  Spalte `Gold erreichbar (A-E)` in Abschnitt 3 gibt die in `structure.json`
-  gespeicherten Werte wieder und ist fuer `:421` und `:678` veraltet.
+  Die Datei `structure.json` wurde am 19.11.2026 mit dem aktuellen Code neu
+  erzeugt (`offline_struktur_20261119`); die Spalte `Gold erreichbar (A-E)` in
+  Abschnitt 3 gibt diese Werte wieder: 30 -> 1, 252 -> 0, **421 -> 3**, 672 -> 0,
+  **678 -> 1**. Der Lauf aendert mehr als die Reichweite (46 -> 94 Goldfelder,
+  7 -> 0 Strukturfehler, 57/60 -> 60/60 komplett, 23 von 59 Records betroffen);
+  Details in `sprint48_planwerte_20261119.md`. Das Diagnoseartefakt
+  `sprint48_budgetdiagnose.json` behaelt die Werte des Laufs vom 18.11.
+  (historisch).
 - **`_cb`** im Feld `prompt_version` ist ein **Cache-Buster**, kein eigener
   Prompt (`versions.py` entfernt das Suffix bei der Kanonisierung,
   `run_extended_extraction.py` setzt es nur beim Frischgenerieren). Der Vorlauf
@@ -59,9 +62,9 @@ dasselbe Budget, frische Generierung.**
 |---|---|---:|---:|---:|---:|---:|---:|---|---:|---|---|
 | `yun2024:30` | PMC3003523 | 26.854 | 3 (1) | 56 | 6 | 2.398 / 1 | **1** | 6 / 6 / **2** | 13.845 | stop | length |
 | `yun2024:252` | PMC5614421 | 41.138 | 3 (1) | 100 | 2 | 5.318 / 1 | 0 | 24 / 2 / **2** | 22.222 | stop | length |
-| `yun2024:421` | PMC3877023 | 27.320 | 4 (4) | 49 | 6 | 5.489 / 1 | 0 | 2 / 2 / **2** | 24.000 | length | length |
-| `yun2024:672` | PMC4550271 | 43.591 | 5 (0) | 467 | 2 | 11.612 / 3 | 0 | 0 / 0 / **0** | 24.000 | length | length |
-| `yun2024:678` | PMC5777419 | 13.328 | 3 (3) | 115 | 2 | 6.461 / 1 | 0 | 6 / 2 / **2** | 10.888 | stop | length |
+| `yun2024:421` | PMC3877023 | 27.320 | 4 (4) | 49 | 6 | 11.272 / 3 | **3** | 2 / 2 / **2** | 24.000 | length | length |
+| `yun2024:672` | PMC4550271 | 43.591 | 5 (0) | 467 | 2 | 11.759 / 3 | 0 | 0 / 0 / **0** | 24.000 | length | length |
+| `yun2024:678` | PMC5777419 | 13.328 | 3 (3) | 115 | 2 | 6.753 / 1 | **1** | 6 / 2 / **2** | 10.888 | stop | length |
 
 Alle fuenf haben im P5-Lauf genau 24.000 Tokens im Reasoning verbraucht
 (`content_chars = 0`, `finish_reason = length`). Der Vorlauf zeigt fuer vier von
@@ -73,19 +76,20 @@ Der Plan ist eine **Prompt-Verkuerzung**, keine Gold-Abdeckung:
 
 - `yun2024:30`: Strategie B senkt den Prompt von 26.854 auf **2.398** Zeichen
   (91 % weniger), erreicht aber nur **1 von 6** Goldzellen.
-- `yun2024:252`, `:421`, `:672`, `:678`: erreichen **0** Goldzellen im
-  gespeicherten Plan. Bei `:252` und `:672` gibt es gar keine passende
-  `n = ...`-Angabe (Abschnitt 4.1); bei `:421` und `:678` steht die Angabe zwar
-  im Dokument, der gespeicherte Plan weist sie aber nicht aus - mit dem heutigen
-  Code waeren es 3 bzw. 1 (Abschnitt 2).
+- `yun2024:252`, `:421`, `:672`, `:678`: erreichen im neu erzeugten Plan **0, 3,
+  0 und 1** Goldzellen. Bei `:252` und `:672` gibt es gar keine passende
+  `n = ...`-Angabe (Abschnitt 4.1). Bei `:421` sind zwei Zellen ueber die
+  Outcome-Zeile und eine ueber die Kopfangabe `n = 30` erreichbar, bei `:678`
+  eine ueber `n = 16`; die Vergleichsgruppe bleibt in beiden Faellen offen.
 - `yun2024:672` hat zusaetzlich **0 Tabellen mit Zielfeld** bei 467 Datenzellen
   und 36 Zeilen je Tabelle: der Parser ordnet das abgefragte Feld keiner Tabelle
   zu (H4b). Ein Ausschnitt dieses Dokuments kann die 2 Goldzellen nicht liefern.
 
 **Folgerung:** Ein planbasierter Nachzug (Ausschnitt statt Volltext) rechtfertigt
-sich fuer **keinen** der fuenf aus der Gold-Abdeckung. Er kann hoechstens das
-Reasoning verkleinern. Die Entscheidung unten stuetzt sich deshalb auf den
-Vorlauf mit dem **unveraenderten Volltext-Prompt**.
+sich fuer **keinen** der fuenf aus der Gold-Abdeckung. Er erreicht hoechstens die
+Haelfte der Goldzellen (421: 3 von 6, 678: 1 von 2, 30: 1 von 6, 252/672: 0) und
+kann sonst nur das Reasoning verkleinern. Die Entscheidung unten stuetzt sich
+deshalb auf den Vorlauf mit dem **unveraenderten Volltext-Prompt**.
 
 ### 4.1 Kopfangaben: 16 von 132 Goldzellen
 
@@ -131,6 +135,13 @@ in den Rohdaten (`annotated_rct_dataset.json`, `provenance.source_id`):
 | `yun2024:523` | 15 | `comparator_group_size` | FALSE | FALSE | TRUE | - |
 | `yun2024:525` | 15 | `intervention_group_size` | FALSE | FALSE | TRUE | - |
 | `yun2024:525` | 15 | `comparator_group_size` | FALSE | FALSE | TRUE | - |
+
+Bei `yun2024:523` und `:525` (dasselbe Dokument, `PMC5325897`) ist die 15
+**nicht gedruckt, sondern ableitbar**: Der Text nennt "30 emergency medicine
+residents ... allocated to two equal groups", Tabelle 1 listet "Male 9 (60) /
+8 (53.3)" und "Female 6 (40) / 7 (46.7)" - 9+6 = 15, 8+7 = 15 und 30/2 = 15.
+Die Prozentwerte (60/40, 53,3/46,7) bestaetigen den Nenner 15. Ein Textpfad
+muesste die Groesse also rechnen, nicht lesen; deshalb fehlt sie.
 
 Damit ist klar: `yun2024:164` und `:273` haben die Tabelle nur als Grafik,
 `yun2024:173` die Daten in einer Abbildung, `yun2024:171` ist als unvollstaendig
