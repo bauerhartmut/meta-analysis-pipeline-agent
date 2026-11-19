@@ -1846,5 +1846,8 @@ einen abweichenden Wert (Untergruppen statt Gesamtarm, etwa 17+16 gegen 33,
 statt 94**. Bei `yun2024:678` bindet T2 die Kopfangabe `(n=15)` an
 `intervention`, waehrend Gold 16/intervention und 15/comparator verlangt; der
 Planwert faellt von 1 auf 0, seine Spalte `Gold erreichbar (A-E)` ist
-entsprechend nachgezogen. Artefakte: `sprint48_planwerte_20261119.md`,
+entsprechend nachgezogen. Die 26 Wertabweichungen sind aufgeschluesselt: 16
+Untergruppen bzw. geteilte Arme, 5 andere Tabelle/Population (185, 194, 196)
+und 5 armfalsch (335, 336, 426, 678, 682); die Wertabdeckung bleibt 68.
+Ursachen und Skript-Review: `sprint48_planzellen_ursachen_20261119.md`. Artefakte: `sprint48_planwerte_20261119.md`,
 `sprint48_armbindung_20261119.{md,json}`.

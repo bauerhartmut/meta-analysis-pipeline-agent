@@ -47,7 +47,10 @@ Zwei Definitionen, die die Entscheidung tragen:
   Details in `sprint48_planwerte_20261119.md`. Die Pruefung auf der
   Plan-Auswahl (`sprint48_armbindung_20261119.md`, `load_tables` je Record)
   findet 70 Feldtreffer ueber Kopfangaben: 44 mit passendem Wert und Arm, 26
-  mit abweichendem Wert; wertgedeckt sind **68 statt 94**. Bei `:678` ist der
+  mit abweichendem Wert; wertgedeckt sind **68 statt 94**. Die 26 sind
+  aufgeschluesselt (`sprint48_planzellen_ursachen_20261119.md`): 16 Untergruppen
+  bzw. geteilte Arme, 5 andere Tabelle/Population (185, 194, 196), 5 armfalsch (335,
+  336, 426, 678, 682). Bei `:678` ist der
   eine Planwert sogar am falschen Arm: die 15 sitzt ueber der
   Antibiotic-Gruppe (`intervention`), Gold verlangt 16/intervention und
   15/comparator. Das Diagnoseartefakt
