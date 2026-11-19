@@ -4,11 +4,11 @@ Massgeblich ist die Tabelle, die `load_tables` je Record auswaehlt (dieselbe Pip
 
 ## 1. Befund
 
-- **94 Goldzellen** sind im Plan ueber ihr Feld erreichbar (`gold_reachable`, Sollwert 94); davon 80 mit Gruppengroesse: 10 ueber die Outcome-Zeile, 70 nur ueber eine Kopfangabe.
-- Von den 70 Feldtreffern ueber Kopfangaben tragen **44** Wert **und** Arm, **4** tragen den Wert des anderen Arms (Arm vertauscht), **22** einen anderen Wert.
-- Damit sind **68 von 94** Feldtreffern nicht durch eine wertabweichende Kopfangabe widerlegt. Das ist eine **Obergrenze**: Zeilenzellen und Messwertzellen sind nicht wertgeprueft, und verifiziert ist nur der Abgleich gegen Gold, nicht die Spaltenarm-Zuordnung selbst.
-- Bandpruefung aller 114 Kopfangaben der Plan-Tabellen: 110 ok, 0 gemischt, 0 falsch, 4 ohne Arm. Ein Band ueber gemischten oder fremden Armen wird als Befund ausgewiesen, aendert die Wertzaehlung aber nicht.
-- Abgleich: Summe 94 = Sollwert 94 aus `structure.json`.
+- **97 Goldzellen** sind im Plan ueber ihr Feld erreichbar (`gold_reachable`, Sollwert 97); davon 83 mit Gruppengroesse: 12 ueber die Outcome-Zeile, 71 nur ueber eine Kopfangabe.
+- Von den 71 Feldtreffern ueber Kopfangaben tragen **45** Wert **und** Arm, **4** tragen den Wert des anderen Arms (Arm vertauscht), **22** einen anderen Wert.
+- Damit sind **71 von 97** Feldtreffern nicht durch eine wertabweichende Kopfangabe widerlegt. Das ist eine **Obergrenze**: Zeilenzellen und Messwertzellen sind nicht wertgeprueft, und verifiziert ist nur der Abgleich gegen Gold, nicht die Spaltenarm-Zuordnung selbst.
+- Bandpruefung aller 117 Kopfangaben der Plan-Tabellen: 113 ok, 0 gemischt, 0 falsch, 4 ohne Arm. Ein Band ueber gemischten oder fremden Armen wird als Befund ausgewiesen, aendert die Wertzaehlung aber nicht.
+- Abgleich: Summe 97 = Sollwert 97 aus `structure.json`.
 
 ## 2. Records mit Feldtreffer ohne passenden Wert/Arm
 

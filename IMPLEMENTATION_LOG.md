@@ -1862,5 +1862,9 @@ Der Record-Kontext bleibt massgebliche Armquelle; **68 von 94** ist damit die
 endgueltige Obergrenze. Neu: `validate_arm_context` in `validation.py` meldet
 Kopf-Kontext-Widersprueche (15 Faelle in 10 Record-Paaren, davon 7 Warnungen,
 u. a. 678/682, 335/336) als Warnung, ohne Arme umzuhaengen; siehe
-`sprint48_armkonflikt_20261119.md`. `structure.json` wurde nicht neu erzeugt. Artefakte: `sprint48_planwerte_20261119.md`,
+`sprint48_armkonflikt_20261119.md`. Die kuratierte Alias-Zuordnung
+(Control -> PBO fuer `yun2024:30`, Definition -> IPAT fuer `:15`/`:16`) steht
+in `semantics.py` und wird ueber `record_id` im Kontext gebunden; `structure.json`
+neu erzeugt: **97 Goldfelder, 71 nicht widerlegt**, Warnungen A 137 -> 144,
+Errors 0, 60/60 komplett. Details: `sprint48_alias_20261119.md`. Artefakte: `sprint48_planwerte_20261119.md`,
 `sprint48_armbindung_20261119.{md,json}`.

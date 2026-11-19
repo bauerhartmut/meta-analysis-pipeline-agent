@@ -6,18 +6,18 @@
   "netzaufrufe": 0,
   "grundlage": "load_tables (Plan-Auswahl, gleiche Pipeline wie run_benchmark --offline)",
   "abgleich": {
-    "feldtreffer_gesamt": 94,
-    "gold_reachable": 94,
+    "feldtreffer_gesamt": 97,
+    "gold_reachable": 97,
     "ok": true
   },
   "summe": {
-    "feldtreffer_gesamt": 94,
+    "feldtreffer_gesamt": 97,
     "band_ohne_arm": 4,
-    "feldtreffer": 80,
-    "kopf_feldtreffer": 70,
-    "wert_und_arm": 44,
-    "band_ok": 110,
-    "zeilenzelle": 10,
+    "feldtreffer": 83,
+    "kopf_feldtreffer": 71,
+    "wert_und_arm": 45,
+    "band_ok": 113,
+    "zeilenzelle": 12,
     "wert_abweichend": 22,
     "arm_vertauscht": 4
   },
@@ -555,7 +555,7 @@
       "tables": [
         "PMC2667135:T4"
       ],
-      "feldtreffer_gesamt": 1,
+      "feldtreffer_gesamt": 2,
       "zellen": [
         {
           "field": "intervention_group_size",
@@ -579,6 +579,29 @@
               "band_status": "ok"
             }
           ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 97.0,
+          "fact_only": false,
+          "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
+          "kandidaten": [
+            {
+              "table_id": "PMC2667135:T4",
+              "text": "IPAT (*n* = 97)",
+              "value": 97,
+              "arm": "comparator",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ],
+              "band_status": "ok"
+            }
+          ]
         }
       ],
       "details": [
@@ -596,9 +619,25 @@
             "intervention"
           ],
           "band_status": "ok"
+        },
+        {
+          "record_id": "yun2024:15",
+          "field": "comparator_group_size",
+          "gold_value": 97.0,
+          "gold_arm": "comparator",
+          "klasse": "zeilenzelle",
+          "table_id": "PMC2667135:T4",
+          "text": "IPAT (*n* = 97)",
+          "value": 97,
+          "arm": "comparator",
+          "band_arme": [
+            "comparator"
+          ],
+          "band_status": "ok"
         }
       ],
       "band_status": [
+        "ok",
         "ok"
       ]
     },
@@ -687,7 +726,7 @@
       "tables": [
         "PMC2667135:T4"
       ],
-      "feldtreffer_gesamt": 1,
+      "feldtreffer_gesamt": 2,
       "zellen": [
         {
           "field": "intervention_group_size",
@@ -711,6 +750,29 @@
               "band_status": "ok"
             }
           ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 97.0,
+          "fact_only": false,
+          "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
+          "kandidaten": [
+            {
+              "table_id": "PMC2667135:T4",
+              "text": "IPAT (*n* = 97)",
+              "value": 97,
+              "arm": "comparator",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ],
+              "band_status": "ok"
+            }
+          ]
         }
       ],
       "details": [
@@ -728,9 +790,25 @@
             "intervention"
           ],
           "band_status": "ok"
+        },
+        {
+          "record_id": "yun2024:16",
+          "field": "comparator_group_size",
+          "gold_value": 97.0,
+          "gold_arm": "comparator",
+          "klasse": "zeilenzelle",
+          "table_id": "PMC2667135:T4",
+          "text": "IPAT (*n* = 97)",
+          "value": 97,
+          "arm": "comparator",
+          "band_arme": [
+            "comparator"
+          ],
+          "band_status": "ok"
         }
       ],
       "band_status": [
+        "ok",
         "ok"
       ]
     },
@@ -3023,7 +3101,7 @@
       "tables": [
         "PMC3003523:T1"
       ],
-      "feldtreffer_gesamt": 1,
+      "feldtreffer_gesamt": 2,
       "zellen": [
         {
           "field": "intervention_group_size",
@@ -3047,6 +3125,29 @@
               "band_status": "ok"
             }
           ]
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 199.0,
+          "fact_only": true,
+          "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
+          "kandidaten": [
+            {
+              "table_id": "PMC3003523:T1",
+              "text": "(n = 199)",
+              "value": 199,
+              "arm": "comparator",
+              "field": "comparator_group_size",
+              "band_arme": [
+                "comparator"
+              ],
+              "band_status": "ok"
+            }
+          ]
         }
       ],
       "details": [
@@ -3064,9 +3165,25 @@
             "intervention"
           ],
           "band_status": "ok"
+        },
+        {
+          "record_id": "yun2024:30",
+          "field": "comparator_group_size",
+          "gold_value": 199.0,
+          "gold_arm": "comparator",
+          "klasse": "wert_und_arm",
+          "table_id": "PMC3003523:T1",
+          "text": "(n = 199)",
+          "value": 199,
+          "arm": "comparator",
+          "band_arme": [
+            "comparator"
+          ],
+          "band_status": "ok"
         }
       ],
       "band_status": [
+        "ok",
         "ok"
       ]
     },

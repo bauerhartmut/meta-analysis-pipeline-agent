@@ -3,8 +3,8 @@
 Grundlage: `pruefe_armbindung_sprint48.py` (Plan-Auswahl ueber `load_tables`),
 Stand `offline_struktur_20261118b/structure.json`. Rein lesend, keine
 Netzaufrufe. Die 26 Zellen sind die Kopftreffer, deren Wert nicht zum Goldwert
-passt; **68 von 94** Feldtreffern bleiben damit nicht widerlegt (Obergrenze,
-Zeilenzellen und Messwerte ungeprueft).
+passt; nach der kuratierten Alias-Zuordnung sind es **71 von 97** Feldtreffern,
+die nicht widerlegt sind (Obergrenze, Zeilenzellen und Messwerte ungeprueft).
 
 ## 1. Aufteilung
 

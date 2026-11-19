@@ -21,7 +21,9 @@ der separate Ordner `offline_struktur_20261119/` bleibt als Beleg stehen.
 
 ## 2. Was sich aendert
 
-- **23 von 59 Records** aendern die Reichweite (Summe 46 -> 94).
+- **23 von 59 Records** aendern die Reichweite (Summe 46 -> 94). Mit der
+  kuratierten Alias-Zuordnung (Control -> PBO, Definition -> IPAT) kommen
+  15, 16 und 30 je eine Zelle hinzu: 94 -> 97.
 - **29 Records** aendern Einheiten oder Prompt-Zeichen.
 - Strukturfehler fallen von 7 auf 0; komplett von 57/60 auf 60/60.
 - Die Ursache ist die Kopfangaben-Zaehlung aus Sprint 44 (`reachable_cells` fuehrt `n = ...` als `(-1, feld)`), nicht die Auswahl: die SHA256 ist identisch.
@@ -56,7 +58,7 @@ Beispiele fuer geaenderte Reichweite (Strategie A):
 | `yun2024:678` | A | 1 -> 1 | 6461 -> 6753 | 0 -> 1 |
 | `yun2024:678` | B | 1 -> 1 | 6461 -> 6753 | 0 -> 1 |
 
-Damit sind die reproduzierten Feldtreffer: 30 -> 1, 252 -> 0, 421 -> 3, 672 -> 0,
+Damit sind die reproduzierten Feldtreffer: 30 -> 2, 252 -> 0, 421 -> 3, 672 -> 0,
 678 -> 1. Bei 421 und 678 stammen die Treffer aus den Kopfangaben (421 zusaetzlich
 zwei Zellen aus der Outcome-Zeile), bei 30 aus `n = 393`. **Wertgeprueft** ist
 678 jedoch 0: die Kopfangabe `(n=15)` sitzt ueber der Antibiotic-Gruppe

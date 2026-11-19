@@ -9,31 +9,31 @@
       "units": 60,
       "units_per_record": 1.02,
       "expected_cells": 1687,
-      "prompt_chars": 363745,
-      "prompt_chars_per_record": 6165.2,
-      "prompt_chars_per_unit": 6062.4,
-      "est_tokens": 90936,
+      "prompt_chars": 363787,
+      "prompt_chars_per_record": 6165.9,
+      "prompt_chars_per_unit": 6063.1,
+      "est_tokens": 90947,
       "redundant_tables": 0,
-      "gold_reachable": 94,
+      "gold_reachable": 97,
       "errors": 0,
-      "warnings": 137
+      "warnings": 144
     },
     "B": {
       "strategy_label": "Vertical Decomposition",
       "records": 59,
       "tables": 60,
       "tables_complete": 60,
-      "units": 151,
-      "units_per_record": 2.56,
-      "expected_cells": 1266,
-      "prompt_chars": 637807,
-      "prompt_chars_per_record": 10810.3,
-      "prompt_chars_per_unit": 4223.9,
-      "est_tokens": 159452,
+      "units": 154,
+      "units_per_record": 2.61,
+      "expected_cells": 1273,
+      "prompt_chars": 646982,
+      "prompt_chars_per_record": 10965.8,
+      "prompt_chars_per_unit": 4201.2,
+      "est_tokens": 161746,
       "redundant_tables": 0,
-      "gold_reachable": 94,
+      "gold_reachable": 97,
       "errors": 0,
-      "warnings": 103
+      "warnings": 115
     },
     "C": {
       "strategy_label": "Horizontal Decomposition",
@@ -43,31 +43,31 @@
       "units": 329,
       "units_per_record": 5.58,
       "expected_cells": 1687,
-      "prompt_chars": 1123577,
-      "prompt_chars_per_record": 19043.7,
-      "prompt_chars_per_unit": 3415.1,
-      "est_tokens": 280894,
+      "prompt_chars": 1123659,
+      "prompt_chars_per_record": 19045.1,
+      "prompt_chars_per_unit": 3415.4,
+      "est_tokens": 280915,
       "redundant_tables": 0,
-      "gold_reachable": 94,
+      "gold_reachable": 97,
       "errors": 0,
-      "warnings": 237
+      "warnings": 244
     },
     "D": {
       "strategy_label": "Bidirectional Decomposition",
       "records": 59,
       "tables": 60,
       "tables_complete": 60,
-      "units": 431,
-      "units_per_record": 7.31,
+      "units": 434,
+      "units_per_record": 7.36,
       "expected_cells": 1687,
-      "prompt_chars": 1521862,
-      "prompt_chars_per_record": 25794.3,
-      "prompt_chars_per_unit": 3531.0,
-      "est_tokens": 380466,
+      "prompt_chars": 1531119,
+      "prompt_chars_per_record": 25951.2,
+      "prompt_chars_per_unit": 3527.9,
+      "est_tokens": 382780,
       "redundant_tables": 0,
-      "gold_reachable": 94,
+      "gold_reachable": 97,
       "errors": 0,
-      "warnings": 318
+      "warnings": 330
     },
     "E": {
       "strategy_label": "Adaptive Recursive Decomposition",
@@ -77,14 +77,14 @@
       "units": 262,
       "units_per_record": 4.44,
       "expected_cells": 1674,
-      "prompt_chars": 1096135,
-      "prompt_chars_per_record": 18578.6,
-      "prompt_chars_per_unit": 4183.7,
-      "est_tokens": 274034,
+      "prompt_chars": 1096177,
+      "prompt_chars_per_record": 18579.3,
+      "prompt_chars_per_unit": 4183.9,
+      "est_tokens": 274044,
       "redundant_tables": 0,
-      "gold_reachable": 94,
+      "gold_reachable": 97,
       "errors": 0,
-      "warnings": 253
+      "warnings": 260
     }
   },
   "records": {
@@ -113,7 +113,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 4,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -151,7 +152,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 4,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -176,24 +178,25 @@
         "units": 1,
         "expected_cells": 3,
         "in_scope_cells": 10,
-        "prompt_chars": 4166,
-        "prompt_chars_per_unit": 4166.0,
-        "est_tokens_zeichen_durch_4": 1042,
+        "prompt_chars": 4182,
+        "prompt_chars_per_unit": 4182.0,
+        "est_tokens_zeichen_durch_4": 1046,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
             "units": 1,
-            "prompt_chars": 4166,
+            "prompt_chars": 4182,
             "in_scope_cells": 10,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
@@ -212,24 +215,25 @@
         "units": 1,
         "expected_cells": 3,
         "in_scope_cells": 10,
-        "prompt_chars": 4105,
-        "prompt_chars_per_unit": 4105.0,
-        "est_tokens_zeichen_durch_4": 1026,
+        "prompt_chars": 4121,
+        "prompt_chars_per_unit": 4121.0,
+        "est_tokens_zeichen_durch_4": 1030,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
             "units": 1,
-            "prompt_chars": 4105,
+            "prompt_chars": 4121,
             "in_scope_cells": 10,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
@@ -326,7 +330,9 @@
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
-        "finding_codes": {},
+        "finding_codes": {
+          "kontextarm_nicht_im_kopf": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5122613:T1",
@@ -360,7 +366,9 @@
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
-        "finding_codes": {},
+        "finding_codes": {
+          "kontextarm_nicht_im_kopf": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5122613:T1",
@@ -879,25 +887,26 @@
         "units": 1,
         "expected_cells": 20,
         "in_scope_cells": 20,
-        "prompt_chars": 3515,
-        "prompt_chars_per_unit": 3515.0,
-        "est_tokens_zeichen_durch_4": 879,
+        "prompt_chars": 3525,
+        "prompt_chars_per_unit": 3525.0,
+        "est_tokens_zeichen_durch_4": 881,
         "gold_cells_record": 6,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 0,
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 20,
+        "validation_warnings": 21,
         "finding_codes": {
           "zeilenlabel_fehlt": 20,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC3003523:T1",
             "units": 1,
-            "prompt_chars": 3515,
+            "prompt_chars": 3525,
             "in_scope_cells": 20,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
@@ -925,10 +934,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 1,
+        "validation_warnings": 2,
         "finding_codes": {
           "spaltenkopf_fehlt": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -962,10 +972,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 1,
+        "validation_warnings": 2,
         "finding_codes": {
           "spaltenkopf_fehlt": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -1072,7 +1083,8 @@
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 1,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -1110,7 +1122,8 @@
         "finding_codes": {
           "spaltenkopf_fehlt": 1,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -2064,9 +2077,10 @@
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
+        "validation_warnings": 1,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kopf_n_widerspricht_kontext": 1
         },
         "per_table": [
           {
@@ -2100,8 +2114,10 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
-        "finding_codes": {},
+        "validation_warnings": 1,
+        "finding_codes": {
+          "kopf_n_widerspricht_kontext": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5777419:T2",
@@ -2134,10 +2150,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 44,
+        "validation_warnings": 45,
         "finding_codes": {
           "zeilenlabel_fehlt": 44,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -2171,10 +2188,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 44,
+        "validation_warnings": 45,
         "finding_codes": {
           "zeilenlabel_fehlt": 44,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -2214,7 +2232,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 4,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -2254,7 +2273,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 4,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -2278,28 +2298,29 @@
           "PMC2667135:T4"
         ],
         "complexity": "mittel",
-        "units": 1,
-        "expected_cells": 1,
-        "in_scope_cells": 4,
-        "prompt_chars": 3377,
-        "prompt_chars_per_unit": 3377.0,
-        "est_tokens_zeichen_durch_4": 844,
+        "units": 2,
+        "expected_cells": 2,
+        "in_scope_cells": 8,
+        "prompt_chars": 6783,
+        "prompt_chars_per_unit": 3391.5,
+        "est_tokens_zeichen_durch_4": 1696,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
-            "units": 1,
-            "prompt_chars": 3377,
-            "in_scope_cells": 4,
+            "units": 2,
+            "prompt_chars": 6783,
+            "in_scope_cells": 8,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
           }
@@ -2314,28 +2335,29 @@
           "PMC2667135:T4"
         ],
         "complexity": "mittel",
-        "units": 1,
-        "expected_cells": 1,
-        "in_scope_cells": 4,
-        "prompt_chars": 3317,
-        "prompt_chars_per_unit": 3317.0,
-        "est_tokens_zeichen_durch_4": 829,
+        "units": 2,
+        "expected_cells": 2,
+        "in_scope_cells": 8,
+        "prompt_chars": 6668,
+        "prompt_chars_per_unit": 3334.0,
+        "est_tokens_zeichen_durch_4": 1667,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
-            "units": 1,
-            "prompt_chars": 3317,
-            "in_scope_cells": 4,
+            "units": 2,
+            "prompt_chars": 6668,
+            "in_scope_cells": 8,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
           }
@@ -2436,7 +2458,8 @@
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -2472,7 +2495,8 @@
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -2999,30 +3023,31 @@
           "PMC3003523:T1"
         ],
         "complexity": "mittel",
-        "units": 1,
-        "expected_cells": 5,
-        "in_scope_cells": 5,
-        "prompt_chars": 2398,
-        "prompt_chars_per_unit": 2398.0,
-        "est_tokens_zeichen_durch_4": 600,
+        "units": 2,
+        "expected_cells": 10,
+        "in_scope_cells": 10,
+        "prompt_chars": 4816,
+        "prompt_chars_per_unit": 2408.0,
+        "est_tokens_zeichen_durch_4": 1204,
         "gold_cells_record": 6,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 0,
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 5,
+        "validation_warnings": 11,
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
-          "zeilenlabel_fehlt": 5,
-          "verbundwert_getrennt": 1
+          "zeilenlabel_fehlt": 10,
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC3003523:T1",
-            "units": 1,
-            "prompt_chars": 2398,
-            "in_scope_cells": 5,
+            "units": 2,
+            "prompt_chars": 4816,
+            "in_scope_cells": 10,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
           }
@@ -3049,10 +3074,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
+        "validation_warnings": 1,
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -3086,10 +3112,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
+        "validation_warnings": 1,
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -3195,7 +3222,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -3233,7 +3261,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -4214,9 +4243,10 @@
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
+        "validation_warnings": 1,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kopf_n_widerspricht_kontext": 1
         },
         "per_table": [
           {
@@ -4252,8 +4282,10 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
-        "finding_codes": {},
+        "validation_warnings": 1,
+        "finding_codes": {
+          "kopf_n_widerspricht_kontext": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5777419:T2",
@@ -4288,11 +4320,12 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 38,
+        "validation_warnings": 39,
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "zeilenlabel_fehlt": 38,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -4326,11 +4359,12 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 38,
+        "validation_warnings": 39,
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "zeilenlabel_fehlt": 38,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -4370,7 +4404,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 8,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -4408,7 +4443,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 8,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -4433,24 +4469,25 @@
         "units": 1,
         "expected_cells": 3,
         "in_scope_cells": 10,
-        "prompt_chars": 3419,
-        "prompt_chars_per_unit": 3419.0,
-        "est_tokens_zeichen_durch_4": 855,
+        "prompt_chars": 3435,
+        "prompt_chars_per_unit": 3435.0,
+        "est_tokens_zeichen_durch_4": 859,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
             "units": 1,
-            "prompt_chars": 3419,
+            "prompt_chars": 3435,
             "in_scope_cells": 10,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
@@ -4469,24 +4506,25 @@
         "units": 1,
         "expected_cells": 3,
         "in_scope_cells": 10,
-        "prompt_chars": 3358,
-        "prompt_chars_per_unit": 3358.0,
-        "est_tokens_zeichen_durch_4": 840,
+        "prompt_chars": 3374,
+        "prompt_chars_per_unit": 3374.0,
+        "est_tokens_zeichen_durch_4": 844,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
             "units": 1,
-            "prompt_chars": 3358,
+            "prompt_chars": 3374,
             "in_scope_cells": 10,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
@@ -4583,7 +4621,9 @@
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
-        "finding_codes": {},
+        "finding_codes": {
+          "kontextarm_nicht_im_kopf": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5122613:T1",
@@ -4617,7 +4657,9 @@
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
-        "finding_codes": {},
+        "finding_codes": {
+          "kontextarm_nicht_im_kopf": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5122613:T1",
@@ -5136,25 +5178,26 @@
         "units": 5,
         "expected_cells": 20,
         "in_scope_cells": 20,
-        "prompt_chars": 11517,
-        "prompt_chars_per_unit": 2303.4,
-        "est_tokens_zeichen_durch_4": 2879,
+        "prompt_chars": 11567,
+        "prompt_chars_per_unit": 2313.4,
+        "est_tokens_zeichen_durch_4": 2892,
         "gold_cells_record": 6,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 0,
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 20,
+        "validation_warnings": 21,
         "finding_codes": {
           "zeilenlabel_fehlt": 20,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC3003523:T1",
             "units": 5,
-            "prompt_chars": 11517,
+            "prompt_chars": 11567,
             "in_scope_cells": 20,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
@@ -5182,10 +5225,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 1,
+        "validation_warnings": 2,
         "finding_codes": {
           "spaltenkopf_fehlt": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -5219,10 +5263,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 1,
+        "validation_warnings": 2,
         "finding_codes": {
           "spaltenkopf_fehlt": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -5329,7 +5374,8 @@
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 1,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -5367,7 +5413,8 @@
         "finding_codes": {
           "spaltenkopf_fehlt": 8,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -6321,9 +6368,10 @@
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
+        "validation_warnings": 1,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kopf_n_widerspricht_kontext": 1
         },
         "per_table": [
           {
@@ -6357,8 +6405,10 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
-        "finding_codes": {},
+        "validation_warnings": 1,
+        "finding_codes": {
+          "kopf_n_widerspricht_kontext": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5777419:T2",
@@ -6391,10 +6441,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 44,
+        "validation_warnings": 45,
         "finding_codes": {
           "zeilenlabel_fehlt": 44,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -6428,10 +6479,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 44,
+        "validation_warnings": 45,
         "finding_codes": {
           "zeilenlabel_fehlt": 44,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -6471,7 +6523,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 8,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -6511,7 +6564,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 8,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -6535,27 +6589,28 @@
           "PMC2667135:T4"
         ],
         "complexity": "mittel",
-        "units": 2,
+        "units": 3,
         "expected_cells": 3,
         "in_scope_cells": 10,
-        "prompt_chars": 6796,
-        "prompt_chars_per_unit": 3398.0,
-        "est_tokens_zeichen_durch_4": 1699,
+        "prompt_chars": 10218,
+        "prompt_chars_per_unit": 3406.0,
+        "est_tokens_zeichen_durch_4": 2554,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
-            "units": 2,
-            "prompt_chars": 6796,
+            "units": 3,
+            "prompt_chars": 10218,
             "in_scope_cells": 10,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
@@ -6571,27 +6626,28 @@
           "PMC2667135:T4"
         ],
         "complexity": "mittel",
-        "units": 2,
+        "units": 3,
         "expected_cells": 3,
         "in_scope_cells": 10,
-        "prompt_chars": 6675,
-        "prompt_chars_per_unit": 3337.5,
-        "est_tokens_zeichen_durch_4": 1669,
+        "prompt_chars": 10042,
+        "prompt_chars_per_unit": 3347.3,
+        "est_tokens_zeichen_durch_4": 2510,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
-            "units": 2,
-            "prompt_chars": 6675,
+            "units": 3,
+            "prompt_chars": 10042,
             "in_scope_cells": 10,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
@@ -6688,7 +6744,9 @@
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
-        "finding_codes": {},
+        "finding_codes": {
+          "kontextarm_nicht_im_kopf": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5122613:T1",
@@ -6722,7 +6780,9 @@
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
-        "finding_codes": {},
+        "finding_codes": {
+          "kontextarm_nicht_im_kopf": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5122613:T1",
@@ -7244,28 +7304,29 @@
           "PMC3003523:T1"
         ],
         "complexity": "mittel",
-        "units": 6,
+        "units": 7,
         "expected_cells": 20,
         "in_scope_cells": 20,
-        "prompt_chars": 13915,
-        "prompt_chars_per_unit": 2319.2,
-        "est_tokens_zeichen_durch_4": 3479,
+        "prompt_chars": 16383,
+        "prompt_chars_per_unit": 2340.4,
+        "est_tokens_zeichen_durch_4": 4096,
         "gold_cells_record": 6,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 0,
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 25,
+        "validation_warnings": 31,
         "finding_codes": {
-          "zeilenlabel_fehlt": 25,
-          "verbundwert_getrennt": 1
+          "zeilenlabel_fehlt": 30,
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC3003523:T1",
-            "units": 6,
-            "prompt_chars": 13915,
+            "units": 7,
+            "prompt_chars": 16383,
             "in_scope_cells": 20,
             "validation_status": "strukturell_vollstaendig",
             "notes": []
@@ -7293,10 +7354,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 1,
+        "validation_warnings": 2,
         "finding_codes": {
           "spaltenkopf_fehlt": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -7330,10 +7392,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 1,
+        "validation_warnings": 2,
         "finding_codes": {
           "spaltenkopf_fehlt": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -7440,7 +7503,8 @@
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 1,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -7478,7 +7542,8 @@
         "finding_codes": {
           "spaltenkopf_fehlt": 8,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -8440,9 +8505,10 @@
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
+        "validation_warnings": 1,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kopf_n_widerspricht_kontext": 1
         },
         "per_table": [
           {
@@ -8478,8 +8544,10 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
-        "finding_codes": {},
+        "validation_warnings": 1,
+        "finding_codes": {
+          "kopf_n_widerspricht_kontext": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5777419:T2",
@@ -8514,10 +8582,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 82,
+        "validation_warnings": 83,
         "finding_codes": {
           "zeilenlabel_fehlt": 82,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -8551,10 +8620,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 82,
+        "validation_warnings": 83,
         "finding_codes": {
           "zeilenlabel_fehlt": 82,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -8594,7 +8664,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 8,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -8635,7 +8706,8 @@
         "finding_codes": {
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 8,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -8663,29 +8735,30 @@
         "units": 1,
         "expected_cells": 3,
         "in_scope_cells": 10,
-        "prompt_chars": 4166,
-        "prompt_chars_per_unit": 4166.0,
-        "est_tokens_zeichen_durch_4": 1042,
+        "prompt_chars": 4182,
+        "prompt_chars_per_unit": 4182.0,
+        "est_tokens_zeichen_durch_4": 1046,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
             "units": 1,
-            "prompt_chars": 4166,
+            "prompt_chars": 4182,
             "in_scope_cells": 10,
             "validation_status": "strukturell_vollstaendig",
             "notes": [
-              "Komplexitaet 0.34 (mittel).",
-              "Nur 1 Zielspalten: Volltabelle ist billiger als Zerlegung."
+              "Komplexitaet 0.29 (mittel).",
+              "Nur 2 Zielspalten: Volltabelle ist billiger als Zerlegung."
             ]
           }
         ],
@@ -8702,29 +8775,30 @@
         "units": 1,
         "expected_cells": 3,
         "in_scope_cells": 10,
-        "prompt_chars": 4105,
-        "prompt_chars_per_unit": 4105.0,
-        "est_tokens_zeichen_durch_4": 1026,
+        "prompt_chars": 4121,
+        "prompt_chars_per_unit": 4121.0,
+        "est_tokens_zeichen_durch_4": 1030,
         "gold_cells_record": 4,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 1,
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC2667135:T4",
             "units": 1,
-            "prompt_chars": 4105,
+            "prompt_chars": 4121,
             "in_scope_cells": 10,
             "validation_status": "strukturell_vollstaendig",
             "notes": [
-              "Komplexitaet 0.34 (mittel).",
-              "Nur 1 Zielspalten: Volltabelle ist billiger als Zerlegung."
+              "Komplexitaet 0.29 (mittel).",
+              "Nur 2 Zielspalten: Volltabelle ist billiger als Zerlegung."
             ]
           }
         ],
@@ -8825,7 +8899,9 @@
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
-        "finding_codes": {},
+        "finding_codes": {
+          "kontextarm_nicht_im_kopf": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5122613:T1",
@@ -8862,7 +8938,9 @@
         "structural_complete_tables": 1,
         "validation_errors": 0,
         "validation_warnings": 0,
-        "finding_codes": {},
+        "finding_codes": {
+          "kontextarm_nicht_im_kopf": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5122613:T1",
@@ -9430,30 +9508,31 @@
         "units": 1,
         "expected_cells": 20,
         "in_scope_cells": 20,
-        "prompt_chars": 3515,
-        "prompt_chars_per_unit": 3515.0,
-        "est_tokens_zeichen_durch_4": 879,
+        "prompt_chars": 3525,
+        "prompt_chars_per_unit": 3525.0,
+        "est_tokens_zeichen_durch_4": 881,
         "gold_cells_record": 6,
-        "gold_reachable": 1,
+        "gold_reachable": 2,
         "focus_rows": 0,
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 20,
+        "validation_warnings": 21,
         "finding_codes": {
           "zeilenlabel_fehlt": 20,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
             "table_id": "PMC3003523:T1",
             "units": 1,
-            "prompt_chars": 3515,
+            "prompt_chars": 3525,
             "in_scope_cells": 20,
             "validation_status": "strukturell_vollstaendig",
             "notes": [
-              "Komplexitaet 0.37 (mittel).",
-              "Nur 1 Zielspalten: Volltabelle ist billiger als Zerlegung."
+              "Komplexitaet 0.33 (mittel).",
+              "Nur 2 Zielspalten: Volltabelle ist billiger als Zerlegung."
             ]
           }
         ],
@@ -9479,10 +9558,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 1,
+        "validation_warnings": 2,
         "finding_codes": {
           "spaltenkopf_fehlt": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -9519,10 +9599,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 1,
+        "validation_warnings": 2,
         "finding_codes": {
           "spaltenkopf_fehlt": 1,
-          "verbundwert_getrennt": 1
+          "verbundwert_getrennt": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -9640,7 +9721,8 @@
           "zelle_ausserhalb_scope": 1,
           "spaltenkopf_fehlt": 1,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -9682,7 +9764,8 @@
         "finding_codes": {
           "spaltenkopf_fehlt": 8,
           "verbundwert_getrennt": 1,
-          "rolle_aus_zeilenlabel": 1
+          "rolle_aus_zeilenlabel": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -10730,9 +10813,10 @@
         "no_outcome_row": false,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
+        "validation_warnings": 1,
         "finding_codes": {
-          "zelle_ausserhalb_scope": 1
+          "zelle_ausserhalb_scope": 1,
+          "kopf_n_widerspricht_kontext": 1
         },
         "per_table": [
           {
@@ -10770,8 +10854,10 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 0,
-        "finding_codes": {},
+        "validation_warnings": 1,
+        "finding_codes": {
+          "kopf_n_widerspricht_kontext": 1
+        },
         "per_table": [
           {
             "table_id": "PMC5777419:T2",
@@ -10808,10 +10894,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 82,
+        "validation_warnings": 83,
         "finding_codes": {
           "zeilenlabel_fehlt": 82,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -10848,10 +10935,11 @@
         "no_outcome_row": true,
         "structural_complete_tables": 1,
         "validation_errors": 0,
-        "validation_warnings": 82,
+        "validation_warnings": 83,
         "finding_codes": {
           "zeilenlabel_fehlt": 82,
-          "armzuordnung_uebertragen": 1
+          "armzuordnung_uebertragen": 1,
+          "kontextarm_nicht_im_kopf": 1
         },
         "per_table": [
           {
@@ -10878,5 +10966,5 @@
   "selection": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/analysis/table_decomposition_20261118/selection_test.json",
   "selection_role": "test",
   "selection_sha256": "c22ed3fb42dbaaff7051a89cdb327c4b250a134db0a62a19d3877d5ba311c0b1",
-  "created": "2026-11-19T20:09:31+00:00"
+  "created": "2026-11-19T20:56:58+00:00"
 }

@@ -1,8 +1,10 @@
 # Sprint 48: Validierungs-Finding "Kopf-n widerspricht Kontext"
 
 **Entscheidung:** Der Record-Kontext bleibt die massgebliche Armquelle. Die
-68 von 94 Feldtreffern sind damit die **endgueltige Obergrenze**; die
-kopf-treue Variante (gedrucktes n schlaegt Kontext) wird nicht eingefuehrt.
+kopf-treue Variante (gedrucktes n schlaegt Kontext) wird nicht eingefuehrt;
+stattdessen sind die beiden Alias-Zuordnungen (Control -> PBO,
+Definition -> IPAT) Teil des Kontexts und heben drei Zellen: **97 Feldtreffer,
+71 nicht widerlegt**.
 
 ## 1. Was das Finding prueft
 

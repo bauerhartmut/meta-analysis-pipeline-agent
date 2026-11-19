@@ -40,18 +40,21 @@ Zwei Definitionen, die die Entscheidung tragen:
   mit") ist an dieser Stelle veraltet.
   Die Datei `structure.json` wurde am 19.11.2026 mit dem aktuellen Code neu
   erzeugt (`offline_struktur_20261119`); die Spalte `Gold erreichbar (A-E)` in
-  Abschnitt 3 gibt die Feldtreffer wieder: 30 -> 1, 252 -> 0, **421 -> 3**,
+  Abschnitt 3 gibt die Feldtreffer wieder: 30 -> 2, 252 -> 0, **421 -> 3**,
   672 -> 0, **678 -> 0** (ein Feldtreffer, aber Wert 15 statt 16). Der Lauf
   aendert mehr als die Reichweite (46 -> 94 Goldfelder,
-  7 -> 0 Strukturfehler, 57/60 -> 60/60 komplett, 23 von 59 Records betroffen);
+  7 -> 0 Strukturfehler, 57/60 -> 60/60 komplett, 23 von 59 Records betroffen;
+  die kuratierte Alias-Zuordnung hebt spaeter 15, 16 und 30 um je eine Zelle,
+  94 -> 97);
   Details in `sprint48_planwerte_20261119.md`. Die Pruefung auf der
   Plan-Auswahl (`sprint48_armbindung_20261119.md`, `load_tables` je Record)
-  findet 70 Feldtreffer ueber Kopfangaben: 44 mit passendem Wert und Arm, 4 mit
+  findet 71 Feldtreffer ueber Kopfangaben: 45 mit passendem Wert und Arm, 4 mit
   dem Wert des anderen Arms (Arm vertauscht: 335, 336, 678, 682) und 22 mit
-  abweichendem Wert. **68 von 94** Feldtreffern sind damit nicht durch eine
+  abweichendem Wert. **71 von 97** Feldtreffern sind damit nicht durch eine
   wertabweichende Kopfangabe widerlegt. Der Record-Kontext bleibt die
-  massgebliche Armquelle; **68 von 94 ist damit die endgueltige Obergrenze**
-  (Zeilen- und Messwertzellen sind nicht wertgeprueft). Ein neues
+  massgebliche Armquelle; die kuratierte Alias-Zuordnung (Control -> PBO,
+  Definition -> IPAT) ist Teil dieses Kontexts und hebt drei Zellen:
+  **71 von 97** (Zeilen- und Messwertzellen sind nicht wertgeprueft). Ein neues
   Validierungs-Finding meldet Kopf-Kontext-Widersprueche, ohne Arme
   umzuhaengen (`sprint48_armkonflikt_20261119.md`). Die 26 sind aufgeschluesselt
   (`sprint48_planzellen_ursachen_20261119.md`): 17 Untergruppen bzw. geteilte
@@ -77,7 +80,7 @@ dasselbe Budget, frische Generierung.**
 
 | Record | PMC | Prompt (Zeichen) | Tabellen (mit Zielfeld) | Datenzellen | Gold | Plan B (Zeichen/Einheiten) | Gold erreichbar (A-E) | Vorlauf 24k: Zellen / adressiert / wertgleich | Vorlauf Tokens | Vorlauf Abschluss | P5-Ergebnis |
 |---|---|---:|---:|---:|---:|---:|---:|---|---:|---|---|
-| `yun2024:30` | PMC3003523 | 26.854 | 3 (1) | 56 | 6 | 2.398 / 1 | **1** | 6 / 6 / **2** | 13.845 | stop | length |
+| `yun2024:30` | PMC3003523 | 26.854 | 3 (1) | 56 | 6 | 2.398 / 1 | **2** | 6 / 6 / **2** | 13.845 | stop | length |
 | `yun2024:252` | PMC5614421 | 41.138 | 3 (1) | 100 | 2 | 5.318 / 1 | 0 | 24 / 2 / **2** | 22.222 | stop | length |
 | `yun2024:421` | PMC3877023 | 27.320 | 4 (4) | 49 | 6 | 11.272 / 3 | **3** | 2 / 2 / **2** | 24.000 | length | length |
 | `yun2024:672` | PMC4550271 | 43.591 | 5 (0) | 467 | 2 | 11.759 / 3 | 0 | 0 / 0 / **0** | 24.000 | length | length |
@@ -97,7 +100,7 @@ ihnen, dass dasselbe Budget reicht — fuer `yun2024:672` nicht.
 Der Plan ist eine **Prompt-Verkuerzung**, keine Gold-Abdeckung:
 
 - `yun2024:30`: Strategie B senkt den Prompt von 26.854 auf **2.398** Zeichen
-  (91 % weniger), erreicht aber nur **1 von 6** Goldzellen.
+  (91 % weniger), erreicht aber nur **2 von 6** Goldzellen.
 - `yun2024:252`, `:421`, `:672`, `:678`: erreichen im neu erzeugten Plan **0, 3,
   0 und 0** nicht widerlegte Goldzellen. Bei `:252` und `:672` gibt es gar keine
   passende `n = ...`-Angabe (Abschnitt 4.1). Bei `:421` sind zwei Zellen ueber
@@ -111,7 +114,7 @@ Der Plan ist eine **Prompt-Verkuerzung**, keine Gold-Abdeckung:
 
 **Folgerung:** Ein planbasierter Nachzug (Ausschnitt statt Volltext) rechtfertigt
 sich fuer **keinen** der fuenf aus der Gold-Abdeckung. Er erreicht hoechstens die
-Haelfte der Goldzellen (421: 3 von 6, 678: 0 von 2, 30: 1 von 6, 252/672: 0) und
+Haelfte der Goldzellen (421: 3 von 6, 678: 0 von 2, 30: 2 von 6, 252/672: 0) und
 kann sonst nur das Reasoning verkleinern. Die Entscheidung unten stuetzt sich
 deshalb auf den Vorlauf mit dem **unveraenderten Volltext-Prompt**.
 
@@ -202,7 +205,7 @@ also etwa 13.000 Tokens je richtiger Zelle gegen 8.232 im P5-Lauf
 | Record | Entscheidung | Begruendung |
 |---|---|---|
 | `yun2024:678` | **Nachzug ja (1 x 24.000)** | Einziger Fall mit belastbarem Ertrag: beide Goldzellen (Interventions- und Vergleichsgruppengroesse) im Vorlauf **wertgleich** getroffen, 6 Zellen geliefert, Abschluss `stop` bei **10.888 Tokens** (45 % des Budgets, also Luft). Kleinster Prompt der fuenf (13.328 Zeichen), 3 von 3 Tabellen tragen das Zielfeld. |
-| `yun2024:30` | **Ausfall bleiben** | Der Vorlauf adressiert alle 6 Goldfelder, trifft aber nur **2** Werte. Der Fehler ist inhaltlich (falsche Werte je Feld/Arm), nicht Budget: ein weiterer 24k-Lauf wiederholt eher die Fehlzuordnung. Plan erreicht 1 von 6 Goldzellen. |
+| `yun2024:30` | **Ausfall bleiben** | Der Vorlauf adressiert alle 6 Goldfelder, trifft aber nur **2** Werte. Der Fehler ist inhaltlich (falsche Werte je Feld/Arm), nicht Budget: ein weiterer 24k-Lauf wiederholt eher die Fehlzuordnung. Plan erreicht 2 von 6 Goldzellen. |
 | `yun2024:252` | **Ausfall bleiben** | 2 von 2 Goldzellen im Vorlauf wertgleich, aber der Erfolg kostete **22.222 Tokens** (93 % des Budgets) bei 41.138 Zeichen Prompt. Derselbe Ertrag wie `yun2024:678` zum doppelten Preis; ein Fehlversuch verbrennt volle 24.000. |
 | `yun2024:421` | **Ausfall bleiben** | Auch der Vorlauf endete auf **24.000 Tokens mit `length`** und lieferte nur 2 Zellen; 4 der 6 Goldzellen blieben offen. Die Decke liegt bei diesem Prompt unter dem Budget, nicht bei der Reproduzierbarkeit. |
 | `yun2024:672` | **Ausfall bleiben** | Zwei 24k-Laeufe (Vorlauf und P5) ohne eine einzige Zelle; 0 Tabellen mit Zielfeld, 0 erreichbare Goldzellen im Plan, 467 Datenzellen in 5 Tabellen. Ohne anderen Pfad aussichtslos. |
