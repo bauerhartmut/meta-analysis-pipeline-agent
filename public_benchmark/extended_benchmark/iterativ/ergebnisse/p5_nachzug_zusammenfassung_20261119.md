@@ -153,5 +153,9 @@ stimmen), Auswertung Exit 0.
   ausweisen.
 - Die offizielle Bewertung (Recall, MAE) bleibt der geschuetzte
   Bewertungslauf; die Zellzaehlung hier ist eine Selbstpruefung.
-- Zitierte Staende in Handoff und README (43 verwertbar, 42 von 102) sind
-  gegenueber 67 beziehungsweise 66 von 102 veraltet.
+- Zitierbar sind jetzt 67 verwertbare Records und 66 von 102 bewertbaren
+  Records gerettet. So steht es im Handoff
+  `docs/internal/wiederaufnahme_harness_20261119.md` (Abschnitt 7 und 8) und in
+  der Auswertung `p5_auswertung_20261118.md` (64.7 %). Die Momentaufnahme
+  `runs/p5_auswertung_stand1314/` bleibt absichtlich bei 43 und 42 von 102: sie
+  belegt den Stand vor dem Nachzug und wird nicht nachgezogen.

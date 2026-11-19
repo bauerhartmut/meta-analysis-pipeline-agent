@@ -79,6 +79,7 @@ def _lauf(
     *,
     python: str | None = None,
     extra_env: dict[str, str] | None = None,
+    argumente: tuple[str, ...] = (),
 ) -> subprocess.CompletedProcess:
     env = dict(os.environ)
     env.update(
@@ -92,7 +93,11 @@ def _lauf(
     )
     env.update(extra_env or {})
     return subprocess.run(
-        [BASH, str(WRAPPER)], env=env, capture_output=True, text=True, timeout=180
+        [BASH, str(WRAPPER), *argumente],
+        env=env,
+        capture_output=True,
+        text=True,
+        timeout=180,
     )
 
 
@@ -180,11 +185,22 @@ def test_absichtlich_falsches_fixture_blockiert_auswertung(tmp_path: Path) -> No
 
 
 def test_wrapper_nutzt_die_echte_kontrolle(tmp_path: Path) -> None:
-    """Mit der echten Kontrolle laeuft es bis zur Auswertung (hier: kein Lauf da)."""
+    """Mit der echten Kontrolle laeuft es bis zur Auswertung, hier ohne Lauf.
+
+    `--neu` zeigt bewusst auf einen Pfad ohne Predictions: der Exit 2 haengt so
+    am fehlenden Lauf und nicht am Zustand des echten Laufverzeichnisses. Seit
+    der P5-Lauf 67 verwertbare Records hat, existiert
+    `runs/yun699_p5_24000_20261118/predictions.jsonl`; ohne diesen Pfad
+    schriebe die echte Auswertung ihre Berichte nach `iterativ/ergebnisse/`.
+    Ein Test darf den echten Stand nicht ueberschreiben.
+    """
+    ohne_lauf = tmp_path / "kein_lauf" / "predictions.jsonl"
     ergebnis = _lauf(
         tmp_path,
         BENCH / "extended_benchmark" / "yun_full" / "positivkontrolle_p5.py",
         BENCH / "extended_benchmark" / "yun_full" / "werte_p5_aus.py",
+        argumente=("--neu", str(ohne_lauf)),
     )
     assert ergebnis.returncode == 2
     assert "Lauf liegt noch nicht vor" in ergebnis.stdout
+    assert not (tmp_path / "kein_lauf").exists()
