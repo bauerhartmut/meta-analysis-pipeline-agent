@@ -40,14 +40,17 @@ Zwei Definitionen, die die Entscheidung tragen:
   mit") ist an dieser Stelle veraltet.
   Die Datei `structure.json` wurde am 19.11.2026 mit dem aktuellen Code neu
   erzeugt (`offline_struktur_20261119`); die Spalte `Gold erreichbar (A-E)` in
-  Abschnitt 3 gibt diese Werte wieder: 30 -> 1, 252 -> 0, **421 -> 3**, 672 -> 0,
-  **678 -> 1**. Der Lauf aendert mehr als die Reichweite (46 -> 94 Goldfelder,
+  Abschnitt 3 gibt die Feldtreffer wieder: 30 -> 1, 252 -> 0, **421 -> 3**,
+  672 -> 0, **678 -> 0** (ein Feldtreffer, aber Wert 15 statt 16). Der Lauf
+  aendert mehr als die Reichweite (46 -> 94 Goldfelder,
   7 -> 0 Strukturfehler, 57/60 -> 60/60 komplett, 23 von 59 Records betroffen);
-  Details in `sprint48_planwerte_20261119.md`. Die Armpruefung der 23
-  geaenderten Records (`sprint48_armbindung_20261119.md`) findet 30 von 38
-  neuen Zellen wert- und armstimmig, 0 Arm-Fehlbindungen und 8 nur feldbelegte
-  Zellen (Untergruppen statt Gesamtarm, etwa 17+16 gegen 33); wertgeprueft
-  sind es 86 statt 94. Das Diagnoseartefakt
+  Details in `sprint48_planwerte_20261119.md`. Die Pruefung auf der
+  Plan-Auswahl (`sprint48_armbindung_20261119.md`, `load_tables` je Record)
+  findet 70 Feldtreffer ueber Kopfangaben: 44 mit passendem Wert und Arm, 26
+  mit abweichendem Wert; wertgedeckt sind **68 statt 94**. Bei `:678` ist der
+  eine Planwert sogar am falschen Arm: die 15 sitzt ueber der
+  Antibiotic-Gruppe (`intervention`), Gold verlangt 16/intervention und
+  15/comparator. Das Diagnoseartefakt
   `sprint48_budgetdiagnose.json` behaelt die Werte des Laufs vom 18.11.
   (historisch).
 - **`_cb`** im Feld `prompt_version` ist ein **Cache-Buster**, kein eigener
@@ -68,7 +71,12 @@ dasselbe Budget, frische Generierung.**
 | `yun2024:252` | PMC5614421 | 41.138 | 3 (1) | 100 | 2 | 5.318 / 1 | 0 | 24 / 2 / **2** | 22.222 | stop | length |
 | `yun2024:421` | PMC3877023 | 27.320 | 4 (4) | 49 | 6 | 11.272 / 3 | **3** | 2 / 2 / **2** | 24.000 | length | length |
 | `yun2024:672` | PMC4550271 | 43.591 | 5 (0) | 467 | 2 | 11.759 / 3 | 0 | 0 / 0 / **0** | 24.000 | length | length |
-| `yun2024:678` | PMC5777419 | 13.328 | 3 (3) | 115 | 2 | 6.753 / 1 | **1** | 6 / 2 / **2** | 10.888 | stop | length |
+| `yun2024:678` | PMC5777419 | 13.328 | 3 (3) | 115 | 2 | 6.753 / 1 | **0** | 6 / 2 / **2** | 10.888 | stop | length |
+
+`yun2024:678` ist der einzige Fall, in dem die Spalte unter den Feldschnitt
+sinkt: `gold_reachable` zaehlt die Kopfangabe `(n=15)` als Feldtreffer, obwohl
+sie ueber der Antibiotic-Gruppe (`intervention`) sitzt; Gold verlangt
+16/intervention und 15/comparator. Wertgeprueft bleibt 0.
 
 Alle fuenf haben im P5-Lauf genau 24.000 Tokens im Reasoning verbraucht
 (`content_chars = 0`, `finish_reason = length`). Der Vorlauf zeigt fuer vier von
@@ -81,17 +89,19 @@ Der Plan ist eine **Prompt-Verkuerzung**, keine Gold-Abdeckung:
 - `yun2024:30`: Strategie B senkt den Prompt von 26.854 auf **2.398** Zeichen
   (91 % weniger), erreicht aber nur **1 von 6** Goldzellen.
 - `yun2024:252`, `:421`, `:672`, `:678`: erreichen im neu erzeugten Plan **0, 3,
-  0 und 1** Goldzellen. Bei `:252` und `:672` gibt es gar keine passende
-  `n = ...`-Angabe (Abschnitt 4.1). Bei `:421` sind zwei Zellen ueber die
-  Outcome-Zeile und eine ueber die Kopfangabe `n = 30` erreichbar, bei `:678`
-  eine ueber `n = 16`; die Vergleichsgruppe bleibt in beiden Faellen offen.
+  0 und 0** wertgedeckte Goldzellen. Bei `:252` und `:672` gibt es gar keine
+  passende `n = ...`-Angabe (Abschnitt 4.1). Bei `:421` sind zwei Zellen ueber
+  die Outcome-Zeile und eine ueber die Kopfangabe `n = 30` erreichbar; bei
+  `:678` ist der eine Feldtreffer die an `intervention` gebundene 15
+  (Gold: 16/intervention, 15/comparator). Die Vergleichsgruppe bleibt in
+  beiden Faellen offen.
 - `yun2024:672` hat zusaetzlich **0 Tabellen mit Zielfeld** bei 467 Datenzellen
   und 36 Zeilen je Tabelle: der Parser ordnet das abgefragte Feld keiner Tabelle
   zu (H4b). Ein Ausschnitt dieses Dokuments kann die 2 Goldzellen nicht liefern.
 
 **Folgerung:** Ein planbasierter Nachzug (Ausschnitt statt Volltext) rechtfertigt
 sich fuer **keinen** der fuenf aus der Gold-Abdeckung. Er erreicht hoechstens die
-Haelfte der Goldzellen (421: 3 von 6, 678: 1 von 2, 30: 1 von 6, 252/672: 0) und
+Haelfte der Goldzellen (421: 3 von 6, 678: 0 von 2, 30: 1 von 6, 252/672: 0) und
 kann sonst nur das Reasoning verkleinern. Die Entscheidung unten stuetzt sich
 deshalb auf den Vorlauf mit dem **unveraenderten Volltext-Prompt**.
 
@@ -105,7 +115,8 @@ des Dokuments) praezisiert die Gold-Abdeckung:
   8 ohne. 70 Goldzellen sind Messwerte, 46 Gruppengroessen haben keine passende
   Kopfangabe.
 - In den fuenf Planfaellen sind es **6 von 18**: `yun2024:30` 2/6, `:421` 2/6,
-  `:252` 0/2, `:672` 0/2, **`:678` 2/2 (beide mit Arm)**.
+  `:252` 0/2, `:672` 0/2, **`:678` 2/2 (beide mit Arm, dokumentweit; in der
+  Plan-Tabelle T2 trifft keine Zelle den Wert)**.
 - Von den 46 ohne Kopfangabe stehen 16 nur im Fliesstext, 1 nur in einer Caption,
   4 nur in einer Tabellenzelle, 9 an mehreren Stellen, 7 nur ohne erkennbaren
   Gruppen-Kontext und **9 nirgends im Markdown** (u. a. `yun2024:164`, `:171`,
@@ -115,8 +126,9 @@ des Dokuments) praezisiert die Gold-Abdeckung:
 **Konsequenz:** Ein Kopf-Fakten-Prompt ist kein flaechiger Hebel. Selbst wenn er
 jede `n = ...`-Angabe des Dokuments aus Kopf, Caption und Fliesstext einsammelt,
 erreicht er hoechstens **28 von 132 Goldzellen (21,2 %)** - die 16 Kopfangaben
-plus 12 weitere, deren Wert anderswo als `n = ...` steht. Vollstaendig abgedeckt
-ist unter den Planfaellen nur **`yun2024:678`**; bei `yun2024:30` und `:421`
+plus 12 weitere, deren Wert anderswo als `n = ...` steht. Dokumentweit
+vollstaendig abgedeckt ist unter den Planfaellen nur **`yun2024:678`** (2/2);
+in der Plan-Auswahl trifft keine seiner Zellen den Wert. Bei `yun2024:30` und `:421`
 liefert er nur die Gruppengroessen (je 2 von 6), bei `:252` und `:672` keinen
 der beiden Goldwerte. Die Empfehlung aus Abschnitt 6 bleibt damit unveraendert:
 Nachzug nur fuer `yun2024:678`.

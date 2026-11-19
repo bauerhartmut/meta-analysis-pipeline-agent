@@ -56,6 +56,9 @@ Beispiele fuer geaenderte Reichweite (Strategie A):
 | `yun2024:678` | A | 1 -> 1 | 6461 -> 6753 | 0 -> 1 |
 | `yun2024:678` | B | 1 -> 1 | 6461 -> 6753 | 0 -> 1 |
 
-Damit sind die reproduzierten Werte fuer die Entscheidungsvorlage: 30 -> 1, 252 -> 0,
-421 -> 3, 672 -> 0, 678 -> 1. Bei 421 und 678 stammen die Treffer aus den Kopfangaben
-(421 zusaetzlich zwei Zellen aus der Outcome-Zeile), bei 30 aus `n = 393`.
+Damit sind die reproduzierten Feldtreffer: 30 -> 1, 252 -> 0, 421 -> 3, 672 -> 0,
+678 -> 1. Bei 421 und 678 stammen die Treffer aus den Kopfangaben (421 zusaetzlich
+zwei Zellen aus der Outcome-Zeile), bei 30 aus `n = 393`. **Wertgeprueft** ist
+678 jedoch 0: die Kopfangabe `(n=15)` sitzt ueber der Antibiotic-Gruppe
+(`intervention`), Gold verlangt 16/intervention und 15/comparator; in der
+Entscheidungsvorlage steht deshalb 0 (`sprint48_armbindung_20261119.md`).

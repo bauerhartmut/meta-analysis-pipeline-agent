@@ -1838,11 +1838,13 @@ Code neu erzeugt (`offline_struktur_20261119`, gleiche Auswahl-SHA256):
 **46 -> 94** erreichbare Goldfelder, **57/60 -> 60/60** strukturell komplett,
 **7 -> 0** Strukturfehler. Die frueheren 46/57/7 sind der Stand vom 18.11.
 
-Armpruefung der 23 Records mit geaenderter Reichweite (38 neu gezaehlte
-Goldzellen): 30 mit passendem Wert **und** Arm, 0 Arm-Fehlbindungen, 8 nur
-feldbelegt mit abweichendem Wert (Untergruppen statt Gesamtarm, etwa 17+16
-gegen 33, 298/307 gegen 289, 49 gegen 34, 33 gegen 28). Wertgeprueft sind es
-damit 86 statt 94. Von 49 geprueften Kopfbaendern sitzen 43 ueber Spalten
-desselben Arms, 6 ueber Spalten ohne Arm, 0 ueber den anderen Arm.
-Artefakte: `sprint48_planwerte_20261119.md`,
+Arm- und Wertpruefung auf der Plan-Auswahl (`load_tables` je Record, nicht
+dokumentweit): 94 Feldtreffer, davon 80 Gruppengroessen (10 ueber Zeilen, 70
+ueber Kopfangaben). Von den 70 Kopftreffern tragen 44 Wert **und** Arm, 26
+einen abweichenden Wert (Untergruppen statt Gesamtarm, etwa 17+16 gegen 33,
+298/307 gegen 289, 145 gegen 169, 15 gegen 16). Wertgedeckt sind damit **68
+statt 94**. Bei `yun2024:678` bindet T2 die Kopfangabe `(n=15)` an
+`intervention`, waehrend Gold 16/intervention und 15/comparator verlangt; der
+Planwert faellt von 1 auf 0, seine Spalte `Gold erreichbar (A-E)` ist
+entsprechend nachgezogen. Artefakte: `sprint48_planwerte_20261119.md`,
 `sprint48_armbindung_20261119.{md,json}`.

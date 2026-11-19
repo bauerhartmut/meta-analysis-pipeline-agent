@@ -1,83 +1,54 @@
-# Sprint 48: Arm- und Wertpruefung der neu gezaehlten Kopfangaben
+# Sprint 48: Arm- und Wertpruefung auf der Plan-Auswahl
 
-Stichprobe: alle **23** Records, deren `gold_reachable` sich durch die Neuerzeugung geaendert hat (Vergleich gegen `911e593^`). Rein lesend: keine Netzaufrufe, keine Predictions geschrieben.
+Massgeblich ist die Tabelle, die `load_tables` je Record auswaehlt (dieselbe Pipeline wie `run_benchmark.py --offline`), nicht das ganze Dokument. Rein lesend: keine Netzaufrufe, keine Predictions geschrieben.
 
 ## 1. Befund
 
-- **38 Goldzellen** sind neu ueber Kopfangaben erreichbar; 30 davon mit **passendem Wert und Arm**, 0 mit passendem Wert aber falschem Arm.
-- **8 Zellen** werden nur deshalb gezaehlt, weil das *Feld* von einer Kopfangabe belegt ist - der gedruckte Wert weicht vom Goldwert ab (Untergruppen statt Gesamtgruppe).
-- Bandpruefung: 43 tragende Angaben sitzen ueber Spalten desselben Arms, 0 ueber Spalten eines anderen Arms, 6 ueber Spalten ohne Arm.
+- **94 Goldzellen** sind im Plan ueber ihr Feld erreichbar (`gold_reachable`), davon 80 mit Gruppengroesse: 10 ueber die Outcome-Zeile, 70 nur ueber eine Kopfangabe.
+- Von den 70 Feldtreffern ueber Kopfangaben tragen **44** den passenden Wert **und** Arm; **0** den passenden Wert, aber einen anderen Arm; **26** einen abweichenden Wert.
+- Damit sind **68 von 94** Feldtreffern wert- und armgedeckt; die Zeilenzellen sind dabei nicht wertgeprueft.
+- Die 0 unter "passender Wert, anderer Arm" zaehlt nur Zellen, deren Wert passt. Zusaetzlich zeigt `yun2024:678` eine Arm-Fehlbindung auf Spaltenebene: die 15 (Gold: comparator) sitzt ueber der als `intervention` gefuehrten Antibiotic-Gruppe, die 16 der Probiotic-Gruppe traegt keinen Arm.
 
-## 2. Je Record
+## 2. Records mit Feldtreffer ohne passenden Wert/Arm
 
-| Record | alt -> neu | neu ueber Kopf | Wert+Arm | Wert ok, Arm falsch | Wert abweichend |
-|---|---:|---:|---:|---:|---:|
-| `yun2024:665` | 0 -> 6 | 0 | 0 | 0 | 0 |
-| `yun2024:390` | 1 -> 6 | 2 | 2 | 0 | 0 |
-| `yun2024:421` | 0 -> 3 | 2 | 1 | 0 | 1 |
-| `yun2024:172` | 0 -> 2 | 2 | 1 | 0 | 1 |
-| `yun2024:174` | 0 -> 2 | 2 | 1 | 0 | 1 |
-| `yun2024:350` | 0 -> 2 | 2 | 2 | 0 | 0 |
-| `yun2024:352` | 0 -> 2 | 2 | 2 | 0 | 0 |
-| `yun2024:402` | 0 -> 2 | 2 | 2 | 0 | 0 |
-| `yun2024:403` | 0 -> 2 | 2 | 2 | 0 | 0 |
-| `yun2024:486` | 0 -> 2 | 2 | 2 | 0 | 0 |
-| `yun2024:489` | 0 -> 2 | 2 | 2 | 0 | 0 |
-| `yun2024:531` | 0 -> 2 | 2 | 0 | 0 | 2 |
-| `yun2024:532` | 0 -> 2 | 2 | 0 | 0 | 2 |
-| `yun2024:639` | 0 -> 2 | 2 | 2 | 0 | 0 |
-| `yun2024:640` | 0 -> 2 | 2 | 2 | 0 | 0 |
-| `yun2024:645` | 0 -> 2 | 0 | 0 | 0 | 0 |
-| `yun2024:647` | 0 -> 2 | 0 | 0 | 0 | 0 |
-| `yun2024:184` | 0 -> 1 | 1 | 1 | 0 | 0 |
-| `yun2024:185` | 0 -> 1 | 1 | 0 | 0 | 1 |
-| `yun2024:391` | 1 -> 2 | 2 | 2 | 0 | 0 |
-| `yun2024:426` | 0 -> 1 | 2 | 2 | 0 | 0 |
-| `yun2024:678` | 0 -> 1 | 2 | 2 | 0 | 0 |
-| `yun2024:682` | 0 -> 1 | 2 | 2 | 0 | 0 |
+| Record | Tabelle(n) | Feld | Gold | Klasse | gedruckte Kandidaten |
+|---|---|---|---:|---|---|
+| `yun2024:172` | PMC5079604:T1 | `intervention_group_size` | 33 (intervention) | wert_abweichend | "Metformin (*n* = 17)" -> intervention (17); "Sitagliptin (*n* = 16)" -> intervention (16) |
+| `yun2024:174` | PMC5079604:T1 | `intervention_group_size` | 33 (intervention) | wert_abweichend | "Metformin (*n* = 17)" -> intervention (17); "Sitagliptin (*n* = 16)" -> intervention (16) |
+| `yun2024:185` | PMC5122613:T1 | `comparator_group_size` | 28 (comparator) | wert_abweichend | "Placebo (*n* = 33)" -> comparator (33) |
+| `yun2024:194` | PMC5360580:T1 | `intervention_group_size` | 169 (intervention) | wert_abweichend | "Pls group (n = 145)" -> intervention (145) |
+| `yun2024:194` | PMC5360580:T1 | `comparator_group_size` | 167 (comparator) | wert_abweichend | "Placebo group (n = 140)" -> comparator (140) |
+| `yun2024:196` | PMC5360580:T6 | `intervention_group_size` | 24 (intervention) | wert_abweichend | "Pls group (n = 169)" -> intervention (169) |
+| `yun2024:196` | PMC5360580:T6 | `comparator_group_size` | 24 (comparator) | wert_abweichend | "Placebo group (n = 167)" -> comparator (167) |
+| `yun2024:265` | PMC2430617:T1 | `intervention_group_size` | 83 (intervention) | wert_abweichend | "30 µg YIC group (N = 81)" -> intervention (81); "60 µg YIC group (N = 78)" -> intervention (78) |
+| `yun2024:265` | PMC2430617:T1 | `comparator_group_size` | 79 (comparator) | wert_abweichend | "Placebo group (N = 78)" -> comparator (78) |
+| `yun2024:266` | PMC2430617:T1 | `intervention_group_size` | 80 (intervention) | wert_abweichend | "30 µg YIC group (N = 81)" -> intervention (81); "60 µg YIC group (N = 78)" -> intervention (78) |
+| `yun2024:266` | PMC2430617:T1 | `comparator_group_size` | 79 (comparator) | wert_abweichend | "Placebo group (N = 78)" -> comparator (78) |
+| `yun2024:335` | PMC5617873:T2 | `intervention_group_size` | 45 (intervention) | wert_abweichend | "Aripiprazole (n = 47)" -> intervention (47) |
+| `yun2024:336` | PMC5617873:T2 | `intervention_group_size` | 45 (intervention) | wert_abweichend | "Aripiprazole (n = 47)" -> intervention (47) |
+| `yun2024:426` | PMC3877023:T4 | `comparator_group_size` | 44 (comparator) | wert_abweichend | "n = 18" -> comparator (18); "n = 30" -> comparator (30) |
+| `yun2024:531` | PMC4230312:T3 | `intervention_group_size` | 289 (intervention) | wert_abweichend | "Quetiapine 300 mg/day (***n*** = 298)" -> intervention (298); "Quetiapine 600 mg/day (***n*** = 307)" -> intervention (307) |
+| `yun2024:531` | PMC4230312:T3 | `comparator_group_size` | 204 (comparator) | wert_abweichend | "Placebo (***n*** = 214)" -> comparator (214) |
+| `yun2024:532` | PMC4230312:T1 | `intervention_group_size` | 283 (intervention) | wert_abweichend | "Quetiapine 300 mg/day ( ***n*** = 298)" -> intervention (298); "Quetiapine 600 mg/day ( ***n*** = 307)" -> intervention (307) |
+| `yun2024:532` | PMC4230312:T1 | `comparator_group_size` | 204 (comparator) | wert_abweichend | "Placebo (***n*** = 214)" -> comparator (214) |
+| `yun2024:645` | PMC4675066:T1 | `intervention_group_size` | 27 (intervention) | wert_abweichend | "Iodine (*n* = 29)" -> intervention (29) |
+| `yun2024:645` | PMC4675066:T1 | `comparator_group_size` | 26 (comparator) | wert_abweichend | "Placebo (*n* = 30)" -> comparator (30) |
+| `yun2024:647` | PMC4675066:T1 | `intervention_group_size` | 27 (intervention) | wert_abweichend | "Iodine (*n* = 29)" -> intervention (29) |
+| `yun2024:647` | PMC4675066:T1 | `comparator_group_size` | 26 (comparator) | wert_abweichend | "Placebo (*n* = 30)" -> comparator (30) |
+| `yun2024:678` | PMC5777419:T2 | `intervention_group_size` | 16 (intervention) | wert_abweichend | "(n=15)" -> intervention (15) |
+| `yun2024:682` | PMC5777419:T2 | `intervention_group_size` | 16 (intervention) | wert_abweichend | "(n=15)" -> intervention (15) |
+| `yun2024:78` | PMC3546023:T4 | `intervention_group_size` | 30 (intervention) | wert_abweichend | "**Palmvitee, n = 3**" -> intervention (3); "**Palmvitee,n = 19**" -> intervention (19); "**Palmvitee,n = 8**" -> intervention (8) |
+| `yun2024:79` | PMC3546023:T4 | `intervention_group_size` | 30 (intervention) | wert_abweichend | "**Palmvitee, n = 3**" -> intervention (3); "**Palmvitee,n = 19**" -> intervention (19); "**Palmvitee,n = 8**" -> intervention (8) |
 
-## 3. Beispiele
+## 3. Der Fall yun2024:678
 
-- `yun2024:390` intervention_group_size=27: wert_und_arm_stimmig - PMC3278655:T1: "(n = 27)" -> intervention (Band ueber ['intervention']); PMC3278655:T2: "(n=30)" -> intervention (Band ueber ['intervention'])
-- `yun2024:390` comparator_group_size=18: wert_und_arm_stimmig - PMC3278655:T1: "(n = 18)" -> comparator (Band ueber ['comparator']); PMC3278655:T2: "(n=24)" -> comparator (Band ueber ['comparator'])
-- `yun2024:421` intervention_group_size=30: wert_und_arm_stimmig - PMC3877023:T1: "Short-Bore MR (n = 44)" -> intervention (Band ueber ['intervention']); PMC3877023:T3: "n = 18" -> intervention (Band ueber ['intervention'])
-- `yun2024:421` comparator_group_size=34: feld_belegt_wert_abweichend - PMC3877023:T1: "Open MR (n = 49)" -> comparator (Band ueber ['comparator'])
-- `yun2024:172` intervention_group_size=33: feld_belegt_wert_abweichend - PMC5079604:T1: "Metformin (*n* = 17)" -> intervention (Band ueber ['intervention']); PMC5079604:T1: "Sitagliptin (*n* = 16)" -> intervention (Band ueber ['intervention'])
-- `yun2024:172` comparator_group_size=15: wert_und_arm_stimmig - PMC5079604:T1: "Placebo (*n* = 15)" -> comparator (Band ueber ['comparator'])
-- `yun2024:174` intervention_group_size=33: feld_belegt_wert_abweichend - PMC5079604:T1: "Metformin (*n* = 17)" -> intervention (Band ueber ['intervention']); PMC5079604:T1: "Sitagliptin (*n* = 16)" -> intervention (Band ueber ['intervention'])
-- `yun2024:174` comparator_group_size=15: wert_und_arm_stimmig - PMC5079604:T1: "Placebo (*n* = 15)" -> comparator (Band ueber ['comparator'])
-- `yun2024:350` intervention_group_size=9: wert_und_arm_stimmig - PMC5874317:T1: "**Bilateral ( *n* = 9)**" -> intervention (Band ueber ['intervention'])
-- `yun2024:350` comparator_group_size=9: wert_und_arm_stimmig - PMC5874317:T1: "**Unilateral ( *n* = 9)**" -> comparator (Band ueber ['comparator'])
-- `yun2024:352` intervention_group_size=9: wert_und_arm_stimmig - PMC5874317:T1: "**Bilateral ( *n* = 9)**" -> intervention (Band ueber ['intervention'])
-- `yun2024:352` comparator_group_size=9: wert_und_arm_stimmig - PMC5874317:T1: "**Unilateral ( *n* = 9)**" -> comparator (Band ueber ['comparator'])
-- `yun2024:402` intervention_group_size=20: wert_und_arm_stimmig - PMC5781260:T1: "(*N* = 20 59% men, 41% women)" -> intervention (Band ueber ['intervention'])
-- `yun2024:402` comparator_group_size=20: wert_und_arm_stimmig - PMC5781260:T1: "(*N* = 20 40% men, 60% women)" -> comparator (Band ueber ['comparator'])
-- `yun2024:403` intervention_group_size=20: wert_und_arm_stimmig - PMC5781260:T1: "(*N* = 20 59% men, 41% women)" -> intervention (Band ueber ['intervention'])
-- `yun2024:403` comparator_group_size=20: wert_und_arm_stimmig - PMC5781260:T1: "(*N* = 20 40% men, 60% women)" -> comparator (Band ueber ['comparator'])
-- `yun2024:486` intervention_group_size=44: wert_und_arm_stimmig - PMC3786549:T3: "(*n* = 44)" -> intervention (Band ueber ['intervention']); PMC3786549:T3: "(*n* = 44)" -> intervention (Band ueber ['intervention'])
-- `yun2024:486` comparator_group_size=44: wert_und_arm_stimmig - PMC3786549:T3: "(*n* = 44)" -> comparator (Band ueber ['comparator']); PMC3786549:T3: "(*n* = 44)" -> comparator (Band ueber ['comparator'])
-- `yun2024:489` intervention_group_size=44: wert_und_arm_stimmig - PMC3786549:T3: "(*n* = 44)" -> intervention (Band ueber ['intervention']); PMC3786549:T3: "(*n* = 44)" -> intervention (Band ueber ['intervention'])
-- `yun2024:489` comparator_group_size=44: wert_und_arm_stimmig - PMC3786549:T3: "(*n* = 44)" -> comparator (Band ueber ['comparator']); PMC3786549:T3: "(*n* = 44)" -> comparator (Band ueber ['comparator'])
-- `yun2024:531` intervention_group_size=289: feld_belegt_wert_abweichend - PMC4230312:T1: "Quetiapine 300 mg/day ( ***n*** = 298)" -> intervention (Band ueber ['intervention']); PMC4230312:T1: "Quetiapine 600 mg/day ( ***n*** = 307)" -> intervention (Band ueber ['intervention'])
-- `yun2024:531` comparator_group_size=204: feld_belegt_wert_abweichend - PMC4230312:T1: "Placebo (***n*** = 214)" -> comparator (Band ueber ['comparator']); PMC4230312:T3: "Placebo (***n*** = 214)" -> comparator (Band ueber ['comparator'])
-- `yun2024:532` intervention_group_size=283: feld_belegt_wert_abweichend - PMC4230312:T1: "Quetiapine 300 mg/day ( ***n*** = 298)" -> intervention (Band ueber ['intervention']); PMC4230312:T1: "Quetiapine 600 mg/day ( ***n*** = 307)" -> intervention (Band ueber ['intervention'])
-- `yun2024:532` comparator_group_size=204: feld_belegt_wert_abweichend - PMC4230312:T1: "Placebo (***n*** = 214)" -> comparator (Band ueber ['comparator']); PMC4230312:T3: "Placebo (***n*** = 214)" -> comparator (Band ueber ['comparator'])
-- `yun2024:639` intervention_group_size=12: wert_und_arm_stimmig - PMC4511433:T1: "Elobixibat 2.5 mg (*N* = 12)" -> intervention (Band ueber ohne Arm); PMC4511433:T2: "A3309 - 2.5 mg (*N* = 12)" -> intervention (Band ueber ['intervention'])
-- `yun2024:639` comparator_group_size=12: wert_und_arm_stimmig - PMC4511433:T1: "Placebo (*N* = 12)" -> comparator (Band ueber ohne Arm); PMC4511433:T2: "Placebo (*N* = 12)" -> comparator (Band ueber ohne Arm)
-- `yun2024:640` intervention_group_size=12: wert_und_arm_stimmig - PMC4511433:T1: "Elobixibat 2.5 mg (*N* = 12)" -> intervention (Band ueber ohne Arm); PMC4511433:T2: "A3309 - 2.5 mg (*N* = 12)" -> intervention (Band ueber ['intervention'])
-- `yun2024:640` comparator_group_size=12: wert_und_arm_stimmig - PMC4511433:T1: "Placebo (*N* = 12)" -> comparator (Band ueber ohne Arm); PMC4511433:T2: "Placebo (*N* = 12)" -> comparator (Band ueber ohne Arm)
-- `yun2024:184` comparator_group_size=33: wert_und_arm_stimmig - PMC5122613:T1: "Placebo (*n* = 33)" -> comparator (Band ueber ['comparator'])
-- `yun2024:185` comparator_group_size=28: feld_belegt_wert_abweichend - PMC5122613:T1: "Placebo (*n* = 33)" -> comparator (Band ueber ['comparator'])
-- `yun2024:391` intervention_group_size=27: wert_und_arm_stimmig - PMC3278655:T1: "(n = 27)" -> intervention (Band ueber ['intervention']); PMC3278655:T2: "(n=30)" -> intervention (Band ueber ['intervention'])
-- `yun2024:391` comparator_group_size=18: wert_und_arm_stimmig - PMC3278655:T1: "(n = 18)" -> comparator (Band ueber ['comparator']); PMC3278655:T2: "(n=24)" -> comparator (Band ueber ['comparator'])
-- `yun2024:426` intervention_group_size=49: wert_und_arm_stimmig - PMC3877023:T1: "Open MR (n = 49)" -> intervention (Band ueber ['intervention'])
-- `yun2024:426` comparator_group_size=44: wert_und_arm_stimmig - PMC3877023:T1: "Short-Bore MR (n = 44)" -> comparator (Band ueber ['comparator']); PMC3877023:T3: "n = 18" -> comparator (Band ueber ['comparator'])
-- `yun2024:678` intervention_group_size=16: wert_und_arm_stimmig - PMC5777419:T1: "Antibiotic group (n=16)" -> intervention (Band ueber ['intervention']); PMC5777419:T2: "(n=15)" -> intervention (Band ueber ['intervention'])
-- `yun2024:678` comparator_group_size=15: wert_und_arm_stimmig - PMC5777419:T1: "Placebo group (n=15)" -> comparator (Band ueber ['comparator']); PMC5777419:T3: "Placebo group (n=15)" -> comparator (Band ueber ['comparator'])
-- `yun2024:682` intervention_group_size=16: wert_und_arm_stimmig - PMC5777419:T1: "Antibiotic group (n=16)" -> intervention (Band ueber ['intervention']); PMC5777419:T2: "(n=15)" -> intervention (Band ueber ['intervention'])
-- `yun2024:682` comparator_group_size=15: wert_und_arm_stimmig - PMC5777419:T1: "Placebo group (n=15)" -> comparator (Band ueber ['comparator']); PMC5777419:T3: "Placebo group (n=15)" -> comparator (Band ueber ['comparator'])
+- Plan-Tabelle: `PMC5777419:T2`
+- Gold `intervention_group_size` = 16 (intervention): Feld erreichbar = True, Klasse `wert_abweichend`
+- Kopfangabe `(n=15)` -> intervention (Wert 15), Band ueber ['intervention']
+
+Die Tabelle bindet `n = 15` an **intervention**, Gold verlangt 16/intervention und 15/comparator. Die 15 steht ueber der Antibiotic-Gruppe (Spalten 6-10), die der Plan als intervention fuehrt; die 16 der Probiotic-Gruppe traegt keinen Arm. Der Planwert 1 ist damit ein Feldtreffer ohne passenden Wert - und am falschen Arm; wertgeprueft bleibt 0.
 
 ## 4. Grenzen
 
-- Geprueft ist die Bindung des Parsers gegen die Spaltenarme unter dem Band; eine falsche Spaltenarm-Zuordnung selbst wird nicht aufgedeckt.
-- `gold_reachable` zaehlt Felder, nicht Werte. Die Zaehlung kann daher Felder als erreichbar fuehren, obwohl der gedruckte Wert ein anderer ist.
+- Zeilenzellen werden als Feldtreffer gezaehlt, aber nicht wertgeprueft; die 68 sind deshalb eine Obergrenze.
+- Geprueft ist die Bindung gegen Gold und die Spaltenarme unter dem Band; eine falsche Spaltenarm-Zuordnung selbst deckt die Pruefung nicht auf.
