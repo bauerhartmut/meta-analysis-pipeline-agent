@@ -179,5 +179,36 @@ Stand danach: **67** brauchbare Zeilen und **36** Ausfaelle — 33 x
 `length_ohne_ergebnis`, 3 x ohne Zellen, keine 503/429/Timeout mehr. Der
 Nachzug endet mit Exitcode 4, weil Ausfaelle verbleiben.
 
-Die Auswertung `iterativ/ergebnisse/p5_auswertung_20261118.{json,md}` stammt vom
-Stand 13:14 und ist damit veraltet; `werte_p5_mit_kontrolle.sh` erzeugt sie neu.
+Die Auswertung `iterativ/ergebnisse/p5_auswertung_20261118.{json,md}` wurde
+danach neu erzeugt (Abschnitt 8).
+
+## 8. Neuberechnung der Auswertung, 15:04
+
+`werte_p5_mit_kontrolle.sh` lief auf dem neuen Stand: Positivkontrolle gruen
+(alle 12 Kennzahlen, 22 Klassenzahlen und 25 Werte in Bilanz und Zellprotokoll
+stimmen), Auswertung Exit 0. Gegenueber dem Bericht von 13:14:
+
+| Kennzahl | 13:14 | 15:04 |
+|---|---:|---:|
+| gerettet (Antwort mit Zellen) | 43 | 67 |
+| fertig, aber ohne Zellen | 2 | 3 |
+| weiter ausgefallen | 58 | 33 |
+| Antwort technisch erhalten | 45 | 70 |
+| Rettungsquote (102 bewertbare) | 42 (41,2 %) | 66 (64,7 %) |
+| Stufe 3 wertgleich | 38 | 58 |
+| Zellen | 179 | 271 |
+| adressiert (Feld und Arm) | 154 | 241 |
+| wertgleich (Feld und Arm) | 114 | 170 |
+| TP / FP / FN | 114 / 61 / 309 | 170 / 97 / 253 |
+| Precision | 0,651 | 0,637 |
+| Recall | 0,270 | 0,402 |
+| F1 | 0,381 | 0,493 |
+| Completion-Tokens | 823.476 | 1.399.558 |
+
+Die 24 geretteten Records bringen 92 Zellen, 56 wertgleiche Zellen und 11 Punkte
+F1; die Precision sinkt um 1,4 Punkte, weil die neuen Antworten mehr Dubletten
+und Fremdschluessel enthalten (`ueberzaehlig` 46 -> 80, `fremdschluessel`
+15 -> 17). Die 36 Ausfaelle sind unveraendert 33 x `length_ohne_ergebnis` und
+3 x ohne Zellen; die Differenz bei `weiter ausgefallen` (58 -> 33) erklaert sich
+aus 24 geretteten Records und einem Record, der von `weiter_ausfall` zu
+`fertig_ohne_zellen` wechselte (`yun2024:137`).
