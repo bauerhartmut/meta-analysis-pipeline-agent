@@ -21,7 +21,7 @@ import time
 import urllib.error
 import urllib.request
 import uuid
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -34,7 +34,12 @@ sys.path.insert(0, str(BENCH))
 
 from research_agent.config import get_config  # noqa: E402
 from research_agent.llm import token_zaehler  # noqa: E402
-from extended_benchmark.yun_full import fehlerklassen, jobs as jobprotokoll, retry_manager  # noqa: E402
+from extended_benchmark.yun_full import (  # noqa: E402
+    fehlerklassen,
+    jobs as jobprotokoll,
+    retry_manager,
+    wiederaufnahme,
+)
 
 RECORDS = HERE / "records" / "yun.jsonl"
 
@@ -680,6 +685,27 @@ def main() -> int:
             "neu = zentrale Fehlerklassen und Versuchsspur in der Zeile"
         ),
     )
+    parser.add_argument(
+        "--wiederaufnahme-versuche",
+        type=int,
+        default=4,
+        help=(
+            "Wie oft ein Auftrag nach 503, 429, Timeout oder Verbindungsfehler erneut "
+            "eingereiht wird; 0 stellt das alte Verhalten her (Fehlerzeile sofort)"
+        ),
+    )
+    parser.add_argument(
+        "--wiederaufnahme-basis",
+        type=float,
+        default=30.0,
+        help="Basis-Wartezeit in Sekunden vor einer Wiederaufnahme; verdoppelt sich, Deckel 600s",
+    )
+    parser.add_argument(
+        "--wiederaufnahme-frist",
+        type=int,
+        default=90,
+        help="Minuten ab Laufstart, nach denen nicht mehr wiederaufgenommen wird",
+    )
     parser.add_argument("--cache-buster", action="store_true", help="eindeutigen Session-Tag in den Systemprompt haengen")
     parser.add_argument("--absolute-counts", action="store_true", help="Prompt-Zusatz aus v3_abs_count aktivieren")
     parser.add_argument(
@@ -807,6 +833,11 @@ def main() -> int:
                 "mit Zeile werden sie uebersprungen, ohne Zeile laufen sie erneut",
                 flush=True,
             )
+
+    # Zaehler und Startzeit der Wiederaufnahme: sie entscheiden je Auftrag, ob
+    # ein temporaerer Ausfall erneut versucht wird oder endgueltig ist.
+    laufstart = time.monotonic()
+    wiederaufnahmen: dict[tuple[str, str], int] = {}
 
     def work(record: dict[str, Any], model: str) -> dict[str, Any]:
         if journal is not None:
@@ -984,6 +1015,28 @@ def main() -> int:
             row["http_versuche"] = sum(
                 len(eintrag.get("versuche") or []) for eintrag in (primaer, retry, repair) if eintrag
             )
+        # Wiederaufnahme auf Auftragsebene: ein 503 ("all instances at max
+        # capacity") oder eine laengere Drossel ueberdauert den HTTP-Retry des
+        # Retry-Managers. Statt den Auftrag endgueltig zu verbuchen, wartet der
+        # Thread und laeuft ihn erneut; erst nach `--wiederaufnahme-versuche`
+        # oder abgelaufener Frist entsteht eine Fehlerzeile. `row` bleibt dabei
+        # ungeschrieben, das Journal steht weiter auf `running`.
+        auftrag = (record["record_id"], model)
+        with LOCK:
+            bisher = wiederaufnahmen.get(auftrag, 0)
+        frist_ok = (time.monotonic() - laufstart) < args.wiederaufnahme_frist * 60
+        if neu and wiederaufnahme.noetig(diagnose, bisher, args.wiederaufnahme_versuche, frist_ok):
+            warte = wiederaufnahme.wartezeit(bisher + 1, args.wiederaufnahme_basis)
+            with LOCK:
+                wiederaufnahmen[auftrag] = bisher + 1
+            print(
+                f"{model}: {record['record_id']} {diagnose}, Wiederaufnahme "
+                f"{bisher + 1}/{args.wiederaufnahme_versuche} nach {warte:.0f}s",
+                flush=True,
+            )
+            time.sleep(warte)
+            return {"record_id": record["record_id"], "model": model, "wiederaufnahme": True}
+        row["wiederaufnahmen"] = bisher
         if args.save_content:
             row.update(content_felder(inhalt, erste_antwort, (retry.get("content") or "") if retry else ""))
         with LOCK:
@@ -1002,7 +1055,8 @@ def main() -> int:
             status = f"FEHLER {fehlerklasse}"
             print(
                 f"{model}: {record['record_id']} {status} "
-                f"({response.get('completion_tokens') or 0} Tokens, kein Retry)",
+                f"({response.get('completion_tokens') or 0} Tokens, "
+                f"{bisher} Wiederaufnahmen, endgueltig)",
                 flush=True,
             )
         else:
@@ -1011,20 +1065,32 @@ def main() -> int:
         return row
 
     completed = 0
+    erneut = 0
     try:
         with ThreadPoolExecutor(max_workers=args.workers) as pool:
-            futures = {pool.submit(work, record, model): (record, model) for record, model in jobs}
-            for future in as_completed(futures):
-                try:
-                    future.result()
-                    completed += 1
-                except Exception as error:  # noqa: BLE001
-                    print(f"FEHLER {futures[future]}: {error}", flush=True)
+            # Die Schlange waechst: ein wiederaufgenommener Auftrag wird erneut
+            # eingereiht, statt die Runde zu beenden. `wait` statt `as_completed`,
+            # weil nur so neu hinzugefuegte Futures mitlaufen.
+            offen = {pool.submit(work, record, model): (record, model) for record, model in jobs}
+            while offen:
+                fertig, _ = wait(list(offen), return_when=FIRST_COMPLETED)
+                for future in fertig:
+                    aufgabe = offen.pop(future)
+                    try:
+                        ergebnis = future.result()
+                    except Exception as error:  # noqa: BLE001
+                        print(f"FEHLER {aufgabe}: {error}", flush=True)
+                        continue
+                    if ergebnis.get("wiederaufnahme"):
+                        erneut += 1
+                        offen[pool.submit(work, *aufgabe)] = aufgabe
+                    else:
+                        completed += 1
     finally:
         if sperre is not None:
             sperre.freigeben()
 
-    print(f"fertig: {completed} Auftraege, Ausgabe {out_path}", flush=True)
+    print(f"fertig: {completed} Auftraege, {erneut} Wiederaufnahmen, Ausgabe {out_path}", flush=True)
     return 0
 
 
