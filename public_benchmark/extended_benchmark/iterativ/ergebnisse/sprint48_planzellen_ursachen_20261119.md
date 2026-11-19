@@ -152,10 +152,12 @@ stimmen hier ueberein, das **Gold** ist umgekehrt (45 intervention, 47
 comparator). Aus dem Kopf laesst sich die Umkehrung nicht begruenden:
 **0 der 5 Zellen** werden dadurch wertrichtig.
 
-**Ergebnis:** Kopf-treu werden **2 der 5** armfalschen Zellen wertrichtig
-(678 und 682), und zwar nur unter der Regel "gedrucktes n schlaegt Kontext".
-Bleibt der Kontext massgeblich, sind es **0 von 5**. Die 68 im Hauptskript
-bleiben in beiden Faellen unveraendert, weil dort nichts umgebaut wird.
+**Ergebnis:** Kopf-treu waeren **2 der 5** armfalschen Zellen wertrichtig
+(678 und 682), aber nur unter der Regel "gedrucktes n schlaegt Kontext".
+**Entscheidung: Der Kontext bleibt massgeblich**, damit sind es **0 von 5** und
+die 68 von 94 sind die endgueltige Obergrenze. Das neue Finding
+`validate_arm_context` macht die Konflikte sichtbar, ohne sie zu loesen
+(`sprint48_armkonflikt_20261119.md`).
 
 ## 6. Zweiter Skript-Review (keine Zahl geaendert)
 

@@ -57,7 +57,10 @@ from research_agent.table_decomposition.strategies import (  # noqa: E402
     PlanOptions,
     plan as plan_table,
 )
-from research_agent.table_decomposition.validation import validate  # noqa: E402
+from research_agent.table_decomposition.validation import (  # noqa: E402
+    validate,
+    validate_arm_context,
+)
 
 STRATEGIES = ("A", "B", "C", "D", "E")
 ANALYSIS = BENCH / "analysis"
@@ -178,6 +181,7 @@ def offline_run(selection: Dict[str, Any], records: Dict[str, Dict[str, Any]],
                 decomposition = plan_table(
                     table, strategy, PlanOptions(focus_outcome=focus_outcome), text)
                 report = validate(table, decomposition.units, None)
+                report.findings.extend(validate_arm_context(table, context))
                 chars = sum(len(unit.prompt) for unit in decomposition.units)
                 scope_cols = {col for unit in decomposition.units for col in unit.col_ids}
                 units += len(decomposition.units)

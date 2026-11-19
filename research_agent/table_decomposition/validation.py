@@ -16,6 +16,7 @@ Der Bericht traegt diesen Satz mit, damit die Zahl nicht als Urteil gelesen wird
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
@@ -652,6 +653,91 @@ def _source_group_size(table: Table, row_id: int, arm: str) -> Optional[float]:
         return None
     cell = row.cells.get(col_id)
     return cell.value if cell is not None else None
+
+
+_ARM_STOPWORTER = {"group", "groups", "arm", "arms", "the", "n", "value",
+                  "values", "patients", "subjects", "mg", "day"}
+
+
+def _arm_worte(text: Optional[str]) -> set:
+    return {
+        wort for wort in re.split(r"[^a-z0-9]+", (text or "").lower())
+        if wort and wort not in _ARM_STOPWORTER
+    }
+
+
+def _band_traegt_n(table: Table, band) -> bool:
+    for fact in table.header_facts:
+        if fact.get("value") is None:
+            continue
+        if band.col_end < fact["col_start"] or fact["col_end"] < band.col_start:
+            continue
+        return True
+    return False
+
+
+def validate_arm_context(table: Table, context: Optional[Dict[str, Any]]) -> List[Finding]:
+    """Meldet, wenn der gedruckte n-Kopf dem Record-Kontext widerspricht.
+
+    Der Kontext bleibt die massgebliche Armquelle. Widerspricht ihm der Kopf,
+    ist das ein Pruefauftrag, keine automatische Umkehrung:
+
+    * ``kopf_n_widerspricht_kontext`` - ein Kontextarm ist im Kopf auffindbar,
+      traegt dort aber kein n, waehrend andere Gruppen eins drucken.
+    * ``kontextarm_nicht_im_kopf`` - ein Kontextarm ist im Kopf gar nicht
+      auffindbar, waehrend andere Gruppen ein n drucken (etwa Tippfehler im
+      Kontext wie ``Placbeo``).
+
+    Es wird nichts umgehaengt; die Funktion liefert nur Befunde.
+    """
+    if not context:
+        return []
+    arme = {
+        arm: _arm_worte(context.get(arm))
+        for arm in ("intervention", "comparator")
+        if context.get(arm)
+    }
+    if not arme:
+        return []
+    baender = [b for b in table.header_bands
+               if _arm_worte(b.text) and b.col_end >= b.col_start]
+    if not any(_band_traegt_n(table, b) for b in baender):
+        return []
+    beispiel = next(b for b in baender if _band_traegt_n(table, b))
+    rollen = {"intervention": {"intervention"}, "comparator": {"comparator", "control"}}
+    findings: List[Finding] = []
+    for arm, worte in arme.items():
+        treffer = [
+            b for b in baender
+            if (worte & _arm_worte(b.text)) or (rollen.get(arm, set()) & _arm_worte(b.text))
+        ]
+        if not treffer:
+            findings.append(
+                Finding(
+                    code="kontextarm_nicht_im_kopf",
+                    severity=SEVERITY_WARNING,
+                    message=(
+                        f"Kontextarm {context.get(arm)!r} ({arm}) ist im Kopf "
+                        f"nicht auffindbar; n steht auf {beispiel.text!r}. "
+                        "Der Kontext bleibt massgeblich, der Kopf ist zu pruefen."
+                    ),
+                    table_id=table.table_id,
+                )
+            )
+        elif not any(_band_traegt_n(table, b) for b in treffer):
+            findings.append(
+                Finding(
+                    code="kopf_n_widerspricht_kontext",
+                    severity=SEVERITY_WARNING,
+                    message=(
+                        f"Kontextarm {context.get(arm)!r} ({arm}) traegt im Kopf "
+                        f"kein n, waehrend {beispiel.text!r} eins druckt. "
+                        "Der Kontext bleibt massgeblich, der Kopf ist zu pruefen."
+                    ),
+                    table_id=table.table_id,
+                )
+            )
+    return findings
 
 
 def validate(table: Table, units: Sequence[ExtractionUnit],

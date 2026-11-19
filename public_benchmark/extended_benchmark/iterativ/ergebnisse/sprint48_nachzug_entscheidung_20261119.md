@@ -49,8 +49,11 @@ Zwei Definitionen, die die Entscheidung tragen:
   findet 70 Feldtreffer ueber Kopfangaben: 44 mit passendem Wert und Arm, 4 mit
   dem Wert des anderen Arms (Arm vertauscht: 335, 336, 678, 682) und 22 mit
   abweichendem Wert. **68 von 94** Feldtreffern sind damit nicht durch eine
-  wertabweichende Kopfangabe widerlegt - eine Obergrenze, weil Zeilen- und
-  Messwertzellen nicht wertgeprueft sind. Die 26 sind aufgeschluesselt
+  wertabweichende Kopfangabe widerlegt. Der Record-Kontext bleibt die
+  massgebliche Armquelle; **68 von 94 ist damit die endgueltige Obergrenze**
+  (Zeilen- und Messwertzellen sind nicht wertgeprueft). Ein neues
+  Validierungs-Finding meldet Kopf-Kontext-Widersprueche, ohne Arme
+  umzuhaengen (`sprint48_armkonflikt_20261119.md`). Die 26 sind aufgeschluesselt
   (`sprint48_planzellen_ursachen_20261119.md`): 17 Untergruppen bzw. geteilte
   Arme, 5 andere Tabelle/Population (185, 194, 196), 4 armfalsch (335, 336, 678,
   682). Bei 426 ist die P-Wert-Spalte zusaetzlich falsch als comparator
