@@ -51,9 +51,10 @@ Zwei Definitionen, die die Entscheidung tragen:
   abweichendem Wert. **68 von 94** Feldtreffern sind damit nicht durch eine
   wertabweichende Kopfangabe widerlegt - eine Obergrenze, weil Zeilen- und
   Messwertzellen nicht wertgeprueft sind. Die 26 sind aufgeschluesselt
-  (`sprint48_planzellen_ursachen_20261119.md`): 16 Untergruppen bzw. geteilte
-  Arme, 5 andere Tabelle/Population (185, 194, 196), 5 armfalsch (335, 336, 426,
-  678, 682; 426 nur ueber die Spaltenarme). Bei `:678` ist der
+  (`sprint48_planzellen_ursachen_20261119.md`): 17 Untergruppen bzw. geteilte
+  Arme, 5 andere Tabelle/Population (185, 194, 196), 4 armfalsch (335, 336, 678,
+  682). Bei 426 ist die P-Wert-Spalte zusaetzlich falsch als comparator
+  zugeordnet, ohne Goldwirkung. Bei `:678` ist der
   eine Planwert sogar am falschen Arm: die 15 sitzt ueber der
   Antibiotic-Gruppe (`intervention`), Gold verlangt 16/intervention und
   15/comparator. Das Diagnoseartefakt

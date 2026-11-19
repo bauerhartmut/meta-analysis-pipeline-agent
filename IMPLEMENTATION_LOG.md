@@ -1853,7 +1853,9 @@ abweichenden Wert; **68 von 94** Feldtreffern sind damit nicht widerlegt
 114 Kopfangaben ergibt 110 ok, 0 gemischt, 0 falsch, 4 ohne Arm - die falschen
 Spaltenarme (426, 678) sitzen bereits in der Spaltenzuordnung selbst. Der
 Abgleich gegen `gold_reachable` (94) laeuft im Skript als Abbruchbedingung.
-Aufteilung der 26: 16 Untergruppen bzw. geteilte Arme, 5 andere
-Tabelle/Population (185, 194, 196), 5 armfalsch (335, 336, 426, 678, 682).
+Aufteilung der 26: 17 Untergruppen bzw. geteilte Arme, 5 andere
+Tabelle/Population (185, 194, 196), 4 armfalsch (335, 336, 678, 682); bei 426
+ist die P-Wert-Spalte zusaetzlich falsch als comparator zugeordnet, ohne
+Goldwirkung.
 Ursachen und Skript-Review: `sprint48_planzellen_ursachen_20261119.md`. Artefakte: `sprint48_planwerte_20261119.md`,
 `sprint48_armbindung_20261119.{md,json}`.
