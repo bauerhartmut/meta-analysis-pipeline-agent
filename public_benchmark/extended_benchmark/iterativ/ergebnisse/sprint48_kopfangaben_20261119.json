@@ -1,0 +1,2094 @@
+{
+  "sprint": 48,
+  "frage": "Wie viele Goldzellen der 33 Budgetfaelle sind Kopfangaben (n = ...) und damit fuer den Tabellenpfad nicht erreichbar?",
+  "erzeugt_von": "public_benchmark/extended_benchmark/yun_full/zaehle_kopfangaben_sprint48.py",
+  "nur_lesend": true,
+  "netzaufrufe": 0,
+  "lauf": "yun699_p5_24000_20261118",
+  "records": 33,
+  "summe": {
+    "gold_zellen": 132,
+    "gruppenfeld_zellen": 62,
+    "kopfangabe_mit_arm": 8,
+    "kopfangabe_ohne_arm": 8,
+    "kopfangabe_anderer_arm": 0,
+    "keine_kopfangabe": 46,
+    "kein_gruppenfeld": 70,
+    "ueber_outcome_zeile": 10,
+    "nur_als_kopfangabe": 7,
+    "weder_noch": 115
+  },
+  "faelle": [
+    {
+      "record_id": "yun2024:30",
+      "dokument_id": "PMC3003523",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 1,
+      "kopfangabe_ohne_arm": 1,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 0,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 1,
+      "weder_noch": 5,
+      "kopfangaben_im_dokument": 3,
+      "kopfangaben_mit_arm": 1,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 393.0,
+          "klasse": "kopfangabe_mit_arm",
+          "belege": [
+            {
+              "table_id": "PMC3003523:T1",
+              "text": "(n = 393)",
+              "value": 393,
+              "arm": "intervention",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": true
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 38.1,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 9.5,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 199.0,
+          "klasse": "kopfangabe_ohne_arm",
+          "belege": [
+            {
+              "table_id": "PMC3003523:T1",
+              "text": "(n = 199)",
+              "value": 199,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 31.5,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 7.4,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:52",
+      "dokument_id": "PMC3195393",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 562.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 13.6,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 0.07,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 463.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 11.5,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 0.13,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:119",
+      "dokument_id": "PMC4323894",
+      "parser_fehler": "",
+      "gold_zellen": 4,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 2,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 4,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 10.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 70.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 13.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 15.4,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:128",
+      "dokument_id": "PMC4493951",
+      "parser_fehler": "",
+      "gold_zellen": 4,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 2,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 0,
+      "kein_gruppenfeld": 2,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 4,
+      "kopfangaben_im_dokument": 6,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 50.0,
+          "klasse": "kopfangabe_ohne_arm",
+          "belege": [
+            {
+              "table_id": "PMC4493951:T1",
+              "text": "Group H0 (*n* = 50)",
+              "value": 50,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC4493951:T1",
+              "text": "Group H2 (*n* = 50)",
+              "value": 50,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC4493951:T2",
+              "text": "(*n* = 50)",
+              "value": 50,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC4493951:T2",
+              "text": "(*n* = 50)",
+              "value": 50,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_events",
+          "arm": "intervention",
+          "value": 10.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 50.0,
+          "klasse": "kopfangabe_ohne_arm",
+          "belege": [
+            {
+              "table_id": "PMC4493951:T1",
+              "text": "Group H0 (*n* = 50)",
+              "value": 50,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC4493951:T1",
+              "text": "Group H2 (*n* = 50)",
+              "value": 50,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC4493951:T2",
+              "text": "(*n* = 50)",
+              "value": 50,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC4493951:T2",
+              "text": "(*n* = 50)",
+              "value": 50,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_events",
+          "arm": "comparator",
+          "value": 21.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:152",
+      "dokument_id": "PMC5055753",
+      "parser_fehler": "",
+      "gold_zellen": 4,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 2,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 4,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 40.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_events",
+          "arm": "intervention",
+          "value": 14.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 40.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_events",
+          "arm": "comparator",
+          "value": 7.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:159",
+      "dokument_id": "PMC5056957",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 592.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 21.07,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 6.39,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 459.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 21.27,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 5.9,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:164",
+      "dokument_id": "PMC5062234",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 21.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 21.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:171",
+      "dokument_id": "PMC5079604",
+      "parser_fehler": "",
+      "gold_zellen": 4,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 1,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 1,
+      "kein_gruppenfeld": 2,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 1,
+      "weder_noch": 3,
+      "kopfangaben_im_dokument": 5,
+      "kopfangaben_mit_arm": 3,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 33.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 480.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "klasse": "kopfangabe_mit_arm",
+          "belege": [
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Placebo (*n* = 15)",
+              "value": 15,
+              "arm": "comparator",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": true
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 305.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:173",
+      "dokument_id": "PMC5079604",
+      "parser_fehler": "",
+      "gold_zellen": 4,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 1,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 1,
+      "kein_gruppenfeld": 2,
+      "ueber_outcome_zeile": 2,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 5,
+      "kopfangaben_mit_arm": 3,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 33.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_events",
+          "arm": "intervention",
+          "value": 13.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "klasse": "kopfangabe_mit_arm",
+          "belege": [
+            {
+              "table_id": "PMC5079604:T1",
+              "text": "Placebo (*n* = 15)",
+              "value": 15,
+              "arm": "comparator",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_events",
+          "arm": "comparator",
+          "value": 12.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:204",
+      "dokument_id": "PMC5380326",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 1,
+      "kopfangabe_ohne_arm": 1,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 0,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 1,
+      "weder_noch": 1,
+      "kopfangaben_im_dokument": 2,
+      "kopfangaben_mit_arm": 1,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 40.0,
+          "klasse": "kopfangabe_mit_arm",
+          "belege": [
+            {
+              "table_id": "PMC5380326:T1",
+              "text": "Vitamin D group (n = 40)",
+              "value": 40,
+              "arm": "intervention",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": true
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 40.0,
+          "klasse": "kopfangabe_ohne_arm",
+          "belege": [
+            {
+              "table_id": "PMC5380326:T1",
+              "text": "Placebo group (n = 40)",
+              "value": 40,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:251",
+      "dokument_id": "PMC5614421",
+      "parser_fehler": "",
+      "gold_zellen": 4,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 2,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 4,
+      "kopfangaben_im_dokument": 2,
+      "kopfangaben_mit_arm": 2,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 402.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_events",
+          "arm": "intervention",
+          "value": 8.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 388.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_events",
+          "arm": "comparator",
+          "value": 7.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:252",
+      "dokument_id": "PMC5614421",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 2,
+      "kopfangaben_mit_arm": 2,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 402.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 388.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:273",
+      "dokument_id": "PMC3214395",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 60.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 30.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:304",
+      "dokument_id": "PMC4357072",
+      "parser_fehler": "",
+      "gold_zellen": 4,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 2,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 4,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 15.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_events",
+          "arm": "intervention",
+          "value": 14.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_events",
+          "arm": "comparator",
+          "value": 10.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:356",
+      "dokument_id": "PMC5884950",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 2,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 13.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 13.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:420",
+      "dokument_id": "PMC3877023",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 1,
+      "kopfangabe_ohne_arm": 1,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 0,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 4,
+      "nur_als_kopfangabe": 1,
+      "weder_noch": 1,
+      "kopfangaben_im_dokument": 10,
+      "kopfangaben_mit_arm": 6,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 18.0,
+          "klasse": "kopfangabe_mit_arm",
+          "belege": [
+            {
+              "table_id": "PMC3877023:T3",
+              "text": "n = 18",
+              "value": 18,
+              "arm": "intervention",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            },
+            {
+              "table_id": "PMC3877023:T4",
+              "text": "n = 18",
+              "value": 18,
+              "arm": "intervention",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": true
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 0.95,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 0.24,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 21.0,
+          "klasse": "kopfangabe_ohne_arm",
+          "belege": [
+            {
+              "table_id": "PMC3877023:T3",
+              "text": "n = 21",
+              "value": 21,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC3877023:T4",
+              "text": "n = 21",
+              "value": 21,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 1.43,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 0.48,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:421",
+      "dokument_id": "PMC3877023",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 1,
+      "kopfangabe_ohne_arm": 1,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 0,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 4,
+      "nur_als_kopfangabe": 1,
+      "weder_noch": 1,
+      "kopfangaben_im_dokument": 10,
+      "kopfangaben_mit_arm": 6,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 30.0,
+          "klasse": "kopfangabe_mit_arm",
+          "belege": [
+            {
+              "table_id": "PMC3877023:T3",
+              "text": "n = 30",
+              "value": 30,
+              "arm": "intervention",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            },
+            {
+              "table_id": "PMC3877023:T4",
+              "text": "n = 30",
+              "value": 30,
+              "arm": "intervention",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": true
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 0.83,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 0.22,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 34.0,
+          "klasse": "kopfangabe_ohne_arm",
+          "belege": [
+            {
+              "table_id": "PMC3877023:T3",
+              "text": "n = 34",
+              "value": 34,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC3877023:T4",
+              "text": "n = 34",
+              "value": 34,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 1.32,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 0.51,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": true,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:446",
+      "dokument_id": "PMC4879328",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 104.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": -0.89,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 3.32,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 114.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 0.3,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 3.54,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:451",
+      "dokument_id": "PMC4879328",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 99.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 7.41,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 66.12,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 108.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": -16.1,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 66.25,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:523",
+      "dokument_id": "PMC5325897",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 15.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 10.24,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 0.77,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 9.73,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 0.77,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:525",
+      "dokument_id": "PMC5325897",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 15.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 18.53,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 0.22,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 18.99,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 0.22,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:557",
+      "dokument_id": "PMC3136370",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 12.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": -17.1,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 68.08,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 16.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": -19.57,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 93.53,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:559",
+      "dokument_id": "PMC3136370",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 12.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": -4.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 12.35,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 16.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": -8.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 65.41,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:582",
+      "dokument_id": "PMC3504298",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 2,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 0,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 4,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 16.0,
+          "klasse": "kopfangabe_ohne_arm",
+          "belege": [
+            {
+              "table_id": "PMC3504298:T1",
+              "text": "Faces (*n* = 16)",
+              "value": 16,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC3504298:T1",
+              "text": "Words (*n* = 16)",
+              "value": 16,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 16.0,
+          "klasse": "kopfangabe_ohne_arm",
+          "belege": [
+            {
+              "table_id": "PMC3504298:T1",
+              "text": "Faces (*n* = 16)",
+              "value": 16,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            },
+            {
+              "table_id": "PMC3504298:T1",
+              "text": "Words (*n* = 16)",
+              "value": 16,
+              "arm": null,
+              "basis": "kopf_angabe",
+              "arm_basis": "kein_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:624",
+      "dokument_id": "PMC3493722",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 0,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 0,
+      "kein_gruppenfeld": 2,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_events",
+          "arm": "intervention",
+          "value": 74.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_events",
+          "arm": "comparator",
+          "value": 74.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:625",
+      "dokument_id": "PMC3493722",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 0,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 0,
+      "kein_gruppenfeld": 2,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_events",
+          "arm": "intervention",
+          "value": 8.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_events",
+          "arm": "comparator",
+          "value": 4.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:671",
+      "dokument_id": "PMC4550271",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 14.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 12.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:672",
+      "dokument_id": "PMC4550271",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 14.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 12.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:674",
+      "dokument_id": "PMC4550271",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 14.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 23.5,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 26.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 12.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 22.6,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 23.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:673",
+      "dokument_id": "PMC4550271",
+      "parser_fehler": "",
+      "gold_zellen": 6,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 4,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 6,
+      "kopfangaben_im_dokument": 0,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 14.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "value": 36.4,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "value": 32.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 12.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "value": 22.6,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "value": 23.0,
+          "klasse": "kein_gruppenfeld",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:685",
+      "dokument_id": "PMC2836833",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 12,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 17.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 17.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:678",
+      "dokument_id": "PMC5777419",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 2,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 0,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 2,
+      "weder_noch": 0,
+      "kopfangaben_im_dokument": 9,
+      "kopfangaben_mit_arm": 5,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 16.0,
+          "klasse": "kopfangabe_mit_arm",
+          "belege": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Antibiotic group (n=16)",
+              "value": 16,
+              "arm": "intervention",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": true
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 15.0,
+          "klasse": "kopfangabe_mit_arm",
+          "belege": [
+            {
+              "table_id": "PMC5777419:T1",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            },
+            {
+              "table_id": "PMC5777419:T3",
+              "text": "Placebo group (n=15)",
+              "value": 15,
+              "arm": "comparator",
+              "basis": "kopf_angabe",
+              "arm_basis": "header_treffer"
+            }
+          ],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": true
+        }
+      ]
+    },
+    {
+      "record_id": "yun2024:687",
+      "dokument_id": "PMC2836833",
+      "parser_fehler": "",
+      "gold_zellen": 2,
+      "gruppenfeld_zellen": 2,
+      "kopfangabe_mit_arm": 0,
+      "kopfangabe_ohne_arm": 0,
+      "kopfangabe_anderer_arm": 0,
+      "keine_kopfangabe": 2,
+      "kein_gruppenfeld": 0,
+      "ueber_outcome_zeile": 0,
+      "nur_als_kopfangabe": 0,
+      "weder_noch": 2,
+      "kopfangaben_im_dokument": 12,
+      "kopfangaben_mit_arm": 0,
+      "zellen": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "value": 17.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "value": 17.0,
+          "klasse": "keine_kopfangabe",
+          "belege": [],
+          "feld_ueber_outcome_zeile": false,
+          "nur_als_kopfangabe": false
+        }
+      ]
+    }
+  ]
+}
