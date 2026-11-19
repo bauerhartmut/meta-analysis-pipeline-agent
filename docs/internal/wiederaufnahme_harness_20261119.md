@@ -47,8 +47,10 @@ Im Harness (`run_extended_extraction.py`):
   entsteht **keine** Zwischenzeile. Erst nach der letzten Wiederaufnahme oder
   abgelaufener Frist wird die Fehlerzeile geschrieben; sie traegt dann
   `wiederaufnahmen: n`.
-- die Auftragsschleife nutzt jetzt `wait(..., FIRST_COMPLETED)` statt
-  `as_completed`, weil die Schlange waehrend des Laufs wachsen muss.
+- die Auftragsschleife liegt als `wiederaufnahme.abwickeln(auftraege, arbeit,
+  threads=...)` im Modul, nicht mehr im `main` des Harness; `main` behaelt
+  nur `try/finally` um die Prozesssperre. `wait(..., FIRST_COMPLETED)`
+  statt `as_completed`, weil die Schlange waehrend des Laufs wachsen muss.
 - Abschlusszeile nennt die Zahl der Wiederaufnahmen, die Fehlermeldung sagt
   `endgueltig` statt `kein Retry`.
 
@@ -67,45 +69,69 @@ Ausfaelle.
 
 ## 4. Nachzug der Fehlzeilen
 
-`yun_full/nachzug_p5_7.py` bereitet den Nachzug vor und startet nichts von
+`yun_full/nachzug_p5.py` bereitet den Nachzug vor und startet nichts von
 selbst:
 
 - `--pruefen` (Standard) zeigt Fehlzeilen, Sperrlage und den vollstaendigen
   Befehl, aendert nichts.
 - `--starten` bricht mit Exitcode 3 ab, solange die Startwache oder der Harness
   lebt (`jobs._lebt` ueber `OpenProcess`), sichert vorher die
-  `predictions.jsonl`, haengt die neuen Zeilen an dieselbe Datei (damit die
-  Auswertung alle 103 ids sieht) und ruft danach `dedupe_predictions.py` ohne
-  `--write` auf. Ob Doppelzeilen bereinigt werden, bleibt eine bewusste
-  Einzelentscheidung, weil `--write` die Datei umschreibt.
+  `predictions.jsonl` und haengt die neuen Zeilen an dieselbe Datei (damit
+  die Auswertung alle 103 ids sieht).
+- danach raeumt es selbst auf: `eindeutig_machen` laesst je
+  (record_id, model) genau eine Zeile stehen, die letzte brauchbare. Ohne
+  diesen Schritt stuende jedes wiederholte Paar zweimal in der Datei und
+  `auswerte_yun699.py` zaehlte den Record doppelt. Gesichert wird nach
+  `predictions.jsonl.bak`, geschrieben ueber eine Zwischendatei; ist danach
+  ein Record nicht eindeutig oder seine einzige Zeile weiterhin ein Ausfall,
+  endet das Skript mit Exitcode 4.
 
-Stand 10:41 (`--pruefen`):
+Stand beim Schreiben (`--pruefen`, P5 bei 96 Zeilen): **55**
+Fehlzeilen — 28 x `server_fehler` (503),
+8 x `timeout`, 2 x `rate_limit`
+(429), 15 x `length_ohne_ergebnis` mit
+24.000 Tokens und 2 Antworten ohne Zellen. Die
+Eindeutigkeit ist unauffaellig: 96 Zeilen, 0 Duplikate.
 
-```
-Fehlzeilen: 8
-  yun2024:6: HTTP 429 rate_limit, 0 Tokens
-  yun2024:30: HTTP 503 server_fehler, 0 Tokens
-  yun2024:32: HTTP 0 timeout, 0 Tokens
-  yun2024:54: HTTP 503 server_fehler, 0 Tokens
-  yun2024:68: HTTP 503 server_fehler, 0 Tokens
-  yun2024:52: HTTP 0 timeout, 0 Tokens
-  yun2024:85: HTTP 503 server_fehler, 0 Tokens
-  yun2024:110: HTTP 503 server_fehler, 0 Tokens
-Sperrlage: Harness laeuft (PID 19324, harness.lock)
-```
+Die Liste waechst mit dem Lauf und enthaelt damit nicht nur Anbieterausfaelle,
+sondern auch Budget- und Formatgrenzen. Ein Nachzug ueber alle Zeilen kostet
+je `length`-Fall erneut das volle Budget von 24.000 Tokens. Vor `--starten`
+ist deshalb eine Auswahl noetig; das Skript filtert bewusst nicht selbst,
+damit die Entscheidung sichtbar bleibt.
 
-Acht statt sieben, weil `yun2024:110` erst im Neustart um 10:31 gescheitert ist.
-Das Skript liest die Fehlzeilen dynamisch und erfasst damit auch spaetere
-Ausfaelle; es muss deshalb erst nach dem Abschluss des Laufs laufen.
+## 5. Genau eine Zeile je Record
 
-## 5. Pruefung
+`--retry-failed` haengt an, statt zu ersetzen: nach dem Nachzug stuende jedes
+wiederholte Paar zweimal in `predictions.jsonl`, und `auswerte_yun699.py`
+zaehlt den Record doppelt. Der Nachzug raeumt deshalb nach dem Harness-Lauf
+selbst auf (Abschnitt 4) und prueft danach jede id. `tests/test_nachzug_p5.py`
+deckt beides offline ab:
 
-- `py_compile` auf allen vier geaenderten bzw. neuen Dateien.
-- `pytest public_benchmark/tests/test_wiederaufnahme.py test_retry_manager.py
-  test_fehlerklassen.py test_jobs.py test_dedupe_predictions.py` — 57 passed.
+- `test_temporaerer_ausfall_schreibt_keine_zwischenzeile`: zwei Ausfaelle,
+  dann Erfolg; waehrend der Ausfaelle ist die Datei leer, am Ende steht genau
+  eine Zeile.
+- `test_nachzug_hinterlaesst_genau_eine_zeile_je_record`: sechs Zeilen, drei
+  Paare, drei Duplikate; danach drei Zeilen, die erfolgreiche gewinnt, ein
+  weiterhin fehlgeschlagener Record bleibt einmal sichtbar, die fehlende id
+  wird gemeldet.
+- `test_schleife_reiht_nur_wiederaufnahmen_erneut_ein`,
+  `test_ausnahme_beendet_die_schleife_nicht`,
+  `test_aufraeumen_ist_wiederholbar`.
+
+## 6. Pruefung
+
+- `py_compile` auf Harness, `wiederaufnahme.py`, `nachzug_p5.py` und dem neuen
+  Test.
+- `pytest test_run_extended_extraction.py test_crash_recovery.py
+  test_nachzug_p5.py test_wiederaufnahme.py test_dedupe_predictions.py
+  test_jobs.py test_fehlerklassen.py` — 91 passed (1,5 s).
 - `run_extended_extraction.py --dry-run` mit zwei ids: Auswahl korrekt, kein
   Verzeichnis angelegt, keine Anfrage gesendet.
-- `nachzug_p5_7.py --pruefen`: Exitcode 0, Sperrlage erkannt, nichts geschrieben.
+- `nachzug_p5.py --pruefen`: Exitcode 0, Sperrlage erkannt, nichts geschrieben.
+
+Der Testhelfer `_auftrag` in `test_run_extended_extraction.py` setzt jetzt
+`--wiederaufnahme-versuche 0`: mit dem Standard von 4 schlief der
+Timeout-Test bis zu 7,5 Minuten, und der Lauf hing genau dort.
 
 Nicht geprueft: ein echter Lauf mit Wiederaufnahme gegen den Anbieter. Das
 kostet Guthaben und ist erst nach dem Abschluss des laufenden P5 sinnvoll.

@@ -94,8 +94,12 @@ def _auftrag(
     monkeypatch.setattr(
         sys,
         "argv",
+        # Diese Tests pruefen die Zeile, nicht das Warten: die Wiederaufnahme auf
+        # Auftragsebene kostet je Ausfall bis zu 7,5 Minuten Schlaf und wuerde den
+        # Testlauf blockieren. Wer sie pruefen will, setzt das Flag ueber `extra`.
         ["runner", "--records", str(datei), "--split", "test", "--ids", "yun2024:1",
-         "--models", "glm", "--run-id", "t1", "--target-fallback", *(extra or [])],
+         "--models", "glm", "--run-id", "t1", "--target-fallback",
+         "--wiederaufnahme-versuche", "0", *(extra or [])],
     )
     assert runner.main() == erwarte
     pfad = tmp_path / "runs" / "t1" / "predictions.jsonl"

@@ -21,7 +21,6 @@ import time
 import urllib.error
 import urllib.request
 import uuid
-from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -1064,28 +1063,12 @@ def main() -> int:
             print(f"{model}: {record['record_id']} {status} ({len(cells)} Zellen)", flush=True)
         return row
 
-    completed = 0
-    erneut = 0
+    # Die Wiederaufnahme-Schleife liegt in `wiederaufnahme.abwickeln`: sie
+    # reiht einen wiederaufgenommenen Auftrag erneut ein, statt die Runde zu
+    # beenden. Nur der Abschluss oder die erschoepfte Wiederaufnahme schreibt
+    # eine Zeile.
     try:
-        with ThreadPoolExecutor(max_workers=args.workers) as pool:
-            # Die Schlange waechst: ein wiederaufgenommener Auftrag wird erneut
-            # eingereiht, statt die Runde zu beenden. `wait` statt `as_completed`,
-            # weil nur so neu hinzugefuegte Futures mitlaufen.
-            offen = {pool.submit(work, record, model): (record, model) for record, model in jobs}
-            while offen:
-                fertig, _ = wait(list(offen), return_when=FIRST_COMPLETED)
-                for future in fertig:
-                    aufgabe = offen.pop(future)
-                    try:
-                        ergebnis = future.result()
-                    except Exception as error:  # noqa: BLE001
-                        print(f"FEHLER {aufgabe}: {error}", flush=True)
-                        continue
-                    if ergebnis.get("wiederaufnahme"):
-                        erneut += 1
-                        offen[pool.submit(work, *aufgabe)] = aufgabe
-                    else:
-                        completed += 1
+        completed, erneut = wiederaufnahme.abwickeln(jobs, work, threads=args.workers)
     finally:
         if sperre is not None:
             sperre.freigeben()

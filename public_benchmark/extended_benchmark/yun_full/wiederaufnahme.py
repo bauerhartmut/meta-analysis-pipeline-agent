@@ -18,6 +18,9 @@ weiterer Versuch kostet nur Tokens.
 
 from __future__ import annotations
 
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+from typing import Any, Callable, Iterable
+
 from . import fehlerklassen, retry_manager
 
 #: Obergrenze einer einzelnen Wartezeit. Ein Anbieter, der Stunden braucht, soll
@@ -57,3 +60,46 @@ def wartezeit(nummer: int, basis_s: float, deckel_s: float = DECKEL_S) -> float:
         raise ValueError("nummer beginnt bei 1")
     policy = retry_manager.RetryPolicy(basis_s=basis_s, max_delay_s=deckel_s)
     return retry_manager.wartezeit(nummer, None, policy)
+
+
+def abwickeln(
+    auftraege: Iterable[tuple[Any, ...]],
+    arbeit: Callable[..., dict[str, Any]],
+    *,
+    threads: int,
+    melde: Callable[[str], None] = print,
+) -> tuple[int, int]:
+    """Arbeitet Auftraege ab und reiht Wiederaufnahmen erneut ein.
+
+    `arbeit` bekommt einen Auftrag als Argumente und gibt ein dict zurueck.
+    Traegt es `wiederaufnahme=True`, hat der Auftrag bewusst keine Zeile
+    geschrieben und geht erneut in die Schlange, statt die Runde zu beenden.
+    Erst der regulaere Rueckgabewert zaehlt als abgeschlossen; eine Ausnahme
+    beendet den Lauf nicht, sie wird nur gemeldet.
+
+    Rueckgabe: (abgeschlossene Auftraege, Zahl der Wiederaufnahmen).
+    """
+    if threads < 1:
+        raise ValueError("threads muss mindestens 1 sein")
+    fertig = 0
+    erneut = 0
+    with ThreadPoolExecutor(max_workers=threads) as pool:
+        # Die Schlange waechst: ein wiederaufgenommener Auftrag wird erneut
+        # eingereiht, statt die Runde zu beenden. `wait` statt `as_completed`,
+        # weil nur so neu hinzugefuegte Futures mitlaufen.
+        offen = {pool.submit(arbeit, *auftrag): auftrag for auftrag in auftraege}
+        while offen:
+            erledigt, _ = wait(list(offen), return_when=FIRST_COMPLETED)
+            for future in erledigt:
+                auftrag = offen.pop(future)
+                try:
+                    ergebnis = future.result()
+                except Exception as fehler:  # noqa: BLE001 - ein Auftrag darf den Lauf nicht beenden
+                    melde(f"FEHLER {auftrag}: {fehler}")
+                    continue
+                if ergebnis.get("wiederaufnahme"):
+                    erneut += 1
+                    offen[pool.submit(arbeit, *auftrag)] = auftrag
+                else:
+                    fertig += 1
+    return fertig, erneut
