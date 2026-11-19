@@ -264,6 +264,7 @@ def zaehle_fall(row: dict, record: dict, text: str) -> dict[str, Any]:
             "field": zelle.get("field"),
             "arm": zelle.get("arm"),
             "value": zelle.get("value"),
+            "source": zelle.get("source"),
             "klasse": klasse,
             "belege": belege,
             "feld_ueber_outcome_zeile": ueber_zeile,

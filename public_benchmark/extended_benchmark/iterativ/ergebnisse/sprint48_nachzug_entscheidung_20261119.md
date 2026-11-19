@@ -31,9 +31,18 @@ werden hier entschieden.
 
 Zwei Definitionen, die die Entscheidung tragen:
 
-- **`gold_reachable`** zaehlt nur Goldzellen der **Outcome-Zeile** (Spaltenfeld
-  **und** Zeile). Gruppenangaben aus dem Kopf (`n = 456`) zaehlen nicht mit: sie
-  sind noch kein gelesener Zellwert (`table_decomposition/run_benchmark.py`).
+- **`gold_reachable`** zaehlt Goldzellen, deren Feld `reachable_cells` liefert:
+  Zellen der **Outcome-Zeile** (Spaltenfeld **und** Zeile) **und** seit Sprint 44
+  **belegte Kopfangaben** (`n = 456`, Adresse `(-1, feld)`). Beleg: `yun2024:30`
+  hat im Plan `gold_reachable = 1` bei **0** Goldzellen aus Zeilen; die 1 ist die
+  Kopfangabe `n = 393` mit belegtem Arm (`PMC3003523:T1`). Der Docstring in
+  `table_decomposition/run_benchmark.py` ("Gruppenangaben ... zaehlen nicht
+  mit") ist an dieser Stelle veraltet.
+  Mit dem heutigen Stand sind die gespeicherten Planwerte nur fuer `yun2024:30`
+  reproduzierbar: `load_tables` + `reachable_cells` liefern 30 -> 1, 252 -> 0,
+  **421 -> 3**, 672 -> 0, **678 -> 1** (unabhaengig von `assume_order`). Die
+  Spalte `Gold erreichbar (A-E)` in Abschnitt 3 gibt die in `structure.json`
+  gespeicherten Werte wieder und ist fuer `:421` und `:678` veraltet.
 - **`_cb`** im Feld `prompt_version` ist ein **Cache-Buster**, kein eigener
   Prompt (`versions.py` entfernt das Suffix bei der Kanonisierung,
   `run_extended_extraction.py` setzt es nur beim Frischgenerieren). Der Vorlauf
@@ -64,10 +73,11 @@ Der Plan ist eine **Prompt-Verkuerzung**, keine Gold-Abdeckung:
 
 - `yun2024:30`: Strategie B senkt den Prompt von 26.854 auf **2.398** Zeichen
   (91 % weniger), erreicht aber nur **1 von 6** Goldzellen.
-- `yun2024:252`, `:421`, `:672`, `:678`: erreichen **0** Goldzellen im Plan. Bei
-  `:252` und `:672` gibt es gar keine passende `n = ...`-Angabe (Abschnitt
-  4.1); bei `:421` und `:678` steht die Angabe zwar im Dokument, der Plan
-  weist sie aber nicht als erreichbar aus.
+- `yun2024:252`, `:421`, `:672`, `:678`: erreichen **0** Goldzellen im
+  gespeicherten Plan. Bei `:252` und `:672` gibt es gar keine passende
+  `n = ...`-Angabe (Abschnitt 4.1); bei `:421` und `:678` steht die Angabe zwar
+  im Dokument, der gespeicherte Plan weist sie aber nicht aus - mit dem heutigen
+  Code waeren es 3 bzw. 1 (Abschnitt 2).
 - `yun2024:672` hat zusaetzlich **0 Tabellen mit Zielfeld** bei 467 Datenzellen
   und 36 Zeilen je Tabelle: der Parser ordnet das abgefragte Feld keiner Tabelle
   zu (H4b). Ein Ausschnitt dieses Dokuments kann die 2 Goldzellen nicht liefern.
@@ -102,6 +112,32 @@ ist unter den Planfaellen nur **`yun2024:678`**; bei `yun2024:30` und `:421`
 liefert er nur die Gruppengroessen (je 2 von 6), bei `:252` und `:672` keinen
 der beiden Goldwerte. Die Empfehlung aus Abschnitt 6 bleibt damit unveraendert:
 Nachzug nur fuer `yun2024:678`.
+
+### 4.2 Die neun Goldwerte ohne Fundstelle
+
+Neun Goldzellen stehen nirgends im Markdown, auch nicht in einer Caption. Das
+`source`-Feld der Goldzelle traegt **nur den Feldnamen** (in allen neun Faellen
+identisch mit `field`), also keine Tabelle, Zeile oder Seite. Die Herkunft steht
+in den Rohdaten (`annotated_rct_dataset.json`, `provenance.source_id`):
+
+| Record | Wert | Feld | Grafik-Tabelle | Daten in Abbildung | vollstaendig | Notiz |
+|---|---:|---|---|---|---|---|
+| `yun2024:164` | 21 | `intervention_group_size` | TRUE | FALSE | FALSE | Data found in table in graphic format. |
+| `yun2024:164` | 21 | `comparator_group_size` | TRUE | FALSE | FALSE | Data found in table in graphic format. |
+| `yun2024:171` | 33 | `intervention_group_size` | FALSE | FALSE | FALSE | SD is not given. |
+| `yun2024:173` | 33 | `intervention_group_size` | FALSE | TRUE | TRUE | Used percentage to calculate events as binary outcome. |
+| `yun2024:273` | 30 | `comparator_group_size` | TRUE | FALSE | FALSE | mean and std not given for group 1 and 2 combined |
+| `yun2024:523` | 15 | `intervention_group_size` | FALSE | FALSE | TRUE | - |
+| `yun2024:523` | 15 | `comparator_group_size` | FALSE | FALSE | TRUE | - |
+| `yun2024:525` | 15 | `intervention_group_size` | FALSE | FALSE | TRUE | - |
+| `yun2024:525` | 15 | `comparator_group_size` | FALSE | FALSE | TRUE | - |
+
+Damit ist klar: `yun2024:164` und `:273` haben die Tabelle nur als Grafik,
+`yun2024:173` die Daten in einer Abbildung, `yun2024:171` ist als unvollstaendig
+markiert (die Bezugsgroesse fehlt). Bei `yun2024:523` und `:525` ist der
+Datensatz vollstaendig, die `15` steht aber nur als `0.15` im Text. Fuer alle
+neun Zellen ist ein Textpfad ausgeschlossen; sie senken die Obergrenze jeder
+Prompt-Variante und sind kein Prompt-Fehler.
 
 ## 5. Der Vorlauf als Erwartungswert
 
