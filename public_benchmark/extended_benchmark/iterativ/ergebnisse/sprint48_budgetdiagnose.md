@@ -6,43 +6,43 @@ Grundgesamtheit: **33** `length_ohne_ergebnis`-Zeilen und **67** verwertbare Zei
 
 ## 1. Uebersicht der 33 Budgetfaelle
 
-| Record | Dokument | Tab. | Zeilen max | Spalten max | Datenzellen | Kopfebenen | Komplexitaet | Prompt-Zeichen | Reasoning-Zeichen | Gold | Diagnosen | Hypothesen |
-|---|---|---:|---:|---:|---:|---:|---|---:|---:|---:|---|---|
-| `yun2024:30` | PMC3003523 | 3 | 5 | 12 | 56 | 2 | komplex | 26.854 | 89.370 | 6 | TPSD- | H1, H4, H6 |
-| `yun2024:52` | PMC3195393 | 6 | 12 | 11 | 153 | 2 | sehr_komplex | 25.950 | 95.546 | 6 | ----- | H1, H2, H4 |
-| `yun2024:119` | PMC4323894 | 0 | 0 | 0 | 0 | 0 | unbekannt | 11.045 | 98.142 | 4 | ----- | H4, H7 |
-| `yun2024:128` | PMC4493951 | 2 | 7 | 4 | 37 | 2 | mittel | 8.970 | 90.927 | 4 | ----- | H4, H7 |
-| `yun2024:152` | PMC5055753 | 1 | 8 | 3 | 20 | 1 | einfach | 8.788 | 99.665 | 4 | ----- | H4, H7 |
-| `yun2024:159` | PMC5056957 | 2 | 22 | 13 | 184 | 1 | mittel | 17.100 | 88.346 | 6 | ----- | H2, H4 |
-| `yun2024:164` | PMC5062234 | 0 | 0 | 0 | 0 | 0 | unbekannt | 4.897 | 99.794 | 2 | ----- | H4, H7 |
-| `yun2024:171` | PMC5079604 | 2 | 4 | 4 | 19 | 1 | mittel | 21.446 | 97.231 | 4 | ----- | H6 |
-| `yun2024:173` | PMC5079604 | 2 | 4 | 4 | 19 | 1 | mittel | 21.416 | 93.443 | 4 | ----- | H6 |
-| `yun2024:204` | PMC5380326 | 3 | 17 | 6 | 169 | 2 | sehr_komplex | 15.580 | 89.548 | 2 | ----- | H1, H2, H6 |
-| `yun2024:251` | PMC5614421 | 3 | 13 | 6 | 100 | 1 | komplex | 41.153 | 97.921 | 4 | ----- | H1, H4, H6 |
-| `yun2024:252` | PMC5614421 | 3 | 13 | 6 | 100 | 1 | komplex | 41.138 | 99.829 | 2 | TP-D- | H1, H4, H6 |
-| `yun2024:273` | PMC3214395 | 0 | 0 | 0 | 0 | 0 | unbekannt | 4.436 | 101.270 | 2 | ----- | H4, H7 |
-| `yun2024:304` | PMC4357072 | 0 | 0 | 0 | 0 | 0 | unbekannt | 6.540 | 95.635 | 4 | ----- | H4, H7 |
-| `yun2024:356` | PMC5884950 | 2 | 15 | 3 | 48 | 1 | mittel | 20.650 | 96.159 | 2 | ----- | H4, H7 |
-| `yun2024:420` | PMC3877023 | 4 | 5 | 6 | 49 | 4 | sehr_komplex | 27.322 | 86.878 | 6 | ----- | H1, H3, H4, H6 |
-| `yun2024:421` | PMC3877023 | 4 | 5 | 6 | 49 | 4 | sehr_komplex | 27.320 | 84.549 | 6 | TPSD- | H1, H3, H4, H6 |
-| `yun2024:446` | PMC4879328 | 3 | 4 | 5 | 15 | 3 | sehr_komplex | 26.270 | 95.071 | 6 | ----- | H1, H3, H4 |
-| `yun2024:451` | PMC4879328 | 3 | 4 | 5 | 15 | 3 | sehr_komplex | 26.319 | 95.333 | 6 | ----- | H1, H3, H4 |
-| `yun2024:523` | PMC5325897 | 2 | 16 | 3 | 51 | 1 | mittel | 7.811 | 89.661 | 6 | ----- | H4, H7 |
-| `yun2024:525` | PMC5325897 | 2 | 16 | 3 | 51 | 1 | mittel | 7.811 | 89.708 | 6 | ----- | H4, H7 |
-| `yun2024:557` | PMC3136370 | 1 | 6 | 7 | 42 | 1 | mittel | 14.124 | 93.380 | 6 | ----- | H4, H7 |
-| `yun2024:559` | PMC3136370 | 1 | 6 | 7 | 42 | 1 | mittel | 14.139 | 89.528 | 6 | ----- | H4, H7 |
-| `yun2024:582` | PMC3504298 | 1 | 11 | 5 | 55 | 2 | komplex | 13.869 | 99.406 | 2 | ----- | H1, H4 |
-| `yun2024:624` | PMC3493722 | 0 | 0 | 0 | 0 | 0 | unbekannt | 6.268 | 87.507 | 2 | ----- | H4, H7 |
-| `yun2024:625` | PMC3493722 | 0 | 0 | 0 | 0 | 0 | unbekannt | 6.268 | 82.625 | 2 | ----- | H4, H7 |
-| `yun2024:671` | PMC4550271 | 5 | 36 | 9 | 467 | 3 | sehr_komplex | 43.571 | 100.255 | 2 | ----- | H1, H2, H3, H4 |
-| `yun2024:672` | PMC4550271 | 5 | 36 | 9 | 467 | 3 | sehr_komplex | 43.591 | 100.367 | 2 | TP-D- | H1, H2, H3, H4 |
-| `yun2024:674` | PMC4550271 | 5 | 36 | 9 | 467 | 3 | sehr_komplex | 43.605 | 93.674 | 6 | ----- | H1, H2, H3, H4 |
-| `yun2024:673` | PMC4550271 | 5 | 36 | 9 | 467 | 3 | sehr_komplex | 43.585 | 93.498 | 6 | ----- | H1, H2, H3, H4 |
-| `yun2024:685` | PMC2836833 | 7 | 6 | 7 | 117 | 2 | komplex | 19.903 | 88.956 | 2 | ----- | H1, H4 |
-| `yun2024:678` | PMC5777419 | 3 | 7 | 15 | 115 | 3 | sehr_komplex | 13.328 | 97.070 | 2 | TP-D- | H1, H3, H6 |
-| `yun2024:687` | PMC2836833 | 7 | 6 | 7 | 117 | 2 | komplex | 19.900 | 95.376 | 2 | ----- | H1, H4 |
+| Record | Dokument | Tab. | Zeilen max | Datenspalten | Datenzellen | Kopfebenen | Gruppenkopf | Komplexitaet | Prompt-Zeichen | Reasoning-Zeichen | Gold | Diagnosen | Hypothesen |
+|---|---|---:|---:|---:|---:|---:|---:|---|---:|---:|---:|---|---|
+| `yun2024:30` | PMC3003523 | 3 | 5 | 12 | 56 | 2 | 0 | komplex | 26.854 | 89.370 | 6 | TPSD- | H1, H4, H6 |
+| `yun2024:52` | PMC3195393 | 6 | 12 | 11 | 153 | 2 | 2 | sehr_komplex | 25.950 | 95.546 | 6 | ----- | H1, H2, H4 |
+| `yun2024:119` | PMC4323894 | 0 | 0 | 0 | 0 | 0 | 0 | unbekannt | 11.045 | 98.142 | 4 | ----- | H4, H7 |
+| `yun2024:128` | PMC4493951 | 2 | 7 | 4 | 37 | 2 | 0 | mittel | 8.970 | 90.927 | 4 | ----- | H4, H7 |
+| `yun2024:152` | PMC5055753 | 1 | 8 | 3 | 20 | 1 | 0 | einfach | 8.788 | 99.665 | 4 | ----- | H4, H7 |
+| `yun2024:159` | PMC5056957 | 2 | 22 | 13 | 184 | 1 | 0 | mittel | 17.100 | 88.346 | 6 | ----- | H2, H4 |
+| `yun2024:164` | PMC5062234 | 0 | 0 | 0 | 0 | 0 | 0 | unbekannt | 4.897 | 99.794 | 2 | ----- | H4, H7 |
+| `yun2024:171` | PMC5079604 | 2 | 4 | 4 | 19 | 1 | 0 | mittel | 21.446 | 97.231 | 4 | ----- | H6 |
+| `yun2024:173` | PMC5079604 | 2 | 4 | 4 | 19 | 1 | 0 | mittel | 21.416 | 93.443 | 4 | ----- | H6 |
+| `yun2024:204` | PMC5380326 | 3 | 17 | 6 | 169 | 2 | 3 | sehr_komplex | 15.580 | 89.548 | 2 | ----- | H1, H2, H6 |
+| `yun2024:251` | PMC5614421 | 3 | 13 | 6 | 100 | 1 | 0 | komplex | 41.153 | 97.921 | 4 | ----- | H1, H4, H6 |
+| `yun2024:252` | PMC5614421 | 3 | 13 | 6 | 100 | 1 | 0 | komplex | 41.138 | 99.829 | 2 | TP-D- | H1, H4, H6 |
+| `yun2024:273` | PMC3214395 | 0 | 0 | 0 | 0 | 0 | 0 | unbekannt | 4.436 | 101.270 | 2 | ----- | H4, H7 |
+| `yun2024:304` | PMC4357072 | 0 | 0 | 0 | 0 | 0 | 0 | unbekannt | 6.540 | 95.635 | 4 | ----- | H4, H7 |
+| `yun2024:356` | PMC5884950 | 2 | 15 | 3 | 48 | 1 | 0 | mittel | 20.650 | 96.159 | 2 | ----- | H4, H7 |
+| `yun2024:420` | PMC3877023 | 4 | 5 | 6 | 49 | 4 | 4 | sehr_komplex | 27.322 | 86.878 | 6 | ----- | H1, H3, H4, H6 |
+| `yun2024:421` | PMC3877023 | 4 | 5 | 6 | 49 | 4 | 4 | sehr_komplex | 27.320 | 84.549 | 6 | TPSD- | H1, H3, H4, H6 |
+| `yun2024:446` | PMC4879328 | 3 | 4 | 5 | 15 | 3 | 0 | sehr_komplex | 26.270 | 95.071 | 6 | ----- | H1, H3, H4 |
+| `yun2024:451` | PMC4879328 | 3 | 4 | 5 | 15 | 3 | 0 | sehr_komplex | 26.319 | 95.333 | 6 | ----- | H1, H3, H4 |
+| `yun2024:523` | PMC5325897 | 2 | 16 | 3 | 51 | 1 | 0 | mittel | 7.811 | 89.661 | 6 | ----- | H4, H7 |
+| `yun2024:525` | PMC5325897 | 2 | 16 | 3 | 51 | 1 | 0 | mittel | 7.811 | 89.708 | 6 | ----- | H4, H7 |
+| `yun2024:557` | PMC3136370 | 1 | 6 | 7 | 42 | 1 | 0 | mittel | 14.124 | 93.380 | 6 | ----- | H4, H7 |
+| `yun2024:559` | PMC3136370 | 1 | 6 | 7 | 42 | 1 | 0 | mittel | 14.139 | 89.528 | 6 | ----- | H4, H7 |
+| `yun2024:582` | PMC3504298 | 1 | 11 | 5 | 55 | 2 | 0 | komplex | 13.869 | 99.406 | 2 | ----- | H1, H4 |
+| `yun2024:624` | PMC3493722 | 0 | 0 | 0 | 0 | 0 | 0 | unbekannt | 6.268 | 87.507 | 2 | ----- | H4, H7 |
+| `yun2024:625` | PMC3493722 | 0 | 0 | 0 | 0 | 0 | 0 | unbekannt | 6.268 | 82.625 | 2 | ----- | H4, H7 |
+| `yun2024:671` | PMC4550271 | 5 | 36 | 9 | 467 | 3 | 4 | sehr_komplex | 43.571 | 100.255 | 2 | ----- | H1, H2, H3, H4 |
+| `yun2024:672` | PMC4550271 | 5 | 36 | 9 | 467 | 3 | 4 | sehr_komplex | 43.591 | 100.367 | 2 | TP-D- | H1, H2, H3, H4 |
+| `yun2024:674` | PMC4550271 | 5 | 36 | 9 | 467 | 3 | 4 | sehr_komplex | 43.605 | 93.674 | 6 | ----- | H1, H2, H3, H4 |
+| `yun2024:673` | PMC4550271 | 5 | 36 | 9 | 467 | 3 | 4 | sehr_komplex | 43.585 | 93.498 | 6 | ----- | H1, H2, H3, H4 |
+| `yun2024:685` | PMC2836833 | 7 | 6 | 7 | 117 | 2 | 10 | komplex | 19.903 | 88.956 | 2 | ----- | H1, H4 |
+| `yun2024:678` | PMC5777419 | 3 | 7 | 15 | 115 | 3 | 6 | sehr_komplex | 13.328 | 97.070 | 2 | TP-D- | H1, H3, H6 |
+| `yun2024:687` | PMC2836833 | 7 | 6 | 7 | 117 | 2 | 10 | komplex | 19.900 | 95.376 | 2 | ----- | H1, H4 |
 
-Spalten: `Tab.` zaehlt **alle** Tabellen des Dokuments, `Zeilen max` und `Spalten max` sind das Maximum je Tabelle, `Datenzellen` die Summe nicht-leerer Datenzellen (ohne Labelspalten), `Kopfebenen` die hoechste Zahl von Header-Baendern. Diagnosen: T = eingefrorene Testauswahl, P = Strukturplan A-E, S = Kopfband-Diagnose (Sprint 43), D = Gruppenkopf-/Fliesstext-Diagnose, M = Modelllauf A/B/E, `-` = kein Artefakt. Zur **Publikation** traegt der Record nur Dokument-ID und Dokumentpfad; Titel, Journal und DOI stehen nicht in den Daten und sind im JSON als nicht verfuegbar gekennzeichnet.
+Spalten: `Tab.` zaehlt **alle** Tabellen des Dokuments, `Zeilen max` ist das Maximum je Tabelle, `Datenspalten` das Maximum der Datenspalten (ohne Labelspalte), `Gruppenkopf` die Summe der Kopfband-Zellen mit span > 1, `Datenzellen` die Summe nicht-leerer Datenzellen (ohne Labelspalten), `Kopfebenen` die hoechste Zahl von Header-Baendern. Diagnosen: T = eingefrorene Testauswahl, P = Strukturplan A-E, S = Kopfband-Diagnose (Sprint 43), D = Gruppenkopf-/Fliesstext-Diagnose, M = Modelllauf A/B/E, `-` = kein Artefakt. Zur **Publikation** traegt der Record nur Dokument-ID und Dokumentpfad; Titel, Journal und DOI stehen nicht in den Daten und sind im JSON als nicht verfuegbar gekennzeichnet.
 
 Alle 33 Zeilen: `completion_tokens = 24000` (genau das Budget), `content_chars = 0`, `finish_reason = length`, `http_status = 200`, Version `v2_timepoint`. Jede `record_id` kommt genau einmal vor.
 
@@ -65,7 +65,7 @@ Alle 33 Zeilen: `completion_tokens = 24000` (genau das Budget), `content_chars =
 | `fussnoten_summe` | 0 | 0 | 3 | 4 |
 | `unregelmaessige_zeilen` | 1 | 0 | 5 | 2 |
 
-Schwellen aus allen 103 Zeilen (Q75): `datenzellen_summe` 121, `datenzellen_zielfeld` 0, `prompt_zeichen` 22.671, `komplexitaet_score_max` 0,6. Die Schwellen stammen aus beiden Gruppen zusammen, damit kein Merkmal allein durch die Auswahl auffaellt.
+Schwellen aus allen 103 Zeilen (Q75): `datenzellen_summe` 121, `datenzellen_zielfeld` 0, `prompt_zeichen` 22.671, `komplexitaet_score_max` 0,6, `datenspalten_max` 7. Die Schwellen stammen aus beiden Gruppen zusammen, damit kein Merkmal allein durch die Auswahl auffaellt.
 
 ## 3. Gruppierung nach Fehlerhypothesen
 
@@ -74,12 +74,21 @@ Schwellen aus allen 103 Zeilen (Q75): `datenzellen_summe` 121, `datenzellen_ziel
 | H1 Zu hohe Tabellenkomplexitaet | 17 / 33 | 51,5 % | 24 / 67 | 35,8 % | 15,7 Pp |
 | H2 Zu viele Tabellenzellen | 7 / 33 | 21,2 % | 19 / 67 | 28,4 % | -7,2 Pp |
 | H3 Mehrstufige Ueberschriften | 9 / 33 | 27,3 % | 9 / 67 | 13,4 % | 13,9 Pp |
+| H3G Gruppenkopf-Zellen (Kopfband mit span > 1) | 11 / 33 | 33,3 % | 9 / 67 | 13,4 % | 19,9 Pp |
+| H3S Spaltenbreite (Datenspalten ueber Q75) | 8 / 33 | 24,2 % | 12 / 67 | 17,9 % | 6,3 Pp |
+| H3weit H3 zusammen (eines der drei Merkmale) | 15 / 33 | 45,5 % | 20 / 67 | 29,9 % | 15,6 Pp |
 | H4 Ungeeignete Promptstruktur | 29 / 33 | 87,9 % | 55 / 67 | 82,1 % | 5,8 Pp |
+| H4a Grosse Prompt (Volltext ueber Q75) | 12 / 33 | 36,4 % | 14 / 67 | 20,9 % | 15,5 Pp |
+| H4b Keine Tabelle mit Zielfeld | 24 / 33 | 72,7 % | 51 / 67 | 76,1 % | -3,4 Pp |
 | H5 Zu aufwendige Reasoning-Schritte | 33 / 33 | 100 % | 0 / 67 | 0 % | 100 Pp |
 | H6 Zu umfangreiche Ausgabe | 9 / 33 | 27,3 % | 16 / 67 | 23,9 % | 3,4 Pp |
 | H7 Sonstige bzw. nicht eindeutig klassifizierbar | 13 / 33 | 39,4 % | 30 / 67 | 44,8 % | -5,4 Pp |
 
-H5 ist ein **Mechanismus, keine Ursache**: jede Ausfallzeile hat das Budget im Reasoning verbraucht, weil kein Inhalt ausgegeben wurde. H5 unterscheidet daher nichts und steht nur als Befund in der Tabelle. H7 markiert Faelle, bei denen **keine strukturelle** Hypothese (H1, H2, H3, H6) greift; H4 bleibt dabei aussen vor, weil "keine Tabelle mit Zielfeld" in beiden Gruppen fast ueberall zutrifft.
+H5 ist ein **Mechanismus, keine Ursache**: jede Ausfallzeile hat das Budget im Reasoning verbraucht, weil kein Inhalt ausgegeben wurde. H5 unterscheidet daher nichts und steht nur als Befund in der Tabelle. H7 markiert Faelle, bei denen **keine strukturelle** Hypothese (H1, H2, H3, H6) greift; H4 bleibt dabei aussen vor, weil "keine Tabelle mit Zielfeld" in beiden Gruppen fast ueberall zutrifft. H3 meint in dieser Zeile die Zahl der Kopfbaender; H3G und H3S sind Zusatzbelege und aendern H7 nicht.
+
+H3 ist zusaetzlich in drei Teilen ausgewertet, weil sich mehrstufige Ueberschriften im Markdown auf drei Arten zeigen: als Zahl der Kopfbaender (H3, mindestens 3), als Gruppenkopf-Zellen (H3G, Kopfband mit span > 1) und als Spaltenbreite (H3S, Datenspalten ueber Q75 = 7). Einzeln: H3 9/33 gegen 9/67, H3G 11/33 gegen 9/67, H3S 8/33 gegen 12/67. Zusammen (eines der drei) trifft H3 auf 15 der 33 Ausfaelle und 20 der 67 Erfolge (15,6 Pp).
+
+H4 ist in seine zwei Bestandteile zerlegt: **Promptgroesse** (H4a, mehr als 22.671 Zeichen, das Q75 aller 103 Zeilen) und **fehlende Tabelle mit Zielfeld** (H4b, der Parser ordnet keiner Tabelle das abgefragte Zielfeld zu). H4a trifft 12/33 gegen 14/67 (15,5 Pp), H4b 24/33 gegen 51/67 (-3,4 Pp). Die Summe H4 (29/33 gegen 55/67) kommt damit ueberwiegend aus H4b: der Record fragt ein Zielfeld ab, das der Parser in keiner Tabelle findet. Das ist eine Eigenschaft von Aufgabe und Parser, nicht des Prompts; nur H4a beschreibt wirklich die Promptgroesse.
 
 Beobachtung und Vermutung sind getrennt: die Anteile sind Beobachtung; dass ein Merkmal die Ursache ist, waere eine Vermutung. Aussagekraft hat nur ein Merkmal, das bei den Ausfaellen deutlich haeufiger auftritt als bei den Erfolgen.
 
@@ -94,11 +103,32 @@ Beobachtung und Vermutung sind getrennt: die Anteile sind Beobachtung; dass ein 
 | dauer_s: Median | 191,5 | 76,2 |
 | dauer_s: Spanne | 0,1-300 | 0,1-298,4 |
 
-Struktureller Kontrast: 6 der 33 Ausfaelle haben im Dokument **keine parsebare Tabelle**, 24 haben keine Tabelle, der der Parser ein Zielfeld zuordnen kann. Bei den Erfolgen betraegt der Median der Datenzellen 60, bei den Ausfaellen 49; die Ausfaelle sind strukturell also **nicht** die groesseren Tabellen. Auch die Zahl der Tabellen ist bei ihnen kleiner (2 gegen 3 im Median).
+Struktureller Kontrast: 6 der 33 Ausfaelle haben im Dokument **keine parsebare Tabelle** (Abschnitt 4.1 prueft das am Markdown), 24 haben keine Tabelle, der der Parser ein Zielfeld zuordnen kann. Bei den Erfolgen betraegt der Median der Datenzellen 60, bei den Ausfaellen 49; die Ausfaelle sind strukturell also **nicht** die groesseren Tabellen. Auch die Zahl der Tabellen ist bei ihnen kleiner (2 gegen 3 im Median).
 
 Fruehere Laeufe derselben Records bei 8.000 Tokens (vorhandene Predictions, Modell glm): 73 x `length_ohne_ergebnis`, 7 x `ok` Beobachtungen. Auf Record-Ebene: 33 der 33 haben mindestens eine 8000er-Zeile, davon 3 mit mindestens einem Erfolg. Die Mehrheit war also schon bei 8.000 ein Budgetabbruch; mehr Budget allein hat die Klasse nicht gedreht.
 
 Die Dauerangabe ist nur eingeschraenkt brauchbar: mindestens eine Zeile nennt 0,14 s bei 89.370 Reasoning-Zeichen. Sie wird deshalb nicht als Merkmal verwendet.
+
+### 4.1 Die sechs Records ohne Tabelle: am Markdown geprueft
+
+Der Parser findet in diesen sechs Records keine Tabelle. Am Markdown geprueft heisst das nicht, dass der Artikel keine Tabelle hat: alle fuenf betroffenen Dateien enthalten Tabellenbloecke mit Caption, aber der Tabellenkoerper ist durch den Bildplatzhalter `![]()` ersetzt. Es gibt keine einzige Pipe-Zeile, also keinen Tabellentext, den ein Prompt verwenden koennte.
+
+| Record | Dokument | Zeichen | table-wrap | Captions | Bildplatzhalter | Pipe-Zeilen | Parser-Tabellen | Befund |
+|---|---|---:|---:|---:|---:|---:|---:|---|
+| `yun2024:119` | PMC4323894 | 10.032 | 6 | 6 | 6 | 0 | 0 | nur Caption und Bildplatzhalter, kein Tabellentext |
+| `yun2024:164` | PMC5062234 | 3.808 | 2 | 2 | 2 | 0 | 0 | nur Caption und Bildplatzhalter, kein Tabellentext |
+| `yun2024:273` | PMC3214395 | 3.360 | 3 | 3 | 3 | 0 | 0 | nur Caption und Bildplatzhalter, kein Tabellentext |
+| `yun2024:304` | PMC4357072 | 5.515 | 3 | 3 | 3 | 0 | 0 | nur Caption und Bildplatzhalter, kein Tabellentext |
+| `yun2024:624` | PMC3493722 | 5.258 | 3 | 3 | 3 | 0 | 0 | nur Caption und Bildplatzhalter, kein Tabellentext |
+| `yun2024:625` | PMC3493722 | 5.258 | 3 | 3 | 3 | 0 | 0 | nur Caption und Bildplatzhalter, kein Tabellentext |
+
+- `PMC4323894`: "Basic parameters comparison among the 3 studied groups"; "Effect of regional brain cooling on GOS at discharge and at 6 months"; "Effect of regional brain cooling on GOS at 6 months after stratifying the cooling group into mild and deep cooling"; "Effects of regional brain cooling (both mild and deep cooling groups combined together) on immunological parameters"; "Correlation analysis between studied parameters with outcome score at 6 months"; "Association between treatment groups and incidence of complication".
+- `PMC5062234`: "Demographic data of patients in the two groups"; "Visual analogue scale score at rest and on coughing in the two groups (median (minimum-maximum))".
+- `PMC3214395`: "Comparison of time to reach to proposed bispectral index (BIS), duration of laryngoscopy, mean changes of BIS, heart rate, arterial oxygen saturation (SpO2), end tidal CO2 (EtCO2) and an awakening time among three groups"; "The frequency distributions of responses to laryngoscopy among three groups"; "The mean bispectral index (BIS) before and immediately after intubation in different groups".
+- `PMC4357072`: "Intra and inter group comparision of burning sensation (before and after treatment)"; "Inter and intra group comparison of clinical scores (before and after treatment)"; "Inter and intra group comparison of erythematous areas (before and after treatment)".
+- `PMC3493722`: "Demographic Data and Clinical Characteristics of the Two Patient Groups in the Intention to Treat Analysis"; "The Eradication Rate of and Compliance with the 1-Week and 2-Week PPI+BMT Quadruple Rescue Therapy"; "Side Effects of the 1- and 2-Week PPI+BMT Quadruple Rescue Therapy".
+
+Damit ist die Einschraenkung prazise: die sechs Records haben **keinen Tabellentext im Markdown**, obwohl die Artikel Tabellen enthalten (zwei Records teilen sich sogar eine Datei). Ein tabellenbasierter Prompt ist fuer sie nur mit einer anderen Quelle fuer den Tabelleninhalt moeglich; der Prosa-Pfad (Empfehlung 3) ist fuer sie der naheliegende Weg. An der Aussage zu H4b ('keine Tabelle mit Zielfeld') aendert das nichts: ohne Zellen kann auch kein Zielfeld zugeordnet werden.
 
 ## 5. Bereits getestete Zerlegungsverfahren
 
@@ -139,8 +169,8 @@ Damit ist die Zerlegung fuer **keinen** der 33 Faelle mit einem Modell gemessen:
 Auf die Ausgangsfrage, ob die Abbrueche ueberwiegend durch Tabellenkomplexitaet, Promptstruktur, Reasoning-Aufwand oder Ausgabeumfang erklaerbar sind:
 
 - **Tabellenkomplexitaet und Zellenzahl: nein.** H1 trennt mit 15,7 Pp, H2 mit -7,2 Pp; die Ausfaelle haben im Median sogar weniger Datenzellen und weniger Tabellen als die Erfolge.
-- **Mehrstufige Ueberschriften: teilweise.** H3 trifft 9 von 33 Ausfaellen gegenueber 9 von 67 Erfolgen (13,9 Pp). Das ist der spezifischste Strukturtrenner (selten bei Erfolgen), erklaert aber nur gut ein Viertel der Faelle.
-- **Promptstruktur: nur schwach trennend.** H4 trifft 29 der 33 Ausfaelle und 55 der 67 Erfolge. Der Grund: der Volltext-Prompt mit hoechstens 45.000 Zeichen gilt fuer alle Records, und bei den meisten liegt keine Tabelle mit zugeordnetem Zielfeld vor - das trifft Erfolge wie Ausfaelle.
+- **Mehrstufige Ueberschriften: teilweise.** H3 trifft 9 von 33 Ausfaellen gegenueber 9 von 67 Erfolgen (13,9 Pp). Gruppenkopf-Zellen stuetzen den Befund (H3G 11/33 gegen 9/67, 19,9 Pp), die Spaltenbreite nur schwach (H3S 8/33 gegen 12/67, 6,3 Pp); zusammen 15/33 gegen 20/67 (15,6 Pp). H3 ist damit der spezifischste Strukturtrenner, erklaert aber nur gut ein Viertel der Faelle.
+- **Promptstruktur: nur schwach trennend, und aus zwei verschiedenen Dingen zusammengesetzt.** H4a (grosse Prompt) trifft 12 der 33 Ausfaelle und 14 der 67 Erfolge (15,5 Pp); H4b (keine Tabelle mit Zielfeld) 24 bzw. 51 (-3,4 Pp). H4b gilt in beiden Gruppen fast ueberall und trennt daher nicht; nur die Promptgroesse zeigt einen kleinen Unterschied.
 - **Ausgabeumfang: nein.** H6 trennt mit 3,4 Pp.
 - **Reasoning-Aufwand: als Mechanismus bestaetigt, als Ursache offen.** Alle Ausfaelle enden mit 24.000 Tokens und 0 Zeichen Inhalt; der Reasoning-Umfang ist rund dreimal so hoch wie bei den Erfolgen. Warum er so hoch ist, zeigt die Struktur nicht.
 - **13 der 33 Ausfaelle haben keine strukturelle Hypothese**: bei ihnen bleibt nur der Prompt-/Reasoning-Pfad als Erklaerung.
@@ -151,4 +181,5 @@ Gesichert ist damit nur der Mechanismus (Budget im Reasoning, kein Inhalt) und d
 
 - Reasoning-Tokens stehen nicht in den Predictions; angegeben sind Zeichen. Die Umrechnung Zeichen/Token ist eine Schaetzung (Median 4,0 aus 390 abgeschnittenen Zeilen, `budget_hypothese_20261118.md`).
 - Strukturmerkmale kommen aus dem vorhandenen Parser und der vorhandenen Komplexitaetsbewertung. Wo der Parser keine Tabelle erkennt, steht 0 - das ist ein Parserbefund, keine Aussage ueber das PDF.
+- Fuer die sechs Records ohne Tabelle ist der Parserbefund am Markdown geprueft: die Tabellen stehen dort als Caption mit Bildplatzhalter, nicht als Zellen. Aussagen ueber Zellenzahl oder Zielfeld dieser Faelle beschreiben daher das Markdown, nicht den Artikel.
 - Zusammenhange sind beobachtet, nicht kausal belegt. Der Bericht nennt keine Ursache als gesichert.

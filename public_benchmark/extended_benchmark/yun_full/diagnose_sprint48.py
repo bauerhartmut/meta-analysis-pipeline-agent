@@ -25,6 +25,7 @@ Aufruf:
 from __future__ import annotations
 
 import json
+import re
 import statistics
 import sys
 from collections import Counter
@@ -55,6 +56,10 @@ AUSGABE = BENCH / "iterativ" / "ergebnisse" / "sprint48_budgetdiagnose"
 BUDGET = 24000
 PROMPT_LIMIT = 45000  # Standard von build_prompt; P5 hat ihn nicht ueberschrieben
 
+#: Caption-Blocke im Markdown. Der Tabellenkoerper steht dort oft nur als
+#: Bildplatzhalter `![]()`; dann findet der Parser keine Tabelle.
+CAPTION_RE = re.compile(r":::\s*caption\s*\n(.*?)\n:::", re.S)
+
 #: Komplexitaetsklassen in aufsteigender Ordnung (aus `complexity.assess`).
 KLASSEN_RANG = {"einfach": 0, "mittel": 1, "komplex": 2, "sehr_komplex": 3}
 
@@ -62,7 +67,12 @@ HYPOTHESEN = {
     "H1": "Zu hohe Tabellenkomplexitaet",
     "H2": "Zu viele Tabellenzellen",
     "H3": "Mehrstufige Ueberschriften",
+    "H3G": "Gruppenkopf-Zellen (Kopfband mit span > 1)",
+    "H3S": "Spaltenbreite (Datenspalten ueber Q75)",
+    "H3weit": "H3 zusammen (eines der drei Merkmale)",
     "H4": "Ungeeignete Promptstruktur",
+    "H4a": "Grosse Prompt (Volltext ueber Q75)",
+    "H4b": "Keine Tabelle mit Zielfeld",
     "H5": "Zu aufwendige Reasoning-Schritte",
     "H6": "Zu umfangreiche Ausgabe",
     "H7": "Sonstige bzw. nicht eindeutig klassifizierbar",
@@ -102,6 +112,23 @@ def kontext(record: dict) -> dict[str, Any]:
         "outcome": ctx.get("outcome"),
         "outcome_type": ctx.get("outcome_type"),
         "timepoint_target": (record.get("timepoint") or {}).get("target"),
+    }
+
+
+def markdown_befund(text: str) -> dict[str, Any]:
+    """Was steht im Markdown selbst an Tabellen?
+
+    Ein `table-wrap`-Block mit Caption und Bildplatzhalter `![]()` bedeutet:
+    die Tabelle existiert im Artikel, ihr Zellentext fehlt aber im Markdown.
+    Das ist der Unterschied zwischen "keine Tabelle" und "kein Tabellentext".
+    """
+    captions = [" ".join(c.split()) for c in CAPTION_RE.findall(text)]
+    return {
+        "md_tabellen_wrapper": text.count("table-wrap"),
+        "md_captions": len(captions),
+        "md_caption_texte": captions,
+        "md_bild_platzhalter": text.count("![]("),
+        "md_pipe_zeilen": sum(1 for z in text.splitlines() if z.strip().startswith("|")),
     }
 
 
@@ -344,6 +371,7 @@ def fall_eintrag(
         },
         "struktur": {
             **verdichtet,
+            **markdown_befund(text),
             "text_zeichen": len(text),
             "text_zeichen_record": doc.get("text_chars"),
             "prompt_zeichen": prompt_zeichen,
@@ -400,13 +428,22 @@ def ueber(wert: float, schwelle: float) -> bool:
 
 def hypothese_treffer(eintrag: dict, schwellen: dict[str, float]) -> dict[str, bool]:
     s = eintrag["struktur"]
+    h3 = s.get("kopfebenen_max", 0) >= 3
+    h3g = s.get("gruppenkopf_zellen", 0) > 0
+    h3s = ueber(s.get("datenspalten_max", 0), schwellen["datenspalten_max"])
+    h4a = ueber(s.get("prompt_zeichen", 0), schwellen["prompt_zeichen"])
+    h4b = s.get("tabellen_mit_zielfeld", 0) == 0
     return {
         "H1": s.get("komplexe_tabellen", 0) >= 1
         or ueber(s.get("komplexitaet_score_max", 0), schwellen["komplexitaet_score_max"]),
         "H2": ueber(s.get("datenzellen_summe", 0), schwellen["datenzellen_summe"]),
-        "H3": s.get("kopfebenen_max", 0) >= 3,
-        "H4": ueber(s.get("prompt_zeichen", 0), schwellen["prompt_zeichen"])
-        or s.get("tabellen_mit_zielfeld", 0) == 0,
+        "H3": h3,
+        "H3G": h3g,
+        "H3S": h3s,
+        "H3weit": h3 or h3g or h3s,
+        "H4": h4a or h4b,
+        "H4a": h4a,
+        "H4b": h4b,
         "H6": ueber(s.get("datenzellen_zielfeld", 0), schwellen["datenzellen_zielfeld"]),
     }
 
@@ -461,9 +498,9 @@ def schreibe_md(
     a("## 1. Uebersicht der 33 Budgetfaelle")
     a("")
     a(
-        "| Record | Dokument | Tab. | Zeilen max | Spalten max | Datenzellen | Kopfebenen | Komplexitaet | Prompt-Zeichen | Reasoning-Zeichen | Gold | Diagnosen | Hypothesen |"
+        "| Record | Dokument | Tab. | Zeilen max | Datenspalten | Datenzellen | Kopfebenen | Gruppenkopf | Komplexitaet | Prompt-Zeichen | Reasoning-Zeichen | Gold | Diagnosen | Hypothesen |"
     )
-    a("|---|---|---:|---:|---:|---:|---:|---|---:|---:|---:|---|---|")
+    a("|---|---|---:|---:|---:|---:|---:|---:|---|---:|---:|---:|---|---|")
     for e in abbruch:
         s, l = e["struktur"], e["lauf"]
         dz = e["zerlegungsdiagnosen"]
@@ -482,14 +519,15 @@ def schreibe_md(
         a(
             f"| `{e['record_id']}` | {e['publikation']['dokument_id']} | {s.get('tabellen', 0)} | "
             f"{s.get('zeilen_max', 0)} | {s.get('datenspalten_max', 0)} | {s.get('datenzellen_summe', 0)} | "
-            f"{s.get('kopfebenen_max', 0)} | "
+            f"{s.get('kopfebenen_max', 0)} | {s.get('gruppenkopf_zellen', 0)} | "
             f"{s.get('komplexitaet_max', '-')} | {zahl(s.get('prompt_zeichen'))} | "
             f"{zahl(l.get('reasoning_zeichen'))} | {e['gold']['zellen']} | {merker} | {treffer or '-'} |"
         )
     a("")
     a(
-        "Spalten: `Tab.` zaehlt **alle** Tabellen des Dokuments, `Zeilen max` und `Spalten max` "
-        "sind das Maximum je Tabelle, `Datenzellen` die Summe nicht-leerer Datenzellen "
+        "Spalten: `Tab.` zaehlt **alle** Tabellen des Dokuments, `Zeilen max` ist das Maximum "
+        "je Tabelle, `Datenspalten` das Maximum der Datenspalten (ohne Labelspalte), "
+        "`Gruppenkopf` die Summe der Kopfband-Zellen mit span > 1, `Datenzellen` die Summe nicht-leerer Datenzellen "
         "(ohne Labelspalten), `Kopfebenen` die hoechste Zahl von Header-Baendern. "
         "Diagnosen: T = eingefrorene Testauswahl, P = Strukturplan A-E, S = Kopfband-Diagnose "
         "(Sprint 43), D = Gruppenkopf-/Fliesstext-Diagnose, M = Modelllauf A/B/E, `-` = kein "
@@ -538,7 +576,39 @@ def schreibe_md(
         "Reasoning verbraucht, weil kein Inhalt ausgegeben wurde. H5 unterscheidet daher "
         "nichts und steht nur als Befund in der Tabelle. H7 markiert Faelle, bei denen "
         "**keine strukturelle** Hypothese (H1, H2, H3, H6) greift; H4 bleibt dabei aussen "
-        "vor, weil \"keine Tabelle mit Zielfeld\" in beiden Gruppen fast ueberall zutrifft."
+        "vor, weil \"keine Tabelle mit Zielfeld\" in beiden Gruppen fast ueberall zutrifft. "
+        "H3 meint in dieser Zeile die Zahl der Kopfbaender; H3G und H3S sind Zusatzbelege "
+        "und aendern H7 nicht."
+    )
+    a("")
+    h3, h4 = hypothesen_bilanz["H3"], hypothesen_bilanz["H4"]
+    h3g, h3s, h3w = hypothesen_bilanz["H3G"], hypothesen_bilanz["H3S"], hypothesen_bilanz["H3weit"]
+    a(
+        "H3 ist zusaetzlich in drei Teilen ausgewertet, weil sich mehrstufige Ueberschriften "
+        "im Markdown auf drei Arten zeigen: als Zahl der Kopfbaender (H3, mindestens 3), "
+        "als Gruppenkopf-Zellen (H3G, Kopfband mit span > 1) und als Spaltenbreite "
+        f"(H3S, Datenspalten ueber Q75 = {zahl(schwellen['datenspalten_max'])}). Einzeln: "
+        f"H3 {h3['ausfaelle']}/{len(abbruch)} gegen {h3['erfolge']}/{len(erfolg)}, "
+        f"H3G {h3g['ausfaelle']}/{len(abbruch)} gegen {h3g['erfolge']}/{len(erfolg)}, "
+        f"H3S {h3s['ausfaelle']}/{len(abbruch)} gegen {h3s['erfolge']}/{len(erfolg)}. "
+        f"Zusammen (eines der drei) trifft H3 auf {h3w['ausfaelle']} der {len(abbruch)} "
+        f"Ausfaelle und {h3w['erfolge']} der {len(erfolg)} Erfolge "
+        f"({zahl(h3w['differenz_pp'])} Pp)."
+    )
+    a("")
+    h4a, h4b = hypothesen_bilanz["H4a"], hypothesen_bilanz["H4b"]
+    a(
+        "H4 ist in seine zwei Bestandteile zerlegt: **Promptgroesse** (H4a, mehr als "
+        f"{zahl(schwellen['prompt_zeichen'])} Zeichen, das Q75 aller 103 Zeilen) und "
+        "**fehlende Tabelle mit Zielfeld** (H4b, der Parser ordnet keiner Tabelle das "
+        f"abgefragte Zielfeld zu). H4a trifft {h4a['ausfaelle']}/{len(abbruch)} gegen "
+        f"{h4a['erfolge']}/{len(erfolg)} ({zahl(h4a['differenz_pp'])} Pp), H4b "
+        f"{h4b['ausfaelle']}/{len(abbruch)} gegen {h4b['erfolge']}/{len(erfolg)} "
+        f"({zahl(h4b['differenz_pp'])} Pp). Die Summe H4 ({h4['ausfaelle']}/{len(abbruch)} "
+        f"gegen {h4['erfolge']}/{len(erfolg)}) kommt damit ueberwiegend aus H4b: der "
+        "Record fragt ein Zielfeld ab, das der Parser in keiner Tabelle findet. Das ist "
+        "eine Eigenschaft von Aufgabe und Parser, nicht des Prompts; nur H4a beschreibt "
+        "wirklich die Promptgroesse."
     )
     a("")
     a(
@@ -562,7 +632,8 @@ def schreibe_md(
     ohne_zielfeld = sum(1 for e in abbruch if e["struktur"].get("tabellen_mit_zielfeld", 0) == 0)
     a(
         f"Struktureller Kontrast: {ohne_tabellen} der {len(abbruch)} Ausfaelle haben im "
-        f"Dokument **keine parsebare Tabelle**, {ohne_zielfeld} haben keine Tabelle, der "
+        f"Dokument **keine parsebare Tabelle** (Abschnitt 4.1 prueft das am Markdown), "
+        f"{ohne_zielfeld} haben keine Tabelle, der "
         "der Parser ein Zielfeld zuordnen kann. Bei den Erfolgen betraegt der Median der "
         f"Datenzellen {zahl(merkmals_bilanz['datenzellen_summe']['erfolge'].get('median'))}, "
         f"bei den Ausfaellen {zahl(merkmals_bilanz['datenzellen_summe']['ausfaelle'].get('median'))}; "
@@ -588,6 +659,57 @@ def schreibe_md(
     a(
         "Die Dauerangabe ist nur eingeschraenkt brauchbar: mindestens eine Zeile nennt "
         "0,14 s bei 89.370 Reasoning-Zeichen. Sie wird deshalb nicht als Merkmal verwendet."
+    )
+    a("")
+    a("### 4.1 Die sechs Records ohne Tabelle: am Markdown geprueft")
+    a("")
+    a(
+        "Der Parser findet in diesen sechs Records keine Tabelle. Am Markdown geprueft "
+        "heisst das nicht, dass der Artikel keine Tabelle hat: alle fuenf betroffenen "
+        "Dateien enthalten Tabellenbloecke mit Caption, aber der Tabellenkoerper ist "
+        "durch den Bildplatzhalter `![]()` ersetzt. Es gibt keine einzige Pipe-Zeile, "
+        "also keinen Tabellentext, den ein Prompt verwenden koennte."
+    )
+    a("")
+    a(
+        "| Record | Dokument | Zeichen | table-wrap | Captions | Bildplatzhalter | Pipe-Zeilen | Parser-Tabellen | Befund |"
+    )
+    a("|---|---|---:|---:|---:|---:|---:|---:|---|")
+    for e in [x for x in abbruch if x["struktur"].get("tabellen", 0) == 0]:
+        s = e["struktur"]
+        if s.get("md_pipe_zeilen", 0) > 0:
+            befund = "Tabellentext vorhanden, Parser erkennt ihn nicht"
+        elif s.get("md_captions", 0) > 0:
+            befund = "nur Caption und Bildplatzhalter, kein Tabellentext"
+        else:
+            befund = "keine Tabellenmarkierung im Markdown"
+        a(
+            f"| `{e['record_id']}` | {e['publikation']['dokument_id']} | "
+            f"{zahl(s.get('text_zeichen'))} | {s.get('md_tabellen_wrapper', 0)} | "
+            f"{s.get('md_captions', 0)} | {s.get('md_bild_platzhalter', 0)} | "
+            f"{s.get('md_pipe_zeilen', 0)} | {s.get('tabellen', 0)} | {befund} |"
+        )
+    a("")
+    gesehen: dict[str, list[str]] = {}
+    for e in abbruch:
+        if e["struktur"].get("tabellen", 0) == 0:
+            gesehen.setdefault(
+                e["publikation"]["dokument_id"], e["struktur"].get("md_caption_texte") or []
+            )
+    for doc_id, texte in gesehen.items():
+        if not texte:
+            a(f"- `{doc_id}`: keine Caption gefunden.")
+            continue
+        a(f"- `{doc_id}`: " + "; ".join('"' + t + '"' for t in texte) + ".")
+    a("")
+    a(
+        "Damit ist die Einschraenkung prazise: die sechs Records haben **keinen "
+        "Tabellentext im Markdown**, obwohl die Artikel Tabellen enthalten (zwei Records "
+        "teilen sich sogar eine Datei). Ein tabellenbasierter Prompt ist fuer sie nur "
+        "mit einer anderen Quelle fuer den Tabelleninhalt moeglich; der Prosa-Pfad "
+        "(Empfehlung 3) ist fuer sie der naheliegende Weg. An der Aussage zu H4b "
+        "('keine Tabelle mit Zielfeld') aendert das nichts: ohne Zellen kann auch kein "
+        "Zielfeld zugeordnet werden."
     )
     a("")
     a("## 5. Bereits getestete Zerlegungsverfahren")
@@ -751,15 +873,23 @@ def schreibe_md(
     a(
         f"- **Mehrstufige Ueberschriften: teilweise.** H3 trifft {h3['ausfaelle']} von "
         f"{len(abbruch)} Ausfaellen gegenueber {h3['erfolge']} von {len(erfolg)} Erfolgen "
-        f"({zahl(h3['differenz_pp'])} Pp). Das ist der spezifischste Strukturtrenner "
-        "(selten bei Erfolgen), erklaert aber nur gut ein Viertel der Faelle."
+        f"({zahl(h3['differenz_pp'])} Pp). Gruppenkopf-Zellen stuetzen den Befund "
+        f"(H3G {h3g['ausfaelle']}/{len(abbruch)} gegen {h3g['erfolge']}/{len(erfolg)}, "
+        f"{zahl(h3g['differenz_pp'])} Pp), die Spaltenbreite nur schwach "
+        f"(H3S {h3s['ausfaelle']}/{len(abbruch)} gegen {h3s['erfolge']}/{len(erfolg)}, "
+        f"{zahl(h3s['differenz_pp'])} Pp); zusammen {h3w['ausfaelle']}/{len(abbruch)} "
+        f"gegen {h3w['erfolge']}/{len(erfolg)} ({zahl(h3w['differenz_pp'])} Pp). H3 ist "
+        "damit der spezifischste Strukturtrenner, erklaert aber nur gut ein Viertel der "
+        "Faelle."
     )
     a(
-        f"- **Promptstruktur: nur schwach trennend.** H4 trifft {h4['ausfaelle']} der "
-        f"{len(abbruch)} Ausfaelle und {h4['erfolge']} der {len(erfolg)} Erfolge. Der Grund: "
-        "der Volltext-Prompt mit hoechstens 45.000 Zeichen gilt fuer alle Records, und bei "
-        "den meisten liegt keine Tabelle mit zugeordnetem Zielfeld vor - das trifft Erfolge "
-        "wie Ausfaelle."
+        f"- **Promptstruktur: nur schwach trennend, und aus zwei verschiedenen Dingen "
+        f"zusammengesetzt.** H4a (grosse Prompt) trifft {h4a['ausfaelle']} der "
+        f"{len(abbruch)} Ausfaelle und {h4a['erfolge']} der {len(erfolg)} Erfolge "
+        f"({zahl(h4a['differenz_pp'])} Pp); H4b (keine Tabelle mit Zielfeld) "
+        f"{h4b['ausfaelle']} bzw. {h4b['erfolge']} ({zahl(h4b['differenz_pp'])} Pp). H4b "
+        "gilt in beiden Gruppen fast ueberall und trennt daher nicht; nur die "
+        "Promptgroesse zeigt einen kleinen Unterschied."
     )
     a(
         f"- **Ausgabeumfang: nein.** H6 trennt mit {zahl(h6['differenz_pp'])} Pp."
@@ -793,6 +923,12 @@ def schreibe_md(
         "- Strukturmerkmale kommen aus dem vorhandenen Parser und der vorhandenen "
         "Komplexitaetsbewertung. Wo der Parser keine Tabelle erkennt, steht 0 - das ist "
         "ein Parserbefund, keine Aussage ueber das PDF."
+    )
+    a(
+        "- Fuer die sechs Records ohne Tabelle ist der Parserbefund am Markdown geprueft: "
+        "die Tabellen stehen dort als Caption mit Bildplatzhalter, nicht als Zellen. "
+        "Aussagen ueber Zellenzahl oder Zielfeld dieser Faelle beschreiben daher das "
+        "Markdown, nicht den Artikel."
     )
     a(
         "- Zusammenhange sind beobachtet, nicht kausal belegt. Der Bericht nennt keine "
@@ -849,6 +985,7 @@ def main() -> int:
         "komplexitaet_score_max": quantil(
             [e["struktur"]["komplexitaet_score_max"] for e in eintraege], 0.75
         ),
+        "datenspalten_max": quantil([e["struktur"]["datenspalten_max"] for e in eintraege], 0.75),
     }
     for eintrag in eintraege:
         treffer = hypothese_treffer(eintrag, schwellen)
@@ -970,6 +1107,12 @@ def main() -> int:
             "(0,14 s bei 89.370 Reasoning-Zeichen); sie wird nicht als Merkmal verwendet.",
             "Der P5-Prompt sendet den ganzen Artikelauszug (bis 45.000 Zeichen) ohne "
             "Zielzeitpunkt-Bindung (prompt_version v2_timepoint).",
+            "In den sechs Faellen ohne Tabelle enthaelt das Markdown nur "
+            "table-wrap-Caption und Bildplatzhalter ![](), keinen Tabellentext: "
+            "die Artikel haben Tabellen, das Markdown hat sie nicht als Zellen.",
+            "H3 ist in drei Teile zerlegt (Kopfebenen, Gruppenkopf-Zellen, "
+            "Spaltenbreite); H4 in Promptgroesse (H4a) und fehlende Tabelle mit "
+            "Zielfeld (H4b). H3/H4 bleiben die Summen wie in der ersten Fassung.",
         ],
     }
     AUSGABE.with_suffix(".json").write_text(
@@ -983,7 +1126,7 @@ def main() -> int:
     AUSGABE.with_suffix(".md").write_text(bericht, encoding="utf-8", newline="\r\n")
     print(f"JSON: {AUSGABE.with_suffix('.json')}")
     print(f"MD:   {AUSGABE.with_suffix('.md')}")
-    for key in ("H1", "H2", "H3", "H4", "H6", "H7"):
+    for key in ("H1", "H2", "H3", "H3G", "H3S", "H3weit", "H4", "H4a", "H4b", "H6", "H7"):
         zeile = hypothesen_bilanz[key]
         print(
             f"{key} {zeile['bezeichnung']}: {zeile['ausfaelle_anteil']} % der Ausfaelle, "
