@@ -656,7 +656,13 @@ def _source_group_size(table: Table, row_id: int, arm: str) -> Optional[float]:
 
 
 _ARM_STOPWORTER = {"group", "groups", "arm", "arms", "the", "n", "value",
-                  "values", "patients", "subjects", "mg", "day"}
+                  "values", "patients", "subjects", "mg", "day", "mean",
+                  "median", "baseline", "total", "change", "difference",
+                  "ratio", "month", "months", "week", "weeks", "year", "years",
+                  "from", "to", "at", "in", "of", "and", "versus", "vs",
+                  "follow", "up", "end", "study", "screening", "visit"}
+_ARM_ROLLEN = {"intervention": {"intervention"},
+               "comparator": {"comparator", "control"}}
 
 
 def _arm_worte(text: Optional[str]) -> set:
@@ -666,29 +672,46 @@ def _arm_worte(text: Optional[str]) -> set:
     }
 
 
-def _band_traegt_n(table: Table, band) -> bool:
-    for fact in table.header_facts:
-        if fact.get("value") is None:
+def _baender_mit_n(table: Table) -> List[Tuple[Any, Any]]:
+    """Gruppenbaender, unter denen ein n gedruckt steht, mit dem ersten n-Wert.
+
+    Reine Zahlen- oder Periodenbaender (``(n=16)``, ``S1``) tragen nach dem
+    Stopwort-Filter keine Worte und fallen damit heraus - gemeldet wird die
+    Gruppe, nicht das Raster.
+    """
+    treffer: List[Tuple[Any, Any]] = []
+    for band in table.header_bands:
+        worte = _arm_worte(band.text)
+        if not any(len(wort) >= 3 for wort in worte):
             continue
-        if band.col_end < fact["col_start"] or fact["col_end"] < band.col_start:
-            continue
-        return True
-    return False
+        werte = [
+            fact["value"] for fact in table.header_facts
+            if fact.get("value") is not None
+            and band.col_start <= fact["col_end"]
+            and fact["col_start"] <= band.col_end
+        ]
+        if werte:
+            treffer.append((band, werte[0]))
+    return treffer
+
+
+def _n_hinweis(baender: List[Tuple[Any, Any]]) -> str:
+    teile = [f"{band.text!r} ({wert})" for band, wert in baender[:3]]
+    rest = len(baender) - len(teile)
+    return "n steht auf " + ", ".join(teile) + (f" und {rest} weiteren" if rest else "")
 
 
 def validate_arm_context(table: Table, context: Optional[Dict[str, Any]]) -> List[Finding]:
     """Meldet, wenn der gedruckte n-Kopf dem Record-Kontext widerspricht.
 
-    Der Kontext bleibt die massgebliche Armquelle. Widerspricht ihm der Kopf,
-    ist das ein Pruefauftrag, keine automatische Umkehrung:
+    Der Kontext bleibt die massgebliche Armquelle. Der Kopf wird nur geprueft,
+    nicht umgehaengt:
 
     * ``kopf_n_widerspricht_kontext`` - ein Kontextarm ist im Kopf auffindbar,
       traegt dort aber kein n, waehrend andere Gruppen eins drucken.
-    * ``kontextarm_nicht_im_kopf`` - ein Kontextarm ist im Kopf gar nicht
-      auffindbar, waehrend andere Gruppen ein n drucken (etwa Tippfehler im
-      Kontext wie ``Placbeo``).
-
-    Es wird nichts umgehaengt; die Funktion liefert nur Befunde.
+    * ``kontextarm_nicht_im_kopf`` - ein Kontextarm ist im Kopf nicht
+      auffindbar, waehrend andere Gruppen ein n drucken. Ist der Kontextarm
+      eine Beschreibung statt eines Namens, bleibt der Befund ein Hinweis.
     """
     if not context:
         return []
@@ -697,46 +720,51 @@ def validate_arm_context(table: Table, context: Optional[Dict[str, Any]]) -> Lis
         for arm in ("intervention", "comparator")
         if context.get(arm)
     }
-    if not arme:
+    baender = _baender_mit_n(table)
+    if not arme or not baender:
         return []
-    baender = [b for b in table.header_bands
-               if _arm_worte(b.text) and b.col_end >= b.col_start]
-    if not any(_band_traegt_n(table, b) for b in baender):
-        return []
-    beispiel = next(b for b in baender if _band_traegt_n(table, b))
-    rollen = {"intervention": {"intervention"}, "comparator": {"comparator", "control"}}
+    hinweis = _n_hinweis(baender)
+    mit_n = {id(band) for band, _ in baender}
     findings: List[Finding] = []
     for arm, worte in arme.items():
         treffer = [
-            b for b in baender
-            if (worte & _arm_worte(b.text)) or (rollen.get(arm, set()) & _arm_worte(b.text))
+            band for band in table.header_bands
+            if _arm_worte(band.text)
+            and (worte | _ARM_ROLLEN[arm]) & _arm_worte(band.text)
         ]
-        if not treffer:
-            findings.append(
-                Finding(
-                    code="kontextarm_nicht_im_kopf",
-                    severity=SEVERITY_WARNING,
-                    message=(
-                        f"Kontextarm {context.get(arm)!r} ({arm}) ist im Kopf "
-                        f"nicht auffindbar; n steht auf {beispiel.text!r}. "
-                        "Der Kontext bleibt massgeblich, der Kopf ist zu pruefen."
-                    ),
-                    table_id=table.table_id,
-                )
-            )
-        elif not any(_band_traegt_n(table, b) for b in treffer):
-            findings.append(
-                Finding(
-                    code="kopf_n_widerspricht_kontext",
-                    severity=SEVERITY_WARNING,
-                    message=(
-                        f"Kontextarm {context.get(arm)!r} ({arm}) traegt im Kopf "
-                        f"kein n, waehrend {beispiel.text!r} eins druckt. "
-                        "Der Kontext bleibt massgeblich, der Kopf ist zu pruefen."
-                    ),
-                    table_id=table.table_id,
-                )
-            )
+        if any(id(band) in mit_n for band in treffer):
+            continue
+        anzeige = context.get(arm)
+        if treffer and len(worte) <= 2:
+            findings.append(Finding(
+                code="kopf_n_widerspricht_kontext",
+                severity=SEVERITY_WARNING,
+                message=(
+                    f"Kontextarm {anzeige!r} ({arm}) traegt im Kopf kein n; "
+                    f"{hinweis}. Der Kontext bleibt massgeblich, der Kopf ist zu pruefen."
+                ),
+                table_id=table.table_id,
+            ))
+        elif len(worte) > 2:
+            findings.append(Finding(
+                code="kontextarm_nicht_im_kopf",
+                severity=SEVERITY_INFO,
+                message=(
+                    f"Kontextarm {anzeige!r} ({arm}) ist eine Beschreibung und im "
+                    f"Kopf nicht auffindbar; {hinweis}. Kein Namenskonflikt."
+                ),
+                table_id=table.table_id,
+            ))
+        else:
+            findings.append(Finding(
+                code="kontextarm_nicht_im_kopf",
+                severity=SEVERITY_WARNING,
+                message=(
+                    f"Kontextarm {anzeige!r} ({arm}) ist im Kopf nicht auffindbar; "
+                    f"{hinweis}. Der Kontext bleibt massgeblich, der Kopf ist zu pruefen."
+                ),
+                table_id=table.table_id,
+            ))
     return findings
 
 

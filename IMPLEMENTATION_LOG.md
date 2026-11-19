@@ -1860,7 +1860,7 @@ Goldwirkung.
 Ursachen und Skript-Review: `sprint48_planzellen_ursachen_20261119.md`.
 Der Record-Kontext bleibt massgebliche Armquelle; **68 von 94** ist damit die
 endgueltige Obergrenze. Neu: `validate_arm_context` in `validation.py` meldet
-Kopf-Kontext-Widersprueche (13 Faelle in 8 Record-Paaren, u. a. 678/682,
-335/336) als Warnung, ohne Arme umzuhaengen; siehe
+Kopf-Kontext-Widersprueche (15 Faelle in 10 Record-Paaren, davon 7 Warnungen,
+u. a. 678/682, 335/336) als Warnung, ohne Arme umzuhaengen; siehe
 `sprint48_armkonflikt_20261119.md`. `structure.json` wurde nicht neu erzeugt. Artefakte: `sprint48_planwerte_20261119.md`,
 `sprint48_armbindung_20261119.{md,json}`.
