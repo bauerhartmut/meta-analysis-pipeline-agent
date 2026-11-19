@@ -84,8 +84,8 @@ Kontext comparator ist eine Definition ("full course of therapy in the hospital
 setting"), im Kopf steht `IPAT (*n* = 97)`; Gold verlangt comparator 97. Auch
 hier eine **Alias-Luecke** (IPAT = stationaere Therapie), kein Zahlenkonflikt:
 mit der Abbildung Definition -> IPAT waere 97 je Record wertrichtig, also zwei
-Zellen mehr. Zusammen mit 30 waeren das drei Zellen (68 -> 71, geschaetzt),
-ohne neue Netzkosten.
+Zellen mehr. Zusammen mit 30 sind das drei Zellen (68 -> 71), gemessen in
+`sprint48_alias_20261119.md`, ohne neue Netzkosten.
 
 ### yun2024:78 und :79
 
