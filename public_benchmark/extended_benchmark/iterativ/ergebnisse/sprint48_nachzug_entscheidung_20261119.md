@@ -46,11 +46,14 @@ Zwei Definitionen, die die Entscheidung tragen:
   7 -> 0 Strukturfehler, 57/60 -> 60/60 komplett, 23 von 59 Records betroffen);
   Details in `sprint48_planwerte_20261119.md`. Die Pruefung auf der
   Plan-Auswahl (`sprint48_armbindung_20261119.md`, `load_tables` je Record)
-  findet 70 Feldtreffer ueber Kopfangaben: 44 mit passendem Wert und Arm, 26
-  mit abweichendem Wert; wertgedeckt sind **68 statt 94**. Die 26 sind
-  aufgeschluesselt (`sprint48_planzellen_ursachen_20261119.md`): 16 Untergruppen
-  bzw. geteilte Arme, 5 andere Tabelle/Population (185, 194, 196), 5 armfalsch (335,
-  336, 426, 678, 682). Bei `:678` ist der
+  findet 70 Feldtreffer ueber Kopfangaben: 44 mit passendem Wert und Arm, 4 mit
+  dem Wert des anderen Arms (Arm vertauscht: 335, 336, 678, 682) und 22 mit
+  abweichendem Wert. **68 von 94** Feldtreffern sind damit nicht durch eine
+  wertabweichende Kopfangabe widerlegt - eine Obergrenze, weil Zeilen- und
+  Messwertzellen nicht wertgeprueft sind. Die 26 sind aufgeschluesselt
+  (`sprint48_planzellen_ursachen_20261119.md`): 16 Untergruppen bzw. geteilte
+  Arme, 5 andere Tabelle/Population (185, 194, 196), 5 armfalsch (335, 336, 426,
+  678, 682; 426 nur ueber die Spaltenarme). Bei `:678` ist der
   eine Planwert sogar am falschen Arm: die 15 sitzt ueber der
   Antibiotic-Gruppe (`intervention`), Gold verlangt 16/intervention und
   15/comparator. Das Diagnoseartefakt
@@ -92,7 +95,7 @@ Der Plan ist eine **Prompt-Verkuerzung**, keine Gold-Abdeckung:
 - `yun2024:30`: Strategie B senkt den Prompt von 26.854 auf **2.398** Zeichen
   (91 % weniger), erreicht aber nur **1 von 6** Goldzellen.
 - `yun2024:252`, `:421`, `:672`, `:678`: erreichen im neu erzeugten Plan **0, 3,
-  0 und 0** wertgedeckte Goldzellen. Bei `:252` und `:672` gibt es gar keine
+  0 und 0** nicht widerlegte Goldzellen. Bei `:252` und `:672` gibt es gar keine
   passende `n = ...`-Angabe (Abschnitt 4.1). Bei `:421` sind zwei Zellen ueber
   die Outcome-Zeile und eine ueber die Kopfangabe `n = 30` erreichbar; bei
   `:678` ist der eine Feldtreffer die an `intervention` gebundene 15

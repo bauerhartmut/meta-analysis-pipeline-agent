@@ -1846,8 +1846,14 @@ einen abweichenden Wert (Untergruppen statt Gesamtarm, etwa 17+16 gegen 33,
 statt 94**. Bei `yun2024:678` bindet T2 die Kopfangabe `(n=15)` an
 `intervention`, waehrend Gold 16/intervention und 15/comparator verlangt; der
 Planwert faellt von 1 auf 0, seine Spalte `Gold erreichbar (A-E)` ist
-entsprechend nachgezogen. Die 26 Wertabweichungen sind aufgeschluesselt: 16
-Untergruppen bzw. geteilte Arme, 5 andere Tabelle/Population (185, 194, 196)
-und 5 armfalsch (335, 336, 426, 678, 682); die Wertabdeckung bleibt 68.
+entsprechend nachgezogen. Von den 70 Kopftreffern tragen 44 Wert und Arm, 4
+den Wert des anderen Arms (Arm vertauscht: 335, 336, 678, 682) und 22 einen
+abweichenden Wert; **68 von 94** Feldtreffern sind damit nicht widerlegt
+(Obergrenze, Zeilen- und Messwertzellen ungeprueft). Die Bandpruefung aller
+114 Kopfangaben ergibt 110 ok, 0 gemischt, 0 falsch, 4 ohne Arm - die falschen
+Spaltenarme (426, 678) sitzen bereits in der Spaltenzuordnung selbst. Der
+Abgleich gegen `gold_reachable` (94) laeuft im Skript als Abbruchbedingung.
+Aufteilung der 26: 16 Untergruppen bzw. geteilte Arme, 5 andere
+Tabelle/Population (185, 194, 196), 5 armfalsch (335, 336, 426, 678, 682).
 Ursachen und Skript-Review: `sprint48_planzellen_ursachen_20261119.md`. Artefakte: `sprint48_planwerte_20261119.md`,
 `sprint48_armbindung_20261119.{md,json}`.

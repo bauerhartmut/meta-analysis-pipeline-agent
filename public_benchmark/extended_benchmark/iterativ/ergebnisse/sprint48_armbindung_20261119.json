@@ -5,13 +5,21 @@
   "nur_lesend": true,
   "netzaufrufe": 0,
   "grundlage": "load_tables (Plan-Auswahl, gleiche Pipeline wie run_benchmark --offline)",
+  "abgleich": {
+    "feldtreffer_gesamt": 94,
+    "gold_reachable": 94,
+    "ok": true
+  },
   "summe": {
     "feldtreffer_gesamt": 94,
+    "band_ohne_arm": 4,
     "feldtreffer": 80,
     "kopf_feldtreffer": 70,
     "wert_und_arm": 44,
+    "band_ok": 110,
     "zeilenzelle": 10,
-    "wert_abweichend": 26
+    "wert_abweichend": 22,
+    "arm_vertauscht": 4
   },
   "faelle": [
     {
@@ -19,98 +27,112 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:10",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:100",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:101",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:102",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:103",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:104",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:105",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:106",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:107",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:108",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:109",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:11",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:110",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:111",
@@ -125,6 +147,9 @@
           "value": 434.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ohne_arm"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4319071:T1",
@@ -132,7 +157,8 @@
               "value": 434,
               "arm": "comparator",
               "field": "comparator_group_size",
-              "band_arme": []
+              "band_arme": [],
+              "band_status": "ohne_arm"
             }
           ]
         }
@@ -148,8 +174,12 @@
           "text": "n=434",
           "value": 434,
           "arm": "comparator",
-          "band_arme": []
+          "band_arme": [],
+          "band_status": "ohne_arm"
         }
+      ],
+      "band_status": [
+        "ohne_arm"
       ]
     },
     {
@@ -165,6 +195,9 @@
           "value": 434.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ohne_arm"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4319071:T1",
@@ -172,7 +205,8 @@
               "value": 434,
               "arm": "comparator",
               "field": "comparator_group_size",
-              "band_arme": []
+              "band_arme": [],
+              "band_status": "ohne_arm"
             }
           ]
         }
@@ -188,8 +222,12 @@
           "text": "n=434",
           "value": 434,
           "arm": "comparator",
-          "band_arme": []
+          "band_arme": [],
+          "band_status": "ohne_arm"
         }
+      ],
+      "band_status": [
+        "ohne_arm"
       ]
     },
     {
@@ -197,280 +235,320 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:114",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:115",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:116",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:117",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:118",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:119",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:12",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:120",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:121",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:122",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:123",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:124",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:125",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:126",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:127",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:128",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:129",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:13",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:130",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:131",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:132",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:133",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:134",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:135",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:136",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:137",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:138",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:139",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:14",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:140",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:141",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:142",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:143",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:144",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:145",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:146",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:147",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:148",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:149",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:15",
@@ -485,6 +563,9 @@
           "value": 103.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC2667135:T4",
@@ -494,7 +575,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -512,8 +594,12 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -521,70 +607,80 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:151",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:152",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:153",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:154",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:155",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:156",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:157",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:158",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:159",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:16",
@@ -599,6 +695,9 @@
           "value": 103.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC2667135:T4",
@@ -608,7 +707,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -626,8 +726,12 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -635,91 +739,104 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:161",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:162",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:163",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:164",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:165",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:166",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:167",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:168",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:169",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:17",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:170",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:171",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:172",
@@ -734,6 +851,9 @@
           "value": 33.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5079604:T1",
@@ -743,7 +863,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC5079604:T1",
@@ -753,7 +874,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -763,6 +885,9 @@
           "value": 15.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5079604:T1",
@@ -772,7 +897,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -790,7 +916,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:172",
@@ -804,7 +931,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:172",
@@ -818,8 +946,14 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -827,7 +961,8 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:174",
@@ -842,6 +977,9 @@
           "value": 33.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5079604:T1",
@@ -851,7 +989,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC5079604:T1",
@@ -861,7 +1000,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -871,6 +1011,9 @@
           "value": 15.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5079604:T1",
@@ -880,7 +1023,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -898,7 +1042,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:174",
@@ -912,7 +1057,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:174",
@@ -926,8 +1072,14 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -935,70 +1087,80 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:176",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:177",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:178",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:179",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:18",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:180",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:181",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:182",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:183",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:184",
@@ -1013,6 +1175,9 @@
           "value": 33.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5122613:T1",
@@ -1022,7 +1187,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -1040,8 +1206,12 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -1057,6 +1227,9 @@
           "value": 28.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5122613:T1",
@@ -1066,7 +1239,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -1084,8 +1258,12 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -1093,63 +1271,72 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:187",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:188",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:189",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:19",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:190",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:191",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:192",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:193",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:194",
@@ -1164,6 +1351,9 @@
           "value": 169.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5360580:T1",
@@ -1173,7 +1363,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -1183,6 +1374,9 @@
           "value": 167.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5360580:T1",
@@ -1192,7 +1386,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -1210,7 +1405,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:194",
@@ -1224,8 +1420,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -1233,7 +1434,8 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:196",
@@ -1248,6 +1450,9 @@
           "value": 24.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5360580:T6",
@@ -1257,7 +1462,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -1267,6 +1473,9 @@
           "value": 24.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5360580:T6",
@@ -1276,7 +1485,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -1294,7 +1504,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:196",
@@ -1308,8 +1519,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -1317,49 +1533,56 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:198",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:199",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:2",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:20",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:200",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:201",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:202",
@@ -1368,21 +1591,24 @@
       ],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:203",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:204",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:205",
@@ -1391,364 +1617,416 @@
       ],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:206",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:207",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:208",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:209",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:21",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:210",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:211",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:212",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:213",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:214",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:215",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:216",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:217",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:218",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:219",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:22",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:220",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:221",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:222",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:223",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:224",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:225",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:226",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:227",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:228",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:229",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:23",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:230",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:231",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:232",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:233",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:234",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:235",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:236",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:237",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:238",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:239",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:24",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:240",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:241",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:242",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:243",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:244",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:245",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:246",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:247",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:248",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:249",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:25",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:250",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:251",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:252",
@@ -1757,7 +2035,8 @@
       ],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:253",
@@ -1766,28 +2045,32 @@
       ],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:254",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:255",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:256",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:257",
@@ -1802,6 +2085,9 @@
           "value": 38.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5711682:T1",
@@ -1811,7 +2097,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -1821,6 +2108,9 @@
           "value": 39.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5711682:T1",
@@ -1830,7 +2120,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -1848,7 +2139,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:257",
@@ -1862,8 +2154,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -1879,6 +2176,9 @@
           "value": 38.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5711682:T1",
@@ -1888,7 +2188,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -1898,6 +2199,9 @@
           "value": 39.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5711682:T1",
@@ -1907,7 +2211,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -1925,7 +2230,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:258",
@@ -1939,8 +2245,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -1948,49 +2259,56 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:26",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:260",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:261",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:262",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:263",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:264",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:265",
@@ -2005,6 +2323,9 @@
           "value": 83.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC2430617:T1",
@@ -2014,7 +2335,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC2430617:T1",
@@ -2024,7 +2346,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -2034,6 +2357,9 @@
           "value": 79.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC2430617:T1",
@@ -2043,7 +2369,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -2061,7 +2388,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:265",
@@ -2075,7 +2403,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:265",
@@ -2089,8 +2418,14 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -2106,6 +2441,9 @@
           "value": 80.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC2430617:T1",
@@ -2115,7 +2453,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC2430617:T1",
@@ -2125,7 +2464,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -2135,6 +2475,9 @@
           "value": 79.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC2430617:T1",
@@ -2144,7 +2487,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -2162,7 +2506,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:266",
@@ -2176,7 +2521,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:266",
@@ -2190,8 +2536,14 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -2199,63 +2551,72 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:268",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:269",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:27",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:270",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:271",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:272",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:273",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:274",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:275",
@@ -2270,6 +2631,9 @@
           "value": 71.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3654355:T1",
@@ -2279,7 +2643,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -2297,8 +2662,12 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -2306,49 +2675,56 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:277",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:278",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:279",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:28",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:280",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:281",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:282",
@@ -2363,6 +2739,9 @@
           "value": 71.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3654355:T2",
@@ -2372,7 +2751,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -2390,8 +2770,12 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -2399,98 +2783,112 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:284",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:285",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:286",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:287",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:288",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:289",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:29",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:290",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:291",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:292",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:293",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:294",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:295",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:296",
@@ -2505,6 +2903,9 @@
           "value": 14.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4355974:T2",
@@ -2514,7 +2915,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -2532,8 +2934,12 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -2541,7 +2947,8 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:298",
@@ -2556,6 +2963,9 @@
           "value": 14.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4355974:T2",
@@ -2565,7 +2975,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -2583,8 +2994,12 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -2592,14 +3007,16 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:3",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:30",
@@ -2614,6 +3031,9 @@
           "value": 393.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3003523:T1",
@@ -2623,7 +3043,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -2641,8 +3062,12 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -2650,266 +3075,304 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:301",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:302",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:303",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:304",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:305",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:306",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:307",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:308",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:309",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:31",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:310",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:311",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:312",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:313",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:314",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:315",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:316",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:317",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:318",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:319",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:32",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:320",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:321",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:322",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:323",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:324",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:325",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:326",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:327",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:328",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:329",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:33",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:330",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:331",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:332",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:333",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:334",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:335",
@@ -2923,7 +3386,10 @@
           "arm": "intervention",
           "value": 45.0,
           "fact_only": true,
-          "klasse": "wert_abweichend",
+          "klasse": "arm_vertauscht",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5617873:T2",
@@ -2933,7 +3399,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -2944,15 +3411,19 @@
           "field": "intervention_group_size",
           "gold_value": 45.0,
           "gold_arm": "intervention",
-          "klasse": "wert_abweichend",
+          "klasse": "arm_vertauscht",
           "table_id": "PMC5617873:T2",
           "text": "Aripiprazole (n = 47)",
           "value": 47,
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -2967,7 +3438,10 @@
           "arm": "intervention",
           "value": 45.0,
           "fact_only": true,
-          "klasse": "wert_abweichend",
+          "klasse": "arm_vertauscht",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5617873:T2",
@@ -2977,7 +3451,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -2988,15 +3463,19 @@
           "field": "intervention_group_size",
           "gold_value": 45.0,
           "gold_arm": "intervention",
-          "klasse": "wert_abweichend",
+          "klasse": "arm_vertauscht",
           "table_id": "PMC5617873:T2",
           "text": "Aripiprazole (n = 47)",
           "value": 47,
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -3004,105 +3483,120 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:338",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:339",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:34",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:340",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:341",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:342",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:343",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:344",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:345",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:346",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:347",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:348",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:349",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:35",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:350",
@@ -3117,6 +3611,9 @@
           "value": 9.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5874317:T1",
@@ -3126,7 +3623,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -3136,6 +3634,9 @@
           "value": 9.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5874317:T1",
@@ -3145,7 +3646,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -3163,7 +3665,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:350",
@@ -3177,8 +3680,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -3186,7 +3694,8 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:352",
@@ -3201,6 +3710,9 @@
           "value": 9.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5874317:T1",
@@ -3210,7 +3722,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -3220,6 +3733,9 @@
           "value": 9.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5874317:T1",
@@ -3229,7 +3745,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -3247,7 +3764,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:352",
@@ -3261,8 +3779,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -3270,287 +3793,328 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:354",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:355",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:356",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:357",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:358",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:359",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:36",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:360",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:361",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:362",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:363",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:364",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:365",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:366",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:367",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:368",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:369",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:37",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:370",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:371",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:372",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:373",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:374",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:375",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:376",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:377",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:378",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:379",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:38",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:380",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:381",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:382",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:383",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:384",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:385",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:386",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:387",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:388",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:389",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:39",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:390",
@@ -3565,6 +4129,9 @@
           "value": 27.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3278655:T2",
@@ -3574,7 +4141,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -3584,6 +4152,9 @@
           "value": 18.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3278655:T2",
@@ -3593,7 +4164,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -3611,7 +4183,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:390",
@@ -3625,8 +4198,19 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -3642,6 +4226,9 @@
           "value": 27.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3278655:T2",
@@ -3651,7 +4238,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -3661,6 +4249,9 @@
           "value": 18.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3278655:T2",
@@ -3670,7 +4261,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -3688,7 +4280,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:391",
@@ -3702,8 +4295,19 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -3711,84 +4315,96 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:393",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:394",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:395",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:396",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:397",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:398",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:399",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:4",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:40",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:400",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:401",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:402",
@@ -3803,6 +4419,9 @@
           "value": 20.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5781260:T1",
@@ -3812,7 +4431,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -3822,6 +4442,9 @@
           "value": 20.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5781260:T1",
@@ -3831,7 +4454,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -3849,7 +4473,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:402",
@@ -3863,8 +4488,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -3880,6 +4510,9 @@
           "value": 20.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5781260:T1",
@@ -3889,7 +4522,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -3899,6 +4533,9 @@
           "value": 20.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5781260:T1",
@@ -3908,7 +4545,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -3926,7 +4564,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:403",
@@ -3940,8 +4579,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -3949,28 +4593,32 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:405",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:406",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:407",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:408",
@@ -3985,6 +4633,9 @@
           "value": 90.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3475525:T2",
@@ -3994,7 +4645,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -4004,6 +4656,9 @@
           "value": 99.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3475525:T2",
@@ -4013,7 +4668,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -4031,7 +4687,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:408",
@@ -4045,8 +4702,14 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -4054,98 +4717,112 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:41",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:410",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:411",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:412",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:413",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:414",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:415",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:416",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:417",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:418",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:419",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:42",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:420",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:421",
@@ -4160,6 +4837,9 @@
           "value": 30.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3877023:T3",
@@ -4169,7 +4849,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -4187,8 +4868,13 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -4196,28 +4882,32 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:423",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:424",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:425",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:426",
@@ -4232,6 +4922,9 @@
           "value": 44.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3877023:T4",
@@ -4241,7 +4934,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC3877023:T4",
@@ -4251,7 +4945,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -4269,7 +4964,8 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:426",
@@ -4283,8 +4979,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -4292,84 +4993,96 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:428",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:429",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:43",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:430",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:431",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:432",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:433",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:434",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:435",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:436",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:437",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:438",
@@ -4384,6 +5097,9 @@
           "value": 98.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3475525:T1",
@@ -4393,7 +5109,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -4403,6 +5120,9 @@
           "value": 98.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3475525:T1",
@@ -4412,7 +5132,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -4430,7 +5151,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:438",
@@ -4444,8 +5166,14 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -4453,49 +5181,56 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:44",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:440",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:441",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:442",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:443",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:444",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:445",
@@ -4511,6 +5246,9 @@
           "value": 70.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4140238:T1",
@@ -4520,7 +5258,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -4530,6 +5269,9 @@
           "value": 70.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4140238:T1",
@@ -4539,7 +5281,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -4557,7 +5300,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:445",
@@ -4571,8 +5315,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -4580,56 +5329,64 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:447",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:448",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:449",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:45",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:450",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:451",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:452",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:453",
@@ -4644,6 +5401,9 @@
           "value": 79.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5726464:T1",
@@ -4653,7 +5413,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -4663,6 +5424,9 @@
           "value": 86.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5726464:T1",
@@ -4672,7 +5436,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -4690,7 +5455,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:453",
@@ -4704,8 +5470,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -4713,70 +5484,80 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:455",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:456",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:457",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:458",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:459",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:46",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:460",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:461",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:462",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:463",
@@ -4791,6 +5572,9 @@
           "value": 79.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5726464:T1",
@@ -4800,7 +5584,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -4810,6 +5595,9 @@
           "value": 86.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5726464:T1",
@@ -4819,7 +5607,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -4837,7 +5626,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:463",
@@ -4851,8 +5641,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -4860,77 +5655,88 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:465",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:466",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:467",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:468",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:469",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:47",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:470",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:471",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:472",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:473",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:474",
@@ -4939,28 +5745,32 @@
       ],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:475",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:476",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:477",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:478",
@@ -4969,63 +5779,72 @@
       ],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:479",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:48",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:480",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:481",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:482",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:483",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:484",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:485",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:486",
@@ -5040,6 +5859,9 @@
           "value": 44.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3786549:T3",
@@ -5049,7 +5871,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC3786549:T3",
@@ -5059,7 +5882,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -5069,6 +5893,9 @@
           "value": 44.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3786549:T3",
@@ -5078,7 +5905,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC3786549:T3",
@@ -5088,7 +5916,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -5106,7 +5935,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:486",
@@ -5120,7 +5950,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:486",
@@ -5134,7 +5965,8 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:486",
@@ -5148,8 +5980,16 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -5157,14 +5997,16 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:488",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:489",
@@ -5179,6 +6021,9 @@
           "value": 44.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3786549:T3",
@@ -5188,7 +6033,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC3786549:T3",
@@ -5198,7 +6044,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -5208,6 +6055,9 @@
           "value": 44.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3786549:T3",
@@ -5217,7 +6067,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC3786549:T3",
@@ -5227,7 +6078,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -5245,7 +6097,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:489",
@@ -5259,7 +6112,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:489",
@@ -5273,7 +6127,8 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:489",
@@ -5287,8 +6142,16 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -5296,35 +6159,40 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:490",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:491",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:492",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:493",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:494",
@@ -5339,87 +6207,100 @@
           "value": 630.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [],
           "kandidaten": []
         }
       ],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:495",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:496",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:497",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:498",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:499",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:5",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:50",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:500",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:501",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:502",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:503",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:504",
@@ -5428,210 +6309,240 @@
       ],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:505",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:506",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:507",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:508",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:509",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:51",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:510",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:511",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:512",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:513",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:514",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:515",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:516",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:517",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:518",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:519",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:52",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:520",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:521",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:522",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:523",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:524",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:525",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:526",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:527",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:528",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:529",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:53",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:530",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:531",
@@ -5646,6 +6557,9 @@
           "value": 289.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4230312:T3",
@@ -5655,7 +6569,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC4230312:T3",
@@ -5665,7 +6580,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -5675,6 +6591,9 @@
           "value": 204.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4230312:T3",
@@ -5684,7 +6603,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -5702,7 +6622,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:531",
@@ -5716,7 +6637,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:531",
@@ -5730,8 +6652,14 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -5747,6 +6675,9 @@
           "value": 283.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4230312:T1",
@@ -5756,7 +6687,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC4230312:T1",
@@ -5766,7 +6698,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -5776,6 +6709,9 @@
           "value": 204.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4230312:T1",
@@ -5785,7 +6721,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -5803,7 +6740,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:532",
@@ -5817,7 +6755,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:532",
@@ -5831,8 +6770,14 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -5840,133 +6785,152 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:534",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:535",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:536",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:537",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:538",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:539",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:54",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:540",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:541",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:542",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:543",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:544",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:545",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:546",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:547",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:548",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:549",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:55",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:550",
@@ -5981,6 +6945,9 @@
           "value": 18.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3648394:T1",
@@ -5990,7 +6957,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -6000,6 +6968,9 @@
           "value": 19.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3648394:T1",
@@ -6009,7 +6980,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -6027,7 +6999,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:550",
@@ -6041,8 +7014,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -6050,679 +7028,776 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:552",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:553",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:554",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:555",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:556",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:557",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:558",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:559",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:56",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:560",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:561",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:562",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:563",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:564",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:565",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:566",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:567",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:568",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:569",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:57",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:570",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:571",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:572",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:573",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:574",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:575",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:576",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:577",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:578",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:579",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:58",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:580",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:581",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:582",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:583",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:584",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:585",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:586",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:587",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:588",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:589",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:59",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:590",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:591",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:592",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:593",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:594",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:595",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:596",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:597",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:598",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:599",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:6",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:60",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:600",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:601",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:602",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:603",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:604",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:605",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:606",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:607",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:608",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:609",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:61",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:610",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:611",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:612",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:613",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:614",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:615",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:616",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:617",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:618",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:619",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:62",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:620",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:621",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:622",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:623",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:624",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:625",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:626",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:627",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:628",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:629",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:63",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:630",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:631",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:632",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:633",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:634",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:635",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:636",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:637",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:638",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:639",
@@ -6737,6 +7812,9 @@
           "value": 12.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4511433:T2",
@@ -6746,7 +7824,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC4511433:T2",
@@ -6756,7 +7835,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -6766,6 +7846,9 @@
           "value": 12.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ohne_arm"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4511433:T2",
@@ -6773,7 +7856,8 @@
               "value": 12,
               "arm": "comparator",
               "field": "comparator_group_size",
-              "band_arme": []
+              "band_arme": [],
+              "band_status": "ohne_arm"
             }
           ]
         }
@@ -6791,7 +7875,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:639",
@@ -6805,7 +7890,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:639",
@@ -6817,8 +7903,14 @@
           "text": "Placebo (*N* = 12)",
           "value": 12,
           "arm": "comparator",
-          "band_arme": []
+          "band_arme": [],
+          "band_status": "ohne_arm"
         }
+      ],
+      "band_status": [
+        "ohne_arm",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -6826,7 +7918,8 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:640",
@@ -6841,6 +7934,9 @@
           "value": 12.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4511433:T2",
@@ -6850,7 +7946,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC4511433:T2",
@@ -6860,7 +7957,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -6870,6 +7968,9 @@
           "value": 12.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ohne_arm"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4511433:T2",
@@ -6877,7 +7978,8 @@
               "value": 12,
               "arm": "comparator",
               "field": "comparator_group_size",
-              "band_arme": []
+              "band_arme": [],
+              "band_status": "ohne_arm"
             }
           ]
         }
@@ -6895,7 +7997,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:640",
@@ -6909,7 +8012,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:640",
@@ -6921,8 +8025,14 @@
           "text": "Placebo (*N* = 12)",
           "value": 12,
           "arm": "comparator",
-          "band_arme": []
+          "band_arme": [],
+          "band_status": "ohne_arm"
         }
+      ],
+      "band_status": [
+        "ohne_arm",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -6930,28 +8040,32 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:642",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:643",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:644",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:645",
@@ -6966,6 +8080,9 @@
           "value": 27.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4675066:T1",
@@ -6975,7 +8092,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -6985,6 +8103,9 @@
           "value": 26.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4675066:T1",
@@ -6994,7 +8115,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -7012,7 +8134,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:645",
@@ -7026,8 +8149,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -7035,7 +8163,8 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:647",
@@ -7050,6 +8179,9 @@
           "value": 27.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4675066:T1",
@@ -7059,7 +8191,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -7069,6 +8202,9 @@
           "value": 26.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4675066:T1",
@@ -7078,7 +8214,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -7096,7 +8233,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:647",
@@ -7110,8 +8248,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -7119,112 +8262,128 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:649",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:65",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:650",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:651",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:652",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:653",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:654",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:655",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:656",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:657",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:658",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:659",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:66",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:660",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:661",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:662",
@@ -7239,6 +8398,9 @@
           "value": 37.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4987981:T1",
@@ -7248,7 +8410,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC4987981:T1",
@@ -7258,7 +8421,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -7268,6 +8432,9 @@
           "value": 23.0,
           "fact_only": false,
           "klasse": "zeilenzelle",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4987981:T1",
@@ -7277,7 +8444,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -7295,7 +8463,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:662",
@@ -7309,7 +8478,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:662",
@@ -7323,8 +8493,14 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -7332,14 +8508,16 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:664",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:665",
@@ -7354,6 +8532,9 @@
           "value": 16.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4987981:T2",
@@ -7363,7 +8544,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         },
@@ -7373,6 +8555,9 @@
           "value": 23.0,
           "fact_only": true,
           "klasse": "wert_und_arm",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC4987981:T2",
@@ -7382,7 +8567,8 @@
               "field": "comparator_group_size",
               "band_arme": [
                 "comparator"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -7400,7 +8586,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:665",
@@ -7414,8 +8601,13 @@
           "arm": "comparator",
           "band_arme": [
             "comparator"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok"
       ]
     },
     {
@@ -7423,49 +8615,56 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:667",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:668",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:669",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:67",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:670",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:671",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:672",
@@ -7474,21 +8673,24 @@
       ],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:673",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:674",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:675",
@@ -7497,21 +8699,24 @@
       ],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:676",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:677",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:678",
@@ -7525,7 +8730,10 @@
           "arm": "intervention",
           "value": 16.0,
           "fact_only": true,
-          "klasse": "wert_abweichend",
+          "klasse": "arm_vertauscht",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5777419:T2",
@@ -7535,7 +8743,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -7546,15 +8755,19 @@
           "field": "intervention_group_size",
           "gold_value": 16.0,
           "gold_arm": "intervention",
-          "klasse": "wert_abweichend",
+          "klasse": "arm_vertauscht",
           "table_id": "PMC5777419:T2",
           "text": "(n=15)",
           "value": 15,
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -7562,28 +8775,32 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:68",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:680",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:681",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:682",
@@ -7597,7 +8814,10 @@
           "arm": "intervention",
           "value": 16.0,
           "fact_only": true,
-          "klasse": "wert_abweichend",
+          "klasse": "arm_vertauscht",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC5777419:T2",
@@ -7607,7 +8827,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -7618,15 +8839,19 @@
           "field": "intervention_group_size",
           "gold_value": 16.0,
           "gold_arm": "intervention",
-          "klasse": "wert_abweichend",
+          "klasse": "arm_vertauscht",
           "table_id": "PMC5777419:T2",
           "text": "(n=15)",
           "value": 15,
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok"
       ]
     },
     {
@@ -7634,189 +8859,216 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:684",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:685",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:686",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:687",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:688",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:689",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:69",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:690",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:691",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:692",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:693",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:694",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:695",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:696",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:697",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:698",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:699",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:7",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:70",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:71",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:72",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:73",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:74",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:75",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:76",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:77",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:78",
@@ -7831,6 +9083,9 @@
           "value": 30.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3546023:T4",
@@ -7840,7 +9095,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC3546023:T4",
@@ -7850,7 +9106,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC3546023:T4",
@@ -7860,7 +9117,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -7878,7 +9136,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:78",
@@ -7892,8 +9151,14 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -7909,6 +9174,9 @@
           "value": 30.0,
           "fact_only": true,
           "klasse": "wert_abweichend",
+          "band_status": [
+            "ok"
+          ],
           "kandidaten": [
             {
               "table_id": "PMC3546023:T4",
@@ -7918,7 +9186,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC3546023:T4",
@@ -7928,7 +9197,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             },
             {
               "table_id": "PMC3546023:T4",
@@ -7938,7 +9208,8 @@
               "field": "intervention_group_size",
               "band_arme": [
                 "intervention"
-              ]
+              ],
+              "band_status": "ok"
             }
           ]
         }
@@ -7956,7 +9227,8 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         },
         {
           "record_id": "yun2024:79",
@@ -7970,8 +9242,14 @@
           "arm": "intervention",
           "band_arme": [
             "intervention"
-          ]
+          ],
+          "band_status": "ok"
         }
+      ],
+      "band_status": [
+        "ok",
+        "ok",
+        "ok"
       ]
     },
     {
@@ -7979,154 +9257,176 @@
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:80",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:81",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:82",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:83",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:84",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:85",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:86",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:87",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:88",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:89",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:9",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:90",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:91",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:92",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:93",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:94",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:95",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:96",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:97",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:98",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     },
     {
       "record_id": "yun2024:99",
       "tables": [],
       "feldtreffer_gesamt": 0,
       "zellen": [],
-      "details": []
+      "details": [],
+      "band_status": []
     }
   ]
 }

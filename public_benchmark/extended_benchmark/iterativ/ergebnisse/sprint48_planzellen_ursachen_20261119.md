@@ -3,7 +3,8 @@
 Grundlage: `pruefe_armbindung_sprint48.py` (Plan-Auswahl ueber `load_tables`),
 Stand `offline_struktur_20261118b/structure.json`. Rein lesend, keine
 Netzaufrufe. Die 26 Zellen sind die Kopftreffer, deren Wert nicht zum Goldwert
-passt; die Wertabdeckung bleibt damit **68 von 94**.
+passt; **68 von 94** Feldtreffern bleiben damit nicht widerlegt (Obergrenze,
+Zeilenzellen und Messwerte ungeprueft).
 
 ## 1. Aufteilung
 
@@ -14,8 +15,13 @@ passt; die Wertabdeckung bleibt damit **68 von 94**.
 | Arm-/Spaltenfehlbindung | 5 | 335, 336, 426, 678, 682 |
 | **Summe** | **26** | 18 Records |
 
-Keine der 26 Zellen wird durch die Ursachenpruefung wertgedeckt; die Zahl 68
-bleibt unveraendert. Die Aufteilung aendert aber die Diagnose: es sind nicht
+Die Ursachenpruefung deckt keine der 26 Zellen auf; die Zahl 68 bleibt
+unveraendert. Das nachgezogene Skript weist 44 Kopftreffer mit Wert und Arm,
+4 mit dem Wert des anderen Arms (`arm_vertauscht`: 335, 336, 678, 682) und 22
+mit abweichendem Wert aus; die Bandpruefung aller 114 Kopfangaben ergibt 110
+ok, 0 gemischt, 0 falsch und 4 ohne Arm. Die falschen Spaltenarme (426, 678)
+sitzen in der Spaltenzuordnung selbst und sind damit nicht ueber die
+Bandkonsistenz auffindbar. Die Aufteilung aendert aber die Diagnose: es sind nicht
 26 gleichartige "Untergruppenfaelle", sondern 5 armfalsche Zellen und 5
 Zellen, deren Beleg in einem anderen Tableau steht.
 
@@ -91,8 +97,9 @@ Gelesen: `public_benchmark/extended_benchmark/yun_full/pruefe_armbindung_sprint4
 8. **Leere Auswahl wird stillschweigend hingenommen.** Ein Record ohne
    Auswahlzeile traegt 0 bei, ohne Warnung.
 
-Empfehlung: Punkte 1, 3 und 4 vor dem naechsten Lauf beheben (Bandarm-Auswertung,
-Klasse "Arm vertauscht", Soll-Ist-Abgleich), ohne die Bezugsgroesse zu aendern.
+Punkte 1, 3 und 4 sind inzwischen umgesetzt: das Skript weist je Kopfangabe
+einen Bandstatus aus, fuehrt die Klasse `arm_vertauscht` und bricht ab, wenn die
+Summe nicht zu `gold_reachable` passt. Die Bezugsgroesse (94) ist unveraendert.
 
 Hinweis: Wo "Population weicht ab (nicht belegt)" steht, ist die Zuordnung
 (randomisiert vs analysiert) aus dem Markdown nicht sicher belegbar; belegt ist
