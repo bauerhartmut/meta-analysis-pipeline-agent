@@ -150,11 +150,14 @@ nicht vor 1 und 2 zu setzen.
    beide Ankerfassungen ohne Treffer, 88.632 Tokens verbraucht. Die übrigen 11 der
    13 Fälle sind nicht getestet; der Anker ist dort unbelegt, nicht widerlegt.
    Vor einem weiteren Anker-Aufruf hat die Zweistufigkeit Vorrang.
-3. **Maßnahme 4 (Zweistufigkeit) ist der nächste Hebel** — als einziger Ansatz,
-   der den Suchraum vor dem Aufruf verkleinert. Auf einem Record mit vorhandenem
-   Tabellentext testen, nicht auf `yun2024:559`: dort fehlen 4 von 6 Goldwerten
-   im Markdown (Mittelwerte und SD stehen nur in einer Caption mit
-   Bildplatzhalter), ein Aufruf kann sie also nicht finden.
+3. **Maßnahme 4 (Zweistufigkeit) ist gebaut und auf vier Records gemessen —
+   Ergebnis gemischt.** Auf `yun2024:523` ist die Kette vollständig (Stufe 1:
+   2.342 Tokens, Stufe 2: 268 Tokens, 4 TP / 0 FP / 2 FN, F1 0,800); auf
+   `yun2024:420` und `:421` bricht dieselbe Stufe 1 mit `glm-5.3` in jeder
+   geprüften Prompt-Fassung ab (4 von 4 Zellen, je volles Budget, 0 Zeichen);
+   `qwen3.5-397b` antwortet auf beiden, aber auf 421 mit einem falschen Negativ
+   und auf 119 mit einem Treffer. Die Zweistufigkeit ist damit nicht widerlegt,
+   aber ihr Erfolg hängt am Modell und am Record. Details im Nachtrag unten.
 4. **Maßnahme 2** — billig, aber sie ändert an der Bindung nichts; erst nach
    Maßnahme 4 sinnvoll, wenn ein Aufruf überhaupt zuverlässig Inhalt liefert.
 5. **Maßnahme 5** — zuletzt, weil sie am meisten kostet und am wenigsten belegt
@@ -169,17 +172,93 @@ nicht vor 1 und 2 zu setzen.
   Annotation. Eine Goldänderung würde das Problem verdecken.
 - **Predictions überschreiben.** Die drei inspizierten Fälle sind nur deshalb
   nachvollziehbar, weil die Rohantworten unverändert vorliegen.
-- **Ein weiteres Modell als Referenz.** Der Vergleich ist kein Modellproblem:
-  Beide Läufe nutzen `gwdg/glm-5.3` mit derselben Prompt-Fassung.
+- ~~**Ein weiteres Modell als Referenz.** Der Vergleich ist kein Modellproblem:
+  Beide Läufe nutzen `gwdg/glm-5.3` mit derselben Prompt-Fassung.~~
+  **Widerlegt am 20.11.2026 (n = 2 Records).** Auf demselben Prompt bricht
+  `glm-5.3` auf `yun2024:421` mit vollem Budget und 0 Zeichen ab, `qwen3.5-397b`
+  antwortet in 10.686 Tokens mit `stop`; auf `yun2024:119` antwortet qwen in
+  6.236 Tokens und trifft. Das Modell ist ein Faktor, nicht nur die Prompt-Fassung.
+  Siehe Nachtrag unten.
+
+## Nachtrag 20.11.2026, abends: Schema, Anweisung und Modell getrennt
+
+Die alte Fassung dieser Empfehlung führte die 33 Abbrüche auf ein Schema- und
+Strukturproblem zurück (Maßnahme 1/2). Seitdem sind neun Aufrufe auf vier
+Records gelaufen, alle mit demselben 6.000-Zeichen-Ausschnitt, Temperatur 0 und
+je einem Aufruf pro Zelle. Das Bild hat sich verschoben.
+
+| Record | Modell | Prompt-Fassung | Budget | Tokens | Ergebnis |
+|---|---|---|---:|---:|---|
+| 523 | `glm-5.3` | Zeilenlabel, ohne Zusatz | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
+| 523 | `glm-5.3` | Zeilenlabel + Zusatz | 16.632 | 3.318 | ok, 2 Locators |
+| 523 | `glm-5.3` | Satz-Locator + Zusatz | 16.632 | 2.342 | ok, 2 Locators → Stufe 2: 4 TP/0 FP/2 FN, F1 0,800 |
+| 420 | `glm-5.3` | Zeilenlabel + Zusatz | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
+| 420 | `glm-5.3` | Satz-Locator | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
+| 421 | `glm-5.3` | Satz-Locator | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
+| 421 | `glm-5.3` | Zeilenlabel + Zusatz | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
+| 421 | `qwen3.5-397b` | Satz-Locator | 16.000 | 10.686 | ok, **`found: false`** (falsches Negativ) |
+| 119 | `qwen3.5-397b` | Satz-Locator | 16.000 | 6.236 | ok, 2 Locators, **Treffer** |
+
+Berichte: `zweistufig_lauf_20261120/satz_523_ergebnis_20261120.md`,
+`satz_420_ergebnis_20261120.md`, `satz_421_ergebnis_20261120.md`,
+`zusatz_421_ergebnis_20261120.md`, `qwen_421_ergebnis_20261120.md`,
+`qwen_119_ergebnis_20261120.md`.
+
+**Befund 1 — das Schema ist nicht die Ursache.** Auf 420 brechen *zwei*
+verschiedene Fassungen ab (Zeilenlabel mit Zusatz und Satz-Locator), auf 421
+ebenso. 4 von 4 Zellen, je volles Budget, je 0 Zeichen Inhalt, bei 6 von 6
+Goldwerten im Ausschnitt. Wer das Schema weiter ändert, ändert an diesen beiden
+Records nichts.
+
+**Befund 2 — die Anweisung wirkt, aber nicht überall.** „Answer without weighing
+alternative readings." trennt auf 523 zwischen Abbruch (16.632) und Antwort
+(3.318, bzw. 2.342 mit Satz-Schema). Auf 420 und 421 trennt sie nichts. Der
+Effekt ist record-abhängig und mit den vorhandenen Messungen nicht erklärt.
+
+**Befund 3 — das Modell ist ein Faktor.** Auf demselben Prompt und demselben
+Ausschnitt antwortet `qwen3.5-397b`, wo `glm-5.3` das Budget verbrennt (421,
+119). Der Preis ist ungleich: auf 421 ist die Antwort ein falsches Negativ, auf
+119 ein Treffer am richtigen Zeitpunkt mit wörtlich belegtem Satz. Ein
+Modellwechsel allein ist damit **keine** Lösung: für die P5-Bilanz sind Abbruch
+und `found: false` gleich, weil `bilanz_p5` jedes Goldfeld ohne passende
+Vorhersagezelle als FN zählt, ob die Antwort leer blieb oder nicht. Der
+Unterschied ist, dass ein antwortendes Modell diagnostizierbar ist und auf 119
+in einen Treffer kippt; ob es auf weiteren Records kippt, ist die offene Frage.
+Wer den Modellwechsel vorschlägt, muss also den Treffer auf 119 zeigen, nicht
+die bloße Verfügbarkeit.
+
+**Befund 4 — die Annotation trägt einen Bezeichnungsfehler, der Recall kostet.**
+Auf 119 sind von 4 Goldzellen nur 2 aus dem Ausschnitt erreichbar: die
+Gruppengrößen 10 und 13 stehen nicht im Text. Zusätzlich deklariert der Kontext
+`outcome_type = continuous`, während gedruckt ein dichotomierter Anteil steht
+(„70 % attained good GOS"), den das Gold als `mean` führt. Auch bei perfektem
+Locator ist dieser Record nicht 4/4. Das Gold bleibt unverändert; die Zahl
+gehört aber in jede Bewertung des Records.
+
+**Was daraus für die Maßnahmenliste folgt:** Maßnahme 1 (Anker) bleibt an zwei
+Records ohne Gewinn, Maßnahme 3 ist erledigt, Maßnahme 4 ist gebaut und gemischt
+gemessen, Maßnahme 2 (Antwortgerüst) ist mit Befund 1 und 3 nicht mehr die
+naheliegende nächste Größe — sie ändert nichts an einem Modell, das ohne
+Ausgabe das Budget verbraucht, und nichts an einem Satz, der zitiert wird.
 
 ## Nächster Schritt
 
-Maßnahme 3 ist umgesetzt, Maßnahme 1 an zwei Records ohne Gewinn. Der nächste Schritt ist die
-trockene Vorbereitung von Maßnahme 4 auf einem Record, dessen Tabelle im
-Markdown als Text vorliegt (`yun2024:523`/`:525`, sechs Goldzellen, dieselbe
-Quelle, oder `yun2024:557`): Ausschnitt, Stufe-1-Prompt und Budget werden ohne
-Aufruf gebaut und gegen das Gold geprüft. Erst wenn der Ausschnitt die
-Zielwerte enthält, ist ein Aufruf sinnvoll. Der Bau für `yun2024:559` liegt
-als Negativbeispiel in `zweistufig_trocken_20261120.md`: 6.000 von 13.122
-Zeichen, Prompt 7.154 Zeichen, aber 4 von 6 Goldwerten kommen im Volltext nicht
-vor.
+Zwei Aufrufe, die je eine offene Frage schließen, statt weitere Fassungen zu
+bauen:
+
+1. **qwen-Satz-Locator auf `yun2024:420`** (16.000 Tokens). 420 ist der Fall mit
+   der besten Abdeckung (6/6 Goldwerte im Ausschnitt), an dem `glm-5.3` in zwei
+   Fassungen scheitert. Antwortet qwen hier mit einem belegten Satz, ist der
+   Modellwechsel auch auf dem schwersten gemessenen Record belegt; antwortet es
+   mit `found: false`, ist der Wechsel auf beiden schweren Records (420, 421)
+   nur ein Verfügbarkeitsgewinn ohne inhaltlichen — dann trägt Befund 3 allein
+   auf dem 119er Treffer.
+2. **Stufe 2 auf dem 119er Satz** (Budget klein, ~1.000 Tokens). Prüft, ob der
+   zitierte Satz die zwei erreichbaren Zellen (70 / 15,4) wirklich trägt. Das ist
+   die einzige Stelle der Reihe, an der eine vollständige Kette ohne Abbruch
+   möglich ist.
+
+Nicht empfohlen bleibt: weitere Prompt-Fassungen auf 420/421 (Befund 1), eine
+Budgeterhöhung (die Abbrüche enden am Budget, nicht davor) und eine Änderung des
+Goldstandards (Befund 4 beschreibt die Annotation, er rechtfertigt keine
+Korrektur).
