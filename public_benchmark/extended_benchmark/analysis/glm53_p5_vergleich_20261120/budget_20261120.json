@@ -1,0 +1,1724 @@
+{
+  "kennzahlen": {
+    "abbruch_ohne": {
+      "n": 13,
+      "reasoning_median": 93380,
+      "reasoning_q25": 89661,
+      "reasoning_q75": 98142,
+      "prompt_median": 7811,
+      "text_median": 6811,
+      "aufschlag_median": 1013,
+      "reasoning_je_text_median": 13.16,
+      "gold_median": 4,
+      "reasoning_je_goldzelle_median": 24535.5,
+      "dauer_median": 191.5,
+      "tabellen_median": 1,
+      "datenzellen_median": 20,
+      "ohne_tabelle": 6,
+      "ohne_zielfeld": 13,
+      "gruppenkopf": 0,
+      "binary": 5,
+      "continuous": 8
+    },
+    "abbruch_mit": {
+      "n": 20,
+      "reasoning_median": 95202.0,
+      "reasoning_q25": 89548,
+      "reasoning_q75": 97231,
+      "prompt_median": 26294.5,
+      "text_median": 25267.0,
+      "aufschlag_median": 1005.0,
+      "reasoning_je_text_median": 3.77,
+      "gold_median": 4.0,
+      "reasoning_je_goldzelle_median": 23834.25,
+      "dauer_median": 190.2,
+      "tabellen_median": 3.0,
+      "datenzellen_median": 107.5,
+      "ohne_tabelle": 0,
+      "ohne_zielfeld": 11,
+      "gruppenkopf": 11,
+      "binary": 3,
+      "continuous": 17
+    },
+    "erfolg": {
+      "n": 67,
+      "reasoning_median": 31444,
+      "reasoning_q25": 16809,
+      "reasoning_q75": 49626,
+      "prompt_median": 17103,
+      "text_median": 16081,
+      "aufschlag_median": 1013,
+      "reasoning_je_text_median": 2.09,
+      "gold_median": 4,
+      "reasoning_je_goldzelle_median": 7295.79,
+      "dauer_median": 76.2,
+      "tabellen_median": 3,
+      "datenzellen_median": 60,
+      "ohne_tabelle": 9,
+      "ohne_zielfeld": 51,
+      "gruppenkopf": 9,
+      "binary": 19,
+      "continuous": 48
+    }
+  },
+  "faelle": {
+    "yun2024:119": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC4323894",
+      "outcome_typ": "continuous",
+      "goldzellen": 4,
+      "reasoning": 98142,
+      "prompt": 11045,
+      "text": 10032,
+      "aufschlag": 1013,
+      "reasoning_je_text": 9.78,
+      "tabellen": 0,
+      "captions": 6,
+      "pipe_zeilen": 0,
+      "datenzellen": 0,
+      "kopfebenen": 0,
+      "gruppenkopf": 0,
+      "dauer": 237.8,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "q3_repro_a_20261116",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "q3_repro_b_20261116",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "pilot_kurzregel_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "pilot_ohne_regel_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "pilot_repair_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "yun_test186_kombiniert_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "yun_test186_v7_folgelauf_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:128": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC4493951",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "reasoning": 90927,
+      "prompt": 8970,
+      "text": 7954,
+      "aufschlag": 1016,
+      "reasoning_je_text": 11.43,
+      "tabellen": 2,
+      "captions": 2,
+      "pipe_zeilen": 0,
+      "datenzellen": 37,
+      "kopfebenen": 2,
+      "gruppenkopf": 0,
+      "dauer": 0.1,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "q3_repro_a_20261116",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "q3_repro_b_20261116",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:152": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC5055753",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "reasoning": 99665,
+      "prompt": 8788,
+      "text": 7782,
+      "aufschlag": 1006,
+      "reasoning_je_text": 12.81,
+      "tabellen": 1,
+      "captions": 1,
+      "pipe_zeilen": 0,
+      "datenzellen": 20,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 0.1,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "q3_repro_a_20261116",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "q3_repro_b_20261116",
+          8000,
+          "ok"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:164": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC5062234",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 99794,
+      "prompt": 4897,
+      "text": 3808,
+      "aufschlag": 1089,
+      "reasoning_je_text": 26.21,
+      "tabellen": 0,
+      "captions": 2,
+      "pipe_zeilen": 0,
+      "datenzellen": 0,
+      "kopfebenen": 0,
+      "gruppenkopf": 0,
+      "dauer": 252.1,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "json_kaputt"
+        ]
+      ]
+    },
+    "yun2024:273": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC3214395",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 101270,
+      "prompt": 4436,
+      "text": 3360,
+      "aufschlag": 1076,
+      "reasoning_je_text": 30.14,
+      "tabellen": 0,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 0,
+      "kopfebenen": 0,
+      "gruppenkopf": 0,
+      "dauer": 258.6,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "yun699_test60_20261116",
+          4000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ohne Zellen"
+        ]
+      ]
+    },
+    "yun2024:304": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC4357072",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "reasoning": 95635,
+      "prompt": 6540,
+      "text": 5515,
+      "aufschlag": 1025,
+      "reasoning_je_text": 17.34,
+      "tabellen": 0,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 0,
+      "kopfebenen": 0,
+      "gruppenkopf": 0,
+      "dauer": 286.9,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:356": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC5884950",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 96159,
+      "prompt": 20650,
+      "text": 19352,
+      "aufschlag": 1298,
+      "reasoning_je_text": 4.97,
+      "tabellen": 2,
+      "captions": 2,
+      "pipe_zeilen": 0,
+      "datenzellen": 48,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 191.5,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun_test186_v7_folgelauf_20261116",
+          19000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:523": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC5325897",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 89661,
+      "prompt": 7811,
+      "text": 6811,
+      "aufschlag": 1000,
+      "reasoning_je_text": 13.16,
+      "tabellen": 2,
+      "captions": 2,
+      "pipe_zeilen": 0,
+      "datenzellen": 51,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 240.1,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:525": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC5325897",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 89708,
+      "prompt": 7811,
+      "text": 6811,
+      "aufschlag": 1000,
+      "reasoning_je_text": 13.17,
+      "tabellen": 2,
+      "captions": 2,
+      "pipe_zeilen": 0,
+      "datenzellen": 51,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 0.1,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:557": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC3136370",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 93380,
+      "prompt": 14124,
+      "text": 13122,
+      "aufschlag": 1002,
+      "reasoning_je_text": 7.12,
+      "tabellen": 1,
+      "captions": 1,
+      "pipe_zeilen": 0,
+      "datenzellen": 42,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 178.3,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:559": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC3136370",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 89528,
+      "prompt": 14139,
+      "text": 13122,
+      "aufschlag": 1017,
+      "reasoning_je_text": 6.82,
+      "tabellen": 1,
+      "captions": 1,
+      "pipe_zeilen": 0,
+      "datenzellen": 42,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 0.1,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:624": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC3493722",
+      "outcome_typ": "binary",
+      "goldzellen": 2,
+      "reasoning": 87507,
+      "prompt": 6268,
+      "text": 5258,
+      "aufschlag": 1010,
+      "reasoning_je_text": 16.64,
+      "tabellen": 0,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 0,
+      "kopfebenen": 0,
+      "gruppenkopf": 0,
+      "dauer": 203.9,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:625": {
+      "gruppe": "ohne_struktur",
+      "dokument": "PMC3493722",
+      "outcome_typ": "binary",
+      "goldzellen": 2,
+      "reasoning": 82625,
+      "prompt": 6268,
+      "text": 5258,
+      "aufschlag": 1010,
+      "reasoning_je_text": 15.71,
+      "tabellen": 0,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 0,
+      "kopfebenen": 0,
+      "gruppenkopf": 0,
+      "dauer": 0.1,
+      "hypothesen": [
+        "H4",
+        "H4b",
+        "H5",
+        "H7"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:30": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC3003523",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 89370,
+      "prompt": 26854,
+      "text": 25866,
+      "aufschlag": 988,
+      "reasoning_je_text": 3.46,
+      "tabellen": 3,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 56,
+      "kopfebenen": 2,
+      "gruppenkopf": 0,
+      "dauer": 0.1,
+      "hypothesen": [
+        "H1",
+        "H3S",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H6",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "yun20_4000_glm_20261116",
+          4000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun20_4000_glm_gsk_20261116",
+          4000,
+          "json_kaputt"
+        ],
+        [
+          "yun20_4000_glm_gskcb_20261116",
+          4000,
+          "json_kaputt"
+        ],
+        [
+          "yun699_test60_20261116",
+          4000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun20_8000_glm_20261116",
+          8000,
+          "ok"
+        ],
+        [
+          "yun20_8000_glm_cb_20261116",
+          8000,
+          "ok"
+        ],
+        [
+          "yun20_8000_glm_v8_20261116",
+          8000,
+          "ok"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:52": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC3195393",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 95546,
+      "prompt": 25950,
+      "text": 24933,
+      "aufschlag": 1017,
+      "reasoning_je_text": 3.83,
+      "tabellen": 6,
+      "captions": 5,
+      "pipe_zeilen": 0,
+      "datenzellen": 153,
+      "kopfebenen": 2,
+      "gruppenkopf": 2,
+      "dauer": 0.1,
+      "hypothesen": [
+        "H1",
+        "H2",
+        "H3G",
+        "H3S",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "test76_hauptlauf_20261116",
+          19000,
+          "json_kaputt"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:159": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC5056957",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 88346,
+      "prompt": 17100,
+      "text": 16081,
+      "aufschlag": 1019,
+      "reasoning_je_text": 5.49,
+      "tabellen": 2,
+      "captions": 2,
+      "pipe_zeilen": 0,
+      "datenzellen": 184,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 230.0,
+      "hypothesen": [
+        "H2",
+        "H3S",
+        "H3weit",
+        "H4",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "q3_repro_a_20261116",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "q3_repro_b_20261116",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:171": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC5079604",
+      "outcome_typ": "continuous",
+      "goldzellen": 4,
+      "reasoning": 97231,
+      "prompt": 21446,
+      "text": 20409,
+      "aufschlag": 1037,
+      "reasoning_je_text": 4.76,
+      "tabellen": 2,
+      "captions": 2,
+      "pipe_zeilen": 0,
+      "datenzellen": 19,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 176.6,
+      "hypothesen": [
+        "H6",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "json_kaputt"
+        ]
+      ]
+    },
+    "yun2024:173": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC5079604",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "reasoning": 93443,
+      "prompt": 21416,
+      "text": 20409,
+      "aufschlag": 1007,
+      "reasoning_je_text": 4.58,
+      "tabellen": 2,
+      "captions": 2,
+      "pipe_zeilen": 0,
+      "datenzellen": 19,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 226.2,
+      "hypothesen": [
+        "H6",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:204": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC5380326",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 89548,
+      "prompt": 15580,
+      "text": 14600,
+      "aufschlag": 980,
+      "reasoning_je_text": 6.13,
+      "tabellen": 3,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 169,
+      "kopfebenen": 2,
+      "gruppenkopf": 3,
+      "dauer": 168.4,
+      "hypothesen": [
+        "H1",
+        "H2",
+        "H3G",
+        "H3weit",
+        "H6",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "pilot_kurzregel_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "pilot_ohne_regel_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "pilot_repair_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "yun_test186_kombiniert_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "yun_test186_v7_folgelauf_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:251": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC5614421",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "reasoning": 97921,
+      "prompt": 41153,
+      "text": 40101,
+      "aufschlag": 1052,
+      "reasoning_je_text": 2.44,
+      "tabellen": 3,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 100,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 300.0,
+      "hypothesen": [
+        "H1",
+        "H4",
+        "H4a",
+        "H6",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:252": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC5614421",
+      "outcome_typ": "binary",
+      "goldzellen": 2,
+      "reasoning": 99829,
+      "prompt": 41138,
+      "text": 40101,
+      "aufschlag": 1037,
+      "reasoning_je_text": 2.49,
+      "tabellen": 3,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 100,
+      "kopfebenen": 1,
+      "gruppenkopf": 0,
+      "dauer": 295.9,
+      "hypothesen": [
+        "H1",
+        "H4",
+        "H4a",
+        "H6",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "pilot_kurzregel_20261116",
+          19000,
+          "ohne Zellen"
+        ],
+        [
+          "pilot_ohne_regel_20261116",
+          19000,
+          "ohne Zellen"
+        ],
+        [
+          "pilot_repair_20261116",
+          19000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun_test186_kombiniert_20261116",
+          19000,
+          "ohne Zellen"
+        ],
+        [
+          "yun_test186_v7_folgelauf_20261116",
+          19000,
+          "ohne Zellen"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:420": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC3877023",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 86878,
+      "prompt": 27322,
+      "text": 26274,
+      "aufschlag": 1048,
+      "reasoning_je_text": 3.31,
+      "tabellen": 4,
+      "captions": 4,
+      "pipe_zeilen": 0,
+      "datenzellen": 49,
+      "kopfebenen": 4,
+      "gruppenkopf": 4,
+      "dauer": 196.0,
+      "hypothesen": [
+        "H1",
+        "H3",
+        "H3G",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H6",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:421": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC3877023",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 84549,
+      "prompt": 27320,
+      "text": 26274,
+      "aufschlag": 1046,
+      "reasoning_je_text": 3.22,
+      "tabellen": 4,
+      "captions": 4,
+      "pipe_zeilen": 0,
+      "datenzellen": 49,
+      "kopfebenen": 4,
+      "gruppenkopf": 4,
+      "dauer": 243.2,
+      "hypothesen": [
+        "H1",
+        "H3",
+        "H3G",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H6",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "yun699_test60_20261116",
+          4000,
+          "ok"
+        ],
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:446": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC4879328",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 95071,
+      "prompt": 26270,
+      "text": 25267,
+      "aufschlag": 1003,
+      "reasoning_je_text": 3.76,
+      "tabellen": 3,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 15,
+      "kopfebenen": 3,
+      "gruppenkopf": 0,
+      "dauer": 0.1,
+      "hypothesen": [
+        "H1",
+        "H3",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:451": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC4879328",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 95333,
+      "prompt": 26319,
+      "text": 25267,
+      "aufschlag": 1052,
+      "reasoning_je_text": 3.77,
+      "tabellen": 3,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 15,
+      "kopfebenen": 3,
+      "gruppenkopf": 0,
+      "dauer": 131.7,
+      "hypothesen": [
+        "H1",
+        "H3",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:582": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC3504298",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 99406,
+      "prompt": 13869,
+      "text": 12838,
+      "aufschlag": 1031,
+      "reasoning_je_text": 7.74,
+      "tabellen": 1,
+      "captions": 1,
+      "pipe_zeilen": 0,
+      "datenzellen": 55,
+      "kopfebenen": 2,
+      "gruppenkopf": 0,
+      "dauer": 264.6,
+      "hypothesen": [
+        "H1",
+        "H4",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun_test186_v7_folgelauf_20261116",
+          19000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:671": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 100255,
+      "prompt": 43571,
+      "text": 42606,
+      "aufschlag": 965,
+      "reasoning_je_text": 2.35,
+      "tabellen": 5,
+      "captions": 5,
+      "pipe_zeilen": 0,
+      "datenzellen": 467,
+      "kopfebenen": 3,
+      "gruppenkopf": 4,
+      "dauer": 299.2,
+      "hypothesen": [
+        "H1",
+        "H2",
+        "H3",
+        "H3G",
+        "H3S",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "test76_hauptlauf_20261116",
+          19000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:672": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 100367,
+      "prompt": 43591,
+      "text": 42606,
+      "aufschlag": 985,
+      "reasoning_je_text": 2.36,
+      "tabellen": 5,
+      "captions": 5,
+      "pipe_zeilen": 0,
+      "datenzellen": 467,
+      "kopfebenen": 3,
+      "gruppenkopf": 4,
+      "dauer": 283.6,
+      "hypothesen": [
+        "H1",
+        "H2",
+        "H3",
+        "H3G",
+        "H3S",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "test76_hauptlauf_20261116",
+          19000,
+          "ohne Zellen"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:674": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 93674,
+      "prompt": 43605,
+      "text": 42606,
+      "aufschlag": 999,
+      "reasoning_je_text": 2.2,
+      "tabellen": 5,
+      "captions": 5,
+      "pipe_zeilen": 0,
+      "datenzellen": 467,
+      "kopfebenen": 3,
+      "gruppenkopf": 4,
+      "dauer": 184.4,
+      "hypothesen": [
+        "H1",
+        "H2",
+        "H3",
+        "H3G",
+        "H3S",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:673": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "reasoning": 93498,
+      "prompt": 43585,
+      "text": 42606,
+      "aufschlag": 979,
+      "reasoning_je_text": 2.19,
+      "tabellen": 5,
+      "captions": 5,
+      "pipe_zeilen": 0,
+      "datenzellen": 467,
+      "kopfebenen": 3,
+      "gruppenkopf": 4,
+      "dauer": 213.9,
+      "hypothesen": [
+        "H1",
+        "H2",
+        "H3",
+        "H3G",
+        "H3S",
+        "H3weit",
+        "H4",
+        "H4a",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:685": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC2836833",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 88956,
+      "prompt": 19903,
+      "text": 18929,
+      "aufschlag": 974,
+      "reasoning_je_text": 4.7,
+      "tabellen": 7,
+      "captions": 7,
+      "pipe_zeilen": 0,
+      "datenzellen": 117,
+      "kopfebenen": 2,
+      "gruppenkopf": 10,
+      "dauer": 165.5,
+      "hypothesen": [
+        "H1",
+        "H3G",
+        "H3weit",
+        "H4",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "pilot_len_b_20261116",
+          19000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun_test186_v7_folgelauf_20261116",
+          19000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "length_ohne_ergebnis"
+        ]
+      ]
+    },
+    "yun2024:678": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC5777419",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 97070,
+      "prompt": 13328,
+      "text": 12349,
+      "aufschlag": 979,
+      "reasoning_je_text": 7.86,
+      "tabellen": 3,
+      "captions": 3,
+      "pipe_zeilen": 0,
+      "datenzellen": 115,
+      "kopfebenen": 3,
+      "gruppenkopf": 6,
+      "dauer": 175.8,
+      "hypothesen": [
+        "H1",
+        "H3",
+        "H3G",
+        "H3S",
+        "H3weit",
+        "H6",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "yun20_4000_glm_20261116",
+          4000,
+          "ok"
+        ],
+        [
+          "yun20_4000_glm_gsk_20261116",
+          4000,
+          "ok"
+        ],
+        [
+          "yun20_4000_glm_gskcb_20261116",
+          4000,
+          "ok"
+        ],
+        [
+          "yun699_test60_20261116",
+          4000,
+          "ok"
+        ],
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun20_8000_glm_20261116",
+          8000,
+          "ok"
+        ],
+        [
+          "yun20_8000_glm_cb_20261116",
+          8000,
+          "ok"
+        ],
+        [
+          "yun20_8000_glm_v8_20261116",
+          8000,
+          "ok"
+        ],
+        [
+          "yun_test186_kombiniert_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "yun_test186_v7_folgelauf_20261116",
+          19000,
+          "ok"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ok"
+        ]
+      ]
+    },
+    "yun2024:687": {
+      "gruppe": "mit_struktur",
+      "dokument": "PMC2836833",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "reasoning": 95376,
+      "prompt": 19900,
+      "text": 18929,
+      "aufschlag": 971,
+      "reasoning_je_text": 5.04,
+      "tabellen": 7,
+      "captions": 7,
+      "pipe_zeilen": 0,
+      "datenzellen": 117,
+      "kopfebenen": 2,
+      "gruppenkopf": 10,
+      "dauer": 172.2,
+      "hypothesen": [
+        "H1",
+        "H3G",
+        "H3weit",
+        "H4",
+        "H4b",
+        "H5"
+      ],
+      "vorlaeufe": [
+        [
+          "_lesekopie_20261118",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "glm_auswertung_20261117",
+          8000,
+          "length_ohne_ergebnis"
+        ],
+        [
+          "yun_test186_kombiniert_20261116",
+          19000,
+          "ohne Zellen"
+        ],
+        [
+          "yun_test186_v7_folgelauf_20261116",
+          19000,
+          "ohne Zellen"
+        ],
+        [
+          "yun699_8000_alle_20261117",
+          24000,
+          "ohne Zellen"
+        ]
+      ]
+    }
+  }
+}

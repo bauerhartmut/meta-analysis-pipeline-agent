@@ -1868,3 +1868,35 @@ in `semantics.py` und wird ueber `record_id` im Kontext gebunden; `structure.jso
 neu erzeugt: **97 Goldfelder, 71 nicht widerlegt**, Warnungen A 137 -> 144,
 Errors 0, 60/60 komplett. Details: `sprint48_alias_20261119.md`. Artefakte: `sprint48_planwerte_20261119.md`,
 `sprint48_armbindung_20261119.{md,json}`.
+
+### Referenzvergleich 20.11.2026 - GLM-5.3 gegen P5
+
+Untersucht, warum der im Repo zitierte GLM-F1 von etwa 0,80 neben dem P5-Wert
+0,493 steht. Der 0,80 ist **kein Gesamtdatensatz-Wert**, sondern F1 0,8088 auf
+den **559 von 699** Zeilen, die Zellen geliefert haben; auf allen 699 Zeilen
+sind es 0,7336 (Feld+Arm, 1:1) bzw. 0,7519 (Logik `auswerte_yun699.py`). P5
+bewertet die **103 Records, die im Referenzlauf samtlich `length_ohne_ergebnis`
+waren und dort 0 Zellen haben**; die Schnittmenge der beiden bewerteten Mengen
+ist leer. Prompt-Fassung ist in beiden Laeufen `v2_timepoint` (`_cb` nur
+Cache-Buster), Modell identisch, Budget 8.000 gegen 24.000.
+
+Nachgerechnet auf identischer Grundgesamtheit (102 bewertbare Records, gleiche
+Logik): P5 170 TP / 97 FP / 253 FN -> Precision 0,6367, Recall 0,4019, F1
+0,4928. Fehlmenge: 132 der 253 FN sind die 33 Records ohne Antwort, 49
+fehlende Zellen, 68 falsche Werte, 4 Armverwechslungen (Spiegelpruefung; ohne
+sie waeren 113/178/291 als falscher Wert durchgegangen). Falsch positiv: 80
+Mehrfach-/Falschwert-Zellen, 17 Fremdschluessel. Hybrid (Referenz auf 596
+Rest-Records + P5 auf 102) ergibt F1 0,7609 statt 0,7336, Recall +0,061,
+Precision -0,019. Dublettenfilter als reine Nachbearbeitung: Precision 0,6589,
+F1 0,4993.
+
+Budgetabbrueche: die 13 Faelle ohne Strukturhypothese haben den kleinsten
+Prompt (Median 7.811 Zeichen), die wenigsten Datenzellen (20) und die hoechste
+Reasoning-Dichte (13,2 Zeichen Reasoning je Zeichen Text). 13/13 ohne Tabelle
+mit Zielfeld, 6/13 ohne Tabellentext. Fuenf der 13 hatten bei 24.000 Tokens
+schon einmal Zellen - der Abbruch ist Grenzvarianz, keine harte Grenze.
+Prompt-Aufschlag in allen Gruppen 1.013 Zeichen, Redundanz damit ausgeschlossen.
+
+Artefakte: `analysis/glm53_p5_vergleich_20261120/` mit vier Berichten, zwei
+Skripten und zwei JSON. Rein lesend, kein Netzaufruf, keine Prediction oder
+Goldzelle veraendert.
