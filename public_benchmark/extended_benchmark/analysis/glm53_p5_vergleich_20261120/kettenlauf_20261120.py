@@ -120,8 +120,19 @@ def score_zeilen_im_stueck(text: str, stuecke: list[tuple[int, int, str]],
     return befunde
 
 
+SCHEMA_ALT = '"timepoint": "<as printed>", "found": true}, ...]}'
+SCHEMA_NEU = ('"timepoint": "<as printed>", "fundstelle": "zeile" | "satz" | '
+              '"kopf", "found": true}, ...]}')
+
+
 def prompt1_mit_kopf(prompt: str) -> str:
-    """Setzt den Kopfzahl-Block vor die JSON-Ausgabe der Stufe-1-Regeln."""
+    """Setzt den Kopfzahl-Block vor die JSON-Ausgabe und ergaenzt das Schema.
+
+    Ohne den Schema-Eintrag hat das Modell kein Feld fuer die Fundstelle und
+    antwortet auf yun2024:582 mit `found: false` (5.030 Tokens, 20.11.2026).
+    """
+    if SCHEMA_ALT in prompt:
+        prompt = prompt.replace(SCHEMA_ALT, SCHEMA_NEU)
     marke = "Return exactly one JSON object:"
     stelle = prompt.rfind(marke)
     if stelle < 0:

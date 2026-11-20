@@ -63,3 +63,21 @@ Deckelwert, einer eine falsche Zelle, drei finden keine Stelle. Die Ursachen
 sind benennbar und liegen alle vor der Extraktion: fehlende Gruppengroessen im
 Ausschnitt (420), zwei Wertepaare in einem Satz ohne Bindung (421), Goldwert als
 Kopfzahl statt Zeilenwert (582, 671, 672).
+
+## Kopf-Modus auf 582, erster Aufruf (20.11.2026)
+
+Ein Aufruf: `--records yun2024:582 --budget1 16000 --budget2 8000`.
+
+Ergebnis: Stufe 1 `ok`, **5.030** Tokens, zwei Locators mit `found: false`
+(alle Felder leer), Stufe 2 nicht gestartet. Die Armzuordnung im Kopf ist damit
+**nicht gemessen**, und es gibt keinen F1-Wert: keine Zellen, `recall = 0`,
+`F1 = null`.
+
+Ursache, offline gefunden: das JSON-Schema in `PROMPT_REGELN` listet
+`fundstelle` nicht. Der Regelblock verlangte das Feld, das Schema gab ihm aber
+keinen Platz; das Modell antwortete folgerichtig mit `found: false`.
+
+Behoben: `prompt1_mit_kopf` ersetzt die Schema-Zeile und haengt
+`"fundstelle": "zeile" | "satz" | "kopf"` an. Prompt fuer 582 jetzt 7.462
+Zeichen, Feld und Block im Prompt belegt, Schema-Pruefung `True`. Kein weiterer
+Aufruf in diesem Schritt.
