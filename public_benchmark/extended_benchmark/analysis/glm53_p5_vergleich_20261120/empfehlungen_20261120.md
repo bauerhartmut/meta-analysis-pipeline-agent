@@ -346,9 +346,16 @@ Tabellenzeile reicht.
    4/6 war teils zufällig (23 % drug stores, 32 % facilities, 26 % education).
    Ein blindes Tabellendichte-Fenster erreicht 6/6 auf 30 und 4/6 bzw. 3/6 auf
    673/674.
-3. **Nächster Aufruf:** Prompt aus Tabellenfenster plus Prosa-Stück, zuerst
-   offline prüfen (30 erreicht 6/6), dann ein Aufruf mit 16.000 Tokens. Keine
-   weitere Serie über Prosa-Fenster.
+3. **Tabellenfenster gelaufen (20.11.2026):** Prompt aus Tabellendichte-Fenster
+   (7.641–9.641) plus Prosa-Stück (5.391–7.391), offline 6/6, ein Aufruf mit
+   16.000 Tokens (`tabelle_prosa_30_ergebnis_20261120.md`). Ergebnis `ok`,
+   8.174 Tokens, 236 s: Tabelle, Zeitpunkt und Arme stimmen, das Modell wählt
+   aber `Mean change from BL` statt `Mean score (SD)`; die Goldzeile
+   (`38.1 (9.5)` / `31.5 (7.4)`) war sichtbar. Damit ist der Fehler erstmals
+   der Zeilenwahl zuzuordnen, nicht dem Ausschnitt.
+4. **Nächster Schritt:** Zeilenbindung im Prompt schärfen oder in einer Stufe 2
+   mit Zeilenkandidaten (Score vs. Change) auflösen; kein weiterer Aufruf ohne
+   diese Entscheidung.
 
 Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Feldbezeichnung offen),
 weitere Prompt-Fassungen auf 420/421 (Befund 1), eine Budgeterhöhung als
