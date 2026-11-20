@@ -76,8 +76,14 @@ def main() -> int:
     if args.extra:
         prompt = prompt + "\n" + args.extra
 
+    zh, _, _ = zahlen_im_text(fall["ausschnitt_text"])
+    werte = {round(float(z["wert"]), 6) for z in fall["gold"]}
+    im_ausschnitt = len({w for w in werte if zh.get(w)})
+    # `goldwerte_im_volltext` zaehlt im ganzen Dokument, nicht im Ausschnitt;
+    # genau diese Verwechslung hat die Kandidatenwahl fuer 674 verzerrt.
     print(f"{args.record}: Prompt {len(prompt)} Zeichen, Budget {args.budget}, "
-          f"Goldwerte im Ausschnitt {fall['goldwerte_im_volltext']}/{len(fall['gold'])}")
+          f"Goldwerte im Ausschnitt {im_ausschnitt}/{len(fall['gold'])}, "
+          f"im Volltext {fall['goldwerte_im_volltext']}/{len(fall['gold'])}")
     if args.dry_run:
         print("DRY-RUN: keine Anfrage")
         return 0
@@ -152,6 +158,7 @@ def main() -> int:
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
         "max_tokens": args.budget,
         "prompt_zusatz": args.extra,
+        "goldwerte_im_ausschnitt": im_ausschnitt,
         "budget_begruendung": "gemessener Fertig-Punkt von yun2024:559 mit Anker (16.632 Tokens)",
         "status": "abgebrochen" if abgebrochen else "ok",
         "abbruchkriterium": "content_chars == 0 oder finish_reason == length",

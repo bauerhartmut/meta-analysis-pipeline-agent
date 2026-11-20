@@ -1,0 +1,450 @@
+{
+ "quelle": "AIResearch/public_benchmark/extended_benchmark/analysis/glm53_p5_vergleich_20261120/leere_p5_muster_20261120.json",
+ "n": 33,
+ "ausschnitt_zeichen": 6000,
+ "faelle": [
+  {
+   "record_id": "yun2024:420",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC3877023",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 6,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 86878
+  },
+  {
+   "record_id": "yun2024:421",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC3877023",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 6,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 84549
+  },
+  {
+   "record_id": "yun2024:119",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC4323894",
+   "goldzellen": 4,
+   "goldwerte": 4,
+   "im_ausschnitt": 4,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 98142
+  },
+  {
+   "record_id": "yun2024:128",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC4493951",
+   "goldzellen": 4,
+   "goldwerte": 3,
+   "im_ausschnitt": 3,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 90927
+  },
+  {
+   "record_id": "yun2024:171",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC5079604",
+   "goldzellen": 4,
+   "goldwerte": 4,
+   "im_ausschnitt": 3,
+   "fehlend": [
+    33.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 97231
+  },
+  {
+   "record_id": "yun2024:173",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC5079604",
+   "goldzellen": 4,
+   "goldwerte": 4,
+   "im_ausschnitt": 3,
+   "fehlend": [
+    33.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 93443
+  },
+  {
+   "record_id": "yun2024:251",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC5614421",
+   "goldzellen": 4,
+   "goldwerte": 4,
+   "im_ausschnitt": 3,
+   "fehlend": [
+    7.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 97921
+  },
+  {
+   "record_id": "yun2024:30",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC3003523",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 3,
+   "fehlend": [
+    7.4,
+    9.5,
+    31.5
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 89370
+  },
+  {
+   "record_id": "yun2024:523",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC5325897",
+   "goldzellen": 6,
+   "goldwerte": 4,
+   "im_ausschnitt": 3,
+   "fehlend": [
+    15.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 89661
+  },
+  {
+   "record_id": "yun2024:525",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC5325897",
+   "goldzellen": 6,
+   "goldwerte": 4,
+   "im_ausschnitt": 3,
+   "fehlend": [
+    15.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 89708
+  },
+  {
+   "record_id": "yun2024:673",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC4550271",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 3,
+   "fehlend": [
+    22.6,
+    23.0,
+    36.4
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 93498
+  },
+  {
+   "record_id": "yun2024:674",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC4550271",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 3,
+   "fehlend": [
+    22.6,
+    23.0,
+    23.5
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 93674
+  },
+  {
+   "record_id": "yun2024:152",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC5055753",
+   "goldzellen": 4,
+   "goldwerte": 3,
+   "im_ausschnitt": 2,
+   "fehlend": [
+    7.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 99665
+  },
+  {
+   "record_id": "yun2024:252",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC5614421",
+   "goldzellen": 2,
+   "goldwerte": 2,
+   "im_ausschnitt": 2,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 99829
+  },
+  {
+   "record_id": "yun2024:304",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC4357072",
+   "goldzellen": 4,
+   "goldwerte": 3,
+   "im_ausschnitt": 2,
+   "fehlend": [
+    14.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 95635
+  },
+  {
+   "record_id": "yun2024:52",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC3195393",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 2,
+   "fehlend": [
+    0.07,
+    0.13,
+    463.0,
+    562.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 95546
+  },
+  {
+   "record_id": "yun2024:557",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC3136370",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 2,
+   "fehlend": [
+    -19.57,
+    -17.1,
+    68.08,
+    93.53
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 93380
+  },
+  {
+   "record_id": "yun2024:559",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC3136370",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 2,
+   "fehlend": [
+    -8.0,
+    -4.0,
+    12.35,
+    65.41
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 89528
+  },
+  {
+   "record_id": "yun2024:671",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC4550271",
+   "goldzellen": 2,
+   "goldwerte": 2,
+   "im_ausschnitt": 2,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 100255
+  },
+  {
+   "record_id": "yun2024:672",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC4550271",
+   "goldzellen": 2,
+   "goldwerte": 2,
+   "im_ausschnitt": 2,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 100367
+  },
+  {
+   "record_id": "yun2024:678",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC5777419",
+   "goldzellen": 2,
+   "goldwerte": 2,
+   "im_ausschnitt": 2,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 97070
+  },
+  {
+   "record_id": "yun2024:204",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC5380326",
+   "goldzellen": 2,
+   "goldwerte": 1,
+   "im_ausschnitt": 1,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 89548
+  },
+  {
+   "record_id": "yun2024:273",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC3214395",
+   "goldzellen": 2,
+   "goldwerte": 2,
+   "im_ausschnitt": 1,
+   "fehlend": [
+    30.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 101270
+  },
+  {
+   "record_id": "yun2024:356",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC5884950",
+   "goldzellen": 2,
+   "goldwerte": 1,
+   "im_ausschnitt": 1,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 96159
+  },
+  {
+   "record_id": "yun2024:446",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC4879328",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 1,
+   "fehlend": [
+    -0.89,
+    3.32,
+    3.54,
+    104.0,
+    114.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 95071
+  },
+  {
+   "record_id": "yun2024:451",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC4879328",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 1,
+   "fehlend": [
+    -16.1,
+    7.41,
+    66.12,
+    66.25,
+    108.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 95333
+  },
+  {
+   "record_id": "yun2024:582",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC3504298",
+   "goldzellen": 2,
+   "goldwerte": 1,
+   "im_ausschnitt": 1,
+   "fehlend": [],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 99406
+  },
+  {
+   "record_id": "yun2024:159",
+   "klasse": "prosa_mehrfachpaar",
+   "dokument": "PMC5056957",
+   "goldzellen": 6,
+   "goldwerte": 6,
+   "im_ausschnitt": 0,
+   "fehlend": [
+    5.9,
+    6.39,
+    21.07,
+    21.27,
+    459.0,
+    592.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 88346
+  },
+  {
+   "record_id": "yun2024:164",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC5062234",
+   "goldzellen": 2,
+   "goldwerte": 1,
+   "im_ausschnitt": 0,
+   "fehlend": [
+    21.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 99794
+  },
+  {
+   "record_id": "yun2024:624",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC3493722",
+   "goldzellen": 2,
+   "goldwerte": 1,
+   "im_ausschnitt": 0,
+   "fehlend": [
+    74.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 87507
+  },
+  {
+   "record_id": "yun2024:625",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC3493722",
+   "goldzellen": 2,
+   "goldwerte": 2,
+   "im_ausschnitt": 0,
+   "fehlend": [
+    4.0,
+    8.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 82625
+  },
+  {
+   "record_id": "yun2024:685",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC2836833",
+   "goldzellen": 2,
+   "goldwerte": 1,
+   "im_ausschnitt": 0,
+   "fehlend": [
+    17.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 88956
+  },
+  {
+   "record_id": "yun2024:687",
+   "klasse": "fehlt_im_text",
+   "dokument": "PMC2836833",
+   "goldzellen": 2,
+   "goldwerte": 1,
+   "im_ausschnitt": 0,
+   "fehlend": [
+    17.0
+   ],
+   "pipe_zeilen_ausschnitt": 0,
+   "p5_reasoning": 95376
+  }
+ ],
+ "fair": [
+  "yun2024:420",
+  "yun2024:421",
+  "yun2024:119"
+ ],
+ "ohne_vollstaendige_abdeckung": 30,
+ "ohne_jeden_goldwert": 6
+}
