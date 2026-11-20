@@ -201,7 +201,8 @@ def baue_prompt2(aus: dict[str, Any], fall: dict[str, Any], context: dict[str, A
     )
 
 
-def vorstufe_kopf(text: str, stuecke: list[tuple[int, int, str]]) -> dict[str, Any]:
+def vorstufe_kopf(text: str, stuecke: list[tuple[int, int, str]],
+                  record_context: dict[str, Any]) -> dict[str, Any]:
     """Gruppengroessen regelbasiert aus der Tabellenkopfzeile, ohne Modell.
 
     Laeuft vor Stufe 1. Findet der Parser zwei Kopfzellen mit Armzeile, sind die
@@ -212,9 +213,11 @@ def vorstufe_kopf(text: str, stuecke: list[tuple[int, int, str]]) -> dict[str, A
     start, ende, _ = stuecke[-1]
     kopf = kp.kopf_parse(text, start, ende)
     zellen = kopf.get("zellen") or []
-    werte = [z["wert"] for z in zellen][:2]
+    lesarten = kp.varianten(zellen, record_context)
+    werte = lesarten.get("erste_zwei") or []
     leer = {"cells": [], "gefunden": False, "kopfzeile": kopf.get("kopfzeile", ""),
-            "armzeile": kopf.get("armzeile", ""), "vektoren": [],
+            "armzeile": kopf.get("armzeile", ""), "varianten": lesarten,
+            "zelltexte": [z["zelle"] for z in zellen],
             "grund": kopf.get("grund") or "weniger als zwei Kopfzellen"}
     if len(werte) < 2:
         return leer
@@ -224,8 +227,19 @@ def vorstufe_kopf(text: str, stuecke: list[tuple[int, int, str]]) -> dict[str, A
               "value": werte[1], "raw": zahl_text(werte[1]), "quelle": "kopf_parser"}]
     return {"cells": cells, "gefunden": True, "kopfzeile": kopf.get("kopfzeile", ""),
             "armzeile": kopf.get("armzeile", ""),
-            "labels": [z["arm_label"] for z in zellen],
-            "werte": werte, "zelltexte": [z["zelle"] for z in zellen]}
+            "zellen": [(z["arm_label"], z["untergruppe"], z["wert"]) for z in zellen],
+            "varianten": lesarten, "werte": werte,
+            "zelltexte": [z["zelle"] for z in zellen]}
+
+
+def f1_werte(werte: list[float], gold: list[dict[str, Any]]) -> dict[str, Any]:
+    """F1 einer Wertefolge als Interventions-/Komparatorgroesse."""
+    cells = [{"field": "intervention_group_size", "arm": "intervention",
+              "value": werte[0]},
+             {"field": "comparator_group_size", "arm": "comparator",
+              "value": werte[1]}]
+    bilanz = v.bilanz_p5(gold, cells)
+    return {**bilanz, **v.quote(bilanz["tp"], bilanz["fp"], bilanz["fn"])}
 
 
 def kopf_ausschnitt(text: str, start: int, spaltenkopf: str) -> dict[str, Any]:
@@ -376,7 +390,7 @@ def main() -> int:
         gold = (record.get("gold") or {}).get("cells") or []
         werte = sorted({round(float(z["value"]), 6) for z in gold if z.get("value") is not None})
         stuecke = erweitere(text, waehle_stuecke(text, worte_von(record)))
-        vorstufe = vorstufe_kopf(text, stuecke)
+        vorstufe = vorstufe_kopf(text, stuecke, context)
         bind = bindung_pruefen(text, stuecke)
         kopfzahlen = [m.group(0) for a, b, _ in stuecke
                       for m in KOPF_N.finditer(text[a:b])]
@@ -415,6 +429,11 @@ def main() -> int:
         faelle.append(fall)
         print(f"   Vorstufe Kopf: {vorstufe.get('zelltexte')} "
               f"-> {vorstufe.get('werte')} ({vorstufe.get('armzeile')!r})")
+        print(f"   Vorstufe Zellen (Arm, Untergruppe, Wert): {vorstufe.get('zellen')}")
+        for name, lesart in (vorstufe.get("varianten") or {}).items():
+            f1 = f1_werte(lesart, gold)
+            print(f"   Lesart {name:11s} {lesart} -> TP {f1['tp']} FP {f1['fp']} "
+                  f"FN {f1['fn']} F1 {f1['f1']}")
         print(f"{rid}: Stuecke {stuecke}, Gold im Ausschnitt "
               f"{sum(1 for w in werte if abgedeckt[w])}/{len(werte)}, "
               f"Score-Zeilen {len(zeilen)}, Prompt1 {len(prompt1)} Zeichen")
@@ -452,6 +471,10 @@ def main() -> int:
             print(f"{fall['rid']}: Vorstufe {[z['value'] for z in vor['cells']]} "
                   f"Gold {fall['werte']} TP {bilanz['tp']} FP {bilanz['fp']} "
                   f"FN {bilanz['fn']} F1 {quote['f1']}")
+            for name, lesart in (vor.get("varianten") or {}).items():
+                f1 = f1_werte(lesart, fall["gold"])
+                print(f"   Lesart {name:11s} {lesart} -> TP {f1['tp']} FP {f1['fp']} "
+                      f"FN {f1['fn']} F1 {f1['f1']}")
         print(f"F1 = 1.0 bei {treffer} von {len(faelle)} Records, kein Aufruf")
         return 0
 
@@ -492,8 +515,11 @@ def main() -> int:
 
         zeile = {"record_id": rid, "variante": "kette_stichprobe",
                  "vorstufe": {k: fall["vorstufe"].get(k) for k in
-                              ("gefunden", "werte", "zelltexte", "armzeile",
+                              ("gefunden", "werte", "zelltexte", "zellen", "armzeile",
                                "kopfzeile", "cells")},
+                 "vorstufe_varianten_f1": {
+                     name: f1_werte(lesart, fall["gold"])
+                     for name, lesart in (fall["vorstufe"].get("varianten") or {}).items()},
                  "model": MODELL, "model_id": modell1.get("id"),
                  "stuecke": fall["stuecke"], "goldwerte": fall["werte"],
                  "goldwerte_im_ausschnitt": fall["goldwerte_im_ausschnitt"],

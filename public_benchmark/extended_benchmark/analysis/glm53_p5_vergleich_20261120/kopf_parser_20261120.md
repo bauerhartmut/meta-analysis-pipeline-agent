@@ -62,3 +62,10 @@ Den Parser als Vorstufe vor Stufe 1 in den Kettenlauf haengen: findet er zwei
 Kopfzellen mit Armzeile, werden die Gruppengroessen ohne Aufruf gesetzt und
 Stufe 2 liest nur noch die Mittelwerte. Er greift bei 582 und laesst die anderen
 Records unveraendert, statt sie mit einem weiteren Aufruf zu belasten.
+
+## Nachtrag 20.11.2026: Arm und Untergruppe
+
+Der Parser liest jetzt je Kopfzelle Arm und Untergruppe (`Faces`, `Words`) und
+gibt drei Lesarten aus: `erste_zwei` (16/16, F1 1,0), `je_arm` (16/14, F1 0,5)
+und `untergruppe` (16/14, F1 0,5). Einzelheiten in
+`kopf_und_satzauswahl_20261120.md`; die 1,0 haengt an `erste_zwei`.

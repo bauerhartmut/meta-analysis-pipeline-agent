@@ -1,0 +1,455 @@
+{
+  "zaehlung": {
+    "Paar fehlt, richtiger Satz lag vor": 6,
+    "Paar richtig, Unterscheider fehlt: Cervicothoracic": 4,
+    "Paar richtig, Unterscheider fehlt: thoracolumbar": 4,
+    "Paar fehlt, kein richtiger Satz im Ausschnitt": 4,
+    "Paar richtig, Unterscheider fehlt: results": 2
+  },
+  "faelle": [
+    {
+      "record_id": "yun2024:30",
+      "quelle": "predictions_dreifenster_30_qwen_16000.jsonl",
+      "arm": "intervention",
+      "satz": "Mean changes from baseline in the SF-36 Mental Component Summary (MCS) at week 52 for CZP 200 mg and 400 mg plus MTX, and PBO plus MTX were 6.4, 6.4 and 2.1, respectively (*P* < 0.001).",
+      "goldwerte_im_satz": [],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [],
+      "unterscheider": [
+        "Short-Form",
+        "improvement"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 1,
+      "urteil": "Paar fehlt, richtiger Satz lag vor",
+      "tokens": 5781
+    },
+    {
+      "record_id": "yun2024:30",
+      "quelle": "predictions_dreifenster_30_qwen_16000.jsonl",
+      "arm": "comparator",
+      "satz": "Mean changes from baseline in the SF-36 Mental Component Summary (MCS) at week 52 for CZP 200 mg and 400 mg plus MTX, and PBO plus MTX were 6.4, 6.4 and 2.1, respectively (*P* < 0.001).",
+      "goldwerte_im_satz": [],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [],
+      "unterscheider": [
+        "Short-Form",
+        "improvement"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 1,
+      "urteil": "Paar fehlt, richtiger Satz lag vor",
+      "tokens": 5781
+    },
+    {
+      "record_id": "yun2024:673",
+      "quelle": "predictions_dreifenster_673_qwen_16000.jsonl",
+      "arm": "intervention",
+      "satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+      "goldwerte_im_satz": [
+        23.0
+      ],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [
+        "according",
+        "guidelines"
+      ],
+      "unterscheider": [
+        "treatment",
+        "according",
+        "guidelines"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 4,
+      "urteil": "Paar fehlt, richtiger Satz lag vor",
+      "tokens": 6543
+    },
+    {
+      "record_id": "yun2024:673",
+      "quelle": "predictions_dreifenster_673_qwen_16000.jsonl",
+      "arm": "comparator",
+      "satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+      "goldwerte_im_satz": [
+        23.0
+      ],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [
+        "according",
+        "guidelines"
+      ],
+      "unterscheider": [
+        "treatment",
+        "according",
+        "guidelines"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 4,
+      "urteil": "Paar fehlt, richtiger Satz lag vor",
+      "tokens": 6543
+    },
+    {
+      "record_id": "yun2024:674",
+      "quelle": "predictions_dreifenster_674_qwen_16000.jsonl",
+      "arm": "comparator",
+      "satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+      "goldwerte_im_satz": [
+        23.0
+      ],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [
+        "according",
+        "guidelines"
+      ],
+      "unterscheider": [
+        "treatment",
+        "according",
+        "guidelines"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 4,
+      "urteil": "Paar fehlt, richtiger Satz lag vor",
+      "tokens": 9314
+    },
+    {
+      "record_id": "yun2024:674",
+      "quelle": "predictions_dreifenster_674_qwen_16000.jsonl",
+      "arm": "intervention",
+      "satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+      "goldwerte_im_satz": [
+        23.0
+      ],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [
+        "according",
+        "guidelines"
+      ],
+      "unterscheider": [
+        "treatment",
+        "according",
+        "guidelines"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 4,
+      "urteil": "Paar fehlt, richtiger Satz lag vor",
+      "tokens": 9314
+    },
+    {
+      "record_id": "yun2024:420",
+      "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+      "arm": "intervention",
+      "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+      "goldwerte_im_satz": [
+        0.24,
+        0.48,
+        0.95,
+        1.43
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [
+        "contour",
+        "sharpness"
+      ],
+      "unterscheider": [
+        "contour",
+        "sharpness",
+        "Cervicothoracic"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 1,
+      "urteil": "Paar richtig, Unterscheider fehlt: Cervicothoracic",
+      "tokens": null
+    },
+    {
+      "record_id": "yun2024:420",
+      "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+      "arm": "comparator",
+      "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+      "goldwerte_im_satz": [
+        0.24,
+        0.48,
+        0.95,
+        1.43
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [
+        "contour",
+        "sharpness"
+      ],
+      "unterscheider": [
+        "contour",
+        "sharpness",
+        "Cervicothoracic"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 1,
+      "urteil": "Paar richtig, Unterscheider fehlt: Cervicothoracic",
+      "tokens": null
+    },
+    {
+      "record_id": "yun2024:421",
+      "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+      "arm": "intervention",
+      "satz": "rt-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+      "goldwerte_im_satz": [
+        0.22,
+        0.51,
+        0.83,
+        1.32
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [
+        "contour",
+        "sharpness"
+      ],
+      "unterscheider": [
+        "contour",
+        "sharpness",
+        "thoracolumbar"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 1,
+      "urteil": "Paar richtig, Unterscheider fehlt: thoracolumbar",
+      "tokens": null
+    },
+    {
+      "record_id": "yun2024:421",
+      "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+      "arm": "comparator",
+      "satz": "rt-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+      "goldwerte_im_satz": [
+        0.22,
+        0.51,
+        0.83,
+        1.32
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [
+        "contour",
+        "sharpness"
+      ],
+      "unterscheider": [
+        "contour",
+        "sharpness",
+        "thoracolumbar"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 1,
+      "urteil": "Paar richtig, Unterscheider fehlt: thoracolumbar",
+      "tokens": null
+    },
+    {
+      "record_id": "yun2024:421",
+      "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+      "arm": "intervention",
+      "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+      "goldwerte_im_satz": [
+        0.22,
+        0.51,
+        0.83,
+        1.32
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [
+        "contour",
+        "sharpness"
+      ],
+      "unterscheider": [
+        "contour",
+        "sharpness",
+        "thoracolumbar"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 1,
+      "urteil": "Paar richtig, Unterscheider fehlt: thoracolumbar",
+      "tokens": null
+    },
+    {
+      "record_id": "yun2024:421",
+      "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+      "arm": "comparator",
+      "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+      "goldwerte_im_satz": [
+        0.22,
+        0.51,
+        0.83,
+        1.32
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [
+        "contour",
+        "sharpness"
+      ],
+      "unterscheider": [
+        "contour",
+        "sharpness",
+        "thoracolumbar"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 1,
+      "urteil": "Paar richtig, Unterscheider fehlt: thoracolumbar",
+      "tokens": null
+    },
+    {
+      "record_id": "yun2024:119",
+      "quelle": "predictions_satz_119_qwen_16000.jsonl",
+      "arm": "intervention",
+      "satz": "When comparison was only made between 2 groups (no cooling vs mild cooling; no cooling vs deep cooling and mild cooling vs deep cooling), it seems that the mild-cooling-treated patients fared better than no cooling (70% of mild cooling attained good GOS compared with only 15.4% attained good GOS in no cooling group, *P* = 0.013); and apparently, the deep-cooling-treated patients failed to be better than either no cooling (*P* = 0.074) or mild cooling group (*P* = 0.650).",
+      "goldwerte_im_satz": [
+        15.4,
+        70.0
+      ],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [],
+      "unterscheider": [
+        "Improvement",
+        "Glasgow",
+        "outcome",
+        "months",
+        "post-trauma"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 0,
+      "urteil": "Paar fehlt, kein richtiger Satz im Ausschnitt",
+      "tokens": 6236
+    },
+    {
+      "record_id": "yun2024:119",
+      "quelle": "predictions_satz_119_qwen_16000.jsonl",
+      "arm": "comparator",
+      "satz": "When comparison was only made between 2 groups (no cooling vs mild cooling; no cooling vs deep cooling and mild cooling vs deep cooling), it seems that the mild-cooling-treated patients fared better than no cooling (70% of mild cooling attained good GOS compared with only 15.4% attained good GOS in no cooling group, *P* = 0.013); and apparently, the deep-cooling-treated patients failed to be better than either no cooling (*P* = 0.074) or mild cooling group (*P* = 0.650).",
+      "goldwerte_im_satz": [
+        15.4,
+        70.0
+      ],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [],
+      "unterscheider": [
+        "Improvement",
+        "Glasgow",
+        "outcome",
+        "months",
+        "post-trauma"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 0,
+      "urteil": "Paar fehlt, kein richtiger Satz im Ausschnitt",
+      "tokens": 6236
+    },
+    {
+      "record_id": "yun2024:420",
+      "quelle": "predictions_satz_420_qwen_16000.jsonl",
+      "arm": "intervention",
+      "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+      "goldwerte_im_satz": [
+        0.24,
+        0.48,
+        0.95,
+        1.43
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [
+        "contour",
+        "sharpness"
+      ],
+      "unterscheider": [
+        "contour",
+        "sharpness",
+        "Cervicothoracic"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 0,
+      "urteil": "Paar richtig, Unterscheider fehlt: Cervicothoracic",
+      "tokens": 7728
+    },
+    {
+      "record_id": "yun2024:420",
+      "quelle": "predictions_satz_420_qwen_16000.jsonl",
+      "arm": "comparator",
+      "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+      "goldwerte_im_satz": [
+        0.24,
+        0.48,
+        0.95,
+        1.43
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [
+        "contour",
+        "sharpness"
+      ],
+      "unterscheider": [
+        "contour",
+        "sharpness",
+        "Cervicothoracic"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 0,
+      "urteil": "Paar richtig, Unterscheider fehlt: Cervicothoracic",
+      "tokens": 7728
+    },
+    {
+      "record_id": "yun2024:523",
+      "quelle": "predictions_satz_523_16632.jsonl",
+      "arm": "intervention",
+      "satz": "Mean scores of first and second evaluations were 10.24 \u00b1 0.77, 17.73 \u00b1 0.46 in feedback receivers and 9.73 \u00b1 0.77 and 12.13 \u00b1 0.47 in others (p < 0.001).",
+      "goldwerte_im_satz": [
+        0.77,
+        9.73,
+        10.24
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [],
+      "unterscheider": [
+        "results"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 0,
+      "urteil": "Paar richtig, Unterscheider fehlt: results",
+      "tokens": 2342
+    },
+    {
+      "record_id": "yun2024:523",
+      "quelle": "predictions_satz_523_16632.jsonl",
+      "arm": "comparator",
+      "satz": "Mean scores of first and second evaluations were 10.24 \u00b1 0.77, 17.73 \u00b1 0.46 in feedback receivers and 9.73 \u00b1 0.77 and 12.13 \u00b1 0.47 in others (p < 0.001).",
+      "goldwerte_im_satz": [
+        0.77,
+        9.73,
+        10.24
+      ],
+      "paar_vollstaendig": true,
+      "unterscheider_im_satz": [],
+      "unterscheider": [
+        "results"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 0,
+      "urteil": "Paar richtig, Unterscheider fehlt: results",
+      "tokens": 2342
+    },
+    {
+      "record_id": "yun2024:52",
+      "quelle": "predictions_satz_52_qwen_16000.jsonl",
+      "arm": "intervention",
+      "satz": "In the study site, there was no significant difference in the overall restraint rate between the pre- and postintervention periods although the overall restraint rate had a slightly upward trend from 11.5% to 13.6% (*P* = 0.405) postintervention.",
+      "goldwerte_im_satz": [
+        11.5,
+        13.6
+      ],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [
+        "Restraint"
+      ],
+      "unterscheider": [
+        "Restraint",
+        "frecuency"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 0,
+      "urteil": "Paar fehlt, kein richtiger Satz im Ausschnitt",
+      "tokens": 7400
+    },
+    {
+      "record_id": "yun2024:52",
+      "quelle": "predictions_satz_52_qwen_16000.jsonl",
+      "arm": "comparator",
+      "satz": "In the study site, there was no significant difference in the overall restraint rate between the pre- and postintervention periods although the overall restraint rate had a slightly upward trend from 11.5% to 13.6% (*P* = 0.405) postintervention.",
+      "goldwerte_im_satz": [
+        11.5,
+        13.6
+      ],
+      "paar_vollstaendig": false,
+      "unterscheider_im_satz": [
+        "Restraint"
+      ],
+      "unterscheider": [
+        "Restraint",
+        "frecuency"
+      ],
+      "saetze_mit_gold_im_ausschnitt": 0,
+      "urteil": "Paar fehlt, kein richtiger Satz im Ausschnitt",
+      "tokens": 7400
+    }
+  ]
+}

@@ -5,42 +5,72 @@
       "intervention_group_size": 16.0,
       "comparator_group_size": 16.0
     },
-    "gefunden": true,
+    "kopfzeile": "Faces (*n* = 16)   Words (*n* = 16)   Faces (*n* = 14)   Words (*n* = 15)   *p*[a](#)",
+    "armzeile": "Positive ABM       Neutral ABM",
     "zellen": [
       {
         "arm_label": "Positive ABM",
+        "untergruppe": "Faces",
         "wert": 16.0,
         "zelle": "(*n* = 16)",
-        "pos": 10685
+        "pos": 10624
       },
       {
         "arm_label": "Positive ABM",
+        "untergruppe": "Words",
         "wert": 16.0,
         "zelle": "(*n* = 16)",
-        "pos": 10704
+        "pos": 10624
       },
       {
         "arm_label": "Neutral ABM",
+        "untergruppe": "Faces",
         "wert": 14.0,
         "zelle": "(*n* = 14)",
-        "pos": 10723
+        "pos": 10624
       },
       {
         "arm_label": "Neutral ABM",
+        "untergruppe": "Words",
         "wert": 15.0,
         "zelle": "(*n* = 15)",
-        "pos": 10742
+        "pos": 10624
       }
     ],
-    "kopfzeile": "Faces (*n* = 16)   Words (*n* = 16)   Faces (*n* = 14)   Words (*n* = 15)   *p*[a](#)",
-    "armzeile": "Positive ABM       Neutral ABM",
-    "zeile_pos": 10624,
-    "zuordnung": {
-      "ordnung": "wie_gedruckt",
-      "tp": 2,
-      "fp": 0,
-      "fn": 0,
-      "f1": 1.0
+    "varianten": {
+      "erste_zwei": {
+        "werte": [
+          16.0,
+          16.0
+        ],
+        "ordnung": "wie_gedruckt",
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "f1": 1.0
+      },
+      "je_arm": {
+        "werte": [
+          16.0,
+          14.0
+        ],
+        "ordnung": "wie_gedruckt",
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "f1": 0.5
+      },
+      "untergruppe": {
+        "werte": [
+          16.0,
+          14.0
+        ],
+        "ordnung": "wie_gedruckt",
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "f1": 0.5
+      }
     }
   },
   {
@@ -49,12 +79,10 @@
       "intervention_group_size": 18.0,
       "comparator_group_size": 21.0
     },
-    "gefunden": false,
-    "grund": "keine Zeile mit zwei Kopfzellen",
-    "zuordnung": {
-      "f1": 0.0,
-      "grund": "weniger als zwei Kopfzellen"
-    }
+    "kopfzeile": "",
+    "armzeile": "",
+    "zellen": [],
+    "varianten": {}
   },
   {
     "record_id": "yun2024:421",
@@ -62,12 +90,10 @@
       "intervention_group_size": 30.0,
       "comparator_group_size": 34.0
     },
-    "gefunden": false,
-    "grund": "keine Zeile mit zwei Kopfzellen",
-    "zuordnung": {
-      "f1": 0.0,
-      "grund": "weniger als zwei Kopfzellen"
-    }
+    "kopfzeile": "",
+    "armzeile": "",
+    "zellen": [],
+    "varianten": {}
   },
   {
     "record_id": "yun2024:671",
@@ -75,12 +101,10 @@
       "intervention_group_size": 14.0,
       "comparator_group_size": 12.0
     },
-    "gefunden": false,
-    "grund": "keine Zeile mit zwei Kopfzellen",
-    "zuordnung": {
-      "f1": 0.0,
-      "grund": "weniger als zwei Kopfzellen"
-    }
+    "kopfzeile": "",
+    "armzeile": "",
+    "zellen": [],
+    "varianten": {}
   },
   {
     "record_id": "yun2024:672",
@@ -88,11 +112,9 @@
       "intervention_group_size": 14.0,
       "comparator_group_size": 12.0
     },
-    "gefunden": false,
-    "grund": "keine Zeile mit zwei Kopfzellen",
-    "zuordnung": {
-      "f1": 0.0,
-      "grund": "weniger als zwei Kopfzellen"
-    }
+    "kopfzeile": "",
+    "armzeile": "",
+    "zellen": [],
+    "varianten": {}
   }
 ]
