@@ -369,9 +369,15 @@ Tabellenzeile reicht.
    F1 1.0**. Erster Record mit geschlossener Kette.
 7. **Stufe-1-Runner:** prüft das Zeilenlabel gegen die Stücke, Tabellen-Locators
    tragen `stueck` statt `None` (belegt per `--pruefe-prediction`, ohne Netz).
-8. **Nächster Schritt:** Kette auf 5 der 33 Records übertragen (Schätzung rund
-   11.300 Tokens je Record, also ca. 57.000); die volle Serie (ca. 373.000)
-   erst, wenn die Trefferquote der Stichprobe steht.
+8. **Kette auf 5 der 33 Records (20.11.2026):** 420, 421, 582, 671, 672;
+   Stufe 1 16.000 / Stufe 2 8.000, zusammen 32.162 Tokens
+   (`kette_stichprobe_20261120.md`). Ergebnis: 420 F1 0,8 (Deckel aus fehlenden
+   Gruppengrößen), 421 F1 0 (falsches Paar desselben Satzes), 582/671/672
+   `found: false` (Goldwert ist Gruppengröße im Kopf, keine Zeile).
+9. **Nächster Schritt:** vor weiterer Serie drei Bindungslücken schließen:
+   Kopfzahlen (n) als eigene Fundstelle erlauben, mehrere Wertepaare in einem
+   Satz an Schnittstelle/Zeitpunkt binden, und einen Ausschnitt wählen, der die
+   Gruppengrößen mitnimmt. Danach dieselben fünf Records erneut messen.
 
 Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Feldbezeichnung offen),
 weitere Prompt-Fassungen auf 420/421 (Befund 1), eine Budgeterhöhung als

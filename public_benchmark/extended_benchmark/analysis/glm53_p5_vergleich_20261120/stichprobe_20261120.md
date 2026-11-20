@@ -25,6 +25,14 @@ Die strenge Fassung (Wochenlabel im Ausschnitt) trifft **0 von 33** Records. Gru
 | `yun2024:671` | PMC4550271 | Community knowledge | 3 Mean (SD) | nein | 2/2 | 6241 |
 | `yun2024:672` | PMC4550271 | Community knowledge | 3 Mean (SD) | nein | 2/2 | 6261 |
 
+## Obergrenze der Bewertung bei 420 und 421
+
+Bei `yun2024:420` und `yun2024:421` fehlen die Gruppengroessen im Ausschnitt
+(18/21 bzw. 30/34 stehen nur ausserhalb der beiden Stuecke), die Mittelwerte
+und Standardabweichungen liegen drin. Von sechs Goldzellen sind dort also nur
+vier erreichbar: **F1 hoechstens 0,8**, auch bei fehlerfreiem Lauf. Ein Wert
+unter 0,8 misst den Lauf, ein Wert von 0,8 misst nur die Abdeckung.
+
 ## Kosten
 
 Gemessen auf yun2024:30: 8.003 Tokens Stufe 1, 3.262 Tokens Stufe 2, zusammen 11265.
