@@ -16,9 +16,13 @@ Rein lesend, kein Modellaufruf. Auswahl wie beim Dublettenfilter: eine Zelle, di
 
 ## Wie belastbar ist "steht im Text"?
 
-- 22 der 63 Zellen haben genau einen Treffer im Dokument, 20 zwei bis drei Treffer, 21 mehr als drei. Bei einem einmaligen Treffer in einem 10.000-Zeichen-Dokument ist der Beleg stark.
-- 15 Zellen tragen einen kleinen Integer (Betrag unter 100), der im Text mehr als dreimal vorkommt. Dort ist "steht im Text" fast automatisch wahr und traegt keine Aussage; diese Zellen zaehlen mit, sind aber schwach belegt.
+- 22 der 63 Zellen haben genau einen Treffer im Dokument, 27 zwei bis drei Treffer, 14 mehr als drei. Bei einem einmaligen Treffer in einem 10.000-Zeichen-Dokument ist der Beleg stark.
+- 9 Zellen tragen einen kleinen Integer (Betrag unter 100), der im Text mehr als dreimal vorkommt. Dort ist "steht im Text" fast automatisch wahr und traegt keine Aussage; diese Zellen zaehlen mit, sind aber schwach belegt.
 - Die grossen Werte sind dagegen eindeutig: 922 und 919 in `yun2024:362` sowie 769 und 667 in `yun2024:615` bis `:617` stehen je nur zweimal im Dokument und treffen keine Goldzelle.
+- Der Zahlenvergleich liest Trennzeichen nur dann als Tausendertrenner, wenn jede Gruppe nach der ersten genau drei Ziffern hat; `7.69` ist damit 7,69 und nicht 769. Eine fruehere Fassung dieses Skripts hatte genau diesen Fehler und machte aus `7.69` die 769.
+- Nach der Verschaerfung bleiben alle 63 Textfaelle bestaetigt; 12 Zellen verlieren Treffer, keine verliert den Beleg. Die vier grossen Werte stehen als ganze Zahlen im Text (`n = 922`, `n = 919`, 769 Frauen, 667 Frauen), nicht als Dezimalzahl.
+- 63 der 63 Textfaelle haben mindestens einen eindeutigen Treffer; keiner haengt an einer mehrdeutigen Tausender-Lesart wie `1.234` (1,234 oder 1.234).
+- Jede Bestaetigung traegt ihre Fundstelle im JSON (`beleg_stellen`); die 22 Zellen mit genau einem Treffer sind im Anhang mit Textzitat aufgefuehrt.
 
 ## Was eine korrigierte Zuordnung an den Kennzahlen aendert
 
@@ -103,3 +107,32 @@ Werden die 3 eindeutigen Zuordnungsfaelle umgehaengt, steigt TP von 170 auf 173,
 | `yun2024:84` | comparator_events | comparator | 1.8 | 124.0 | ja | - | wert_im_text | nein |
 | `yun2024:86` | intervention_events | intervention | 0.1 | 773.0 | ja | - | wert_im_text | nein |
 | `yun2024:86` | comparator_events | comparator | 0.1 | 689.0 | ja | - | wert_im_text | nein |
+
+## Anhang: Fundstellen der einmaligen Belege
+
+Je Zelle der erste Treffer im Markdown, 40 Zeichen davor bis 25 Zeichen danach.
+
+| Record | Feld | gedruckt | Fundstelle im Text |
+|---|---|---:|---|
+| `yun2024:110` | intervention_mean | 2.42 | ...(3.76) 17.10 2.42 (0.13) --0.86... |
+| `yun2024:110` | comparator_mean | 3.06 | ...(3.71) 5.37 3.06 (0.13) --0.15... |
+| `yun2024:113` | intervention_mean | 170.63 | ...) 0.39 170.63 (3.81) 11... |
+| `yun2024:113` | comparator_mean | 180.34 | ...) 0.32 180.34 (3.76) 17... |
+| `yun2024:114` | intervention_mean | 2.22 | ...Plus 2.22 (0.07) 0.39... |
+| `yun2024:114` | comparator_mean | 2.05 | ...Control 2.05 (0.07) 0.24... |
+| `yun2024:149` | intervention_mean | 145.0 | ...720 Postop 1st month 145 (113--220) -... |
+| `yun2024:158` | intervention_mean | 55.22 | ...55.96 (12.60) 55.22 (12.51) 61.... |
+| `yun2024:158` | intervention_standard_deviation | 12.51 | ...55.96 (12.60) 55.22 (12.51) 61.50 (13.... |
+| `yun2024:158` | comparator_mean | 55.96 | ....05) 49.43 (11.05) 55.96 (12.60) 55.2... |
+| `yun2024:158` | comparator_standard_deviation | 12.6 | ...49.43 (11.05) 55.96 (12.60) 55.22 (12.5... |
+| `yun2024:161` | intervention_mean | 60.52 | ....51) 61.50 (13.23) 60.52 (12.72) BMI[j](#)... |
+| `yun2024:161` | intervention_standard_deviation | 12.72 | ...61.50 (13.23) 60.52 (12.72) BMI[j](#)... |
+| `yun2024:161` | comparator_mean | 61.5 | ...55.22 (12.51) 61.50 (13.23) 60.52 (1... |
+| `yun2024:161` | comparator_standard_deviation | 13.23 | ...55.22 (12.51) 61.50 (13.23) 60.52 (12.72)... |
+| `yun2024:162` | intervention_standard_deviation | 4.06 | ...21.90 (4.33) 21.64 (4.06) BMI *z*-score[k](#)... |
+| `yun2024:162` | comparator_standard_deviation | 4.33 | ...20.77 (3.96) 21.90 (4.33) 21.64 (4.06)... |
+| `yun2024:558` | comparator_standard_deviation | 41.0 | ...ed 16% (±26) in the soy group and 15% (±41) in the placebo group (*... |
+| `yun2024:626` | intervention_events | 2.5 | ...compliance, 9.9% 'well' compliance and 2.5% 'poor' compliance. In t... |
+| `yun2024:626` | comparator_events | 3.7 | ...compliance rates were 91.4%, 4.6%, and 3.7%, respectively ([Table 2... |
+| `yun2024:668` | intervention_standard_deviation | 45.4 | ...0.903 44.3 ± 45.4 <0.001^f... |
+| `yun2024:668` | comparator_standard_deviation | 43.3 | ...^e^ Triglycerides (mg/dl) 1.1 ± 43.3 0.903... |

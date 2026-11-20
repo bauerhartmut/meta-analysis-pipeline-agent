@@ -61,36 +61,82 @@ def sha256(pfad: Path) -> str:
     return hashlib.sha256(pfad.read_bytes()).hexdigest()
 
 
-def zahlen_im_text(text: str) -> Counter:
-    """Alle Zahlen des Textes unter beiden Trennzeichen-Lesarten.
+def lesarten(roh: str) -> set[float]:
+    """Zahlen, die eine Textstelle bedeuten kann. Trennzeichen nur als Tausendergruppen.
 
-    `1.234,5` (deutsch) und `1,234.5` (englisch) ergeben dieselbe Zahl; mehrdeutige
-    Schreibungen werden bewusst beide aufgenommen, damit die Pruefung nicht
-    wegen einer Formatfrage falsch negativ wird.
+    Eine Ziffernfolge darf nur dann als Tausenderzahl gelesen werden, wenn jede
+    Gruppe nach der ersten genau drei Ziffern hat. `7.69` ist damit 7,69 und
+    nicht 769; `1.234` bleibt mehrdeutig und wird als 1,234 und als 1234 gefuehrt.
+    Ein Dezimalteil wird nur angenommen, wenn die Gruppen davor entweder eine
+    einzelne Zahl oder echte Tausendergruppen sind.
+    """
+    roh = roh.replace("\u00a0", " ").strip()
+    gruppen = [g for g in re.split(r"[,.]|(?<=\d) (?=\d)", roh) if g]
+    if not gruppen:
+        return set()
+    if len(gruppen) == 1:
+        return {float(gruppen[0])}
+
+    aus: set[float] = set()
+    # (1) alle Trenner sind Tausendertrenner -> ganze Zahl
+    if all(len(g) == 3 for g in gruppen[1:]):
+        aus.add(float(gruppen[0] + "".join(gruppen[1:])))
+    # (2) letzte Gruppe ist Dezimalteil, davor eine Zahl oder echte Tausendergruppen
+    if len(gruppen[-1]) <= 6 and (len(gruppen) == 2 or all(len(g) == 3 for g in gruppen[1:-1])):
+        aus.add(float("".join(gruppen[:-1]) + "." + gruppen[-1]))
+    return aus
+
+
+#: Selbstpruefung: der alte Zahlenvergleich machte aus 7.69 die 769.
+PRUEFUNGEN = {
+    "7.69": {7.69},
+    "7,69": {7.69},
+    "1,919": {1.919, 1919.0},
+    "922": {922.0},
+    "11,897": {11.897, 11897.0},
+    "1.234,5": {1234.5},
+    "1,234.5": {1234.5},
+}
+
+
+def eindeutig(roh: str) -> bool:
+    """Traegt die Textstelle die Zahl ohne Tausender-Mehrdeutigkeit?
+
+    Eindeutig sind Zahlen ohne Trenner sowie Dezimalzahlen mit hoechstens zwei
+    Nachkommastellen (`2.42`, `7,69`). `1.234` ist es nicht: 1,234 und 1.234 sind
+    beide lesbar.
+    """
+    teile = [t for t in re.split(r"[,.]", roh.replace("\u00a0", " ")) if t]
+    return len(teile) == 1 or (len(teile) == 2 and len(teile[1]) <= 2)
+
+
+def zahlen_im_text(text: str) -> tuple[Counter, dict[float, list[str]], Counter]:
+    """Alle Zahlen des Textes unter den zulaessigen Trennzeichen-Lesarten.
+
+    Zusaetzlich die Fundstellen (hoechstens drei je Zahl), damit jede Bestaetigung
+    im Bericht nachpruefbar ist und nicht nur als Trefferzahl dasteht.
     """
     gefunden: Counter = Counter()
+    klar: Counter = Counter()
+    stellen: dict[float, list[str]] = {}
     for treffer in TOKEN.finditer(text):
-        roh = treffer.group(0).replace("\u00a0", " ")
-        varianten: set[float] = set()
-        # (a) alle Trennzeichen sind Tausendertrenner
-        nur_ziffern = re.sub(r"[.,\s]", "", roh)
-        if nur_ziffern:
-            varianten.add(float(nur_ziffern))
-        # (b) deutsches Format: Punkte trennen Tausender, Komma ist Dezimaltrenner
-        deutsch = roh.replace(" ", "").replace(".", "").replace(",", ".")
-        try:
-            varianten.add(float(deutsch))
-        except ValueError:
-            pass
-        # (c) englisches Format: Kommas trennen Tausender, Punkt ist Dezimaltrenner
-        englisch = roh.replace(" ", "").replace(",", "")
-        try:
-            varianten.add(float(englisch))
-        except ValueError:
-            pass
-        for zahl in varianten:
-            gefunden[round(zahl, 6)] += 1
-    return gefunden
+        roh = treffer.group(0)
+        for zahl in lesarten(roh):
+            schluessel = round(zahl, 6)
+            gefunden[schluessel] += 1
+            if eindeutig(roh):
+                klar[schluessel] += 1
+            if len(stellen.setdefault(schluessel, [])) < 3:
+                von = max(0, treffer.start() - 40)
+                stellen[schluessel].append(" ".join(text[von:treffer.end() + 25].split()))
+    return gefunden, stellen, klar
+
+
+def pruefe_lesarten() -> None:
+    for roh, erwartet in PRUEFUNGEN.items():
+        ist = lesarten(roh)
+        if ist != erwartet:
+            raise SystemExit(f"Selbstpruefung fehlgeschlagen: {roh} -> {ist}, erwartet {erwartet}")
 
 
 def key(zelle: dict[str, Any]) -> tuple[str, str]:
@@ -98,6 +144,7 @@ def key(zelle: dict[str, Any]) -> tuple[str, str]:
 
 
 def main() -> int:
+    pruefe_lesarten()
     vorher = {"gold": sha256(v.RECORDS), "p5": sha256(v.P5)}
     records = {r["record_id"]: r for r in v.lade(v.RECORDS)}
     ids = [i for i in (json.loads(v.AUSWAHL.read_text(encoding="utf-8")).get("ids") or []) if i in records]
@@ -135,7 +182,7 @@ def main() -> int:
         pfad = ROOT / (record.get("document") or {}).get("path", "")
         text_voll = pfad.read_text(encoding="utf-8", errors="replace") if pfad.exists() else ""
         text = text_voll[:LIMIT]
-        zahlen = zahlen_im_text(text)
+        zahlen, stellen, klar = zahlen_im_text(text)
 
         for i, kandidat in enumerate(vor):
             if verbraucht[i] or v.zahl(kandidat.get("value")) is None:
@@ -182,6 +229,8 @@ def main() -> int:
                 "gold": soll,
                 "im_text": treffer > 0,
                 "text_treffer": treffer,
+                "text_treffer_eindeutig": klar.get(round(float(ist), 6), 0),
+                "beleg_stellen": stellen.get(round(float(ist), 6), []),
                 "text_zeichen": len(text_voll),
                 "text_abgeschnitten": len(text_voll) > LIMIT,
                 "gleiche_slots": [list(p) for p in gleiche_slots],
@@ -286,6 +335,18 @@ def main() -> int:
         "diese Zellen zaehlen mit, sind aber schwach belegt.",
         "- Die grossen Werte sind dagegen eindeutig: 922 und 919 in `yun2024:362` sowie 769 und 667 "
         "in `yun2024:615` bis `:617` stehen je nur zweimal im Dokument und treffen keine Goldzelle.",
+        "- Der Zahlenvergleich liest Trennzeichen nur dann als Tausendertrenner, wenn jede Gruppe "
+        "nach der ersten genau drei Ziffern hat; `7.69` ist damit 7,69 und nicht 769. Eine fruehere "
+        "Fassung dieses Skripts hatte genau diesen Fehler und machte aus `7.69` die 769.",
+        "- Nach der Verschaerfung bleiben alle 63 Textfaelle bestaetigt; 12 Zellen verlieren Treffer, "
+        "keine verliert den Beleg. Die vier grossen Werte stehen als ganze Zahlen im Text "
+        "(`n = 922`, `n = 919`, 769 Frauen, 667 Frauen), nicht als Dezimalzahl.",
+        f"- {sum(1 for z in zellen if z['klasse'] == 'wert_im_text' and z['text_treffer_eindeutig'])} "
+        f"der {klassen.get('wert_im_text', 0)} Textfaelle haben mindestens einen eindeutigen Treffer; "
+        "keiner haengt an einer mehrdeutigen Tausender-Lesart wie `1.234` (1,234 oder 1.234).",
+        f"- Jede Bestaetigung traegt ihre Fundstelle im JSON (`beleg_stellen`); die "
+        f"{belege.get('eindeutig', 0)} Zellen mit genau einem Treffer sind im Anhang mit Textzitat "
+        "aufgefuehrt.",
         "",
         "## Was eine korrigierte Zuordnung an den Kennzahlen aendert",
         "",
@@ -330,6 +391,18 @@ def main() -> int:
             f"{'ja' if z['im_text'] else 'nein'} | {slots} | {z['klasse']} | "
             f"{'ja' if z['ziel_slot_offen'] else 'nein'} |"
         )
+    md.append("")
+    md += [
+        "## Anhang: Fundstellen der einmaligen Belege",
+        "",
+        "Je Zelle der erste Treffer im Markdown, 40 Zeichen davor bis 25 Zeichen danach.",
+        "",
+        "| Record | Feld | gedruckt | Fundstelle im Text |",
+        "|---|---|---:|---|",
+    ]
+    for z in [z for z in zellen if z["klasse"] == "wert_im_text" and z["text_treffer"] == 1]:
+        stelle = (z["beleg_stellen"][0] if z["beleg_stellen"] else "").replace("|", "\\|")
+        md.append(f"| `{z['record_id']}` | {z['feld']} | {z['gedruckt']} | ...{stelle}... |")
     md.append("")
     AUSGABE_MD.write_text("\n".join(md), encoding="utf-8", newline="\n")
 

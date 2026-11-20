@@ -11,9 +11,9 @@
     "zuordnung_beides": 4
   },
   "beleg_im_text": {
-    "breit": 21,
+    "breit": 14,
     "eindeutig": 22,
-    "eng": 20
+    "eng": 27
   },
   "basis": {
     "tp": 170,
@@ -43,15 +43,9 @@
     "yun2024:357/intervention_group_size",
     "yun2024:357/comparator_group_size",
     "yun2024:380/intervention_events",
-    "yun2024:380/comparator_events",
-    "yun2024:427/intervention_group_size",
-    "yun2024:427/comparator_group_size",
     "yun2024:556/intervention_mean",
     "yun2024:556/comparator_mean",
-    "yun2024:558/intervention_mean",
-    "yun2024:558/comparator_mean",
-    "yun2024:686/intervention_group_size",
-    "yun2024:686/comparator_group_size"
+    "yun2024:558/intervention_mean"
   ],
   "zellen": [
     {
@@ -63,6 +57,12 @@
       "gold": 459.0,
       "im_text": true,
       "text_treffer": 4,
+      "text_treffer_eindeutig": 4,
+      "beleg_stellen": [
+        "nition and self-regulation processes; n=456), plus (basic interventi",
+        "434 n=459 n=456",
+        "T1 was higher in the basic (34.6%, 158/456; OR 1.42, 95% CI 1.07-1."
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [],
@@ -81,6 +81,10 @@
       "gold": 2.5,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "(3.76) 17.10 2.42 (0.13) --0.86"
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [],
@@ -99,6 +103,10 @@
       "gold": 2.84,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "(3.71) 5.37 3.06 (0.13) --0.15"
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [],
@@ -117,6 +125,12 @@
       "gold": 456.0,
       "im_text": true,
       "text_treffer": 4,
+      "text_treffer_eindeutig": 4,
+      "beleg_stellen": [
+        "argeting environmental-level factors; n=459), and control (generic n",
+        "n=434 n=459 n=456",
+        "*P*=.02) and the plus group (37.3%, 171/459; OR 1.55, 95% CI 1.17-2."
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [
@@ -140,6 +154,12 @@
       "gold": 459.0,
       "im_text": true,
       "text_treffer": 4,
+      "text_treffer_eindeutig": 4,
+      "beleg_stellen": [
+        "nition and self-regulation processes; n=456), plus (basic interventi",
+        "434 n=459 n=456",
+        "T1 was higher in the basic (34.6%, 158/456; OR 1.42, 95% CI 1.07-1."
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [
@@ -163,6 +183,10 @@
       "gold": 167.61,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        ") 0.39 170.63 (3.81) 11"
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [],
@@ -181,6 +205,10 @@
       "gold": 173.28,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        ") 0.32 180.34 (3.76) 17"
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [],
@@ -199,6 +227,12 @@
       "gold": 456.0,
       "im_text": true,
       "text_treffer": 4,
+      "text_treffer_eindeutig": 4,
+      "beleg_stellen": [
+        "argeting environmental-level factors; n=459), and control (generic n",
+        "n=434 n=459 n=456",
+        "*P*=.02) and the plus group (37.3%, 171/459; OR 1.55, 95% CI 1.17-2."
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [],
@@ -217,6 +251,10 @@
       "gold": 2.17,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "Plus 2.22 (0.07) 0.39"
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [],
@@ -235,6 +273,10 @@
       "gold": 2.0,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "Control 2.05 (0.07) 0.24"
+      ],
       "text_zeichen": 49917,
       "text_abgeschnitten": true,
       "gleiche_slots": [],
@@ -253,6 +295,11 @@
       "gold": 20.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "4. Results Double stenting was used in 30 cases and pyeloplasty wi",
+        "se With Stent (n = 30) Without Stent (n = 52"
+      ],
       "text_zeichen": 6594,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -271,6 +318,11 @@
       "gold": 44.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "hout internal drainage was performed in 52 patients. Both groups we",
+        "ith Stent (n = 30) Without Stent (n = 52) P Value -----------"
+      ],
       "text_zeichen": 6594,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -288,7 +340,13 @@
       "gedruckt_zahl": 5.0,
       "gold": 11.0,
       "im_text": true,
-      "text_treffer": 7,
+      "text_treffer": 5,
+      "text_treffer_eindeutig": 5,
+      "beleg_stellen": [
+        ". All patients were given dexamethasone 5 mg during the induction",
+        "Diagnostic laparoscopy 5 (10 %) 11 (",
+        "Nausea 15 (30 %) 5 (10 %)† 9 (18 %)"
+      ],
       "text_zeichen": 7954,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -307,6 +365,10 @@
       "gold": 138.0,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "720 Postop 1st month 145 (113--220) -"
+      ],
       "text_zeichen": 11389,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -325,6 +387,10 @@
       "gold": 55.91,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "55.96 (12.60) 55.22 (12.51) 61."
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -343,6 +409,10 @@
       "gold": 15.64,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "55.96 (12.60) 55.22 (12.51) 61.50 (13."
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -361,6 +431,10 @@
       "gold": 56.48,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        ".05) 49.43 (11.05) 55.96 (12.60) 55.2"
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -379,6 +453,10 @@
       "gold": 14.76,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "49.43 (11.05) 55.96 (12.60) 55.22 (12.5"
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -397,6 +475,10 @@
       "gold": 61.08,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        ".51) 61.50 (13.23) 60.52 (12.72) BMI[j](#)"
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -415,6 +497,10 @@
       "gold": 15.15,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "61.50 (13.23) 60.52 (12.72) BMI[j](#)"
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -433,6 +519,10 @@
       "gold": 61.94,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "55.22 (12.51) 61.50 (13.23) 60.52 (1"
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -451,6 +541,10 @@
       "gold": 14.25,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "55.22 (12.51) 61.50 (13.23) 60.52 (12.72)"
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -469,6 +563,10 @@
       "gold": 6.22,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "21.90 (4.33) 21.64 (4.06) BMI *z*-score[k](#)"
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -487,6 +585,10 @@
       "gold": 5.68,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "20.77 (3.96) 21.90 (4.33) 21.64 (4.06)"
+      ],
       "text_zeichen": 16081,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -504,7 +606,12 @@
       "gedruckt_zahl": 14.0,
       "gold": 12.8,
       "im_text": true,
-      "text_treffer": 3,
+      "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        ".2 47.1 ± 10.0 49.4 ± 14.0 47.9 ± 8.8",
+        "46.3 ± 10.6 39.1 ± 8.5 38.6 ± 14.0 Post"
+      ],
       "text_zeichen": 13663,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -523,6 +630,11 @@
       "gold": 46.5,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "44.6 ± 10.2 46.2 ± 9.9 42.8 ± 12.8 44.5 ± 10.7",
+        "46.5 ± 9.8 45.4 ± 7.7 42.8 ± 11.7 43.3 ± 10.8"
+      ],
       "text_zeichen": 13663,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -541,6 +653,10 @@
       "gold": 9.8,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        ".6 ± 10.2 46.2 ± 9.9 42.8 ± 12.8 44.5 ± 10.7 39.3"
+      ],
       "text_zeichen": 13663,
       "text_abgeschnitten": false,
       "gleiche_slots": [
@@ -563,11 +679,17 @@
       "gedruckt_zahl": 100.0,
       "gold": 22.0,
       "im_text": true,
-      "text_treffer": 4,
+      "text_treffer": 3,
+      "text_treffer_eindeutig": 3,
+      "beleg_stellen": [
+        "PLU provided a higher stone- free rate (100% vs 80%. p=0.043) and lo",
+        "vely (p=0.192). The stone-free rate was 100% in Group I, and 80% in",
+        "Stone-free rate 100% 80%"
+      ],
       "text_zeichen": 6292,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
-      "beleg": "breit",
+      "beleg": "eng",
       "zufall_verdacht": false,
       "klasse": "wert_im_text",
       "ziel_slot_offen": false,
@@ -582,6 +704,12 @@
       "gold": 16.0,
       "im_text": true,
       "text_treffer": 3,
+      "text_treffer_eindeutig": 3,
+      "beleg_stellen": [
+        "ided a higher stone- free rate (100% vs 80%. p=0.043) and lower ret",
+        "tone-free rate was 100% in Group I, and 80% in Group II after a sin",
+        "100% 80% 0.0"
+      ],
       "text_zeichen": 6292,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -600,6 +728,12 @@
       "gold": 22.0,
       "im_text": true,
       "text_treffer": 6,
+      "text_treffer_eindeutig": 6,
+      "beleg_stellen": [
+        "reatment, pain values were [3.9 (2.2 to 5); n = 22] and [3.2 (2.1",
+        "standard deviation) [n] 1944 (1793) [5] 625 (250) [5]",
+        "[n] 1944 (1793) [5] 625 (250) [5] 0.09 [*^c^"
+      ],
       "text_zeichen": 9253,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -618,6 +752,12 @@
       "gold": 22.0,
       "im_text": true,
       "text_treffer": 6,
+      "text_treffer_eindeutig": 6,
+      "beleg_stellen": [
+        "reatment, pain values were [3.9 (2.2 to 5); n = 22] and [3.2 (2.1",
+        "standard deviation) [n] 1944 (1793) [5] 625 (250) [5]",
+        "[n] 1944 (1793) [5] 625 (250) [5] 0.09 [*^c^"
+      ],
       "text_zeichen": 9253,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -635,7 +775,13 @@
       "gedruckt_zahl": 21.0,
       "gold": 13.0,
       "im_text": true,
-      "text_treffer": 8,
+      "text_treffer": 6,
+      "text_treffer_eindeutig": 6,
+      "beleg_stellen": [
+        "e with a median oSCORAD of 23 (Q1--Q3 = 21--27). All infants were b",
+        "Q3) oSCORAD in the control group of 24 (21--27) and 21 (20--26) in",
+        "in the control group of 24 (21--27) and 21 (20--26) in the active g"
+      ],
       "text_zeichen": 19352,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -654,6 +800,12 @@
       "gold": 13.0,
       "im_text": true,
       "text_treffer": 23,
+      "text_treffer_eindeutig": 23,
+      "beleg_stellen": [
+        "h an objective-SCORAD score (oSCORAD) ≥ 20 and elevated total-IgE a",
+        "and CCL22), inflammatory chemokine (CCL20), and the Th1 chemokine,",
+        "ratios for CCL17/CXCL9, CCL22/CXCL9, CCL20/CXCL10, and CCL20/CXCL11"
+      ],
       "text_zeichen": 19352,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -672,6 +824,11 @@
       "gold": 720.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "e randomized to daclizumab beta ( *n* = 919) or IM IFN beta-1a ( *n*",
+        "were randomized (daclizumab beta, *n* = 919; IM IFN beta-1a, *n* = 9"
+      ],
       "text_zeichen": 6842,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -690,6 +847,11 @@
       "gold": 682.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "( *n* = 919) or IM IFN beta-1a ( *n* = 922) for 96--144 weeks. SDMT",
+        "beta, *n* = 919; IM IFN beta-1a, *n* = 922). All were included in t"
+      ],
       "text_zeichen": 6842,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -707,7 +869,13 @@
       "gedruckt_zahl": 79.0,
       "gold": 47.0,
       "im_text": true,
-      "text_treffer": 6,
+      "text_treffer": 5,
+      "text_treffer_eindeutig": 4,
+      "beleg_stellen": [
+        "roup reported monitoring weights daily (79% vs. 29%, p < 0.0001). A",
+        "daily weight measurement at 12 months (79% vs. 29%, p < 0.001). ##",
+        "71 0.079 Education, years (SD)"
+      ],
       "text_zeichen": 11667,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -725,12 +893,17 @@
       "gedruckt_zahl": 29.0,
       "gold": 19.0,
       "im_text": true,
-      "text_treffer": 4,
+      "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "orted monitoring weights daily (79% vs. 29%, p < 0.0001). After adj",
+        "eight measurement at 12 months (79% vs. 29%, p < 0.001). ## Subgrou"
+      ],
       "text_zeichen": 11667,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
-      "beleg": "breit",
-      "zufall_verdacht": true,
+      "beleg": "eng",
+      "zufall_verdacht": false,
       "klasse": "wert_im_text",
       "ziel_slot_offen": false,
       "wirksam": false
@@ -743,12 +916,18 @@
       "gedruckt_zahl": 48.0,
       "gold": 44.0,
       "im_text": true,
-      "text_treffer": 4,
+      "text_treffer": 3,
+      "text_treffer_eindeutig": 3,
+      "beleg_stellen": [
+        "underwent spinal MR imaging there were 48 examinations on the shor",
+        "--- Number of MR examinations[a](#) 48 55",
+        "T1w/T2w sagittal 48 55"
+      ],
       "text_zeichen": 26274,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
-      "beleg": "breit",
-      "zufall_verdacht": true,
+      "beleg": "eng",
+      "zufall_verdacht": false,
       "klasse": "wert_im_text",
       "ziel_slot_offen": false,
       "wirksam": false
@@ -761,12 +940,18 @@
       "gedruckt_zahl": 55.0,
       "gold": 49.0,
       "im_text": true,
-      "text_treffer": 4,
+      "text_treffer": 3,
+      "text_treffer_eindeutig": 3,
+      "beleg_stellen": [
+        "ations on the short-bore MR scanner and 55 examinations on the open",
+        "minations[a](#) 48 55 .9 Cerv",
+        "48 55 .9 Cerv"
+      ],
       "text_zeichen": 26274,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
-      "beleg": "breit",
-      "zufall_verdacht": true,
+      "beleg": "eng",
+      "zufall_verdacht": false,
       "klasse": "wert_im_text",
       "ziel_slot_offen": false,
       "wirksam": false
@@ -780,6 +965,12 @@
       "gold": 37.0,
       "im_text": true,
       "text_treffer": 3,
+      "text_treffer_eindeutig": 3,
+      "beleg_stellen": [
+        "s after a treatment. (NBT: <em>n</em> = 34; CBT: <em>n</em> = 30).",
+        "months after the treatment (NBT: *n* = 34; CBT: *n* = 30). :::",
+        "NBT (*n* = 34) 1 month before the"
+      ],
       "text_zeichen": 8923,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -798,6 +989,12 @@
       "gold": 35.0,
       "im_text": true,
       "text_treffer": 3,
+      "text_treffer_eindeutig": 3,
+      "beleg_stellen": [
+        "NBT: <em>n</em> = 34; CBT: <em>n</em> = 30). Note 1. The gap in the",
+        "he treatment (NBT: *n* = 34; CBT: *n* = 30). ::: Treatments",
+        "CBT (*n* = 30) 1 month before the"
+      ],
       "text_zeichen": 8923,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -816,6 +1013,12 @@
       "gold": -17.1,
       "im_text": true,
       "text_treffer": 9,
+      "text_treffer_eindeutig": 9,
+      "beleg_stellen": [
+        "owed that total FIQ scores decreased by 14% in the soy group (*P* =",
+        "n for patients who completed the trial (14.0), but this also was not",
+        "stically significant difference (*P* = .14). ## 3.2. Between-Group"
+      ],
       "text_zeichen": 13122,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -834,6 +1037,11 @@
       "gold": 68.08,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "and at study completion decreased 14% (±29) in the soy group and 18",
+        "nalysis, the total FIQ scores decreased 29% (±36) in the soy group"
+      ],
       "text_zeichen": 13122,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -851,7 +1059,13 @@
       "gedruckt_zahl": 18.0,
       "gold": -19.57,
       "im_text": true,
-      "text_treffer": 5,
+      "text_treffer": 4,
+      "text_treffer_eindeutig": 4,
+      "beleg_stellen": [
+        "14% in the soy group (*P* = .02) and by 18% in the placebo group (*",
+        "rial. Median age was 47.7 years (range, 18--76 years). There was no",
+        "ecreased 14% (±29) in the soy group and 18% (±25) in the placebo gr"
+      ],
       "text_zeichen": 13122,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -870,6 +1084,11 @@
       "gold": 93.53,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "ed 14% (±29) in the soy group and 18% (±25) in the placebo group (*",
+        "roup had CES-D scores of 16 or greater, 25% had scores of 19 or gre"
+      ],
       "text_zeichen": 13122,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -888,6 +1107,12 @@
       "gold": -4.0,
       "im_text": true,
       "text_treffer": 8,
+      "text_treffer_eindeutig": 8,
+      "beleg_stellen": [
+        "the groups was not significant (*P* = .16). With the same analysis",
+        "-D scores decreased in the soy group by 16% (*P* = .004) and in the",
+        "atients (56%)---12 in the soy group and 16 in the placebo group (*P"
+      ],
       "text_zeichen": 13122,
       "text_abgeschnitten": false,
       "gleiche_slots": [
@@ -911,6 +1136,11 @@
       "gold": 12.35,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "ed 29% (±36) in the soy group and 28% (±26) in the placebo group (*",
+        "alysis, the CES-D scores improved 16% (±26) in the soy group and 15"
+      ],
       "text_zeichen": 13122,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -928,12 +1158,17 @@
       "gedruckt_zahl": 15.0,
       "gold": -8.0,
       "im_text": true,
-      "text_treffer": 5,
+      "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "*P* = .004) and in the placebo group by 15% (*P* = .05). The change",
+        "improved 16% (±26) in the soy group and 15% (±41) in the placebo gr"
+      ],
       "text_zeichen": 13122,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
-      "beleg": "breit",
-      "zufall_verdacht": true,
+      "beleg": "eng",
+      "zufall_verdacht": false,
       "klasse": "wert_im_text",
       "ziel_slot_offen": false,
       "wirksam": false
@@ -947,6 +1182,10 @@
       "gold": 65.41,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "ed 16% (±26) in the soy group and 15% (±41) in the placebo group (*"
+      ],
       "text_zeichen": 13122,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -965,6 +1204,11 @@
       "gold": 754.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "gnancy until delivery (standard course; 769 women), or from 35 weeks",
+        "zed to the short zidovudine regimen and 769 women to the long regime"
+      ],
       "text_zeichen": 12441,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -983,6 +1227,11 @@
       "gold": 656.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "rom 35 weeks to delivery (short course; 667). Blood tests were perfo",
+        "s described in [Figure 1](#). In total, 667 HIV-1 women were randomi"
+      ],
       "text_zeichen": 12441,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1001,6 +1250,11 @@
       "gold": 754.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "gnancy until delivery (standard course; 769 women), or from 35 weeks",
+        "zed to the short zidovudine regimen and 769 women to the long regime"
+      ],
       "text_zeichen": 12441,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1019,6 +1273,11 @@
       "gold": 656.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "rom 35 weeks to delivery (short course; 667). Blood tests were perfo",
+        "s described in [Figure 1](#). In total, 667 HIV-1 women were randomi"
+      ],
       "text_zeichen": 12441,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1037,6 +1296,11 @@
       "gold": 754.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "gnancy until delivery (standard course; 769 women), or from 35 weeks",
+        "zed to the short zidovudine regimen and 769 women to the long regime"
+      ],
       "text_zeichen": 12441,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1055,6 +1319,11 @@
       "gold": 656.0,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "rom 35 weeks to delivery (short course; 667). Blood tests were perfo",
+        "s described in [Figure 1](#). In total, 667 HIV-1 women were randomi"
+      ],
       "text_zeichen": 12441,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1073,6 +1342,10 @@
       "gold": 2.0,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "compliance, 9.9% 'well' compliance and 2.5% 'poor' compliance. In t"
+      ],
       "text_zeichen": 5258,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1091,6 +1364,10 @@
       "gold": 3.0,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "compliance rates were 91.4%, 4.6%, and 3.7%, respectively ([Table 2"
+      ],
       "text_zeichen": 5258,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1109,6 +1386,11 @@
       "gold": 194.3,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "45.1 (±13.5) 44.3 (±6.6) 45.0 (",
+        "0.903 44.3 ± 45.4 <"
+      ],
       "text_zeichen": 19304,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1127,6 +1409,10 @@
       "gold": 63.1,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "0.903 44.3 ± 45.4 <0.001^f"
+      ],
       "text_zeichen": 19304,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1145,6 +1431,11 @@
       "gold": 181.8,
       "im_text": true,
       "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "0.338 1.1 ± 1.9",
+        ",0.577^e^ Triglycerides (mg/dl) 1.1 ± 43.3"
+      ],
       "text_zeichen": 19304,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1163,6 +1454,10 @@
       "gold": 61.3,
       "im_text": true,
       "text_treffer": 1,
+      "text_treffer_eindeutig": 1,
+      "beleg_stellen": [
+        "^e^ Triglycerides (mg/dl) 1.1 ± 43.3 0.903"
+      ],
       "text_zeichen": 19304,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1180,12 +1475,17 @@
       "gedruckt_zahl": 34.0,
       "gold": 17.0,
       "im_text": true,
-      "text_treffer": 4,
+      "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "dairy calcium on fecal fat excretion in 34 healthy adults during mo",
+        "for the study, 40 were randomized, and 34 completed the study (19"
+      ],
       "text_zeichen": 18929,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
-      "beleg": "breit",
-      "zufall_verdacht": true,
+      "beleg": "eng",
+      "zufall_verdacht": false,
       "klasse": "wert_im_text",
       "ziel_slot_offen": false,
       "wirksam": false
@@ -1198,12 +1498,17 @@
       "gedruckt_zahl": 34.0,
       "gold": 17.0,
       "im_text": true,
-      "text_treffer": 4,
+      "text_treffer": 2,
+      "text_treffer_eindeutig": 2,
+      "beleg_stellen": [
+        "dairy calcium on fecal fat excretion in 34 healthy adults during mo",
+        "for the study, 40 were randomized, and 34 completed the study (19"
+      ],
       "text_zeichen": 18929,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
-      "beleg": "breit",
-      "zufall_verdacht": true,
+      "beleg": "eng",
+      "zufall_verdacht": false,
       "klasse": "wert_im_text",
       "ziel_slot_offen": false,
       "wirksam": false
@@ -1217,6 +1522,12 @@
       "gold": 178.0,
       "im_text": true,
       "text_treffer": 4,
+      "text_treffer_eindeutig": 4,
+      "beleg_stellen": [
+        "0.3 (−1.7, 2.3) General disorders and",
+        "on was higher in the sitagliptin group (2.3) than in the non-exposed",
+        "tion 2.3"
+      ],
       "text_zeichen": 39597,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1235,6 +1546,12 @@
       "gold": 124.0,
       "im_text": true,
       "text_treffer": 7,
+      "text_treffer_eindeutig": 7,
+      "beleg_stellen": [
+        "0.3 (−1.1, 1.8) Pregnancy, puerperium",
+        "up (2.3) than in the non-exposed group (1.8). For the specific adver",
+        "3 1.8"
+      ],
       "text_zeichen": 39597,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1253,6 +1570,12 @@
       "gold": 773.0,
       "im_text": true,
       "text_treffer": 78,
+      "text_treffer_eindeutig": 78,
+      "beleg_stellen": [
+        "ctively, with a difference in rates of −0.1 events per 100-patient-y",
+        "0.1 (−0.1, 0.4) Deaths",
+        "0.1 (−0.1, 0.4) Deaths"
+      ],
       "text_zeichen": 39597,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
@@ -1271,6 +1594,12 @@
       "gold": 689.0,
       "im_text": true,
       "text_treffer": 78,
+      "text_treffer_eindeutig": 78,
+      "beleg_stellen": [
+        "ctively, with a difference in rates of −0.1 events per 100-patient-y",
+        "0.1 (−0.1, 0.4) Deaths",
+        "0.1 (−0.1, 0.4) Deaths"
+      ],
       "text_zeichen": 39597,
       "text_abgeschnitten": false,
       "gleiche_slots": [],
