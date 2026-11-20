@@ -65,12 +65,16 @@ def main() -> int:
     parser.add_argument("--record", default=RECORD_ID)
     parser.add_argument("--budget", type=int, default=BUDGET_GEMESSEN)
     parser.add_argument("--out", default="predictions.jsonl")
+    parser.add_argument("--extra", default="",
+                        help="Zusatzsatz am Ende des Prompts, z. B. eine Abwaegverbotszeile")
     args = parser.parse_args()
 
     records = {r["record_id"]: r for r in v.lade(v.RECORDS)}
     record = records[args.record]
     fall = baue_fall(args.record, record)
     prompt = fall["prompt"]
+    if args.extra:
+        prompt = prompt + "\n" + args.extra
 
     print(f"{args.record}: Prompt {len(prompt)} Zeichen, Budget {args.budget}, "
           f"Goldwerte im Ausschnitt {fall['goldwerte_im_volltext']}/{len(fall['gold'])}")
@@ -147,6 +151,7 @@ def main() -> int:
         "prompt_zeichen": len(prompt),
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
         "max_tokens": args.budget,
+        "prompt_zusatz": args.extra,
         "budget_begruendung": "gemessener Fertig-Punkt von yun2024:559 mit Anker (16.632 Tokens)",
         "status": "abgebrochen" if abgebrochen else "ok",
         "abbruchkriterium": "content_chars == 0 oder finish_reason == length",

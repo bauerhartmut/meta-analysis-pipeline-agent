@@ -69,6 +69,13 @@ ein Zeilenlabel verlangt, hat in beiden Formen nichts zu zitieren.
 - Die 33 sind keine Zufallsstichprobe: es sind genau die Records, die im P5-Lauf
   ohne Inhalt endeten. Ueber die 666 uebrigen Records sagt die Auswertung
   nichts.
-- Der Zusammenhang ist beschreibend. Dass die Textlage den Abbruch verursacht,
-  stuetzt der A/B-Test auf 523 (Zeilenlabel: Abbruch bei 16.632; Satz-Locator:
-  Antwort bei 2.342), nicht diese Korrelation.
+- Der Zusammenhang ist beschreibend, und die Kausalitaet ist praeziser als hier
+  zuerst formuliert: Nicht der fehlende Anker allein loest den Abbruch aus,
+  sondern das Abwaegen darueber. Auf 523 antwortet die **alte** Zeilenlabel-Fassung
+  in 3.318 Tokens, sobald der Zusatz „Answer without weighing alternative
+  readings.“ im Prompt steht; ohne ihn verbrannte sie 16.632. Die fehlende
+  Zeilenlabel-Struktur ist also der Ausloeser der Denkschleife, nicht ihre
+  Ursache im engeren Sinn. Siehe `zweistufig_lauf_20261120/satz_523_ergebnis_20261120.md`.
+- Die Zuordnung der 17 Records zum Muster beruht auf Textlage, nicht auf einem
+  Aufruf je Record; ob sie ohne Zusatz wirklich abbrechen wuerden, ist für keinen
+  dieser 17 ausser 523 und 525 gemessen.

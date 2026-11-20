@@ -1,4 +1,9 @@
-# Satz-Locator auf yun2024:523: der Abbruch hing am Schema (20.11.2026)
+# Satz-Locator auf yun2024:523: der Abbruch hing an der Anweisung, nicht am Schema (20.11.2026)
+
+> Korrigiert am 20.11.2026: Die erste Fassung dieses Berichts schrieb den Erfolg dem
+> neuen Schema zu. Die Kontrolle mit dem Zusatzsatz in der alten Zeilenlabel-Fassung
+> widerlegt das; beide Schemata funktionieren mit dem Zusatz. Siehe Abschnitte
+> „Dreiwegvergleich“ und „Kette 523 vollstaendig“ unten.
 
 Ein freigegebener Aufruf. Modell `gwdg/glm-5.3`, Budget 16.632, Temperatur 0,
 gleicher Ausschnitt wie zuvor (6.000 von 6.811 Zeichen), Prompt 7.265 Zeichen.
@@ -35,35 +40,67 @@ Derselbe Record, derselbe Ausschnitt, dasselbe Budget, nur das Schema geaendert:
 | Zeilenlabel (`stage1_ankerlos`) | abgebrochen, `length` | 16.632 (voll) | 0 Zeichen, 0 Locators |
 | Satz-Locator (`stage1_satz`) | ok, `stop` | 2.342 | 610 Zeichen, 2 Locators |
 
-**Ja, der Abbruch hing am Schema.** Bei einem Budget, das zuvor vollstaendig im
-Reasoning verschwand, antwortet dasselbe Modell auf demselben Material in 2.342
-Tokens, sobald es den Satz zitieren darf statt eine Zeile zu benennen, die es im
-Text nicht gibt.
+Auf diesem Material antwortet das Modell in 2.342 Tokens, sobald es den Satz
+zitieren darf statt eine Zeile zu benennen. Ob das am Schema oder am Zusatzsatz
+liegt, klaert der Dreiwegvergleich unten - die Antwort ist: am Zusatzsatz.
 
-## Was der Satz-Locator nicht leistet
+## Dreiwegvergleich: Schema oder Anweisung?
 
-Der zurueckgegebene Satz enthaelt **beide** Wertepaare: erstes (10,24 / 9,73)
-und zweites (17,73 / 12,13) Evaluation. Stufe 1 hat die Stelle also gefunden,
-aber die Ambiguitaet nicht aufgeloest - die liegt jetzt bei Stufe 2, die aus
-diesem Satz das erste Paar waehlen muss. Fuer 525 war die Lage einfacher, weil
-das dritte Paar einen eigenen Satz hat; dort las Stufe 2 vier von vier Zellen
-richtig.
+Gleicher Record, gleicher Ausschnitt (6.000 Zeichen), gleiches Budget 16.632,
+jeweils ein Aufruf. Unterschiede nur im Prompt:
 
-Damit ist die Kette fuer 523 noch nicht bis zum TP gemessen: Es gibt Locators,
-aber noch keine Zellen. Der naechste Schritt waere Stufe 2 mit diesem Satz und
-der Auflage, das **erste** Wertepaar zu lesen (Armzuordnung: intervention =
-feedback receivers, comparator = others). Erwartung: 4 Zellen (Mittelwert und SD
-je Arm), davon 4 TP, wenn die Paarwahl stimmt; die Gruppengroessen 15/15 bleiben
-FN, weil sie im Text nicht gedruckt sind.
+| Prompt | Tokens | Ergebnis | Locator / Zellen |
+|---|---:|---|---|
+| Zeilenlabel, ohne Zusatz | 16.632 (voll) | abgebrochen, `length` | 0 Locators |
+| Zeilenlabel, mit Zusatz | **3.318** | ok, `stop` | 2 Locators, Zeile `Mean scores of first and second evaluations`, Spalten `feedback receivers` / `others`, Zeitpunkt `first`, Zielwerte 10,24 / 9,73 / 0,77 in der Umgebung |
+| Satz-Locator, mit Zusatz | **2.342** | ok, `stop` | 2 Locators, berichtender Satz woertlich |
+
+**Ergebnis: Der Abbruch hing an der Anweisung, nicht am Schema.** Dieselbe
+alte Zeilenlabel-Fassung, die zuvor das ganze Budget verbrauchte, antwortet in
+3.318 Tokens, sobald der Satz „Answer without weighing alternative readings.“
+am Ende steht - und findet dabei ein Zeilenlabel, das vorher nicht existierte
+(„Mean scores of first and second evaluations“). Das Modell konnte die Stelle
+also; ohne die Anweisung hat es sich im Abwaegen verfangen.
+
+Der Satz-Locator ist trotzdem die bessere Fassung: 976 Tokens billiger (2.342
+gegen 3.318) und ohne die Behauptung, es gaebe eine Tabellenzeile, die es im
+Abstract nicht gibt.
+
+Offen bleibt, ob der **Wortlaut** oder nur die **Laenge** des Zusatzes wirkt -
+gemessen ist genau dieser eine Satz an genau dieser Stelle, n = 1 je Zelle.
+
+## Kette 523 vollstaendig: 4 TP aus dem Satz
+
+Stufe 2 mit dem Satz und der Auflage, nur die **erste** Evaluation zu lesen
+(`predictions_stufe2_satz_523_16632.jsonl`):
+
+| Groesse | Wert |
+|---|---|
+| Status | ok (`finish_reason = stop`) |
+| Completion-Tokens | **268** |
+| Inhalt | 478 Zeichen, 4 Zellen |
+| TP / FP / FN | **4 / 0 / 2** |
+| P / R / F1 | 1,000 / 0,667 / 0,800 |
+
+Gelesen: intervention_mean 10,24, intervention_sd 0,77, comparator_mean 9,73,
+comparator_sd 0,77 - alle vier im Ausschnitt gedruckt, alle vier richtig. Die
+FN sind die Gruppengroessen 15/15, die der Text nicht nennt.
+
+Damit ist der Fall vollstaendig: 2.342 (Stufe 1) + 268 (Stufe 2) = **2.610
+Tokens** fuer 4 TP auf einem Record, dessen Stufe-1-Aufruf zuvor 16.632 Tokens
+ohne Ergebnis verbrannte. Die Ambiguitaet im Satz (zwei Evaluationen je Arm) hat
+Stufe 2 mit der Auflage „erstes Paar“ aufgeloest.
 
 ## Grenzen
 
 - **n = 1** Record, ein Dokument. Der Satz-Locator ist auf 525 nicht in dieser
   Fassung gemessen (dort lief die Zeilenlabel-Fassung), also gibt es keinen
   zweiten Messpunkt fuer das neue Schema.
-- Der Vergleich Zeilenlabel gegen Satz ist confounded mit dem Zusatzsatz
-  „Answer without weighing alternative readings.“ im neuen Prompt. Der Satz
-  steht im Prompt, um langes Abwaegen zu unterbinden; ob der Erfolg am Schema
-  oder an dieser Anweisung haengt, ist mit einem Aufruf nicht getrennt.
+- Der Dreiwegvergleich ist mit je einem Aufruf pro Zelle gemessen; n = 1. Eine
+  Wiederholung koennte anders ausgehen, der P5-Lauf zeigt genau diese Varianz
+  (5 der 13 Abbrueche lieferten im Nachzug Zellen).
+- Armzuordnung in Stufe 2 (intervention = feedback receivers, comparator =
+  others) stand im Prompt; sie folgt aus dem Kontext, ist aber von mir gesetzt
+  und nicht vom Modell erschlossen.
 - Tokens sind keine Kostenwahrheit: 2.342 Completion-Tokens sind gemessen, der
   Prompt hat 7.265 Zeichen (Eingabetokens nicht budgetiert).
