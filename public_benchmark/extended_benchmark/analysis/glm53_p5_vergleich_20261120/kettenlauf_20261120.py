@@ -63,6 +63,17 @@ MODELL = "qwen"
 LAUF = HIER / "zweistufig_lauf_20261120"
 AUSGABE = LAUF / "predictions_kette_stichprobe_20261120.jsonl"
 PAAR = re.compile(r"(-?\d+(?:\.\d+)?)\s*\(\s*(\d+(?:\.\d+)?)\s*\)")
+KOPF_N = re.compile(r"\(\s*\*?n\*?\s*=\s*\d+\s*\)|\b[Nn]\s*=\s*\d+")
+KONTEXT2 = 700
+
+#: Zusatz zum bindenden Regelblock: Kopfzahlen als eigene Fundstelle.
+BINDUNG_KOPF = (
+    "If the outcome value is a group size and it is printed in a table header "
+    'cell such as "(n = 16)" or "N = 14", return the header cell as the '
+    "location: leave zeilenlabel empty, put the header text into spaltenkopf and "
+    'set "fundstelle": "kopf".\n'
+    'Set "fundstelle" to "zeile" for a table row and to "satz" for a sentence.\n'
+)
 
 STAGE2_SYSTEM = (
     "You read numbers from a randomised controlled trial publication at a table "
@@ -107,6 +118,28 @@ def score_zeilen_im_stueck(text: str, stuecke: list[tuple[int, int, str]],
                             "fenster": fenster, "paare": len(paare),
                             "goldtreffer": sorted(set(treffer))})
     return befunde
+
+
+def prompt1_mit_kopf(prompt: str) -> str:
+    """Setzt den Kopfzahl-Block vor die JSON-Ausgabe der Stufe-1-Regeln."""
+    marke = "Return exactly one JSON object:"
+    stelle = prompt.rfind(marke)
+    if stelle < 0:
+        return prompt + "\n" + BINDUNG_KOPF
+    return prompt[:stelle] + BINDUNG_KOPF + "\n" + prompt[stelle:]
+
+
+def erweitere(text: str, stuecke: list[tuple[int, int, str]],
+              links: int = 400) -> list[tuple[int, int, str]]:
+    """Zieht jedes Stueck nach links, damit Kopfzeilen und Vorsaetze drin sind."""
+    erweitert: list[tuple[int, int, str]] = []
+    for i, (a, b, art) in enumerate(stuecke):
+        grenze = erweitert[-1][1] if erweitert else 0
+        start = max(grenze, a - links, 0)
+        if i == 0:
+            start = max(a - links, 0)
+        erweitert.append((start, b, art))
+    return erweitert
 
 
 def baue_ausschnitt2(text: str, start: int, label: str) -> dict[str, Any]:
@@ -160,7 +193,8 @@ def baue_prompt2(aus: dict[str, Any], fall: dict[str, Any], context: dict[str, A
 def baue_prompt2_satz(text: str, satz: str, fall: dict[str, Any],
                       context: dict[str, Any], int_loc: dict[str, Any]) -> str:
     pos = text.find(satz)
-    umgebung = text[max(0, pos - 300):pos + len(satz)].strip() if pos >= 0 else satz
+    umgebung = (text[max(0, pos - KONTEXT2):pos + len(satz)].strip()
+               if pos >= 0 else satz)
     ziel = str(int_loc.get("timepoint") or fall.get("timepoint_target") or "")
     return (
         "Publication excerpt:\n"
@@ -174,10 +208,13 @@ def baue_prompt2_satz(text: str, satz: str, fall: dict[str, Any],
         f'"{satz}"\n\n'
         "Read for each arm the mean and the standard deviation printed in that "
         "sentence, and the group size if the sentence prints it. If the sentence "
-        "prints more than one value pair per arm, take the pair of the target time "
-        "point named above; if that cannot be decided from the sentence, take the "
-        "first pair. Do not read change values, differences or values of another "
-        "outcome.\n\n"
+        "prints more than one value pair per arm, bind the pair to the entity named "
+        "in the Outcome above: the pairs are listed in the order in which the "
+        "entities are named in the text before or in the sentence. Read the pair of "
+        "the entity named in the Outcome, not the first pair, and say in \"block\" "
+        "which entity you read. If the Outcome does not name the entity that "
+        "distinguishes the pairs, set \"cells\": [] instead of choosing a pair. "
+        "Do not read change values, differences or values of another outcome.\n\n"
         "Copy the numbers exactly as printed; do not convert, compute or round. "
         "If a value is not printed, omit its cell.\n\n"
         "Return exactly one JSON object:\n"
@@ -250,14 +287,17 @@ def main() -> int:
             encoding="utf-8", errors="replace")
         gold = (record.get("gold") or {}).get("cells") or []
         werte = sorted({round(float(z["value"]), 6) for z in gold if z.get("value") is not None})
-        stuecke = waehle_stuecke(text, worte_von(record))
+        stuecke = erweitere(text, waehle_stuecke(text, worte_von(record)))
         bind = bindung_pruefen(text, stuecke)
+        kopfzahlen = [m.group(0) for a, b, _ in stuecke
+                      for m in KOPF_N.finditer(text[a:b])]
         index = werte_index(text, werte)
         abgedeckt = {w: [i + 1 for i, (a, b, _) in enumerate(stuecke)
                          if any(a <= p[0] < b for p in index.get(w, []))] for w in werte}
-        prompt1 = baue_prompt(text, stuecke, context,
-                              str((record.get("timepoint") or {}).get("target") or ""),
-                              zeilenbindung=True)
+        prompt1 = prompt1_mit_kopf(baue_prompt(
+            text, stuecke, context,
+            str((record.get("timepoint") or {}).get("target") or ""),
+            zeilenbindung=True))
         zeilen = score_zeilen_im_stueck(text, stuecke, werte)
         bester = max(zeilen, key=lambda z: (len(z["goldtreffer"]), z["paare"]), default=None)
         lage = {}
@@ -270,6 +310,14 @@ def main() -> int:
                 zeilen_art.append("tabelle" if text[start_zeile:p].count("  ") >= 2 else "prosa")
             lage[zahl_text(w)] = {"stuecke": arten[:2], "zeilen": zeilen_art[:2]}
         print(f"   Goldlage: {lage}")
+        print(f"   n-Angaben im Ausschnitt: {sorted(set(kopfzahlen))[:6]}")
+        if bind["score_zeilen"]:
+            for t in bind["score_zeilen"][:1]:
+                a, b, _ = stuecke[t["stueck"] - 1]
+                vor = text[max(a, t["pos"] - KONTEXT2):t["pos"]]
+                named = [w for w in str(context.get("outcome") or "").split()
+                         if len(w) >= 6 and w.lower() in vor.lower()]
+                print(f"   Entitaetsnamen vor der ersten Score-Zeile: {named}")
         fall = {"rid": rid, "record": record, "context": context, "text": text,
                 "gold": gold, "werte": werte, "stuecke": stuecke,
                 "prompt1": prompt1, "bind": bind,
