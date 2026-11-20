@@ -162,9 +162,12 @@ nicht vor 1 und 2 zu setzen.
    Stufe 2 nach einer Budgetkorrektur (8.000) mit einer **leeren Zellenliste**
    und vollem Zitat: der Satz druckt Anteile („70% … attained good GOS") und
    keine Mittelwerte, und das Modell weigert sich, sie als `mean` auszugeben.
-   Die Zweistufigkeit trägt damit auf zwei Records vollständig (523 mit glm,
-   420 mit qwen), scheitert auf 421 an der `found`-Entscheidung und auf 119 an
-   der Feldbezeichnung des Goldes. Details im Nachtrag unten.
+   Auf 52, einem der 33 Abbrüche aus einer fremden Publikation, trägt die Kette
+   ebenfalls: 2 Zellen, richtig zugeordnet, 0 FP (F1 0,500 bei nur 2 von 6
+   erreichbaren Werten). Die Zweistufigkeit trägt damit auf drei Records
+   vollständig (523 mit glm; 420 und 52 mit qwen), scheitert auf 421 an der
+   `found`-Entscheidung und auf 119 an der Feldbezeichnung des Goldes. Details
+   im Nachtrag unten.
 4. **Maßnahme 2** — billig, aber sie ändert an der Bindung nichts; erst nach
    Maßnahme 4 sinnvoll, wenn ein Aufruf überhaupt zuverlässig Inhalt liefert.
 5. **Maßnahme 5** — zuletzt, weil sie am meisten kostet und am wenigsten belegt
@@ -232,6 +235,14 @@ Inhalt, also keine Aussage über den Satz. Bericht:
 (`mild cooling` 4×, `no cooling` 5×), `70%` und `15.4%` je einmal wörtlich, die
 Gruppengrößen 10/13 gar nicht. Bericht:
 `stufe2_satz_119_qwen_8000_ergebnis_20261120.md`.
+`yun2024:52` mit `qwen3.5-397b`, Budget 8.000, `--paare 1` (der Satz berichtet je
+Arm **einen** Wert) — **ok, 2 Zellen**: 2.827 Tokens, 10.082
+Reasoning-Zeichen, `intervention_mean` = 13,6 und `comparator_mean` = 11,5,
+beide richtig zugeordnet, **2 TP / 0 FP / 4 FN** (P 1,00, R 0,333, F1 0,500).
+Die Armrichtung steckt nur in „from 11.5% to 13.6% … postintervention"; der
+Prompt nennt sie nicht. Die Vorgabeprompts für 523 und 420 sind byte-gleich
+geblieben (SHA `f6753fd3…` und `977e817a…`). Bericht:
+`stufe2_satz_52_qwen_8000_ergebnis_20261120.md`.
 
 **Befund 1 — das Schema ist nicht die Ursache.** Auf 420 brechen *zwei*
 verschiedene Fassungen ab (Zeilenlabel mit Zusatz und Satz-Locator), auf 421
@@ -285,24 +296,31 @@ Ausgabe das Budget verbraucht, und nichts an einem Satz, der zitiert wird.
 
 ## Nächster Schritt
 
-Der Modelleffekt ist jetzt auch außerhalb von PMC3877023 belegt (`yun2024:52`,
-PMC3195393: Treffer, Armrichtung korrekt, 7.400 Tokens von 16.000). Alle
-gemessenen Fragen der Reihe sind beantwortet; die nächste Stufe ist eine
-Entscheidung über die Breite, nicht ein weiterer Einzelaufruf:
+Die Kette auf 52 ist geschlossen (2 TP / 0 FP, Armrichtung korrekt). Alle
+Einzelfragen der Reihe sind beantwortet; der nächste Schritt ist **keine**
+weiterer Aufruf, sondern die Fensterwahl — sie ist der Engpass jeder Breite:
 
-1. **Stufe 2 auf dem 52er Satz** (Budget 4.000–8.000). Prüft an einem dritten
-dokumentfremden Record, ob aus der „from 11.5% to 13.6%"-Belegstelle die zwei
-erreichbaren Zellen ohne Armvertauschung werden. Das ist der erste Satz der
-Reihe, in dem die Armzuordnung nur über ein Richtungswort existiert — genau der
-Fehlertyp, der 72 der 121 FN auf den beantworteten P5-Records erklärt. Kosten:
-ein Aufruf, gemessen 2.590–5.899 Tokens auf dieser Stufe.
+| Goldwerte im 6.000er-Fenster | Abbrüche (von 33) |
+|---|---:|
+| 0 | **21** |
+| 1 | 7 |
+| 2 | 1 |
+| 3 | 2 |
+| 4 | 2 |
 
-Der größere Hebel, aber teurer: eine qwen-Serie auf den übrigen Abbrüchen. Dafür
-ist die Ausschnittsabdeckung der Engpass — nur 3 von 15 Prosa-Abbrüchen außerhalb
-PMC3877023 haben mindestens 2 Goldwerte im 6.000er-Fenster. Eine Serie ohne
-korrigierte Fensterwahl würde überwiegend `found: false` messen, nicht das
-Modell.
+Nur **5 von 33** haben mindestens zwei erreichbare Goldwerte (420, 421, 525, 523,
+52); vier davon sind gemessen. Eine qwen-Serie über die restlichen 29 würde bei
+21 Records 0 erreichbare Werte bewerten — sie misst dann mein Ausschnittsfenster,
+nicht das Modell.
 
-Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Frage beantwortet,
-Feldbezeichnung offen), weitere Prompt-Fassungen auf 420/421 (Befund 1), eine
-Budgeterhöhung als Strategie und eine Änderung des Goldstandards.
+1. **Ausschnittsfenster offline prüfen (0 Tokens).** Für die 21 Records mit 0
+   Treffern: liegt der Goldwert im Dokument außerhalb des Fensters, und wäre er
+   mit einer anderen Startregel drin? Das ist die Frage, die 33 Records
+   entscheidet, und sie kostet keinen Aufruf.
+2. Erst danach eine **qwen-Serie auf den dann abgedeckten Records** (Budget
+   16.000 je Record, gemessener Verbrauch 6.236–7.728), Größe nach der Zahl der
+   abgedeckten Fälle, nicht pauschal 33.
+
+Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Feldbezeichnung offen),
+weitere Prompt-Fassungen auf 420/421 (Befund 1), eine Budgeterhöhung als
+Strategie und eine Änderung des Goldstandards.

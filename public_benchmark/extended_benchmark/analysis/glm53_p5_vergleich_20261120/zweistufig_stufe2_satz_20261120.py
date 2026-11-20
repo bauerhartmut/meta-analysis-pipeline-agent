@@ -78,8 +78,31 @@ def lade_satz(pfad: Path, rid: str) -> dict[str, Any]:
 
 
 def build_prompt(
-    fall: dict[str, Any], context: dict[str, Any], satz: str, arm_hinweis: str
+    fall: dict[str, Any], context: dict[str, Any], satz: str, arm_hinweis: str,
+    paare: int = 2,
 ) -> str:
+    if paare == 2:
+        # Satz mit zwei Wertepaaren je Arm (523, 420): das erste Paar ist das Ziel.
+        sachverhalt = (
+            "In that sentence each arm is reported twice: the first value is the first "
+            "evaluation, the second value is the second evaluation. The target is the "
+            "FIRST evaluation only. "
+            f"{arm_hinweis}\n\n"
+            "Read for each arm the mean and the standard deviation of the FIRST evaluation. "
+            "Copy the numbers exactly as printed; do not convert, compute, round or fall back "
+            "to the second evaluation. If a value is not printed, omit its cell.\n\n"
+        )
+    else:
+        # Satz mit einem Wert je Arm, Arme nur ueber Richtungsworte unterschieden (52).
+        sachverhalt = (
+            "In that sentence each arm is reported once. The order of the numbers and the "
+            "direction words of the sentence state which period each printed value belongs "
+            "to. "
+            f"{arm_hinweis}\n\n"
+            "Read for each arm the mean as printed. Copy the numbers exactly as printed; do "
+            "not convert, compute, round, swap the arms or infer a value that is not "
+            "printed. If a value is not printed, omit its cell.\n\n"
+        )
     return (
         f"Publication excerpt:\n{fall['ausschnitt_text']}\n\n"
         f"Intervention: {context.get('intervention') or 'not stated'}\n"
@@ -89,13 +112,7 @@ def build_prompt(
         f'Target time point (binding): "{fall["timepoint_target"]}".\n\n'
         "A previous step located this sentence, copied verbatim:\n"
         f'"{satz}"\n\n'
-        "In that sentence each arm is reported twice: the first value is the first "
-        "evaluation, the second value is the second evaluation. The target is the "
-        "FIRST evaluation only. "
-        f"{arm_hinweis}\n\n"
-        "Read for each arm the mean and the standard deviation of the FIRST evaluation. "
-        "Copy the numbers exactly as printed; do not convert, compute, round or fall back "
-        "to the second evaluation. If a value is not printed, omit its cell.\n\n"
+        f"{sachverhalt}"
         "Return exactly one JSON object:\n"
         '{"cells": [{"field": "intervention_mean" | "intervention_standard_deviation" | '
         '"comparator_mean" | "comparator_standard_deviation", "arm": "intervention" | '
@@ -115,6 +132,9 @@ def main() -> int:
     parser.add_argument("--out", default=AUSGABE.name)
     parser.add_argument("--arm-hinweis", default=ARM_HINWEIS,
                         help="Satz, der die Armnamen des Zitats den Kontextarmen zuordnet")
+    parser.add_argument("--paare", type=int, default=2, choices=(1, 2),
+                        help="Wertepaare je Arm im Satz: 2 = erstes Paar zaehlt (523, 420), "
+                             "1 = ein Wert je Arm, Arme nur ueber Richtungsworte (52)")
     parser.add_argument("--timeout", type=float, default=300.0,
                         help="Socket-Lesezeit je HTTP-Versuch in Sekunden")
     args = parser.parse_args()
@@ -124,7 +144,7 @@ def main() -> int:
     context = record.get("context") or {}
     fall = baue_fall(args.record, record)
     stufe1 = lade_satz(Path(args.locators), args.record)
-    prompt = build_prompt(fall, context, stufe1["satz"], args.arm_hinweis)
+    prompt = build_prompt(fall, context, stufe1["satz"], args.arm_hinweis, args.paare)
     gold = (record.get("gold") or {}).get("cells") or []
 
     print(f"{args.record}: Satz {len(stufe1['satz'])} Zeichen, Prompt {len(prompt)} Zeichen, "
@@ -187,6 +207,7 @@ def main() -> int:
         "prompt_zeichen": len(prompt),
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
         "arm_hinweis": args.arm_hinweis,
+        "wertepaare_je_arm": args.paare,
         "max_tokens": args.budget,
         "timeout_s": args.timeout,
         "status": status,
