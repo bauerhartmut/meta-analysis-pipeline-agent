@@ -1,0 +1,2761 @@
+{
+  "n": 33,
+  "fenster_breite": 6000,
+  "schritt": 500,
+  "werte_gesamt": 118,
+  "werte_im_text": 92,
+  "werte_nirgends": 26,
+  "null_im_fenster": [
+    "yun2024:159",
+    "yun2024:164",
+    "yun2024:624",
+    "yun2024:625",
+    "yun2024:685",
+    "yun2024:687"
+  ],
+  "regeln": {
+    "score": {
+      "records": 33,
+      "mindestens_ein_wert": 27,
+      "mindestens_zwei_werte": 21,
+      "werte": 67,
+      "zellen": 75
+    },
+    "outcome_erste": {
+      "records": 33,
+      "mindestens_ein_wert": 26,
+      "mindestens_zwei_werte": 20,
+      "werte": 58,
+      "zellen": 66
+    },
+    "outcome_letzte": {
+      "records": 33,
+      "mindestens_ein_wert": 27,
+      "mindestens_zwei_werte": 21,
+      "werte": 62,
+      "zellen": 70
+    },
+    "tabelle_mitte": {
+      "records": 5,
+      "mindestens_ein_wert": 2,
+      "mindestens_zwei_werte": 1,
+      "werte": 3,
+      "zellen": 4
+    },
+    "zeitpunkt": {
+      "records": 5,
+      "mindestens_ein_wert": 2,
+      "mindestens_zwei_werte": 1,
+      "werte": 3,
+      "zellen": 4
+    },
+    "anker_max": {
+      "records": 33,
+      "mindestens_ein_wert": 27,
+      "mindestens_zwei_werte": 21,
+      "werte": 67,
+      "zellen": 75
+    },
+    "mehrfach_3x2000": {
+      "records": 33,
+      "mindestens_ein_wert": 28,
+      "mindestens_zwei_werte": 24,
+      "werte": 72,
+      "zellen": 80
+    },
+    "orakel_6000": {
+      "records": 33,
+      "mindestens_ein_wert": 30,
+      "mindestens_zwei_werte": 24,
+      "werte": 91,
+      "zellen": 101
+    }
+  },
+  "orakel_werte": 91,
+  "orakel_nicht_erreichbar": 1,
+  "faelle": {
+    "yun2024:30": {
+      "record_id": "yun2024:30",
+      "dokument": "PMC3003523",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "Short-Form 36-Items improvement",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 25866,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 6,
+      "werte_im_fenster": 3,
+      "werte_ausserhalb": 3,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 1000,
+        "ende": 7000,
+        "zeichen": 6000,
+        "outcome_treffer": 14,
+        "tabellenzeilen": 0,
+        "bewertung": 46.58
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 7.4,
+          "stellen": 1,
+          "abstand_zeichen": 1419,
+          "richtung": "danach",
+          "kontext": [
+            "3) 38.1 (9.5) 38.9 (8.9) 31.5 (7.4) Mean change from BL"
+          ]
+        },
+        {
+          "wert": 9.5,
+          "stellen": 2,
+          "abstand_zeichen": 1349,
+          "richtung": "danach",
+          "kontext": [
+            "9) 36.8 (8.4) 30.7 (7.1) 37.8 (9.5) 38.4 (8.8) 31.4 (",
+            "5) 38.4 (8.8) 31.4 (7.3) 38.1 (9.5) 38.9 (8.9) 31.5 ("
+          ]
+        },
+        {
+          "wert": 31.5,
+          "stellen": 1,
+          "abstand_zeichen": 1413,
+          "richtung": "danach",
+          "kontext": [
+            ".4 (7.3) 38.1 (9.5) 38.9 (8.9) 31.5 (7.4) Mean change fr"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 1000,
+          "ende": 7000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_letzte": {
+          "start": 19866,
+          "ende": 25866,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "anker_max": {
+          "start": 1198,
+          "ende": 7198,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              750,
+              2750
+            ],
+            [
+              5500,
+              7500
+            ],
+            [
+              18750,
+              20750
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 2420,
+          "ende": 8420,
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        }
+      }
+    },
+    "yun2024:52": {
+      "record_id": "yun2024:52",
+      "dokument": "PMC3195393",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "Restraint frecuency",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 24933,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 6,
+      "werte_im_fenster": 2,
+      "werte_ausserhalb": 4,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 4500,
+        "ende": 10500,
+        "zeichen": 6000,
+        "outcome_treffer": 24,
+        "tabellenzeilen": 0,
+        "bewertung": 74.76
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 0.07,
+          "stellen": 5,
+          "abstand_zeichen": 13296,
+          "richtung": "danach",
+          "kontext": [
+            "0.7 ± 0.02 5.1 ± 0.07 <0.001",
+            "10.7 ± 0.12 8.3 ± 0.07 0.001",
+            "11.6 ± 0.15 7.6 ± 0.07 <0.001"
+          ]
+        },
+        {
+          "wert": 0.13,
+          "stellen": 1,
+          "abstand_zeichen": 14034,
+          "richtung": "danach",
+          "kontext": [
+            "0.001 Overall 10.8 ± 0.13 8.5 ± 0.07"
+          ]
+        },
+        {
+          "wert": 463.0,
+          "stellen": 1,
+          "abstand_zeichen": 12201,
+          "richtung": "danach",
+          "kontext": [
+            "ase *n* = 463 *n* = 562"
+          ]
+        },
+        {
+          "wert": 562.0,
+          "stellen": 1,
+          "abstand_zeichen": 12225,
+          "richtung": "danach",
+          "kontext": [
+            "*n* = 463 *n* = 562 *P*-value"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 4500,
+          "ende": 10500,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 18933,
+          "ende": 24933,
+          "abgedeckt": 5,
+          "zellen_abgedeckt": 5
+        },
+        "anker_max": {
+          "start": 4336,
+          "ende": 10336,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              4750,
+              6750
+            ],
+            [
+              0,
+              2000
+            ],
+            [
+              8250,
+              10250
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 18535,
+          "ende": 24535,
+          "abgedeckt": 5,
+          "zellen_abgedeckt": 5
+        }
+      }
+    },
+    "yun2024:119": {
+      "record_id": "yun2024:119",
+      "dokument": "PMC4323894",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "Improvement in Glasgow outcome score at 6 months post-trauma",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 10032,
+      "goldzellen": 4,
+      "werte_gesamt": 4,
+      "werte_im_text": 4,
+      "werte_im_fenster": 4,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 0,
+        "ende": 6000,
+        "zeichen": 6000,
+        "outcome_treffer": 33,
+        "tabellenzeilen": 0,
+        "bewertung": 101.0
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        },
+        "outcome_letzte": {
+          "start": 4032,
+          "ende": 10032,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              2750,
+              4750
+            ],
+            [
+              0,
+              2000
+            ],
+            [
+              8000,
+              10000
+            ]
+          ],
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        }
+      }
+    },
+    "yun2024:128": {
+      "record_id": "yun2024:128",
+      "dokument": "PMC4493951",
+      "klasse": "fehlt_im_text",
+      "outcome": "the incidence of postoperative nausea and vomiting (PONV)",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 7954,
+      "goldzellen": 4,
+      "werte_gesamt": 3,
+      "werte_im_text": 3,
+      "werte_im_fenster": 3,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 500,
+        "ende": 6500,
+        "zeichen": 6000,
+        "outcome_treffer": 37,
+        "tabellenzeilen": 0,
+        "bewertung": 115.66
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 500,
+          "ende": 6500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "outcome_letzte": {
+          "start": 1954,
+          "ende": 7954,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "anker_max": {
+          "start": 93,
+          "ende": 6093,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              4500,
+              6500
+            ],
+            [
+              0,
+              2000
+            ],
+            [
+              2250,
+              4250
+            ]
+          ],
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        }
+      }
+    },
+    "yun2024:152": {
+      "record_id": "yun2024:152",
+      "dokument": "PMC5055753",
+      "klasse": "fehlt_im_text",
+      "outcome": "The percentages of patients in the calm",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 7782,
+      "goldzellen": 4,
+      "werte_gesamt": 3,
+      "werte_im_text": 3,
+      "werte_im_fenster": 2,
+      "werte_ausserhalb": 1,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 1000,
+        "ende": 7000,
+        "zeichen": 6000,
+        "outcome_treffer": 21,
+        "tabellenzeilen": 0,
+        "bewertung": 66.39
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 7.0,
+          "stellen": 1,
+          "abstand_zeichen": 393,
+          "richtung": "danach",
+          "kontext": [
+            "ompared to the midazolam group ([Figure 7](#)). <figure> <p><img s"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 1000,
+          "ende": 7000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_letzte": {
+          "start": 470,
+          "ende": 6470,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "anker_max": {
+          "start": 1000,
+          "ende": 7000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              500,
+              2500
+            ],
+            [
+              2750,
+              4750
+            ],
+            [
+              5250,
+              7250
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "orakel_6000": {
+          "start": 1394,
+          "ende": 7394,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        }
+      }
+    },
+    "yun2024:159": {
+      "record_id": "yun2024:159",
+      "dokument": "PMC5056957",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "BMI reduction at 12 months",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 16081,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 4,
+      "werte_im_fenster": 0,
+      "werte_ausserhalb": 4,
+      "werte_nirgends": 2,
+      "fenster": {
+        "start": 1000,
+        "ende": 7000,
+        "zeichen": 6000,
+        "outcome_treffer": 26,
+        "tabellenzeilen": 0,
+        "bewertung": 83.01
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 21.07,
+          "stellen": 1,
+          "abstand_zeichen": 8236,
+          "richtung": "danach",
+          "kontext": [
+            "20.27 (19.76, 20.78) 21.07 (20.56, 21.59)"
+          ]
+        },
+        {
+          "wert": 21.27,
+          "stellen": 1,
+          "abstand_zeichen": 8374,
+          "richtung": "danach",
+          "kontext": [
+            "20.19 (19.65, 20.72) 21.27 (20.73, 21.81)"
+          ]
+        },
+        {
+          "wert": 459.0,
+          "stellen": 2,
+          "abstand_zeichen": 510,
+          "richtung": "danach",
+          "kontext": [
+            "Intervention (*n*=645)* *Control (*n*=459)* *Intervention (*",
+            "e (*n*=505) mean (95% CI)* *12 m (*n*=459) mean (95% CI)* *24 m"
+          ]
+        },
+        {
+          "wert": 592.0,
+          "stellen": 2,
+          "abstand_zeichen": 541,
+          "richtung": "danach",
+          "kontext": [
+            "rol (*n*=459)* *Intervention (*n*=592)* *Control (*n*=425)*",
+            "e (*n*=645) mean (95% CI)* *12 m (*n*=592) mean (95% CI)* *24 m"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 1000,
+          "ende": 7000,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_letzte": {
+          "start": 4127,
+          "ende": 10127,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 1211,
+          "ende": 7211,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              5250,
+              7250
+            ],
+            [
+              1000,
+              3000
+            ],
+            [
+              14000,
+              16000
+            ]
+          ],
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        },
+        "orakel_6000": {
+          "start": 9375,
+          "ende": 15375,
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        }
+      }
+    },
+    "yun2024:164": {
+      "record_id": "yun2024:164",
+      "dokument": "PMC5062234",
+      "klasse": "fehlt_im_text",
+      "outcome": "The visual analog scale scores at rest and on coughing",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 3808,
+      "goldzellen": 2,
+      "werte_gesamt": 1,
+      "werte_im_text": 0,
+      "werte_im_fenster": 0,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 1,
+      "fenster": {
+        "start": 0,
+        "ende": 3808,
+        "zeichen": 3808,
+        "outcome_treffer": 16,
+        "tabellenzeilen": 0,
+        "bewertung": null
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 3808,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 3808,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_letzte": {
+          "start": 0,
+          "ende": 3808,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "tabelle_mitte": {
+          "start": 0,
+          "ende": 3808,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "zeitpunkt": {
+          "start": 0,
+          "ende": 3808,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 3808,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "mehrfach_3x2000": {
+          "start": 0,
+          "ende": 3808,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 3808,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "ganzer_text": {
+          "start": 0,
+          "ende": 3808,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        }
+      }
+    },
+    "yun2024:171": {
+      "record_id": "yun2024:171",
+      "dokument": "PMC5079604",
+      "klasse": "fehlt_im_text",
+      "outcome": "The restricted mean time to hyperglycemia relapse",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 20409,
+      "goldzellen": 4,
+      "werte_gesamt": 4,
+      "werte_im_text": 3,
+      "werte_im_fenster": 3,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 1,
+      "fenster": {
+        "start": 13500,
+        "ende": 19500,
+        "zeichen": 6000,
+        "outcome_treffer": 37,
+        "tabellenzeilen": 0,
+        "bewertung": 113.82
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 13500,
+          "ende": 19500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_erste": {
+          "start": 13421,
+          "ende": 19421,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_letzte": {
+          "start": 13421,
+          "ende": 19421,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "anker_max": {
+          "start": 14409,
+          "ende": 20409,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              16250,
+              18250
+            ],
+            [
+              9250,
+              11250
+            ],
+            [
+              0,
+              2000
+            ]
+          ],
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        }
+      }
+    },
+    "yun2024:173": {
+      "record_id": "yun2024:173",
+      "dokument": "PMC5079604",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "The 2-year failure rate",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 20409,
+      "goldzellen": 4,
+      "werte_gesamt": 4,
+      "werte_im_text": 3,
+      "werte_im_fenster": 3,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 1,
+      "fenster": {
+        "start": 11500,
+        "ende": 17500,
+        "zeichen": 6000,
+        "outcome_treffer": 5,
+        "tabellenzeilen": 0,
+        "bewertung": 18.43
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 11500,
+          "ende": 17500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_erste": {
+          "start": 12950,
+          "ende": 18950,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_letzte": {
+          "start": 12950,
+          "ende": 18950,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "anker_max": {
+          "start": 11500,
+          "ende": 17500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              15750,
+              17750
+            ],
+            [
+              3750,
+              5750
+            ],
+            [
+              11250,
+              13250
+            ]
+          ],
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        }
+      }
+    },
+    "yun2024:204": {
+      "record_id": "yun2024:204",
+      "dokument": "PMC5380326",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "Th1/Th2 cytokines",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 14600,
+      "goldzellen": 2,
+      "werte_gesamt": 1,
+      "werte_im_text": 1,
+      "werte_im_fenster": 1,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 500,
+        "ende": 6500,
+        "zeichen": 6000,
+        "outcome_treffer": 4,
+        "tabellenzeilen": 0,
+        "bewertung": 18.62
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 500,
+          "ende": 6500,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 685,
+          "ende": 6685,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              500,
+              2500
+            ],
+            [
+              8000,
+              10000
+            ],
+            [
+              4500,
+              6500
+            ]
+          ],
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:251": {
+      "record_id": "yun2024:251",
+      "dokument": "PMC5614421",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "severity of any neonatal respiratory disease",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 40101,
+      "goldzellen": 4,
+      "werte_gesamt": 4,
+      "werte_im_text": 4,
+      "werte_im_fenster": 3,
+      "werte_ausserhalb": 1,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 0,
+        "ende": 6000,
+        "zeichen": 6000,
+        "outcome_treffer": 18,
+        "tabellenzeilen": 0,
+        "bewertung": 57.24
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 7.0,
+          "stellen": 5,
+          "abstand_zeichen": 6257,
+          "richtung": "danach",
+          "kontext": [
+            "8/402 (2.0) 7/388 (1.8)",
+            "10/402 (2.5) 7/388 (1.8) 1.38 (",
+            "5/406 (1.2) 7/393 (1.8) 0.69 ("
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_letzte": {
+          "start": 6539,
+          "ende": 12539,
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              9250,
+              11250
+            ],
+            [
+              500,
+              2500
+            ],
+            [
+              21250,
+              23250
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 6258,
+          "ende": 12258,
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        }
+      }
+    },
+    "yun2024:252": {
+      "record_id": "yun2024:252",
+      "dokument": "PMC5614421",
+      "klasse": "fehlt_im_text",
+      "outcome": "other respiratory morbidities",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 40101,
+      "goldzellen": 2,
+      "werte_gesamt": 2,
+      "werte_im_text": 2,
+      "werte_im_fenster": 2,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 0,
+        "ende": 6000,
+        "zeichen": 6000,
+        "outcome_treffer": 19,
+        "tabellenzeilen": 0,
+        "bewertung": 60.24
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              750,
+              2750
+            ],
+            [
+              7750,
+              9750
+            ],
+            [
+              3000,
+              5000
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:273": {
+      "record_id": "yun2024:273",
+      "dokument": "PMC3214395",
+      "klasse": "fehlt_im_text",
+      "outcome": "awakening",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 3360,
+      "goldzellen": 2,
+      "werte_gesamt": 2,
+      "werte_im_text": 1,
+      "werte_im_fenster": 1,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 1,
+      "fenster": {
+        "start": 0,
+        "ende": 3360,
+        "zeichen": 3360,
+        "outcome_treffer": 3,
+        "tabellenzeilen": 0,
+        "bewertung": null
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 3360,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 3360,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "outcome_letzte": {
+          "start": 0,
+          "ende": 3360,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "tabelle_mitte": {
+          "start": 0,
+          "ende": 3360,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "zeitpunkt": {
+          "start": 0,
+          "ende": 3360,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 3360,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "mehrfach_3x2000": {
+          "start": 0,
+          "ende": 3360,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 3360,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "ganzer_text": {
+          "start": 0,
+          "ende": 3360,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        }
+      }
+    },
+    "yun2024:304": {
+      "record_id": "yun2024:304",
+      "dokument": "PMC4357072",
+      "klasse": "fehlt_im_text",
+      "outcome": "reduction in erythematous area",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 5515,
+      "goldzellen": 4,
+      "werte_gesamt": 3,
+      "werte_im_text": 2,
+      "werte_im_fenster": 2,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 1,
+      "fenster": {
+        "start": 0,
+        "ende": 5515,
+        "zeichen": 5515,
+        "outcome_treffer": 23,
+        "tabellenzeilen": 0,
+        "bewertung": null
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 5515,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 5515,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_letzte": {
+          "start": 0,
+          "ende": 5515,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "tabelle_mitte": {
+          "start": 0,
+          "ende": 5515,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "zeitpunkt": {
+          "start": 0,
+          "ende": 5515,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 5515,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "mehrfach_3x2000": {
+          "start": 0,
+          "ende": 5515,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 5515,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        },
+        "ganzer_text": {
+          "start": 0,
+          "ende": 5515,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 3
+        }
+      }
+    },
+    "yun2024:356": {
+      "record_id": "yun2024:356",
+      "dokument": "PMC5884950",
+      "klasse": "fehlt_im_text",
+      "outcome": "objective-SCORAD score",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 19352,
+      "goldzellen": 2,
+      "werte_gesamt": 1,
+      "werte_im_text": 1,
+      "werte_im_fenster": 1,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 9000,
+        "ende": 15000,
+        "zeichen": 6000,
+        "outcome_treffer": 13,
+        "tabellenzeilen": 0,
+        "bewertung": 42.55
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 9000,
+          "ende": 15000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 9000,
+          "ende": 15000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              0,
+              2000
+            ],
+            [
+              10750,
+              12750
+            ],
+            [
+              4250,
+              6250
+            ]
+          ],
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:420": {
+      "record_id": "yun2024:420",
+      "dokument": "PMC3877023",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "quantitative contour sharpness of the Cervicothoracic Spine",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 26274,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 6,
+      "werte_im_fenster": 6,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 15500,
+        "ende": 21500,
+        "zeichen": 6000,
+        "outcome_treffer": 39,
+        "tabellenzeilen": 0,
+        "bewertung": 121.87
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 15500,
+          "ende": 21500,
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_letzte": {
+          "start": 20274,
+          "ende": 26274,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 15349,
+          "ende": 21349,
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              7250,
+              9250
+            ],
+            [
+              18500,
+              20500
+            ],
+            [
+              250,
+              2250
+            ]
+          ],
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        },
+        "orakel_6000": {
+          "start": 13138,
+          "ende": 19138,
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        }
+      }
+    },
+    "yun2024:421": {
+      "record_id": "yun2024:421",
+      "dokument": "PMC3877023",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "quantitative contour sharpness of the thoracolumbar spine",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 26274,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 6,
+      "werte_im_fenster": 6,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 15500,
+        "ende": 21500,
+        "zeichen": 6000,
+        "outcome_treffer": 40,
+        "tabellenzeilen": 0,
+        "bewertung": 124.87
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 15500,
+          "ende": 21500,
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 20274,
+          "ende": 26274,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 15373,
+          "ende": 21373,
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              7250,
+              9250
+            ],
+            [
+              19000,
+              21000
+            ],
+            [
+              250,
+              2250
+            ]
+          ],
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        },
+        "orakel_6000": {
+          "start": 13181,
+          "ende": 19181,
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        }
+      }
+    },
+    "yun2024:446": {
+      "record_id": "yun2024:446",
+      "dokument": "PMC4879328",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "waist circumference",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 25267,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 3,
+      "werte_im_fenster": 1,
+      "werte_ausserhalb": 2,
+      "werte_nirgends": 3,
+      "fenster": {
+        "start": 5000,
+        "ende": 11000,
+        "zeichen": 6000,
+        "outcome_treffer": 10,
+        "tabellenzeilen": 0,
+        "bewertung": 34.14
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 104.0,
+          "stellen": 2,
+          "abstand_zeichen": 5286,
+          "richtung": "danach",
+          "kontext": [
+            "ealthy' (GHSH) intervention group (I; n=104) and the control group (",
+            "Stay Healthy' (GHSH) intervention (I; n=104) and control groups (C;"
+          ]
+        },
+        {
+          "wert": 114.0,
+          "stellen": 12,
+          "abstand_zeichen": 313,
+          "richtung": "teils davor, teils danach",
+          "kontext": [
+            "s of GHSH participants (intervention, n=114; control, n=114). Upon e",
+            "ipants (intervention, n=114; control, n=114). Upon entering the GHSH",
+            "line to 6 months was 95% (216/228) (103/114, 90% in intervention and"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 5000,
+          "ende": 11000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "outcome_letzte": {
+          "start": 19267,
+          "ende": 25267,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 5252,
+          "ende": 11252,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              9250,
+              11250
+            ],
+            [
+              1000,
+              3000
+            ],
+            [
+              21500,
+              23500
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 11366,
+          "ende": 17366,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        }
+      }
+    },
+    "yun2024:451": {
+      "record_id": "yun2024:451",
+      "dokument": "PMC4879328",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "accelerometer-assessed moderate to vigorous physical activity (MVPA)",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 25267,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 3,
+      "werte_im_fenster": 1,
+      "werte_ausserhalb": 2,
+      "werte_nirgends": 3,
+      "fenster": {
+        "start": 1000,
+        "ende": 7000,
+        "zeichen": 6000,
+        "outcome_treffer": 31,
+        "tabellenzeilen": 0,
+        "bewertung": 96.45
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 7.41,
+          "stellen": 1,
+          "abstand_zeichen": 11770,
+          "richtung": "danach",
+          "kontext": [
+            "^(minutes/week) 30 minutes I 7.41 (−5.61, 20.44)"
+          ]
+        },
+        {
+          "wert": 108.0,
+          "stellen": 1,
+          "abstand_zeichen": 14603,
+          "richtung": "danach",
+          "kontext": [
+            "circumference). ^d^n=99 GHSH group; n=108 control group; some part"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 1000,
+          "ende": 7000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "outcome_letzte": {
+          "start": 19267,
+          "ende": 25267,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 1064,
+          "ende": 7064,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              1000,
+              3000
+            ],
+            [
+              9500,
+              11500
+            ],
+            [
+              21250,
+              23250
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 15604,
+          "ende": 21604,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        }
+      }
+    },
+    "yun2024:523": {
+      "record_id": "yun2024:523",
+      "dokument": "PMC5325897",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "First test results",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 6811,
+      "goldzellen": 6,
+      "werte_gesamt": 4,
+      "werte_im_text": 3,
+      "werte_im_fenster": 3,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 1,
+      "fenster": {
+        "start": 500,
+        "ende": 6500,
+        "zeichen": 6000,
+        "outcome_treffer": 12,
+        "tabellenzeilen": 0,
+        "bewertung": 40.87
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 500,
+          "ende": 6500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "outcome_letzte": {
+          "start": 811,
+          "ende": 6811,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "anker_max": {
+          "start": 807,
+          "ende": 6807,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              1000,
+              3000
+            ],
+            [
+              4750,
+              6750
+            ]
+          ],
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        }
+      }
+    },
+    "yun2024:525": {
+      "record_id": "yun2024:525",
+      "dokument": "PMC5325897",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "Final test results",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 6811,
+      "goldzellen": 6,
+      "werte_gesamt": 4,
+      "werte_im_text": 3,
+      "werte_im_fenster": 3,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 1,
+      "fenster": {
+        "start": 500,
+        "ende": 6500,
+        "zeichen": 6000,
+        "outcome_treffer": 4,
+        "tabellenzeilen": 0,
+        "bewertung": 16.87
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 500,
+          "ende": 6500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "outcome_letzte": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "anker_max": {
+          "start": 807,
+          "ende": 6807,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              1250,
+              3250
+            ],
+            [
+              4750,
+              6750
+            ]
+          ],
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 4
+        }
+      }
+    },
+    "yun2024:557": {
+      "record_id": "yun2024:557",
+      "dokument": "PMC3136370",
+      "klasse": "fehlt_im_text",
+      "outcome": "Fibromyalgia Impact Questionnaire scores",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 13122,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 2,
+      "werte_im_fenster": 2,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 4,
+      "fenster": {
+        "start": 0,
+        "ende": 6000,
+        "zeichen": 6000,
+        "outcome_treffer": 30,
+        "tabellenzeilen": 0,
+        "bewertung": 92.28
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 7122,
+          "ende": 13122,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              0,
+              2000
+            ],
+            [
+              3250,
+              5250
+            ],
+            [
+              8000,
+              10000
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:559": {
+      "record_id": "yun2024:559",
+      "dokument": "PMC3136370",
+      "klasse": "fehlt_im_text",
+      "outcome": "Center for Epidemiologic Studies Depression Scale score",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 13122,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 2,
+      "werte_im_fenster": 2,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 4,
+      "fenster": {
+        "start": 1500,
+        "ende": 7500,
+        "zeichen": 6000,
+        "outcome_treffer": 45,
+        "tabellenzeilen": 0,
+        "bewertung": 137.13
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 1500,
+          "ende": 7500,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 7122,
+          "ende": 13122,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 1
+        },
+        "anker_max": {
+          "start": 1650,
+          "ende": 7650,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              5250,
+              7250
+            ],
+            [
+              2750,
+              4750
+            ],
+            [
+              250,
+              2250
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:582": {
+      "record_id": "yun2024:582",
+      "dokument": "PMC3504298",
+      "klasse": "fehlt_im_text",
+      "outcome": "Attentional Function",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 12838,
+      "goldzellen": 2,
+      "werte_gesamt": 1,
+      "werte_im_text": 1,
+      "werte_im_fenster": 1,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 4000,
+        "ende": 10000,
+        "zeichen": 6000,
+        "outcome_treffer": 11,
+        "tabellenzeilen": 0,
+        "bewertung": 34.25
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 4000,
+          "ende": 10000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 1843,
+          "ende": 7843,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 1843,
+          "ende": 7843,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 4000,
+          "ende": 10000,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              4750,
+              6750
+            ],
+            [
+              8250,
+              10250
+            ],
+            [
+              0,
+              2000
+            ]
+          ],
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 85,
+          "ende": 6085,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:624": {
+      "record_id": "yun2024:624",
+      "dokument": "PMC3493722",
+      "klasse": "fehlt_im_text",
+      "outcome": "good compliance rates",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 5258,
+      "goldzellen": 2,
+      "werte_gesamt": 1,
+      "werte_im_text": 0,
+      "werte_im_fenster": 0,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 1,
+      "fenster": {
+        "start": 0,
+        "ende": 5258,
+        "zeichen": 5258,
+        "outcome_treffer": 16,
+        "tabellenzeilen": 0,
+        "bewertung": null
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_letzte": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "tabelle_mitte": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "zeitpunkt": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "mehrfach_3x2000": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "ganzer_text": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        }
+      }
+    },
+    "yun2024:625": {
+      "record_id": "yun2024:625",
+      "dokument": "PMC3493722",
+      "klasse": "fehlt_im_text",
+      "outcome": "well compliance rates",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 5258,
+      "goldzellen": 2,
+      "werte_gesamt": 2,
+      "werte_im_text": 0,
+      "werte_im_fenster": 0,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 2,
+      "fenster": {
+        "start": 0,
+        "ende": 5258,
+        "zeichen": 5258,
+        "outcome_treffer": 16,
+        "tabellenzeilen": 0,
+        "bewertung": null
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_letzte": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "tabelle_mitte": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "zeitpunkt": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "mehrfach_3x2000": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "ganzer_text": {
+          "start": 0,
+          "ende": 5258,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        }
+      }
+    },
+    "yun2024:671": {
+      "record_id": "yun2024:671",
+      "dokument": "PMC4550271",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "Community knowledge",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 42606,
+      "goldzellen": 2,
+      "werte_gesamt": 2,
+      "werte_im_text": 2,
+      "werte_im_fenster": 2,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 27500,
+        "ende": 33500,
+        "zeichen": 6000,
+        "outcome_treffer": 9,
+        "tabellenzeilen": 0,
+        "bewertung": 31.14
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 27500,
+          "ende": 33500,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 24604,
+          "ende": 30604,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 30262,
+          "ende": 36262,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 27604,
+          "ende": 33604,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              27500,
+              29500
+            ],
+            [
+              2000,
+              4000
+            ],
+            [
+              32750,
+              34750
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:672": {
+      "record_id": "yun2024:672",
+      "dokument": "PMC4550271",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "Community knowledge",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 42606,
+      "goldzellen": 2,
+      "werte_gesamt": 2,
+      "werte_im_text": 2,
+      "werte_im_fenster": 2,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 27500,
+        "ende": 33500,
+        "zeichen": 6000,
+        "outcome_treffer": 9,
+        "tabellenzeilen": 0,
+        "bewertung": 31.14
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 27500,
+          "ende": 33500,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 24604,
+          "ende": 30604,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 30262,
+          "ende": 36262,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 27604,
+          "ende": 33604,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              27500,
+              29500
+            ],
+            [
+              2000,
+              4000
+            ],
+            [
+              32750,
+              34750
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:674": {
+      "record_id": "yun2024:674",
+      "dokument": "PMC4550271",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "treatment according to guidelines",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 42606,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 6,
+      "werte_im_fenster": 3,
+      "werte_ausserhalb": 3,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 25500,
+        "ende": 31500,
+        "zeichen": 6000,
+        "outcome_treffer": 9,
+        "tabellenzeilen": 0,
+        "bewertung": 31.78
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 22.6,
+          "stellen": 1,
+          "abstand_zeichen": 6645,
+          "richtung": "davor",
+          "kontext": [
+            "**299/1536 (20%)** **22.6% (23)** **0*"
+          ]
+        },
+        {
+          "wert": 23.0,
+          "stellen": 7,
+          "abstand_zeichen": 531,
+          "richtung": "davor",
+          "kontext": [
+            "d with pharmacies (5%) and drug stores (23%) due to an unexpected b",
+            "55 (31%) 300 (23%) **Days of illness**[",
+            "cording to guidelines (36% in provider, 23% control, 24% provider-s"
+          ]
+        },
+        {
+          "wert": 23.5,
+          "stellen": 1,
+          "abstand_zeichen": 5323,
+          "richtung": "davor",
+          "kontext": [
+            "**131/1496 (9%)** **23.5% (26)** *"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 25500,
+          "ende": 31500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_erste": {
+          "start": 8065,
+          "ende": 14065,
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        },
+        "outcome_letzte": {
+          "start": 8065,
+          "ende": 14065,
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        },
+        "anker_max": {
+          "start": 25500,
+          "ende": 31500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              9250,
+              11250
+            ],
+            [
+              0,
+              2000
+            ],
+            [
+              25750,
+              27750
+            ]
+          ],
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        },
+        "orakel_6000": {
+          "start": 14178,
+          "ende": 20178,
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        }
+      }
+    },
+    "yun2024:673": {
+      "record_id": "yun2024:673",
+      "dokument": "PMC4550271",
+      "klasse": "prosa_mehrfachpaar",
+      "outcome": "treatment according to guidelines",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 42606,
+      "goldzellen": 6,
+      "werte_gesamt": 6,
+      "werte_im_text": 6,
+      "werte_im_fenster": 3,
+      "werte_ausserhalb": 3,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 25500,
+        "ende": 31500,
+        "zeichen": 6000,
+        "outcome_treffer": 9,
+        "tabellenzeilen": 0,
+        "bewertung": 31.78
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 22.6,
+          "stellen": 1,
+          "abstand_zeichen": 6645,
+          "richtung": "davor",
+          "kontext": [
+            "**299/1536 (20%)** **22.6% (23)** **0*"
+          ]
+        },
+        {
+          "wert": 23.0,
+          "stellen": 7,
+          "abstand_zeichen": 531,
+          "richtung": "davor",
+          "kontext": [
+            "d with pharmacies (5%) and drug stores (23%) due to an unexpected b",
+            "55 (31%) 300 (23%) **Days of illness**[",
+            "cording to guidelines (36% in provider, 23% control, 24% provider-s"
+          ]
+        },
+        {
+          "wert": 36.4,
+          "stellen": 1,
+          "abstand_zeichen": 5995,
+          "richtung": "davor",
+          "kontext": [
+            "**275/1832 (15%)** **36.4% (32)** *"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 25500,
+          "ende": 31500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_erste": {
+          "start": 8065,
+          "ende": 14065,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "outcome_letzte": {
+          "start": 8065,
+          "ende": 14065,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "anker_max": {
+          "start": 25500,
+          "ende": 31500,
+          "abgedeckt": 3,
+          "zellen_abgedeckt": 3
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              9250,
+              11250
+            ],
+            [
+              0,
+              2000
+            ],
+            [
+              25750,
+              27750
+            ]
+          ],
+          "abgedeckt": 4,
+          "zellen_abgedeckt": 4
+        },
+        "orakel_6000": {
+          "start": 13506,
+          "ende": 19506,
+          "abgedeckt": 6,
+          "zellen_abgedeckt": 6
+        }
+      }
+    },
+    "yun2024:685": {
+      "record_id": "yun2024:685",
+      "dokument": "PMC2836833",
+      "klasse": "fehlt_im_text",
+      "outcome": "Fecal fat loss",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 18929,
+      "goldzellen": 2,
+      "werte_gesamt": 1,
+      "werte_im_text": 1,
+      "werte_im_fenster": 0,
+      "werte_ausserhalb": 1,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 0,
+        "ende": 6000,
+        "zeichen": 6000,
+        "outcome_treffer": 24,
+        "tabellenzeilen": 0,
+        "bewertung": 75.29
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 17.0,
+          "stellen": 2,
+          "abstand_zeichen": 3709,
+          "richtung": "danach",
+          "kontext": [
+            "Dairy Diet (n= 17)",
+            "Non-Dairy Diet (n = 17)"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_letzte": {
+          "start": 1474,
+          "ende": 7474,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "anker_max": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              2750,
+              4750
+            ],
+            [
+              0,
+              2000
+            ],
+            [
+              11750,
+              13750
+            ]
+          ],
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "orakel_6000": {
+          "start": 3710,
+          "ende": 9710,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:678": {
+      "record_id": "yun2024:678",
+      "dokument": "PMC5777419",
+      "klasse": "fehlt_im_text",
+      "outcome": "the total cultivable microbiota",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 12349,
+      "goldzellen": 2,
+      "werte_gesamt": 2,
+      "werte_im_text": 2,
+      "werte_im_fenster": 2,
+      "werte_ausserhalb": 0,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 1000,
+        "ende": 7000,
+        "zeichen": 6000,
+        "outcome_treffer": 8,
+        "tabellenzeilen": 0,
+        "bewertung": 29.56
+      },
+      "ausserhalb_details": [],
+      "regeln": {
+        "score": {
+          "start": 1000,
+          "ende": 7000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_erste": {
+          "start": 6349,
+          "ende": 12349,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "outcome_letzte": {
+          "start": 6349,
+          "ende": 12349,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "anker_max": {
+          "start": 1000,
+          "ende": 7000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              1250,
+              3250
+            ],
+            [
+              5250,
+              7250
+            ],
+            [
+              9750,
+              11750
+            ]
+          ],
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        },
+        "orakel_6000": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 2,
+          "zellen_abgedeckt": 2
+        }
+      }
+    },
+    "yun2024:687": {
+      "record_id": "yun2024:687",
+      "dokument": "PMC2836833",
+      "klasse": "fehlt_im_text",
+      "outcome": "weight loss",
+      "zielzeitpunkt": "primary time point of the trial (if not stated: the last reported time point)",
+      "text_zeichen": 18929,
+      "goldzellen": 2,
+      "werte_gesamt": 1,
+      "werte_im_text": 1,
+      "werte_im_fenster": 0,
+      "werte_ausserhalb": 1,
+      "werte_nirgends": 0,
+      "fenster": {
+        "start": 500,
+        "ende": 6500,
+        "zeichen": 6000,
+        "outcome_treffer": 16,
+        "tabellenzeilen": 0,
+        "bewertung": 51.32
+      },
+      "ausserhalb_details": [
+        {
+          "wert": 17.0,
+          "stellen": 2,
+          "abstand_zeichen": 3209,
+          "richtung": "danach",
+          "kontext": [
+            "Dairy Diet (n= 17)",
+            "Non-Dairy Diet (n = 17)"
+          ]
+        }
+      ],
+      "regeln": {
+        "score": {
+          "start": 500,
+          "ende": 6500,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_erste": {
+          "start": 0,
+          "ende": 6000,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "outcome_letzte": {
+          "start": 2204,
+          "ende": 8204,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "anker_max": {
+          "start": 500,
+          "ende": 6500,
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "mehrfach_3x2000": {
+          "stuecke": [
+            [
+              3500,
+              5500
+            ],
+            [
+              500,
+              2500
+            ],
+            [
+              7000,
+              9000
+            ]
+          ],
+          "abgedeckt": 0,
+          "zellen_abgedeckt": 0
+        },
+        "orakel_6000": {
+          "start": 3710,
+          "ende": 9710,
+          "abgedeckt": 1,
+          "zellen_abgedeckt": 2
+        }
+      }
+    }
+  }
+}

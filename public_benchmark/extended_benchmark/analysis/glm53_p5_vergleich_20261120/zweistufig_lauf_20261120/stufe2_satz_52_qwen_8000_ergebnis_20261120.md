@@ -83,20 +83,24 @@ groessere abbrach.
 
 ## Was das fuer die Breite bedeutet (offline nachgezaehlt)
 
-Alle 33 Abbrueche, Goldwerte im 6.000er-Fenster:
+Alle 33 Abbrueche, Goldwerte im 6.000er-Fenster (nachgetragen am 20.11.2026,
+`fensterlage_20261120.py`):
 
 | Goldwerte im Ausschnitt | Records |
 |---:|---:|
-| 0 | **21** |
-| 1 | 7 |
-| 2 | 1 |
-| 3 | 2 |
-| 4 | 2 |
+| 0 | 6 |
+| 1 | 6 |
+| 2 und mehr | 21 |
 
-**Nur 5 der 33** haben mindestens zwei Goldwerte im Fenster: 420 (4/6), 421
-(4/6), 525 (3/4), 523 (3/4) und 52 (2/6). Vier davon sind jetzt gemessen. Eine
-qwen-Serie ueber die restlichen Abbrueche wuerde bei 21 Records 0 erreichbare
-Werte messen - sie wuerde die Fensterwahl messen, nicht das Modell.
+Die frueher hier stehende Tabelle (0 = 21) war falsch etikettiert: 21 ist die
+Zahl der Records mit mindestens zwei Werten, nicht mit null. Die dort genannten
+4/6, 4/6, 3/4, 3/4 und 2/6 sind Werte der zitierten Belegstelle, nicht des
+Fensters; im Fenster zeigen 420 und 421 je 6/6, 523 und 525 je 3/4 und 52 2/6.
+Von den 118 Goldwerten stehen 92 im Text und 26 nicht; das Fenster zeigt 67,
+das beste einzelne 6.000er-Fenster 91. Eine qwen-Serie ueber alle 33 wuerde
+daher zu 51 von 118 Werten die Fensterwahl bzw. die Dokumentaufbereitung messen,
+nicht das Modell; messbar ist das Modell auf den 21 Records mit mindestens zwei
+Werten im Fenster.
 
 ## Kosten
 

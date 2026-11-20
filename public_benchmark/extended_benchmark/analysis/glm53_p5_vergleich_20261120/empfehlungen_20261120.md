@@ -296,30 +296,41 @@ Ausgabe das Budget verbraucht, und nichts an einem Satz, der zitiert wird.
 
 ## Nächster Schritt
 
-Die Kette auf 52 ist geschlossen (2 TP / 0 FP, Armrichtung korrekt). Alle
-Einzelfragen der Reihe sind beantwortet; der nächste Schritt ist **keine**
-weiterer Aufruf, sondern die Fensterwahl — sie ist der Engpass jeder Breite:
+Die Kette auf 52 ist geschlossen (2 TP / 0 FP, Armrichtung korrekt). Die
+Fensterwahl ist offline nachgemessen (`fensterlage_20261120.py`,
+`p5_fensterlage_20261120.md`; 33 Abbrüche, 118 verschiedene Goldwerte):
 
 | Goldwerte im 6.000er-Fenster | Abbrüche (von 33) |
 |---|---:|
-| 0 | **21** |
-| 1 | 7 |
-| 2 | 1 |
-| 3 | 2 |
-| 4 | 2 |
+| 0 | 6 |
+| 1 | 6 |
+| 2 und mehr | 21 |
 
-Nur **5 von 33** haben mindestens zwei erreichbare Goldwerte (420, 421, 525, 523,
-52); vier davon sind gemessen. Eine qwen-Serie über die restlichen 29 würde bei
-21 Records 0 erreichbare Werte bewerten — sie misst dann mein Ausschnittsfenster,
-nicht das Modell.
+Die frühere Tabelle war falsch etikettiert: 21 ist die Zahl der Records mit
+**mindestens zwei** Werten im Fenster, nicht mit null. Ohne jeden Wert im
+Fenster sind 6 (159, 164, 624, 625, 685, 687), mit genau einem 6.
 
-1. **Ausschnittsfenster offline prüfen (0 Tokens).** Für die 21 Records mit 0
-   Treffern: liegt der Goldwert im Dokument außerhalb des Fensters, und wäre er
-   mit einer anderen Startregel drin? Das ist die Frage, die 33 Records
-   entscheidet, und sie kostet keinen Aufruf.
-2. Erst danach eine **qwen-Serie auf den dann abgedeckten Records** (Budget
-   16.000 je Record, gemessener Verbrauch 6.236–7.728), Größe nach der Zahl der
-   abgedeckten Fälle, nicht pauschal 33.
+Von den 118 Goldwerten stehen 92 im Dokumenttext, 26 nicht (Bildtabelle, nur
+Caption). Das aktuelle Fenster zeigt 67, also 25 im Text stehende Werte nicht.
+Das beste einzelne 6.000er-Fenster käme auf 91; nur ein Wert passt in kein
+Fenster dieser Breite. Der Engpass ist die Startregel, nicht die Breite: drei
+2.000er-Stücke erreichen 72 Werte und 24 Records mit mindestens zwei Werten
+(gegenüber 67 und 21 beim Einzelfenster). Drei der sechs Records ohne Wert im
+Fenster (164, 624, 625) haben gar keinen Goldwert im Text; dort hilft keine
+Regel, nur eine andere Dokumentaufbereitung.
+
+Für eine qwen-Serie heißt das: über alle 33 würde sie zu 51 von 118 Werten
+(43 %) die Fensterwahl bzw. die Dokumentaufbereitung messen. Das Modell messbar
+ist sie auf den 21 Records mit mindestens zwei Werten im Fenster; 159 und
+446/451 gewinnen mit drei 2.000er-Stücken, 685/687 nur mit einem Fenster, das
+bis an die Tabellenzeile reicht.
+
+1. **Erledigt:** Fensterlage offline geprüft (0 Tokens), Ergebnis oben und in
+   `p5_fensterlage_20261120.md`.
+2. **Nächster Aufruf:** qwen-Serie nur auf den 21 Records mit mindestens zwei
+   Werten im Fenster (Budget 16.000 je Record, gemessener Verbrauch
+   6.236–7.728); 164, 624, 625 bleiben außen vor, bis die Bildtabellen
+   maschinenlesbar sind.
 
 Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Feldbezeichnung offen),
 weitere Prompt-Fassungen auf 420/421 (Befund 1), eine Budgeterhöhung als
