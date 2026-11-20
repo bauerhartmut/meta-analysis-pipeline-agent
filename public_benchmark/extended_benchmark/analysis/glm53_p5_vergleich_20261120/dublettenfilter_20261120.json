@@ -1,0 +1,272 @@
+{
+  "quellen": {
+    "records": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/yun_full/records/yun699.jsonl",
+    "p5": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/runs/yun699_p5_24000_20261118/predictions.jsonl",
+    "auswahl": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/iterativ/ergebnisse/p5_vorbereitung_20261118.json"
+  },
+  "hinweis": "beste_zelle nutzt den Goldwert zur Auswahl und ist keine anwendbare Nachbearbeitung, sondern die Obergrenze des Verfahrens.",
+  "records_bewertbar": 102,
+  "varianten": {
+    "basis": {
+      "tp": 170,
+      "fp": 97,
+      "fn": 253,
+      "ueberzaehlig": 80,
+      "fremdschluessel": 17,
+      "precision": 0.6367041198501873,
+      "recall": 0.40189125295508277,
+      "f1": 0.4927536231884057,
+      "entfernte_zellen": 0,
+      "records_veraendert": 0,
+      "delta_f1": 0.0,
+      "delta_precision": 0.0
+    },
+    "erste_zelle": {
+      "tp": 170,
+      "fp": 88,
+      "fn": 253,
+      "ueberzaehlig": 71,
+      "fremdschluessel": 17,
+      "precision": 0.6589147286821705,
+      "recall": 0.40189125295508277,
+      "f1": 0.4992657856093979,
+      "entfernte_zellen": 9,
+      "records_veraendert": 5,
+      "delta_f1": 0.006512,
+      "delta_precision": 0.022211
+    },
+    "mehrheit": {
+      "tp": 170,
+      "fp": 88,
+      "fn": 253,
+      "ueberzaehlig": 71,
+      "fremdschluessel": 17,
+      "precision": 0.6589147286821705,
+      "recall": 0.40189125295508277,
+      "f1": 0.4992657856093979,
+      "entfernte_zellen": 9,
+      "records_veraendert": 5,
+      "delta_f1": 0.006512,
+      "delta_precision": 0.022211
+    },
+    "beste_zelle": {
+      "tp": 170,
+      "fp": 88,
+      "fn": 253,
+      "ueberzaehlig": 71,
+      "fremdschluessel": 17,
+      "precision": 0.6589147286821705,
+      "recall": 0.40189125295508277,
+      "f1": 0.4992657856093979,
+      "entfernte_zellen": 9,
+      "records_veraendert": 5,
+      "delta_f1": 0.006512,
+      "delta_precision": 0.022211
+    }
+  },
+  "je_record": {
+    "yun2024:151": {
+      "goldzellen": 4,
+      "zellen": 6,
+      "basis": {
+        "tp": 3,
+        "fp": 3,
+        "fn": 1,
+        "ueberzaehlig": 3,
+        "fremdschluessel": 0,
+        "precision": 0.5,
+        "recall": 0.75,
+        "f1": 0.6,
+        "entfernt": 0
+      },
+      "erste_zelle": {
+        "tp": 3,
+        "fp": 1,
+        "fn": 1,
+        "ueberzaehlig": 1,
+        "fremdschluessel": 0,
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75,
+        "entfernt": 2
+      },
+      "mehrheit": {
+        "tp": 3,
+        "fp": 1,
+        "fn": 1,
+        "ueberzaehlig": 1,
+        "fremdschluessel": 0,
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75,
+        "entfernt": 2
+      }
+    },
+    "yun2024:174": {
+      "goldzellen": 4,
+      "zellen": 6,
+      "basis": {
+        "tp": 2,
+        "fp": 4,
+        "fn": 2,
+        "ueberzaehlig": 4,
+        "fremdschluessel": 0,
+        "precision": 0.3333333333333333,
+        "recall": 0.5,
+        "f1": 0.4,
+        "entfernt": 0
+      },
+      "erste_zelle": {
+        "tp": 2,
+        "fp": 2,
+        "fn": 2,
+        "ueberzaehlig": 2,
+        "fremdschluessel": 0,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "entfernt": 2
+      },
+      "mehrheit": {
+        "tp": 2,
+        "fp": 2,
+        "fn": 2,
+        "ueberzaehlig": 2,
+        "fremdschluessel": 0,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "entfernt": 2
+      }
+    },
+    "yun2024:214": {
+      "goldzellen": 6,
+      "zellen": 6,
+      "basis": {
+        "tp": 4,
+        "fp": 2,
+        "fn": 2,
+        "ueberzaehlig": 2,
+        "fremdschluessel": 0,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "entfernt": 0
+      },
+      "erste_zelle": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 2,
+        "ueberzaehlig": 0,
+        "fremdschluessel": 0,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "entfernt": 2
+      },
+      "mehrheit": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 2,
+        "ueberzaehlig": 0,
+        "fremdschluessel": 0,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "entfernt": 2
+      }
+    },
+    "yun2024:215": {
+      "goldzellen": 6,
+      "zellen": 6,
+      "basis": {
+        "tp": 4,
+        "fp": 2,
+        "fn": 2,
+        "ueberzaehlig": 2,
+        "fremdschluessel": 0,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "entfernt": 0
+      },
+      "erste_zelle": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 2,
+        "ueberzaehlig": 0,
+        "fremdschluessel": 0,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "entfernt": 2
+      },
+      "mehrheit": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 2,
+        "ueberzaehlig": 0,
+        "fremdschluessel": 0,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "entfernt": 2
+      }
+    },
+    "yun2024:662": {
+      "goldzellen": 2,
+      "zellen": 3,
+      "basis": {
+        "tp": 1,
+        "fp": 2,
+        "fn": 1,
+        "ueberzaehlig": 2,
+        "fremdschluessel": 0,
+        "precision": 0.3333333333333333,
+        "recall": 0.5,
+        "f1": 0.4,
+        "entfernt": 0
+      },
+      "erste_zelle": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "ueberzaehlig": 1,
+        "fremdschluessel": 0,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "entfernt": 1
+      },
+      "mehrheit": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "ueberzaehlig": 1,
+        "fremdschluessel": 0,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "entfernt": 1
+      }
+    }
+  },
+  "fp_zerlegung": {
+    "einzelner_falschwert": 67,
+    "fremdschluessel": 17,
+    "mehrfachzelle": 13
+  },
+  "integritaet": {
+    "vorher": {
+      "gold": "c22ed3fb42dbaaff7051a89cdb327c4b250a134db0a62a19d3877d5ba311c0b1",
+      "p5": "46268ae8b6366bb76c6560c926e3f6cb3e404ed8fd3bc9bb1e8065ad2f516661",
+      "glm": "85666ede212d970b596d8edec385f1033b46a94816b8bb1fb5998045e9331e42"
+    },
+    "nachher": {
+      "gold": "c22ed3fb42dbaaff7051a89cdb327c4b250a134db0a62a19d3877d5ba311c0b1",
+      "p5": "46268ae8b6366bb76c6560c926e3f6cb3e404ed8fd3bc9bb1e8065ad2f516661",
+      "glm": "85666ede212d970b596d8edec385f1033b46a94816b8bb1fb5998045e9331e42"
+    },
+    "unveraendert": true
+  }
+}
