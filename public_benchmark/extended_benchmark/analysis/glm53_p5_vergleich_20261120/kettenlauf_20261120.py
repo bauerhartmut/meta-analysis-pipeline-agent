@@ -201,6 +201,33 @@ def baue_prompt2(aus: dict[str, Any], fall: dict[str, Any], context: dict[str, A
     )
 
 
+def vorstufe_kopf(text: str, stuecke: list[tuple[int, int, str]]) -> dict[str, Any]:
+    """Gruppengroessen regelbasiert aus der Tabellenkopfzeile, ohne Modell.
+
+    Laeuft vor Stufe 1. Findet der Parser zwei Kopfzellen mit Armzeile, sind die
+    Groessen gesetzt und muessen nicht vom Modell gelesen werden.
+    """
+    import kopf_parser_20261120 as kp
+
+    start, ende, _ = stuecke[-1]
+    kopf = kp.kopf_parse(text, start, ende)
+    zellen = kopf.get("zellen") or []
+    werte = [z["wert"] for z in zellen][:2]
+    leer = {"cells": [], "gefunden": False, "kopfzeile": kopf.get("kopfzeile", ""),
+            "armzeile": kopf.get("armzeile", ""), "vektoren": [],
+            "grund": kopf.get("grund") or "weniger als zwei Kopfzellen"}
+    if len(werte) < 2:
+        return leer
+    cells = [{"field": "intervention_group_size", "arm": "intervention",
+              "value": werte[0], "raw": zahl_text(werte[0]), "quelle": "kopf_parser"},
+             {"field": "comparator_group_size", "arm": "comparator",
+              "value": werte[1], "raw": zahl_text(werte[1]), "quelle": "kopf_parser"}]
+    return {"cells": cells, "gefunden": True, "kopfzeile": kopf.get("kopfzeile", ""),
+            "armzeile": kopf.get("armzeile", ""),
+            "labels": [z["arm_label"] for z in zellen],
+            "werte": werte, "zelltexte": [z["zelle"] for z in zellen]}
+
+
 def kopf_ausschnitt(text: str, start: int, spaltenkopf: str) -> dict[str, Any]:
     """Kopfzeilen der Tabelle, in denen die Gruppengroesse gedruckt steht."""
     pos = text.find(spaltenkopf, start) if spaltenkopf else -1
@@ -330,6 +357,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--records", nargs="+", default=list(RECORDS))
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--nur-vorstufe", action="store_true",
+                        help="nur die regelbasierte Vorstufe, kein Aufruf")
     parser.add_argument("--pruefe-kopf", action="store_true",
                         help="Kopf-Modus der Stufe 2 offline bauen, kein Aufruf")
     parser.add_argument("--budget1", type=int, default=BUDGET1)
@@ -347,6 +376,7 @@ def main() -> int:
         gold = (record.get("gold") or {}).get("cells") or []
         werte = sorted({round(float(z["value"]), 6) for z in gold if z.get("value") is not None})
         stuecke = erweitere(text, waehle_stuecke(text, worte_von(record)))
+        vorstufe = vorstufe_kopf(text, stuecke)
         bind = bindung_pruefen(text, stuecke)
         kopfzahlen = [m.group(0) for a, b, _ in stuecke
                       for m in KOPF_N.finditer(text[a:b])]
@@ -378,11 +408,13 @@ def main() -> int:
                          if len(w) >= 6 and w.lower() in vor.lower()]
                 print(f"   Entitaetsnamen vor der ersten Score-Zeile: {named}")
         fall = {"rid": rid, "record": record, "context": context, "text": text,
-                "gold": gold, "werte": werte, "stuecke": stuecke,
+                "gold": gold, "werte": werte, "stuecke": stuecke, "vorstufe": vorstufe,
                 "prompt1": prompt1, "bind": bind,
                 "goldwerte_im_ausschnitt": sum(1 for w in werte if abgedeckt[w]),
                 "zeilen": zeilen, "bester": bester}
         faelle.append(fall)
+        print(f"   Vorstufe Kopf: {vorstufe.get('zelltexte')} "
+              f"-> {vorstufe.get('werte')} ({vorstufe.get('armzeile')!r})")
         print(f"{rid}: Stuecke {stuecke}, Gold im Ausschnitt "
               f"{sum(1 for w in werte if abgedeckt[w])}/{len(werte)}, "
               f"Score-Zeilen {len(zeilen)}, Prompt1 {len(prompt1)} Zeichen")
@@ -408,6 +440,19 @@ def main() -> int:
                   f"Prompt {len(prompt)} Zeichen, Goldwerte im Kopf {drin}")
             print("--- Kopfausschnitt ---")
             print(aus["ausschnitt_text"])
+        return 0
+
+    if args.nur_vorstufe:
+        treffer = 0
+        for fall in faelle:
+            vor = fall["vorstufe"]
+            bilanz = v.bilanz_p5(fall["gold"], vor["cells"])
+            quote = v.quote(bilanz["tp"], bilanz["fp"], bilanz["fn"])
+            treffer += 1 if quote["f1"] == 1.0 else 0
+            print(f"{fall['rid']}: Vorstufe {[z['value'] for z in vor['cells']]} "
+                  f"Gold {fall['werte']} TP {bilanz['tp']} FP {bilanz['fp']} "
+                  f"FN {bilanz['fn']} F1 {quote['f1']}")
+        print(f"F1 = 1.0 bei {treffer} von {len(faelle)} Records, kein Aufruf")
         return 0
 
     if args.dry_run:
@@ -446,6 +491,9 @@ def main() -> int:
               f"tp {int_loc.get('timepoint')!r}")
 
         zeile = {"record_id": rid, "variante": "kette_stichprobe",
+                 "vorstufe": {k: fall["vorstufe"].get(k) for k in
+                              ("gefunden", "werte", "zelltexte", "armzeile",
+                               "kopfzeile", "cells")},
                  "model": MODELL, "model_id": modell1.get("id"),
                  "stuecke": fall["stuecke"], "goldwerte": fall["werte"],
                  "goldwerte_im_ausschnitt": fall["goldwerte_im_ausschnitt"],
@@ -499,6 +547,17 @@ def main() -> int:
         else:
             zeile["stufe2"] = None
             print("   Stufe 2 uebersprungen (keine Zeile aus Stufe 1)")
+
+        gesamtzellen = list(((zeile.get("stufe2") or {}).get("cells")) or [])
+        for zelle in fall["vorstufe"]["cells"]:
+            if not any(g.get("field") == zelle["field"] for g in gesamtzellen):
+                gesamtzellen.append(zelle)
+        bilanz = v.bilanz_p5(fall["gold"], gesamtzellen)
+        quote = v.quote(bilanz["tp"], bilanz["fp"], bilanz["fn"])
+        zeile["bewertung_gesamt"] = {**bilanz, **quote}
+        zeile["zellen_gesamt"] = gesamtzellen
+        print(f"   Gesamt mit Vorstufe: {len(gesamtzellen)} Zellen, "
+              f"TP {bilanz['tp']} FP {bilanz['fp']} FN {bilanz['fn']} F1 {quote['f1']}")
 
         with AUSGABE.open("a", encoding="utf-8", newline="\n") as handle:
             handle.write(json.dumps(zeile, ensure_ascii=False) + "\n")
