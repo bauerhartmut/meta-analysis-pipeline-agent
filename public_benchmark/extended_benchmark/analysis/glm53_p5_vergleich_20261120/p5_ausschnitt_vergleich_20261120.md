@@ -85,6 +85,28 @@ jede Kuerzung.
    119), weil dort das 6.000er-Fenster alle Werte enthaelt. Fuer Aussagen ueber
    den P5-Lauf taugt die Auswahl aber nicht als Filter.
 
+## Nachrechnen
+
+Die Tabelle oben ist nicht abgetippt: `ausschnitt_abdeckung_20261120.py` rechnet
+beide Spalten und schreibt sie nach `ausschnitt_abdeckung_20261120.json`.
+
+```
+.venv/bin/python .../ausschnitt_abdeckung_20261120.py
+```
+
+Je Record im JSON:
+
+- `p5_prompt_zeichen` / `p5_im_prompt` / `p5_fehlend` - Abdeckung im P5-Ausschnitt,
+  also in `text[:45000]` (`P5_LIMIT` im Skript),
+- `im_ausschnitt` / `fehlend` / `pipe_zeilen_ausschnitt` - Abdeckung im 6.000er-Fenster
+  aus `zweistufig_trocken_20261120.py`,
+- `p5_gekuerzt` - ob das Dokument die 45.000er Grenze ueberschreitet (0/33),
+- Summen: `p5_alle_goldwerte` (19/33), `p5_ohne_vollstaendige_abdeckung` (14/33),
+  `p5_und_fenster_verschieden` (11/33), `fair` (420, 421, 119).
+
+Der Lauf gibt dieselbe Tabelle zweiseitig aus (P5 und Fenster nebeneinander), damit
+die Zahlen aus dem Bericht ohne Zwischenschritt pruefbar sind.
+
 ## Grenzen
 
 - Der P5-Ausschnitt ist aus dem Code und den Dokumentlaengen hergeleitet, nicht

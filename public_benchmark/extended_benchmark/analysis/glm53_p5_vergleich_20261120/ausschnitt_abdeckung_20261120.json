@@ -2,55 +2,78 @@
  "quelle": "AIResearch/public_benchmark/extended_benchmark/analysis/glm53_p5_vergleich_20261120/leere_p5_muster_20261120.json",
  "n": 33,
  "ausschnitt_zeichen": 6000,
+ "p5_limit": 45000,
+ "p5_herkunft": "run_extended_extraction.build_prompt(..., limit=45000): text[:limit], main() liest das Dokument vollstaendig",
  "faelle": [
   {
    "record_id": "yun2024:420",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC3877023",
+   "text_zeichen": 26274,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 6,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 26274,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 6,
+   "p5_fehlend": [],
    "p5_reasoning": 86878
   },
   {
    "record_id": "yun2024:421",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC3877023",
+   "text_zeichen": 26274,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 6,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 26274,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 6,
+   "p5_fehlend": [],
    "p5_reasoning": 84549
   },
   {
    "record_id": "yun2024:119",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC4323894",
+   "text_zeichen": 10032,
    "goldzellen": 4,
    "goldwerte": 4,
    "im_ausschnitt": 4,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 10032,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 4,
+   "p5_fehlend": [],
    "p5_reasoning": 98142
   },
   {
    "record_id": "yun2024:128",
    "klasse": "fehlt_im_text",
    "dokument": "PMC4493951",
+   "text_zeichen": 7954,
    "goldzellen": 4,
    "goldwerte": 3,
    "im_ausschnitt": 3,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 7954,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 3,
+   "p5_fehlend": [],
    "p5_reasoning": 90927
   },
   {
    "record_id": "yun2024:171",
    "klasse": "fehlt_im_text",
    "dokument": "PMC5079604",
+   "text_zeichen": 20409,
    "goldzellen": 4,
    "goldwerte": 4,
    "im_ausschnitt": 3,
@@ -58,12 +81,19 @@
     33.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 20409,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 3,
+   "p5_fehlend": [
+    33.0
+   ],
    "p5_reasoning": 97231
   },
   {
    "record_id": "yun2024:173",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC5079604",
+   "text_zeichen": 20409,
    "goldzellen": 4,
    "goldwerte": 4,
    "im_ausschnitt": 3,
@@ -71,12 +101,19 @@
     33.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 20409,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 3,
+   "p5_fehlend": [
+    33.0
+   ],
    "p5_reasoning": 93443
   },
   {
    "record_id": "yun2024:251",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC5614421",
+   "text_zeichen": 40101,
    "goldzellen": 4,
    "goldwerte": 4,
    "im_ausschnitt": 3,
@@ -84,12 +121,17 @@
     7.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 40101,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 4,
+   "p5_fehlend": [],
    "p5_reasoning": 97921
   },
   {
    "record_id": "yun2024:30",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC3003523",
+   "text_zeichen": 25866,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 3,
@@ -99,12 +141,17 @@
     31.5
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 25866,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 6,
+   "p5_fehlend": [],
    "p5_reasoning": 89370
   },
   {
    "record_id": "yun2024:523",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC5325897",
+   "text_zeichen": 6811,
    "goldzellen": 6,
    "goldwerte": 4,
    "im_ausschnitt": 3,
@@ -112,12 +159,19 @@
     15.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 6811,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 3,
+   "p5_fehlend": [
+    15.0
+   ],
    "p5_reasoning": 89661
   },
   {
    "record_id": "yun2024:525",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC5325897",
+   "text_zeichen": 6811,
    "goldzellen": 6,
    "goldwerte": 4,
    "im_ausschnitt": 3,
@@ -125,12 +179,19 @@
     15.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 6811,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 3,
+   "p5_fehlend": [
+    15.0
+   ],
    "p5_reasoning": 89708
   },
   {
    "record_id": "yun2024:673",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC4550271",
+   "text_zeichen": 42606,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 3,
@@ -140,12 +201,17 @@
     36.4
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 42606,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 6,
+   "p5_fehlend": [],
    "p5_reasoning": 93498
   },
   {
    "record_id": "yun2024:674",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC4550271",
+   "text_zeichen": 42606,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 3,
@@ -155,12 +221,17 @@
     23.5
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 42606,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 6,
+   "p5_fehlend": [],
    "p5_reasoning": 93674
   },
   {
    "record_id": "yun2024:152",
    "klasse": "fehlt_im_text",
    "dokument": "PMC5055753",
+   "text_zeichen": 7782,
    "goldzellen": 4,
    "goldwerte": 3,
    "im_ausschnitt": 2,
@@ -168,23 +239,33 @@
     7.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 7782,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 3,
+   "p5_fehlend": [],
    "p5_reasoning": 99665
   },
   {
    "record_id": "yun2024:252",
    "klasse": "fehlt_im_text",
    "dokument": "PMC5614421",
+   "text_zeichen": 40101,
    "goldzellen": 2,
    "goldwerte": 2,
    "im_ausschnitt": 2,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 40101,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 2,
+   "p5_fehlend": [],
    "p5_reasoning": 99829
   },
   {
    "record_id": "yun2024:304",
    "klasse": "fehlt_im_text",
    "dokument": "PMC4357072",
+   "text_zeichen": 5515,
    "goldzellen": 4,
    "goldwerte": 3,
    "im_ausschnitt": 2,
@@ -192,12 +273,19 @@
     14.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 5515,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 2,
+   "p5_fehlend": [
+    14.0
+   ],
    "p5_reasoning": 95635
   },
   {
    "record_id": "yun2024:52",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC3195393",
+   "text_zeichen": 24933,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 2,
@@ -208,12 +296,17 @@
     562.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 24933,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 6,
+   "p5_fehlend": [],
    "p5_reasoning": 95546
   },
   {
    "record_id": "yun2024:557",
    "klasse": "fehlt_im_text",
    "dokument": "PMC3136370",
+   "text_zeichen": 13122,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 2,
@@ -224,12 +317,22 @@
     93.53
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 13122,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 2,
+   "p5_fehlend": [
+    -19.57,
+    -17.1,
+    68.08,
+    93.53
+   ],
    "p5_reasoning": 93380
   },
   {
    "record_id": "yun2024:559",
    "klasse": "fehlt_im_text",
    "dokument": "PMC3136370",
+   "text_zeichen": 13122,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 2,
@@ -240,56 +343,86 @@
     65.41
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 13122,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 2,
+   "p5_fehlend": [
+    -8.0,
+    -4.0,
+    12.35,
+    65.41
+   ],
    "p5_reasoning": 89528
   },
   {
    "record_id": "yun2024:671",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC4550271",
+   "text_zeichen": 42606,
    "goldzellen": 2,
    "goldwerte": 2,
    "im_ausschnitt": 2,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 42606,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 2,
+   "p5_fehlend": [],
    "p5_reasoning": 100255
   },
   {
    "record_id": "yun2024:672",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC4550271",
+   "text_zeichen": 42606,
    "goldzellen": 2,
    "goldwerte": 2,
    "im_ausschnitt": 2,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 42606,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 2,
+   "p5_fehlend": [],
    "p5_reasoning": 100367
   },
   {
    "record_id": "yun2024:678",
    "klasse": "fehlt_im_text",
    "dokument": "PMC5777419",
+   "text_zeichen": 12349,
    "goldzellen": 2,
    "goldwerte": 2,
    "im_ausschnitt": 2,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 12349,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 2,
+   "p5_fehlend": [],
    "p5_reasoning": 97070
   },
   {
    "record_id": "yun2024:204",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC5380326",
+   "text_zeichen": 14600,
    "goldzellen": 2,
    "goldwerte": 1,
    "im_ausschnitt": 1,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 14600,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 1,
+   "p5_fehlend": [],
    "p5_reasoning": 89548
   },
   {
    "record_id": "yun2024:273",
    "klasse": "fehlt_im_text",
    "dokument": "PMC3214395",
+   "text_zeichen": 3360,
    "goldzellen": 2,
    "goldwerte": 2,
    "im_ausschnitt": 1,
@@ -297,23 +430,35 @@
     30.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 3360,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 1,
+   "p5_fehlend": [
+    30.0
+   ],
    "p5_reasoning": 101270
   },
   {
    "record_id": "yun2024:356",
    "klasse": "fehlt_im_text",
    "dokument": "PMC5884950",
+   "text_zeichen": 19352,
    "goldzellen": 2,
    "goldwerte": 1,
    "im_ausschnitt": 1,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 19352,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 1,
+   "p5_fehlend": [],
    "p5_reasoning": 96159
   },
   {
    "record_id": "yun2024:446",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC4879328",
+   "text_zeichen": 25267,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 1,
@@ -325,12 +470,21 @@
     114.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 25267,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 3,
+   "p5_fehlend": [
+    -0.89,
+    3.32,
+    3.54
+   ],
    "p5_reasoning": 95071
   },
   {
    "record_id": "yun2024:451",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC4879328",
+   "text_zeichen": 25267,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 1,
@@ -342,23 +496,37 @@
     108.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 25267,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 3,
+   "p5_fehlend": [
+    -16.1,
+    66.12,
+    66.25
+   ],
    "p5_reasoning": 95333
   },
   {
    "record_id": "yun2024:582",
    "klasse": "fehlt_im_text",
    "dokument": "PMC3504298",
+   "text_zeichen": 12838,
    "goldzellen": 2,
    "goldwerte": 1,
    "im_ausschnitt": 1,
    "fehlend": [],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 12838,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 1,
+   "p5_fehlend": [],
    "p5_reasoning": 99406
   },
   {
    "record_id": "yun2024:159",
    "klasse": "prosa_mehrfachpaar",
    "dokument": "PMC5056957",
+   "text_zeichen": 16081,
    "goldzellen": 6,
    "goldwerte": 6,
    "im_ausschnitt": 0,
@@ -371,12 +539,20 @@
     592.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 16081,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 4,
+   "p5_fehlend": [
+    5.9,
+    6.39
+   ],
    "p5_reasoning": 88346
   },
   {
    "record_id": "yun2024:164",
    "klasse": "fehlt_im_text",
    "dokument": "PMC5062234",
+   "text_zeichen": 3808,
    "goldzellen": 2,
    "goldwerte": 1,
    "im_ausschnitt": 0,
@@ -384,12 +560,19 @@
     21.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 3808,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 0,
+   "p5_fehlend": [
+    21.0
+   ],
    "p5_reasoning": 99794
   },
   {
    "record_id": "yun2024:624",
    "klasse": "fehlt_im_text",
    "dokument": "PMC3493722",
+   "text_zeichen": 5258,
    "goldzellen": 2,
    "goldwerte": 1,
    "im_ausschnitt": 0,
@@ -397,12 +580,19 @@
     74.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 5258,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 0,
+   "p5_fehlend": [
+    74.0
+   ],
    "p5_reasoning": 87507
   },
   {
    "record_id": "yun2024:625",
    "klasse": "fehlt_im_text",
    "dokument": "PMC3493722",
+   "text_zeichen": 5258,
    "goldzellen": 2,
    "goldwerte": 2,
    "im_ausschnitt": 0,
@@ -411,12 +601,20 @@
     8.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 5258,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 0,
+   "p5_fehlend": [
+    4.0,
+    8.0
+   ],
    "p5_reasoning": 82625
   },
   {
    "record_id": "yun2024:685",
    "klasse": "fehlt_im_text",
    "dokument": "PMC2836833",
+   "text_zeichen": 18929,
    "goldzellen": 2,
    "goldwerte": 1,
    "im_ausschnitt": 0,
@@ -424,12 +622,17 @@
     17.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 18929,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 1,
+   "p5_fehlend": [],
    "p5_reasoning": 88956
   },
   {
    "record_id": "yun2024:687",
    "klasse": "fehlt_im_text",
    "dokument": "PMC2836833",
+   "text_zeichen": 18929,
    "goldzellen": 2,
    "goldwerte": 1,
    "im_ausschnitt": 0,
@@ -437,6 +640,10 @@
     17.0
    ],
    "pipe_zeilen_ausschnitt": 0,
+   "p5_prompt_zeichen": 18929,
+   "p5_gekuerzt": false,
+   "p5_im_prompt": 1,
+   "p5_fehlend": [],
    "p5_reasoning": 95376
   }
  ],
@@ -446,5 +653,41 @@
   "yun2024:119"
  ],
  "ohne_vollstaendige_abdeckung": 30,
- "ohne_jeden_goldwert": 6
+ "ohne_jeden_goldwert": 6,
+ "p5_alle_goldwerte": [
+  "yun2024:420",
+  "yun2024:421",
+  "yun2024:119",
+  "yun2024:128",
+  "yun2024:251",
+  "yun2024:30",
+  "yun2024:673",
+  "yun2024:674",
+  "yun2024:152",
+  "yun2024:252",
+  "yun2024:52",
+  "yun2024:671",
+  "yun2024:672",
+  "yun2024:678",
+  "yun2024:204",
+  "yun2024:356",
+  "yun2024:582",
+  "yun2024:685",
+  "yun2024:687"
+ ],
+ "p5_ohne_vollstaendige_abdeckung": 14,
+ "p5_gekuerzt": 0,
+ "p5_und_fenster_verschieden": [
+  "yun2024:251",
+  "yun2024:30",
+  "yun2024:673",
+  "yun2024:674",
+  "yun2024:152",
+  "yun2024:52",
+  "yun2024:446",
+  "yun2024:451",
+  "yun2024:159",
+  "yun2024:685",
+  "yun2024:687"
+ ]
 }
