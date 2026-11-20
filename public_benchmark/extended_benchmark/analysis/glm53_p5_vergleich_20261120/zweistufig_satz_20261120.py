@@ -37,6 +37,7 @@ sys.path.insert(0, str(HIER))
 
 import run_extended_extraction as rx  # noqa: E402
 import vergleiche_20261120 as v  # noqa: E402
+from aufruf_20261120 import lesezeit  # noqa: E402
 from zweistufig_trocken_20261120 import STAGE1_SYSTEM, baue_fall  # noqa: E402
 
 MODELL = "glm"
@@ -127,6 +128,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--record", default="yun2024:523")
+    parser.add_argument("--model", default=MODELL, choices=sorted(rx.MODELS))
     parser.add_argument("--budget", type=int, default=BUDGET)
     parser.add_argument("--out", default="predictions_satz_523_16632.jsonl")
     parser.add_argument("--timeout", type=float, default=300.0,
@@ -155,21 +157,15 @@ def main() -> int:
         print("FEHLER: kein API-Schluessel in der Konfiguration", flush=True)
         return 2
 
-    modell = dict(rx.MODELS[MODELL])
+    modell = dict(rx.MODELS[args.model])
     modell["max_tokens"] = args.budget
     original = rx.SYSTEM
-    einmal = rx._call_once
-    # Die Lesezeit steht in `rx._call_once` fest auf 300 s. Ein Aufruf mit 16.632
-    # Token Budget kann laenger rechnen: auf yun2024:421 endete der Versuch nach
-    # 300,08 s in einem TimeoutError, ohne dass das Modell geantwortet hatte.
-    # Die Retry-Logik von `rx.call` bleibt unveraendert, nur die Lesezeit waechst.
-    rx._call_once = lambda m, p, k, b, timeout=args.timeout: einmal(m, p, k, b, timeout=timeout)
     try:
-        rx.SYSTEM = STAGE1_SYSTEM
-        antwort = rx.call(modell, prompt, key, base, attempts=3)
+        with lesezeit(args.timeout):
+            rx.SYSTEM = STAGE1_SYSTEM
+            antwort = rx.call(modell, prompt, key, base, attempts=3)
     finally:
         rx.SYSTEM = original
-        rx._call_once = einmal
 
     inhalt = antwort.get("content") or ""
     finish = antwort.get("finish_reason") or ""
@@ -187,7 +183,7 @@ def main() -> int:
         "record_id": args.record,
         "stufe": 1,
         "variante": PROMPT_LABEL,
-        "model": MODELL,
+        "model": args.model,
         "model_id": modell["id"],
         "prompt_zeichen": len(prompt),
         "ausschnitt_zeichen": len(fall["ausschnitt_text"]),

@@ -38,6 +38,7 @@ sys.path.insert(0, str(HIER))
 import run_extended_extraction as rx  # noqa: E402
 import vergleiche_20261120 as v  # noqa: E402
 from falschwert_20261120 import zahlen_im_text  # noqa: E402
+from aufruf_20261120 import lesezeit  # noqa: E402
 from stage_extraction import parse_stage1  # noqa: E402
 from zweistufig_trocken_20261120 import STAGE1_SYSTEM, STAGE1_MAX_TOKENS, baue_fall  # noqa: E402
 
@@ -108,17 +109,12 @@ def main() -> int:
     modell = dict(rx.MODELS[MODELL])
     modell["max_tokens"] = args.budget
     original = rx.SYSTEM
-    einmal = rx._call_once
-    # Die Lesezeit steht in `rx._call_once` fest auf 300 s; ein Aufruf mit diesem
-    # Budget kann laenger rechnen (auf yun2024:421 gemessen: 542,86 s). Die
-    # Retry-Logik von `rx.call` bleibt unveraendert, nur die Lesezeit waechst.
-    rx._call_once = lambda m, p, k, b, timeout=args.timeout: einmal(m, p, k, b, timeout=timeout)
     try:
-        rx.SYSTEM = STAGE1_SYSTEM
-        antwort = rx.call(modell, prompt, key, base, attempts=3)
+        with lesezeit(args.timeout):
+            rx.SYSTEM = STAGE1_SYSTEM
+            antwort = rx.call(modell, prompt, key, base, attempts=3)
     finally:
         rx.SYSTEM = original
-        rx._call_once = einmal
 
     inhalt = antwort.get("content") or ""
     finish = antwort.get("finish_reason") or ""
