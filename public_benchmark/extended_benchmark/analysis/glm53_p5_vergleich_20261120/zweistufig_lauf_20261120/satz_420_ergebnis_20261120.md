@@ -61,6 +61,12 @@ verbrauchen das volle Budget ohne einen Zeichen Inhalt. Fuer 523 trennt dagegen
 genau der Zusatzsatz zwischen Abbruch und Antwort. Der Unterschied ist
 record-spezifisch und mit den vorhandenen Messungen nicht erklaert.
 
+**Nachtrag 20.11.2026:** Der Befund ist mit demselben Prompt (identischer
+SHA256 `f7bc1167...b5b2`) und `qwen3.5-397b` aufgeloest - der Abbruch ist
+modellspezifisch, nicht recordspezifisch. qwen liefert zwei Locators und den
+Satz mit allen vier erreichbaren Goldwerten; siehe
+`qwen_420_ergebnis_20261120.md`.
+
 ## Kosten
 
 Gemessene Completion-Tokens dieser Reihe: 26.121 + 268 + 3.318 + 1.038 + 16.632 +

@@ -155,9 +155,12 @@ nicht vor 1 und 2 zu setzen.
    2.342 Tokens, Stufe 2: 268 Tokens, 4 TP / 0 FP / 2 FN, F1 0,800); auf
    `yun2024:420` und `:421` bricht dieselbe Stufe 1 mit `glm-5.3` in jeder
    geprüften Prompt-Fassung ab (4 von 4 Zellen, je volles Budget, 0 Zeichen);
-   `qwen3.5-397b` antwortet auf beiden, aber auf 421 mit einem falschen Negativ
-   und auf 119 mit einem Treffer. Die Zweistufigkeit ist damit nicht widerlegt,
-   aber ihr Erfolg hängt am Modell und am Record. Details im Nachtrag unten.
+   `qwen3.5-397b` antwortet auf beiden und dreien der drei gemessenen Records —
+   Treffer auf 420 (Satz wörtlich, 4 von 6 Werten im Satz) und 119, falsches
+   Negativ auf 421. `glm-5.3` beantwortet 0 von 4 Zellen, `qwen3.5-397b` 2 von 3
+   (Stufe 1). Die Zweistufigkeit ist damit nicht widerlegt; ihr Erfolg hängt am
+   Modell und, auf 421, an der `found`-Entscheidung selbst. Details im Nachtrag
+   unten.
 4. **Maßnahme 2** — billig, aber sie ändert an der Bindung nichts; erst nach
    Maßnahme 4 sinnvoll, wenn ein Aufruf überhaupt zuverlässig Inhalt liefert.
 5. **Maßnahme 5** — zuletzt, weil sie am meisten kostet und am wenigsten belegt
@@ -194,6 +197,7 @@ je einem Aufruf pro Zelle. Das Bild hat sich verschoben.
 | 523 | `glm-5.3` | Satz-Locator + Zusatz | 16.632 | 2.342 | ok, 2 Locators → Stufe 2: 4 TP/0 FP/2 FN, F1 0,800 |
 | 420 | `glm-5.3` | Zeilenlabel + Zusatz | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
 | 420 | `glm-5.3` | Satz-Locator | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
+| 420 | `qwen3.5-397b` | Satz-Locator (identischer Prompt) | 16.000 | 7.728 | ok, 2 Locators, **Treffer** (4/6 Werte im Satz) |
 | 421 | `glm-5.3` | Satz-Locator | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
 | 421 | `glm-5.3` | Zeilenlabel + Zusatz | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
 | 421 | `qwen3.5-397b` | Satz-Locator | 16.000 | 10.686 | ok, **`found: false`** (falsches Negativ) |
@@ -202,7 +206,7 @@ je einem Aufruf pro Zelle. Das Bild hat sich verschoben.
 Berichte: `zweistufig_lauf_20261120/satz_523_ergebnis_20261120.md`,
 `satz_420_ergebnis_20261120.md`, `satz_421_ergebnis_20261120.md`,
 `zusatz_421_ergebnis_20261120.md`, `qwen_421_ergebnis_20261120.md`,
-`qwen_119_ergebnis_20261120.md`.
+`qwen_119_ergebnis_20261120.md`, `qwen_420_ergebnis_20261120.md`.
 
 **Befund 1 — das Schema ist nicht die Ursache.** Auf 420 brechen *zwei*
 verschiedene Fassungen ab (Zeilenlabel mit Zusatz und Satz-Locator), auf 421
@@ -216,9 +220,12 @@ alternative readings." trennt auf 523 zwischen Abbruch (16.632) und Antwort
 Effekt ist record-abhängig und mit den vorhandenen Messungen nicht erklärt.
 
 **Befund 3 — das Modell ist ein Faktor.** Auf demselben Prompt und demselben
-Ausschnitt antwortet `qwen3.5-397b`, wo `glm-5.3` das Budget verbrennt (421,
-119). Der Preis ist ungleich: auf 421 ist die Antwort ein falsches Negativ, auf
-119 ein Treffer am richtigen Zeitpunkt mit wörtlich belegtem Satz. Ein
+Ausschnitt antwortet `qwen3.5-397b`, wo `glm-5.3` das Budget verbrennt (420, 421,
+119). Auf 420 ist der Prompt byte-identisch (7.313 Zeichen, gleicher SHA256),
+also ist der Abbruch dort nachweislich modell- und nicht recordspezifisch. Der
+Preis ist ungleich: auf 421 ist die Antwort ein falsches Negativ, auf 420 ein
+Treffer mit 4 der 6 Goldwerte im zitierten Satz, auf 119 ein Treffer am
+richtigen Zeitpunkt mit wörtlich belegtem Satz. Ein
 Modellwechsel allein ist damit **keine** Lösung: für die P5-Bilanz sind Abbruch
 und `found: false` gleich, weil `bilanz_p5` jedes Goldfeld ohne passende
 Vorhersagezelle als FN zählt, ob die Antwort leer blieb oder nicht. Der
@@ -243,22 +250,27 @@ Ausgabe das Budget verbraucht, und nichts an einem Satz, der zitiert wird.
 
 ## Nächster Schritt
 
-Zwei Aufrufe, die je eine offene Frage schließen, statt weitere Fassungen zu
-bauen:
+Der 420er Aufruf ist gelaufen: `qwen3.5-397b` antwortet auf dem byte-identischen
+Prompt mit zwei Locators und dem richtigen Satz. Stufe 1 ist damit auf drei
+Records gemessen (2 Treffer, 1 falsches Negativ). Die offene Frage hat sich
+verschoben — von „antwortet ein anderes Modell überhaupt" zu „trägt die
+Belegstelle die Zellen":
 
-1. **qwen-Satz-Locator auf `yun2024:420`** (16.000 Tokens). 420 ist der Fall mit
-   der besten Abdeckung (6/6 Goldwerte im Ausschnitt), an dem `glm-5.3` in zwei
-   Fassungen scheitert. Antwortet qwen hier mit einem belegten Satz, ist der
-   Modellwechsel auch auf dem schwersten gemessenen Record belegt; antwortet es
-   mit `found: false`, ist der Wechsel auf beiden schweren Records (420, 421)
-   nur ein Verfügbarkeitsgewinn ohne inhaltlichen — dann trägt Befund 3 allein
-   auf dem 119er Treffer.
-2. **Stufe 2 auf dem 119er Satz** (Budget klein, ~1.000 Tokens). Prüft, ob der
+1. **Stufe 2 auf dem 119er Satz** (Budget klein, ~1.000 Tokens). Prüft, ob der
    zitierte Satz die zwei erreichbaren Zellen (70 / 15,4) wirklich trägt. Das ist
    die einzige Stelle der Reihe, an der eine vollständige Kette ohne Abbruch
    möglich ist.
+2. **Stufe 2 auf dem 420er Satz** (Budget klein). Prüft, ob qwens Belegstelle die
+   vier erreichbaren Zellen trägt und ob Stufe 2 vor den zwei
+   Schnittstellenpaaren dieselbe Wahl trifft wie das Gold (erstes Paar). Das ist
+   die erste Stelle, an der die Bindungsentscheidung des Modells metrisch wird.
+
+Beide brauchen eine Freigabe, je ein Aufruf, und sie sind billig gegen die
+16.000er Läufe. Nutzen: die einzigen Messpunkte dieser Reihe, an denen aus einer
+belegten Belegstelle Zellen werden. Risiko: niedrig, kein neuer Prompt-Bau.
 
 Nicht empfohlen bleibt: weitere Prompt-Fassungen auf 420/421 (Befund 1), eine
-Budgeterhöhung (die Abbrüche enden am Budget, nicht davor) und eine Änderung des
-Goldstandards (Befund 4 beschreibt die Annotation, er rechtfertigt keine
-Korrektur).
+Budgeterhöhung (die Abbrüche enden am Budget, nicht davor), ein weiterer
+qwen-Lauf auf 421 (die Antwort `found: false` ist ohne Zusatzannahme nicht
+auflösbar) und eine Änderung des Goldstandards (Befund 4 beschreibt die
+Annotation, er rechtfertigt keine Korrektur).
