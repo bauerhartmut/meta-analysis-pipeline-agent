@@ -63,11 +63,16 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true", help="nur Prompt bauen, keine Anfrage")
     parser.add_argument("--ids", nargs="+", default=list(IDS))
+    parser.add_argument(
+        "--out",
+        default="predictions.jsonl",
+        help="Datei im Ausgabeverzeichnis; je Ankerfassung eine eigene, damit Fassung 1 erhalten bleibt",
+    )
     args = parser.parse_args()
 
     records = {r["record_id"]: r for r in lade(v.RECORDS)}
     AUSGABE.mkdir(parents=True, exist_ok=True)
-    ziel = AUSGABE / "predictions.jsonl"
+    ziel = AUSGABE / args.out
     fertig = {
         z["record_id"] for z in lade(ziel) if z.get("record_id")
     } if ziel.exists() else set()
