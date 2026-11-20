@@ -1,0 +1,936 @@
+{
+  "quelle": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/runs/yun699_p5_24000_20261118/predictions.jsonl",
+  "n_leere": 33,
+  "n_streng": 0,
+  "n_kandidaten": 7,
+  "gewaehlt": [
+    "yun2024:420",
+    "yun2024:421",
+    "yun2024:582",
+    "yun2024:671",
+    "yun2024:672"
+  ],
+  "kosten": {
+    "je_record_gemessen": 11265,
+    "erwartet": 56325,
+    "obergrenze": 120000,
+    "budget_stufe1": 16000,
+    "budget_stufe2": 8000,
+    "hinweis": "Obergrenze gilt, wenn Stufe 1 das Budget wie im P5-Lauf ausschopft; auf yun2024:30 waren es 8.003 und 3.262."
+  },
+  "faelle": {
+    "yun2024:30": {
+      "dokument": "PMC3003523",
+      "outcome_typ": "continuous",
+      "outcome": "Short-Form 36-Items improvement",
+      "stuecke": [
+        [
+          5391,
+          7391,
+          "prose region"
+        ],
+        [
+          7641,
+          9641,
+          "table region"
+        ]
+      ],
+      "score_zeilen": 3,
+      "score_labels": [
+        "Mean score (SD)"
+      ],
+      "wochenlabel": {
+        "1": [
+          "Week 12",
+          "Week 24",
+          "Week 52",
+          "week 12",
+          "week 52",
+          "weeks 12",
+          "weeks 12, 24 and 52"
+        ]
+      },
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 6,
+      "prompt_zeichen": 6260,
+      "gruende": [
+        "bereits_gemessen"
+      ],
+      "auswahl": false
+    },
+    "yun2024:52": {
+      "dokument": "PMC3195393",
+      "outcome_typ": "continuous",
+      "outcome": "Restraint frecuency",
+      "stuecke": [
+        [
+          1179,
+          3179,
+          "table region"
+        ],
+        [
+          4429,
+          6429,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 2,
+      "prompt_zeichen": 6289,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:119": {
+      "dokument": "PMC4323894",
+      "outcome_typ": "continuous",
+      "outcome": "Improvement in Glasgow outcome score at 6 months post-trauma",
+      "stuecke": [
+        [
+          1958,
+          3958,
+          "table region"
+        ],
+        [
+          7958,
+          9958,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 4,
+      "goldwerte_im_ausschnitt": 3,
+      "prompt_zeichen": 6285,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:128": {
+      "dokument": "PMC4493951",
+      "outcome_typ": "binary",
+      "outcome": "the incidence of postoperative nausea and vomiting (PONV)",
+      "stuecke": [
+        [
+          3216,
+          5216,
+          "table region"
+        ],
+        [
+          5216,
+          7216,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 3,
+      "goldwerte_im_ausschnitt": 3,
+      "prompt_zeichen": 6288,
+      "gruende": [
+        "keine_score_zeile",
+        "outcome_typ=binary"
+      ],
+      "auswahl": false
+    },
+    "yun2024:152": {
+      "dokument": "PMC5055753",
+      "outcome_typ": "binary",
+      "outcome": "The percentages of patients in the calm",
+      "stuecke": [
+        [
+          2396,
+          4396,
+          "table region"
+        ],
+        [
+          4646,
+          6646,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 3,
+      "goldwerte_im_ausschnitt": 1,
+      "prompt_zeichen": 6278,
+      "gruende": [
+        "keine_score_zeile",
+        "outcome_typ=binary"
+      ],
+      "auswahl": false
+    },
+    "yun2024:159": {
+      "dokument": "PMC5056957",
+      "outcome_typ": "continuous",
+      "outcome": "BMI reduction at 12 months",
+      "stuecke": [
+        [
+          5186,
+          7186,
+          "prose region"
+        ],
+        [
+          7686,
+          9686,
+          "table region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 0,
+      "prompt_zeichen": 6291,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:164": {
+      "dokument": "PMC5062234",
+      "outcome_typ": "continuous",
+      "outcome": "The visual analog scale scores at rest and on coughing",
+      "stuecke": [
+        [
+          1972,
+          3808,
+          "results region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 1,
+      "goldwerte_im_ausschnitt": 0,
+      "prompt_zeichen": 4056,
+      "gruende": [
+        "kein_zweites_stueck",
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:171": {
+      "dokument": "PMC5079604",
+      "outcome_typ": "continuous",
+      "outcome": "The restricted mean time to hyperglycemia relapse",
+      "stuecke": [
+        [
+          8874,
+          10874,
+          "table region"
+        ],
+        [
+          16124,
+          18124,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 4,
+      "goldwerte_im_ausschnitt": 3,
+      "prompt_zeichen": 6312,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:173": {
+      "dokument": "PMC5079604",
+      "outcome_typ": "binary",
+      "outcome": "The 2-year failure rate",
+      "stuecke": [
+        [
+          8874,
+          10874,
+          "table region"
+        ],
+        [
+          15874,
+          17874,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 4,
+      "goldwerte_im_ausschnitt": 2,
+      "prompt_zeichen": 6282,
+      "gruende": [
+        "keine_score_zeile",
+        "outcome_typ=binary"
+      ],
+      "auswahl": false
+    },
+    "yun2024:204": {
+      "dokument": "PMC5380326",
+      "outcome_typ": "continuous",
+      "outcome": "Th1/Th2 cytokines",
+      "stuecke": [
+        [
+          5599,
+          7599,
+          "table region"
+        ],
+        [
+          7849,
+          9849,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 1,
+      "goldwerte_im_ausschnitt": 1,
+      "prompt_zeichen": 6252,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:251": {
+      "dokument": "PMC5614421",
+      "outcome_typ": "binary",
+      "outcome": "severity of any neonatal respiratory disease",
+      "stuecke": [
+        [
+          4003,
+          6003,
+          "table region"
+        ],
+        [
+          9253,
+          11253,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 4,
+      "goldwerte_im_ausschnitt": 3,
+      "prompt_zeichen": 6325,
+      "gruende": [
+        "keine_score_zeile",
+        "outcome_typ=binary"
+      ],
+      "auswahl": false
+    },
+    "yun2024:252": {
+      "dokument": "PMC5614421",
+      "outcome_typ": "binary",
+      "outcome": "other respiratory morbidities",
+      "stuecke": [
+        [
+          4003,
+          6003,
+          "table region"
+        ],
+        [
+          7753,
+          9753,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 2,
+      "goldwerte_im_ausschnitt": 2,
+      "prompt_zeichen": 6309,
+      "gruende": [
+        "keine_score_zeile",
+        "outcome_typ=binary"
+      ],
+      "auswahl": false
+    },
+    "yun2024:273": {
+      "dokument": "PMC3214395",
+      "outcome_typ": "continuous",
+      "outcome": "awakening",
+      "stuecke": [
+        [
+          1864,
+          3360,
+          "results region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 2,
+      "goldwerte_im_ausschnitt": 0,
+      "prompt_zeichen": 3703,
+      "gruende": [
+        "kein_zweites_stueck",
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:304": {
+      "dokument": "PMC4357072",
+      "outcome_typ": "binary",
+      "outcome": "reduction in erythematous area",
+      "stuecke": [
+        [
+          2114,
+          4114,
+          "table region"
+        ],
+        [
+          3515,
+          5515,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 3,
+      "goldwerte_im_ausschnitt": 1,
+      "prompt_zeichen": 6297,
+      "gruende": [
+        "keine_score_zeile",
+        "outcome_typ=binary"
+      ],
+      "auswahl": false
+    },
+    "yun2024:356": {
+      "dokument": "PMC5884950",
+      "outcome_typ": "continuous",
+      "outcome": "objective-SCORAD score",
+      "stuecke": [
+        [
+          4157,
+          6157,
+          "table region"
+        ],
+        [
+          11157,
+          13157,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 1,
+      "goldwerte_im_ausschnitt": 1,
+      "prompt_zeichen": 6572,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:420": {
+      "dokument": "PMC3877023",
+      "outcome_typ": "continuous",
+      "outcome": "quantitative contour sharpness of the Cervicothoracic Spine",
+      "stuecke": [
+        [
+          8260,
+          10260,
+          "table region"
+        ],
+        [
+          18510,
+          20510,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 1,
+      "score_labels": [
+        "mean (SD)"
+      ],
+      "wochenlabel": {},
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 4,
+      "prompt_zeichen": 6323,
+      "gruende": [],
+      "auswahl": true
+    },
+    "yun2024:421": {
+      "dokument": "PMC3877023",
+      "outcome_typ": "continuous",
+      "outcome": "quantitative contour sharpness of the thoracolumbar spine",
+      "stuecke": [
+        [
+          8260,
+          10260,
+          "table region"
+        ],
+        [
+          19010,
+          21010,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 1,
+      "score_labels": [
+        "mean (SD)"
+      ],
+      "wochenlabel": {},
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 4,
+      "prompt_zeichen": 6321,
+      "gruende": [],
+      "auswahl": true
+    },
+    "yun2024:446": {
+      "dokument": "PMC4879328",
+      "outcome_typ": "continuous",
+      "outcome": "waist circumference",
+      "stuecke": [
+        [
+          9287,
+          11287,
+          "prose region"
+        ],
+        [
+          12537,
+          14537,
+          "table region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {
+        "2": [
+          "week 1",
+          "week 18",
+          "week 6 and 26",
+          "week 6, 40"
+        ]
+      },
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 0,
+      "prompt_zeichen": 6278,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:451": {
+      "dokument": "PMC4879328",
+      "outcome_typ": "continuous",
+      "outcome": "accelerometer-assessed moderate to vigorous physical activity (MVPA)",
+      "stuecke": [
+        [
+          9537,
+          11537,
+          "prose region"
+        ],
+        [
+          12537,
+          14537,
+          "table region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {
+        "2": [
+          "week 1",
+          "week 18",
+          "week 6 and 26",
+          "week 6, 40"
+        ]
+      },
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 1,
+      "prompt_zeichen": 6327,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:523": {
+      "dokument": "PMC5325897",
+      "outcome_typ": "continuous",
+      "outcome": "First test results",
+      "stuecke": [
+        [
+          1685,
+          3685,
+          "table region"
+        ],
+        [
+          4685,
+          6685,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 4,
+      "goldwerte_im_ausschnitt": 3,
+      "prompt_zeichen": 6272,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:525": {
+      "dokument": "PMC5325897",
+      "outcome_typ": "continuous",
+      "outcome": "Final test results",
+      "stuecke": [
+        [
+          1685,
+          3685,
+          "table region"
+        ],
+        [
+          4685,
+          6685,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 4,
+      "goldwerte_im_ausschnitt": 3,
+      "prompt_zeichen": 6272,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:557": {
+      "dokument": "PMC3136370",
+      "outcome_typ": "continuous",
+      "outcome": "Fibromyalgia Impact Questionnaire scores",
+      "stuecke": [
+        [
+          2727,
+          4727,
+          "table region"
+        ],
+        [
+          4727,
+          6727,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 2,
+      "prompt_zeichen": 6274,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:559": {
+      "dokument": "PMC3136370",
+      "outcome_typ": "continuous",
+      "outcome": "Center for Epidemiologic Studies Depression Scale score",
+      "stuecke": [
+        [
+          2727,
+          4727,
+          "table region"
+        ],
+        [
+          5477,
+          7477,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 2,
+      "prompt_zeichen": 6289,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:582": {
+      "dokument": "PMC3504298",
+      "outcome_typ": "continuous",
+      "outcome": "Attentional Function",
+      "stuecke": [
+        [
+          4726,
+          6726,
+          "prose region"
+        ],
+        [
+          10226,
+          12226,
+          "table region"
+        ]
+      ],
+      "score_zeilen": 9,
+      "score_labels": [
+        "Mean (SD)"
+      ],
+      "wochenlabel": {},
+      "goldwerte": 1,
+      "goldwerte_im_ausschnitt": 1,
+      "prompt_zeichen": 6305,
+      "gruende": [],
+      "auswahl": true
+    },
+    "yun2024:624": {
+      "dokument": "PMC3493722",
+      "outcome_typ": "binary",
+      "outcome": "good compliance rates",
+      "stuecke": [
+        [
+          2204,
+          4204,
+          "table region"
+        ],
+        [
+          3258,
+          5258,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 1,
+      "goldwerte_im_ausschnitt": 0,
+      "prompt_zeichen": 6282,
+      "gruende": [
+        "keine_score_zeile",
+        "outcome_typ=binary"
+      ],
+      "auswahl": false
+    },
+    "yun2024:625": {
+      "dokument": "PMC3493722",
+      "outcome_typ": "binary",
+      "outcome": "well compliance rates",
+      "stuecke": [
+        [
+          2204,
+          4204,
+          "table region"
+        ],
+        [
+          3258,
+          5258,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 2,
+      "goldwerte_im_ausschnitt": 0,
+      "prompt_zeichen": 6282,
+      "gruende": [
+        "keine_score_zeile",
+        "outcome_typ=binary"
+      ],
+      "auswahl": false
+    },
+    "yun2024:671": {
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "outcome": "Community knowledge",
+      "stuecke": [
+        [
+          23937,
+          25937,
+          "table region"
+        ],
+        [
+          27437,
+          29437,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 3,
+      "score_labels": [
+        "Mean (SD)"
+      ],
+      "wochenlabel": {},
+      "goldwerte": 2,
+      "goldwerte_im_ausschnitt": 2,
+      "prompt_zeichen": 6241,
+      "gruende": [],
+      "auswahl": true
+    },
+    "yun2024:672": {
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "outcome": "Community knowledge",
+      "stuecke": [
+        [
+          23937,
+          25937,
+          "table region"
+        ],
+        [
+          27437,
+          29437,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 3,
+      "score_labels": [
+        "Mean (SD)"
+      ],
+      "wochenlabel": {},
+      "goldwerte": 2,
+      "goldwerte_im_ausschnitt": 2,
+      "prompt_zeichen": 6261,
+      "gruende": [],
+      "auswahl": true
+    },
+    "yun2024:674": {
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "outcome": "treatment according to guidelines",
+      "stuecke": [
+        [
+          9687,
+          11687,
+          "prose region"
+        ],
+        [
+          23937,
+          25937,
+          "table region"
+        ]
+      ],
+      "score_zeilen": 2,
+      "score_labels": [
+        "Mean (SD)"
+      ],
+      "wochenlabel": {},
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 3,
+      "prompt_zeichen": 6274,
+      "gruende": [],
+      "auswahl": true
+    },
+    "yun2024:673": {
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "outcome": "treatment according to guidelines",
+      "stuecke": [
+        [
+          9687,
+          11687,
+          "prose region"
+        ],
+        [
+          23937,
+          25937,
+          "table region"
+        ]
+      ],
+      "score_zeilen": 2,
+      "score_labels": [
+        "Mean (SD)"
+      ],
+      "wochenlabel": {},
+      "goldwerte": 6,
+      "goldwerte_im_ausschnitt": 4,
+      "prompt_zeichen": 6254,
+      "gruende": [],
+      "auswahl": true
+    },
+    "yun2024:685": {
+      "dokument": "PMC2836833",
+      "outcome_typ": "continuous",
+      "outcome": "Fecal fat loss",
+      "stuecke": [
+        [
+          2906,
+          4906,
+          "table region"
+        ],
+        [
+          11656,
+          13656,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 1,
+      "goldwerte_im_ausschnitt": 0,
+      "prompt_zeichen": 6248,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:678": {
+      "dokument": "PMC5777419",
+      "outcome_typ": "continuous",
+      "outcome": "the total cultivable microbiota",
+      "stuecke": [
+        [
+          1164,
+          1559,
+          "results region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 2,
+      "goldwerte_im_ausschnitt": 0,
+      "prompt_zeichen": 2505,
+      "gruende": [
+        "kein_zweites_stueck",
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    },
+    "yun2024:687": {
+      "dokument": "PMC2836833",
+      "outcome_typ": "continuous",
+      "outcome": "weight loss",
+      "stuecke": [
+        [
+          2906,
+          4906,
+          "table region"
+        ],
+        [
+          4906,
+          6906,
+          "prose region"
+        ]
+      ],
+      "score_zeilen": 0,
+      "score_labels": [],
+      "wochenlabel": {},
+      "goldwerte": 1,
+      "goldwerte_im_ausschnitt": 0,
+      "prompt_zeichen": 6243,
+      "gruende": [
+        "keine_score_zeile"
+      ],
+      "auswahl": false
+    }
+  }
+}
