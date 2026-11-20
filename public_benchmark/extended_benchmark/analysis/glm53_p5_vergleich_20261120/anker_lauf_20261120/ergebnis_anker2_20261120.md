@@ -42,8 +42,12 @@ Pruefregel hat den Reasoning-Bedarf nicht erkennbar gesenkt.
   Reasoning-Bedarf. Das ist die plausibelste Erklaerung fuer beide Abbrueche; belegt
   ist nur die Zahlenlage, nicht die Ursache.
 - Der Anker ist damit fuer diese zwei Records gescheitert, in beiden Fassungen und in
-  beide Richtungen (falsche Tabelle bzw. kein Ergebnis). Weitere Anker-Varianten auf
-  demselben Einzelaufruf versprechen nach dieser Messung keinen Gewinn.
+  beide Richtungen (falsche Tabelle bzw. kein Ergebnis). Das ist eine Aussage ueber
+  **n = 2** von 13 Budgetfaellen; die uebrigen 11 sind weder mit Fassung 1 noch mit
+  Fassung 2 gelaufen und damit unbelegt, nicht widerlegt.
+- Fuer diese beiden Records versprechen weitere Anker-Varianten auf demselben
+  Einzelaufruf nach dieser Messung keinen Gewinn. Verallgemeinern laesst sich das
+  nicht: zwei Records, zwei Ausfaelle, kein Stichprobenumfang fuer die Gruppe.
 
 ## Naechster Schritt
 

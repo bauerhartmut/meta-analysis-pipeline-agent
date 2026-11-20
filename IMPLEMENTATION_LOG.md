@@ -1901,7 +1901,7 @@ Artefakte: `analysis/glm53_p5_vergleich_20261120/` mit vier Berichten, zwei
 Skripten und zwei JSON. Rein lesend, kein Netzaufruf, keine Prediction oder
 Goldzelle veraendert.
 
-### Ankerprompt 20.11.2026 - zwei Fassungen, beide ohne Gewinn
+### Ankerprompt 20.11.2026 - zwei Fassungen, an zwei Records ohne Gewinn (n = 2)
 
 Massnahme 1 der Empfehlungen (Tabellenanker) ist gebaut und gemessen: je ein
 Aufruf pro Fassung auf `yun2024:559` und `yun2024:615`, Modell und Budget wie im
@@ -1918,7 +1918,9 @@ P5-Lauf (24.000 Completion-Tokens), Abbruch bei `content_chars == 0` oder
 
 Kosten der Ankerspur: 88.632 Completion-Tokens, Gewinn: 0 TP. Die zusaetzliche
 Pflicht hat den Suchraum nicht verkleinert; auf 559 stieg das Reasoning von
-67.322 auf 98.896 Zeichen. Der Tabellenanker ist damit als naechster Hebel
+67.322 auf 98.896 Zeichen. Das gilt fuer **n = 2** von 13 Budgetfaellen; die
+uebrigen 11 sind mit keiner Ankerfassung gelaufen und damit unbelegt, nicht
+widerlegt. Fuer diese beiden Records ist der Tabellenanker als naechster Hebel
 erledigt.
 
 Zusatzbefund bei der Vorbereitung des zweistufigen Tests: bei `yun2024:559`

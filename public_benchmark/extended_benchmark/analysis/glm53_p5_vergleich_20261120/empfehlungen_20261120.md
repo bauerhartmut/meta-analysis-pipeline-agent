@@ -30,7 +30,7 @@ Erfolgszeilen-Zahl bleibt als Diagnose, nicht als Headline.
 
 ### 1. Tabellenanker statt Volltext
 
-> **Nachtrag 20.11.2026: gebaut, gemessen, gescheitert.** Zwei Fassungen des
+> **Nachtrag 20.11.2026: gebaut, an zwei Records gemessen, dort ohne Gewinn (n = 2).** Zwei Fassungen des
 > Ankers, je ein Aufruf auf `yun2024:559` und `yun2024:615`, 24.000 Tokens,
 > Abbruch bei `content_chars == 0` oder `finish_reason = length`. Fassung 1
 > (884 Zeichen) beantwortet 559 mit 16.632 Tokens, nennt aber eine
@@ -40,8 +40,9 @@ Erfolgszeilen-Zahl bleibt als Diagnose, nicht als Headline.
 > ins Budget laufen (559: 98.896, 615: 96.344 Reasoning-Zeichen, je 0 Zeichen
 > Inhalt). Kosten der Ankerspur 88.632 Completion-Tokens, Gewinn 0 TP. Details:
 > `anker_lauf_20261120/ergebnis_20261120.md` und `ergebnis_anker2_20261120.md`.
-> Die Erwartung unten (+29 TP) ist damit widerlegt; sie bleibt als damalige
-> Schaetzung stehen.
+> Die Erwartung unten (+29 TP) ist damit fuer diese zwei Records nicht eingetreten;
+> fuer die uebrigen 11 der 13 Faelle ist sie offen und ungemessen. Die Zahl bleibt
+> als damalige Schaetzung stehen.
 
 **Was:** Wo der Parser eine Tabelle mit Zielfeld findet, nur diese Tabelle samt
 Kopfzeilen und Fußnoten senden. Wo er keine findet, einen eigenen
@@ -145,8 +146,10 @@ nicht vor 1 und 2 zu setzen.
 1. **Maßnahme 3 ist erledigt** — Dublettenfilter gemessen: Precision 0,6367 →
    0,6589, F1 0,4928 → 0,4993, Recall unverändert. Mehr gibt der Filter nicht
    her, weil 67 der 97 falschen Zellen einzelne Falschwerte sind.
-2. **Maßnahme 1 ist gemessen und gescheitert** — beide Ankerfassungen ohne
-   Treffer, 88.632 Tokens verbraucht. Nicht weiter verfolgen.
+2. **Maßnahme 1 ist an zwei Records gemessen und dort ohne Gewinn (n = 2)** —
+   beide Ankerfassungen ohne Treffer, 88.632 Tokens verbraucht. Die übrigen 11 der
+   13 Fälle sind nicht getestet; der Anker ist dort unbelegt, nicht widerlegt.
+   Vor einem weiteren Anker-Aufruf hat die Zweistufigkeit Vorrang.
 3. **Maßnahme 4 (Zweistufigkeit) ist der nächste Hebel** — als einziger Ansatz,
    der den Suchraum vor dem Aufruf verkleinert. Auf einem Record mit vorhandenem
    Tabellentext testen, nicht auf `yun2024:559`: dort fehlen 4 von 6 Goldwerten
@@ -171,7 +174,7 @@ nicht vor 1 und 2 zu setzen.
 
 ## Nächster Schritt
 
-Maßnahme 3 ist umgesetzt, Maßnahme 1 widerlegt. Der nächste Schritt ist die
+Maßnahme 3 ist umgesetzt, Maßnahme 1 an zwei Records ohne Gewinn. Der nächste Schritt ist die
 trockene Vorbereitung von Maßnahme 4 auf einem Record, dessen Tabelle im
 Markdown als Text vorliegt (`yun2024:523`/`:525`, sechs Goldzellen, dieselbe
 Quelle, oder `yun2024:557`): Ausschnitt, Stufe-1-Prompt und Budget werden ohne
