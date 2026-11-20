@@ -190,6 +190,52 @@ def baue_prompt2(aus: dict[str, Any], fall: dict[str, Any], context: dict[str, A
     )
 
 
+def kopf_ausschnitt(text: str, start: int, spaltenkopf: str) -> dict[str, Any]:
+    """Kopfzeilen der Tabelle, in denen die Gruppengroesse gedruckt steht."""
+    pos = text.find(spaltenkopf, start) if spaltenkopf else -1
+    if pos < 0:
+        treffer = KOPF_N.search(text, start)
+        pos = treffer.start() if treffer else -1
+    if pos < 0:
+        raise SystemExit("keine Kopfzelle mit n = im Ausschnitt")
+    zeilen_start = text.rfind("\n", max(0, pos - 400), pos) + 1
+    block = text[zeilen_start:pos + 260]
+    kopf = "\n".join(z.rstrip() for z in block.splitlines()[:4] if z.strip())
+    return {"ausschnitt_text": kopf, "zeile": kopf, "row_pos": pos, "art": "kopf"}
+
+
+def baue_prompt2_kopf(aus: dict[str, Any], fall: dict[str, Any],
+                      context: dict[str, Any], int_loc: dict[str, Any],
+                      cmp_loc: dict[str, Any]) -> str:
+    ziel = str(int_loc.get("timepoint") or fall.get("timepoint_target") or "")
+    caption = str(int_loc.get("caption") or "")
+    return (
+        "Publication excerpt (table header rows):\n"
+        f"{aus['ausschnitt_text']}\n\n"
+        f"Intervention: {context.get('intervention') or 'not stated'}\n"
+        f"Comparator: {context.get('comparator') or 'not stated'}\n"
+        f"Outcome: {context.get('outcome') or 'not stated'}\n"
+        "Outcome type: continuous\n"
+        f'Target time point (binding): "{ziel}".\n\n'
+        "A previous step located the group size in the header cell "
+        f"\"{int_loc.get('spaltenkopf')}\" (intervention arm) and "
+        f"\"{cmp_loc.get('spaltenkopf')}\" (comparator arm)"
+        + (f", caption \"{caption}\"" if caption else "")
+        + ".\n\n"
+        "Read from that header only the group size of each arm, as printed in the "
+        "header cell of the arm (for example \"(n = 16)\"). The header lists the "
+        "arms in the order of their column labels; the Intervention and Comparator "
+        "lines name the arms. Do not read means, standard deviations or values of "
+        "another row, and do not compute or sum anything. If a group size is not "
+        "printed, omit its cell.\n\n"
+        "Return exactly one JSON object:\n"
+        '{"cells": [{"field": "intervention_group_size" | '
+        '"comparator_group_size", "arm": "intervention" | "comparator", '
+        '"value": <number>}, ...], "quote": "<the printed header you read>"}\n'
+        "No commentary, markdown or code fences."
+    )
+
+
 def baue_prompt2_satz(text: str, satz: str, fall: dict[str, Any],
                       context: dict[str, Any], int_loc: dict[str, Any]) -> str:
     pos = text.find(satz)
@@ -273,6 +319,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--records", nargs="+", default=list(RECORDS))
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--pruefe-kopf", action="store_true",
+                        help="Kopf-Modus der Stufe 2 offline bauen, kein Aufruf")
     parser.add_argument("--budget1", type=int, default=BUDGET1)
     parser.add_argument("--budget2", type=int, default=BUDGET2)
     parser.add_argument("--timeout", type=float, default=420.0)
@@ -332,6 +380,25 @@ def main() -> int:
                   f"{bester['paare']} Wertepaare, Gold {bester['goldtreffer']}")
             print(f"   {bester['fenster'][:160]!r}")
 
+    if args.pruefe_kopf:
+        for fall in faelle:
+            kopf_n = KOPF_N.search(fall["text"], fall["stuecke"][-1][0])
+            if not kopf_n:
+                print(f"{fall['rid']}: keine Kopfzelle mit n = im Tabellenstueck")
+                continue
+            aus = kopf_ausschnitt(fall["text"], fall["stuecke"][-1][0], "")
+            loc = {"spaltenkopf": kopf_n.group(0), "fundstelle": "kopf",
+                   "caption": "", "timepoint": ""}
+            prompt = baue_prompt2_kopf(aus, {"timepoint_target": ""},
+                                       fall["context"], loc, {"spaltenkopf": ""})
+            drin = [w for w in fall["werte"] if zahl_text(w) in aus["ausschnitt_text"]]
+            print(f"{fall['rid']}: Kopfzelle {kopf_n.group(0)!r} @{kopf_n.start()}, "
+                  f"Ausschnitt {len(aus['ausschnitt_text'])} Zeichen, "
+                  f"Prompt {len(prompt)} Zeichen, Goldwerte im Kopf {drin}")
+            print("--- Kopfausschnitt ---")
+            print(aus["ausschnitt_text"])
+        return 0
+
     if args.dry_run:
         return 0
 
@@ -356,7 +423,7 @@ def main() -> int:
                 if isinstance(eintrag, dict):
                     locators.append({k: str(eintrag.get(k) or "").strip()
                                      for k in ("arm", "satz", "zeilenlabel", "spaltenkopf",
-                                               "caption", "timepoint")})
+                                               "caption", "timepoint", "fundstelle")})
         normiert = [normalisiere(fall["text"][a:b]) for a, b, _ in fall["stuecke"]]
         for loc in locators:
             loc["zeilenlabel_im_stueck"] = next(
@@ -381,8 +448,17 @@ def main() -> int:
 
         cmp_loc = next((l for l in locators if l["arm"] == "comparator"), {})
         zeitpunkt_target = str((fall["record"].get("timepoint") or {}).get("target") or "")
-        if s1["status"] == "ok" and (int_loc.get("satz") or int_loc.get("zeilenlabel")):
-            if int_loc.get("satz"):
+        kopf_fall = (int_loc.get("fundstelle") == "kopf"
+                     or (not int_loc.get("satz") and not int_loc.get("zeilenlabel")
+                         and bool(KOPF_N.search(int_loc.get("spaltenkopf") or ""))))
+        if s1["status"] == "ok" and (int_loc.get("satz") or int_loc.get("zeilenlabel")
+                                      or kopf_fall):
+            if kopf_fall:
+                aus2 = kopf_ausschnitt(fall["text"], fall["stuecke"][-1][0],
+                                       int_loc.get("spaltenkopf") or "")
+                prompt2 = baue_prompt2_kopf(aus2, {"timepoint_target": zeitpunkt_target},
+                                            fall["context"], int_loc, cmp_loc)
+            elif int_loc.get("satz"):
                 aus2 = {"ausschnitt_text": int_loc["satz"], "zeile": int_loc["satz"],
                         "row_pos": fall["text"].find(int_loc["satz"]), "art": "satz"}
                 prompt2 = baue_prompt2_satz(fall["text"], int_loc["satz"],

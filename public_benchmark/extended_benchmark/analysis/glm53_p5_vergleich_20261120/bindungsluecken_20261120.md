@@ -56,3 +56,31 @@ Belege:
 Kosten: prompts rund 1.100 Zeichen laenger als im letzten Lauf; bei gleichem
 Verhalten sind das etwa 32.000 bis 40.000 Completion-Tokens fuer fuenf Records
 (Schaetzung aus dem letzten Lauf: 32.162).
+
+## Nachtrag: Kopffundstelle war wirkungslos
+
+Der erste Einbau hatte drei Fehler, alle offline gefunden, keiner davon mit
+ einem Aufruf:
+
+1. `fundstelle` wurde beim Einlesen der Stufe-1-Antwort verworfen (die Liste der
+   uebernommenen Felder endete bei `timepoint`).
+2. Stufe 2 startete nur bei `satz` oder `zeilenlabel`; ein Kopf-Locator lief
+   deshalb ins Leere und 582 blieb wieder ohne Stufe 2.
+3. Es gab keinen Kopf-Modus in Stufe 2.
+
+Behoben: `fundstelle` wird uebernommen, der Kopf-Zweig greift bei
+`fundstelle = "kopf"` oder wenn nur ein `spaltenkopf` mit `n =` vorliegt, und
+`baue_prompt2_kopf` liest ausschliesslich Gruppengroessen (Felder
+`intervention_group_size` / `comparator_group_size`).
+
+Offline geprueft mit `--pruefe-kopf`, ohne Netzaufruf:
+
+| Record | Kopfzelle | Ausschnitt | Prompt | Gold im Kopf |
+|---|---|---:|---:|---|
+| `yun2024:582` | `(*n* = 16)` @10.685 | 291 Zeichen | 1.285 Zeichen | `16.0` |
+| `yun2024:671` | keine Kopfzelle mit `n =` | — | — | — |
+| `yun2024:672` | keine Kopfzelle mit `n =` | — | — | — |
+
+Der Kopfausschnitt von 582 zeigt die Zeile `Faces (*n* = 16) Words (*n* = 16)
+Faces (*n* = 14) Words (*n* = 15)`. Damit ist die Fundstelle belegt; ob das
+Modell die Arme richtig zuordnet, entscheidet erst ein Aufruf.
