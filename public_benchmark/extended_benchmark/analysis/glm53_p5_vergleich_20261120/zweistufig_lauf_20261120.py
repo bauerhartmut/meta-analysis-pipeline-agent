@@ -105,6 +105,16 @@ def main() -> int:
     inhalt = antwort.get("content") or ""
     finish = antwort.get("finish_reason") or ""
     locators, parse_fehler = parse_stage1(inhalt) if inhalt else ([], "leer")
+    # `stage_extraction.parse_stage1` uebernimmt das Feld `timepoint` nicht; es
+    # wird deshalb aus der Rohantwort nachgezogen, sonst geht ein geliefertes
+    # Zeitpunktlabel still verloren (auf yun2024:525 war es "third").
+    payload, _ = rx._load_payload(inhalt) if inhalt else (None, "")
+    roh = payload.get("locators") if isinstance(payload, dict) else None
+    if isinstance(roh, list):
+        je_arm = {str(e.get("arm") or "").lower(): str(e.get("timepoint") or "").strip()
+                  for e in roh if isinstance(e, dict)}
+        for loc in locators:
+            loc["timepoint"] = je_arm.get(str(loc.get("arm") or ""), "")
     abgebrochen = (len(inhalt) == 0) or finish == "length"
 
     # Zielwerte je Arm aus dem Gold, fuer den Abgleich mit der Umgebung.
@@ -148,6 +158,7 @@ def main() -> int:
         "elapsed_s": antwort.get("elapsed_s"),
         "parse_fehler": parse_fehler,
         "locators": locators,
+        "locators_roh": roh if isinstance(roh, list) else [],
         "content": inhalt,
         "fehler": antwort.get("error") or "",
         "gold": fall["gold"],
