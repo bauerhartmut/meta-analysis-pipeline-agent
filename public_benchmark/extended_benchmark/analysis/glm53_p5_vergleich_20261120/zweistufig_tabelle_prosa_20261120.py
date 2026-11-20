@@ -162,6 +162,8 @@ def main() -> int:
                         help="nur das Tabellenfenster, ohne Prosastueck")
     parser.add_argument("--zeilenbindung", action="store_true",
                         help="Zeile muss den Outcome-Wert tragen; Aenderungszeilen aus")
+    parser.add_argument("--pruefe-prediction", default=None,
+                        help="gespeicherte JSONL-Zeile ohne Netzaufruf nachpruefen")
     parser.add_argument("--model", default=MODELL, choices=sorted(rx.MODELS))
     parser.add_argument("--budget", type=int, default=BUDGET)
     parser.add_argument("--timeout", type=float, default=420.0)
@@ -203,6 +205,24 @@ def main() -> int:
           f"{[(t['stueck'], t['label']) for t in bind['score_zeilen']]}")
     print(f"  Zeitpunktlabel: {bind['wochen'] or 'keins im Ausschnitt'}")
     if args.dry_run:
+        return 0
+
+    if args.pruefe_prediction:
+        pfad = Path(args.pruefe_prediction)
+        zeilen = [json.loads(z) for z in pfad.read_text(encoding="utf-8").splitlines()
+                  if z.strip()]
+        row = [r for r in zeilen if r.get("record_id") == args.record][-1]
+        normiert = [normalisiere(text[a:b]) for a, b, _ in stuecke]
+        print(f"{args.record}: {len(row.get('locators') or [])} Locators aus {pfad.name}")
+        for loc in row.get("locators") or []:
+            satz = normalisiere(str(loc.get("satz") or ""))
+            lab = normalisiere(str(loc.get("zeilenlabel") or ""))
+            s_stueck = next((i + 1 for i, teil in enumerate(normiert)
+                             if satz and satz in teil), None)
+            l_stueck = next((i + 1 for i, teil in enumerate(normiert)
+                             if lab and lab in teil), None)
+            print(f"   {loc.get('arm')}: satz={s_stueck} zeilenlabel={l_stueck} "
+                  f"stueck={s_stueck or l_stueck} label={lab!r}")
         return 0
 
     config = rx.get_config()
@@ -258,6 +278,13 @@ def main() -> int:
         loc["satz_im_stueck"] = next(
             (i + 1 for i, teil in enumerate(normiert)
              if normalisiere(loc["satz"]) and normalisiere(loc["satz"]) in teil), None)
+        # Tabellen-Locators zitieren eine Zeile, keinen Satz: ohne diese Pruefung
+        # bleibt `stueck` bei ihnen None.
+        loc["zeilenlabel_im_stueck"] = next(
+            (i + 1 for i, teil in enumerate(normiert)
+             if normalisiere(loc["zeilenlabel"])
+             and normalisiere(loc["zeilenlabel"]) in teil), None)
+        loc["stueck"] = loc["satz_im_stueck"] or loc["zeilenlabel_im_stueck"]
 
     transport_fehler = bool(antwort.get("error")) or tokens is None
     abgebrochen = (len(inhalt) == 0) or finish == "length"
@@ -307,7 +334,7 @@ def main() -> int:
     print(f"  -> {status}, finish {finish}, {tokens} Tokens, {len(inhalt)} Zeichen, "
           f"{len(locators)} Locators, {zeile['elapsed_s']} s")
     for loc in locators:
-        print(f"     {loc['arm']}: stueck={loc['satz_im_stueck']} "
+        print(f"     {loc['arm']}: stueck={loc['stueck']} "
               f"werte={loc['goldwerte_im_satz']} tp={loc['timepoint']!r}")
         print(f"       {loc['satz'][:180]!r}")
     print("geschrieben:", ziel_pfad)

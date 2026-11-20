@@ -363,9 +363,15 @@ Tabellenzeile reicht.
    Score-Zeile dreimal im Tabellenstück, `Week 52` im Prosa-Stück; ein Aufruf:
    `ok`, 8.003 Tokens, 224 s, beide Arme `Mean score (SD)` = Goldzeile, Caption
    und `Week 52` korrekt. Die Zeilenbindung ist damit gelöst.
-6. **Nächster Schritt:** Stufe 2 auf diesem Locator — dritten Wochenblock
-   wählen und `38.1 (9.5)` / `31.5 (7.4)` extrahieren; damit ist der erste
-   Record durchgängig. Erst danach Übertragung auf weitere der 33 Records.
+6. **Stufe 2 auf dem Zeilen-Locator (20.11.2026):** Wochenblock-Zuordnung offline
+   nachgerechnet (Gold in `Week 52`, CZP 200 mg / PBO), ein Aufruf mit 8.000
+   Tokens: `ok`, 3.262 Tokens, 6 Zellen, Block `Week 52`, **TP 6 FP 0 FN 0
+   F1 1.0**. Erster Record mit geschlossener Kette.
+7. **Stufe-1-Runner:** prüft das Zeilenlabel gegen die Stücke, Tabellen-Locators
+   tragen `stueck` statt `None` (belegt per `--pruefe-prediction`, ohne Netz).
+8. **Nächster Schritt:** Kette auf 5 der 33 Records übertragen (Schätzung rund
+   11.300 Tokens je Record, also ca. 57.000); die volle Serie (ca. 373.000)
+   erst, wenn die Trefferquote der Stichprobe steht.
 
 Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Feldbezeichnung offen),
 weitere Prompt-Fassungen auf 420/421 (Befund 1), eine Budgeterhöhung als

@@ -121,6 +121,45 @@ nicht die Woche. In der Zeile stehen neun Werte (drei Bloecke zu je drei
 Armen); das Gold liegt im dritten Block. Das ist Aufgabe der Stufe 2 und ohne
 Extraktion hier nicht geprueft.
 
+## Stufe 2 auf dem Zeilen-Locator (20.11.2026)
+
+Der Stufe-1-Runner prueft das Zeilenlabel jetzt gegen die Stuecke; Tabellen-
+Locators tragen damit `stueck = 2` statt `None` (nachgeprueft an der
+gespeicherten Zeile mit `--pruefe-prediction`, ohne Netzaufruf).
+
+Stufe 2 (`zweistufig_stufe2_zeile_20261120.py`) liest aus der benannten Zeile
+nur den Block des Zielzeitpunkts: je Arm Mittelwert, Standardabweichung und
+Gruppengroesse, sechs Zellen. Ausschnitt 514 Zeichen (Wochenzeile, Spaltenkopf,
+Zeile), Prompt 1.885 Zeichen, Budget 8.000.
+
+Offline nachgerechnet, bevor der Aufruf startete (`wochenblock`): die Zeile hat
+neun Wertepaare, drei Bloecke zu drei Armen.
+
+| Block | CZP 200 mg + MTX | CZP 400 mg + MTX | PBO + MTX |
+|---|---|---|---|
+| Week 12 | 36.1 (8.9) | 36.8 (8.4) | 30.7 (7.1) |
+| Week 24 | 37.8 (9.5) | 38.4 (8.8) | 31.4 (7.3) |
+| Week 52 | **38.1 (9.5)** | 38.9 (8.9) | **31.5 (7.4)** |
+
+Beide Goldmittel liegen in `Week 52` (CZP 200 mg bzw. PBO), die Zuordnung ist
+also eindeutig und nicht geschaetzt.
+
+`ok`, `finish_reason = stop`, **3.262** Completion-Tokens, 814 Zeichen, 6 Zellen,
+gelesener Block `Week 52`.
+
+| Feld | Wert | im Ausschnitt gedruckt |
+|---|---|---|
+| intervention_mean | 38.1 | ja |
+| intervention_standard_deviation | 9.5 | ja |
+| intervention_group_size | 393 | ja |
+| comparator_mean | 31.5 | ja |
+| comparator_standard_deviation | 7.4 | ja |
+| comparator_group_size | 199 | ja |
+
+Bewertung gegen Gold: **TP 6, FP 0, FN 0, P 1.0, R 1.0, F1 1.0**. Das ist der
+erste Record der Reihe, der die Kette bis zum Wert durchlaeuft, und der erste
+mit vollstaendigem F1. Die 8.000 Tokens waren nicht ausgeschoepft (3.262).
+
 ## Was das fuer die Kette heisst
 
 - Das Tabellenfenster loest die Abdeckung: 6/6 statt 2/6 im Prosafenster.
@@ -136,20 +175,25 @@ Extraktion hier nicht geprueft.
   stehen.
 - Mit dem bindenden Regelblock waehlt dasselbe Modell dieselbe Tabelle in der
   Goldzeile (`Mean score (SD)`, 3. Lauf). Damit ist die Zeilenbindung per
-  Prompt geloest; offen ist nur die Wochenspalte, die Stufe 2 aufloesen muss.
+  Prompt geloest.
+- Stufe 2 loest auch die Wochenspalte: Block `Week 52` gelesen, sechs Zellen,
+  F1 1.0. Die Kette (Fenster, Zeile, Zeitpunkt, Wert) ist auf diesem Record
+  vollstaendig und kostet 8.003 + 3.262 Tokens.
 
 ## Kosten
 
 8.174 Completion-Tokens, 235,88 s fuer Tabellenfenster plus Prosastueck; 7.589
 Tokens, 397,03 s fuer das Tabellenfenster allein; 8.003 Tokens, 223,76 s mit
-Zeilenbindung. Gesamtstand der Reihe: 161.271 (bis 52) + 21.638
-(Dreifenster-Serie) + 8.174 + 7.589 + 8.003 = **206.675** Completion-Tokens.
+Zeilenbindung; 3.262 Tokens, 87,8 s fuer Stufe 2. Gesamtstand der
+Reihe: 161.271 (bis 52) + 21.638 (Dreifenster-Serie) + 8.174 + 7.589 + 8.003 +
+3.262 = **209.937** Completion-Tokens.
 
 ## Empfehlung
 
-Regelblock behalten und die Kette weiterbauen: auf genau diesem Locator eine
-Stufe 2 ansetzen, die den dritten Wochenblock auswaehlt und `38.1 (9.5)` /
-`31.5 (7.4)` extrahiert. Das prueft die letzte offene Stelle (Wochenspalte)
-und liefert zugleich den ersten Record, bei dem die Kette bis zum Wert
-vollstaendig ist. Erst danach lohnt die Uebertragung auf weitere der 33
-Records; ohne diesen Schritt bleibt offen, ob die Bindung generalisiert.
+Die Kette ist auf diesem Record geschlossen (F1 1.0, 11.265 Tokens fuer beide
+Stufen). Naechster Hebel ist die Generalisierung: dieselbe Kette auf eine
+kleine Stichprobe der 33 Records, nicht auf alle. Schaetzung (nicht gemessen):
+bei rund 11.300 Tokens je Record kosten 5 Records etwa 57.000 Completion-Tokens,
+alle 33 etwa 373.000. Fuenf Records zeigen, ob Zeilenbindung und Wochenblock
+uebertragen; die volle Serie lohnt erst, wenn die Trefferquote der Stichprobe
+steht.
