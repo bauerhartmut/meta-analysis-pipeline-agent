@@ -8,9 +8,10 @@ geht eine Stufe tiefer und ordnet jede Fundstelle ein:
 * Abschnitt: Abstract, Ergebnisteil, Methoden, Diskussion, sonstiger Body.
   Die Dokumente haben keine Zeilenumbrueche vor Ueberschriften; erkannt wird
   an den Inline-Markern `#`/`##` und einer festen Wortliste. Der Abstract
-  endet an der ersten H1-Ueberschrift nach Position 0, der Ergebnisteil
-  beginnt an der ersten Results-Ueberschrift im Body und endet an
-  Discussion/Conclusion/Limitations oder am Textende.
+  endet an der ersten H1-Ueberschrift nach Position 0, der   Ergebnisteil beginnt an der ersten Results-Ueberschrift im Body und endet an
+  Discussion/Conclusion/Limitations oder am Textende. Nummerierte Ueberschriften
+  (`# 3. Results`, `## 3.1. Baseline Characteristics`) werden mit erkannt; ohne
+  das blieben vier Dokumente (52, 152, 557, 559) ohne Body-Grenze.
 * Zitat: die Zahl steht in einer eckigen Klammer (`[17]`) oder in einer
   Klammer mit `et al`/Jahreszahl/reiner Ziffernliste (`(12, 15)`).
 * Verweis: die Zahl ist selbst eine Tabellen- oder Abbildungsnummer
@@ -76,14 +77,15 @@ WORT = (
     r"Study design|Data collection|Limitations|References?|Acknowledg\w*|Funding|"
     r"Tables?|Figures?)"
 )
-UEBERSCHRIFT = re.compile(r"(?P<level>#{1,6})\s+" + WORT + r"\b", re.I)
+UEBERSCHRIFT = re.compile(
+    r"(?P<level>#{1,6})\s+(?:\d+(?:\.\d+)*\.?\s+)?(?P<title>" + WORT + r")\b", re.I)
 TABELLE = re.compile(r"\b(n\s*=|mean|SD|95%\s*CI|CI\b|Table)\b", re.I)
 JAHR = re.compile(r"(?<!\d)(19|20)\d{2}(?!\d)")
 
 
 def abschnitte(text: str) -> dict[str, Any]:
     """Spans fuer Abstract, Ergebnisteil, Methoden, Diskussion."""
-    kopf = [(m.start(), len(m.group("level")), m.group(2).lower())
+    kopf = [(m.start(), len(m.group("level")), m.group("title").lower())
             for m in UEBERSCHRIFT.finditer(text)]
     if not kopf:
         return {"body_start": None, "abstract_ende": None, "spans": []}
@@ -183,7 +185,6 @@ def main() -> int:
 
         bewertung: dict[str, Any] = {}
         index_streng: dict[float, list[tuple[int, int]]] = {w: [] for w in werte}
-        index_weit: dict[float, list[tuple[int, int]]] = {w: [] for w in werte}
         for wert in werte:
             stellen = []
             for start, ende in index[wert]:
@@ -197,9 +198,6 @@ def main() -> int:
                                 "kontext": kontext(text, (start, ende))})
                 if abschnitt == "ergebnisse" and not zitat and not verweis:
                     index_streng[wert].append((start, ende))
-                if (abschnitt in ("ergebnisse", "unbekannt")
-                        and not zitat and not verweis):
-                    index_weit[wert].append((start, ende))
 
             if not stellen:
                 etikette = "nirgends"
@@ -219,7 +217,6 @@ def main() -> int:
         wahl = waehle_ausschnitt(text, stichworte, BREITE, 500)
         start, ende = wahl["start"], wahl["ende"]
         streng_regeln = regeln(text, stichworte, outcome, ziel, index_streng)
-        weit_regeln = regeln(text, stichworte, outcome, ziel, index_weit)
         faelle[rid] = {
             "record_id": rid,
             "dokument": m.get("dokument"),
@@ -236,11 +233,6 @@ def main() -> int:
             "streng_orakel": streng_regeln["orakel_6000"]["abgedeckt"],
             "streng_mehrfach": streng_regeln["mehrfach_3x2000"]["abgedeckt"],
             "streng_regeln": streng_regeln,
-            "werte_weit": sum(1 for w in werte if index_weit[w]),
-            "weit_fenster": sum(1 for w in werte
-                                if any(start <= s[0] < ende for s in index_weit[w])),
-            "weit_orakel": weit_regeln["orakel_6000"]["abgedeckt"],
-            "weit_mehrfach": weit_regeln["mehrfach_3x2000"]["abgedeckt"],
         }
 
     reihenfolge = list(faelle)
@@ -250,9 +242,6 @@ def main() -> int:
     fenster_streng = sum(f["streng_fenster"] for f in faelle.values())
     orakel_streng = sum(f["streng_orakel"] for f in faelle.values())
     mehrfach_streng = sum(f["streng_mehrfach"] for f in faelle.values())
-    weit_fenster = sum(f["weit_fenster"] for f in faelle.values())
-    weit_orakel = sum(f["weit_orakel"] for f in faelle.values())
-    weit_mehrfach = sum(f["weit_mehrfach"] for f in faelle.values())
     ergebnis = {
         "n": len(faelle),
         "fenster_breite": BREITE,
@@ -263,9 +252,6 @@ def main() -> int:
         "streng_fenster": fenster_streng,
         "streng_orakel": orakel_streng,
         "streng_mehrfach": mehrfach_streng,
-        "weit_fenster": weit_fenster,
-        "weit_orakel": weit_orakel,
-        "weit_mehrfach": weit_mehrfach,
         "faelle": faelle,
     }
     AUS_JSON.write_text(json.dumps(ergebnis, ensure_ascii=False, indent=2) + "\n",
@@ -316,13 +302,12 @@ def main() -> int:
         "",
         "## Fenster und Orakel auf den belastbaren Fundstellen",
         "",
-        "| Groesse | alle Textfundstellen | nur Ergebnisteil | Ergebnisteil + unbekannt |",
-        "|---|---:|---:|---:|",
-        f"| Goldwerte mit Fundstelle | {werte_text} | {werte_streng} | "
-        f"{sum(f['werte_weit'] for f in faelle.values())} |",
-        f"| im aktuellen 6.000er-Fenster | 67 | {fenster_streng} | {weit_fenster} |",
-        f"| Orakel: bestes 6.000er-Fenster | 91 | {orakel_streng} | {weit_orakel} |",
-        f"| drei Stuecke zu 2.000 Zeichen | 72 | {mehrfach_streng} | {weit_mehrfach} |",
+        "| Groesse | alle Textfundstellen | nur Ergebnisteil |",
+        "|---|---:|---:|",
+        f"| Goldwerte mit Fundstelle | {werte_text} | {werte_streng} |",
+        f"| im aktuellen 6.000er-Fenster | 67 | {fenster_streng} |",
+        f"| Orakel: bestes 6.000er-Fenster | 91 | {orakel_streng} |",
+        f"| drei Stuecke zu 2.000 Zeichen | 72 | {mehrfach_streng} |",
         "",
     ]
 
@@ -331,10 +316,7 @@ def main() -> int:
             f"Auf den belastbaren Fundstellen bleibt ein Abstand von "
             f"**{orakel_streng - fenster_streng}** Werten zwischen dem besten "
             f"einzelnen Fenster ({orakel_streng}) und dem aktuellen Fenster "
-            f"({fenster_streng}). Zaehlt man die 12 Werte aus Dokumenten ohne "
-            f"erkannte Body-Ueberschrift als belastbar mit, sind es "
-            f"{weit_orakel} gegen {weit_fenster}, also "
-            f"{weit_orakel - weit_fenster} Werte Abstand."
+            f"({fenster_streng})."
         )
     else:
         md.append("Es bleibt kein belastbarer Wert uebrig; die Aussage waere dann "
@@ -344,8 +326,8 @@ def main() -> int:
         "",
         "## Records mit Auffaelligkeiten",
         "",
-        "| Record | Werte | im Text | belastbar | Fenster | Orakel | mit unbekannt | Fenster | Orakel | Etiketten |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+        "| Record | Werte | im Text | belastbar | Fenster | Orakel | Etiketten |",
+        "|---|---:|---:|---:|---:|---:|---|",
     ]
     for rid in reihenfolge:
         f = faelle[rid]
@@ -355,7 +337,6 @@ def main() -> int:
             md.append(
                 f"| `{rid}` | {f['werte_gesamt']} | {f['werte_im_text']} | "
                 f"{f['werte_streng']} | {f['streng_fenster']} | {f['streng_orakel']} | "
-                f"{f['werte_weit']} | {f['weit_fenster']} | {f['weit_orakel']} | "
                 + ", ".join(f"{k}: {n}" for k, n in zaehler.most_common()) + " |"
             )
 
@@ -369,20 +350,15 @@ def main() -> int:
         f"im Ergebnisteil, davon "
         f"{betrag('ergebnisteil_tabelle')} ausschliesslich in eingeflachten "
         f"Tabellentext. Nur {betrag('abstract')} Werte stehen allein im Abstract, "
-        f"{betrag('diskussion')} allein in der Diskussion, {betrag('unbekannt')} in "
-        f"Dokumenten ohne erkannte Body-Ueberschrift (52, 152, 557, 559). Der "
+        f"{betrag('diskussion')} allein in der Diskussion, {betrag('unbekannt')} "
+        f"ohne bestimmbaren Abschnitt. Der "
         f"Abstand zwischen Fenster und Orakel bleibt auf der belastbaren Teilmenge "
         f"erhalten ({fenster_streng} gegen {orakel_streng}); die Aussage "
         f"\"Startregel statt Breite\" haengt damit nicht an Zufallstreffern. Die "
         f"absoluten Zahlen sinken aber: fuer den Ergebnisteil heisst es "
         f"{orakel_streng} statt 91.",
         "",
-        "Auf `yun2024:52` stehen die sechs als `unbekannt` gefuehrten Werte sichtbar "
-        "in der Ergebnistabelle (`n = 463`, `n = 562`, \"from 11.5% to 13.6%\"); "
-        "die Body-Ueberschrift fehlt nur im Markdown. Deshalb ist die Spalte "
-        "\"Ergebnisteil + unbekannt\" als Obergrenze mitgefuehrt: sie liefert "
-        f"{weit_orakel} gegen {weit_fenster} im Fenster, also denselben Befund.",
-        "",
+"",
         "## Vorbehalt",
         "",
         "- Die Abschnittsgrenzen haengen an erkannten Ueberschriften. Wo keine "
@@ -404,9 +380,6 @@ def main() -> int:
     print("Etiketten:", dict(etiketten))
     print(f"belastbar im Ergebnisteil: {werte_streng}; Fenster {fenster_streng}; "
           f"Orakel {orakel_streng}; 3x2000 {mehrfach_streng}")
-    print(f"mit unbekannten Abschnitten: Werte "
-          f"{sum(f['werte_weit'] for f in faelle.values())}; Fenster {weit_fenster}; "
-          f"Orakel {weit_orakel}; 3x2000 {weit_mehrfach}")
     print()
     print(f"  {'Record':<13} {'Text':>4} {'streng':>6} {'Fenster':>7} {'Orakel':>6}")
     for rid in reihenfolge:

@@ -11,47 +11,43 @@ Rein offline: jede Fundstelle eines Goldwerts wird nach Abschnitt, Zitatkontext 
 
 | Etikette | Werte |
 |---|---:|
-| `ergebnisteil_text` | 56 |
-| `ergebnisteil_tabelle` | 19 |
+| `ergebnisteil_text` | 64 |
+| `ergebnisteil_tabelle` | 23 |
 | `abstract` | 2 |
 | `methoden` | 0 |
 | `diskussion` | 2 |
 | `body_sonstiges` | 0 |
-| `unbekannt` | 12 |
+| `unbekannt` | 0 |
 | `zitat_oder_verweis` | 1 |
 | `nirgends` | 26 |
 | **Summe** | **118** |
 
-Von 118 Goldwerten sind 92 im Text auffindbar und 26 nicht. Belastbar im Ergebnisteil stehen **75**; die uebrigen 17 verteilen sich auf Abstract (2), Diskussion (2), Zitat/Verweis (1) und nicht klassifizierbare Dokumente (12).
+Von 118 Goldwerten sind 92 im Text auffindbar und 26 nicht. Belastbar im Ergebnisteil stehen **87**; die uebrigen 5 verteilen sich auf Abstract (2), Diskussion (2), Zitat/Verweis (1) und nicht klassifizierbare Dokumente (0).
 
 ## Fenster und Orakel auf den belastbaren Fundstellen
 
-| Groesse | alle Textfundstellen | nur Ergebnisteil | Ergebnisteil + unbekannt |
-|---|---:|---:|---:|
-| Goldwerte mit Fundstelle | 92 | 75 | 87 |
-| im aktuellen 6.000er-Fenster | 67 | 48 | 56 |
-| Orakel: bestes 6.000er-Fenster | 91 | 74 | 85 |
-| drei Stuecke zu 2.000 Zeichen | 72 | 53 | 61 |
+| Groesse | alle Textfundstellen | nur Ergebnisteil |
+|---|---:|---:|
+| Goldwerte mit Fundstelle | 92 | 87 |
+| im aktuellen 6.000er-Fenster | 67 | 56 |
+| Orakel: bestes 6.000er-Fenster | 91 | 85 |
+| drei Stuecke zu 2.000 Zeichen | 72 | 61 |
 
-Auf den belastbaren Fundstellen bleibt ein Abstand von **26** Werten zwischen dem besten einzelnen Fenster (74) und dem aktuellen Fenster (48). Zaehlt man die 12 Werte aus Dokumenten ohne erkannte Body-Ueberschrift als belastbar mit, sind es 85 gegen 56, also 29 Werte Abstand.
+Auf den belastbaren Fundstellen bleibt ein Abstand von **29** Werten zwischen dem besten einzelnen Fenster (85) und dem aktuellen Fenster (56).
 
 ## Records mit Auffaelligkeiten
 
-| Record | Werte | im Text | belastbar | Fenster | Orakel | mit unbekannt | Fenster | Orakel | Etiketten |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| `yun2024:52` | 6 | 6 | 0 | 0 | 0 | 6 | 2 | 5 | unbekannt: 6 |
-| `yun2024:152` | 3 | 3 | 0 | 0 | 0 | 2 | 2 | 2 | unbekannt: 2, zitat_oder_verweis: 1 |
-| `yun2024:273` | 2 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | nirgends: 1, abstract: 1 |
-| `yun2024:304` | 3 | 2 | 1 | 1 | 1 | 1 | 1 | 1 | ergebnisteil_text: 1, nirgends: 1, abstract: 1 |
-| `yun2024:557` | 6 | 2 | 0 | 0 | 0 | 2 | 2 | 2 | nirgends: 4, unbekannt: 2 |
-| `yun2024:559` | 6 | 2 | 0 | 0 | 0 | 2 | 2 | 2 | nirgends: 4, unbekannt: 2 |
-| `yun2024:678` | 2 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | diskussion: 2 |
+| Record | Werte | im Text | belastbar | Fenster | Orakel | Etiketten |
+|---|---:|---:|---:|---:|---:|---|
+| `yun2024:152` | 3 | 3 | 2 | 2 | 2 | zitat_oder_verweis: 1, ergebnisteil_text: 1, ergebnisteil_tabelle: 1 |
+| `yun2024:273` | 2 | 1 | 0 | 0 | 0 | nirgends: 1, abstract: 1 |
+| `yun2024:304` | 3 | 2 | 1 | 1 | 1 | ergebnisteil_text: 1, nirgends: 1, abstract: 1 |
+| `yun2024:678` | 2 | 2 | 0 | 0 | 0 | diskussion: 2 |
 
 ## Antwort auf die Frage
 
-Von den 92 im Text gefundenen Werten steht **1** ausschliesslich als Zitat- oder Verweisnummer: 152: 7.0 ist die Abbildungsnummer in "Figure 7", kein Messwert. **75** stehen im Ergebnisteil, davon 19 ausschliesslich in eingeflachten Tabellentext. Nur 2 Werte stehen allein im Abstract, 2 allein in der Diskussion, 12 in Dokumenten ohne erkannte Body-Ueberschrift (52, 152, 557, 559). Der Abstand zwischen Fenster und Orakel bleibt auf der belastbaren Teilmenge erhalten (48 gegen 74); die Aussage "Startregel statt Breite" haengt damit nicht an Zufallstreffern. Die absoluten Zahlen sinken aber: fuer den Ergebnisteil heisst es 74 statt 91.
+Von den 92 im Text gefundenen Werten steht **1** ausschliesslich als Zitat- oder Verweisnummer: 152: 7.0 ist die Abbildungsnummer in "Figure 7", kein Messwert. **87** stehen im Ergebnisteil, davon 23 ausschliesslich in eingeflachten Tabellentext. Nur 2 Werte stehen allein im Abstract, 2 allein in der Diskussion, 0 ohne bestimmbaren Abschnitt. Der Abstand zwischen Fenster und Orakel bleibt auf der belastbaren Teilmenge erhalten (56 gegen 85); die Aussage "Startregel statt Breite" haengt damit nicht an Zufallstreffern. Die absoluten Zahlen sinken aber: fuer den Ergebnisteil heisst es 85 statt 91.
 
-Auf `yun2024:52` stehen die sechs als `unbekannt` gefuehrten Werte sichtbar in der Ergebnistabelle (`n = 463`, `n = 562`, "from 11.5% to 13.6%"); die Body-Ueberschrift fehlt nur im Markdown. Deshalb ist die Spalte "Ergebnisteil + unbekannt" als Obergrenze mitgefuehrt: sie liefert 85 gegen 56 im Fenster, also denselben Befund.
 
 ## Vorbehalt
 

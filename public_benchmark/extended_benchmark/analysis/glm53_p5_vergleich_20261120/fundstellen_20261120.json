@@ -4,21 +4,17 @@
   "werte_gesamt": 118,
   "werte_im_text": 92,
   "werte_etiketten": {
-    "ergebnisteil_tabelle": 19,
-    "ergebnisteil_text": 56,
-    "unbekannt": 12,
+    "ergebnisteil_tabelle": 23,
+    "ergebnisteil_text": 64,
     "zitat_oder_verweis": 1,
     "nirgends": 26,
     "abstract": 2,
     "diskussion": 2
   },
-  "werte_streng": 75,
-  "streng_fenster": 48,
-  "streng_orakel": 74,
-  "streng_mehrfach": 53,
-  "weit_fenster": 56,
-  "weit_orakel": 85,
-  "weit_mehrfach": 61,
+  "werte_streng": 87,
+  "streng_fenster": 56,
+  "streng_orakel": 85,
+  "streng_mehrfach": 61,
   "faelle": {
     "yun2024:30": {
       "record_id": "yun2024:30",
@@ -280,25 +276,37 @@
           "ende": 8420,
           "abgedeckt": 6
         }
-      },
-      "werte_weit": 6,
-      "weit_fenster": 3,
-      "weit_orakel": 6,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:52": {
       "record_id": "yun2024:52",
       "dokument": "PMC3195393",
       "text_zeichen": 24933,
-      "hat_body_ueberschrift": false,
-      "abschnitte": [],
+      "hat_body_ueberschrift": true,
+      "abschnitte": [
+        [
+          0,
+          1179,
+          "abstract"
+        ],
+        [
+          1179,
+          24933,
+          "ergebnisse"
+        ],
+        [
+          1179,
+          24933,
+          "body_sonstiges"
+        ]
+      ],
       "werte": {
         "0.07": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_text",
           "stellen": [
             {
               "start": 23796,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -307,7 +315,7 @@
             },
             {
               "start": 24099,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -316,7 +324,7 @@
             },
             {
               "start": 24254,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -325,7 +333,7 @@
             },
             {
               "start": 24403,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -334,7 +342,7 @@
             },
             {
               "start": 24557,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -344,11 +352,11 @@
           ]
         },
         "0.13": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_text",
           "stellen": [
             {
               "start": 24534,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -358,11 +366,11 @@
           ]
         },
         "11.5": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_text",
           "stellen": [
             {
               "start": 5558,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": true,
@@ -371,7 +379,7 @@
             },
             {
               "start": 19128,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -381,11 +389,11 @@
           ]
         },
         "13.6": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_tabelle",
           "stellen": [
             {
               "start": 5567,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": true,
@@ -395,11 +403,11 @@
           ]
         },
         "463.0": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_tabelle",
           "stellen": [
             {
               "start": 22701,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": true,
@@ -409,11 +417,11 @@
           ]
         },
         "562.0": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_tabelle",
           "stellen": [
             {
               "start": 22725,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": true,
@@ -425,34 +433,34 @@
       },
       "werte_gesamt": 6,
       "werte_im_text": 6,
-      "werte_streng": 0,
+      "werte_streng": 6,
       "fenster": {
         "start": 4500,
         "ende": 10500
       },
-      "streng_fenster": 0,
-      "streng_orakel": 0,
-      "streng_mehrfach": 0,
+      "streng_fenster": 2,
+      "streng_orakel": 5,
+      "streng_mehrfach": 2,
       "streng_regeln": {
         "score": {
           "start": 4500,
           "ende": 10500,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "outcome_erste": {
           "start": 0,
           "ende": 6000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "outcome_letzte": {
           "start": 18933,
           "ende": 24933,
-          "abgedeckt": 0
+          "abgedeckt": 5
         },
         "anker_max": {
           "start": 4336,
           "ende": 10336,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "mehrfach_3x2000": {
           "stuecke": [
@@ -469,18 +477,14 @@
               10250
             ]
           ],
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "orakel_6000": {
-          "start": 0,
-          "ende": 6000,
-          "abgedeckt": 0
+          "start": 18535,
+          "ende": 24535,
+          "abgedeckt": 5
         }
-      },
-      "werte_weit": 6,
-      "weit_fenster": 2,
-      "weit_orakel": 5,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:119": {
       "record_id": "yun2024:119",
@@ -678,11 +682,7 @@
           "ende": 6000,
           "abgedeckt": 4
         }
-      },
-      "werte_weit": 4,
-      "weit_fenster": 4,
-      "weit_orakel": 4,
-      "weit_mehrfach": 3
+      }
     },
     "yun2024:128": {
       "record_id": "yun2024:128",
@@ -956,25 +956,37 @@
           "ende": 6000,
           "abgedeckt": 3
         }
-      },
-      "werte_weit": 3,
-      "weit_fenster": 3,
-      "weit_orakel": 3,
-      "weit_mehrfach": 3
+      }
     },
     "yun2024:152": {
       "record_id": "yun2024:152",
       "dokument": "PMC5055753",
       "text_zeichen": 7782,
-      "hat_body_ueberschrift": false,
-      "abschnitte": [],
+      "hat_body_ueberschrift": true,
+      "abschnitte": [
+        [
+          0,
+          2146,
+          "abstract"
+        ],
+        [
+          2146,
+          7782,
+          "ergebnisse"
+        ],
+        [
+          2146,
+          7782,
+          "body_sonstiges"
+        ]
+      ],
       "werte": {
         "7.0": {
           "etikette": "zitat_oder_verweis",
           "stellen": [
             {
               "start": 7393,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": true,
               "tabelle": false,
@@ -984,11 +996,11 @@
           ]
         },
         "14.0": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_text",
           "stellen": [
             {
               "start": 3892,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -998,11 +1010,11 @@
           ]
         },
         "40.0": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_tabelle",
           "stellen": [
             {
               "start": 2226,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": true,
@@ -1011,7 +1023,7 @@
             },
             {
               "start": 2256,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": true,
@@ -1023,34 +1035,34 @@
       },
       "werte_gesamt": 3,
       "werte_im_text": 3,
-      "werte_streng": 0,
+      "werte_streng": 2,
       "fenster": {
         "start": 1000,
         "ende": 7000
       },
-      "streng_fenster": 0,
-      "streng_orakel": 0,
-      "streng_mehrfach": 0,
+      "streng_fenster": 2,
+      "streng_orakel": 2,
+      "streng_mehrfach": 2,
       "streng_regeln": {
         "score": {
           "start": 1000,
           "ende": 7000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "outcome_erste": {
           "start": 0,
           "ende": 6000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "outcome_letzte": {
           "start": 470,
           "ende": 6470,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "anker_max": {
           "start": 1000,
           "ende": 7000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "mehrfach_3x2000": {
           "stuecke": [
@@ -1067,18 +1079,14 @@
               7250
             ]
           ],
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "orakel_6000": {
           "start": 0,
           "ende": 6000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         }
-      },
-      "werte_weit": 2,
-      "weit_fenster": 2,
-      "weit_orakel": 2,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:159": {
       "record_id": "yun2024:159",
@@ -1239,11 +1247,7 @@
           "ende": 15375,
           "abgedeckt": 4
         }
-      },
-      "werte_weit": 4,
-      "weit_fenster": 0,
-      "weit_orakel": 4,
-      "weit_mehrfach": 4
+      }
     },
     "yun2024:164": {
       "record_id": "yun2024:164",
@@ -1329,11 +1333,7 @@
           "ende": 3808,
           "abgedeckt": 0
         }
-      },
-      "werte_weit": 0,
-      "weit_fenster": 0,
-      "weit_orakel": 0,
-      "weit_mehrfach": 0
+      }
     },
     "yun2024:171": {
       "record_id": "yun2024:171",
@@ -1539,11 +1539,7 @@
           "ende": 16568,
           "abgedeckt": 3
         }
-      },
-      "werte_weit": 3,
-      "weit_fenster": 3,
-      "weit_orakel": 3,
-      "weit_mehrfach": 3
+      }
     },
     "yun2024:173": {
       "record_id": "yun2024:173",
@@ -1839,11 +1835,7 @@
           "ende": 6000,
           "abgedeckt": 3
         }
-      },
-      "werte_weit": 3,
-      "weit_fenster": 3,
-      "weit_orakel": 3,
-      "weit_mehrfach": 3
+      }
     },
     "yun2024:204": {
       "record_id": "yun2024:204",
@@ -2017,11 +2009,7 @@
           "ende": 6000,
           "abgedeckt": 1
         }
-      },
-      "werte_weit": 1,
-      "weit_fenster": 1,
-      "weit_orakel": 1,
-      "weit_mehrfach": 1
+      }
     },
     "yun2024:251": {
       "record_id": "yun2024:251",
@@ -2651,11 +2639,7 @@
           "ende": 12258,
           "abgedeckt": 4
         }
-      },
-      "werte_weit": 4,
-      "weit_fenster": 1,
-      "weit_orakel": 4,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:252": {
       "record_id": "yun2024:252",
@@ -3140,11 +3124,7 @@
           "ende": 9451,
           "abgedeckt": 2
         }
-      },
-      "werte_weit": 2,
-      "weit_fenster": 0,
-      "weit_orakel": 2,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:273": {
       "record_id": "yun2024:273",
@@ -3253,11 +3233,7 @@
           "ende": 3360,
           "abgedeckt": 0
         }
-      },
-      "werte_weit": 0,
-      "weit_fenster": 0,
-      "weit_orakel": 0,
-      "weit_mehrfach": 0
+      }
     },
     "yun2024:304": {
       "record_id": "yun2024:304",
@@ -3380,11 +3356,7 @@
           "ende": 5515,
           "abgedeckt": 1
         }
-      },
-      "werte_weit": 1,
-      "weit_fenster": 1,
-      "weit_orakel": 1,
-      "weit_mehrfach": 1
+      }
     },
     "yun2024:356": {
       "record_id": "yun2024:356",
@@ -3495,11 +3467,7 @@
           "ende": 6000,
           "abgedeckt": 1
         }
-      },
-      "werte_weit": 1,
-      "weit_fenster": 1,
-      "weit_orakel": 1,
-      "weit_mehrfach": 1
+      }
     },
     "yun2024:420": {
       "record_id": "yun2024:420",
@@ -3748,11 +3716,7 @@
           "ende": 19138,
           "abgedeckt": 6
         }
-      },
-      "werte_weit": 6,
-      "weit_fenster": 6,
-      "weit_orakel": 6,
-      "weit_mehrfach": 6
+      }
     },
     "yun2024:421": {
       "record_id": "yun2024:421",
@@ -4046,11 +4010,7 @@
           "ende": 19181,
           "abgedeckt": 6
         }
-      },
-      "werte_weit": 6,
-      "weit_fenster": 6,
-      "weit_orakel": 6,
-      "weit_mehrfach": 6
+      }
     },
     "yun2024:446": {
       "record_id": "yun2024:446",
@@ -4305,11 +4265,7 @@
           "ende": 17366,
           "abgedeckt": 3
         }
-      },
-      "werte_weit": 3,
-      "weit_fenster": 1,
-      "weit_orakel": 3,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:451": {
       "record_id": "yun2024:451",
@@ -4474,11 +4430,7 @@
           "ende": 21604,
           "abgedeckt": 3
         }
-      },
-      "werte_weit": 3,
-      "weit_fenster": 1,
-      "weit_orakel": 3,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:523": {
       "record_id": "yun2024:523",
@@ -4653,11 +4605,7 @@
           "ende": 6000,
           "abgedeckt": 3
         }
-      },
-      "werte_weit": 3,
-      "weit_fenster": 3,
-      "weit_orakel": 3,
-      "weit_mehrfach": 1
+      }
     },
     "yun2024:525": {
       "record_id": "yun2024:525",
@@ -4832,18 +4780,30 @@
           "ende": 6000,
           "abgedeckt": 3
         }
-      },
-      "werte_weit": 3,
-      "weit_fenster": 3,
-      "weit_orakel": 3,
-      "weit_mehrfach": 3
+      }
     },
     "yun2024:557": {
       "record_id": "yun2024:557",
       "dokument": "PMC3136370",
       "text_zeichen": 13122,
-      "hat_body_ueberschrift": false,
-      "abschnitte": [],
+      "hat_body_ueberschrift": true,
+      "abschnitte": [
+        [
+          0,
+          1727,
+          "abstract"
+        ],
+        [
+          1727,
+          13122,
+          "ergebnisse"
+        ],
+        [
+          1727,
+          13122,
+          "body_sonstiges"
+        ]
+      ],
       "werte": {
         "-19.57": {
           "etikette": "nirgends",
@@ -4854,11 +4814,11 @@
           "stellen": []
         },
         "12.0": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_text",
           "stellen": [
             {
               "start": 2048,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4867,7 +4827,7 @@
             },
             {
               "start": 2546,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4876,7 +4836,7 @@
             },
             {
               "start": 5694,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4885,7 +4845,7 @@
             },
             {
               "start": 8967,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4894,7 +4854,7 @@
             },
             {
               "start": 10891,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4903,7 +4863,7 @@
             },
             {
               "start": 12486,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4912,7 +4872,7 @@
             },
             {
               "start": 12499,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4922,11 +4882,11 @@
           ]
         },
         "16.0": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_text",
           "stellen": [
             {
               "start": 1025,
-              "abschnitt": "unbekannt",
+              "abschnitt": "abstract",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4935,7 +4895,7 @@
             },
             {
               "start": 1097,
-              "abschnitt": "unbekannt",
+              "abschnitt": "abstract",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4944,7 +4904,7 @@
             },
             {
               "start": 2072,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4953,7 +4913,7 @@
             },
             {
               "start": 2981,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4962,7 +4922,7 @@
             },
             {
               "start": 3324,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4971,7 +4931,7 @@
             },
             {
               "start": 3672,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4980,7 +4940,7 @@
             },
             {
               "start": 4369,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -4989,7 +4949,7 @@
             },
             {
               "start": 5333,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5009,34 +4969,34 @@
       },
       "werte_gesamt": 6,
       "werte_im_text": 2,
-      "werte_streng": 0,
+      "werte_streng": 2,
       "fenster": {
         "start": 0,
         "ende": 6000
       },
-      "streng_fenster": 0,
-      "streng_orakel": 0,
-      "streng_mehrfach": 0,
+      "streng_fenster": 2,
+      "streng_orakel": 2,
+      "streng_mehrfach": 2,
       "streng_regeln": {
         "score": {
           "start": 0,
           "ende": 6000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "outcome_erste": {
           "start": 0,
           "ende": 6000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "outcome_letzte": {
           "start": 7122,
           "ende": 13122,
-          "abgedeckt": 0
+          "abgedeckt": 1
         },
         "anker_max": {
           "start": 0,
           "ende": 6000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "mehrfach_3x2000": {
           "stuecke": [
@@ -5053,25 +5013,37 @@
               10000
             ]
           ],
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "orakel_6000": {
           "start": 0,
           "ende": 6000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         }
-      },
-      "werte_weit": 2,
-      "weit_fenster": 2,
-      "weit_orakel": 2,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:559": {
       "record_id": "yun2024:559",
       "dokument": "PMC3136370",
       "text_zeichen": 13122,
-      "hat_body_ueberschrift": false,
-      "abschnitte": [],
+      "hat_body_ueberschrift": true,
+      "abschnitte": [
+        [
+          0,
+          1727,
+          "abstract"
+        ],
+        [
+          1727,
+          13122,
+          "ergebnisse"
+        ],
+        [
+          1727,
+          13122,
+          "body_sonstiges"
+        ]
+      ],
       "werte": {
         "-8.0": {
           "etikette": "nirgends",
@@ -5082,11 +5054,11 @@
           "stellen": []
         },
         "12.0": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_text",
           "stellen": [
             {
               "start": 2048,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5095,7 +5067,7 @@
             },
             {
               "start": 2546,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5104,7 +5076,7 @@
             },
             {
               "start": 5694,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5113,7 +5085,7 @@
             },
             {
               "start": 8967,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5122,7 +5094,7 @@
             },
             {
               "start": 10891,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5131,7 +5103,7 @@
             },
             {
               "start": 12486,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5140,7 +5112,7 @@
             },
             {
               "start": 12499,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5154,11 +5126,11 @@
           "stellen": []
         },
         "16.0": {
-          "etikette": "unbekannt",
+          "etikette": "ergebnisteil_text",
           "stellen": [
             {
               "start": 1025,
-              "abschnitt": "unbekannt",
+              "abschnitt": "abstract",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5167,7 +5139,7 @@
             },
             {
               "start": 1097,
-              "abschnitt": "unbekannt",
+              "abschnitt": "abstract",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5176,7 +5148,7 @@
             },
             {
               "start": 2072,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5185,7 +5157,7 @@
             },
             {
               "start": 2981,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5194,7 +5166,7 @@
             },
             {
               "start": 3324,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5203,7 +5175,7 @@
             },
             {
               "start": 3672,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5212,7 +5184,7 @@
             },
             {
               "start": 4369,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5221,7 +5193,7 @@
             },
             {
               "start": 5333,
-              "abschnitt": "unbekannt",
+              "abschnitt": "ergebnisse",
               "zitat": false,
               "verweis": false,
               "tabelle": false,
@@ -5237,34 +5209,34 @@
       },
       "werte_gesamt": 6,
       "werte_im_text": 2,
-      "werte_streng": 0,
+      "werte_streng": 2,
       "fenster": {
         "start": 1500,
         "ende": 7500
       },
-      "streng_fenster": 0,
-      "streng_orakel": 0,
-      "streng_mehrfach": 0,
+      "streng_fenster": 2,
+      "streng_orakel": 2,
+      "streng_mehrfach": 2,
       "streng_regeln": {
         "score": {
           "start": 1500,
           "ende": 7500,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "outcome_erste": {
           "start": 0,
           "ende": 6000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "outcome_letzte": {
           "start": 7122,
           "ende": 13122,
-          "abgedeckt": 0
+          "abgedeckt": 1
         },
         "anker_max": {
           "start": 1650,
           "ende": 7650,
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "mehrfach_3x2000": {
           "stuecke": [
@@ -5281,18 +5253,14 @@
               2250
             ]
           ],
-          "abgedeckt": 0
+          "abgedeckt": 2
         },
         "orakel_6000": {
           "start": 0,
           "ende": 6000,
-          "abgedeckt": 0
+          "abgedeckt": 2
         }
-      },
-      "werte_weit": 2,
-      "weit_fenster": 2,
-      "weit_orakel": 2,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:582": {
       "record_id": "yun2024:582",
@@ -5403,11 +5371,7 @@
           "ende": 10693,
           "abgedeckt": 1
         }
-      },
-      "werte_weit": 1,
-      "weit_fenster": 0,
-      "weit_orakel": 1,
-      "weit_mehrfach": 0
+      }
     },
     "yun2024:624": {
       "record_id": "yun2024:624",
@@ -5493,11 +5457,7 @@
           "ende": 5258,
           "abgedeckt": 0
         }
-      },
-      "werte_weit": 0,
-      "weit_fenster": 0,
-      "weit_orakel": 0,
-      "weit_mehrfach": 0
+      }
     },
     "yun2024:625": {
       "record_id": "yun2024:625",
@@ -5587,11 +5547,7 @@
           "ende": 5258,
           "abgedeckt": 0
         }
-      },
-      "werte_weit": 0,
-      "weit_fenster": 0,
-      "weit_orakel": 0,
-      "weit_mehrfach": 0
+      }
     },
     "yun2024:671": {
       "record_id": "yun2024:671",
@@ -6148,11 +6104,7 @@
           "ende": 6000,
           "abgedeckt": 2
         }
-      },
-      "werte_weit": 2,
-      "weit_fenster": 2,
-      "weit_orakel": 2,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:672": {
       "record_id": "yun2024:672",
@@ -6709,11 +6661,7 @@
           "ende": 6000,
           "abgedeckt": 2
         }
-      },
-      "werte_weit": 2,
-      "weit_fenster": 2,
-      "weit_orakel": 2,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:674": {
       "record_id": "yun2024:674",
@@ -7425,11 +7373,7 @@
           "ende": 18856,
           "abgedeckt": 5
         }
-      },
-      "werte_weit": 6,
-      "weit_fenster": 2,
-      "weit_orakel": 5,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:673": {
       "record_id": "yun2024:673",
@@ -8177,11 +8121,7 @@
           "ende": 19506,
           "abgedeckt": 6
         }
-      },
-      "werte_weit": 6,
-      "weit_fenster": 2,
-      "weit_orakel": 6,
-      "weit_mehrfach": 2
+      }
     },
     "yun2024:685": {
       "record_id": "yun2024:685",
@@ -8283,11 +8223,7 @@
           "ende": 9710,
           "abgedeckt": 1
         }
-      },
-      "werte_weit": 1,
-      "weit_fenster": 0,
-      "weit_orakel": 1,
-      "weit_mehrfach": 0
+      }
     },
     "yun2024:678": {
       "record_id": "yun2024:678",
@@ -8552,11 +8488,7 @@
           "ende": 6000,
           "abgedeckt": 0
         }
-      },
-      "werte_weit": 0,
-      "weit_fenster": 0,
-      "weit_orakel": 0,
-      "weit_mehrfach": 0
+      }
     },
     "yun2024:687": {
       "record_id": "yun2024:687",
@@ -8658,11 +8590,7 @@
           "ende": 9710,
           "abgedeckt": 1
         }
-      },
-      "werte_weit": 1,
-      "weit_fenster": 0,
-      "weit_orakel": 1,
-      "weit_mehrfach": 0
+      }
     }
   }
 }
