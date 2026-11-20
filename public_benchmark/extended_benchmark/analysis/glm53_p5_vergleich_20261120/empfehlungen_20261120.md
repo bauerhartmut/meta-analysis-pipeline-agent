@@ -321,26 +321,34 @@ Regel, nur eine andere Dokumentaufbereitung.
 
 Nachgeprüft am 20.11.2026 (`fundstellen_20261120.py`): Von den 92 im Text
 gefundenen Werten ist genau **einer** eine reine Zitat- oder Verweisnummer
-(152: 7.0 ist "Figure 7"). **75** stehen im Ergebnisteil, davon 19 nur in
-eingeflachtem Tabellentext; 2 stehen nur im Abstract, 2 nur in der Diskussion,
-12 in vier Dokumenten ohne Body-Überschrift (52, 152, 557, 559; auf 52 stehen
-sie sichtbar in der Ergebnistabelle). Auf der belastbaren Menge bleibt der
-Abstand zwischen Orakel und Fenster erhalten: **74 gegen 48** (mit den
-Unbekannten 85 gegen 56). Die 91/67 sind also nicht durch Zufallstreffer
-getragen; wer nur den Ergebnisteil zählt, nennt 74/48.
+(152: 7.0 ist "Figure 7"). **87** stehen im Ergebnisteil, davon 23 nur in
+eingeflachtem Tabellentext; 2 stehen nur im Abstract, 2 nur in der Diskussion.
+Die vier Dokumente ohne Body-Überschrift (52, 152, 557, 559) tragen nummerierte
+Überschriften (`# 3. Results`); nach deren Erkennung bleibt kein Wert ohne
+Abschnitt. Auf der belastbaren Menge bleibt der Abstand zwischen Orakel und
+Fenster erhalten: **85 gegen 56**. Die 91/67 sind also nicht durch
+Zufallstreffer getragen; wer nur den Ergebnisteil zählt, nennt 85/56.
 
 Für eine qwen-Serie heißt das: über alle 33 würde sie zu 51 von 118 Werten
 (43 %) die Fensterwahl bzw. die Dokumentaufbereitung messen. Das Modell messbar
-ist sie auf den 21 Records mit mindestens zwei Werten im Fenster; 159 und
-446/451 gewinnen mit drei 2.000er-Stücken, 685/687 nur mit einem Fenster, das
-bis an die Tabellenzeile reicht.
+ist sie auf den 21 Records mit mindestens zwei Werten im Fenster. 159 und
+446/451 gewinnen mit drei 2.000er-Stücken nur an Abdeckung (0 → 4 bzw. 1 → 2),
+nicht an der Goldzeile; 685/687 erreicht nur ein Fenster, das bis an die
+Tabellenzeile reicht.
 
 1. **Erledigt:** Fensterlage offline geprüft (0 Tokens), Ergebnis oben und in
    `p5_fensterlage_20261120.md`.
-2. **Nächster Aufruf:** qwen-Serie nur auf den 21 Records mit mindestens zwei
-   Werten im Fenster (Budget 16.000 je Record, gemessener Verbrauch
-   6.236–7.728); 164, 624, 625 bleiben außen vor, bis die Bildtabellen
-   maschinenlesbar sind.
+2. **Dreifenster-Serie gelaufen (20.11.2026):** 30, 673 und 674 mit qwen,
+   Budget 16.000, drei 2.000er-Stücke (`dreifenster_serie_ergebnis_20261120.md`).
+   Alle drei antworten (`ok`), 21.638 Tokens, 990 s; **0 von 3** zitieren das
+   Goldmittel. Die Goldzeile lag in allen drei Fällen zwischen den Stücken
+   (30: 8.385; 673/674: 19.505/20.177). Die vorab gemessene Abdeckung 2/6, 4/6,
+   4/6 war teils zufällig (23 % drug stores, 32 % facilities, 26 % education).
+   Ein blindes Tabellendichte-Fenster erreicht 6/6 auf 30 und 4/6 bzw. 3/6 auf
+   673/674.
+3. **Nächster Aufruf:** Prompt aus Tabellenfenster plus Prosa-Stück, zuerst
+   offline prüfen (30 erreicht 6/6), dann ein Aufruf mit 16.000 Tokens. Keine
+   weitere Serie über Prosa-Fenster.
 
 Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Feldbezeichnung offen),
 weitere Prompt-Fassungen auf 420/421 (Befund 1), eine Budgeterhöhung als

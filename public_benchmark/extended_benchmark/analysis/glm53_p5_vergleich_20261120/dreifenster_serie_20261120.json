@@ -1,0 +1,218 @@
+{
+  "n": 3,
+  "tokens": 21638,
+  "sekunden": 990.0,
+  "records_mit_goldmittel": 0,
+  "faelle": {
+    "yun2024:30": {
+      "record_id": "yun2024:30",
+      "outcome": "Short-Form 36-Items improvement",
+      "outcome_type": "continuous",
+      "stuecke": [
+        [
+          750,
+          2750
+        ],
+        [
+          5500,
+          7500
+        ],
+        [
+          18750,
+          20750
+        ]
+      ],
+      "goldzeile": 8385,
+      "goldzeile_in_stueck": false,
+      "goldwerte": [
+        7.4,
+        9.5,
+        31.5,
+        38.1,
+        199.0,
+        393.0
+      ],
+      "naiv_abgedeckt": 2,
+      "status": "ok",
+      "finish_reason": "stop",
+      "completion_tokens": 5781,
+      "elapsed_s": 266.53,
+      "prompt_zeichen": 7509,
+      "prompt_sha256": "068e01f7cb0d64417d17c18ea9bf5eb011de46c7fa0ae940172018585ed73973",
+      "locators": [
+        {
+          "arm": "intervention",
+          "timepoint": "week 52",
+          "satz": "Mean changes from baseline in the SF-36 Mental Component Summary (MCS) at week 52 for CZP 200 mg and 400 mg plus MTX, and PBO plus MTX were 6.4, 6.4 and 2.1, respectively (*P* < 0.001).",
+          "zahlen": [
+            0.001,
+            1.0,
+            2.1,
+            6.4,
+            36.0,
+            52.0,
+            200.0,
+            400.0
+          ],
+          "goldwerte_im_satz": [],
+          "goldmittel_im_satz": false
+        },
+        {
+          "arm": "comparator",
+          "timepoint": "week 52",
+          "satz": "Mean changes from baseline in the SF-36 Mental Component Summary (MCS) at week 52 for CZP 200 mg and 400 mg plus MTX, and PBO plus MTX were 6.4, 6.4 and 2.1, respectively (*P* < 0.001).",
+          "zahlen": [
+            0.001,
+            1.0,
+            2.1,
+            6.4,
+            36.0,
+            52.0,
+            200.0,
+            400.0
+          ],
+          "goldwerte_im_satz": [],
+          "goldmittel_im_satz": false
+        }
+      ],
+      "tabellenfenster_start": 7641,
+      "tabellenfenster_abgedeckt": 6
+    },
+    "yun2024:673": {
+      "record_id": "yun2024:673",
+      "outcome": "treatment according to guidelines",
+      "outcome_type": "continuous",
+      "stuecke": [
+        [
+          0,
+          2000
+        ],
+        [
+          9250,
+          11250
+        ],
+        [
+          25750,
+          27750
+        ]
+      ],
+      "goldzeile": 19505,
+      "goldzeile_in_stueck": false,
+      "goldwerte": [
+        12.0,
+        14.0,
+        22.6,
+        23.0,
+        32.0,
+        36.4
+      ],
+      "naiv_abgedeckt": 4,
+      "status": "ok",
+      "finish_reason": "stop",
+      "completion_tokens": 6543,
+      "elapsed_s": 371.55,
+      "prompt_zeichen": 7499,
+      "prompt_sha256": "c13c829c2821593bd6e8e40aabf1be392551e30b7e67bec96f630fe84a72134f",
+      "locators": [
+        {
+          "arm": "intervention",
+          "timepoint": "",
+          "satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+          "zahlen": [
+            23.0,
+            24.0,
+            36.0
+          ],
+          "goldwerte_im_satz": [
+            23.0
+          ],
+          "goldmittel_im_satz": false
+        },
+        {
+          "arm": "comparator",
+          "timepoint": "",
+          "satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+          "zahlen": [
+            23.0,
+            24.0,
+            36.0
+          ],
+          "goldwerte_im_satz": [
+            23.0
+          ],
+          "goldmittel_im_satz": false
+        }
+      ],
+      "tabellenfenster_start": 23937,
+      "tabellenfenster_abgedeckt": 4
+    },
+    "yun2024:674": {
+      "record_id": "yun2024:674",
+      "outcome": "treatment according to guidelines",
+      "outcome_type": "continuous",
+      "stuecke": [
+        [
+          0,
+          2000
+        ],
+        [
+          9250,
+          11250
+        ],
+        [
+          25750,
+          27750
+        ]
+      ],
+      "goldzeile": 20177,
+      "goldzeile_in_stueck": false,
+      "goldwerte": [
+        12.0,
+        14.0,
+        22.6,
+        23.0,
+        23.5,
+        26.0
+      ],
+      "naiv_abgedeckt": 4,
+      "status": "ok",
+      "finish_reason": "stop",
+      "completion_tokens": 9314,
+      "elapsed_s": 351.92,
+      "prompt_zeichen": 7519,
+      "prompt_sha256": "74f7861f25a9251cfa440fa688e1c34d92b8c1943cae4327e74038c2fbb1edc4",
+      "locators": [
+        {
+          "arm": "comparator",
+          "timepoint": "",
+          "satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+          "zahlen": [
+            23.0,
+            24.0,
+            36.0
+          ],
+          "goldwerte_im_satz": [
+            23.0
+          ],
+          "goldmittel_im_satz": false
+        },
+        {
+          "arm": "intervention",
+          "timepoint": "",
+          "satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+          "zahlen": [
+            23.0,
+            24.0,
+            36.0
+          ],
+          "goldwerte_im_satz": [
+            23.0
+          ],
+          "goldmittel_im_satz": false
+        }
+      ],
+      "tabellenfenster_start": 23937,
+      "tabellenfenster_abgedeckt": 3
+    }
+  }
+}
