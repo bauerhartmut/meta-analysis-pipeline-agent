@@ -45,6 +45,10 @@ RECORD_ID = "yun2024:525"
 AUSGABE = HIER / "zweistufig_lauf_20261120"
 MODELL = "glm"
 PROMPT_LABEL = "stage1_ankerlos"
+#: Budget des zweiten Aufrufs: der einzige gemessene Punkt, an dem dieses Modell
+#: mit vergleichbarem Prompt fertig wurde (yun2024:559 mit Anker, Fassung 1,
+#: finish_reason = stop). Keine Schaetzung.
+BUDGET_GEMESSEN = 16632
 
 
 def umgebung(text: str, label: str, breite: int = 400) -> tuple[int, str]:
@@ -59,6 +63,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--record", default=RECORD_ID)
+    parser.add_argument("--budget", type=int, default=BUDGET_GEMESSEN)
+    parser.add_argument("--out", default="predictions.jsonl")
     args = parser.parse_args()
 
     records = {r["record_id"]: r for r in v.lade(v.RECORDS)}
@@ -66,14 +72,14 @@ def main() -> int:
     fall = baue_fall(args.record, record)
     prompt = fall["prompt"]
 
-    print(f"{args.record}: Prompt {len(prompt)} Zeichen, Budget {STAGE1_MAX_TOKENS}, "
+    print(f"{args.record}: Prompt {len(prompt)} Zeichen, Budget {args.budget}, "
           f"Goldwerte im Ausschnitt {fall['goldwerte_im_volltext']}/{len(fall['gold'])}")
     if args.dry_run:
         print("DRY-RUN: keine Anfrage")
         return 0
 
     AUSGABE.mkdir(parents=True, exist_ok=True)
-    ziel = AUSGABE / "predictions.jsonl"
+    ziel = AUSGABE / args.out
     fertig = {json.loads(z)["record_id"] for z in ziel.read_text(encoding="utf-8").splitlines()
               if z.strip()} if ziel.exists() else set()
     if args.record in fertig:
@@ -88,7 +94,7 @@ def main() -> int:
         return 2
 
     modell = dict(rx.MODELS[MODELL])
-    modell["max_tokens"] = STAGE1_MAX_TOKENS
+    modell["max_tokens"] = args.budget
     original = rx.SYSTEM
     try:
         rx.SYSTEM = STAGE1_SYSTEM
@@ -130,7 +136,8 @@ def main() -> int:
         "prompt_version": PROMPT_LABEL,
         "prompt_zeichen": len(prompt),
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
-        "max_tokens": STAGE1_MAX_TOKENS,
+        "max_tokens": args.budget,
+        "budget_begruendung": "gemessener Fertig-Punkt von yun2024:559 mit Anker (16.632 Tokens)",
         "status": "abgebrochen" if abgebrochen else "ok",
         "abbruchkriterium": "content_chars == 0 oder finish_reason == length",
         "http_status": antwort.get("http_status"),
