@@ -319,6 +319,16 @@ Fenster dieser Breite. Der Engpass ist die Startregel, nicht die Breite: drei
 Fenster (164, 624, 625) haben gar keinen Goldwert im Text; dort hilft keine
 Regel, nur eine andere Dokumentaufbereitung.
 
+Nachgeprüft am 20.11.2026 (`fundstellen_20261120.py`): Von den 92 im Text
+gefundenen Werten ist genau **einer** eine reine Zitat- oder Verweisnummer
+(152: 7.0 ist "Figure 7"). **75** stehen im Ergebnisteil, davon 19 nur in
+eingeflachtem Tabellentext; 2 stehen nur im Abstract, 2 nur in der Diskussion,
+12 in vier Dokumenten ohne Body-Überschrift (52, 152, 557, 559; auf 52 stehen
+sie sichtbar in der Ergebnistabelle). Auf der belastbaren Menge bleibt der
+Abstand zwischen Orakel und Fenster erhalten: **74 gegen 48** (mit den
+Unbekannten 85 gegen 56). Die 91/67 sind also nicht durch Zufallstreffer
+getragen; wer nur den Ergebnisteil zählt, nennt 74/48.
+
 Für eine qwen-Serie heißt das: über alle 33 würde sie zu 51 von 118 Werten
 (43 %) die Fensterwahl bzw. die Dokumentaufbereitung messen. Das Modell messbar
 ist sie auf den 21 Records mit mindestens zwei Werten im Fenster; 159 und
