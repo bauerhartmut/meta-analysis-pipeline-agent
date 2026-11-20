@@ -1,0 +1,978 @@
+{
+  "statisch": {
+    "anzahl": 45,
+    "treffer": [
+      {
+        "datei": "public_benchmark/extended_benchmark/adapters/common.py",
+        "zeile": 33,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "text = text.replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/analysis/glm53_p5_vergleich_20261120/vergleiche_20261120.py",
+        "zeile": 49,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "text = str(wert).strip().replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/analyze_errors.py",
+        "zeile": 252,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "variants.append(f\"{value:,.0f}\".replace(\",\", \".\"))"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/check_timepoints.py",
+        "zeile": 53,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "value = float(match.group(1).replace(\",\", \".\"))"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/iterativ/gemeinsam.py",
+        "zeile": 170,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": true,
+        "text": "s = s.replace(\",\", \"\")"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/iterativ/gemeinsam.py",
+        "zeile": 174,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": true,
+        "text": "s = s.replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/iterativ/gemeinsam.py",
+        "zeile": 194,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": true,
+        "text": "out.add(ohne_leer.replace(\",\", \".\"))"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/precheck_gold.py",
+        "zeile": 75,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "roh = treffer.group(0).replace(\" \", \"\").replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/run_extended_extraction.py",
+        "zeile": 467,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "number = float(str(value).replace(\",\", \".\"))"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/stage_extraction.py",
+        "zeile": 155,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "text = str(raw).replace(\",\", \".\").strip()"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/table_decomposition/diagnose_spaltenzeitpunkte.py",
+        "zeile": 89,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "paare.append((float(treffer.replace(\",\", \".\")), treffer))"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/table_decomposition/report.py",
+        "zeile": 28,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "return f\"{value:,}\".replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/yun_full/baue_yun699.py",
+        "zeile": 77,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": false,
+        "text": "return float(versuch.replace(\",\", \"\")), True"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/yun_full/diagnose_sprint48.py",
+        "zeile": 456,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "return f\"{int(wert):,}\".replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/yun_full/diagnose_sprint48.py",
+        "zeile": 458,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "return f\"{wert:,}\".replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/yun_full/nachzug_p5.py",
+        "zeile": 147,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "return f\"{zahl:,}\".replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/extended_benchmark/yun_full/werte_p5_aus.py",
+        "zeile": 104,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "text = str(wert).strip().replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/utils.py",
+        "zeile": 370,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": false,
+        "text": "return int(value.replace(',', ''))"
+      },
+      {
+        "datei": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/utils.py",
+        "zeile": 383,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": false,
+        "text": "return float(value.replace(',', ''))"
+      },
+      {
+        "datei": "public_benchmark/scripts/build_inventory.py",
+        "zeile": 78,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": false,
+        "text": "text = str(value).strip().replace(\",\", \"\")"
+      },
+      {
+        "datei": "public_benchmark/scripts/build_p0_review_batch2_checklist.py",
+        "zeile": 48,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": false,
+        "text": "value = unicodedata.normalize(\"NFKC\", value).casefold().replace(\",\", \"\")"
+      },
+      {
+        "datei": "public_benchmark/scripts/build_p0_review_batch2_checklist.py",
+        "zeile": 151,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": true,
+        "text": "return {token.replace(\",\", \"\") for token in tokens}"
+      },
+      {
+        "datei": "public_benchmark/scripts/goldstandard/adapter_eururology.py",
+        "zeile": 46,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "return float(value.replace(\",\", \".\"))"
+      },
+      {
+        "datei": "public_benchmark/scripts/goldstandard/adapter_pico_corpus.py",
+        "zeile": 55,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "return float(match.group(0).replace(\",\", \".\"))"
+      },
+      {
+        "datei": "public_benchmark/scripts/goldstandard/analyse_medsr_bench.py",
+        "zeile": 70,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "text = str(value).strip().replace(\",\", \".\")"
+      },
+      {
+        "datei": "public_benchmark/scripts/goldstandard/score_tier1.py",
+        "zeile": 53,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "cells.append((key, float(str(value).replace(\",\", \".\"))))"
+      },
+      {
+        "datei": "public_benchmark/scripts/goldstandard/score_tier1.py",
+        "zeile": 127,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "values[key] = float(str(value).replace(\",\", \".\"))"
+      },
+      {
+        "datei": "public_benchmark/scripts/match_dcbti_review_studies.py",
+        "zeile": 279,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "value = float(number.replace(\",\", \".\"))"
+      },
+      {
+        "datei": "public_benchmark/tests/test_bilanz_adversarial_20261118.py",
+        "zeile": 41,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "return float(str(wert).strip().replace(\",\", \".\"))"
+      },
+      {
+        "datei": "research_agent/agents/evidence_scorer.py",
+        "zeile": 117,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": false,
+        "text": "n = int(match.group(1).replace(\",\", \"\"))"
+      },
+      {
+        "datei": "research_agent/llm/token_zaehler.py",
+        "zeile": 224,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "return f\"{int(wert or 0):,}\".replace(\",\", \".\")"
+      },
+      {
+        "datei": "research_agent/meta/arm_level.py",
+        "zeile": 116,
+        "muster": "Punkt und Komma werden beide entfernt",
+        "gruppierung_in_umgebung": true,
+        "text": "token = token.replace(\".\", \"\").replace(\",\", \".\")"
+      },
+      {
+        "datei": "research_agent/meta/arm_level.py",
+        "zeile": 118,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": true,
+        "text": "token = token.replace(\",\", \"\")"
+      },
+      {
+        "datei": "research_agent/meta/arm_level.py",
+        "zeile": 120,
+        "muster": "Komma wird entfernt",
+        "gruppierung_in_umgebung": true,
+        "text": "token = token.replace(\",\", \"\")"
+      },
+      {
+        "datei": "research_agent/meta/arm_level.py",
+        "zeile": 122,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": true,
+        "text": "token = token.replace(\",\", \".\")"
+      },
+      {
+        "datei": "research_agent/meta/benchmark.py",
+        "zeile": 48,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "entry[\"wert_num\"] = float(str(entry.get(\"wert\") or \"\").replace(\",\", \".\"))"
+      },
+      {
+        "datei": "research_agent/meta/quote_gaps.py",
+        "zeile": 52,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "text = text.replace(\",\", \".\")"
+      },
+      {
+        "datei": "research_agent/research/vision_table.py",
+        "zeile": 49,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "s = s.replace(\",\", \".\")"
+      },
+      {
+        "datei": "research_agent/table_decomposition/parser.py",
+        "zeile": 56,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "s = s.replace(\",\", \".\")"
+      },
+      {
+        "datei": "research_agent/table_decomposition/provenienz.py",
+        "zeile": 160,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "wert = float(einzel.group(2).replace(\",\", \".\"))"
+      },
+      {
+        "datei": "research_agent/table_decomposition/semantics.py",
+        "zeile": 1255,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "werte.add(round(float(treffer.group(1).replace(\",\", \".\")), 6))"
+      },
+      {
+        "datei": "research_agent/tests/test_pwert_korroboration.py",
+        "zeile": 46,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "zelle.value = float(treffer.group(0).replace(\",\", \".\"))"
+      },
+      {
+        "datei": "research_agent/verification/compare.py",
+        "zeile": 24,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "out.append(float(token.replace(\",\", \".\")))"
+      },
+      {
+        "datei": "research_agent/verification/tables.py",
+        "zeile": 49,
+        "muster": "Komma wird zu Punkt (Spiegelrichtung)",
+        "gruppierung_in_umgebung": false,
+        "text": "return float(str(text).replace(\",\", \".\"))"
+      },
+      {
+        "datei": "scripts/pruefe_extraktion_20261109.py",
+        "zeile": 83,
+        "muster": "Punkt und Komma werden beide entfernt",
+        "gruppierung_in_umgebung": false,
+        "text": "text = text.replace(\".\", \"\").replace(\",\", \".\") if \",\" in text else text"
+      }
+    ]
+  },
+  "dynamisch": [
+    {
+      "datei": "public_benchmark/extended_benchmark/iterativ/gemeinsam.py",
+      "funktion": "gemeinsam.als_zahl",
+      "ergebnisse": [
+        {
+          "eingabe": "7.69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "der alte Fehler machte daraus 769"
+        },
+        {
+          "eingabe": "7,69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "769",
+          "ergebnis": 769.0,
+          "zulaessig": [
+            769.0
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "ganze Zahl"
+        },
+        {
+          "eingabe": "1,919",
+          "ergebnis": 1919.0,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "englischer Tausendertrenner oder deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "1.919",
+          "ergebnis": 1919.0,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "deutscher Tausendertrenner oder Dezimalpunkt"
+        },
+        {
+          "eingabe": "1.234,5",
+          "ergebnis": null,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "deutsch: Punkt Tausender, Komma Dezimal"
+        },
+        {
+          "eingabe": "1,234.5",
+          "ergebnis": null,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "englisch: Komma Tausender, Punkt Dezimal"
+        },
+        {
+          "eingabe": "11,897",
+          "ergebnis": 11897.0,
+          "zulaessig": [
+            11.897,
+            11897.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "mehrdeutig wie 1,919"
+        }
+      ],
+      "fehler": 2,
+      "urteil": "fehlerhaft"
+    },
+    {
+      "datei": "public_benchmark/extended_benchmark/yun_full/werte_p5_aus.py",
+      "funktion": "werte_p5_aus.zahl",
+      "ergebnisse": [
+        {
+          "eingabe": "7.69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "der alte Fehler machte daraus 769"
+        },
+        {
+          "eingabe": "7,69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "769",
+          "ergebnis": 769.0,
+          "zulaessig": [
+            769.0
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "ganze Zahl"
+        },
+        {
+          "eingabe": "1,919",
+          "ergebnis": 1.919,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "englischer Tausendertrenner oder deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "1.919",
+          "ergebnis": 1.919,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "deutscher Tausendertrenner oder Dezimalpunkt"
+        },
+        {
+          "eingabe": "1.234,5",
+          "ergebnis": null,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "deutsch: Punkt Tausender, Komma Dezimal"
+        },
+        {
+          "eingabe": "1,234.5",
+          "ergebnis": null,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "englisch: Komma Tausender, Punkt Dezimal"
+        },
+        {
+          "eingabe": "11,897",
+          "ergebnis": 11.897,
+          "zulaessig": [
+            11.897,
+            11897.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "mehrdeutig wie 1,919"
+        }
+      ],
+      "fehler": 2,
+      "urteil": "fehlerhaft"
+    },
+    {
+      "datei": "public_benchmark/extended_benchmark/analysis/glm53_p5_vergleich_20261120/vergleiche_20261120.py",
+      "funktion": "vergleiche.zahl",
+      "ergebnisse": [
+        {
+          "eingabe": "7.69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "der alte Fehler machte daraus 769"
+        },
+        {
+          "eingabe": "7,69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "769",
+          "ergebnis": 769.0,
+          "zulaessig": [
+            769.0
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "ganze Zahl"
+        },
+        {
+          "eingabe": "1,919",
+          "ergebnis": 1.919,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "englischer Tausendertrenner oder deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "1.919",
+          "ergebnis": 1.919,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "deutscher Tausendertrenner oder Dezimalpunkt"
+        },
+        {
+          "eingabe": "1.234,5",
+          "ergebnis": null,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "deutsch: Punkt Tausender, Komma Dezimal"
+        },
+        {
+          "eingabe": "1,234.5",
+          "ergebnis": null,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "englisch: Komma Tausender, Punkt Dezimal"
+        },
+        {
+          "eingabe": "11,897",
+          "ergebnis": 11.897,
+          "zulaessig": [
+            11.897,
+            11897.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "mehrdeutig wie 1,919"
+        }
+      ],
+      "fehler": 2,
+      "urteil": "fehlerhaft"
+    },
+    {
+      "datei": "public_benchmark/extended_benchmark/yun_full/baue_yun699.py",
+      "funktion": "baue_yun699.zahl",
+      "ergebnisse": [
+        {
+          "eingabe": "7.69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "der alte Fehler machte daraus 769"
+        },
+        {
+          "eingabe": "7,69",
+          "ergebnis": null,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "769",
+          "ergebnis": 769.0,
+          "zulaessig": [
+            769.0
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "ganze Zahl"
+        },
+        {
+          "eingabe": "1,919",
+          "ergebnis": 1919.0,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "englischer Tausendertrenner oder deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "1.919",
+          "ergebnis": 1.919,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "deutscher Tausendertrenner oder Dezimalpunkt"
+        },
+        {
+          "eingabe": "1.234,5",
+          "ergebnis": null,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "deutsch: Punkt Tausender, Komma Dezimal"
+        },
+        {
+          "eingabe": "1,234.5",
+          "ergebnis": 1234.5,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "englisch: Komma Tausender, Punkt Dezimal"
+        },
+        {
+          "eingabe": "11,897",
+          "ergebnis": 11897.0,
+          "zulaessig": [
+            11.897,
+            11897.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "mehrdeutig wie 1,919"
+        }
+      ],
+      "fehler": 2,
+      "urteil": "fehlerhaft"
+    },
+    {
+      "datei": "research_agent/meta/arm_level.py",
+      "funktion": "arm_level.parse_number",
+      "ergebnisse": [
+        {
+          "eingabe": "7.69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "der alte Fehler machte daraus 769"
+        },
+        {
+          "eingabe": "7,69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "769",
+          "ergebnis": 769.0,
+          "zulaessig": [
+            769.0
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "ganze Zahl"
+        },
+        {
+          "eingabe": "1,919",
+          "ergebnis": 1.919,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "englischer Tausendertrenner oder deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "1.919",
+          "ergebnis": 1.919,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "deutscher Tausendertrenner oder Dezimalpunkt"
+        },
+        {
+          "eingabe": "1.234,5",
+          "ergebnis": 1234.5,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "deutsch: Punkt Tausender, Komma Dezimal"
+        },
+        {
+          "eingabe": "1,234.5",
+          "ergebnis": 1234.5,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "englisch: Komma Tausender, Punkt Dezimal"
+        },
+        {
+          "eingabe": "11,897",
+          "ergebnis": 11.897,
+          "zulaessig": [
+            11.897,
+            11897.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "mehrdeutig wie 1,919"
+        }
+      ],
+      "fehler": 0,
+      "urteil": "ok"
+    },
+    {
+      "datei": "public_benchmark/extended_benchmark/precheck_gold.py",
+      "funktion": "precheck_gold",
+      "ergebnisse": [
+        {
+          "eingabe": "7.69",
+          "ergebnis": [
+            7.69
+          ],
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "der alte Fehler machte daraus 769"
+        },
+        {
+          "eingabe": "7,69",
+          "ergebnis": [
+            7.69
+          ],
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "769",
+          "ergebnis": [
+            769.0
+          ],
+          "zulaessig": [
+            769.0
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "ganze Zahl"
+        },
+        {
+          "eingabe": "1,919",
+          "ergebnis": [
+            1.919
+          ],
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "englischer Tausendertrenner oder deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "1.919",
+          "ergebnis": [
+            1.919
+          ],
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "deutscher Tausendertrenner oder Dezimalpunkt"
+        },
+        {
+          "eingabe": "1.234,5",
+          "ergebnis": [
+            1.234,
+            5.0
+          ],
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "deutsch: Punkt Tausender, Komma Dezimal"
+        },
+        {
+          "eingabe": "1,234.5",
+          "ergebnis": [
+            1.234
+          ],
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "englisch: Komma Tausender, Punkt Dezimal"
+        },
+        {
+          "eingabe": "11,897",
+          "ergebnis": [
+            11.897
+          ],
+          "zulaessig": [
+            11.897,
+            11897.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "mehrdeutig wie 1,919"
+        }
+      ],
+      "fehler": 2,
+      "urteil": "fehlerhaft"
+    },
+    {
+      "datei": "scripts/pruefe_extraktion_20261109.py",
+      "funktion": "pruefe_extraktion.zahl",
+      "ergebnisse": [
+        {
+          "eingabe": "7.69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "der alte Fehler machte daraus 769"
+        },
+        {
+          "eingabe": "7,69",
+          "ergebnis": 7.69,
+          "zulaessig": [
+            7.69
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "769",
+          "ergebnis": 769.0,
+          "zulaessig": [
+            769.0
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "ganze Zahl"
+        },
+        {
+          "eingabe": "1,919",
+          "ergebnis": 1.919,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "englischer Tausendertrenner oder deutsches Dezimalkomma"
+        },
+        {
+          "eingabe": "1.919",
+          "ergebnis": 1.919,
+          "zulaessig": [
+            1.919,
+            1919.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "deutscher Tausendertrenner oder Dezimalpunkt"
+        },
+        {
+          "eingabe": "1.234,5",
+          "ergebnis": 1234.5,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": true,
+          "mehrdeutig": false,
+          "hinweis": "deutsch: Punkt Tausender, Komma Dezimal"
+        },
+        {
+          "eingabe": "1,234.5",
+          "ergebnis": 1.2345,
+          "zulaessig": [
+            1234.5
+          ],
+          "ok": false,
+          "mehrdeutig": false,
+          "hinweis": "englisch: Komma Tausender, Punkt Dezimal"
+        },
+        {
+          "eingabe": "11,897",
+          "ergebnis": 11.897,
+          "zulaessig": [
+            11.897,
+            11897.0
+          ],
+          "ok": true,
+          "mehrdeutig": true,
+          "hinweis": "mehrdeutig wie 1,919"
+        }
+      ],
+      "fehler": 1,
+      "urteil": "fehlerhaft"
+    }
+  ]
+}
