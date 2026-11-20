@@ -67,6 +67,8 @@ def main() -> int:
     parser.add_argument("--out", default="predictions.jsonl")
     parser.add_argument("--extra", default="",
                         help="Zusatzsatz am Ende des Prompts, z. B. eine Abwaegverbotszeile")
+    parser.add_argument("--timeout", type=float, default=300.0,
+                        help="Socket-Lesezeit je HTTP-Versuch in Sekunden")
     args = parser.parse_args()
 
     records = {r["record_id"]: r for r in v.lade(v.RECORDS)}
@@ -106,11 +108,17 @@ def main() -> int:
     modell = dict(rx.MODELS[MODELL])
     modell["max_tokens"] = args.budget
     original = rx.SYSTEM
+    einmal = rx._call_once
+    # Die Lesezeit steht in `rx._call_once` fest auf 300 s; ein Aufruf mit diesem
+    # Budget kann laenger rechnen (auf yun2024:421 gemessen: 542,86 s). Die
+    # Retry-Logik von `rx.call` bleibt unveraendert, nur die Lesezeit waechst.
+    rx._call_once = lambda m, p, k, b, timeout=args.timeout: einmal(m, p, k, b, timeout=timeout)
     try:
         rx.SYSTEM = STAGE1_SYSTEM
         antwort = rx.call(modell, prompt, key, base, attempts=3)
     finally:
         rx.SYSTEM = original
+        rx._call_once = einmal
 
     inhalt = antwort.get("content") or ""
     finish = antwort.get("finish_reason") or ""
@@ -126,6 +134,10 @@ def main() -> int:
         for loc in locators:
             loc["timepoint"] = je_arm.get(str(loc.get("arm") or ""), "")
     abgebrochen = (len(inhalt) == 0) or finish == "length"
+    # 503 oder Timeout ist kein Abbruch am Tokenlimit: ohne Tokens und ohne
+    # finish_reason hat das Modell nie geantwortet.
+    transport_fehler = bool(antwort.get("error")) or antwort.get("completion_tokens") is None
+    status = "fehler" if transport_fehler else ("abgebrochen" if abgebrochen else "ok")
 
     # Zielwerte je Arm aus dem Gold, fuer den Abgleich mit der Umgebung.
     ziele: dict[str, list[float]] = {}
@@ -160,7 +172,9 @@ def main() -> int:
         "prompt_zusatz": args.extra,
         "goldwerte_im_ausschnitt": im_ausschnitt,
         "budget_begruendung": "gemessener Fertig-Punkt von yun2024:559 mit Anker (16.632 Tokens)",
-        "status": "abgebrochen" if abgebrochen else "ok",
+        "status": status,
+        "timeout_s": args.timeout,
+        "transport_fehler": transport_fehler,
         "abbruchkriterium": "content_chars == 0 oder finish_reason == length",
         "http_status": antwort.get("http_status"),
         "finish_reason": finish,
@@ -178,7 +192,8 @@ def main() -> int:
     with ziel.open("a", encoding="utf-8", newline="\n") as handle:
         handle.write(json.dumps(zeile, ensure_ascii=False) + "\n")
 
-    print(f"  -> {zeile['status']}, finish {finish}, {zeile['completion_tokens']} Tokens, "
+    print(f"  -> {status}{'' if not transport_fehler else ' (kein Modellkontakt: ' + str(zeile['fehler'])[:80] + ')'}, "
+          f"finish {finish}, {zeile['completion_tokens']} Tokens, "
           f"{zeile['content_chars']} Zeichen Inhalt, {len(locators)} Locators")
     for loc in locators:
         print(f"     {loc.get('arm')}: row={loc.get('row_label')!r} col={loc.get('column_header')!r} "
