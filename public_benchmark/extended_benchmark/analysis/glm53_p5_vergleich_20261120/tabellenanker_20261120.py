@@ -6,10 +6,17 @@ dem echten Prompt-Bauer des Harness (`build_prompt`, Version `v2_timepoint`)
 gebaut und um einen Ankerblock ergaenzt; gemessen wird nur die Laenge.
 
 Der Anker ist bewusst additiv: der bestehende Prompt bleibt Zeichen fuer Zeichen
-erhalten, damit ein spaeterer Lauf genau eine Veraenderung traegt. Er verlangt
-vor den Zellen eine Quelle (Caption oder Satz, Zeilenlabel, beide Spaltenkoepfe),
-bindet alle Zellen an diese eine Zeile und diesen einen Zeitpunkt und beendet
-die Suche, sobald der Anker den Zielzeitpunkt traegt.
+ erhalten, damit ein spaeterer Lauf genau eine Veraenderung traegt. Er verlangt
+ vor den Zellen eine Quelle (Caption oder Satz, Zeilenlabel, beide Spaltenkoepfe),
+ bindet alle Zellen an diese eine Zeile und diesen einen Zeitpunkt und verlangt
+ eine Pruefung der Quelle vor der Antwort: der Zielzeitpunkt und das Feld jeder
+ Zelle muessen in dieser Zeile gedruckt stehen, sonst bleibt die Zelle weg.
+
+Zweite Fassung nach dem Aufruf vom 20.11.2026: Der erste Anker verlangte ein
+neues Feld als ersten Schluessel und verdraengte damit `chosen_timepoint` und
+`discarded_timepoints` aus der Antwort (`yun2024:559`); ausserdem benannte er
+ohne Pruefung eine Tabelle, die den Zielzeitpunkt nicht trug. Beides ist hier
+behoben, die Feldliste und die Zeitpunktregel des Basis-Prompts bleiben.
 
 Aufruf:
     .venv/bin/python public_benchmark/extended_benchmark/analysis/glm53_p5_vergleich_20261120/tabellenanker_20261120.py
@@ -41,12 +48,26 @@ LIMIT = 45000
 ANKER = """
 
 Table anchor (binding, before any cell):
-1. Name the one place that reports this outcome: the table caption (table number and title) or, if the outcome is reported only in prose, the sentence. Copy it character for character.
-2. Add "anchor" as the first key: {"source": "<caption or sentence>", "row": "<row label exactly as printed>", "intervention_column": "<column head of the intervention arm>", "comparator_column": "<column head of the comparator arm>"}.
-3. Every cell must come from this one row and this one time point. Never combine two rows, two populations or two tables.
-4. If that row reports the target time point, answer immediately and do not search another candidate.
-5. If it does not report the target time point, return an empty cell list and name its label in "discarded_timepoints"; never substitute another time point.
+1. Name the one place that reports this outcome at the target time point: the table caption (table number and title) or, if the outcome is reported only in prose, the sentence. Copy it character for character.
+2. Add "anchor" as the first key: {"source": "<caption or sentence, copied verbatim>", "row": "<row label exactly as printed>", "intervention_column": "<column head of the intervention arm>", "comparator_column": "<column head of the comparator arm>"}.
+3. Check the anchor before you answer: the quoted source must, as printed, name the target time point and carry a value for the field of every cell you emit. A cell whose field or time point is not printed in that one row is not anchored: omit it.
+4. Never combine two rows, two populations, two tables or two time points. If no single row prints the target time point and the field, return an empty cell list instead of the nearest other row.
+5. After "anchor", always return the two keys the schema requires: "chosen_timepoint" (the label you used, copied exactly as printed) and "discarded_timepoints" (the other labels of this outcome you skipped, copied exactly as printed). Both are required even when the cell list is empty; use "not applicable" if only one time point is reported and "running text" if the outcome is printed only in prose.
 Do not describe tables you did not use."""
+
+
+#: Laenge des ersten Ankers vom 20.11.2026 (gemessen im Trockenlauf jenes Tages).
+ANKER_V1_ZEAHL = 884
+
+#: Was der Anker verlangen muss, damit die zweite Fassung nicht hinter die erste
+#: zurueckfaellt. Wird beim Start geprueft.
+PFLICHT = ("target time point", "chosen_timepoint", "discarded_timepoints", "empty cell list")
+
+
+def pruefe_anker() -> None:
+    fehlend = [wort for wort in PFLICHT if wort not in ANKER]
+    if fehlend:
+        raise SystemExit(f"Anker unvollstaendig, es fehlt: {fehlend}")
 
 
 def lade(pfad: Path) -> list[dict[str, Any]]:
@@ -54,6 +75,7 @@ def lade(pfad: Path) -> list[dict[str, Any]]:
 
 
 def main() -> int:
+    pruefe_anker()
     budget = json.loads(QUELLE_BUDGET.read_text(encoding="utf-8"))
     ohne = sorted(rid for rid, e in budget["faelle"].items() if e["gruppe"] == "ohne_struktur")
     records = {r["record_id"]: r for r in lade(RECORDS)}
@@ -105,6 +127,8 @@ def main() -> int:
             "delta_prozent": round(100 * (summe_neu - summe_alt) / summe_alt, 2) if summe_alt else None,
             "alle_reproduzierbar": all(z["budget_json_prompt_gleich"] for z in zeilen),
             "anker_zeichen": len(ANKER),
+            "anker_v1_zeichen": ANKER_V1_ZEAHL,
+            "anker_delta_gegen_v1": len(ANKER) - ANKER_V1_ZEAHL,
         },
     }
     AUSGABE_JSON.write_text(json.dumps(ergebnis, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -138,7 +162,8 @@ def main() -> int:
         "",
         f"Summe: {summe_alt} -> {summe_neu} Zeichen (+{summe_neu - summe_alt}). Der Anker kostet "
         f"{len(ANKER)} Zeichen je Aufruf, also rund {round(100 * len(ANKER) / (summe_alt / len(zeilen)), 1)} "
-        "Prozent eines durchschnittlichen Prompts dieser Gruppe.",
+        "Prozent eines durchschnittlichen Prompts dieser Gruppe; gegenueber der ersten Fassung "
+        f"({ANKER_V1_ZEAHL} Zeichen) sind das {len(ANKER) - ANKER_V1_ZEAHL:+d} Zeichen je Aufruf.",
         "",
         "## Was der Anker aendert und was nicht",
         "",
@@ -147,6 +172,12 @@ def main() -> int:
         "und die Suche endet am Anker. Die Extraktionsregeln, die Feldliste und der Zeitpunktzwang "
         "bleiben unveraendert; der Anker uebernimmt die v2-Regel, bei fehlendem Zielzeitpunkt "
         "Zellen wegzulassen statt einen anderen Zeitpunkt einzusetzen.",
+        "- Neu ist die Pruefung vor der Antwort: der genannte Quelltext muss den Zielzeitpunkt "
+        "nennen und fuer jede Zelle deren Feld drucken; sonst bleibt die Zelle weg, statt die "
+        "naechstbeste Zeile zu nehmen. Das haette im Aufruf vom 20.11. auf `yun2024:559` die "
+        "Zellen aus der Separationsanalyse-Tabelle verhindert.",
+        "- Neu ist ausserdem, dass `chosen_timepoint` und `discarded_timepoints` ausdruecklich "
+        "verlangt werden, auch bei leerer Zellenliste. Der erste Anker hatte sie verdraengt.",
         "- Er beantwortet nicht die Frage, ob der Anker den Reasoning-Verbrauch senkt. Das ist "
         "eine Hypothese; ohne Aufruf ist die Wirkung nicht gemessen. Gemessen ist nur die Prompt-Laenge.",
         "- Fuer die sechs Records ohne Tabellentext im Markdown greift Regel 1 auf den Satz zurueck; "

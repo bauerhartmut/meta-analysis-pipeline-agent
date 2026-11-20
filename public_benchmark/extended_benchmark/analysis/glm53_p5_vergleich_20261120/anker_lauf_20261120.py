@@ -2,7 +2,8 @@
 """Zwei freigegebene Anker-Aufrufe auf yun2024:559 und yun2024:615.
 
 Ein Aufruf je Record, Modell und Budget wie im P5-Lauf (glm, 24.000 Completion-
-Tokens), Prompt = `build_prompt` plus Ankerblock aus `tabellenanker_20261120.py`.
+Tokens), Prompt = `build_prompt` plus Ankerblock aus `tabellenanker_20261120.py`
+(Fassung 2: Quelle muss Zielzeitpunkt und Feld tragen, Schemafelder bleiben).
 Kein Reparaturaufruf, keine Budgeterhoehung.
 
 Festes Abbruchkriterium: eine Antwort gilt als Ausfall, wenn `content_chars == 0`
@@ -20,6 +21,7 @@ Aufruf:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 import time
@@ -41,7 +43,11 @@ from tabellenanker_20261120 import ANKER  # noqa: E402
 AUSGABE = HIER / "anker_lauf_20261120"
 IDS = ("yun2024:559", "yun2024:615")
 MODELL = "glm"
-PROMPT_LABEL = "v2_timepoint_anker"
+#: Fassung 2 seit 20.11.2026: Quelle muss Zielzeitpunkt und Feld tragen, und
+#: `chosen_timepoint`/`discarded_timepoints` sind ausdruecklich verlangt. Der
+#: Lauf vom 20.11. mit dem ersten Anker bleibt unter `v2_timepoint_anker`.
+PROMPT_LABEL = "v2_timepoint_anker2"
+ANKER_SHA256 = hashlib.sha256(ANKER.encode("utf-8")).hexdigest()
 
 
 def lade(pfad: Path) -> list[dict[str, Any]]:
@@ -116,6 +122,7 @@ def main() -> int:
             "prompt_version": PROMPT_LABEL,
             "prompt_zeichen": len(prompt),
             "anker_zeichen": len(ANKER),
+            "anker_sha256": ANKER_SHA256,
             "status": "abgebrochen" if abgebrochen else "ok",
             "abbruchkriterium": "content_chars == 0 oder finish_reason == length",
             "http_status": antwort.get("http_status"),
