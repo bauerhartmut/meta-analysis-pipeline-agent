@@ -358,10 +358,14 @@ Tabellenzeile reicht.
    `Mean change from BL` — der Confound ist damit ausgeräumt, die Zeile ist
    modellseitig. Preis: ohne Prosa fehlen Caption und Zeitpunkt (`timepoint`
    leer).
-5. **Nächster Schritt:** Prosa-Stück behalten (Zeitpunkt), Zeilenbindung im
-   Prompt schärfen (Score-Zeile verlangen, `Mean change` ausschließen) oder in
-   einer Stufe 2 Zeilenkandidaten (Score vs. Change) auflösen; kein weiterer
-   Aufruf ohne diese Entscheidung.
+5. **Zeilenbindung im Prompt (20.11.2026):** Regelblock vor `PROMPT_REGELN`
+   (Zeile trägt den Outcome-Wert, `Mean change` ausgeschlossen), offline 6/6,
+   Score-Zeile dreimal im Tabellenstück, `Week 52` im Prosa-Stück; ein Aufruf:
+   `ok`, 8.003 Tokens, 224 s, beide Arme `Mean score (SD)` = Goldzeile, Caption
+   und `Week 52` korrekt. Die Zeilenbindung ist damit gelöst.
+6. **Nächster Schritt:** Stufe 2 auf diesem Locator — dritten Wochenblock
+   wählen und `38.1 (9.5)` / `31.5 (7.4)` extrahieren; damit ist der erste
+   Record durchgängig. Erst danach Übertragung auf weitere der 33 Records.
 
 Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Feldbezeichnung offen),
 weitere Prompt-Fassungen auf 420/421 (Befund 1), eine Budgeterhöhung als

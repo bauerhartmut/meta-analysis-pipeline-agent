@@ -59,6 +59,20 @@ STUECK = 2000
 SCHRITT = 250
 LAUF = HIER / "zweistufig_lauf_20261120"
 MARKE = re.compile(r"\b(n\s*=|mean|SD|95%\s*CI|CI\b|Table|%)", re.I)
+ZEILENBINDUNG = (
+    "Row binding (binding rule, takes precedence over the rules below):\n"
+    "If the values are printed in a table, the row must be the row that carries "
+    "the outcome value itself: its label names the measure and the statistic, "
+    'for example "Mean score (SD)", "Mean (SD)", "Median (IQR)" or "n".\n'
+    "A change row is never the outcome row: labels such as \"Mean change from BL\", "
+    "\"mean change from baseline\", \"change\", \"delta\" or \"difference\" report "
+    "the change, not the value, and must not be returned as zeilenlabel.\n"
+    "Take the columns of the block whose column header names the target time "
+    "point; name that block's time-point label in \"timepoint\".\n"
+    "If only change rows are printed for the outcome, set \"found\": false.\n"
+)
+SCORE_ZEILE = re.compile(r"[Mm]ean score\s*\(SD\)|[Mm]ean\s*\(SD\)|[Mm]edian\s*\(IQR\)")
+WOCHEN = re.compile(r"[Ww]eeks?\s*\d+(?:\s*(?:,|and)\s*\d+)*")
 
 
 def score(text: str, stichworte: list[str]) -> float:
@@ -94,8 +108,23 @@ def waehle_stuecke(text: str, stichworte: list[str],
     return [(s, s + STUECK, art) for s, art in sorted(stuecke)]
 
 
+def bindung_pruefen(text: str, stuecke: list[tuple[int, int, str]]) -> dict[str, Any]:
+    """Offline: liegt die Score-Zeile und ein Zeitpunktlabel im Ausschnitt?"""
+    score: list[dict[str, Any]] = []
+    wochen: dict[int, list[str]] = {}
+    for nummer, (a, b, _) in enumerate(stuecke, 1):
+        teil = text[a:b]
+        for m in SCORE_ZEILE.finditer(teil):
+            score.append({"stueck": nummer, "label": m.group(0), "pos": a + m.start()})
+        labels = sorted({normalisiere(m.group(0)) for m in WOCHEN.finditer(teil)})
+        if labels:
+            wochen[nummer] = labels
+    return {"score_zeilen": score, "wochen": wochen}
+
+
 def baue_prompt(text: str, stuecke: list[tuple[int, int, str]],
-                context: dict[str, Any], ziel: str) -> str:
+                context: dict[str, Any], ziel: str,
+                zeilenbindung: bool = False) -> str:
     teile = []
     for nummer, (start, ende, art) in enumerate(stuecke, 1):
         teile.append(f"--- piece {nummer} of {len(stuecke)}, {art}, "
@@ -109,6 +138,7 @@ def baue_prompt(text: str, stuecke: list[tuple[int, int, str]],
                       "appear in the document; text between them is omitted. The table "
                       "region may be printed as flattened rows without column borders.\n\n"
                       + "\n\n".join(teile))
+    regeln = f"{ZEILENBINDUNG}\n{PROMPT_REGELN}" if zeilenbindung else PROMPT_REGELN
     return (
         f"Publication excerpt:\n{ausschnitt}\n\n"
         f"Intervention: {context.get('intervention') or 'not stated'}\n"
@@ -116,7 +146,7 @@ def baue_prompt(text: str, stuecke: list[tuple[int, int, str]],
         f"Outcome: {context.get('outcome') or 'not stated'}\n"
         f"Outcome type: {context.get('outcome_type') or 'unknown'}\n"
         f'Target time point (binding): "{ziel}".\n\n'
-        f"{PROMPT_REGELN}"
+        f"{regeln}"
     )
 
 
@@ -130,6 +160,8 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--nur-tabelle", action="store_true",
                         help="nur das Tabellenfenster, ohne Prosastueck")
+    parser.add_argument("--zeilenbindung", action="store_true",
+                        help="Zeile muss den Outcome-Wert tragen; Aenderungszeilen aus")
     parser.add_argument("--model", default=MODELL, choices=sorted(rx.MODELS))
     parser.add_argument("--budget", type=int, default=BUDGET)
     parser.add_argument("--timeout", type=float, default=420.0)
@@ -145,9 +177,15 @@ def main() -> int:
     stichworte = [w for w in re.split(r"[\s/,()-]+", str(context.get("outcome") or ""))
                   if len(w) >= 4] or [str(context.get("outcome") or "")]
 
-    label = "stage1_tabelle_allein" if args.nur_tabelle else PROMPT_LABEL
+    if args.nur_tabelle:
+        label = "stage1_tabelle_allein"
+    elif args.zeilenbindung:
+        label = "stage1_tabelle_prosa_zeile"
+    else:
+        label = PROMPT_LABEL
     stuecke = waehle_stuecke(text, stichworte, nur_tabelle=args.nur_tabelle)
-    prompt = baue_prompt(text, stuecke, context, ziel)
+    prompt = baue_prompt(text, stuecke, context, ziel,
+                         zeilenbindung=args.zeilenbindung)
     zellen = (record.get("gold") or {}).get("cells") or []
     werte = sorted({round(float(z["value"]), 6) for z in zellen if z.get("value") is not None})
     index = werte_index(text, werte)
@@ -160,6 +198,10 @@ def main() -> int:
           f"SHA {hashlib.sha256(prompt.encode('utf-8')).hexdigest()[:16]}")
     for w in werte:
         print(f"   {w}: Stueck {abgedeckt[w] or '-'}")
+    bind = bindung_pruefen(text, stuecke)
+    print(f"  Score-Zeile: {len(bind['score_zeilen'])} Treffer "
+          f"{[(t['stueck'], t['label']) for t in bind['score_zeilen']]}")
+    print(f"  Zeitpunktlabel: {bind['wochen'] or 'keins im Ausschnitt'}")
     if args.dry_run:
         return 0
 
@@ -245,10 +287,17 @@ def main() -> int:
         "locators": locators,
         "goldwerte": werte,
         "goldwerte_im_ausschnitt": treffer,
+        "zeilenbindung": args.zeilenbindung,
+        "bindung": bind,
         "content": inhalt,
         "fehler": antwort.get("error") or "",
     }
-    praefix = "tabelle_allein" if args.nur_tabelle else "tabelle_prosa"
+    if args.nur_tabelle:
+        praefix = "tabelle_allein"
+    elif args.zeilenbindung:
+        praefix = "tabelle_zeile"
+    else:
+        praefix = "tabelle_prosa"
     ziel_pfad = LAUF / (args.out or
                         f"predictions_{praefix}_{args.record.split(':')[1]}"
                         f"_{args.model}_{args.budget}.jsonl")
