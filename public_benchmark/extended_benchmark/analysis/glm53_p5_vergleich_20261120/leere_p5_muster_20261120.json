@@ -1,0 +1,1611 @@
+{
+  "quelle": "D:/daswu/AIResearch/public_benchmark/extended_benchmark/runs/yun699_p5_24000_20261118/predictions.jsonl",
+  "n": 33,
+  "faelle": {
+    "yun2024:30": {
+      "dokument": "PMC3003523",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 25866,
+      "pipe_zeilen": 0,
+      "reasoning": 89370,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 6,
+      "werte_gefunden": 4,
+      "werte_fehlend": [
+        199.0,
+        393.0
+      ],
+      "befund": [
+        {
+          "wert": 7.4,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 474,
+          "mehrfach": true,
+          "satz": "ANCOVA = analysis of covariance; CZP = certolizumab pegol; ITT = intent to treat; LOCF = last observation carried forward; MCID = minimal clinically important difference; MCS = mental component summary; MTX = methotrexate; PBO = placebo; PCS = physical component summary; SF-36 = short-form 36-item health survey.</figcaption> </figure> ::::table-wrap\n::: caption\nImprovements in health-related quali"
+        },
+        {
+          "wert": 9.5,
+          "gefunden": 2,
+          "tabelle": 0,
+          "prosa": 2,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 474,
+          "mehrfach": true,
+          "satz": "ANCOVA = analysis of covariance; CZP = certolizumab pegol; ITT = intent to treat; LOCF = last observation carried forward; MCID = minimal clinically important difference; MCS = mental component summary; MTX = methotrexate; PBO = placebo; PCS = physical component summary; SF-36 = short-form 36-item health survey.</figcaption> </figure> ::::table-wrap\n::: caption\nImprovements in health-related quali"
+        },
+        {
+          "wert": 31.5,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 474,
+          "mehrfach": true,
+          "satz": "ANCOVA = analysis of covariance; CZP = certolizumab pegol; ITT = intent to treat; LOCF = last observation carried forward; MCID = minimal clinically important difference; MCS = mental component summary; MTX = methotrexate; PBO = placebo; PCS = physical component summary; SF-36 = short-form 36-item health survey.</figcaption> </figure> ::::table-wrap\n::: caption\nImprovements in health-related quali"
+        },
+        {
+          "wert": 38.1,
+          "gefunden": 3,
+          "tabelle": 0,
+          "prosa": 3,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 474,
+          "mehrfach": true,
+          "satz": "ANCOVA = analysis of covariance; CZP = certolizumab pegol; ITT = intent to treat; LOCF = last observation carried forward; MCID = minimal clinically important difference; MCS = mental component summary; MTX = methotrexate; PBO = placebo; PCS = physical component summary; SF-36 = short-form 36-item health survey.</figcaption> </figure> ::::table-wrap\n::: caption\nImprovements in health-related quali"
+        },
+        {
+          "wert": 199.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 393.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:52": {
+      "dokument": "PMC3195393",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 24933,
+      "pipe_zeilen": 0,
+      "reasoning": 95546,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 6,
+      "werte_gefunden": 4,
+      "werte_fehlend": [
+        463.0,
+        562.0
+      ],
+      "befund": [
+        {
+          "wert": 0.07,
+          "gefunden": 5,
+          "tabelle": 0,
+          "prosa": 5,
+          "satz_pm_max": 56,
+          "satz_zahlen_max": 459,
+          "mehrfach": true,
+          "satz": "However, there was a significant difference in their mean practice score (38.41 versus 36.43, *P* = 0.037), with the control site having relatively poorer scores. ::::table-wrap\n::: caption\n(a) Sample profile before intervention (I)\n:::\n\n                     Nonrestrained            Restrained                                                                                 \n  ------------------ ---"
+        },
+        {
+          "wert": 0.13,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 56,
+          "satz_zahlen_max": 459,
+          "mehrfach": true,
+          "satz": "However, there was a significant difference in their mean practice score (38.41 versus 36.43, *P* = 0.037), with the control site having relatively poorer scores. ::::table-wrap\n::: caption\n(a) Sample profile before intervention (I)\n:::\n\n                     Nonrestrained            Restrained                                                                                 \n  ------------------ ---"
+        },
+        {
+          "wert": 11.5,
+          "gefunden": 2,
+          "tabelle": 0,
+          "prosa": 2,
+          "satz_pm_max": 56,
+          "satz_zahlen_max": 459,
+          "mehrfach": true,
+          "satz": "However, there was a significant difference in their mean practice score (38.41 versus 36.43, *P* = 0.037), with the control site having relatively poorer scores. ::::table-wrap\n::: caption\n(a) Sample profile before intervention (I)\n:::\n\n                     Nonrestrained            Restrained                                                                                 \n  ------------------ ---"
+        },
+        {
+          "wert": 13.6,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 3,
+          "mehrfach": false,
+          "satz": "In the study site, there was no significant difference in the overall restraint rate between the pre- and postintervention periods although the overall restraint rate had a slightly upward trend from 11.5% to 13.6% (*P* = 0.405) postintervention."
+        },
+        {
+          "wert": 463.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 562.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:119": {
+      "dokument": "PMC4323894",
+      "outcome_typ": "continuous",
+      "goldzellen": 4,
+      "text_zeichen": 10032,
+      "pipe_zeilen": 0,
+      "reasoning": 98142,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 4,
+      "werte_gefunden": 1,
+      "werte_fehlend": [
+        10.0,
+        13.0,
+        70.0
+      ],
+      "befund": [
+        {
+          "wert": 10.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 13.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 15.4,
+          "gefunden": 4,
+          "tabelle": 0,
+          "prosa": 4,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 14,
+          "mehrfach": true,
+          "satz": "When comparison was only made between 2 groups (no cooling vs mild cooling; no cooling vs deep cooling and mild cooling vs deep cooling), it seems that the mild-cooling-treated patients fared better than no cooling (70% of mild cooling attained good GOS compared with only 15.4% attained good GOS in no cooling group, *P* = 0.013); and apparently, the deep-cooling-treated patients failed to be bette"
+        },
+        {
+          "wert": 70.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:128": {
+      "dokument": "PMC4493951",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "text_zeichen": 7954,
+      "pipe_zeilen": 0,
+      "reasoning": 90927,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 3,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        10.0,
+        21.0,
+        50.0
+      ],
+      "befund": [
+        {
+          "wert": 10.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 21.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 50.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:152": {
+      "dokument": "PMC5055753",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "text_zeichen": 7782,
+      "pipe_zeilen": 0,
+      "reasoning": 99665,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 3,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        7.0,
+        14.0,
+        40.0
+      ],
+      "befund": [
+        {
+          "wert": 7.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 14.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 40.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:159": {
+      "dokument": "PMC5056957",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 16081,
+      "pipe_zeilen": 0,
+      "reasoning": 88346,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 6,
+      "werte_gefunden": 2,
+      "werte_fehlend": [
+        5.9,
+        6.39,
+        459.0,
+        592.0
+      ],
+      "befund": [
+        {
+          "wert": 5.9,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 6.39,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 21.07,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 114,
+          "mehrfach": true,
+          "satz": "Baseline (control=484, intervention=571), mid-point (control=406,\ncontrol=502), follow-up (control=343, intervention=488).::::  ::::table-wrap\n::: caption\n###### Changes in adiposity outcomes from baseline to 12- and 24-month follow-up\n:::\n\n  *Outcome*        *Intervention*                       *Control*                        *Intervention--Control*                                               "
+        },
+        {
+          "wert": 21.27,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 114,
+          "mehrfach": true,
+          "satz": "Baseline (control=484, intervention=571), mid-point (control=406,\ncontrol=502), follow-up (control=343, intervention=488).::::  ::::table-wrap\n::: caption\n###### Changes in adiposity outcomes from baseline to 12- and 24-month follow-up\n:::\n\n  *Outcome*        *Intervention*                       *Control*                        *Intervention--Control*                                               "
+        },
+        {
+          "wert": 459.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 592.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:164": {
+      "dokument": "PMC5062234",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 3808,
+      "pipe_zeilen": 0,
+      "reasoning": 99794,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 1,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        21.0
+      ],
+      "befund": [
+        {
+          "wert": 21.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:171": {
+      "dokument": "PMC5079604",
+      "outcome_typ": "continuous",
+      "goldzellen": 4,
+      "text_zeichen": 20409,
+      "pipe_zeilen": 0,
+      "reasoning": 97231,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 4,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        15.0,
+        33.0,
+        305.0,
+        480.0
+      ],
+      "befund": [
+        {
+          "wert": 15.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 33.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 305.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 480.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:173": {
+      "dokument": "PMC5079604",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "text_zeichen": 20409,
+      "pipe_zeilen": 0,
+      "reasoning": 93443,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 4,
+      "werte_gefunden": 2,
+      "werte_fehlend": [
+        15.0,
+        33.0
+      ],
+      "befund": [
+        {
+          "wert": 12.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 80,
+          "satz_zahlen_max": 246,
+          "mehrfach": true,
+          "satz": "HbA~1c~ was lower at presentation of DKA/hyperglycemia in subjects who withdrew compared with those who stayed (12.0 ± 2.3% [107 ± 25 mmol/mol] vs. 13.5 ± 2.0% [124 ± 22 mmol/mol], *P* = 0.03) but was similar at randomization. ::::table-wrap\n::: caption\nClinical characteristics of obese African American subjects with DKA and\nsevere hyperglycemia\n:::\n\n                                           Metf"
+        },
+        {
+          "wert": 13.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 35,
+          "satz_zahlen_max": 120,
+          "mehrfach": true,
+          "satz": "At the end of the study, fasting glucose and HbA~1c~ levels were higher in the subjects who experienced hyperglycemia relapse ([Table 2](#)). ::::table-wrap\n::: caption\nClinical characteristics of obese African American patients with DKA and\nsevere hyperglycemia with near-normoglycemia remission compared with\nthose with hyperglycemia relapse\n:::\n\n                                               Near"
+        },
+        {
+          "wert": 15.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 33.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:204": {
+      "dokument": "PMC5380326",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 14600,
+      "pipe_zeilen": 0,
+      "reasoning": 89548,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 1,
+      "werte_gefunden": 1,
+      "werte_fehlend": [],
+      "befund": [
+        {
+          "wert": 40.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 30,
+          "satz_zahlen_max": 153,
+          "mehrfach": true,
+          "satz": "The mean age was 52.39 years (range; 30--70). ::::table-wrap\n10.1371/journal.pone.0174608.t001\n\n::: caption\n###### Baseline characteristics of CHC patients in the placebo and vitamin D groups.\n:::\n\n![]()\n\n  Variables                     Placebo group (n = 40)   Vitamin D group (n = 40)   p values\n  ----------------------------- ------------------------ -------------------------- ----------\n  Mean "
+        }
+      ]
+    },
+    "yun2024:251": {
+      "dokument": "PMC5614421",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "text_zeichen": 40101,
+      "pipe_zeilen": 0,
+      "reasoning": 97921,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 4,
+      "werte_gefunden": 1,
+      "werte_fehlend": [
+        7.0,
+        388.0,
+        402.0
+      ],
+      "befund": [
+        {
+          "wert": 7.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 8.0,
+          "gefunden": 2,
+          "tabelle": 0,
+          "prosa": 2,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 363,
+          "mehrfach": true,
+          "satz": "Unadjusted analyses showed similar findings to the analyses adjusted for gestational age at randomisation, gestation of previous preterm birth, and reason for previous preterm birth ([Table 2](#)). ::::table-wrap\n10.1371/journal.pmed.1002390.t002\n\n::: caption\n###### Primary and secondary neonatal outcomes by study group.\n:::\n\n![]()\n\n  Outcome                                              Progestero"
+        },
+        {
+          "wert": 388.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 402.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:252": {
+      "dokument": "PMC5614421",
+      "outcome_typ": "binary",
+      "goldzellen": 2,
+      "text_zeichen": 40101,
+      "pipe_zeilen": 0,
+      "reasoning": 99829,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 2,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        388.0,
+        402.0
+      ],
+      "befund": [
+        {
+          "wert": 388.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 402.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:273": {
+      "dokument": "PMC3214395",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 3360,
+      "pipe_zeilen": 0,
+      "reasoning": 101270,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 2,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        30.0,
+        60.0
+      ],
+      "befund": [
+        {
+          "wert": 30.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 60.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:304": {
+      "dokument": "PMC4357072",
+      "outcome_typ": "binary",
+      "goldzellen": 4,
+      "text_zeichen": 5515,
+      "pipe_zeilen": 0,
+      "reasoning": 95635,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 3,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        10.0,
+        14.0,
+        15.0
+      ],
+      "befund": [
+        {
+          "wert": 10.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 14.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 15.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:356": {
+      "dokument": "PMC5884950",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 19352,
+      "pipe_zeilen": 0,
+      "reasoning": 96159,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 1,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        13.0
+      ],
+      "befund": [
+        {
+          "wert": 13.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:420": {
+      "dokument": "PMC3877023",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 26274,
+      "pipe_zeilen": 0,
+      "reasoning": 86878,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 6,
+      "werte_gefunden": 4,
+      "werte_fehlend": [
+        18.0,
+        21.0
+      ],
+      "befund": [
+        {
+          "wert": 0.24,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001)."
+        },
+        {
+          "wert": 0.48,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001)."
+        },
+        {
+          "wert": 0.95,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001)."
+        },
+        {
+          "wert": 1.43,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001)."
+        },
+        {
+          "wert": 18.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 21.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:421": {
+      "dokument": "PMC3877023",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 26274,
+      "pipe_zeilen": 0,
+      "reasoning": 84549,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 6,
+      "werte_gefunden": 4,
+      "werte_fehlend": [
+        30.0,
+        34.0
+      ],
+      "befund": [
+        {
+          "wert": 0.22,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001)."
+        },
+        {
+          "wert": 0.51,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001)."
+        },
+        {
+          "wert": 0.83,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001)."
+        },
+        {
+          "wert": 1.32,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001)."
+        },
+        {
+          "wert": 30.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 34.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:446": {
+      "dokument": "PMC4879328",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 25267,
+      "pipe_zeilen": 0,
+      "reasoning": 95071,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 6,
+      "werte_gefunden": 1,
+      "werte_fehlend": [
+        -0.89,
+        3.32,
+        3.54,
+        104.0,
+        114.0
+      ],
+      "befund": [
+        {
+          "wert": -0.89,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 0.3,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 7,
+          "satz_zahlen_max": 157,
+          "mehrfach": true,
+          "satz": "Missing data was associated with: higher baseline BMI (mean ± SD for missing vs complete; <figure> <p><img src=\"\" /></p> <figcaption>Participation in the Get Healthy, Stay Healthy (GHSH) trial.</figcaption> </figure> ::::table-wrap\n::: caption\nCharacteristics of 'Get Healthy, Stay Healthy' (GHSH) trial\nparticipants.\n:::\n\n  ---------------------------------------------------------------------------"
+        },
+        {
+          "wert": 3.32,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 3.54,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 104.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 114.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:451": {
+      "dokument": "PMC4879328",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 25267,
+      "pipe_zeilen": 0,
+      "reasoning": 95333,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 6,
+      "werte_gefunden": 1,
+      "werte_fehlend": [
+        -16.1,
+        66.12,
+        66.25,
+        99.0,
+        108.0
+      ],
+      "befund": [
+        {
+          "wert": -16.1,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 7.41,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 162,
+          "mehrfach": true,
+          "satz": "Overall, it cost approximately AU$80.00 per participant to deliver the GHSH extended contact intervention. ::::table-wrap\n::: caption\nMean changes within the 'Get Healthy, Stay Healthy' (GHSH) intervention\ngroup (I; n=104) and the control group (C; n=114)\n:::\n\n  -----------------------------------------------------------------------------------------------------------------------------------------"
+        },
+        {
+          "wert": 66.12,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 66.25,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 99.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 108.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:523": {
+      "dokument": "PMC5325897",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 6811,
+      "pipe_zeilen": 0,
+      "reasoning": 89661,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 4,
+      "werte_gefunden": 3,
+      "werte_fehlend": [
+        15.0
+      ],
+      "befund": [
+        {
+          "wert": 0.77,
+          "gefunden": 4,
+          "tabelle": 0,
+          "prosa": 4,
+          "satz_pm_max": 4,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001)."
+        },
+        {
+          "wert": 9.73,
+          "gefunden": 3,
+          "tabelle": 0,
+          "prosa": 3,
+          "satz_pm_max": 30,
+          "satz_zahlen_max": 130,
+          "mehrfach": true,
+          "satz": "As can be seen, residents in Loghman Hakim Hospital were significantly better in the second exam both quantitatively and qualitatively. ::::table-wrap\n::: caption\nBaseline characteristics of participants\n:::\n\n  **Variable**                                   **Loghman Hakim**   **Imam Hossein**   **P**\n  ---------------------------------------------- ------------------- ------------------ -------\n "
+        },
+        {
+          "wert": 10.24,
+          "gefunden": 2,
+          "tabelle": 0,
+          "prosa": 2,
+          "satz_pm_max": 4,
+          "satz_zahlen_max": 9,
+          "mehrfach": true,
+          "satz": "Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001)."
+        },
+        {
+          "wert": 15.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:525": {
+      "dokument": "PMC5325897",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 6811,
+      "pipe_zeilen": 0,
+      "reasoning": 89708,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 4,
+      "werte_gefunden": 3,
+      "werte_fehlend": [
+        15.0
+      ],
+      "befund": [
+        {
+          "wert": 0.22,
+          "gefunden": 4,
+          "tabelle": 0,
+          "prosa": 4,
+          "satz_pm_max": 3,
+          "satz_zahlen_max": 11,
+          "mehrfach": true,
+          "satz": "Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). ## Conclusion: Based on the findings of the present study, giving feedback after evaluating the second year emergency medicine residents regarding chest ultrasonography for trauma patients, led to a significant improvement in their scores in future evaluations and consequently th"
+        },
+        {
+          "wert": 15.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 18.53,
+          "gefunden": 3,
+          "tabelle": 0,
+          "prosa": 3,
+          "satz_pm_max": 30,
+          "satz_zahlen_max": 130,
+          "mehrfach": true,
+          "satz": "As can be seen, residents in Loghman Hakim Hospital were significantly better in the second exam both quantitatively and qualitatively. ::::table-wrap\n::: caption\nBaseline characteristics of participants\n:::\n\n  **Variable**                                   **Loghman Hakim**   **Imam Hossein**   **P**\n  ---------------------------------------------- ------------------- ------------------ -------\n "
+        },
+        {
+          "wert": 18.99,
+          "gefunden": 2,
+          "tabelle": 0,
+          "prosa": 2,
+          "satz_pm_max": 3,
+          "satz_zahlen_max": 11,
+          "mehrfach": true,
+          "satz": "Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). ## Conclusion: Based on the findings of the present study, giving feedback after evaluating the second year emergency medicine residents regarding chest ultrasonography for trauma patients, led to a significant improvement in their scores in future evaluations and consequently th"
+        }
+      ]
+    },
+    "yun2024:557": {
+      "dokument": "PMC3136370",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 13122,
+      "pipe_zeilen": 0,
+      "reasoning": 93380,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 6,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        -19.57,
+        -17.1,
+        12.0,
+        16.0,
+        68.08,
+        93.53
+      ],
+      "befund": [
+        {
+          "wert": -19.57,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": -17.1,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 12.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 16.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 68.08,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 93.53,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:559": {
+      "dokument": "PMC3136370",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 13122,
+      "pipe_zeilen": 0,
+      "reasoning": 89528,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 6,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        -8.0,
+        -4.0,
+        12.0,
+        12.35,
+        16.0,
+        65.41
+      ],
+      "befund": [
+        {
+          "wert": -8.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": -4.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 12.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 12.35,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 16.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 65.41,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:582": {
+      "dokument": "PMC3504298",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 12838,
+      "pipe_zeilen": 0,
+      "reasoning": 99406,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 1,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        16.0
+      ],
+      "befund": [
+        {
+          "wert": 16.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:624": {
+      "dokument": "PMC3493722",
+      "outcome_typ": "binary",
+      "goldzellen": 2,
+      "text_zeichen": 5258,
+      "pipe_zeilen": 0,
+      "reasoning": 87507,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 1,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        74.0
+      ],
+      "befund": [
+        {
+          "wert": 74.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:625": {
+      "dokument": "PMC3493722",
+      "outcome_typ": "binary",
+      "goldzellen": 2,
+      "text_zeichen": 5258,
+      "pipe_zeilen": 0,
+      "reasoning": 82625,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 2,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        4.0,
+        8.0
+      ],
+      "befund": [
+        {
+          "wert": 4.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 8.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:671": {
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 42606,
+      "pipe_zeilen": 0,
+      "reasoning": 100255,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 2,
+      "werte_gefunden": 2,
+      "werte_fehlend": [],
+      "befund": [
+        {
+          "wert": 12.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        },
+        {
+          "wert": 14.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 207,
+          "mehrfach": true,
+          "satz": "A larger proportion of patients in public facilities were tested compared to the private sector but there was no evidence of differences in testing or treatment according to results between arms in either sector ([Table 3](#)). <figure> 10.1371/journal.pone.0133832.g003 <p><img src=\"\" /></p> <figcaption>Flow chart showing definition of primary outcome.</figcaption> </figure> ::::table-wrap\n10.1371"
+        }
+      ]
+    },
+    "yun2024:672": {
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 42606,
+      "pipe_zeilen": 0,
+      "reasoning": 100367,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 2,
+      "werte_gefunden": 2,
+      "werte_fehlend": [],
+      "befund": [
+        {
+          "wert": 12.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        },
+        {
+          "wert": 14.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 207,
+          "mehrfach": true,
+          "satz": "A larger proportion of patients in public facilities were tested compared to the private sector but there was no evidence of differences in testing or treatment according to results between arms in either sector ([Table 3](#)). <figure> 10.1371/journal.pone.0133832.g003 <p><img src=\"\" /></p> <figcaption>Flow chart showing definition of primary outcome.</figcaption> </figure> ::::table-wrap\n10.1371"
+        }
+      ]
+    },
+    "yun2024:674": {
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 42606,
+      "pipe_zeilen": 0,
+      "reasoning": 93674,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 6,
+      "werte_gefunden": 5,
+      "werte_fehlend": [
+        26.0
+      ],
+      "befund": [
+        {
+          "wert": 12.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        },
+        {
+          "wert": 14.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 207,
+          "mehrfach": true,
+          "satz": "A larger proportion of patients in public facilities were tested compared to the private sector but there was no evidence of differences in testing or treatment according to results between arms in either sector ([Table 3](#)). <figure> 10.1371/journal.pone.0133832.g003 <p><img src=\"\" /></p> <figcaption>Flow chart showing definition of primary outcome.</figcaption> </figure> ::::table-wrap\n10.1371"
+        },
+        {
+          "wert": 22.6,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        },
+        {
+          "wert": 23.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        },
+        {
+          "wert": 23.5,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        },
+        {
+          "wert": 26.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:673": {
+      "dokument": "PMC4550271",
+      "outcome_typ": "continuous",
+      "goldzellen": 6,
+      "text_zeichen": 42606,
+      "pipe_zeilen": 0,
+      "reasoning": 93498,
+      "klasse": "prosa_mehrfachpaar",
+      "werte_gesamt": 6,
+      "werte_gefunden": 5,
+      "werte_fehlend": [
+        32.0
+      ],
+      "befund": [
+        {
+          "wert": 12.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        },
+        {
+          "wert": 14.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 207,
+          "mehrfach": true,
+          "satz": "A larger proportion of patients in public facilities were tested compared to the private sector but there was no evidence of differences in testing or treatment according to results between arms in either sector ([Table 3](#)). <figure> 10.1371/journal.pone.0133832.g003 <p><img src=\"\" /></p> <figcaption>Flow chart showing definition of primary outcome.</figcaption> </figure> ::::table-wrap\n10.1371"
+        },
+        {
+          "wert": 22.6,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        },
+        {
+          "wert": 23.0,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        },
+        {
+          "wert": 32.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 36.4,
+          "gefunden": 1,
+          "tabelle": 0,
+          "prosa": 1,
+          "satz_pm_max": 0,
+          "satz_zahlen_max": 285,
+          "mehrfach": true,
+          "satz": "There was also no evidence of a difference between the two intervention arms; adjusted RD was -12.9% (95% CI -34.0%, 8.3%) ([Table 2](#) --Notes). ::::table-wrap\n10.1371/journal.pone.0133832.t002\n\n::: caption\n###### Effects of the interventions on the primary outcome compared with control, by stratum.\n:::\n\n![]()\n\n  Outcome                                                 Study arm and stratum   Clu"
+        }
+      ]
+    },
+    "yun2024:685": {
+      "dokument": "PMC2836833",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 18929,
+      "pipe_zeilen": 0,
+      "reasoning": 88956,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 1,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        17.0
+      ],
+      "befund": [
+        {
+          "wert": 17.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:678": {
+      "dokument": "PMC5777419",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 12349,
+      "pipe_zeilen": 0,
+      "reasoning": 97070,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 2,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        15.0,
+        16.0
+      ],
+      "befund": [
+        {
+          "wert": 15.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        },
+        {
+          "wert": 16.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    },
+    "yun2024:687": {
+      "dokument": "PMC2836833",
+      "outcome_typ": "continuous",
+      "goldzellen": 2,
+      "text_zeichen": 18929,
+      "pipe_zeilen": 0,
+      "reasoning": 95376,
+      "klasse": "fehlt_im_text",
+      "werte_gesamt": 1,
+      "werte_gefunden": 0,
+      "werte_fehlend": [
+        17.0
+      ],
+      "befund": [
+        {
+          "wert": 17.0,
+          "gefunden": 0,
+          "tabelle": 0,
+          "prosa": 0,
+          "satz_pm_max": 0,
+          "satz": ""
+        }
+      ]
+    }
+  },
+  "klassen": {
+    "mit_fehlendem_wert": 30,
+    "prosa_mehrfachpaar": 17,
+    "fehlt_im_text": 16
+  },
+  "ohne_pipe_tabelle": 33
+}
