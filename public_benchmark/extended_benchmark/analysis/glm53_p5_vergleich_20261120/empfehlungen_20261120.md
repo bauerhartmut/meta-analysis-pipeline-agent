@@ -150,17 +150,18 @@ nicht vor 1 und 2 zu setzen.
    beide Ankerfassungen ohne Treffer, 88.632 Tokens verbraucht. Die übrigen 11 der
    13 Fälle sind nicht getestet; der Anker ist dort unbelegt, nicht widerlegt.
    Vor einem weiteren Anker-Aufruf hat die Zweistufigkeit Vorrang.
-3. **Maßnahme 4 (Zweistufigkeit) ist gebaut und auf vier Records gemessen —
-   Ergebnis gemischt.** Auf `yun2024:523` ist die Kette vollständig (Stufe 1:
-   2.342 Tokens, Stufe 2: 268 Tokens, 4 TP / 0 FP / 2 FN, F1 0,800); auf
-   `yun2024:420` und `:421` bricht dieselbe Stufe 1 mit `glm-5.3` in jeder
-   geprüften Prompt-Fassung ab (4 von 4 Zellen, je volles Budget, 0 Zeichen);
-   `qwen3.5-397b` antwortet auf beiden und dreien der drei gemessenen Records —
-   Treffer auf 420 (Satz wörtlich, 4 von 6 Werten im Satz) und 119, falsches
-   Negativ auf 421. `glm-5.3` beantwortet 0 von 4 Zellen, `qwen3.5-397b` 2 von 3
-   (Stufe 1). Die Zweistufigkeit ist damit nicht widerlegt; ihr Erfolg hängt am
-   Modell und, auf 421, an der `found`-Entscheidung selbst. Details im Nachtrag
-   unten.
+3. **Maßnahme 4 (Zweistufigkeit) ist gebaut, auf vier Records gemessen und auf
+   zwei davon vollständig geschlossen.** Mit `glm-5.3` ist die Kette nur auf
+   `yun2024:523` vollständig (Stufe 1: 2.342 Tokens, Stufe 2: 268 Tokens,
+   4 TP / 0 FP / 2 FN, F1 0,800); auf 420 und 421 bricht dieselbe Stufe 1 in
+   jeder geprüften Prompt-Fassung ab (4 von 4 Zellen, je volles Budget,
+   0 Zeichen). Mit `qwen3.5-397b` antwortet Stufe 1 auf allen drei gemessenen
+   Records: Treffer auf 420 und 119, falsches Negativ auf 421. Auf 420 ist auch
+   Stufe 2 gelaufen (2.590 Tokens von 4.000, 4 Zellen): **4 TP / 0 FP / 2 FN,
+   F1 0,800**, das erste Schnittstellenpaar korrekt gewählt. Die Zweistufigkeit
+   trägt damit auf zwei Records vollständig (523 mit glm, 420 mit qwen) und
+   scheitert auf einem an der `found`-Entscheidung selbst (421). Details im
+   Nachtrag unten.
 4. **Maßnahme 2** — billig, aber sie ändert an der Bindung nichts; erst nach
    Maßnahme 4 sinnvoll, wenn ein Aufruf überhaupt zuverlässig Inhalt liefert.
 5. **Maßnahme 5** — zuletzt, weil sie am meisten kostet und am wenigsten belegt
@@ -186,9 +187,9 @@ nicht vor 1 und 2 zu setzen.
 ## Nachtrag 20.11.2026, abends: Schema, Anweisung und Modell getrennt
 
 Die alte Fassung dieser Empfehlung führte die 33 Abbrüche auf ein Schema- und
-Strukturproblem zurück (Maßnahme 1/2). Seitdem sind neun Aufrufe auf vier
-Records gelaufen, alle mit demselben 6.000-Zeichen-Ausschnitt, Temperatur 0 und
-je einem Aufruf pro Zelle. Das Bild hat sich verschoben.
+Strukturproblem zurück (Maßnahme 1/2). Seitdem sind zehn Aufrufe der Stufe 1 auf
+vier Records gelaufen, alle mit demselben 6.000-Zeichen-Ausschnitt, Temperatur
+0 und je einem Aufruf pro Zelle. Das Bild hat sich verschoben.
 
 | Record | Modell | Prompt-Fassung | Budget | Tokens | Ergebnis |
 |---|---|---|---:|---:|---|
@@ -207,6 +208,15 @@ Berichte: `zweistufig_lauf_20261120/satz_523_ergebnis_20261120.md`,
 `satz_420_ergebnis_20261120.md`, `satz_421_ergebnis_20261120.md`,
 `zusatz_421_ergebnis_20261120.md`, `qwen_421_ergebnis_20261120.md`,
 `qwen_119_ergebnis_20261120.md`, `qwen_420_ergebnis_20261120.md`.
+
+**Stufe 2, nachgetragen:** `yun2024:523` mit `glm-5.3` — 268 Tokens, 4 Zellen,
+4 TP / 0 FP / 2 FN, F1 0,800. `yun2024:420` mit `qwen3.5-397b` auf dem oben
+zitierten Satz — 2.590 Tokens von 4.000, 4 Zellen, **4 TP / 0 FP / 2 FN,
+F1 0,800**, Dauer 124,12 s, gelesen wird `0.95 [SD, 0.24]` gegen
+`1.43 [SD, 0.48]` (das erste Schnittstellenpaar, wie das Gold). Die zwei FN
+sind die Gruppengrößen 18 und 21, die nur im Kopf der qualitativen Tabelle
+stehen und nicht in der Belegstelle. Bericht:
+`zweistufig_lauf_20261120/stufe2_satz_420_qwen_ergebnis_20261120.md`.
 
 **Befund 1 — das Schema ist nicht die Ursache.** Auf 420 brechen *zwei*
 verschiedene Fassungen ab (Zeilenlabel mit Zusatz und Satz-Locator), auf 421
@@ -250,24 +260,21 @@ Ausgabe das Budget verbraucht, und nichts an einem Satz, der zitiert wird.
 
 ## Nächster Schritt
 
-Der 420er Aufruf ist gelaufen: `qwen3.5-397b` antwortet auf dem byte-identischen
-Prompt mit zwei Locators und dem richtigen Satz. Stufe 1 ist damit auf drei
-Records gemessen (2 Treffer, 1 falsches Negativ). Die offene Frage hat sich
-verschoben — von „antwortet ein anderes Modell überhaupt" zu „trägt die
-Belegstelle die Zellen":
+Die 420er Kette ist geschlossen: `qwen3.5-397b` zitiert auf dem byte-identischen
+Prompt den richtigen Satz, und Stufe 2 liest daraus 4 Zellen ohne FP (F1 0,800).
+Es bleibt ein Aufruf:
 
-1. **Stufe 2 auf dem 119er Satz** (Budget klein, ~1.000 Tokens). Prüft, ob der
-   zitierte Satz die zwei erreichbaren Zellen (70 / 15,4) wirklich trägt. Das ist
-   die einzige Stelle der Reihe, an der eine vollständige Kette ohne Abbruch
-   möglich ist.
-2. **Stufe 2 auf dem 420er Satz** (Budget klein). Prüft, ob qwens Belegstelle die
-   vier erreichbaren Zellen trägt und ob Stufe 2 vor den zwei
-   Schnittstellenpaaren dieselbe Wahl trifft wie das Gold (erstes Paar). Das ist
-   die erste Stelle, an der die Bindungsentscheidung des Modells metrisch wird.
+1. **Stufe 2 auf dem 119er Satz** (Budget klein, 4.000 genügten auf 420 mit
+   2.590 Verbrauch). Prüft, ob der zitierte Satz die zwei erreichbaren Zellen
+   (70 / 15,4) trägt und ob das Modell die Prozentangaben als `mean` liest, ohne
+   in Absolutzahlen zu rechnen. Das ist der letzte offene Punkt der Reihe: alle
+   anderen Records haben entweder eine geschlossene Kette (523, 420) oder eine
+   auf Stufe 1 unauflösbare `found`-Frage (421).
 
-Beide brauchen eine Freigabe, je ein Aufruf, und sie sind billig gegen die
-16.000er Läufe. Nutzen: die einzigen Messpunkte dieser Reihe, an denen aus einer
-belegten Belegstelle Zellen werden. Risiko: niedrig, kein neuer Prompt-Bau.
+Nutzen: schließt die Zweistufigkeit auf dem dritten Record und liefert den
+Vergleich „4 von 6 Zellen" (420) gegen „2 von 4 erreichbaren" (119). Kosten: ein
+Aufruf mit kleinem Budget, gemessen 2.590 Tokens auf derselben Stufe. Risiko:
+niedrig, kein neuer Prompt-Bau.
 
 Nicht empfohlen bleibt: weitere Prompt-Fassungen auf 420/421 (Befund 1), eine
 Budgeterhöhung (die Abbrüche enden am Budget, nicht davor), ein weiterer
