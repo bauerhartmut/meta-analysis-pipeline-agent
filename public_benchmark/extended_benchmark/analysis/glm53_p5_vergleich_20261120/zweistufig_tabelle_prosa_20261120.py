@@ -74,12 +74,15 @@ def bereiche(text: str) -> tuple[int, int]:
     return 0, len(text)
 
 
-def waehle_stuecke(text: str, stichworte: list[str]) -> list[tuple[int, int, str]]:
+def waehle_stuecke(text: str, stichworte: list[str],
+                   nur_tabelle: bool = False) -> list[tuple[int, int, str]]:
     start, ende = bereiche(text)
     if ende - start <= STUECK:
         return [(start, ende, "results region")]
     tabelle = max(range(start, ende - STUECK + 1, SCHRITT),
                   key=lambda s: (len(MARKE.findall(text[s:s + STUECK])), -s))
+    if nur_tabelle:
+        return [(tabelle, tabelle + STUECK, "table region")]
     kandidaten = [s for s in range(start, ende - STUECK + 1, SCHRITT)
                   if s + STUECK <= tabelle or s >= tabelle + STUECK]
     if kandidaten:
@@ -97,10 +100,15 @@ def baue_prompt(text: str, stuecke: list[tuple[int, int, str]],
     for nummer, (start, ende, art) in enumerate(stuecke, 1):
         teile.append(f"--- piece {nummer} of {len(stuecke)}, {art}, "
                      f"characters {start}-{ende} ---\n{text[start:ende]}")
-    ausschnitt = ("Two non-contiguous pieces of the same article, in the order they "
-                  "appear in the document; text between them is omitted. The table "
-                  "region may be printed as flattened rows without column borders.\n\n"
-                  + "\n\n".join(teile))
+    if len(stuecke) == 1:
+        ausschnitt = ("One piece of the article: the table region of the results, "
+                      "printed as flattened rows without column borders.\n\n"
+                      + "\n\n".join(teile))
+    else:
+        ausschnitt = ("Two non-contiguous pieces of the same article, in the order they "
+                      "appear in the document; text between them is omitted. The table "
+                      "region may be printed as flattened rows without column borders.\n\n"
+                      + "\n\n".join(teile))
     return (
         f"Publication excerpt:\n{ausschnitt}\n\n"
         f"Intervention: {context.get('intervention') or 'not stated'}\n"
@@ -120,6 +128,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--record", default="yun2024:30")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--nur-tabelle", action="store_true",
+                        help="nur das Tabellenfenster, ohne Prosastueck")
     parser.add_argument("--model", default=MODELL, choices=sorted(rx.MODELS))
     parser.add_argument("--budget", type=int, default=BUDGET)
     parser.add_argument("--timeout", type=float, default=420.0)
@@ -135,7 +145,8 @@ def main() -> int:
     stichworte = [w for w in re.split(r"[\s/,()-]+", str(context.get("outcome") or ""))
                   if len(w) >= 4] or [str(context.get("outcome") or "")]
 
-    stuecke = waehle_stuecke(text, stichworte)
+    label = "stage1_tabelle_allein" if args.nur_tabelle else PROMPT_LABEL
+    stuecke = waehle_stuecke(text, stichworte, nur_tabelle=args.nur_tabelle)
     prompt = baue_prompt(text, stuecke, context, ziel)
     zellen = (record.get("gold") or {}).get("cells") or []
     werte = sorted({round(float(z["value"]), 6) for z in zellen if z.get("value") is not None})
@@ -213,7 +224,7 @@ def main() -> int:
     zeile = {
         "record_id": args.record,
         "stufe": 1,
-        "variante": PROMPT_LABEL,
+        "variante": label,
         "model": args.model,
         "model_id": modell["id"],
         "stuecke": stuecke,
@@ -237,8 +248,9 @@ def main() -> int:
         "content": inhalt,
         "fehler": antwort.get("error") or "",
     }
+    praefix = "tabelle_allein" if args.nur_tabelle else "tabelle_prosa"
     ziel_pfad = LAUF / (args.out or
-                        f"predictions_tabelle_prosa_{args.record.split(':')[1]}"
+                        f"predictions_{praefix}_{args.record.split(':')[1]}"
                         f"_{args.model}_{args.budget}.jsonl")
     with ziel_pfad.open("a", encoding="utf-8", newline="\n") as handle:
         handle.write(json.dumps(zeile, ensure_ascii=False) + "\n")

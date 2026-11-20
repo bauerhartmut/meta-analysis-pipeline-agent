@@ -351,11 +351,17 @@ Tabellenzeile reicht.
    16.000 Tokens (`tabelle_prosa_30_ergebnis_20261120.md`). Ergebnis `ok`,
    8.174 Tokens, 236 s: Tabelle, Zeitpunkt und Arme stimmen, das Modell wählt
    aber `Mean change from BL` statt `Mean score (SD)`; die Goldzeile
-   (`38.1 (9.5)` / `31.5 (7.4)`) war sichtbar. Damit ist der Fehler erstmals
-   der Zeilenwahl zuzuordnen, nicht dem Ausschnitt.
-4. **Nächster Schritt:** Zeilenbindung im Prompt schärfen oder in einer Stufe 2
-   mit Zeilenkandidaten (Score vs. Change) auflösen; kein weiterer Aufruf ohne
-   diese Entscheidung.
+   (`38.1 (9.5)` / `31.5 (7.4)`) war sichtbar. Confound: das Prosa-Stück enthält
+   selbst Änderungswerte (6,4/6,4/2,1) und kann die Zeile geprimt haben.
+4. **Gegenprobe ohne Prosa-Stück (20.11.2026):** nur Tabellenfenster, offline
+   6/6, ein Aufruf mit 16.000 Tokens: `ok`, 7.589 Tokens, 397 s, erneut
+   `Mean change from BL` — der Confound ist damit ausgeräumt, die Zeile ist
+   modellseitig. Preis: ohne Prosa fehlen Caption und Zeitpunkt (`timepoint`
+   leer).
+5. **Nächster Schritt:** Prosa-Stück behalten (Zeitpunkt), Zeilenbindung im
+   Prompt schärfen (Score-Zeile verlangen, `Mean change` ausschließen) oder in
+   einer Stufe 2 Zeilenkandidaten (Score vs. Change) auflösen; kein weiterer
+   Aufruf ohne diese Entscheidung.
 
 Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Feldbezeichnung offen),
 weitere Prompt-Fassungen auf 420/421 (Befund 1), eine Budgeterhöhung als
