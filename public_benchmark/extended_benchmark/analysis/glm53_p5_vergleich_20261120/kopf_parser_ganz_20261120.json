@@ -1,0 +1,256 @@
+[
+  {
+    "record_id": "yun2024:582",
+    "gold": {
+      "intervention_group_size": 16.0,
+      "comparator_group_size": 16.0
+    },
+    "gefunden": true,
+    "zellen": [
+      {
+        "arm_label": "Positive ABM",
+        "wert": 16.0,
+        "zelle": "(*n* = 16)",
+        "pos": 10685
+      },
+      {
+        "arm_label": "Positive ABM",
+        "wert": 16.0,
+        "zelle": "(*n* = 16)",
+        "pos": 10704
+      },
+      {
+        "arm_label": "Neutral ABM",
+        "wert": 14.0,
+        "zelle": "(*n* = 14)",
+        "pos": 10723
+      },
+      {
+        "arm_label": "Neutral ABM",
+        "wert": 15.0,
+        "zelle": "(*n* = 15)",
+        "pos": 10742
+      }
+    ],
+    "kopfzeile": "Faces (*n* = 16)   Words (*n* = 16)   Faces (*n* = 14)   Words (*n* = 15)   *p*[a](#)",
+    "armzeile": "Positive ABM       Neutral ABM",
+    "zeile_pos": 10624,
+    "zuordnung": {
+      "ordnung": "wie_gedruckt",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "f1": 1.0
+    }
+  },
+  {
+    "record_id": "yun2024:420",
+    "gold": {
+      "intervention_group_size": 18.0,
+      "comparator_group_size": 21.0
+    },
+    "gefunden": true,
+    "zellen": [
+      {
+        "arm_label": "",
+        "wert": 58.0,
+        "zelle": "(n\u200a=\u200a58)",
+        "pos": 10045
+      },
+      {
+        "arm_label": "",
+        "wert": 44.0,
+        "zelle": "(n\u200a=\u200a44)",
+        "pos": 10070
+      },
+      {
+        "arm_label": "",
+        "wert": 45.0,
+        "zelle": "(n\u200a=\u200a45)",
+        "pos": 10110
+      },
+      {
+        "arm_label": "",
+        "wert": 42.0,
+        "zelle": "(n\u200a=\u200a42)",
+        "pos": 10147
+      },
+      {
+        "arm_label": "",
+        "wert": 35.0,
+        "zelle": "(n\u200a=\u200a35)",
+        "pos": 10191
+      },
+      {
+        "arm_label": "",
+        "wert": 33.0,
+        "zelle": "(n\u200a=\u200a33)",
+        "pos": 10217
+      },
+      {
+        "arm_label": "",
+        "wert": 28.0,
+        "zelle": "(n\u200a=\u200a28)",
+        "pos": 10258
+      },
+      {
+        "arm_label": "",
+        "wert": 5.0,
+        "zelle": "(n\u200a=\u200a5)",
+        "pos": 10299
+      },
+      {
+        "arm_label": "",
+        "wert": 4.0,
+        "zelle": "(n\u200a=\u200a4)",
+        "pos": 10317
+      },
+      {
+        "arm_label": "",
+        "wert": 2.0,
+        "zelle": "(n\u200a=\u200a2)",
+        "pos": 10337
+      },
+      {
+        "arm_label": "",
+        "wert": 2.0,
+        "zelle": "(n\u200a=\u200a2)",
+        "pos": 10364
+      },
+      {
+        "arm_label": "",
+        "wert": 1.0,
+        "zelle": "(n\u200a=\u200a1)",
+        "pos": 10394
+      }
+    ],
+    "kopfzeile": "nonmarked (0--100 mm) visual analogue scales.:::: Results of all examinations were of diagnostic image quality. The main findings included: disc protrusion (n\u200a=\u200a58), disc extrusion (n\u200a=\u200a44), degenerative spondylarthrosis (n\u200a=\u200a45), neural foraminal narrowing (n\u200a=\u200a42), nerve root compression/irritation (n\u200a=\u200a35), spinal stenosis (n\u200a=\u200a33), intervertebral osteochondrosis (n\u200a=\u200a28), myelopathy/spinal cord lesions (n\u200a=\u200a5), fracture (n\u200a=\u200a4), metastasis (n\u200a=\u200a2), spondylolisthesis (n\u200a=\u200a2), and spondylodiscitis (n\u200a=\u200a1). ## Qualitative Analysis Qualitative overall image quality of all available imaging sequences, assessed by two blinded examiners in consensus, was rated significantly higher for short-bore MR images than for open MR images (1.92 [SD, 0.74] versus 3.16 [SD, 0.77]; *P*<0.0001). No sequence was rated very poor (nondiagnostic). Thus image quality scores ranged from 1 (optimal) to 4 (poor). [Table 3](#) shows the respective results computed separately for all qualitative parameters which were assessed. There were significantly more artifacts in sagittal T1-weighted sequences of the cervicothoracic and the thoracolumbar spine and in axial T2-weighted sequences of the thoracolumbar spine when obtained with the open MR scanner. Relevant artifacts were mainly due to motion for both, short-bore and open MR imaging. However, none of the examinations showed severe artifacts limiting their diagnostic value. Subgroup analyses excluding patients who underwent imaging after cross-referral revealed equally distributed results (*P*<0.0001, data not shown). Analysis of only those examinations which were performed with sedation also revealed higher qualitative image quality ratings for short-bore MR, but significant differences were only found for axial sequences (data not shown). [Figures 2](#) to [5](#) show examples of MR images representing the respective range of qualitative image quality for the two scanners. <figure> 10.1371/journal.pone.0083427.g002 <p><img src=\"\" /></p> <figcaption>Representative Examples of Image Quality on Sagittal T1- and T2-Weighted Sequences of the Cervical Spine.<br /> Top row: sagittal T1-weighted turbo spin-echo sequences of the cervicothoracic spine of four patients, representing the range of qualitative image quality scores obtained with short-bore (A, C) and open MR imaging (B, D). Overall image quality ratings were: \u201coptimal\u201d for sequence A,\u201cgood\u201d for B, \u201cmoderate\u201d for C, and \u201cpoor\u201d for D. No sequence was rated very poor (nondiagnostic). Bottom row: sagittal T2-weighted turbo spin-echo sequences of the cervicothoracic spine of the same four patients obtained with short-bore (E, G) and open MR imaging (F, H). Overall image quality ratings were: \u201cgood\u201d for sequence E,\u201cgood\u201d for F, \u201cmoderate\u201d for G, and \u201cgood\u201d for H. No sequence was rated very poor (nondiagnostic).</figcaption> </figure> <figure> 10.1371/journal.pone.0083427.g003 <p><img src=\"\" /></p> <figcaption>Representative Examples of Image Quality on Sagittal T2- and T1-Weighted Sequences of the Lumbar Spine.<br /> Top row: sagittal T2-weighted turbo spin-echo sequences of the lumbar spine of four patients, representing the range of qualitative image quality scores obtained with short-bore (A, C) and open MR imaging (B, D). Overall image quality ratings were: \u201coptimal\u201d for A,\u201cgood\u201d for B, \u201cmoderate\u201d for C, and \u201cpoor\u201d for D. No sequence was rated very poor (nondiagnostic). Bottom row: sagittal T1-weighted turbo spin-echo sequences of the lumbar spine of the same four patients obtained with short-bore (E, G) and open MR imaging (F, H). Overall image quality ratings were: \u201cgood\u201d for sequence E,\u201cmoderate\u201d for F, \u201cgood\u201d for G, and \u201cpoor\u201d for H. No sequence was rated very poor (nondiagnostic).</figcaption> </figure> <figure> 10.1371/journal.pone.0083427.g004 <p><img src=\"\" /></p> <figcaption>Representative Examples of Image Quality on Axial T2-Weighted Sequences of the Cervical Spine.<br /> Axial T2-weighted medic sequences of the cervical spine of four patients, representing the range of qualitative image quality scores obtained with short-bore (A, B) and open MR imaging (C, D). Overall image quality ratings were: \u201coptimal\u201d for sequence A,\u201cgood\u201d for sequence B, \u201cmoderate\u201d for C, and \u201cpoor\u201d for D. No sequence was rated very poor (nondiagnostic).</figcaption> </figure> <figure> 10.1371/journal.pone.0083427.g005 <p><img src=\"\" /></p> <figcaption>Representative Examples of Image Quality on Axial T2-weighted Sequences of the Thoracolumbar Spine.<br /> Axial T2-weighted sequences of the lumbar spine of four patients, representing the range of qualitative image quality scores obtained with short-bore (A, C) and open MR imaging (B, D). Overall image quality ratings were: \u201coptimal\u201d for sequence A,\u201cgood\u201d for sequence B, \u201cmoderate\u201d for C, and \u201cpoor\u201d for D. No sequence was rated very poor (nondiagnostic).</figcaption> </figure> ::::table-wrap",
+    "armzeile": "",
+    "zeile_pos": 9889,
+    "zuordnung": {
+      "ordnung": "wie_gedruckt",
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "f1": 0.0
+    }
+  },
+  {
+    "record_id": "yun2024:421",
+    "gold": {
+      "intervention_group_size": 30.0,
+      "comparator_group_size": 34.0
+    },
+    "gefunden": true,
+    "zellen": [
+      {
+        "arm_label": "",
+        "wert": 58.0,
+        "zelle": "(n\u200a=\u200a58)",
+        "pos": 10045
+      },
+      {
+        "arm_label": "",
+        "wert": 44.0,
+        "zelle": "(n\u200a=\u200a44)",
+        "pos": 10070
+      },
+      {
+        "arm_label": "",
+        "wert": 45.0,
+        "zelle": "(n\u200a=\u200a45)",
+        "pos": 10110
+      },
+      {
+        "arm_label": "",
+        "wert": 42.0,
+        "zelle": "(n\u200a=\u200a42)",
+        "pos": 10147
+      },
+      {
+        "arm_label": "",
+        "wert": 35.0,
+        "zelle": "(n\u200a=\u200a35)",
+        "pos": 10191
+      },
+      {
+        "arm_label": "",
+        "wert": 33.0,
+        "zelle": "(n\u200a=\u200a33)",
+        "pos": 10217
+      },
+      {
+        "arm_label": "",
+        "wert": 28.0,
+        "zelle": "(n\u200a=\u200a28)",
+        "pos": 10258
+      },
+      {
+        "arm_label": "",
+        "wert": 5.0,
+        "zelle": "(n\u200a=\u200a5)",
+        "pos": 10299
+      },
+      {
+        "arm_label": "",
+        "wert": 4.0,
+        "zelle": "(n\u200a=\u200a4)",
+        "pos": 10317
+      },
+      {
+        "arm_label": "",
+        "wert": 2.0,
+        "zelle": "(n\u200a=\u200a2)",
+        "pos": 10337
+      },
+      {
+        "arm_label": "",
+        "wert": 2.0,
+        "zelle": "(n\u200a=\u200a2)",
+        "pos": 10364
+      },
+      {
+        "arm_label": "",
+        "wert": 1.0,
+        "zelle": "(n\u200a=\u200a1)",
+        "pos": 10394
+      }
+    ],
+    "kopfzeile": "nonmarked (0--100 mm) visual analogue scales.:::: Results of all examinations were of diagnostic image quality. The main findings included: disc protrusion (n\u200a=\u200a58), disc extrusion (n\u200a=\u200a44), degenerative spondylarthrosis (n\u200a=\u200a45), neural foraminal narrowing (n\u200a=\u200a42), nerve root compression/irritation (n\u200a=\u200a35), spinal stenosis (n\u200a=\u200a33), intervertebral osteochondrosis (n\u200a=\u200a28), myelopathy/spinal cord lesions (n\u200a=\u200a5), fracture (n\u200a=\u200a4), metastasis (n\u200a=\u200a2), spondylolisthesis (n\u200a=\u200a2), and spondylodiscitis (n\u200a=\u200a1). ## Qualitative Analysis Qualitative overall image quality of all available imaging sequences, assessed by two blinded examiners in consensus, was rated significantly higher for short-bore MR images than for open MR images (1.92 [SD, 0.74] versus 3.16 [SD, 0.77]; *P*<0.0001). No sequence was rated very poor (nondiagnostic). Thus image quality scores ranged from 1 (optimal) to 4 (poor). [Table 3](#) shows the respective results computed separately for all qualitative parameters which were assessed. There were significantly more artifacts in sagittal T1-weighted sequences of the cervicothoracic and the thoracolumbar spine and in axial T2-weighted sequences of the thoracolumbar spine when obtained with the open MR scanner. Relevant artifacts were mainly due to motion for both, short-bore and open MR imaging. However, none of the examinations showed severe artifacts limiting their diagnostic value. Subgroup analyses excluding patients who underwent imaging after cross-referral revealed equally distributed results (*P*<0.0001, data not shown). Analysis of only those examinations which were performed with sedation also revealed higher qualitative image quality ratings for short-bore MR, but significant differences were only found for axial sequences (data not shown). [Figures 2](#) to [5](#) show examples of MR images representing the respective range of qualitative image quality for the two scanners. <figure> 10.1371/journal.pone.0083427.g002 <p><img src=\"\" /></p> <figcaption>Representative Examples of Image Quality on Sagittal T1- and T2-Weighted Sequences of the Cervical Spine.<br /> Top row: sagittal T1-weighted turbo spin-echo sequences of the cervicothoracic spine of four patients, representing the range of qualitative image quality scores obtained with short-bore (A, C) and open MR imaging (B, D). Overall image quality ratings were: \u201coptimal\u201d for sequence A,\u201cgood\u201d for B, \u201cmoderate\u201d for C, and \u201cpoor\u201d for D. No sequence was rated very poor (nondiagnostic). Bottom row: sagittal T2-weighted turbo spin-echo sequences of the cervicothoracic spine of the same four patients obtained with short-bore (E, G) and open MR imaging (F, H). Overall image quality ratings were: \u201cgood\u201d for sequence E,\u201cgood\u201d for F, \u201cmoderate\u201d for G, and \u201cgood\u201d for H. No sequence was rated very poor (nondiagnostic).</figcaption> </figure> <figure> 10.1371/journal.pone.0083427.g003 <p><img src=\"\" /></p> <figcaption>Representative Examples of Image Quality on Sagittal T2- and T1-Weighted Sequences of the Lumbar Spine.<br /> Top row: sagittal T2-weighted turbo spin-echo sequences of the lumbar spine of four patients, representing the range of qualitative image quality scores obtained with short-bore (A, C) and open MR imaging (B, D). Overall image quality ratings were: \u201coptimal\u201d for A,\u201cgood\u201d for B, \u201cmoderate\u201d for C, and \u201cpoor\u201d for D. No sequence was rated very poor (nondiagnostic). Bottom row: sagittal T1-weighted turbo spin-echo sequences of the lumbar spine of the same four patients obtained with short-bore (E, G) and open MR imaging (F, H). Overall image quality ratings were: \u201cgood\u201d for sequence E,\u201cmoderate\u201d for F, \u201cgood\u201d for G, and \u201cpoor\u201d for H. No sequence was rated very poor (nondiagnostic).</figcaption> </figure> <figure> 10.1371/journal.pone.0083427.g004 <p><img src=\"\" /></p> <figcaption>Representative Examples of Image Quality on Axial T2-Weighted Sequences of the Cervical Spine.<br /> Axial T2-weighted medic sequences of the cervical spine of four patients, representing the range of qualitative image quality scores obtained with short-bore (A, B) and open MR imaging (C, D). Overall image quality ratings were: \u201coptimal\u201d for sequence A,\u201cgood\u201d for sequence B, \u201cmoderate\u201d for C, and \u201cpoor\u201d for D. No sequence was rated very poor (nondiagnostic).</figcaption> </figure> <figure> 10.1371/journal.pone.0083427.g005 <p><img src=\"\" /></p> <figcaption>Representative Examples of Image Quality on Axial T2-weighted Sequences of the Thoracolumbar Spine.<br /> Axial T2-weighted sequences of the lumbar spine of four patients, representing the range of qualitative image quality scores obtained with short-bore (A, C) and open MR imaging (B, D). Overall image quality ratings were: \u201coptimal\u201d for sequence A,\u201cgood\u201d for sequence B, \u201cmoderate\u201d for C, and \u201cpoor\u201d for D. No sequence was rated very poor (nondiagnostic).</figcaption> </figure> ::::table-wrap",
+    "armzeile": "",
+    "zeile_pos": 9889,
+    "zuordnung": {
+      "ordnung": "wie_gedruckt",
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "f1": 0.0
+    }
+  },
+  {
+    "record_id": "yun2024:671",
+    "gold": {
+      "intervention_group_size": 14.0,
+      "comparator_group_size": 12.0
+    },
+    "gefunden": false,
+    "grund": "keine Zeile mit zwei Kopfzellen",
+    "zuordnung": {
+      "f1": 0.0,
+      "grund": "weniger als zwei Kopfzellen"
+    }
+  },
+  {
+    "record_id": "yun2024:672",
+    "gold": {
+      "intervention_group_size": 14.0,
+      "comparator_group_size": 12.0
+    },
+    "gefunden": false,
+    "grund": "keine Zeile mit zwei Kopfzellen",
+    "zuordnung": {
+      "f1": 0.0,
+      "grund": "weniger als zwei Kopfzellen"
+    }
+  }
+]
