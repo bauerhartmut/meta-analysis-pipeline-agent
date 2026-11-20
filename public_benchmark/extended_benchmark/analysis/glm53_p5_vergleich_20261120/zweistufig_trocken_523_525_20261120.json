@@ -1,0 +1,171 @@
+{
+  "summe": {
+    "n": 2,
+    "prompt_median": 7137,
+    "goldwerte": 12,
+    "goldwerte_im_volltext": 8,
+    "goldwerte_fehlend": 4,
+    "max_tokens": 2000,
+    "hinweis": "Trockenbau: Ausschnitt und Prompt fuer Stufe 1, kein Modellaufruf."
+  },
+  "faelle": {
+    "yun2024:523": {
+      "record_id": "yun2024:523",
+      "dokument": "PMC5325897",
+      "text_zeichen": 6811,
+      "outcome": "First test results",
+      "timepoint_target": "primary time point of the trial (if not stated: the last reported time point)",
+      "stichworte": [
+        "First",
+        "test",
+        "results"
+      ],
+      "ausschnitt": {
+        "breite": 6000,
+        "start": 500,
+        "ende": 6500,
+        "zeichen": 6000,
+        "anteil_prozent": 88.1,
+        "outcome_treffer": 12,
+        "tabellenzeilen": 0,
+        "bewertung": 40.87,
+        "kandidaten": 2
+      },
+      "prompt_zeichen": 7137,
+      "prompt_tokens_geschaetzt": 1784,
+      "max_tokens": 2000,
+      "prompt": "Publication excerpt:\ns design and before-after method. They were randomly allocated to two groups (with or without feedback) and evaluated three times regarding chest ultrasonography for trauma patients, using direct observation of procedural skills (DOPS) and valid and reliable checklist. Data were analyzed using SPSS 20. ## Results: 30 emergency medicine residents with the mean age of 36.63 ± 30.30 years were allocated to two equal groups (56.7% male). Studied groups were similar regarding the baseline characteristics. In both groups, obtained scores showed a significant increase from the first to the third evaluation (p < 0.001). Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001). Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). ## Conclusion: Based on the findings of the present study, giving feedback after evaluating the second year emergency medicine residents regarding chest ultrasonography for trauma patients, led to a significant improvement in their scores in future evaluations and consequently their skill. # Results ***Baseline characteristics*** 30 emergency medicine residents with the mean age of 36.63 ± 30.30 (29 - 47) years participated (56.7% male). They were randomly allocated to either Loghman Hakim (group 1) or Imam Hossein hospitals (group 2). [Table 1](#) shows the baseline characteristics of the participants. The two studied groups were similar regarding the baseline characteristics. 25 (83.4%) residents performed chest ultrasonography more than five times (56.7% more than 10 times) and 25 (83.3%) residents believed that chest ultrasonography for trauma patients had medium to high difficulty level. ***Outcomes*** Mean scores of the residents in the first, second, and third evaluations were 10.00 ± 0.54, 14.93 ± 0.32, and 18.72 ± 0.15, respectively. [Figure 1](#) shows the scores obtained by the residents for the 3 evaluations done based on the hospital. In both groups, obtained scores showed a significant increase from the first to the third evaluation (p < 0.001) according to Greenhouse-Geisser Correction test. Mean score obtained for preparation, scan and post-scan items among all residents were 3.34 ± 0.91, 9.48 ± 3.16, and 1.72 ± 0.97, respectively. [Tables 2](#) and [3](#) compare the scores obtained by each group in the 3 tests qualitatively and quantitatively. Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001). Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). As can be seen, residents in Loghman Hakim Hospital were significantly better in the second exam both quantitatively and qualitatively. ::::table-wrap\n::: caption\nBaseline characteristics of participants\n:::\n\n  **Variable**                                   **Loghman Hakim**   **Imam Hossein**   **P**\n  ---------------------------------------------- ------------------- ------------------ -------\n  **Mean age (year)**                            34.93 ± 5.40        38.33 ± 5.23       0.091\n  **Sex**                                                                               \n  Male                                           9 (60)              8 (53.3)           0.71\n  Female                                         6 (40)              7 (46.7)           \n  **Background experience1(time)**                                                      \n  1 -4                                           3 (20)              2 (13.3)           0.879\n  5- 9                                           4 (26.7)            4 (26.7)           \n  ≥ 10                                           8 (53.3)            9 (60)             \n  **Background attitude** ^2^ **(difficulty)**                                          \n  Low                                            4 (26.7)            1 (6.7)            0.241\n  Medium                                         10 (66.7)           11 (73.3)          \n  High                                           1 (6.7)             3 (20)             \n  **Mean promotion exam score**^3^               81.06 ± 6.29        82.42 ± 6.27       0.565\n\nData were presented as mean ± standard deviation or frequency\n(percentage);\n\n1: Previous experience of chest ultrasonography;\n\n2: Attitude of the resident regarding the difficulty of the procedure;\n\n3: Score in exam taken for promotion from year 1 to year 2 of the\nresidency program (out of 100).:::: <figure> <p><img src=\"\" /></p> <figcaption>Trend of scores (minimum 0 and maximum 20) in three evaluations of studied groups (p &lt; 0.001, based on Greenhouse-Geisser Correction</figcaption> </figure> ::::table-wrap\n::: caption\nComparison of mean evaluation scores between groups\n:::\n\n  **Evaluation**             **Loghman Hakim**   **Imam Hossein**   **P-value**\n  -------------------------- ------------------- ------------------ -------------\n  **Preparation (0 -- 4)**                                          \n  First                      3.00 ± 0.75         2.1 ± 0.92         0.009\n  Second                     4.00 ± 0.00         3.00 ± 0.85        < 0.0001\n  Third                      3.93 ± 0.26         4.00 ± 0.00        0.326\n  **Scan (0 -- 13)**                                                \n  First                      6.87 ± 2.39         6.27 ± 2.43        0.501\n  Second                     11.60 ± 0.99        7.33 ± 1.95        < 0.001\n  Third                      12.53 ± 0.74        12.26 ± 0.59       0.287\n  **Post scan (0 -- 3)**                                            \n  First                      0.40 ± 0.63         1.20 ± 0.67        0.002\n  Second                     2.13 ± 0.35         1.80 ± 0.86        0.176\n  Third                      2.53 ± 0.64         2.27 ± 0.71        0.287\n  **Total (0 - 20)**                \n\nIntervention: Evaluation with feedback\nComparator: Evaluation without feedback\nOutcome: First test results\nOutcome type: continuous\nTarget time point (binding): \"primary time point of the trial (if not stated: the last reported time point)\".\n\nRead no numbers. Only locate where the outcome is reported at the target time point.\nName, for each arm, the exact row label (the outcome line as printed), the exact column header of that arm as printed, the caption of the table or the paragraph, and the time point label as printed.\nIf the excerpt does not report the outcome at the target time point for an arm, set \"found\": false for that arm and leave the labels empty. Do not guess a row.\nIf the outcome is reported in several rows (subgroups, populations), choose the row that matches the arms named in the request.\n\nReturn exactly one JSON object:\n{\"locators\": [{\"arm\": \"intervention\" | \"comparator\", \"row_label\": \"<as printed>\", \"column_header\": \"<as printed>\", \"caption\": \"<caption or short paragraph label>\", \"timepoint\": \"<as printed>\", \"found\": true}, ...]}\nNo numbers. No commentary, markdown or code fences.",
+      "ausschnitt_text": "s design and before-after method. They were randomly allocated to two groups (with or without feedback) and evaluated three times regarding chest ultrasonography for trauma patients, using direct observation of procedural skills (DOPS) and valid and reliable checklist. Data were analyzed using SPSS 20. ## Results: 30 emergency medicine residents with the mean age of 36.63 ± 30.30 years were allocated to two equal groups (56.7% male). Studied groups were similar regarding the baseline characteristics. In both groups, obtained scores showed a significant increase from the first to the third evaluation (p < 0.001). Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001). Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). ## Conclusion: Based on the findings of the present study, giving feedback after evaluating the second year emergency medicine residents regarding chest ultrasonography for trauma patients, led to a significant improvement in their scores in future evaluations and consequently their skill. # Results ***Baseline characteristics*** 30 emergency medicine residents with the mean age of 36.63 ± 30.30 (29 - 47) years participated (56.7% male). They were randomly allocated to either Loghman Hakim (group 1) or Imam Hossein hospitals (group 2). [Table 1](#) shows the baseline characteristics of the participants. The two studied groups were similar regarding the baseline characteristics. 25 (83.4%) residents performed chest ultrasonography more than five times (56.7% more than 10 times) and 25 (83.3%) residents believed that chest ultrasonography for trauma patients had medium to high difficulty level. ***Outcomes*** Mean scores of the residents in the first, second, and third evaluations were 10.00 ± 0.54, 14.93 ± 0.32, and 18.72 ± 0.15, respectively. [Figure 1](#) shows the scores obtained by the residents for the 3 evaluations done based on the hospital. In both groups, obtained scores showed a significant increase from the first to the third evaluation (p < 0.001) according to Greenhouse-Geisser Correction test. Mean score obtained for preparation, scan and post-scan items among all residents were 3.34 ± 0.91, 9.48 ± 3.16, and 1.72 ± 0.97, respectively. [Tables 2](#) and [3](#) compare the scores obtained by each group in the 3 tests qualitatively and quantitatively. Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001). Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). As can be seen, residents in Loghman Hakim Hospital were significantly better in the second exam both quantitatively and qualitatively. ::::table-wrap\n::: caption\nBaseline characteristics of participants\n:::\n\n  **Variable**                                   **Loghman Hakim**   **Imam Hossein**   **P**\n  ---------------------------------------------- ------------------- ------------------ -------\n  **Mean age (year)**                            34.93 ± 5.40        38.33 ± 5.23       0.091\n  **Sex**                                                                               \n  Male                                           9 (60)              8 (53.3)           0.71\n  Female                                         6 (40)              7 (46.7)           \n  **Background experience1(time)**                                                      \n  1 -4                                           3 (20)              2 (13.3)           0.879\n  5- 9                                           4 (26.7)            4 (26.7)           \n  ≥ 10                                           8 (53.3)            9 (60)             \n  **Background attitude** ^2^ **(difficulty)**                                          \n  Low                                            4 (26.7)            1 (6.7)            0.241\n  Medium                                         10 (66.7)           11 (73.3)          \n  High                                           1 (6.7)             3 (20)             \n  **Mean promotion exam score**^3^               81.06 ± 6.29        82.42 ± 6.27       0.565\n\nData were presented as mean ± standard deviation or frequency\n(percentage);\n\n1: Previous experience of chest ultrasonography;\n\n2: Attitude of the resident regarding the difficulty of the procedure;\n\n3: Score in exam taken for promotion from year 1 to year 2 of the\nresidency program (out of 100).:::: <figure> <p><img src=\"\" /></p> <figcaption>Trend of scores (minimum 0 and maximum 20) in three evaluations of studied groups (p &lt; 0.001, based on Greenhouse-Geisser Correction</figcaption> </figure> ::::table-wrap\n::: caption\nComparison of mean evaluation scores between groups\n:::\n\n  **Evaluation**             **Loghman Hakim**   **Imam Hossein**   **P-value**\n  -------------------------- ------------------- ------------------ -------------\n  **Preparation (0 -- 4)**                                          \n  First                      3.00 ± 0.75         2.1 ± 0.92         0.009\n  Second                     4.00 ± 0.00         3.00 ± 0.85        < 0.0001\n  Third                      3.93 ± 0.26         4.00 ± 0.00        0.326\n  **Scan (0 -- 13)**                                                \n  First                      6.87 ± 2.39         6.27 ± 2.43        0.501\n  Second                     11.60 ± 0.99        7.33 ± 1.95        < 0.001\n  Third                      12.53 ± 0.74        12.26 ± 0.59       0.287\n  **Post scan (0 -- 3)**                                            \n  First                      0.40 ± 0.63         1.20 ± 0.67        0.002\n  Second                     2.13 ± 0.35         1.80 ± 0.86        0.176\n  Third                      2.53 ± 0.64         2.27 ± 0.71        0.287\n  **Total (0 - 20)**                ",
+      "system": "You locate numerical results in randomised controlled trial publications. You answer with a single JSON object and nothing else. You never invent labels: every label you name must appear in the text.",
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "wert": 15.0,
+          "im_volltext": 0,
+          "im_ausschnitt": 0
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "wert": 10.24,
+          "im_volltext": 2,
+          "im_ausschnitt": 2
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "wert": 0.77,
+          "im_volltext": 4,
+          "im_ausschnitt": 4
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "wert": 15.0,
+          "im_volltext": 0,
+          "im_ausschnitt": 0
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "wert": 9.73,
+          "im_volltext": 3,
+          "im_ausschnitt": 2
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "wert": 0.77,
+          "im_volltext": 4,
+          "im_ausschnitt": 4
+        }
+      ],
+      "goldwerte_im_volltext": 4,
+      "goldwerte_fehlend": 2,
+      "fehlende_felder": [
+        "intervention_group_size",
+        "comparator_group_size"
+      ]
+    },
+    "yun2024:525": {
+      "record_id": "yun2024:525",
+      "dokument": "PMC5325897",
+      "text_zeichen": 6811,
+      "outcome": "Final test results",
+      "timepoint_target": "primary time point of the trial (if not stated: the last reported time point)",
+      "stichworte": [
+        "Final",
+        "test",
+        "results"
+      ],
+      "ausschnitt": {
+        "breite": 6000,
+        "start": 500,
+        "ende": 6500,
+        "zeichen": 6000,
+        "anteil_prozent": 88.1,
+        "outcome_treffer": 4,
+        "tabellenzeilen": 0,
+        "bewertung": 16.87,
+        "kandidaten": 2
+      },
+      "prompt_zeichen": 7137,
+      "prompt_tokens_geschaetzt": 1784,
+      "max_tokens": 2000,
+      "prompt": "Publication excerpt:\ns design and before-after method. They were randomly allocated to two groups (with or without feedback) and evaluated three times regarding chest ultrasonography for trauma patients, using direct observation of procedural skills (DOPS) and valid and reliable checklist. Data were analyzed using SPSS 20. ## Results: 30 emergency medicine residents with the mean age of 36.63 ± 30.30 years were allocated to two equal groups (56.7% male). Studied groups were similar regarding the baseline characteristics. In both groups, obtained scores showed a significant increase from the first to the third evaluation (p < 0.001). Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001). Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). ## Conclusion: Based on the findings of the present study, giving feedback after evaluating the second year emergency medicine residents regarding chest ultrasonography for trauma patients, led to a significant improvement in their scores in future evaluations and consequently their skill. # Results ***Baseline characteristics*** 30 emergency medicine residents with the mean age of 36.63 ± 30.30 (29 - 47) years participated (56.7% male). They were randomly allocated to either Loghman Hakim (group 1) or Imam Hossein hospitals (group 2). [Table 1](#) shows the baseline characteristics of the participants. The two studied groups were similar regarding the baseline characteristics. 25 (83.4%) residents performed chest ultrasonography more than five times (56.7% more than 10 times) and 25 (83.3%) residents believed that chest ultrasonography for trauma patients had medium to high difficulty level. ***Outcomes*** Mean scores of the residents in the first, second, and third evaluations were 10.00 ± 0.54, 14.93 ± 0.32, and 18.72 ± 0.15, respectively. [Figure 1](#) shows the scores obtained by the residents for the 3 evaluations done based on the hospital. In both groups, obtained scores showed a significant increase from the first to the third evaluation (p < 0.001) according to Greenhouse-Geisser Correction test. Mean score obtained for preparation, scan and post-scan items among all residents were 3.34 ± 0.91, 9.48 ± 3.16, and 1.72 ± 0.97, respectively. [Tables 2](#) and [3](#) compare the scores obtained by each group in the 3 tests qualitatively and quantitatively. Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001). Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). As can be seen, residents in Loghman Hakim Hospital were significantly better in the second exam both quantitatively and qualitatively. ::::table-wrap\n::: caption\nBaseline characteristics of participants\n:::\n\n  **Variable**                                   **Loghman Hakim**   **Imam Hossein**   **P**\n  ---------------------------------------------- ------------------- ------------------ -------\n  **Mean age (year)**                            34.93 ± 5.40        38.33 ± 5.23       0.091\n  **Sex**                                                                               \n  Male                                           9 (60)              8 (53.3)           0.71\n  Female                                         6 (40)              7 (46.7)           \n  **Background experience1(time)**                                                      \n  1 -4                                           3 (20)              2 (13.3)           0.879\n  5- 9                                           4 (26.7)            4 (26.7)           \n  ≥ 10                                           8 (53.3)            9 (60)             \n  **Background attitude** ^2^ **(difficulty)**                                          \n  Low                                            4 (26.7)            1 (6.7)            0.241\n  Medium                                         10 (66.7)           11 (73.3)          \n  High                                           1 (6.7)             3 (20)             \n  **Mean promotion exam score**^3^               81.06 ± 6.29        82.42 ± 6.27       0.565\n\nData were presented as mean ± standard deviation or frequency\n(percentage);\n\n1: Previous experience of chest ultrasonography;\n\n2: Attitude of the resident regarding the difficulty of the procedure;\n\n3: Score in exam taken for promotion from year 1 to year 2 of the\nresidency program (out of 100).:::: <figure> <p><img src=\"\" /></p> <figcaption>Trend of scores (minimum 0 and maximum 20) in three evaluations of studied groups (p &lt; 0.001, based on Greenhouse-Geisser Correction</figcaption> </figure> ::::table-wrap\n::: caption\nComparison of mean evaluation scores between groups\n:::\n\n  **Evaluation**             **Loghman Hakim**   **Imam Hossein**   **P-value**\n  -------------------------- ------------------- ------------------ -------------\n  **Preparation (0 -- 4)**                                          \n  First                      3.00 ± 0.75         2.1 ± 0.92         0.009\n  Second                     4.00 ± 0.00         3.00 ± 0.85        < 0.0001\n  Third                      3.93 ± 0.26         4.00 ± 0.00        0.326\n  **Scan (0 -- 13)**                                                \n  First                      6.87 ± 2.39         6.27 ± 2.43        0.501\n  Second                     11.60 ± 0.99        7.33 ± 1.95        < 0.001\n  Third                      12.53 ± 0.74        12.26 ± 0.59       0.287\n  **Post scan (0 -- 3)**                                            \n  First                      0.40 ± 0.63         1.20 ± 0.67        0.002\n  Second                     2.13 ± 0.35         1.80 ± 0.86        0.176\n  Third                      2.53 ± 0.64         2.27 ± 0.71        0.287\n  **Total (0 - 20)**                \n\nIntervention: Evaluation with feedback\nComparator: Evaluation without feedback\nOutcome: Final test results\nOutcome type: continuous\nTarget time point (binding): \"primary time point of the trial (if not stated: the last reported time point)\".\n\nRead no numbers. Only locate where the outcome is reported at the target time point.\nName, for each arm, the exact row label (the outcome line as printed), the exact column header of that arm as printed, the caption of the table or the paragraph, and the time point label as printed.\nIf the excerpt does not report the outcome at the target time point for an arm, set \"found\": false for that arm and leave the labels empty. Do not guess a row.\nIf the outcome is reported in several rows (subgroups, populations), choose the row that matches the arms named in the request.\n\nReturn exactly one JSON object:\n{\"locators\": [{\"arm\": \"intervention\" | \"comparator\", \"row_label\": \"<as printed>\", \"column_header\": \"<as printed>\", \"caption\": \"<caption or short paragraph label>\", \"timepoint\": \"<as printed>\", \"found\": true}, ...]}\nNo numbers. No commentary, markdown or code fences.",
+      "ausschnitt_text": "s design and before-after method. They were randomly allocated to two groups (with or without feedback) and evaluated three times regarding chest ultrasonography for trauma patients, using direct observation of procedural skills (DOPS) and valid and reliable checklist. Data were analyzed using SPSS 20. ## Results: 30 emergency medicine residents with the mean age of 36.63 ± 30.30 years were allocated to two equal groups (56.7% male). Studied groups were similar regarding the baseline characteristics. In both groups, obtained scores showed a significant increase from the first to the third evaluation (p < 0.001). Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001). Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). ## Conclusion: Based on the findings of the present study, giving feedback after evaluating the second year emergency medicine residents regarding chest ultrasonography for trauma patients, led to a significant improvement in their scores in future evaluations and consequently their skill. # Results ***Baseline characteristics*** 30 emergency medicine residents with the mean age of 36.63 ± 30.30 (29 - 47) years participated (56.7% male). They were randomly allocated to either Loghman Hakim (group 1) or Imam Hossein hospitals (group 2). [Table 1](#) shows the baseline characteristics of the participants. The two studied groups were similar regarding the baseline characteristics. 25 (83.4%) residents performed chest ultrasonography more than five times (56.7% more than 10 times) and 25 (83.3%) residents believed that chest ultrasonography for trauma patients had medium to high difficulty level. ***Outcomes*** Mean scores of the residents in the first, second, and third evaluations were 10.00 ± 0.54, 14.93 ± 0.32, and 18.72 ± 0.15, respectively. [Figure 1](#) shows the scores obtained by the residents for the 3 evaluations done based on the hospital. In both groups, obtained scores showed a significant increase from the first to the third evaluation (p < 0.001) according to Greenhouse-Geisser Correction test. Mean score obtained for preparation, scan and post-scan items among all residents were 3.34 ± 0.91, 9.48 ± 3.16, and 1.72 ± 0.97, respectively. [Tables 2](#) and [3](#) compare the scores obtained by each group in the 3 tests qualitatively and quantitatively. Mean scores of first and second evaluations were 10.24 ± 0.77, 17.73 ± 0.46 in feedback receivers and 9.73 ± 0.77 and 12.13 ± 0.47 in others (p < 0.001). Mean third score after switching groups were 18.53 ± 0.22 in feedback receivers and 18.99 ± 0.22 in others (p = 0.213). As can be seen, residents in Loghman Hakim Hospital were significantly better in the second exam both quantitatively and qualitatively. ::::table-wrap\n::: caption\nBaseline characteristics of participants\n:::\n\n  **Variable**                                   **Loghman Hakim**   **Imam Hossein**   **P**\n  ---------------------------------------------- ------------------- ------------------ -------\n  **Mean age (year)**                            34.93 ± 5.40        38.33 ± 5.23       0.091\n  **Sex**                                                                               \n  Male                                           9 (60)              8 (53.3)           0.71\n  Female                                         6 (40)              7 (46.7)           \n  **Background experience1(time)**                                                      \n  1 -4                                           3 (20)              2 (13.3)           0.879\n  5- 9                                           4 (26.7)            4 (26.7)           \n  ≥ 10                                           8 (53.3)            9 (60)             \n  **Background attitude** ^2^ **(difficulty)**                                          \n  Low                                            4 (26.7)            1 (6.7)            0.241\n  Medium                                         10 (66.7)           11 (73.3)          \n  High                                           1 (6.7)             3 (20)             \n  **Mean promotion exam score**^3^               81.06 ± 6.29        82.42 ± 6.27       0.565\n\nData were presented as mean ± standard deviation or frequency\n(percentage);\n\n1: Previous experience of chest ultrasonography;\n\n2: Attitude of the resident regarding the difficulty of the procedure;\n\n3: Score in exam taken for promotion from year 1 to year 2 of the\nresidency program (out of 100).:::: <figure> <p><img src=\"\" /></p> <figcaption>Trend of scores (minimum 0 and maximum 20) in three evaluations of studied groups (p &lt; 0.001, based on Greenhouse-Geisser Correction</figcaption> </figure> ::::table-wrap\n::: caption\nComparison of mean evaluation scores between groups\n:::\n\n  **Evaluation**             **Loghman Hakim**   **Imam Hossein**   **P-value**\n  -------------------------- ------------------- ------------------ -------------\n  **Preparation (0 -- 4)**                                          \n  First                      3.00 ± 0.75         2.1 ± 0.92         0.009\n  Second                     4.00 ± 0.00         3.00 ± 0.85        < 0.0001\n  Third                      3.93 ± 0.26         4.00 ± 0.00        0.326\n  **Scan (0 -- 13)**                                                \n  First                      6.87 ± 2.39         6.27 ± 2.43        0.501\n  Second                     11.60 ± 0.99        7.33 ± 1.95        < 0.001\n  Third                      12.53 ± 0.74        12.26 ± 0.59       0.287\n  **Post scan (0 -- 3)**                                            \n  First                      0.40 ± 0.63         1.20 ± 0.67        0.002\n  Second                     2.13 ± 0.35         1.80 ± 0.86        0.176\n  Third                      2.53 ± 0.64         2.27 ± 0.71        0.287\n  **Total (0 - 20)**                ",
+      "system": "You locate numerical results in randomised controlled trial publications. You answer with a single JSON object and nothing else. You never invent labels: every label you name must appear in the text.",
+      "gold": [
+        {
+          "field": "intervention_group_size",
+          "arm": "intervention",
+          "wert": 15.0,
+          "im_volltext": 0,
+          "im_ausschnitt": 0
+        },
+        {
+          "field": "intervention_mean",
+          "arm": "intervention",
+          "wert": 18.53,
+          "im_volltext": 3,
+          "im_ausschnitt": 2
+        },
+        {
+          "field": "intervention_standard_deviation",
+          "arm": "intervention",
+          "wert": 0.22,
+          "im_volltext": 4,
+          "im_ausschnitt": 4
+        },
+        {
+          "field": "comparator_group_size",
+          "arm": "comparator",
+          "wert": 15.0,
+          "im_volltext": 0,
+          "im_ausschnitt": 0
+        },
+        {
+          "field": "comparator_mean",
+          "arm": "comparator",
+          "wert": 18.99,
+          "im_volltext": 2,
+          "im_ausschnitt": 2
+        },
+        {
+          "field": "comparator_standard_deviation",
+          "arm": "comparator",
+          "wert": 0.22,
+          "im_volltext": 4,
+          "im_ausschnitt": 4
+        }
+      ],
+      "goldwerte_im_volltext": 4,
+      "goldwerte_fehlend": 2,
+      "fehlende_felder": [
+        "intervention_group_size",
+        "comparator_group_size"
+      ]
+    }
+  }
+}

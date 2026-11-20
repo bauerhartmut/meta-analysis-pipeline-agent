@@ -1,26 +1,31 @@
 #!/usr/bin/env python
-"""Zweistufiger Test auf yun2024:559, Stufe 1 trocken.
+"""Zweistufiger Test, Stufe 1 trocken, fuer einen oder mehrere Records.
 
 Kein Modellaufruf, kein Netz. Gebaut wird, was Stufe 1 bekommen wuerde:
 
-* einen Ausschnitt von rund 6.000 Zeichen, gewaehlt nach Nennungen des Outcomes
-  und nach Tabellenzeilen (der Volltext hat 13.122 Zeichen),
-* einen Prompt, der nur Zeile, Spaltenkoepfe und Zeitpunkt benennen darf,
+* ein Ausschnitt von rund 6.000 Zeichen, gewaehlt nach Nennungen des Outcomes
+  und nach Tabellenzeilen,
+* ein Prompt, der nur Zeile, Spaltenkoepfe und Zeitpunkt benennen darf,
   ausdruecklich keine Zahlen,
 * ein Budget von 2.000 Completion-Tokens statt 24.000.
 
-Der Ausschnitt wird nach einer festen, hier dokumentierten Regel gewaehlt: ein
+Dazu die entscheidende Vorabpruefung: stehen die Goldwerte des Records
+ueberhaupt im Volltext und im Ausschnitt? Fehlt ein Wert im Volltext, kann ihn
+keine Stufe finden.
+
+Die Fensterwahl ist eine feste Heuristik ohne Modell und ohne Goldwissen:
 Fenster von 6.000 Zeichen, Start in 500er-Schritten, Bewertung =
-3 x Outcome-Treffer + 2 x Tabellenzeilen + 1 x Zahlentreffer im Fenster.
-Das ist eine Heuristik ohne Modell und ohne Goldwissen; sie dient dazu, den
-Prompt zu bauen, nicht ihn zu bewerten.
+3 x Outcome-Treffer + 2 x Tabellenzeilen + 1/100 x Ziffern im Fenster.
 
 Aufruf:
     .venv/bin/python .../zweistufig_trocken_20261120.py
+    .venv/bin/python .../zweistufig_trocken_20261120.py --records yun2024:523 yun2024:525 \
+        --out-prefix zweistufig_trocken_523_525_20261120
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -36,14 +41,11 @@ sys.path.insert(0, str(BENCH))
 sys.path.insert(0, str(HIER))
 
 import vergleiche_20261120 as v  # noqa: E402
-from falschwert_20261120 import lesarten, zahlen_im_text  # noqa: E402
+from falschwert_20261120 import zahlen_im_text  # noqa: E402
 
-RECORD_ID = "yun2024:559"
 BREITE = 6000
 SCHRITT = 500
 STAGE1_MAX_TOKENS = 2000
-AUSGABE = HIER / "zweistufig_trocken_20261120.json"
-AUSGABE_MD = HIER / "zweistufig_trocken_20261120.md"
 
 STAGE1_SYSTEM = (
     "You locate numerical results in randomised controlled trial publications. "
@@ -67,7 +69,7 @@ def waehle_ausschnitt(text: str, stichworte: list[str], breite: int, schritt: in
         return {"start": 0, "ende": len(text), "fenster": text, "bewertung": None,
                 "outcome_treffer": zaehle(text, stichworte),
                 "tabellenzeilen": tabellenzeilen(text), "zahlen": len(re.findall(r"\d", text)),
-                "kandidaten": []}
+                "kandidaten": 0}
     kandidaten = []
     for start in range(0, max(1, len(text) - breite + 1), schritt):
         fenster = text[start:start + breite]
@@ -80,7 +82,8 @@ def waehle_ausschnitt(text: str, stichworte: list[str], breite: int, schritt: in
             "bewertung": 3 * treffer + 2 * zeilen + zahlen / 100,
         })
     bestes = max(kandidaten, key=lambda k: k["bewertung"])
-    return {**bestes, "fenster": text[bestes["start"]:bestes["ende"]], "kandidaten": kandidaten}
+    return {**bestes, "fenster": text[bestes["start"]:bestes["ende"]],
+            "kandidaten": len(kandidaten)}
 
 
 def build_stage1_prompt(ausschnitt: str, context: dict[str, Any], target: str) -> str:
@@ -107,11 +110,9 @@ def build_stage1_prompt(ausschnitt: str, context: dict[str, Any], target: str) -
     )
 
 
-def main() -> int:
-    records = {r["record_id"]: r for r in v.lade(v.RECORDS)}
-    record = records[RECORD_ID]
+def baue_fall(rid: str, record: dict[str, Any]) -> dict[str, Any]:
     pfad = ROOT / (record.get("document") or {}).get("path", "")
-    text = pfad.read_text(encoding="utf-8", errors="replace")
+    text = pfad.read_text(encoding="utf-8", errors="replace") if pfad.exists() else ""
     context = record.get("context") or {}
     target = str((record.get("timepoint") or {}).get("target") or "")
     outcome = str(context.get("outcome") or "")
@@ -122,13 +123,10 @@ def main() -> int:
     wahl = waehle_ausschnitt(text, stichworte, BREITE, SCHRITT)
     prompt = build_stage1_prompt(wahl["fenster"], context, target)
 
-    # Kann Stufe 1 ueberhaupt finden, was das Gold verlangt? Gezaehlt wird mit
-    # derselben Trennzeichen-Regel wie im Falschwert-Bericht.
-    gold = (record.get("gold") or {}).get("cells") or []
     voll_zahlen, _, _ = zahlen_im_text(text)
     aus_zahlen, _, _ = zahlen_im_text(wahl["fenster"])
     zielwerte = []
-    for zelle in gold:
+    for zelle in (record.get("gold") or {}).get("cells") or []:
         wert = v.zahl(zelle.get("value"))
         schluessel = round(float(wert), 6) if wert is not None else None
         zielwerte.append({
@@ -140,9 +138,8 @@ def main() -> int:
         })
     fehlend = [z for z in zielwerte if z["im_volltext"] == 0]
 
-    ergebnis = {
-        "record_id": RECORD_ID,
-        "hinweis": "Trockenbau: Ausschnitt und Prompt fuer Stufe 1, kein Modellaufruf.",
+    return {
+        "record_id": rid,
         "dokument": (record.get("document") or {}).get("id"),
         "text_zeichen": len(text),
         "outcome": outcome,
@@ -153,11 +150,11 @@ def main() -> int:
             "start": wahl["start"],
             "ende": wahl["ende"],
             "zeichen": len(wahl["fenster"]),
-            "anteil_prozent": round(100 * len(wahl["fenster"]) / len(text), 1),
+            "anteil_prozent": round(100 * len(wahl["fenster"]) / len(text), 1) if text else 0,
             "outcome_treffer": wahl["outcome_treffer"],
             "tabellenzeilen": wahl["tabellenzeilen"],
             "bewertung": round(wahl["bewertung"], 2) if wahl["bewertung"] is not None else None,
-            "kandidaten": len(wahl["kandidaten"]),
+            "kandidaten": wahl["kandidaten"],
         },
         "prompt_zeichen": len(prompt),
         "prompt_tokens_geschaetzt": round(len(prompt) / 4),
@@ -168,73 +165,117 @@ def main() -> int:
         "gold": zielwerte,
         "goldwerte_im_volltext": len(zielwerte) - len(fehlend),
         "goldwerte_fehlend": len(fehlend),
+        "fehlende_felder": [z["field"] for z in fehlend],
     }
-    AUSGABE.write_text(json.dumps(ergebnis, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--records", nargs="+", default=["yun2024:559"])
+    parser.add_argument("--out-prefix", default="zweistufig_trocken_20261120")
+    args = parser.parse_args()
+
+    records = {r["record_id"]: r for r in v.lade(v.RECORDS)}
+    unbekannt = [rid for rid in args.records if rid not in records]
+    if unbekannt:
+        raise SystemExit(f"unbekannte Records: {unbekannt}")
+
+    faelle = {rid: baue_fall(rid, records[rid]) for rid in args.records}
+    summe = {
+        "n": len(faelle),
+        "prompt_median": sorted(f["prompt_zeichen"] for f in faelle.values())[len(faelle) // 2],
+        "goldwerte": sum(len(f["gold"]) for f in faelle.values()),
+        "goldwerte_im_volltext": sum(f["goldwerte_im_volltext"] for f in faelle.values()),
+        "goldwerte_fehlend": sum(f["goldwerte_fehlend"] for f in faelle.values()),
+        "max_tokens": STAGE1_MAX_TOKENS,
+        "hinweis": "Trockenbau: Ausschnitt und Prompt fuer Stufe 1, kein Modellaufruf.",
+    }
+    ergebnis = {"summe": summe, "faelle": faelle}
+
+    json_pfad = HIER / f"{args.out_prefix}.json"
+    md_pfad = HIER / f"{args.out_prefix}.md"
+    json_pfad.write_text(json.dumps(ergebnis, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     md = [
-        "# Zweistufiger Test auf yun2024:559, Stufe 1 trocken (20.11.2026)",
+        f"# Zweistufiger Test, Stufe 1 trocken: {', '.join(args.records)} (20.11.2026)",
         "",
         "Kein Modellaufruf. Gebaut ist nur, was Stufe 1 bekommen wuerde: Ausschnitt, "
-        "Prompt und Budget.",
+        "Prompt und Budget, dazu die Vorabpruefung, ob die Goldwerte ueberhaupt im "
+        "Text stehen.",
         "",
-        "## Eckdaten",
+        "## Uebersicht",
         "",
-        f"- Dokument: {(record.get('document') or {}).get('id')}, Volltext {len(text)} Zeichen",
-        f"- Outcome: {outcome}",
-        f"- Zielzeitpunkt: {target or 'nicht gesetzt'}",
-        f"- Stichworte fuer die Fenstersuche: {', '.join(stichworte) or '-'}",
-        f"- Ausschnitt: {len(wahl['fenster'])} Zeichen (Zeichen {wahl['start']} bis "
-        f"{wahl['ende']}, {round(100 * len(wahl['fenster']) / len(text), 1)} % des Textes)",
-        f"- Prompt: {len(prompt)} Zeichen, geschaetzt {round(len(prompt) / 4)} Tokens",
-        f"- Budget Stufe 1: {STAGE1_MAX_TOKENS} Completion-Tokens (statt 24.000 im Einzelaufruf)",
+        "| Record | Dokument | Text | Ausschnitt | Anteil | Outcome-Treffer | Tabellenzeilen | Prompt | Goldwerte im Text |",
+        "|---|---|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for rid, f in faelle.items():
+        md.append(
+            f"| `{rid}` | {f['dokument']} | {f['text_zeichen']} | {f['ausschnitt']['zeichen']} | "
+            f"{f['ausschnitt']['anteil_prozent']} % | {f['ausschnitt']['outcome_treffer']} | "
+            f"{f['ausschnitt']['tabellenzeilen']} | {f['prompt_zeichen']} | "
+            f"{f['goldwerte_im_volltext']}/{len(f['gold'])} |"
+        )
+    md += [
         "",
-        "## Ausschnitt",
-        "",
-        "```markdown",
-        wahl["fenster"],
-        "```",
-        "",
-        "## Prompt Stufe 1",
-        "",
-        "```text",
-        prompt,
-        "```",
-        "",
-        "## Koennen die Goldwerte ueberhaupt im Ausschnitt stehen?",
-        "",
-        "| Feld | Arm | Goldwert | Vorkommen im Volltext | im Ausschnitt |",
-        "|---|---|---:|---:|---:|",
-        *[
-            f"| {z['field']} | {z['arm']} | {z['wert']} | {z['im_volltext']} | {z['im_ausschnitt']} |"
-            for z in zielwerte
-        ],
-        "",
-        f"{len(zielwerte) - len(fehlend)} von {len(zielwerte)} Goldwerten stehen im Volltext, "
-        f"{len(fehlend)} von {len(zielwerte)} nicht. Fehlt ein Wert im Volltext, kann ihn weder "
-        "Stufe 1 noch Stufe 2 finden: die Tabelle steht im Markdown nur als Caption mit "
-        "Bildplatzhalter, der Tabellenkoerper fehlt.",
-        "",
-        "## Was Stufe 1 nicht bekommt",
-        "",
-        "- keine Zahlenauftrag: der Prompt verbietet das Lesen von Werten ausdruecklich",
-        "- keine Feldliste mit acht Feldern, nur Outcome, Arme und Zielzeitpunkt",
-        "- kein Volltext: 6.000 statt 13.122 Zeichen, also 46 Prozent",
-        "",
-        "## Vorbehalt",
-        "",
-        "Die Fensterwahl ist eine Heuristik (Outcome-Treffer, Tabellenzeilen, Ziffern), "
-        "kein Modell. Ob der Ausschnitt die richtige Zeile enthaelt, entscheidet erst "
-        "Stufe 1; ob Stufe 1 ihn richtig liest, erst der Aufruf.",
+        f"Budget je Aufruf: {STAGE1_MAX_TOKENS} Completion-Tokens (statt 24.000 im "
+        "Einzelaufruf). Prompt-Laenge je Record unten.",
         "",
     ]
-    AUSGABE_MD.write_text("\n".join(md), encoding="utf-8", newline="\n")
+    for rid, f in faelle.items():
+        md += [
+            f"## {rid}",
+            "",
+            f"- Dokument: {f['dokument']}, Volltext {f['text_zeichen']} Zeichen",
+            f"- Outcome: {f['outcome']}",
+            f"- Zielzeitpunkt: {f['timepoint_target'] or 'nicht gesetzt'}",
+            f"- Ausschnitt: Zeichen {f['ausschnitt']['start']} bis {f['ausschnitt']['ende']}, "
+            f"{f['ausschnitt']['zeichen']} Zeichen ({f['ausschnitt']['anteil_prozent']} %)",
+            f"- Prompt: {f['prompt_zeichen']} Zeichen, geschaetzt {f['prompt_tokens_geschaetzt']} Tokens",
+            "",
+            "### Stehen die Goldwerte im Text?",
+            "",
+            "| Feld | Arm | Goldwert | Volltext | Ausschnitt |",
+            "|---|---|---:|---:|---:|",
+            *[
+                f"| {z['field']} | {z['arm']} | {z['wert']} | {z['im_volltext']} | {z['im_ausschnitt']} |"
+                for z in f["gold"]
+            ],
+            "",
+            f"{f['goldwerte_im_volltext']} von {len(f['gold'])} Goldwerten stehen im Volltext, "
+            f"{f['goldwerte_fehlend']} nicht. Fehlt ein Wert im Volltext, kann ihn keine Stufe "
+            "finden: die Tabelle steht im Markdown nur als Caption mit Bildplatzhalter.",
+            "",
+            "### Ausschnitt",
+            "",
+            "```markdown",
+            f["ausschnitt_text"],
+            "```",
+            "",
+            "### Prompt Stufe 1",
+            "",
+            "```text",
+            f["prompt"],
+            "```",
+            "",
+        ]
+    md += [
+        "## Vorbehalt",
+        "",
+        "Die Fensterwahl ist eine Heuristik (Outcome-Treffer, Tabellenzeilen, Ziffern), kein "
+        "Modell. Ob der Ausschnitt die richtige Zeile enthaelt, entscheidet erst Stufe 1; ob "
+        "Stufe 1 ihn richtig liest, erst der Aufruf.",
+        "",
+    ]
+    md_pfad.write_text("\n".join(md), encoding="utf-8", newline="\n")
 
-    print(f"Text {len(text)} Zeichen, Outcome {outcome!r}, Ziel {target!r}")
-    print(f"Ausschnitt {wahl['start']}..{wahl['ende']} = {len(wahl['fenster'])} Zeichen, "
-          f"Treffer {wahl['outcome_treffer']}, Tabellenzeilen {wahl['tabellenzeilen']}")
-    print(f"Prompt {len(prompt)} Zeichen (~{round(len(prompt)/4)} Tokens), Budget {STAGE1_MAX_TOKENS}")
-    print("geschrieben:", AUSGABE)
-    print("geschrieben:", AUSGABE_MD)
+    for rid, f in faelle.items():
+        print(f"{rid}: Text {f['text_zeichen']}, Ausschnitt {f['ausschnitt']['zeichen']} "
+              f"({f['ausschnitt']['anteil_prozent']} %), Prompt {f['prompt_zeichen']} Zeichen "
+              f"(~{f['prompt_tokens_geschaetzt']} Tokens), Goldwerte im Text "
+              f"{f['goldwerte_im_volltext']}/{len(f['gold'])}"
+              + (f", fehlend: {', '.join(f['fehlende_felder'])}" if f["fehlende_felder"] else ""))
+    print("geschrieben:", json_pfad)
+    print("geschrieben:", md_pfad)
     return 0
 
 
