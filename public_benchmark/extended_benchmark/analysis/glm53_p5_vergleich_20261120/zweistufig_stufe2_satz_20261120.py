@@ -9,8 +9,12 @@ zur Stufe-1-Prediction kommt ueber `--locators`.
 Budget standardmaessig 16.632 (gemessener Fertig-Punkt), Abbruchkriterium wie
 zuvor: `content_chars == 0` oder `finish_reason == "length"`. Ein 503 oder
 Timeout ist kein Abbruch am Tokenlimit und wird als `status = fehler` mit
-`transport_fehler = true` geschrieben. Bewertung gegen Gold mit der Logik aus
-`vergleiche_20261120.py` (Feld + Arm, 1:1-Verbrauch).
+`transport_fehler = true` geschrieben. Eine **bewusst leere Zellenliste**
+(`{"cells": [], "quote": ...}`) ist dagegen eine inhaltliche Antwort: sie wird
+mit `inhaltliche_antwort = true`, `leere_zellenliste = true` und leerem
+`parse_fehler` geschrieben, damit spaetere Zaehlungen sie nicht als Abbruch
+lesen. Bewertung gegen Gold mit der Logik aus `vergleiche_20261120.py`
+(Feld + Arm, 1:1-Verbrauch).
 
 Aufruf (Vorgabe = yun2024:523, glm, erstes Wertepaar):
     .venv/bin/python .../zweistufig_stufe2_satz_20261120.py --dry-run
@@ -45,7 +49,7 @@ LOCATORS = HIER / "zweistufig_lauf_20261120" / "predictions_satz_523_16632.jsonl
 AUSGABE = HIER / "zweistufig_lauf_20261120" / "predictions_stufe2_satz_523_16632.jsonl"
 MODELL = "glm"
 BUDGET = 16632
-PROMPT_LABEL = "stage2_satz_erstes_paar"
+PROMPT_LABEL = "stage2_satz_erstes_paar"  # Zellenliste; leer = inhaltliche Antwort
 #: Der Satz von 523 nennt die Arme nicht mit den Kontextnamen; der Hinweis
 #: musste deshalb gesetzt werden. Vorgabe haelt den 523er Prompt byte-gleich.
 ARM_HINWEIS = (
@@ -150,6 +154,18 @@ def main() -> int:
     inhalt = antwort.get("content") or ""
     finish = antwort.get("finish_reason") or ""
     zellen, parse_fehler = rx.parse_cells(inhalt) if inhalt else ([], "leer")
+    # `rx.parse_cells` meldet eine *bewusst leere* Zellenliste genauso wie eine
+    # unbrauchbare Antwort ("keine_verwertbaren_zellen"). Fuer die Auswertung ist
+    # das der Unterschied zwischen "kein Abbruch, aber nichts zu lesen" und
+    # "Antwort nicht lesbar" - auf yun2024:119 hat das Modell mit
+    # `{"cells": [], "quote": ...}` geantwortet. Der produktive Parser bleibt
+    # unangetastet; gekennzeichnet wird hier.
+    payload, _ = rx._load_payload(inhalt) if inhalt else (None, "")
+    roh_zellen = payload.get("cells") if isinstance(payload, dict) else None
+    leere_liste = isinstance(roh_zellen, list) and not roh_zellen
+    zitat = str(payload.get("quote") or "").strip() if isinstance(payload, dict) else ""
+    if leere_liste and not zellen:
+        parse_fehler = ""
     abgebrochen = (len(inhalt) == 0) or finish == "length"
     # 503 oder Timeout ist kein Abbruch am Tokenlimit (siehe Satz-Locator-Runner).
     transport_fehler = bool(antwort.get("error")) or antwort.get("completion_tokens") is None
@@ -183,6 +199,12 @@ def main() -> int:
         "content_chars": len(inhalt),
         "elapsed_s": antwort.get("elapsed_s"),
         "parse_fehler": parse_fehler,
+        # Kennzeichnung fuer spaetere Zaehlungen: eine leere Zellenliste ist eine
+        # inhaltliche Antwort, kein Abbruch und kein Parse-Fehler.
+        "inhaltliche_antwort": not transport_fehler and not abgebrochen,
+        "leere_zellenliste": leere_liste,
+        "zitat": zitat,
+        "zitat_zeichen": len(zitat),
         "satz": stufe1["satz"],
         "cells": zellen,
         "bewertung": {**bilanz, **quote_ok},
@@ -195,6 +217,7 @@ def main() -> int:
         handle.write(json.dumps(zeile, ensure_ascii=False) + "\n")
 
     print(f"  -> {status}{'' if not transport_fehler else ' (kein Modellkontakt: ' + str(zeile['fehler'])[:80] + ')'}, "
+          f"{'' if not leere_liste else 'leere Zellenliste (inhaltliche Antwort, kein Abbruch), '}"
           f"finish {finish}, {zeile['completion_tokens']} Tokens, "
           f"{zeile['content_chars']} Zeichen, {len(zellen)} Zellen")
     print(f"     TP {bilanz['tp']} FP {bilanz['fp']} FN {bilanz['fn']} "

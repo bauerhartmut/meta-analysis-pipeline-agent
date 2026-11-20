@@ -190,8 +190,8 @@ nicht vor 1 und 2 zu setzen.
 ## Nachtrag 20.11.2026, abends: Schema, Anweisung und Modell getrennt
 
 Die alte Fassung dieser Empfehlung führte die 33 Abbrüche auf ein Schema- und
-Strukturproblem zurück (Maßnahme 1/2). Seitdem sind zehn Aufrufe der Stufe 1 auf
-vier Records gelaufen, alle mit demselben 6.000-Zeichen-Ausschnitt, Temperatur
+Strukturproblem zurück (Maßnahme 1/2). Seitdem sind elf Aufrufe der Stufe 1 auf
+fünf Records gelaufen, alle mit demselben 6.000-Zeichen-Ausschnitt, Temperatur
 0 und je einem Aufruf pro Zelle. Das Bild hat sich verschoben.
 
 | Record | Modell | Prompt-Fassung | Budget | Tokens | Ergebnis |
@@ -202,6 +202,7 @@ vier Records gelaufen, alle mit demselben 6.000-Zeichen-Ausschnitt, Temperatur
 | 420 | `glm-5.3` | Zeilenlabel + Zusatz | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
 | 420 | `glm-5.3` | Satz-Locator | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
 | 420 | `qwen3.5-397b` | Satz-Locator (identischer Prompt) | 16.000 | 7.728 | ok, 2 Locators, **Treffer** (4/6 Werte im Satz) |
+| 52 | `qwen3.5-397b` | Satz-Locator | 16.000 | 7.400 | ok, 2 Locators, **Treffer** (11,5/13,6, Armrichtung korrekt) |
 | 421 | `glm-5.3` | Satz-Locator | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
 | 421 | `glm-5.3` | Zeilenlabel + Zusatz | 16.632 | 16.632 | **Abbruch**, 0 Zeichen |
 | 421 | `qwen3.5-397b` | Satz-Locator | 16.000 | 10.686 | ok, **`found: false`** (falsches Negativ) |
@@ -210,7 +211,8 @@ vier Records gelaufen, alle mit demselben 6.000-Zeichen-Ausschnitt, Temperatur
 Berichte: `zweistufig_lauf_20261120/satz_523_ergebnis_20261120.md`,
 `satz_420_ergebnis_20261120.md`, `satz_421_ergebnis_20261120.md`,
 `zusatz_421_ergebnis_20261120.md`, `qwen_421_ergebnis_20261120.md`,
-`qwen_119_ergebnis_20261120.md`, `qwen_420_ergebnis_20261120.md`.
+`qwen_119_ergebnis_20261120.md`, `qwen_420_ergebnis_20261120.md`,
+`qwen_52_ergebnis_20261120.md`.
 
 **Stufe 2, nachgetragen:** `yun2024:523` mit `glm-5.3` — 268 Tokens, 4 Zellen,
 4 TP / 0 FP / 2 FN, F1 0,800. `yun2024:420` mit `qwen3.5-397b` auf dem oben
@@ -248,7 +250,17 @@ Ausschnitt antwortet `qwen3.5-397b`, wo `glm-5.3` das Budget verbrennt (420, 421
 also ist der Abbruch dort nachweislich modell- und nicht recordspezifisch. Der
 Preis ist ungleich: auf 421 ist die Antwort ein falsches Negativ, auf 420 ein
 Treffer mit 4 der 6 Goldwerte im zitierten Satz, auf 119 ein Treffer am
-richtigen Zeitpunkt mit wörtlich belegtem Satz. Ein
+richtigen Zeitpunkt mit wörtlich belegtem Satz.
+
+**Der Effekt trägt über PMC3877023 hinaus (n = 2 fremde Dokumente).** Auf
+`yun2024:52` (PMC3195393), einem der 33 P5-Abbrüche aus einem unberührten
+Dokument, antwortet qwen in 7.400 Tokens mit dem richtigen Satz und ordnet die
+Arme über die Richtung („from 11.5% to 13.6% … postintervention") korrekt zu:
+intervention = 13,6 mit `timepoint = postintervention`, comparator = 11,5 mit
+`pre-intervention`. Derselbe Record ist im P5-Lauf mit `glm-5.3` nach 95.546
+Reasoning-Zeichen ohne Inhalt abgebrochen. Die qwen-Stufe-1-Bilanz steht damit
+bei 3 Treffern in 4 Aufrufen, und das einzige falsche Negativ (421) liegt
+**innerhalb** von PMC3877023. Ein
 Modellwechsel allein ist damit **keine** Lösung: für die P5-Bilanz sind Abbruch
 und `found: false` gleich, weil `bilanz_p5` jedes Goldfeld ohne passende
 Vorhersagezelle als FN zählt, ob die Antwort leer blieb oder nicht. Der
@@ -273,31 +285,24 @@ Ausgabe das Budget verbraucht, und nichts an einem Satz, der zitiert wird.
 
 ## Nächster Schritt
 
-Der 119er Stufe-2-Aufruf mit 8.000 Tokens ist durchgelaufen (`ok`, 5.899
-Tokens, `stop`) und liefert **keine Zelle**: das Modell gibt eine leere Liste
-mit vollem Zitat zurück. Damit steht fest, dass es nicht am Budget lag — der
-Satz druckt Anteile („70% … attained good GOS"), das Schema verlangt
-`*_mean`, und das Modell deutet oder rechnet nicht um. Alle gemessenen Fragen
-der Reihe sind damit beantwortet; offen ist eine Entscheidung, kein Aufruf:
+Der Modelleffekt ist jetzt auch außerhalb von PMC3877023 belegt (`yun2024:52`,
+PMC3195393: Treffer, Armrichtung korrekt, 7.400 Tokens von 16.000). Alle
+gemessenen Fragen der Reihe sind beantwortet; die nächste Stufe ist eine
+Entscheidung über die Breite, nicht ein weiterer Einzelaufruf:
 
-1. **Entscheiden, ob der Anteil ein `mean` ist.** Zwei Wege, beide ohne
-   Netzlauf zu bewerten:
-   - **(a) Prompt-Regel** („a percentage of patients attaining the outcome is
-     entered as printed under the corresponding mean field, e.g. 70, not 0.7").
-     Ein Aufruf würde zeigen, ob das Modell dann Zellen liefert — es ist aber
-     eine Regel, die eine Umdeutung **erlaubt**, nicht eine Messung.
-   - **(b) Befund 4 als Annotationsthema schließen** und 119 aus der
-     Extraktionsbewertung nehmen, bis das Feld geklärt ist. Kostet 0 Tokens
-     und verfälscht keine Zahl.
+1. **Stufe 2 auf dem 52er Satz** (Budget 4.000–8.000). Prüft an einem dritten
+dokumentfremden Record, ob aus der „from 11.5% to 13.6%"-Belegstelle die zwei
+erreichbaren Zellen ohne Armvertauschung werden. Das ist der erste Satz der
+Reihe, in dem die Armzuordnung nur über ein Richtungswort existiert — genau der
+Fehlertyp, der 72 der 121 FN auf den beantworteten P5-Records erklärt. Kosten:
+ein Aufruf, gemessen 2.590–5.899 Tokens auf dieser Stufe.
 
-Empfohlen ist **(b) zuerst**: Bei 119 sind ohnehin nur 2 von 4 Zellen aus dem
-Ausschnitt erreichbar, und die 70/15,4 sind Anteile, keine Mittelwerte. Ein
-weiterer Aufruf würde eine Regel messen, die nur für diesen Record gebraucht
-wird — der größte Hebel liegt weiter bei der Bindung auf den 33
-P5-Abruchrecords, nicht bei einem einzelnen Record.
+Der größere Hebel, aber teurer: eine qwen-Serie auf den übrigen Abbrüchen. Dafür
+ist die Ausschnittsabdeckung der Engpass — nur 3 von 15 Prosa-Abbrüchen außerhalb
+PMC3877023 haben mindestens 2 Goldwerte im 6.000er-Fenster. Eine Serie ohne
+korrigierte Fensterwahl würde überwiegend `found: false` messen, nicht das
+Modell.
 
-Teuer und deshalb nicht empfohlen: weitere Stufe-2-Aufrufe auf 119 (Frage
-beantwortet), weitere Prompt-Fassungen auf 420/421 (Befund 1), eine
-Budgeterhöhung als Strategie (die Abbrüche enden am Budget, die leere Liste
-nicht) und eine Änderung des Goldstandards — Befund 4 beschreibt die Annotation,
-er rechtfertigt keine stille Korrektur, er rechtfertigt eine Entscheidung.
+Nicht empfohlen bleibt: weitere Stufe-2-Aufrufe auf 119 (Frage beantwortet,
+Feldbezeichnung offen), weitere Prompt-Fassungen auf 420/421 (Befund 1), eine
+Budgeterhöhung als Strategie und eine Änderung des Goldstandards.
