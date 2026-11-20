@@ -158,10 +158,13 @@ nicht vor 1 und 2 zu setzen.
    0 Zeichen). Mit `qwen3.5-397b` antwortet Stufe 1 auf allen drei gemessenen
    Records: Treffer auf 420 und 119, falsches Negativ auf 421. Auf 420 ist auch
    Stufe 2 gelaufen (2.590 Tokens von 4.000, 4 Zellen): **4 TP / 0 FP / 2 FN,
-   F1 0,800**, das erste Schnittstellenpaar korrekt gewählt. Die Zweistufigkeit
-   trägt damit auf zwei Records vollständig (523 mit glm, 420 mit qwen) und
-   scheitert auf einem an der `found`-Entscheidung selbst (421). Details im
-   Nachtrag unten.
+   F1 0,800**, das erste Schnittstellenpaar korrekt gewählt. Auf 119 antwortet
+   Stufe 2 nach einer Budgetkorrektur (8.000) mit einer **leeren Zellenliste**
+   und vollem Zitat: der Satz druckt Anteile („70% … attained good GOS") und
+   keine Mittelwerte, und das Modell weigert sich, sie als `mean` auszugeben.
+   Die Zweistufigkeit trägt damit auf zwei Records vollständig (523 mit glm,
+   420 mit qwen), scheitert auf 421 an der `found`-Entscheidung und auf 119 an
+   der Feldbezeichnung des Goldes. Details im Nachtrag unten.
 4. **Maßnahme 2** — billig, aber sie ändert an der Bindung nichts; erst nach
    Maßnahme 4 sinnvoll, wenn ein Aufruf überhaupt zuverlässig Inhalt liefert.
 5. **Maßnahme 5** — zuletzt, weil sie am meisten kostet und am wenigsten belegt
@@ -221,6 +224,12 @@ stehen und nicht in der Belegstelle. Bericht:
 (`finish_reason = length`), 4.000 Tokens, 15.994 Reasoning-Zeichen, 0 Zeichen
 Inhalt, also keine Aussage über den Satz. Bericht:
 `stufe2_satz_119_qwen_4000_ergebnis_20261120.md`.
+`yun2024:119` mit `qwen3.5-397b`, Budget 8.000 (byte-identischer Prompt) — **ok,
+0 Zellen**: 5.899 Tokens, 22.362 Reasoning-Zeichen, Antwort
+`{"cells": [], "quote": …}`. Offline vorab geprüft: die Arme stehen im Satz
+(`mild cooling` 4×, `no cooling` 5×), `70%` und `15.4%` je einmal wörtlich, die
+Gruppengrößen 10/13 gar nicht. Bericht:
+`stufe2_satz_119_qwen_8000_ergebnis_20261120.md`.
 
 **Befund 1 — das Schema ist nicht die Ursache.** Auf 420 brechen *zwei*
 verschiedene Fassungen ab (Zeilenlabel mit Zusatz und Satz-Locator), auf 421
@@ -264,29 +273,31 @@ Ausgabe das Budget verbraucht, und nichts an einem Satz, der zitiert wird.
 
 ## Nächster Schritt
 
-Die 420er Kette ist geschlossen; der 119er Stufe-2-Aufruf mit Budget 4.000 ist
-dagegen **am Budget abgebrochen** (4.000 Tokens, 15.994 Reasoning-Zeichen,
-0 Zeichen Inhalt) und sagt über den Satzinhalt nichts aus. Es bleibt derselbe
-Aufruf, nur mit einem Budget, das die gemessene Denkspur deckt:
+Der 119er Stufe-2-Aufruf mit 8.000 Tokens ist durchgelaufen (`ok`, 5.899
+Tokens, `stop`) und liefert **keine Zelle**: das Modell gibt eine leere Liste
+mit vollem Zitat zurück. Damit steht fest, dass es nicht am Budget lag — der
+Satz druckt Anteile („70% … attained good GOS"), das Schema verlangt
+`*_mean`, und das Modell deutet oder rechnet nicht um. Alle gemessenen Fragen
+der Reihe sind damit beantwortet; offen ist eine Entscheidung, kein Aufruf:
 
-1. **Stufe 2 auf dem 119er Satz mit Budget 8.000** (statt 4.000). Begründung aus
-   Messungen, keine Schätzung: dasselbe Modell brauchte auf 119 in Stufe 1 6.236
-   Tokens, und der 4.000er Lauf verbrauchte 15.994 Reasoning-Zeichen ohne
-   Ausgabe — doppelt so viel wie der erfolgreiche 420er Stufe-2-Aufruf (7.938)
-   und ohne ein Zeichen Inhalt. Prüft dann, ob der Satz die zwei erreichbaren
-   Zellen (70 / 15,4) als `mean` trägt und ob das Modell Prozentangaben nicht in
-   Anteile umrechnet.
+1. **Entscheiden, ob der Anteil ein `mean` ist.** Zwei Wege, beide ohne
+   Netzlauf zu bewerten:
+   - **(a) Prompt-Regel** („a percentage of patients attaining the outcome is
+     entered as printed under the corresponding mean field, e.g. 70, not 0.7").
+     Ein Aufruf würde zeigen, ob das Modell dann Zellen liefert — es ist aber
+     eine Regel, die eine Umdeutung **erlaubt**, nicht eine Messung.
+   - **(b) Befund 4 als Annotationsthema schließen** und 119 aus der
+     Extraktionsbewertung nehmen, bis das Feld geklärt ist. Kostet 0 Tokens
+     und verfälscht keine Zahl.
 
-Nutzen: der letzte offene Punkt der Reihe — alle anderen Records haben entweder
-eine geschlossene Kette (523, 420) oder eine auf Stufe 1 unauflösbare
-`found`-Frage (421). Kosten: ein Aufruf, nach der 119er Stufe-1-Messung
-voraussichtlich 5.000–7.000 Tokens, also klein gegen die 16.000er Läufe. Risiko:
-niedrig — gleicher Prompt, nur das Budget ändert sich. Das ist ausdrücklich
-**keine** Budgeterhöhung als Lösungsstrategie (siehe unten), sondern die
-Korrektur einer zu knappen Setzung für diesen einen Record.
+Empfohlen ist **(b) zuerst**: Bei 119 sind ohnehin nur 2 von 4 Zellen aus dem
+Ausschnitt erreichbar, und die 70/15,4 sind Anteile, keine Mittelwerte. Ein
+weiterer Aufruf würde eine Regel messen, die nur für diesen Record gebraucht
+wird — der größte Hebel liegt weiter bei der Bindung auf den 33
+P5-Abruchrecords, nicht bei einem einzelnen Record.
 
-Nicht empfohlen bleibt: weitere Prompt-Fassungen auf 420/421 (Befund 1), eine
-Budgeterhöhung (die Abbrüche enden am Budget, nicht davor), ein weiterer
-qwen-Lauf auf 421 (die Antwort `found: false` ist ohne Zusatzannahme nicht
-auflösbar) und eine Änderung des Goldstandards (Befund 4 beschreibt die
-Annotation, er rechtfertigt keine Korrektur).
+Teuer und deshalb nicht empfohlen: weitere Stufe-2-Aufrufe auf 119 (Frage
+beantwortet), weitere Prompt-Fassungen auf 420/421 (Befund 1), eine
+Budgeterhöhung als Strategie (die Abbrüche enden am Budget, die leere Liste
+nicht) und eine Änderung des Goldstandards — Befund 4 beschreibt die Annotation,
+er rechtfertigt keine stille Korrektur, er rechtfertigt eine Entscheidung.
