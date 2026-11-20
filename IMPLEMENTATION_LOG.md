@@ -1900,3 +1900,47 @@ Prompt-Aufschlag in allen Gruppen 1.013 Zeichen, Redundanz damit ausgeschlossen.
 Artefakte: `analysis/glm53_p5_vergleich_20261120/` mit vier Berichten, zwei
 Skripten und zwei JSON. Rein lesend, kein Netzaufruf, keine Prediction oder
 Goldzelle veraendert.
+
+### Ankerprompt 20.11.2026 - zwei Fassungen, beide ohne Gewinn
+
+Massnahme 1 der Empfehlungen (Tabellenanker) ist gebaut und gemessen: je ein
+Aufruf pro Fassung auf `yun2024:559` und `yun2024:615`, Modell und Budget wie im
+P5-Lauf (24.000 Completion-Tokens), Abbruch bei `content_chars == 0` oder
+`finish_reason = length`.
+
+- Fassung 1 (884 Zeichen): 559 antwortet (16.632 Tokens, `stop`), nennt aber
+  "Summary of data analysis with a separation test" und liefert -1,92/-5,12
+  statt -4,0/-8,0 -> 0 TP, 2 FP; `chosen_timepoint` und `discarded_timepoints`
+  fehlen. 615 bricht ab (24.000 Tokens, 98.472 Reasoning-Zeichen).
+- Fassung 2 (1.393 Zeichen; die Quelle muss Zielzeitpunkt und Feld tragen, beide
+  Schemafelder bleiben verlangt): **beide** brechen ab - 559 mit 98.896, 615 mit
+  96.344 Reasoning-Zeichen, je 24.000 Tokens und 0 Zeichen Inhalt.
+
+Kosten der Ankerspur: 88.632 Completion-Tokens, Gewinn: 0 TP. Die zusaetzliche
+Pflicht hat den Suchraum nicht verkleinert; auf 559 stieg das Reasoning von
+67.322 auf 98.896 Zeichen. Der Tabellenanker ist damit als naechster Hebel
+erledigt.
+
+Zusatzbefund bei der Vorbereitung des zweistufigen Tests: bei `yun2024:559`
+stehen 4 von 6 Goldwerten (Mittelwerte -4,0/-8,0, SD 12,35/65,41) in **keinem**
+Fall im Markdown; die Tabelle existiert dort nur als Caption mit
+Bildplatzhalter. Ein Aufruf kann auf diesem Record hoechstens die beiden
+Gruppengroessen finden - unabhaengig vom Prompt.
+
+Trocken gebaut (kein Aufruf): Stufe 1 fuer 559 mit 6.000 von 13.122 Zeichen
+(Fenster 1500..7500, 45 Outcome-Treffer, 0 Tabellenzeilen), Prompt 7.154 Zeichen
+rund 1.788 Tokens, Budget 2.000 statt 24.000. Die Fensterwahl ist eine
+Stichwort-Heuristik ohne Modell und ohne Goldwissen.
+
+Nebenbei geprueft: der Trennzeichen-Fehler des alten Zahlvergleichs (`7.69`
+wurde 769) tritt in keinem anderen Skript der Auswertungskette auf; die
+verbreitete Schwaeche ist die Gegenrichtung (englische Tausender als
+Dezimalzahl), und die Parser der Bewertung liefern dabei `None` statt eines
+falschen Werts.
+
+Artefakte: `analysis/glm53_p5_vergleich_20261120/anker_lauf_20261120/` (zwei
+Predictions-Dateien, zwei Berichte), `zweistufig_trocken_20261120.{py,json,md}`,
+`trennzeichen_audit_20261120.{py,json,md}`, `falschwert_20261120.{py,json,md}`.
+Rein lesend bzw. zwei freigegebene Aufrufe; Gold und bestehende Predictions
+unveraendert. Naechster Hebel ist Massnahme 4 (Zweistufigkeit) auf einem Record
+mit vorhandenem Tabellentext, nicht der Anker.
