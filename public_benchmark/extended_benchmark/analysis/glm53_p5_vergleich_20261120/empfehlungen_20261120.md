@@ -217,6 +217,10 @@ F1 0,800**, Dauer 124,12 s, gelesen wird `0.95 [SD, 0.24]` gegen
 sind die Gruppengrößen 18 und 21, die nur im Kopf der qualitativen Tabelle
 stehen und nicht in der Belegstelle. Bericht:
 `zweistufig_lauf_20261120/stufe2_satz_420_qwen_ergebnis_20261120.md`.
+`yun2024:119` mit `qwen3.5-397b`, Budget 4.000 — **abgebrochen**
+(`finish_reason = length`), 4.000 Tokens, 15.994 Reasoning-Zeichen, 0 Zeichen
+Inhalt, also keine Aussage über den Satz. Bericht:
+`stufe2_satz_119_qwen_4000_ergebnis_20261120.md`.
 
 **Befund 1 — das Schema ist nicht die Ursache.** Auf 420 brechen *zwei*
 verschiedene Fassungen ab (Zeilenlabel mit Zusatz und Satz-Locator), auf 421
@@ -260,21 +264,26 @@ Ausgabe das Budget verbraucht, und nichts an einem Satz, der zitiert wird.
 
 ## Nächster Schritt
 
-Die 420er Kette ist geschlossen: `qwen3.5-397b` zitiert auf dem byte-identischen
-Prompt den richtigen Satz, und Stufe 2 liest daraus 4 Zellen ohne FP (F1 0,800).
-Es bleibt ein Aufruf:
+Die 420er Kette ist geschlossen; der 119er Stufe-2-Aufruf mit Budget 4.000 ist
+dagegen **am Budget abgebrochen** (4.000 Tokens, 15.994 Reasoning-Zeichen,
+0 Zeichen Inhalt) und sagt über den Satzinhalt nichts aus. Es bleibt derselbe
+Aufruf, nur mit einem Budget, das die gemessene Denkspur deckt:
 
-1. **Stufe 2 auf dem 119er Satz** (Budget klein, 4.000 genügten auf 420 mit
-   2.590 Verbrauch). Prüft, ob der zitierte Satz die zwei erreichbaren Zellen
-   (70 / 15,4) trägt und ob das Modell die Prozentangaben als `mean` liest, ohne
-   in Absolutzahlen zu rechnen. Das ist der letzte offene Punkt der Reihe: alle
-   anderen Records haben entweder eine geschlossene Kette (523, 420) oder eine
-   auf Stufe 1 unauflösbare `found`-Frage (421).
+1. **Stufe 2 auf dem 119er Satz mit Budget 8.000** (statt 4.000). Begründung aus
+   Messungen, keine Schätzung: dasselbe Modell brauchte auf 119 in Stufe 1 6.236
+   Tokens, und der 4.000er Lauf verbrauchte 15.994 Reasoning-Zeichen ohne
+   Ausgabe — doppelt so viel wie der erfolgreiche 420er Stufe-2-Aufruf (7.938)
+   und ohne ein Zeichen Inhalt. Prüft dann, ob der Satz die zwei erreichbaren
+   Zellen (70 / 15,4) als `mean` trägt und ob das Modell Prozentangaben nicht in
+   Anteile umrechnet.
 
-Nutzen: schließt die Zweistufigkeit auf dem dritten Record und liefert den
-Vergleich „4 von 6 Zellen" (420) gegen „2 von 4 erreichbaren" (119). Kosten: ein
-Aufruf mit kleinem Budget, gemessen 2.590 Tokens auf derselben Stufe. Risiko:
-niedrig, kein neuer Prompt-Bau.
+Nutzen: der letzte offene Punkt der Reihe — alle anderen Records haben entweder
+eine geschlossene Kette (523, 420) oder eine auf Stufe 1 unauflösbare
+`found`-Frage (421). Kosten: ein Aufruf, nach der 119er Stufe-1-Messung
+voraussichtlich 5.000–7.000 Tokens, also klein gegen die 16.000er Läufe. Risiko:
+niedrig — gleicher Prompt, nur das Budget ändert sich. Das ist ausdrücklich
+**keine** Budgeterhöhung als Lösungsstrategie (siehe unten), sondern die
+Korrektur einer zu knappen Setzung für diesen einen Record.
 
 Nicht empfohlen bleibt: weitere Prompt-Fassungen auf 420/421 (Befund 1), eine
 Budgeterhöhung (die Abbrüche enden am Budget, nicht davor), ein weiterer
