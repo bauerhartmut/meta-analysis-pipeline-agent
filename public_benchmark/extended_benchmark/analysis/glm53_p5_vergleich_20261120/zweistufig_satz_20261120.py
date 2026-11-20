@@ -129,6 +129,8 @@ def main() -> int:
     parser.add_argument("--record", default="yun2024:523")
     parser.add_argument("--budget", type=int, default=BUDGET)
     parser.add_argument("--out", default="predictions_satz_523_16632.jsonl")
+    parser.add_argument("--timeout", type=float, default=300.0,
+                        help="Socket-Lesezeit je HTTP-Versuch in Sekunden")
     args = parser.parse_args()
 
     records = {r["record_id"]: r for r in v.lade(v.RECORDS)}
@@ -139,7 +141,8 @@ def main() -> int:
     gold = record.get("gold", {}).get("cells") or []
 
     print(f"{args.record}: Prompt {len(prompt)} Zeichen (Ausschnitt {len(fall['ausschnitt_text'])}, "
-          f"Zusatz {len(prompt) - len(fall['ausschnitt_text'])}), Budget {args.budget}")
+          f"Zusatz {len(prompt) - len(fall['ausschnitt_text'])}), Budget {args.budget}, "
+          f"Lesezeit {args.timeout:.0f}s")
     if args.dry_run:
         print("--- Prompt-Ende ---")
         print(prompt[-(len(PROMPT_REGELN) + 200):])
@@ -155,17 +158,30 @@ def main() -> int:
     modell = dict(rx.MODELS[MODELL])
     modell["max_tokens"] = args.budget
     original = rx.SYSTEM
+    einmal = rx._call_once
+    # Die Lesezeit steht in `rx._call_once` fest auf 300 s. Ein Aufruf mit 16.632
+    # Token Budget kann laenger rechnen: auf yun2024:421 endete der Versuch nach
+    # 300,08 s in einem TimeoutError, ohne dass das Modell geantwortet hatte.
+    # Die Retry-Logik von `rx.call` bleibt unveraendert, nur die Lesezeit waechst.
+    rx._call_once = lambda m, p, k, b, timeout=args.timeout: einmal(m, p, k, b, timeout=timeout)
     try:
         rx.SYSTEM = STAGE1_SYSTEM
         antwort = rx.call(modell, prompt, key, base, attempts=3)
     finally:
         rx.SYSTEM = original
+        rx._call_once = einmal
 
     inhalt = antwort.get("content") or ""
     finish = antwort.get("finish_reason") or ""
+    tokens = antwort.get("completion_tokens")
     locators, parse_fehler = parse_satz(inhalt)
     pruefe(locators, fall["ausschnitt_text"], gold)
     abgebrochen = (len(inhalt) == 0) or finish == "length"
+    # Ein 503 oder Timeout ist kein Abbruch am Tokenlimit: ohne Tokens und ohne
+    # finish_reason hat das Modell nie geantwortet. Als `abgebrochen` gezaehlt
+    # waere das ein falscher Messpunkt (auf yun2024:421 dreimal 503).
+    transport_fehler = bool(antwort.get("error")) or tokens is None
+    status = "fehler" if transport_fehler else ("abgebrochen" if abgebrochen else "ok")
 
     zeile = {
         "record_id": args.record,
@@ -177,7 +193,9 @@ def main() -> int:
         "ausschnitt_zeichen": len(fall["ausschnitt_text"]),
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
         "max_tokens": args.budget,
-        "status": "abgebrochen" if abgebrochen else "ok",
+        "timeout_s": args.timeout,
+        "status": status,
+        "transport_fehler": transport_fehler,
         "abbruchkriterium": "content_chars == 0 oder finish_reason == length",
         "http_status": antwort.get("http_status"),
         "finish_reason": finish,
@@ -195,7 +213,8 @@ def main() -> int:
     with ziel.open("a", encoding="utf-8", newline="\n") as handle:
         handle.write(json.dumps(zeile, ensure_ascii=False) + "\n")
 
-    print(f"  -> {zeile['status']}, finish {finish}, {zeile['completion_tokens']} Tokens, "
+    print(f"  -> {status}{'' if not transport_fehler else ' (kein Modellkontakt: ' + str(zeile['fehler'])[:80] + ')'}, "
+          f"finish {finish}, {zeile['completion_tokens']} Tokens, "
           f"{zeile['content_chars']} Zeichen, {len(locators)} Locators")
     for loc in locators:
         print(f"     {loc['arm']}: satz_im_ausschnitt={loc['satz_im_ausschnitt']} "
