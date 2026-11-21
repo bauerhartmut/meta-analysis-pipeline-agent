@@ -1,7 +1,7 @@
 {
   "stand": "2026-11-21",
   "zellen": 41,
-  "fp_groesse": 10,
+  "fp_groesse": 4,
   "sichtung": [
     {
       "record_id": "yun2024:196",
@@ -30,129 +30,38 @@
       "tabelle_gold": ""
     },
     {
-      "record_id": "yun2024:331",
+      "record_id": "yun2024:426",
       "feld": "intervention_group_size",
-      "regelwert": 47.0,
-      "regel_zeile": 40,
-      "gold": 45.0,
+      "regelwert": 44.0,
+      "regel_zeile": 10,
+      "gold": 49.0,
       "gold_zeilen": [
-        1,
-        6,
-        34
+        10,
+        122,
+        162
       ],
       "klasse": "falsche_spalte",
       "tabelle_regel": "::: caption",
-      "tabelle_gold": ""
+      "tabelle_gold": "::: caption"
     },
     {
-      "record_id": "yun2024:331",
+      "record_id": "yun2024:426",
       "feld": "comparator_group_size",
-      "regelwert": 45.0,
-      "regel_zeile": 40,
-      "gold": 47.0,
+      "regelwert": 49.0,
+      "regel_zeile": 10,
+      "gold": 44.0,
       "gold_zeilen": [
-        1,
-        6,
-        34
+        10,
+        97
       ],
       "klasse": "falsche_spalte",
       "tabelle_regel": "::: caption",
-      "tabelle_gold": ""
-    },
-    {
-      "record_id": "yun2024:334",
-      "feld": "intervention_group_size",
-      "regelwert": 47.0,
-      "regel_zeile": 40,
-      "gold": 45.0,
-      "gold_zeilen": [
-        1,
-        6,
-        34
-      ],
-      "klasse": "falsche_spalte",
-      "tabelle_regel": "::: caption",
-      "tabelle_gold": ""
-    },
-    {
-      "record_id": "yun2024:334",
-      "feld": "comparator_group_size",
-      "regelwert": 45.0,
-      "regel_zeile": 40,
-      "gold": 47.0,
-      "gold_zeilen": [
-        1,
-        6,
-        34
-      ],
-      "klasse": "falsche_spalte",
-      "tabelle_regel": "::: caption",
-      "tabelle_gold": ""
-    },
-    {
-      "record_id": "yun2024:335",
-      "feld": "intervention_group_size",
-      "regelwert": 47.0,
-      "regel_zeile": 40,
-      "gold": 45.0,
-      "gold_zeilen": [
-        1,
-        6,
-        34
-      ],
-      "klasse": "falsche_spalte",
-      "tabelle_regel": "::: caption",
-      "tabelle_gold": ""
-    },
-    {
-      "record_id": "yun2024:335",
-      "feld": "comparator_group_size",
-      "regelwert": 45.0,
-      "regel_zeile": 40,
-      "gold": 47.0,
-      "gold_zeilen": [
-        1,
-        6,
-        34
-      ],
-      "klasse": "falsche_spalte",
-      "tabelle_regel": "::: caption",
-      "tabelle_gold": ""
-    },
-    {
-      "record_id": "yun2024:336",
-      "feld": "intervention_group_size",
-      "regelwert": 47.0,
-      "regel_zeile": 40,
-      "gold": 45.0,
-      "gold_zeilen": [
-        1,
-        6,
-        34
-      ],
-      "klasse": "falsche_spalte",
-      "tabelle_regel": "::: caption",
-      "tabelle_gold": ""
-    },
-    {
-      "record_id": "yun2024:336",
-      "feld": "comparator_group_size",
-      "regelwert": 45.0,
-      "regel_zeile": 40,
-      "gold": 47.0,
-      "gold_zeilen": [
-        1,
-        6,
-        34
-      ],
-      "klasse": "falsche_spalte",
-      "tabelle_regel": "::: caption",
-      "tabelle_gold": ""
+      "tabelle_gold": "::: caption"
     }
   ],
   "klassen": {
     "falsche_tabelle": 2,
-    "falsche_spalte": 8
+    "falsche_spalte": 2
   },
   "records": 699,
   "vorher": {
@@ -161,14 +70,14 @@
     "fn": 2603
   },
   "nachher": {
-    "tp": 194,
-    "fp": 114,
-    "fn": 2579
+    "tp": 200,
+    "fp": 108,
+    "fn": 2573
   },
   "delta": {
-    "tp": 24,
-    "fp": 13,
-    "fn": -24
+    "tp": 30,
+    "fp": 7,
+    "fn": -30
   },
   "records_geaendert": 24,
   "zellen_ersetzt": 4,
@@ -180,12 +89,12 @@
       "fn": 2603
     },
     "nachher": {
-      "tp": 194,
+      "tp": 200,
       "fp": 97,
-      "fn": 2579
+      "fn": 2573
     },
-    "records_geaendert": 13,
+    "records_geaendert": 16,
     "zellen_ersetzt": 4,
-    "zellen_neu": 20
+    "zellen_neu": 26
   }
 }

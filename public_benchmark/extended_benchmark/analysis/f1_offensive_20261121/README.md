@@ -412,15 +412,15 @@ verworfen.
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
 | Zellen | 36 | 44 | 24 | 41 |
-| TP | 18 | 24 | 12 | 24 |
-| FP | 18 | 20 | 12 | 17 |
-| Trefferquote | 50 % | 55 % | 50 % | **59 %** |
+| TP | 26 | 30 | 18 | 30 |
+| FP | 10 | 14 | 6 | 11 |
+| Trefferquote | 72 % | 68 % | 75 % | **73 %** |
 
 Formate in der Endvariante:
 
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
-| Groesse | Groessenzeile | 12 | 10 |
+| Groesse | Groessenzeile | 18 | 4 |
 | Mittel | `Zahl +/- Zahl` | 12 | 5 |
 | Mittel | `Zahl (Zahl)` | 0 | 2 |
 
@@ -442,31 +442,36 @@ Tabelle ab.
 Der Schritt bringt gegenueber dem Alias-Lauf mit Ereignissen 7 FP weniger bei
 gleicher TP-Zahl; gegenueber der strengen Variante 12 TP mehr bei 5 FP mehr.
 
-### Die 10 Groessen-FP und der Einsatz der 41 Zellen
+### Die 4 Groessen-FP und der Einsatz der 41 Zellen
 
-`groessen_fp_einsatz_20261121.py`. Die 10 Groessen-FP stammen **nicht**
-ueberwiegend aus der falschen Tabelle:
+`groessen_fp_einsatz_20261121.py`. Mit der Positionsregel bleiben vier
+Groessen-FP:
 
 | Klasse | Faelle |
 |---|---:|
-| falsche Spalte, gleiche Zeile | 8 |
 | falsche Tabelle (Subgruppe) | 2 |
+| bewusster Positionsverlust | 2 |
 
-Die 8 Spaltenfaelle sind die vier `PMC5617873`-Records mit vertauschten
-Goldarmen (beide Arme je Record). Die 2 Tabellenfaelle sind die beiden Arme von
-`yun2024:196`: Gold stammt aus Tabelle 3 (Subgruppe MMSE-J 20 bis 23, Woche 28),
-die Regel liest die Haupttabelle 2 (80/78). `yun2024:193` ist mit der
-Wochenspalten-Auswahl richtig geworden.
+Die 2 Tabellenfaelle sind die beiden Arme von `yun2024:196`: Gold stammt aus
+Tabelle 3 (Subgruppe MMSE-J 20 bis 23, Woche 28), die Regel liest die
+Haupttabelle 2 (80/78).
+
+Die 2 Positionsfaelle sind die beiden Arme von `yun2024:426`: In Spalte 1 steht
+die Vergleichsgruppe, die Positionsregel liest sie als Intervention (44 statt
+49). Der Verlust ist bewusst in Kauf genommen, weil dieselbe Regel die acht
+PMC5617873-Zellen richtig stellt.
+
+`yun2024:193` ist mit der Wochenspalten-Auswahl richtig geworden.
 
 Einsatz der 41 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
 
 | Zellen | TP | FP | FN |
 |---|---:|---:|---:|
 | vorher | 170 | 101 | 2603 |
-| alle 41 | 194 | 114 | 2579 |
-| nur die 24 richtigen | 194 | 97 | 2579 |
+| alle 41 | 200 | 108 | 2573 |
+| nur die 30 richtigen | 200 | 97 | 2573 |
 
-Alle 41: +24 TP und +13 FP. Nur die richtigen: +24 TP und -4 FP (vier Zellen
+Alle 41: +30 TP und +7 FP. Nur die richtigen: +30 TP und -4 FP (vier Zellen
 ersetzten vorhandene falsche Werte).
 
 ### Armzuordnung aus der Spaltenreihenfolge
@@ -483,17 +488,18 @@ umsschaltbar (`POSITIONAL`) und wurde ueber die 295 gemessen:
 
 | Lesart | Zellen | TP | FP | Groessenzellen richtig | Groessenzellen falsch |
 |---|---:|---:|---:|---:|---:|
-| Spaltenname (Standard) | 41 | 24 | 17 | 12 | 10 |
-| Position | 41 | 30 | 11 | 20 | 2 |
+| Position (**Standard**) | 41 | 30 | 11 | 18 | 4 |
+| Spaltenname (Vergleich) | 41 | 24 | 17 | 12 | 10 |
 
 Richtig werden alle 8 PMC5617873-Zellen. Falsch werden die beiden Arme von
 `yun2024:426` (vorher 49/44, jetzt 44/49, Gold 49/44): dort steht in Spalte 1
 die Vergleichsgruppe, in Spalte 2 die Intervention, und Gold folgt den Namen.
 `yun2024:193` bleibt richtig, weil seine Kopfzeile die Intervention zuerst nennt.
 
-Der Tabellenkopf bleibt die verlaesslichere Quelle: die Positionsregel gewinnt 8
-Zellen gegen ein Gold, das an dieser Stelle selbst vertauscht ist, und verliert
-dafuer 2 belegte Zellen (siehe `pruefvermerk_gold_20261121.md`).
+Die Positionsregel ist der Standard (`POSITIONAL = True`). Sie gewinnt 8 Zellen
+gegen ein Gold, das an dieser Stelle selbst vertauscht ist, und verliert dafuer
+die 2 belegten Zellen von `yun2024:426` - ein bewusster Verlust, im Bericht
+ausgewiesen (siehe `pruefvermerk_gold_20261121.md`).
 
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
 gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht

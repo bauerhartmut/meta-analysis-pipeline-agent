@@ -124,7 +124,7 @@ def zeitverlauf_ziel(zeilen: list[str], outcome: str, alias: dict[str, list[str]
     return max(kandidaten)[0] if spaeter else min(kandidaten)[0]
 
 
-POSITIONAL = False
+POSITIONAL = True
 
 
 def spalten_reihenfolge(zeilen: list[str], ziel: int, context: dict[str, Any]) -> list[str]:
@@ -477,10 +477,11 @@ Haupttabelle steht vor den Subgruppentabellen).
 `yun2024:196` bleibt falsch: die Haupttabelle 2 nennt fuer Woche 28 die Werte
 80/78, Gold (24/24) stammt aus Tabelle 3, einer Subgruppe (MMSE-J 20 bis 23).
 
-Die Armzuordnung der Groessen folgt den Spaltennamen (`POSITIONAL = False`). Die
-Positionsregel (erste Datenspalte = Intervention) ist umschaltbar und in
-`armreihenfolge_20261121.md` gemessen: sie holt die acht PMC5617873-Zellen und
-macht dafuer die beiden Arme von `yun2024:426` falsch.
+Die Armzuordnung der Groessen folgt der Spaltenposition (`POSITIONAL = True`):
+Die erste Datenspalte ist die Intervention, die zweite der Comparator. Sie holt
+die acht PMC5617873-Zellen und macht dafuer die beiden Arme von `yun2024:426`
+falsch; dieser Verlust ist bewusst (Gold folgt dort den Spaltennamen, siehe
+`armreihenfolge_20261121.md`).
 
 Trefferquote: {beide['tp']} von {beide['geliefert']} Zellen, also
 {100 * beide['tp'] // max(1, beide['geliefert'])} Prozent. Ereignisse tragen

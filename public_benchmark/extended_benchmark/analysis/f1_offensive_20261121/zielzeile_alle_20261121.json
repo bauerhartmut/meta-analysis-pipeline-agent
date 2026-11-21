@@ -4,39 +4,39 @@
   "alias_streng": {
     "zielzeile_gefunden": 178,
     "geliefert": 24,
-    "tp": 12,
-    "fp": 12,
-    "tp_gerundet": 12,
-    "fp_gerundet": 12
+    "tp": 18,
+    "fp": 6,
+    "tp_gerundet": 18,
+    "fp_gerundet": 6
   },
   "neu": {
     "zielzeile_gefunden": 178,
     "geliefert": 41,
-    "tp": 24,
-    "fp": 17,
-    "tp_gerundet": 24,
-    "fp_gerundet": 17
+    "tp": 30,
+    "fp": 11,
+    "tp_gerundet": 30,
+    "fp_gerundet": 11
   },
   "neu_zellformate": {
-    "groesse|groessenzeile|richtig": 12,
-    "groesse|groessenzeile|falsch": 10,
+    "groesse|groessenzeile|richtig": 18,
+    "groesse|groessenzeile|falsch": 4,
     "mittel|plus_minus|falsch": 5,
     "mittel|mittel_sd|falsch": 2,
     "mittel|plus_minus|richtig": 12
   },
   "fp_nach_feldtyp": {
-    "groesse": 10,
+    "groesse": 4,
     "mittel": 10
   },
   "fp_nach_format": {
-    "groesse|groessenzeile": 10,
+    "groesse|groessenzeile": 4,
     "mittel|sonstig": 3,
     "mittel|plus_minus": 5,
     "mittel|mittel_sd": 2
   },
   "zellformate": {
-    "groesse|groessenzeile|richtig": 12,
-    "groesse|groessenzeile|falsch": 10,
+    "groesse|groessenzeile|richtig": 18,
+    "groesse|groessenzeile|falsch": 4,
     "mittel|sonstig|falsch": 3,
     "mittel|plus_minus|falsch": 5,
     "mittel|mittel_sd|falsch": 2,
@@ -45,25 +45,25 @@
   "ohne": {
     "zielzeile_gefunden": 156,
     "geliefert": 36,
-    "tp": 18,
-    "fp": 18,
-    "tp_gerundet": 18,
-    "fp_gerundet": 18
+    "tp": 26,
+    "fp": 10,
+    "tp_gerundet": 26,
+    "fp_gerundet": 10
   },
   "alias": {
     "zielzeile_gefunden": 178,
     "geliefert": 44,
-    "tp": 24,
-    "fp": 20,
-    "tp_gerundet": 26,
-    "fp_gerundet": 18
+    "tp": 30,
+    "fp": 14,
+    "tp_gerundet": 32,
+    "fp_gerundet": 12
   },
   "nur_mit_alias": {
     "geliefert": 8,
-    "tp": 6,
-    "fp": 2,
-    "tp_gerundet": 8,
-    "fp_gerundet": 0
+    "tp": 4,
+    "fp": 4,
+    "tp_gerundet": 6,
+    "fp_gerundet": 2
   },
   "detail_nur_mit_alias": [
     {
@@ -71,13 +71,13 @@
       "feld": "intervention_group_size",
       "arm": "intervention",
       "regel": {
-        "value": 49.0,
-        "quelle": "zeile",
+        "value": 44.0,
+        "quelle": "position",
         "zeile": 10
       },
       "gold": 49.0,
-      "richtig": true,
-      "richtig_gerundet": true
+      "richtig": false,
+      "richtig_gerundet": false
     },
     {
       "record_id": "yun2024:426",
@@ -98,13 +98,13 @@
       "feld": "comparator_group_size",
       "arm": "comparator",
       "regel": {
-        "value": 44.0,
-        "quelle": "zeile",
+        "value": 49.0,
+        "quelle": "position",
         "zeile": 10
       },
       "gold": 44.0,
-      "richtig": true,
-      "richtig_gerundet": true
+      "richtig": false,
+      "richtig_gerundet": false
     },
     {
       "record_id": "yun2024:426",

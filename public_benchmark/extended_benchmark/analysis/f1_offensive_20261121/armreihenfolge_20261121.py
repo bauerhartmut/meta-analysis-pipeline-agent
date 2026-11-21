@@ -138,11 +138,13 @@ def main() -> int:
         zeilen.append(f"| {richtung} | `{e['record_id']}` | {e['feld']} | {e['vorher']} | "
                       f"{e['nachher']} | {e['gold']} |")
     zeilen += ["", "## Lesart der Zahlen", "",
-               "Die Positionsregel holt alle acht PMC5617873-Zellen und macht dafuer die",
-               "beiden Arme von `yun2024:426` falsch: dort steht in Spalte 1 der",
-               "Interventionsarm (`n  Mean`-Layout), Gold folgt dem Spaltennamen. Der",
-               "Tabellenkopf bleibt die verlaesslichere Quelle; das Gold der vier",
-               "PMC5617873-Records ist vertauscht.", ""]
+               "Standard ist die Positionsregel (`POSITIONAL = True`). Sie holt alle acht",
+               "PMC5617873-Zellen und macht dafuer die beiden Arme von `yun2024:426`",
+               "falsch: dort steht in Spalte 1 die Vergleichsgruppe, Gold folgt dem",
+               "Spaltennamen. Dieser Verlust ist bewusst und im Bericht ausgewiesen.", "",
+               "Das Gold der vier PMC5617873-Records ist vertauscht (Placebo-Werte als",
+               "Intervention); die Positionsregel trifft diese Konvention, die",
+               "Spaltennamen-Lesart trifft den Tabellenkopf. Beide Zahlen stehen oben.", ""]
     (HIER / "armreihenfolge_20261121.md").write_text("\n".join(zeilen), encoding="ascii", errors="replace")
     (HIER / "armreihenfolge_20261121.json").write_text(
         json.dumps({"label": {"tp": label["tp"], "fp": label["fp"], "groesse": groesse(label)},

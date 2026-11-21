@@ -2,43 +2,37 @@
 
 Offline, ohne Netzaufruf.
 
-## Teil A: die 10 Groessen-FP
+## Teil A: die 4 Groessen-FP
 
 | Record | Feld | Regelwert | Gold | Klasse | Zeile Regel | Zeile Gold |
 |---|---|---:|---:|---|---:|---|
 | `yun2024:196` | intervention_group_size | 80.0 | 24.0 | falsche_tabelle | 47 | 1 |
 | `yun2024:196` | comparator_group_size | 78.0 | 24.0 | falsche_tabelle | 47 | 1 |
-| `yun2024:331` | intervention_group_size | 47.0 | 45.0 | falsche_spalte | 40 | 1, 6, 34 |
-| `yun2024:331` | comparator_group_size | 45.0 | 47.0 | falsche_spalte | 40 | 1, 6, 34 |
-| `yun2024:334` | intervention_group_size | 47.0 | 45.0 | falsche_spalte | 40 | 1, 6, 34 |
-| `yun2024:334` | comparator_group_size | 45.0 | 47.0 | falsche_spalte | 40 | 1, 6, 34 |
-| `yun2024:335` | intervention_group_size | 47.0 | 45.0 | falsche_spalte | 40 | 1, 6, 34 |
-| `yun2024:335` | comparator_group_size | 45.0 | 47.0 | falsche_spalte | 40 | 1, 6, 34 |
-| `yun2024:336` | intervention_group_size | 47.0 | 45.0 | falsche_spalte | 40 | 1, 6, 34 |
-| `yun2024:336` | comparator_group_size | 45.0 | 47.0 | falsche_spalte | 40 | 1, 6, 34 |
+| `yun2024:426` | intervention_group_size | 44.0 | 49.0 | falsche_spalte | 10 | 10, 122, 162 |
+| `yun2024:426` | comparator_group_size | 49.0 | 44.0 | falsche_spalte | 10 | 10, 97 |
 
-Klassen: {'falsche_tabelle': 2, 'falsche_spalte': 8}
+Klassen: {'falsche_tabelle': 2, 'falsche_spalte': 2}
 
 ## Teil B: 41 Zellen in P5 eingesetzt
 
 | Kennzahl | vorher | nachher | Delta |
 |---|---:|---:|---:|
-| TP | 170 | 194 | +24 |
-| FP | 101 | 114 | +13 |
-| FN | 2603 | 2579 | -24 |
+| TP | 170 | 200 | +30 |
+| FP | 101 | 108 | +7 |
+| FN | 2603 | 2573 | -30 |
 
 Betroffene Records: 24 von 699.
 
 ## Teil C: nur die richtigen Zellen
 
-Setzt man nur die 24 richtigen Zellen ein
-(ohne die 17 falschen), dann:
+Setzt man nur die 30 richtigen Zellen ein
+(ohne die 11 falschen), dann:
 
 | Kennzahl | vorher | nachher | Delta |
 |---|---:|---:|---:|
-| TP | 170 | 194 | +24 |
+| TP | 170 | 200 | +30 |
 | FP | 101 | 97 | -4 |
-| FN | 2603 | 2579 | -24 |
+| FN | 2603 | 2573 | -30 |
 
-Das ist die Obergrenze: 20 Zellen waren neu, 4 ersetzten
+Das ist die Obergrenze: 26 Zellen waren neu, 4 ersetzten
 einen vorhandenen falschen Wert.
