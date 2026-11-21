@@ -1,0 +1,1093 @@
+{
+  "p5_records": 103,
+  "vollstaendig": 27,
+  "luecken": 76,
+  "feld_luecke": {
+    "intervention_standard_deviation": 55,
+    "comparator_standard_deviation": 55,
+    "intervention_mean": 38,
+    "comparator_mean": 39,
+    "intervention_group_size": 42,
+    "comparator_group_size": 43,
+    "intervention_events": 15,
+    "comparator_events": 16
+  },
+  "feld_luecke_allein": {},
+  "kandidaten": 5,
+  "kandidaten_ids": [
+    "yun2024:212",
+    "yun2024:213",
+    "yun2024:215",
+    "yun2024:214",
+    "yun2024:626"
+  ],
+  "ohne_goldwert": [
+    "yun2024:626"
+  ],
+  "auftraege": 8,
+  "geliefert": {
+    "gate": 0,
+    "ohne_gate": 0
+  },
+  "tp": {
+    "gate": 0,
+    "ohne_gate": 0
+  },
+  "fp": {
+    "gate": 0,
+    "ohne_gate": 0
+  },
+  "geschlossen": {
+    "gate": 0,
+    "ohne_gate": 0
+  },
+  "geschlossen_richtig": {
+    "gate": 0,
+    "ohne_gate": 0
+  },
+  "geschlossen_detail": {
+    "gate": [],
+    "ohne_gate": []
+  },
+  "kategorien": {
+    "nur Standardabweichung fehlt": 15,
+    "Standardabweichung und weitere Felder": 40,
+    "nur Ereignisse fehlen": 5,
+    "Ereignisse und weitere Felder": 11,
+    "nur Groesse/Mittel (Regeln vorhanden)": 4,
+    "nur Groesse (Regeln vorhanden)": 1
+  },
+  "gruende": {
+    "yun2024:212": "keine n-Zeile in der Tabelle der Zielzeile",
+    "yun2024:213": "keine n-Zeile in der Tabelle der Zielzeile",
+    "yun2024:215": "keine n-Zeile in der Tabelle der Zielzeile",
+    "yun2024:214": "keine n-Zeile in der Tabelle der Zielzeile",
+    "yun2024:626": "Zielzeile nicht gefunden"
+  },
+  "sd_sichtung": {
+    "records": 15,
+    "beide_arme_format": 6,
+    "beide_arme_vorhanden": 11,
+    "je_record": {
+      "yun2024:6": 0,
+      "yun2024:113": 2,
+      "yun2024:110": 1,
+      "yun2024:114": 2,
+      "yun2024:149": 2,
+      "yun2024:151": 0,
+      "yun2024:160": 2,
+      "yun2024:163": 2,
+      "yun2024:203": 2,
+      "yun2024:357": 0,
+      "yun2024:367": 0,
+      "yun2024:447": 1,
+      "yun2024:449": 1,
+      "yun2024:450": 1,
+      "yun2024:448": 1
+    }
+  },
+  "nicht_poolbar": {
+    "yun2024:313": "Ereignisse groesser als Gruppe",
+    "yun2024:380": "Ereignisse groesser als Gruppe",
+    "yun2024:376": "Ereignisse groesser als Gruppe"
+  },
+  "je_record": [
+    {
+      "record_id": "yun2024:6",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:30",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:32",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:54",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:68",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:52",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:85",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:84",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:86",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:113",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:110",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:114",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:119",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:117",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:120",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:128",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:130",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:136",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:137",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:149",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:133",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:151",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:154",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:158",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:152",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:160",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:161",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:159",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:162",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:163",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:169",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:164",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:171",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:173",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:174",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:183",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:203",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:204",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:178",
+      "typ": "binary",
+      "fehlt": [
+        "comparator_events",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:212",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": true
+    },
+    {
+      "record_id": "yun2024:213",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": true
+    },
+    {
+      "record_id": "yun2024:215",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": true
+    },
+    {
+      "record_id": "yun2024:214",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": true
+    },
+    {
+      "record_id": "yun2024:228",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:232",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:233",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:251",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:268",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:252",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:269",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:270",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:291",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:273",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:313",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:344",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:304",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:347",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:349",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:357",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:362",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:367",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:356",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:380",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:376",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:405",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:384",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:420",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:421",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:427",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:447",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:446",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:449",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:450",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:448",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:451",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:523",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:525",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:533",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:556",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:557",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:558",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:559",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:601",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:602",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:582",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:616",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:615",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:624",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:617",
+      "typ": "continuous",
+      "fehlt": [
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:626",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": true
+    },
+    {
+      "record_id": "yun2024:625",
+      "typ": "binary",
+      "fehlt": [
+        "intervention_events",
+        "comparator_events",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:662",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:653",
+      "typ": "binary",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:668",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:671",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:672",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:674",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:673",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:677",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:685",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:678",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:686",
+      "typ": "continuous",
+      "fehlt": [],
+      "nur_lesbar": false
+    },
+    {
+      "record_id": "yun2024:687",
+      "typ": "continuous",
+      "fehlt": [
+        "intervention_mean",
+        "comparator_mean",
+        "intervention_standard_deviation",
+        "comparator_standard_deviation",
+        "intervention_group_size",
+        "comparator_group_size"
+      ],
+      "nur_lesbar": false
+    }
+  ]
+}

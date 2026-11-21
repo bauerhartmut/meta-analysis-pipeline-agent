@@ -171,6 +171,33 @@ Vorzeichen und die Aussage "kein sicherer Effekt" bleiben gleich. Gate und
 Ohne-Gate sind gepoolt identisch, weil die 10 zusaetzlich verworfenen Zellen auf
 Records liegen, die im P5-Pool ohnehin unvollstaendig sind.
 
+## Warum 76 der 103 P5-Records unvollstaendig sind
+
+`pooling_luecken_20261121.py`, offline. Von 103 P5-Records sind 27 fuer ein
+Pooling vollstaendig, 76 nicht. Kategorien der Luecke:
+
+| Kategorie | Records |
+|---|---:|
+| Standardabweichung und weitere Felder | 40 |
+| nur Standardabweichung fehlt | 15 |
+| Ereignisse und weitere Felder | 11 |
+| nur Ereignisse fehlen | 5 |
+| nur Groesse/Mittel (Regeln vorhanden) | 4 |
+| nur Groesse (Regeln vorhanden) | 1 |
+
+Mit den vorhandenen Regeln liesse sich keiner davon schliessen. Fuenf Records
+liegen feldartig im Regelbereich (es fehlt nichts ausser Groesse bzw. Groesse und
+Mittel), aber die Regeln liefern dort nichts: bei den vier Segment-Records
+`yun2024:212` bis `215` fehlt die `n`-Zeile in der Tabelle der ansonsten
+gefundenen Zielzeile, bei `yun2024:626` wird die Zielzeile nicht gefunden und der
+Ereignisleser ist abgeschaltet. Gemessen mit Goldauftraegen: 8 Zellen, 0
+geliefert, mit und ohne Gate.
+
+Sichtung ohne Regel: Bei 6 der 15 Records mit ausschliesslich fehlender SD steht
+der zweite Wert in beiden Armen im Format `Mittel +/- SD` oder `Mittel (SD)`.
+Drei vollstaendige Records sind zudem nicht poolbar, weil die Ereigniszahl die
+Gruppengroesse uebersteigt (`yun2024:313`, `376`, `380`).
+
 ## Grenzen
 
 - Alle Regeln sind Textheuristiken auf Markdown; sie greifen bei sauberen

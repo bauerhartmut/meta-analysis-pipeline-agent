@@ -573,6 +573,40 @@ auffindbar (`Vegetable intake` vs. Tabellenzeile `Vegetables`), in 4 weiteren
 fehlt eine Groessenzeile in Reichweite, in 4 ist der Arm in einer Multiarm-
 Tabelle mehrdeutig.
 
+## Warum 76 der 103 P5-Records fuer das Pooling unvollstaendig sind
+
+`pooling_luecken_20261121.py`, offline. Sollfelder je Outcome-Typ: sechs bei
+kontinuierlich (Mittel, SD, Groesse je Arm), vier bei binaer (Ereignisse,
+Groesse je Arm). 27 Records sind vollstaendig, 76 haben Luecken:
+
+| Kategorie | Records |
+|---|---:|
+| Standardabweichung und weitere Felder | 40 |
+| nur Standardabweichung fehlt | 15 |
+| Ereignisse und weitere Felder | 11 |
+| nur Ereignisse fehlen | 5 |
+| nur Groesse/Mittel (Regeln vorhanden) | 4 |
+| nur Groesse (Regeln vorhanden) | 1 |
+
+Feldweise fehlen die SD in 55, Mittel in 38/39, Groesse in 42/43, Ereignisse in
+15/16 Records. Kein Feld ist je Record die einzige Luecke - es fehlen immer
+beide Arme oder mehrere Felder zugleich.
+
+**Mit den vorhandenen Regeln schliessbar: 0 von 76.** Fuenf Records liegen
+feldartig im Bereich der Regeln (nur Groesse bzw. nur Groesse und Mittel
+fehlen), aber die Regeln liefern dort nichts: bei `yun2024:212`, `213`, `214`,
+`215` steht die Gruppengroesse nicht in der Tabelle der Zielzeile (die
+Zielzeile selbst wird gefunden, es gibt aber keine `n`-Zeile), bei
+`yun2024:626` wird die Zielzeile nicht gefunden und der Ereignisleser ist
+abgeschaltet. Auftraege aus Gold: 8 Zellen, geliefert 0 - mit und ohne Gate.
+
+Sichtung der SD-Luecke (reine Textzaehlung, keine Regel): bei 6 der 15 Records
+steht neben beiden Goldmitteln ein zweiter Wert im Format `Mittel +/- SD` oder
+`Mittel (SD)`, bei 11 steht er irgendwo im Dokument.
+
+Drei weitere Records sind vollstaendig, aber nicht poolbar, weil die
+Ereigniszahl die Gruppengroesse uebersteigt (`yun2024:313`, `376`, `380`).
+
 ## Fixture: beide Zellstaende zellgenau
 
 `fixture_20261121.py` (Modi `schreiben` / `pruefen`) friert die 33 Zellen mit
