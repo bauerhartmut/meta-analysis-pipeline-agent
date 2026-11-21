@@ -422,6 +422,33 @@ Formate in der Endvariante:
 Der Schritt bringt gegenueber dem Alias-Lauf mit Ereignissen 7 FP weniger bei
 gleicher TP-Zahl; gegenueber der strengen Variante 12 TP mehr bei 5 FP mehr.
 
+### Die 10 Groessen-FP und der Einsatz der 37 Zellen
+
+`groessen_fp_einsatz_20261121.py`. Die 10 Groessen-FP stammen **nicht**
+ueberwiegend aus der falschen Tabelle:
+
+| Klasse | Faelle |
+|---|---:|
+| falsche Spalte, gleiche Zeile | 8 |
+| falsche Tabelle | 1 |
+| Gold in anderer Tabelle ohne `n =`-Marker | 1 |
+
+Die 8 Spaltenfaelle sind die vier `PMC5617873`-Records mit vertauschten
+Goldarmen (beide Arme je Record). Die 2 Tabellenfaelle sind `yun2024:196` und
+`yun2024:193`: Gold stammt aus Tabelle 2 (Woche 28), die Regel las die
+Kopfzeile von Tabelle 1.
+
+Einsatz der 37 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
+
+| Zellen | TP | FP | FN |
+|---|---:|---:|---:|
+| vorher | 170 | 101 | 2603 |
+| alle 37 | 190 | 114 | 2583 |
+| nur die 20 richtigen | 190 | 97 | 2583 |
+
+Alle 37: +20 TP und +13 FP. Nur die richtigen: +20 TP und -4 FP (vier Zellen
+ersetzten vorhandene falsche Werte).
+
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
 gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht
 auffindbar (`Vegetable intake` vs. Tabellenzeile `Vegetables`), in 4 weiteren
