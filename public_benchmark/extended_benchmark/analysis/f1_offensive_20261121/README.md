@@ -411,10 +411,10 @@ verworfen.
 | Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Endvariante |
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
-| Zellen | 36 | 44 | 24 | 41 |
-| TP | 30 | 34 | 18 | 34 |
-| FP | 6 | 10 | 6 | 7 |
-| Trefferquote | 83 % | 77 % | 75 % | **83 %** |
+| Zellen | 36 | 44 | 26 | 43 |
+| TP | 30 | 34 | 22 | 38 |
+| FP | 6 | 10 | 4 | 5 |
+| Trefferquote | 83 % | 77 % | 85 % | **88 %** |
 
 Formate in der Endvariante:
 
@@ -422,7 +422,7 @@ Formate in der Endvariante:
 |---|---|---:|---:|
 | Groesse | Groessenzeile | 18 | 4 |
 | Mittel | `Zahl +/- Zahl` | 16 | 1 |
-| Mittel | `Zahl (Zahl)` | 0 | 2 |
+| Mittel | `Zahl (Zahl)` | 4 | 0 |
 
 Enthaelt ein Dokument eine Tabelle mit Wochenspalte, in der das Outcome
 mehrfach vorkommt, gilt die Zeile des letzten Zeitpunkts statt der
@@ -442,7 +442,7 @@ Tabelle ab.
 Der Schritt bringt gegenueber dem Alias-Lauf mit Ereignissen 7 FP weniger bei
 gleicher TP-Zahl; gegenueber der strengen Variante 12 TP mehr bei 5 FP mehr.
 
-### Die 4 Groessen-FP und der Einsatz der 41 Zellen
+### Die 4 Groessen-FP und der Einsatz der 43 Zellen
 
 `groessen_fp_einsatz_20261121.py`. Mit der Positionsregel bleiben vier
 Groessen-FP:
@@ -468,10 +468,10 @@ Einsatz der 41 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
 | Zellen | TP | FP | FN |
 |---|---:|---:|---:|
 | vorher | 170 | 101 | 2603 |
-| alle 41 | 204 | 104 | 2569 |
-| nur die 34 richtigen | 204 | 97 | 2569 |
+| alle 43 | 208 | 102 | 2565 |
+| nur die 38 richtigen | 208 | 97 | 2565 |
 
-Alle 41: +34 TP und +3 FP. Nur die richtigen: +34 TP und -4 FP (vier Zellen
+Alle 43: +38 TP und +1 FP. Nur die richtigen: +38 TP und -4 FP (vier Zellen
 ersetzten vorhandene falsche Werte).
 
 ### Mittel-FP: Tabellenlokalitaet half nicht, das Blocklabel schon
@@ -483,14 +483,13 @@ vier weg, drei bleiben.
 
 | Klasse | Faelle | Betroffene Zellen |
 |---|---:|---|
-| Gold in anderem Abschnitt | 2 | `yun2024:33`, `:34` |
 | Gold nicht als Mittelwert belegt | 1 | `yun2024:345` |
 
-- `33`/`34`: Gold steht in der Mittelwertzeile einer anderen Subskala (PCS bzw.
-  MCS) und dort in einer spaeteren Wochenspalte; die Regel trifft `General
-  Health` bzw. `Mental Health` in Woche 12.
 - `345`: Der Goldwert 2.3 steht im Dokument nur als Grenze eines
   Median-Differenz-Intervalls, nicht als Mittelwertzelle.
+
+`33` und `34` sind mit der Zeitpunktspalten-Regel richtig geworden (siehe
+unten); uebrig bleibt nur `345`.
 
 ### Blocklabel-Regel fuer Messwoerter
 
@@ -505,8 +504,26 @@ Beweglichkeitszeile in Grad. Zusaetzlich waehlt die Mittelspalte jetzt die beste
 Label-Uebereinstimmung statt der ersten: Bei zwei Interventionsspalten gewinnt
 `ACVC-HA group` gegen `ACVC group` (0.34 statt 0.35).
 
-Andere Zellen kippen nicht: Die Messung bleibt bei 41 Zellen und steigt von 30
-auf 34 TP, die FP fallen von 11 auf 7.
+Andere Zellen kippen nicht: Die Messung steigt von 30 auf 34 TP, die FP fallen
+von 11 auf 7.
+
+### Zeitpunktspalten: Subskalen-Block und letzte Woche
+
+`zeitverlauf_mittel`. Hat eine Tabelle einen Wochenkopf mit mehreren Zeitpunkten
+(`Week 12  Week 24  Week 52`), wird das Mittel aus der Spalte des **letzten**
+Zeitpunkts gelesen. Die Zeile kommt aus dem Block, dessen Ueberschrift das
+Outcome trifft - per Alias oder als Akronym (`MCS` fuer `Mental Component
+Summary`); trifft keine Ueberschrift, gilt der erste Block der Tabelle.
+Innerhalb des Blocks zaehlt die erste Zeile mit lesbarem Mittel, typisch
+`Mean score (SD)`.
+
+Die Armspalte wird dabei ueber Dosis und Placebo-Synonyme zugeordnet
+(`CZP 400 mg` zu `Certolizumab 400 mg`, `PBO` zu `Control`), weil die
+Spaltennamen im Wochenkopf nicht die Armbeschriftung des Records tragen.
+
+Damit werden `yun2024:33` (38.1 / 31.5, Block `PCS`, Woche 52) und `yun2024:34`
+(45.4 / 41.1, Block `MCS`, Woche 52) richtig. Die Messung steigt auf 43 Zellen,
+38 TP und 5 FP; andere Zellen kippen nicht.
 
 ### Armzuordnung aus der Spaltenreihenfolge
 
@@ -522,8 +539,8 @@ umsschaltbar (`POSITIONAL`) und wurde ueber die 295 gemessen:
 
 | Lesart | Zellen | TP | FP | Groessenzellen richtig | Groessenzellen falsch |
 |---|---:|---:|---:|---:|---:|
-| Position (**Standard**) | 41 | 34 | 7 | 18 | 4 |
-| Spaltenname (Vergleich) | 41 | 28 | 13 | 12 | 10 |
+| Position (**Standard**) | 43 | 38 | 5 | 18 | 4 |
+| Spaltenname (Vergleich) | 43 | 32 | 11 | 12 | 10 |
 
 Richtig werden alle 8 PMC5617873-Zellen. Falsch werden die beiden Arme von
 `yun2024:426` (vorher 49/44, jetzt 44/49, Gold 49/44): dort steht in Spalte 1

@@ -1,50 +1,6 @@
 {
   "faelle": [
     {
-      "record_id": "yun2024:33",
-      "feld": "comparator_mean",
-      "regel": 34.9,
-      "gold": 31.5,
-      "regel_zeile": 34,
-      "regel_tabelle": [
-        2,
-        54
-      ],
-      "klasse": "gold_anderer_abschnitt",
-      "gold_in_regelzeile": false,
-      "gold_zeilen": [
-        70
-      ],
-      "gold_tabellen": [
-        [
-          54,
-          162
-        ]
-      ]
-    },
-    {
-      "record_id": "yun2024:34",
-      "feld": "comparator_mean",
-      "regel": 52.2,
-      "gold": 41.1,
-      "regel_zeile": 42,
-      "regel_tabelle": [
-        2,
-        54
-      ],
-      "klasse": "gold_anderer_abschnitt",
-      "gold_in_regelzeile": false,
-      "gold_zeilen": [
-        78
-      ],
-      "gold_tabellen": [
-        [
-          54,
-          162
-        ]
-      ]
-    },
-    {
       "record_id": "yun2024:345",
       "feld": "intervention_mean",
       "regel": 5.4,
@@ -61,12 +17,11 @@
     }
   ],
   "klassen": {
-    "gold_anderer_abschnitt": 2,
     "gold_nicht_belegt": 1
   },
   "messung": {
-    "zellen": 41,
-    "tp": 34,
-    "fp": 7
+    "zellen": 43,
+    "tp": 38,
+    "fp": 5
   }
 }

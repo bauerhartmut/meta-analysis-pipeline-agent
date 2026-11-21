@@ -3,25 +3,25 @@
   "faelle": 295,
   "alias_streng": {
     "zielzeile_gefunden": 178,
-    "geliefert": 24,
-    "tp": 18,
-    "fp": 6,
-    "tp_gerundet": 18,
-    "fp_gerundet": 6
+    "geliefert": 26,
+    "tp": 22,
+    "fp": 4,
+    "tp_gerundet": 22,
+    "fp_gerundet": 4
   },
   "neu": {
     "zielzeile_gefunden": 178,
-    "geliefert": 41,
-    "tp": 34,
-    "fp": 7,
-    "tp_gerundet": 34,
-    "fp_gerundet": 7
+    "geliefert": 43,
+    "tp": 38,
+    "fp": 5,
+    "tp_gerundet": 38,
+    "fp_gerundet": 5
   },
   "neu_zellformate": {
     "groesse|groessenzeile|richtig": 18,
     "groesse|groessenzeile|falsch": 4,
     "mittel|plus_minus|richtig": 16,
-    "mittel|mittel_sd|falsch": 2,
+    "mittel|mittel_sd|richtig": 4,
     "mittel|plus_minus|falsch": 1
   },
   "fp_nach_feldtyp": {

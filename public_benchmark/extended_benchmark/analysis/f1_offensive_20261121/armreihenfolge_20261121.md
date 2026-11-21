@@ -33,8 +33,8 @@ trifft damit das Gold, das dieselbe Zuordnung fuehrt.
 
 | Lesart | Zellen | TP | FP | Groessenzellen richtig | Groessenzellen falsch |
 |---|---:|---:|---:|---:|---:|
-| label | 41 | 28 | 13 | 12 | 10 |
-| position | 41 | 34 | 7 | 18 | 4 |
+| label | 43 | 32 | 11 | 12 | 10 |
+| position | 43 | 38 | 5 | 18 | 4 |
 
 Richtig geworden: 8 Zellen. Falsch geworden: 2 Zellen.
 

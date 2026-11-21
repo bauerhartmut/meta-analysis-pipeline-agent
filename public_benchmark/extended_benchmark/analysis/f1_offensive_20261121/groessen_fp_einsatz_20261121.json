@@ -1,6 +1,6 @@
 {
   "stand": "2026-11-21",
-  "zellen": 41,
+  "zellen": 43,
   "fp_groesse": 4,
   "sichtung": [
     {
@@ -70,18 +70,18 @@
     "fn": 2603
   },
   "nachher": {
-    "tp": 204,
-    "fp": 104,
-    "fn": 2569
+    "tp": 208,
+    "fp": 102,
+    "fn": 2565
   },
   "delta": {
-    "tp": 34,
-    "fp": 3,
-    "fn": -34
+    "tp": 38,
+    "fp": 1,
+    "fn": -38
   },
   "records_geaendert": 24,
   "zellen_ersetzt": 4,
-  "zellen_neu": 37,
+  "zellen_neu": 39,
   "nur_richtige": {
     "vorher": {
       "tp": 170,
@@ -89,12 +89,12 @@
       "fn": 2603
     },
     "nachher": {
-      "tp": 204,
+      "tp": 208,
       "fp": 97,
-      "fn": 2569
+      "fn": 2565
     },
-    "records_geaendert": 19,
+    "records_geaendert": 21,
     "zellen_ersetzt": 4,
-    "zellen_neu": 30
+    "zellen_neu": 34
   }
 }

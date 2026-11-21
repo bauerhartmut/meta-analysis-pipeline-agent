@@ -8,11 +8,11 @@ Akronymen.
 | Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Ereignisse aus, Mittel beide Formate |
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
-| Zellen geliefert | 36 | 44 | 24 | 41 |
-| TP (exakt) | 30 | 34 | 18 | 34 |
-| FP (exakt) | 6 | 10 | 6 | 7 |
-| TP (auf ganze Zahl gerundet) | 30 | 36 | 18 | 34 |
-| FP (auf ganze Zahl gerundet) | 6 | 8 | 6 | 7 |
+| Zellen geliefert | 36 | 44 | 26 | 43 |
+| TP (exakt) | 30 | 34 | 22 | 38 |
+| FP (exakt) | 6 | 10 | 4 | 5 |
+| TP (auf ganze Zahl gerundet) | 30 | 36 | 22 | 38 |
+| FP (auf ganze Zahl gerundet) | 6 | 8 | 4 | 5 |
 
 ## FP nach Feldtyp (Alias-Lauf vor der Umstellung, 10 FP)
 
@@ -26,7 +26,7 @@ Akronymen.
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
 | groesse | groessenzeile | 18 | 4 |
-| mittel | mittel_sd | 0 | 2 |
+| mittel | mittel_sd | 4 | 0 |
 | mittel | plus_minus | 16 | 1 |
 
 ## FP nach Zellformat
@@ -68,12 +68,14 @@ Groessenzeile steht, gilt der Rueckfall auf die naechste Zeile darueber. Das
 Zellformat `n  Mean (95% CI)` einer Zeitverlaufstabelle wird als Zeilen-`n`
 gelesen (n nach der Wochenzahl, zweites n nach dem ersten Klammerblock).
 
-In der Endvariante stellen sich die 7 FP so:
+In der Endvariante stellen sich die 5 FP so:
 
 * Groesse 4 (196 Subgruppe, 426 Positionsverlust).
 * Mittel 1 im Format `+/-` (345: Gold steht nur als Intervallgrenze).
-* Mittel 2 im Format `Mittel (SD)` (33, 34) - dort ist die Zeile oder Spalte
-  falsch, nicht das Format.
+
+Hat eine Tabelle mehrere Wochenspalten, gilt die Spalte des letzten Zeitpunkts
+und der Block, dessen Ueberschrift das Outcome trifft (Alias oder Akronym wie
+`MCS`); ohne Treffer der erste Block. Damit sind 33 und 34 richtig.
 
 Nennt das Outcome ein Messwort (`stiffness`, `range of motion`, `neutral zone`,
 `neural zone`), gilt nur eine Zielzeile in einem Block mit passendem Label; bei
@@ -95,8 +97,8 @@ die acht PMC5617873-Zellen und macht dafuer die beiden Arme von `yun2024:426`
 falsch; dieser Verlust ist bewusst (Gold folgt dort den Spaltennamen, siehe
 `armreihenfolge_20261121.md`).
 
-Trefferquote: 34 von 41 Zellen, also
-82 Prozent. Ereignisse tragen
+Trefferquote: 38 von 43 Zellen, also
+88 Prozent. Ereignisse tragen
 nichts bei, Groessen und Mittel teilen sich die Treffer. Die Umstellung von der
 ersten Zahl auf zwei erlaubte Formate kostet 3 weitere Zellen des Formats
 `sonstig`, alle drei waren falsch.

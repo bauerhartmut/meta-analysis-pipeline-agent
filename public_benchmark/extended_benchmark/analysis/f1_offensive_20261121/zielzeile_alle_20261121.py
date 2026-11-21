@@ -183,6 +183,126 @@ def ziel_zeile_block(zeilen: list[str], outcome: str, alias: dict[str, list[str]
     return max(i for p, i in beste if p == top)
 
 
+WOCHE = re.compile(r"\bweek\s*\d+", re.IGNORECASE)
+
+
+PLACEBO = ("pbo", "placebo", "control", "untreated", "sham")
+
+
+def arm_score(label: str, arm: str, context: dict[str, Any], alias: dict[str, list[str]],
+              akronyme: bool) -> int:
+    """Passung eines Spaltenlabels zum Arm: Alias, Dosis und Placebo-Synonyme."""
+    text = str(context.get(arm) or "")
+    score = alias_mod.treffer_alias(label, text, alias, akronyme)
+    li = label.lower()
+    dosen = re.findall(r"\d+\s*(?:mg|g|ml|iu)", text.lower())
+    if dosen and any(d.replace(" ", "") in li.replace(" ", "") for d in dosen):
+        score += 2
+    if arm == "comparator":
+        if any(w in li for w in PLACEBO) and any(w in text.lower() for w in PLACEBO):
+            score += 2
+    return score
+
+
+def akronym_score(label: str, outcome: str) -> int:
+    """Blocklabel als Akronym des Outcomes (`MCS` fuer Mental Component Summary)."""
+    marke = re.sub(r"[^A-Za-z]", "", label).upper()
+    if len(marke) < 2 or len(marke) > 5:
+        return 0
+    worte = [w for w in re.findall(r"[A-Za-z]+", outcome) if len(w) > 2]
+    for start in range(0, max(1, len(worte) - len(marke) + 1)):
+        stelle = "".join(w[0] for w in worte[start:start + len(marke)]).upper()
+        if stelle == marke:
+            return 3
+    return 0
+
+
+def zeitverlauf_gruppen(zeilen: list[str], i: int) -> tuple[int, int, list[str]]:
+    """Wochenkopf ueber Zeile `i`: (Zeilen, Gruppen, Armlabels der Kopfzeile)."""
+    start, _ = tabellengrenzen(zeilen, i)
+    for j in range(i - 1, max(start - 1, i - 12), -1):
+        treffer = WOCHE.findall(zeilen[j])
+        if len(treffer) >= 2:
+            for m in range(j + 1, min(i, j + 8)):
+                kopf = segmente(zeilen[m])
+                if len(kopf) >= len(treffer) * 2 and len(kopf) % len(treffer) == 0:
+                    return len(treffer), len(kopf) // len(treffer), kopf
+            return len(treffer), 0, []
+    return 0, 0, []
+
+
+def zeitverlauf_mittel(zeilen: list[str], ziel: int, outcome: str, feld: str, arm: str,
+                       context: dict[str, Any], alias: dict[str, list[str]],
+                       akronyme: bool, mean_formate: tuple[str, ...]) -> dict[str, Any] | None:
+    """Mittel aus der Zeile des passenden Subskalen-Blocks, letzter Zeitpunkt.
+
+    Gilt nur fuer Tabellen mit mehreren Wochenspalten. Gewaehlt wird der Block,
+    dessen Ueberschrift das Outcome trifft; trifft keiner, der erste Block der
+    Tabelle. Innerhalb des Blocks zaehlt die erste Zeile mit lesbarem Mittel
+    ( typisch `Mean score (SD)`). Die Spalte kommt aus der letzten Wochengruppe.
+    """
+    # Tabellen des Dokuments: eine mit Wochenkopf traegt die Zeitpunktspalten.
+    grenzen: list[tuple[int, int]] = []
+    start = 0
+    for i, zeile in enumerate(zeilen):
+        if KAPITION.search(zeile):
+            if i > start:
+                grenzen.append((start, i))
+            start = i
+    grenzen.append((start, len(zeilen)))
+    for a, b in grenzen:
+        gruppen = pro_gruppe = 0
+        for j in range(a, min(b, a + 40)):
+            treffer = WOCHE.findall(zeilen[j])
+            if len(treffer) < 2:
+                continue
+            for m in range(j + 1, min(b, j + 8)):
+                kopf = segmente(zeilen[m])
+                if len(kopf) >= 2 * len(treffer) and len(kopf) % len(treffer) == 0:
+                    gruppen, pro_gruppe = len(treffer), len(kopf) // len(treffer)
+                    break
+            if gruppen:
+                break
+        if gruppen < 2 or pro_gruppe < 2:
+            continue
+        bloecke: list[tuple[int, str, int]] = []
+        for i in range(a, b):
+            ueberschrift = block_label(zeilen, i)
+            if not ueberschrift:
+                continue
+            score = max(alias_mod.treffer_alias(ueberschrift, outcome, alias, akronyme),
+                        akronym_score(ueberschrift, outcome))
+            bloecke.append((score, ueberschrift, i))
+        if not bloecke:
+            continue
+        beste = max(s for s, _, _ in bloecke)
+        # Nur eine belastbare Ueberschrift (Alias oder Akronym) waehlt den Block;
+        # sonst gilt der erste Block der Tabelle.
+        kandidaten = ([(u, i) for s, u, i in bloecke if s == beste] if beste >= 2
+                      else [(u, i) for _, u, i in bloecke])
+        for _, ab in kandidaten:
+            for i in range(ab, min(ab + 6, b)):
+                segs = segmente(zeilen[i])
+                if len(segs) < gruppen * pro_gruppe:
+                    continue
+                spalte = 1 + (gruppen - 1) * pro_gruppe
+                kandidaten_spalten: list[tuple[int, int]] = []
+                for k in range(spalte, min(spalte + pro_gruppe, len(segs))):
+                    if wert_aus_zelle(segs[k], feld, mean_formate) is None:
+                        continue
+                    label = spalte_label(zeilen, i, segs, k, context, alias, akronyme)
+                    score = arm_score(label, arm, context, alias, akronyme)
+                    if score > 0:
+                        kandidaten_spalten.append((score, k))
+                if not kandidaten_spalten:
+                    continue
+                _, k = max(kandidaten_spalten, key=lambda x: (x[0], -x[1]))
+                return {"value": wert_aus_zelle(segs[k], feld, mean_formate),
+                        "quelle": "wochenspalte", "zeile": i + 1,
+                        "zellformat": zellformat(segs[k]), "block": block_label(zeilen, i)}
+    return None
+
+
 def spalten_reihenfolge(zeilen: list[str], ziel: int, context: dict[str, Any]) -> list[str]:
     """Arme in der Reihenfolge ihrer Datenspalten (Groessenzeile, sonst Kopf)."""
     start, _ = tabellengrenzen(zeilen, ziel)
@@ -261,13 +381,21 @@ def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) ->
 FELD_ARM = {"intervention": "intervention", "comparator": "comparator"}
 
 
-def spalte_label(zeilen: list[str], i: int, segs: list[str], k: int) -> str:
-    """Kopfzeilen-Label der Zellspalte `k` (fuer die Rangfolge der Arme)."""
+def spalte_label(zeilen: list[str], i: int, segs: list[str], k: int,
+                 context: dict[str, Any] | None = None,
+                 alias: dict[str, list[str]] | None = None,
+                 akronyme: bool = False) -> str:
+    """Kopfzeilen-Label der Zellspalte `k`.
+
+    Unter mehreren passenden Kopfzeilen (Armzeile, Dosiszeile, `(n = ...)`)
+    gewinnt die, deren Label am besten zu einem Arm passt.
+    """
     zahlenspalten = [n for n, s in enumerate(segs) if re.search(r"\d", s)]
     if k not in zahlenspalten:
         return ""
     pos = zahlenspalten.index(k)
     start, _ = tabellengrenzen(zeilen, i)
+    beste: tuple[int, str] = (-1, "")
     for j in range(i - 1, max(start - 1, i - 41), -1):
         kopf = segmente(zeilen[j])
         if len(kopf) == len(zahlenspalten):
@@ -276,9 +404,17 @@ def spalte_label(zeilen: list[str], i: int, segs: list[str], k: int) -> str:
             ziel = pos + 1
         else:
             continue
-        if ziel < len(kopf) and re.search(r"[A-Za-z]{3}", kopf[ziel]) and "\u00b1" not in kopf[ziel]:
-            return kopf[ziel]
-    return ""
+        if ziel >= len(kopf) or not re.search(r"[A-Za-z]{3}", kopf[ziel]) or "\u00b1" in kopf[ziel]:
+            continue
+        score = 0
+        if context and alias is not None:
+            score = max(arm_score(kopf[ziel], "intervention", context, alias, akronyme),
+                        arm_score(kopf[ziel], "comparator", context, alias, akronyme))
+        if score > beste[0]:
+            beste = (score, kopf[ziel])
+            if score >= 2:
+                break
+    return beste[1]
 
 
 def arm_von_spalte(zeilen: list[str], i: int, segs: list[str], k: int,
@@ -368,9 +504,15 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
             return None
         return treffer
 
-    ziel = ziel_zeile_block(zeilen, str(context.get("outcome") or ""), alias, akronyme)
+    outcome = str(context.get("outcome") or "")
+    ziel = ziel_zeile_block(zeilen, outcome, alias, akronyme)
     if ziel < 0:
         return None
+    if mean_formate:
+        treffer = zeitverlauf_mittel(zeilen, ziel, outcome, feld, arm, context, alias,
+                                     akronyme, mean_formate)
+        if treffer:
+            return treffer
     segs = segmente(zeilen[ziel])
     context = record.get("context") or {}
     kandidaten: list[tuple[int, int, int]] = []
@@ -379,8 +521,8 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
             continue
         if wert_aus_zelle(segs[k], feld, mean_formate) is None:
             continue
-        label = spalte_label(zeilen, ziel, segs, k)
-        score = alias_mod.treffer_alias(label, str(context.get(arm) or ""), alias, akronyme)
+        label = spalte_label(zeilen, ziel, segs, k, context, alias, akronyme)
+        score = arm_score(label, arm, context, alias, akronyme)
         kandidaten.append((score, len(label), k))
     if not kandidaten:
         return None
@@ -552,8 +694,10 @@ In der Endvariante stellen sich die {beide['fp']} FP so:
 
 * Groesse 4 (196 Subgruppe, 426 Positionsverlust).
 * Mittel 1 im Format `+/-` (345: Gold steht nur als Intervallgrenze).
-* Mittel 2 im Format `Mittel (SD)` (33, 34) - dort ist die Zeile oder Spalte
-  falsch, nicht das Format.
+
+Hat eine Tabelle mehrere Wochenspalten, gilt die Spalte des letzten Zeitpunkts
+und der Block, dessen Ueberschrift das Outcome trifft (Alias oder Akronym wie
+`MCS`); ohne Treffer der erste Block. Damit sind 33 und 34 richtig.
 
 Nennt das Outcome ein Messwort (`stiffness`, `range of motion`, `neutral zone`,
 `neural zone`), gilt nur eine Zielzeile in einem Block mit passendem Label; bei
