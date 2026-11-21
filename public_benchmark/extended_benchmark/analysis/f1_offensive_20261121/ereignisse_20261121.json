@@ -1,0 +1,302 @@
+{
+  "stand": "2026-11-21",
+  "faelle": 29,
+  "verteilung": {
+    "zaehler_arm_unklar": 14,
+    "zaehler_prozent_in_kopfzeile": 4,
+    "zaehler_anderer_arm": 1,
+    "wert_ohne_prozent": 10
+  },
+  "detail": [
+    {
+      "record_id": "yun2024:127",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 11.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 11
+    },
+    {
+      "record_id": "yun2024:127",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 21.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 8
+    },
+    {
+      "record_id": "yun2024:130",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 11.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 11
+    },
+    {
+      "record_id": "yun2024:14",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 54.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 159
+    },
+    {
+      "record_id": "yun2024:153",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 7.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 11
+    },
+    {
+      "record_id": "yun2024:190",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 52.0,
+      "klasse": "zaehler_prozent_in_kopfzeile",
+      "spalte_arm": "intervention",
+      "quelle": "zeile-links",
+      "zeile": 74
+    },
+    {
+      "record_id": "yun2024:190",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 51.0,
+      "klasse": "zaehler_anderer_arm",
+      "spalte_arm": "intervention",
+      "quelle": "zeile-links",
+      "zeile": 74
+    },
+    {
+      "record_id": "yun2024:305",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 1.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    },
+    {
+      "record_id": "yun2024:313",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 22.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 8
+    },
+    {
+      "record_id": "yun2024:313",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 16.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    },
+    {
+      "record_id": "yun2024:369",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 51.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 22
+    },
+    {
+      "record_id": "yun2024:369",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 57.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 29
+    },
+    {
+      "record_id": "yun2024:370",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 33.0,
+      "klasse": "zaehler_prozent_in_kopfzeile",
+      "spalte_arm": "comparator",
+      "quelle": "kopf",
+      "zeile": 13
+    },
+    {
+      "record_id": "yun2024:373",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 46.0,
+      "klasse": "zaehler_prozent_in_kopfzeile",
+      "spalte_arm": "comparator",
+      "quelle": "kopf",
+      "zeile": 44
+    },
+    {
+      "record_id": "yun2024:379",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 25.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 28
+    },
+    {
+      "record_id": "yun2024:379",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 39.0,
+      "klasse": "zaehler_prozent_in_kopfzeile",
+      "spalte_arm": "comparator",
+      "quelle": "kopf",
+      "zeile": 15
+    },
+    {
+      "record_id": "yun2024:380",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 47.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 21
+    },
+    {
+      "record_id": "yun2024:380",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 19.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 28
+    },
+    {
+      "record_id": "yun2024:499",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 27.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 35
+    },
+    {
+      "record_id": "yun2024:500",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 12.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 49
+    },
+    {
+      "record_id": "yun2024:501",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 15.0,
+      "klasse": "zaehler_arm_unklar",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": 46
+    },
+    {
+      "record_id": "yun2024:62",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 23.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    },
+    {
+      "record_id": "yun2024:626",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 2.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    },
+    {
+      "record_id": "yun2024:626",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 3.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    },
+    {
+      "record_id": "yun2024:63",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 23.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    },
+    {
+      "record_id": "yun2024:63",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 5.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    },
+    {
+      "record_id": "yun2024:64",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 4.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    },
+    {
+      "record_id": "yun2024:65",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 3.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    },
+    {
+      "record_id": "yun2024:66",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 4.0,
+      "klasse": "wert_ohne_prozent",
+      "spalte_arm": "",
+      "quelle": "",
+      "zeile": null
+    }
+  ]
+}

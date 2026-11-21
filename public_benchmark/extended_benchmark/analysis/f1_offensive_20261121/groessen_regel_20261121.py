@@ -39,60 +39,7 @@ import vergleiche_20261120 as v  # noqa: E402
 from zaehlfelder_20261121 import ZAEHLFELDER, arm_von_label, segmente  # noqa: E402
 
 FELD = {"intervention": "intervention_group_size", "comparator": "comparator_group_size"}
-
-SATZ = re.compile(
-    r"(\d{1,5})\s+(?:patients|participants|subjects|women|men|infants|children|adults|"
-    r"individuals|cases|pupils|students)\b[^.;]{0,100}?"
-    r"(?:randomi[sz]ed|assigned|allocated|enrolled|included|received|underwent|were\s+treated)",
-    re.IGNORECASE,
-)
 NENNER = re.compile(r"\b(\d{1,5})\s*/\s*(\d{1,5})\b")
-TRENNER = re.compile(r"[;]|,\s*(?:and|while|whereas)\s+|\.\s+", re.IGNORECASE)
-
-
-def satz_teile(text: str) -> list[str]:
-    return [t for t in TRENNER.split(text) if t.strip()]
-
-
-def beide_arme(text: str, context: dict[str, Any]) -> bool:
-    """Nennt der Text beide Arme? Dann ist die Zahl nicht eindeutig zuzuordnen."""
-    li = text.lower()
-    inter = [w for w in re.findall(r"[a-z][a-z-]{3,}", str(context.get("intervention") or "").lower())] + ALLGEMEIN["intervention"]
-    comp = [w for w in re.findall(r"[a-z][a-z-]{3,}", str(context.get("comparator") or "").lower())] + ALLGEMEIN["comparator"]
-    return any(w in li for w in inter) and any(w in li for w in comp)
-
-
-def aus_saetzen(record: dict[str, Any], text: str) -> dict[str, dict[str, Any]]:
-    """Gruppengroessen aus Saetzen; je Arm hoechstens ein Wert, sonst Konflikt."""
-    context = record.get("context") or {}
-    treffer: dict[str, list[tuple[float, str]]] = {"intervention": [], "comparator": []}
-    for absatz in text.splitlines():
-        for teil in satz_teile(absatz):
-            for m in SATZ.finditer(teil):
-                wert = float(m.group(1))
-                if wert < 5:
-                    # `1 women were randomized` ist ein Satzfragment, keine Armgroesse.
-                    continue
-                vor = teil[max(0, m.start() - 60) : m.start()]
-                nach = teil[m.end() : m.end() + 90]
-                # Gesamtzahlen sind keine Armgroessen.
-                if re.search(r"\b(total|overall|altogether|in all)\b", vor, re.IGNORECASE):
-                    continue
-                # Der Arm muss NACH der Zahl genannt werden; ein `placebo-`
-                # controlled trial` davor beschreibt die Studie, nicht den Arm.
-                if beide_arme(nach, context):
-                    continue
-                arm = arm_von_label2(nach, context)
-                if arm:
-                    treffer[arm].append((wert, teil.strip()[:120]))
-    ergebnis: dict[str, dict[str, Any]] = {}
-    for arm, werte in treffer.items():
-        eindeutig = {w for w, _ in werte}
-        if len(eindeutig) == 1:
-            wert = eindeutig.pop()
-            ergebnis[FELD[arm]] = {"value": wert, "quelle": "satz", "beleg": werte[0][1]}
-    return ergebnis
-
 
 ALLGEMEIN = {
     "intervention": ["intervention", "treatment", "active", "experimental", "therapy", "verum"],
@@ -159,19 +106,12 @@ def aus_nennern(record: dict[str, Any], text: str) -> dict[str, dict[str, Any]]:
 
 
 def regel(record: dict[str, Any], text: str) -> dict[str, dict[str, Any]]:
-    """Zellen der Nachregel; bei Widerspruch bleibt der Arm leer."""
-    aus_satz = aus_saetzen(record, text)
-    aus_nenner = aus_nennern(record, text)
-    ergebnis: dict[str, dict[str, Any]] = {}
-    for feld in FELD.values():
-        werte = [q[feld]["value"] for q in (aus_satz, aus_nenner) if feld in q]
-        if not werte:
-            continue
-        if len(set(werte)) > 1:
-            continue
-        quelle = "+".join(q[feld]["quelle"] for q in (aus_satz, aus_nenner) if feld in q)
-        ergebnis[feld] = {"value": werte[0], "quelle": quelle}
-    return ergebnis
+    """Zellen der Nachregel: nur Nenner mit selbstbeschrifteter Groessenkopfzeile.
+
+    Die Satzquelle (`N patients were randomized ...`) ist entfernt: sie lieferte
+    im Korpus nur Gesamtzahlen und damit falsche Werte.
+    """
+    return aus_nennern(record, text)
 
 
 def main() -> int:
@@ -199,14 +139,12 @@ def main() -> int:
     # 1. Abdeckung der 48 ohne Groessenzeile
     ziel = [f for f in zaehl if (f["record_id"], f["feld"], f["arm"]) in ohne_zeile_ids]
     treffer = fehlt = falsch = 0
-    je_quelle = Counter()
     for f in ziel:
         zellen = ausgaben[f["record_id"]]
         if f["feld"] not in zellen or f["feld"] not in FELD.values():
             fehlt += 1
             continue
         wert = zellen[f["feld"]]["value"]
-        je_quelle[zellen[f["feld"]]["quelle"]] += 1
         if abs(wert - f["wert"]) < 1e-6:
             treffer += 1
         else:
@@ -256,7 +194,6 @@ def main() -> int:
         "richtig": treffer,
         "falsch": falsch,
         "verweigert": fehlt,
-        "je_quelle": dict(je_quelle),
         "ziel_events": ziel_events,
         "ziel_groesse": ziel_groesse,
         "ziel_wert_als_nenner": mit_nenner,
@@ -276,10 +213,10 @@ def main() -> int:
 
     bericht = f"""# Nachregel fuer Gruppengroessen ohne Groessenzeile (21.11.2026)
 
-Offline, ohne Netzaufruf. Zwei deterministische Quellen, sonst Verweigerung:
-
-1. Satz mit Zahl und Armbeschreibung (`40 patients were randomized ...`).
-2. Nenner `k/n` in einer Tabellenzeile mit selbstbeschrifteter Armzeile.
+Offline, ohne Netzaufruf. Eine Quelle, sonst Verweigerung: Nenner `k/n` in einer Tabellenzeile, deren
+Kopfzeile die Groessen selbst nennt (`n = ...`) und jede Spalte einem Arm
+zuordnet. Die Satzquelle ist entfernt, weil sie ausschliesslich Gesamtzahlen
+las.
 
 ## Ergebnis an den {len(ziel)} Ziel-Faellen
 
@@ -291,9 +228,7 @@ Offline, ohne Netzaufruf. Zwei deterministische Quellen, sonst Verweigerung:
 | davon falsch | {falsch} |
 | verweigert | {fehlt} |
 
-Quellen der gelieferten Werte: {je_quelle.get('satz', 0)} aus Saetzen,
-{je_quelle.get('nenner', 0)} aus Nennern, {je_quelle.get('satz+nenner', 0)} aus
-beiden (deckungsgleich).
+Alle gelieferten Werte stammen aus Nennern mit Groessenkopfzeile.
 
 ## Warum die Regel verweigert
 
@@ -308,10 +243,7 @@ Ereigniszaehler haben weder Groessenzeile noch Nenner; sie sind mit dieser
 Regel grundsaetzlich nicht zu holen. Bei den Groessenfaellen steht der Goldwert
 zwar oft als Nenner oder in Armnaehe, aber in Tabellen anderer Subgruppen
 (Beispiel yun2024:120: Nenner 30/52, Gold 20/44) oder als Kompletter-Zahl
-(yun2024:547: `68 of 72`). Die Stichprobe der Satzkandidaten bestand
-ausschliesslich aus Gesamtzahlen (`A total of 328 patients`) oder Fragmenten
-(`1 women`). Auch die fuenf Satz-Lieferungen ausserhalb der 48 (etwa 440 statt
-122, 1171 statt 357) waren falsch; die Satzquelle ist damit nicht belastbar.
+(yun2024:547: `68 of 72`). Ohne die Satzquelle bleibt es deshalb bei Verweigerung und 0 FP.
 
 ## Wirkung auf die Bilanz
 
@@ -335,7 +267,7 @@ Records.
 """
     (HIER / "groessen_regel_20261121.md").write_text(bericht, encoding="utf-8", newline="\n")
     print(f"Ziel {len(ziel)}: geliefert {treffer + falsch} (richtig {treffer}, falsch {falsch}), verweigert {fehlt}")
-    print(f"Quellen: {dict(je_quelle)} | Regelzellen {zellen_gesamt}")
+    print(f"Regelzellen {zellen_gesamt}")
     print(f"additiv TP {additiv_tp} FP {additiv_fp} | ersetzen TP {ersetzen_tp} FP {ersetzen_fp} TP-Verlust {tp_verlust}")
     return 0
 

@@ -1,9 +1,9 @@
 # Nachregel fuer Gruppengroessen ohne Groessenzeile (21.11.2026)
 
-Offline, ohne Netzaufruf. Zwei deterministische Quellen, sonst Verweigerung:
-
-1. Satz mit Zahl und Armbeschreibung (`40 patients were randomized ...`).
-2. Nenner `k/n` in einer Tabellenzeile mit selbstbeschrifteter Armzeile.
+Offline, ohne Netzaufruf. Eine Quelle, sonst Verweigerung: Nenner `k/n` in einer Tabellenzeile, deren
+Kopfzeile die Groessen selbst nennt (`n = ...`) und jede Spalte einem Arm
+zuordnet. Die Satzquelle ist entfernt, weil sie ausschliesslich Gesamtzahlen
+las.
 
 ## Ergebnis an den 48 Ziel-Faellen
 
@@ -15,9 +15,7 @@ Offline, ohne Netzaufruf. Zwei deterministische Quellen, sonst Verweigerung:
 | davon falsch | 0 |
 | verweigert | 48 |
 
-Quellen der gelieferten Werte: 0 aus Saetzen,
-0 aus Nennern, 0 aus
-beiden (deckungsgleich).
+Alle gelieferten Werte stammen aus Nennern mit Groessenkopfzeile.
 
 ## Warum die Regel verweigert
 
@@ -32,19 +30,16 @@ Ereigniszaehler haben weder Groessenzeile noch Nenner; sie sind mit dieser
 Regel grundsaetzlich nicht zu holen. Bei den Groessenfaellen steht der Goldwert
 zwar oft als Nenner oder in Armnaehe, aber in Tabellen anderer Subgruppen
 (Beispiel yun2024:120: Nenner 30/52, Gold 20/44) oder als Kompletter-Zahl
-(yun2024:547: `68 of 72`). Die Stichprobe der Satzkandidaten bestand
-ausschliesslich aus Gesamtzahlen (`A total of 328 patients`) oder Fragmenten
-(`1 women`). Auch die fuenf Satz-Lieferungen ausserhalb der 48 (etwa 440 statt
-122, 1171 statt 357) waren falsch; die Satzquelle ist damit nicht belastbar.
+(yun2024:547: `68 of 72`). Ohne die Satzquelle bleibt es deshalb bei Verweigerung und 0 FP.
 
 ## Wirkung auf die Bilanz
 
 | Modus | TP | FP | TP-Verlust |
 |---|---:|---:|---:|
-| additiv (nur fehlende Schluessel) | 0 | 2 | 0 |
+| additiv (nur fehlende Schluessel) | 0 | 0 | 0 |
 | ersetzen (ueberschreibt) | 0 | 0 | 0 |
 
-Die Regel liefert insgesamt 2 Zellen ueber die 77
+Die Regel liefert insgesamt 0 Zellen ueber die 77
 betroffenen Records; gezaehlt ist jede Zelle gegen das Gold des jeweiligen
 Records.
 

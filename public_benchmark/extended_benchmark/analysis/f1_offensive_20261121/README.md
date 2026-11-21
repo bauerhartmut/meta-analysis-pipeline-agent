@@ -238,10 +238,12 @@ der Zahl des anderen Arms in derselben Groessenzeile ueberein.
 
 ## Nachregel fuer Gruppengroessen: 0 von 48
 
-`groessen_regel_20261121.py` liest Gruppengroessen aus Saetzen
-(`N patients were randomized ...`) und aus Nennern (`k/n`) mit
-selbstbeschrifteter Armzeile; bei Widerspruch oder fehlendem Armbezug
-verweigert sie. Gemessen an den 48 Zaehlfeldern ohne Groessenzeile:
+`groessen_regel_20261121.py` liest Gruppengroessen nur noch aus Nennern
+(`k/n`), und zwar ausschliesslich dann, wenn die Kopfzeile die Groessen selbst
+nennt (`n = ...`) und jede Spalte einem Arm zugeordnet ist. Die Satzquelle
+(`N patients were randomized ...`) ist entfernt: sie las ausschliesslich
+Gesamtzahlen und lieferte fuenf Werte, alle falsch. Gemessen an den 48
+Zaehlfeldern ohne Groessenzeile:
 
 | Kennzahl | Wert |
 |---|---:|
@@ -249,16 +251,33 @@ verweigert sie. Gemessen an den 48 Zaehlfeldern ohne Groessenzeile:
 | Regel liefert einen Wert | 0 |
 | davon richtig | 0 |
 | verweigert | 48 |
-| FP (additiv) | 2 |
-| TP-Verlust (ersetzen) | 0 |
+| FP (additiv) | 0 |
+| TP-Verlust | 0 |
 
 Die 48 bestehen aus 29 Ereignis-Feldern (keine Groesse, kein Nenner) und 19
 Groessenfaellen. In den Groessenfaellen steht der Goldwert zwar oft als Nenner
 (16 Faelle), aber in Tabellen anderer Subgruppen (`yun2024:120`: Nenner 30/52,
-Gold 20/44) oder als Kompletter-Zahl (`yun2024:547`: `68 of 72`). Die
-Satzquelle lieferte im ganzen Korpus nur fuenf Werte, alle falsch (440 statt
-122, 1171 statt 357); sie ist nicht belastbar. Die zwei verbleibenden FP zeigen
-den Restrisikobetrag, die Verweigerung ist der Regelfall.
+Gold 20/44) oder als Kompletter-Zahl (`yun2024:547`: `68 of 72`). Ohne die
+Satzquelle bleibt es daher bei Verweigerung und 0 FP.
+
+## Ereigniszaehler: 4 von 29 lesbar
+
+`ereignisse_20261121.py` prueft die 29 `events`-Faelle ohne Groessenzeile, ob
+der Goldwert als Zaehler mit Prozentanteil in einer Zeile mit Armspalte steht:
+
+| Klasse | Faelle |
+|---|---:|
+| Zaehler mit Prozentzeichen, richtiger Arm | 0 |
+| Zaehler mit Prozent ohne Zeichen, richtiger Arm | 0 |
+| Zaehler unter (%)-Kopfzeile, richtiger Arm | 4 |
+| Zaehler im anderen Arm | 1 |
+| Zaehler, Arm unklar | 14 |
+| Wert ohne Prozentanteil | 10 |
+
+Das Format `11 (12%)` kommt in keinem Fall vor; die Tabellen schreiben
+`52 (39.1)` ohne Zeichen oder setzen `No. patients (%)` ueber nackte Zahlen. Nur
+4 der 29 sind ueber eine (%)-Kopfzeile und den Arm in der Zeilenbeschriftung
+deterministisch lesbar; 14 mal fehlt die Armzuordnung, 10 mal der Prozentbezug.
 
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 

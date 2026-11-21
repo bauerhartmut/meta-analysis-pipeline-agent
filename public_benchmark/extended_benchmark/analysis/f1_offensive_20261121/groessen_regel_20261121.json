@@ -5,15 +5,14 @@
   "richtig": 0,
   "falsch": 0,
   "verweigert": 48,
-  "je_quelle": {},
   "ziel_events": 29,
   "ziel_groesse": 19,
   "ziel_wert_als_nenner": 16,
   "ziel_wert_nah_am_armwort": 12,
-  "regelzellen_gesamt": 2,
+  "regelzellen_gesamt": 0,
   "additiv": {
     "tp": 0,
-    "fp": 2
+    "fp": 0
   },
   "ersetzen": {
     "tp": 0,
