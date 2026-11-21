@@ -411,22 +411,30 @@ verworfen.
 | Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Endvariante |
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
-| Zellen | 34 | 42 | 22 | 39 |
-| TP | 16 | 22 | 10 | 22 |
+| Zellen | 36 | 44 | 24 | 41 |
+| TP | 18 | 24 | 12 | 24 |
 | FP | 18 | 20 | 12 | 17 |
-| Trefferquote | 47 % | 52 % | 45 % | **56 %** |
+| Trefferquote | 50 % | 55 % | 50 % | **59 %** |
 
 Formate in der Endvariante:
 
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
-| Groesse | Groessenzeile | 10 | 10 |
+| Groesse | Groessenzeile | 12 | 10 |
 | Mittel | `Zahl +/- Zahl` | 12 | 5 |
 | Mittel | `Zahl (Zahl)` | 0 | 2 |
 
-`yun2024:193` und `yun2024:196` bleiben falsch: ihre Zielzeile steht in
-Tabelle 1, Gold stammt aus der Zeitverlaufstabelle 2 (Woche 28). Eine
-Blockheuristik mit Wochenauswahl wurde getestet und verworfen - sie waehlt bei
+Enthaelt ein Dokument eine Tabelle mit Wochenspalte, in der das Outcome
+mehrfach vorkommt, gilt die Zeile des letzten Zeitpunkts statt der
+Baseline-Zeile; bei mehreren solchen Tabellen entscheidet die fruehste. Der
+Kopf wird auch fuer kurze Armnamen wie `Pls group` gelesen.
+
+`yun2024:193` wird damit richtig: 138/131 aus Tabelle 2, Woche 28.
+`yun2024:196` bleibt falsch - die Haupttabelle 2 nennt fuer Woche 28 die Werte
+80/78, Gold (24/24) stammt aus Tabelle 3, einer Subgruppe (MMSE-J 20 bis 23).
+Der Pruefvermerk fuehrt den Fall als `gold_aus_subgruppentabelle`.
+
+Eine fruehere Blockheuristik ohne Wochenspalte wurde verworfen: sie waehlte bei
 zwei Bloecken desselben Outcomes den falschen (196: Mittelblock 80/78 statt
 Aenderungsblock 24/24) und griff in anderen Faellen eine spaetere, fremde
 Tabelle ab.
@@ -434,7 +442,7 @@ Tabelle ab.
 Der Schritt bringt gegenueber dem Alias-Lauf mit Ereignissen 7 FP weniger bei
 gleicher TP-Zahl; gegenueber der strengen Variante 12 TP mehr bei 5 FP mehr.
 
-### Die 10 Groessen-FP und der Einsatz der 37 Zellen
+### Die 10 Groessen-FP und der Einsatz der 41 Zellen
 
 `groessen_fp_einsatz_20261121.py`. Die 10 Groessen-FP stammen **nicht**
 ueberwiegend aus der falschen Tabelle:
@@ -442,23 +450,23 @@ ueberwiegend aus der falschen Tabelle:
 | Klasse | Faelle |
 |---|---:|
 | falsche Spalte, gleiche Zeile | 8 |
-| falsche Tabelle | 1 |
-| Gold in anderer Tabelle ohne `n =`-Marker | 1 |
+| falsche Tabelle (Subgruppe) | 2 |
 
 Die 8 Spaltenfaelle sind die vier `PMC5617873`-Records mit vertauschten
-Goldarmen (beide Arme je Record). Die 2 Tabellenfaelle sind `yun2024:196` und
-`yun2024:193`: Gold stammt aus Tabelle 2 (Woche 28), die Regel las die
-Kopfzeile von Tabelle 1.
+Goldarmen (beide Arme je Record). Die 2 Tabellenfaelle sind die beiden Arme von
+`yun2024:196`: Gold stammt aus Tabelle 3 (Subgruppe MMSE-J 20 bis 23, Woche 28),
+die Regel liest die Haupttabelle 2 (80/78). `yun2024:193` ist mit der
+Wochenspalten-Auswahl richtig geworden.
 
-Einsatz der 37 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
+Einsatz der 41 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
 
 | Zellen | TP | FP | FN |
 |---|---:|---:|---:|
 | vorher | 170 | 101 | 2603 |
-| alle 37 | 190 | 114 | 2583 |
-| nur die 20 richtigen | 190 | 97 | 2583 |
+| alle 41 | 194 | 114 | 2579 |
+| nur die 24 richtigen | 194 | 97 | 2579 |
 
-Alle 37: +20 TP und +13 FP. Nur die richtigen: +20 TP und -4 FP (vier Zellen
+Alle 41: +24 TP und +13 FP. Nur die richtigen: +24 TP und -4 FP (vier Zellen
 ersetzten vorhandene falsche Werte).
 
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht

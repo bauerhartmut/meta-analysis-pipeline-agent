@@ -34,7 +34,26 @@ sys.path.insert(0, str(HIER))
 import vergleiche_20261120 as v  # noqa: E402
 import groessen_zielzeile_20261121 as g  # noqa: E402
 import zielzeile_alias_20261121 as alias_mod  # noqa: E402
-from zaehlfelder_20261121 import segmente, arm_von_label  # noqa: E402
+from zaehlfelder_20261121 import segmente, arm_von_label, STOPP_ARM  # noqa: E402
+
+
+def arm_weit(label: str, context: dict[str, Any]) -> str:
+    """Armerkennung wie `arm_von_label`, aber auch fuer drei Buchstaben (`Pls`)."""
+    arm = arm_von_label(label, context)
+    if arm:
+        return arm
+    li = label.lower()
+    inter = [w for w in re.findall(r"[a-z][a-z-]{2,}", str(context.get("intervention") or "").lower())
+             if w not in STOPP_ARM and w not in {"the", "and", "for", "per", "day", "mg", "with"}]
+    comp = [w for w in re.findall(r"[a-z][a-z-]{2,}", str(context.get("comparator") or "").lower())
+            if w not in STOPP_ARM and w not in {"the", "and", "for", "per", "day", "mg", "with"}]
+    si = sum(1 for w in inter if w in li)
+    sc = sum(1 for w in comp if w in li)
+    if si > sc and si:
+        return "intervention"
+    if sc > si and sc:
+        return "comparator"
+    return ""
 
 KAPITION = re.compile(r"^\s*(?:Table|TABLE)\s*\d|:::\s*caption", re.IGNORECASE)
 
@@ -54,6 +73,57 @@ def tabellengrenzen(zeilen: list[str], ziel: int) -> tuple[int, int]:
     return start, ende
 
 
+def zeitverlauf_ziel(zeilen: list[str], outcome: str, alias: dict[str, list[str]],
+                     akronyme: bool, spaeter: bool = False) -> int:
+    """Zielzeile aus einer Tabelle mit Wochenspalte: letzter Zeitpunkt des Blocks.
+
+    Gesucht werden Tabellen, deren Kopf `Week` nennt. In ihnen tragen nur die
+    ersten Zeilen eines Blocks das Outcome-Label; die Wochenzeilen darunter sind
+    nackt. Bei gleichem Treffer entscheidet die spaetere (oder fruehere) Tabelle.
+    """
+    grenzen: list[tuple[int, int]] = []
+    start = 0
+    for i, zeile in enumerate(zeilen):
+        if KAPITION.search(zeile):
+            if i > start:
+                grenzen.append((start, i))
+            start = i
+    grenzen.append((start, len(zeilen)))
+
+    beste: list[tuple[int, int, int]] = []  # (score, zeile, tabelle)
+    for t_index, (a, b) in enumerate(grenzen):
+        kopf = " ".join(zeilen[max(a, b - 80):min(b, a + 10)]).lower()
+        if not re.search(r"\bweek\b", kopf):
+            continue
+        bloecke: dict[str, list[tuple[float, int]]] = {}
+        label = ""
+        for i in range(a, b):
+            segs = segmente(zeilen[i])
+            if not segs:
+                continue
+            if re.search(r"[A-Za-z]{3}", segs[0]):
+                label = segs[0]
+                if (len(segs) > 1 and re.fullmatch(r"\d{1,2}", segs[1])
+                        and len(g.zahlen(zeilen[i])) >= 2):
+                    bloecke.setdefault(label, []).append((float(segs[1]), i))
+                continue
+            if label and re.fullmatch(r"\d{1,2}", segs[0]) and len(g.zahlen(zeilen[i])) >= 2:
+                bloecke.setdefault(label, []).append((float(segs[0]), i))
+        for lab, reihen in bloecke.items():
+            if len(reihen) < 2:
+                continue
+            p = alias_mod.treffer_alias(lab, outcome, alias, akronyme)
+            if p <= 0:
+                continue
+            woche, i = max(reihen, key=lambda x: x[0])
+            beste.append((p, i, t_index))
+    if not beste:
+        return -1
+    top = max(p for p, _, _ in beste)
+    kandidaten = [(i, t) for p, i, t in beste if p == top]
+    return max(kandidaten)[0] if spaeter else min(kandidaten)[0]
+
+
 def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) -> dict[str, dict[str, Any]]:
     """Groesse aus der Tabelle der Zielzeile: `n =`-Zeile oder Zeilen-`n`."""
     start, ende = tabellengrenzen(zeilen, ziel)
@@ -66,7 +136,7 @@ def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) ->
     kopf: list[str] | None = None
     for j in range(ziel - 1, start - 1, -1):
         segs = segmente(zeilen[j])
-        arme = [arm_von_label(s, context) for s in segs if arm_von_label(s, context)]
+        arme = [arm_weit(s, context) for s in segs if arm_weit(s, context)]
         if len(arme) >= 2:
             fenster = " ".join(zeilen[j:min(j + 3, ziel + 1)]).lower()
             if "mean" in fenster and re.search(r"\bn\b", fenster):
@@ -170,7 +240,10 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
     context = record.get("context") or {}
     zeilen = text.splitlines()
     if feld.endswith("group_size"):
-        ziel = alias_mod.ziel_zeile_alias(zeilen, str(context.get("outcome") or ""), alias, akronyme)
+        outcome = str(context.get("outcome") or "")
+        ziel = zeitverlauf_ziel(zeilen, outcome, alias, akronyme)
+        if ziel < 0:
+            ziel = alias_mod.ziel_zeile_alias(zeilen, outcome, alias, akronyme)
         if ziel < 0:
             return None
         treffer = groesse_in_tabelle(zeilen, ziel, context).get(arm)
@@ -359,10 +432,14 @@ In der Endvariante stellen sich die {beide['fp']} FP so:
 * Mittel 2 im Format `Mittel (SD)`, 0 richtig - dort ist die Zeile oder Spalte
   falsch, nicht das Format.
 
-`yun2024:193` und `yun2024:196` bleiben falsch: ihre Zielzeile liegt in
-Tabelle 1, Gold stammt aus der Zeitverlaufstabelle 2 (Woche 28). Die
-Tabelle-lokale Groesse allein hilft dort nicht, weil schon die Zielzeile in der
-falschen Tabelle steht.
+Enthaelt ein Dokument eine Tabelle mit Wochenspalte, in der das Outcome
+mehrfach vorkommt, gilt die Zeile des letzten Zeitpunkts statt der
+Baseline-Zeile; bei mehreren solchen Tabellen entscheidet die fruehste (die
+Haupttabelle steht vor den Subgruppentabellen).
+
+`yun2024:193` wird damit richtig (138/131 aus Tabelle 2, Woche 28).
+`yun2024:196` bleibt falsch: die Haupttabelle 2 nennt fuer Woche 28 die Werte
+80/78, Gold (24/24) stammt aus Tabelle 3, einer Subgruppe (MMSE-J 20 bis 23).
 
 Trefferquote: {beide['tp']} von {beide['geliefert']} Zellen, also
 {100 * beide['tp'] // max(1, beide['geliefert'])} Prozent. Ereignisse tragen

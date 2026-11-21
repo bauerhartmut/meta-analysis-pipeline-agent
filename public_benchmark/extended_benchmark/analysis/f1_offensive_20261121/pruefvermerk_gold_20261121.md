@@ -9,7 +9,7 @@ haelt nur fest, ob das Dokument die Goldbeschriftung stuetzt.
 | `yun2024:334` | `armtausch_bestaetigt` |
 | `yun2024:335` | `armtausch_bestaetigt` |
 | `yun2024:336` | `armtausch_bestaetigt` |
-| `yun2024:196` | `verdacht_widerlegt` |
+| `yun2024:196` | `gold_aus_subgruppentabelle` |
 
 ## Faelle
 
@@ -69,12 +69,13 @@ Belegstellen:
 
 - Kontext: intervention = `1 mg/day of Pls purified from scallop`, comparator = `placebo`
 - Gold: intervention_group_size (intervention) = 24.0, comparator_group_size (comparator) = 24.0
-- Verdikt: `verdacht_widerlegt`
-- Notiz: Gold stammt aus Tabelle 2 (Woche 28, n = 24, Mittel 1.29/1.08); die Regel las Tabelle 1.
+- Verdikt: `gold_aus_subgruppentabelle`
+- Notiz: Gold (n = 24, Mittel 1.29/1.08) steht in Tabelle 3, Woche 28; deren Kopf nennt die Subgruppe MMSE-J 20 bis 23. Die Haupttabelle 2 nennt fuer Woche 28 die Werte 80/78 (Mittel 2.30/2.46). Der Wert ist belegt, gehoert aber zur Subgruppe.
 
 Belegstellen:
 
   - Zeile 8: `Variable            Pls group (n = 145)   Placebo group (n = 140)   P value[a](#)`
+  - Zeile 65: `Mean difference from the baseline, in patients with MMSE-J score 20 to`
   - Zeile 82: `28               24     1.29        (0.04; 2.55)     24               1.08       (0.46; 1.70)     0.76`
 
 ## Folge

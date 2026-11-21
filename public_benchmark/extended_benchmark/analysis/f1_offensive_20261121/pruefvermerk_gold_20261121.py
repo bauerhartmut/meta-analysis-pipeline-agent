@@ -6,6 +6,8 @@ Belegzeilen aus dem Dokument zitiert und ein Verdikt gesetzt:
 
 * `armtausch_bestaetigt` - das Dokument nennt die Arme andersherum als Gold.
 * `verdacht_widerlegt`  - der Goldwert ist im Dokument belegt.
+* `gold_aus_subgruppentabelle` - der Goldwert steht in einer Subgruppentabelle,
+  nicht in der Haupttabelle.
 
 Aufruf::
 
@@ -47,8 +49,10 @@ FAELLE: list[dict[str, Any]] = [
      "notiz": "Gleiches Dokument wie 331, gleiche Zellwerte."},
     {"record_id": "yun2024:336", "beleg": [6, 40, 93], "verdikt": "armtausch_bestaetigt",
      "notiz": "Gleiches Dokument wie 331, gleiche Zellwerte."},
-    {"record_id": "yun2024:196", "beleg": [8, 82], "verdikt": "verdacht_widerlegt",
-     "notiz": "Gold stammt aus Tabelle 2 (Woche 28, n = 24, Mittel 1.29/1.08); die Regel las Tabelle 1."},
+    {"record_id": "yun2024:196", "beleg": [8, 65, 82], "verdikt": "gold_aus_subgruppentabelle",
+     "notiz": "Gold (n = 24, Mittel 1.29/1.08) steht in Tabelle 3, Woche 28; deren Kopf nennt "
+              "die Subgruppe MMSE-J 20 bis 23. Die Haupttabelle 2 nennt fuer Woche 28 die Werte "
+              "80/78 (Mittel 2.30/2.46). Der Wert ist belegt, gehoert aber zur Subgruppe."},
 ]
 
 

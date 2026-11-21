@@ -8,10 +8,10 @@ Akronymen.
 | Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Ereignisse aus, Mittel beide Formate |
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
-| Zellen geliefert | 34 | 42 | 22 | 39 |
-| TP (exakt) | 16 | 22 | 10 | 22 |
+| Zellen geliefert | 36 | 44 | 24 | 41 |
+| TP (exakt) | 18 | 24 | 12 | 24 |
 | FP (exakt) | 18 | 20 | 12 | 17 |
-| TP (auf ganze Zahl gerundet) | 16 | 24 | 10 | 22 |
+| TP (auf ganze Zahl gerundet) | 18 | 26 | 12 | 24 |
 | FP (auf ganze Zahl gerundet) | 18 | 18 | 12 | 17 |
 
 ## FP nach Feldtyp (Alias-Lauf vor der Umstellung, 20 FP)
@@ -25,7 +25,7 @@ Akronymen.
 
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
-| groesse | groessenzeile | 10 | 10 |
+| groesse | groessenzeile | 12 | 10 |
 | mittel | mittel_sd | 0 | 2 |
 | mittel | plus_minus | 12 | 5 |
 
@@ -75,13 +75,17 @@ In der Endvariante stellen sich die 17 FP so:
 * Mittel 2 im Format `Mittel (SD)`, 0 richtig - dort ist die Zeile oder Spalte
   falsch, nicht das Format.
 
-`yun2024:193` und `yun2024:196` bleiben falsch: ihre Zielzeile liegt in
-Tabelle 1, Gold stammt aus der Zeitverlaufstabelle 2 (Woche 28). Die
-Tabelle-lokale Groesse allein hilft dort nicht, weil schon die Zielzeile in der
-falschen Tabelle steht.
+Enthaelt ein Dokument eine Tabelle mit Wochenspalte, in der das Outcome
+mehrfach vorkommt, gilt die Zeile des letzten Zeitpunkts statt der
+Baseline-Zeile; bei mehreren solchen Tabellen entscheidet die fruehste (die
+Haupttabelle steht vor den Subgruppentabellen).
 
-Trefferquote: 22 von 39 Zellen, also
-56 Prozent. Ereignisse tragen
+`yun2024:193` wird damit richtig (138/131 aus Tabelle 2, Woche 28).
+`yun2024:196` bleibt falsch: die Haupttabelle 2 nennt fuer Woche 28 die Werte
+80/78, Gold (24/24) stammt aus Tabelle 3, einer Subgruppe (MMSE-J 20 bis 23).
+
+Trefferquote: 24 von 41 Zellen, also
+58 Prozent. Ereignisse tragen
 nichts bei, Groessen und Mittel teilen sich die Treffer. Die Umstellung von der
 ersten Zahl auf zwei erlaubte Formate kostet 3 weitere Zellen des Formats
 `sonstig`, alle drei waren falsch.

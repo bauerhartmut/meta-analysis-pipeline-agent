@@ -1,30 +1,32 @@
 {
   "stand": "2026-11-21",
-  "zellen": 37,
+  "zellen": 41,
   "fp_groesse": 10,
   "sichtung": [
     {
-      "record_id": "yun2024:193",
-      "feld": "comparator_group_size",
-      "regelwert": 140.0,
-      "regel_zeile": 8,
-      "gold": 131.0,
-      "gold_zeilen": [],
-      "klasse": "gold_in_anderer_tabelle_ohne_groessenzeile",
-      "tabelle_regel": "Table 1",
-      "tabelle_gold": ""
-    },
-    {
       "record_id": "yun2024:196",
-      "feld": "comparator_group_size",
-      "regelwert": 140.0,
-      "regel_zeile": 8,
+      "feld": "intervention_group_size",
+      "regelwert": 80.0,
+      "regel_zeile": 47,
       "gold": 24.0,
       "gold_zeilen": [
         1
       ],
       "klasse": "falsche_tabelle",
-      "tabelle_regel": "Table 1",
+      "tabelle_regel": "Table 2",
+      "tabelle_gold": ""
+    },
+    {
+      "record_id": "yun2024:196",
+      "feld": "comparator_group_size",
+      "regelwert": 78.0,
+      "regel_zeile": 47,
+      "gold": 24.0,
+      "gold_zeilen": [
+        1
+      ],
+      "klasse": "falsche_tabelle",
+      "tabelle_regel": "Table 2",
       "tabelle_gold": ""
     },
     {
@@ -149,8 +151,7 @@
     }
   ],
   "klassen": {
-    "gold_in_anderer_tabelle_ohne_groessenzeile": 1,
-    "falsche_tabelle": 1,
+    "falsche_tabelle": 2,
     "falsche_spalte": 8
   },
   "records": 699,
@@ -160,18 +161,18 @@
     "fn": 2603
   },
   "nachher": {
-    "tp": 190,
+    "tp": 194,
     "fp": 114,
-    "fn": 2583
+    "fn": 2579
   },
   "delta": {
-    "tp": 20,
+    "tp": 24,
     "fp": 13,
-    "fn": -20
+    "fn": -24
   },
-  "records_geaendert": 23,
+  "records_geaendert": 24,
   "zellen_ersetzt": 4,
-  "zellen_neu": 33,
+  "zellen_neu": 37,
   "nur_richtige": {
     "vorher": {
       "tp": 170,
@@ -179,12 +180,12 @@
       "fn": 2603
     },
     "nachher": {
-      "tp": 190,
+      "tp": 194,
       "fp": 97,
-      "fn": 2583
+      "fn": 2579
     },
-    "records_geaendert": 11,
+    "records_geaendert": 13,
     "zellen_ersetzt": 4,
-    "zellen_neu": 16
+    "zellen_neu": 20
   }
 }
