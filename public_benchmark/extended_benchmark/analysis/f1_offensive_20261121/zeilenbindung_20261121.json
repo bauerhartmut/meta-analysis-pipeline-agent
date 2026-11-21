@@ -1,0 +1,1950 @@
+{
+  "stand": "2026-11-21",
+  "regel": {
+    "kandidat": "genau zwei Wertepaare der Form Wert (SD) in einer Zeile",
+    "label": "Outcome-Stammwort im Zeilenlabel, Aenderungsworte ausgeschlossen",
+    "arm": "Reihenfolge aus Tabellenkopf; ohne Kopf keine Bindung",
+    "mehrdeutig": "gleich gute Zeilen werden nicht aufgeloest"
+  },
+  "auswahl": {
+    "records": 41,
+    "fp_gebunden_in_auswahl": 17,
+    "fn_wert_ersetzt_in_auswahl": 16,
+    "fp_gebunden_gesamt": 270,
+    "fn_wert_ersetzt_gesamt": 295
+  },
+  "laeufe": [
+    {
+      "modus": "additiv",
+      "records": 41,
+      "gebunden": 0,
+      "vorher": {
+        "tp": 0,
+        "fp": 24,
+        "fn": 158
+      },
+      "nachher": {
+        "tp": 0,
+        "fp": 24,
+        "fn": 158
+      },
+      "tp_verlust": 0,
+      "fp_gebunden_korrigiert": 0,
+      "fn_wert_ersetzt_korrigiert": 0,
+      "detail": [
+        {
+          "record_id": "yun2024:30",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:52",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:119",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:128",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:152",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:159",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:164",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:171",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:173",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:204",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:251",
+          "gebunden": false,
+          "grund": "4 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:252",
+          "gebunden": false,
+          "grund": "Streuung nicht positiv",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:273",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:304",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:356",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:420",
+          "gebunden": false,
+          "grund": "3 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:421",
+          "gebunden": false,
+          "grund": "3 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:446",
+          "gebunden": false,
+          "grund": "2 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:451",
+          "gebunden": false,
+          "grund": "4 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:523",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:525",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:557",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:559",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:582",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:624",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:625",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:671",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:672",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:673",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:674",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:678",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:685",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:687",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:113",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 6,
+            "ueberzaehlig": 4,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 6,
+            "ueberzaehlig": 4,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:357",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 2
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 2
+          }
+        },
+        {
+          "record_id": "yun2024:362",
+          "gebunden": false,
+          "grund": "kein Spaltenraster mit passender Breite",
+          "zeile": 1,
+          "label": "Abstract Background: Cognitive impairment is common in multiple sclerosis (MS), with cognitive processing speed being the most frequently affected domain. Objective: Examine the effects of daclizumab beta versus intramuscular (IM) interferon (IFN) beta-1a on cognitive processing speed as assessed by Symbol Digit Modalities Test (SDMT). Methods: In DECIDE, patients with relapsing--remitting multiple sclerosis (RRMS) (age: 18--55 years; Expanded Disability Status Scale (EDSS) score 0--5.0) were randomized to daclizumab beta ( n = 919) or IM IFN beta-1a ( n = 922) for 96--144 weeks. SDMT was administered at baseline and at 24-week intervals. Results: At week 96, significantly greater mean improvement from baseline in SDMT was observed with daclizumab beta versus IM IFN beta-1a ( p = 0.0274). Significantly more patients treated with daclizumab beta showed clinically meaningful improvement in SDMT (increase from baseline of ⩾3 points ( p = 0.0153) or ⩾4 points ( p = 0.0366)), and significantly fewer patients showed clinically meaningful worsening (decrease from baseline of ⩾3 points ( p = 0.0103)). Odds representing risk of worsening versus stability or improvement on SDMT were significantly smaller for daclizumab beta ( p = 0.0088 (3-point threshold); p = 0.0267 (4-point threshold)). In patients completing 144 weeks of treatment, the effects of daclizumab beta were generally sustained. Conclusion: These results provide evidence for a benefit of daclizumab beta versus IM IFN beta-1a on cognitive processing speed in RRMS. Trial registration: ClinicalTrials.gov identifier NCT01064401 (Efficacy and Safety of BIIB019 (Daclizumab High Yield Process) Versus Interferon β 1a in Participants With Relapsing-Remitting Multiple Sclerosis (DECIDE)): [https://clinicaltrials.gov/ct2/show/NCT01064401]( ) . Results Descriptive data A total of 1841 patients were randomized (daclizumab beta, n = 919; IM IFN beta-1a, n = 922). All were included in the ITT population. Demographic and baseline MS disease characteristics were well balanced across treatment groups, as reported previously. ^[18]( )^At baseline, in the daclizumab beta and IM IFN beta-1a groups, mean (SD) SDMT score was",
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:533",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:615",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:616",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:626",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:686",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 6,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 4
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 6,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 4
+          }
+        }
+      ]
+    },
+    {
+      "modus": "ersetzen",
+      "records": 41,
+      "gebunden": 0,
+      "vorher": {
+        "tp": 0,
+        "fp": 24,
+        "fn": 158
+      },
+      "nachher": {
+        "tp": 0,
+        "fp": 24,
+        "fn": 158
+      },
+      "tp_verlust": 0,
+      "fp_gebunden_korrigiert": 0,
+      "fn_wert_ersetzt_korrigiert": 0,
+      "detail": [
+        {
+          "record_id": "yun2024:30",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:52",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:119",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:128",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:152",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:159",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:164",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:171",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:173",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:204",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:251",
+          "gebunden": false,
+          "grund": "4 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:252",
+          "gebunden": false,
+          "grund": "Streuung nicht positiv",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:273",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:304",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:356",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:420",
+          "gebunden": false,
+          "grund": "3 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:421",
+          "gebunden": false,
+          "grund": "3 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:446",
+          "gebunden": false,
+          "grund": "2 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:451",
+          "gebunden": false,
+          "grund": "4 gleich gute Zeilen",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:523",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:525",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:557",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:559",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:582",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:624",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:625",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:671",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:672",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:673",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:674",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:678",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:685",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:687",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "ueberzaehlig": 0,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:113",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 6,
+            "ueberzaehlig": 4,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 6,
+            "ueberzaehlig": 4,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:357",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 2
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 2
+          }
+        },
+        {
+          "record_id": "yun2024:362",
+          "gebunden": false,
+          "grund": "kein Spaltenraster mit passender Breite",
+          "zeile": 1,
+          "label": "Abstract Background: Cognitive impairment is common in multiple sclerosis (MS), with cognitive processing speed being the most frequently affected domain. Objective: Examine the effects of daclizumab beta versus intramuscular (IM) interferon (IFN) beta-1a on cognitive processing speed as assessed by Symbol Digit Modalities Test (SDMT). Methods: In DECIDE, patients with relapsing--remitting multiple sclerosis (RRMS) (age: 18--55 years; Expanded Disability Status Scale (EDSS) score 0--5.0) were randomized to daclizumab beta ( n = 919) or IM IFN beta-1a ( n = 922) for 96--144 weeks. SDMT was administered at baseline and at 24-week intervals. Results: At week 96, significantly greater mean improvement from baseline in SDMT was observed with daclizumab beta versus IM IFN beta-1a ( p = 0.0274). Significantly more patients treated with daclizumab beta showed clinically meaningful improvement in SDMT (increase from baseline of ⩾3 points ( p = 0.0153) or ⩾4 points ( p = 0.0366)), and significantly fewer patients showed clinically meaningful worsening (decrease from baseline of ⩾3 points ( p = 0.0103)). Odds representing risk of worsening versus stability or improvement on SDMT were significantly smaller for daclizumab beta ( p = 0.0088 (3-point threshold); p = 0.0267 (4-point threshold)). In patients completing 144 weeks of treatment, the effects of daclizumab beta were generally sustained. Conclusion: These results provide evidence for a benefit of daclizumab beta versus IM IFN beta-1a on cognitive processing speed in RRMS. Trial registration: ClinicalTrials.gov identifier NCT01064401 (Efficacy and Safety of BIIB019 (Daclizumab High Yield Process) Versus Interferon β 1a in Participants With Relapsing-Remitting Multiple Sclerosis (DECIDE)): [https://clinicaltrials.gov/ct2/show/NCT01064401]( ) . Results Descriptive data A total of 1841 patients were randomized (daclizumab beta, n = 919; IM IFN beta-1a, n = 922). All were included in the ITT population. Demographic and baseline MS disease characteristics were well balanced across treatment groups, as reported previously. ^[18]( )^At baseline, in the daclizumab beta and IM IFN beta-1a groups, mean (SD) SDMT score was",
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:533",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:615",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:616",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 4,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:626",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 0
+          }
+        },
+        {
+          "record_id": "yun2024:686",
+          "gebunden": false,
+          "grund": "keine Zeile mit Zahlenpaaren und Outcome-Label",
+          "zeile": null,
+          "label": null,
+          "reihenfolge": null,
+          "aenderungen": [],
+          "vor": {
+            "tp": 0,
+            "fp": 6,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 4
+          },
+          "nach": {
+            "tp": 0,
+            "fp": 6,
+            "fn": 2,
+            "ueberzaehlig": 2,
+            "fremdschluessel": 4
+          }
+        }
+      ]
+    }
+  ],
+  "obergrenze": {
+    "zellen": 33,
+    "wert_und_wort_in_zeile": 24,
+    "wort_nur_in_kaption": 2,
+    "ohne_outcome_bezug": 7
+  }
+}

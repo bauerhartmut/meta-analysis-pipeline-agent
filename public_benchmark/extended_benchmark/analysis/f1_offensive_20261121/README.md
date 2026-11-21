@@ -13,6 +13,7 @@ vorhandenen Predictions nachgerechnet.
 | `satz_locator_20261121.py` / `.md` / `.json` | Phase 2: Locator mit Unterscheider-Pflicht, 10 Regressionfaelle + 30 schwere Faelle |
 | `validiere_zellen_20261121.py` / `validierung_20261121.md` / `.json` | Phase 3: goldfreie Zellvalidierung, am 699-Hybrid gemessen |
 | `record30_kette_20261121.py` / `.md` / `.json` | Phase 3: Record 30 offline nachgerechnet, Fundstelle je Zelle |
+| `zeilenbindung_20261121.py` / `.md` / `.json` | Zeilenbindung als Regel, gemessen an allen 41 schweren Records |
 
 ## Zahlabgleich: eine Fassung fuer beide Skripte
 
@@ -124,6 +125,33 @@ kein F1-Hebel.
   Prozentpruefung (10). Ein Verwerfen haette 76 richtige Zellen geloescht, weil
   der gespeicherte Dokumenttext bei einigen Records die Goldwerte nicht
   enthaelt. Das ist ein Befund zur Dokumentfassung, kein Zellfehler.
+
+## Zeilenbindung als Regel (Nachtrag 21.11.2026)
+
+Die aus Record 30 abgeleitete Regel arbeitet ohne Gold: Datenzeile mit
+`Wert (SD)`-Paaren und Outcome-Wort im Label, Spaltenraster aus Arm- und
+Wochenzeile, Arm ueber die Spaltenlabels (Zahlen zaehlen mit), sonst
+Verweigerung. Gemessen auf allen 41 schweren Records:
+
+| Modus | gebunden | TP | FP | FN | TP-Verlust | richtig gebunden |
+|---|---:|---:|---:|---:|---:|---:|
+| additiv | 0 | 0 -> 0 | 24 -> 24 | 158 -> 158 | 0 | 0 von 33 |
+| ersetzen | 0 | 0 -> 0 | 24 -> 24 | 158 -> 158 | 0 | 0 von 33 |
+
+Ergebnis: **0 der 17 `fp_gebunden` und 0 der 16 `fn_wert_ersetzt`** in der
+Auswahl werden gebunden. Die Obergrenze zeigt, dass es nicht an den Daten
+liegt: 24 der 33 Fehlerzellen stehen in einer Zeile, die den Wert und ein
+Outcome-Wort traegt, 2 weitere mit dem Wort in den zehn Zeilen darueber. Die
+Eindeutigkeit fehlt: dieselbe Tabelle fuehrt mehrere Zeilen mit demselben Label
+(`Mean score (SD)` fuer PCS und MCS), und die Unterscheidung steht in einer
+Zeilengruppen-Ueberschrift, die der Textabgleich nicht als Achse liest. Genau
+daran scheitert Record 30 selbst. Eine erste, lockere Fassung ohne Raster band
+3 Records, davon 0 mit richtigem Wert, und erzeugte 12 zusaetzliche FP; sie ist
+deshalb verworfen.
+
+Der Vergleich mit den 565 Fehlerzellen der Gesamtmenge ist wichtig: in den 41
+schweren Records liegen nur 33 davon. Selbst eine perfekte Regel haette hier
+also hoechstens 33 Zellen korrigieren koennen.
 
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 
