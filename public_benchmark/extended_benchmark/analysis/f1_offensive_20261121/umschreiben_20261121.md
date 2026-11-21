@@ -68,11 +68,18 @@ keine
   - davon die alte Regel richtig, neu falsch: 0
 - richtige Vorhersagezellen, zu denen die neue Regel nichts liefert: 110
 
-| Stand | TP | FP | FN |
-|---|---:|---:|---:|
-| p5 | 166 | 96 | 2607 |
-| p5_plus_alt | 138 | 158 | 2635 |
-| p5_plus_neu | 157 | 141 | 2616 |
+| Stand | TP | FP | FN | F1 | uebersprungene Regelzellen |
+|---|---:|---:|---:|---:|---:|
+| p5 | 166 | 96 | 2607 | 0.109 | 0 |
+| p5_plus_alt | 138 | 158 | 2635 | 0.090 | 0 |
+| p5_plus_neu | 157 | 141 | 2616 | 0.102 | 0 |
+| p5_plus_alt_luecken | 169 | 127 | 2604 | 0.110 | 64 |
+| p5_plus_neu_luecken | 178 | 120 | 2595 | 0.116 | 66 |
+
+Lesart: Ersetzen kostet TP, weil 31 richtige Vorhersagezellen durch einen
+falschen Regelwert ersetzt werden. `nur Luecken fuellen` laesst diese Zellen
+stehen: +12 TP und +24 FP gegenueber der unveraenderten Vorhersage (F1 0.109 -> 0.116). Mit der alten Tabellenwahl waere es +3 TP / +31 FP; die neue Wahl bringt unter dieser Strategie +9 TP und -7 FP.
+
 
 | Record | Feld | Arm | Vorhersage | Gold | Regel neu | abgeleitet |
 |---|---|---|---:|---:|---:|---|

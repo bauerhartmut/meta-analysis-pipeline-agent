@@ -674,7 +674,11 @@ Feldern), Groesse und Streuung brauchen die Zeilen-n und das KI dieser Tabelle.
 Jede aus einem KI abgeleitete Streuung traegt im Ergebnis `abgeleitet: True` und
 `herkunft: "95%-KI"`, abgelesene Zellen tragen `abgeleitet: False` und
 `herkunft: "zelle"`. Die Fixture schreibt das Kennzeichen je Zelle mit, damit
-abgelesene und abgeleitete Werte nicht verwechselt werden.
+abgelesene und abgeleitete Werte nicht verwechselt werden. Der vierte Stand
+`zellen_abgeleitet` friert die sechs Felder der Records `446` bis `452` ein (42
+Zellen, 14 davon aus dem KI): `pruefen` meldet jede fehlende abgeleitete Zelle
+einzeln und zusaetzlich "keine Zelle aus dem 95%-KI mehr", wenn die Ableitung
+still auf das Ablesen zurueckfaellt (Rueckgabewert dann 1).
 
 `umschreiben_20261121.py` liest alle 699 Records aus `yun699.jsonl` je Goldfeld
 zweimal (Tabellenwahl aus und an), 2.463 Auftraege:
@@ -703,20 +707,27 @@ Ueberschreibungen sind alte Schuld: die Regel lieferte dort schon vorher einen
 anderen falschen Wert, keine geht auf die Tabellenwahl zurueck. Die Bilanz
 ueber alle 699 Records:
 
-| Stand | TP | FP | FN |
-|---|---:|---:|---:|
-| P5 unveraendert | 166 | 96 | 2607 |
-| P5 + alte Regelzellen | 138 | 158 | 2635 |
-| P5 + neue Regelzellen | 157 | 141 | 2616 |
+| Stand | TP | FP | FN | F1 |
+|---|---:|---:|---:|---:|
+| P5 unveraendert | 166 | 96 | 2607 | 0.109 |
+| P5 + alte Regelzellen | 138 | 158 | 2635 | 0.090 |
+| P5 + neue Regelzellen | 157 | 141 | 2616 | 0.102 |
+| P5 + alte Regelzellen, nur Luecken | 169 | 127 | 2604 | 0.110 |
+| P5 + neue Regelzellen, nur Luecken | 178 | 120 | 2595 | 0.116 |
 
 Das Ersetzen kostet auch mit der neuen Tabellenwahl TP; sie verkleinert den
 Verlust nur (alt -28 TP, neu -9 TP gegen die unveraenderte Vorhersage).
+`nur Luecken fuellen` dreht das Vorzeichen: 66 Regelzellen bleiben aussen vor,
+weil die Vorhersage das Feld schon hat (+12 TP, +24 FP, F1 0.109 -> 0.116). Mit
+der alten Tabellenwahl waere es nur +3 TP bei +31 FP (F1 0.110), die neue Wahl
+bringt unter dieser Strategie also +9 TP und -7 FP.
 
 ## Fixture: beide Zellstaende zellgenau
 
 `fixture_20261121.py` (Modi `schreiben` / `pruefen`) friert die 33 Zellen mit
-Gate unter `zellen`, die 43 Zellen ohne Gate unter `zellen_ohne_gate` und die
-17 Streuungszellen unter `zellen_streuung` ein, dazu die Ablation der acht
+Gate unter `zellen`, die 43 Zellen ohne Gate unter `zellen_ohne_gate`, die
+17 Streuungszellen unter `zellen_streuung` und die 42 Zellen mit abgeleiteten
+Streuungen unter `zellen_abgeleitet` ein, dazu die Ablation der acht
 Schalter (`ohne_zeitpunkt`, `ohne_armbedingung`, `ohne_armzeile`,
 `ohne_vorzeichen` sind neu). `pruefen` rechnet beide Staende neu und
 vergleicht jede Zelle ueber Schluessel (Record, Feld, Arm), Wert und

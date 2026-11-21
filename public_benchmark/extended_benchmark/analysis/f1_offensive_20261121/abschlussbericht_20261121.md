@@ -268,11 +268,26 @@ neue falsche (die 169 falschen liefert die Regel in beiden Staenden). Die 14
 abgeleiteten Streuungen sind 10-mal richtig; falsch bei `446` (Gold 3.32 gegen
 5.07 aus dem KI) und `451` (falsche Zeile, `Vigorous PA` statt MVPA).
 
+Der Stand `zellen_abgeleitet` der Fixture friert diese 42 Zellen ein (14 aus
+dem KI); `pruefen` meldet jede fehlende abgeleitete Zelle und zusaetzlich
+"keine Zelle aus dem 95%-KI mehr", wenn die Ableitung still ausfaellt
+(Rueckgabewert 1, gegengeprueft mit `SD_AUS_KI=False`: 16 Abweichungen).
+
 In den 103 P5-Vorhersagen bestaetigt die Regel 30 richtige Zellen und
 ueberschreibt 31; alle 31 tragen schon vorher einen falschen Regelwert, keine
-geht auf die Tabellenwahl zurueck. Die Bilanz ueber alle 699 Records bleibt
-negativ: 166 TP / 96 FP ohne Ersetzen, 157 / 141 mit den neuen Zellen (alt
-138 / 158).
+geht auf die Tabellenwahl zurueck. Die Bilanz ueber alle 699 Records:
+
+| Stand | TP | FP | FN | F1 |
+|---|---:|---:|---:|---:|
+| P5 unveraendert | 166 | 96 | 2607 | 0.109 |
+| P5 + alte Regelzellen | 138 | 158 | 2635 | 0.090 |
+| P5 + neue Regelzellen | 157 | 141 | 2616 | 0.102 |
+| P5 + alte Regelzellen, nur Luecken | 169 | 127 | 2604 | 0.110 |
+| P5 + neue Regelzellen, nur Luecken | 178 | 120 | 2595 | 0.116 |
+
+Ersetzen kostet TP, `nur Luecken fuellen` gewinnt leicht: +12 TP und +24 FP
+gegenueber der unveraenderten Vorhersage, F1 0.109 -> 0.116. Die Tabellenwahl
+bringt unter dieser Strategie +9 TP und -7 FP gegenueber der alten.
 
 ## Grenzen
 

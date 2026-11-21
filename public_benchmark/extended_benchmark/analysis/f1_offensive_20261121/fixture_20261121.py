@@ -7,9 +7,15 @@ Zwei Modi:
 * `pruefen`   - rechnet erneut und vergleicht mit der Fixture; jede Abweichung
   wird gemeldet, der Rueckgabewert ist dann 1.
 
-Die Fixture haelt je Zelle Record, Feld, Arm, Wert, Gold, Zeile und Quelle fest.
-Damit kann eine spaetere Aenderung an den Bausteinen keine Treffer still
-kosten.
+Die Fixture haelt je Zelle Record, Feld, Arm, Wert, Gold, Zeile, Quelle und die
+Herkunft (`zelle` oder `95%-KI`) fest. Damit kann eine spaetere Aenderung an den
+Bausteinen keine Treffer still kosten.
+
+Vierter Stand `zellen_abgeleitet`: die sechs Felder der Records 446 bis 452 aus
+`PMC4879328`, deren Streuungen nur als 95%-KI gedruckt sind. Der Stand friert
+die abgeleiteten Streuungen mit `abgeleitet: True` ein; `pruefen` meldet es,
+wenn keine abgeleitete Zelle mehr entsteht (Rueckfall auf das Ablesen) oder
+sich Wert, Kennzeichen oder Zeile aendern.
 """
 
 from __future__ import annotations
@@ -29,6 +35,29 @@ import zielzeile_alle_20261121 as m  # noqa: E402
 
 FIXTURE = HIER / "fixture_20261121.json"
 FORMATE = ("mittel_sd", "plus_minus")
+# Records, deren Nachher-Tabelle keine SD druckt: hier muss die Streuung aus
+# dem 95%-KI kommen. Der Stand haelt das fest.
+ABGELEITET = ("yun2024:446", "yun2024:447", "yun2024:448", "yun2024:449",
+              "yun2024:450", "yun2024:451", "yun2024:452")
+FELD_ARM = {"intervention_group_size": "intervention",
+            "comparator_group_size": "comparator",
+            "intervention_mean": "intervention",
+            "comparator_mean": "comparator",
+            "intervention_standard_deviation": "intervention",
+            "comparator_standard_deviation": "comparator"}
+
+
+def abgeleitete_faelle(recs: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    """Goldauftraege der Records 446 bis 452 (alle sechs Felder)."""
+    aus: list[dict[str, Any]] = []
+    for rid in ABGELEITET:
+        for zelle in (recs[rid].get("gold") or {}).get("cells") or []:
+            feld = str(zelle.get("field") or "")
+            if feld not in FELD_ARM or zelle.get("value") is None:
+                continue
+            aus.append({"record_id": rid, "feld": feld, "arm": FELD_ARM[feld],
+                        "wert": float(zelle["value"])})
+    return aus
 
 
 def schalter(**werte: bool) -> None:
@@ -74,7 +103,7 @@ def main(argv: list[str]) -> int:
     streuung_faelle = [f for f in alle_faelle if f["feld"].endswith("standard_deviation")]
     recs = {r["record_id"]: r for r in v.lade(v.RECORDS)}
     texte = {rid: (Path(".") / recs[rid]["document"]["path"]).read_text(encoding="utf-8", errors="replace")
-             for rid in {f["record_id"] for f in alle_faelle}}
+             for rid in {f["record_id"] for f in alle_faelle} | set(ABGELEITET)}
 
     ablation: dict[str, dict[str, int]] = {}
     schalter()
@@ -90,6 +119,12 @@ def main(argv: list[str]) -> int:
     streuung = lauf(streuung_faelle, recs, texte)
     streuung_zellen = zellen(streuung)
     ablation["streuung"] = kennzahlen(streuung)
+    # Abgeleitete Streuungen: eigener Stand. Die Nachher-Tabelle druckt keine SD,
+    # der Wert muss aus dem 95%-KI kommen und das Kennzeichen tragen.
+    abgeleitet = lauf(abgeleitete_faelle(recs), recs, texte)
+    abgeleitet_zellen = zellen(abgeleitet)
+    abgeleitet_aus_ki = sum(1 for z in abgeleitet_zellen if z["abgeleitet"])
+    ablation["abgeleitet"] = kennzahlen(abgeleitet)
     schalter()
     for name, kwargs in (("ohne_gate", {"gate": False}),
                          ("ohne_positionsregel", {"positional": False}),
@@ -122,14 +157,17 @@ def main(argv: list[str]) -> int:
                                             ("ohne_gate", alt.get("zellen_ohne_gate", []),
                                              ohne_gate_zellen),
                                             ("streuung", alt.get("zellen_streuung", []),
-                                             streuung_zellen)):
+                                             streuung_zellen),
+                                            ("abgeleitet", alt.get("zellen_abgeleitet", []),
+                                             abgeleitet_zellen)):
             alt_schluessel = {(z["record_id"], z["feld"], z["arm"]): z for z in alt_liste}
             neu_schluessel = {(z["record_id"], z["feld"], z["arm"]): z for z in neu_liste}
             fehlend = sorted(set(alt_schluessel) - set(neu_schluessel))
             neu = sorted(set(neu_schluessel) - set(alt_schluessel))
             geaendert = [k for k in set(alt_schluessel) & set(neu_schluessel)
                          if alt_schluessel[k]["wert"] != neu_schluessel[k]["wert"]
-                         or alt_schluessel[k]["richtig"] != neu_schluessel[k]["richtig"]]
+                         or alt_schluessel[k]["richtig"] != neu_schluessel[k]["richtig"]
+                         or alt_schluessel[k].get("abgeleitet") != neu_schluessel[k].get("abgeleitet")]
             for k in fehlend:
                 probleme += 1
                 print(f"  [{stand}] fehlt:", k)
@@ -141,16 +179,23 @@ def main(argv: list[str]) -> int:
                 print(f"  [{stand}] geaendert: {k} {alt_schluessel[k]['wert']} -> "
                       f"{neu_schluessel[k]['wert']} (richtig {alt_schluessel[k]['richtig']} -> "
                       f"{neu_schluessel[k]['richtig']})")
+        if not abgeleitet_aus_ki:
+            probleme += 1
+            print("  [abgeleitet] keine Zelle aus dem 95%-KI mehr: die Ableitung ist "
+                  "still auf das Ablesen zurueckgefallen")
         print(f"Fixture {FIXTURE.name}: {len(alt['zellen'])} Zellen mit Gate, "
-              f"{len(alt.get('zellen_ohne_gate', []))} ohne Gate | Abweichungen {probleme}")
+              f"{len(alt.get('zellen_ohne_gate', []))} ohne Gate, "
+              f"{len(alt.get('zellen_streuung', []))} Streuung, "
+              f"{abgeleitet_aus_ki} abgeleitet | Abweichungen {probleme}")
         return 1 if probleme else 0
 
     inhalt = {"stand": "2026-11-21", "faelle": len(faelle), "ablation": ablation,
               "zellen": basis_zellen, "zellen_ohne_gate": ohne_gate_zellen,
-              "zellen_streuung": streuung_zellen}
+              "zellen_streuung": streuung_zellen, "zellen_abgeleitet": abgeleitet_zellen}
     FIXTURE.write_text(json.dumps(inhalt, indent=2, ensure_ascii=True), encoding="utf-8")
     print(f"geschrieben: {FIXTURE.name} | Zellen {len(basis_zellen)} mit Gate, "
-          f"{len(ohne_gate_zellen)} ohne Gate")
+          f"{len(ohne_gate_zellen)} ohne Gate, {len(abgeleitet_zellen)} im Stand "
+          f"abgeleitet ({abgeleitet_aus_ki} aus dem KI)")
     for name, k in ablation.items():
         print(f"  {name:22s} Zellen {k['zellen']:3d} TP {k['tp']:3d} FP {k['fp']:3d}")
     return 0

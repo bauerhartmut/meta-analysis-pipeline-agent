@@ -202,17 +202,23 @@ def main() -> int:
                                        "abgeleitet": neu_zelle["abgeleitet"],
                                        "regel_alt": vor_alt, "ursache": grund})
 
-    def einsatz(zellen: dict[str, list[dict[str, Any]]]) -> dict[str, int]:
-        summe = {"tp": 0, "fp": 0, "fn": 0}
+    def einsatz(zellen: dict[str, list[dict[str, Any]]]) -> dict[str, float]:
+        summe: dict[str, float] = {"tp": 0, "fp": 0, "fn": 0}
         for rid, record in records.items():
             b = v.bilanz_p5((record.get("gold") or {}).get("cells") or [],
                             zellen.get(rid, []))
-            for k in summe:
+            for k in ("tp", "fp", "fn"):
                 summe[k] += b[k]
+        tp, fp, fn = summe["tp"], summe["fp"], summe["fn"]
+        genau = tp / (tp + fp) if tp + fp else 0.0
+        treffer = tp / (tp + fn) if tp + fn else 0.0
+        summe["f1"] = 2 * genau * treffer / (genau + treffer) if genau + treffer else 0.0
         return summe
 
     karten: dict[str, dict[str, list[dict[str, Any]]]] = {
-        "p5": {}, "p5_plus_alt": {}, "p5_plus_neu": {}}
+        "p5": {}, "p5_plus_alt": {}, "p5_plus_neu": {},
+        "p5_plus_alt_luecken": {}, "p5_plus_neu_luecken": {}}
+    uebersprungen: dict[str, int] = {}
     for rid, zeile in p5.items():
         if rid not in records:
             continue
@@ -226,6 +232,18 @@ def main() -> int:
                 zusammen[(c["field"], c["group"])] = {
                     "field": c["field"], "group": c["group"], "value": c["value"]}
             karten[name][rid] = list(zusammen.values())
+            # Nur Luecken fuellen: eine vorhandene Vorhersagezelle bleibt stehen,
+            # auch wenn die Regel einen anderen Wert liest.
+            luecken = {k: dict(c) for k, c in basis.items()}
+            for c in extra:
+                schluessel = (c["field"], c["group"])
+                if schluessel in basis:
+                    uebersprungen[name + "_luecken"] = \
+                        uebersprungen.get(name + "_luecken", 0) + 1
+                    continue
+                luecken[schluessel] = {"field": c["field"], "group": c["group"],
+                                       "value": c["value"]}
+            karten[name + "_luecken"][rid] = list(luecken.values())
     bilanz = {name: einsatz(karte) for name, karte in karten.items()}
 
     ergebnis = {"stand": "2026-11-21", "records": len(records), "p5_records": len(p5),
@@ -235,7 +253,7 @@ def main() -> int:
                 "abgeleitete_streuungen": abgeleitet,
                 "p5": {"ueberschrieben": ueberschrieben, "bestaetigt": bestaetigt,
                        "regel_liefert_nichts": leere, "bilanz": bilanz,
-                       "ursache": ursache}}
+                       "ursache": ursache, "uebersprungen": uebersprungen}}
     (HIER / "umschreiben_20261121.json").write_text(
         json.dumps(ergebnis, indent=2, ensure_ascii=True), encoding="utf-8")
 
@@ -284,10 +302,23 @@ def main() -> int:
            f"{ursache.get('alt_falsch', 0)}",
            f"  - davon die alte Regel richtig, neu falsch: {ursache.get('alt_richtig', 0)}",
            f"- richtige Vorhersagezellen, zu denen die neue Regel nichts liefert: {leere}",
-           "", "| Stand | TP | FP | FN |", "|---|---:|---:|---:|"]
-    for name in ("p5", "p5_plus_alt", "p5_plus_neu"):
+           "", "| Stand | TP | FP | FN | F1 | uebersprungene Regelzellen |",
+           "|---|---:|---:|---:|---:|---:|"]
+    for name in ("p5", "p5_plus_alt", "p5_plus_neu", "p5_plus_alt_luecken",
+                 "p5_plus_neu_luecken"):
         b = bilanz[name]
-        md.append(f"| {name} | {b['tp']} | {b['fp']} | {b['fn']} |")
+        md.append(f"| {name} | {b['tp']:.0f} | {b['fp']:.0f} | {b['fn']:.0f} | "
+                  f"{b['f1']:.3f} | {uebersprungen.get(name, 0)} |")
+    b_p5, b_alt, b_neu = bilanz["p5"], bilanz["p5_plus_alt"], bilanz["p5_plus_neu"]
+    g_alt, g_neu = bilanz["p5_plus_alt_luecken"], bilanz["p5_plus_neu_luecken"]
+    md += ["", "Lesart: Ersetzen kostet TP, weil 31 richtige Vorhersagezellen durch einen",
+           "falschen Regelwert ersetzt werden. `nur Luecken fuellen` laesst diese Zellen",
+           f"stehen: {g_neu['tp'] - b_p5['tp']:+.0f} TP und {g_neu['fp'] - b_p5['fp']:+.0f} FP "
+           f"gegenueber der unveraenderten Vorhersage (F1 {b_p5['f1']:.3f} -> "
+           f"{g_neu['f1']:.3f}). Mit der alten Tabellenwahl waere es "
+           f"{g_alt['tp'] - b_p5['tp']:+.0f} TP / {g_alt['fp'] - b_p5['fp']:+.0f} FP; die neue "
+           f"Wahl bringt unter dieser Strategie {g_neu['tp'] - g_alt['tp']:+.0f} TP und "
+           f"{g_neu['fp'] - g_alt['fp']:+.0f} FP.", ""]
     if ueberschrieben:
         md += ["", "| Record | Feld | Arm | Vorhersage | Gold | Regel neu | abgeleitet |",
                "|---|---|---|---:|---:|---:|---|"]
@@ -304,8 +335,11 @@ def main() -> int:
           f"(richtig {sum(1 for e in abgeleitet if e['richtig'])})")
     print(f"P5: bestaetigt {bestaetigt} | ueberschrieben {len(ueberschrieben)} | "
           f"Regel liefert nichts {leere}")
-    for name in ("p5", "p5_plus_alt", "p5_plus_neu"):
-        print(f"  {name:12s} {bilanz[name]}")
+    for name in ("p5", "p5_plus_alt", "p5_plus_neu", "p5_plus_alt_luecken",
+                 "p5_plus_neu_luecken"):
+        b = bilanz[name]
+        print(f"  {name:20s} TP {b['tp']:.0f} FP {b['fp']:.0f} FN {b['fn']:.0f} "
+              f"F1 {b['f1']:.3f} uebersprungen {uebersprungen.get(name, 0)}")
     return 0
 
 
