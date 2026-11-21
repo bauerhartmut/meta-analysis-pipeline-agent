@@ -420,18 +420,23 @@ verworfen.
 | Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Endvariante |
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
-| Zellen | 36 | 44 | 26 | 43 |
-| TP | 30 | 34 | 22 | 38 |
-| FP | 6 | 10 | 4 | 5 |
-| Trefferquote | 83 % | 77 % | 85 % | **88 %** |
+| Zellen | 28 | 34 | 16 | 33 |
+| TP | 22 | 26 | 14 | 30 |
+| FP | 6 | 8 | 2 | 3 |
+| Trefferquote | 79 % | 76 % | 88 % | **91 %** |
 
 Formate in der Endvariante:
 
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
-| Groesse | Groessenzeile | 18 | 4 |
+| Groesse | Groessenzeile | 10 | 2 |
 | Mittel | `Zahl +/- Zahl` | 16 | 1 |
 | Mittel | `Zahl (Zahl)` | 4 | 0 |
+
+Das Uebereinstimmungs-Gate (`GATE`) gibt eine Groessenzelle nur aus, wenn
+Label-Zuordnung und Positionsregel denselben Wert liefern. Es kostet die acht
+PMC5617873-Zellen und den bewussten Positionsverlust bei `yun2024:426` und hebt
+die Trefferquote von 88 auf 91 Prozent (33 Zellen, 30 TP, 3 FP).
 
 Enthaelt ein Dokument eine Tabelle mit Wochenspalte, in der das Outcome
 mehrfach vorkommt, gilt die Zeile des letzten Zeitpunkts statt der
@@ -451,36 +456,34 @@ Tabelle ab.
 Der Schritt bringt gegenueber dem Alias-Lauf mit Ereignissen 7 FP weniger bei
 gleicher TP-Zahl; gegenueber der strengen Variante 12 TP mehr bei 5 FP mehr.
 
-### Die 4 Groessen-FP und der Einsatz der 43 Zellen
+### Die 2 Groessen-FP und der Einsatz der 33 Zellen
 
-`groessen_fp_einsatz_20261121.py`. Mit der Positionsregel bleiben vier
-Groessen-FP:
+`groessen_fp_einsatz_20261121.py`. Mit Gate bleiben zwei Groessen-FP:
 
 | Klasse | Faelle |
 |---|---:|
 | falsche Tabelle (Subgruppe) | 2 |
-| bewusster Positionsverlust | 2 |
 
 Die 2 Tabellenfaelle sind die beiden Arme von `yun2024:196`: Gold stammt aus
 Tabelle 3 (Subgruppe MMSE-J 20 bis 23, Woche 28), die Regel liest die
 Haupttabelle 2 (80/78).
 
-Die 2 Positionsfaelle sind die beiden Arme von `yun2024:426`: In Spalte 1 steht
-die Vergleichsgruppe, die Positionsregel liest sie als Intervention (44 statt
-49). Der Verlust ist bewusst in Kauf genommen, weil dieselbe Regel die acht
-PMC5617873-Zellen richtig stellt.
+Die beiden Arme von `yun2024:426` fallen durch das Gate weg: Label-Zuordnung
+(49/44) und Positionsregel (44/49) widersprechen sich, also wird die Zelle nicht
+mehr ausgegeben. Damit ist der frueher bewusst bezahlte Positionsverlust
+entfallen; die acht PMC5617873-Zellen ebenso.
 
 `yun2024:193` ist mit der Wochenspalten-Auswahl richtig geworden.
 
-Einsatz der 41 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
+Einsatz der 33 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
 
 | Zellen | TP | FP | FN |
 |---|---:|---:|---:|
 | vorher | 170 | 101 | 2603 |
-| alle 43 | 208 | 102 | 2565 |
-| nur die 38 richtigen | 208 | 97 | 2565 |
+| alle 33 | 200 | 100 | 2573 |
+| nur die 30 richtigen | 200 | 97 | 2573 |
 
-Alle 43: +38 TP und +1 FP. Nur die richtigen: +38 TP und -4 FP (vier Zellen
+Alle 33: +30 TP und -1 FP. Nur die richtigen: +30 TP und -4 FP (vier Zellen
 ersetzten vorhandene falsche Werte).
 
 ### Mittel-FP: Tabellenlokalitaet half nicht, das Blocklabel schon
@@ -546,10 +549,13 @@ Placebo-Werte als Intervention. Die Positionsregel ("erste Datenspalte ist
 Intervention, zweite Comparator", Spaltennamen ignoriert) ist im Skript
 umsschaltbar (`POSITIONAL`) und wurde ueber die 295 gemessen:
 
-| Lesart | Zellen | TP | FP | Groessenzellen richtig | Groessenzellen falsch |
-|---|---:|---:|---:|---:|---:|
-| Position (**Standard**) | 43 | 38 | 5 | 18 | 4 |
-| Spaltenname (Vergleich) | 43 | 32 | 11 | 12 | 10 |
+| Lesart | Zellen | TP | FP |
+|---|---:|---:|---:|
+| Position (Standard) | 33 | 30 | 3 |
+| Spaltenname (Vergleich) | 33 | 30 | 3 |
+
+Mit dem Gate sind beide Lesarten gleichwertig: Wo sie sich unterscheiden, wird
+die Zelle nicht mehr ausgegeben.
 
 Richtig werden alle 8 PMC5617873-Zellen. Falsch werden die beiden Arme von
 `yun2024:426` (vorher 49/44, jetzt 44/49, Gold 49/44): dort steht in Spalte 1

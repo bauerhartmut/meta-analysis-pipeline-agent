@@ -25,9 +25,12 @@ Studien liest, ohne Goldblick? Gemessen an den 295 Faellen der Regel
    Zeile darueber), sonst Zeilen-`n` im Layout `n Mean (95% CI)`. Die Armspalte
    folgt der Spaltenposition: erste Datenspalte Intervention, zweite Comparator.
    Zaehlungen muessen ganzzahlig und mindestens 5 sein.
-5. **Mittel**: Wert aus der Zielzeile im Format `Zahl +/- Zahl` oder
+5. **Uebereinstimmungs-Gate**: Eine Groessenzelle wird nur ausgegeben, wenn
+   Label-Zuordnung und Positionsregel denselben Wert liefern. Widersprechen sie
+   sich, bleibt die Zelle leer.
+6. **Mittel**: Wert aus der Zielzeile im Format `Zahl +/- Zahl` oder
    `Zahl (Zahl)`; Armspalte ueber Label, Dosis und Placebo-Synonyme.
-6. **Ereignisse**: Leser abgeschaltet (0 TP, 7 FP in der Vormessung).
+7. **Ereignisse**: Leser abgeschaltet (0 TP, 7 FP in der Vormessung).
 
 ## Ergebnis
 
@@ -35,44 +38,64 @@ Studien liest, ohne Goldblick? Gemessen an den 295 Faellen der Regel
 |---|---:|---:|---:|---:|
 | Faelle | 295 | 295 | 295 | 295 |
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
-| gelieferte Zellen | 36 | 44 | 26 | 43 |
-| TP | 30 | 34 | 22 | 38 |
-| FP | 6 | 10 | 4 | 5 |
-| Trefferquote | 83 % | 77 % | 85 % | **88 %** |
+| gelieferte Zellen | 28 | 34 | 16 | 33 |
+| TP | 22 | 26 | 14 | 30 |
+| FP | 6 | 8 | 2 | 3 |
+| Trefferquote | 79 % | 76 % | 88 % | **91 %** |
 
 Zellformate in der Endvariante:
 
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
-| Groesse | Groessenzeile | 18 | 4 |
+| Groesse | Groessenzeile | 10 | 2 |
 | Mittel | `Zahl +/- Zahl` | 16 | 1 |
 | Mittel | `Zahl (Zahl)` | 4 | 0 |
 
-## Die fuenf verbleibenden FP
+## Die drei verbleibenden FP
 
 | Record | Feld | Regel | Gold | Ursache |
 |---|---|---:|---:|---|
 | `yun2024:196` | intervention_group_size | 80 | 24 | Gold aus Subgruppentabelle (MMSE-J 20-23), siehe Pruefvermerk |
 | `yun2024:196` | comparator_group_size | 78 | 24 | dito |
-| `yun2024:426` | intervention_group_size | 44 | 49 | bewusster Positionsverlust (Spalte 1 ist die Vergleichsgruppe) |
-| `yun2024:426` | comparator_group_size | 49 | 44 | dito |
 | `yun2024:345` | intervention_mean | 5.4 | 2.3 | Gold nicht als Zellwert belegt (nur Intervallgrenze), siehe Pruefvermerk |
 
-Damit sind drei der fuenf FP Gold- oder Konventionsfragen, zwei sind der bewusst
-in Kauf genommene Preis der Positionsregel.
+Alle drei sind Goldfragen. Der fruehere Positionsverlust bei `yun2024:426` ist
+entfallen: Das Gate verwirft die Zelle, weil Label und Position sich
+widersprechen. Damit kostet die Positionsregel nichts mehr, sie liefert aber
+auch die acht PMC5617873-Zellen nicht mehr (siehe Ablation).
 
 ## Einsatz in den P5-Vorhersagen
 
-Bilanz ueber alle 699 Records, nur die 43 gelesenen Zellen ersetzt:
+Bilanz ueber alle 699 Records, nur die 33 gelesenen Zellen ersetzt:
 
 | Zellen | TP | FP | FN |
 |---|---:|---:|---:|
 | vorher | 170 | 101 | 2603 |
-| alle 43 | 208 | 102 | 2565 |
-| nur die 38 richtigen | 208 | 97 | 2565 |
+| alle 33 | 200 | 100 | 2573 |
+| nur die 30 richtigen | 200 | 97 | 2573 |
 
-Alle 43: +38 TP und +1 FP. Nur die richtigen: +38 TP und -4 FP, weil vier
+Alle 33: +30 TP und -1 FP. Nur die richtigen: +30 TP und -4 FP, weil vier
 Zellen vorhandene falsche Werte ersetzen.
+
+## Ablation der Bausteine
+
+`fixture_20261121.py` schaltet jeden Baustein einzeln ab; die Zahlen sind in
+`fixture_20261121.json` eingefroren.
+
+| Lauf | Zellen | TP | FP |
+|---|---:|---:|---:|
+| Endvariante | 33 | 30 | 3 |
+| ohne Gate | 43 | 38 | 5 |
+| ohne Positionsregel | 33 | 30 | 3 |
+| ohne Wochenspalte | 31 | 26 | 5 |
+| ohne Messwort-Block | 33 | 26 | 7 |
+| ohne tabellenlokale Groesse | 31 | 28 | 3 |
+
+Lesart: Das Gate kostet acht richtige Zellen und zwei falsche, hebt die
+Trefferquote von 88 auf 91 Prozent. Wochenspalte, Messwort-Block und
+tabellenlokale Groesse tragen je 2 bis 4 richtige Zellen und duerfen nicht
+entfallen; die Positionsregel ist mit Gate wirkungslos, weil genau ihre
+Abweichungen wegfallen.
 
 ## Uebertrag auf die uebrigen FN-Regeln
 
@@ -125,9 +148,9 @@ Faellen und 14 Prozent Trefferquote.
   Tabellen mit Beschriftung, nicht bei Bildtabellen oder freiem Fliesstext.
 - Tabellenwahl bei doppelten Labels bleibt eine Annahme (spaeterer Block,
   spaetere Tabelle), gedeckt durch Gold, nicht durch den Text.
-- Die Positionsregel liest die erste Datenspalte als Intervention. Sie gewinnt
-  acht PMC5617873-Zellen gegen ein dort vertauschtes Gold und verliert dafuer
-  zwei belegte Zellen bei `yun2024:426`.
+- Das Gate macht die Ausgabe praeziser, aber schmaler: Es verwirft die acht
+  PMC5617873-Zellen, bei denen das Gold selbst vertauscht ist, und damit auch
+  den frueheren Positionsverlust bei `yun2024:426`.
 - `yun2024:196` und `yun2024:345` sind mit keiner Leseregel zu holen; beide
   brauchen eine Goldentscheidung.
 - Die Stichprobe umfasst 20 von 164 Faellen mit festem Schritt, nicht zufaellig
@@ -137,9 +160,10 @@ Faellen und 14 Prozent Trefferquote.
 
 ## Empfehlung
 
-Den Stand als Endvariante festschreiben (38 TP, 5 FP, 88 Prozent Trefferquote),
-die beiden Goldfaelle im Pruefvermerk belassen und die 7 zusaetzlichen Treffer
-aus der FN-Uebertragung als Randgewinn notieren, nicht als Hebel. Weitere
+Den Stand als Endvariante festschreiben (30 TP, 3 FP, 91 Prozent Trefferquote,
+Fixture gegen Regressionen), die drei Goldfaelle im Pruefvermerk belassen und die
+7 zusaetzlichen Treffer aus der FN-Uebertragung als Randgewinn notieren, nicht
+als Hebel. Weitere
 Regelarbeit an den FN-Klassen ist abgeschlossen und bringt nichts; offen ist
 allein die Goldfrage. Wer sie klaeren will, braucht eine PDF-Gegenprobe der
 `fn_nicht_im_dokument`-Faelle (Netzzugriff, vorher freigeben) und eine

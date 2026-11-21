@@ -7,19 +7,19 @@ Offline, ohne Netzaufruf.
 * `yun2024:331` - Kopfzeile 40: `Placebo (n =?45)            Aripiprazole (n =?47)   Difference or ratio (95% confidence interval) P value`
   * Spalte 1: `Placebo (n =?45)` -> `comparator`
   * Spalte 2: `Aripiprazole (n =?47)` -> `intervention`
-  * Gold: intervention 45.0, comparator 47.0
+  * Gold: intervention None, comparator None
 * `yun2024:334` - Kopfzeile 40: `Placebo (n =?45)            Aripiprazole (n =?47)   Difference or ratio (95% confidence interval) P value`
   * Spalte 1: `Placebo (n =?45)` -> `comparator`
   * Spalte 2: `Aripiprazole (n =?47)` -> `intervention`
-  * Gold: intervention 45.0, comparator 47.0
+  * Gold: intervention None, comparator None
 * `yun2024:335` - Kopfzeile 40: `Placebo (n =?45)            Aripiprazole (n =?47)   Difference or ratio (95% confidence interval) P value`
   * Spalte 1: `Placebo (n =?45)` -> `comparator`
   * Spalte 2: `Aripiprazole (n =?47)` -> `intervention`
-  * Gold: intervention 45.0, comparator 47.0
+  * Gold: intervention None, comparator None
 * `yun2024:336` - Kopfzeile 40: `Placebo (n =?45)            Aripiprazole (n =?47)   Difference or ratio (95% confidence interval) P value`
   * Spalte 1: `Placebo (n =?45)` -> `comparator`
   * Spalte 2: `Aripiprazole (n =?47)` -> `intervention`
-  * Gold: intervention 45.0, comparator 47.0
+  * Gold: intervention None, comparator None
 
 ## Lesart
 
@@ -33,23 +33,13 @@ trifft damit das Gold, das dieselbe Zuordnung fuehrt.
 
 | Lesart | Zellen | TP | FP | Groessenzellen richtig | Groessenzellen falsch |
 |---|---:|---:|---:|---:|---:|
-| label | 43 | 32 | 11 | 12 | 10 |
-| position | 43 | 38 | 5 | 18 | 4 |
+| label | 33 | 30 | 3 | 10 | 2 |
+| position | 33 | 30 | 3 | 10 | 2 |
 
-Richtig geworden: 8 Zellen. Falsch geworden: 2 Zellen.
+Richtig geworden: 0 Zellen. Falsch geworden: 0 Zellen.
 
 | Richtung | Record | Feld | vorher | nachher | Gold |
 |---|---|---|---:|---:|---:|
-| richtig | `yun2024:331` | comparator_group_size | 45.0 | 47.0 | 47.0 |
-| richtig | `yun2024:331` | intervention_group_size | 47.0 | 45.0 | 45.0 |
-| richtig | `yun2024:334` | comparator_group_size | 45.0 | 47.0 | 47.0 |
-| richtig | `yun2024:334` | intervention_group_size | 47.0 | 45.0 | 45.0 |
-| richtig | `yun2024:335` | comparator_group_size | 45.0 | 47.0 | 47.0 |
-| richtig | `yun2024:335` | intervention_group_size | 47.0 | 45.0 | 45.0 |
-| richtig | `yun2024:336` | comparator_group_size | 45.0 | 47.0 | 47.0 |
-| richtig | `yun2024:336` | intervention_group_size | 47.0 | 45.0 | 45.0 |
-| falsch | `yun2024:426` | comparator_group_size | 44.0 | 49.0 | 44.0 |
-| falsch | `yun2024:426` | intervention_group_size | 49.0 | 44.0 | 49.0 |
 
 ## Lesart der Zahlen
 

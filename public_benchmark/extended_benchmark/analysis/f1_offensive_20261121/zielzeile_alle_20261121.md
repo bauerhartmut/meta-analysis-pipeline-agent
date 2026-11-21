@@ -8,24 +8,24 @@ Akronymen.
 | Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Ereignisse aus, Mittel beide Formate |
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
-| Zellen geliefert | 36 | 44 | 26 | 43 |
-| TP (exakt) | 30 | 34 | 22 | 38 |
-| FP (exakt) | 6 | 10 | 4 | 5 |
-| TP (auf ganze Zahl gerundet) | 30 | 36 | 22 | 38 |
-| FP (auf ganze Zahl gerundet) | 6 | 8 | 4 | 5 |
+| Zellen geliefert | 28 | 34 | 16 | 33 |
+| TP (exakt) | 22 | 26 | 14 | 30 |
+| FP (exakt) | 6 | 8 | 2 | 3 |
+| TP (auf ganze Zahl gerundet) | 22 | 28 | 14 | 30 |
+| FP (auf ganze Zahl gerundet) | 6 | 6 | 2 | 3 |
 
-## FP nach Feldtyp (Alias-Lauf vor der Umstellung, 10 FP)
+## FP nach Feldtyp (Alias-Lauf vor der Umstellung, 8 FP)
 
 | Feldtyp | FP |
 |---|---:|
 | mittel | 6 |
-| groesse | 4 |
+| groesse | 2 |
 
 ## Formate der gelieferten Zellen (Endvariante)
 
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
-| groesse | groessenzeile | 18 | 4 |
+| groesse | groessenzeile | 10 | 2 |
 | mittel | mittel_sd | 4 | 0 |
 | mittel | plus_minus | 16 | 1 |
 
@@ -33,13 +33,13 @@ Akronymen.
 
 | Feldtyp | Zellformat | FP |
 |---|---|---:|
-| groesse | groessenzeile | 4 |
 | mittel | sonstig | 3 |
+| groesse | groessenzeile | 2 |
 | mittel | mittel_sd | 2 |
 | mittel | plus_minus | 1 |
 
 
-Nur durch den Alias neu geliefert: 8 Zellen, davon
+Nur durch den Alias neu geliefert: 6 Zellen, davon
 4 exakt richtig und
 6 nach Rundung richtig.
 Die zwei exakten FP sind Rundungen: 31.7 gegen Gold 32 und 19.8 gegen Gold 20.
@@ -48,9 +48,7 @@ Die zwei exakten FP sind Rundungen: 31.7 gegen Gold 32 und 19.8 gegen Gold 20.
 
 | Record | Feld | Regelwert | Gold | richtig |
 |---|---|---:|---:|---|
-| `yun2024:426` | intervention_group_size | 44.0 | 49.0 | nein |
 | `yun2024:426` | intervention_mean | 31.7 | 32.0 | nein |
-| `yun2024:426` | comparator_group_size | 49.0 | 44.0 | nein |
 | `yun2024:426` | comparator_mean | 19.8 | 20.0 | nein |
 | `yun2024:664` | intervention_mean | 101.9 | 101.9 | ja |
 | `yun2024:664` | comparator_mean | 97.6 | 97.6 | ja |
@@ -68,7 +66,7 @@ Groessenzeile steht, gilt der Rueckfall auf die naechste Zeile darueber. Das
 Zellformat `n  Mean (95% CI)` einer Zeitverlaufstabelle wird als Zeilen-`n`
 gelesen (n nach der Wochenzahl, zweites n nach dem ersten Klammerblock).
 
-In der Endvariante stellen sich die 5 FP so:
+In der Endvariante stellen sich die 3 FP so:
 
 * Groesse 4 (196 Subgruppe, 426 Positionsverlust).
 * Mittel 1 im Format `+/-` (345: Gold steht nur als Intervallgrenze).
@@ -97,8 +95,8 @@ die acht PMC5617873-Zellen und macht dafuer die beiden Arme von `yun2024:426`
 falsch; dieser Verlust ist bewusst (Gold folgt dort den Spaltennamen, siehe
 `armreihenfolge_20261121.md`).
 
-Trefferquote: 38 von 43 Zellen, also
-88 Prozent. Ereignisse tragen
+Trefferquote: 30 von 33 Zellen, also
+90 Prozent. Ereignisse tragen
 nichts bei, Groessen und Mittel teilen sich die Treffer. Die Umstellung von der
 ersten Zahl auf zwei erlaubte Formate kostet 3 weitere Zellen des Formats
 `sonstig`, alle drei waren falsch.

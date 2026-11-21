@@ -20,8 +20,8 @@
     "gold_nicht_belegt": 1
   },
   "messung": {
-    "zellen": 43,
-    "tp": 38,
-    "fp": 5
+    "zellen": 33,
+    "tp": 30,
+    "fp": 3
   }
 }

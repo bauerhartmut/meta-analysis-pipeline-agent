@@ -3,40 +3,40 @@
   "faelle": 295,
   "alias_streng": {
     "zielzeile_gefunden": 178,
-    "geliefert": 26,
-    "tp": 22,
-    "fp": 4,
-    "tp_gerundet": 22,
-    "fp_gerundet": 4
+    "geliefert": 16,
+    "tp": 14,
+    "fp": 2,
+    "tp_gerundet": 14,
+    "fp_gerundet": 2
   },
   "neu": {
     "zielzeile_gefunden": 178,
-    "geliefert": 43,
-    "tp": 38,
-    "fp": 5,
-    "tp_gerundet": 38,
-    "fp_gerundet": 5
+    "geliefert": 33,
+    "tp": 30,
+    "fp": 3,
+    "tp_gerundet": 30,
+    "fp_gerundet": 3
   },
   "neu_zellformate": {
-    "groesse|groessenzeile|richtig": 18,
-    "groesse|groessenzeile|falsch": 4,
+    "groesse|groessenzeile|richtig": 10,
+    "groesse|groessenzeile|falsch": 2,
     "mittel|plus_minus|richtig": 16,
     "mittel|mittel_sd|richtig": 4,
     "mittel|plus_minus|falsch": 1
   },
   "fp_nach_feldtyp": {
-    "groesse": 4,
+    "groesse": 2,
     "mittel": 6
   },
   "fp_nach_format": {
-    "groesse|groessenzeile": 4,
+    "groesse|groessenzeile": 2,
     "mittel|sonstig": 3,
     "mittel|mittel_sd": 2,
     "mittel|plus_minus": 1
   },
   "zellformate": {
-    "groesse|groessenzeile|richtig": 18,
-    "groesse|groessenzeile|falsch": 4,
+    "groesse|groessenzeile|richtig": 10,
+    "groesse|groessenzeile|falsch": 2,
     "mittel|sonstig|falsch": 3,
     "mittel|plus_minus|richtig": 16,
     "mittel|mittel_sd|falsch": 2,
@@ -44,41 +44,28 @@
   },
   "ohne": {
     "zielzeile_gefunden": 156,
-    "geliefert": 36,
-    "tp": 30,
+    "geliefert": 28,
+    "tp": 22,
     "fp": 6,
-    "tp_gerundet": 30,
+    "tp_gerundet": 22,
     "fp_gerundet": 6
   },
   "alias": {
     "zielzeile_gefunden": 178,
-    "geliefert": 44,
-    "tp": 34,
-    "fp": 10,
-    "tp_gerundet": 36,
-    "fp_gerundet": 8
+    "geliefert": 34,
+    "tp": 26,
+    "fp": 8,
+    "tp_gerundet": 28,
+    "fp_gerundet": 6
   },
   "nur_mit_alias": {
-    "geliefert": 8,
+    "geliefert": 6,
     "tp": 4,
-    "fp": 4,
+    "fp": 2,
     "tp_gerundet": 6,
-    "fp_gerundet": 2
+    "fp_gerundet": 0
   },
   "detail_nur_mit_alias": [
-    {
-      "record_id": "yun2024:426",
-      "feld": "intervention_group_size",
-      "arm": "intervention",
-      "regel": {
-        "value": 44.0,
-        "quelle": "position",
-        "zeile": 10
-      },
-      "gold": 49.0,
-      "richtig": false,
-      "richtig_gerundet": false
-    },
     {
       "record_id": "yun2024:426",
       "feld": "intervention_mean",
@@ -92,19 +79,6 @@
       "gold": 32.0,
       "richtig": false,
       "richtig_gerundet": true
-    },
-    {
-      "record_id": "yun2024:426",
-      "feld": "comparator_group_size",
-      "arm": "comparator",
-      "regel": {
-        "value": 49.0,
-        "quelle": "position",
-        "zeile": 10
-      },
-      "gold": 44.0,
-      "richtig": false,
-      "richtig_gerundet": false
     },
     {
       "record_id": "yun2024:426",

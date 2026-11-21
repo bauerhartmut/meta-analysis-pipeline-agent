@@ -125,6 +125,13 @@ def zeitverlauf_ziel(zeilen: list[str], outcome: str, alias: dict[str, list[str]
 
 
 POSITIONAL = True
+# Uebereinstimmungs-Gate: Groessenzelle nur ausgeben, wenn Label-Zuordnung und
+# Positionsregel denselben Wert liefern.
+GATE = True
+# Schalter fuer die Ablation der Bausteine.
+WOCHENSPALTE = True
+MESSWORT_BLOCK = True
+TABELLENLOKAL = True
 
 # Messwoerter, die im Tabellenblock stehen muessen, wenn das Outcome sie nennt.
 MESSWOERTER = ("stiffness", "range of motion", "ranges of motion", "neutral zone",
@@ -164,6 +171,8 @@ def ziel_zeile_block(zeilen: list[str], outcome: str, alias: dict[str, list[str]
     passendem Label steht; findet sich keine, bleibt die normale Zielzeile.
     """
     standard = alias_mod.ziel_zeile_alias(zeilen, outcome, alias, akronyme)
+    if not MESSWORT_BLOCK:
+        return standard
     wort = messwort(outcome)
     if not wort:
         return standard
@@ -231,7 +240,7 @@ def zeitverlauf_gruppen(zeilen: list[str], i: int) -> tuple[int, int, list[str]]
     return 0, 0, []
 
 
-def zeitverlauf_mittel(zeilen: list[str], ziel: int, outcome: str, feld: str, arm: str,
+def zeitverlauf_mittel(zeilen: list[str], ziel: int, outcome: str, feld: str, arm: str,  # noqa: PLR0913
                        context: dict[str, Any], alias: dict[str, list[str]],
                        akronyme: bool, mean_formate: tuple[str, ...]) -> dict[str, Any] | None:
     """Mittel aus der Zeile des passenden Subskalen-Blocks, letzter Zeitpunkt.
@@ -336,6 +345,8 @@ def positional(treffer: dict[str, dict[str, Any]], reihenfolge: list[str]) -> di
 def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) -> dict[str, dict[str, Any]]:
     """Groesse aus der Tabelle der Zielzeile: `n =`-Zeile oder Zeilen-`n`."""
     start, ende = tabellengrenzen(zeilen, ziel)
+    if not TABELLENLOKAL:
+        start = max(-1, ziel - 61)
     for i in range(ziel - 1, start - 1, -1):
         if g.ist_groessenzeile(zeilen[i]) and g.STRENGE.search(zeilen[i]):
             werte = g.aus_groessenzeile(zeilen, i, context)
@@ -494,8 +505,14 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
         if ziel < 0:
             return None
         werte = groesse_in_tabelle(zeilen, ziel, context)
+        reihenfolge = spalten_reihenfolge(zeilen, ziel, context)
+        if GATE and len(reihenfolge) >= 2 and reihenfolge[0] != reihenfolge[1]:
+            geprueft = positional(werte, reihenfolge)
+            a, b = werte.get(arm), geprueft.get(arm)
+            if not a or not b or abs(float(a["value"]) - float(b["value"])) > 1e-9:
+                return None
         if POSITIONAL:
-            werte = positional(werte, spalten_reihenfolge(zeilen, ziel, context))
+            werte = positional(werte, reihenfolge)
         treffer = werte.get(arm)
         if not treffer:
             return None
@@ -508,7 +525,7 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
     ziel = ziel_zeile_block(zeilen, outcome, alias, akronyme)
     if ziel < 0:
         return None
-    if mean_formate:
+    if mean_formate and WOCHENSPALTE:
         treffer = zeitverlauf_mittel(zeilen, ziel, outcome, feld, arm, context, alias,
                                      akronyme, mean_formate)
         if treffer:

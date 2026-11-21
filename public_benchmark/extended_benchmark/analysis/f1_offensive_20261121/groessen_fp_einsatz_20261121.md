@@ -2,37 +2,35 @@
 
 Offline, ohne Netzaufruf.
 
-## Teil A: die 4 Groessen-FP
+## Teil A: die 2 Groessen-FP
 
 | Record | Feld | Regelwert | Gold | Klasse | Zeile Regel | Zeile Gold |
 |---|---|---:|---:|---|---:|---|
 | `yun2024:196` | intervention_group_size | 80.0 | 24.0 | falsche_tabelle | 47 | 1 |
 | `yun2024:196` | comparator_group_size | 78.0 | 24.0 | falsche_tabelle | 47 | 1 |
-| `yun2024:426` | intervention_group_size | 44.0 | 49.0 | falsche_spalte | 10 | 10, 122, 162 |
-| `yun2024:426` | comparator_group_size | 49.0 | 44.0 | falsche_spalte | 10 | 10, 97 |
 
-Klassen: {'falsche_tabelle': 2, 'falsche_spalte': 2}
+Klassen: {'falsche_tabelle': 2}
 
-## Teil B: 43 Zellen in P5 eingesetzt
+## Teil B: 33 Zellen in P5 eingesetzt
 
 | Kennzahl | vorher | nachher | Delta |
 |---|---:|---:|---:|
-| TP | 170 | 208 | +38 |
-| FP | 101 | 102 | +1 |
-| FN | 2603 | 2565 | -38 |
+| TP | 170 | 200 | +30 |
+| FP | 101 | 100 | -1 |
+| FN | 2603 | 2573 | -30 |
 
-Betroffene Records: 24 von 699.
+Betroffene Records: 19 von 699.
 
 ## Teil C: nur die richtigen Zellen
 
-Setzt man nur die 38 richtigen Zellen ein
-(ohne die 5 falschen), dann:
+Setzt man nur die 30 richtigen Zellen ein
+(ohne die 3 falschen), dann:
 
 | Kennzahl | vorher | nachher | Delta |
 |---|---:|---:|---:|
-| TP | 170 | 208 | +38 |
+| TP | 170 | 200 | +30 |
 | FP | 101 | 97 | -4 |
-| FN | 2603 | 2565 | -38 |
+| FN | 2603 | 2573 | -30 |
 
-Das ist die Obergrenze: 34 Zellen waren neu, 4 ersetzten
+Das ist die Obergrenze: 26 Zellen waren neu, 4 ersetzten
 einen vorhandenen falschen Wert.
