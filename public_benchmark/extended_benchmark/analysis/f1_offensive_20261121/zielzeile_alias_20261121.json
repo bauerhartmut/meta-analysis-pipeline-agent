@@ -15,23 +15,29 @@
     "scanning": [
       "scan",
       "duration"
-    ],
-    "vegetable": [
-      "vegetables"
-    ],
-    "vegetables": [
-      "vegetable"
-    ],
-    "fruit": [
-      "fruits"
-    ],
-    "blood": [
-      "blood",
-      "pressure"
-    ],
-    "pressure": [
-      "pressure"
     ]
+  },
+  "varianten": {
+    "ohne Erweiterung": {
+      "geliefert": 7,
+      "tp": 2,
+      "fp": 5
+    },
+    "nur Akronyme": {
+      "geliefert": 7,
+      "tp": 2,
+      "fp": 5
+    },
+    "nur scanning": {
+      "geliefert": 9,
+      "tp": 4,
+      "fp": 5
+    },
+    "Akronyme + scanning": {
+      "geliefert": 9,
+      "tp": 4,
+      "fp": 5
+    }
   },
   "detail": [
     {
@@ -44,7 +50,6 @@
         "zeile": 8
       },
       "gold": 24.0,
-      "pred": null,
       "richtig": false
     },
     {
@@ -57,7 +62,6 @@
         "zeile": 40
       },
       "gold": 47.0,
-      "pred": null,
       "richtig": false
     },
     {
@@ -70,7 +74,6 @@
         "zeile": 40
       },
       "gold": 47.0,
-      "pred": null,
       "richtig": false
     },
     {
@@ -83,7 +86,6 @@
         "zeile": 40
       },
       "gold": 47.0,
-      "pred": null,
       "richtig": false
     },
     {
@@ -96,7 +98,6 @@
         "zeile": 40
       },
       "gold": 47.0,
-      "pred": null,
       "richtig": false
     },
     {
@@ -109,7 +110,6 @@
         "zeile": 33
       },
       "gold": 22.0,
-      "pred": null,
       "richtig": true
     },
     {
@@ -122,7 +122,6 @@
         "zeile": 33
       },
       "gold": 22.0,
-      "pred": 5.0,
       "richtig": true
     },
     {
@@ -135,7 +134,6 @@
         "zeile": 10
       },
       "gold": 44.0,
-      "pred": null,
       "richtig": true
     },
     {
@@ -148,7 +146,6 @@
         "zeile": 10
       },
       "gold": 49.0,
-      "pred": null,
       "richtig": true
     }
   ]

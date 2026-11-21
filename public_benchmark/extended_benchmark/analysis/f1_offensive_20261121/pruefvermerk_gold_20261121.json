@@ -1,0 +1,172 @@
+{
+  "stand": "2026-11-21",
+  "gold_geaendert": false,
+  "faelle": [
+    {
+      "record_id": "yun2024:331",
+      "dokument": "PMC5617873.md",
+      "intervention": "Aripiprazole",
+      "comparator": "Placbeo",
+      "gold_group_size": [
+        [
+          "intervention_group_size",
+          "intervention",
+          45.0
+        ],
+        [
+          "comparator_group_size",
+          "comparator",
+          47.0
+        ]
+      ],
+      "beleg": [
+        {
+          "zeile": 6,
+          "text": "Placebo (n = 45)   Aripiprazole (n = 47)   Total (n = 92)"
+        },
+        {
+          "zeile": 40,
+          "text": "Placebo (n = 45)            Aripiprazole (n = 47)   Difference or ratio (95% confidence interval) P value"
+        },
+        {
+          "zeile": 93,
+          "text": "Placebo (n = 45)   Aripiprazole (n = 47)"
+        }
+      ],
+      "verdikt": "armtausch_bestaetigt",
+      "notiz": "Drei Tabellenkoepfe nennen Placebo vor Aripiprazole; Gold fuehrt 45 als Intervention."
+    },
+    {
+      "record_id": "yun2024:334",
+      "dokument": "PMC5617873.md",
+      "intervention": "Aripiprazole",
+      "comparator": "Placbeo",
+      "gold_group_size": [
+        [
+          "intervention_group_size",
+          "intervention",
+          45.0
+        ],
+        [
+          "comparator_group_size",
+          "comparator",
+          47.0
+        ]
+      ],
+      "beleg": [
+        {
+          "zeile": 6,
+          "text": "Placebo (n = 45)   Aripiprazole (n = 47)   Total (n = 92)"
+        },
+        {
+          "zeile": 40,
+          "text": "Placebo (n = 45)            Aripiprazole (n = 47)   Difference or ratio (95% confidence interval) P value"
+        },
+        {
+          "zeile": 93,
+          "text": "Placebo (n = 45)   Aripiprazole (n = 47)"
+        }
+      ],
+      "verdikt": "armtausch_bestaetigt",
+      "notiz": "Gleiches Dokument wie 331, gleiche Zellwerte."
+    },
+    {
+      "record_id": "yun2024:335",
+      "dokument": "PMC5617873.md",
+      "intervention": "Aripiprazole",
+      "comparator": "Placbeo",
+      "gold_group_size": [
+        [
+          "intervention_group_size",
+          "intervention",
+          45.0
+        ],
+        [
+          "comparator_group_size",
+          "comparator",
+          47.0
+        ]
+      ],
+      "beleg": [
+        {
+          "zeile": 6,
+          "text": "Placebo (n = 45)   Aripiprazole (n = 47)   Total (n = 92)"
+        },
+        {
+          "zeile": 40,
+          "text": "Placebo (n = 45)            Aripiprazole (n = 47)   Difference or ratio (95% confidence interval) P value"
+        },
+        {
+          "zeile": 93,
+          "text": "Placebo (n = 45)   Aripiprazole (n = 47)"
+        }
+      ],
+      "verdikt": "armtausch_bestaetigt",
+      "notiz": "Gleiches Dokument wie 331, gleiche Zellwerte."
+    },
+    {
+      "record_id": "yun2024:336",
+      "dokument": "PMC5617873.md",
+      "intervention": "Aripiprazole",
+      "comparator": "Placbeo",
+      "gold_group_size": [
+        [
+          "intervention_group_size",
+          "intervention",
+          45.0
+        ],
+        [
+          "comparator_group_size",
+          "comparator",
+          47.0
+        ]
+      ],
+      "beleg": [
+        {
+          "zeile": 6,
+          "text": "Placebo (n = 45)   Aripiprazole (n = 47)   Total (n = 92)"
+        },
+        {
+          "zeile": 40,
+          "text": "Placebo (n = 45)            Aripiprazole (n = 47)   Difference or ratio (95% confidence interval) P value"
+        },
+        {
+          "zeile": 93,
+          "text": "Placebo (n = 45)   Aripiprazole (n = 47)"
+        }
+      ],
+      "verdikt": "armtausch_bestaetigt",
+      "notiz": "Gleiches Dokument wie 331, gleiche Zellwerte."
+    },
+    {
+      "record_id": "yun2024:196",
+      "dokument": "PMC5360580.md",
+      "intervention": "1 mg/day of Pls purified from scallop",
+      "comparator": "placebo",
+      "gold_group_size": [
+        [
+          "intervention_group_size",
+          "intervention",
+          24.0
+        ],
+        [
+          "comparator_group_size",
+          "comparator",
+          24.0
+        ]
+      ],
+      "beleg": [
+        {
+          "zeile": 8,
+          "text": "Variable            Pls group (n = 145)   Placebo group (n = 140)   P value[a](#)"
+        },
+        {
+          "zeile": 82,
+          "text": "28               24     1.29        (0.04; 2.55)     24               1.08       (0.46; 1.70)     0.76"
+        }
+      ],
+      "verdikt": "verdacht_widerlegt",
+      "notiz": "Gold stammt aus Tabelle 2 (Woche 28, n = 24, Mittel 1.29/1.08); die Regel las Tabelle 1."
+    }
+  ]
+}

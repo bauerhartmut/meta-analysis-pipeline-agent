@@ -338,13 +338,27 @@ Akronyme ab drei Buchstaben, Plural) und misst die 31 erneut:
 | TP-Verlust | 0 | 0 |
 
 Der Zugewinn sind `yun2024:426` (`Scanning times` gegen `Scan duration (min)`,
-Armspalten `Short-Bore MR (n = 44)` / `Open MR (n = 49)`), also 2 TP. Der neue
-FP ist `yun2024:196`: Tabelle 1 nennt `Pls group (n = 145)` und
-`Placebo group (n = 140)`, Gold fuehrt fuer beide Arme 24; die 24 sind im
-Dokument nicht belegt. Alle fuenf FP sind damit Gold-Verdachtsfaelle, keiner
-ist ein belegter Regel-Fehler: viermal `PMC5617873` mit vertauschten Armen
-(dreimal `Placebo (n = 45)` vor `Aripiprazole (n = 47)`, Kontext-Intervention
-Aripiprazole), einmal `yun2024:196`. Gold blieb unveraendert.
+Armspalten `Short-Bore MR (n = 44)` / `Open MR (n = 49)`), also 2 TP.
+
+Wirkung je Baustein:
+
+| Variante | geliefert | TP | FP |
+|---|---:|---:|---:|
+| ohne Erweiterung | 7 | 2 | 5 |
+| nur Akronyme | 7 | 2 | 5 |
+| nur `scanning` | 9 | 4 | 5 |
+| Akronyme + `scanning` | 9 | 4 | 5 |
+
+Die Aliasliste enthaelt nur noch `scanning -> scan, duration`;`blood/pressure`
+und `fruit/vegetable` sind entfernt, weil sie nichts veraendern. Die
+Akronym-Regel bringt allein 0 TP.
+
+Vier der fuenf FP sind Gold-Verdachtsfaelle (`PMC5617873`, Arme vertauscht:
+dreimal `Placebo (n = 45)` vor `Aripiprazole (n = 47)`, Kontext-Intervention
+Aripiprazole). Der fuenfte, `yun2024:196`, ist **kein** Gold-Fehler: Gold steht
+so in Tabelle 2 (Woche 28, n = 24, Mittel 1.29/1.08), die Regel las die
+Kopfzeile von Tabelle 1 (145/140). Belege im
+`pruefvermerk_gold_20261121.md`; Gold blieb unveraendert.
 
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
 gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht
