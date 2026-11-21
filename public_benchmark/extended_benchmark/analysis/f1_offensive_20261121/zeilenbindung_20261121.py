@@ -470,6 +470,23 @@ def main() -> int:
                 }
             )
 
+    # Zahlengleiche `ersetzen`-Laeufe sind keine Variante, sondern dieselbe
+    # Messung: sie werden nicht ausgewiesen.
+    alle_laeufe = ergebnisse
+    additiv_je = {e["gruppe_modus"]: e for e in alle_laeufe if e["modus"] == "additiv"}
+    ergebnisse = [
+        e for e in alle_laeufe
+        if e["modus"] == "additiv"
+        or e["nachher"] != additiv_je[e["gruppe_modus"]]["nachher"]
+        or any(a["art"] == "ersetzt" for d in e["detail"] for a in d["aenderungen"])
+    ]
+    nicht_ausgewiesen = [
+        {"gruppe_modus": e["gruppe_modus"], "modus": e["modus"],
+         "grund": "zahlenleich zu additiv (keine ersetzte Zelle)"}
+        for e in alle_laeufe if e not in ergebnisse
+    ]
+    erstes_additiv = next(e for e in ergebnisse if e["gruppe_modus"] == "erstes" and e["modus"] == "additiv")
+
     # Record-30-Pruefung: trifft die Regel die sechs Goldzellen?
     r30 = records["yun2024:30"]
     gold30 = {(c["field"], c.get("arm")): c["value"] for c in r30["gold"]["cells"]}
@@ -511,6 +528,7 @@ def main() -> int:
         },
         "record30": record30,
         "laeufe": ergebnisse,
+        "nicht_ausgewiesen": nicht_ausgewiesen,
         "obergrenze": obergrenze,
     }
     (HIER / "zeilenbindung_20261121.json").write_text(
@@ -530,14 +548,15 @@ def main() -> int:
         f"{(d['label'] or d['grund'] or '-')[:36].encode('ascii', 'replace').decode()} | "
         f"{d['vor']['tp']}/{d['vor']['fp']}/{d['vor']['fn']} | "
         f"{d['nach']['tp']}/{d['nach']['fp']}/{d['nach']['fn']} | {len(d['aenderungen'])} |"
-        for d in ergebnisse[2]["detail"]
+        for d in erstes_additiv["detail"]
     )
     r30e = record30["erstes"]
     tabellen_zeilen = "".join(zeile(e) for e in ergebnisse)
+    hinweis = ", ".join(f"{x['gruppe_modus']}/{x['modus']}" for x in nicht_ausgewiesen) or "keine"
     aenderungs_liste = "\n".join(
         f"- `{d['record_id']}`: {len(d['aenderungen'])} Zellen gebunden, davon {d['neu_richtig']} neu richtig; "
         f"Phase-1-Klassen: {', '.join(f'{k}: {n}' for k, n in d['klassen'].items())}"
-        for d in ergebnisse[2]["detail"] if d["gebunden"]
+        for d in erstes_additiv["detail"] if d["gebunden"]
     )
     bericht = f"""# Zeilenbindung mit Zeilengruppen-Achse (21.11.2026)
 
@@ -577,6 +596,10 @@ Gruppenachse loest den Fall also nur mit dem Reihenfolge-Stichentscheid.
 | Gruppenmodus | Anwendung | gebunden | neue TP | davon erreichbar | davon `fp_gebunden` | davon `fn_wert_ersetzt` | FP-Delta | TP-Verlust |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
 {tabellen_zeilen}
+
+Zahlengleiche `ersetzen`-Laeufe sind nicht ausgewiesen ({hinweis}); sie haetten
+keine Zelle ersetzt, weil die Vorhersagen an den gebundenen Schluesseln leer
+waren.
 
 ### Wohin die Aenderungen fallen (Gruppenmodus erstes, additiv)
 

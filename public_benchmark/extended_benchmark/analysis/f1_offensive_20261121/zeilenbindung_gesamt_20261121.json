@@ -1,0 +1,122 @@
+{
+  "stand": "2026-11-21",
+  "records": 699,
+  "laeufe": [
+    {
+      "gruppe_modus": "streng",
+      "records": 699,
+      "gebunden": 2,
+      "zellen_gebunden": 12,
+      "zellen_richtig": 2,
+      "vorher": {
+        "tp": 170,
+        "fp": 101,
+        "fn": 2603
+      },
+      "nachher": {
+        "tp": 172,
+        "fp": 111,
+        "fn": 2601
+      },
+      "tp_delta": 2,
+      "fp_delta": 10,
+      "fn_delta": -2,
+      "auswahl41": {
+        "records": 41,
+        "gebunden": 1,
+        "zellen_gebunden": 6,
+        "zellen_richtig": 1,
+        "vorher": {
+          "tp": 0,
+          "fp": 24,
+          "fn": 158
+        },
+        "nachher": {
+          "tp": 1,
+          "fp": 29,
+          "fn": 157
+        },
+        "tp_delta": 1,
+        "fp_delta": 5,
+        "fn_delta": -1
+      },
+      "rest658": {
+        "records": 658,
+        "gebunden": 1,
+        "zellen_gebunden": 6,
+        "zellen_richtig": 1,
+        "vorher": {
+          "tp": 170,
+          "fp": 77,
+          "fn": 2445
+        },
+        "nachher": {
+          "tp": 171,
+          "fp": 82,
+          "fn": 2444
+        },
+        "tp_delta": 1,
+        "fp_delta": 5,
+        "fn_delta": -1
+      }
+    },
+    {
+      "gruppe_modus": "erstes",
+      "records": 699,
+      "gebunden": 22,
+      "zellen_gebunden": 126,
+      "zellen_richtig": 34,
+      "vorher": {
+        "tp": 170,
+        "fp": 101,
+        "fn": 2603
+      },
+      "nachher": {
+        "tp": 198,
+        "fp": 177,
+        "fn": 2575
+      },
+      "tp_delta": 28,
+      "fp_delta": 76,
+      "fn_delta": -28,
+      "auswahl41": {
+        "records": 41,
+        "gebunden": 3,
+        "zellen_gebunden": 18,
+        "zellen_richtig": 7,
+        "vorher": {
+          "tp": 0,
+          "fp": 24,
+          "fn": 158
+        },
+        "nachher": {
+          "tp": 7,
+          "fp": 35,
+          "fn": 151
+        },
+        "tp_delta": 7,
+        "fp_delta": 11,
+        "fn_delta": -7
+      },
+      "rest658": {
+        "records": 658,
+        "gebunden": 19,
+        "zellen_gebunden": 108,
+        "zellen_richtig": 27,
+        "vorher": {
+          "tp": 170,
+          "fp": 77,
+          "fn": 2445
+        },
+        "nachher": {
+          "tp": 191,
+          "fp": 142,
+          "fn": 2424
+        },
+        "tp_delta": 21,
+        "fp_delta": 65,
+        "fn_delta": -21
+      }
+    }
+  ]
+}

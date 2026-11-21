@@ -142,14 +142,13 @@ Record 30 gegen seine 6 Goldzellen (38.1/9.5 und 31.5/7.4, n = 393/199, Woche
 | streng | nein (3 gleich gute Zeilen) | - | - | 0/6 |
 | erstes | ja | PCS | 52 | 6/6 |
 
-Messung auf allen 41 schweren Records (`TP-Verlust` negativ = Gewinn):
+Messung auf allen 41 schweren Records (`TP-Verlust` negativ = Gewinn). Die
+`ersetzen`-Laeufe waren zahlengleich zu `additiv` und sind nicht ausgewiesen:
 
-| Gruppenmodus | Anwendung | gebunden | neue TP | davon erreichbar | FP-Delta | TP-Verlust |
-|---|---|---:|---:|---:|---:|---:|
-| streng | additiv | 1 | 1 | 0 | +5 | -1 |
-| erstes | additiv | 3 | 7 | 0 | +11 | -7 |
-| streng | ersetzen | wie additiv | | | | |
-| erstes | ersetzen | wie additiv | | | | |
+| Gruppenmodus | gebunden | neue TP | davon erreichbar | FP-Delta | TP-Verlust |
+|---|---:|---:|---:|---:|---:|
+| streng | 1 | 1 | 0 | +5 | -1 |
+| erstes | 3 | 7 | 0 | +11 | -7 |
 
 Ergebnis: **0 der 24 erreichbaren `fp_gebunden`/`fn_wert_ersetzt`-Zellen**
 (26 mit Kaption-Bezug) werden neu gebunden. Der Zugewinn von 7 TP liegt
@@ -160,6 +159,22 @@ ausschliesslich in `fn_leer`-Zellen: Record 30 mit 6 von 6 und eine Zelle in
 Grenze des Verfahrens: `streng` verweigert Record 30, weil der Kontext weder
 PCS noch MCS nennt; `erstes` trifft PCS nur, weil PCS die erste Gruppe der
 Tabelle ist. Bei einem Record mit MCS-Gold waere dieselbe Regel falsch.
+
+## Gegenprobe: alle 699 Records (offline)
+
+Dieselbe Regel, additiver Modus, alle 699 Records mit Gold und P5-Zellen
+(`zeilenbindung_gesamt_20261121.py`):
+
+| Gruppenmodus | gebunden | Zellen (richtig) | TP | FP | FP-Delta | TP-Delta |
+|---|---:|---:|---:|---:|---:|---:|
+| streng | 2 | 12 (2) | 172 | 111 | +10 | +2 |
+| erstes | 22 | 126 (34) | 198 | 177 | +76 | +28 |
+
+Die Zusatz-FP der 41 verschwinden nicht, sie sind nur ein kleiner Teil: 11 der
+76 bei `erstes`. Die uebrigen 658 Records steuern +65 FP bei +21 TP bei, das
+Verhaeltnis wird also schlechter, nicht besser. `streng` bleibt bei 2 TP zu
+10 FP. Die Regel bindet 22 von 699 Records (3 Prozent) und trifft in deren
+126 Zellen zu 34 (27 Prozent) das Gold.
 
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 

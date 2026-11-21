@@ -36,10 +36,12 @@ Gruppenachse loest den Fall also nur mit dem Reihenfolge-Stichentscheid.
 | Gruppenmodus | Anwendung | gebunden | neue TP | davon erreichbar | davon `fp_gebunden` | davon `fn_wert_ersetzt` | FP-Delta | TP-Verlust |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
 | streng | additiv | 1 | 1 | 0 | 0 | 0 | +5 | -1 |
-| streng | ersetzen | 1 | 1 | 0 | 0 | 0 | +5 | -1 |
 | erstes | additiv | 3 | 7 | 0 | 0 | 0 | +11 | -7 |
-| erstes | ersetzen | 3 | 7 | 0 | 0 | 0 | +11 | -7 |
 
+
+Zahlengleiche `ersetzen`-Laeufe sind nicht ausgewiesen (streng/ersetzen, erstes/ersetzen); sie haetten
+keine Zelle ersetzt, weil die Vorhersagen an den gebundenen Schluesseln leer
+waren.
 
 ### Wohin die Aenderungen fallen (Gruppenmodus erstes, additiv)
 
