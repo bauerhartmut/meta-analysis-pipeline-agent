@@ -1,0 +1,83 @@
+{
+  "record_id": "yun2024:557",
+  "dokument": {
+    "pmcid": "PMC3136370",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3136370.md",
+    "text_zeichen": 13122
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "Soy shake",
+    "comparator": "Casein shake (Placebo)",
+    "outcome": "Fibromyalgia Impact Questionnaire scores",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 6,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 12.0,
+      "raw": "12",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": -17.1,
+      "raw": "-17.1",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 68.08,
+      "raw": "68.08",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 16.0,
+      "raw": "16",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": -19.57,
+      "raw": "-19.57",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 93.53,
+      "raw": "93.53",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nein",
+    "gefunden": 0,
+    "von": 6,
+    "ohne_fund": [
+      -19.57,
+      -17.1,
+      12.0,
+      16.0,
+      68.08,
+      93.53
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 6,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

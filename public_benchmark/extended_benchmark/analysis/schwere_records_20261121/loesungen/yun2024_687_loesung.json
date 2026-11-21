@@ -1,0 +1,50 @@
+{
+  "record_id": "yun2024:687",
+  "dokument": {
+    "pmcid": "PMC2836833",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC2836833.md",
+    "text_zeichen": 18929
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "1500 mg calcium",
+    "comparator": "500 mg calcium",
+    "outcome": "weight loss",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 2,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 17.0,
+      "raw": "17",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 17.0,
+      "raw": "17",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nein",
+    "gefunden": 0,
+    "von": 2,
+    "ohne_fund": [
+      17.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

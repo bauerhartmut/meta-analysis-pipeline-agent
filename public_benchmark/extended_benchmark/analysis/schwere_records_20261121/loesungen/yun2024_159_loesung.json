@@ -1,0 +1,81 @@
+{
+  "record_id": "yun2024:159",
+  "dokument": {
+    "pmcid": "PMC5056957",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5056957.md",
+    "text_zeichen": 16081
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "Multi-component physical activity",
+    "comparator": "Usual PE and sport programmes",
+    "outcome": "BMI reduction at 12 months",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 6,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 592.0,
+      "raw": "592",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": 21.07,
+      "raw": "21.07",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 6.39,
+      "raw": "6.39",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 459.0,
+      "raw": "459",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 21.27,
+      "raw": "21.27",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 5.9,
+      "raw": "5.9",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "ja",
+    "gefunden": 2,
+    "von": 6,
+    "ohne_fund": [
+      5.9,
+      6.39,
+      459.0,
+      592.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 6,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

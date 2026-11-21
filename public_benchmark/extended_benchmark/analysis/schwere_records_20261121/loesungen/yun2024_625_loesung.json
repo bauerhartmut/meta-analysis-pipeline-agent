@@ -1,0 +1,51 @@
+{
+  "record_id": "yun2024:625",
+  "dokument": {
+    "pmcid": "PMC3493722",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3493722.md",
+    "text_zeichen": 5258
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "1-week quadruple rescue therapy",
+    "comparator": "2-week quadruple rescue therapy",
+    "outcome": "well compliance rates",
+    "outcome_type": "binary"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 2,
+  "gold_zellen": [
+    {
+      "field": "intervention_events",
+      "arm": "intervention",
+      "value": 8.0,
+      "raw": "8",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_events",
+      "arm": "comparator",
+      "value": 4.0,
+      "raw": "4",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nein",
+    "gefunden": 0,
+    "von": 2,
+    "ohne_fund": [
+      4.0,
+      8.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

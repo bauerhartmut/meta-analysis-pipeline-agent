@@ -1,0 +1,381 @@
+{
+  "stand": "2026-11-21",
+  "kriterien": {
+    "A_keine_antwort": "content_chars == 0 im P5-Lauf (33 Records)",
+    "B_zellen_ohne_treffer": "p5.zellen > 0, p5.tp == 0, goldzellen > 0 (8 Records)",
+    "ausgeschlossen": {
+      "yun2024:653": "keine Goldzellen"
+    }
+  },
+  "records": [
+    {
+      "record_id": "yun2024:30",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3003523",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:52",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3195393",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:119",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC4323894",
+      "goldzellen": 4,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:128",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC4493951",
+      "goldzellen": 4,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:152",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5055753",
+      "goldzellen": 4,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:159",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5056957",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:164",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5062234",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:171",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5079604",
+      "goldzellen": 4,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:173",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5079604",
+      "goldzellen": 4,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:204",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5380326",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:251",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5614421",
+      "goldzellen": 4,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:252",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5614421",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:273",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3214395",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:304",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC4357072",
+      "goldzellen": 4,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:356",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5884950",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:420",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3877023",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:421",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3877023",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:446",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC4879328",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:451",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC4879328",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:523",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5325897",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:525",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5325897",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:557",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3136370",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:559",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3136370",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:582",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3504298",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:624",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3493722",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:625",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC3493722",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:671",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC4550271",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:672",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC4550271",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:673",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC4550271",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:674",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC4550271",
+      "goldzellen": 6,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "ja"
+    },
+    {
+      "record_id": "yun2024:678",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC5777419",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:685",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC2836833",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:687",
+      "klasse": "A_keine_antwort",
+      "pmcid": "PMC2836833",
+      "goldzellen": 2,
+      "p5_zellen": 0,
+      "p5_tp": 0,
+      "gold_im_text": "nein"
+    },
+    {
+      "record_id": "yun2024:113",
+      "klasse": "B_zellen_ohne_treffer",
+      "pmcid": "PMC4319071",
+      "goldzellen": 6,
+      "p5_zellen": 4,
+      "p5_tp": 0,
+      "gold_im_text": "nicht ausgewertet"
+    },
+    {
+      "record_id": "yun2024:357",
+      "klasse": "B_zellen_ohne_treffer",
+      "pmcid": "PMC5884950",
+      "goldzellen": 2,
+      "p5_zellen": 4,
+      "p5_tp": 0,
+      "gold_im_text": "nicht ausgewertet"
+    },
+    {
+      "record_id": "yun2024:362",
+      "klasse": "B_zellen_ohne_treffer",
+      "pmcid": "PMC5971365",
+      "goldzellen": 4,
+      "p5_zellen": 2,
+      "p5_tp": 0,
+      "gold_im_text": "nicht ausgewertet"
+    },
+    {
+      "record_id": "yun2024:533",
+      "klasse": "B_zellen_ohne_treffer",
+      "pmcid": "PMC5800236",
+      "goldzellen": 2,
+      "p5_zellen": 2,
+      "p5_tp": 0,
+      "gold_im_text": "nicht ausgewertet"
+    },
+    {
+      "record_id": "yun2024:615",
+      "klasse": "B_zellen_ohne_treffer",
+      "pmcid": "PMC1863515",
+      "goldzellen": 4,
+      "p5_zellen": 2,
+      "p5_tp": 0,
+      "gold_im_text": "nicht ausgewertet"
+    },
+    {
+      "record_id": "yun2024:616",
+      "klasse": "B_zellen_ohne_treffer",
+      "pmcid": "PMC1863515",
+      "goldzellen": 4,
+      "p5_zellen": 2,
+      "p5_tp": 0,
+      "gold_im_text": "nicht ausgewertet"
+    },
+    {
+      "record_id": "yun2024:626",
+      "klasse": "B_zellen_ohne_treffer",
+      "pmcid": "PMC3493722",
+      "goldzellen": 2,
+      "p5_zellen": 2,
+      "p5_tp": 0,
+      "gold_im_text": "nicht ausgewertet"
+    },
+    {
+      "record_id": "yun2024:686",
+      "klasse": "B_zellen_ohne_treffer",
+      "pmcid": "PMC2836833",
+      "goldzellen": 2,
+      "p5_zellen": 6,
+      "p5_tp": 0,
+      "gold_im_text": "nicht ausgewertet"
+    }
+  ]
+}

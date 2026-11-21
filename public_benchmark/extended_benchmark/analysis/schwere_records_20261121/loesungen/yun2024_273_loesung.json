@@ -1,0 +1,51 @@
+{
+  "record_id": "yun2024:273",
+  "dokument": {
+    "pmcid": "PMC3214395",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3214395.md",
+    "text_zeichen": 3360
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "group 1 included bispectral index (BIS) of 60, group 2 covered bispectral index (BIS) of 50",
+    "comparator": "group 3 involved bispectral index (BIS) of 40",
+    "outcome": "awakening",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 2,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 60.0,
+      "raw": "60",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 30.0,
+      "raw": "30",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nein",
+    "gefunden": 0,
+    "von": 2,
+    "ohne_fund": [
+      30.0,
+      60.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

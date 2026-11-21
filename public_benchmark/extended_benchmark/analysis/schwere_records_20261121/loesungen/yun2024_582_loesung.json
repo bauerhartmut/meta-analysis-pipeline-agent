@@ -1,0 +1,50 @@
+{
+  "record_id": "yun2024:582",
+  "dokument": {
+    "pmcid": "PMC3504298",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3504298.md",
+    "text_zeichen": 12838
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "Word-based attentional bias modification",
+    "comparator": "Face-based attentional bias modification",
+    "outcome": "Attentional Function",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 2,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 16.0,
+      "raw": "16",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 16.0,
+      "raw": "16",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nein",
+    "gefunden": 0,
+    "von": 2,
+    "ohne_fund": [
+      16.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

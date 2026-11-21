@@ -1,0 +1,82 @@
+{
+  "record_id": "yun2024:446",
+  "dokument": {
+    "pmcid": "PMC4879328",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4879328.md",
+    "text_zeichen": 25267
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "Get Healthy, Stay Healthy' (GHSH)",
+    "comparator": "no continued contact",
+    "outcome": "waist circumference",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 6,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 104.0,
+      "raw": "104",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": -0.89,
+      "raw": "-0.89",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 3.32,
+      "raw": "3.32",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 114.0,
+      "raw": "114",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 0.3,
+      "raw": "0.3",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 3.54,
+      "raw": "3.54",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "ja",
+    "gefunden": 1,
+    "von": 6,
+    "ohne_fund": [
+      -0.89,
+      3.32,
+      3.54,
+      104.0,
+      114.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 6,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

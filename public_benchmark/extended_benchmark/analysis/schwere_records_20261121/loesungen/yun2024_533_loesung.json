@@ -1,0 +1,48 @@
+{
+  "record_id": "yun2024:533",
+  "dokument": {
+    "pmcid": "PMC5800236",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5800236.md",
+    "text_zeichen": 8923
+  },
+  "klasse": "B_zellen_ohne_treffer",
+  "kontext": {
+    "intervention": "Nacadia® nature-based therapy",
+    "comparator": "Cognitive behavioral therapy",
+    "outcome": "Months of sick leave",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 2,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 37.0,
+      "raw": "37",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 35.0,
+      "raw": "35",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nicht ausgewertet",
+    "gefunden": null,
+    "von": 2,
+    "ohne_fund": [],
+    "methode": "nicht ausgewertet"
+  },
+  "p5_lauf": {
+    "zellen": 2,
+    "tp": 0,
+    "fp": 2,
+    "fn": 2,
+    "f1": null,
+    "fehlerklasse": ""
+  }
+}

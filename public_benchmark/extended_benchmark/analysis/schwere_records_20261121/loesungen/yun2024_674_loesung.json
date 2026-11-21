@@ -1,0 +1,78 @@
+{
+  "record_id": "yun2024:674",
+  "dokument": {
+    "pmcid": "PMC4550271",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4550271.md",
+    "text_zeichen": 42606
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "provider-school intervention",
+    "comparator": "control",
+    "outcome": "treatment according to guidelines",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 6,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 14.0,
+      "raw": "14",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": 23.5,
+      "raw": "23.5",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 26.0,
+      "raw": "26",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 12.0,
+      "raw": "12",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 22.6,
+      "raw": "22.6",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 23.0,
+      "raw": "23",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "ja",
+    "gefunden": 5,
+    "von": 6,
+    "ohne_fund": [
+      26.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 6,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "record_id": "yun2024:420",
+  "dokument": {
+    "pmcid": "PMC3877023",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3877023.md",
+    "text_zeichen": 26274
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "short-bore MR scanner",
+    "comparator": "high-field horizontal open MR scanner",
+    "outcome": "quantitative contour sharpness of the Cervicothoracic Spine",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 6,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 18.0,
+      "raw": "18",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": 0.95,
+      "raw": "0.95",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 0.24,
+      "raw": "0.24",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 21.0,
+      "raw": "21",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 1.43,
+      "raw": "1.43",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 0.48,
+      "raw": "0.48",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "ja",
+    "gefunden": 4,
+    "von": 6,
+    "ohne_fund": [
+      18.0,
+      21.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 6,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

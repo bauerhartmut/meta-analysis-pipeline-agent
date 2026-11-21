@@ -1,0 +1,66 @@
+{
+  "record_id": "yun2024:119",
+  "dokument": {
+    "pmcid": "PMC4323894",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4323894.md",
+    "text_zeichen": 10032
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "Mild-cooling",
+    "comparator": "No cooling",
+    "outcome": "Improvement in Glasgow outcome score at 6 months post-trauma",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 4,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 10.0,
+      "raw": "10",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": 70.0,
+      "raw": "70",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 13.0,
+      "raw": "13",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 15.4,
+      "raw": "15.4",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "ja",
+    "gefunden": 1,
+    "von": 4,
+    "ohne_fund": [
+      10.0,
+      13.0,
+      70.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 4,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

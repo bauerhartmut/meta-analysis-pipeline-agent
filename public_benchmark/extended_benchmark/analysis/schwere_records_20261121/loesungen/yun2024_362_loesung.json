@@ -1,0 +1,62 @@
+{
+  "record_id": "yun2024:362",
+  "dokument": {
+    "pmcid": "PMC5971365",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5971365.md",
+    "text_zeichen": 6842
+  },
+  "klasse": "B_zellen_ohne_treffer",
+  "kontext": {
+    "intervention": "daclizumab beta",
+    "comparator": "intramuscular (IM) interferon (IFN) beta-1a",
+    "outcome": "clinically meaningful improvement at week 96 (⩾3-point increase on the SDMT)",
+    "outcome_type": "binary"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 4,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 720.0,
+      "raw": "720",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_events",
+      "arm": "intervention",
+      "value": 432.0,
+      "raw": "432",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 682.0,
+      "raw": "682",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_events",
+      "arm": "comparator",
+      "value": 369.0,
+      "raw": "369",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nicht ausgewertet",
+    "gefunden": null,
+    "von": 4,
+    "ohne_fund": [],
+    "methode": "nicht ausgewertet"
+  },
+  "p5_lauf": {
+    "zellen": 2,
+    "tp": 0,
+    "fp": 2,
+    "fn": 4,
+    "f1": null,
+    "fehlerklasse": ""
+  }
+}

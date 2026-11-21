@@ -1,0 +1,62 @@
+{
+  "record_id": "yun2024:616",
+  "dokument": {
+    "pmcid": "PMC1863515",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC1863515.md",
+    "text_zeichen": 12441
+  },
+  "klasse": "B_zellen_ohne_treffer",
+  "kontext": {
+    "intervention": "Zidovudine prophylaxis initiation",
+    "comparator": "placebo",
+    "outcome": "leucocyte count between 26 and 35 wk",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 4,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 754.0,
+      "raw": "754",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": -423.0,
+      "raw": "-423",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 656.0,
+      "raw": "656",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 0.0,
+      "raw": "0",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nicht ausgewertet",
+    "gefunden": null,
+    "von": 4,
+    "ohne_fund": [],
+    "methode": "nicht ausgewertet"
+  },
+  "p5_lauf": {
+    "zellen": 2,
+    "tp": 0,
+    "fp": 2,
+    "fn": 4,
+    "f1": null,
+    "fehlerklasse": ""
+  }
+}

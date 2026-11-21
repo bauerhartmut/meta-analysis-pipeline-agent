@@ -1,0 +1,67 @@
+{
+  "record_id": "yun2024:171",
+  "dokument": {
+    "pmcid": "PMC5079604",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5079604.md",
+    "text_zeichen": 20409
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "metformin 1,000 mg daily, sitagliptin 100 mg daily",
+    "comparator": "placebo",
+    "outcome": "The restricted mean time to hyperglycemia relapse",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 4,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 33.0,
+      "raw": "33",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": 480.0,
+      "raw": "480",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 15.0,
+      "raw": "15",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 305.0,
+      "raw": "305",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nein",
+    "gefunden": 0,
+    "von": 4,
+    "ohne_fund": [
+      15.0,
+      33.0,
+      305.0,
+      480.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 4,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

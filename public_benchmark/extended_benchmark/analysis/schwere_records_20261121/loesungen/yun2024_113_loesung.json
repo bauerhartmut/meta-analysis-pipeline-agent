@@ -1,0 +1,76 @@
+{
+  "record_id": "yun2024:113",
+  "dokument": {
+    "pmcid": "PMC4319071",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC4319071.md",
+    "text_zeichen": 49917
+  },
+  "klasse": "B_zellen_ohne_treffer",
+  "kontext": {
+    "intervention": "Intervention + targeting environmental-level factors",
+    "comparator": "Individual cognition and self-regulation processes intervention",
+    "outcome": "Vegetable intake",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 6,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 456.0,
+      "raw": "456",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": 167.61,
+      "raw": "167.61",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 83.71,
+      "raw": "83.71",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 459.0,
+      "raw": "459",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 173.28,
+      "raw": "173.28",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 81.63,
+      "raw": "81.63",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nicht ausgewertet",
+    "gefunden": null,
+    "von": 6,
+    "ohne_fund": [],
+    "methode": "nicht ausgewertet"
+  },
+  "p5_lauf": {
+    "zellen": 4,
+    "tp": 0,
+    "fp": 4,
+    "fn": 6,
+    "f1": null,
+    "fehlerklasse": ""
+  }
+}

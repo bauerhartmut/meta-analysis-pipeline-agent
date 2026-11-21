@@ -1,0 +1,50 @@
+{
+  "record_id": "yun2024:164",
+  "dokument": {
+    "pmcid": "PMC5062234",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5062234.md",
+    "text_zeichen": 3808
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "Transversus abdominis plane block with 0.375% ropivacaine",
+    "comparator": "local anesthetic infiltration of the port site.",
+    "outcome": "The visual analog scale scores at rest and on coughing",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 2,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 21.0,
+      "raw": "21",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 21.0,
+      "raw": "21",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nein",
+    "gefunden": 0,
+    "von": 2,
+    "ohne_fund": [
+      21.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

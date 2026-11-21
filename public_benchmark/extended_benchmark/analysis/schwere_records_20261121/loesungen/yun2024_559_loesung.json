@@ -1,0 +1,83 @@
+{
+  "record_id": "yun2024:559",
+  "dokument": {
+    "pmcid": "PMC3136370",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3136370.md",
+    "text_zeichen": 13122
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "Soy shake",
+    "comparator": "Casein shake (Placebo)",
+    "outcome": "Center for Epidemiologic Studies Depression Scale score",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 6,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 12.0,
+      "raw": "12",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": -4.0,
+      "raw": "-4",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 12.35,
+      "raw": "12.35",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 16.0,
+      "raw": "16",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": -8.0,
+      "raw": "-8",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 65.41,
+      "raw": "65.41",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nein",
+    "gefunden": 0,
+    "von": 6,
+    "ohne_fund": [
+      -8.0,
+      -4.0,
+      12.0,
+      12.35,
+      16.0,
+      65.41
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 6,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

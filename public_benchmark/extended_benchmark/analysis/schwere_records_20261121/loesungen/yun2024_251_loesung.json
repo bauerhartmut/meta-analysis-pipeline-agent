@@ -1,0 +1,66 @@
+{
+  "record_id": "yun2024:251",
+  "dokument": {
+    "pmcid": "PMC5614421",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5614421.md",
+    "text_zeichen": 40101
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "vaginal progesterone pessaries (equivalent to 100 mg vaginal progesterone)",
+    "comparator": "placebo",
+    "outcome": "severity of any neonatal respiratory disease",
+    "outcome_type": "binary"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 4,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 402.0,
+      "raw": "402",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_events",
+      "arm": "intervention",
+      "value": 8.0,
+      "raw": "8",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 388.0,
+      "raw": "388",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_events",
+      "arm": "comparator",
+      "value": 7.0,
+      "raw": "7",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "ja",
+    "gefunden": 1,
+    "von": 4,
+    "ohne_fund": [
+      7.0,
+      388.0,
+      402.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 4,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

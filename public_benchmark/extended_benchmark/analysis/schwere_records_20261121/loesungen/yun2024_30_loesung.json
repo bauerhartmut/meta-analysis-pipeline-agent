@@ -1,0 +1,79 @@
+{
+  "record_id": "yun2024:30",
+  "dokument": {
+    "pmcid": "PMC3003523",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC3003523.md",
+    "text_zeichen": 25866
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "Certolizumab 200 mg",
+    "comparator": "Control",
+    "outcome": "Short-Form 36-Items improvement",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 6,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 393.0,
+      "raw": "393",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": 38.1,
+      "raw": "38.1",
+      "timepoint": null
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 9.5,
+      "raw": "9.5",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 199.0,
+      "raw": "199",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 31.5,
+      "raw": "31.5",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 7.4,
+      "raw": "7.4",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "ja",
+    "gefunden": 4,
+    "von": 6,
+    "ohne_fund": [
+      199.0,
+      393.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 6,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}

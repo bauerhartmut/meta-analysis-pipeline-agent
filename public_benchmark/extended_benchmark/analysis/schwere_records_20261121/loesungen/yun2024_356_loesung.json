@@ -1,0 +1,50 @@
+{
+  "record_id": "yun2024:356",
+  "dokument": {
+    "pmcid": "PMC5884950",
+    "pfad": "public_benchmark/raw_data/yun_llm_meta_analysis/evaluation/data/no_attributes_markdown_files/PMC5884950.md",
+    "text_zeichen": 19352
+  },
+  "klasse": "A_keine_antwort",
+  "kontext": {
+    "intervention": "extensively hydrolyzed whey-based formula with short-chain galacto-oligosaccharides/long-chain fructo-oligosaccharides (9:1) and Bifidobacterium breve M-16V (active).",
+    "comparator": "extensively hydrolyzed whey-based formula without (control) short-chain galacto-oligosaccharides/long-chain fructo-oligosaccharides (9:1) and Bifidobacterium breve M-16V (active).",
+    "outcome": "objective-SCORAD score",
+    "outcome_type": "continuous"
+  },
+  "zielzeitpunkt_regel": "primary time point of the trial (if not stated: the last reported time point)",
+  "gold_summe": 2,
+  "gold_zellen": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 13.0,
+      "raw": "13",
+      "timepoint": null
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 13.0,
+      "raw": "13",
+      "timepoint": null
+    }
+  ],
+  "goldwerte_im_text": {
+    "status": "nein",
+    "gefunden": 0,
+    "von": 2,
+    "ohne_fund": [
+      13.0
+    ],
+    "methode": "Satz- und Tabellenkontext (leere_p5_muster_20261120.json)"
+  },
+  "p5_lauf": {
+    "zellen": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "f1": null,
+    "fehlerklasse": "length_ohne_ergebnis"
+  }
+}
