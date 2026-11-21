@@ -84,6 +84,8 @@ def felder_lesen(record: dict[str, Any], text: str) -> dict[str, dict[str, Any]]
         aus[feld] = {"wert": None if info is None else info["value"],
                      "zeile": None if info is None else info.get("zeile"),
                      "quelle": None if info is None else info.get("quelle"),
+                     "abgeleitet": bool((info or {}).get("abgeleitet")),
+                     "herkunft": (info or {}).get("herkunft", "zelle"),
                      "gold": gold,
                      "richtig": info is not None and abs(info["value"] - gold) < 1e-6}
     return aus
@@ -241,15 +243,21 @@ def main() -> int:
                   f"{e['bilanz_alt']['richtig']} | {e['bilanz_neu']['richtig']} | "
                   f"{'ja' if e['bilanz_neu']['vollstaendig_richtig'] else 'nein'} |")
     md += ["", "### Zellen im Vergleich", "",
-           "| Record | Feld | alt | neu | Gold | neu richtig | Quelle neu |",
-           "|---|---|---:|---:|---:|---|---|"]
+           "| Record | Feld | alt | neu | Gold | neu richtig | abgeleitet | Quelle neu |",
+           "|---|---|---:|---:|---:|---|---|---|"]
     for rid in VIER:
         for feld, w in vier[rid]["neu"].items():
             a = vier[rid]["alt"][feld]
             md.append(f"| `{rid}` | {feld} | {'-' if a['wert'] is None else a['wert']} | "
                       f"{'-' if w['wert'] is None else w['wert']} | {w['gold']} | "
                       f"{'ja' if w['richtig'] else 'nein'} | "
+                      f"{'ja' if w['abgeleitet'] else 'nein'} | "
                       f"{w['quelle'] or '-'} / Zeile {w['zeile'] or '-'} |")
+    abgeleitet = [(rid, feld) for rid in VIER for feld, w in vier[rid]["neu"].items()
+                  if w["abgeleitet"]]
+    md += ["", f"Abgeleitet statt abgelesen sind {len(abgeleitet)} Zellen; gedruckt ist ",
+           "keine davon, sie stammen aus dem 95%-KI der Nachher-Tabelle.",
+           ""]
     md += ["", "## Tabellen der Dokumente, einzeln gelesen", "",
            "Jede Tabelle allein an die Regel gegeben; so wird sichtbar, welche Werte",
            "in welcher Tabelle stehen.", ""]

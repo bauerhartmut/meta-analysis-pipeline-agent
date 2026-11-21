@@ -257,6 +257,23 @@ Streuung brauchen die Zeilen-n und das KI dieser Tabelle.
 
 Poolbasis: k 24 -> 27 und pooled 0.125 -> 0.136 (95%-KI -0.226 bis 0.499).
 
+## Kennzeichnung und Pruefung ueber alle 699 Records
+
+Abgeleitete Streuungen tragen `abgeleitet: True` und `herkunft: 95%-KI`,
+abgelesene `abgeleitet: False` und `herkunft: zelle`; die Fixture haelt das
+Kennzeichen je Zelle fest. `umschreiben_20261121.py` liest alle 699 Records je
+Goldfeld mit aus- und mit eingeschalteter Tabellenwahl (2.463 Auftraege): 0
+verworfene und 0 umgeschriebene richtige Zellen, 26 neue richtige Zellen und 0
+neue falsche (die 169 falschen liefert die Regel in beiden Staenden). Die 14
+abgeleiteten Streuungen sind 10-mal richtig; falsch bei `446` (Gold 3.32 gegen
+5.07 aus dem KI) und `451` (falsche Zeile, `Vigorous PA` statt MVPA).
+
+In den 103 P5-Vorhersagen bestaetigt die Regel 30 richtige Zellen und
+ueberschreibt 31; alle 31 tragen schon vorher einen falschen Regelwert, keine
+geht auf die Tabellenwahl zurueck. Die Bilanz ueber alle 699 Records bleibt
+negativ: 166 TP / 96 FP ohne Ersetzen, 157 / 141 mit den neuen Zellen (alt
+138 / 158).
+
 ## Grenzen
 
 - Alle Regeln sind Textheuristiken auf Markdown; sie greifen bei sauberen
@@ -267,7 +284,12 @@ Poolbasis: k 24 -> 27 und pooled 0.125 -> 0.136 (95%-KI -0.226 bis 0.499).
   um; ohne diese Bedingung verliert es 12 TP.
 - Die Streuung der drei Records ist nicht gedruckt, sondern aus dem 95%-KI
   abgeleitet (Normalverteilung, gerundete Intervallgrenzen). Sie trifft die
-  Goldwerte, ist aber eine Schaetzung.
+  Goldwerte, ist aber eine Schaetzung und wird als solche gekennzeichnet.
+  Bei `yun2024:446` passt das Gold (3.32) nicht zum gedruckten KI (5.07
+  abgeleitet) - offene Goldfrage, keine Leseschwaeche der Formel.
+- Das Ersetzen von Vorhersagezellen durch Regelzellen kostet in P5 TP, auch mit
+  der neuen Tabellenwahl (166 auf 157). Die Regel ist als Ersatz, nicht als
+  Ergaenzung zu lesen.
 - Das Gate macht die Ausgabe praeziser, aber schmaler: Es verwirft die acht
   PMC5617873-Zellen, bei denen das Gold selbst vertauscht ist, und damit auch
   den frueheren Positionsverlust bei `yun2024:426`.

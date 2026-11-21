@@ -67,7 +67,9 @@
       "gold": 37.0,
       "richtig": true,
       "zeile": 122,
-      "quelle": "zeile"
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:193",
@@ -77,7 +79,9 @@
       "gold": 131.0,
       "richtig": true,
       "zeile": 58,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:193",
@@ -87,7 +91,9 @@
       "gold": 138.0,
       "richtig": true,
       "zeile": 58,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:196",
@@ -97,7 +103,9 @@
       "gold": 24.0,
       "richtig": false,
       "zeile": 47,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:196",
@@ -107,7 +115,9 @@
       "gold": 24.0,
       "richtig": false,
       "zeile": 47,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:221",
@@ -117,7 +127,9 @@
       "gold": 7.47,
       "richtig": true,
       "zeile": 141,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:221",
@@ -127,7 +139,9 @@
       "gold": 0.34,
       "richtig": true,
       "zeile": 141,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:222",
@@ -137,7 +151,9 @@
       "gold": 2.67,
       "richtig": true,
       "zeile": 143,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:223",
@@ -147,7 +163,9 @@
       "gold": 1.62,
       "richtig": true,
       "zeile": 145,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:33",
@@ -157,7 +175,9 @@
       "gold": 31.5,
       "richtig": true,
       "zeile": 70,
-      "quelle": "wochenspalte"
+      "quelle": "wochenspalte",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:33",
@@ -167,7 +187,9 @@
       "gold": 38.1,
       "richtig": true,
       "zeile": 70,
-      "quelle": "wochenspalte"
+      "quelle": "wochenspalte",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:34",
@@ -177,7 +199,9 @@
       "gold": 41.1,
       "richtig": true,
       "zeile": 78,
-      "quelle": "wochenspalte"
+      "quelle": "wochenspalte",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:34",
@@ -187,7 +211,9 @@
       "gold": 45.4,
       "richtig": true,
       "zeile": 78,
-      "quelle": "wochenspalte"
+      "quelle": "wochenspalte",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:345",
@@ -197,7 +223,9 @@
       "gold": 2.3,
       "richtig": false,
       "zeile": 13,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:346",
@@ -207,7 +235,9 @@
       "gold": 22.0,
       "richtig": true,
       "zeile": 33,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:346",
@@ -217,7 +247,9 @@
       "gold": 22.0,
       "richtig": true,
       "zeile": 33,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:347",
@@ -227,7 +259,9 @@
       "gold": 22.0,
       "richtig": true,
       "zeile": 33,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:347",
@@ -237,7 +271,9 @@
       "gold": 22.0,
       "richtig": true,
       "zeile": 33,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:445",
@@ -247,7 +283,9 @@
       "gold": 70.0,
       "richtig": true,
       "zeile": 6,
-      "quelle": "zeile"
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:445",
@@ -257,7 +295,9 @@
       "gold": 70.0,
       "richtig": true,
       "zeile": 6,
-      "quelle": "zeile"
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:664",
@@ -267,7 +307,9 @@
       "gold": 97.6,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:664",
@@ -277,7 +319,9 @@
       "gold": 101.9,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:665",
@@ -287,7 +331,9 @@
       "gold": 97.6,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:665",
@@ -297,7 +343,9 @@
       "gold": 103.4,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:666",
@@ -307,7 +355,9 @@
       "gold": 184.4,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:666",
@@ -317,7 +367,9 @@
       "gold": 206.9,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:667",
@@ -327,7 +379,9 @@
       "gold": 184.4,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:667",
@@ -337,7 +391,9 @@
       "gold": 207.2,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:668",
@@ -347,7 +403,9 @@
       "gold": 181.8,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:668",
@@ -357,7 +415,9 @@
       "gold": 194.3,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:669",
@@ -367,7 +427,9 @@
       "gold": 181.8,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:669",
@@ -377,7 +439,9 @@
       "gold": 200.1,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:98",
@@ -387,7 +451,9 @@
       "gold": 37.0,
       "richtig": true,
       "zeile": 154,
-      "quelle": "zeile"
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     }
   ],
   "zellen_ohne_gate": [
@@ -399,7 +465,9 @@
       "gold": 37.0,
       "richtig": true,
       "zeile": 122,
-      "quelle": "zeile"
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:193",
@@ -409,7 +477,9 @@
       "gold": 131.0,
       "richtig": true,
       "zeile": 58,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:193",
@@ -419,7 +489,9 @@
       "gold": 138.0,
       "richtig": true,
       "zeile": 58,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:196",
@@ -429,7 +501,9 @@
       "gold": 24.0,
       "richtig": false,
       "zeile": 47,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:196",
@@ -439,7 +513,9 @@
       "gold": 24.0,
       "richtig": false,
       "zeile": 47,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:221",
@@ -449,7 +525,9 @@
       "gold": 7.47,
       "richtig": true,
       "zeile": 141,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:221",
@@ -459,7 +537,9 @@
       "gold": 0.34,
       "richtig": true,
       "zeile": 141,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:222",
@@ -469,7 +549,9 @@
       "gold": 2.67,
       "richtig": true,
       "zeile": 143,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:223",
@@ -479,7 +561,9 @@
       "gold": 1.62,
       "richtig": true,
       "zeile": 145,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:33",
@@ -489,7 +573,9 @@
       "gold": 31.5,
       "richtig": true,
       "zeile": 70,
-      "quelle": "wochenspalte"
+      "quelle": "wochenspalte",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:33",
@@ -499,7 +585,9 @@
       "gold": 38.1,
       "richtig": true,
       "zeile": 70,
-      "quelle": "wochenspalte"
+      "quelle": "wochenspalte",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:331",
@@ -509,7 +597,9 @@
       "gold": 47.0,
       "richtig": true,
       "zeile": 40,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:331",
@@ -519,7 +609,9 @@
       "gold": 45.0,
       "richtig": true,
       "zeile": 40,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:334",
@@ -529,7 +621,9 @@
       "gold": 47.0,
       "richtig": true,
       "zeile": 40,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:334",
@@ -539,7 +633,9 @@
       "gold": 45.0,
       "richtig": true,
       "zeile": 40,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:335",
@@ -549,7 +645,9 @@
       "gold": 47.0,
       "richtig": true,
       "zeile": 40,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:335",
@@ -559,7 +657,9 @@
       "gold": 45.0,
       "richtig": true,
       "zeile": 40,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:336",
@@ -569,7 +669,9 @@
       "gold": 47.0,
       "richtig": true,
       "zeile": 40,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:336",
@@ -579,7 +681,9 @@
       "gold": 45.0,
       "richtig": true,
       "zeile": 40,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:34",
@@ -589,7 +693,9 @@
       "gold": 41.1,
       "richtig": true,
       "zeile": 78,
-      "quelle": "wochenspalte"
+      "quelle": "wochenspalte",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:34",
@@ -599,7 +705,9 @@
       "gold": 45.4,
       "richtig": true,
       "zeile": 78,
-      "quelle": "wochenspalte"
+      "quelle": "wochenspalte",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:345",
@@ -609,7 +717,9 @@
       "gold": 2.3,
       "richtig": false,
       "zeile": 13,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:346",
@@ -619,7 +729,9 @@
       "gold": 22.0,
       "richtig": true,
       "zeile": 33,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:346",
@@ -629,7 +741,9 @@
       "gold": 22.0,
       "richtig": true,
       "zeile": 33,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:347",
@@ -639,7 +753,9 @@
       "gold": 22.0,
       "richtig": true,
       "zeile": 33,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:347",
@@ -649,7 +765,9 @@
       "gold": 22.0,
       "richtig": true,
       "zeile": 33,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:426",
@@ -659,7 +777,9 @@
       "gold": 44.0,
       "richtig": false,
       "zeile": 10,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:426",
@@ -669,7 +789,9 @@
       "gold": 49.0,
       "richtig": false,
       "zeile": 10,
-      "quelle": "position"
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:445",
@@ -679,7 +801,9 @@
       "gold": 70.0,
       "richtig": true,
       "zeile": 6,
-      "quelle": "zeile"
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:445",
@@ -689,7 +813,9 @@
       "gold": 70.0,
       "richtig": true,
       "zeile": 6,
-      "quelle": "zeile"
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:664",
@@ -699,7 +825,9 @@
       "gold": 97.6,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:664",
@@ -709,7 +837,9 @@
       "gold": 101.9,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:665",
@@ -719,7 +849,9 @@
       "gold": 97.6,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:665",
@@ -729,7 +861,9 @@
       "gold": 103.4,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:666",
@@ -739,7 +873,9 @@
       "gold": 184.4,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:666",
@@ -749,7 +885,9 @@
       "gold": 206.9,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:667",
@@ -759,7 +897,9 @@
       "gold": 184.4,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:667",
@@ -769,7 +909,9 @@
       "gold": 207.2,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:668",
@@ -779,7 +921,9 @@
       "gold": 181.8,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:668",
@@ -789,7 +933,9 @@
       "gold": 194.3,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:669",
@@ -799,7 +945,9 @@
       "gold": 181.8,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:669",
@@ -809,7 +957,9 @@
       "gold": 200.1,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:98",
@@ -819,7 +969,9 @@
       "gold": 37.0,
       "richtig": true,
       "zeile": 154,
-      "quelle": "zeile"
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     }
   ],
   "zellen_streuung": [
@@ -831,7 +983,9 @@
       "gold": 1.45,
       "richtig": true,
       "zeile": 141,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:221",
@@ -841,7 +995,9 @@
       "gold": 0.12,
       "richtig": true,
       "zeile": 141,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:222",
@@ -851,7 +1007,9 @@
       "gold": 0.68,
       "richtig": true,
       "zeile": 143,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:222",
@@ -861,7 +1019,9 @@
       "gold": 0.02,
       "richtig": true,
       "zeile": 143,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:223",
@@ -871,7 +1031,9 @@
       "gold": 0.47,
       "richtig": true,
       "zeile": 145,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:664",
@@ -881,7 +1043,9 @@
       "gold": 20.8,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:664",
@@ -891,7 +1055,9 @@
       "gold": 35.1,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:665",
@@ -901,7 +1067,9 @@
       "gold": 20.8,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:665",
@@ -911,7 +1079,9 @@
       "gold": 28.9,
       "richtig": true,
       "zeile": 26,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:666",
@@ -921,7 +1091,9 @@
       "gold": 37.5,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:666",
@@ -931,7 +1103,9 @@
       "gold": 36.2,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:667",
@@ -941,7 +1115,9 @@
       "gold": 37.5,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:667",
@@ -951,7 +1127,9 @@
       "gold": 42.3,
       "richtig": true,
       "zeile": 27,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:668",
@@ -961,7 +1139,9 @@
       "gold": 61.3,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:668",
@@ -971,7 +1151,9 @@
       "gold": 63.1,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:669",
@@ -981,7 +1163,9 @@
       "gold": 61.3,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     },
     {
       "record_id": "yun2024:669",
@@ -991,7 +1175,9 @@
       "gold": 55.9,
       "richtig": true,
       "zeile": 28,
-      "quelle": "zielzeile"
+      "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
     }
   ]
 }

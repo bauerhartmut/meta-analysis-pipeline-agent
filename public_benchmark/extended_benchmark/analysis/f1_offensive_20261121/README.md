@@ -669,6 +669,49 @@ Subgruppentabelle (MMSE-J 20 bis 23); diese Einschraenkung nennt der Record
 nicht. Allein gelesen liefert die Tabelle nur die beiden Mittel (2 von 6
 Feldern), Groesse und Streuung brauchen die Zeilen-n und das KI dieser Tabelle.
 
+### Kennzeichnung und Wirkung ueber alle 699 Records
+
+Jede aus einem KI abgeleitete Streuung traegt im Ergebnis `abgeleitet: True` und
+`herkunft: "95%-KI"`, abgelesene Zellen tragen `abgeleitet: False` und
+`herkunft: "zelle"`. Die Fixture schreibt das Kennzeichen je Zelle mit, damit
+abgelesene und abgeleitete Werte nicht verwechselt werden.
+
+`umschreiben_20261121.py` liest alle 699 Records aus `yun699.jsonl` je Goldfeld
+zweimal (Tabellenwahl aus und an), 2.463 Auftraege:
+
+| Klasse | Zellen |
+|---|---:|
+| beide richtig, gleicher Wert | 210 |
+| verworfen (alt richtig, neu nichts) | 0 |
+| umgeschrieben, neu falsch | 0 |
+| umgeschrieben, neu richtig | 0 |
+| neu richtig | 26 |
+| neu falsch, alt ohne Wert | 0 |
+| neu falsch, alt schon falsch | 169 |
+| beide ohne Wert | 2.058 |
+
+Die Tabellenwahl verwirft also keine richtige Zelle und schreibt keine um; sie
+holt 26 richtige Zellen dazu (sechs Records aus `PMC4879328`, `446` bis `452`)
+und erzeugt keine neue falsche Zelle. Von den 14 abgeleiteten Streuungen sind
+10 richtig; falsch sind `yun2024:446` (Waist: Gold 3.32 gegen 5.07 aus dem
+gedruckten KI, das Gold passt nicht zum Intervall) und `yun2024:451` (die Regel
+liest `Vigorous PA` statt der MVPA).
+
+In den gespeicherten P5-Vorhersagen (103 Records) bestaetigt die neue Regel 30
+richtige Zellen, ueberschreibt 31 und laesst 110 ohne Regelwert. Alle 31
+Ueberschreibungen sind alte Schuld: die Regel lieferte dort schon vorher einen
+anderen falschen Wert, keine geht auf die Tabellenwahl zurueck. Die Bilanz
+ueber alle 699 Records:
+
+| Stand | TP | FP | FN |
+|---|---:|---:|---:|
+| P5 unveraendert | 166 | 96 | 2607 |
+| P5 + alte Regelzellen | 138 | 158 | 2635 |
+| P5 + neue Regelzellen | 157 | 141 | 2616 |
+
+Das Ersetzen kostet auch mit der neuen Tabellenwahl TP; sie verkleinert den
+Verlust nur (alt -28 TP, neu -9 TP gegen die unveraenderte Vorhersage).
+
 ## Fixture: beide Zellstaende zellgenau
 
 `fixture_20261121.py` (Modi `schreiben` / `pruefen`) friert die 33 Zellen mit

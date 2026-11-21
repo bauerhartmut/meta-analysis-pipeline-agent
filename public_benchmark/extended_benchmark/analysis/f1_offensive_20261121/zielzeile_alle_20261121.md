@@ -43,8 +43,12 @@ Akronymen.
 
 Auftraege aus den `fn_wert_ersetzt`-Faellen mit Feld `*_standard_deviation`:
 68. Geliefert 17, davon richtig
-17 und falsch 0. Gelesen wird die Streuung nur aus
-Zellen im Format `Mittel (SD)` oder `Mittel +/- SD`.
+17 und falsch 0. Gelesen wird die Streuung aus
+Zellen im Format `Mittel (SD)` oder `Mittel +/- SD`. Druckt die Nachher-Tabelle
+keine SD, sondern ein 95%-KI, leitet `wert_aus_zelle` sie ab
+(`SD = halbe Intervallbreite / 1.96 * sqrt(n)`); solche Zellen tragen
+`abgeleitet: True` und `herkunft: 95%-KI` und sind damit von abgelesenen
+Streuungen unterscheidbar (hier 0 Zellen).
 
 Nur durch den Alias neu geliefert: 6 Zellen, davon
 4 exakt richtig und

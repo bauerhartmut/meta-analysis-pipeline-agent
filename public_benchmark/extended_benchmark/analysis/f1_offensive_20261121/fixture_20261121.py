@@ -56,7 +56,9 @@ def zellen(res: dict[str, Any]) -> list[dict[str, Any]]:
             continue
         aus.append({"record_id": e["record_id"], "feld": e["feld"], "arm": e.get("arm"),
                     "wert": e["regel"]["value"], "gold": e["gold"], "richtig": e["richtig"],
-                    "zeile": e["regel"].get("zeile"), "quelle": e["regel"].get("quelle")})
+                    "zeile": e["regel"].get("zeile"), "quelle": e["regel"].get("quelle"),
+                    "abgeleitet": bool(e["regel"].get("abgeleitet")),
+                    "herkunft": e["regel"].get("herkunft", "zelle")})
     return sorted(aus, key=lambda x: (x["record_id"], x["feld"], x["arm"] or ""))
 
 

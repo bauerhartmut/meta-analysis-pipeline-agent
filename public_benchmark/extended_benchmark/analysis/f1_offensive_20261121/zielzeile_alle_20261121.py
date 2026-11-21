@@ -555,6 +555,20 @@ def zellformat(zelle: str) -> str:
     return "sonstig"
 
 
+KI_PAAR = re.compile(r"\(\s*([" + MINUS + r"-]?)\s*(\d+(?:\.\d+)?)\s*[,;]\s*(["
+                     + MINUS + r"-]?)\s*(\d+(?:\.\d+)?)\s*\)")
+
+
+def ki_grenzen(zelle: str) -> tuple[float, float] | None:
+    """Untere und obere Grenze eines 95%-KI in der Zelle, oder None."""
+    m = KI_PAAR.search(zelle)
+    if not m:
+        return None
+    unten = float(m.group(2)) * (-1 if m.group(1) else 1)
+    oben = float(m.group(4)) * (-1 if m.group(3) else 1)
+    return (unten, oben) if oben > unten else None
+
+
 def wert_aus_zelle(zelle: str, feld: str, mean_formate: tuple[str, ...] | None,
                    n_arm: int | None = None) -> float | None:
     """Wert einer Armzelle: Streuung in Klammern, Mittel nur in erlaubten Formaten.
@@ -567,14 +581,10 @@ def wert_aus_zelle(zelle: str, feld: str, mean_formate: tuple[str, ...] | None,
         # Streuung aus einem 95%-KI: SE = halbe Intervallbreite / 1.96, SD = SE * sqrt(n).
         # Nur mit bekannter Gruppengroesse, sonst bleibt die Zelle leer.
         if SD_AUS_KI and n_arm:
-            m = re.search(r"\(\s*([" + MINUS + r"-]?)\s*(\d+(?:\.\d+)?)\s*[,;]\s*(["
-                          + MINUS + r"-]?)\s*(\d+(?:\.\d+)?)\s*\)", zelle)
-            if m:
-                unten = float(m.group(2)) * (-1 if m.group(1) else 1)
-                oben = float(m.group(4)) * (-1 if m.group(3) else 1)
-                if oben > unten:
-                    halb = (oben - unten) / 2
-                    return round(halb / 1.96 * math.sqrt(n_arm), 2)
+            grenzen = ki_grenzen(zelle)
+            if grenzen:
+                halb = (grenzen[1] - grenzen[0]) / 2
+                return round(halb / 1.96 * math.sqrt(n_arm), 2)
         # Streuung nur aus Zellen, deren Format den zweiten Wert als SD ausweist:
         # `Mittel (SD)` und `Mittel +/- SD`. Alles andere (KI, Prozent, n Mean)
         # bleibt leer, damit keine Intervallgrenze als SD durchgeht.
@@ -648,8 +658,16 @@ def gruppenzeile_wert(zeilen: list[str], ziel: int, feld: str, arm: str,
                 formate = None if feld.endswith("mean") else mean_formate
                 wert = wert_aus_zelle(zelle, feld, formate, n_arm=n_i or None)
                 if wert is not None:
-                    return {"value": wert, "quelle": "armzeile", "zeile": i + 1,
-                            "zellformat": zellformat(zelle)}
+                    treffer = {"value": wert, "quelle": "armzeile", "zeile": i + 1,
+                               "zellformat": zellformat(zelle)}
+                    if feld.endswith("standard_deviation"):
+                        # Kennzeichnen, ob die Streuung abgelesen oder aus dem KI
+                        # abgeleitet wurde: gedruckt ist sie nur in `(SD)` und `+/-`.
+                        abgeleitet = (zellformat(zelle) not in ("mittel_sd", "plus_minus")
+                                      and ki_grenzen(zelle) is not None)
+                        treffer["abgeleitet"] = abgeleitet
+                        treffer["herkunft"] = "95%-KI" if abgeleitet else "zelle"
+                    return treffer
     return None
 
 
@@ -876,8 +894,12 @@ Akronymen.
 
 Auftraege aus den `fn_wert_ersetzt`-Faellen mit Feld `*_standard_deviation`:
 {len(streuung_faelle)}. Geliefert {streuung['geliefert']}, davon richtig
-{streuung['tp']} und falsch {streuung['fp']}. Gelesen wird die Streuung nur aus
-Zellen im Format `Mittel (SD)` oder `Mittel +/- SD`.
+{streuung['tp']} und falsch {streuung['fp']}. Gelesen wird die Streuung aus
+Zellen im Format `Mittel (SD)` oder `Mittel +/- SD`. Druckt die Nachher-Tabelle
+keine SD, sondern ein 95%-KI, leitet `wert_aus_zelle` sie ab
+(`SD = halbe Intervallbreite / 1.96 * sqrt(n)`); solche Zellen tragen
+`abgeleitet: True` und `herkunft: 95%-KI` und sind damit von abgelesenen
+Streuungen unterscheidbar (hier {sum(1 for e in streuung['detail'] if e['regel'].get('abgeleitet'))} Zellen).
 
 Nur durch den Alias neu geliefert: {len(neu_detail)} Zellen, davon
 {sum(1 for e in neu_detail if e['richtig'])} exakt richtig und

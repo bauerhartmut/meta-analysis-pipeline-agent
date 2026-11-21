@@ -1,0 +1,802 @@
+{
+  "stand": "2026-11-21",
+  "records": 699,
+  "p5_records": 103,
+  "klassen": {
+    "keine": 2058,
+    "gleich": 210,
+    "neu_falsch_mit_alt": 169,
+    "neu_richtig": 26
+  },
+  "je_feldart": {
+    "groesse": {
+      "keine": 1125,
+      "gleich": 90,
+      "neu_falsch_mit_alt": 65,
+      "neu_richtig": 6
+    },
+    "mittel": {
+      "keine": 503,
+      "neu_falsch_mit_alt": 53,
+      "gleich": 60,
+      "neu_richtig": 10
+    },
+    "streuung": {
+      "keine": 430,
+      "neu_falsch_mit_alt": 51,
+      "gleich": 60,
+      "neu_richtig": 10
+    }
+  },
+  "beispiele": {
+    "neu_richtig": [
+      {
+        "record_id": "yun2024:446",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "gold": 104.0,
+        "alt": 114.0,
+        "alt_zeile": 10,
+        "neu": 104.0,
+        "neu_zeile": 111,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:447",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "gold": 104.0,
+        "alt": 114.0,
+        "alt_zeile": 10,
+        "neu": 104.0,
+        "neu_zeile": 125,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:447",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "gold": -0.55,
+        "alt": 3.99,
+        "alt_zeile": 42,
+        "neu": -0.55,
+        "neu_zeile": 125,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:447",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "gold": 2.29,
+        "alt": 3.04,
+        "alt_zeile": 42,
+        "neu": 2.29,
+        "neu_zeile": 125,
+        "abgeleitet": true
+      },
+      {
+        "record_id": "yun2024:447",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "gold": 0.31,
+        "alt": 3.3,
+        "alt_zeile": 42,
+        "neu": 0.31,
+        "neu_zeile": 127,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:447",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "gold": 3.84,
+        "alt": 2.44,
+        "alt_zeile": 42,
+        "neu": 3.84,
+        "neu_zeile": 127,
+        "abgeleitet": true
+      },
+      {
+        "record_id": "yun2024:448",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "gold": 104.0,
+        "alt": 114.0,
+        "alt_zeile": 10,
+        "neu": 104.0,
+        "neu_zeile": 117,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:448",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "gold": 0.2,
+        "alt": 1.56,
+        "alt_zeile": 38,
+        "neu": 0.2,
+        "neu_zeile": 117,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:448",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "gold": 1.56,
+        "alt": 1.86,
+        "alt_zeile": 38,
+        "neu": 1.56,
+        "neu_zeile": 117,
+        "abgeleitet": true
+      },
+      {
+        "record_id": "yun2024:448",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "gold": -0.4,
+        "alt": 2.33,
+        "alt_zeile": 38,
+        "neu": -0.4,
+        "neu_zeile": 119,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:448",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "gold": 2.48,
+        "alt": 2.53,
+        "alt_zeile": 38,
+        "neu": 2.48,
+        "neu_zeile": 119,
+        "abgeleitet": true
+      },
+      {
+        "record_id": "yun2024:449",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "gold": 104.0,
+        "alt": 114.0,
+        "alt_zeile": 10,
+        "neu": 104.0,
+        "neu_zeile": 151,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:449",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "gold": 0.07,
+        "alt": null,
+        "alt_zeile": null,
+        "neu": 0.07,
+        "neu_zeile": 151,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:449",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "gold": 0.26,
+        "alt": null,
+        "alt_zeile": null,
+        "neu": 0.26,
+        "neu_zeile": 151,
+        "abgeleitet": true
+      },
+      {
+        "record_id": "yun2024:449",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "gold": 0.01,
+        "alt": null,
+        "alt_zeile": null,
+        "neu": 0.01,
+        "neu_zeile": 153,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:449",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "gold": 0.33,
+        "alt": null,
+        "alt_zeile": null,
+        "neu": 0.33,
+        "neu_zeile": 153,
+        "abgeleitet": true
+      },
+      {
+        "record_id": "yun2024:450",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "gold": 104.0,
+        "alt": 114.0,
+        "alt_zeile": 10,
+        "neu": 104.0,
+        "neu_zeile": 121,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:450",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "gold": 0.19,
+        "alt": 1.11,
+        "alt_zeile": 40,
+        "neu": 0.19,
+        "neu_zeile": 121,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:450",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "gold": 1.82,
+        "alt": 1.78,
+        "alt_zeile": 40,
+        "neu": 1.82,
+        "neu_zeile": 121,
+        "abgeleitet": true
+      },
+      {
+        "record_id": "yun2024:450",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "gold": -0.68,
+        "alt": 1.6,
+        "alt_zeile": 40,
+        "neu": -0.68,
+        "neu_zeile": 123,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:450",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "gold": 2.32,
+        "alt": 1.97,
+        "alt_zeile": 40,
+        "neu": 2.32,
+        "neu_zeile": 123,
+        "abgeleitet": true
+      },
+      {
+        "record_id": "yun2024:452",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "gold": 104.0,
+        "alt": 114.0,
+        "alt_zeile": 10,
+        "neu": 104.0,
+        "neu_zeile": 107,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:452",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "gold": -0.89,
+        "alt": 82.8,
+        "alt_zeile": 18,
+        "neu": -0.89,
+        "neu_zeile": 107,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:452",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "gold": 3.33,
+        "alt": 19.4,
+        "alt_zeile": 18,
+        "neu": 3.33,
+        "neu_zeile": 107,
+        "abgeleitet": true
+      },
+      {
+        "record_id": "yun2024:452",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "gold": 0.3,
+        "alt": 83.6,
+        "alt_zeile": 18,
+        "neu": 0.3,
+        "neu_zeile": 109,
+        "abgeleitet": false
+      },
+      {
+        "record_id": "yun2024:452",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "gold": 3.54,
+        "alt": 18.9,
+        "alt_zeile": 18,
+        "neu": 3.54,
+        "neu_zeile": 109,
+        "abgeleitet": true
+      }
+    ]
+  },
+  "abgeleitete_streuungen": [
+    {
+      "record_id": "yun2024:446",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 5.07,
+      "gold": 3.32,
+      "richtig": false
+    },
+    {
+      "record_id": "yun2024:446",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 6.24,
+      "gold": 3.54,
+      "richtig": false
+    },
+    {
+      "record_id": "yun2024:447",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 2.29,
+      "gold": 2.29,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:447",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 3.84,
+      "gold": 3.84,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:448",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 1.56,
+      "gold": 1.56,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:448",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 2.48,
+      "gold": 2.48,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:449",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 0.26,
+      "gold": 0.26,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:449",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 0.33,
+      "gold": 0.33,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:450",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 1.82,
+      "gold": 1.82,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:450",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 2.32,
+      "gold": 2.32,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:451",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 1.56,
+      "gold": 66.12,
+      "richtig": false
+    },
+    {
+      "record_id": "yun2024:451",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 2.48,
+      "gold": 66.25,
+      "richtig": false
+    },
+    {
+      "record_id": "yun2024:452",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 3.33,
+      "gold": 3.33,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:452",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 3.54,
+      "gold": 3.54,
+      "richtig": true
+    }
+  ],
+  "p5": {
+    "ueberschrieben": [
+      {
+        "record_id": "yun2024:32",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "vorhersage": 53.9,
+        "gold": 53.9,
+        "regel_neu": 38.9,
+        "abgeleitet": false,
+        "regel_alt": 38.9,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:32",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "vorhersage": 22.2,
+        "gold": 22.2,
+        "regel_neu": 8.9,
+        "abgeleitet": false,
+        "regel_alt": 8.9,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:32",
+        "feld": "comparator_group_size",
+        "arm": "comparator",
+        "vorhersage": 199.0,
+        "gold": 199.0,
+        "regel_neu": 36.0,
+        "abgeleitet": false,
+        "regel_alt": 36.0,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:32",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "vorhersage": 34.0,
+        "gold": 34.0,
+        "regel_neu": 31.5,
+        "abgeleitet": false,
+        "regel_alt": 31.5,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:32",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "vorhersage": 20.1,
+        "gold": 20.1,
+        "regel_neu": 7.4,
+        "abgeleitet": false,
+        "regel_alt": 7.4,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:86",
+        "feld": "comparator_group_size",
+        "arm": "comparator",
+        "vorhersage": 6885.0,
+        "gold": 6885.0,
+        "regel_neu": 5122.0,
+        "abgeleitet": false,
+        "regel_alt": 5122.0,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:158",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "vorhersage": 592.0,
+        "gold": 592.0,
+        "regel_neu": 24.0,
+        "abgeleitet": false,
+        "regel_alt": 24.0,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:160",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "vorhersage": 592.0,
+        "gold": 592.0,
+        "regel_neu": 24.0,
+        "abgeleitet": false,
+        "regel_alt": 24.0,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:161",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "vorhersage": 560.0,
+        "gold": 560.0,
+        "regel_neu": 24.0,
+        "abgeleitet": false,
+        "regel_alt": 24.0,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:162",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "vorhersage": 560.0,
+        "gold": 560.0,
+        "regel_neu": 24.0,
+        "abgeleitet": false,
+        "regel_alt": 24.0,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:163",
+        "feld": "intervention_group_size",
+        "arm": "intervention",
+        "vorhersage": 560.0,
+        "gold": 560.0,
+        "regel_neu": 24.0,
+        "abgeleitet": false,
+        "regel_alt": 24.0,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:212",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "vorhersage": 9.2,
+        "gold": 9.2,
+        "regel_neu": 5.8,
+        "abgeleitet": false,
+        "regel_alt": 5.8,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:212",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "vorhersage": 0.9,
+        "gold": 0.9,
+        "regel_neu": 0.5,
+        "abgeleitet": false,
+        "regel_alt": 0.5,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:212",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "vorhersage": 9.6,
+        "gold": 9.6,
+        "regel_neu": 5.9,
+        "abgeleitet": false,
+        "regel_alt": 5.9,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:212",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "vorhersage": 1.1,
+        "gold": 1.1,
+        "regel_neu": 0.7,
+        "abgeleitet": false,
+        "regel_alt": 0.7,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:215",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "vorhersage": 2.2,
+        "gold": 2.2,
+        "regel_neu": 5.8,
+        "abgeleitet": false,
+        "regel_alt": 5.8,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:215",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "vorhersage": 0.4,
+        "gold": 0.4,
+        "regel_neu": 0.5,
+        "abgeleitet": false,
+        "regel_alt": 0.5,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:215",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "vorhersage": 2.0,
+        "gold": 2.0,
+        "regel_neu": 5.9,
+        "abgeleitet": false,
+        "regel_alt": 5.9,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:215",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "vorhersage": 0.3,
+        "gold": 0.3,
+        "regel_neu": 0.7,
+        "abgeleitet": false,
+        "regel_alt": 0.7,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:214",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "vorhersage": 2.0,
+        "gold": 2.0,
+        "regel_neu": 5.8,
+        "abgeleitet": false,
+        "regel_alt": 5.8,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:214",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "vorhersage": 0.4,
+        "gold": 0.4,
+        "regel_neu": 0.5,
+        "abgeleitet": false,
+        "regel_alt": 0.5,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:214",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "vorhersage": 2.0,
+        "gold": 2.0,
+        "regel_neu": 5.8,
+        "abgeleitet": false,
+        "regel_alt": 5.8,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:214",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "vorhersage": 1.8,
+        "gold": 1.8,
+        "regel_neu": 5.9,
+        "abgeleitet": false,
+        "regel_alt": 5.9,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:214",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "vorhersage": 0.2,
+        "gold": 0.2,
+        "regel_neu": 0.7,
+        "abgeleitet": false,
+        "regel_alt": 0.7,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:232",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "vorhersage": 13.8,
+        "gold": 13.8,
+        "regel_neu": 20.06,
+        "abgeleitet": false,
+        "regel_alt": 20.06,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:232",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "vorhersage": 1.14,
+        "gold": 1.14,
+        "regel_neu": 8.04,
+        "abgeleitet": false,
+        "regel_alt": 8.04,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:367",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "vorhersage": 57.0,
+        "gold": 57.0,
+        "regel_neu": 7.0,
+        "abgeleitet": false,
+        "regel_alt": 7.0,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:427",
+        "feld": "intervention_mean",
+        "arm": "intervention",
+        "vorhersage": 17.97,
+        "gold": 17.97,
+        "regel_neu": 16.9,
+        "abgeleitet": false,
+        "regel_alt": 16.9,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:427",
+        "feld": "intervention_standard_deviation",
+        "arm": "intervention",
+        "vorhersage": 6.58,
+        "gold": 6.58,
+        "regel_neu": 3.4,
+        "abgeleitet": false,
+        "regel_alt": 3.4,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:427",
+        "feld": "comparator_mean",
+        "arm": "comparator",
+        "vorhersage": 11.28,
+        "gold": 11.28,
+        "regel_neu": 9.23,
+        "abgeleitet": false,
+        "regel_alt": 9.23,
+        "ursache": "alt_falsch"
+      },
+      {
+        "record_id": "yun2024:427",
+        "feld": "comparator_standard_deviation",
+        "arm": "comparator",
+        "vorhersage": 4.35,
+        "gold": 4.35,
+        "regel_neu": 2.1,
+        "abgeleitet": false,
+        "regel_alt": 2.1,
+        "ursache": "alt_falsch"
+      }
+    ],
+    "bestaetigt": 30,
+    "regel_liefert_nichts": 110,
+    "bilanz": {
+      "p5": {
+        "tp": 166,
+        "fp": 96,
+        "fn": 2607
+      },
+      "p5_plus_alt": {
+        "tp": 138,
+        "fp": 158,
+        "fn": 2635
+      },
+      "p5_plus_neu": {
+        "tp": 157,
+        "fp": 141,
+        "fn": 2616
+      }
+    },
+    "ursache": {
+      "alt_falsch": 31
+    }
+  }
+}

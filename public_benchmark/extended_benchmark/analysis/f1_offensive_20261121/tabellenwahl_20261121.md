@@ -16,32 +16,36 @@ ihre Arme in der Unterschrift nennt (`I; n=104`).
 
 ### Zellen im Vergleich
 
-| Record | Feld | alt | neu | Gold | neu richtig | Quelle neu |
-|---|---|---:|---:|---:|---|---|
-| `yun2024:196` | intervention_group_size | 80.0 | 80.0 | 24.0 | nein | position / Zeile 47 |
-| `yun2024:196` | comparator_group_size | 78.0 | 78.0 | 24.0 | nein | position / Zeile 47 |
-| `yun2024:196` | intervention_mean | - | - | 1.29 | nein | - / Zeile - |
-| `yun2024:196` | comparator_mean | - | - | 1.08 | nein | - / Zeile - |
-| `yun2024:196` | intervention_standard_deviation | - | - | 3.14 | nein | - / Zeile - |
-| `yun2024:196` | comparator_standard_deviation | - | - | 1.55 | nein | - / Zeile - |
-| `yun2024:447` | intervention_group_size | 114.0 | 104.0 | 104.0 | ja | unterschrift_n / Zeile 125 |
-| `yun2024:447` | comparator_group_size | 114.0 | 114.0 | 114.0 | ja | unterschrift_n / Zeile 125 |
-| `yun2024:447` | intervention_mean | 3.99 | -0.55 | -0.55 | ja | armzeile / Zeile 125 |
-| `yun2024:447` | comparator_mean | 3.3 | 0.31 | 0.31 | ja | armzeile / Zeile 127 |
-| `yun2024:447` | intervention_standard_deviation | 3.04 | 2.29 | 2.29 | ja | armzeile / Zeile 125 |
-| `yun2024:447` | comparator_standard_deviation | 2.44 | 3.84 | 3.84 | ja | armzeile / Zeile 127 |
-| `yun2024:448` | intervention_group_size | 114.0 | 104.0 | 104.0 | ja | unterschrift_n / Zeile 117 |
-| `yun2024:448` | comparator_group_size | 114.0 | 114.0 | 114.0 | ja | unterschrift_n / Zeile 117 |
-| `yun2024:448` | intervention_mean | 1.56 | 0.2 | 0.2 | ja | armzeile / Zeile 117 |
-| `yun2024:448` | comparator_mean | 2.33 | -0.4 | -0.4 | ja | armzeile / Zeile 119 |
-| `yun2024:448` | intervention_standard_deviation | 1.86 | 1.56 | 1.56 | ja | armzeile / Zeile 117 |
-| `yun2024:448` | comparator_standard_deviation | 2.53 | 2.48 | 2.48 | ja | armzeile / Zeile 119 |
-| `yun2024:450` | intervention_group_size | 114.0 | 104.0 | 104.0 | ja | unterschrift_n / Zeile 121 |
-| `yun2024:450` | comparator_group_size | 114.0 | 114.0 | 114.0 | ja | unterschrift_n / Zeile 121 |
-| `yun2024:450` | intervention_mean | 1.11 | 0.19 | 0.19 | ja | armzeile / Zeile 121 |
-| `yun2024:450` | comparator_mean | 1.6 | -0.68 | -0.68 | ja | armzeile / Zeile 123 |
-| `yun2024:450` | intervention_standard_deviation | 1.78 | 1.82 | 1.82 | ja | armzeile / Zeile 121 |
-| `yun2024:450` | comparator_standard_deviation | 1.97 | 2.32 | 2.32 | ja | armzeile / Zeile 123 |
+| Record | Feld | alt | neu | Gold | neu richtig | abgeleitet | Quelle neu |
+|---|---|---:|---:|---:|---|---|---|
+| `yun2024:196` | intervention_group_size | 80.0 | 80.0 | 24.0 | nein | nein | position / Zeile 47 |
+| `yun2024:196` | comparator_group_size | 78.0 | 78.0 | 24.0 | nein | nein | position / Zeile 47 |
+| `yun2024:196` | intervention_mean | - | - | 1.29 | nein | nein | - / Zeile - |
+| `yun2024:196` | comparator_mean | - | - | 1.08 | nein | nein | - / Zeile - |
+| `yun2024:196` | intervention_standard_deviation | - | - | 3.14 | nein | nein | - / Zeile - |
+| `yun2024:196` | comparator_standard_deviation | - | - | 1.55 | nein | nein | - / Zeile - |
+| `yun2024:447` | intervention_group_size | 114.0 | 104.0 | 104.0 | ja | nein | unterschrift_n / Zeile 125 |
+| `yun2024:447` | comparator_group_size | 114.0 | 114.0 | 114.0 | ja | nein | unterschrift_n / Zeile 125 |
+| `yun2024:447` | intervention_mean | 3.99 | -0.55 | -0.55 | ja | nein | armzeile / Zeile 125 |
+| `yun2024:447` | comparator_mean | 3.3 | 0.31 | 0.31 | ja | nein | armzeile / Zeile 127 |
+| `yun2024:447` | intervention_standard_deviation | 3.04 | 2.29 | 2.29 | ja | ja | armzeile / Zeile 125 |
+| `yun2024:447` | comparator_standard_deviation | 2.44 | 3.84 | 3.84 | ja | ja | armzeile / Zeile 127 |
+| `yun2024:448` | intervention_group_size | 114.0 | 104.0 | 104.0 | ja | nein | unterschrift_n / Zeile 117 |
+| `yun2024:448` | comparator_group_size | 114.0 | 114.0 | 114.0 | ja | nein | unterschrift_n / Zeile 117 |
+| `yun2024:448` | intervention_mean | 1.56 | 0.2 | 0.2 | ja | nein | armzeile / Zeile 117 |
+| `yun2024:448` | comparator_mean | 2.33 | -0.4 | -0.4 | ja | nein | armzeile / Zeile 119 |
+| `yun2024:448` | intervention_standard_deviation | 1.86 | 1.56 | 1.56 | ja | ja | armzeile / Zeile 117 |
+| `yun2024:448` | comparator_standard_deviation | 2.53 | 2.48 | 2.48 | ja | ja | armzeile / Zeile 119 |
+| `yun2024:450` | intervention_group_size | 114.0 | 104.0 | 104.0 | ja | nein | unterschrift_n / Zeile 121 |
+| `yun2024:450` | comparator_group_size | 114.0 | 114.0 | 114.0 | ja | nein | unterschrift_n / Zeile 121 |
+| `yun2024:450` | intervention_mean | 1.11 | 0.19 | 0.19 | ja | nein | armzeile / Zeile 121 |
+| `yun2024:450` | comparator_mean | 1.6 | -0.68 | -0.68 | ja | nein | armzeile / Zeile 123 |
+| `yun2024:450` | intervention_standard_deviation | 1.78 | 1.82 | 1.82 | ja | ja | armzeile / Zeile 121 |
+| `yun2024:450` | comparator_standard_deviation | 1.97 | 2.32 | 2.32 | ja | ja | armzeile / Zeile 123 |
+
+Abgeleitet statt abgelesen sind 6 Zellen; gedruckt ist 
+keine davon, sie stammen aus dem 95%-KI der Nachher-Tabelle.
+
 
 ## Tabellen der Dokumente, einzeln gelesen
 
