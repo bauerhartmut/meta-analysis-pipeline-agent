@@ -573,6 +573,36 @@ auffindbar (`Vegetable intake` vs. Tabellenzeile `Vegetables`), in 4 weiteren
 fehlt eine Groessenzeile in Reichweite, in 4 ist der Arm in einer Multiarm-
 Tabelle mehrdeutig.
 
+## Fixture: beide Zellstaende zellgenau
+
+`fixture_20261121.py` (Modi `schreiben` / `pruefen`) friert die 33 Zellen mit
+Gate unter `zellen` und die 43 Zellen ohne Gate unter `zellen_ohne_gate` ein,
+dazu die Ablation der fuenf Schalter. `pruefen` rechnet beide Staende neu und
+vergleicht jede Zelle ueber Schluessel (Record, Feld, Arm), Wert und
+Richtig-Kennzeichen; Abweichungen werden einzeln gemeldet und der Rueckgabewert
+ist dann 1. Stand: 33 Zellen mit Gate, 43 ohne Gate, Abweichungen 0.
+
+## Aendern die Ersetzungen die gepoolte Schaetzung?
+
+`pooling_effekt_20261121.py`, offline. Zellen der 103 P5-Records in vier
+Staenden, Effekt je Record als Log-Odds-Ratio (binaer) bzw. Hedges g
+(kontinuierlich), gepoolt mit `pool(method="hksj")` aus
+`research_agent/meta/pooling.py`:
+
+| Stand | k | pooled | 95 %-KI | I2 |
+|---|---:|---:|---|---:|
+| unveraendert | 24 | 0.125 | -0.302 bis 0.551 | 91.1 |
+| 33 Zellen | 24 | -0.018 | -0.575 bis 0.538 | 92.6 |
+| 43 Zellen | 24 | -0.018 | -0.575 bis 0.538 | 92.6 |
+| Gold (Referenz) | 58 | 0.318 | -0.412 bis 1.048 | 97.8 |
+
+Nur zwei Records aendern ihren Effekt (`yun2024:347`, `yun2024:668`); die
+Verschiebung betraegt 0.07 auf der Effektskala, die Intervalle ueberlappen sich
+fast vollstaendig. Auf der gemeinsamen Menge (k = 20) lauten die Werte 0.043,
+-0.115, -0.115 und -0.026; ohne Extremwerte (|g| > 3, k = 19) 0.086, 0.052,
+0.052 und 0.092. Gate und Ohne-Gate sind identisch, weil die 10 zusaetzlich
+verworfenen Zellen auf Records ohne vollstaendige Zellen liegen.
+
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 
 Die Bedingung des Auftrags war "nach erfolgreichen Offline-Tests". Die

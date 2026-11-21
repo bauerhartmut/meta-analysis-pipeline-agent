@@ -364,5 +364,437 @@
       "zeile": 154,
       "quelle": "zeile"
     }
+  ],
+  "zellen_ohne_gate": [
+    {
+      "record_id": "yun2024:100",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 37.0,
+      "gold": 37.0,
+      "richtig": true,
+      "zeile": 122,
+      "quelle": "zeile"
+    },
+    {
+      "record_id": "yun2024:193",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 131.0,
+      "gold": 131.0,
+      "richtig": true,
+      "zeile": 58,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:193",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 138.0,
+      "gold": 138.0,
+      "richtig": true,
+      "zeile": 58,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:196",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 78.0,
+      "gold": 24.0,
+      "richtig": false,
+      "zeile": 47,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:196",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 80.0,
+      "gold": 24.0,
+      "richtig": false,
+      "zeile": 47,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:221",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 7.47,
+      "gold": 7.47,
+      "richtig": true,
+      "zeile": 141,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:221",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 0.34,
+      "gold": 0.34,
+      "richtig": true,
+      "zeile": 141,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:222",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 2.67,
+      "gold": 2.67,
+      "richtig": true,
+      "zeile": 143,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:223",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 1.62,
+      "gold": 1.62,
+      "richtig": true,
+      "zeile": 145,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:33",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 31.5,
+      "gold": 31.5,
+      "richtig": true,
+      "zeile": 70,
+      "quelle": "wochenspalte"
+    },
+    {
+      "record_id": "yun2024:33",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 38.1,
+      "gold": 38.1,
+      "richtig": true,
+      "zeile": 70,
+      "quelle": "wochenspalte"
+    },
+    {
+      "record_id": "yun2024:331",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 47.0,
+      "gold": 47.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:331",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 45.0,
+      "gold": 45.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:334",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 47.0,
+      "gold": 47.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:334",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 45.0,
+      "gold": 45.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:335",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 47.0,
+      "gold": 47.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:335",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 45.0,
+      "gold": 45.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:336",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 47.0,
+      "gold": 47.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:336",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 45.0,
+      "gold": 45.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:34",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 41.1,
+      "gold": 41.1,
+      "richtig": true,
+      "zeile": 78,
+      "quelle": "wochenspalte"
+    },
+    {
+      "record_id": "yun2024:34",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 45.4,
+      "gold": 45.4,
+      "richtig": true,
+      "zeile": 78,
+      "quelle": "wochenspalte"
+    },
+    {
+      "record_id": "yun2024:345",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 5.4,
+      "gold": 2.3,
+      "richtig": false,
+      "zeile": 13,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:346",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:346",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:347",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:347",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:426",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 49.0,
+      "gold": 44.0,
+      "richtig": false,
+      "zeile": 10,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:426",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 44.0,
+      "gold": 49.0,
+      "richtig": false,
+      "zeile": 10,
+      "quelle": "position"
+    },
+    {
+      "record_id": "yun2024:445",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 70.0,
+      "gold": 70.0,
+      "richtig": true,
+      "zeile": 6,
+      "quelle": "zeile"
+    },
+    {
+      "record_id": "yun2024:445",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 70.0,
+      "gold": 70.0,
+      "richtig": true,
+      "zeile": 6,
+      "quelle": "zeile"
+    },
+    {
+      "record_id": "yun2024:664",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 97.6,
+      "gold": 97.6,
+      "richtig": true,
+      "zeile": 26,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:664",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 101.9,
+      "gold": 101.9,
+      "richtig": true,
+      "zeile": 26,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:665",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 97.6,
+      "gold": 97.6,
+      "richtig": true,
+      "zeile": 26,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:665",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 103.4,
+      "gold": 103.4,
+      "richtig": true,
+      "zeile": 26,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:666",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 184.4,
+      "gold": 184.4,
+      "richtig": true,
+      "zeile": 27,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:666",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 206.9,
+      "gold": 206.9,
+      "richtig": true,
+      "zeile": 27,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:667",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 184.4,
+      "gold": 184.4,
+      "richtig": true,
+      "zeile": 27,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:667",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 207.2,
+      "gold": 207.2,
+      "richtig": true,
+      "zeile": 27,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:668",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 181.8,
+      "gold": 181.8,
+      "richtig": true,
+      "zeile": 28,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:668",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 194.3,
+      "gold": 194.3,
+      "richtig": true,
+      "zeile": 28,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:669",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": 181.8,
+      "gold": 181.8,
+      "richtig": true,
+      "zeile": 28,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:669",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 200.1,
+      "gold": 200.1,
+      "richtig": true,
+      "zeile": 28,
+      "quelle": "zielzeile"
+    },
+    {
+      "record_id": "yun2024:98",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 37.0,
+      "gold": 37.0,
+      "richtig": true,
+      "zeile": 154,
+      "quelle": "zeile"
+    }
   ]
 }

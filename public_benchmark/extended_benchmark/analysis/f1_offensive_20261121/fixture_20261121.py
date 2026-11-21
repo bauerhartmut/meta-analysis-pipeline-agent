@@ -72,6 +72,12 @@ def main(argv: list[str]) -> int:
     basis = lauf(faelle, recs, texte)
     ablation["endvariante"] = kennzahlen(basis)
     basis_zellen = zellen(basis)
+    # Zweiter Stand: ohne Gate, damit der Pruefmodus beide Varianten
+    # zellgenau vergleicht.
+    schalter(gate=False)
+    ohne_gate = lauf(faelle, recs, texte)
+    ohne_gate_zellen = zellen(ohne_gate)
+    schalter()
     for name, kwargs in (("ohne_gate", {"gate": False}),
                          ("ohne_positionsregel", {"positional": False}),
                          ("ohne_wochenspalte", {"wochenspalte": False}),
@@ -95,32 +101,36 @@ def main(argv: list[str]) -> int:
                 jetzt = ablation.get(name)
                 if vorher != jetzt:
                     print(f"  {name}: {vorher} -> {jetzt}")
-        alt_schluessel = {(z["record_id"], z["feld"], z["arm"]): z for z in alt["zellen"]}
-        neu_schluessel = {(z["record_id"], z["feld"], z["arm"]): z for z in basis_zellen}
-        fehlend = sorted(set(alt_schluessel) - set(neu_schluessel))
-        neu = sorted(set(neu_schluessel) - set(alt_schluessel))
-        geaendert = [k for k in set(alt_schluessel) & set(neu_schluessel)
-                     if alt_schluessel[k]["wert"] != neu_schluessel[k]["wert"]
-                     or alt_schluessel[k]["richtig"] != neu_schluessel[k]["richtig"]]
-        for k in fehlend:
-            probleme += 1
-            print("  fehlt:", k)
-        for k in neu:
-            probleme += 1
-            print("  neu:", k)
-        for k in sorted(geaendert):
-            probleme += 1
-            print(f"  geaendert: {k} {alt_schluessel[k]['wert']} -> "
-                  f"{neu_schluessel[k]['wert']} (richtig {alt_schluessel[k]['richtig']} -> "
-                  f"{neu_schluessel[k]['richtig']})")
-        print(f"Fixture {FIXTURE.name}: {len(alt['zellen'])} Zellen | "
-              f"Abweichungen {probleme}")
+        for stand, alt_liste, neu_liste in (("gate", alt["zellen"], basis_zellen),
+                                            ("ohne_gate", alt.get("zellen_ohne_gate", []),
+                                             ohne_gate_zellen)):
+            alt_schluessel = {(z["record_id"], z["feld"], z["arm"]): z for z in alt_liste}
+            neu_schluessel = {(z["record_id"], z["feld"], z["arm"]): z for z in neu_liste}
+            fehlend = sorted(set(alt_schluessel) - set(neu_schluessel))
+            neu = sorted(set(neu_schluessel) - set(alt_schluessel))
+            geaendert = [k for k in set(alt_schluessel) & set(neu_schluessel)
+                         if alt_schluessel[k]["wert"] != neu_schluessel[k]["wert"]
+                         or alt_schluessel[k]["richtig"] != neu_schluessel[k]["richtig"]]
+            for k in fehlend:
+                probleme += 1
+                print(f"  [{stand}] fehlt:", k)
+            for k in neu:
+                probleme += 1
+                print(f"  [{stand}] neu:", k)
+            for k in sorted(geaendert):
+                probleme += 1
+                print(f"  [{stand}] geaendert: {k} {alt_schluessel[k]['wert']} -> "
+                      f"{neu_schluessel[k]['wert']} (richtig {alt_schluessel[k]['richtig']} -> "
+                      f"{neu_schluessel[k]['richtig']})")
+        print(f"Fixture {FIXTURE.name}: {len(alt['zellen'])} Zellen mit Gate, "
+              f"{len(alt.get('zellen_ohne_gate', []))} ohne Gate | Abweichungen {probleme}")
         return 1 if probleme else 0
 
     inhalt = {"stand": "2026-11-21", "faelle": len(faelle), "ablation": ablation,
-              "zellen": basis_zellen}
+              "zellen": basis_zellen, "zellen_ohne_gate": ohne_gate_zellen}
     FIXTURE.write_text(json.dumps(inhalt, indent=2, ensure_ascii=True), encoding="utf-8")
-    print(f"geschrieben: {FIXTURE.name} | Zellen {len(basis_zellen)}")
+    print(f"geschrieben: {FIXTURE.name} | Zellen {len(basis_zellen)} mit Gate, "
+          f"{len(ohne_gate_zellen)} ohne Gate")
     for name, k in ablation.items():
         print(f"  {name:22s} Zellen {k['zellen']:3d} TP {k['tp']:3d} FP {k['fp']:3d}")
     return 0

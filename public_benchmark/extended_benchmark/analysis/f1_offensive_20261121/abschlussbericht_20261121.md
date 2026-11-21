@@ -80,7 +80,9 @@ Zellen vorhandene falsche Werte ersetzen.
 ## Ablation der Bausteine
 
 `fixture_20261121.py` schaltet jeden Baustein einzeln ab; die Zahlen sind in
-`fixture_20261121.json` eingefroren.
+`fixture_20261121.json` eingefroren. Die Fixture haelt beide Zellstaende
+zellgenau fest - 33 Zellen mit Gate unter `zellen`, 43 ohne Gate unter
+`zellen_ohne_gate` - und `pruefen` vergleicht beide Listen samt Ablation.
 
 | Lauf | Zellen | TP | FP |
 |---|---:|---:|---:|
@@ -142,6 +144,33 @@ Abbildung) oder der Wert ist abgeleitet. Ein Ausbau der Zeilen-, Spalten- oder
 Blockwahl kann daran nichts aendern; das zeigt die Uebertragung mit 7 von 464
 Faellen und 14 Prozent Trefferquote.
 
+## Wird die gepoolte Schaetzung dadurch anders?
+
+`pooling_effekt_20261121.py`, offline. Fuer die 103 P5-Records werden die Zellen
+in vier Staenden gepoolt: unveraendert, mit den 33 Zellen, mit den 43 Zellen,
+mit Gold als Referenz. Effekt je Record: Log-Odds-Ratio (binaer), Hedges g
+(kontinuierlich); Pooling mit `pool(method="hksj")` aus
+`research_agent/meta/pooling.py`.
+
+| Stand | k | pooled | 95 %-KI | I2 |
+|---|---:|---:|---|---:|
+| unveraendert | 24 | 0.125 | -0.302 bis 0.551 | 91.1 |
+| 33 Zellen | 24 | -0.018 | -0.575 bis 0.538 | 92.6 |
+| 43 Zellen | 24 | -0.018 | -0.575 bis 0.538 | 92.6 |
+| Gold (Referenz) | 58 | 0.318 | -0.412 bis 1.048 | 97.8 |
+
+Auf der gemeinsamen Menge (k = 20) lauten die Werte 0.043, -0.115, -0.115 und
+-0.026. Ohne die beiden Extremrecords (|g| > 3) bleiben 0.086, 0.052, 0.052 und
+0.092 bei k = 19; die Richtungsverteilung (negativ/positiv) ist 12/8 gegenueber
+12/8 und bei Gold 10/10.
+
+Befund: Die Ersetzungen bewegen die gepoolte Schaetzung nur ueber zwei Records
+(`yun2024:347`, `yun2024:668`), und zwar um 0.07 auf der Effektskala (0.125 auf
+-0.018). Alle Konfidenzintervalle ueberlappen sich fast vollstaendig; das
+Vorzeichen und die Aussage "kein sicherer Effekt" bleiben gleich. Gate und
+Ohne-Gate sind gepoolt identisch, weil die 10 zusaetzlich verworfenen Zellen auf
+Records liegen, die im P5-Pool ohnehin unvollstaendig sind.
+
 ## Grenzen
 
 - Alle Regeln sind Textheuristiken auf Markdown; sie greifen bei sauberen
@@ -153,6 +182,9 @@ Faellen und 14 Prozent Trefferquote.
   den frueheren Positionsverlust bei `yun2024:426`.
 - `yun2024:196` und `yun2024:345` sind mit keiner Leseregel zu holen; beide
   brauchen eine Goldentscheidung.
+- Die Pooling-Messung ist eine Naeherung: einfache Effektformeln, nur 24 von 103
+  P5-Records vollstaendig, I2 ueber 90 Prozent, ein Record mit |g| = 6. Sie
+  zeigt die Groessenordnung der Verschiebung, nicht die gepoolte Wahrheit.
 - Die Stichprobe umfasst 20 von 164 Faellen mit festem Schritt, nicht zufaellig
   gezogen; "nur gerundet" kann bei kurzen Zahlen ein Zufallstreffer sein.
 - Nicht geprueft: Wirkung ausserhalb der 295 Faelle und ausserhalb der
