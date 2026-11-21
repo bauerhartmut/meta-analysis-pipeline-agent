@@ -199,12 +199,42 @@ Systematische Stichprobe (jeder 15. Fall der 295 `fn_wert_ersetzt`), offline
 | Wert nur im Fliesstext | 14 |
 | Wert in Zeile ohne Outcome-Bezug | 2 |
 
-Hoechstens 4 der 20 koennte eine explizite Zeilenbenennung im Prompt
-erreichen, nach Sichtpruefung 3 (`yun2024:389` nennt die Groesse einer
-Untergruppe, nicht die Armgroesse). 16 sind es nicht: die Werte stehen im
-Fliesstext oder in Zeilen, die den Outcome nicht nennen. 10 der 20 sind
-Zaehlfelder; in der Gesamtmenge der 295 sind es 127 Zaehlfelder, 100
-Mittelwerte, 68 Streuungen.
+Getrennt nach Feldgruppe, damit die Zaehlfelder die Aussage nicht verwaessern:
+
+| Feldgruppe | Faelle | eindeutig | mehrdeutig | Kaption | Fliesstext | ohne Bezug |
+|---|---:|---:|---:|---:|---:|---:|
+| Mittelwerte | 6 | 1 | 0 | 0 | 5 | 0 |
+| Streuungen | 4 | 0 | 1 | 0 | 3 | 0 |
+| Zaehlfelder | 10 | 0 | 0 | 2 | 6 | 2 |
+
+Fuer Mittelwerte und Streuungen (10 Faelle) bleiben damit 2 durch Zeilen-
+benennung erreichbar, 8 nicht. Bei den Zaehlfeldern sind 2 ueber die Kaption
+auffindbar, 6 stehen nur im Fliesstext, 2 in Zeilen ohne Outcome-Bezug. In der
+Gesamtmenge der 295 sind 127 Zaehlfelder, 100 Mittelwerte, 68 Streuungen.
+
+## Zaehlfelder: fehlende Groessenzeile oder Armzuordnung?
+
+Alle 127 `fn_wert_ersetzt` mit `group_size` oder `events`, offline
+(`zaehlfelder_20261121.py`):
+
+| Klasse | Faelle |
+|---|---:|
+| Groessenzeile vorhanden, Wert im richtigen Arm | 31 |
+| Groessenzeile vorhanden, Wert im anderen Arm | 20 |
+| Arm nur ueber Kopfzeile zugeordnet | 6 |
+| Arm nicht bestimmbar | 22 |
+| Groesse nur als Nenner (8/20) | 16 |
+| Groesse nur im Fliesstext | 32 |
+
+Damit ist die fehlende Groessenzeile der groessere Block: 48 von 127 (38
+Prozent) haben keine Zeile, in der die Groesse als eigene Zelle steht. Die
+Armzuordnung ist hoechstens in 20 Faellen (16 Prozent) betroffen, und diese
+Klasse ist nicht sauber belegt: Beschriftungen wie `No text message` tragen
+dieselben Woerter wie der Interventionsarm, wodurch die Zuordnung kippt
+(Sichtpruefung `yun2024:100`). 28 Faelle sind ohne Armnamen nicht entscheidbar,
+31 sind in Ordnung (dort ist die Auswahl der Zahl das Problem). Ein Arm-Tausch
+der Vorhersage ist in keinem Fall belegbar: die ausgegebene Zahl stimmt nie mit
+der Zahl des anderen Arms in derselben Groessenzeile ueberein.
 
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 

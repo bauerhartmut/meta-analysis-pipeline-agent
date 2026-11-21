@@ -132,6 +132,9 @@ def main() -> int:
         )
 
     verteilung = Counter(e["klasse"] for e in ergebnisse)
+    pro_gruppe: dict[str, Counter] = {}
+    for e in ergebnisse:
+        pro_gruppe.setdefault(e["feldgruppe"], Counter())[e["klasse"]] += 1
     nach_feld = Counter(e["feldgruppe"] for e in ergebnisse)
     feld_gesamt = Counter(
         "zaehlung" if f["feld"] in ZAEHLFELDER else ("streuung" if "standard_deviation" in f["feld"] else "mittelwert")
@@ -145,6 +148,7 @@ def main() -> int:
         "stichprobe": len(ergebnisse),
         "verfahren": f"jeder {SCHRITT}. Fall der Liste",
         "verteilung": dict(verteilung),
+        "verteilung_nach_feldgruppe": {k: dict(v) for k, v in pro_gruppe.items()},
         "feldgruppen_stichprobe": dict(nach_feld),
         "feldgruppen_gesamt": dict(feld_gesamt),
         "loesbar_durch_zeilenbenennung": loesbar,
@@ -155,6 +159,13 @@ def main() -> int:
         json.dumps(ergebnis, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n"
     )
 
+    klassen = ["eindeutig_benannt", "mehrdeutig_benannt", "kaption_benannt",
+               "wert_nur_im_fliessetext", "ohne_outcome_bezug", "wert_nicht_im_dokument"]
+    zeilen_gruppen = "\n".join(
+        f"| {gruppe} | {sum(zaehler.values())} | "
+        + " | ".join(str(zaehler.get(k, 0)) for k in klassen) + " |"
+        for gruppe, zaehler in sorted(pro_gruppe.items())
+    )
     tab = "\n".join(
         f"| `{e['record_id']}` | {e['feld'].replace('_', ' ')} | {e['arm']} | {e['wert']} | "
         f"{e['klasse']} | {e['zeilen_mit_wert']} | "
@@ -182,6 +193,16 @@ benennt? Ist das eindeutig, kann eine explizite Zeilenangabe den Fall loesen.
 | Wert ohne Outcome-Bezug | {verteilung['ohne_outcome_bezug']} |
 | Wert nur im Fliesstext, keine Tabellenzeile | {verteilung['wert_nur_im_fliessetext']} |
 | Wert nicht im Dokument | {verteilung['wert_nicht_im_dokument']} |
+
+## Verteilung getrennt nach Feldgruppe
+
+| Feldgruppe | Faelle | eindeutig | mehrdeutig | Kaption | Fliesstext | ohne Bezug | nicht im Dokument |
+|---|---:|---:|---:|---:|---:|---:|---:|
+{zeilen_gruppen}
+
+Zaehlfelder sind Gruppengroessen und Ereignisse; sie werden im Prompt nicht
+ueber eine Zeile, sondern ueber Arm und Tabelle adressiert. Die Trennung zeigt,
+ob die Aussage zur Zeilenbenennung durch sie verwaessert wird.
 
 ## Faelle
 

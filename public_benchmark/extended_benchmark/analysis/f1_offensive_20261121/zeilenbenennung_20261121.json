@@ -10,6 +10,21 @@
     "kaption_benannt": 2,
     "mehrdeutig_benannt": 1
   },
+  "verteilung_nach_feldgruppe": {
+    "zaehlung": {
+      "wert_nur_im_fliessetext": 6,
+      "ohne_outcome_bezug": 2,
+      "kaption_benannt": 2
+    },
+    "mittelwert": {
+      "eindeutig_benannt": 1,
+      "wert_nur_im_fliessetext": 5
+    },
+    "streuung": {
+      "wert_nur_im_fliessetext": 3,
+      "mehrdeutig_benannt": 1
+    }
+  },
   "feldgruppen_stichprobe": {
     "zaehlung": 10,
     "mittelwert": 6,

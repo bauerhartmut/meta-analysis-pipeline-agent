@@ -18,6 +18,18 @@ benennt? Ist das eindeutig, kann eine explizite Zeilenangabe den Fall loesen.
 | Wert nur im Fliesstext, keine Tabellenzeile | 14 |
 | Wert nicht im Dokument | 0 |
 
+## Verteilung getrennt nach Feldgruppe
+
+| Feldgruppe | Faelle | eindeutig | mehrdeutig | Kaption | Fliesstext | ohne Bezug | nicht im Dokument |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| mittelwert | 6 | 1 | 0 | 0 | 5 | 0 | 0 |
+| streuung | 4 | 0 | 1 | 0 | 3 | 0 | 0 |
+| zaehlung | 10 | 0 | 0 | 2 | 6 | 2 | 0 |
+
+Zaehlfelder sind Gruppengroessen und Ereignisse; sie werden im Prompt nicht
+ueber eine Zeile, sondern ueber Arm und Tabelle adressiert. Die Trennung zeigt,
+ob die Aussage zur Zeilenbenennung durch sie verwaessert wird.
+
 ## Faelle
 
 | Record | Feld | Arm | Wert | Klasse | Zeilen mit Wert | Gruppe / Label | Regel bindet Record |
