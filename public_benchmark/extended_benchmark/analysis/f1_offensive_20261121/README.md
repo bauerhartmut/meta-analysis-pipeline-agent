@@ -394,9 +394,33 @@ Die 27 FP verteilen sich auf Groesse 10, Mittel 10 und Ereignis 7 (Streuungen 0)
 | Ereignis | `Mittel (SD)` | 0 | 1 |
 
 **Mittel nur noch im Format `Mittel (SD)` zu lesen ist eine Verschlechterung:**
-Zellen 47 -> 27, TP 20 -> 8, FP 27 -> 19, Trefferquote 43 -> 30 Prozent. Alle 12
-richtigen Mittel standen im Format `26.1 +/- 1.0`; die 2 FP, die auch im
+Alle 12 richtigen Mittel standen im Format `26.1 +/- 1.0`; die 2 FP, die auch im
 Format `Mittel (SD)` auftreten, haben eine falsche Zeile oder Spalte.
+
+### Endvariante: Ereignisse aus, Mittel in beiden Formaten
+
+Der Ereignis-Leser ist abgeschaltet (er lieferte 0 TP und 7 FP), Mittel werden
+nur aus `Zahl +/- Zahl` und `Zahl (Zahl)` gelesen. Alle Laeufe ohne
+Ereignis-Leser:
+
+| Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Endvariante |
+|---|---:|---:|---:|---:|
+| Zielzeile gefunden | 156 | 178 | 178 | 178 |
+| Zellen | 32 | 40 | 20 | 37 |
+| TP | 14 | 20 | 8 | 20 |
+| FP | 18 | 20 | 12 | 17 |
+| Trefferquote | 44 % | 50 % | 40 % | **54 %** |
+
+Formate in der Endvariante:
+
+| Feldtyp | Zellformat | richtig | falsch |
+|---|---|---:|---:|
+| Groesse | Groessenzeile | 8 | 10 |
+| Mittel | `Zahl +/- Zahl` | 12 | 5 |
+| Mittel | `Zahl (Zahl)` | 0 | 2 |
+
+Der Schritt bringt gegenueber dem Alias-Lauf mit Ereignissen 7 FP weniger bei
+gleicher TP-Zahl; gegenueber der strengen Variante 12 TP mehr bei 5 FP mehr.
 
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
 gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht

@@ -82,23 +82,28 @@ def zellformat(zelle: str) -> str:
     return "sonstig"
 
 
-def wert_aus_zelle(zelle: str, feld: str, mean_streng: bool) -> float | None:
-    """Wert einer Armzelle: Streuung in Klammern, Mittel nur im Format `Mittel (SD)`."""
+def wert_aus_zelle(zelle: str, feld: str, mean_formate: tuple[str, ...] | None) -> float | None:
+    """Wert einer Armzelle: Streuung in Klammern, Mittel nur in erlaubten Formaten.
+
+    `mean_formate=None` heisst: erste Zahl der Zelle, ohne Formatpruefung.
+    """
     if feld.endswith("standard_deviation"):
         m = re.search(r"\(\s*(\d+(?:\.\d+)?)", zelle)
         return float(m.group(1)) if m else None
-    if feld.endswith("mean") and mean_streng:
-        if not MITTEL_SD.match(zelle.strip()):
+    if feld.endswith("mean"):
+        if mean_formate is not None and zellformat(zelle) not in mean_formate:
             return None
-        m = re.match(r"^[\s*]*(\d+(?:\.\d+)?)", zelle.strip())
-        return float(m.group(1)) if m else None
+        m = re.search(r"(?<![\d.])(\d[\d,]*(?:\.\d+)?)", zelle)
+        return float(m.group(1).replace(",", "")) if m else None
     m = re.search(r"(?<![\d.])(\d[\d,]*(?:\.\d+)?)", zelle)
     return float(m.group(1).replace(",", "")) if m else None
 
 
 def lies(record: dict[str, Any], text: str, feld: str, arm: str,
          alias: dict[str, list[str]], akronyme: bool,
-         mean_streng: bool = False) -> dict[str, Any] | None:
+         mean_formate: tuple[str, ...] | None = None) -> dict[str, Any] | None:
+    if feld.endswith("events"):
+        return None  # Ereignis-Leser abgeschaltet: 0 TP, 7 FP
     context = record.get("context") or {}
     zeilen = text.splitlines()
     if feld.endswith("group_size"):
@@ -118,7 +123,7 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
     for k in range(1, len(segs)):
         if arm_von_spalte(zeilen, ziel, segs, k, context) != arm:
             continue
-        wert = wert_aus_zelle(segs[k], feld, mean_streng)
+        wert = wert_aus_zelle(segs[k], feld, mean_formate)
         if wert is not None:
             return {"value": wert, "quelle": "zielzeile", "zeile": ziel + 1,
                     "zellformat": zellformat(segs[k])}
@@ -126,7 +131,8 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
 
 
 def messe(faelle: list[dict[str, Any]], records: dict[str, dict[str, Any]], texte: dict[str, str],
-          alias: dict[str, list[str]], akronyme: bool, mean_streng: bool = False) -> dict[str, Any]:
+          alias: dict[str, list[str]], akronyme: bool,
+          mean_formate: tuple[str, ...] | None = None) -> dict[str, Any]:
     detail: list[dict[str, Any]] = []
     ziel_gefunden = 0
     for f in faelle:
@@ -136,7 +142,7 @@ def messe(faelle: list[dict[str, Any]], records: dict[str, dict[str, Any]], text
         if alias_mod.ziel_zeile_alias(zeilen, str((record.get("context") or {}).get("outcome") or ""),
                                       alias, akronyme) >= 0:
             ziel_gefunden += 1
-        info = lies(record, texte[rid], f["feld"], f["arm"], alias, akronyme, mean_streng)
+        info = lies(record, texte[rid], f["feld"], f["arm"], alias, akronyme, mean_formate)
         if info is None:
             continue
         gold = float(f["wert"])
@@ -161,7 +167,9 @@ def main() -> int:
 
     ohne = messe(faelle, records, texte, {}, False)
     mit = messe(faelle, records, texte, alias_mod.ALIAS, True)
-    streng = messe(faelle, records, texte, alias_mod.ALIAS, True, mean_streng=True)
+    streng = messe(faelle, records, texte, alias_mod.ALIAS, True, mean_formate=("mittel_sd",))
+    beide = messe(faelle, records, texte, alias_mod.ALIAS, True,
+                  mean_formate=("mittel_sd", "plus_minus"))
     neu = {(e["record_id"], e["feld"], e["arm"]) for e in mit["detail"]} - \
           {(e["record_id"], e["feld"], e["arm"]) for e in ohne["detail"]}
     neu_detail = [e for e in mit["detail"] if (e["record_id"], e["feld"], e["arm"]) in neu]
@@ -179,6 +187,8 @@ def main() -> int:
 
     zell_aufschl = Counter((gruppe(e["feld"]), e["regel"].get("zellformat", "groessenzeile"),
                             e["richtig"]) for e in mit["detail"])
+    zell_aufschl_neu = Counter((gruppe(e["feld"]), e["regel"].get("zellformat", "groessenzeile"),
+                                e["richtig"]) for e in beide["detail"])
     fp = [e for e in mit["detail"] if not e["richtig"]]
     fp_feldtyp = Counter(gruppe(e["feld"]) for e in fp)
     fp_format = Counter((gruppe(e["feld"]), e["regel"].get("zellformat", "groessenzeile")) for e in fp)
@@ -188,6 +198,10 @@ def main() -> int:
         "faelle": len(faelle),
         "alias_streng": {k: streng[k] for k in ("zielzeile_gefunden", "geliefert", "tp", "fp",
                                                 "tp_gerundet", "fp_gerundet")},
+        "neu": {k: beide[k] for k in ("zielzeile_gefunden", "geliefert", "tp", "fp",
+                                     "tp_gerundet", "fp_gerundet")},
+        "neu_zellformate": {f"{a}|{b}|{'richtig' if r else 'falsch'}": c
+                            for (a, b, r), c in zell_aufschl_neu.items()},
         "fp_nach_feldtyp": dict(fp_feldtyp),
         "fp_nach_format": {f"{a}|{b}": c for (a, b), c in fp_format.items()},
         "zellformate": {f"{a}|{b}|{'richtig' if r else 'falsch'}": c
@@ -207,7 +221,7 @@ def main() -> int:
         json.dumps(ergebnis, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
 
     zell_paar: dict[tuple[str, str], list[int]] = {}
-    for (a, b, r), c in zell_aufschl.items():
+    for (a, b, r), c in zell_aufschl_neu.items():
         zell_paar.setdefault((a, b), [0, 0])[0 if r else 1] += c
     format_tab = "\n".join(f"| {a} | {b} | {v[0]} | {v[1]} |"
                             for (a, b), v in sorted(zell_paar.items())) or "| - | - | - | - |"
@@ -223,22 +237,22 @@ Offline, ohne Netzaufruf. Die Zielzeilensuche laeuft ueber alle
 Varianten: ohne Erweiterung und mit Alias `scanning -> scan, duration` plus
 Akronymen.
 
-| Kennzahl | ohne | mit Alias | Alias, Mittel nur `Mittel (SD)` |
-|---|---:|---:|---:|
-| Zielzeile gefunden | {ohne['zielzeile_gefunden']} | {mit['zielzeile_gefunden']} | {streng['zielzeile_gefunden']} |
-| Zellen geliefert | {ohne['geliefert']} | {mit['geliefert']} | {streng['geliefert']} |
-| TP (exakt) | {ohne['tp']} | {mit['tp']} | {streng['tp']} |
-| FP (exakt) | {ohne['fp']} | {mit['fp']} | {streng['fp']} |
-| TP (auf ganze Zahl gerundet) | {ohne['tp_gerundet']} | {mit['tp_gerundet']} | {streng['tp_gerundet']} |
-| FP (auf ganze Zahl gerundet) | {ohne['fp_gerundet']} | {mit['fp_gerundet']} | {streng['fp_gerundet']} |
+| Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Ereignisse aus, Mittel beide Formate |
+|---|---:|---:|---:|---:|
+| Zielzeile gefunden | {ohne['zielzeile_gefunden']} | {mit['zielzeile_gefunden']} | {streng['zielzeile_gefunden']} | {beide['zielzeile_gefunden']} |
+| Zellen geliefert | {ohne['geliefert']} | {mit['geliefert']} | {streng['geliefert']} | {beide['geliefert']} |
+| TP (exakt) | {ohne['tp']} | {mit['tp']} | {streng['tp']} | {beide['tp']} |
+| FP (exakt) | {ohne['fp']} | {mit['fp']} | {streng['fp']} | {beide['fp']} |
+| TP (auf ganze Zahl gerundet) | {ohne['tp_gerundet']} | {mit['tp_gerundet']} | {streng['tp_gerundet']} | {beide['tp_gerundet']} |
+| FP (auf ganze Zahl gerundet) | {ohne['fp_gerundet']} | {mit['fp_gerundet']} | {streng['fp_gerundet']} | {beide['fp_gerundet']} |
 
-## FP nach Feldtyp (Alias-Lauf, {mit['fp']} FP)
+## FP nach Feldtyp (Alias-Lauf vor der Umstellung, {mit['fp']} FP)
 
 | Feldtyp | FP |
 |---|---:|
 {fp_feldtyp_tab}
 
-## Formate der gelieferten Zellen (Alias-Lauf)
+## Formate der gelieferten Zellen (Endvariante)
 
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
@@ -264,26 +278,22 @@ Die zwei exakten FP sind Rundungen: 31.7 gegen Gold 32 und 19.8 gegen Gold 20.
 
 ## Lesart
 
-Gelesen wird je Feldtyp: Groessen aus der Groessenzeile, Mittel und Ereignisse
-als erste Zahl der Armzelle, Streuungen als Zahl in Klammern. Der Leser ist
-grob und nicht validiert; die TP/FP-Zahlen messen die Zielzeilensuche, nicht
-einen fertigen Extraktor.
+Gelesen wird je Feldtyp: Groessen aus der Groessenzeile, Mittel nur in den
+Formaten `Zahl +/- Zahl` und `Zahl (Zahl)`, Streuungen als Zahl in Klammern.
+Der Ereignis-Leser ist in allen Laeufen abgeschaltet (vorher 0 TP, 7 FP).
 
-Die 27 FP verteilen sich auf Groesse 10, Mittel 10 und Ereignis 7; Streuungen
-stellen keinen Fehler. Die Zellformate zeigen den Grund:
+In der Endvariante stellen sich die {beide['fp']} FP so:
 
-* Mittel stehen fast immer als `26.1 +/- 1.0` (12 richtig, 5 falsch), nicht als
-  `Mittel (SD)`; `sonstig` sind 3 weitere Fehler (etwa Median mit Quartilen).
-* Ereignisse liefern 0 richtige und 7 falsche Zellen - der Leser greift dort
-  regelmaessig den Prozentwert oder die Nachbarspalte.
-* Groessen treffen 8 von 18.
+* Groesse 10 (Groessenzeile), 8 richtig.
+* Mittel 5 im Format `+/-`, 12 richtig.
+* Mittel 2 im Format `Mittel (SD)`, 0 richtig - dort ist die Zeile oder Spalte
+  falsch, nicht das Format.
 
-Die verlangte Umstellung auf `Mittel (SD)` kostet deshalb mehr, als sie bringt:
-Zellen 47 -> {streng['geliefert']}, TP 20 -> {streng['tp']}, FP 27 -> {streng['fp']}.
-Alle 12 richtigen Mittel standen im Format `+/-`; die 2 FP im Format
-`Mittel (SD)` bleiben auch nach der Umstellung, weil dort Zeile oder Spalte
-falsch ist, nicht das Format. Trefferquote: 43 Prozent mit weiter Fassung,
-30 Prozent mit strenger.
+Trefferquote: {beide['tp']} von {beide['geliefert']} Zellen, also
+{100 * beide['tp'] // max(1, beide['geliefert'])} Prozent. Ereignisse tragen
+nichts bei, Groessen und Mittel teilen sich die Treffer. Die Umstellung von der
+ersten Zahl auf zwei erlaubte Formate kostet 3 weitere Zellen des Formats
+`sonstig`, alle drei waren falsch.
 """
     (HIER / "zielzeile_alle_20261121.md").write_text(bericht, encoding="utf-8", newline="\n")
 
@@ -297,6 +307,8 @@ falsch ist, nicht das Format. Trefferquote: 43 Prozent mit weiter Fassung,
           f"{ergebnis['nur_mit_alias']['tp_gerundet']}")
     print(f"alias + Mittel nur (SD): Zellen {streng['geliefert']} | TP {streng['tp']} | "
           f"FP {streng['fp']} | gerundet TP {streng['tp_gerundet']}")
+    print(f"Ereignisse aus + Mittel beide Formate: Zellen {beide['geliefert']} | TP {beide['tp']} | "
+          f"FP {beide['fp']} | gerundet TP {beide['tp_gerundet']} | gerundet FP {beide['fp_gerundet']}")
     print(f"FP nach Feldtyp: {dict(fp_feldtyp)}")
     print(f"FP nach Format: {ergebnis['fp_nach_format']}")
     for e in neu_detail:

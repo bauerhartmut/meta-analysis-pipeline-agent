@@ -3,52 +3,60 @@
   "faelle": 295,
   "alias_streng": {
     "zielzeile_gefunden": 178,
-    "geliefert": 27,
+    "geliefert": 20,
     "tp": 8,
-    "fp": 19,
+    "fp": 12,
     "tp_gerundet": 8,
-    "fp_gerundet": 19
+    "fp_gerundet": 12
+  },
+  "neu": {
+    "zielzeile_gefunden": 178,
+    "geliefert": 37,
+    "tp": 20,
+    "fp": 17,
+    "tp_gerundet": 20,
+    "fp_gerundet": 17
+  },
+  "neu_zellformate": {
+    "groesse|groessenzeile|richtig": 8,
+    "groesse|groessenzeile|falsch": 10,
+    "mittel|plus_minus|falsch": 5,
+    "mittel|mittel_sd|falsch": 2,
+    "mittel|plus_minus|richtig": 12
   },
   "fp_nach_feldtyp": {
     "groesse": 10,
-    "mittel": 10,
-    "ereignis": 7
+    "mittel": 10
   },
   "fp_nach_format": {
     "groesse|groessenzeile": 10,
     "mittel|sonstig": 3,
     "mittel|plus_minus": 5,
-    "ereignis|mittel_sd": 1,
-    "mittel|mittel_sd": 2,
-    "ereignis|nackt": 3,
-    "ereignis|sonstig": 3
+    "mittel|mittel_sd": 2
   },
   "zellformate": {
     "groesse|groessenzeile|richtig": 8,
     "groesse|groessenzeile|falsch": 10,
     "mittel|sonstig|falsch": 3,
     "mittel|plus_minus|falsch": 5,
-    "ereignis|mittel_sd|falsch": 1,
     "mittel|mittel_sd|falsch": 2,
-    "ereignis|nackt|falsch": 3,
-    "ereignis|sonstig|falsch": 3,
     "mittel|plus_minus|richtig": 12
   },
   "ohne": {
     "zielzeile_gefunden": 156,
-    "geliefert": 39,
+    "geliefert": 32,
     "tp": 14,
-    "fp": 25,
+    "fp": 18,
     "tp_gerundet": 14,
-    "fp_gerundet": 25
+    "fp_gerundet": 18
   },
   "alias": {
     "zielzeile_gefunden": 178,
-    "geliefert": 47,
+    "geliefert": 40,
     "tp": 20,
-    "fp": 27,
+    "fp": 20,
     "tp_gerundet": 22,
-    "fp_gerundet": 25
+    "fp_gerundet": 18
   },
   "nur_mit_alias": {
     "geliefert": 8,
