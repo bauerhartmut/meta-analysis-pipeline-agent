@@ -633,20 +633,49 @@ Die 16 nicht gelieferten Auftraege scheitern zu gleichen Teilen an fehlender
 Zielzeile (`6`, `110`, `113`, `114`) und an einer Zielzeile ohne SD-Format
 (`160`, `163`, `203`, `449`).
 
-Die drei vollstaendigen Records sind nicht gold-richtig, weil ihre Goldwerte
-nicht im Text stehen: bei `447` fehlen drei von vier Zahlen im Dokument, bei
-`450` alle vier, bei `448` die SD des Vergleichsarms. Gelesen wird jeweils die
-Zeile, die das Gold-Outcome trifft (Baseline-Tabelle), nicht die Nachher-Tabelle.
+Die drei vollstaendigen Records lasen die Baseline-Tabelle und trafen damit
+keinen Goldwert. Mit der Tabellenwahl (naechster Abschnitt) lesen sie die
+Nachher-Tabelle und sind mit allen sechs Feldern gold-richtig; ihre SD faellt
+dort aus dem 95%-KI. Poolbasis dann: k 24 -> 27, pooled 0.125 -> 0.136.
 
-Poolbasis: k 24 -> 27, pooled 0.125 -> 0.135, wenn alle gelieferten SD zaehlen;
-mit nur den richtigen SD bleibt es bei k = 24 und 0.125.
+## Tabellenwahl: Nachher-Tabelle vor Baseline-Tabelle
+
+`tabellenwahl_20261121.py`, offline. Die Zielzeile kam bisher aus der ersten
+Zeile mit dem hoechsten Alias-Treffer und lag damit in der Baseline-Tabelle,
+wenn sie vor der Nachher-Tabelle steht. Neu bewertet `tabellen_zeitpunkt` den
+Tabellenkopf (`+2` Follow-up, Zeitpunkt, Woche oder Monat; `-2` Baseline,
+Charakteristika), und `ziel_zeile_zeitpunkt` zieht bei gleichem Treffer in die
+Nachher-Tabelle um - aber nur, wenn diese ihre Arme in der Unterschrift nennt
+(`I; n=104`). Dazu lesen `armkuerzel` und `gruppenzeile_wert` die Armzeilen,
+und `wert_aus_zelle` leitet die Streuung aus einem 95%-KI ab
+(`SE = halbe Breite / 1.96`, `SD = SE * sqrt(n)`).
+
+| Record | Felder richtig alt | Felder richtig neu | vollstaendig richtig neu |
+|---|---:|---:|---|
+| `yun2024:196` | 0 | 0 | nein |
+| `yun2024:447` | 1 | 6 | ja |
+| `yun2024:448` | 1 | 6 | ja |
+| `yun2024:450` | 1 | 6 | ja |
+
+Die 33 Zellen und die 17 Streuungszellen der 295 FN-Faelle bleiben unveraendert
+(33/30/3 und 17/17/0), kein TP geht verloren. Der Umzug kostet aber, wenn die
+Armbedingung fehlt: ohne sie steht der Zellstand bei 33 Zellen / 18 TP / 15 FP
+und die Streuung bei 17 / 5 / 12, weil dann eine Aenderungstabelle gegen die
+Tabelle mit den Absolutwerten gewinnt (`PMC4987981`: Gold steht in der
+Baseline-Tabelle).
+
+`yun2024:196` bleibt falsch. Seine Goldwerte stehen in Tabelle 3, einer
+Subgruppentabelle (MMSE-J 20 bis 23); diese Einschraenkung nennt der Record
+nicht. Allein gelesen liefert die Tabelle nur die beiden Mittel (2 von 6
+Feldern), Groesse und Streuung brauchen die Zeilen-n und das KI dieser Tabelle.
 
 ## Fixture: beide Zellstaende zellgenau
 
 `fixture_20261121.py` (Modi `schreiben` / `pruefen`) friert die 33 Zellen mit
 Gate unter `zellen`, die 43 Zellen ohne Gate unter `zellen_ohne_gate` und die
-17 Streuungszellen unter `zellen_streuung` ein, dazu die Ablation der fuenf
-Schalter. `pruefen` rechnet beide Staende neu und
+17 Streuungszellen unter `zellen_streuung` ein, dazu die Ablation der acht
+Schalter (`ohne_zeitpunkt`, `ohne_armbedingung`, `ohne_armzeile`,
+`ohne_vorzeichen` sind neu). `pruefen` rechnet beide Staende neu und
 vergleicht jede Zelle ueber Schluessel (Record, Feld, Arm), Wert und
 Richtig-Kennzeichen; Abweichungen werden einzeln gemeldet und der Rueckgabewert
 ist dann 1. Stand: 33 Zellen mit Gate, 43 ohne Gate, Abweichungen 0.
@@ -697,6 +726,7 @@ und in `tabelle_prosa_30_ergebnis_20261120.md`.
 .venv/bin/python public_benchmark/extended_benchmark/analysis/f1_offensive_20261121/satz_locator_20261121.py
 .venv/bin/python public_benchmark/extended_benchmark/analysis/f1_offensive_20261121/validiere_zellen_20261121.py
 .venv/bin/python public_benchmark/extended_benchmark/analysis/f1_offensive_20261121/record30_kette_20261121.py
+.venv/bin/python public_benchmark/extended_benchmark/analysis/f1_offensive_20261121/tabellenwahl_20261121.py
 ```
 
 Alle vier Skripte sind lesend: kein Modellaufruf, keine geschriebene Prediction,

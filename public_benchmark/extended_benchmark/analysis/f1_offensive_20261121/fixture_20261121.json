@@ -36,6 +36,26 @@
       "zellen": 31,
       "tp": 28,
       "fp": 3
+    },
+    "ohne_zeitpunkt": {
+      "zellen": 33,
+      "tp": 30,
+      "fp": 3
+    },
+    "ohne_armbedingung": {
+      "zellen": 33,
+      "tp": 18,
+      "fp": 15
+    },
+    "ohne_armzeile": {
+      "zellen": 33,
+      "tp": 30,
+      "fp": 3
+    },
+    "ohne_vorzeichen": {
+      "zellen": 33,
+      "tp": 30,
+      "fp": 3
     }
   },
   "zellen": [

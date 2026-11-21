@@ -1,0 +1,1894 @@
+{
+  "stand": "2026-11-21",
+  "vier": {
+    "yun2024:196": {
+      "outcome": "WMS-R (0 min)",
+      "alt": {
+        "intervention_group_size": {
+          "wert": 80.0,
+          "zeile": 47,
+          "quelle": "position",
+          "gold": 24.0,
+          "richtig": false
+        },
+        "comparator_group_size": {
+          "wert": 78.0,
+          "zeile": 47,
+          "quelle": "position",
+          "gold": 24.0,
+          "richtig": false
+        },
+        "intervention_mean": {
+          "wert": null,
+          "zeile": null,
+          "quelle": null,
+          "gold": 1.29,
+          "richtig": false
+        },
+        "comparator_mean": {
+          "wert": null,
+          "zeile": null,
+          "quelle": null,
+          "gold": 1.08,
+          "richtig": false
+        },
+        "intervention_standard_deviation": {
+          "wert": null,
+          "zeile": null,
+          "quelle": null,
+          "gold": 3.14,
+          "richtig": false
+        },
+        "comparator_standard_deviation": {
+          "wert": null,
+          "zeile": null,
+          "quelle": null,
+          "gold": 1.55,
+          "richtig": false
+        }
+      },
+      "neu": {
+        "intervention_group_size": {
+          "wert": 80.0,
+          "zeile": 47,
+          "quelle": "position",
+          "gold": 24.0,
+          "richtig": false
+        },
+        "comparator_group_size": {
+          "wert": 78.0,
+          "zeile": 47,
+          "quelle": "position",
+          "gold": 24.0,
+          "richtig": false
+        },
+        "intervention_mean": {
+          "wert": null,
+          "zeile": null,
+          "quelle": null,
+          "gold": 1.29,
+          "richtig": false
+        },
+        "comparator_mean": {
+          "wert": null,
+          "zeile": null,
+          "quelle": null,
+          "gold": 1.08,
+          "richtig": false
+        },
+        "intervention_standard_deviation": {
+          "wert": null,
+          "zeile": null,
+          "quelle": null,
+          "gold": 3.14,
+          "richtig": false
+        },
+        "comparator_standard_deviation": {
+          "wert": null,
+          "zeile": null,
+          "quelle": null,
+          "gold": 1.55,
+          "richtig": false
+        }
+      },
+      "bilanz_alt": {
+        "felder": 6,
+        "richtig": 0,
+        "geliefert": 2,
+        "vollstaendig_richtig": 0
+      },
+      "bilanz_neu": {
+        "felder": 6,
+        "richtig": 0,
+        "geliefert": 2,
+        "vollstaendig_richtig": 0
+      }
+    },
+    "yun2024:447": {
+      "outcome": "effects for walking",
+      "alt": {
+        "intervention_group_size": {
+          "wert": 114.0,
+          "zeile": 10,
+          "quelle": "position",
+          "gold": 104.0,
+          "richtig": false
+        },
+        "comparator_group_size": {
+          "wert": 114.0,
+          "zeile": 10,
+          "quelle": "position",
+          "gold": 114.0,
+          "richtig": true
+        },
+        "intervention_mean": {
+          "wert": 3.99,
+          "zeile": 42,
+          "quelle": "zielzeile",
+          "gold": -0.55,
+          "richtig": false
+        },
+        "comparator_mean": {
+          "wert": 3.3,
+          "zeile": 42,
+          "quelle": "zielzeile",
+          "gold": 0.31,
+          "richtig": false
+        },
+        "intervention_standard_deviation": {
+          "wert": 3.04,
+          "zeile": 42,
+          "quelle": "zielzeile",
+          "gold": 2.29,
+          "richtig": false
+        },
+        "comparator_standard_deviation": {
+          "wert": 2.44,
+          "zeile": 42,
+          "quelle": "zielzeile",
+          "gold": 3.84,
+          "richtig": false
+        }
+      },
+      "neu": {
+        "intervention_group_size": {
+          "wert": 104.0,
+          "zeile": 125,
+          "quelle": "unterschrift_n",
+          "gold": 104.0,
+          "richtig": true
+        },
+        "comparator_group_size": {
+          "wert": 114.0,
+          "zeile": 125,
+          "quelle": "unterschrift_n",
+          "gold": 114.0,
+          "richtig": true
+        },
+        "intervention_mean": {
+          "wert": -0.55,
+          "zeile": 125,
+          "quelle": "armzeile",
+          "gold": -0.55,
+          "richtig": true
+        },
+        "comparator_mean": {
+          "wert": 0.31,
+          "zeile": 127,
+          "quelle": "armzeile",
+          "gold": 0.31,
+          "richtig": true
+        },
+        "intervention_standard_deviation": {
+          "wert": 2.29,
+          "zeile": 125,
+          "quelle": "armzeile",
+          "gold": 2.29,
+          "richtig": true
+        },
+        "comparator_standard_deviation": {
+          "wert": 3.84,
+          "zeile": 127,
+          "quelle": "armzeile",
+          "gold": 3.84,
+          "richtig": true
+        }
+      },
+      "bilanz_alt": {
+        "felder": 6,
+        "richtig": 1,
+        "geliefert": 6,
+        "vollstaendig_richtig": 0
+      },
+      "bilanz_neu": {
+        "felder": 6,
+        "richtig": 6,
+        "geliefert": 6,
+        "vollstaendig_richtig": 1
+      }
+    },
+    "yun2024:448": {
+      "outcome": "effects for vigorous activity",
+      "alt": {
+        "intervention_group_size": {
+          "wert": 114.0,
+          "zeile": 10,
+          "quelle": "position",
+          "gold": 104.0,
+          "richtig": false
+        },
+        "comparator_group_size": {
+          "wert": 114.0,
+          "zeile": 10,
+          "quelle": "position",
+          "gold": 114.0,
+          "richtig": true
+        },
+        "intervention_mean": {
+          "wert": 1.56,
+          "zeile": 38,
+          "quelle": "zielzeile",
+          "gold": 0.2,
+          "richtig": false
+        },
+        "comparator_mean": {
+          "wert": 2.33,
+          "zeile": 38,
+          "quelle": "zielzeile",
+          "gold": -0.4,
+          "richtig": false
+        },
+        "intervention_standard_deviation": {
+          "wert": 1.86,
+          "zeile": 38,
+          "quelle": "zielzeile",
+          "gold": 1.56,
+          "richtig": false
+        },
+        "comparator_standard_deviation": {
+          "wert": 2.53,
+          "zeile": 38,
+          "quelle": "zielzeile",
+          "gold": 2.48,
+          "richtig": false
+        }
+      },
+      "neu": {
+        "intervention_group_size": {
+          "wert": 104.0,
+          "zeile": 117,
+          "quelle": "unterschrift_n",
+          "gold": 104.0,
+          "richtig": true
+        },
+        "comparator_group_size": {
+          "wert": 114.0,
+          "zeile": 117,
+          "quelle": "unterschrift_n",
+          "gold": 114.0,
+          "richtig": true
+        },
+        "intervention_mean": {
+          "wert": 0.2,
+          "zeile": 117,
+          "quelle": "armzeile",
+          "gold": 0.2,
+          "richtig": true
+        },
+        "comparator_mean": {
+          "wert": -0.4,
+          "zeile": 119,
+          "quelle": "armzeile",
+          "gold": -0.4,
+          "richtig": true
+        },
+        "intervention_standard_deviation": {
+          "wert": 1.56,
+          "zeile": 117,
+          "quelle": "armzeile",
+          "gold": 1.56,
+          "richtig": true
+        },
+        "comparator_standard_deviation": {
+          "wert": 2.48,
+          "zeile": 119,
+          "quelle": "armzeile",
+          "gold": 2.48,
+          "richtig": true
+        }
+      },
+      "bilanz_alt": {
+        "felder": 6,
+        "richtig": 1,
+        "geliefert": 6,
+        "vollstaendig_richtig": 0
+      },
+      "bilanz_neu": {
+        "felder": 6,
+        "richtig": 6,
+        "geliefert": 6,
+        "vollstaendig_richtig": 1
+      }
+    },
+    "yun2024:450": {
+      "outcome": "weekly moderate physical activity sessions",
+      "alt": {
+        "intervention_group_size": {
+          "wert": 114.0,
+          "zeile": 10,
+          "quelle": "position",
+          "gold": 104.0,
+          "richtig": false
+        },
+        "comparator_group_size": {
+          "wert": 114.0,
+          "zeile": 10,
+          "quelle": "position",
+          "gold": 114.0,
+          "richtig": true
+        },
+        "intervention_mean": {
+          "wert": 1.11,
+          "zeile": 40,
+          "quelle": "zielzeile",
+          "gold": 0.19,
+          "richtig": false
+        },
+        "comparator_mean": {
+          "wert": 1.6,
+          "zeile": 40,
+          "quelle": "zielzeile",
+          "gold": -0.68,
+          "richtig": false
+        },
+        "intervention_standard_deviation": {
+          "wert": 1.78,
+          "zeile": 40,
+          "quelle": "zielzeile",
+          "gold": 1.82,
+          "richtig": false
+        },
+        "comparator_standard_deviation": {
+          "wert": 1.97,
+          "zeile": 40,
+          "quelle": "zielzeile",
+          "gold": 2.32,
+          "richtig": false
+        }
+      },
+      "neu": {
+        "intervention_group_size": {
+          "wert": 104.0,
+          "zeile": 121,
+          "quelle": "unterschrift_n",
+          "gold": 104.0,
+          "richtig": true
+        },
+        "comparator_group_size": {
+          "wert": 114.0,
+          "zeile": 121,
+          "quelle": "unterschrift_n",
+          "gold": 114.0,
+          "richtig": true
+        },
+        "intervention_mean": {
+          "wert": 0.19,
+          "zeile": 121,
+          "quelle": "armzeile",
+          "gold": 0.19,
+          "richtig": true
+        },
+        "comparator_mean": {
+          "wert": -0.68,
+          "zeile": 123,
+          "quelle": "armzeile",
+          "gold": -0.68,
+          "richtig": true
+        },
+        "intervention_standard_deviation": {
+          "wert": 1.82,
+          "zeile": 121,
+          "quelle": "armzeile",
+          "gold": 1.82,
+          "richtig": true
+        },
+        "comparator_standard_deviation": {
+          "wert": 2.32,
+          "zeile": 123,
+          "quelle": "armzeile",
+          "gold": 2.32,
+          "richtig": true
+        }
+      },
+      "bilanz_alt": {
+        "felder": 6,
+        "richtig": 1,
+        "geliefert": 6,
+        "vollstaendig_richtig": 0
+      },
+      "bilanz_neu": {
+        "felder": 6,
+        "richtig": 6,
+        "geliefert": 6,
+        "vollstaendig_richtig": 1
+      }
+    }
+  },
+  "sichten": {
+    "yun2024:196": [
+      {
+        "start": 1,
+        "ende": 1,
+        "kopf": "# Abstract ## Background Plasmalogens (Pls) reportedly decreased in postmortem brain and i",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 2,
+        "ende": 5,
+        "kopf": "caption Baseline characteristics.",
+        "zeitpunkt": -2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 6,
+        "ende": 29,
+        "kopf": "Table 1 Variable Pls group (n = 145) Placebo group (n = 140) P value[a](#)",
+        "zeitpunkt": 0,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": 140.0,
+            "zeile": 3,
+            "quelle": "zeile",
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 30,
+        "ende": 33,
+        "kopf": "caption Mean difference from the baseline.",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 34,
+        "ende": 63,
+        "kopf": "Table 2 Variable Week Pls group Placebo group P value",
+        "zeitpunkt": 0,
+        "felder": {
+          "intervention_group_size": {
+            "wert": 80.0,
+            "zeile": 14,
+            "quelle": "position",
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": 78.0,
+            "zeile": 14,
+            "quelle": "position",
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 64,
+        "ende": 68,
+        "kopf": "caption Mean difference from the baseline, in patients with MMSE-J score 20 to 23.",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 69,
+        "ende": 89,
+        "kopf": "Table 3 Variable Week Pls group Placebo group P value",
+        "zeitpunkt": 0,
+        "felder": {
+          "intervention_group_size": {
+            "wert": 24.0,
+            "zeile": 14,
+            "quelle": "position",
+            "gold": 24.0,
+            "richtig": true
+          },
+          "comparator_group_size": {
+            "wert": 24.0,
+            "zeile": 14,
+            "quelle": "position",
+            "gold": 24.0,
+            "richtig": true
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 2
+      },
+      {
+        "start": 90,
+        "ende": 94,
+        "kopf": "caption Mean difference from the baseline, by gender and age, in patients with MMSE-J scor",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 95,
+        "ende": 117,
+        "kopf": "Table 4 Gender/age Week Pls group Placebo group P value",
+        "zeitpunkt": 0,
+        "felder": {
+          "intervention_group_size": {
+            "wert": 24.0,
+            "zeile": 8,
+            "quelle": "position",
+            "gold": 24.0,
+            "richtig": true
+          },
+          "comparator_group_size": {
+            "wert": 29.0,
+            "zeile": 8,
+            "quelle": "position",
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 1
+      },
+      {
+        "start": 118,
+        "ende": 122,
+        "kopf": "caption Mean difference from the baseline, in patients with MMSE-J score 20 to 23.",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 123,
+        "ende": 137,
+        "kopf": "Table 5 Variable Week Pls group Placebo group P value",
+        "zeitpunkt": 0,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 138,
+        "ende": 141,
+        "kopf": "caption List of reported adverse events.",
+        "zeitpunkt": 0,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 142,
+        "ende": 199,
+        "kopf": "Table 6 Pls group (n = 169) Placebo group (n = 167)",
+        "zeitpunkt": 0,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 24.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.29,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.08,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.14,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.55,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      }
+    ],
+    "yun2024:447": [
+      {
+        "start": 1,
+        "ende": 1,
+        "kopf": "# Abstract ## Background Extending contact with participants after initial, intensive inte",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 104.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 114.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": -0.55,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 0.31,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 2.29,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.84,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 2,
+        "ende": 93,
+        "kopf": "caption Characteristics of 'Get Healthy, Stay Healthy' (GHSH) trial participants.",
+        "zeitpunkt": -2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": 114.0,
+            "zeile": 9,
+            "quelle": "position",
+            "gold": 104.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": 114.0,
+            "zeile": 9,
+            "quelle": "position",
+            "gold": 114.0,
+            "richtig": true
+          },
+          "intervention_mean": {
+            "wert": 3.99,
+            "zeile": 41,
+            "quelle": "zielzeile",
+            "gold": -0.55,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": 3.3,
+            "zeile": 41,
+            "quelle": "zielzeile",
+            "gold": 0.31,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": 3.04,
+            "zeile": 41,
+            "quelle": "zielzeile",
+            "gold": 2.29,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": 2.44,
+            "zeile": 41,
+            "quelle": "zielzeile",
+            "gold": 3.84,
+            "richtig": false
+          }
+        },
+        "richtig": 1
+      },
+      {
+        "start": 94,
+        "ende": 175,
+        "kopf": "caption Mean changes within the 'Get Healthy, Stay Healthy' (GHSH) intervention group (I; ",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": 104.0,
+            "zeile": 32,
+            "quelle": "unterschrift_n",
+            "gold": 104.0,
+            "richtig": true
+          },
+          "comparator_group_size": {
+            "wert": 114.0,
+            "zeile": 32,
+            "quelle": "unterschrift_n",
+            "gold": 114.0,
+            "richtig": true
+          },
+          "intervention_mean": {
+            "wert": -0.55,
+            "zeile": 32,
+            "quelle": "armzeile",
+            "gold": -0.55,
+            "richtig": true
+          },
+          "comparator_mean": {
+            "wert": 0.31,
+            "zeile": 34,
+            "quelle": "armzeile",
+            "gold": 0.31,
+            "richtig": true
+          },
+          "intervention_standard_deviation": {
+            "wert": 2.29,
+            "zeile": 32,
+            "quelle": "armzeile",
+            "gold": 2.29,
+            "richtig": true
+          },
+          "comparator_standard_deviation": {
+            "wert": 3.84,
+            "zeile": 34,
+            "quelle": "armzeile",
+            "gold": 3.84,
+            "richtig": true
+          }
+        },
+        "richtig": 6
+      },
+      {
+        "start": 176,
+        "ende": 239,
+        "kopf": "caption Mean differences in changes between the 'Get Healthy, Stay Healthy' (GHSH) interve",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 104.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 114.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": -0.55,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 0.31,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 2.29,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 3.84,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      }
+    ],
+    "yun2024:448": [
+      {
+        "start": 1,
+        "ende": 1,
+        "kopf": "# Abstract ## Background Extending contact with participants after initial, intensive inte",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 104.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 114.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 0.2,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": -0.4,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.56,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 2.48,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 2,
+        "ende": 93,
+        "kopf": "caption Characteristics of 'Get Healthy, Stay Healthy' (GHSH) trial participants.",
+        "zeitpunkt": -2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": 114.0,
+            "zeile": 9,
+            "quelle": "position",
+            "gold": 104.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": 114.0,
+            "zeile": 9,
+            "quelle": "position",
+            "gold": 114.0,
+            "richtig": true
+          },
+          "intervention_mean": {
+            "wert": 1.56,
+            "zeile": 37,
+            "quelle": "zielzeile",
+            "gold": 0.2,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": 2.33,
+            "zeile": 37,
+            "quelle": "zielzeile",
+            "gold": -0.4,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": 1.86,
+            "zeile": 37,
+            "quelle": "zielzeile",
+            "gold": 1.56,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": 2.53,
+            "zeile": 37,
+            "quelle": "zielzeile",
+            "gold": 2.48,
+            "richtig": false
+          }
+        },
+        "richtig": 1
+      },
+      {
+        "start": 94,
+        "ende": 175,
+        "kopf": "caption Mean changes within the 'Get Healthy, Stay Healthy' (GHSH) intervention group (I; ",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": 104.0,
+            "zeile": 24,
+            "quelle": "unterschrift_n",
+            "gold": 104.0,
+            "richtig": true
+          },
+          "comparator_group_size": {
+            "wert": 114.0,
+            "zeile": 24,
+            "quelle": "unterschrift_n",
+            "gold": 114.0,
+            "richtig": true
+          },
+          "intervention_mean": {
+            "wert": 0.2,
+            "zeile": 24,
+            "quelle": "armzeile",
+            "gold": 0.2,
+            "richtig": true
+          },
+          "comparator_mean": {
+            "wert": -0.4,
+            "zeile": 26,
+            "quelle": "armzeile",
+            "gold": -0.4,
+            "richtig": true
+          },
+          "intervention_standard_deviation": {
+            "wert": 1.56,
+            "zeile": 24,
+            "quelle": "armzeile",
+            "gold": 1.56,
+            "richtig": true
+          },
+          "comparator_standard_deviation": {
+            "wert": 2.48,
+            "zeile": 26,
+            "quelle": "armzeile",
+            "gold": 2.48,
+            "richtig": true
+          }
+        },
+        "richtig": 6
+      },
+      {
+        "start": 176,
+        "ende": 239,
+        "kopf": "caption Mean differences in changes between the 'Get Healthy, Stay Healthy' (GHSH) interve",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 104.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 114.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 0.2,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": -0.4,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.56,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 2.48,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      }
+    ],
+    "yun2024:450": [
+      {
+        "start": 1,
+        "ende": 1,
+        "kopf": "# Abstract ## Background Extending contact with participants after initial, intensive inte",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 104.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 114.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 0.19,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": -0.68,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.82,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 2.32,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      },
+      {
+        "start": 2,
+        "ende": 93,
+        "kopf": "caption Characteristics of 'Get Healthy, Stay Healthy' (GHSH) trial participants.",
+        "zeitpunkt": -2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": 114.0,
+            "zeile": 9,
+            "quelle": "position",
+            "gold": 104.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": 114.0,
+            "zeile": 9,
+            "quelle": "position",
+            "gold": 114.0,
+            "richtig": true
+          },
+          "intervention_mean": {
+            "wert": 1.11,
+            "zeile": 39,
+            "quelle": "zielzeile",
+            "gold": 0.19,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": 1.6,
+            "zeile": 39,
+            "quelle": "zielzeile",
+            "gold": -0.68,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": 1.78,
+            "zeile": 39,
+            "quelle": "zielzeile",
+            "gold": 1.82,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": 1.97,
+            "zeile": 39,
+            "quelle": "zielzeile",
+            "gold": 2.32,
+            "richtig": false
+          }
+        },
+        "richtig": 1
+      },
+      {
+        "start": 94,
+        "ende": 175,
+        "kopf": "caption Mean changes within the 'Get Healthy, Stay Healthy' (GHSH) intervention group (I; ",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": 104.0,
+            "zeile": 28,
+            "quelle": "unterschrift_n",
+            "gold": 104.0,
+            "richtig": true
+          },
+          "comparator_group_size": {
+            "wert": 114.0,
+            "zeile": 28,
+            "quelle": "unterschrift_n",
+            "gold": 114.0,
+            "richtig": true
+          },
+          "intervention_mean": {
+            "wert": 0.19,
+            "zeile": 28,
+            "quelle": "armzeile",
+            "gold": 0.19,
+            "richtig": true
+          },
+          "comparator_mean": {
+            "wert": -0.68,
+            "zeile": 30,
+            "quelle": "armzeile",
+            "gold": -0.68,
+            "richtig": true
+          },
+          "intervention_standard_deviation": {
+            "wert": 1.82,
+            "zeile": 28,
+            "quelle": "armzeile",
+            "gold": 1.82,
+            "richtig": true
+          },
+          "comparator_standard_deviation": {
+            "wert": 2.32,
+            "zeile": 30,
+            "quelle": "armzeile",
+            "gold": 2.32,
+            "richtig": true
+          }
+        },
+        "richtig": 6
+      },
+      {
+        "start": 176,
+        "ende": 239,
+        "kopf": "caption Mean differences in changes between the 'Get Healthy, Stay Healthy' (GHSH) interve",
+        "zeitpunkt": 2,
+        "felder": {
+          "intervention_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 104.0,
+            "richtig": false
+          },
+          "comparator_group_size": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 114.0,
+            "richtig": false
+          },
+          "intervention_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 0.19,
+            "richtig": false
+          },
+          "comparator_mean": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": -0.68,
+            "richtig": false
+          },
+          "intervention_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 1.82,
+            "richtig": false
+          },
+          "comparator_standard_deviation": {
+            "wert": null,
+            "zeile": null,
+            "quelle": null,
+            "gold": 2.32,
+            "richtig": false
+          }
+        },
+        "richtig": 0
+      }
+    ]
+  },
+  "staende": {
+    "neu": {
+      "zellen": 33,
+      "tp": 30,
+      "fp": 3,
+      "streuung": {
+        "zellen": 17,
+        "tp": 17,
+        "fp": 0
+      }
+    },
+    "ohne_zeitpunkt": {
+      "zellen": 33,
+      "tp": 30,
+      "fp": 3,
+      "streuung": {
+        "zellen": 17,
+        "tp": 17,
+        "fp": 0
+      }
+    },
+    "ohne_armbedingung": {
+      "zellen": 33,
+      "tp": 18,
+      "fp": 15,
+      "streuung": {
+        "zellen": 17,
+        "tp": 5,
+        "fp": 12
+      }
+    },
+    "ohne_armzeile": {
+      "zellen": 33,
+      "tp": 30,
+      "fp": 3,
+      "streuung": {
+        "zellen": 17,
+        "tp": 17,
+        "fp": 0
+      }
+    },
+    "ohne_vorzeichen": {
+      "zellen": 33,
+      "tp": 30,
+      "fp": 3,
+      "streuung": {
+        "zellen": 17,
+        "tp": 17,
+        "fp": 0
+      }
+    },
+    "ohne_sd_ki": {
+      "zellen": 33,
+      "tp": 30,
+      "fp": 3,
+      "streuung": {
+        "zellen": 17,
+        "tp": 17,
+        "fp": 0
+      }
+    },
+    "alt": {
+      "zellen": 33,
+      "tp": 30,
+      "fp": 3,
+      "streuung": {
+        "zellen": 17,
+        "tp": 17,
+        "fp": 0
+      }
+    }
+  },
+  "zell_diff": {
+    "hinzu": [],
+    "entfaellt": [],
+    "kippt": []
+  },
+  "streuung_diff": {
+    "hinzu": [],
+    "entfaellt": [],
+    "kippt": []
+  },
+  "pool": {
+    "alt": {
+      "k": 24,
+      "pooled": 0.12488625589884483,
+      "ci": [
+        -0.3016273558148139,
+        0.5513998676125036
+      ],
+      "i2": 91.05679038302182,
+      "records": [
+        "yun2024:120",
+        "yun2024:130",
+        "yun2024:133",
+        "yun2024:154",
+        "yun2024:158",
+        "yun2024:161",
+        "yun2024:162",
+        "yun2024:174",
+        "yun2024:183",
+        "yun2024:228",
+        "yun2024:232",
+        "yun2024:233",
+        "yun2024:291",
+        "yun2024:32",
+        "yun2024:347",
+        "yun2024:384",
+        "yun2024:427",
+        "yun2024:556",
+        "yun2024:558",
+        "yun2024:653",
+        "yun2024:668",
+        "yun2024:686",
+        "yun2024:84",
+        "yun2024:86"
+      ]
+    },
+    "neu": {
+      "k": 27,
+      "pooled": 0.1364053682310616,
+      "ci": [
+        -0.2261259987381867,
+        0.4989367352003099
+      ],
+      "i2": 90.42201795498197,
+      "records": [
+        "yun2024:120",
+        "yun2024:130",
+        "yun2024:133",
+        "yun2024:154",
+        "yun2024:158",
+        "yun2024:161",
+        "yun2024:162",
+        "yun2024:174",
+        "yun2024:183",
+        "yun2024:228",
+        "yun2024:232",
+        "yun2024:233",
+        "yun2024:291",
+        "yun2024:32",
+        "yun2024:347",
+        "yun2024:384",
+        "yun2024:427",
+        "yun2024:447",
+        "yun2024:448",
+        "yun2024:450",
+        "yun2024:556",
+        "yun2024:558",
+        "yun2024:653",
+        "yun2024:668",
+        "yun2024:686",
+        "yun2024:84",
+        "yun2024:86"
+      ]
+    },
+    "p5": {
+      "k": 24,
+      "pooled": 0.12488625589884483,
+      "ci": [
+        -0.3016273558148139,
+        0.5513998676125036
+      ],
+      "i2": 91.05679038302182,
+      "records": [
+        "yun2024:120",
+        "yun2024:130",
+        "yun2024:133",
+        "yun2024:154",
+        "yun2024:158",
+        "yun2024:161",
+        "yun2024:162",
+        "yun2024:174",
+        "yun2024:183",
+        "yun2024:228",
+        "yun2024:232",
+        "yun2024:233",
+        "yun2024:291",
+        "yun2024:32",
+        "yun2024:347",
+        "yun2024:384",
+        "yun2024:427",
+        "yun2024:556",
+        "yun2024:558",
+        "yun2024:653",
+        "yun2024:668",
+        "yun2024:686",
+        "yun2024:84",
+        "yun2024:86"
+      ]
+    }
+  }
+}

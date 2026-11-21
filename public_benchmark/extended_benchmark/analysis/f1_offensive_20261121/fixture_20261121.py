@@ -37,6 +37,11 @@ def schalter(**werte: bool) -> None:
     m.WOCHENSPALTE = werte.get("wochenspalte", True)
     m.MESSWORT_BLOCK = werte.get("messwort", True)
     m.TABELLENLOKAL = werte.get("tabellenlokal", True)
+    m.ZEITPUNKT_TABELLE = werte.get("zeitpunkt", True)
+    m.TABELLE_ARMBEDINGUNG = werte.get("armbedingung", True)
+    m.ARMZEILE = werte.get("armzeile", True)
+    m.VORZEICHEN = werte.get("vorzeichen", True)
+    m.SD_AUS_KI = werte.get("sd_ki", True)
 
 
 def lauf(faelle: list[dict[str, Any]], recs: dict[str, dict[str, Any]],
@@ -88,7 +93,11 @@ def main(argv: list[str]) -> int:
                          ("ohne_positionsregel", {"positional": False}),
                          ("ohne_wochenspalte", {"wochenspalte": False}),
                          ("ohne_messwort_block", {"messwort": False}),
-                         ("ohne_tabellenlokal", {"tabellenlokal": False})):
+                         ("ohne_tabellenlokal", {"tabellenlokal": False}),
+                         ("ohne_zeitpunkt", {"zeitpunkt": False}),
+                         ("ohne_armbedingung", {"armbedingung": False}),
+                         ("ohne_armzeile", {"armzeile": False}),
+                         ("ohne_vorzeichen", {"vorzeichen": False})):
         schalter(**kwargs)
         ablation[name] = kennzahlen(lauf(faelle, recs, texte))
     schalter()

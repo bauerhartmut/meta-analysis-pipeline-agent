@@ -20,6 +20,7 @@ Aufruf::
 from __future__ import annotations
 
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -71,6 +72,71 @@ def tabellengrenzen(zeilen: list[str], ziel: int) -> tuple[int, int]:
             ende = j
             break
     return start, ende
+
+
+FOLLOWUP_KOPF = re.compile(r"\bfollow[- ]?up\b|\bchange[sd]?\b|\bmean difference\b|"
+                           r"\bfrom (?:the )?baseline\b|\bat \d+\s*(?:weeks?|months?)\b|"
+                           r"\bweek\s*\d+\b", re.IGNORECASE)
+BASELINE_KOPF = re.compile(r"\bbaseline\b|\bcharacteristics\b", re.IGNORECASE)
+
+
+def tabellen_zeitpunkt(zeilen: list[str], start: int, ende: int) -> int:
+    """Zeitpunkt-Kennzeichen einer Tabelle mit den Grenzen `start` bis `ende`.
+
+    +2 fuer eine Nachher-/Follow-up-Tabelle (Aenderung, Follow-up, Zeitpunkt),
+    -2 fuer eine Baseline-Tabelle (Ausgangswerte, Charakteristika), 0 sonst.
+    Gelesen wird nur der Tabellenkopf: Unterschrift und erste Kopfzeilen.
+    Die Grenzen werden uebergeben, weil die Unterschrift selbst eine
+    Tabellengrenze ist und die Ruecksuche sie sonst ueberspringt.
+    """
+    kopf = " ".join(zeilen[start:min(ende, start + 10)])
+    if FOLLOWUP_KOPF.search(kopf):
+        return 2
+    if BASELINE_KOPF.search(kopf):
+        return -2
+    return 0
+
+
+def ziel_zeile_zeitpunkt(zeilen: list[str], outcome: str, alias: dict[str, list[str]],
+                         akronyme: bool) -> int:
+    """Zielzeile mit Tabellenwahl bei gleichem Alias-Treffer.
+
+    `ziel_zeile_alias` nimmt die erste Zeile mit dem hoechsten Treffer und
+    landet damit in der Baseline-Tabelle, wenn sie vor der Nachher-Tabelle
+    steht. Hier gewinnt bei gleichem Treffer die Tabelle mit Zeitpunkt- oder
+    Follow-up-Kopf; unter mehreren solchen Tabellen die fruehste (die
+    Haupttabelle steht vor Sensitivitaets- und Subgruppentabellen). Innerhalb
+    einer Tabelle bleibt es bei der spaetesten Zeile.
+    """
+    kandidaten: list[tuple[int, int]] = []
+    for i, zeile in enumerate(zeilen):
+        if g.ist_groessenzeile(zeile) or not re.search(r"[A-Za-z]{3}", zeile):
+            continue
+        segs = segmente(zeile)
+        if len(segs) < 2 or len(g.zahlen(zeile)) < 2:
+            continue
+        p = max(alias_mod.treffer_alias(s, outcome, alias, akronyme) for s in segs)
+        if p > 0:
+            kandidaten.append((p, i))
+    if not kandidaten:
+        return -1
+    top = max(p for p, _ in kandidaten)
+    je_tabelle: dict[tuple[int, int], list[int]] = {}
+    for p, i in kandidaten:
+        if p == top:
+            je_tabelle.setdefault(tabellengrenzen(zeilen, i), []).append(i)
+    punkte = {grenzen: tabellen_zeitpunkt(zeilen, *grenzen) for grenzen in je_tabelle}
+    # Umziehen lohnt nur in eine Tabelle, die ihre Arme selbst benennt (Kuerzel
+    # mit n in der Unterschrift). Sonst bleibt es bei der bisherigen Wahl: sonst
+    # gewaenne eine Aenderungstabelle gegen die Tabelle mit den Absolutwerten
+    # (PMC4987981: Gold steht in der Baseline-Tabelle).
+    bevorzugt = [grenzen for grenzen in je_tabelle
+                 if punkte[grenzen] > 0
+                 and (not TABELLE_ARMBEDINGUNG or armkuerzel(zeilen, grenzen))]
+    if not bevorzugt:
+        return min(i for p, i in kandidaten if p == top)
+    frueheste = min(bevorzugt)
+    return min(je_tabelle[frueheste])
 
 
 def zeitverlauf_ziel(zeilen: list[str], outcome: str, alias: dict[str, list[str]],
@@ -132,6 +198,19 @@ GATE = True
 WOCHENSPALTE = True
 MESSWORT_BLOCK = True
 TABELLENLOKAL = True
+# Tabellenwahl: eine Tabelle mit Zeitpunkt- oder Follow-up-Kopf vor der
+# Baseline-Tabelle bevorzugen.
+ZEITPUNKT_TABELLE = True
+# Umzug nur in eine Nachher-Tabelle, die ihre Arme selbst benennt.
+TABELLE_ARMBEDINGUNG = True
+# Armzeilen lesen: Armkuerzel (`I`/`C`) steht in der Zeile selbst, die
+# Gruppengroesse in der Tabellenunterschrift.
+ARMZEILE = True
+# Fuehrendes Minus einer Zelle uebernehmen (U+2212 und ASCII).
+VORZEICHEN = True
+# Streuung aus einem 95%-KI ableiten, wenn keine SD gedruckt ist.
+SD_AUS_KI = True
+MINUS = chr(0x2212)
 
 # Messwoerter, die im Tabellenblock stehen muessen, wenn das Outcome sie nennt.
 MESSWOERTER = ("stiffness", "range of motion", "ranges of motion", "neutral zone",
@@ -170,7 +249,10 @@ def ziel_zeile_block(zeilen: list[str], outcome: str, alias: dict[str, list[str]
     Sonst gilt nur eine Zeile, die das Outcome trifft und in einem Block mit
     passendem Label steht; findet sich keine, bleibt die normale Zielzeile.
     """
-    standard = alias_mod.ziel_zeile_alias(zeilen, outcome, alias, akronyme)
+    if ZEITPUNKT_TABELLE:
+        standard = ziel_zeile_zeitpunkt(zeilen, outcome, alias, akronyme)
+    else:
+        standard = alias_mod.ziel_zeile_alias(zeilen, outcome, alias, akronyme)
     if not MESSWORT_BLOCK:
         return standard
     wort = messwort(outcome)
@@ -473,12 +555,26 @@ def zellformat(zelle: str) -> str:
     return "sonstig"
 
 
-def wert_aus_zelle(zelle: str, feld: str, mean_formate: tuple[str, ...] | None) -> float | None:
+def wert_aus_zelle(zelle: str, feld: str, mean_formate: tuple[str, ...] | None,
+                   n_arm: int | None = None) -> float | None:
     """Wert einer Armzelle: Streuung in Klammern, Mittel nur in erlaubten Formaten.
 
     `mean_formate=None` heisst: erste Zahl der Zelle, ohne Formatpruefung.
+    `n_arm` ist die Gruppengroesse des Arms; sie wird nur gebraucht, wenn eine
+    Streuung aus einem 95%-KI abgeleitet wird (keine SD gedruckt).
     """
     if feld.endswith("standard_deviation"):
+        # Streuung aus einem 95%-KI: SE = halbe Intervallbreite / 1.96, SD = SE * sqrt(n).
+        # Nur mit bekannter Gruppengroesse, sonst bleibt die Zelle leer.
+        if SD_AUS_KI and n_arm:
+            m = re.search(r"\(\s*([" + MINUS + r"-]?)\s*(\d+(?:\.\d+)?)\s*[,;]\s*(["
+                          + MINUS + r"-]?)\s*(\d+(?:\.\d+)?)\s*\)", zelle)
+            if m:
+                unten = float(m.group(2)) * (-1 if m.group(1) else 1)
+                oben = float(m.group(4)) * (-1 if m.group(3) else 1)
+                if oben > unten:
+                    halb = (oben - unten) / 2
+                    return round(halb / 1.96 * math.sqrt(n_arm), 2)
         # Streuung nur aus Zellen, deren Format den zweiten Wert als SD ausweist:
         # `Mittel (SD)` und `Mittel +/- SD`. Alles andere (KI, Prozent, n Mean)
         # bleibt leer, damit keine Intervallgrenze als SD durchgeht.
@@ -494,9 +590,67 @@ def wert_aus_zelle(zelle: str, feld: str, mean_formate: tuple[str, ...] | None) 
         if mean_formate is not None and zellformat(zelle) not in mean_formate:
             return None
         m = re.search(r"(?<![\d.])(\d[\d,]*(?:\.\d+)?)", zelle)
-        return float(m.group(1).replace(",", "")) if m else None
+        if not m:
+            return None
+        wert = float(m.group(1).replace(",", ""))
+        # Fuehrendes Minus (U+2212 oder ASCII) gehoert zum Wert; ohne diese
+        # Regel wird aus `-0.55` eine `0.55`.
+        if VORZEICHEN and re.match(r"\s*[" + MINUS + r"-]", zelle):
+            wert = -wert
+        return wert
     m = re.search(r"(?<![\d.])(\d[\d,]*(?:\.\d+)?)", zelle)
     return float(m.group(1).replace(",", "")) if m else None
+
+
+ARMKUERZEL = re.compile(
+    r"\b(intervention|control|placebo|treatment|comparison)\b[a-z ,'-]{0,20}?"
+    r"group\s*\(\s*([A-Za-z])\s*[;,]\s*n\s*=\s*(\d+)\s*\)", re.IGNORECASE)
+
+
+def armkuerzel(zeilen: list[str],
+               grenzen: tuple[int, int]) -> dict[str, tuple[str, int]]:
+    """Armkuerzel und Gruppengroesse aus der Tabellenunterschrift.
+
+    Erkannt wird die Form `intervention group (I; n=104) and the control group
+    (C; n=114)`. Das Kuerzel steht in der Armzeile, die Groesse nur in der
+    Unterschrift.
+    """
+    start, ende = grenzen
+    text = " ".join(zeilen[start:min(ende, start + 6)])
+    aus: dict[str, tuple[str, int]] = {}
+    for name, kuerzel, n in ARMKUERZEL.findall(text):
+        arm = ("comparator" if name.lower() in ("control", "placebo", "comparison")
+               else "intervention")
+        aus[kuerzel] = (arm, int(n))
+    return aus
+
+
+def gruppenzeile_wert(zeilen: list[str], ziel: int, feld: str, arm: str,
+                      mean_formate: tuple[str, ...] | None,
+                      kuerzel: dict[str, tuple[str, int]]) -> dict[str, Any] | None:
+    """Wert aus einer Armzeile: das Kuerzel steht in der Zeile, der Wert rechts.
+
+    Gilt fuer Tabellen wie `Mean changes within ...`, in denen je Arm eine Zeile
+    steht (`I  -0.55 (-0.99, -0.11)`). Die Zeile traegt kein Spaltenlabel, die
+    Armzuordnung kommt allein aus dem Kuerzel der Unterschrift.
+    """
+    for i in (ziel, ziel + 1, ziel + 2, ziel + 3):
+        if i >= len(zeilen):
+            break
+        segs = segmente(zeilen[i])
+        for k, s in enumerate(segs):
+            arm_i, n_i = kuerzel.get(s.strip(), ("", 0))
+            if arm_i != arm:
+                continue
+            for zelle in segs[k + 1:k + 3]:
+                # In der Armzeile steht das Mittel als nackte Zahl ohne Zellformat;
+                # das Format ist hier schon durch die Armzuordnung belegt.
+                formate = None if feld.endswith("mean") else mean_formate
+                wert = wert_aus_zelle(zelle, feld, formate, n_arm=n_i or None)
+                if wert is not None:
+                    return {"value": wert, "quelle": "armzeile", "zeile": i + 1,
+                            "zellformat": zellformat(zelle)}
+    return None
 
 
 def lies(record: dict[str, Any], text: str, feld: str, arm: str,
@@ -510,10 +664,20 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
         outcome = str(context.get("outcome") or "")
         ziel = zeitverlauf_ziel(zeilen, outcome, alias, akronyme)
         if ziel < 0:
-            ziel = alias_mod.ziel_zeile_alias(zeilen, outcome, alias, akronyme)
+            if ZEITPUNKT_TABELLE:
+                ziel = ziel_zeile_zeitpunkt(zeilen, outcome, alias, akronyme)
+            else:
+                ziel = alias_mod.ziel_zeile_alias(zeilen, outcome, alias, akronyme)
         if ziel < 0:
             return None
-        werte = groesse_in_tabelle(zeilen, ziel, context)
+        # Stehen die Arme als Kuerzel in der Unterschrift (`I; n=104`), gilt deren
+        # Groesse; sonst die Groessenzeile der Tabelle.
+        kuerzel = armkuerzel(zeilen, tabellengrenzen(zeilen, ziel)) if ARMZEILE else {}
+        if kuerzel:
+            werte = {a: {"value": float(n), "quelle": "unterschrift_n", "zeile": ziel + 1}
+                     for a, n in kuerzel.values()}
+        else:
+            werte = groesse_in_tabelle(zeilen, ziel, context)
         reihenfolge = spalten_reihenfolge(zeilen, ziel, context)
         if GATE and len(reihenfolge) >= 2 and reihenfolge[0] != reihenfolge[1]:
             geprueft = positional(werte, reihenfolge)
@@ -534,6 +698,12 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
     ziel = ziel_zeile_block(zeilen, outcome, alias, akronyme)
     if ziel < 0:
         return None
+    if ARMZEILE:
+        kuerzel = armkuerzel(zeilen, tabellengrenzen(zeilen, ziel))
+        if kuerzel:
+            treffer = gruppenzeile_wert(zeilen, ziel, feld, arm, mean_formate, kuerzel)
+            if treffer:
+                return treffer
     if mean_formate and WOCHENSPALTE:
         treffer = zeitverlauf_mittel(zeilen, ziel, outcome, feld, arm, context, alias,
                                      akronyme, mean_formate)
@@ -749,6 +919,15 @@ Enthaelt ein Dokument eine Tabelle mit Wochenspalte, in der das Outcome
 mehrfach vorkommt, gilt die Zeile des letzten Zeitpunkts statt der
 Baseline-Zeile; bei mehreren solchen Tabellen entscheidet die fruehste (die
 Haupttabelle steht vor den Subgruppentabellen).
+
+Neu bewertet `tabellen_zeitpunkt` den Tabellenkopf (`+2` Follow-up, Zeitpunkt,
+Woche, Monat; `-2` Baseline, Charakteristika). Bei gleichem Alias-Treffer zieht
+`ziel_zeile_zeitpunkt` in die Nachher-Tabelle um, aber nur wenn sie ihre Arme in
+der Unterschrift nennt (`I; n=104`); `armkuerzel` und `gruppenzeile_wert` lesen
+dann die Armzeilen, die Gruppengroesse kommt aus der Unterschrift. Auf den
+{len(faelle)} Faellen aendert das keine Zelle (33/30/3 und 17/17/0); die drei
+Records aus `PMC4879328` werden damit gold-richtig, siehe
+`tabellenwahl_20261121.md`.
 
 `yun2024:193` wird damit richtig (138/131 aus Tabelle 2, Woche 28).
 `yun2024:196` bleibt falsch: die Haupttabelle 2 nennt fuer Woche 28 die Werte

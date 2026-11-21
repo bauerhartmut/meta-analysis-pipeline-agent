@@ -217,26 +217,62 @@ An den 15 Records mit ausschliesslich fehlender SD:
 
 Die 16 offenen Auftraege scheitern an fehlender Zielzeile (`yun2024:6`, `110`,
 `113`, `114`) oder an einer Zielzeile ohne SD-Format (`160`, `163`, `203`,
-`449`). Die drei vollstaendigen Records (`447`, `448`, `450`) lesen die
-Baseline-Tabelle; ihre Goldwerte stehen dort nicht - bei `447` fehlen drei von
-vier Zahlen im Dokument, bei `450` alle vier, bei `448` die SD des
-Vergleichsarms. Der Leser liest also richtig, was in der Zeile steht, greift
-aber die falsche Tabelle.
+`449`). Die drei vollstaendigen Records (`447`, `448`, `450`) lasen die
+Baseline-Tabelle; ihre Goldwerte stehen dort nicht. Der Leser las also richtig,
+was in der Zeile stand, griff aber die falsche Tabelle - behoben im naechsten
+Abschnitt.
 
-Poolbasis: k 24 -> 27 und pooled 0.125 -> 0.135 mit allen gelieferten SD; nur
-mit den richtigen SD bleibt es bei k = 24 und 0.125.
+## Tabellenwahl: 3 der 4 Records gold-richtig, 196 nicht
+
+`tabellenwahl_20261121.py`, offline. Kriterium auf dem Tabellenkopf: `+2` fuer
+Follow-up, Zeitpunkt, Woche oder Monat, `-2` fuer Baseline und Charakteristika.
+Bei gleichem Alias-Treffer zieht `ziel_zeile_zeitpunkt` in die Nachher-Tabelle
+um, aber nur wenn sie ihre Arme in der Unterschrift nennt (`I; n=104`). Dazu
+lesen `armkuerzel` und `gruppenzeile_wert` die Armzeilen (`I`, `C`), die
+Gruppengroesse kommt aus der Unterschrift, und `wert_aus_zelle` leitet die
+Streuung aus dem 95%-KI ab (`SE = halbe Breite / 1.96`, `SD = SE * sqrt(n)`).
+
+| Record | richtig alt | richtig neu | vollstaendig richtig neu |
+|---|---:|---:|---|
+| `yun2024:196` | 0/6 | 0/6 | nein |
+| `yun2024:447` | 1/6 | 6/6 | ja |
+| `yun2024:448` | 1/6 | 6/6 | ja |
+| `yun2024:450` | 1/6 | 6/6 | ja |
+
+`447` und `448` treffen alle sechs Goldzellen, `450` ebenfalls (die SD 2.32 des
+Vergleichsarms faellt aus dem gedruckten KI genau). Die 33 Zellen der
+Endvariante bleiben bei 30 TP und 3 FP, die 17 Streuungszellen bei 17 TP: kein
+Treffer geht verloren, es kommt keine Zelle hinzu.
+
+Die Armbedingung ist der teure Teil: ohne sie zieht die Regel in jede
+Aenderungstabelle um und faellt auf 33 Zellen / 18 TP / 15 FP sowie 17 / 5 / 12
+bei der Streuung. Grund ist `PMC4987981`: dort steht das Gold in der
+Baseline-Tabelle, die Nachher-Tabelle enthaelt die Aenderung.
+
+`yun2024:196` bleibt falsch. Seine Goldwerte stehen in Tabelle 3, einer
+Subgruppentabelle (`MMSE-J 20 bis 23`); diese Einschraenkung nennt der Record
+nicht, und Tabelle 2 hat dieselbe Wochenspalte. Auch allein gelesen liefert
+die Subgruppentabelle nur die beiden Mittel (2 von 6 Feldern); Groesse und
+Streuung brauchen die Zeilen-n und das KI dieser Tabelle.
+
+Poolbasis: k 24 -> 27 und pooled 0.125 -> 0.136 (95%-KI -0.226 bis 0.499).
 
 ## Grenzen
 
 - Alle Regeln sind Textheuristiken auf Markdown; sie greifen bei sauberen
   Tabellen mit Beschriftung, nicht bei Bildtabellen oder freiem Fliesstext.
 - Tabellenwahl bei doppelten Labels bleibt eine Annahme (spaeterer Block,
-  spaetere Tabelle), gedeckt durch Gold, nicht durch den Text.
+  spaetere Tabelle), gedeckt durch Gold, nicht durch den Text. Das neue
+  Zeitpunkt-Kriterium zieht nur in Tabellen mit Armkuerzeln in der Unterschrift
+  um; ohne diese Bedingung verliert es 12 TP.
+- Die Streuung der drei Records ist nicht gedruckt, sondern aus dem 95%-KI
+  abgeleitet (Normalverteilung, gerundete Intervallgrenzen). Sie trifft die
+  Goldwerte, ist aber eine Schaetzung.
 - Das Gate macht die Ausgabe praeziser, aber schmaler: Es verwirft die acht
   PMC5617873-Zellen, bei denen das Gold selbst vertauscht ist, und damit auch
   den frueheren Positionsverlust bei `yun2024:426`.
 - `yun2024:196` und `yun2024:345` sind mit keiner Leseregel zu holen; beide
-  brauchen eine Goldentscheidung.
+  brauchen eine Goldentscheidung (bei `196`: Subgruppe `MMSE-J 20 bis 23`).
 - Die Pooling-Messung ist eine Naeherung: einfache Effektformeln, nur 24 von 103
   P5-Records vollstaendig, I2 ueber 90 Prozent, ein Record mit |g| = 6. Sie
   zeigt die Groessenordnung der Verschiebung, nicht die gepoolte Wahrheit.
@@ -247,12 +283,11 @@ mit den richtigen SD bleibt es bei k = 24 und 0.125.
 
 ## Empfehlung
 
-Den Stand als Endvariante festschreiben (30 TP, 3 FP, 91 Prozent Trefferquote,
-Fixture gegen Regressionen), die drei Goldfaelle im Pruefvermerk belassen und die
-7 zusaetzlichen Treffer aus der FN-Uebertragung als Randgewinn notieren, nicht
-als Hebel. Weitere
-Regelarbeit an den FN-Klassen ist abgeschlossen und bringt nichts; offen ist
-allein die Goldfrage. Wer sie klaeren will, braucht eine PDF-Gegenprobe der
-`fn_nicht_im_dokument`-Faelle (Netzzugriff, vorher freigeben) und eine
-Entscheidung zu `yun2024:196` (Subgruppe) und `yun2024:345` (Wert nur als
-Intervallgrenze).
+Den Stand als Endvariante festschreiben (33 Zellen, 30 TP, 3 FP, Fixture gegen
+Regressionen) und die Tabellenwahl als Teil davon: sie holt drei Records mit
+je sechs Feldern, ohne eine Zelle der 33 zu kosten. Die drei Goldfaelle im
+Pruefvermerk bleiben, die 7 zusaetzlichen Treffer aus der FN-Uebertragung sind
+Randgewinn, kein Hebel. Offen ist die Goldfrage: fuer `yun2024:196` braucht es
+eine Entscheidung zur Subgruppe (`MMSE-J 20 bis 23`), fuer `yun2024:345` eine
+zum Wert, der nur als Intervallgrenze steht; eine PDF-Gegenprobe der
+`fn_nicht_im_dokument`-Faelle braucht Netzzugriff (vorher freigeben).

@@ -92,6 +92,15 @@ mehrfach vorkommt, gilt die Zeile des letzten Zeitpunkts statt der
 Baseline-Zeile; bei mehreren solchen Tabellen entscheidet die fruehste (die
 Haupttabelle steht vor den Subgruppentabellen).
 
+Neu bewertet `tabellen_zeitpunkt` den Tabellenkopf (`+2` Follow-up, Zeitpunkt,
+Woche, Monat; `-2` Baseline, Charakteristika). Bei gleichem Alias-Treffer zieht
+`ziel_zeile_zeitpunkt` in die Nachher-Tabelle um, aber nur wenn sie ihre Arme in
+der Unterschrift nennt (`I; n=104`); `armkuerzel` und `gruppenzeile_wert` lesen
+dann die Armzeilen, die Gruppengroesse kommt aus der Unterschrift. Auf den
+227 Faellen aendert das keine Zelle (33/30/3 und 17/17/0); die drei
+Records aus `PMC4879328` werden damit gold-richtig, siehe
+`tabellenwahl_20261121.md`.
+
 `yun2024:193` wird damit richtig (138/131 aus Tabelle 2, Woche 28).
 `yun2024:196` bleibt falsch: die Haupttabelle 2 nennt fuer Woche 28 die Werte
 80/78, Gold (24/24) stammt aus Tabelle 3, einer Subgruppe (MMSE-J 20 bis 23).
