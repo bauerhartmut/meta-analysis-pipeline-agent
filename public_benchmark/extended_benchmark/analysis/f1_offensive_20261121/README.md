@@ -469,6 +469,26 @@ Einsatz der 41 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
 Alle 41: +24 TP und +13 FP. Nur die richtigen: +24 TP und -4 FP (vier Zellen
 ersetzten vorhandene falsche Werte).
 
+### Armzuordnung aus der Spaltenreihenfolge
+
+`armreihenfolge_20261121.py`. Die Regel ordnet jeden `n`-Wert ueber den
+Spaltennamen des Tabellenkopfs zu, nicht ueber die Position. Fuer `PMC5617873`
+steht in Spalte 1 `Placebo (n = 45)`, in Spalte 2 `Aripiprazole (n = 47)`; die
+Regel liefert Intervention 47, Comparator 45.
+
+Gold fuehrt fuer dieselben vier Records Intervention 45, Comparator 47, also die
+Placebo-Werte als Intervention. Ein positionsbasierter Tausch ("erste Spalte ist
+Intervention") stellt die 8 Zellen gegen Gold richtig, macht aber `yun2024:193`
+und `yun2024:426` falsch:
+
+| Lesart | richtig | falsch |
+|---|---:|---:|
+| Spaltenname (Regel) | 12 | 10 |
+| Position, getauscht | 16 | 6 |
+
+Der Tabellenkopf bleibt die verlaesslichere Quelle; die 8 Zellen sind ein
+Goldtausch, kein Lesefehler (siehe `pruefvermerk_gold_20261121.md`).
+
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
 gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht
 auffindbar (`Vegetable intake` vs. Tabellenzeile `Vegetables`), in 4 weiteren

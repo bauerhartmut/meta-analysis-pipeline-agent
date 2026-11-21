@@ -1,0 +1,100 @@
+{
+  "gesamt": {
+    "ohne_tausch": {
+      "richtig": 12,
+      "falsch": 10,
+      "zellen": 22
+    },
+    "mit_tausch": {
+      "richtig": 16,
+      "falsch": 6,
+      "zellen": 22
+    }
+  },
+  "records": [
+    {
+      "record_id": "yun2024:331",
+      "kopfzeile": 40,
+      "spalten": [
+        {
+          "spalte": 1,
+          "kopf": "Placebo (n =\u200945)",
+          "arm": "comparator"
+        },
+        {
+          "spalte": 2,
+          "kopf": "Aripiprazole (n =\u200947)",
+          "arm": "intervention"
+        }
+      ],
+      "gold": {
+        "intervention_group_size": 45.0,
+        "comparator_group_size": 47.0
+      },
+      "kopf_text": "Placebo (n =\u200945)            Aripiprazole (n =\u200947)   Difference or ratio (95% confidence interval) P value"
+    },
+    {
+      "record_id": "yun2024:334",
+      "kopfzeile": 40,
+      "spalten": [
+        {
+          "spalte": 1,
+          "kopf": "Placebo (n =\u200945)",
+          "arm": "comparator"
+        },
+        {
+          "spalte": 2,
+          "kopf": "Aripiprazole (n =\u200947)",
+          "arm": "intervention"
+        }
+      ],
+      "gold": {
+        "intervention_group_size": 45.0,
+        "comparator_group_size": 47.0
+      },
+      "kopf_text": "Placebo (n =\u200945)            Aripiprazole (n =\u200947)   Difference or ratio (95% confidence interval) P value"
+    },
+    {
+      "record_id": "yun2024:335",
+      "kopfzeile": 40,
+      "spalten": [
+        {
+          "spalte": 1,
+          "kopf": "Placebo (n =\u200945)",
+          "arm": "comparator"
+        },
+        {
+          "spalte": 2,
+          "kopf": "Aripiprazole (n =\u200947)",
+          "arm": "intervention"
+        }
+      ],
+      "gold": {
+        "intervention_group_size": 45.0,
+        "comparator_group_size": 47.0
+      },
+      "kopf_text": "Placebo (n =\u200945)            Aripiprazole (n =\u200947)   Difference or ratio (95% confidence interval) P value"
+    },
+    {
+      "record_id": "yun2024:336",
+      "kopfzeile": 40,
+      "spalten": [
+        {
+          "spalte": 1,
+          "kopf": "Placebo (n =\u200945)",
+          "arm": "comparator"
+        },
+        {
+          "spalte": 2,
+          "kopf": "Aripiprazole (n =\u200947)",
+          "arm": "intervention"
+        }
+      ],
+      "gold": {
+        "intervention_group_size": 45.0,
+        "comparator_group_size": 47.0
+      },
+      "kopf_text": "Placebo (n =\u200945)            Aripiprazole (n =\u200947)   Difference or ratio (95% confidence interval) P value"
+    }
+  ]
+}
