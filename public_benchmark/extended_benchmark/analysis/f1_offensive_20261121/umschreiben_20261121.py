@@ -157,7 +157,8 @@ def main() -> int:
             if neu[feld] is not None:
                 zellen_neu.setdefault(rid, []).append(
                     {"field": feld, "group": arm, "value": neu[feld]["value"],
-                     "abgeleitet": bool(neu[feld].get("abgeleitet"))})
+                     "abgeleitet": bool(neu[feld].get("abgeleitet")),
+                     "zeile": neu[feld].get("zeile")})
             if alt[feld] is not None:
                 zellen_alt.setdefault(rid, []).append(
                     {"field": feld, "group": arm, "value": alt[feld]["value"]})
@@ -217,7 +218,8 @@ def main() -> int:
 
     def fuellen(basis: dict[tuple[str, str], dict[str, Any]],
                 extra: list[dict[str, Any]],
-                mittel: str) -> tuple[list[dict[str, Any]], int, int]:
+                mittel: str, groesse: str = "alle"
+                ) -> tuple[list[dict[str, Any]], int, int, int]:
         """Luecken fuellen; Feldprioritaet entscheidet ueber die Mittel.
 
         Streuung und Groesse werden immer gefuellt, sobald das Feld leer ist
@@ -227,17 +229,38 @@ def main() -> int:
         * `arm` - nur wenn der Arm weder Mittel noch Streuung hat,
         * `record` - nur wenn der Record ueberhaupt kein Mittel hat,
         * `nie` - gar kein Mittel aus der Regel.
+
+        `groesse` steuert die Groessen:
+
+        * `alle` - jede leere Groesse wird gefuellt,
+        * `arm` - nur wenn die Vorhersage fuer denselben Arm schon Mittel oder
+          Streuung hat (die Vorhersage traegt keine Zeilenangabe),
+        * `zeile` - nur wenn die Regel fuer denselben Arm aus derselben Zeile ein
+          Mittel oder eine Streuung liest,
+        * `beides` - beide Bedingungen.
         """
         karte = {k: dict(c) for k, c in basis.items()}
         belegt = 0
         zurueck = 0
+        zurueck_g = 0
         arme_mittel = {k[1] for k in basis if art(k[0]) == "mittel"}
         arme_streuung = {k[1] for k in basis if art(k[0]) == "streuung"}
+        arme_mit_wert = {k[1] for k in basis if art(k[0]) in ("mittel", "streuung")}
+        zeile_wert = {(c["group"], c.get("zeile")) for c in extra
+                      if art(c["field"]) in ("mittel", "streuung") and c.get("zeile")}
         for c in extra:
             schluessel = (c["field"], c["group"])
             if schluessel in basis:
                 belegt += 1
                 continue
+            if art(c["field"]) == "groesse":
+                passt_arm = c["group"] in arme_mit_wert
+                passt_zeile = (c["group"], c.get("zeile")) in zeile_wert
+                if ((groesse == "arm" and not passt_arm)
+                        or (groesse == "zeile" and not passt_zeile)
+                        or (groesse == "beides" and not (passt_arm and passt_zeile))):
+                    zurueck_g += 1
+                    continue
             if art(c["field"]) == "mittel":
                 if mittel == "nie":
                     zurueck += 1
@@ -251,15 +274,18 @@ def main() -> int:
                     continue
             karte[schluessel] = {"field": c["field"], "group": c["group"],
                                 "value": c["value"]}
-        return list(karte.values()), belegt, zurueck
+        return list(karte.values()), belegt, zurueck, zurueck_g
 
     karten: dict[str, dict[str, list[dict[str, Any]]]] = {
         "p5": {}, "p5_plus_alt": {}, "p5_plus_neu": {},
         "p5_plus_alt_luecken": {}, "p5_plus_neu_luecken": {},
         "p5_plus_neu_arm": {}, "p5_plus_neu_record": {},
-        "p5_plus_neu_ohne_mittel": {}}
+        "p5_plus_neu_ohne_mittel": {},
+        "p5_plus_neu_groesse_arm": {}, "p5_plus_neu_groesse_zeile": {},
+        "p5_plus_neu_groesse_beides": {}}
     uebersprungen: dict[str, int] = {}
     zurueckgehalten: dict[str, int] = {}
+    zurueckgehalten_groesse: dict[str, int] = {}
     for rid, zeile in p5.items():
         if rid not in records:
             continue
@@ -279,10 +305,18 @@ def main() -> int:
                                     ("p5_plus_neu_arm", "arm", zellen_neu),
                                     ("p5_plus_neu_record", "record", zellen_neu),
                                     ("p5_plus_neu_ohne_mittel", "nie", zellen_neu)):
-            zellen, belegt, zurueck = fuellen(basis, quelle.get(rid, []), regel)
+            zellen, belegt, zurueck, _zg = fuellen(basis, quelle.get(rid, []), regel)
             karten[name][rid] = zellen
             uebersprungen[name] = uebersprungen.get(name, 0) + belegt
             zurueckgehalten[name] = zurueckgehalten.get(name, 0) + zurueck
+        for name, groesse in (("p5_plus_neu_groesse_arm", "arm"),
+                              ("p5_plus_neu_groesse_zeile", "zeile"),
+                              ("p5_plus_neu_groesse_beides", "beides")):
+            zellen, belegt, zurueck, zg = fuellen(basis, zellen_neu.get(rid, []), "nie", groesse)
+            karten[name][rid] = zellen
+            uebersprungen[name] = uebersprungen.get(name, 0) + belegt
+            zurueckgehalten[name] = zurueckgehalten.get(name, 0) + zurueck
+            zurueckgehalten_groesse[name] = zurueckgehalten_groesse.get(name, 0) + zg
     bilanz = {name: einsatz(karte) for name, karte in karten.items()}
 
     def zuwachs(name: str) -> dict[str, dict[str, int]]:
@@ -302,6 +336,32 @@ def main() -> int:
                 eimer["tp" if soll is not None and abs(c["value"] - soll) < 1e-6 else "fp"] += 1
         return aus
 
+    def groessen_befund() -> list[dict[str, Any]]:
+        """Jede neue Groessenzelle mit beiden Belegbedingungen."""
+        aus: list[dict[str, Any]] = []
+        for rid, zeile in p5.items():
+            if rid not in records:
+                continue
+            vorhersage = v.zellen(zeile)
+            vorher = {(str(x.get("field") or ""), v.arm_von(x)) for x in vorhersage}
+            gold = {(str(z.get("field") or ""), v.arm_von(z)): v.zahl(z.get("value"))
+                    for z in (records[rid].get("gold") or {}).get("cells") or []}
+            arme_mit_wert = {v.arm_von(x) for x in vorhersage
+                             if art(str(x.get("field") or "")) in ("mittel", "streuung")}
+            extra = zellen_neu.get(rid, [])
+            zeile_wert = {(c["group"], c.get("zeile")) for c in extra
+                          if art(c["field"]) in ("mittel", "streuung") and c.get("zeile")}
+            for c in extra:
+                if art(c["field"]) != "groesse" or (c["field"], c["group"]) in vorher:
+                    continue
+                soll = gold.get((c["field"], c["group"]))
+                aus.append({"record_id": rid, "feld": c["field"], "arm": c["group"],
+                            "zeile": c.get("zeile"), "wert": c["value"], "gold": soll,
+                            "richtig": soll is not None and abs(c["value"] - soll) < 1e-6,
+                            "arm_hat_wert": c["group"] in arme_mit_wert,
+                            "zeile_passt": (c["group"], c.get("zeile")) in zeile_wert})
+        return aus
+
     ergebnis = {"stand": "2026-11-21", "records": len(records), "p5_records": len(p5),
                 "klassen": bilanzen,
                 "je_feldart": je_art,
@@ -315,7 +375,12 @@ def main() -> int:
                            n: zuwachs(n) for n in ("p5_plus_neu_luecken",
                                                    "p5_plus_neu_arm",
                                                    "p5_plus_neu_record",
-                                                   "p5_plus_neu_ohne_mittel")}}}
+                                                   "p5_plus_neu_ohne_mittel",
+                                                   "p5_plus_neu_groesse_arm",
+                                                   "p5_plus_neu_groesse_zeile",
+                                                   "p5_plus_neu_groesse_beides")}},
+                "zurueckgehalten_groesse": zurueckgehalten_groesse,
+                "groessen_befund": groessen_befund()}
     (HIER / "umschreiben_20261121.json").write_text(
         json.dumps(ergebnis, indent=2, ensure_ascii=True), encoding="utf-8")
 
@@ -368,7 +433,8 @@ def main() -> int:
            "|---|---:|---:|---:|---:|---:|---:|"]
     namen = ("p5", "p5_plus_alt", "p5_plus_neu", "p5_plus_alt_luecken",
              "p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
-             "p5_plus_neu_ohne_mittel")
+             "p5_plus_neu_ohne_mittel", "p5_plus_neu_groesse_arm",
+             "p5_plus_neu_groesse_zeile", "p5_plus_neu_groesse_beides")
     for name in namen:
         b = bilanz[name]
         md.append(f"| {name} | {b['tp']:.0f} | {b['fp']:.0f} | {b['fn']:.0f} | "
@@ -385,7 +451,10 @@ def main() -> int:
            f"Wahl bringt unter dieser Strategie {g_neu['tp'] - g_alt['tp']:+.0f} TP und "
            f"{g_neu['fp'] - g_alt['fp']:+.0f} FP.", ""]
     zw = {n: zuwachs(n) for n in ("p5_plus_neu_luecken", "p5_plus_neu_arm",
-                                  "p5_plus_neu_record", "p5_plus_neu_ohne_mittel")}
+                                  "p5_plus_neu_record", "p5_plus_neu_ohne_mittel",
+                                  "p5_plus_neu_groesse_arm",
+                                  "p5_plus_neu_groesse_zeile",
+                                  "p5_plus_neu_groesse_beides")}
     md += ["", "## Feldprioritaet der Mittel", "",
            "Streuung und Groesse werden immer gefuellt. Ein Mittel wird nur",
            "geschrieben, wenn `alle` (jede Luecke), `arm` (der Arm hat weder Mittel",
@@ -394,7 +463,8 @@ def main() -> int:
            "", "| Stand | Feldart | neu richtig | neu falsch |",
            "|---|---|---:|---:|"]
     for name in ("p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
-                 "p5_plus_neu_ohne_mittel"):
+                 "p5_plus_neu_ohne_mittel", "p5_plus_neu_groesse_arm",
+                 "p5_plus_neu_groesse_zeile", "p5_plus_neu_groesse_beides"):
         for feldart in sorted(zw[name]):
             e = zw[name][feldart]
             md.append(f"| {name} | {feldart} | {e['tp']} | {e['fp']} |")
@@ -407,6 +477,46 @@ def main() -> int:
         md.append(f"| {label} | {b['tp'] - b_p5['tp']:+.0f} | {b['fp'] - b_p5['fp']:+.0f} | "
                   f"{b['f1']:.4f} |")
     md.append("")
+    befund = groessen_befund()
+    md += ["## Groesse nur mit Beleg im Arm", "",
+           "Bezug ist das Lueckenfuellen ohne Mittel (178 TP / 114 FP). `arm`:",
+           "die Vorhersage hat fuer denselben Arm schon Mittel oder Streuung.",
+           "`zeile`: die Regel liest fuer denselben Arm aus derselben Zeile ein",
+           "Mittel oder eine Streuung. Die Vorhersage traegt keine Zeilenangabe,",
+           "der Zeilenteil ist deshalb nur gegen die Regel-eigene Lesung pruefbar.",
+           "", "| Stand | TP | FP | FN | F1 | Groessen richtig | Groessen falsch |"
+           " Groessen zurueckgehalten |", "|---|---:|---:|---:|---:|---:|---:|---:|"]
+    for name, label in (("p5_plus_neu_ohne_mittel", "ohne Bedingung"),
+                        ("p5_plus_neu_groesse_arm", "nur mit Wert im Arm"),
+                        ("p5_plus_neu_groesse_zeile", "nur aus derselben Zeile"),
+                        ("p5_plus_neu_groesse_beides", "Arm und Zeile")):
+        b = bilanz[name]
+        g = zw[name].get("groesse", {"tp": 0, "fp": 0})
+        md.append(f"| {label} | {b['tp']:.0f} | {b['fp']:.0f} | {b['fn']:.0f} | "
+                  f"{b['f1']:.4f} | {g['tp']} | {g['fp']} | "
+                  f"{zurueckgehalten_groesse.get(name, 0)} |")
+    md += ["", f"{len(befund)} Groessenzellen fuellt die Regel neu "
+           f"({sum(1 for e in befund if e['richtig'])} richtig, "
+           f"{sum(1 for e in befund if not e['richtig'])} falsch).", "",
+           "| Record | Feld | Arm | Zeile | Wert | Gold | richtig | Arm hat Wert | Zeile passt |",
+           "|---|---|---|---|---:|---:|---|---|---|"]
+    for e in befund:
+        md.append(f"| `{e['record_id']}` | {e['feld']} | {e['arm']} | {e['zeile']} | "
+                  f"{e['wert']} | {'-' if e['gold'] is None else e['gold']} | "
+                  f"{'ja' if e['richtig'] else 'nein'} | "
+                  f"{'ja' if e['arm_hat_wert'] else 'nein'} | "
+                  f"{'ja' if e['zeile_passt'] else 'nein'} |")
+    fp_b = [e for e in befund if not e["richtig"]]
+    tp_b = [e for e in befund if e["richtig"]]
+    md += ["", f"Lesart: von den {len(fp_b)} falschen Groessen erfuellen "
+           f"{sum(1 for e in fp_b if e['arm_hat_wert'])} die Arm-Bedingung und "
+           f"{sum(1 for e in fp_b if e['zeile_passt'])} die Zeilenbedingung; von den "
+           f"{len(tp_b)} richtigen sind es {sum(1 for e in tp_b if e['arm_hat_wert'])} "
+           f"und {sum(1 for e in tp_b if e['zeile_passt'])}. Die Arm-Bedingung ist in "
+           "keiner der 16 Zellen erfuellt (die Vorhersage hat dort in dem Arm weder "
+           "Mittel noch Streuung), sie wirkt deshalb wie ein Verzicht auf Groessen. "
+           "Die Zeilenbedingung laesst zwei Zellen stehen: `yun2024:446` "
+           "Intervention (richtig) und `yun2024:451` Intervention (falsch).", ""]
     if ueberschrieben:
         md += ["", "| Record | Feld | Arm | Vorhersage | Gold | Regel neu | abgeleitet |",
                "|---|---|---|---:|---:|---:|---|"]
@@ -425,14 +535,20 @@ def main() -> int:
           f"Regel liefert nichts {leere}")
     for name in ("p5", "p5_plus_alt", "p5_plus_neu", "p5_plus_alt_luecken",
                  "p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
-                 "p5_plus_neu_ohne_mittel"):
+                 "p5_plus_neu_ohne_mittel", "p5_plus_neu_groesse_arm",
+                 "p5_plus_neu_groesse_zeile", "p5_plus_neu_groesse_beides"):
         b = bilanz[name]
-        print(f"  {name:22s} TP {b['tp']:.0f} FP {b['fp']:.0f} FN {b['fn']:.0f} "
+        print(f"  {name:28s} TP {b['tp']:.0f} FP {b['fp']:.0f} FN {b['fn']:.0f} "
               f"F1 {b['f1']:.3f} belegt {uebersprungen.get(name, 0)} "
               f"mittel_zurueck {zurueckgehalten.get(name, 0)}")
     for name in ("p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
-                 "p5_plus_neu_ohne_mittel"):
+                 "p5_plus_neu_ohne_mittel", "p5_plus_neu_groesse_arm",
+                 "p5_plus_neu_groesse_zeile", "p5_plus_neu_groesse_beides"):
         print(f"  {name} je Feldart: {zuwachs(name)}")
+    for e in groessen_befund():
+        print(f"    {e['record_id']} {e['feld']} {e['arm']} zeile={e['zeile']} "
+              f"wert={e['wert']} gold={e['gold']} richtig={e['richtig']} "
+              f"arm={e['arm_hat_wert']} zeile_ok={e['zeile_passt']}")
     return 0
 
 

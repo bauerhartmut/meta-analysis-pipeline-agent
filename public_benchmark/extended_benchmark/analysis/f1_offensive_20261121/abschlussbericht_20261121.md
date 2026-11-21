@@ -295,7 +295,14 @@ leeren Arm oder mittelfreien Record) ist wirkungslos: sie liefert dieselben
 auftritt, wo der Arm weder Mittel noch Streuung hat. Erst der Verzicht auf
 Mittel aus der Regel hilft: 178 TP bleiben, FP 120 -> 114 (F1 0.1159 ->
 0.1161). Neue Zellen nach Feldart: Streuung 8 richtig / 6 falsch, Groesse 4 /
-12, Mittel 0 / 6. Die Groessen sind damit der naechste Hebel, nicht die Mittel.
+12, Mittel 0 / 6.
+
+Auch die Groessen lassen sich nicht ueber einen Beleg im Arm absichern: die
+Bedingung "derselbe Arm hat schon Mittel oder Streuung" ist in keiner der 16
+Zellen erfuellt, weil die Vorhersage genau in diesen Records den Arm gar nicht
+liest. Der Stand faellt damit auf 174 TP / 102 FP (statt 178 / 114), also
+-12 FP und -4 TP; die Zeilenbedingung rettet zwei Zellen (175 / 103). Unter dem
+Strich ist der Groessengewinn nur als Ganzes zu haben oder gar nicht.
 
 ## Grenzen
 

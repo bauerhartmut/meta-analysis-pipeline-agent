@@ -736,6 +736,15 @@ Abschalten der Mittel bewegt die Bilanz: 178 TP bleiben, FP 120 -> 114, F1
 | Groesse | 4 | 12 |
 | Mittel | 0 | 6 |
 
+Eine Groesse nur zu uebernehmen, wenn derselbe Arm im Record schon Mittel oder
+Streuung hat, hilft nicht: keine der 16 neuen Groessenzellen (4 richtig, 12
+falsch) erfuellt die Bedingung, der Stand faellt auf 174 TP / 102 FP. Die
+Zeilenbedingung (die Regel liest fuer denselben Arm aus derselben Zeile Mittel
+oder Streuung) laesst zwei Zellen stehen (175 / 103); die Vorhersage traegt
+keine Zeilenangabe, geprueft wird also gegen die Regel-eigene Lesung. Beides
+zusammen bleibt bei 174 / 102. Der Groessengewinn stammt damit genau aus den
+Records, in denen der Arm sonst leer ist.
+
 ## Fixture: beide Zellstaende zellgenau
 
 `fixture_20261121.py` (Modi `schreiben` / `pruefen`) friert die 33 Zellen mit

@@ -826,6 +826,24 @@
         "fp": 114,
         "fn": 2595,
         "f1": 0.1161500815660685
+      },
+      "p5_plus_neu_groesse_arm": {
+        "tp": 174,
+        "fp": 102,
+        "fn": 2599,
+        "f1": 0.1141357822236799
+      },
+      "p5_plus_neu_groesse_zeile": {
+        "tp": 175,
+        "fp": 103,
+        "fn": 2598,
+        "f1": 0.11471648639790233
+      },
+      "p5_plus_neu_groesse_beides": {
+        "tp": 174,
+        "fp": 102,
+        "fn": 2599,
+        "f1": 0.1141357822236799
       }
     },
     "ursache": {
@@ -836,14 +854,20 @@
       "p5_plus_neu_luecken": 66,
       "p5_plus_neu_arm": 66,
       "p5_plus_neu_record": 66,
-      "p5_plus_neu_ohne_mittel": 66
+      "p5_plus_neu_ohne_mittel": 66,
+      "p5_plus_neu_groesse_arm": 66,
+      "p5_plus_neu_groesse_zeile": 66,
+      "p5_plus_neu_groesse_beides": 66
     },
     "zurueckgehalten": {
       "p5_plus_alt_luecken": 0,
       "p5_plus_neu_luecken": 0,
       "p5_plus_neu_arm": 0,
       "p5_plus_neu_record": 0,
-      "p5_plus_neu_ohne_mittel": 6
+      "p5_plus_neu_ohne_mittel": 6,
+      "p5_plus_neu_groesse_arm": 6,
+      "p5_plus_neu_groesse_zeile": 6,
+      "p5_plus_neu_groesse_beides": 6
     },
     "zuwachs_je_feldart": {
       "p5_plus_neu_luecken": {
@@ -897,7 +921,212 @@
           "tp": 8,
           "fp": 6
         }
+      },
+      "p5_plus_neu_groesse_arm": {
+        "streuung": {
+          "tp": 8,
+          "fp": 6
+        }
+      },
+      "p5_plus_neu_groesse_zeile": {
+        "streuung": {
+          "tp": 8,
+          "fp": 6
+        },
+        "groesse": {
+          "tp": 1,
+          "fp": 1
+        }
+      },
+      "p5_plus_neu_groesse_beides": {
+        "streuung": {
+          "tp": 8,
+          "fp": 6
+        }
       }
     }
-  }
+  },
+  "zurueckgehalten_groesse": {
+    "p5_plus_neu_groesse_arm": 16,
+    "p5_plus_neu_groesse_zeile": 14,
+    "p5_plus_neu_groesse_beides": 16
+  },
+  "groessen_befund": [
+    {
+      "record_id": "yun2024:159",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "zeile": 1,
+      "wert": 24.0,
+      "gold": 592.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:251",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "zeile": 60,
+      "wert": 406.0,
+      "gold": 402.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:251",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "zeile": 60,
+      "wert": 393.0,
+      "gold": 388.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:252",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "zeile": 10,
+      "wert": 398.0,
+      "gold": 402.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:252",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "zeile": 10,
+      "wert": 389.0,
+      "gold": 388.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:356",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "zeile": 6,
+      "wert": 15.0,
+      "gold": 13.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:420",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "zeile": 10,
+      "wert": 44.0,
+      "gold": 18.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:420",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "zeile": 10,
+      "wert": 49.0,
+      "gold": 21.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:421",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "zeile": 10,
+      "wert": 44.0,
+      "gold": 30.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:421",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "zeile": 10,
+      "wert": 49.0,
+      "gold": 34.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:446",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "zeile": 111,
+      "wert": 104.0,
+      "gold": 104.0,
+      "richtig": true,
+      "arm_hat_wert": false,
+      "zeile_passt": true
+    },
+    {
+      "record_id": "yun2024:446",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "zeile": 111,
+      "wert": 114.0,
+      "gold": 114.0,
+      "richtig": true,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:451",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "zeile": 117,
+      "wert": 104.0,
+      "gold": 99.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": true
+    },
+    {
+      "record_id": "yun2024:451",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "zeile": 117,
+      "wert": 114.0,
+      "gold": 108.0,
+      "richtig": false,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:678",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "zeile": 8,
+      "wert": 16.0,
+      "gold": 16.0,
+      "richtig": true,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    },
+    {
+      "record_id": "yun2024:678",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "zeile": 8,
+      "wert": 15.0,
+      "gold": 15.0,
+      "richtig": true,
+      "arm_hat_wert": false,
+      "zeile_passt": false
+    }
+  ]
 }

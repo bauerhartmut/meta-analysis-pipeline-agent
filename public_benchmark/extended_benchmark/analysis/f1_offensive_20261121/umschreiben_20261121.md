@@ -78,6 +78,9 @@ keine
 | p5_plus_neu_arm | 178 | 120 | 2595 | 0.116 | 66 | 0 |
 | p5_plus_neu_record | 178 | 120 | 2595 | 0.116 | 66 | 0 |
 | p5_plus_neu_ohne_mittel | 178 | 114 | 2595 | 0.116 | 66 | 6 |
+| p5_plus_neu_groesse_arm | 174 | 102 | 2599 | 0.114 | 66 | 6 |
+| p5_plus_neu_groesse_zeile | 175 | 103 | 2598 | 0.115 | 66 | 6 |
+| p5_plus_neu_groesse_beides | 174 | 102 | 2599 | 0.114 | 66 | 6 |
 
 Lesart: Ersetzen kostet TP, weil 31 richtige Vorhersagezellen durch einen
 falschen Regelwert ersetzt werden. `nur Luecken fuellen` laesst diese Zellen
@@ -104,6 +107,10 @@ noch Streuung) oder `record` (der Record hat kein Mittel) es zulaesst.
 | p5_plus_neu_record | streuung | 8 | 6 |
 | p5_plus_neu_ohne_mittel | groesse | 4 | 12 |
 | p5_plus_neu_ohne_mittel | streuung | 8 | 6 |
+| p5_plus_neu_groesse_arm | streuung | 8 | 6 |
+| p5_plus_neu_groesse_zeile | groesse | 1 | 1 |
+| p5_plus_neu_groesse_zeile | streuung | 8 | 6 |
+| p5_plus_neu_groesse_beides | streuung | 8 | 6 |
 
 | Stand | TP gegen P5 | FP gegen P5 | F1 |
 |---|---:|---:|---:|
@@ -111,6 +118,44 @@ noch Streuung) oder `record` (der Record hat kein Mittel) es zulaesst.
 | Mittel nur im leeren Arm | +12 | +24 | 0.1159 |
 | Mittel nur im mittelfreien Record | +12 | +24 | 0.1159 |
 | keine Mittel aus der Regel | +12 | +18 | 0.1162 |
+
+## Groesse nur mit Beleg im Arm
+
+Bezug ist das Lueckenfuellen ohne Mittel (178 TP / 114 FP). `arm`:
+die Vorhersage hat fuer denselben Arm schon Mittel oder Streuung.
+`zeile`: die Regel liest fuer denselben Arm aus derselben Zeile ein
+Mittel oder eine Streuung. Die Vorhersage traegt keine Zeilenangabe,
+der Zeilenteil ist deshalb nur gegen die Regel-eigene Lesung pruefbar.
+
+| Stand | TP | FP | FN | F1 | Groessen richtig | Groessen falsch | Groessen zurueckgehalten |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| ohne Bedingung | 178 | 114 | 2595 | 0.1162 | 4 | 12 | 0 |
+| nur mit Wert im Arm | 174 | 102 | 2599 | 0.1141 | 0 | 0 | 16 |
+| nur aus derselben Zeile | 175 | 103 | 2598 | 0.1147 | 1 | 1 | 14 |
+| Arm und Zeile | 174 | 102 | 2599 | 0.1141 | 0 | 0 | 16 |
+
+16 Groessenzellen fuellt die Regel neu (4 richtig, 12 falsch).
+
+| Record | Feld | Arm | Zeile | Wert | Gold | richtig | Arm hat Wert | Zeile passt |
+|---|---|---|---|---:|---:|---|---|---|
+| `yun2024:159` | intervention_group_size | intervention | 1 | 24.0 | 592.0 | nein | nein | nein |
+| `yun2024:251` | intervention_group_size | intervention | 60 | 406.0 | 402.0 | nein | nein | nein |
+| `yun2024:251` | comparator_group_size | comparator | 60 | 393.0 | 388.0 | nein | nein | nein |
+| `yun2024:252` | intervention_group_size | intervention | 10 | 398.0 | 402.0 | nein | nein | nein |
+| `yun2024:252` | comparator_group_size | comparator | 10 | 389.0 | 388.0 | nein | nein | nein |
+| `yun2024:356` | comparator_group_size | comparator | 6 | 15.0 | 13.0 | nein | nein | nein |
+| `yun2024:420` | intervention_group_size | intervention | 10 | 44.0 | 18.0 | nein | nein | nein |
+| `yun2024:420` | comparator_group_size | comparator | 10 | 49.0 | 21.0 | nein | nein | nein |
+| `yun2024:421` | intervention_group_size | intervention | 10 | 44.0 | 30.0 | nein | nein | nein |
+| `yun2024:421` | comparator_group_size | comparator | 10 | 49.0 | 34.0 | nein | nein | nein |
+| `yun2024:446` | intervention_group_size | intervention | 111 | 104.0 | 104.0 | ja | nein | ja |
+| `yun2024:446` | comparator_group_size | comparator | 111 | 114.0 | 114.0 | ja | nein | nein |
+| `yun2024:451` | intervention_group_size | intervention | 117 | 104.0 | 99.0 | nein | nein | ja |
+| `yun2024:451` | comparator_group_size | comparator | 117 | 114.0 | 108.0 | nein | nein | nein |
+| `yun2024:678` | intervention_group_size | intervention | 8 | 16.0 | 16.0 | ja | nein | nein |
+| `yun2024:678` | comparator_group_size | comparator | 8 | 15.0 | 15.0 | ja | nein | nein |
+
+Lesart: von den 12 falschen Groessen erfuellen 0 die Arm-Bedingung und 1 die Zeilenbedingung; von den 4 richtigen sind es 0 und 1. Die Arm-Bedingung ist in keiner der 16 Zellen erfuellt (die Vorhersage hat dort in dem Arm weder Mittel noch Streuung), sie wirkt deshalb wie ein Verzicht auf Groessen. Die Zeilenbedingung laesst zwei Zellen stehen: `yun2024:446` Intervention (richtig) und `yun2024:451` Intervention (falsch).
 
 
 | Record | Feld | Arm | Vorhersage | Gold | Regel neu | abgeleitet |
