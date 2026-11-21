@@ -9,6 +9,10 @@ vorhandenen Predictions nachgerechnet.
 Der zusammenfassende Stand der 295 Faelle (Endvariante 43 Zellen, 38 TP, 5 FP,
 88 Prozent Trefferquote) steht in `abschlussbericht_20261121.md`.
 
+Die Bausteine tragen bei den uebrigen FN-Regeln nicht; Messung und Begruendung
+stehen in `bausteine_uebertrag_20261121.md` (50 Zellen, 7 TP, 43 FP bei 464
+offenen Faellen).
+
 | Datei | Inhalt |
 |---|---|
 | `zahlabgleich_20261121.py` | gemeinsamer Zahlabgleich fuer Fehleranalyse und Validierung |

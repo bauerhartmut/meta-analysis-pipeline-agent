@@ -1,0 +1,136 @@
+{
+  "mit_position": {
+    "fn_leer": {
+      "faelle": 182,
+      "zellen": 31,
+      "tp": 3,
+      "fp": 28,
+      "je_quelle": {
+        "zeile": {
+          "TP": 0,
+          "FP": 3
+        },
+        "position": {
+          "TP": 3,
+          "FP": 13
+        },
+        "zielzeile": {
+          "TP": 0,
+          "FP": 12
+        }
+      },
+      "je_feld": {
+        "size": 25,
+        "mean": 6
+      }
+    },
+    "fn_nicht_im_dokument": {
+      "faelle": 164,
+      "zellen": 10,
+      "tp": 0,
+      "fp": 10,
+      "je_quelle": {
+        "zielzeile": {
+          "TP": 0,
+          "FP": 9
+        },
+        "position": {
+          "TP": 0,
+          "FP": 1
+        }
+      },
+      "je_feld": {
+        "mean": 1,
+        "size": 9
+      }
+    },
+    "fn_nicht_ausgegeben": {
+      "faelle": 118,
+      "zellen": 9,
+      "tp": 4,
+      "fp": 5,
+      "je_quelle": {
+        "zeile": {
+          "TP": 0,
+          "FP": 1
+        },
+        "zielzeile": {
+          "TP": 0,
+          "FP": 4
+        },
+        "wochenspalte": {
+          "TP": 4,
+          "FP": 0
+        }
+      },
+      "je_feld": {
+        "size": 9
+      }
+    }
+  },
+  "ohne_position": {
+    "fn_leer": {
+      "faelle": 182,
+      "zellen": 31,
+      "tp": 4,
+      "fp": 27,
+      "je_quelle": {
+        "zeile": {
+          "TP": 4,
+          "FP": 15
+        },
+        "zielzeile": {
+          "TP": 0,
+          "FP": 12
+        }
+      },
+      "je_feld": {
+        "size": 25,
+        "mean": 6
+      }
+    },
+    "fn_nicht_im_dokument": {
+      "faelle": 164,
+      "zellen": 10,
+      "tp": 0,
+      "fp": 10,
+      "je_quelle": {
+        "zielzeile": {
+          "TP": 0,
+          "FP": 9
+        },
+        "zeile": {
+          "TP": 0,
+          "FP": 1
+        }
+      },
+      "je_feld": {
+        "mean": 1,
+        "size": 9
+      }
+    },
+    "fn_nicht_ausgegeben": {
+      "faelle": 118,
+      "zellen": 9,
+      "tp": 4,
+      "fp": 5,
+      "je_quelle": {
+        "zeile": {
+          "TP": 0,
+          "FP": 1
+        },
+        "zielzeile": {
+          "TP": 0,
+          "FP": 4
+        },
+        "wochenspalte": {
+          "TP": 4,
+          "FP": 0
+        }
+      },
+      "je_feld": {
+        "size": 9
+      }
+    }
+  }
+}
