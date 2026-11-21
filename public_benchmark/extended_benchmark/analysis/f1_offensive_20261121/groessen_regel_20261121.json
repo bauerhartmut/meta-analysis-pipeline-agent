@@ -1,0 +1,361 @@
+{
+  "stand": "2026-11-21",
+  "ziel_faelle_ohne_groessenzeile": 48,
+  "geliefert": 0,
+  "richtig": 0,
+  "falsch": 0,
+  "verweigert": 48,
+  "je_quelle": {},
+  "ziel_events": 29,
+  "ziel_groesse": 19,
+  "ziel_wert_als_nenner": 16,
+  "ziel_wert_nah_am_armwort": 12,
+  "regelzellen_gesamt": 2,
+  "additiv": {
+    "tp": 0,
+    "fp": 2
+  },
+  "ersetzen": {
+    "tp": 0,
+    "fp": 0,
+    "tp_verlust": 0
+  },
+  "beispiele": [
+    {
+      "record_id": "yun2024:118",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 10.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:120",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 20.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:120",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 44.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:127",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 11.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:127",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 21.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:130",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 11.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:14",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 54.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:153",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 7.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:190",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 52.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:190",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 51.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:193",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 138.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:193",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 131.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:305",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 1.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:313",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 22.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:313",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 16.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:369",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 51.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:369",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 57.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:370",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 33.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:373",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 46.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:379",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 25.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:379",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 39.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:380",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 47.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:380",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 19.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:499",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 27.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:500",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 12.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:501",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 15.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:547",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 68.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:548",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 68.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:615",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 754.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:615",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 656.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:616",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 754.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:616",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 656.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:617",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 754.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:617",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 656.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:618",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 754.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:618",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 656.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:619",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 754.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:619",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 656.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:62",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 23.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:620",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 754.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:620",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 656.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:626",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 2.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:626",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 3.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:63",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "gold": 23.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:63",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 5.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:64",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 4.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:65",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 3.0,
+      "regel": null
+    },
+    {
+      "record_id": "yun2024:66",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "gold": 4.0,
+      "regel": null
+    }
+  ]
+}

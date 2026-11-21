@@ -236,6 +236,30 @@ dieselben Woerter wie der Interventionsarm, wodurch die Zuordnung kippt
 der Vorhersage ist in keinem Fall belegbar: die ausgegebene Zahl stimmt nie mit
 der Zahl des anderen Arms in derselben Groessenzeile ueberein.
 
+## Nachregel fuer Gruppengroessen: 0 von 48
+
+`groessen_regel_20261121.py` liest Gruppengroessen aus Saetzen
+(`N patients were randomized ...`) und aus Nennern (`k/n`) mit
+selbstbeschrifteter Armzeile; bei Widerspruch oder fehlendem Armbezug
+verweigert sie. Gemessen an den 48 Zaehlfeldern ohne Groessenzeile:
+
+| Kennzahl | Wert |
+|---|---:|
+| Ziel-Faelle | 48 |
+| Regel liefert einen Wert | 0 |
+| davon richtig | 0 |
+| verweigert | 48 |
+| FP (additiv) | 2 |
+| TP-Verlust (ersetzen) | 0 |
+
+Die 48 bestehen aus 29 Ereignis-Feldern (keine Groesse, kein Nenner) und 19
+Groessenfaellen. In den Groessenfaellen steht der Goldwert zwar oft als Nenner
+(16 Faelle), aber in Tabellen anderer Subgruppen (`yun2024:120`: Nenner 30/52,
+Gold 20/44) oder als Kompletter-Zahl (`yun2024:547`: `68 of 72`). Die
+Satzquelle lieferte im ganzen Korpus nur fuenf Werte, alle falsch (440 statt
+122, 1171 statt 357); sie ist nicht belastbar. Die zwei verbleibenden FP zeigen
+den Restrisikobetrag, die Verweigerung ist der Regelfall.
+
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 
 Die Bedingung des Auftrags war "nach erfolgreichen Offline-Tests". Die
