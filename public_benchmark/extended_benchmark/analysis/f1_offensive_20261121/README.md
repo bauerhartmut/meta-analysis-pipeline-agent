@@ -297,6 +297,40 @@ Zeitpunktachse; bei 370 und 373 liefert die Outcome-Zeile andere Zahlen als Gold
 (`Diabetes, %  52  59` gegen 35/33), bei 379 gibt es keine passende Zeile. Die
 `prozent`-Variante zahlt diese Fehlgriffe als 4 FP.
 
+## Groessenzeile der Zielzeile: 2 von 31
+
+`groessen_zielzeile_20261121.py` liest die Groessenzeile ueber der Zielzeile:
+Zielzeile ueber den Outcome-Namen suchen, naechste echte Groessenzeile darueber
+(`n = 40` mit Zahl), Spalte ueber die Armnamen. Gemessen an den 31 Faellen mit
+korrekter Groessenzeile und richtigem Arm:
+
+| Kennzahl | Wert |
+|---|---:|
+| Zielfaelle | 31 |
+| Regel liefert einen Wert | 6 |
+| davon richtig (TP) | 2 |
+| davon falsch (FP) | 4 |
+| Zielzeile nicht ueber Outcome gefunden | 13 |
+| Groessenzeile nicht in Reichweite | 4 |
+| Arm nicht eindeutig | 4 |
+| Tabelle gelesen, nur der andere Arm | 4 |
+
+Die 2 TP sind `yun2024:346` und `yun2024:347` (Resveratrol/Placebo, je 22). Die
+4 FP stammen alle aus `PMC5617873` (`yun2024:331/334/335/336`): dort ist
+`intervention` = Aripiprazole, `comparator` = `Placbeo` (Tippfehler im Kontext),
+Gold fuehrt aber 45 als Intervention und 47 als Comparator, waehrend die Tabelle
+`Placebo (n = 45)` vor `Aripiprazole (n = 47)` stellt. Gold und Dokument sind
+dort vertauscht; die Regel folgt dem Dokument.
+
+Die unankerte Variante (alle Groessenzeilen im Dokument, nur bei einem einzigen
+Wert je Arm) liefert 10 der 31 mit 2 TP und 8 FP und ist damit schlechter.
+
+Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
+gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht
+auffindbar (`Vegetable intake` vs. Tabellenzeile `Vegetables`), in 4 weiteren
+fehlt eine Groessenzeile in Reichweite, in 4 ist der Arm in einer Multiarm-
+Tabelle mehrdeutig.
+
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 
 Die Bedingung des Auftrags war "nach erfolgreichen Offline-Tests". Die
