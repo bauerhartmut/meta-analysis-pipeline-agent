@@ -74,6 +74,51 @@ Bilanz ueber alle 699 Records, nur die 43 gelesenen Zellen ersetzt:
 Alle 43: +38 TP und +1 FP. Nur die richtigen: +38 TP und -4 FP, weil vier
 Zellen vorhandene falsche Werte ersetzen.
 
+## Uebertrag auf die uebrigen FN-Regeln
+
+Dieselbe Regelkette lief ausserdem ueber die 464 offenen FN-Faelle
+(`bausteine_uebertrag_20261121.py`):
+
+| Klasse | Faelle | Zellen | TP | FP |
+|---|---:|---:|---:|---:|
+| `fn_leer` | 182 | 31 | 3 | 28 |
+| `fn_nicht_im_dokument` | 164 | 10 | 0 | 10 |
+| `fn_nicht_ausgegeben` | 118 | 9 | 4 | 5 |
+| Summe | 464 | 50 | 7 | 43 |
+
+Je Baustein: Wochenspalte 4 TP / 0 FP, Positionsregel 3 / 14, tabellenlokale
+Groesse 0 / 4, Mittel aus der Zielzeile 0 / 25. Nur die Wochenspalte traegt;
+die Positionsregel ist ausserhalb ihres Entstehungsfalls schaedlich (ohne sie
+8 TP statt 7).
+
+Die 7 richtigen Zellen sind **zusaetzlicher** Gewinn, nicht doppelt gezaehlt:
+Sie teilen keinen Record/Feld/Arm-Schluessel mit den 43 Zellen der Endvariante
+und damit auch keinen mit den in P5 ersetzten Werten (`pruefung_fn_20261121.py`).
+
+## Stichprobe `fn_nicht_im_dokument`
+
+20 der 164 Faelle (jeder 8., sortiert nach Record/Feld/Arm) wurden gegen das
+Markdown geprueft:
+
+| Befund | Faelle |
+|---|---:|
+| Goldwert nicht gefunden | 11 |
+| Goldwert nur gerundet vorhanden | 9 |
+| exakt als Zellwert | 0 |
+| exakt im Text | 0 |
+
+Kein Goldwert steht exakt im Dokument. Acht der neun gerundeten Funde sind
+Standardabweichungen, die der Record selbst als aus Konfidenzintervallen
+zurueckgerechnet ausweist - dort kann der exakte Wert nicht im Text stehen. Alle
+20 Dokumente enthalten das Outcome-Label, nur fuenf sind Kurzdokumente; es fehlt
+also der Wert, nicht der Text. Die Klasse ist damit bestaetigt.
+
+**Weitere Regelarbeit an diesen Faellen bringt nichts.** Die Zeile ist dort
+nicht falsch gewaehlt, sondern die Zelle fehlt im Markdown (Bildtabelle,
+Abbildung) oder der Wert ist abgeleitet. Ein Ausbau der Zeilen-, Spalten- oder
+Blockwahl kann daran nichts aendern; das zeigt die Uebertragung mit 7 von 464
+Faellen und 14 Prozent Trefferquote.
+
 ## Grenzen
 
 - Alle Regeln sind Textheuristiken auf Markdown; sie greifen bei sauberen
@@ -85,14 +130,18 @@ Zellen vorhandene falsche Werte ersetzen.
   zwei belegte Zellen bei `yun2024:426`.
 - `yun2024:196` und `yun2024:345` sind mit keiner Leseregel zu holen; beide
   brauchen eine Goldentscheidung.
+- Die Stichprobe umfasst 20 von 164 Faellen mit festem Schritt, nicht zufaellig
+  gezogen; "nur gerundet" kann bei kurzen Zahlen ein Zufallstreffer sein.
 - Nicht geprueft: Wirkung ausserhalb der 295 Faelle und ausserhalb der
   P5-Bilanz; die Pipeline selbst wurde nicht veraendert.
 
 ## Empfehlung
 
-Den Stand als Endvariante festschreiben (38 TP, 5 FP, 88 Prozent Trefferquote)
-und die beiden Goldfaelle im Pruefvermerk belassen. Der naechste sinnvolle
-Schritt ist keine weitere Regel, sondern die Uebertragung der Groessen- und
-Mittelregel auf die uebrigen Regeln des Fehlerbildes (`fehlerursachen_20261121`),
-um zu sehen, ob dieselben Bausteine dort ebenfalls tragen; das kostet nur
-Offline-Zeit und kein Guthaben.
+Den Stand als Endvariante festschreiben (38 TP, 5 FP, 88 Prozent Trefferquote),
+die beiden Goldfaelle im Pruefvermerk belassen und die 7 zusaetzlichen Treffer
+aus der FN-Uebertragung als Randgewinn notieren, nicht als Hebel. Weitere
+Regelarbeit an den FN-Klassen ist abgeschlossen und bringt nichts; offen ist
+allein die Goldfrage. Wer sie klaeren will, braucht eine PDF-Gegenprobe der
+`fn_nicht_im_dokument`-Faelle (Netzzugriff, vorher freigeben) und eine
+Entscheidung zu `yun2024:196` (Subgruppe) und `yun2024:345` (Wert nur als
+Intervallgrenze).
