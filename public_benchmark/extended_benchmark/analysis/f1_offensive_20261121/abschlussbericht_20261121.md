@@ -81,17 +81,23 @@ Zellen vorhandene falsche Werte ersetzen.
 
 `fixture_20261121.py` schaltet jeden Baustein einzeln ab; die Zahlen sind in
 `fixture_20261121.json` eingefroren. Die Fixture haelt beide Zellstaende
-zellgenau fest - 33 Zellen mit Gate unter `zellen`, 43 ohne Gate unter
-`zellen_ohne_gate` - und `pruefen` vergleicht beide Listen samt Ablation.
+zellgenau fest - 25 Zellen mit Gate unter `zellen`, 25 ohne Gate unter
+`zellen_ohne_gate` - und `pruefen` vergleicht beide Listen samt Ablation. Der
+Stand vor der Kopfband-Regel war 33 / 43 Zellen; die Differenz sind
+Groessenzellen aus Kopfbaendern ohne Armkuerzel.
 
 | Lauf | Zellen | TP | FP |
 |---|---:|---:|---:|
-| Endvariante | 33 | 30 | 3 |
-| ohne Gate | 43 | 38 | 5 |
-| ohne Positionsregel | 33 | 30 | 3 |
-| ohne Wochenspalte | 31 | 26 | 5 |
-| ohne Messwort-Block | 33 | 26 | 7 |
-| ohne tabellenlokale Groesse | 31 | 28 | 3 |
+| Endvariante | 25 | 22 | 3 |
+| ohne Gate | 25 | 22 | 3 |
+| ohne Positionsregel | 25 | 22 | 3 |
+| ohne Wochenspalte | 23 | 18 | 5 |
+| ohne Messwort-Block | 25 | 18 | 7 |
+| ohne tabellenlokale Groesse | 25 | 22 | 3 |
+
+Mit der Kopfband-Regel verliert die Gate-Ablation ihre Trennschaerfe: die 18
+Zellen, die das Gate frueher zusaetzlich lieferte, waren Groessenzellen aus
+Kopfbaendern ohne Armkuerzel und werden jetzt in beiden Staenden nicht gelesen.
 
 Lesart: Das Gate kostet acht richtige Zellen und zwei falsche, hebt die
 Trefferquote von 88 auf 91 Prozent. Wochenspalte, Messwort-Block und
@@ -240,9 +246,10 @@ Streuung aus dem 95%-KI ab (`SE = halbe Breite / 1.96`, `SD = SE * sqrt(n)`).
 | `yun2024:450` | 1/6 | 6/6 | ja |
 
 `447` und `448` treffen alle sechs Goldzellen, `450` ebenfalls (die SD 2.32 des
-Vergleichsarms faellt aus dem gedruckten KI genau). Die 33 Zellen der
-Endvariante bleiben bei 30 TP und 3 FP, die 17 Streuungszellen bei 17 TP: kein
-Treffer geht verloren, es kommt keine Zelle hinzu.
+Vergleichsarms faellt aus dem gedruckten KI genau). Die Zellen der Endvariante
+bleiben unveraendert (33 / 30 / 3 vor der Kopfband-Regel, danach 25 / 22 / 3),
+die 17 Streuungszellen bei 17 TP: kein Treffer der Tabellenwahl geht verloren,
+es kommt keine Zelle hinzu.
 
 Die Armbedingung ist der teure Teil: ohne sie zieht die Regel in jede
 Aenderungstabelle um und faellt auf 33 Zellen / 18 TP / 15 FP sowie 17 / 5 / 12
@@ -273,28 +280,41 @@ dem KI); `pruefen` meldet jede fehlende abgeleitete Zelle und zusaetzlich
 "keine Zelle aus dem 95%-KI mehr", wenn die Ableitung still ausfaellt
 (Rueckgabewert 1, gegengeprueft mit `SD_AUS_KI=False`: 16 Abweichungen).
 
-In den 103 P5-Vorhersagen bestaetigt die Regel 30 richtige Zellen und
-ueberschreibt 31; alle 31 tragen schon vorher einen falschen Regelwert, keine
+In den 103 P5-Vorhersagen bestaetigt die Regel 20 richtige Zellen und
+ueberschreibt 24; alle 24 tragen schon vorher einen falschen Regelwert, keine
 geht auf die Tabellenwahl zurueck. Die Bilanz ueber alle 699 Records:
 
 | Stand | TP | FP | FN | F1 |
 |---|---:|---:|---:|---:|
 | P5 unveraendert | 166 | 96 | 2607 | 0.109 |
-| P5 + alte Regelzellen | 138 | 158 | 2635 | 0.090 |
-| P5 + neue Regelzellen | 157 | 141 | 2616 | 0.102 |
-| P5 + alte Regelzellen, nur Luecken | 169 | 127 | 2604 | 0.110 |
-| P5 + neue Regelzellen, nur Luecken | 178 | 120 | 2595 | 0.116 |
+| P5 + alte Regelzellen | 144 | 136 | 2629 | 0.094 |
+| P5 + neue Regelzellen | 160 | 126 | 2613 | 0.105 |
+| P5 + alte Regelzellen, nur Luecken | 166 | 114 | 2607 | 0.109 |
+| P5 + neue Regelzellen, nur Luecken | 176 | 110 | 2597 | 0.115 |
+| P5 + neue Regelzellen, nur Luecken, ohne Mittel | 176 | 104 | 2597 | 0.115 |
 
-Ersetzen kostet TP, `nur Luecken fuellen` gewinnt leicht: +12 TP und +24 FP
-gegenueber der unveraenderten Vorhersage, F1 0.109 -> 0.116. Die Tabellenwahl
-bringt unter dieser Strategie +9 TP und -7 FP gegenueber der alten.
+Ersetzen kostet TP (alt -22, neu -6); `nur Luecken fuellen` gewinnt leicht: +10
+TP und +14 FP gegenueber der unveraenderten Vorhersage, F1 0.109 -> 0.115. Die
+Tabellenwahl bringt unter dieser Strategie +10 TP und -4 FP gegenueber der alten.
 
 Zwei Zwischenstaende der Mittel (nur im leeren Arm, nur im mittelfreien
 Record) waren zellgleich mit dem einfachen Lueckenfuellen und sind entfernt,
 weil eine Mittelluecke nur dort auftritt, wo der Arm weder Mittel noch Streuung
-hat. Erst der Verzicht auf Mittel aus der Regel hilft: 178 TP bleiben, FP 120 ->
-114 (F1 0.1159 -> 0.1161). Neue Zellen nach Feldart: Streuung 8 richtig / 6 falsch, Groesse 4 /
-12, Mittel 0 / 6.
+hat. Erst der Verzicht auf Mittel aus der Regel hilft: 176 TP bleiben, FP 110 ->
+104 (F1 0.1151 -> 0.1153). Neue Zellen nach Feldart: Streuung 8 richtig / 6
+falsch, Groesse 2 / 2, Mittel 0 / 6.
+
+Die Kopfband-Regel (`KOPFBAND_ARM`, Vorgabe `kuerzel`) laesst eine `n =`-Zeile
+nur zu, wenn dort ein Armkuerzel steht (`I; n=104`). Auf den 103 P5-Records
+entfallen damit 10 der 12 falschen Groessenzellen (5 falsche Zeile, 5
+abweichende Definition); es bleiben nur `yun2024:451` beide Arme, deren
+Unterschrift in Zeile 96 ein vollstaendiges Kuerzel nennt und deren Gold eine
+andere Population meint (MVPA 99/108, nicht als n gedruckt). Der Preis sind zwei
+der vier richtigen Zellen (`yun2024:678`) und acht weitere richtige
+Groessenzellen der Fixture-Records (`yun2024:98`, `100`, `346`, `347`, `445`):
+Endvariante 25 Zellen / 22 TP / 3 FP statt 33 / 30 / 3. Die Stellung `arm`
+(Armbezeichnung statt Kuerzel) entfernt nur zwei falsche Zellen und kostet keine
+richtige.
 
 Auch die Groessen lassen sich nicht ueber einen Beleg im Arm absichern: die
 Bedingung "derselbe Arm hat schon Mittel oder Streuung" ist in keiner der 16

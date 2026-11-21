@@ -431,6 +431,8 @@ def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) ->
         start = max(-1, ziel - 61)
     for i in range(ziel - 1, start - 1, -1):
         if g.ist_groessenzeile(zeilen[i]) and g.STRENGE.search(zeilen[i]):
+            if not kopfband_ok(zeilen, i):
+                continue
             werte = g.aus_groessenzeile(zeilen, i, context)
             if werte:
                 return werte
@@ -449,6 +451,8 @@ def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) ->
         # der Tabellengrenzen (Tabellen ohne Beschriftung).
         for i in range(ziel - 1, max(-1, ziel - 61), -1):
             if g.ist_groessenzeile(zeilen[i]) and g.STRENGE.search(zeilen[i]):
+                if not kopfband_ok(zeilen, i):
+                    continue
                 werte = g.aus_groessenzeile(zeilen, i, context)
                 if werte:
                     return werte
@@ -615,6 +619,33 @@ def wert_aus_zelle(zelle: str, feld: str, mean_formate: tuple[str, ...] | None,
 ARMKUERZEL = re.compile(
     r"\b(intervention|control|placebo|treatment|comparison)\b[a-z ,'-]{0,20}?"
     r"group\s*\(\s*([A-Za-z])\s*[;,]\s*n\s*=\s*(\d+)\s*\)", re.IGNORECASE)
+
+# Kopfband-Zahlen nur zulassen, wenn der Arm dort genannt ist.
+#
+# * "aus"     - jede `n =`-Zeile im Kopfband zaehlt (Stand vor der Regel),
+# * "kuerzel" - nur ein Armkuerzel mit n (`I; n=104`, `C; n=114`),
+# * "arm"     - nur wenn im Kopfband eine Armbezeichnung steht (intervention,
+#               control, placebo, treatment, comparison); eine Modalitaet oder
+#               Population wie `Short-Bore MR (n = 44)` zaehlt nicht.
+KOPFBAND_ARM = "kuerzel"
+KOPFBAND_KUERZEL = re.compile(r"\b[A-Z]{1,2}\s*[;,]\s*\*?n\*?\s*=\s*\d+")
+ARM_WORT = re.compile(r"\b(intervention|control|placebo|treatment|comparison)\b",
+                      re.IGNORECASE)
+
+
+def hat_kopfband_arm(zeile: str) -> bool:
+    """Steht im Kopfband ein Armkuerzel mit n (`I; n=104`, `C; n=114`)?"""
+    return bool(KOPFBAND_KUERZEL.search(zeile))
+
+
+def kopfband_ok(zeilen: list[str], i: int) -> bool:
+    """Darf die `n =`-Zeile `i` als Arm groesse gelten?"""
+    if KOPFBAND_ARM == "aus":
+        return True
+    if KOPFBAND_ARM == "kuerzel":
+        return hat_kopfband_arm(zeilen[i])
+    band = " ".join(zeilen[max(0, i - 3):i + 1])
+    return bool(ARM_WORT.search(band))
 
 
 def armkuerzel(zeilen: list[str],

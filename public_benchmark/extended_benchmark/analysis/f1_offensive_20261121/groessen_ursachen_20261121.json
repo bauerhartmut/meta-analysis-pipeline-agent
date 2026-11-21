@@ -1,12 +1,36 @@
 {
   "stand": "2026-11-21",
   "records": 699,
-  "groessenzellen": 16,
-  "richtig": 4,
-  "falsch": 12,
+  "p5_records": 103,
+  "staende": {
+    "aus": {
+      "zellen": 16,
+      "richtig": 4,
+      "falsch": 12
+    },
+    "kuerzel": {
+      "zellen": 4,
+      "richtig": 2,
+      "falsch": 2
+    },
+    "arm": {
+      "zellen": 14,
+      "richtig": 4,
+      "falsch": 10
+    }
+  },
   "ursachen": {
     "falsche_zeile": 5,
     "abweichende_definition": 7
+  },
+  "davon_entfernt": {
+    "kuerzel": {
+      "falsche_zeile": 5,
+      "abweichende_definition": 5
+    },
+    "arm": {
+      "falsche_zeile": 2
+    }
   },
   "ohne_zuordnung": 0,
   "zellen": [
@@ -17,12 +41,20 @@
       "wert": 24.0,
       "gold": 592.0,
       "richtig": false,
-      "zeile": 1,
-      "zeilentext": "::: caption",
-      "kopfzeile": true,
+      "quelle": "zeile",
+      "tabellenzeile": 2,
+      "beleg_zeile": 3,
+      "beleg_art": "unterschrift",
+      "beleg_text": "###### Sample characteristics at baseline, 12 and 24 months for students who provided adiposity outcome measures",
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
-      "begruendung": "Die 24 stammt aus der Bildunterschrift 'at baseline, 12 and 24 months'; Gold 592 steht in der Armzeile 'Intervention (n=592)' der 12-Monats-Spalte."
+      "begruendung": "Die 24 stammt aus der Bildunterschrift 'at baseline, 12 and 24 months'; Gold 592 steht in der Armzeile 'Intervention (n=592)' der 12-Monats-Spalte.",
+      "mit_kuerzel": null,
+      "mit_arm": {
+        "wert": 24.0,
+        "richtig": false,
+        "beleg_zeile": 3
+      }
     },
     {
       "record_id": "yun2024:251",
@@ -31,12 +63,20 @@
       "wert": 406.0,
       "gold": 402.0,
       "richtig": false,
-      "zeile": 60,
-      "zeilentext": "---------------------------------------------------- ------------------------ ------------------- --------------------------------------------------------------",
-      "kopfzeile": true,
+      "quelle": "position",
+      "tabellenzeile": 61,
+      "beleg_zeile": 60,
+      "beleg_art": "n-form",
+      "beleg_text": "Outcome                                              Progesterone *n* = 406   Placebo *n* = 393   Unadjusted Treatment Effect for Progesterone versus Placebo (9",
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
-      "begruendung": "Kopfzeile nennt randomisiert n=406, die Outcome-Zeile rechnet mit 42/402; Gold nimmt die 402."
+      "begruendung": "Kopfzeile nennt randomisiert n=406, die Outcome-Zeile rechnet mit 42/402; Gold nimmt die 402.",
+      "mit_kuerzel": null,
+      "mit_arm": {
+        "wert": 406.0,
+        "richtig": false,
+        "beleg_zeile": 60
+      }
     },
     {
       "record_id": "yun2024:251",
@@ -45,12 +85,20 @@
       "wert": 393.0,
       "gold": 388.0,
       "richtig": false,
-      "zeile": 60,
-      "zeilentext": "---------------------------------------------------- ------------------------ ------------------- --------------------------------------------------------------",
-      "kopfzeile": true,
+      "quelle": "position",
+      "tabellenzeile": 61,
+      "beleg_zeile": 60,
+      "beleg_art": "n-form",
+      "beleg_text": "Outcome                                              Progesterone *n* = 406   Placebo *n* = 393   Unadjusted Treatment Effect for Progesterone versus Placebo (9",
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
-      "begruendung": "Kopfzeile nennt randomisiert n=393, die Outcome-Zeile rechnet mit 41/388; Gold nimmt die 388."
+      "begruendung": "Kopfzeile nennt randomisiert n=393, die Outcome-Zeile rechnet mit 41/388; Gold nimmt die 388.",
+      "mit_kuerzel": null,
+      "mit_arm": {
+        "wert": 393.0,
+        "richtig": false,
+        "beleg_zeile": 60
+      }
     },
     {
       "record_id": "yun2024:252",
@@ -59,12 +107,20 @@
       "wert": 398.0,
       "gold": 402.0,
       "richtig": false,
-      "zeile": 10,
-      "zeilentext": "--------------------------------------------------- -------------------------- ---------------------",
-      "kopfzeile": true,
+      "quelle": "position",
+      "tabellenzeile": 11,
+      "beleg_zeile": 10,
+      "beleg_art": "n-form",
+      "beleg_text": "Characteristic                                      Progesterone (*n* = 398)   Placebo (*n* = 389)",
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
-      "begruendung": "Charakteristika-Tabelle nennt randomisiert n=398, Gold 402 ist der Nenner der Outcome-Zeilen."
+      "begruendung": "Charakteristika-Tabelle nennt randomisiert n=398, Gold 402 ist der Nenner der Outcome-Zeilen.",
+      "mit_kuerzel": null,
+      "mit_arm": {
+        "wert": 398.0,
+        "richtig": false,
+        "beleg_zeile": 10
+      }
     },
     {
       "record_id": "yun2024:252",
@@ -73,12 +129,20 @@
       "wert": 389.0,
       "gold": 388.0,
       "richtig": false,
-      "zeile": 10,
-      "zeilentext": "--------------------------------------------------- -------------------------- ---------------------",
-      "kopfzeile": true,
+      "quelle": "position",
+      "tabellenzeile": 11,
+      "beleg_zeile": 10,
+      "beleg_art": "n-form",
+      "beleg_text": "Characteristic                                      Progesterone (*n* = 398)   Placebo (*n* = 389)",
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
-      "begruendung": "Charakteristika-Tabelle nennt randomisiert n=389, Gold 388 ist der Nenner der Outcome-Zeilen."
+      "begruendung": "Charakteristika-Tabelle nennt randomisiert n=389, Gold 388 ist der Nenner der Outcome-Zeilen.",
+      "mit_kuerzel": null,
+      "mit_arm": {
+        "wert": 389.0,
+        "richtig": false,
+        "beleg_zeile": 10
+      }
     },
     {
       "record_id": "yun2024:356",
@@ -87,12 +151,20 @@
       "wert": 15.0,
       "gold": 13.0,
       "richtig": false,
-      "zeile": 6,
-      "zeilentext": "------------------------------------------------------------------- --------------------------- -------------------------- -----------",
-      "kopfzeile": true,
+      "quelle": "zeile",
+      "tabellenzeile": 7,
+      "beleg_zeile": 6,
+      "beleg_art": "n-form",
+      "beleg_text": "Characteristic                                                      Control group ( *n* =\u200915)   Active group ( *n* =\u200916)   *p*Values",
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
-      "begruendung": "Baseline-Kopfzeile nennt randomisiert n=15, Gold 13 ist die Haelfte der 26 Kinder, die die Studie abgeschlossen haben."
+      "begruendung": "Baseline-Kopfzeile nennt randomisiert n=15, Gold 13 ist die Haelfte der 26 Kinder, die die Studie abgeschlossen haben.",
+      "mit_kuerzel": null,
+      "mit_arm": {
+        "wert": 15.0,
+        "richtig": false,
+        "beleg_zeile": 6
+      }
     },
     {
       "record_id": "yun2024:420",
@@ -101,12 +173,16 @@
       "wert": 44.0,
       "gold": 18.0,
       "richtig": false,
-      "zeile": 10,
-      "zeilentext": "----------------------------------------------- ------------------------ ------------------ -----------",
-      "kopfzeile": true,
+      "quelle": "position",
+      "tabellenzeile": 11,
+      "beleg_zeile": 10,
+      "beleg_art": "n-form",
+      "beleg_text": "Short-Bore MR (n\u200a=\u200a44)   Open MR (n\u200a=\u200a49)   *P* Value",
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
-      "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=44; Gold 18 steht als n=18 in der Outcome-Zeile 'T2w sagittal' der Bildqualitaetstabelle."
+      "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=44; Gold 18 steht als n=18 in der Outcome-Zeile 'T2w sagittal' der Bildqualitaetstabelle.",
+      "mit_kuerzel": null,
+      "mit_arm": null
     },
     {
       "record_id": "yun2024:420",
@@ -115,12 +191,20 @@
       "wert": 49.0,
       "gold": 21.0,
       "richtig": false,
-      "zeile": 10,
-      "zeilentext": "----------------------------------------------- ------------------------ ------------------ -----------",
-      "kopfzeile": true,
+      "quelle": "position",
+      "tabellenzeile": 11,
+      "beleg_zeile": 10,
+      "beleg_art": "n-form",
+      "beleg_text": "Short-Bore MR (n\u200a=\u200a44)   Open MR (n\u200a=\u200a49)   *P* Value",
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
-      "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=49; Gold 21 steht als n=21 in derselben Outcome-Zeile."
+      "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=49; Gold 21 steht als n=21 in derselben Outcome-Zeile.",
+      "mit_kuerzel": null,
+      "mit_arm": {
+        "wert": 20.0,
+        "richtig": false,
+        "beleg_zeile": 1
+      }
     },
     {
       "record_id": "yun2024:421",
@@ -129,12 +213,16 @@
       "wert": 44.0,
       "gold": 30.0,
       "richtig": false,
-      "zeile": 10,
-      "zeilentext": "----------------------------------------------- ------------------------ ------------------ -----------",
-      "kopfzeile": true,
+      "quelle": "position",
+      "tabellenzeile": 11,
+      "beleg_zeile": 10,
+      "beleg_art": "n-form",
+      "beleg_text": "Short-Bore MR (n\u200a=\u200a44)   Open MR (n\u200a=\u200a49)   *P* Value",
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
-      "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=44; Gold 30 steht als n=30 in der Outcome-Zeile fuer die Brustwirbelsaeule."
+      "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=44; Gold 30 steht als n=30 in der Outcome-Zeile fuer die Brustwirbelsaeule.",
+      "mit_kuerzel": null,
+      "mit_arm": null
     },
     {
       "record_id": "yun2024:421",
@@ -143,40 +231,20 @@
       "wert": 49.0,
       "gold": 34.0,
       "richtig": false,
-      "zeile": 10,
-      "zeilentext": "----------------------------------------------- ------------------------ ------------------ -----------",
-      "kopfzeile": true,
+      "quelle": "position",
+      "tabellenzeile": 11,
+      "beleg_zeile": 10,
+      "beleg_art": "n-form",
+      "beleg_text": "Short-Bore MR (n\u200a=\u200a44)   Open MR (n\u200a=\u200a49)   *P* Value",
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
-      "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=49; Gold 34 steht als n=34 in derselben Outcome-Zeile."
-    },
-    {
-      "record_id": "yun2024:446",
-      "feld": "intervention_group_size",
-      "arm": "intervention",
-      "wert": 104.0,
-      "gold": 104.0,
-      "richtig": true,
-      "zeile": 111,
-      "zeilentext": "",
-      "kopfzeile": true,
-      "gold_im_dokument": true,
-      "ursache": null,
-      "begruendung": null
-    },
-    {
-      "record_id": "yun2024:446",
-      "feld": "comparator_group_size",
-      "arm": "comparator",
-      "wert": 114.0,
-      "gold": 114.0,
-      "richtig": true,
-      "zeile": 111,
-      "zeilentext": "",
-      "kopfzeile": true,
-      "gold_im_dokument": true,
-      "ursache": null,
-      "begruendung": null
+      "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=49; Gold 34 steht als n=34 in derselben Outcome-Zeile.",
+      "mit_kuerzel": null,
+      "mit_arm": {
+        "wert": 20.0,
+        "richtig": false,
+        "beleg_zeile": 1
+      }
     },
     {
       "record_id": "yun2024:451",
@@ -185,12 +253,24 @@
       "wert": 104.0,
       "gold": 99.0,
       "richtig": false,
-      "zeile": 117,
-      "zeilentext": "",
-      "kopfzeile": true,
+      "quelle": "unterschrift_n",
+      "tabellenzeile": 118,
+      "beleg_zeile": 96,
+      "beleg_art": "n-form",
+      "beleg_text": "group (I; n=104) and the control group (C; n=114)",
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
-      "begruendung": "Die Tabellenunterschrift nennt I; n=104, Gold 99 ist die Auswertungsgroesse der MVPA-Zeile; sie steht nicht als n im Dokument."
+      "begruendung": "Die Tabellenunterschrift in Zeile 96 nennt 'I; n=104' (randomisiert), Gold 99 ist die Auswertungsgroesse der MVPA-Zeile; sie steht nicht als n im Dokument.",
+      "mit_kuerzel": {
+        "wert": 104.0,
+        "richtig": false,
+        "beleg_zeile": 96
+      },
+      "mit_arm": {
+        "wert": 104.0,
+        "richtig": false,
+        "beleg_zeile": 96
+      }
     },
     {
       "record_id": "yun2024:451",
@@ -199,40 +279,42 @@
       "wert": 114.0,
       "gold": 108.0,
       "richtig": false,
-      "zeile": 117,
-      "zeilentext": "",
-      "kopfzeile": true,
+      "quelle": "unterschrift_n",
+      "tabellenzeile": 118,
+      "beleg_zeile": 96,
+      "beleg_art": "n-form",
+      "beleg_text": "group (I; n=104) and the control group (C; n=114)",
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
-      "begruendung": "Die Tabellenunterschrift nennt C; n=114, Gold 108 ist die Auswertungsgroesse der MVPA-Zeile; sie steht nicht als n im Dokument."
-    },
-    {
-      "record_id": "yun2024:678",
-      "feld": "intervention_group_size",
-      "arm": "intervention",
-      "wert": 16.0,
-      "gold": 16.0,
-      "richtig": true,
-      "zeile": 8,
-      "zeilentext": "Age[1](#) (years)               46.5 \u00b1 9.3               49.0 \u00b1 7.9                52.8 \u00b1 7.5             0.1171",
-      "kopfzeile": false,
-      "gold_im_dokument": true,
-      "ursache": null,
-      "begruendung": null
-    },
-    {
-      "record_id": "yun2024:678",
-      "feld": "comparator_group_size",
-      "arm": "comparator",
-      "wert": 15.0,
-      "gold": 15.0,
-      "richtig": true,
-      "zeile": 8,
-      "zeilentext": "Age[1](#) (years)               46.5 \u00b1 9.3               49.0 \u00b1 7.9                52.8 \u00b1 7.5             0.1171",
-      "kopfzeile": false,
-      "gold_im_dokument": true,
-      "ursache": null,
-      "begruendung": null
+      "begruendung": "Die Tabellenunterschrift in Zeile 96 nennt 'C; n=114' (randomisiert), Gold 108 ist die Auswertungsgroesse der MVPA-Zeile; sie steht nicht als n im Dokument.",
+      "mit_kuerzel": {
+        "wert": 114.0,
+        "richtig": false,
+        "beleg_zeile": 96
+      },
+      "mit_arm": {
+        "wert": 114.0,
+        "richtig": false,
+        "beleg_zeile": 96
+      }
     }
-  ]
+  ],
+  "geblieben": {
+    "kuerzel": [
+      "yun2024:451/intervention_group_size/intervention",
+      "yun2024:451/comparator_group_size/comparator"
+    ],
+    "arm": [
+      "yun2024:159/intervention_group_size/intervention",
+      "yun2024:251/intervention_group_size/intervention",
+      "yun2024:251/comparator_group_size/comparator",
+      "yun2024:252/intervention_group_size/intervention",
+      "yun2024:252/comparator_group_size/comparator",
+      "yun2024:356/comparator_group_size/comparator",
+      "yun2024:420/comparator_group_size/comparator",
+      "yun2024:421/comparator_group_size/comparator",
+      "yun2024:451/intervention_group_size/intervention",
+      "yun2024:451/comparator_group_size/comparator"
+    ]
+  }
 }

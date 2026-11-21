@@ -66,6 +66,7 @@ def schalter(**werte: bool) -> None:
     m.ARMZEILE = werte.get("armzeile", True)
     m.VORZEICHEN = werte.get("vorzeichen", True)
     m.SD_AUS_KI = werte.get("sd_ki", True)
+    m.KOPFBAND_ARM = werte.get("kopfband", "kuerzel")
     m.POSITIONAL = True
     m.GATE = True
     m.WOCHENSPALTE = True

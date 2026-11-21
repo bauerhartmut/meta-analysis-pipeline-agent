@@ -613,7 +613,8 @@ Ereigniszahl die Gruppengroesse uebersteigt (`yun2024:313`, `376`, `380`).
 nur aus Zellen, deren Format den zweiten Wert als SD ausweist (`Mittel (SD)`,
 `Mittel +/- SD`); KI-, Prozent- und `n Mean`-Zellen bleiben leer, damit keine
 Intervallgrenze als SD durchgeht. Die Zaehlung fuer Groesse und Mittel bleibt
-unveraendert bei 33 Zellen / 30 TP / 3 FP; die Streuung laeuft separat:
+unveraendert bei 33 Zellen / 30 TP / 3 FP (vor der Kopfband-Regel); die
+Streuung laeuft separat:
 
 | Stand | Zellen | TP | FP |
 |---|---:|---:|---:|
@@ -658,7 +659,7 @@ und `wert_aus_zelle` leitet die Streuung aus einem 95%-KI ab
 | `yun2024:450` | 1 | 6 | ja |
 
 Die 33 Zellen und die 17 Streuungszellen der 295 FN-Faelle bleiben unveraendert
-(33/30/3 und 17/17/0), kein TP geht verloren. Der Umzug kostet aber, wenn die
+(33/30/3 und 17/17/0, Stand vor der Kopfband-Regel), kein TP geht verloren. Der Umzug kostet aber, wenn die
 Armbedingung fehlt: ohne sie steht der Zellstand bei 33 Zellen / 18 TP / 15 FP
 und die Streuung bei 17 / 5 / 12, weil dann eine Aenderungstabelle gegen die
 Tabelle mit den Absolutwerten gewinnt (`PMC4987981`: Gold steht in der
@@ -701,39 +702,65 @@ und erzeugt keine neue falsche Zelle. Von den 14 abgeleiteten Streuungen sind
 gedruckten KI, das Gold passt nicht zum Intervall) und `yun2024:451` (die Regel
 liest `Vigorous PA` statt der MVPA).
 
-In den gespeicherten P5-Vorhersagen (103 Records) bestaetigt die neue Regel 30
-richtige Zellen, ueberschreibt 31 und laesst 110 ohne Regelwert. Alle 31
-Ueberschreibungen sind alte Schuld: die Regel lieferte dort schon vorher einen
-anderen falschen Wert, keine geht auf die Tabellenwahl zurueck. Die Bilanz
-ueber alle 699 Records:
+In den gespeicherten P5-Vorhersagen (103 Records) bestaetigt die neue Regel 20
+richtige Zellen, ueberschreibt 24 und laesst 127 ohne Regelwert (Stand mit der
+Kopfband-Regel, siehe unten). Alle 24 Ueberschreibungen sind alte Schuld: die
+Regel lieferte dort schon vorher einen anderen falschen Wert, keine geht auf die
+Tabellenwahl zurueck. Die Bilanz ueber alle 699 Records:
 
 | Stand | TP | FP | FN | F1 |
 |---|---:|---:|---:|---:|
 | P5 unveraendert | 166 | 96 | 2607 | 0.109 |
-| P5 + alte Regelzellen | 138 | 158 | 2635 | 0.090 |
-| P5 + neue Regelzellen | 157 | 141 | 2616 | 0.102 |
-| P5 + alte Regelzellen, nur Luecken | 169 | 127 | 2604 | 0.110 |
-| P5 + neue Regelzellen, nur Luecken | 178 | 120 | 2595 | 0.116 |
+| P5 + alte Regelzellen | 144 | 136 | 2629 | 0.094 |
+| P5 + neue Regelzellen | 160 | 126 | 2613 | 0.105 |
+| P5 + alte Regelzellen, nur Luecken | 166 | 114 | 2607 | 0.109 |
+| P5 + neue Regelzellen, nur Luecken | 176 | 110 | 2597 | 0.115 |
+| P5 + neue Regelzellen, nur Luecken, ohne Mittel | 176 | 104 | 2597 | 0.115 |
 
-Das Ersetzen kostet auch mit der neuen Tabellenwahl TP; sie verkleinert den
-Verlust nur (alt -28 TP, neu -9 TP gegen die unveraenderte Vorhersage).
-`nur Luecken fuellen` dreht das Vorzeichen: 66 Regelzellen bleiben aussen vor,
-weil die Vorhersage das Feld schon hat (+12 TP, +24 FP, F1 0.109 -> 0.116). Mit
-der alten Tabellenwahl waere es nur +3 TP bei +31 FP (F1 0.110), die neue Wahl
-bringt unter dieser Strategie also +9 TP und -7 FP.
+Das Ersetzen kostet auch mit der neuen Tabellenwahl TP (alt -22, neu -6 gegen die
+unveraenderte Vorhersage). `nur Luecken fuellen` dreht das Vorzeichen: 47
+Regelzellen bleiben aussen vor, weil die Vorhersage das Feld schon hat (+10 TP,
++14 FP, F1 0.109 -> 0.115). Mit der alten Tabellenwahl waere es 0 TP bei +18 FP;
+die neue Wahl bringt unter dieser Strategie also +10 TP und -4 FP.
 
 Zwei Zwischenstaende der Mittel (nur im leeren Arm, nur im mittelfreien
 Record) waren zellgleich mit dem einfachen Lueckenfuellen (178 / 120 / 2595, 0
 zurueckgehaltene Mittel) und sind wieder entfernt: eine Mittelluecke entsteht
 nur dort, wo der Arm weder Mittel noch Streuung hat, die Bedingung ist also
-immer erfuellt. Erst das Abschalten der Mittel bewegt die Bilanz: 178 TP
-bleiben, FP 120 -> 114, F1 0.1159 -> 0.1161. Der Grund steht in der Feldart:
+immer erfuellt. Erst das Abschalten der Mittel bewegt die Bilanz: 176 TP
+bleiben, FP 110 -> 104, F1 0.1151 -> 0.1153. Der Grund steht in der Feldart:
 
 | Feldart | neu richtig | neu falsch |
 |---|---:|---:|
 | Streuung | 8 | 6 |
-| Groesse | 4 | 12 |
+| Groesse | 2 | 2 |
 | Mittel | 0 | 6 |
+
+## Kopfband-Regel: Arm im Kopfband
+
+`KOPFBAND_ARM` in `zielzeile_alle_20261121.py` steuert, wann eine `n =`-Zeile im
+Kopfband als Gruppengroesse gilt: `aus` (jede), `kuerzel` (nur mit Armkuerzel,
+`I; n=104`) und `arm` (nur wenn dort eine Armbezeichnung steht). Vorgabe ist
+`kuerzel`. Auf den 103 P5-Records (`groessen_ursachen_20261121.py`):
+
+| Stand | Groessenzellen | richtig | falsch |
+|---|---:|---:|---:|
+| aus | 16 | 4 | 12 |
+| kuerzel | 4 | 2 | 2 |
+| arm | 14 | 4 | 10 |
+
+Mit `kuerzel` entfallen 10 der 12 falschen Zellen: alle fuenf aus falscher Zeile
+und fuenf der sieben Definitionsfaelle. Es bleiben `yun2024:451` beide Arme - die
+Unterschrift nennt dort ein vollstaendiges Kuerzel (`I; n=104`, Zeile 96), der
+Fehler ist die Population (MVPA-Auswertung 99/108, nicht als n gedruckt). Der
+Preis: zwei der vier richtigen Zellen (`yun2024:678`) und acht weitere richtige
+Groessenzellen der Fixture-Records (`yun2024:98`, `100`, `346`, `347`, `445`)
+werden nicht mehr gelesen. Die Endvariante der Fixture faellt damit von 33 Zellen
+/ 30 TP / 3 FP auf 25 / 22 / 3, und die Ablation ohne Gate ist nicht mehr
+unterscheidbar (25 / 22 / 3). Mit `arm` entfallen nur zwei falsche Zellen (420,
+421 Intervention), dafuer keine richtige; die beiden Komparatorzellen lesen dann
+einen anderen falschen Wert (20 gegen Gold 21/34). Die Zahlen der folgenden
+Absaetze zu Groessen beziehen sich auf den Stand vor dieser Regel.
 
 Eine Groesse nur zu uebernehmen, wenn derselbe Arm im Record schon Mittel oder
 Streuung hat, hilft nicht: keine der 16 neuen Groessenzellen (4 richtig, 12
@@ -760,7 +787,8 @@ gegen 402/388 in `yun2024:251`, 398/389 gegen 402/388 in `:252`, 15 gegen 13 in
 `fixture_20261121.py` (Modi `schreiben` / `pruefen`) friert die 33 Zellen mit
 Gate unter `zellen`, die 43 Zellen ohne Gate unter `zellen_ohne_gate`, die
 17 Streuungszellen unter `zellen_streuung` und die 42 Zellen mit abgeleiteten
-Streuungen unter `zellen_abgeleitet` ein, dazu die Ablation der acht
+Streuungen unter `zellen_abgeleitet` ein (Zellstand seit der Kopfband-Regel 25
+Zellen mit 22 TP und 3 FP, ohne Gate ebenfalls 25 / 22 / 3), dazu die Ablation der acht
 Schalter (`ohne_zeitpunkt`, `ohne_armbedingung`, `ohne_armzeile`,
 `ohne_vorzeichen` sind neu). `pruefen` rechnet beide Staende neu und
 vergleicht jede Zelle ueber Schluessel (Record, Feld, Arm), Wert und

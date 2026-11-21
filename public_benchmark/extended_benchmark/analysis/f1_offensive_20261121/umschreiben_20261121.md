@@ -9,18 +9,18 @@ Ereignisleser in beiden Staenden abgeschaltet ist.
 
 | Klasse | Zellen |
 |---|---:|
-| gleich | 210 |
+| gleich | 122 |
 | verworfen | 0 |
 | umgeschrieben_falsch | 0 |
 | umgeschrieben_richtig | 0 |
-| neu_richtig | 26 |
-| neu_falsch_ohne_alt | 0 |
-| neu_falsch_mit_alt | 169 |
-| keine | 2058 |
+| neu_richtig | 32 |
+| neu_falsch_ohne_alt | 2 |
+| neu_falsch_mit_alt | 108 |
+| keine | 2199 |
 
 | Feldart | gleich | verworfen | umgeschrieben_falsch | umgeschrieben_richtig | neu_richtig | neu_falsch_ohne_alt | neu_falsch_mit_alt | keine |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| groesse | 90 | 0 | 0 | 0 | 6 | 0 | 65 | 1125 |
+| groesse | 2 | 0 | 0 | 0 | 12 | 2 | 4 | 1266 |
 | mittel | 60 | 0 | 0 | 0 | 10 | 0 | 53 | 503 |
 | streuung | 60 | 0 | 0 | 0 | 10 | 0 | 51 | 430 |
 
@@ -61,28 +61,28 @@ keine
 
 ## P5-Vorhersagen
 
-- richtige Vorhersagezellen von der neuen Regel bestaetigt: 30
-- richtige Vorhersagezellen mit anderem Wert ueberschrieben: 31
+- richtige Vorhersagezellen von der neuen Regel bestaetigt: 20
+- richtige Vorhersagezellen mit anderem Wert ueberschrieben: 24
   - davon die alte Regel ohne Wert: 0
-  - davon die alte Regel mit demselben falschen Wert: 31
+  - davon die alte Regel mit demselben falschen Wert: 24
   - davon die alte Regel richtig, neu falsch: 0
-- richtige Vorhersagezellen, zu denen die neue Regel nichts liefert: 110
+- richtige Vorhersagezellen, zu denen die neue Regel nichts liefert: 127
 
 | Stand | TP | FP | FN | F1 | Feld schon belegt | Mittel zurueckgehalten |
 |---|---:|---:|---:|---:|---:|---:|
 | p5 | 166 | 96 | 2607 | 0.109 | 0 | 0 |
-| p5_plus_alt | 138 | 158 | 2635 | 0.090 | 0 | 0 |
-| p5_plus_neu | 157 | 141 | 2616 | 0.102 | 0 | 0 |
-| p5_plus_alt_luecken | 169 | 127 | 2604 | 0.110 | 64 | 0 |
-| p5_plus_neu_luecken | 178 | 120 | 2595 | 0.116 | 66 | 0 |
-| p5_plus_neu_ohne_mittel | 178 | 114 | 2595 | 0.116 | 66 | 6 |
-| p5_plus_neu_groesse_arm | 174 | 102 | 2599 | 0.114 | 66 | 6 |
-| p5_plus_neu_groesse_zeile | 175 | 103 | 2598 | 0.115 | 66 | 6 |
-| p5_plus_neu_groesse_beides | 174 | 102 | 2599 | 0.114 | 66 | 6 |
+| p5_plus_alt | 144 | 136 | 2629 | 0.094 | 0 | 0 |
+| p5_plus_neu | 160 | 126 | 2613 | 0.105 | 0 | 0 |
+| p5_plus_alt_luecken | 166 | 114 | 2607 | 0.109 | 37 | 0 |
+| p5_plus_neu_luecken | 176 | 110 | 2597 | 0.115 | 47 | 0 |
+| p5_plus_neu_ohne_mittel | 176 | 104 | 2597 | 0.115 | 47 | 6 |
+| p5_plus_neu_groesse_arm | 174 | 102 | 2599 | 0.114 | 47 | 6 |
+| p5_plus_neu_groesse_zeile | 175 | 103 | 2598 | 0.115 | 47 | 6 |
+| p5_plus_neu_groesse_beides | 174 | 102 | 2599 | 0.114 | 47 | 6 |
 
 Lesart: Ersetzen kostet TP, weil 31 richtige Vorhersagezellen durch einen
 falschen Regelwert ersetzt werden. `nur Luecken fuellen` laesst diese Zellen
-stehen: +12 TP und +24 FP gegenueber der unveraenderten Vorhersage (F1 0.109 -> 0.116). Mit der alten Tabellenwahl waere es +3 TP / +31 FP; die neue Wahl bringt unter dieser Strategie +9 TP und -7 FP.
+stehen: +10 TP und +14 FP gegenueber der unveraenderten Vorhersage (F1 0.109 -> 0.115). Mit der alten Tabellenwahl waere es +0 TP / +18 FP; die neue Wahl bringt unter dieser Strategie +10 TP und -4 FP.
 
 
 ## Feldprioritaet der Mittel
@@ -95,10 +95,10 @@ entfernt.
 
 | Stand | Feldart | neu richtig | neu falsch |
 |---|---|---:|---:|
-| p5_plus_neu_luecken | groesse | 4 | 12 |
+| p5_plus_neu_luecken | groesse | 2 | 2 |
 | p5_plus_neu_luecken | mittel | 0 | 6 |
 | p5_plus_neu_luecken | streuung | 8 | 6 |
-| p5_plus_neu_ohne_mittel | groesse | 4 | 12 |
+| p5_plus_neu_ohne_mittel | groesse | 2 | 2 |
 | p5_plus_neu_ohne_mittel | streuung | 8 | 6 |
 | p5_plus_neu_groesse_arm | streuung | 8 | 6 |
 | p5_plus_neu_groesse_zeile | groesse | 1 | 1 |
@@ -107,8 +107,8 @@ entfernt.
 
 | Stand | TP gegen P5 | FP gegen P5 | F1 |
 |---|---:|---:|---:|
-| Mittel in jeder Luecke | +12 | +24 | 0.1159 |
-| keine Mittel aus der Regel | +12 | +18 | 0.1162 |
+| Mittel in jeder Luecke | +10 | +14 | 0.1151 |
+| keine Mittel aus der Regel | +10 | +8 | 0.1153 |
 
 ## Groesse nur mit Beleg im Arm
 
@@ -120,48 +120,29 @@ der Zeilenteil ist deshalb nur gegen die Regel-eigene Lesung pruefbar.
 
 | Stand | TP | FP | FN | F1 | Groessen richtig | Groessen falsch | Groessen zurueckgehalten |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| ohne Bedingung | 178 | 114 | 2595 | 0.1162 | 4 | 12 | 0 |
-| nur mit Wert im Arm | 174 | 102 | 2599 | 0.1141 | 0 | 0 | 16 |
-| nur aus derselben Zeile | 175 | 103 | 2598 | 0.1147 | 1 | 1 | 14 |
-| Arm und Zeile | 174 | 102 | 2599 | 0.1141 | 0 | 0 | 16 |
+| ohne Bedingung | 176 | 104 | 2597 | 0.1153 | 2 | 2 | 0 |
+| nur mit Wert im Arm | 174 | 102 | 2599 | 0.1141 | 0 | 0 | 4 |
+| nur aus derselben Zeile | 175 | 103 | 2598 | 0.1147 | 1 | 1 | 2 |
+| Arm und Zeile | 174 | 102 | 2599 | 0.1141 | 0 | 0 | 4 |
 
-16 Groessenzellen fuellt die Regel neu (4 richtig, 12 falsch).
+4 Groessenzellen fuellt die Regel neu (2 richtig, 2 falsch).
 
 | Record | Feld | Arm | Zeile | Wert | Gold | richtig | Arm hat Wert | Zeile passt |
 |---|---|---|---|---:|---:|---|---|---|
-| `yun2024:159` | intervention_group_size | intervention | 1 | 24.0 | 592.0 | nein | nein | nein |
-| `yun2024:251` | intervention_group_size | intervention | 60 | 406.0 | 402.0 | nein | nein | nein |
-| `yun2024:251` | comparator_group_size | comparator | 60 | 393.0 | 388.0 | nein | nein | nein |
-| `yun2024:252` | intervention_group_size | intervention | 10 | 398.0 | 402.0 | nein | nein | nein |
-| `yun2024:252` | comparator_group_size | comparator | 10 | 389.0 | 388.0 | nein | nein | nein |
-| `yun2024:356` | comparator_group_size | comparator | 6 | 15.0 | 13.0 | nein | nein | nein |
-| `yun2024:420` | intervention_group_size | intervention | 10 | 44.0 | 18.0 | nein | nein | nein |
-| `yun2024:420` | comparator_group_size | comparator | 10 | 49.0 | 21.0 | nein | nein | nein |
-| `yun2024:421` | intervention_group_size | intervention | 10 | 44.0 | 30.0 | nein | nein | nein |
-| `yun2024:421` | comparator_group_size | comparator | 10 | 49.0 | 34.0 | nein | nein | nein |
 | `yun2024:446` | intervention_group_size | intervention | 111 | 104.0 | 104.0 | ja | nein | ja |
 | `yun2024:446` | comparator_group_size | comparator | 111 | 114.0 | 114.0 | ja | nein | nein |
 | `yun2024:451` | intervention_group_size | intervention | 117 | 104.0 | 99.0 | nein | nein | ja |
 | `yun2024:451` | comparator_group_size | comparator | 117 | 114.0 | 108.0 | nein | nein | nein |
-| `yun2024:678` | intervention_group_size | intervention | 8 | 16.0 | 16.0 | ja | nein | nein |
-| `yun2024:678` | comparator_group_size | comparator | 8 | 15.0 | 15.0 | ja | nein | nein |
 
-Lesart: von den 12 falschen Groessen erfuellen 0 die Arm-Bedingung und 1 die Zeilenbedingung; von den 4 richtigen sind es 0 und 1. Die Arm-Bedingung ist in keiner der 16 Zellen erfuellt (die Vorhersage hat dort in dem Arm weder Mittel noch Streuung), sie wirkt deshalb wie ein Verzicht auf Groessen. Die Zeilenbedingung laesst zwei Zellen stehen: `yun2024:446` Intervention (richtig) und `yun2024:451` Intervention (falsch).
+Lesart: von den 2 falschen Groessen erfuellen 0 die Arm-Bedingung und 1 die Zeilenbedingung; von den 2 richtigen sind es 0 und 1. Die Arm-Bedingung ist in keiner der 16 Zellen erfuellt (die Vorhersage hat dort in dem Arm weder Mittel noch Streuung), sie wirkt deshalb wie ein Verzicht auf Groessen. Die Zeilenbedingung laesst zwei Zellen stehen: `yun2024:446` Intervention (richtig) und `yun2024:451` Intervention (falsch).
 
 
 | Record | Feld | Arm | Vorhersage | Gold | Regel neu | abgeleitet |
 |---|---|---|---:|---:|---:|---|
 | `yun2024:32` | intervention_mean | intervention | 53.9 | 53.9 | 38.9 | nein |
 | `yun2024:32` | intervention_standard_deviation | intervention | 22.2 | 22.2 | 8.9 | nein |
-| `yun2024:32` | comparator_group_size | comparator | 199.0 | 199.0 | 36.0 | nein |
 | `yun2024:32` | comparator_mean | comparator | 34.0 | 34.0 | 31.5 | nein |
 | `yun2024:32` | comparator_standard_deviation | comparator | 20.1 | 20.1 | 7.4 | nein |
-| `yun2024:86` | comparator_group_size | comparator | 6885.0 | 6885.0 | 5122.0 | nein |
-| `yun2024:158` | intervention_group_size | intervention | 592.0 | 592.0 | 24.0 | nein |
-| `yun2024:160` | intervention_group_size | intervention | 592.0 | 592.0 | 24.0 | nein |
-| `yun2024:161` | intervention_group_size | intervention | 560.0 | 560.0 | 24.0 | nein |
-| `yun2024:162` | intervention_group_size | intervention | 560.0 | 560.0 | 24.0 | nein |
-| `yun2024:163` | intervention_group_size | intervention | 560.0 | 560.0 | 24.0 | nein |
 | `yun2024:212` | intervention_mean | intervention | 9.2 | 9.2 | 5.8 | nein |
 | `yun2024:212` | intervention_standard_deviation | intervention | 0.9 | 0.9 | 0.5 | nein |
 | `yun2024:212` | comparator_mean | comparator | 9.6 | 9.6 | 5.9 | nein |
