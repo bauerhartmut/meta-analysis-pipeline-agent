@@ -607,11 +607,46 @@ steht neben beiden Goldmitteln ein zweiter Wert im Format `Mittel +/- SD` oder
 Drei weitere Records sind vollstaendig, aber nicht poolbar, weil die
 Ereigniszahl die Gruppengroesse uebersteigt (`yun2024:313`, `376`, `380`).
 
+## Streuung als eigenes Zellfeld
+
+`wert_aus_zelle` liefert die Streuung jetzt fuer `*_standard_deviation`, aber
+nur aus Zellen, deren Format den zweiten Wert als SD ausweist (`Mittel (SD)`,
+`Mittel +/- SD`); KI-, Prozent- und `n Mean`-Zellen bleiben leer, damit keine
+Intervallgrenze als SD durchgeht. Die Zaehlung fuer Groesse und Mittel bleibt
+unveraendert bei 33 Zellen / 30 TP / 3 FP; die Streuung laeuft separat:
+
+| Stand | Zellen | TP | FP |
+|---|---:|---:|---:|
+| Streuung (295er-Auftraege) | 17 | 17 | 0 |
+
+`sd_durchreichen_20261121.py` misst die Wirkung an den 15 Records, denen
+ausschliesslich die SD fehlt:
+
+| Kennzahl | Wert |
+|---|---:|
+| Zellauftraege | 22 |
+| davon geliefert | 6 (27 %) |
+| Records vollstaendig | 3 (`447`, `448`, `450`) |
+| davon gegen Gold richtig | 0 |
+
+Die 16 nicht gelieferten Auftraege scheitern zu gleichen Teilen an fehlender
+Zielzeile (`6`, `110`, `113`, `114`) und an einer Zielzeile ohne SD-Format
+(`160`, `163`, `203`, `449`).
+
+Die drei vollstaendigen Records sind nicht gold-richtig, weil ihre Goldwerte
+nicht im Text stehen: bei `447` fehlen drei von vier Zahlen im Dokument, bei
+`450` alle vier, bei `448` die SD des Vergleichsarms. Gelesen wird jeweils die
+Zeile, die das Gold-Outcome trifft (Baseline-Tabelle), nicht die Nachher-Tabelle.
+
+Poolbasis: k 24 -> 27, pooled 0.125 -> 0.135, wenn alle gelieferten SD zaehlen;
+mit nur den richtigen SD bleibt es bei k = 24 und 0.125.
+
 ## Fixture: beide Zellstaende zellgenau
 
 `fixture_20261121.py` (Modi `schreiben` / `pruefen`) friert die 33 Zellen mit
-Gate unter `zellen` und die 43 Zellen ohne Gate unter `zellen_ohne_gate` ein,
-dazu die Ablation der fuenf Schalter. `pruefen` rechnet beide Staende neu und
+Gate unter `zellen`, die 43 Zellen ohne Gate unter `zellen_ohne_gate` und die
+17 Streuungszellen unter `zellen_streuung` ein, dazu die Ablation der fuenf
+Schalter. `pruefen` rechnet beide Staende neu und
 vergleicht jede Zelle ueber Schluessel (Record, Feld, Arm), Wert und
 Richtig-Kennzeichen; Abweichungen werden einzeln gemeldet und der Rueckgabewert
 ist dann 1. Stand: 33 Zellen mit Gate, 43 ohne Gate, Abweichungen 0.

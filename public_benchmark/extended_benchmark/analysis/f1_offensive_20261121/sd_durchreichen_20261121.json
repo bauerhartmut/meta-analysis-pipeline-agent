@@ -1,0 +1,202 @@
+{
+  "records": 15,
+  "auftraege": 22,
+  "geliefert": 6,
+  "richtig": 0,
+  "falsch": 6,
+  "records_vollstaendig": 3,
+  "records_ganz_richtig": 0,
+  "je_record": {
+    "yun2024:6": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:113": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:110": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:114": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:149": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:151": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:160": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:163": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:203": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:357": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:367": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:447": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "richtig": 0,
+      "vollstaendig": true,
+      "ganz_richtig": false
+    },
+    "yun2024:449": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [],
+      "richtig": 0,
+      "vollstaendig": false,
+      "ganz_richtig": false
+    },
+    "yun2024:450": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "richtig": 0,
+      "vollstaendig": true,
+      "ganz_richtig": false
+    },
+    "yun2024:448": {
+      "braucht": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "geliefert": [
+        "intervention_standard_deviation",
+        "comparator_standard_deviation"
+      ],
+      "richtig": 0,
+      "vollstaendig": true,
+      "ganz_richtig": false
+    }
+  },
+  "gruende": {
+    "yun2024:6|intervention_standard_deviation": "keine Zielzeile",
+    "yun2024:6|comparator_standard_deviation": "keine Zielzeile",
+    "yun2024:113|intervention_standard_deviation": "keine Zielzeile",
+    "yun2024:113|comparator_standard_deviation": "keine Zielzeile",
+    "yun2024:110|intervention_standard_deviation": "keine Zielzeile",
+    "yun2024:110|comparator_standard_deviation": "keine Zielzeile",
+    "yun2024:114|intervention_standard_deviation": "keine Zielzeile",
+    "yun2024:114|comparator_standard_deviation": "keine Zielzeile",
+    "yun2024:160|intervention_standard_deviation": "Zielzeile ohne SD-Format",
+    "yun2024:160|comparator_standard_deviation": "Zielzeile ohne SD-Format",
+    "yun2024:163|intervention_standard_deviation": "Zielzeile ohne SD-Format",
+    "yun2024:163|comparator_standard_deviation": "Zielzeile ohne SD-Format",
+    "yun2024:203|intervention_standard_deviation": "Zielzeile ohne SD-Format",
+    "yun2024:203|comparator_standard_deviation": "Zielzeile ohne SD-Format",
+    "yun2024:449|intervention_standard_deviation": "Zielzeile ohne SD-Format",
+    "yun2024:449|comparator_standard_deviation": "Zielzeile ohne SD-Format"
+  },
+  "pool": {
+    "basis": {
+      "k": 24,
+      "pooled": 0.12488625589884483
+    },
+    "mit_alle_sd": {
+      "k": 27,
+      "pooled": 0.1348306992797484
+    },
+    "mit_richtigen_sd": {
+      "k": 24,
+      "pooled": 0.12488625589884483
+    }
+  }
+}

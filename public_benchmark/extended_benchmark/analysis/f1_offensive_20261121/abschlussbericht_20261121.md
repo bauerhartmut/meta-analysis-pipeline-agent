@@ -198,6 +198,34 @@ der zweite Wert in beiden Armen im Format `Mittel +/- SD` oder `Mittel (SD)`.
 Drei vollstaendige Records sind zudem nicht poolbar, weil die Ereigniszahl die
 Gruppengroesse uebersteigt (`yun2024:313`, `376`, `380`).
 
+## Streuung durchgereicht: 3 von 15 vollstaendig, 0 richtig
+
+`sd_durchreichen_20261121.py`, offline. `wert_aus_zelle` gibt die Streuung
+jetzt als eigenes Feld aus, aber nur aus Zellen im Format `Mittel (SD)` oder
+`Mittel +/- SD`. Auf den 68 Streuungsauftraegen der 295 FN-Faelle liefert die
+Regel 17 Zellen, alle 17 richtig (0 FP). Die Zaehlung fuer Groesse und Mittel
+bleibt unveraendert bei 33/30/3.
+
+An den 15 Records mit ausschliesslich fehlender SD:
+
+| Kennzahl | Wert |
+|---|---:|
+| Zellauftraege | 22 |
+| geliefert | 6 |
+| Records vollstaendig | 3 |
+| davon gegen Gold richtig | 0 |
+
+Die 16 offenen Auftraege scheitern an fehlender Zielzeile (`yun2024:6`, `110`,
+`113`, `114`) oder an einer Zielzeile ohne SD-Format (`160`, `163`, `203`,
+`449`). Die drei vollstaendigen Records (`447`, `448`, `450`) lesen die
+Baseline-Tabelle; ihre Goldwerte stehen dort nicht - bei `447` fehlen drei von
+vier Zahlen im Dokument, bei `450` alle vier, bei `448` die SD des
+Vergleichsarms. Der Leser liest also richtig, was in der Zeile steht, greift
+aber die falsche Tabelle.
+
+Poolbasis: k 24 -> 27 und pooled 0.125 -> 0.135 mit allen gelieferten SD; nur
+mit den richtigen SD bleibt es bei k = 24 und 0.125.
+
 ## Grenzen
 
 - Alle Regeln sind Textheuristiken auf Markdown; sie greifen bei sauberen

@@ -479,7 +479,16 @@ def wert_aus_zelle(zelle: str, feld: str, mean_formate: tuple[str, ...] | None) 
     `mean_formate=None` heisst: erste Zahl der Zelle, ohne Formatpruefung.
     """
     if feld.endswith("standard_deviation"):
-        m = re.search(r"\(\s*(\d+(?:\.\d+)?)", zelle)
+        # Streuung nur aus Zellen, deren Format den zweiten Wert als SD ausweist:
+        # `Mittel (SD)` und `Mittel +/- SD`. Alles andere (KI, Prozent, n Mean)
+        # bleibt leer, damit keine Intervallgrenze als SD durchgeht.
+        fmt = zellformat(zelle)
+        if fmt == "mittel_sd":
+            m = re.search(r"\(\s*(\d+(?:\.\d+)?)\s*\)", zelle)
+        elif fmt == "plus_minus":
+            m = re.search(re.escape(chr(0x00B1)) + r"\s*(\d+(?:\.\d+)?)", zelle)
+        else:
+            return None
         return float(m.group(1)) if m else None
     if feld.endswith("mean"):
         if mean_formate is not None and zellformat(zelle) not in mean_formate:
@@ -579,10 +588,14 @@ def messe(faelle: list[dict[str, Any]], records: dict[str, dict[str, Any]], text
 
 def main() -> int:
     fehler = json.loads((HIER / "fehlerursachen_20261121.json").read_text(encoding="utf-8"))
-    faelle = [f for f in fehler["faelle_fn"] if f["regel"] == "fn_wert_ersetzt"]
+    alle_faelle = [f for f in fehler["faelle_fn"] if f["regel"] == "fn_wert_ersetzt"]
+    # Die Zaehlung unten meint Groesse und Mittel; die Streuung wird seit dem
+    # Durchreichen als eigenes Feld gefuehrt und separat gezaehlt.
+    faelle = [f for f in alle_faelle if not f["feld"].endswith("standard_deviation")]
+    streuung_faelle = [f for f in alle_faelle if f["feld"].endswith("standard_deviation")]
     records = {r["record_id"]: r for r in v.lade(v.RECORDS)}
     texte: dict[str, str] = {}
-    for rid in {f["record_id"] for f in faelle}:
+    for rid in {f["record_id"] for f in alle_faelle}:
         texte[rid] = (REPO / records[rid]["document"]["path"]).read_text(encoding="utf-8", errors="replace")
 
     ohne = messe(faelle, records, texte, {}, False)
@@ -590,6 +603,8 @@ def main() -> int:
     streng = messe(faelle, records, texte, alias_mod.ALIAS, True, mean_formate=("mittel_sd",))
     beide = messe(faelle, records, texte, alias_mod.ALIAS, True,
                   mean_formate=("mittel_sd", "plus_minus"))
+    streuung = messe(streuung_faelle, records, texte, alias_mod.ALIAS, True,
+                     mean_formate=("mittel_sd", "plus_minus"))
     neu = {(e["record_id"], e["feld"], e["arm"]) for e in mit["detail"]} - \
           {(e["record_id"], e["feld"], e["arm"]) for e in ohne["detail"]}
     neu_detail = [e for e in mit["detail"] if (e["record_id"], e["feld"], e["arm"]) in neu]
@@ -630,6 +645,8 @@ def main() -> int:
                                        "tp_gerundet", "fp_gerundet")},
         "alias": {k: mit[k] for k in ("zielzeile_gefunden", "geliefert", "tp", "fp",
                                       "tp_gerundet", "fp_gerundet")},
+        "streuung": {k: streuung[k] for k in ("zielzeile_gefunden", "geliefert", "tp", "fp")},
+        "streuung_detail": streuung["detail"],
         "nur_mit_alias": {"geliefert": len(neu_detail),
                           "tp": sum(1 for e in neu_detail if e["richtig"]),
                           "fp": sum(1 for e in neu_detail if not e["richtig"]),
@@ -684,6 +701,13 @@ Akronymen.
 |---|---|---:|
 {fp_format_tab}
 
+
+## Streuung als eigenes Feld
+
+Auftraege aus den `fn_wert_ersetzt`-Faellen mit Feld `*_standard_deviation`:
+{len(streuung_faelle)}. Geliefert {streuung['geliefert']}, davon richtig
+{streuung['tp']} und falsch {streuung['fp']}. Gelesen wird die Streuung nur aus
+Zellen im Format `Mittel (SD)` oder `Mittel +/- SD`.
 
 Nur durch den Alias neu geliefert: {len(neu_detail)} Zellen, davon
 {sum(1 for e in neu_detail if e['richtig'])} exakt richtig und

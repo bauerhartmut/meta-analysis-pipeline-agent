@@ -1,13 +1,13 @@
 # Alias-Erweiterung ueber alle 295 fn_wert_ersetzt (21.11.2026)
 
 Offline, ohne Netzaufruf. Die Zielzeilensuche laeuft ueber alle
-295 `fn_wert_ersetzt`, nicht nur ueber die 31 Zaehlfelder. Zwei
+227 `fn_wert_ersetzt`, nicht nur ueber die 31 Zaehlfelder. Zwei
 Varianten: ohne Erweiterung und mit Alias `scanning -> scan, duration` plus
 Akronymen.
 
 | Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Ereignisse aus, Mittel beide Formate |
 |---|---:|---:|---:|---:|
-| Zielzeile gefunden | 156 | 178 | 178 | 178 |
+| Zielzeile gefunden | 116 | 129 | 129 | 129 |
 | Zellen geliefert | 28 | 34 | 16 | 33 |
 | TP (exakt) | 22 | 26 | 14 | 30 |
 | FP (exakt) | 6 | 8 | 2 | 3 |
@@ -38,6 +38,13 @@ Akronymen.
 | mittel | mittel_sd | 2 |
 | mittel | plus_minus | 1 |
 
+
+## Streuung als eigenes Feld
+
+Auftraege aus den `fn_wert_ersetzt`-Faellen mit Feld `*_standard_deviation`:
+68. Geliefert 17, davon richtig
+17 und falsch 0. Gelesen wird die Streuung nur aus
+Zellen im Format `Mittel (SD)` oder `Mittel +/- SD`.
 
 Nur durch den Alias neu geliefert: 6 Zellen, davon
 4 exakt richtig und

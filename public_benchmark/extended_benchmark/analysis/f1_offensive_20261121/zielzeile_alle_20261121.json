@@ -1,8 +1,8 @@
 {
   "stand": "2026-11-21",
-  "faelle": 295,
+  "faelle": 227,
   "alias_streng": {
-    "zielzeile_gefunden": 178,
+    "zielzeile_gefunden": 129,
     "geliefert": 16,
     "tp": 14,
     "fp": 2,
@@ -10,7 +10,7 @@
     "fp_gerundet": 2
   },
   "neu": {
-    "zielzeile_gefunden": 178,
+    "zielzeile_gefunden": 129,
     "geliefert": 33,
     "tp": 30,
     "fp": 3,
@@ -43,7 +43,7 @@
     "mittel|plus_minus|falsch": 1
   },
   "ohne": {
-    "zielzeile_gefunden": 156,
+    "zielzeile_gefunden": 116,
     "geliefert": 28,
     "tp": 22,
     "fp": 6,
@@ -51,13 +51,259 @@
     "fp_gerundet": 6
   },
   "alias": {
-    "zielzeile_gefunden": 178,
+    "zielzeile_gefunden": 129,
     "geliefert": 34,
     "tp": 26,
     "fp": 8,
     "tp_gerundet": 28,
     "fp_gerundet": 6
   },
+  "streuung": {
+    "zielzeile_gefunden": 49,
+    "geliefert": 17,
+    "tp": 17,
+    "fp": 0
+  },
+  "streuung_detail": [
+    {
+      "record_id": "yun2024:221",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "regel": {
+        "value": 0.12,
+        "quelle": "zielzeile",
+        "zeile": 141,
+        "zellformat": "plus_minus"
+      },
+      "gold": 0.12,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:221",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "regel": {
+        "value": 1.45,
+        "quelle": "zielzeile",
+        "zeile": 141,
+        "zellformat": "plus_minus"
+      },
+      "gold": 1.45,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:222",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "regel": {
+        "value": 0.02,
+        "quelle": "zielzeile",
+        "zeile": 143,
+        "zellformat": "plus_minus"
+      },
+      "gold": 0.02,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:222",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "regel": {
+        "value": 0.68,
+        "quelle": "zielzeile",
+        "zeile": 143,
+        "zellformat": "plus_minus"
+      },
+      "gold": 0.68,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:223",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "regel": {
+        "value": 0.47,
+        "quelle": "zielzeile",
+        "zeile": 145,
+        "zellformat": "plus_minus"
+      },
+      "gold": 0.47,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:664",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "regel": {
+        "value": 35.1,
+        "quelle": "zielzeile",
+        "zeile": 26,
+        "zellformat": "plus_minus"
+      },
+      "gold": 35.1,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:664",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "regel": {
+        "value": 20.8,
+        "quelle": "zielzeile",
+        "zeile": 26,
+        "zellformat": "plus_minus"
+      },
+      "gold": 20.8,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:665",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "regel": {
+        "value": 28.9,
+        "quelle": "zielzeile",
+        "zeile": 26,
+        "zellformat": "plus_minus"
+      },
+      "gold": 28.9,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:665",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "regel": {
+        "value": 20.8,
+        "quelle": "zielzeile",
+        "zeile": 26,
+        "zellformat": "plus_minus"
+      },
+      "gold": 20.8,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:666",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "regel": {
+        "value": 36.2,
+        "quelle": "zielzeile",
+        "zeile": 27,
+        "zellformat": "plus_minus"
+      },
+      "gold": 36.2,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:666",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "regel": {
+        "value": 37.5,
+        "quelle": "zielzeile",
+        "zeile": 27,
+        "zellformat": "plus_minus"
+      },
+      "gold": 37.5,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:667",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "regel": {
+        "value": 42.3,
+        "quelle": "zielzeile",
+        "zeile": 27,
+        "zellformat": "plus_minus"
+      },
+      "gold": 42.3,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:667",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "regel": {
+        "value": 37.5,
+        "quelle": "zielzeile",
+        "zeile": 27,
+        "zellformat": "plus_minus"
+      },
+      "gold": 37.5,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:668",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "regel": {
+        "value": 63.1,
+        "quelle": "zielzeile",
+        "zeile": 28,
+        "zellformat": "plus_minus"
+      },
+      "gold": 63.1,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:668",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "regel": {
+        "value": 61.3,
+        "quelle": "zielzeile",
+        "zeile": 28,
+        "zellformat": "plus_minus"
+      },
+      "gold": 61.3,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:669",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "regel": {
+        "value": 55.9,
+        "quelle": "zielzeile",
+        "zeile": 28,
+        "zellformat": "plus_minus"
+      },
+      "gold": 55.9,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:669",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "regel": {
+        "value": 61.3,
+        "quelle": "zielzeile",
+        "zeile": 28,
+        "zellformat": "plus_minus"
+      },
+      "gold": 61.3,
+      "richtig": true,
+      "richtig_gerundet": true
+    }
+  ],
   "nur_mit_alias": {
     "geliefert": 6,
     "tp": 4,

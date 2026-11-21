@@ -62,10 +62,12 @@ def kennzahlen(res: dict[str, Any]) -> dict[str, int]:
 def main(argv: list[str]) -> int:
     modus = argv[1] if len(argv) > 1 else "schreiben"
     daten = json.loads((HIER / "fehlerursachen_20261121.json").read_text(encoding="utf-8"))
-    faelle = [f for f in daten["faelle_fn"] if f["regel"] == "fn_wert_ersetzt"]
+    alle_faelle = [f for f in daten["faelle_fn"] if f["regel"] == "fn_wert_ersetzt"]
+    faelle = [f for f in alle_faelle if not f["feld"].endswith("standard_deviation")]
+    streuung_faelle = [f for f in alle_faelle if f["feld"].endswith("standard_deviation")]
     recs = {r["record_id"]: r for r in v.lade(v.RECORDS)}
     texte = {rid: (Path(".") / recs[rid]["document"]["path"]).read_text(encoding="utf-8", errors="replace")
-             for rid in {f["record_id"] for f in faelle}}
+             for rid in {f["record_id"] for f in alle_faelle}}
 
     ablation: dict[str, dict[str, int]] = {}
     schalter()
@@ -77,6 +79,10 @@ def main(argv: list[str]) -> int:
     schalter(gate=False)
     ohne_gate = lauf(faelle, recs, texte)
     ohne_gate_zellen = zellen(ohne_gate)
+    # Streuung als eigenes Feld: eigener Stand, eigener Vergleich.
+    streuung = lauf(streuung_faelle, recs, texte)
+    streuung_zellen = zellen(streuung)
+    ablation["streuung"] = kennzahlen(streuung)
     schalter()
     for name, kwargs in (("ohne_gate", {"gate": False}),
                          ("ohne_positionsregel", {"positional": False}),
@@ -103,7 +109,9 @@ def main(argv: list[str]) -> int:
                     print(f"  {name}: {vorher} -> {jetzt}")
         for stand, alt_liste, neu_liste in (("gate", alt["zellen"], basis_zellen),
                                             ("ohne_gate", alt.get("zellen_ohne_gate", []),
-                                             ohne_gate_zellen)):
+                                             ohne_gate_zellen),
+                                            ("streuung", alt.get("zellen_streuung", []),
+                                             streuung_zellen)):
             alt_schluessel = {(z["record_id"], z["feld"], z["arm"]): z for z in alt_liste}
             neu_schluessel = {(z["record_id"], z["feld"], z["arm"]): z for z in neu_liste}
             fehlend = sorted(set(alt_schluessel) - set(neu_schluessel))
@@ -127,7 +135,8 @@ def main(argv: list[str]) -> int:
         return 1 if probleme else 0
 
     inhalt = {"stand": "2026-11-21", "faelle": len(faelle), "ablation": ablation,
-              "zellen": basis_zellen, "zellen_ohne_gate": ohne_gate_zellen}
+              "zellen": basis_zellen, "zellen_ohne_gate": ohne_gate_zellen,
+              "zellen_streuung": streuung_zellen}
     FIXTURE.write_text(json.dumps(inhalt, indent=2, ensure_ascii=True), encoding="utf-8")
     print(f"geschrieben: {FIXTURE.name} | Zellen {len(basis_zellen)} mit Gate, "
           f"{len(ohne_gate_zellen)} ohne Gate")
