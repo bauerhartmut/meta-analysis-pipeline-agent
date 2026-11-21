@@ -279,6 +279,24 @@ Das Format `11 (12%)` kommt in keinem Fall vor; die Tabellen schreiben
 4 der 29 sind ueber eine (%)-Kopfzeile und den Arm in der Zeilenbeschriftung
 deterministisch lesbar; 14 mal fehlt die Armzuordnung, 10 mal der Prozentbezug.
 
+### Mit Zeitpunktzuordnung: 2 TP, 0 FP
+
+`zaehler_zeitpunkt_20261121.py` sucht die Tabelle, deren Zeilenbeschriftung zum
+Outcome-Namen passt, liest den Arm aus Zeile oder Kopfzeile und waehlt die
+Spalte des Zielzeitpunkts (letzter berichteter).
+
+| Variante | Zellen | TP | FP | TP-Verlust |
+|---|---:|---:|---:|---:|
+| `zaehler` (nur `n` + `(%)`) | 2 | 2 | 0 | 0 |
+| `prozent` (auch Prozentzeilen) | 6 | 2 | 4 | 0 |
+
+Nur `yun2024:190` ist ein echter Zaehler: Armzeilen `Intervention`/`TAU`,
+Zeitpunktspalten `Baseline`/3/6/12 Monate, Zielspalte 12 Monate, Werte 52/51 =
+beide Gold. Die drei Baseline-Faelle (370, 373, 379) sind Prozentwerte ohne
+Zeitpunktachse; bei 370 und 373 liefert die Outcome-Zeile andere Zahlen als Gold
+(`Diabetes, %  52  59` gegen 35/33), bei 379 gibt es keine passende Zeile. Die
+`prozent`-Variante zahlt diese Fehlgriffe als 4 FP.
+
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 
 Die Bedingung des Auftrags war "nach erfolgreichen Offline-Tests". Die

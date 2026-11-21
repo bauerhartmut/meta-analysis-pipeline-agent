@@ -1,0 +1,138 @@
+{
+  "stand": "2026-11-21",
+  "ziel_records": [
+    "yun2024:190",
+    "yun2024:370",
+    "yun2024:373",
+    "yun2024:379"
+  ],
+  "ziel_faelle": 4,
+  "summen": {
+    "zaehler": {
+      "tp": 2,
+      "fp": 0,
+      "tp_verlust": 0,
+      "zellen": 2
+    },
+    "prozent": {
+      "tp": 2,
+      "fp": 4,
+      "tp_verlust": 0,
+      "zellen": 6
+    }
+  },
+  "detail": [
+    {
+      "variante": "zaehler",
+      "record_id": "yun2024:190",
+      "feld": "intervention_events",
+      "regel": {
+        "value": 52.0,
+        "quelle": "zaehler",
+        "spalte": "12 months",
+        "zeile": 67
+      },
+      "gold": 52.0,
+      "richtig": true,
+      "schon_vorhanden": false
+    },
+    {
+      "variante": "zaehler",
+      "record_id": "yun2024:190",
+      "feld": "comparator_events",
+      "regel": {
+        "value": 51.0,
+        "quelle": "zaehler",
+        "spalte": "12 months",
+        "zeile": 67
+      },
+      "gold": 51.0,
+      "richtig": true,
+      "schon_vorhanden": false
+    },
+    {
+      "variante": "prozent",
+      "record_id": "yun2024:190",
+      "feld": "intervention_events",
+      "regel": {
+        "value": 52.0,
+        "quelle": "zaehler",
+        "spalte": "12 months",
+        "zeile": 67
+      },
+      "gold": 52.0,
+      "richtig": true,
+      "schon_vorhanden": false
+    },
+    {
+      "variante": "prozent",
+      "record_id": "yun2024:190",
+      "feld": "comparator_events",
+      "regel": {
+        "value": 51.0,
+        "quelle": "zaehler",
+        "spalte": "12 months",
+        "zeile": 67
+      },
+      "gold": 51.0,
+      "richtig": true,
+      "schon_vorhanden": false
+    },
+    {
+      "variante": "prozent",
+      "record_id": "yun2024:370",
+      "feld": "comparator_events",
+      "regel": {
+        "value": 52.0,
+        "quelle": "prozent",
+        "spalte": "Prozentzeile",
+        "zeile": 6
+      },
+      "gold": 33.0,
+      "richtig": false,
+      "schon_vorhanden": false
+    },
+    {
+      "variante": "prozent",
+      "record_id": "yun2024:370",
+      "feld": "intervention_events",
+      "regel": {
+        "value": 59.0,
+        "quelle": "prozent",
+        "spalte": "Prozentzeile",
+        "zeile": 6
+      },
+      "gold": 35.0,
+      "richtig": false,
+      "schon_vorhanden": false
+    },
+    {
+      "variante": "prozent",
+      "record_id": "yun2024:373",
+      "feld": "comparator_events",
+      "regel": {
+        "value": 72.0,
+        "quelle": "prozent",
+        "spalte": "Prozentzeile",
+        "zeile": 6
+      },
+      "gold": 46.0,
+      "richtig": false,
+      "schon_vorhanden": false
+    },
+    {
+      "variante": "prozent",
+      "record_id": "yun2024:373",
+      "feld": "intervention_events",
+      "regel": {
+        "value": 54.0,
+        "quelle": "prozent",
+        "spalte": "Prozentzeile",
+        "zeile": 6
+      },
+      "gold": 32.0,
+      "richtig": false,
+      "schon_vorhanden": false
+    }
+  ]
+}
