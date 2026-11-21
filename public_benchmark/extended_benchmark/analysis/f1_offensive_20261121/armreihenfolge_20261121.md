@@ -1,4 +1,4 @@
-# Armzuordnung: Kopfzeilen-Label gegen Spaltenreihenfolge
+# Armzuordnung: Kopfzeilen-Label gegen Spaltenposition
 
 Offline, ohne Netzaufruf.
 
@@ -21,30 +21,40 @@ Offline, ohne Netzaufruf.
   * Spalte 2: `Aripiprazole (n =?47)` -> `intervention`
   * Gold: intervention 45.0, comparator 47.0
 
-## Bilanz der Groessenzellen
-
-| Lesart | richtig | falsch | Zellen |
-|---|---:|---:|---:|
-| Label (Spaltenname) | 12 | 10 | 22 |
-| Position (erste Spalte = Intervention) | 16 | 6 | 22 |
-
 ## Lesart
 
-Die Regel ordnet jeden `n`-Wert ueber den Spaltennamen zu; das ist die
-Spaltenreihenfolge des Tabellenkopfs, nur ohne Annahme ueber die erste
-Spalte. Bei PMC5617873 steht `Placebo (n = 45)` in Spalte 1 und
-`Aripiprazole (n = 47)` in Spalte 2; die Regel liefert deshalb
-Intervention 47 und Comparator 45.
+`label` ordnet jeden `n`-Wert ueber den Spaltennamen zu, `position` nimmt die
+erste Datenspalte als Intervention und die zweite als Comparator. Bei
+PMC5617873 steht `Placebo (n = 45)` in Spalte 1 und `Aripiprazole (n = 47)`
+in Spalte 2; `position` liefert dort also Intervention 45, Comparator 47 und
+trifft damit das Gold, das dieselbe Zuordnung fuehrt.
 
-Gold fuehrt fuer dieselben Records Intervention 45 und Comparator 47,
-also die Werte der Placebo-Spalte als Intervention. Ein Tausch der
-Regelwerte wuerde diese acht Zellen gegen Gold richtig stellen, aber
-dem Tabellenkopf widersprechen.
+## Bilanz ueber die 295
 
-## Was ein Tausch kostet
+| Lesart | Zellen | TP | FP | Groessenzellen richtig | Groessenzellen falsch |
+|---|---:|---:|---:|---:|---:|
+| label | 41 | 24 | 17 | 12 | 10 |
+| position | 41 | 30 | 11 | 18 | 4 |
 
-Ein Tausch aller Groessenpaare stellt die acht PMC5617873-Zellen richtig,
-macht aber `yun2024:193` (138/131) und `yun2024:426` (49/44) falsch, also
-vier vorher richtige Zellen. Unterm Strich: 12 richtig / 10 falsch vorher,
-16 richtig / 6 falsch nachher - gegen ein Gold, das an dieser Stelle selbst
-vertauscht ist. Der Tabellenkopf bleibt die verlaesslichere Quelle.
+Richtig geworden: 8 Zellen. Falsch geworden: 2 Zellen.
+
+| Richtung | Record | Feld | vorher | nachher | Gold |
+|---|---|---|---:|---:|---:|
+| richtig | `yun2024:331` | comparator_group_size | 45.0 | 47.0 | 47.0 |
+| richtig | `yun2024:331` | intervention_group_size | 47.0 | 45.0 | 45.0 |
+| richtig | `yun2024:334` | comparator_group_size | 45.0 | 47.0 | 47.0 |
+| richtig | `yun2024:334` | intervention_group_size | 47.0 | 45.0 | 45.0 |
+| richtig | `yun2024:335` | comparator_group_size | 45.0 | 47.0 | 47.0 |
+| richtig | `yun2024:335` | intervention_group_size | 47.0 | 45.0 | 45.0 |
+| richtig | `yun2024:336` | comparator_group_size | 45.0 | 47.0 | 47.0 |
+| richtig | `yun2024:336` | intervention_group_size | 47.0 | 45.0 | 45.0 |
+| falsch | `yun2024:426` | comparator_group_size | 44.0 | 49.0 | 44.0 |
+| falsch | `yun2024:426` | intervention_group_size | 49.0 | 44.0 | 49.0 |
+
+## Lesart der Zahlen
+
+Die Positionsregel holt alle acht PMC5617873-Zellen und macht dafuer die
+beiden Arme von `yun2024:426` falsch: dort steht in Spalte 1 der
+Interventionsarm (`n  Mean`-Layout), Gold folgt dem Spaltennamen. Der
+Tabellenkopf bleibt die verlaesslichere Quelle; das Gold der vier
+PMC5617873-Records ist vertauscht.

@@ -84,6 +84,11 @@ Haupttabelle steht vor den Subgruppentabellen).
 `yun2024:196` bleibt falsch: die Haupttabelle 2 nennt fuer Woche 28 die Werte
 80/78, Gold (24/24) stammt aus Tabelle 3, einer Subgruppe (MMSE-J 20 bis 23).
 
+Die Armzuordnung der Groessen folgt den Spaltennamen (`POSITIONAL = False`). Die
+Positionsregel (erste Datenspalte = Intervention) ist umschaltbar und in
+`armreihenfolge_20261121.md` gemessen: sie holt die acht PMC5617873-Zellen und
+macht dafuer die beiden Arme von `yun2024:426` falsch.
+
 Trefferquote: 24 von 41 Zellen, also
 58 Prozent. Ereignisse tragen
 nichts bei, Groessen und Mittel teilen sich die Treffer. Die Umstellung von der

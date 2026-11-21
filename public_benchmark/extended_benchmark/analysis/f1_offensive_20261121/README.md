@@ -477,17 +477,23 @@ steht in Spalte 1 `Placebo (n = 45)`, in Spalte 2 `Aripiprazole (n = 47)`; die
 Regel liefert Intervention 47, Comparator 45.
 
 Gold fuehrt fuer dieselben vier Records Intervention 45, Comparator 47, also die
-Placebo-Werte als Intervention. Ein positionsbasierter Tausch ("erste Spalte ist
-Intervention") stellt die 8 Zellen gegen Gold richtig, macht aber `yun2024:193`
-und `yun2024:426` falsch:
+Placebo-Werte als Intervention. Die Positionsregel ("erste Datenspalte ist
+Intervention, zweite Comparator", Spaltennamen ignoriert) ist im Skript
+umsschaltbar (`POSITIONAL`) und wurde ueber die 295 gemessen:
 
-| Lesart | richtig | falsch |
-|---|---:|---:|
-| Spaltenname (Regel) | 12 | 10 |
-| Position, getauscht | 16 | 6 |
+| Lesart | Zellen | TP | FP | Groessenzellen richtig | Groessenzellen falsch |
+|---|---:|---:|---:|---:|---:|
+| Spaltenname (Standard) | 41 | 24 | 17 | 12 | 10 |
+| Position | 41 | 30 | 11 | 20 | 2 |
 
-Der Tabellenkopf bleibt die verlaesslichere Quelle; die 8 Zellen sind ein
-Goldtausch, kein Lesefehler (siehe `pruefvermerk_gold_20261121.md`).
+Richtig werden alle 8 PMC5617873-Zellen. Falsch werden die beiden Arme von
+`yun2024:426` (vorher 49/44, jetzt 44/49, Gold 49/44): dort steht in Spalte 1
+die Vergleichsgruppe, in Spalte 2 die Intervention, und Gold folgt den Namen.
+`yun2024:193` bleibt richtig, weil seine Kopfzeile die Intervention zuerst nennt.
+
+Der Tabellenkopf bleibt die verlaesslichere Quelle: die Positionsregel gewinnt 8
+Zellen gegen ein Gold, das an dieser Stelle selbst vertauscht ist, und verliert
+dafuer 2 belegte Zellen (siehe `pruefvermerk_gold_20261121.md`).
 
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
 gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht

@@ -124,6 +124,39 @@ def zeitverlauf_ziel(zeilen: list[str], outcome: str, alias: dict[str, list[str]
     return max(kandidaten)[0] if spaeter else min(kandidaten)[0]
 
 
+POSITIONAL = False
+
+
+def spalten_reihenfolge(zeilen: list[str], ziel: int, context: dict[str, Any]) -> list[str]:
+    """Arme in der Reihenfolge ihrer Datenspalten (Groessenzeile, sonst Kopf)."""
+    start, _ = tabellengrenzen(zeilen, ziel)
+    for i in range(ziel - 1, start - 1, -1):
+        if g.ist_groessenzeile(zeilen[i]) and g.STRENGE.search(zeilen[i]):
+            arme = [arm_weit(s, context) for s in segmente(zeilen[i])]
+            arme = [a for a in arme if a]
+            if len(arme) >= 2:
+                return arme
+    for j in range(ziel - 1, start - 1, -1):
+        arme = [arm_weit(s, context) for s in segmente(zeilen[j])]
+        arme = [a for a in arme if a]
+        if len(arme) >= 2:
+            return arme
+    return []
+
+
+def positional(treffer: dict[str, dict[str, Any]], reihenfolge: list[str]) -> dict[str, dict[str, Any]]:
+    """Erste Datenspalte ist Intervention, zweite Comparator - Namen ignoriert."""
+    if not treffer or "intervention" not in treffer or "comparator" not in treffer:
+        return treffer
+    if len(reihenfolge) < 2 or reihenfolge[0] == reihenfolge[1]:
+        return treffer
+    erste, zweite = reihenfolge[0], reihenfolge[1]
+    if erste not in treffer or zweite not in treffer:
+        return treffer
+    return {"intervention": dict(treffer[erste], quelle="position"),
+            "comparator": dict(treffer[zweite], quelle="position")}
+
+
 def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) -> dict[str, dict[str, Any]]:
     """Groesse aus der Tabelle der Zielzeile: `n =`-Zeile oder Zeilen-`n`."""
     start, ende = tabellengrenzen(zeilen, ziel)
@@ -246,7 +279,10 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
             ziel = alias_mod.ziel_zeile_alias(zeilen, outcome, alias, akronyme)
         if ziel < 0:
             return None
-        treffer = groesse_in_tabelle(zeilen, ziel, context).get(arm)
+        werte = groesse_in_tabelle(zeilen, ziel, context)
+        if POSITIONAL:
+            werte = positional(werte, spalten_reihenfolge(zeilen, ziel, context))
+        treffer = werte.get(arm)
         if not treffer:
             return None
         # Gruppengroessen sind Zaehlungen: keine Dezimalwerte, keine Kleinstwerte.
@@ -440,6 +476,11 @@ Haupttabelle steht vor den Subgruppentabellen).
 `yun2024:193` wird damit richtig (138/131 aus Tabelle 2, Woche 28).
 `yun2024:196` bleibt falsch: die Haupttabelle 2 nennt fuer Woche 28 die Werte
 80/78, Gold (24/24) stammt aus Tabelle 3, einer Subgruppe (MMSE-J 20 bis 23).
+
+Die Armzuordnung der Groessen folgt den Spaltennamen (`POSITIONAL = False`). Die
+Positionsregel (erste Datenspalte = Intervention) ist umschaltbar und in
+`armreihenfolge_20261121.md` gemessen: sie holt die acht PMC5617873-Zellen und
+macht dafuer die beiden Arme von `yun2024:426` falsch.
 
 Trefferquote: {beide['tp']} von {beide['geliefert']} Zellen, also
 {100 * beide['tp'] // max(1, beide['geliefert'])} Prozent. Ereignisse tragen

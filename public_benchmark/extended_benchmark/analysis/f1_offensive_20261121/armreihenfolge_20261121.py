@@ -1,16 +1,14 @@
-"""Armzuordnung der Groessenzellen: Kopfzeilen-Label gegen Spaltenreihenfolge.
+"""Armzuordnung der Groessenzellen: Kopfzeilen-Label gegen Spaltenposition.
 
 Offline, ohne Netzaufruf. Vergleicht fuer die 295 `fn_wert_ersetzt`-Faelle zwei
 Lesarten der Gruppengroessen:
 
-* `label`  - jeder `n`-Wert gehoert zu dem Arm, der in seiner Spalte steht
-             (Spaltenreihenfolge aus dem Tabellenkopf, Zuordnung ueber den
-             Spaltennamen). Das ist die Regel im Skript.
-* `position` - die erste Datenspalte gehoert immer der Intervention, egal wie
-             die Spalte heisst.
+* `label`    - jeder `n`-Wert gehoert zu dem Arm, der in seiner Spalte steht.
+* `position` - die erste Datenspalte gehoert der Intervention, die zweite dem
+               Comparator, unabhaengig von den Spaltennamen.
 
-Zusaetzlich werden die vier PMC5617873-Records einzeln belegt, deren Groessen-FP
-als `falsche_spalte` gefuehrt sind.
+Beide Lesarten laufen durch dieselbe Messung; nur die Armzuordnung der
+Groessenwerte ist umgeschaltet (`zielzeile_alle_20261121.POSITIONAL`).
 """
 
 from __future__ import annotations
@@ -34,7 +32,7 @@ SIZE_FELDER = ("intervention_group_size", "comparator_group_size")
 
 
 def kopf_zeile(zeilen: list[str], ziel: int, context: dict[str, Any]) -> tuple[int, list[str]]:
-    """Naeheste Kopfzeile ueber der Zielzeile, die beide Arme benennt."""
+    """Naechste Kopfzeile ueber der Zielzeile, die beide Arme benennt."""
     a, _ = m.tabellengrenzen(zeilen, ziel)
     for j in range(ziel - 1, a - 1, -1):
         segs = segmente(zeilen[j])
@@ -63,35 +61,14 @@ def belege(recs: dict[str, dict[str, Any]], texte: dict[str, str],
             arm = m.arm_weit(seg, context)
             if arm:
                 spalten.append({"spalte": pos + 1, "kopf": seg[:40], "arm": arm})
-        gold = {k: gold_map.get(rid, {}).get(k) for k in SIZE_FELDER}
         aus.append({"record_id": rid, "kopfzeile": j + 1, "spalten": spalten,
-                    "gold": gold, "kopf_text": (zeilen[j].strip()[:120] if j >= 0 else "")})
+                    "gold": {k: gold_map.get(rid, {}).get(k) for k in SIZE_FELDER},
+                    "kopf_text": (zeilen[j].strip()[:120] if j >= 0 else "")})
     return aus
 
 
-def bilanz(detail: list[dict[str, Any]], tauschen: bool) -> dict[str, Any]:
-    """Richtige und falsche Groessenzellen, optional mit getauschten Armen."""
-    zwischen: dict[str, dict[str, dict[str, Any]]] = {}
-    for e in detail:
-        if e["feld"] in SIZE_FELDER and e.get("regel"):
-            zwischen.setdefault(e["record_id"], {})[e["feld"]] = e
-    richtig = falsch = 0
-    for rid, felder in zwischen.items():
-        if tauschen and len(felder) == 2:
-            i, c = felder.get(SIZE_FELDER[0]), felder.get(SIZE_FELDER[1])
-            if i and c:
-                zwischen[rid] = {SIZE_FELDER[0]: dict(i, regel=dict(i["regel"], value=c["regel"]["value"])),
-                                 SIZE_FELDER[1]: dict(c, regel=dict(c["regel"], value=i["regel"]["value"]))}
-    for rid, felder in zwischen.items():
-        for feld, e in felder.items():
-            gold = e.get("gold")
-            if gold is None:
-                continue
-            if float(e["regel"]["value"]) == float(gold):
-                richtig += 1
-            else:
-                falsch += 1
-    return {"richtig": richtig, "falsch": falsch, "zellen": richtig + falsch}
+def zellen(res: dict[str, Any]) -> dict[tuple[str, str], dict[str, Any]]:
+    return {(e["record_id"], e["feld"]): e for e in res["detail"] if e.get("regel")}
 
 
 def main() -> int:
@@ -100,51 +77,83 @@ def main() -> int:
     recs = {r["record_id"]: r for r in v.lade(v.RECORDS)}
     texte = {rid: (Path(".") / recs[rid]["document"]["path"]).read_text(encoding="utf-8", errors="replace")
              for rid in {f["record_id"] for f in faelle}}
-    res = m.messe(faelle, recs, texte, m.alias_mod.ALIAS, True,
-                  mean_formate=("mittel_sd", "plus_minus"))
-    detail = res["detail"]
-    gesamt = {"ohne_tausch": bilanz(detail, False), "mit_tausch": bilanz(detail, True)}
-    einzeln = belege(recs, texte, detail)
 
-    zeilen = ["# Armzuordnung: Kopfzeilen-Label gegen Spaltenreihenfolge", "",
+    m.POSITIONAL = False
+    label = m.messe(faelle, recs, texte, m.alias_mod.ALIAS, True,
+                    mean_formate=("mittel_sd", "plus_minus"))
+    m.POSITIONAL = True
+    position = m.messe(faelle, recs, texte, m.alias_mod.ALIAS, True,
+                       mean_formate=("mittel_sd", "plus_minus"))
+    m.POSITIONAL = False
+
+    zl, zp = zellen(label), zellen(position)
+    besser: list[dict[str, Any]] = []
+    schlechter: list[dict[str, Any]] = []
+    for k in sorted(set(zl) | set(zp)):
+        a, b = zl.get(k), zp.get(k)
+        va = a["regel"]["value"] if a and a.get("regel") else None
+        vb = b["regel"]["value"] if b and b.get("regel") else None
+        if va == vb:
+            continue
+        eintrag = {"record_id": k[0], "feld": k[1], "vorher": va, "nachher": vb,
+                   "gold": (a or b)["gold"]}
+        (besser if (b and b["richtig"]) else schlechter).append(eintrag)
+
+    def groesse(res: dict[str, Any]) -> dict[str, int]:
+        d = [e for e in res["detail"] if e["feld"] in SIZE_FELDER]
+        r = sum(1 for e in d if e["richtig"])
+        return {"richtig": r, "falsch": len(d) - r, "zellen": len(d)}
+
+    einseln = belege(recs, texte, label["detail"])
+
+    zeilen = ["# Armzuordnung: Kopfzeilen-Label gegen Spaltenposition", "",
               "Offline, ohne Netzaufruf.", "",
               "## Die vier PMC5617873-Records", ""]
-    for b in einzeln:
+    for b in einseln:
         zeilen.append(f"* `{b['record_id']}` - Kopfzeile {b['kopfzeile']}: `{b['kopf_text']}`")
         for s in b["spalten"]:
             zeilen.append(f"  * Spalte {s['spalte']}: `{s['kopf']}` -> `{s['arm']}`")
         g = b["gold"]
         zeilen.append(f"  * Gold: intervention {g['intervention_group_size']}, "
                       f"comparator {g['comparator_group_size']}")
-    zeilen += ["", "## Bilanz der Groessenzellen", "",
-               "| Lesart | richtig | falsch | Zellen |", "|---|---:|---:|---:|"]
-    for name, wert in (("Label (Spaltenname)", gesamt["ohne_tausch"]),
-                       ("Position (erste Spalte = Intervention)", gesamt["mit_tausch"])):
-        zeilen.append(f"| {name} | {wert['richtig']} | {wert['falsch']} | {wert['zellen']} |")
     zeilen += ["", "## Lesart", "",
-               "Die Regel ordnet jeden `n`-Wert ueber den Spaltennamen zu; das ist die",
-               "Spaltenreihenfolge des Tabellenkopfs, nur ohne Annahme ueber die erste",
-               "Spalte. Bei PMC5617873 steht `Placebo (n = 45)` in Spalte 1 und",
-               "`Aripiprazole (n = 47)` in Spalte 2; die Regel liefert deshalb",
-               "Intervention 47 und Comparator 45.", "",
-               "Gold fuehrt fuer dieselben Records Intervention 45 und Comparator 47,",
-               "also die Werte der Placebo-Spalte als Intervention. Ein Tausch der",
-               "Regelwerte wuerde diese acht Zellen gegen Gold richtig stellen, aber",
-               "dem Tabellenkopf widersprechen.", "",
-               "## Was ein Tausch kostet", "",
-               "Ein Tausch aller Groessenpaare stellt die acht PMC5617873-Zellen richtig,",
-               "macht aber `yun2024:193` (138/131) und `yun2024:426` (49/44) falsch, also",
-               "vier vorher richtige Zellen. Unterm Strich: 12 richtig / 10 falsch vorher,",
-               "16 richtig / 6 falsch nachher - gegen ein Gold, das an dieser Stelle selbst",
-               "vertauscht ist. Der Tabellenkopf bleibt die verlaesslichere Quelle.", ""]
+               "`label` ordnet jeden `n`-Wert ueber den Spaltennamen zu, `position` nimmt die",
+               "erste Datenspalte als Intervention und die zweite als Comparator. Bei",
+               "PMC5617873 steht `Placebo (n = 45)` in Spalte 1 und `Aripiprazole (n = 47)`",
+               "in Spalte 2; `position` liefert dort also Intervention 45, Comparator 47 und",
+               "trifft damit das Gold, das dieselbe Zuordnung fuehrt.", "",
+               "## Bilanz ueber die 295", "",
+               "| Lesart | Zellen | TP | FP | Groessenzellen richtig | Groessenzellen falsch |",
+               "|---|---:|---:|---:|---:|---:|"]
+    for name, res in (("label", label), ("position", position)):
+        g = groesse(res)
+        zeilen.append(f"| {name} | {res['geliefert']} | {res['tp']} | {res['fp']} | "
+                      f"{g['richtig']} | {g['falsch']} |")
+    zeilen += ["", f"Richtig geworden: {len(besser)} Zellen. "
+                   f"Falsch geworden: {len(schlechter)} Zellen.", "",
+               "| Richtung | Record | Feld | vorher | nachher | Gold |",
+               "|---|---|---|---:|---:|---:|"]
+    for e in besser + schlechter:
+        richtung = "richtig" if e in besser else "falsch"
+        zeilen.append(f"| {richtung} | `{e['record_id']}` | {e['feld']} | {e['vorher']} | "
+                      f"{e['nachher']} | {e['gold']} |")
+    zeilen += ["", "## Lesart der Zahlen", "",
+               "Die Positionsregel holt alle acht PMC5617873-Zellen und macht dafuer die",
+               "beiden Arme von `yun2024:426` falsch: dort steht in Spalte 1 der",
+               "Interventionsarm (`n  Mean`-Layout), Gold folgt dem Spaltennamen. Der",
+               "Tabellenkopf bleibt die verlaesslichere Quelle; das Gold der vier",
+               "PMC5617873-Records ist vertauscht.", ""]
     (HIER / "armreihenfolge_20261121.md").write_text("\n".join(zeilen), encoding="ascii", errors="replace")
     (HIER / "armreihenfolge_20261121.json").write_text(
-        json.dumps({"gesamt": gesamt, "records": einzeln}, indent=2, ensure_ascii=True), encoding="utf-8")
-    print("Faelle", len(faelle))
-    for name, wert in gesamt.items():
-        print(f"{name:14s} richtig {wert['richtig']} | falsch {wert['falsch']}")
-    for b in einzeln:
-        print(b["record_id"], [(s["spalte"], s["arm"]) for s in b["spalten"]], "gold", b["gold"])
+        json.dumps({"label": {"tp": label["tp"], "fp": label["fp"], "groesse": groesse(label)},
+                    "position": {"tp": position["tp"], "fp": position["fp"], "groesse": groesse(position)},
+                    "besser": besser, "schlechter": schlechter, "records": einseln},
+                   indent=2, ensure_ascii=True), encoding="utf-8")
+    print("label    Zellen", label["geliefert"], "TP", label["tp"], "FP", label["fp"])
+    print("position Zellen", position["geliefert"], "TP", position["tp"], "FP", position["fp"])
+    print("richtig geworden", len(besser), "| falsch geworden", len(schlechter))
+    for e in besser + schlechter:
+        print(" ", e["record_id"], e["feld"], e["vorher"], "->", e["nachher"], "gold", e["gold"])
     return 0
 
 
