@@ -11,7 +11,9 @@ Der zusammenfassende Stand der 295 Faelle (Endvariante 43 Zellen, 38 TP, 5 FP,
 
 Die Bausteine tragen bei den uebrigen FN-Regeln nicht; Messung und Begruendung
 stehen in `bausteine_uebertrag_20261121.md` (50 Zellen, 7 TP, 43 FP bei 464
-offenen Faellen).
+offenen Faellen). Die Kontrolle dazu (`pruefung_fn_20261121.md`) zeigt: keine
+Ueberlappung mit den 43 Zellen, und die Stichprobe der
+`fn_nicht_im_dokument`-Faelle bestaetigt die Klasse.
 
 | Datei | Inhalt |
 |---|---|

@@ -1,0 +1,380 @@
+{
+  "ueberlappung": [],
+  "zellen_haupt": 43,
+  "tp_rest": 7,
+  "stichprobe": [
+    {
+      "record_id": "yun2024:10",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 20.0,
+      "zeichen": 2872,
+      "zeilen": 1,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:112",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 78.33,
+      "zeichen": 49917,
+      "zeilen": 410,
+      "outcome_im_text": true,
+      "klasse": "nur_gerundet",
+      "treffer": [
+        {
+          "zeile": 38,
+          "zelle": false,
+          "text": "Roermond               217 (16.09)      69 (15.9)        78 (17.1)                          70 (15.3)           1.04 (0."
+        }
+      ],
+      "anzahl": 1
+    },
+    {
+      "record_id": "yun2024:134",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 24.79,
+      "zeichen": 21577,
+      "zeilen": 143,
+      "outcome_im_text": true,
+      "klasse": "nur_gerundet",
+      "treffer": [
+        {
+          "zeile": 93,
+          "zelle": false,
+          "text": "TUG >10 sec                                79 (25.5%)       80 (25.9%)        0.93[^#^](#)"
+        },
+        {
+          "zeile": 107,
+          "zelle": false,
+          "text": "\u2318: Mann Whitney U-Test:::: Furthermore, there were no differences regarding functional and cognitive tests assessed by t"
+        },
+        {
+          "zeile": 143,
+          "zelle": false,
+          "text": "#: \u03c72-Test:::: The most frequent complications were cardiopulmonary complications (30.8%), followed by anemia (15.2%) an"
+        }
+      ],
+      "anzahl": 3
+    },
+    {
+      "record_id": "yun2024:158",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 15.64,
+      "zeichen": 16081,
+      "zeilen": 81,
+      "outcome_im_text": true,
+      "klasse": "nur_gerundet",
+      "treffer": [
+        {
+          "zeile": 1,
+          "zelle": false,
+          "text": "# Abstract ## BACKGROUND/OBJECTIVES: Obesity prevention during adolescence is a health priority. The 'Physical Activity "
+        },
+        {
+          "zeile": 41,
+          "zelle": false,
+          "text": "Baseline (control=16, intervention=44), mid-point (control=23,"
+        }
+      ],
+      "anzahl": 2
+    },
+    {
+      "record_id": "yun2024:163",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 1.81,
+      "zeichen": 16081,
+      "zeilen": 81,
+      "outcome_im_text": true,
+      "klasse": "nur_gerundet",
+      "treffer": [
+        {
+          "zeile": 1,
+          "zelle": false,
+          "text": "# Abstract ## BACKGROUND/OBJECTIVES: Obesity prevention during adolescence is a health priority. The 'Physical Activity "
+        },
+        {
+          "zeile": 14,
+          "zelle": false,
+          "text": "Other                         15 (3.1%)             8 (1.3%)                   11 (2.5%)                 9 (1.6%)       "
+        },
+        {
+          "zeile": 19,
+          "zelle": false,
+          "text": "BMI category[e](#)    Underweight                   30 (6.3%)             41 (7.3%)                  19 (5.8%)          "
+        }
+      ],
+      "anzahl": 5
+    },
+    {
+      "record_id": "yun2024:193",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": -0.59,
+      "zeichen": 20669,
+      "zeilen": 199,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:205",
+      "feld": "comparator_standard_deviation",
+      "arm": "comparator",
+      "wert": 103.03,
+      "zeichen": 14600,
+      "zeilen": 124,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:302",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 0.2,
+      "zeichen": 5515,
+      "zeilen": 19,
+      "outcome_im_text": true,
+      "klasse": "nur_gerundet",
+      "treffer": [
+        {
+          "zeile": 1,
+          "zelle": false,
+          "text": "# Abstract ## Background and Objectives: Oral lichen planus (OLP) is a relatively common, chronic inflammatory condition"
+        },
+        {
+          "zeile": 7,
+          "zelle": false,
+          "text": "![]():::: <figure> <p><img src=\"\" /></p> <figcaption>Intergroup comparison of burning sensation</figcaption> </figure> T"
+        },
+        {
+          "zeile": 13,
+          "zelle": false,
+          "text": "![]():::: <figure> <p><img src=\"\" /></p> <figcaption>Intergroup comparison of clinical score</figcaption> </figure> Impr"
+        }
+      ],
+      "anzahl": 3
+    },
+    {
+      "record_id": "yun2024:335",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": -4.7,
+      "zeichen": 17138,
+      "zeilen": 105,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:361",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 169.0,
+      "zeichen": 6842,
+      "zeilen": 1,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:370",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 35.0,
+      "zeichen": 11667,
+      "zeilen": 69,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:398",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 4.09,
+      "zeichen": 18987,
+      "zeilen": 73,
+      "outcome_im_text": true,
+      "klasse": "nur_gerundet",
+      "treffer": [
+        {
+          "zeile": 1,
+          "zelle": false,
+          "text": "# Abstract ## Purpose Sonic hedgehog (SHH), an activating ligand of smoothened (SMO), is overexpressed in > 70% of pancr"
+        },
+        {
+          "zeile": 32,
+          "zelle": false,
+          "text": "Neck/uncinate              1 (2)         2 (4)             3 (3)"
+        },
+        {
+          "zeile": 56,
+          "zelle": false,
+          "text": "Fatigue                          7 (13)        4 (8)     .53"
+        }
+      ],
+      "anzahl": 12
+    },
+    {
+      "record_id": "yun2024:452",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 3.33,
+      "zeichen": 25267,
+      "zeilen": 239,
+      "outcome_im_text": true,
+      "klasse": "nur_gerundet",
+      "treffer": [
+        {
+          "zeile": 30,
+          "zelle": false,
+          "text": "SEIFA^b^(% living in most advantaged 3 quintiles)^c^   86 (75.4%)           78 (68.4%)"
+        },
+        {
+          "zeile": 42,
+          "zelle": false,
+          "text": "Walking PA (sessions/week)                             3.99 (3.04)          3.30 (2.44)"
+        },
+        {
+          "zeile": 46,
+          "zelle": false,
+          "text": "Vegetables (servings/day)                              3.1 (1.4)            3.4 (1.8)"
+        }
+      ],
+      "anzahl": 8
+    },
+    {
+      "record_id": "yun2024:477",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 1279.0,
+      "zeichen": 41467,
+      "zeilen": 266,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:504",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 1.37,
+      "zeichen": 16710,
+      "zeilen": 75,
+      "outcome_im_text": true,
+      "klasse": "nur_gerundet",
+      "treffer": [
+        {
+          "zeile": 1,
+          "zelle": false,
+          "text": "# Abstract ## Background There is an increasing amount of blood sample rejection at primary health care facilities (PHCF"
+        },
+        {
+          "zeile": 13,
+          "zelle": false,
+          "text": "Male                   1 (5)"
+        },
+        {
+          "zeile": 23,
+          "zelle": false,
+          "text": "> 10 years            9 (39):::: [Box 1](#) describes the tool that was developed to facilitate the phlebotomy training,"
+        }
+      ],
+      "anzahl": 17
+    },
+    {
+      "record_id": "yun2024:531",
+      "feld": "intervention_standard_deviation",
+      "arm": "intervention",
+      "wert": 10.54,
+      "zeichen": 15368,
+      "zeilen": 68,
+      "outcome_im_text": true,
+      "klasse": "nur_gerundet",
+      "treffer": [
+        {
+          "zeile": 1,
+          "zelle": false,
+          "text": "# Abstract ## Background Despite being present in up to 1% of the population, few controlled trials have examined the ef"
+        },
+        {
+          "zeile": 19,
+          "zelle": false,
+          "text": "HAM-A                            19.2                                      18.6                                      19."
+        },
+        {
+          "zeile": 51,
+          "zelle": false,
+          "text": "Upper respiratory tract infection   7 (2.3)                                 7 (2.3)                                 11 ("
+        }
+      ],
+      "anzahl": 3
+    },
+    {
+      "record_id": "yun2024:558",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "wert": -8.0,
+      "zeichen": 13122,
+      "zeilen": 40,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:61",
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 20.0,
+      "zeichen": 4109,
+      "zeilen": 26,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:620",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "wert": 5639.0,
+      "zeichen": 12441,
+      "zeilen": 20,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    },
+    {
+      "record_id": "yun2024:84",
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 124.0,
+      "zeichen": 39597,
+      "zeilen": 215,
+      "outcome_im_text": true,
+      "klasse": "nicht_gefunden",
+      "treffer": [],
+      "anzahl": 0
+    }
+  ],
+  "verteilung": {
+    "nicht_gefunden": 11,
+    "nur_gerundet": 9
+  }
+}
