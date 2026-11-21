@@ -226,8 +226,6 @@ def main() -> int:
         (dort fehlt P5 am haeufigsten). Fuer ein Mittel gilt:
 
         * `alle` - jede leere Mittelzelle wird gefuellt,
-        * `arm` - nur wenn der Arm weder Mittel noch Streuung hat,
-        * `record` - nur wenn der Record ueberhaupt kein Mittel hat,
         * `nie` - gar kein Mittel aus der Regel.
 
         `groesse` steuert die Groessen:
@@ -243,8 +241,6 @@ def main() -> int:
         belegt = 0
         zurueck = 0
         zurueck_g = 0
-        arme_mittel = {k[1] for k in basis if art(k[0]) == "mittel"}
-        arme_streuung = {k[1] for k in basis if art(k[0]) == "streuung"}
         arme_mit_wert = {k[1] for k in basis if art(k[0]) in ("mittel", "streuung")}
         zeile_wert = {(c["group"], c.get("zeile")) for c in extra
                       if art(c["field"]) in ("mittel", "streuung") and c.get("zeile")}
@@ -265,21 +261,13 @@ def main() -> int:
                 if mittel == "nie":
                     zurueck += 1
                     continue
-                if mittel == "arm" and (c["group"] in arme_mittel
-                                        or c["group"] in arme_streuung):
-                    zurueck += 1
-                    continue
-                if mittel == "record" and arme_mittel:
-                    zurueck += 1
-                    continue
             karte[schluessel] = {"field": c["field"], "group": c["group"],
                                 "value": c["value"]}
         return list(karte.values()), belegt, zurueck, zurueck_g
 
     karten: dict[str, dict[str, list[dict[str, Any]]]] = {
         "p5": {}, "p5_plus_alt": {}, "p5_plus_neu": {},
-        "p5_plus_alt_luecken": {}, "p5_plus_neu_luecken": {},
-        "p5_plus_neu_arm": {}, "p5_plus_neu_record": {},
+        "p5_plus_alt_luecken": {},         "p5_plus_neu_luecken": {},
         "p5_plus_neu_ohne_mittel": {},
         "p5_plus_neu_groesse_arm": {}, "p5_plus_neu_groesse_zeile": {},
         "p5_plus_neu_groesse_beides": {}}
@@ -302,8 +290,6 @@ def main() -> int:
         # Lueckenfuellung: ohne Prioritaet, mit Prioritaet auf Arm und auf Record.
         for name, regel, quelle in (("p5_plus_alt_luecken", "alle", zellen_alt),
                                     ("p5_plus_neu_luecken", "alle", zellen_neu),
-                                    ("p5_plus_neu_arm", "arm", zellen_neu),
-                                    ("p5_plus_neu_record", "record", zellen_neu),
                                     ("p5_plus_neu_ohne_mittel", "nie", zellen_neu)):
             zellen, belegt, zurueck, _zg = fuellen(basis, quelle.get(rid, []), regel)
             karten[name][rid] = zellen
@@ -373,8 +359,6 @@ def main() -> int:
                        "zurueckgehalten": zurueckgehalten,
                        "zuwachs_je_feldart": {
                            n: zuwachs(n) for n in ("p5_plus_neu_luecken",
-                                                   "p5_plus_neu_arm",
-                                                   "p5_plus_neu_record",
                                                    "p5_plus_neu_ohne_mittel",
                                                    "p5_plus_neu_groesse_arm",
                                                    "p5_plus_neu_groesse_zeile",
@@ -432,8 +416,8 @@ def main() -> int:
            "", "| Stand | TP | FP | FN | F1 | Feld schon belegt | Mittel zurueckgehalten |",
            "|---|---:|---:|---:|---:|---:|---:|"]
     namen = ("p5", "p5_plus_alt", "p5_plus_neu", "p5_plus_alt_luecken",
-             "p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
-             "p5_plus_neu_ohne_mittel", "p5_plus_neu_groesse_arm",
+             "p5_plus_neu_luecken", "p5_plus_neu_ohne_mittel",
+             "p5_plus_neu_groesse_arm",
              "p5_plus_neu_groesse_zeile", "p5_plus_neu_groesse_beides")
     for name in namen:
         b = bilanz[name]
@@ -450,28 +434,26 @@ def main() -> int:
            f"{g_alt['tp'] - b_p5['tp']:+.0f} TP / {g_alt['fp'] - b_p5['fp']:+.0f} FP; die neue "
            f"Wahl bringt unter dieser Strategie {g_neu['tp'] - g_alt['tp']:+.0f} TP und "
            f"{g_neu['fp'] - g_alt['fp']:+.0f} FP.", ""]
-    zw = {n: zuwachs(n) for n in ("p5_plus_neu_luecken", "p5_plus_neu_arm",
-                                  "p5_plus_neu_record", "p5_plus_neu_ohne_mittel",
+    zw = {n: zuwachs(n) for n in ("p5_plus_neu_luecken", "p5_plus_neu_ohne_mittel",
                                   "p5_plus_neu_groesse_arm",
                                   "p5_plus_neu_groesse_zeile",
                                   "p5_plus_neu_groesse_beides")}
     md += ["", "## Feldprioritaet der Mittel", "",
-           "Streuung und Groesse werden immer gefuellt. Ein Mittel wird nur",
-           "geschrieben, wenn `alle` (jede Luecke), `arm` (der Arm hat weder Mittel",
-           "noch Streuung) oder `record` (der Record hat kein Mittel) es zulaesst.",
-           "`nie` schaltet die Mittel der Regel ganz ab.",
+           "Streuung und Groesse werden immer gefuellt. Fuer die Mittel gibt es",
+           "zwei Staende: `alle` fuellt jede Luecke, `nie` schaltet die Mittel der",
+           "Regel ganz ab. Zwei geprueffte Zwischenstufen (Mittel nur im leeren Arm,",
+           "Mittel nur im mittelfreien Record) waren zellgleich mit `alle` und sind",
+           "entfernt.",
            "", "| Stand | Feldart | neu richtig | neu falsch |",
            "|---|---|---:|---:|"]
-    for name in ("p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
-                 "p5_plus_neu_ohne_mittel", "p5_plus_neu_groesse_arm",
-                 "p5_plus_neu_groesse_zeile", "p5_plus_neu_groesse_beides"):
+    for name in ("p5_plus_neu_luecken", "p5_plus_neu_ohne_mittel",
+                 "p5_plus_neu_groesse_arm", "p5_plus_neu_groesse_zeile",
+                 "p5_plus_neu_groesse_beides"):
         for feldart in sorted(zw[name]):
             e = zw[name][feldart]
             md.append(f"| {name} | {feldart} | {e['tp']} | {e['fp']} |")
     md += ["", "| Stand | TP gegen P5 | FP gegen P5 | F1 |", "|---|---:|---:|---:|"]
     for name, label in (("p5_plus_neu_luecken", "Mittel in jeder Luecke"),
-                        ("p5_plus_neu_arm", "Mittel nur im leeren Arm"),
-                        ("p5_plus_neu_record", "Mittel nur im mittelfreien Record"),
                         ("p5_plus_neu_ohne_mittel", "keine Mittel aus der Regel")):
         b = bilanz[name]
         md.append(f"| {label} | {b['tp'] - b_p5['tp']:+.0f} | {b['fp'] - b_p5['fp']:+.0f} | "
@@ -534,16 +516,16 @@ def main() -> int:
     print(f"P5: bestaetigt {bestaetigt} | ueberschrieben {len(ueberschrieben)} | "
           f"Regel liefert nichts {leere}")
     for name in ("p5", "p5_plus_alt", "p5_plus_neu", "p5_plus_alt_luecken",
-                 "p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
-                 "p5_plus_neu_ohne_mittel", "p5_plus_neu_groesse_arm",
+                 "p5_plus_neu_luecken", "p5_plus_neu_ohne_mittel",
+                 "p5_plus_neu_groesse_arm",
                  "p5_plus_neu_groesse_zeile", "p5_plus_neu_groesse_beides"):
         b = bilanz[name]
         print(f"  {name:28s} TP {b['tp']:.0f} FP {b['fp']:.0f} FN {b['fn']:.0f} "
               f"F1 {b['f1']:.3f} belegt {uebersprungen.get(name, 0)} "
               f"mittel_zurueck {zurueckgehalten.get(name, 0)}")
-    for name in ("p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
-                 "p5_plus_neu_ohne_mittel", "p5_plus_neu_groesse_arm",
-                 "p5_plus_neu_groesse_zeile", "p5_plus_neu_groesse_beides"):
+    for name in ("p5_plus_neu_luecken", "p5_plus_neu_ohne_mittel",
+                 "p5_plus_neu_groesse_arm", "p5_plus_neu_groesse_zeile",
+                 "p5_plus_neu_groesse_beides"):
         print(f"  {name} je Feldart: {zuwachs(name)}")
     for e in groessen_befund():
         print(f"    {e['record_id']} {e['feld']} {e['arm']} zeile={e['zeile']} "

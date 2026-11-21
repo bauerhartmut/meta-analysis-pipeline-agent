@@ -75,8 +75,6 @@ keine
 | p5_plus_neu | 157 | 141 | 2616 | 0.102 | 0 | 0 |
 | p5_plus_alt_luecken | 169 | 127 | 2604 | 0.110 | 64 | 0 |
 | p5_plus_neu_luecken | 178 | 120 | 2595 | 0.116 | 66 | 0 |
-| p5_plus_neu_arm | 178 | 120 | 2595 | 0.116 | 66 | 0 |
-| p5_plus_neu_record | 178 | 120 | 2595 | 0.116 | 66 | 0 |
 | p5_plus_neu_ohne_mittel | 178 | 114 | 2595 | 0.116 | 66 | 6 |
 | p5_plus_neu_groesse_arm | 174 | 102 | 2599 | 0.114 | 66 | 6 |
 | p5_plus_neu_groesse_zeile | 175 | 103 | 2598 | 0.115 | 66 | 6 |
@@ -89,22 +87,17 @@ stehen: +12 TP und +24 FP gegenueber der unveraenderten Vorhersage (F1 0.109 -> 
 
 ## Feldprioritaet der Mittel
 
-Streuung und Groesse werden immer gefuellt. Ein Mittel wird nur
-geschrieben, wenn `alle` (jede Luecke), `arm` (der Arm hat weder Mittel
-noch Streuung) oder `record` (der Record hat kein Mittel) es zulaesst.
-`nie` schaltet die Mittel der Regel ganz ab.
+Streuung und Groesse werden immer gefuellt. Fuer die Mittel gibt es
+zwei Staende: `alle` fuellt jede Luecke, `nie` schaltet die Mittel der
+Regel ganz ab. Zwei geprueffte Zwischenstufen (Mittel nur im leeren Arm,
+Mittel nur im mittelfreien Record) waren zellgleich mit `alle` und sind
+entfernt.
 
 | Stand | Feldart | neu richtig | neu falsch |
 |---|---|---:|---:|
 | p5_plus_neu_luecken | groesse | 4 | 12 |
 | p5_plus_neu_luecken | mittel | 0 | 6 |
 | p5_plus_neu_luecken | streuung | 8 | 6 |
-| p5_plus_neu_arm | groesse | 4 | 12 |
-| p5_plus_neu_arm | mittel | 0 | 6 |
-| p5_plus_neu_arm | streuung | 8 | 6 |
-| p5_plus_neu_record | groesse | 4 | 12 |
-| p5_plus_neu_record | mittel | 0 | 6 |
-| p5_plus_neu_record | streuung | 8 | 6 |
 | p5_plus_neu_ohne_mittel | groesse | 4 | 12 |
 | p5_plus_neu_ohne_mittel | streuung | 8 | 6 |
 | p5_plus_neu_groesse_arm | streuung | 8 | 6 |
@@ -115,8 +108,6 @@ noch Streuung) oder `record` (der Record hat kein Mittel) es zulaesst.
 | Stand | TP gegen P5 | FP gegen P5 | F1 |
 |---|---:|---:|---:|
 | Mittel in jeder Luecke | +12 | +24 | 0.1159 |
-| Mittel nur im leeren Arm | +12 | +24 | 0.1159 |
-| Mittel nur im mittelfreien Record | +12 | +24 | 0.1159 |
 | keine Mittel aus der Regel | +12 | +18 | 0.1162 |
 
 ## Groesse nur mit Beleg im Arm

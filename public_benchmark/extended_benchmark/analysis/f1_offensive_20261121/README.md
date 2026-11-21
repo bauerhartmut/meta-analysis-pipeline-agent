@@ -722,13 +722,12 @@ weil die Vorhersage das Feld schon hat (+12 TP, +24 FP, F1 0.109 -> 0.116). Mit
 der alten Tabellenwahl waere es nur +3 TP bei +31 FP (F1 0.110), die neue Wahl
 bringt unter dieser Strategie also +9 TP und -7 FP.
 
-Feldprioritaet fuer die Mittel aendert daran nichts: Streuung und Groesse
-zuerst zu fuellen und ein Mittel nur im leeren Arm (oder im mittelfreien
-Record) zu schreiben, liefert exakt dieselben 178 / 120 / 2595 mit 0
-zurueckgehaltenen Mitteln. Eine Mittelluecke entsteht nur dort, wo der Arm
-weder Mittel noch Streuung hat, die Bedingung ist also immer erfuellt. Erst das
-Abschalten der Mittel bewegt die Bilanz: 178 TP bleiben, FP 120 -> 114, F1
-0.1159 -> 0.1161. Der Grund steht in der Feldart:
+Zwei Zwischenstaende der Mittel (nur im leeren Arm, nur im mittelfreien
+Record) waren zellgleich mit dem einfachen Lueckenfuellen (178 / 120 / 2595, 0
+zurueckgehaltene Mittel) und sind wieder entfernt: eine Mittelluecke entsteht
+nur dort, wo der Arm weder Mittel noch Streuung hat, die Bedingung ist also
+immer erfuellt. Erst das Abschalten der Mittel bewegt die Bilanz: 178 TP
+bleiben, FP 120 -> 114, F1 0.1159 -> 0.1161. Der Grund steht in der Feldart:
 
 | Feldart | neu richtig | neu falsch |
 |---|---:|---:|
@@ -744,6 +743,17 @@ oder Streuung) laesst zwei Zellen stehen (175 / 103); die Vorhersage traegt
 keine Zeilenangabe, geprueft wird also gegen die Regel-eigene Lesung. Beides
 zusammen bleibt bei 174 / 102. Der Groessengewinn stammt damit genau aus den
 Records, in denen der Arm sonst leer ist.
+
+Die 12 falschen Groessenzellen sind nach Ursache sortiert
+(`groessen_ursachen_20261121.py`): 5 falsche Zeile, 7 abweichende Definition, 0
+Rechenfehler. Alle 12 stammen aus dem Kopfband einer Tabelle (Bildunterschrift,
+Spaltenkopf oder Trennlinie), keine aus einer Datenzeile. Falsche Zeile heisst
+hier: die 24 aus "12 and 24 months" (`yun2024:159`) oder die
+Baseline-Kopfzeile 44/49 statt der Outcome-Zeile 18/21 und 30/34 (`yun2024:420`,
+`:421`). Abweichende Definition heisst: randomisiert gegen ausgewertet (406/393
+gegen 402/388 in `yun2024:251`, 398/389 gegen 402/388 in `:252`, 15 gegen 13 in
+`:356`) sowie Tabellenunterschrift gegen Auswertungsgroesse (104/114 gegen
+99/108 in `yun2024:451`; 99/108 steht nicht als n im Dokument).
 
 ## Fixture: beide Zellstaende zellgenau
 

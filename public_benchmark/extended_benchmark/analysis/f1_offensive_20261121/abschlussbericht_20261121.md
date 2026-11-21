@@ -289,12 +289,11 @@ Ersetzen kostet TP, `nur Luecken fuellen` gewinnt leicht: +12 TP und +24 FP
 gegenueber der unveraenderten Vorhersage, F1 0.109 -> 0.116. Die Tabellenwahl
 bringt unter dieser Strategie +9 TP und -7 FP gegenueber der alten.
 
-Die nachgelagerte Feldprioritaet (Streuung und Groesse zuerst, Mittel nur im
-leeren Arm oder mittelfreien Record) ist wirkungslos: sie liefert dieselben
-178 / 120 / 2595 und haelt 0 Mittel zurueck, weil eine Mittelluecke nur dort
-auftritt, wo der Arm weder Mittel noch Streuung hat. Erst der Verzicht auf
-Mittel aus der Regel hilft: 178 TP bleiben, FP 120 -> 114 (F1 0.1159 ->
-0.1161). Neue Zellen nach Feldart: Streuung 8 richtig / 6 falsch, Groesse 4 /
+Zwei Zwischenstaende der Mittel (nur im leeren Arm, nur im mittelfreien
+Record) waren zellgleich mit dem einfachen Lueckenfuellen und sind entfernt,
+weil eine Mittelluecke nur dort auftritt, wo der Arm weder Mittel noch Streuung
+hat. Erst der Verzicht auf Mittel aus der Regel hilft: 178 TP bleiben, FP 120 ->
+114 (F1 0.1159 -> 0.1161). Neue Zellen nach Feldart: Streuung 8 richtig / 6 falsch, Groesse 4 /
 12, Mittel 0 / 6.
 
 Auch die Groessen lassen sich nicht ueber einen Beleg im Arm absichern: die
@@ -303,6 +302,14 @@ Zellen erfuellt, weil die Vorhersage genau in diesen Records den Arm gar nicht
 liest. Der Stand faellt damit auf 174 TP / 102 FP (statt 178 / 114), also
 -12 FP und -4 TP; die Zeilenbedingung rettet zwei Zellen (175 / 103). Unter dem
 Strich ist der Groessengewinn nur als Ganzes zu haben oder gar nicht.
+
+Die 12 falschen Groessenzellen verteilen sich auf zwei Ursachen
+(`groessen_ursachen_20261121.py`): 5 mal falsche Zeile (Zahl aus der
+Bildunterschrift oder der Baseline-Kopfzeile statt aus der Outcome-Zeile) und 7
+mal abweichende Definition (randomisiert statt ausgewertet, Tabellenunterschrift
+statt Auswertungsgroesse); Rechenfehler gibt es keinen. Alle 12 stammen aus dem
+Kopfband einer Tabelle, keine aus einer Datenzeile - der Fehler sitzt damit in
+der Zeilenwahl, nicht im Lesen der Zahl.
 
 ## Grenzen
 
