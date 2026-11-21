@@ -403,21 +403,33 @@ Der Ereignis-Leser ist abgeschaltet (er lieferte 0 TP und 7 FP), Mittel werden
 nur aus `Zahl +/- Zahl` und `Zahl (Zahl)` gelesen. Alle Laeufe ohne
 Ereignis-Leser:
 
+Groessenzeilen kommen aus der Tabelle der Zielzeile (mit Rueckfall auf die
+naechste Zeile darueber); das Zellformat `n  Mean (95% CI)` wird als Zeilen-`n`
+gelesen. Groessen sind Zaehlungen, Dezimalwerte und Werte unter 5 werden
+verworfen.
+
 | Kennzahl | ohne | mit Alias | nur `Mittel (SD)` | Endvariante |
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
-| Zellen | 32 | 40 | 20 | 37 |
-| TP | 14 | 20 | 8 | 20 |
+| Zellen | 34 | 42 | 22 | 39 |
+| TP | 16 | 22 | 10 | 22 |
 | FP | 18 | 20 | 12 | 17 |
-| Trefferquote | 44 % | 50 % | 40 % | **54 %** |
+| Trefferquote | 47 % | 52 % | 45 % | **56 %** |
 
 Formate in der Endvariante:
 
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
-| Groesse | Groessenzeile | 8 | 10 |
+| Groesse | Groessenzeile | 10 | 10 |
 | Mittel | `Zahl +/- Zahl` | 12 | 5 |
 | Mittel | `Zahl (Zahl)` | 0 | 2 |
+
+`yun2024:193` und `yun2024:196` bleiben falsch: ihre Zielzeile steht in
+Tabelle 1, Gold stammt aus der Zeitverlaufstabelle 2 (Woche 28). Eine
+Blockheuristik mit Wochenauswahl wurde getestet und verworfen - sie waehlt bei
+zwei Bloecken desselben Outcomes den falschen (196: Mittelblock 80/78 statt
+Aenderungsblock 24/24) und griff in anderen Faellen eine spaetere, fremde
+Tabelle ab.
 
 Der Schritt bringt gegenueber dem Alias-Lauf mit Ereignissen 7 FP weniger bei
 gleicher TP-Zahl; gegenueber der strengen Variante 12 TP mehr bei 5 FP mehr.

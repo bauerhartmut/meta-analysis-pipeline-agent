@@ -36,6 +36,69 @@ import groessen_zielzeile_20261121 as g  # noqa: E402
 import zielzeile_alias_20261121 as alias_mod  # noqa: E402
 from zaehlfelder_20261121 import segmente, arm_von_label  # noqa: E402
 
+KAPITION = re.compile(r"^\s*(?:Table|TABLE)\s*\d|:::\s*caption", re.IGNORECASE)
+
+
+def tabellengrenzen(zeilen: list[str], ziel: int) -> tuple[int, int]:
+    """Anfang und Ende der Tabelle, in der die Zielzeile steht."""
+    start = 0
+    for j in range(ziel - 1, -1, -1):
+        if KAPITION.search(zeilen[j]):
+            start = j
+            break
+    ende = len(zeilen)
+    for j in range(ziel + 1, len(zeilen)):
+        if KAPITION.search(zeilen[j]):
+            ende = j
+            break
+    return start, ende
+
+
+def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    """Groesse aus der Tabelle der Zielzeile: `n =`-Zeile oder Zeilen-`n`."""
+    start, ende = tabellengrenzen(zeilen, ziel)
+    for i in range(ziel - 1, start - 1, -1):
+        if g.ist_groessenzeile(zeilen[i]) and g.STRENGE.search(zeilen[i]):
+            werte = g.aus_groessenzeile(zeilen, i, context)
+            if werte:
+                return werte
+    # Zeilenlayout `n  Mean (95% CI)` je Arm: n steht in der Zielzeile selbst.
+    kopf: list[str] | None = None
+    for j in range(ziel - 1, start - 1, -1):
+        segs = segmente(zeilen[j])
+        arme = [arm_von_label(s, context) for s in segs if arm_von_label(s, context)]
+        if len(arme) >= 2:
+            fenster = " ".join(zeilen[j:min(j + 3, ziel + 1)]).lower()
+            if "mean" in fenster and re.search(r"\bn\b", fenster):
+                kopf = arme[:2]
+            break
+    if not kopf:
+        # Rueckfall: naechste Groessenzeile ueber der Zielzeile, auch ausserhalb
+        # der Tabellengrenzen (Tabellen ohne Beschriftung).
+        for i in range(ziel - 1, max(-1, ziel - 61), -1):
+            if g.ist_groessenzeile(zeilen[i]) and g.STRENGE.search(zeilen[i]):
+                werte = g.aus_groessenzeile(zeilen, i, context)
+                if werte:
+                    return werte
+        return {}
+    segs = segmente(zeilen[ziel])
+    if len(kopf) != 2:
+        return {}
+
+    def ganz(s: str) -> int | None:
+        return int(s) if re.fullmatch(r"\d{1,6}", s) else None
+
+    n1 = ganz(segs[1]) if len(segs) > 1 else None
+    n2 = None
+    for k, s in enumerate(segs[2:], start=2):
+        if s.startswith("(") and k + 1 < len(segs):
+            n2 = ganz(segs[k + 1])
+            break
+    if not n1 or not n2:
+        return {}
+    return {kopf[0]: {"value": float(n1), "quelle": "zeile_n", "zeile": ziel + 1},
+            kopf[1]: {"value": float(n2), "quelle": "zeile_n", "zeile": ziel + 1}}
+
 FELD_ARM = {"intervention": "intervention", "comparator": "comparator"}
 
 
@@ -110,11 +173,13 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
         ziel = alias_mod.ziel_zeile_alias(zeilen, str(context.get("outcome") or ""), alias, akronyme)
         if ziel < 0:
             return None
-        groesse = g.groessen_zeile(zeilen, ziel)
-        if groesse < 0:
+        treffer = groesse_in_tabelle(zeilen, ziel, context).get(arm)
+        if not treffer:
             return None
-        werte = g.aus_groessenzeile(zeilen, groesse, context)
-        return werte.get(arm)
+        # Gruppengroessen sind Zaehlungen: keine Dezimalwerte, keine Kleinstwerte.
+        if float(treffer["value"]).is_integer() is False or float(treffer["value"]) < 5:
+            return None
+        return treffer
 
     ziel = alias_mod.ziel_zeile_alias(zeilen, str(context.get("outcome") or ""), alias, akronyme)
     if ziel < 0:
@@ -282,12 +347,22 @@ Gelesen wird je Feldtyp: Groessen aus der Groessenzeile, Mittel nur in den
 Formaten `Zahl +/- Zahl` und `Zahl (Zahl)`, Streuungen als Zahl in Klammern.
 Der Ereignis-Leser ist in allen Laeufen abgeschaltet (vorher 0 TP, 7 FP).
 
+Groessenzeilen kommen aus der Tabelle der Zielzeile; erst wenn dort keine
+Groessenzeile steht, gilt der Rueckfall auf die naechste Zeile darueber. Das
+Zellformat `n  Mean (95% CI)` einer Zeitverlaufstabelle wird als Zeilen-`n`
+gelesen (n nach der Wochenzahl, zweites n nach dem ersten Klammerblock).
+
 In der Endvariante stellen sich die {beide['fp']} FP so:
 
-* Groesse 10 (Groessenzeile), 8 richtig.
+* Groesse 10, davon 10 richtig (siehe Format-Tabelle).
 * Mittel 5 im Format `+/-`, 12 richtig.
 * Mittel 2 im Format `Mittel (SD)`, 0 richtig - dort ist die Zeile oder Spalte
   falsch, nicht das Format.
+
+`yun2024:193` und `yun2024:196` bleiben falsch: ihre Zielzeile liegt in
+Tabelle 1, Gold stammt aus der Zeitverlaufstabelle 2 (Woche 28). Die
+Tabelle-lokale Groesse allein hilft dort nicht, weil schon die Zielzeile in der
+falschen Tabelle steht.
 
 Trefferquote: {beide['tp']} von {beide['geliefert']} Zellen, also
 {100 * beide['tp'] // max(1, beide['geliefert'])} Prozent. Ereignisse tragen
