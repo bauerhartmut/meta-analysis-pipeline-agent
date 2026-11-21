@@ -126,32 +126,40 @@ kein F1-Hebel.
   der gespeicherte Dokumenttext bei einigen Records die Goldwerte nicht
   enthaelt. Das ist ein Befund zur Dokumentfassung, kein Zellfehler.
 
-## Zeilenbindung als Regel (Nachtrag 21.11.2026)
+## Zeilenbindung mit Zeilengruppen-Achse (Nachtrag 21.11.2026)
 
-Die aus Record 30 abgeleitete Regel arbeitet ohne Gold: Datenzeile mit
-`Wert (SD)`-Paaren und Outcome-Wort im Label, Spaltenraster aus Arm- und
-Wochenzeile, Arm ueber die Spaltenlabels (Zahlen zaehlen mit), sonst
-Verweigerung. Gemessen auf allen 41 schweren Records:
+Regel ohne Gold: Datenzeile mit `Wert (SD)`-Paaren, Spaltenraster aus Arm- und
+Wochenzeile als Filter vor der Auswahl, Zeilengruppen-Ueberschrift (PCS/MCS)
+als zweite Achse, Armwahl ueber Spaltenlabels inklusive Dosis und
+Comparator-Alias (`Control` trifft `PBO`), Zeitpunkt aus dem Record oder - bei
+reiner Zeitpunktregel - der letzte Wochenblock.
 
-| Modus | gebunden | TP | FP | FN | TP-Verlust | richtig gebunden |
-|---|---:|---:|---:|---:|---:|---:|
-| additiv | 0 | 0 -> 0 | 24 -> 24 | 158 -> 158 | 0 | 0 von 33 |
-| ersetzen | 0 | 0 -> 0 | 24 -> 24 | 158 -> 158 | 0 | 0 von 33 |
+Record 30 gegen seine 6 Goldzellen (38.1/9.5 und 31.5/7.4, n = 393/199, Woche
+52, Gruppe PCS):
 
-Ergebnis: **0 der 17 `fp_gebunden` und 0 der 16 `fn_wert_ersetzt`** in der
-Auswahl werden gebunden. Die Obergrenze zeigt, dass es nicht an den Daten
-liegt: 24 der 33 Fehlerzellen stehen in einer Zeile, die den Wert und ein
-Outcome-Wort traegt, 2 weitere mit dem Wort in den zehn Zeilen darueber. Die
-Eindeutigkeit fehlt: dieselbe Tabelle fuehrt mehrere Zeilen mit demselben Label
-(`Mean score (SD)` fuer PCS und MCS), und die Unterscheidung steht in einer
-Zeilengruppen-Ueberschrift, die der Textabgleich nicht als Achse liest. Genau
-daran scheitert Record 30 selbst. Eine erste, lockere Fassung ohne Raster band
-3 Records, davon 0 mit richtigem Wert, und erzeugte 12 zusaetzliche FP; sie ist
-deshalb verworfen.
+| Variante | gebunden | Gruppe | Block | Goldtreffer |
+|---|---|---|---:|---:|
+| streng | nein (3 gleich gute Zeilen) | - | - | 0/6 |
+| erstes | ja | PCS | 52 | 6/6 |
 
-Der Vergleich mit den 565 Fehlerzellen der Gesamtmenge ist wichtig: in den 41
-schweren Records liegen nur 33 davon. Selbst eine perfekte Regel haette hier
-also hoechstens 33 Zellen korrigieren koennen.
+Messung auf allen 41 schweren Records (`TP-Verlust` negativ = Gewinn):
+
+| Gruppenmodus | Anwendung | gebunden | neue TP | davon erreichbar | FP-Delta | TP-Verlust |
+|---|---|---:|---:|---:|---:|---:|
+| streng | additiv | 1 | 1 | 0 | +5 | -1 |
+| erstes | additiv | 3 | 7 | 0 | +11 | -7 |
+| streng | ersetzen | wie additiv | | | | |
+| erstes | ersetzen | wie additiv | | | | |
+
+Ergebnis: **0 der 24 erreichbaren `fp_gebunden`/`fn_wert_ersetzt`-Zellen**
+(26 mit Kaption-Bezug) werden neu gebunden. Der Zugewinn von 7 TP liegt
+ausschliesslich in `fn_leer`-Zellen: Record 30 mit 6 von 6 und eine Zelle in
+`yun2024:446`. Von 18 gebundenen Zellen sind 7 richtig; `yun2024:451`
+(`Age (years)`) ist ein Fehlgriff des Stichentscheids (0/6).
+
+Grenze des Verfahrens: `streng` verweigert Record 30, weil der Kontext weder
+PCS noch MCS nennt; `erstes` trifft PCS nur, weil PCS die erste Gruppe der
+Tabelle ist. Bei einem Record mit MCS-Gold waere dieselbe Regel falsch.
 
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 

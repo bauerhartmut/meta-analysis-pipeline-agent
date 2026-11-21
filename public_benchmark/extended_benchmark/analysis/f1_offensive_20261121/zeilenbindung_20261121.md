@@ -1,119 +1,116 @@
-# Zeilenbindung als Regel, offline gemessen (21.11.2026)
+# Zeilenbindung mit Zeilengruppen-Achse (21.11.2026)
 
-Die Regel ist aus dem Aufbau von yun2024:30 abgeleitet, goldfrei und ohne
-Netzaufruf. Sie arbeitet in vier Schritten:
+Die Regel ist aus yun2024:30 abgeleitet, goldfrei und ohne Netzaufruf. Neu
+gegenueber der ersten Fassung sind vier Punkte:
 
-1. Datenzeile: eine Zeile mit Wertepaaren `Wert (SD)` und einem Zeilenlabel,
-   das ein Outcome-Stammwort traegt. Aenderungszeilen (`mean change`,
-   `delta`, `difference`) sind ausgeschlossen.
-2. Spaltenraster: ueber der Zeile muss eine Armzeile mit genau so vielen
-   Spaltenlabels stehen wie die Zeile Wertepaare hat, und eine Wochenzeile mit
-   den Zeitpunktlabels. Das ist das Muster von Record 30 (`Week 12/24/52` ueber
-   je drei Armen).
-3. Block und Arm: der Zielzeitpunkt des Records waehlt den Wochenblock, die
-   Spaltenlabels waehlen je Arm genau eine Spalte (Zahlen zaehlen mit, sonst
-   waeren `CZP 200 mg` und `CZP 400 mg` nicht zu trennen).
-4. Verweigerung: fehlt ein Raster, ist ein Arm nicht eindeutig oder gibt es
-   zwei gleich gute Zeilen, wird nichts gebunden.
+1. Zeilengruppe als eigene Achse: die kurze Ueberschrift ueber der Datenzeile
+   (`PCS`, `MCS`, `Physical Functioning`) wird gelesen und gegen die
+   Outcome-Worte geprueft.
+2. Spaltenraster als Filter vor der Auswahl: nur Zeilen, ueber denen eine
+   Armzeile mit genau so vielen Spalten wie Wertepaare steht. Fortsetzungs-
+   zeilen wie `+ MTX` und Groessenzeilen `(n = ...)` sind keine Armzeile.
+3. Armnamen mit Alias: `Control` im Record trifft `PBO`/`placebo` in der
+   Tabelle; `Certolizumab 200 mg` trifft `CZP 200 mg` ueber die Dosis.
+4. Zeitpunkt: nennt der Record eine Regel statt eines Datums, gilt der letzte
+   Wochenblock - so steht es in der Zeitpunktregel selbst.
 
-Geprueft auf 41 der 41 schweren Records. In dieser Auswahl
-liegen 17 der 270 `fp_gebunden` und 16 der 295 `fn_wert_ersetzt`.
+Zwei Varianten des Stichentscheids: `streng` verweigert, wenn mehrere Zeilen
+gleich gut passen; `erstes` nimmt die erste bindungsfaehige Zeile in
+Dokumentreihenfolge, also die erste Gruppe der Tabelle.
 
-## Ergebnis
+## Record 30: trifft die Regel die Goldzellen?
 
-| Modus | gebunden | TP vorher | FP vorher | FN vorher | TP nachher | FP nachher | FN nachher | TP-Verlust |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| additiv | 0 | 0 | 24 | 158 | 0 | 24 | 158 | 0 |
-| ersetzen | 0 | 0 | 24 | 158 | 0 | 24 | 158 | 0 |
+| Variante | gebunden | Zeile | Gruppe | Block | Zellen | Goldtreffer |
+|---|---|---:|---|---:|---:|---:|
+| streng | nein | - | - | - | 0 | 0/6 |
+| erstes | ja | 70 | PCS | 2 | 6 | 6/6 |
 
-Korrigiert wurden in der Auswahl:
+Variante `erstes` liefert 6 von 6 Goldzellen:
+Mittelwert, Streuung und Gruppengroessen beider Arme, Woche 52, Gruppe PCS.
+Blockbegruendung: letzter Block laut Zeitpunktregel.
+`streng` verweigert hier, weil der Kontext weder PCS noch MCS nennt - die
+Gruppenachse loest den Fall also nur mit dem Reihenfolge-Stichentscheid.
 
-| Modus | `fn_wert_ersetzt` richtig gebunden | `fp_gebunden` richtig gebunden |
-|---|---:|---:|
-| additiv | 0 | 0 |
-| ersetzen | 0 | 0 |
+## Messung auf den 41 schweren Records
 
-Zwischenstand der Entwicklung, damit die Zahl einordenbar ist: eine erste,
-lockere Fassung ohne Spaltenraster band 3 Records, davon 0 mit richtigem Wert,
-und erzeugte 12 zusaetzliche FP. Die strenge Fassung bindet keinen. Beide
-Ergebnisse sagen dasselbe: der Textabgleich findet Zeilen, aber nicht die
-richtige Zelle.
+| Gruppenmodus | Anwendung | gebunden | neue TP | davon erreichbar | davon `fp_gebunden` | davon `fn_wert_ersetzt` | FP-Delta | TP-Verlust |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| streng | additiv | 1 | 1 | 0 | 0 | 0 | +5 | -1 |
+| streng | ersetzen | 1 | 1 | 0 | 0 | 0 | +5 | -1 |
+| erstes | additiv | 3 | 7 | 0 | 0 | 0 | +11 | -7 |
+| erstes | ersetzen | 3 | 7 | 0 | 0 | 0 | +11 | -7 |
 
-## Obergrenze jeder Textzeilen-Bindung
 
-Von den 33 Fehlerzellen der Auswahl liegen 24 in einer Zeile, die den Wert und ein Outcome-Wort traegt, 2 nur mit dem Wort in den zehn Zeilen darueber, 7 ohne Outcome-Bezug. Mehr als 26 Zellen kann eine textbasierte Zeilenbindung also grundsaetzlich nicht erreichen.
+### Wohin die Aenderungen fallen (Gruppenmodus erstes, additiv)
 
-Erreicht hat die Regel 0. Der Grund ist nicht die Obergrenze, sondern die
-Eindeutigkeit: dieselbe Tabelle enthaelt mehrere Zeilen mit demselben Label
-(`Mean score (SD)` fuer PCS und MCS), und die Unterscheidung steht in einer
-Zeilengruppen-Ueberschrift, die der Textabgleich nicht als eigene Achse liest.
-Genau daran scheitert auch Record 30 selbst: das Label nennt den Outcome nicht
-(der steht in der Caption), und die Goldzeile ist eine von zwei gleich
-beschrifteten Zeilen.
+- `yun2024:30`: 6 Zellen gebunden, davon 6 neu richtig; Phase-1-Klassen: fn_leer: 6
+- `yun2024:446`: 6 Zellen gebunden, davon 1 neu richtig; Phase-1-Klassen: fn_leer: 6
+- `yun2024:451`: 6 Zellen gebunden, davon 0 neu richtig; Phase-1-Klassen: fn_leer: 6
 
-## Je Record (Modus additiv)
+Der Zugewinn liegt ausschliesslich in `fn_leer`-Zellen: Record 30 mit 6 von 6
+Zellen und eine Zelle in 446. Die erreichbaren `fp_gebunden`- und
+`fn_wert_ersetzt`-Zellen bleiben unberuehrt, weil sie in Records liegen, die
+die Regel nicht bindet. Der Gewinn ist also echt, aber nicht der gesuchte.
 
-| Record | gebunden | Zeilenlabel | TP/FP/FN vorher | TP/FP/FN nachher | Aenderungen |
-|---|---|---|---|---|---:|
-| `yun2024:30` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:52` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:119` | nein | - | 0/0/4 | 0/0/4 | 0 |
-| `yun2024:128` | nein | - | 0/0/4 | 0/0/4 | 0 |
-| `yun2024:152` | nein | - | 0/0/4 | 0/0/4 | 0 |
-| `yun2024:159` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:164` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:171` | nein | - | 0/0/4 | 0/0/4 | 0 |
-| `yun2024:173` | nein | - | 0/0/4 | 0/0/4 | 0 |
-| `yun2024:204` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:251` | nein | - | 0/0/4 | 0/0/4 | 0 |
-| `yun2024:252` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:273` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:304` | nein | - | 0/0/4 | 0/0/4 | 0 |
-| `yun2024:356` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:420` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:421` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:446` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:451` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:523` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:525` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:557` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:559` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:582` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:624` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:625` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:671` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:672` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:673` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:674` | nein | - | 0/0/6 | 0/0/6 | 0 |
-| `yun2024:678` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:685` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:687` | nein | - | 0/0/2 | 0/0/2 | 0 |
-| `yun2024:113` | nein | - | 0/4/6 | 0/4/6 | 0 |
-| `yun2024:357` | nein | - | 0/4/2 | 0/4/2 | 0 |
-| `yun2024:362` | nein | Abstract Background: Cognitive impairmen | 0/2/4 | 0/2/4 | 0 |
-| `yun2024:533` | nein | - | 0/2/2 | 0/2/2 | 0 |
-| `yun2024:615` | nein | - | 0/2/4 | 0/2/4 | 0 |
-| `yun2024:616` | nein | - | 0/2/4 | 0/2/4 | 0 |
-| `yun2024:626` | nein | - | 0/2/2 | 0/2/2 | 0 |
-| `yun2024:686` | nein | - | 0/6/2 | 0/6/2 | 0 |
+Erreichbar sind 26 der 33 Fehlerzellen der
+Auswahl (24 mit Wert und Wort in einer Zeile,
+2 mit dem Wort in den zehn Zeilen darueber,
+7 ohne Outcome-Bezug).
 
-## Was die Regel kann und was nicht
+## Je Record (Gruppenmodus erstes, additiv)
 
-- Sie bindet nur, wenn Tabellenraster und Armspalten eindeutig sind. Das ist
-  bewusst streng: eine falsche Bindung kostet eine Zelle und erzeugt eine FP,
-  eine Verweigerung kostet nur den Versuch.
-- Der Modus `ersetzen` kann TPs kosten; er ist deshalb nicht Standard. In
-  dieser Auswahl trat der Fall nicht ein, weil nichts gebunden wurde.
-- Die Regel ersetzt keine Modellentscheidung. Auf Record 30 hat das Modell die
-  Zeile gewaehlt; die deterministische Regel muesste dieselbe Wahl ohne
-  Semantik treffen und verweigert stattdessen.
+| Record | gebunden | Gruppe | Label bzw. Grund | TP/FP/FN vorher | TP/FP/FN nachher | Aenderungen |
+|---|---|---|---|---|---|---:|
+| `yun2024:30` | ja | PCS | Mean score (SD) | 0/0/6 | 6/0/0 | 6 |
+| `yun2024:52` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:119` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/4 | 0/0/4 | 0 |
+| `yun2024:128` | nein | - | Weight (kg) | 0/0/4 | 0/0/4 | 0 |
+| `yun2024:152` | nein | - | Female | 0/0/4 | 0/0/4 | 0 |
+| `yun2024:159` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:164` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:171` | nein | - | GAD antibody positivity[?]( ) [ n (% | 0/0/4 | 0/0/4 | 0 |
+| `yun2024:173` | nein | - | GAD antibody positivity[?]( ) [ n (% | 0/0/4 | 0/0/4 | 0 |
+| `yun2024:204` | nein | - | ? Na?ve (%) | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:251` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/4 | 0/0/4 | 0 |
+| `yun2024:252` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:273` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:304` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/4 | 0/0/4 | 0 |
+| `yun2024:356` | nein | - | Caucasian/White | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:420` | nein | - | Cervicothoracic spine | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:421` | nein | - | Thoracolumbar spine | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:446` | ja | - | Waist circumference (cm) | 0/0/6 | 1/5/5 | 6 |
+| `yun2024:451` | ja | Health and demograph | Age (years) | 0/0/6 | 0/6/6 | 6 |
+| `yun2024:523` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:525` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:557` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:559` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:582` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:624` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:625` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:671` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:672` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:673` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:674` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/6 | 0/0/6 | 0 |
+| `yun2024:678` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:685` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:687` | nein | - | keine Zeile mit Zahlenpaaren | 0/0/2 | 0/0/2 | 0 |
+| `yun2024:113` | nein | - | Basic | 0/4/6 | 0/4/6 | 0 |
+| `yun2024:357` | nein | - | Caucasian/White | 0/4/2 | 0/4/2 | 0 |
+| `yun2024:362` | nein | - | keine Zeile mit Zahlenpaaren | 0/2/4 | 0/2/4 | 0 |
+| `yun2024:533` | nein | - | keine Zeile mit Zahlenpaaren | 0/2/2 | 0/2/2 | 0 |
+| `yun2024:615` | nein | - | keine Zeile mit Zahlenpaaren | 0/2/4 | 0/2/4 | 0 |
+| `yun2024:616` | nein | - | keine Zeile mit Zahlenpaaren | 0/2/4 | 0/2/4 | 0 |
+| `yun2024:626` | nein | - | keine Zeile mit Zahlenpaaren | 0/2/2 | 0/2/2 | 0 |
+| `yun2024:686` | nein | - | keine Zeile mit Zahlenpaaren | 0/6/2 | 0/6/2 | 0 |
 
 ## Grenzen
 
-- Die Auswahl ist nicht repraesentativ fuer die 699 Records: es sind die
-  schweren Faelle, in denen P5 leer blieb oder nichts traf. Von den 270
-  `fp_gebunden` und 295 `fn_wert_ersetzt` liegen nur 17 und 16 hier.
-- Die Zaehlung `richtig gebunden` prueft nur den Schluessel, nicht die
-  Fundstelle; eine Zeile kann den Wert an der richtigen Stelle nennen und
-  trotzdem die falsche Population sein.
-- Kein Zeitpunkt in der Zelle: die Regel bindet keine `timepoint`-Angabe.
+- Der Stichentscheid `erstes` ist eine Annahme, keine Ableitung: wenn der
+  Kontext keine Gruppe nennt, gewinnt die erste Gruppe der Tabelle. Auf
+  Record 30 ist das PCS und trifft das Gold, weil Gold dort PCS nutzt; bei
+  einem Record mit MCS-Gold waere dieselbe Regel falsch.
+- Die 41 Records sind die schweren Faelle, nicht die Gesamtmenge: von den
+  Fehlerzellen liegen nur 33 hier, davon 26 erreichbar.
+- Die Regel bindet keinen Zeitpunkt in der Zelle und keine Gruppengroesse
+  ausserhalb einer `(n = ...)`-Kopfzeile.
+- Der Modus `ersetzen` kann TPs kosten; er ist getrennt ausgewiesen.
