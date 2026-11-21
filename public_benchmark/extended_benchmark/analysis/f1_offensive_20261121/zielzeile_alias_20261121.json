@@ -1,0 +1,155 @@
+{
+  "stand": "2026-11-21",
+  "ziel_faelle": 31,
+  "geliefert": 9,
+  "tp": 4,
+  "fp": 5,
+  "tp_verlust": 0,
+  "diagnose": {
+    "anderer_arm_oder_mehrdeutig": 6,
+    "zielzeile_nicht_gefunden": 12,
+    "groessenzeile_nicht_gefunden": 4,
+    "geliefert": 9
+  },
+  "alias": {
+    "scanning": [
+      "scan",
+      "duration"
+    ],
+    "vegetable": [
+      "vegetables"
+    ],
+    "vegetables": [
+      "vegetable"
+    ],
+    "fruit": [
+      "fruits"
+    ],
+    "blood": [
+      "blood",
+      "pressure"
+    ],
+    "pressure": [
+      "pressure"
+    ]
+  },
+  "detail": [
+    {
+      "record_id": "yun2024:196",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "regel": {
+        "value": 140.0,
+        "quelle": "zeile",
+        "zeile": 8
+      },
+      "gold": 24.0,
+      "pred": null,
+      "richtig": false
+    },
+    {
+      "record_id": "yun2024:331",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "regel": {
+        "value": 45.0,
+        "quelle": "zeile",
+        "zeile": 40
+      },
+      "gold": 47.0,
+      "pred": null,
+      "richtig": false
+    },
+    {
+      "record_id": "yun2024:334",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "regel": {
+        "value": 45.0,
+        "quelle": "zeile",
+        "zeile": 40
+      },
+      "gold": 47.0,
+      "pred": null,
+      "richtig": false
+    },
+    {
+      "record_id": "yun2024:335",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "regel": {
+        "value": 45.0,
+        "quelle": "zeile",
+        "zeile": 40
+      },
+      "gold": 47.0,
+      "pred": null,
+      "richtig": false
+    },
+    {
+      "record_id": "yun2024:336",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "regel": {
+        "value": 45.0,
+        "quelle": "zeile",
+        "zeile": 40
+      },
+      "gold": 47.0,
+      "pred": null,
+      "richtig": false
+    },
+    {
+      "record_id": "yun2024:346",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "regel": {
+        "value": 22.0,
+        "quelle": "zeile",
+        "zeile": 33
+      },
+      "gold": 22.0,
+      "pred": null,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:347",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "regel": {
+        "value": 22.0,
+        "quelle": "zeile",
+        "zeile": 33
+      },
+      "gold": 22.0,
+      "pred": 5.0,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:426",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "regel": {
+        "value": 44.0,
+        "quelle": "zeile",
+        "zeile": 10
+      },
+      "gold": 44.0,
+      "pred": null,
+      "richtig": true
+    },
+    {
+      "record_id": "yun2024:426",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "regel": {
+        "value": 49.0,
+        "quelle": "zeile",
+        "zeile": 10
+      },
+      "gold": 49.0,
+      "pred": null,
+      "richtig": true
+    }
+  ]
+}

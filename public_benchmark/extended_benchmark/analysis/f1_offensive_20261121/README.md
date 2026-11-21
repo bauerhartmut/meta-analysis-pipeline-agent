@@ -325,6 +325,27 @@ dort vertauscht; die Regel folgt dem Dokument.
 Die unankerte Variante (alle Groessenzeilen im Dokument, nur bei einem einzigen
 Wert je Arm) liefert 10 der 31 mit 2 TP und 8 FP und ist damit schlechter.
 
+### Mit Aliasliste: 4 von 31
+
+`zielzeile_alias_20261121.py` ergaenzt drei Wortformen (Scanning/Scan duration,
+Akronyme ab drei Buchstaben, Plural) und misst die 31 erneut:
+
+| Kennzahl | ohne Alias | mit Alias |
+|---|---:|---:|
+| geliefert | 6 | 9 |
+| TP | 2 | 4 |
+| FP | 4 | 5 |
+| TP-Verlust | 0 | 0 |
+
+Der Zugewinn sind `yun2024:426` (`Scanning times` gegen `Scan duration (min)`,
+Armspalten `Short-Bore MR (n = 44)` / `Open MR (n = 49)`), also 2 TP. Der neue
+FP ist `yun2024:196`: Tabelle 1 nennt `Pls group (n = 145)` und
+`Placebo group (n = 140)`, Gold fuehrt fuer beide Arme 24; die 24 sind im
+Dokument nicht belegt. Alle fuenf FP sind damit Gold-Verdachtsfaelle, keiner
+ist ein belegter Regel-Fehler: viermal `PMC5617873` mit vertauschten Armen
+(dreimal `Placebo (n = 45)` vor `Aripiprazole (n = 47)`, Kontext-Intervention
+Aripiprazole), einmal `yun2024:196`. Gold blieb unveraendert.
+
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
 gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht
 auffindbar (`Vegetable intake` vs. Tabellenzeile `Vegetables`), in 4 weiteren
