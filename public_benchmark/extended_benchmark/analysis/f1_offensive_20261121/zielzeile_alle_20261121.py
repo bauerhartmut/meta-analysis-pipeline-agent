@@ -627,7 +627,7 @@ ARMKUERZEL = re.compile(
 # * "arm"     - nur wenn im Kopfband eine Armbezeichnung steht (intervention,
 #               control, placebo, treatment, comparison); eine Modalitaet oder
 #               Population wie `Short-Bore MR (n = 44)` zaehlt nicht.
-KOPFBAND_ARM = "kuerzel"
+KOPFBAND_ARM = "arm"
 KOPFBAND_KUERZEL = re.compile(r"\b[A-Z]{1,2}\s*[;,]\s*\*?n\*?\s*=\s*\d+")
 ARM_WORT = re.compile(r"\b(intervention|control|placebo|treatment|comparison)\b",
                       re.IGNORECASE)

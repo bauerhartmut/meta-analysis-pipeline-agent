@@ -66,7 +66,10 @@ def schalter(**werte: bool) -> None:
     m.ARMZEILE = werte.get("armzeile", True)
     m.VORZEICHEN = werte.get("vorzeichen", True)
     m.SD_AUS_KI = werte.get("sd_ki", True)
-    m.KOPFBAND_ARM = werte.get("kopfband", "kuerzel")
+    # Nur ueberschreiben, wenn der Aufruf es verlangt: sonst gilt die Vorgabe
+    # des Regelmoduls (KOPFBAND_ARM dort).
+    if "kopfband" in werte:
+        m.KOPFBAND_ARM = werte["kopfband"]
     m.POSITIONAL = True
     m.GATE = True
     m.WOCHENSPALTE = True

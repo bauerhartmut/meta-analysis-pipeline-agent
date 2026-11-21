@@ -3,8 +3,8 @@
   "faelle": 227,
   "ablation": {
     "endvariante": {
-      "zellen": 25,
-      "tp": 22,
+      "zellen": 33,
+      "tp": 30,
       "fp": 3
     },
     "streuung": {
@@ -18,52 +18,64 @@
       "fp": 10
     },
     "ohne_gate": {
-      "zellen": 25,
-      "tp": 22,
+      "zellen": 41,
+      "tp": 38,
       "fp": 3
     },
     "ohne_positionsregel": {
-      "zellen": 25,
-      "tp": 22,
+      "zellen": 33,
+      "tp": 30,
       "fp": 3
     },
     "ohne_wochenspalte": {
-      "zellen": 23,
-      "tp": 18,
+      "zellen": 31,
+      "tp": 26,
       "fp": 5
     },
     "ohne_messwort_block": {
-      "zellen": 25,
-      "tp": 18,
+      "zellen": 33,
+      "tp": 26,
       "fp": 7
     },
     "ohne_tabellenlokal": {
-      "zellen": 25,
-      "tp": 22,
+      "zellen": 31,
+      "tp": 28,
       "fp": 3
     },
     "ohne_zeitpunkt": {
-      "zellen": 25,
-      "tp": 22,
+      "zellen": 33,
+      "tp": 30,
       "fp": 3
     },
     "ohne_armbedingung": {
-      "zellen": 25,
-      "tp": 10,
+      "zellen": 33,
+      "tp": 18,
       "fp": 15
     },
     "ohne_armzeile": {
-      "zellen": 25,
-      "tp": 22,
+      "zellen": 33,
+      "tp": 30,
       "fp": 3
     },
     "ohne_vorzeichen": {
-      "zellen": 25,
-      "tp": 22,
+      "zellen": 33,
+      "tp": 30,
       "fp": 3
     }
   },
   "zellen": [
+    {
+      "record_id": "yun2024:100",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 37.0,
+      "gold": 37.0,
+      "richtig": true,
+      "zeile": 122,
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
     {
       "record_id": "yun2024:193",
       "feld": "comparator_group_size",
@@ -221,6 +233,78 @@
       "herkunft": "zelle"
     },
     {
+      "record_id": "yun2024:346",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:346",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:347",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:347",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:445",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 70.0,
+      "gold": 70.0,
+      "richtig": true,
+      "zeile": 6,
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:445",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 70.0,
+      "gold": 70.0,
+      "richtig": true,
+      "zeile": 6,
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
       "record_id": "yun2024:664",
       "feld": "comparator_mean",
       "arm": "comparator",
@@ -361,12 +445,36 @@
       "richtig": true,
       "zeile": 28,
       "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:98",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 37.0,
+      "gold": 37.0,
+      "richtig": true,
+      "zeile": 154,
+      "quelle": "zeile",
       "abgeleitet": false,
       "herkunft": "zelle"
     }
   ],
   "zellen_ohne_gate": [
     {
+      "record_id": "yun2024:100",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 37.0,
+      "gold": 37.0,
+      "richtig": true,
+      "zeile": 122,
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
       "record_id": "yun2024:193",
       "feld": "comparator_group_size",
       "arm": "comparator",
@@ -487,6 +595,102 @@
       "herkunft": "zelle"
     },
     {
+      "record_id": "yun2024:331",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 47.0,
+      "gold": 47.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:331",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 45.0,
+      "gold": 45.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:334",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 47.0,
+      "gold": 47.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:334",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 45.0,
+      "gold": 45.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:335",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 47.0,
+      "gold": 47.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:335",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 45.0,
+      "gold": 45.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:336",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 47.0,
+      "gold": 47.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:336",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 45.0,
+      "gold": 45.0,
+      "richtig": true,
+      "zeile": 40,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
       "record_id": "yun2024:34",
       "feld": "comparator_mean",
       "arm": "comparator",
@@ -519,6 +723,78 @@
       "richtig": false,
       "zeile": 13,
       "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:346",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:346",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:347",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:347",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 22.0,
+      "gold": 22.0,
+      "richtig": true,
+      "zeile": 33,
+      "quelle": "position",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:445",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 70.0,
+      "gold": 70.0,
+      "richtig": true,
+      "zeile": 6,
+      "quelle": "zeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:445",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "wert": 70.0,
+      "gold": 70.0,
+      "richtig": true,
+      "zeile": 6,
+      "quelle": "zeile",
       "abgeleitet": false,
       "herkunft": "zelle"
     },
@@ -663,6 +939,18 @@
       "richtig": true,
       "zeile": 28,
       "quelle": "zielzeile",
+      "abgeleitet": false,
+      "herkunft": "zelle"
+    },
+    {
+      "record_id": "yun2024:98",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "wert": 37.0,
+      "gold": 37.0,
+      "richtig": true,
+      "zeile": 154,
+      "quelle": "zeile",
       "abgeleitet": false,
       "herkunft": "zelle"
     }
