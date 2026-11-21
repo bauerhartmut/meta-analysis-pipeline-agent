@@ -1,0 +1,161 @@
+{
+  "faelle": [
+    {
+      "record_id": "yun2024:221",
+      "feld": "intervention_mean",
+      "regel": 3.9,
+      "gold": 0.34,
+      "regel_zeile": 33,
+      "regel_tabelle": [
+        21,
+        71
+      ],
+      "klasse": "falsche_tabelle",
+      "gold_in_regelzeile": false,
+      "gold_zeilen": [
+        141
+      ],
+      "gold_tabellen": [
+        [
+          113,
+          155
+        ]
+      ]
+    },
+    {
+      "record_id": "yun2024:221",
+      "feld": "comparator_mean",
+      "regel": 4.0,
+      "gold": 7.47,
+      "regel_zeile": 33,
+      "regel_tabelle": [
+        21,
+        71
+      ],
+      "klasse": "falsche_tabelle",
+      "gold_in_regelzeile": false,
+      "gold_zeilen": [
+        141
+      ],
+      "gold_tabellen": [
+        [
+          113,
+          155
+        ]
+      ]
+    },
+    {
+      "record_id": "yun2024:222",
+      "feld": "comparator_mean",
+      "regel": 5.9,
+      "gold": 2.67,
+      "regel_zeile": 35,
+      "regel_tabelle": [
+        21,
+        71
+      ],
+      "klasse": "falsche_tabelle",
+      "gold_in_regelzeile": false,
+      "gold_zeilen": [
+        143
+      ],
+      "gold_tabellen": [
+        [
+          113,
+          155
+        ]
+      ]
+    },
+    {
+      "record_id": "yun2024:223",
+      "feld": "comparator_mean",
+      "regel": 7.2,
+      "gold": 1.62,
+      "regel_zeile": 37,
+      "regel_tabelle": [
+        21,
+        71
+      ],
+      "klasse": "falsche_tabelle",
+      "gold_in_regelzeile": false,
+      "gold_zeilen": [
+        145
+      ],
+      "gold_tabellen": [
+        [
+          113,
+          155
+        ]
+      ]
+    },
+    {
+      "record_id": "yun2024:33",
+      "feld": "comparator_mean",
+      "regel": 34.9,
+      "gold": 31.5,
+      "regel_zeile": 34,
+      "regel_tabelle": [
+        2,
+        54
+      ],
+      "klasse": "gold_anderer_abschnitt",
+      "gold_in_regelzeile": false,
+      "gold_zeilen": [
+        70
+      ],
+      "gold_tabellen": [
+        [
+          54,
+          162
+        ]
+      ]
+    },
+    {
+      "record_id": "yun2024:34",
+      "feld": "comparator_mean",
+      "regel": 52.2,
+      "gold": 41.1,
+      "regel_zeile": 42,
+      "regel_tabelle": [
+        2,
+        54
+      ],
+      "klasse": "gold_anderer_abschnitt",
+      "gold_in_regelzeile": false,
+      "gold_zeilen": [
+        78
+      ],
+      "gold_tabellen": [
+        [
+          54,
+          162
+        ]
+      ]
+    },
+    {
+      "record_id": "yun2024:345",
+      "feld": "intervention_mean",
+      "regel": 5.4,
+      "gold": 2.3,
+      "regel_zeile": 13,
+      "regel_tabelle": [
+        2,
+        29
+      ],
+      "klasse": "gold_nicht_belegt",
+      "gold_in_regelzeile": false,
+      "gold_zeilen": [],
+      "gold_tabellen": []
+    }
+  ],
+  "klassen": {
+    "falsche_tabelle": 4,
+    "gold_anderer_abschnitt": 2,
+    "gold_nicht_belegt": 1
+  },
+  "messung": {
+    "zellen": 41,
+    "tp": 30,
+    "fp": 11
+  }
+}

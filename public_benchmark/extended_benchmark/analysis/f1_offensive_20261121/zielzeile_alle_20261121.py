@@ -212,7 +212,9 @@ def arm_von_spalte(zeilen: list[str], i: int, segs: list[str], k: int,
     if k not in zahlenspalten:
         return ""
     pos = zahlenspalten.index(k)
-    for j in range(i - 1, max(-1, i - 41), -1):
+    # Tabellenlokal: die Kopfzeile darf nur aus derselben Tabelle stammen.
+    start, _ = tabellengrenzen(zeilen, i)
+    for j in range(i - 1, max(start - 1, i - 41), -1):
         kopf = segmente(zeilen[j])
         if len(kopf) == len(zahlenspalten):
             ziel = pos

@@ -474,6 +474,31 @@ Einsatz der 41 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
 Alle 41: +30 TP und +7 FP. Nur die richtigen: +30 TP und -4 FP (vier Zellen
 ersetzten vorhandene falsche Werte).
 
+### Die 7 Mittel-FP: Tabellenlokalitaet holt sie nicht
+
+`mittel_fp_20261121.py`. Die Kopfzeilensuche fuer Mittelspalten ist jetzt auf die
+Tabelle der Zielzeile begrenzt; die Messung ueber die 295 bleibt damit
+unveraendert (41 Zellen, 30 TP, 11 FP, keine geaenderte Zelle). Mittelwerte
+werden ohnehin nur aus der Zielzeile selbst gelesen, nie aus einer Nachbarzeile
+oder einer anderen Tabelle - Tabellenlokalitaet kann hier also nichts holen.
+
+Die sieben Zellen scheitern an der Zeilenwahl:
+
+| Klasse | Faelle | Betroffene Zellen |
+|---|---:|---|
+| falsche Tabelle | 4 | `yun2024:221` (2), `:222`, `:223` |
+| Gold in anderem Abschnitt | 2 | `yun2024:33`, `:34` |
+| Gold nicht als Mittelwert belegt | 1 | `yun2024:345` |
+
+- `221`-`223`: Das Outcome nennt `stiffness`; die Regel nimmt die Zeile
+  `Flexion-Extension` aus der Beweglichkeitstabelle (Grad, Tabelle 21-71), Gold
+  steht im Block `Stiffness (in Nm/Degree)` der spaeteren Tabelle 113-155.
+- `33`/`34`: Gold steht in der Mittelwertzeile einer anderen Subskala (PCS bzw.
+  MCS) und dort in einer spaeteren Wochenspalte; die Regel trifft `General
+  Health` bzw. `Mental Health` in Woche 12.
+- `345`: Der Goldwert 2.3 steht im Dokument nur als Grenze eines
+  Median-Differenz-Intervalls, nicht als Mittelwertzelle.
+
 ### Armzuordnung aus der Spaltenreihenfolge
 
 `armreihenfolge_20261121.py`. Die Regel ordnet jeden `n`-Wert ueber den
