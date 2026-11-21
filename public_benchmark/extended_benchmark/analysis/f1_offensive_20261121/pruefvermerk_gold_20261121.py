@@ -8,6 +8,8 @@ Belegzeilen aus dem Dokument zitiert und ein Verdikt gesetzt:
 * `verdacht_widerlegt`  - der Goldwert ist im Dokument belegt.
 * `gold_aus_subgruppentabelle` - der Goldwert steht in einer Subgruppentabelle,
   nicht in der Haupttabelle.
+* `gold_nicht_belegt` - der Goldwert steht im Dokument nicht als Zellwert; er
+  erscheint nur als Grenze eines Intervalls oder wurde zurueckgerechnet.
 
 Aufruf::
 
@@ -49,6 +51,11 @@ FAELLE: list[dict[str, Any]] = [
      "notiz": "Gleiches Dokument wie 331, gleiche Zellwerte."},
     {"record_id": "yun2024:336", "beleg": [6, 40, 93], "verdikt": "armtausch_bestaetigt",
      "notiz": "Gleiches Dokument wie 331, gleiche Zellwerte."},
+    {"record_id": "yun2024:345", "beleg": [13, 28, 51, 56], "verdikt": "gold_nicht_belegt",
+     "notiz": "Gold nennt Mittel 2.3 (SD 2.63, laut Record aus CI zurueckgerechnet). Im Dokument"
+              " steht 2.3 nur als obere Grenze der Median-Differenz (Zeile 51: 0.75 (--1.6 to 2.3),"
+              " Zeile 56: 0.35 (--2.3 to 2.8), Abstract Zeile 28 ebenso); die Baseline-Zeile 13"
+              " nennt 5.4 +/- 2.6 bzw. 5.7 +/- 2. Eine Mittelwertzelle mit 2.3 gibt es nicht."},
     {"record_id": "yun2024:196", "beleg": [8, 65, 82], "verdikt": "gold_aus_subgruppentabelle",
      "notiz": "Gold (n = 24, Mittel 1.29/1.08) steht in Tabelle 3, Woche 28; deren Kopf nennt "
               "die Subgruppe MMSE-J 20 bis 23. Die Haupttabelle 2 nennt fuer Woche 28 die Werte "

@@ -139,6 +139,44 @@
       "notiz": "Gleiches Dokument wie 331, gleiche Zellwerte."
     },
     {
+      "record_id": "yun2024:345",
+      "dokument": "PMC5686687.md",
+      "intervention": "Resveratrol",
+      "comparator": "Placebo",
+      "gold_group_size": [
+        [
+          "intervention_group_size",
+          "intervention",
+          22.0
+        ],
+        [
+          "comparator_group_size",
+          "comparator",
+          22.0
+        ]
+      ],
+      "beleg": [
+        {
+          "zeile": 13,
+          "text": "Pain score (VAS)                              5.4 +/- 2.6               5.7 +/- 2               0.6 [*^e^*](#)"
+        },
+        {
+          "zeile": 28,
+          "text": "Student *t* test.:::: ## B. Primary Outcome: Pain Score After 7 days of treatment, pain scores were significantly reduced in the resveratrol group, compared with the placebo group. After 42 days of tr"
+        },
+        {
+          "zeile": 51,
+          "text": "Difference between medians (95% CI)             0.75 (--1.6 to 2.3)"
+        },
+        {
+          "zeile": 56,
+          "text": "Difference between medians (95% CI)             0.35 (--2.3 to 2.8)"
+        }
+      ],
+      "verdikt": "gold_nicht_belegt",
+      "notiz": "Gold nennt Mittel 2.3 (SD 2.63, laut Record aus CI zurueckgerechnet). Im Dokument steht 2.3 nur als obere Grenze der Median-Differenz (Zeile 51: 0.75 (--1.6 to 2.3), Zeile 56: 0.35 (--2.3 to 2.8), Abstract Zeile 28 ebenso); die Baseline-Zeile 13 nennt 5.4 +/- 2.6 bzw. 5.7 +/- 2. Eine Mittelwertzelle mit 2.3 gibt es nicht."
+    },
+    {
       "record_id": "yun2024:196",
       "dokument": "PMC5360580.md",
       "intervention": "1 mg/day of Pls purified from scallop",

@@ -6,6 +6,9 @@ danach bis zu drei gezielte Netzlaeufe auf 420, 421 und 523 fahren. Gold,
 Testset und Bewertungslogik bleiben unveraendert; alle Zahlen sind aus
 vorhandenen Predictions nachgerechnet.
 
+Der zusammenfassende Stand der 295 Faelle (Endvariante 43 Zellen, 38 TP, 5 FP,
+88 Prozent Trefferquote) steht in `abschlussbericht_20261121.md`.
+
 | Datei | Inhalt |
 |---|---|
 | `zahlabgleich_20261121.py` | gemeinsamer Zahlabgleich fuer Fehleranalyse und Validierung |
