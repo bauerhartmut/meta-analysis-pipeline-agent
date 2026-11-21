@@ -14,20 +14,20 @@ Basis: 699 Records, 2.014 Goldzellen. Hybrid wie in `vergleiche_20261120.py`
 
 | Kategorie | Regel | Anzahl | Anteil |
 |---|---|---:|---:|
-| Wert erkannt, falsch gebunden (anderer Wert ausgegeben) | `fn_wert_ersetzt` | 286 | 37.7 % |
+| Wert erkannt, falsch gebunden (anderer Wert ausgegeben) | `fn_wert_ersetzt` | 295 | 38.9 % |
 | leere Modellausgabe | `fn_leer` | 182 | 24.0 % |
-| Wert nicht im Prompt (Abdeckung) | `fn_nicht_im_prompt` | 173 | 22.8 % |
+| Wert steht im Dokument nicht (Abdeckung) | `fn_nicht_im_dokument` | 164 | 21.6 % |
 | Wert im Prompt, nicht ausgegeben | `fn_nicht_ausgegeben` | 118 | 15.6 % |
 
 ## FP (ueberzaehlige Vorhersagezellen)
 
 | Kategorie | Regel | Anzahl | Anteil |
 |---|---|---:|---:|
-| Wert erkannt, falsch gebunden | `fp_gebunden` | 264 | 52.1 % |
-| falsches Outcome | `fp_outcome` | 157 | 31.0 % |
-| falsche Einheit (Faktor 10/100/1000) | `fp_einheit` | 40 | 7.9 % |
-| Zahl nicht im Prompt | `fp_halluzination` | 22 | 4.3 % |
-| falscher Zeitpunkt (Baseline- oder Aenderungswert) | `fp_zeitpunkt` | 19 | 3.8 % |
+| Wert erkannt, falsch gebunden | `fp_gebunden` | 270 | 53.2 % |
+| falsches Outcome | `fp_outcome` | 160 | 31.6 % |
+| falsche Einheit (Faktor oder Rate als Anzahl) | `fp_einheit` | 40 | 7.9 % |
+| falscher Zeitpunkt (Baseline- oder Aenderungswert) | `fp_zeitpunkt` | 22 | 4.3 % |
+| Zahl steht nirgends im Dokument | `fp_halluzination` | 10 | 2.0 % |
 | doppelte Zelle | `fp_dublette` | 4 | 0.8 % |
 | falsches Feld | `fp_feld` | 1 | 0.2 % |
 
@@ -35,23 +35,36 @@ Basis: 699 Records, 2.014 Goldzellen. Hybrid wie in `vergleiche_20261120.py`
 
 Die Regeln greifen in dieser Reihenfolge, die erste zutreffende gewinnt:
 
-FN: `fn_leer` (Record ohne Zelle) → `fn_nicht_im_prompt` (Zahl fehlt im
-45.000-Zeichen-Fenster) → `fn_mehrdeutig` (gleiche Zahl in mehreren
-Goldzellen desselben Records oder derselben Publikation) → `fn_wert_ersetzt`
-(gleicher Schluessel, anderer Wert ausgegeben) → `fn_nicht_ausgegeben`.
+FN: `fn_leer` (Record ohne Zelle) → `fn_nicht_im_dokument` (Zahl steht im
+ganzen Dokument nicht; keiner dieser Faelle liegt nur hinter der
+45.000-Zeichen-Grenze) → `fn_mehrdeutig` (Gold traegt fuer denselben
+Schluessel mehrere Werte oder denselben Wert in beiden Armen) →
+`fn_wert_ersetzt` (gleicher Schluessel, anderer Wert ausgegeben) →
+`fn_nicht_ausgegeben`.
 
 FP: `fp_dublette` (zweite Zelle je Feld und Arm) → `fp_arm` (Wert ist
 Goldwert des anderen Arms) → `fp_feld` (Wert gehoert zu einem anderen Feld
-des Records) → `fp_einheit` (Faktor 10/100/1000 zum Goldwert) →
-`fp_halluzination` (Zahl fehlt im Fenster) → `fp_outcome` (Wert ist Goldwert
-eines anderen Records derselben Publikation) → `fp_gebunden`.
+des Records) → `fp_zeitpunkt_zeile` (Wert ist Goldwert desselben Feldes in
+einer anderen Zeile) → `fp_einheit` (Faktor 10/100/1000 oder Rate als Anzahl)
+→ `fp_halluzination` (Zahl steht nirgends im Dokument) →
+`fp_ausserhalb_fenster` (Zahl erst hinter der 45.000-Zeichen-Grenze) →
+`fp_outcome` (Wert ist Goldwert eines anderen Records derselben Publikation)
+→ `fp_zeitpunkt` (Baseline- oder Aenderungswort im Umfeld eines
+Ergebnisfeldes) → `fp_gebunden`.
+
+Der Zahlabgleich ist fuer Fehleranalyse und Zellvalidierung derselbe
+(`zahlabgleich_20261121.py`): Punkt oder Komma als Trenner, nachlaufende
+Nullen erlaubt, 48 passt auf 48.0, nicht auf 48.5, und der Satzpunkt zaehlt
+nicht als Zahlbestandteil. Die fruehere, engere Fassung der Fehleranalyse
+zaehlte 12 Zellen als Halluzination, die im Dokument stehen.
 
 Grenzen: Die Zuordnung ist eine Text- und Zahlenheuristik, keine Rekonstruktion
-der Modellabsicht. `fp_zeitpunkt` ist definiert, aber nicht vergeben, weil das
-Gold in diesen Records keinen Zeitpunkt traegt (fast ueberall `null`) und sich
-Zeitpunktfehler damit nicht belegen lassen. `fn_mehrdeutig` markiert gleiche
-Zahlen, nicht bewiesene Goldfehler. Die Kategorien sind exklusiv; ein Wert,
-der sowohl im falschen Arm als auch am falschen Feld steht, zaehlt beim Arm.
+der Modellabsicht. `fp_zeitpunkt` vergibt sich ueber Baseline- oder
+Aenderungsworte im Umfeld; das Gold traegt fast ueberall keinen Zeitpunkt,
+ein belegter Zeitpunktvergleich ist damit nicht moeglich. `fn_mehrdeutig`
+markiert Goldwidersprueche, nicht bewiesene Goldfehler. Die Kategorien sind
+exklusiv; ein Wert, der sowohl im falschen Arm als auch am falschen Feld
+steht, zaehlt beim Arm.
 
 ## Beispiele
 
@@ -61,11 +74,11 @@ der sowohl im falschen Arm als auch am falschen Feld steht, zaehlt beim Arm.
 - `yun2024:119` intervention_mean/intervention = 70.0 — Position 1348
 - `yun2024:119` comparator_group_size/comparator = 13.0 — Position 2144
 
-**Wert nicht im Prompt (Abdeckung)** (`fn_nicht_im_prompt`)
+**Wert steht im Dokument nicht (Abdeckung)** (`fn_nicht_im_dokument`)
 
-- `yun2024:10` intervention_group_size/intervention = 20.0 — Zahl steht im Prompt-Text nicht
-- `yun2024:10` comparator_group_size/comparator = 20.0 — Zahl steht im Prompt-Text nicht
-- `yun2024:11` intervention_group_size/intervention = 20.0 — Zahl steht im Prompt-Text nicht
+- `yun2024:10` intervention_group_size/intervention = 20.0 — Zahl steht im Dokument nicht
+- `yun2024:10` comparator_group_size/comparator = 20.0 — Zahl steht im Dokument nicht
+- `yun2024:11` intervention_group_size/intervention = 20.0 — Zahl steht im Dokument nicht
 
 **Wert erkannt, falsch gebunden (anderer Wert ausgegeben)** (`fn_wert_ersetzt`)
 
@@ -95,17 +108,17 @@ der sowohl im falschen Arm als auch am falschen Feld steht, zaehlt beim Arm.
 - `yun2024:174` intervention_group_size/intervention = 16.0 — 2. Zelle fuer intervention_group_size/intervention
 - `yun2024:174` intervention_events/intervention = 4.0 — 2. Zelle fuer intervention_events/intervention
 
-**falsche Einheit (Faktor 10/100/1000)** (`fp_einheit`)
+**falsche Einheit (Faktor oder Rate als Anzahl)** (`fp_einheit`)
 
 - `yun2024:1` intervention_events/intervention = 14.2 — intervention_events verlangt eine ganze Zahl, ausgegeben 14.2 (Rate oder Prozent)
 - `yun2024:1` comparator_events/comparator = 15.7 — comparator_events verlangt eine ganze Zahl, ausgegeben 15.7 (Rate oder Prozent)
 - `yun2024:150` intervention_mean/intervention = 0.3 — 0.3 = Goldwert x 100
 
-**Zahl nicht im Prompt** (`fp_halluzination`)
+**Zahl steht nirgends im Dokument** (`fp_halluzination`)
 
-- `yun2024:112` comparator_mean/comparator = 164.3 — 164.3 steht im Prompt-Text nicht
-- `yun2024:151` intervention_mean/intervention = 11609.0 — 11609.0 steht im Prompt-Text nicht
-- `yun2024:151` comparator_mean/comparator = 18177.0 — 18177.0 steht im Prompt-Text nicht
+- `yun2024:151` intervention_mean/intervention = 11609.0 — 11609.0 steht im Dokument nicht
+- `yun2024:151` comparator_mean/comparator = 18177.0 — 18177.0 steht im Dokument nicht
+- `yun2024:193` intervention_mean/intervention = -0.24 — -0.24 steht im Dokument nicht
 
 **Wert erkannt, falsch gebunden** (`fp_gebunden`)
 
@@ -117,5 +130,5 @@ der sowohl im falschen Arm als auch am falschen Feld steht, zaehlt beim Arm.
 
 - `yun2024:187` intervention_mean/intervention = 49.0 — Position 6924, im Umfeld steht ein Baseline- oder Aenderungswort
 - `yun2024:22` intervention_mean/intervention = 44.33 — Position 6787, im Umfeld steht ein Baseline- oder Aenderungswort
-- `yun2024:267` comparator_mean/comparator = 13.1 — Position 1311, im Umfeld steht ein Baseline- oder Aenderungswort
+- `yun2024:22` intervention_standard_deviation/intervention = 2.8 — Position 6793, im Umfeld steht ein Baseline- oder Aenderungswort
 

@@ -8,46 +8,86 @@ vorhandenen Predictions nachgerechnet.
 
 | Datei | Inhalt |
 |---|---|
+| `zahlabgleich_20261121.py` | gemeinsamer Zahlabgleich fuer Fehleranalyse und Validierung |
 | `fehlerursachen_20261121.py` / `.md` / `.json` | Phase 1: Kategorisierung der FN und FP |
 | `satz_locator_20261121.py` / `.md` / `.json` | Phase 2: Locator mit Unterscheider-Pflicht, 10 Regressionfaelle + 30 schwere Faelle |
 | `validiere_zellen_20261121.py` / `validierung_20261121.md` / `.json` | Phase 3: goldfreie Zellvalidierung, am 699-Hybrid gemessen |
 | `record30_kette_20261121.py` / `.md` / `.json` | Phase 3: Record 30 offline nachgerechnet, Fundstelle je Zelle |
 
-## Phase 1: Fehlerursachen
+## Zahlabgleich: eine Fassung fuer beide Skripte
+
+Fehleranalyse und Zellvalidierung hatten zwei verschiedene Fassungen. Die
+Fehleranalyse verwarf `14.2` in `14.20`, `48` in `48.0` und `48` in `48.` am
+Satzende und zaehlte dadurch zu viele Werte als "nicht im Text". Beide nutzen
+jetzt `zahlabgleich_20261121.zahl_positionen`:
+
+- Punkt oder Komma als Dezimaltrenner,
+- nachlaufende Nullen erlaubt (14.2 passt auf 14.20),
+- ganzzahlige Zelle passt auf 48.0, nicht auf 48.5,
+- keine angrenzenden Ziffern (48 passt nicht auf 148),
+- Satzpunkt ist kein Zahlbestandteil.
+
+Zusaetzlich trennt die Fehleranalyse jetzt "steht im Dokument nicht" von "steht
+erst hinter der 45.000-Zeichen-Grenze". Gemessen: **0 Faelle** liegen nur hinter
+der Grenze; die Kuerzung ist fuer diese Kategorien also kein Faktor.
+
+## Phase 1: Fehlerursachen (neu gerechnet)
 
 Basis 699 Records, 2.014 Goldzellen, Hybrid wie in `vergleiche_20261120.py`
 (GLM auf 596, P5 auf 102). Die Bilanz ist unveraendert: TP 2.014, FP 507, FN 759.
-Jede FN und jede FP traegt genau eine Kategorie mit Regelkennung und Beleg.
+Jede FN und jede FP traegt genau eine Kategorie mit Regelkennung und Beleg
+(Position im Text, Vergleichszelle); das Skript bricht ab, wenn die Summen nicht
+exakt 759/507 treffen.
 
 | FN-Kategorie | Anzahl | Anteil |
 |---|---:|---:|
-| Wert erkannt, falsch gebunden (anderer Wert ausgegeben) | 286 | 37,7 % |
+| Wert erkannt, falsch gebunden (anderer Wert ausgegeben) | 295 | 38,9 % |
 | leere Modellausgabe | 182 | 24,0 % |
-| Wert nicht im Prompt (Abdeckung) | 173 | 22,8 % |
-| Wert im Prompt, nicht ausgegeben | 118 | 15,5 % |
+| Wert steht im Dokument nicht (Abdeckung) | 164 | 21,6 % |
+| Wert im Prompt, nicht ausgegeben | 118 | 15,6 % |
 | Gold-Mehrdeutigkeit | 0 | 0 % |
 
 | FP-Kategorie | Anzahl | Anteil |
 |---|---:|---:|
-| Wert erkannt, falsch gebunden | 264 | 52,1 % |
-| falsches Outcome | 157 | 31,0 % |
-| falsche Einheit (Rate, Faktor, Dezimalzahl als Anzahl) | 40 | 7,9 % |
-| Zahl nicht im Prompt | 22 | 4,3 % |
-| falscher Zeitpunkt (Baseline- oder Aenderungswert) | 19 | 3,7 % |
+| Wert erkannt, falsch gebunden | 270 | 53,3 % |
+| falsches Outcome | 160 | 31,6 % |
+| falsche Einheit (Faktor oder Rate als Anzahl) | 40 | 7,9 % |
+| falscher Zeitpunkt (Baseline- oder Aenderungswert) | 22 | 4,3 % |
+| Zahl steht nirgends im Dokument | 10 | 2,0 % |
 | doppelte Zelle | 4 | 0,8 % |
 | falsches Feld | 1 | 0,2 % |
 | falscher Arm | 0 | 0 % |
+| Zahl erst hinter der Prompt-Grenze | 0 | 0 % |
+| Zeitpunktfehler aus anderer Zeile | 0 | 0 % |
 
-Zwei Befunde sind inhaltlich wichtig:
+### Verschiebung gegenueber der ersten Fassung
 
-- **Armfehler gibt es im Hybrid nicht als exakten Werttausch** (0 Faelle). Was
-  wie ein Armfehler aussieht, ist ein Populations- oder Zeilenfehler: der Wert
-  ist Goldwert eines anderen Records derselben Publikation (`fp_outcome`, 157)
-  oder steht im selben Dokument an anderer Stelle (`fp_gebunden`, 264).
-- **Gold-Mehrdeutigkeit ist im geprueften Definitionssinn nicht vorhanden**
-  (0 Faelle): kein Record traegt fuer denselben Schluessel zwei Werte, und kein
-  Wert steht in beiden Armen. Die frueher vermutete Mehrdeutigkeit war eine
-  Fehlinterpretation geteilter Gruppengroessen.
+| Kategorie | vorher | nachher | Differenz |
+|---|---:|---:|---:|
+| FN Wert erkannt, falsch gebunden | 286 | 295 | +9 |
+| FN Wert nicht im Prompt | 173 | 164 | -9 |
+| FN leere Ausgabe / nicht ausgegeben | 182 / 118 | 182 / 118 | 0 |
+| FP falsch gebunden | 264 | 270 | +6 |
+| FP falsches Outcome | 157 | 160 | +3 |
+| FP falscher Zeitpunkt | 19 | 22 | +3 |
+| FP Halluzination | 22 | 10 | -12 |
+| FP Einheit / Dublette / Feld | 40 / 4 / 1 | 40 / 4 / 1 | 0 |
+
+Damit sind 21 FN und 12 FP anders zugeordnet; die Gesamtzahlen bleiben, weil nur
+die Zuordnung innerhalb der 759 und 507 wechselt. Belastbar sind jetzt vor
+allem die beiden Zahlen, die vorher zu hoch waren: **12 der 22 "Halluzinationen"
+standen im Dokument** und sind gebundene Fremdzahlen, und **9 der 173
+"nicht im Prompt"** wurden mit dem korrigierten Abgleich im Text gefunden und
+sind jetzt als "anderer Wert ausgegeben" eingeordnet.
+
+Zwei inhaltliche Befunde bleiben:
+
+- **Armfehler als exakter Werttausch existieren nicht** (0 Faelle). Was wie ein
+  Armfehler aussieht, ist ein Populations- oder Zeilenfehler: der Wert ist
+  Goldwert eines anderen Records derselben Publikation (`fp_outcome`, 160) oder
+  steht im selben Dokument an anderer Stelle (`fp_gebunden`, 270).
+- **Gold-Mehrdeutigkeit im definierten Sinn gibt es nicht** (0): kein Record
+  traegt fuer denselben Schluessel zwei Werte, kein Wert steht in beiden Armen.
 
 ## Phase 2: Satz-Locator mit Unterscheider-Pflicht
 
@@ -98,7 +138,7 @@ Offline-Ergebnisse erfuellen sie nicht:
 
 Ein Lauf auf 420, 421 und 523 wuerde damit rund 30.000 bis 40.000
 Completion-Tokens kosten (Schaetzung aus 8.003 + 3.262 je Record) und die
-Ursache der 264 gebundenen Fehlzellen nicht adressieren. Die Entscheidung ist
+Ursache der 270 gebundenen Fehlzellen nicht adressieren. Die Entscheidung ist
 deshalb: erst die Zeilenbindung fuer die `fp_gebunden`-Gruppe bauen, dann
 laufen. Der fertige Befehl und die Kosten stehen in `zweistufig_lauf_20261120.py`
 und in `tabelle_prosa_30_ergebnis_20261120.md`.
@@ -120,9 +160,12 @@ kein Gold angefasst.
 - Die Kategorien in Phase 1 sind exklusive Text- und Zahlenheuristiken, keine
   Rekonstruktion der Modellabsicht. `fp_zeitpunkt` erkennt Baseline- und
   Aenderungswerte nur ueber Schluesselwoerter im Umfeld.
+- `fn_nicht_im_dokument` heisst: die Zahl steht in der gespeicherten
+  Markdown-Fassung des Artikels nicht. Bei Bildtabellen und Anhaengen ist das
+  eine Grenze der Aufbereitung, nicht der Extraktion.
 - Die 30 schweren Faelle in Phase 2 sind Fenster um den ersten Goldwert, nicht
   das echte Retrieval.
 - Der Nachfilter kann keine Zelle erzeugen und keinen Wert berichtigen; die
-  264 gebundenen Fehlzellen bleiben.
+  270 gebundenen Fehlzellen bleiben.
 - Alle Zahlen gelten fuer den Hybrid aus GLM und P5, nicht fuer eine neue
   Pipeline.

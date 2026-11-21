@@ -42,22 +42,10 @@ REPO = BENCH.parent.parent
 sys.path.insert(0, str(ANALYSE / "glm53_p5_vergleich_20261120"))
 
 import vergleiche_20261120 as v  # noqa: E402
+sys.path.insert(0, str(HIER))
+from zahlabgleich_20261121 import zahl_positionen  # noqa: E402
 
 FENSTER = 45000
-
-
-def zahl_positionen(wert: float, text: str) -> list[int]:
-    s = f"{wert:.6f}".rstrip("0").rstrip(".")
-    ganz, _, dez = s.partition(".")
-    # Gedruckte Form zulassen: 14.2 als 14.20, 48 als 48.0. Eine ganzzahlige
-    # Zelle darf nicht auf 48.5 passen, deshalb der Ausschluss auf Nachkommastellen
-    # ungleich null.
-    muster = (
-        rf"(?<![\d.,]){re.escape(ganz)}[.,]{re.escape(dez)}0*(?![\d])"
-        if dez
-        else rf"(?<![\d.,]){re.escape(ganz)}(?![.,]\d*[1-9])(?![\d])"
-    )
-    return [m.start() for m in re.finditer(muster, text)]
 
 
 #: Regeln, die eine Zelle verwerfen. Alle anderen Befunde werden nur gemeldet:

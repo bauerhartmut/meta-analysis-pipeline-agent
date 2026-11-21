@@ -36,12 +36,14 @@ REPO = BENCH.parent.parent
 sys.path.insert(0, str(ANALYSE / "glm53_p5_vergleich_20261120"))
 
 import vergleiche_20261120 as v  # noqa: E402
+sys.path.insert(0, str(HIER))
+from zahlabgleich_20261121 import zahl_positionen  # noqa: E402
 
 FENSTER = 45000  # Textgrenze von build_prompt; beide Laeufe nutzen sie
 
 URTEIL = {
     "fn_leer": "leere Modellausgabe",
-    "fn_nicht_im_prompt": "Wert nicht im Prompt (Abdeckung)",
+    "fn_nicht_im_dokument": "Wert steht im Dokument nicht (Abdeckung)",
     "fn_mehrdeutig": "Gold-Mehrdeutigkeit",
     "fn_wert_ersetzt": "Wert erkannt, falsch gebunden (anderer Wert ausgegeben)",
     "fn_nicht_ausgegeben": "Wert im Prompt, nicht ausgegeben",
@@ -49,27 +51,18 @@ URTEIL = {
     "fp_feld": "falsches Feld",
     "fp_outcome": "falsches Outcome",
     "fp_dublette": "doppelte Zelle",
-    "fp_einheit": "falsche Einheit (Faktor 10/100/1000)",
-    "fp_halluzination": "Zahl nicht im Prompt",
+    "fp_einheit": "falsche Einheit (Faktor oder Rate als Anzahl)",
+    "fp_halluzination": "Zahl steht nirgends im Dokument",
+    "fp_ausserhalb_fenster": "Zahl erst hinter der Prompt-Grenze (45.000)",
     "fp_gebunden": "Wert erkannt, falsch gebunden",
     "fp_zeitpunkt": "falscher Zeitpunkt (Baseline- oder Aenderungswert)",
+    "fp_zeitpunkt_zeile": "falscher Zeitpunkt (Wert aus anderer Zeile)",
 }
 
 
-def zahlenmuster(wert: float) -> str:
-    """Regex fuer die gedruckte Form einer Zahl, Punkt oder Komma als Trenner."""
-    text = f"{wert:.6f}".rstrip("0").rstrip(".")
-    ganz, _, dez = text.partition(".")
-    if dez:
-        return rf"(?<![\d.,])({re.escape(ganz)}[.,]{re.escape(dez)})(?![\d])"
-    return rf"(?<![\d.,]){re.escape(ganz)}(?![\d.])"
-
-
 def funde(wert: float | None, text: str) -> list[int]:
-    """Alle Fundstellen einer Zahl im Text; leere Liste, wenn sie fehlt."""
-    if wert is None:
-        return []
-    return [m.start() for m in re.finditer(zahlenmuster(wert), text)]
+    """Fundstellen ueber den gemeinsamen Zahlabgleich (zahlabgleich_20261121)."""
+    return zahl_positionen(wert, text)
 
 
 ZEITWORTE = (
@@ -94,6 +87,7 @@ def zeitwort_in_naehe(text: str, position: int, radius: int = 120) -> bool:
 def klassifiziere_record(
     record: dict[str, Any],
     text: str,
+    volltext: str,
     quelle: str,
     vor: list[dict[str, Any]],
     fremde_goldwerte: dict[tuple[str, str, float], list[str]],
@@ -147,12 +141,13 @@ def klassifiziere_record(
             continue
 
         stellen = funde(soll, augenschein)
+        im_dokument = bool(funde(soll, volltext))
         schluessel = (key[0], key[1], round(soll, 6))
         mehrfach = fremde_goldwerte.get(schluessel) or []
         if not vor:
             regel = "fn_leer"
         elif not stellen:
-            regel = "fn_nicht_im_prompt"
+            regel = "fn_nicht_im_dokument"
         elif key in widerspruch or (key[0], round(soll, 6)) in beide_arme:
             regel = "fn_mehrdeutig"
         elif ersatz is not None:
@@ -162,6 +157,12 @@ def klassifiziere_record(
         beleg = (
             f"Position {stellen[0]}" if stellen else "Zahl steht im Prompt-Text nicht"
         )
+        if regel == "fn_nicht_im_dokument":
+            beleg = (
+                "Zahl steht im Dokument, aber hinter der 45000-Zeichen-Grenze"
+                if im_dokument
+                else "Zahl steht im Dokument nicht"
+            )
         if regel == "fn_wert_ersetzt":
             beleg += f"; ausgegeben {ersatz[1]} statt {soll}"
         if regel == "fn_mehrdeutig":
@@ -179,6 +180,7 @@ def klassifiziere_record(
                 "wert": soll,
                 "regel": regel,
                 "urteil": URTEIL[regel],
+                "im_dokument": im_dokument,
                 "beleg": beleg,
             }
         )
@@ -221,7 +223,7 @@ def klassifiziere_record(
             regel = "fp_feld"
             beleg = f"{wert} ist Goldwert eines anderen Feldes im selben Arm"
         elif runde not in eigener_arm and runde in gold_nach_feld.get(feld, set()):
-            regel = "fp_zeitpunkt"
+            regel = "fp_zeitpunkt_zeile"
             beleg = f"{wert} ist Goldwert desselben Feldes in einer anderen Zeile"
         elif feld.endswith(("_events", "_group_size")) and abs(wert - round(wert)) > 1e-9:
             regel = "fp_einheit"
@@ -234,8 +236,12 @@ def klassifiziere_record(
             regel = "fp_einheit"
             beleg = f"{wert} = Goldwert x {faktor}"
         elif not stellen:
-            regel = "fp_halluzination"
-            beleg = f"{wert} steht im Prompt-Text nicht"
+            if funde(wert, volltext):
+                regel = "fp_ausserhalb_fenster"
+                beleg = f"{wert} steht erst hinter der 45000-Zeichen-Grenze"
+            else:
+                regel = "fp_halluzination"
+                beleg = f"{wert} steht im Dokument nicht"
         elif fremde_goldwerte.get((feld, arm, runde)):
             regel = "fp_outcome"
             beleg = "gleicher Wert Gold in: " + ", ".join(fremde_goldwerte[(feld, arm, runde)])
@@ -292,6 +298,7 @@ def main() -> int:
                 fremde_goldwerte[key].append(r["record_id"])
 
     texte: dict[str, str] = {}
+    texte_voll: dict[str, str] = {}
     fn_alle: list[dict[str, Any]] = []
     fp_alle: list[dict[str, Any]] = []
     pro_record: dict[str, dict[str, Any]] = {}
@@ -299,9 +306,13 @@ def main() -> int:
         record = records[rid]
         pfad = (record.get("document") or {}).get("path") or ""
         if pfad not in texte:
-            texte[pfad] = (REPO / pfad).read_text(encoding="utf-8", errors="replace") if pfad else ""
+            voll = (REPO / pfad).read_text(encoding="utf-8", errors="replace") if pfad else ""
+            texte_voll[pfad] = voll
+            texte[pfad] = voll
         b = v.bilanz_p5((record.get("gold") or {}).get("cells") or [], v.zellen(zeile))
-        fn, fp = klassifiziere_record(record, texte[pfad], quelle, v.zellen(zeile), fremde_goldwerte)
+        fn, fp = klassifiziere_record(
+            record, texte[pfad], texte_voll[pfad], quelle, v.zellen(zeile), fremde_goldwerte
+        )
         fn_alle.extend(fn)
         fp_alle.extend(fp)
         pro_record[rid] = {"quelle": quelle, **b, "fn_faelle": len(fn), "fp_faelle": len(fp),
@@ -367,21 +378,33 @@ def main() -> int:
         "| Kategorie | Regel | Anzahl | Anteil |\n|---|---|---:|---:|\n", tabelle(ergebnis["fp"]),
         "\n\n## Regeln und Grenzen\n\n",
         "Die Regeln greifen in dieser Reihenfolge, die erste zutreffende gewinnt:\n\n",
-        "FN: `fn_leer` (Record ohne Zelle) → `fn_nicht_im_prompt` (Zahl fehlt im\n"
-        "45.000-Zeichen-Fenster) → `fn_mehrdeutig` (gleiche Zahl in mehreren\n"
-        "Goldzellen desselben Records oder derselben Publikation) → `fn_wert_ersetzt`\n"
-        "(gleicher Schluessel, anderer Wert ausgegeben) → `fn_nicht_ausgegeben`.\n\n",
+        "FN: `fn_leer` (Record ohne Zelle) → `fn_nicht_im_dokument` (Zahl steht im\n"
+        "ganzen Dokument nicht; keiner dieser Faelle liegt nur hinter der\n"
+        "45.000-Zeichen-Grenze) → `fn_mehrdeutig` (Gold traegt fuer denselben\n"
+        "Schluessel mehrere Werte oder denselben Wert in beiden Armen) →\n"
+        "`fn_wert_ersetzt` (gleicher Schluessel, anderer Wert ausgegeben) →\n"
+        "`fn_nicht_ausgegeben`.\n\n",
         "FP: `fp_dublette` (zweite Zelle je Feld und Arm) → `fp_arm` (Wert ist\n"
         "Goldwert des anderen Arms) → `fp_feld` (Wert gehoert zu einem anderen Feld\n"
-        "des Records) → `fp_einheit` (Faktor 10/100/1000 zum Goldwert) →\n"
-        "`fp_halluzination` (Zahl fehlt im Fenster) → `fp_outcome` (Wert ist Goldwert\n"
-        "eines anderen Records derselben Publikation) → `fp_gebunden`.\n\n",
+        "des Records) → `fp_zeitpunkt_zeile` (Wert ist Goldwert desselben Feldes in\n"
+        "einer anderen Zeile) → `fp_einheit` (Faktor 10/100/1000 oder Rate als Anzahl)\n"
+        "→ `fp_halluzination` (Zahl steht nirgends im Dokument) →\n"
+        "`fp_ausserhalb_fenster` (Zahl erst hinter der 45.000-Zeichen-Grenze) →\n"
+        "`fp_outcome` (Wert ist Goldwert eines anderen Records derselben Publikation)\n"
+        "→ `fp_zeitpunkt` (Baseline- oder Aenderungswort im Umfeld eines\n"
+        "Ergebnisfeldes) → `fp_gebunden`.\n\n",
+        "Der Zahlabgleich ist fuer Fehleranalyse und Zellvalidierung derselbe\n"
+        "(`zahlabgleich_20261121.py`): Punkt oder Komma als Trenner, nachlaufende\n"
+        "Nullen erlaubt, 48 passt auf 48.0, nicht auf 48.5, und der Satzpunkt zaehlt\n"
+        "nicht als Zahlbestandteil. Die fruehere, engere Fassung der Fehleranalyse\n"
+        "zaehlte 12 Zellen als Halluzination, die im Dokument stehen.\n\n",
         "Grenzen: Die Zuordnung ist eine Text- und Zahlenheuristik, keine Rekonstruktion\n"
-        "der Modellabsicht. `fp_zeitpunkt` ist definiert, aber nicht vergeben, weil das\n"
-        "Gold in diesen Records keinen Zeitpunkt traegt (fast ueberall `null`) und sich\n"
-        "Zeitpunktfehler damit nicht belegen lassen. `fn_mehrdeutig` markiert gleiche\n"
-        "Zahlen, nicht bewiesene Goldfehler. Die Kategorien sind exklusiv; ein Wert,\n"
-        "der sowohl im falschen Arm als auch am falschen Feld steht, zaehlt beim Arm.\n\n",
+        "der Modellabsicht. `fp_zeitpunkt` vergibt sich ueber Baseline- oder\n"
+        "Aenderungsworte im Umfeld; das Gold traegt fast ueberall keinen Zeitpunkt,\n"
+        "ein belegter Zeitpunktvergleich ist damit nicht moeglich. `fn_mehrdeutig`\n"
+        "markiert Goldwidersprueche, nicht bewiesene Goldfehler. Die Kategorien sind\n"
+        "exklusiv; ein Wert, der sowohl im falschen Arm als auch am falschen Feld\n"
+        "steht, zaehlt beim Arm.\n\n",
         "## Beispiele\n\n",
     ]
     for regel in URTEIL:
