@@ -54,6 +54,10 @@ def main() -> int:
         gebunden41 = 0
         zellen = richtig = 0
         zellen41 = richtig41 = 0
+        gruende: Counter = Counter()
+        doppelt_gold = doppelt_bindung = 0
+        falsch_wert = falsch_schluessel = unter_anderem_arm = 0
+        schon_richtig: list[dict[str, Any]] = []
         for r in records:
             rid = r["record_id"]
             gold = (r.get("gold") or {}).get("cells") or []
@@ -72,15 +76,33 @@ def main() -> int:
                 if rid in ids41:
                     gebunden41 += 1
                 gold_keys = {(str(z.get("field") or ""), v.arm_von(z)): v.zahl(z.get("value")) for z in gold}
+                roh_keys = {(str(z.get("field") or ""), v.arm_von(z)): v.zahl(z.get("value")) for z in roh}
+                doppelt_gold += sum(1 for n in Counter((str(z.get("field") or ""), v.arm_von(z)) for z in gold).values() if n > 1)
+                doppelt_bindung += sum(1 for n in Counter((z["field"], z["arm"]) for z in bindung["zellen"]).values() if n > 1)
                 for z in bindung["zellen"]:
                     zellen += 1
                     if rid in ids41:
                         zellen41 += 1
-                    wert = gold_keys.get((z["field"], z["arm"]))
+                    key = (z["field"], z["arm"])
+                    wert = gold_keys.get(key)
                     if wert is not None and abs(wert - z["value"]) < 1e-6:
                         richtig += 1
                         if rid in ids41:
                             richtig41 += 1
+                        if key not in roh_keys:
+                            gruende["neu_hinzugefuegt"] += 1
+                        elif abs(roh_keys[key] - wert) < 1e-6:
+                            gruende["vorher_schon_richtig"] += 1
+                            if len(schon_richtig) < 8:
+                                schon_richtig.append({"record_id": rid, "feld": key[0], "arm": key[1]})
+                        else:
+                            gruende["vorher_falsch_additiv_nicht_ersetzt"] += 1
+                    elif wert is None:
+                        falsch_schluessel += 1
+                        if any(abs(w2 - z["value"]) < 1e-6 and k2[1] != z["arm"] for k2, w2 in gold_keys.items()):
+                            unter_anderem_arm += 1
+                    else:
+                        falsch_wert += 1
         s_vor, s_nach = summe(vor), summe(nach)
         s_vor41, s_nach41 = summe(vor41), summe(nach41)
         laeufe.append(
@@ -90,6 +112,13 @@ def main() -> int:
                 "gebunden": gebunden,
                 "zellen_gebunden": zellen,
                 "zellen_richtig": richtig,
+                "zellen_gruende": dict(gruende),
+                "gold_doppelte_schluessel": doppelt_gold,
+                "falsche_zellen_wert": falsch_wert,
+                "falsche_zellen_schluessel_fehlt_gold": falsch_schluessel,
+                "falsche_zellen_wert_unter_anderem_arm": unter_anderem_arm,
+                "vorher_schon_richtig_belege": schon_richtig,
+                "bindung_doppelte_schluessel": doppelt_bindung,
                 "vorher": s_vor,
                 "nachher": s_nach,
                 "tp_delta": s_nach["tp"] - s_vor["tp"],
@@ -131,6 +160,19 @@ def main() -> int:
         f"{e['vorher']['fp']} -> {e['nachher']['fp']} | {e['fp_delta']:+d} | {e['tp_delta']:+d} |"
         for e in laeufe
     )
+    zeilen_gruende = "\n".join(
+        f"| {e['gruppe_modus']} | {e['zellen_richtig']} | {e['zellen_gruende'].get('neu_hinzugefuegt', 0)} | "
+        f"{e['zellen_gruende'].get('vorher_schon_richtig', 0)} | "
+        f"{e['zellen_gruende'].get('vorher_falsch_additiv_nicht_ersetzt', 0)} | "
+        f"{e['gold_doppelte_schluessel']} | {e['bindung_doppelte_schluessel']} |"
+        for e in laeufe
+    )
+    zeilen_arm = "\n".join(
+        f"| {e['gruppe_modus']} | {e['zellen_richtig']} | {e['zellen_gebunden'] - e['zellen_richtig']} | "
+        f"{e['falsche_zellen_wert']} | {e['falsche_zellen_schluessel_fehlt_gold']} | "
+        f"{e['falsche_zellen_wert_unter_anderem_arm']} |"
+        for e in laeufe
+    )
     zeilen41 = "\n".join(
         f"| {e['gruppe_modus']} | {e['auswahl41']['gebunden']} | {e['auswahl41']['zellen_gebunden']} "
         f"({e['auswahl41']['zellen_richtig']} richtig) | {e['auswahl41']['fp_delta']:+d} | "
@@ -153,6 +195,27 @@ Modus. `ersetzen` bleibt aussen vor, weil es in der Auswahl zahlengleich war.
 | Gruppenmodus | Records | gebundene Records | gebundene Zellen (richtig) | TP | FP | FP-Delta | TP-Delta |
 |---|---:|---:|---:|---|---|---:|---:|
 {zeilen}
+
+## Luecke zwischen richtigen Zellen und neuen TP
+
+| Gruppenmodus | richtige Zellen | neu hinzugefuegt | vorher schon richtig | vorher falsch (additiv nicht ersetzt) | doppelte Goldschluessel | doppelte Bindungsschluessel |
+|---|---:|---:|---:|---:|---:|---:|
+{zeilen_gruende}
+
+`neu hinzugefuegt` entspricht dem TP-Delta. Die Differenz sind Zellen, die im
+Gold stehen, aber die Bilanz nicht heben, weil der Wert vorher schon richtig war
+oder weil am Schluessel ein falscher Wert stand, den der additive Modus nicht
+ueberschreibt. Doppelte Schluessel treten nicht auf.
+
+### Armzuordnung der falschen Zellen
+
+| Gruppenmodus | richtige Zellen | falsche Zellen | davon Wert falsch | davon Schluessel nicht im Gold | davon Wert unter dem anderen Arm |
+|---|---:|---:|---:|---:|---:|
+{zeilen_arm}
+
+`Wert unter dem anderen Arm` ist der einzige direkte Hinweis auf eine vertauschte
+Armzuordnung; alle anderen falschen Zellen treffen eine Zeile, die im Gold gar
+nicht vorkommt.
 
 ## Aufteilung
 

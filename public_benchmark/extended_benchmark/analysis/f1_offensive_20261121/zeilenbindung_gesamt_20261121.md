@@ -10,6 +10,29 @@ Modus. `ersetzen` bleibt aussen vor, weil es in der Auswahl zahlengleich war.
 | streng | 699 | 2 | 12 (2 richtig) | 170 -> 172 | 101 -> 111 | +10 | +2 |
 | erstes | 699 | 22 | 126 (34 richtig) | 170 -> 198 | 101 -> 177 | +76 | +28 |
 
+## Luecke zwischen richtigen Zellen und neuen TP
+
+| Gruppenmodus | richtige Zellen | neu hinzugefuegt | vorher schon richtig | vorher falsch (additiv nicht ersetzt) | doppelte Goldschluessel | doppelte Bindungsschluessel |
+|---|---:|---:|---:|---:|---:|---:|
+| streng | 2 | 2 | 0 | 0 | 0 | 0 |
+| erstes | 34 | 28 | 6 | 0 | 0 | 0 |
+
+`neu hinzugefuegt` entspricht dem TP-Delta. Die Differenz sind Zellen, die im
+Gold stehen, aber die Bilanz nicht heben, weil der Wert vorher schon richtig war
+oder weil am Schluessel ein falscher Wert stand, den der additive Modus nicht
+ueberschreibt. Doppelte Schluessel treten nicht auf.
+
+### Armzuordnung der falschen Zellen
+
+| Gruppenmodus | richtige Zellen | falsche Zellen | davon Wert falsch | davon Schluessel nicht im Gold | davon Wert unter dem anderen Arm |
+|---|---:|---:|---:|---:|---:|
+| streng | 2 | 10 | 10 | 0 | 0 |
+| erstes | 34 | 92 | 76 | 16 | 1 |
+
+`Wert unter dem anderen Arm` ist der einzige direkte Hinweis auf eine vertauschte
+Armzuordnung; alle anderen falschen Zellen treffen eine Zeile, die im Gold gar
+nicht vorkommt.
+
 ## Aufteilung
 
 | Gruppenmodus | gebunden (41) | Zellen (richtig) | FP-Delta (41) | TP-Delta (41) |

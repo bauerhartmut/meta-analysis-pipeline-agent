@@ -176,6 +176,36 @@ Verhaeltnis wird also schlechter, nicht besser. `streng` bleibt bei 2 TP zu
 10 FP. Die Regel bindet 22 von 699 Records (3 Prozent) und trifft in deren
 126 Zellen zu 34 (27 Prozent) das Gold.
 
+### Luecke 34 richtige Zellen zu 28 neuen TP
+
+Belegt, nicht geschaetzt: von den 34 richtigen Zellen kamen 28 neu hinzu (das
+ist genau das TP-Delta), 6 standen vorher schon richtig am Schluessel.
+Doppelte Gold- oder Bindungsschluessel gibt es nicht (0/0). Von den 92 falschen
+Zellen entfallen 76 auf einen falschen Wert an einem echten Goldschluessel, 16
+auf Schluessel, die im Gold gar nicht vorkommen, und genau 1 auf einen Wert,
+der unter dem anderen Arm im Gold steht. Eine vertauschte Armzuordnung ist
+als Ursache damit fast ausgeschlossen.
+
+## Zeilenbenennung im Prompt: 20 von 295 Faellen
+
+Systematische Stichprobe (jeder 15. Fall der 295 `fn_wert_ersetzt`), offline
+(`zeilenbenennung_20261121.py`):
+
+| Klasse | Faelle |
+|---|---:|
+| Zeile eindeutig benannt | 1 |
+| Zeile mehrdeutig benannt | 1 |
+| Zaehlfeld ueber Kaption/Tabelle benannt | 2 |
+| Wert nur im Fliesstext | 14 |
+| Wert in Zeile ohne Outcome-Bezug | 2 |
+
+Hoechstens 4 der 20 koennte eine explizite Zeilenbenennung im Prompt
+erreichen, nach Sichtpruefung 3 (`yun2024:389` nennt die Groesse einer
+Untergruppe, nicht die Armgroesse). 16 sind es nicht: die Werte stehen im
+Fliesstext oder in Zeilen, die den Outcome nicht nennen. 10 der 20 sind
+Zaehlfelder; in der Gesamtmenge der 295 sind es 127 Zaehlfelder, 100
+Mittelwerte, 68 Streuungen.
+
 ## Phase 4: Netzlaeufe 420, 421, 523 - nicht gestartet
 
 Die Bedingung des Auftrags war "nach erfolgreichen Offline-Tests". Die
