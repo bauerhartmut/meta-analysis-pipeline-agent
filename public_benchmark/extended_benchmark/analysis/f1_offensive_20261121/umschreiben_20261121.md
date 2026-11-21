@@ -68,17 +68,49 @@ keine
   - davon die alte Regel richtig, neu falsch: 0
 - richtige Vorhersagezellen, zu denen die neue Regel nichts liefert: 110
 
-| Stand | TP | FP | FN | F1 | uebersprungene Regelzellen |
-|---|---:|---:|---:|---:|---:|
-| p5 | 166 | 96 | 2607 | 0.109 | 0 |
-| p5_plus_alt | 138 | 158 | 2635 | 0.090 | 0 |
-| p5_plus_neu | 157 | 141 | 2616 | 0.102 | 0 |
-| p5_plus_alt_luecken | 169 | 127 | 2604 | 0.110 | 64 |
-| p5_plus_neu_luecken | 178 | 120 | 2595 | 0.116 | 66 |
+| Stand | TP | FP | FN | F1 | Feld schon belegt | Mittel zurueckgehalten |
+|---|---:|---:|---:|---:|---:|---:|
+| p5 | 166 | 96 | 2607 | 0.109 | 0 | 0 |
+| p5_plus_alt | 138 | 158 | 2635 | 0.090 | 0 | 0 |
+| p5_plus_neu | 157 | 141 | 2616 | 0.102 | 0 | 0 |
+| p5_plus_alt_luecken | 169 | 127 | 2604 | 0.110 | 64 | 0 |
+| p5_plus_neu_luecken | 178 | 120 | 2595 | 0.116 | 66 | 0 |
+| p5_plus_neu_arm | 178 | 120 | 2595 | 0.116 | 66 | 0 |
+| p5_plus_neu_record | 178 | 120 | 2595 | 0.116 | 66 | 0 |
+| p5_plus_neu_ohne_mittel | 178 | 114 | 2595 | 0.116 | 66 | 6 |
 
 Lesart: Ersetzen kostet TP, weil 31 richtige Vorhersagezellen durch einen
 falschen Regelwert ersetzt werden. `nur Luecken fuellen` laesst diese Zellen
 stehen: +12 TP und +24 FP gegenueber der unveraenderten Vorhersage (F1 0.109 -> 0.116). Mit der alten Tabellenwahl waere es +3 TP / +31 FP; die neue Wahl bringt unter dieser Strategie +9 TP und -7 FP.
+
+
+## Feldprioritaet der Mittel
+
+Streuung und Groesse werden immer gefuellt. Ein Mittel wird nur
+geschrieben, wenn `alle` (jede Luecke), `arm` (der Arm hat weder Mittel
+noch Streuung) oder `record` (der Record hat kein Mittel) es zulaesst.
+`nie` schaltet die Mittel der Regel ganz ab.
+
+| Stand | Feldart | neu richtig | neu falsch |
+|---|---|---:|---:|
+| p5_plus_neu_luecken | groesse | 4 | 12 |
+| p5_plus_neu_luecken | mittel | 0 | 6 |
+| p5_plus_neu_luecken | streuung | 8 | 6 |
+| p5_plus_neu_arm | groesse | 4 | 12 |
+| p5_plus_neu_arm | mittel | 0 | 6 |
+| p5_plus_neu_arm | streuung | 8 | 6 |
+| p5_plus_neu_record | groesse | 4 | 12 |
+| p5_plus_neu_record | mittel | 0 | 6 |
+| p5_plus_neu_record | streuung | 8 | 6 |
+| p5_plus_neu_ohne_mittel | groesse | 4 | 12 |
+| p5_plus_neu_ohne_mittel | streuung | 8 | 6 |
+
+| Stand | TP gegen P5 | FP gegen P5 | F1 |
+|---|---:|---:|---:|
+| Mittel in jeder Luecke | +12 | +24 | 0.1159 |
+| Mittel nur im leeren Arm | +12 | +24 | 0.1159 |
+| Mittel nur im mittelfreien Record | +12 | +24 | 0.1159 |
+| keine Mittel aus der Regel | +12 | +18 | 0.1162 |
 
 
 | Record | Feld | Arm | Vorhersage | Gold | Regel neu | abgeleitet |

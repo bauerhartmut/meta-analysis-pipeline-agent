@@ -215,10 +215,51 @@ def main() -> int:
         summe["f1"] = 2 * genau * treffer / (genau + treffer) if genau + treffer else 0.0
         return summe
 
+    def fuellen(basis: dict[tuple[str, str], dict[str, Any]],
+                extra: list[dict[str, Any]],
+                mittel: str) -> tuple[list[dict[str, Any]], int, int]:
+        """Luecken fuellen; Feldprioritaet entscheidet ueber die Mittel.
+
+        Streuung und Groesse werden immer gefuellt, sobald das Feld leer ist
+        (dort fehlt P5 am haeufigsten). Fuer ein Mittel gilt:
+
+        * `alle` - jede leere Mittelzelle wird gefuellt,
+        * `arm` - nur wenn der Arm weder Mittel noch Streuung hat,
+        * `record` - nur wenn der Record ueberhaupt kein Mittel hat,
+        * `nie` - gar kein Mittel aus der Regel.
+        """
+        karte = {k: dict(c) for k, c in basis.items()}
+        belegt = 0
+        zurueck = 0
+        arme_mittel = {k[1] for k in basis if art(k[0]) == "mittel"}
+        arme_streuung = {k[1] for k in basis if art(k[0]) == "streuung"}
+        for c in extra:
+            schluessel = (c["field"], c["group"])
+            if schluessel in basis:
+                belegt += 1
+                continue
+            if art(c["field"]) == "mittel":
+                if mittel == "nie":
+                    zurueck += 1
+                    continue
+                if mittel == "arm" and (c["group"] in arme_mittel
+                                        or c["group"] in arme_streuung):
+                    zurueck += 1
+                    continue
+                if mittel == "record" and arme_mittel:
+                    zurueck += 1
+                    continue
+            karte[schluessel] = {"field": c["field"], "group": c["group"],
+                                "value": c["value"]}
+        return list(karte.values()), belegt, zurueck
+
     karten: dict[str, dict[str, list[dict[str, Any]]]] = {
         "p5": {}, "p5_plus_alt": {}, "p5_plus_neu": {},
-        "p5_plus_alt_luecken": {}, "p5_plus_neu_luecken": {}}
+        "p5_plus_alt_luecken": {}, "p5_plus_neu_luecken": {},
+        "p5_plus_neu_arm": {}, "p5_plus_neu_record": {},
+        "p5_plus_neu_ohne_mittel": {}}
     uebersprungen: dict[str, int] = {}
+    zurueckgehalten: dict[str, int] = {}
     for rid, zeile in p5.items():
         if rid not in records:
             continue
@@ -232,19 +273,34 @@ def main() -> int:
                 zusammen[(c["field"], c["group"])] = {
                     "field": c["field"], "group": c["group"], "value": c["value"]}
             karten[name][rid] = list(zusammen.values())
-            # Nur Luecken fuellen: eine vorhandene Vorhersagezelle bleibt stehen,
-            # auch wenn die Regel einen anderen Wert liest.
-            luecken = {k: dict(c) for k, c in basis.items()}
-            for c in extra:
-                schluessel = (c["field"], c["group"])
-                if schluessel in basis:
-                    uebersprungen[name + "_luecken"] = \
-                        uebersprungen.get(name + "_luecken", 0) + 1
-                    continue
-                luecken[schluessel] = {"field": c["field"], "group": c["group"],
-                                       "value": c["value"]}
-            karten[name + "_luecken"][rid] = list(luecken.values())
+        # Lueckenfuellung: ohne Prioritaet, mit Prioritaet auf Arm und auf Record.
+        for name, regel, quelle in (("p5_plus_alt_luecken", "alle", zellen_alt),
+                                    ("p5_plus_neu_luecken", "alle", zellen_neu),
+                                    ("p5_plus_neu_arm", "arm", zellen_neu),
+                                    ("p5_plus_neu_record", "record", zellen_neu),
+                                    ("p5_plus_neu_ohne_mittel", "nie", zellen_neu)):
+            zellen, belegt, zurueck = fuellen(basis, quelle.get(rid, []), regel)
+            karten[name][rid] = zellen
+            uebersprungen[name] = uebersprungen.get(name, 0) + belegt
+            zurueckgehalten[name] = zurueckgehalten.get(name, 0) + zurueck
     bilanz = {name: einsatz(karte) for name, karte in karten.items()}
+
+    def zuwachs(name: str) -> dict[str, dict[str, int]]:
+        """Neue Zellen gegenueber der Vorhersage, je Feldart richtig/falsch."""
+        aus: dict[str, dict[str, int]] = {}
+        for rid, karte in karten[name].items():
+            vorher = {(str(x.get("field") or ""), v.arm_von(x))
+                      for x in karten["p5"].get(rid, [])}
+            gold = {(str(z.get("field") or ""), v.arm_von(z)): v.zahl(z.get("value"))
+                    for z in (records[rid].get("gold") or {}).get("cells") or []}
+            for c in karte:
+                schluessel = (str(c.get("field") or ""), v.arm_von(c))
+                if schluessel in vorher:
+                    continue
+                soll = gold.get(schluessel)
+                eimer = aus.setdefault(art(c["field"]), {"tp": 0, "fp": 0})
+                eimer["tp" if soll is not None and abs(c["value"] - soll) < 1e-6 else "fp"] += 1
+        return aus
 
     ergebnis = {"stand": "2026-11-21", "records": len(records), "p5_records": len(p5),
                 "klassen": bilanzen,
@@ -253,7 +309,13 @@ def main() -> int:
                 "abgeleitete_streuungen": abgeleitet,
                 "p5": {"ueberschrieben": ueberschrieben, "bestaetigt": bestaetigt,
                        "regel_liefert_nichts": leere, "bilanz": bilanz,
-                       "ursache": ursache, "uebersprungen": uebersprungen}}
+                       "ursache": ursache, "uebersprungen": uebersprungen,
+                       "zurueckgehalten": zurueckgehalten,
+                       "zuwachs_je_feldart": {
+                           n: zuwachs(n) for n in ("p5_plus_neu_luecken",
+                                                   "p5_plus_neu_arm",
+                                                   "p5_plus_neu_record",
+                                                   "p5_plus_neu_ohne_mittel")}}}
     (HIER / "umschreiben_20261121.json").write_text(
         json.dumps(ergebnis, indent=2, ensure_ascii=True), encoding="utf-8")
 
@@ -302,13 +364,16 @@ def main() -> int:
            f"{ursache.get('alt_falsch', 0)}",
            f"  - davon die alte Regel richtig, neu falsch: {ursache.get('alt_richtig', 0)}",
            f"- richtige Vorhersagezellen, zu denen die neue Regel nichts liefert: {leere}",
-           "", "| Stand | TP | FP | FN | F1 | uebersprungene Regelzellen |",
-           "|---|---:|---:|---:|---:|---:|"]
-    for name in ("p5", "p5_plus_alt", "p5_plus_neu", "p5_plus_alt_luecken",
-                 "p5_plus_neu_luecken"):
+           "", "| Stand | TP | FP | FN | F1 | Feld schon belegt | Mittel zurueckgehalten |",
+           "|---|---:|---:|---:|---:|---:|---:|"]
+    namen = ("p5", "p5_plus_alt", "p5_plus_neu", "p5_plus_alt_luecken",
+             "p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
+             "p5_plus_neu_ohne_mittel")
+    for name in namen:
         b = bilanz[name]
         md.append(f"| {name} | {b['tp']:.0f} | {b['fp']:.0f} | {b['fn']:.0f} | "
-                  f"{b['f1']:.3f} | {uebersprungen.get(name, 0)} |")
+                  f"{b['f1']:.3f} | {uebersprungen.get(name, 0)} | "
+                  f"{zurueckgehalten.get(name, 0)} |")
     b_p5, b_alt, b_neu = bilanz["p5"], bilanz["p5_plus_alt"], bilanz["p5_plus_neu"]
     g_alt, g_neu = bilanz["p5_plus_alt_luecken"], bilanz["p5_plus_neu_luecken"]
     md += ["", "Lesart: Ersetzen kostet TP, weil 31 richtige Vorhersagezellen durch einen",
@@ -319,6 +384,29 @@ def main() -> int:
            f"{g_alt['tp'] - b_p5['tp']:+.0f} TP / {g_alt['fp'] - b_p5['fp']:+.0f} FP; die neue "
            f"Wahl bringt unter dieser Strategie {g_neu['tp'] - g_alt['tp']:+.0f} TP und "
            f"{g_neu['fp'] - g_alt['fp']:+.0f} FP.", ""]
+    zw = {n: zuwachs(n) for n in ("p5_plus_neu_luecken", "p5_plus_neu_arm",
+                                  "p5_plus_neu_record", "p5_plus_neu_ohne_mittel")}
+    md += ["", "## Feldprioritaet der Mittel", "",
+           "Streuung und Groesse werden immer gefuellt. Ein Mittel wird nur",
+           "geschrieben, wenn `alle` (jede Luecke), `arm` (der Arm hat weder Mittel",
+           "noch Streuung) oder `record` (der Record hat kein Mittel) es zulaesst.",
+           "`nie` schaltet die Mittel der Regel ganz ab.",
+           "", "| Stand | Feldart | neu richtig | neu falsch |",
+           "|---|---|---:|---:|"]
+    for name in ("p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
+                 "p5_plus_neu_ohne_mittel"):
+        for feldart in sorted(zw[name]):
+            e = zw[name][feldart]
+            md.append(f"| {name} | {feldart} | {e['tp']} | {e['fp']} |")
+    md += ["", "| Stand | TP gegen P5 | FP gegen P5 | F1 |", "|---|---:|---:|---:|"]
+    for name, label in (("p5_plus_neu_luecken", "Mittel in jeder Luecke"),
+                        ("p5_plus_neu_arm", "Mittel nur im leeren Arm"),
+                        ("p5_plus_neu_record", "Mittel nur im mittelfreien Record"),
+                        ("p5_plus_neu_ohne_mittel", "keine Mittel aus der Regel")):
+        b = bilanz[name]
+        md.append(f"| {label} | {b['tp'] - b_p5['tp']:+.0f} | {b['fp'] - b_p5['fp']:+.0f} | "
+                  f"{b['f1']:.4f} |")
+    md.append("")
     if ueberschrieben:
         md += ["", "| Record | Feld | Arm | Vorhersage | Gold | Regel neu | abgeleitet |",
                "|---|---|---|---:|---:|---:|---|"]
@@ -336,10 +424,15 @@ def main() -> int:
     print(f"P5: bestaetigt {bestaetigt} | ueberschrieben {len(ueberschrieben)} | "
           f"Regel liefert nichts {leere}")
     for name in ("p5", "p5_plus_alt", "p5_plus_neu", "p5_plus_alt_luecken",
-                 "p5_plus_neu_luecken"):
+                 "p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
+                 "p5_plus_neu_ohne_mittel"):
         b = bilanz[name]
-        print(f"  {name:20s} TP {b['tp']:.0f} FP {b['fp']:.0f} FN {b['fn']:.0f} "
-              f"F1 {b['f1']:.3f} uebersprungen {uebersprungen.get(name, 0)}")
+        print(f"  {name:22s} TP {b['tp']:.0f} FP {b['fp']:.0f} FN {b['fn']:.0f} "
+              f"F1 {b['f1']:.3f} belegt {uebersprungen.get(name, 0)} "
+              f"mittel_zurueck {zurueckgehalten.get(name, 0)}")
+    for name in ("p5_plus_neu_luecken", "p5_plus_neu_arm", "p5_plus_neu_record",
+                 "p5_plus_neu_ohne_mittel"):
+        print(f"  {name} je Feldart: {zuwachs(name)}")
     return 0
 
 

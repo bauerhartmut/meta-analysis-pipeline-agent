@@ -722,6 +722,20 @@ weil die Vorhersage das Feld schon hat (+12 TP, +24 FP, F1 0.109 -> 0.116). Mit
 der alten Tabellenwahl waere es nur +3 TP bei +31 FP (F1 0.110), die neue Wahl
 bringt unter dieser Strategie also +9 TP und -7 FP.
 
+Feldprioritaet fuer die Mittel aendert daran nichts: Streuung und Groesse
+zuerst zu fuellen und ein Mittel nur im leeren Arm (oder im mittelfreien
+Record) zu schreiben, liefert exakt dieselben 178 / 120 / 2595 mit 0
+zurueckgehaltenen Mitteln. Eine Mittelluecke entsteht nur dort, wo der Arm
+weder Mittel noch Streuung hat, die Bedingung ist also immer erfuellt. Erst das
+Abschalten der Mittel bewegt die Bilanz: 178 TP bleiben, FP 120 -> 114, F1
+0.1159 -> 0.1161. Der Grund steht in der Feldart:
+
+| Feldart | neu richtig | neu falsch |
+|---|---:|---:|
+| Streuung | 8 | 6 |
+| Groesse | 4 | 12 |
+| Mittel | 0 | 6 |
+
 ## Fixture: beide Zellstaende zellgenau
 
 `fixture_20261121.py` (Modi `schreiben` / `pruefen`) friert die 33 Zellen mit

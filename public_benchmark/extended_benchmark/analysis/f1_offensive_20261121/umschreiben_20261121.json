@@ -808,6 +808,24 @@
         "fp": 120,
         "fn": 2595,
         "f1": 0.11592315206773036
+      },
+      "p5_plus_neu_arm": {
+        "tp": 178,
+        "fp": 120,
+        "fn": 2595,
+        "f1": 0.11592315206773036
+      },
+      "p5_plus_neu_record": {
+        "tp": 178,
+        "fp": 120,
+        "fn": 2595,
+        "f1": 0.11592315206773036
+      },
+      "p5_plus_neu_ohne_mittel": {
+        "tp": 178,
+        "fp": 114,
+        "fn": 2595,
+        "f1": 0.1161500815660685
       }
     },
     "ursache": {
@@ -815,7 +833,71 @@
     },
     "uebersprungen": {
       "p5_plus_alt_luecken": 64,
-      "p5_plus_neu_luecken": 66
+      "p5_plus_neu_luecken": 66,
+      "p5_plus_neu_arm": 66,
+      "p5_plus_neu_record": 66,
+      "p5_plus_neu_ohne_mittel": 66
+    },
+    "zurueckgehalten": {
+      "p5_plus_alt_luecken": 0,
+      "p5_plus_neu_luecken": 0,
+      "p5_plus_neu_arm": 0,
+      "p5_plus_neu_record": 0,
+      "p5_plus_neu_ohne_mittel": 6
+    },
+    "zuwachs_je_feldart": {
+      "p5_plus_neu_luecken": {
+        "groesse": {
+          "tp": 4,
+          "fp": 12
+        },
+        "mittel": {
+          "tp": 0,
+          "fp": 6
+        },
+        "streuung": {
+          "tp": 8,
+          "fp": 6
+        }
+      },
+      "p5_plus_neu_arm": {
+        "groesse": {
+          "tp": 4,
+          "fp": 12
+        },
+        "mittel": {
+          "tp": 0,
+          "fp": 6
+        },
+        "streuung": {
+          "tp": 8,
+          "fp": 6
+        }
+      },
+      "p5_plus_neu_record": {
+        "groesse": {
+          "tp": 4,
+          "fp": 12
+        },
+        "mittel": {
+          "tp": 0,
+          "fp": 6
+        },
+        "streuung": {
+          "tp": 8,
+          "fp": 6
+        }
+      },
+      "p5_plus_neu_ohne_mittel": {
+        "groesse": {
+          "tp": 4,
+          "fp": 12
+        },
+        "streuung": {
+          "tp": 8,
+          "fp": 6
+        }
+      }
     }
   }
 }

@@ -289,6 +289,14 @@ Ersetzen kostet TP, `nur Luecken fuellen` gewinnt leicht: +12 TP und +24 FP
 gegenueber der unveraenderten Vorhersage, F1 0.109 -> 0.116. Die Tabellenwahl
 bringt unter dieser Strategie +9 TP und -7 FP gegenueber der alten.
 
+Die nachgelagerte Feldprioritaet (Streuung und Groesse zuerst, Mittel nur im
+leeren Arm oder mittelfreien Record) ist wirkungslos: sie liefert dieselben
+178 / 120 / 2595 und haelt 0 Mittel zurueck, weil eine Mittelluecke nur dort
+auftritt, wo der Arm weder Mittel noch Streuung hat. Erst der Verzicht auf
+Mittel aus der Regel hilft: 178 TP bleiben, FP 120 -> 114 (F1 0.1159 ->
+0.1161). Neue Zellen nach Feldart: Streuung 8 richtig / 6 falsch, Groesse 4 /
+12, Mittel 0 / 6. Die Groessen sind damit der naechste Hebel, nicht die Mittel.
+
 ## Grenzen
 
 - Alle Regeln sind Textheuristiken auf Markdown; sie greifen bei sauberen
