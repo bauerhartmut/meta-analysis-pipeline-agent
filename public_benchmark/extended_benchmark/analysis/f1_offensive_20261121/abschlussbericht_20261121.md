@@ -320,6 +320,22 @@ Nicht erfasst bleiben `yun2024:159` (nackte Zahl aus der Bildunterschrift, keine
 49, gegen Gold 21/34 weiter falsch) und die fuenf Definitionsfaelle `:251`,
 `:252`, `:356`, `:451`.
 
+Die Gegenprobe ueber alle 699 Records (`kopfband_699_20261121.py`, 1286
+Goldzellen der Gruppengroesse) zeigt den Preis ausserhalb der P5-Records: 96
+Zellen sind ohne die Regel richtig, 83 mit ihr. Verloren gehen 14 richtige
+Zellen (13 ausserhalb P5), gewonnen wird eine. Betroffen sind Armlabels, die das
+Wortfeld nicht kennt: `Apple Juice` / `White Grape Juice`, `CoPAT` / `IPAT`,
+`Genoss DES` / `Promus Element`, `Sitagliptin` / `Non-exposed`.
+
+Der Weg der falschen Groesse in `PMC3877023` (`yun2024:420`, `:421`) ist
+`pmc3877023_20261121.py` zu entnehmen: die Alias-Suche landet auf der
+Region-Zeile der Demografie-Tabelle (Zeile 29), weil der Outcome-Text Region und
+Kenngroesse getrennt nennt; deren Kopfzeile `Short-Bore MR (n = 44)` liefert die
+Groesse. Die richtige `n`-Zeile (Zeile 146) wird zwar als Groessenzeile erkannt,
+liefert aber nichts, weil ihre Zellen nur `n = 18` heissen und die Tabelle zwei
+Regionbloecke mit sechs Spalten hat - ohne Regionbewusstsein ist das Arm-Paar
+nicht zuzuordnen.
+
 Auch die Groessen lassen sich nicht ueber einen Beleg im Arm absichern: die
 Bedingung "derselbe Arm hat schon Mittel oder Streuung" ist in keiner der 16
 Zellen erfuellt, weil die Vorhersage genau in diesen Records den Arm gar nicht

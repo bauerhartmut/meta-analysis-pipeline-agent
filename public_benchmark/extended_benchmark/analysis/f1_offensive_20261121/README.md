@@ -771,6 +771,28 @@ Bildunterschrift, nicht als `n =`-Zeile), die Komparatorzellen von `:420`/`:421`
 Definitionsfaelle `:251`, `:252`, `:356` und `:451` - dort ist die gedruckte Zahl
 korrekt fuer ihre Population, der Arm ist im Kopfband benannt.
 
+## Gegenprobe ausserhalb der P5-Records
+
+`kopfband_699_20261121.py` liest jede Goldzelle der Gruppengroesse ueber alle 699
+Records zweimal, ohne und mit der Kopfband-Regel:
+
+| Kennzahl | Wert |
+|---|---:|
+| Records mit Goldgroesse | 643 |
+| Groessenzellen ausserhalb P5 | 1088 |
+| Groessenzellen | 1286 |
+| richtig ohne Regel | 96 |
+| richtig mit Regel | 83 |
+| Zellen verloren | 14 (13 ausserhalb P5) |
+| Zellen gewonnen | 1 (ausserhalb P5) |
+
+Die Regel kostet also auch ausserhalb der P5-Records richtige Zellen, netto 12.
+Verloren gehen Armlabels, die das Wortfeld nicht kennt: `Apple Juice` / `White
+Grape Juice` (`yun2024:4`, beide Arme), `CoPAT` / `IPAT` (`:13`), `Genoss DES` /
+`Promus Element` (`:255`, `:257`, `:258`, `:259`, je beide Arme), `Sitagliptin` /
+`Non-exposed` (`:84`). Gewonnen wird eine Zelle in `yun2024:75`, wo die Regel
+vorher die Subgruppe (`Nonsmokers n = 56`) statt der Armzeile las.
+
 Eine Groesse nur zu uebernehmen, wenn derselbe Arm im Record schon Mittel oder
 Streuung hat, hilft nicht: keine der 14 neuen Groessenzellen (4 richtig, 10
 falsch) erfuellt die Bedingung, der Stand faellt auf 174 TP / 102 FP. Die
@@ -790,6 +812,26 @@ Baseline-Kopfzeile 44/49 statt der Outcome-Zeile 18/21 und 30/34 (`yun2024:420`,
 gegen 402/388 in `yun2024:251`, 398/389 gegen 402/388 in `:252`, 15 gegen 13 in
 `:356`) sowie Tabellenunterschrift gegen Auswertungsgroesse (104/114 gegen
 99/108 in `yun2024:451`; 99/108 steht nicht als n im Dokument).
+
+## Warum PMC3877023 die Groesse aus der Baseline-Tabelle liest
+
+`pmc3877023_20261121.py` zeigt die Kette fuer `yun2024:420` und `:421`:
+
+1. Die Zielzeile liegt in der Demografie-Tabelle. Der Outcome-Text nennt Region
+   (`Cervicothoracic spine`) und Kenngroesse (`contour sharpness`) getrennt; die
+   Region steht in Zeile 29 (`Cervicothoracic spine 14 (31.8) 15 (30.6)`), die
+   Kenngroesse nur als Blockzeile. Die Alias-Suche nimmt die Region-Zeile, und
+   deren Tabelle liefert `Short-Bore MR (n = 44)` / `Open MR (n = 49)`.
+2. Die `n =`-Zeile der Bildqualitaetstabelle (Zeile 146, `**T2w sagittal**
+   n = 18 n = 21 n = 30 n = 34`) wird von `ist_groessenzeile` und `STRENGE`
+   erkannt, aber `aus_groessenzeile` gibt `{}` zurueck: die Zellen sind weder
+   armbeschriftet noch nackte Zahlen (`n = 18` mit schmalen Leerzeichen trifft
+   `^[\d,]+$` nicht).
+3. Ein Parser-Nachbau allein reicht nicht: die Tabelle hat zwei Regionbloecke
+   nebeneinander (Gruppenzeile 141, darunter je Short-Bore, Open und P-Wert,
+   sechs Spalten) und die `n`-Zeile nur fuenf Segmente. Ohne Regionbewusstsein
+   ist nicht entscheidbar, welches `n`-Paar zu welchem Arm gehoert - genau
+   darum trennt Gold 420 (18/21) von 421 (30/34).
 
 ## Fixture: beide Zellstaende zellgenau
 

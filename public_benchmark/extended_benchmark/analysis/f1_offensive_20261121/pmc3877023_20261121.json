@@ -1,0 +1,155 @@
+{
+  "stand": "2026-11-21",
+  "befund": [
+    {
+      "record_id": "yun2024:420",
+      "outcome": "quantitative contour sharpness of the Cervicothoracic Spine",
+      "ziel_verlauf": -1,
+      "ziel_zeitpunkt": 28,
+      "ziel_alias": 28,
+      "ziel_zeile": 29,
+      "ziel_text": "Cervicothoracic spine                           14 (31.8)                15 (30.6)",
+      "ziel_tabelle": [
+        4,
+        50
+      ],
+      "n_zeilen": [
+        {
+          "zeile": 1,
+          "text": "# Abstract ## Background The purpose of the present study was to compare the image quality of spinal magnetic resonance ",
+          "werte": {
+            "comparator": 20.0
+          },
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 10,
+          "text": "Short-Bore MR (n\u200a=\u200a44)   Open MR (n\u200a=\u200a49)   *P* Value",
+          "werte": {
+            "intervention": 44.0,
+            "comparator": 49.0
+          },
+          "in_zieltabelle": true
+        },
+        {
+          "zeile": 97,
+          "text": "nonmarked (0--100 mm) visual analogue scales.:::: Results of all examinations were of diagnostic image quality. The main",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 110,
+          "text": "**T2w sagittal**        n\u200a=\u200a18                  n\u200a=\u200a21                                   n\u200a=\u200a30                  n\u200a=\u200a34",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 116,
+          "text": "**T1w sagittal**        n\u200a=\u200a18                  n\u200a=\u200a21                                   n\u200a=\u200a30                  n\u200a=\u200a34",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 122,
+          "text": "**T2w axial**           n\u200a=\u200a19                  n\u200a=\u200a22                                   n \u200a=\u200a49                 n\u200a=\u200a54",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 146,
+          "text": "**T2w sagittal**                                 n\u200a=\u200a18                  n\u200a=\u200a21                                   n\u200a=\u200a30",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 154,
+          "text": "**T1w sagittal**                                 n\u200a=\u200a18                  n\u200a=\u200a22                                   n\u200a=\u200a30",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 162,
+          "text": "**T2w axial**[d](#)                              n\u200a=\u200a19                  n\u200a=\u200a22                                   n \u200a=\u200a4",
+          "werte": null,
+          "in_zieltabelle": false
+        }
+      ],
+      "gelesen": null
+    },
+    {
+      "record_id": "yun2024:421",
+      "outcome": "quantitative contour sharpness of the thoracolumbar spine",
+      "ziel_verlauf": -1,
+      "ziel_zeitpunkt": 29,
+      "ziel_alias": 29,
+      "ziel_zeile": 30,
+      "ziel_text": "Thoracolumbar spine                             26 (59.1)                28 (57.1)",
+      "ziel_tabelle": [
+        4,
+        50
+      ],
+      "n_zeilen": [
+        {
+          "zeile": 1,
+          "text": "# Abstract ## Background The purpose of the present study was to compare the image quality of spinal magnetic resonance ",
+          "werte": {
+            "comparator": 20.0
+          },
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 10,
+          "text": "Short-Bore MR (n\u200a=\u200a44)   Open MR (n\u200a=\u200a49)   *P* Value",
+          "werte": {
+            "intervention": 44.0,
+            "comparator": 49.0
+          },
+          "in_zieltabelle": true
+        },
+        {
+          "zeile": 97,
+          "text": "nonmarked (0--100 mm) visual analogue scales.:::: Results of all examinations were of diagnostic image quality. The main",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 110,
+          "text": "**T2w sagittal**        n\u200a=\u200a18                  n\u200a=\u200a21                                   n\u200a=\u200a30                  n\u200a=\u200a34",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 116,
+          "text": "**T1w sagittal**        n\u200a=\u200a18                  n\u200a=\u200a21                                   n\u200a=\u200a30                  n\u200a=\u200a34",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 122,
+          "text": "**T2w axial**           n\u200a=\u200a19                  n\u200a=\u200a22                                   n \u200a=\u200a49                 n\u200a=\u200a54",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 146,
+          "text": "**T2w sagittal**                                 n\u200a=\u200a18                  n\u200a=\u200a21                                   n\u200a=\u200a30",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 154,
+          "text": "**T1w sagittal**                                 n\u200a=\u200a18                  n\u200a=\u200a22                                   n\u200a=\u200a30",
+          "werte": null,
+          "in_zieltabelle": false
+        },
+        {
+          "zeile": 162,
+          "text": "**T2w axial**[d](#)                              n\u200a=\u200a19                  n\u200a=\u200a22                                   n \u200a=\u200a4",
+          "werte": null,
+          "in_zieltabelle": false
+        }
+      ],
+      "gelesen": null
+    }
+  ]
+}

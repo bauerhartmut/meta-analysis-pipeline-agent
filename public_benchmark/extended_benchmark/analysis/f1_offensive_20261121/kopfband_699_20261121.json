@@ -1,0 +1,219 @@
+{
+  "stand": "2026-11-21",
+  "records": 699,
+  "records_mit_goldgroesse": 643,
+  "fehlende_dokumente": 0,
+  "zellen": 1286,
+  "ohne_regel": {
+    "richtig": 96,
+    "falsch": 1190
+  },
+  "mit_regel": {
+    "richtig": 83,
+    "falsch": 1203
+  },
+  "ausserhalb_p5": {
+    "zellen": 1088,
+    "verloren": 13,
+    "gewonnen": 1
+  },
+  "verloren": [
+    {
+      "record_id": "yun2024:4",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 30.0,
+      "p5": false,
+      "ohne_wert": 30.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "zeile"
+    },
+    {
+      "record_id": "yun2024:4",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 30.0,
+      "p5": false,
+      "ohne_wert": 30.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "zeile"
+    },
+    {
+      "record_id": "yun2024:13",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 103.0,
+      "p5": false,
+      "ohne_wert": 103.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "zeile"
+    },
+    {
+      "record_id": "yun2024:15",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 103.0,
+      "p5": false,
+      "ohne_wert": 103.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "zeile"
+    },
+    {
+      "record_id": "yun2024:16",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 103.0,
+      "p5": false,
+      "ohne_wert": 103.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "zeile"
+    },
+    {
+      "record_id": "yun2024:84",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 7726.0,
+      "p5": true,
+      "ohne_wert": 7726.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "zeile"
+    },
+    {
+      "record_id": "yun2024:255",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 38.0,
+      "p5": false,
+      "ohne_wert": 38.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "position"
+    },
+    {
+      "record_id": "yun2024:255",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 39.0,
+      "p5": false,
+      "ohne_wert": 39.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "position"
+    },
+    {
+      "record_id": "yun2024:257",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 38.0,
+      "p5": false,
+      "ohne_wert": 38.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "position"
+    },
+    {
+      "record_id": "yun2024:257",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 39.0,
+      "p5": false,
+      "ohne_wert": 39.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "position"
+    },
+    {
+      "record_id": "yun2024:258",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 38.0,
+      "p5": false,
+      "ohne_wert": 38.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "position"
+    },
+    {
+      "record_id": "yun2024:258",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 39.0,
+      "p5": false,
+      "ohne_wert": 39.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "position"
+    },
+    {
+      "record_id": "yun2024:259",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 38.0,
+      "p5": false,
+      "ohne_wert": 38.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "position"
+    },
+    {
+      "record_id": "yun2024:259",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "gold": 39.0,
+      "p5": false,
+      "ohne_wert": 39.0,
+      "mit_wert": null,
+      "ohne_richtig": true,
+      "mit_richtig": false,
+      "mit_quelle": null,
+      "ohne_quelle": "position"
+    }
+  ],
+  "gewonnen": [
+    {
+      "record_id": "yun2024:75",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "gold": 29.0,
+      "p5": false,
+      "ohne_wert": 56.0,
+      "mit_wert": 29.0,
+      "ohne_richtig": false,
+      "mit_richtig": true,
+      "mit_quelle": "zeile",
+      "ohne_quelle": "zeile"
+    }
+  ]
+}
