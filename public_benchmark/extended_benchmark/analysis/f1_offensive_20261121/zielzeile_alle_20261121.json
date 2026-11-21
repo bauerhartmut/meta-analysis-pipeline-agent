@@ -1,6 +1,39 @@
 {
   "stand": "2026-11-21",
   "faelle": 295,
+  "alias_streng": {
+    "zielzeile_gefunden": 178,
+    "geliefert": 27,
+    "tp": 8,
+    "fp": 19,
+    "tp_gerundet": 8,
+    "fp_gerundet": 19
+  },
+  "fp_nach_feldtyp": {
+    "groesse": 10,
+    "mittel": 10,
+    "ereignis": 7
+  },
+  "fp_nach_format": {
+    "groesse|groessenzeile": 10,
+    "mittel|sonstig": 3,
+    "mittel|plus_minus": 5,
+    "ereignis|mittel_sd": 1,
+    "mittel|mittel_sd": 2,
+    "ereignis|nackt": 3,
+    "ereignis|sonstig": 3
+  },
+  "zellformate": {
+    "groesse|groessenzeile|richtig": 8,
+    "groesse|groessenzeile|falsch": 10,
+    "mittel|sonstig|falsch": 3,
+    "mittel|plus_minus|falsch": 5,
+    "ereignis|mittel_sd|falsch": 1,
+    "mittel|mittel_sd|falsch": 2,
+    "ereignis|nackt|falsch": 3,
+    "ereignis|sonstig|falsch": 3,
+    "mittel|plus_minus|richtig": 12
+  },
   "ohne": {
     "zielzeile_gefunden": 156,
     "geliefert": 39,
@@ -45,7 +78,8 @@
       "regel": {
         "value": 31.7,
         "quelle": "zielzeile",
-        "zeile": 68
+        "zeile": 68,
+        "zellformat": "sonstig"
       },
       "gold": 32.0,
       "richtig": false,
@@ -71,7 +105,8 @@
       "regel": {
         "value": 19.8,
         "quelle": "zielzeile",
-        "zeile": 68
+        "zeile": 68,
+        "zellformat": "sonstig"
       },
       "gold": 20.0,
       "richtig": false,
@@ -84,7 +119,8 @@
       "regel": {
         "value": 101.9,
         "quelle": "zielzeile",
-        "zeile": 26
+        "zeile": 26,
+        "zellformat": "plus_minus"
       },
       "gold": 101.9,
       "richtig": true,
@@ -97,7 +133,8 @@
       "regel": {
         "value": 97.6,
         "quelle": "zielzeile",
-        "zeile": 26
+        "zeile": 26,
+        "zellformat": "plus_minus"
       },
       "gold": 97.6,
       "richtig": true,
@@ -110,7 +147,8 @@
       "regel": {
         "value": 103.4,
         "quelle": "zielzeile",
-        "zeile": 26
+        "zeile": 26,
+        "zellformat": "plus_minus"
       },
       "gold": 103.4,
       "richtig": true,
@@ -123,7 +161,8 @@
       "regel": {
         "value": 97.6,
         "quelle": "zielzeile",
-        "zeile": 26
+        "zeile": 26,
+        "zellformat": "plus_minus"
       },
       "gold": 97.6,
       "richtig": true,

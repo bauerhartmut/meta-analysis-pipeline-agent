@@ -381,6 +381,23 @@ zwei FP sind Rundungen (31.7 gegen Gold 32, 19.8 gegen Gold 20), nach Rundung
 also **+8 TP und +0 FP**. Neue Treffer: `yun2024:426` (Groessen 44/49 plus zwei
 Mittel), `yun2024:664` und `yun2024:665` (je zwei Mittel).
 
+Die 27 FP verteilen sich auf Groesse 10, Mittel 10 und Ereignis 7 (Streuungen 0):
+
+| Feldtyp | Zellformat | richtig | falsch |
+|---|---|---:|---:|
+| Groesse | Groessenzeile | 8 | 10 |
+| Mittel | `26.1 +/- 1.0` | 12 | 5 |
+| Mittel | `Mittel (SD)` | 0 | 2 |
+| Mittel | sonstig | 0 | 3 |
+| Ereignis | nackt | 0 | 3 |
+| Ereignis | sonstig | 0 | 3 |
+| Ereignis | `Mittel (SD)` | 0 | 1 |
+
+**Mittel nur noch im Format `Mittel (SD)` zu lesen ist eine Verschlechterung:**
+Zellen 47 -> 27, TP 20 -> 8, FP 27 -> 19, Trefferquote 43 -> 30 Prozent. Alle 12
+richtigen Mittel standen im Format `26.1 +/- 1.0`; die 2 FP, die auch im
+Format `Mittel (SD)` auftreten, haben eine falsche Zeile oder Spalte.
+
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
 gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht
 auffindbar (`Vegetable intake` vs. Tabellenzeile `Vegetables`), in 4 weiteren
