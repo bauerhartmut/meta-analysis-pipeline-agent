@@ -3,20 +3,25 @@
   "records": 699,
   "p5_records": 103,
   "staende": {
-    "aus": {
+    "ohne_regel": {
       "zellen": 16,
       "richtig": 4,
       "falsch": 12
     },
-    "kuerzel": {
-      "zellen": 4,
-      "richtig": 2,
-      "falsch": 2
-    },
-    "arm": {
+    "kopfband": {
       "zellen": 14,
       "richtig": 4,
       "falsch": 10
+    },
+    "tabellenart": {
+      "zellen": 8,
+      "richtig": 2,
+      "falsch": 6
+    },
+    "kopfband_tabellenart": {
+      "zellen": 8,
+      "richtig": 2,
+      "falsch": 6
     }
   },
   "ursachen": {
@@ -24,12 +29,17 @@
     "abweichende_definition": 7
   },
   "davon_entfernt": {
-    "kuerzel": {
-      "falsche_zeile": 5,
-      "abweichende_definition": 5
+    "kopfband": {
+      "falsche_zeile": 2,
+      "abweichende_definition": 0
     },
-    "arm": {
-      "falsche_zeile": 2
+    "tabellenart": {
+      "falsche_zeile": 5,
+      "abweichende_definition": 1
+    },
+    "kopfband_tabellenart": {
+      "falsche_zeile": 5,
+      "abweichende_definition": 1
     }
   },
   "ohne_zuordnung": 0,
@@ -49,12 +59,13 @@
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
       "begruendung": "Die 24 stammt aus der Bildunterschrift 'at baseline, 12 and 24 months'; Gold 592 steht in der Armzeile 'Intervention (n=592)' der 12-Monats-Spalte.",
-      "mit_kuerzel": null,
-      "mit_arm": {
+      "mit_kopfband": {
         "wert": 24.0,
         "richtig": false,
         "beleg_zeile": 3
-      }
+      },
+      "mit_tabellenart": null,
+      "mit_kopfband_tabellenart": null
     },
     {
       "record_id": "yun2024:251",
@@ -71,8 +82,17 @@
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
       "begruendung": "Kopfzeile nennt randomisiert n=406, die Outcome-Zeile rechnet mit 42/402; Gold nimmt die 402.",
-      "mit_kuerzel": null,
-      "mit_arm": {
+      "mit_kopfband": {
+        "wert": 406.0,
+        "richtig": false,
+        "beleg_zeile": 60
+      },
+      "mit_tabellenart": {
+        "wert": 406.0,
+        "richtig": false,
+        "beleg_zeile": 60
+      },
+      "mit_kopfband_tabellenart": {
         "wert": 406.0,
         "richtig": false,
         "beleg_zeile": 60
@@ -93,8 +113,17 @@
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
       "begruendung": "Kopfzeile nennt randomisiert n=393, die Outcome-Zeile rechnet mit 41/388; Gold nimmt die 388.",
-      "mit_kuerzel": null,
-      "mit_arm": {
+      "mit_kopfband": {
+        "wert": 393.0,
+        "richtig": false,
+        "beleg_zeile": 60
+      },
+      "mit_tabellenart": {
+        "wert": 393.0,
+        "richtig": false,
+        "beleg_zeile": 60
+      },
+      "mit_kopfband_tabellenart": {
         "wert": 393.0,
         "richtig": false,
         "beleg_zeile": 60
@@ -115,8 +144,17 @@
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
       "begruendung": "Charakteristika-Tabelle nennt randomisiert n=398, Gold 402 ist der Nenner der Outcome-Zeilen.",
-      "mit_kuerzel": null,
-      "mit_arm": {
+      "mit_kopfband": {
+        "wert": 398.0,
+        "richtig": false,
+        "beleg_zeile": 10
+      },
+      "mit_tabellenart": {
+        "wert": 398.0,
+        "richtig": false,
+        "beleg_zeile": 10
+      },
+      "mit_kopfband_tabellenart": {
         "wert": 398.0,
         "richtig": false,
         "beleg_zeile": 10
@@ -137,8 +175,17 @@
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
       "begruendung": "Charakteristika-Tabelle nennt randomisiert n=389, Gold 388 ist der Nenner der Outcome-Zeilen.",
-      "mit_kuerzel": null,
-      "mit_arm": {
+      "mit_kopfband": {
+        "wert": 389.0,
+        "richtig": false,
+        "beleg_zeile": 10
+      },
+      "mit_tabellenart": {
+        "wert": 389.0,
+        "richtig": false,
+        "beleg_zeile": 10
+      },
+      "mit_kopfband_tabellenart": {
         "wert": 389.0,
         "richtig": false,
         "beleg_zeile": 10
@@ -159,12 +206,13 @@
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
       "begruendung": "Baseline-Kopfzeile nennt randomisiert n=15, Gold 13 ist die Haelfte der 26 Kinder, die die Studie abgeschlossen haben.",
-      "mit_kuerzel": null,
-      "mit_arm": {
+      "mit_kopfband": {
         "wert": 15.0,
         "richtig": false,
         "beleg_zeile": 6
-      }
+      },
+      "mit_tabellenart": null,
+      "mit_kopfband_tabellenart": null
     },
     {
       "record_id": "yun2024:420",
@@ -181,8 +229,9 @@
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
       "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=44; Gold 18 steht als n=18 in der Outcome-Zeile 'T2w sagittal' der Bildqualitaetstabelle.",
-      "mit_kuerzel": null,
-      "mit_arm": null
+      "mit_kopfband": null,
+      "mit_tabellenart": null,
+      "mit_kopfband_tabellenart": null
     },
     {
       "record_id": "yun2024:420",
@@ -199,12 +248,13 @@
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
       "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=49; Gold 21 steht als n=21 in derselben Outcome-Zeile.",
-      "mit_kuerzel": null,
-      "mit_arm": {
+      "mit_kopfband": {
         "wert": 20.0,
         "richtig": false,
         "beleg_zeile": 1
-      }
+      },
+      "mit_tabellenart": null,
+      "mit_kopfband_tabellenart": null
     },
     {
       "record_id": "yun2024:421",
@@ -221,8 +271,9 @@
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
       "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=44; Gold 30 steht als n=30 in der Outcome-Zeile fuer die Brustwirbelsaeule.",
-      "mit_kuerzel": null,
-      "mit_arm": null
+      "mit_kopfband": null,
+      "mit_tabellenart": null,
+      "mit_kopfband_tabellenart": null
     },
     {
       "record_id": "yun2024:421",
@@ -239,12 +290,13 @@
       "gold_im_dokument": true,
       "ursache": "falsche_zeile",
       "begruendung": "Kopfzeile der Baseline-Tabelle nennt n=49; Gold 34 steht als n=34 in derselben Outcome-Zeile.",
-      "mit_kuerzel": null,
-      "mit_arm": {
+      "mit_kopfband": {
         "wert": 20.0,
         "richtig": false,
         "beleg_zeile": 1
-      }
+      },
+      "mit_tabellenart": null,
+      "mit_kopfband_tabellenart": null
     },
     {
       "record_id": "yun2024:451",
@@ -261,12 +313,17 @@
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
       "begruendung": "Die Tabellenunterschrift in Zeile 96 nennt 'I; n=104' (randomisiert), Gold 99 ist die Auswertungsgroesse der MVPA-Zeile; sie steht nicht als n im Dokument.",
-      "mit_kuerzel": {
+      "mit_kopfband": {
         "wert": 104.0,
         "richtig": false,
         "beleg_zeile": 96
       },
-      "mit_arm": {
+      "mit_tabellenart": {
+        "wert": 104.0,
+        "richtig": false,
+        "beleg_zeile": 96
+      },
+      "mit_kopfband_tabellenart": {
         "wert": 104.0,
         "richtig": false,
         "beleg_zeile": 96
@@ -287,12 +344,17 @@
       "gold_im_dokument": true,
       "ursache": "abweichende_definition",
       "begruendung": "Die Tabellenunterschrift in Zeile 96 nennt 'C; n=114' (randomisiert), Gold 108 ist die Auswertungsgroesse der MVPA-Zeile; sie steht nicht als n im Dokument.",
-      "mit_kuerzel": {
+      "mit_kopfband": {
         "wert": 114.0,
         "richtig": false,
         "beleg_zeile": 96
       },
-      "mit_arm": {
+      "mit_tabellenart": {
+        "wert": 114.0,
+        "richtig": false,
+        "beleg_zeile": 96
+      },
+      "mit_kopfband_tabellenart": {
         "wert": 114.0,
         "richtig": false,
         "beleg_zeile": 96
@@ -300,11 +362,7 @@
     }
   ],
   "geblieben": {
-    "kuerzel": [
-      "yun2024:451/intervention_group_size/intervention",
-      "yun2024:451/comparator_group_size/comparator"
-    ],
-    "arm": [
+    "kopfband": [
       "yun2024:159/intervention_group_size/intervention",
       "yun2024:251/intervention_group_size/intervention",
       "yun2024:251/comparator_group_size/comparator",
@@ -313,6 +371,22 @@
       "yun2024:356/comparator_group_size/comparator",
       "yun2024:420/comparator_group_size/comparator",
       "yun2024:421/comparator_group_size/comparator",
+      "yun2024:451/intervention_group_size/intervention",
+      "yun2024:451/comparator_group_size/comparator"
+    ],
+    "tabellenart": [
+      "yun2024:251/intervention_group_size/intervention",
+      "yun2024:251/comparator_group_size/comparator",
+      "yun2024:252/intervention_group_size/intervention",
+      "yun2024:252/comparator_group_size/comparator",
+      "yun2024:451/intervention_group_size/intervention",
+      "yun2024:451/comparator_group_size/comparator"
+    ],
+    "kopfband_tabellenart": [
+      "yun2024:251/intervention_group_size/intervention",
+      "yun2024:251/comparator_group_size/comparator",
+      "yun2024:252/intervention_group_size/intervention",
+      "yun2024:252/comparator_group_size/comparator",
       "yun2024:451/intervention_group_size/intervention",
       "yun2024:451/comparator_group_size/comparator"
     ]

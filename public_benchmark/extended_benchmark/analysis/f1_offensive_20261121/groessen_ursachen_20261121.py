@@ -8,12 +8,13 @@ Regel neu liefert, wird die Zeile mitgedruckt, in der die gelesene Zahl
 tatsaechlich steht. Die Ursache ist eine manuelle Zuordnung anhand dieser Zeile
 und des Goldwerts; sie steht als Tabelle `URSACHE` im Skript.
 
-Gelesen wird dreimal (Schalter `KOPFBAND_ARM`):
+Gelesen wird viermal, aus zwei Schaltern:
 
-* `aus`     - jede `n =`-Zeile im Kopfband zaehlt (Stand vor der Regel),
-* `kuerzel` - nur ein Armkuerzel mit n (`I; n=104`),
-* `arm`     - nur wenn im Kopfband eine Armbezeichnung steht (intervention,
-              control, placebo, treatment, comparison).
+* `ohne_regel`            - keine Regel (KOPFBAND_ARM aus, TABELLENART_AUS aus),
+* `kopfband`             - `n =`-Zeilen im Kopfband nur mit Armbezeichnung,
+* `tabellenart`          - Tabellen mit Baseline-/Charakteristika-Kopf werden
+                           vor der n-Suche uebersprungen,
+* `kopfband_tabellenart` - beides.
 
 Kategorien:
 
@@ -46,7 +47,12 @@ import zielzeile_alle_20261121 as m  # noqa: E402
 FORMATE = ("mittel_sd", "plus_minus")
 FELDART = {"group_size": "groesse", "mean": "mittel",
            "standard_deviation": "streuung", "events": "ereignis"}
-STAENDE = ("aus", "kuerzel", "arm")
+STAENDE: dict[str, tuple[bool, bool]] = {
+    "ohne_regel": (False, False),
+    "kopfband": (True, False),
+    "tabellenart": (False, True),
+    "kopfband_tabellenart": (True, True),
+}
 
 # Zuordnung je Zelle: (Ursache, Begruendung). Grundlage sind die gedruckten
 # Zeilen der jeweiligen Tabelle, siehe `beleg` im Ergebnis.
@@ -142,9 +148,10 @@ def beleg_ort(zeilen: list[str], zeile: int, wert: float,
 
 def zellen(records: dict[str, Any], p5: dict[str, Any],
            texte: dict[str, str], texte_zeilen: dict[str, list[str]],
-           kopfband_arm: str) -> dict[tuple[str, str, str], dict[str, Any]]:
+           kopfband: bool, tabellenart: bool) -> dict[tuple[str, str, str], dict[str, Any]]:
     """Neue Groessenzellen der Regel, je (Record, Feld, Arm)."""
-    m.KOPFBAND_ARM = kopfband_arm
+    m.KOPFBAND_ARM = kopfband
+    m.TABELLENART_AUS = tabellenart
     aus: dict[tuple[str, str, str], dict[str, Any]] = {}
     for rid, zeile in p5.items():
         if rid not in records:
@@ -193,19 +200,21 @@ def main() -> int:
         texte[rid] = text
         texte_zeilen[rid] = text.splitlines()
 
-    staende = {stand: zellen(records, p5, texte, texte_zeilen, stand)
-               for stand in STAENDE}
-    aus = staende["aus"]
+    staende = {name: zellen(records, p5, texte, texte_zeilen, kopfband, tabellenart)
+               for name, (kopfband, tabellenart) in STAENDE.items()}
+    basis = staende["ohne_regel"]
 
     zellen_md: list[dict[str, Any]] = []
-    for schluessel, e in aus.items():
+    for schluessel, e in basis.items():
         if e["richtig"]:
             continue
         ursache, grund = URSACHE.get(schluessel, ("offen", ""))
         eintrag = {**e, "ursache": ursache, "begruendung": grund}
-        for stand in STAENDE[1:]:
-            bleibt = staende[stand].get(schluessel)
-            eintrag["mit_" + stand] = None if bleibt is None else {
+        for name in STAENDE:
+            if name == "ohne_regel":
+                continue
+            bleibt = staende[name].get(schluessel)
+            eintrag["mit_" + name] = None if bleibt is None else {
                 "wert": bleibt["wert"], "richtig": bleibt["richtig"],
                 "beleg_zeile": bleibt["beleg_zeile"]}
         zellen_md.append(eintrag)
@@ -220,59 +229,55 @@ def main() -> int:
                 "richtig": sum(1 for e in karte.values() if e["richtig"]),
                 "falsch": sum(1 for e in karte.values() if not e["richtig"])}
 
-    entfernt = {stand: {e["ursache"]: sum(1 for x in zellen_md
-                                          if x["ursache"] == e["ursache"]
-                                          and x["mit_" + stand] is None)
-                        for e in zellen_md}
-                for stand in STAENDE[1:]}
-    entfernt = {stand: {k: n for k, n in z.items() if n}
-                for stand, z in entfernt.items()}
+    namen = [n for n in STAENDE if n != "ohne_regel"]
+    entfernt = {name: {u: sum(1 for x in zellen_md if x["ursache"] == u
+                              and x["mit_" + name] is None)
+                       for u in zaehler}
+                for name in namen}
     ergebnis = {"stand": "2026-11-21", "records": len(records), "p5_records": len(p5),
-                "staende": {stand: zaehl(karte) for stand, karte in staende.items()},
+                "staende": {name: zaehl(karte) for name, karte in staende.items()},
                 "ursachen": zaehler, "davon_entfernt": entfernt,
                 "ohne_zuordnung": offen, "zellen": zellen_md,
-                "geblieben": {stand: [e["record_id"] + "/" + e["feld"] + "/" + e["arm"]
-                                      for e in zellen_md
-                                      if e["mit_" + stand] is not None]
-                              for stand in STAENDE[1:]}}
+                "geblieben": {name: [e["record_id"] + "/" + e["feld"] + "/" + e["arm"]
+                                     for e in zellen_md
+                                     if e["mit_" + name] is not None]
+                              for name in namen}}
     (HIER / "groessen_ursachen_20261121.json").write_text(
         json.dumps(ergebnis, indent=2, ensure_ascii=True), encoding="utf-8")
 
     md = ["# Ursachen der falschen Groessenzellen (21.11.2026)", "",
           "Offline, ohne Netzaufruf. `groessen_ursachen_20261121.py`. Grundlage ist",
           "die Lueckenfuellung ohne Mittel ueber alle 699 Records, gemessen auf den",
-          f"{len(p5)} P5-Records. Gelesen wird dreimal: ohne Kopfband-Regel (`aus`),",
-          "mit Armkuerzel (`kuerzel`, z. B. `I; n=104`) und mit Armbezeichnung",
-          "(`arm`, z. B. `Control group (n=15)`).", "",
+          f"{len(p5)} P5-Records. Gelesen wird viermal: ohne Regel (`ohne_regel`),",
+          "mit Armbezeichnung im Kopfband (`kopfband`), mit uebersprungenen",
+          "Baseline-/Charakteristika-Tabellen (`tabellenart`) und mit beidem.", "",
           "| Stand | Groessenzellen | richtig | falsch |", "|---|---:|---:|---:|"]
-    for stand in STAENDE:
-        z = ergebnis["staende"][stand]
-        md.append(f"| {stand} | {z['zellen']} | {z['richtig']} | {z['falsch']} |")
-    md += ["", f"Von den {len(zellen_md)} falschen Zellen entfallen mit `kuerzel` "
-           f"{sum(1 for e in zellen_md if e['mit_kuerzel'] is None)} und mit `arm` "
-           f"{sum(1 for e in zellen_md if e['mit_arm'] is None)}.", "",
-           "## Zahlen je Ursache", "", "| Ursache | Zellen | entfallen `kuerzel` "
-           "| entfallen `arm` |", "|---|---:|---:|---:|"]
+    for name in STAENDE:
+        z = ergebnis["staende"][name]
+        md.append(f"| {name} | {z['zellen']} | {z['richtig']} | {z['falsch']} |")
+    md += ["", "## Zahlen je Ursache", "", "| Ursache | Zellen | "
+           + " | ".join(f"entfaellt `{n}`" for n in namen) + " |",
+           "|---|---:|" + "---:|" * len(namen)]
     for name in ("falsche_zeile", "abweichende_definition", "rechenfehler"):
         md.append(f"| {name} | {zaehler.get(name, 0)} | "
-                  f"{entfernt.get('kuerzel', {}).get(name, 0)} | "
-                  f"{entfernt.get('arm', {}).get(name, 0)} |")
+                  + " | ".join(str(entfernt[n].get(name, 0)) for n in namen) + " |")
     if offen:
-        md.append(f"| offen | {offen} | - | - |")
+        md.append(f"| offen | {offen} | " + " | ".join("-" for _ in namen) + " |")
     md += ["", "## Zellen", "",
-           "| Record | Feld | Arm | Wert | Gold | Belegzeile | Beleg | Ursache "
-           "| `kuerzel` | `arm` |", "|---|---|---|---:|---:|---:|---|---|---|---|"]
+           "| Record | Feld | Arm | Wert | Gold | Belegzeile | Beleg | Ursache | "
+           + " | ".join(f"`{n}`" for n in namen) + " |",
+           "|---|---|---|---:|---:|---:|---|---|" + "---|" * len(namen)]
     for e in zellen_md:
-        def stand_text(stand: str, e: dict[str, Any] = e) -> str:
-            b = e["mit_" + stand]
+        def stand_text(name: str) -> str:
+            b = e["mit_" + name]
             if b is None:
                 return "entfaellt"
             return f"{b['wert']} " + ("richtig" if b["richtig"] else "falsch")
 
         md.append(f"| `{e['record_id']}` | {e['feld'].replace('_group_size', '')} | "
                   f"{e['arm']} | {e['wert']} | {e['gold']} | {e['beleg_zeile']} | "
-                  f"{e['beleg_art']} | {e['ursache']} | {stand_text('kuerzel')} | "
-                  f"{stand_text('arm')} |")
+                  f"{e['beleg_art']} | {e['ursache']} | "
+                  + " | ".join(stand_text(n) for n in namen) + " |")
     md += ["", "## Begruendung je Zelle", ""]
     for e in zellen_md:
         md += [f"- `{e['record_id']}` {e['feld']} ({e['arm']}, Regel {e['wert']} gegen "
@@ -283,15 +288,16 @@ def main() -> int:
         "\n".join(md) + "\n", encoding="ascii", errors="replace")
 
     print(f"P5-Records {len(p5)}")
-    for stand in STAENDE:
-        print(f"  {stand:8s} {ergebnis['staende'][stand]}")
+    for name in STAENDE:
+        print(f"  {name:22s} {ergebnis['staende'][name]}")
     print(f"Ursachen {zaehler} | entfallen {entfernt} | ohne Zuordnung {offen}")
     for e in zellen_md:
+        stand_zeile = " ".join(
+            f"{n}={'entfaellt' if e['mit_' + n] is None else e['mit_' + n]['wert']}"
+            for n in namen)
         print(f"  {e['record_id']:14s} {e['arm']:11s} {e['wert']:>7} gegen "
-              f"{e['gold']:>7} beleg={e['beleg_zeile']} ({e['beleg_art']}) "
-              f"{e['ursache']:22s} kuerzel="
-              f"{'-' if e['mit_kuerzel'] is None else e['mit_kuerzel']['wert']} arm="
-              f"{'-' if e['mit_arm'] is None else e['mit_arm']['wert']}")
+              f"{e['gold']:>7} beleg={e['beleg_zeile']} {e['ursache']:22s} "
+              f"{stand_zeile}")
     return 0
 
 

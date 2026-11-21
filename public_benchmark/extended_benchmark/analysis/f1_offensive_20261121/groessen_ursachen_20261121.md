@@ -2,42 +2,41 @@
 
 Offline, ohne Netzaufruf. `groessen_ursachen_20261121.py`. Grundlage ist
 die Lueckenfuellung ohne Mittel ueber alle 699 Records, gemessen auf den
-103 P5-Records. Gelesen wird dreimal: ohne Kopfband-Regel (`aus`),
-mit Armkuerzel (`kuerzel`, z. B. `I; n=104`) und mit Armbezeichnung
-(`arm`, z. B. `Control group (n=15)`).
+103 P5-Records. Gelesen wird viermal: ohne Regel (`ohne_regel`),
+mit Armbezeichnung im Kopfband (`kopfband`), mit uebersprungenen
+Baseline-/Charakteristika-Tabellen (`tabellenart`) und mit beidem.
 
 | Stand | Groessenzellen | richtig | falsch |
 |---|---:|---:|---:|
-| aus | 16 | 4 | 12 |
-| kuerzel | 4 | 2 | 2 |
-| arm | 14 | 4 | 10 |
-
-Von den 12 falschen Zellen entfallen mit `kuerzel` 10 und mit `arm` 2.
+| ohne_regel | 16 | 4 | 12 |
+| kopfband | 14 | 4 | 10 |
+| tabellenart | 8 | 2 | 6 |
+| kopfband_tabellenart | 8 | 2 | 6 |
 
 ## Zahlen je Ursache
 
-| Ursache | Zellen | entfallen `kuerzel` | entfallen `arm` |
-|---|---:|---:|---:|
-| falsche_zeile | 5 | 5 | 2 |
-| abweichende_definition | 7 | 5 | 0 |
-| rechenfehler | 0 | 0 | 0 |
+| Ursache | Zellen | entfaellt `kopfband` | entfaellt `tabellenart` | entfaellt `kopfband_tabellenart` |
+|---|---:|---:|---:|---:|
+| falsche_zeile | 5 | 2 | 5 | 5 |
+| abweichende_definition | 7 | 0 | 1 | 1 |
+| rechenfehler | 0 | 0 | 0 | 0 |
 
 ## Zellen
 
-| Record | Feld | Arm | Wert | Gold | Belegzeile | Beleg | Ursache | `kuerzel` | `arm` |
-|---|---|---|---:|---:|---:|---|---|---|---|
-| `yun2024:159` | intervention | intervention | 24.0 | 592.0 | 3 | unterschrift | falsche_zeile | entfaellt | 24.0 falsch |
-| `yun2024:251` | intervention | intervention | 406.0 | 402.0 | 60 | n-form | abweichende_definition | entfaellt | 406.0 falsch |
-| `yun2024:251` | comparator | comparator | 393.0 | 388.0 | 60 | n-form | abweichende_definition | entfaellt | 393.0 falsch |
-| `yun2024:252` | intervention | intervention | 398.0 | 402.0 | 10 | n-form | abweichende_definition | entfaellt | 398.0 falsch |
-| `yun2024:252` | comparator | comparator | 389.0 | 388.0 | 10 | n-form | abweichende_definition | entfaellt | 389.0 falsch |
-| `yun2024:356` | comparator | comparator | 15.0 | 13.0 | 6 | n-form | abweichende_definition | entfaellt | 15.0 falsch |
-| `yun2024:420` | intervention | intervention | 44.0 | 18.0 | 10 | n-form | falsche_zeile | entfaellt | entfaellt |
-| `yun2024:420` | comparator | comparator | 49.0 | 21.0 | 10 | n-form | falsche_zeile | entfaellt | 20.0 falsch |
-| `yun2024:421` | intervention | intervention | 44.0 | 30.0 | 10 | n-form | falsche_zeile | entfaellt | entfaellt |
-| `yun2024:421` | comparator | comparator | 49.0 | 34.0 | 10 | n-form | falsche_zeile | entfaellt | 20.0 falsch |
-| `yun2024:451` | intervention | intervention | 104.0 | 99.0 | 96 | n-form | abweichende_definition | 104.0 falsch | 104.0 falsch |
-| `yun2024:451` | comparator | comparator | 114.0 | 108.0 | 96 | n-form | abweichende_definition | 114.0 falsch | 114.0 falsch |
+| Record | Feld | Arm | Wert | Gold | Belegzeile | Beleg | Ursache | `kopfband` | `tabellenart` | `kopfband_tabellenart` |
+|---|---|---|---:|---:|---:|---|---|---|---|---|
+| `yun2024:159` | intervention | intervention | 24.0 | 592.0 | 3 | unterschrift | falsche_zeile | 24.0 falsch | entfaellt | entfaellt |
+| `yun2024:251` | intervention | intervention | 406.0 | 402.0 | 60 | n-form | abweichende_definition | 406.0 falsch | 406.0 falsch | 406.0 falsch |
+| `yun2024:251` | comparator | comparator | 393.0 | 388.0 | 60 | n-form | abweichende_definition | 393.0 falsch | 393.0 falsch | 393.0 falsch |
+| `yun2024:252` | intervention | intervention | 398.0 | 402.0 | 10 | n-form | abweichende_definition | 398.0 falsch | 398.0 falsch | 398.0 falsch |
+| `yun2024:252` | comparator | comparator | 389.0 | 388.0 | 10 | n-form | abweichende_definition | 389.0 falsch | 389.0 falsch | 389.0 falsch |
+| `yun2024:356` | comparator | comparator | 15.0 | 13.0 | 6 | n-form | abweichende_definition | 15.0 falsch | entfaellt | entfaellt |
+| `yun2024:420` | intervention | intervention | 44.0 | 18.0 | 10 | n-form | falsche_zeile | entfaellt | entfaellt | entfaellt |
+| `yun2024:420` | comparator | comparator | 49.0 | 21.0 | 10 | n-form | falsche_zeile | 20.0 falsch | entfaellt | entfaellt |
+| `yun2024:421` | intervention | intervention | 44.0 | 30.0 | 10 | n-form | falsche_zeile | entfaellt | entfaellt | entfaellt |
+| `yun2024:421` | comparator | comparator | 49.0 | 34.0 | 10 | n-form | falsche_zeile | 20.0 falsch | entfaellt | entfaellt |
+| `yun2024:451` | intervention | intervention | 104.0 | 99.0 | 96 | n-form | abweichende_definition | 104.0 falsch | 104.0 falsch | 104.0 falsch |
+| `yun2024:451` | comparator | comparator | 114.0 | 108.0 | 96 | n-form | abweichende_definition | 114.0 falsch | 114.0 falsch | 114.0 falsch |
 
 ## Begruendung je Zelle
 

@@ -738,33 +738,38 @@ bleiben, FP 118 -> 112, F1 0.1160 -> 0.1162. Der Grund steht in der Feldart:
 
 ## Kopfband-Regel: Arm im Kopfband
 
-`KOPFBAND_ARM` in `zielzeile_alle_20261121.py` steuert, wann eine `n =`-Zeile im
-Kopfband als Gruppengroesse gilt: `aus` (jede), `kuerzel` (nur mit Armkuerzel,
-`I; n=104`) und `arm` (nur wenn dort eine Armbezeichnung steht). Vorgabe ist
-`arm`. Auf den 103 P5-Records (`groessen_ursachen_20261121.py`):
+`KOPFBAND_ARM` in `zielzeile_alle_20261121.py` ist ein Schalter: an heisst, eine
+`n =`-Zeile im Kopfband gilt nur, wenn dort eine Armbezeichnung steht
+(intervention, control, placebo, treatment, comparison); aus heisst, jede
+`n =`-Zeile gilt. Vorgabe ist an. Dazu kommt die Ablation `TABELLENART_AUS`:
+Tabellen mit Baseline- oder Charakteristika-Unterschrift werden vor der n-Suche
+uebersprungen. Vorgabe ist aus. Auf den 103 P5-Records
+(`groessen_ursachen_20261121.py`):
 
 | Stand | Groessenzellen | richtig | falsch |
 |---|---:|---:|---:|
-| aus | 16 | 4 | 12 |
-| kuerzel | 4 | 2 | 2 |
-| arm | 14 | 4 | 10 |
+| ohne Regel | 16 | 4 | 12 |
+| Kopfband (Vorgabe) | 14 | 4 | 10 |
+| Tabellenart | 8 | 2 | 6 |
+| beides | 8 | 2 | 6 |
 
-Mit `arm` (Vorgabe) entfallen zwei der 12 falschen Zellen, und es geht keine
-richtige verloren: `yun2024:420` und `:421` Intervention lasen die Kopfzeile
-der Charakteristika-Tabelle (`Short-Bore MR (n=44)`), dort steht keine
-Armbezeichnung. Die vier richtigen Zellen (`yun2024:446` beide, `:678` beide)
-bleiben, die Fixture bleibt bei 33 Zellen / 30 TP / 3 FP.
+Die Kopfband-Regel entfernt zwei der 12 falschen Zellen, ohne eine richtige zu
+kosten: `yun2024:420` und `:421` Intervention lasen die Kopfzeile der
+Charakteristika-Tabelle (`Short-Bore MR (n=44)`). Die vier richtigen Zellen
+(`yun2024:446` beide, `:678` beide) bleiben, die Fixture bleibt bei 33 Zellen /
+30 TP / 3 FP.
+
+Der Tabellenart-Ausschluss macht **keine** dieser Zellen richtig: `159`, `:420`
+und `:421` entfallen lediglich, `:356` ebenfalls, und er kostet beide richtigen
+Zellen von `yun2024:678`, dessen Tabelle eine Baseline-Unterschrift traegt. In
+der 699er-Bilanz ohne Mittel steht er damit bei 176 / 108 statt 178 / 112
+(F1 0.1151 statt 0.1162). Er bleibt deshalb aus.
 
 Nicht abgedeckt bleiben: `yun2024:159` (die 24 kommt als nackte Zahl aus der
 Bildunterschrift, nicht als `n =`-Zeile), die Komparatorzellen von `:420`/`:421`
 (sie lesen jetzt 20 statt 49, beides gegen Gold 21/34 falsch) sowie die fuenf
 Definitionsfaelle `:251`, `:252`, `:356` und `:451` - dort ist die gedruckte Zahl
 korrekt fuer ihre Population, der Arm ist im Kopfband benannt.
-
-Die Stellung `kuerzel` (nur `I; n=104`) entfernt 10 der 12 falschen Zellen, kostet
-aber zwei der vier richtigen (`yun2024:678`) und acht weitere richtige
-Groessenzellen der Fixture-Records (`yun2024:98`, `100`, `346`, `347`, `445`):
-Endvariante dann 25 / 22 / 3, ohne Gate ebenfalls 25 / 22 / 3.
 
 Eine Groesse nur zu uebernehmen, wenn derselbe Arm im Record schon Mittel oder
 Streuung hat, hilft nicht: keine der 14 neuen Groessenzellen (4 richtig, 10

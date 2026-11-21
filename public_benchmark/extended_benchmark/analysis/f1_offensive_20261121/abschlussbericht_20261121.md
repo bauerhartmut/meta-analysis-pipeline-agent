@@ -300,20 +300,25 @@ hat. Erst der Verzicht auf Mittel aus der Regel hilft: 178 TP bleiben, FP 118 ->
 112 (F1 0.1160 -> 0.1162). Neue Zellen nach Feldart: Streuung 8 richtig / 6
 falsch, Groesse 4 / 10, Mittel 0 / 6.
 
-Die Kopfband-Regel (`KOPFBAND_ARM`) laesst eine `n =`-Zeile nur zu, wenn der Arm
-dort genannt ist. Vorgabe ist `arm` (Armbezeichnung wie `Control group (n=15)`):
-auf den 103 P5-Records entfallen damit zwei der 12 falschen Groessenzellen,
+Die Kopfband-Regel (`KOPFBAND_ARM`, Schalter, Vorgabe an) laesst eine `n =`-Zeile
+nur zu, wenn der Arm dort genannt ist (`Control group (n=15)`, `Placebo (n=22)`).
+Auf den 103 P5-Records entfallen damit zwei der 12 falschen Groessenzellen,
 `yun2024:420` und `:421` Intervention, die die Kopfzeile der
 Charakteristika-Tabelle (`Short-Bore MR (n=44)`) lasen. Keine richtige Zelle geht
 verloren, die Fixture bleibt bei 33 Zellen / 30 TP / 3 FP.
 
+Die Ablation `TABELLENART_AUS` (Baseline- und Charakteristika-Tabellen vor der
+n-Suche ueberspringen) macht keine dieser Zellen richtig: `159`, `:420`, `:421`
+und `:356` entfallen nur, und sie kostet beide richtigen Zellen von
+`yun2024:678`, deren Tabelle eine Baseline-Unterschrift traegt. Auf den 103
+Records bleiben 8 Groessenzellen (2 richtig, 6 falsch) statt 14 (4 / 10), in der
+699er-Bilanz ohne Mittel 176 / 108 statt 178 / 112 (F1 0.1151 statt 0.1162). Sie
+bleibt aus.
+
 Nicht erfasst bleiben `yun2024:159` (nackte Zahl aus der Bildunterschrift, keine
 `n =`-Zeile), die Komparatorzellen von `:420`/`:421` (sie lesen jetzt 20 statt
 49, gegen Gold 21/34 weiter falsch) und die fuenf Definitionsfaelle `:251`,
-`:252`, `:356`, `:451`. Die strengere Stellung `kuerzel` (nur `I; n=104`) entfernt
-10 der 12 falschen Zellen, kostet aber zwei der vier richtigen (`yun2024:678`)
-und acht weitere richtige Groessenzellen der Fixture-Records (`yun2024:98`,
-`100`, `346`, `347`, `445`): Endvariante dann 25 / 22 / 3.
+`:252`, `:356`, `:451`.
 
 Auch die Groessen lassen sich nicht ueber einen Beleg im Arm absichern: die
 Bedingung "derselbe Arm hat schon Mittel oder Streuung" ist in keiner der 16

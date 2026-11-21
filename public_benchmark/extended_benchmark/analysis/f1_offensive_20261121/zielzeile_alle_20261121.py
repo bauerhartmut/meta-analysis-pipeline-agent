@@ -433,6 +433,8 @@ def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) ->
         if g.ist_groessenzeile(zeilen[i]) and g.STRENGE.search(zeilen[i]):
             if not kopfband_ok(zeilen, i):
                 continue
+            if TABELLENART_AUS and baseline_tabelle(zeilen, i):
+                continue
             werte = g.aus_groessenzeile(zeilen, i, context)
             if werte:
                 return werte
@@ -452,6 +454,8 @@ def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) ->
         for i in range(ziel - 1, max(-1, ziel - 61), -1):
             if g.ist_groessenzeile(zeilen[i]) and g.STRENGE.search(zeilen[i]):
                 if not kopfband_ok(zeilen, i):
+                    continue
+                if TABELLENART_AUS and baseline_tabelle(zeilen, i):
                     continue
                 werte = g.aus_groessenzeile(zeilen, i, context)
                 if werte:
@@ -620,32 +624,50 @@ ARMKUERZEL = re.compile(
     r"\b(intervention|control|placebo|treatment|comparison)\b[a-z ,'-]{0,20}?"
     r"group\s*\(\s*([A-Za-z])\s*[;,]\s*n\s*=\s*(\d+)\s*\)", re.IGNORECASE)
 
-# Kopfband-Zahlen nur zulassen, wenn der Arm dort genannt ist.
-#
-# * "aus"     - jede `n =`-Zeile im Kopfband zaehlt (Stand vor der Regel),
-# * "kuerzel" - nur ein Armkuerzel mit n (`I; n=104`, `C; n=114`),
-# * "arm"     - nur wenn im Kopfband eine Armbezeichnung steht (intervention,
-#               control, placebo, treatment, comparison); eine Modalitaet oder
-#               Population wie `Short-Bore MR (n = 44)` zaehlt nicht.
-KOPFBAND_ARM = "arm"
-KOPFBAND_KUERZEL = re.compile(r"\b[A-Z]{1,2}\s*[;,]\s*\*?n\*?\s*=\s*\d+")
+# Kopfband-Zahlen nur zulassen, wenn im Kopfband eine Armbezeichnung steht
+# (intervention, control, placebo, treatment, comparison). Eine Modalitaet oder
+# Population wie `Short-Bore MR (n = 44)` zaehlt nicht. Aus: jede `n =`-Zeile gilt.
+KOPFBAND_ARM = True
 ARM_WORT = re.compile(r"\b(intervention|control|placebo|treatment|comparison)\b",
                       re.IGNORECASE)
 
-
-def hat_kopfband_arm(zeile: str) -> bool:
-    """Steht im Kopfband ein Armkuerzel mit n (`I; n=104`, `C; n=114`)?"""
-    return bool(KOPFBAND_KUERZEL.search(zeile))
+# Ablation: Tabellen mit Baseline- oder Charakteristika-Kopf vor der n-Suche
+# ueberspringen. Aus heisst, auch dort wird gesucht (Vorgabe).
+TABELLENART_AUS = False
 
 
 def kopfband_ok(zeilen: list[str], i: int) -> bool:
     """Darf die `n =`-Zeile `i` als Arm groesse gelten?"""
-    if KOPFBAND_ARM == "aus":
+    if not KOPFBAND_ARM:
         return True
-    if KOPFBAND_ARM == "kuerzel":
-        return hat_kopfband_arm(zeilen[i])
     band = " ".join(zeilen[max(0, i - 3):i + 1])
     return bool(ARM_WORT.search(band))
+
+
+def tabellenkopf(zeilen: list[str], start: int) -> str:
+    """Unterschrift der Tabelle, die bei `start` beginnt; sonst ihre Kopfzeilen.
+
+    Gelesen wird nur der `::: caption`-Block direkt ueber der Tabelle. Fliesstext
+    weiter oben nennt "baseline" oft beilaeufig und darf die Tabelle nicht
+    umwidmen.
+    """
+    for j in range(start - 1, max(-1, start - 9), -1):
+        if "::: caption" in zeilen[j]:
+            block: list[str] = []
+            for k in range(j + 1, min(len(zeilen), j + 6)):
+                if zeilen[k].strip() == ":::":
+                    break
+                if zeilen[k].strip():
+                    block.append(zeilen[k].strip())
+            if block:
+                return " ".join(block)
+    return " ".join(zeilen[start:start + 2])
+
+
+def baseline_tabelle(zeilen: list[str], i: int) -> bool:
+    """Steht Zeile `i` in einer Tabelle mit Baseline- oder Charakteristika-Kopf?"""
+    start, _ = tabellengrenzen(zeilen, i)
+    return bool(BASELINE_KOPF.search(tabellenkopf(zeilen, start)))
 
 
 def armkuerzel(zeilen: list[str],
@@ -718,6 +740,9 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
             else:
                 ziel = alias_mod.ziel_zeile_alias(zeilen, outcome, alias, akronyme)
         if ziel < 0:
+            return None
+        # Ablation: in einer Baseline- oder Charakteristika-Tabelle keine Groesse.
+        if TABELLENART_AUS and baseline_tabelle(zeilen, ziel):
             return None
         # Stehen die Arme als Kuerzel in der Unterschrift (`I; n=104`), gilt deren
         # Groesse; sonst die Groessenzeile der Tabelle.

@@ -66,10 +66,12 @@ def schalter(**werte: bool) -> None:
     m.ARMZEILE = werte.get("armzeile", True)
     m.VORZEICHEN = werte.get("vorzeichen", True)
     m.SD_AUS_KI = werte.get("sd_ki", True)
-    # Nur ueberschreiben, wenn der Aufruf es verlangt: sonst gilt die Vorgabe
-    # des Regelmoduls (KOPFBAND_ARM dort).
+    # Nur ueberschreiben, wenn der Aufruf es verlangt: sonst gelten die Vorgaben
+    # des Regelmoduls (KOPFBAND_ARM, TABELLENART_AUS).
     if "kopfband" in werte:
         m.KOPFBAND_ARM = werte["kopfband"]
+    if "tabellenart" in werte:
+        m.TABELLENART_AUS = werte["tabellenart"]
     m.POSITIONAL = True
     m.GATE = True
     m.WOCHENSPALTE = True
@@ -110,7 +112,10 @@ def klasse(alt: dict[str, Any] | None, neu: dict[str, Any] | None,
 def main() -> int:
     records = {r["record_id"]: r for r in v.lade(v.RECORDS)}
     p5 = {z["record_id"]: z for z in v.lade(v.P5)}
-    grenze = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+    if "--tabellenart" in sys.argv:
+        m.TABELLENART_AUS = True
+    zahlen = [a for a in sys.argv[1:] if a.isdigit()]
+    grenze = int(zahlen[0]) if zahlen else 0
     if grenze:
         records = dict(list(records.items())[:grenze])
     texte: dict[str, str] = {}
