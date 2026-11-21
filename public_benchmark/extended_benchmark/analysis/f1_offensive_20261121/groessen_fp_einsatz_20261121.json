@@ -70,14 +70,14 @@
     "fn": 2603
   },
   "nachher": {
-    "tp": 200,
-    "fp": 108,
-    "fn": 2573
+    "tp": 204,
+    "fp": 104,
+    "fn": 2569
   },
   "delta": {
-    "tp": 30,
-    "fp": 7,
-    "fn": -30
+    "tp": 34,
+    "fp": 3,
+    "fn": -34
   },
   "records_geaendert": 24,
   "zellen_ersetzt": 4,
@@ -89,12 +89,12 @@
       "fn": 2603
     },
     "nachher": {
-      "tp": 200,
+      "tp": 204,
       "fp": 97,
-      "fn": 2573
+      "fn": 2569
     },
-    "records_geaendert": 16,
+    "records_geaendert": 19,
     "zellen_ersetzt": 4,
-    "zellen_neu": 26
+    "zellen_neu": 30
   }
 }

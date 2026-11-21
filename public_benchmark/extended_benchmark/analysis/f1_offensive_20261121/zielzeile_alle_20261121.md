@@ -9,16 +9,16 @@ Akronymen.
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
 | Zellen geliefert | 36 | 44 | 24 | 41 |
-| TP (exakt) | 26 | 30 | 18 | 30 |
-| FP (exakt) | 10 | 14 | 6 | 11 |
-| TP (auf ganze Zahl gerundet) | 26 | 32 | 18 | 30 |
-| FP (auf ganze Zahl gerundet) | 10 | 12 | 6 | 11 |
+| TP (exakt) | 30 | 34 | 18 | 34 |
+| FP (exakt) | 6 | 10 | 6 | 7 |
+| TP (auf ganze Zahl gerundet) | 30 | 36 | 18 | 34 |
+| FP (auf ganze Zahl gerundet) | 6 | 8 | 6 | 7 |
 
-## FP nach Feldtyp (Alias-Lauf vor der Umstellung, 14 FP)
+## FP nach Feldtyp (Alias-Lauf vor der Umstellung, 10 FP)
 
 | Feldtyp | FP |
 |---|---:|
-| mittel | 10 |
+| mittel | 6 |
 | groesse | 4 |
 
 ## Formate der gelieferten Zellen (Endvariante)
@@ -27,16 +27,16 @@ Akronymen.
 |---|---|---:|---:|
 | groesse | groessenzeile | 18 | 4 |
 | mittel | mittel_sd | 0 | 2 |
-| mittel | plus_minus | 12 | 5 |
+| mittel | plus_minus | 16 | 1 |
 
 ## FP nach Zellformat
 
 | Feldtyp | Zellformat | FP |
 |---|---|---:|
-| mittel | plus_minus | 5 |
 | groesse | groessenzeile | 4 |
 | mittel | sonstig | 3 |
 | mittel | mittel_sd | 2 |
+| mittel | plus_minus | 1 |
 
 
 Nur durch den Alias neu geliefert: 8 Zellen, davon
@@ -68,12 +68,17 @@ Groessenzeile steht, gilt der Rueckfall auf die naechste Zeile darueber. Das
 Zellformat `n  Mean (95% CI)` einer Zeitverlaufstabelle wird als Zeilen-`n`
 gelesen (n nach der Wochenzahl, zweites n nach dem ersten Klammerblock).
 
-In der Endvariante stellen sich die 11 FP so:
+In der Endvariante stellen sich die 7 FP so:
 
-* Groesse 10, davon 10 richtig (siehe Format-Tabelle).
-* Mittel 5 im Format `+/-`, 12 richtig.
-* Mittel 2 im Format `Mittel (SD)`, 0 richtig - dort ist die Zeile oder Spalte
+* Groesse 4 (196 Subgruppe, 426 Positionsverlust).
+* Mittel 1 im Format `+/-` (345: Gold steht nur als Intervallgrenze).
+* Mittel 2 im Format `Mittel (SD)` (33, 34) - dort ist die Zeile oder Spalte
   falsch, nicht das Format.
+
+Nennt das Outcome ein Messwort (`stiffness`, `range of motion`, `neutral zone`,
+`neural zone`), gilt nur eine Zielzeile in einem Block mit passendem Label; bei
+mehreren solchen Bloecken gewinnt der spaetere. Das holt 221 bis 223 und waehlt
+bei mehreren Spalten desselben Arms das genauere Label (ACVC-HA statt ACVC).
 
 Enthaelt ein Dokument eine Tabelle mit Wochenspalte, in der das Outcome
 mehrfach vorkommt, gilt die Zeile des letzten Zeitpunkts statt der
@@ -90,8 +95,8 @@ die acht PMC5617873-Zellen und macht dafuer die beiden Arme von `yun2024:426`
 falsch; dieser Verlust ist bewusst (Gold folgt dort den Spaltennamen, siehe
 `armreihenfolge_20261121.md`).
 
-Trefferquote: 30 von 41 Zellen, also
-73 Prozent. Ereignisse tragen
+Trefferquote: 34 von 41 Zellen, also
+82 Prozent. Ereignisse tragen
 nichts bei, Groessen und Mittel teilen sich die Treffer. Die Umstellung von der
 ersten Zahl auf zwei erlaubte Formate kostet 3 weitere Zellen des Formats
 `sonstig`, alle drei waren falsch.

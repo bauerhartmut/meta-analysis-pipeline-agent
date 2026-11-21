@@ -17,22 +17,22 @@ Klassen: {'falsche_tabelle': 2, 'falsche_spalte': 2}
 
 | Kennzahl | vorher | nachher | Delta |
 |---|---:|---:|---:|
-| TP | 170 | 200 | +30 |
-| FP | 101 | 108 | +7 |
-| FN | 2603 | 2573 | -30 |
+| TP | 170 | 204 | +34 |
+| FP | 101 | 104 | +3 |
+| FN | 2603 | 2569 | -34 |
 
 Betroffene Records: 24 von 699.
 
 ## Teil C: nur die richtigen Zellen
 
-Setzt man nur die 30 richtigen Zellen ein
-(ohne die 11 falschen), dann:
+Setzt man nur die 34 richtigen Zellen ein
+(ohne die 7 falschen), dann:
 
 | Kennzahl | vorher | nachher | Delta |
 |---|---:|---:|---:|
-| TP | 170 | 200 | +30 |
+| TP | 170 | 204 | +34 |
 | FP | 101 | 97 | -4 |
-| FN | 2603 | 2573 | -30 |
+| FN | 2603 | 2569 | -34 |
 
-Das ist die Obergrenze: 26 Zellen waren neu, 4 ersetzten
+Das ist die Obergrenze: 30 Zellen waren neu, 4 ersetzten
 einen vorhandenen falschen Wert.

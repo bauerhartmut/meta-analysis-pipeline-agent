@@ -412,16 +412,16 @@ verworfen.
 |---|---:|---:|---:|---:|
 | Zielzeile gefunden | 156 | 178 | 178 | 178 |
 | Zellen | 36 | 44 | 24 | 41 |
-| TP | 26 | 30 | 18 | 30 |
-| FP | 10 | 14 | 6 | 11 |
-| Trefferquote | 72 % | 68 % | 75 % | **73 %** |
+| TP | 30 | 34 | 18 | 34 |
+| FP | 6 | 10 | 6 | 7 |
+| Trefferquote | 83 % | 77 % | 75 % | **83 %** |
 
 Formate in der Endvariante:
 
 | Feldtyp | Zellformat | richtig | falsch |
 |---|---|---:|---:|
 | Groesse | Groessenzeile | 18 | 4 |
-| Mittel | `Zahl +/- Zahl` | 12 | 5 |
+| Mittel | `Zahl +/- Zahl` | 16 | 1 |
 | Mittel | `Zahl (Zahl)` | 0 | 2 |
 
 Enthaelt ein Dokument eine Tabelle mit Wochenspalte, in der das Outcome
@@ -468,36 +468,45 @@ Einsatz der 41 Zellen in die P5-Vorhersagen, Bilanz ueber alle 699 Records:
 | Zellen | TP | FP | FN |
 |---|---:|---:|---:|
 | vorher | 170 | 101 | 2603 |
-| alle 41 | 200 | 108 | 2573 |
-| nur die 30 richtigen | 200 | 97 | 2573 |
+| alle 41 | 204 | 104 | 2569 |
+| nur die 34 richtigen | 204 | 97 | 2569 |
 
-Alle 41: +30 TP und +7 FP. Nur die richtigen: +30 TP und -4 FP (vier Zellen
+Alle 41: +34 TP und +3 FP. Nur die richtigen: +34 TP und -4 FP (vier Zellen
 ersetzten vorhandene falsche Werte).
 
-### Die 7 Mittel-FP: Tabellenlokalitaet holt sie nicht
+### Mittel-FP: Tabellenlokalitaet half nicht, das Blocklabel schon
 
-`mittel_fp_20261121.py`. Die Kopfzeilensuche fuer Mittelspalten ist jetzt auf die
-Tabelle der Zielzeile begrenzt; die Messung ueber die 295 bleibt damit
-unveraendert (41 Zellen, 30 TP, 11 FP, keine geaenderte Zelle). Mittelwerte
-werden ohnehin nur aus der Zielzeile selbst gelesen, nie aus einer Nachbarzeile
-oder einer anderen Tabelle - Tabellenlokalitaet kann hier also nichts holen.
-
-Die sieben Zellen scheitern an der Zeilenwahl:
+`mittel_fp_20261121.py`. Tabellenlokalitaet allein holte keine Zelle: Mittel
+werden nur aus der Zielzeile gelesen, die Fehler lagen in der Zeilenwahl.
+Geholfen hat die Blocklabel-Regel (siehe unten): von den sieben Mittel-FP sind
+vier weg, drei bleiben.
 
 | Klasse | Faelle | Betroffene Zellen |
 |---|---:|---|
-| falsche Tabelle | 4 | `yun2024:221` (2), `:222`, `:223` |
 | Gold in anderem Abschnitt | 2 | `yun2024:33`, `:34` |
 | Gold nicht als Mittelwert belegt | 1 | `yun2024:345` |
 
-- `221`-`223`: Das Outcome nennt `stiffness`; die Regel nimmt die Zeile
-  `Flexion-Extension` aus der Beweglichkeitstabelle (Grad, Tabelle 21-71), Gold
-  steht im Block `Stiffness (in Nm/Degree)` der spaeteren Tabelle 113-155.
 - `33`/`34`: Gold steht in der Mittelwertzeile einer anderen Subskala (PCS bzw.
   MCS) und dort in einer spaeteren Wochenspalte; die Regel trifft `General
   Health` bzw. `Mental Health` in Woche 12.
 - `345`: Der Goldwert 2.3 steht im Dokument nur als Grenze eines
   Median-Differenz-Intervalls, nicht als Mittelwertzelle.
+
+### Blocklabel-Regel fuer Messwoerter
+
+Nennt das Outcome ein Messwort (`stiffness`, `range of motion`, `neutral zone`,
+`neural zone`), darf die Zielzeile nur in einem Tabellenblock mit passendem
+Label liegen (`block_label`, `ziel_zeile_block`). Gibt es mehrere solche Bloecke,
+gewinnt der spaetere Traeger.
+
+Dadurch werden `yun2024:221` (2 Zellen), `:222` und `:223` richtig: Die Regel
+liest jetzt den Block `Stiffness (in Nm/Degree)` der Tabelle 113-155 statt der
+Beweglichkeitszeile in Grad. Zusaetzlich waehlt die Mittelspalte jetzt die beste
+Label-Uebereinstimmung statt der ersten: Bei zwei Interventionsspalten gewinnt
+`ACVC-HA group` gegen `ACVC group` (0.34 statt 0.35).
+
+Andere Zellen kippen nicht: Die Messung bleibt bei 41 Zellen und steigt von 30
+auf 34 TP, die FP fallen von 11 auf 7.
 
 ### Armzuordnung aus der Spaltenreihenfolge
 
@@ -513,8 +522,8 @@ umsschaltbar (`POSITIONAL`) und wurde ueber die 295 gemessen:
 
 | Lesart | Zellen | TP | FP | Groessenzellen richtig | Groessenzellen falsch |
 |---|---:|---:|---:|---:|---:|
-| Position (**Standard**) | 41 | 30 | 11 | 18 | 4 |
-| Spaltenname (Vergleich) | 41 | 24 | 17 | 12 | 10 |
+| Position (**Standard**) | 41 | 34 | 7 | 18 | 4 |
+| Spaltenname (Vergleich) | 41 | 28 | 13 | 12 | 10 |
 
 Richtig werden alle 8 PMC5617873-Zellen. Falsch werden die beiden Arme von
 `yun2024:426` (vorher 49/44, jetzt 44/49, Gold 49/44): dort steht in Spalte 1

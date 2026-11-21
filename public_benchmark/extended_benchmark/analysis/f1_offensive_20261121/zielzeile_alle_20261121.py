@@ -126,6 +126,62 @@ def zeitverlauf_ziel(zeilen: list[str], outcome: str, alias: dict[str, list[str]
 
 POSITIONAL = True
 
+# Messwoerter, die im Tabellenblock stehen muessen, wenn das Outcome sie nennt.
+MESSWOERTER = ("stiffness", "range of motion", "ranges of motion", "neutral zone",
+               "neural zone")
+
+
+def block_label(zeilen: list[str], i: int) -> str:
+    """Ueberschrift des Blocks, in dem Zeile `i` steht (innerhalb ihrer Tabelle)."""
+    start, _ = tabellengrenzen(zeilen, i)
+    for j in range(i - 1, start - 1, -1):
+        z = zeilen[j].strip()
+        if len(re.findall(r"[A-Za-z]", z)) < 3 or "\u00b1" in z or len(z) > 70:
+            continue
+        if re.fullmatch(r"[\d.,;:\s%-]+", z):
+            continue
+        if len(re.findall(r"\d+(?:\.\d+)?", z)) > 2:
+            continue
+        return z
+    return ""
+
+
+def messwort(outcome: str) -> str:
+    """Messwort aus dem Outcome, falls es eines der bekannten nennt."""
+    text = outcome.lower()
+    for wort in MESSWOERTER:
+        if wort in text:
+            return wort
+    return ""
+
+
+def ziel_zeile_block(zeilen: list[str], outcome: str, alias: dict[str, list[str]],
+                     akronyme: bool) -> int:
+    """Zielzeile, deren Block das Messwort des Outcomes traegt.
+
+    Nennt das Outcome kein Messwort, bleibt es bei der normalen Zielzeile.
+    Sonst gilt nur eine Zeile, die das Outcome trifft und in einem Block mit
+    passendem Label steht; findet sich keine, bleibt die normale Zielzeile.
+    """
+    standard = alias_mod.ziel_zeile_alias(zeilen, outcome, alias, akronyme)
+    wort = messwort(outcome)
+    if not wort:
+        return standard
+    beste: list[tuple[int, int]] = []
+    for i, zeile in enumerate(zeilen):
+        p = alias_mod.treffer_alias(zeile, outcome, alias, akronyme)
+        if p <= 0:
+            continue
+        if wort not in block_label(zeilen, i).lower():
+            continue
+        beste.append((p, i))
+    if not beste:
+        return standard
+    top = max(p for p, _ in beste)
+    # Mehrere Bloecke mit passendem Label: der spaetere Traeger gilt als der
+    # Auswertungsblock (bei 221-223 steht dort das Gold).
+    return max(i for p, i in beste if p == top)
+
 
 def spalten_reihenfolge(zeilen: list[str], ziel: int, context: dict[str, Any]) -> list[str]:
     """Arme in der Reihenfolge ihrer Datenspalten (Groessenzeile, sonst Kopf)."""
@@ -203,6 +259,26 @@ def groesse_in_tabelle(zeilen: list[str], ziel: int, context: dict[str, Any]) ->
             kopf[1]: {"value": float(n2), "quelle": "zeile_n", "zeile": ziel + 1}}
 
 FELD_ARM = {"intervention": "intervention", "comparator": "comparator"}
+
+
+def spalte_label(zeilen: list[str], i: int, segs: list[str], k: int) -> str:
+    """Kopfzeilen-Label der Zellspalte `k` (fuer die Rangfolge der Arme)."""
+    zahlenspalten = [n for n, s in enumerate(segs) if re.search(r"\d", s)]
+    if k not in zahlenspalten:
+        return ""
+    pos = zahlenspalten.index(k)
+    start, _ = tabellengrenzen(zeilen, i)
+    for j in range(i - 1, max(start - 1, i - 41), -1):
+        kopf = segmente(zeilen[j])
+        if len(kopf) == len(zahlenspalten):
+            ziel = pos
+        elif len(kopf) == len(zahlenspalten) + 1:
+            ziel = pos + 1
+        else:
+            continue
+        if ziel < len(kopf) and re.search(r"[A-Za-z]{3}", kopf[ziel]) and "\u00b1" not in kopf[ziel]:
+            return kopf[ziel]
+    return ""
 
 
 def arm_von_spalte(zeilen: list[str], i: int, segs: list[str], k: int,
@@ -292,18 +368,27 @@ def lies(record: dict[str, Any], text: str, feld: str, arm: str,
             return None
         return treffer
 
-    ziel = alias_mod.ziel_zeile_alias(zeilen, str(context.get("outcome") or ""), alias, akronyme)
+    ziel = ziel_zeile_block(zeilen, str(context.get("outcome") or ""), alias, akronyme)
     if ziel < 0:
         return None
     segs = segmente(zeilen[ziel])
+    context = record.get("context") or {}
+    kandidaten: list[tuple[int, int, int]] = []
     for k in range(1, len(segs)):
         if arm_von_spalte(zeilen, ziel, segs, k, context) != arm:
             continue
-        wert = wert_aus_zelle(segs[k], feld, mean_formate)
-        if wert is not None:
-            return {"value": wert, "quelle": "zielzeile", "zeile": ziel + 1,
-                    "zellformat": zellformat(segs[k])}
-    return None
+        if wert_aus_zelle(segs[k], feld, mean_formate) is None:
+            continue
+        label = spalte_label(zeilen, ziel, segs, k)
+        score = alias_mod.treffer_alias(label, str(context.get(arm) or ""), alias, akronyme)
+        kandidaten.append((score, len(label), k))
+    if not kandidaten:
+        return None
+    # Bei mehreren Spalten desselben Arms gewinnt die beste Label-Uebereinstimmung,
+    # bei Gleichstand das laengere (genauere) Label, dann die linke Spalte.
+    _, _, k = max(kandidaten, key=lambda x: (x[0], x[1], -x[2]))
+    return {"value": wert_aus_zelle(segs[k], feld, mean_formate), "quelle": "zielzeile",
+            "zeile": ziel + 1, "zellformat": zellformat(segs[k])}
 
 
 def messe(faelle: list[dict[str, Any]], records: dict[str, dict[str, Any]], texte: dict[str, str],
@@ -465,10 +550,15 @@ gelesen (n nach der Wochenzahl, zweites n nach dem ersten Klammerblock).
 
 In der Endvariante stellen sich die {beide['fp']} FP so:
 
-* Groesse 10, davon 10 richtig (siehe Format-Tabelle).
-* Mittel 5 im Format `+/-`, 12 richtig.
-* Mittel 2 im Format `Mittel (SD)`, 0 richtig - dort ist die Zeile oder Spalte
+* Groesse 4 (196 Subgruppe, 426 Positionsverlust).
+* Mittel 1 im Format `+/-` (345: Gold steht nur als Intervallgrenze).
+* Mittel 2 im Format `Mittel (SD)` (33, 34) - dort ist die Zeile oder Spalte
   falsch, nicht das Format.
+
+Nennt das Outcome ein Messwort (`stiffness`, `range of motion`, `neutral zone`,
+`neural zone`), gilt nur eine Zielzeile in einem Block mit passendem Label; bei
+mehreren solchen Bloecken gewinnt der spaetere. Das holt 221 bis 223 und waehlt
+bei mehreren Spalten desselben Arms das genauere Label (ACVC-HA statt ACVC).
 
 Enthaelt ein Dokument eine Tabelle mit Wochenspalte, in der das Outcome
 mehrfach vorkommt, gilt die Zeile des letzten Zeitpunkts statt der

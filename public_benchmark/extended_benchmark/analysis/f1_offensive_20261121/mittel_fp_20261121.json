@@ -1,94 +1,6 @@
 {
   "faelle": [
     {
-      "record_id": "yun2024:221",
-      "feld": "intervention_mean",
-      "regel": 3.9,
-      "gold": 0.34,
-      "regel_zeile": 33,
-      "regel_tabelle": [
-        21,
-        71
-      ],
-      "klasse": "falsche_tabelle",
-      "gold_in_regelzeile": false,
-      "gold_zeilen": [
-        141
-      ],
-      "gold_tabellen": [
-        [
-          113,
-          155
-        ]
-      ]
-    },
-    {
-      "record_id": "yun2024:221",
-      "feld": "comparator_mean",
-      "regel": 4.0,
-      "gold": 7.47,
-      "regel_zeile": 33,
-      "regel_tabelle": [
-        21,
-        71
-      ],
-      "klasse": "falsche_tabelle",
-      "gold_in_regelzeile": false,
-      "gold_zeilen": [
-        141
-      ],
-      "gold_tabellen": [
-        [
-          113,
-          155
-        ]
-      ]
-    },
-    {
-      "record_id": "yun2024:222",
-      "feld": "comparator_mean",
-      "regel": 5.9,
-      "gold": 2.67,
-      "regel_zeile": 35,
-      "regel_tabelle": [
-        21,
-        71
-      ],
-      "klasse": "falsche_tabelle",
-      "gold_in_regelzeile": false,
-      "gold_zeilen": [
-        143
-      ],
-      "gold_tabellen": [
-        [
-          113,
-          155
-        ]
-      ]
-    },
-    {
-      "record_id": "yun2024:223",
-      "feld": "comparator_mean",
-      "regel": 7.2,
-      "gold": 1.62,
-      "regel_zeile": 37,
-      "regel_tabelle": [
-        21,
-        71
-      ],
-      "klasse": "falsche_tabelle",
-      "gold_in_regelzeile": false,
-      "gold_zeilen": [
-        145
-      ],
-      "gold_tabellen": [
-        [
-          113,
-          155
-        ]
-      ]
-    },
-    {
       "record_id": "yun2024:33",
       "feld": "comparator_mean",
       "regel": 34.9,
@@ -149,13 +61,12 @@
     }
   ],
   "klassen": {
-    "falsche_tabelle": 4,
     "gold_anderer_abschnitt": 2,
     "gold_nicht_belegt": 1
   },
   "messung": {
     "zellen": 41,
-    "tp": 30,
-    "fp": 11
+    "tp": 34,
+    "fp": 7
   }
 }

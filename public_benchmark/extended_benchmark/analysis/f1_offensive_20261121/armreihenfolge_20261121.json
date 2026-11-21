@@ -1,7 +1,7 @@
 {
   "label": {
-    "tp": 24,
-    "fp": 17,
+    "tp": 28,
+    "fp": 13,
     "groesse": {
       "richtig": 12,
       "falsch": 10,
@@ -9,8 +9,8 @@
     }
   },
   "position": {
-    "tp": 30,
-    "fp": 11,
+    "tp": 34,
+    "fp": 7,
     "groesse": {
       "richtig": 18,
       "falsch": 4,
