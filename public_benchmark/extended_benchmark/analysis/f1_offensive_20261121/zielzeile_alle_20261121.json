@@ -1,0 +1,133 @@
+{
+  "stand": "2026-11-21",
+  "faelle": 295,
+  "ohne": {
+    "zielzeile_gefunden": 156,
+    "geliefert": 39,
+    "tp": 14,
+    "fp": 25,
+    "tp_gerundet": 14,
+    "fp_gerundet": 25
+  },
+  "alias": {
+    "zielzeile_gefunden": 178,
+    "geliefert": 47,
+    "tp": 20,
+    "fp": 27,
+    "tp_gerundet": 22,
+    "fp_gerundet": 25
+  },
+  "nur_mit_alias": {
+    "geliefert": 8,
+    "tp": 6,
+    "fp": 2,
+    "tp_gerundet": 8,
+    "fp_gerundet": 0
+  },
+  "detail_nur_mit_alias": [
+    {
+      "record_id": "yun2024:426",
+      "feld": "intervention_group_size",
+      "arm": "intervention",
+      "regel": {
+        "value": 49.0,
+        "quelle": "zeile",
+        "zeile": 10
+      },
+      "gold": 49.0,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:426",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "regel": {
+        "value": 31.7,
+        "quelle": "zielzeile",
+        "zeile": 68
+      },
+      "gold": 32.0,
+      "richtig": false,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:426",
+      "feld": "comparator_group_size",
+      "arm": "comparator",
+      "regel": {
+        "value": 44.0,
+        "quelle": "zeile",
+        "zeile": 10
+      },
+      "gold": 44.0,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:426",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "regel": {
+        "value": 19.8,
+        "quelle": "zielzeile",
+        "zeile": 68
+      },
+      "gold": 20.0,
+      "richtig": false,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:664",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "regel": {
+        "value": 101.9,
+        "quelle": "zielzeile",
+        "zeile": 26
+      },
+      "gold": 101.9,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:664",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "regel": {
+        "value": 97.6,
+        "quelle": "zielzeile",
+        "zeile": 26
+      },
+      "gold": 97.6,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:665",
+      "feld": "intervention_mean",
+      "arm": "intervention",
+      "regel": {
+        "value": 103.4,
+        "quelle": "zielzeile",
+        "zeile": 26
+      },
+      "gold": 103.4,
+      "richtig": true,
+      "richtig_gerundet": true
+    },
+    {
+      "record_id": "yun2024:665",
+      "feld": "comparator_mean",
+      "arm": "comparator",
+      "regel": {
+        "value": 97.6,
+        "quelle": "zielzeile",
+        "zeile": 26
+      },
+      "gold": 97.6,
+      "richtig": true,
+      "richtig_gerundet": true
+    }
+  ]
+}

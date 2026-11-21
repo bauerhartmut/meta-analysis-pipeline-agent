@@ -360,6 +360,27 @@ so in Tabelle 2 (Woche 28, n = 24, Mittel 1.29/1.08), die Regel las die
 Kopfzeile von Tabelle 1 (145/140). Belege im
 `pruefvermerk_gold_20261121.md`; Gold blieb unveraendert.
 
+### Alias ueber alle 295 fn_wert_ersetzt
+
+`zielzeile_alle_20261121.py` misst dieselbe Erweiterung ueber alle
+`fn_wert_ersetzt`, mit einem groben Leser je Feldtyp (Groesse aus der
+Groessenzeile, Mittel und Ereignisse als erste Zahl der Armzelle, Streuung als
+Zahl in Klammern).
+
+| Kennzahl | ohne | mit Alias |
+|---|---:|---:|
+| Zielzeile gefunden (von 295) | 156 | 178 |
+| Zellen geliefert | 39 | 47 |
+| TP exakt | 14 | 20 |
+| FP exakt | 25 | 27 |
+| TP gerundet | 14 | 22 |
+| FP gerundet | 25 | 25 |
+
+Der Alias bringt **+22 gefundene Zielzeilen, +8 Zellen, +6 TP und +2 FP**; die
+zwei FP sind Rundungen (31.7 gegen Gold 32, 19.8 gegen Gold 20), nach Rundung
+also **+8 TP und +0 FP**. Neue Treffer: `yun2024:426` (Groessen 44/49 plus zwei
+Mittel), `yun2024:664` und `yun2024:665` (je zwei Mittel).
+
 Kernbefund: die Groessenzeile ist nicht der Engpass. In 13 der 25 nicht
 gelieferten Faelle ist schon die Zielzeile ueber den Outcome-Namen nicht
 auffindbar (`Vegetable intake` vs. Tabellenzeile `Vegetables`), in 4 weiteren
