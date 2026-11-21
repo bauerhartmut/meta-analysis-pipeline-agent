@@ -1,0 +1,178 @@
+{
+  "stand": "2026-11-21",
+  "record_id": "yun2024:30",
+  "stufe1_locators": [
+    {
+      "arm": "intervention",
+      "satz": "",
+      "zeilenlabel": "Mean score (SD)",
+      "spaltenkopf": "CZP 200 mg + MTX",
+      "caption": "Improvements in health-related quality of life at weeks 12, 24 and 52 (ITT population, LOCF)*",
+      "timepoint": "Week 52",
+      "found": true,
+      "zahlen_im_satz": [],
+      "goldwerte_im_satz": [],
+      "satz_im_stueck": null
+    },
+    {
+      "arm": "comparator",
+      "satz": "",
+      "zeilenlabel": "Mean score (SD)",
+      "spaltenkopf": "PBO + MTX",
+      "caption": "Improvements in health-related quality of life at weeks 12, 24 and 52 (ITT population, LOCF)*",
+      "timepoint": "Week 52",
+      "found": true,
+      "zahlen_im_satz": [],
+      "goldwerte_im_satz": [],
+      "satz_im_stueck": null
+    }
+  ],
+  "stufe2_zellen": [
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": 38.1,
+      "timepoint": "",
+      "im_ausschnitt": true,
+      "fundstelle": {
+        "position": 4967,
+        "zeile": "Role Emotional            32.4 (39.1)         28.9 (38.1)         30.9 (38.7)",
+        "ausschnitt": "2)      Role Emotional            32.4 (39.1)         28.9 (38.1)         30.9 (38.7)      Mental Health             53.",
+        "belegt": true
+      }
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 9.5,
+      "timepoint": "",
+      "im_ausschnitt": true,
+      "fundstelle": {
+        "position": 8349,
+        "zeile": "Mean score (SD)       36.1 (8.9)    36.8 (8.4)    30.7 (7.1)    37.8 (9.5)    38.4 (8.8)    31.4 (7.3)    38.1 (9.5)    38.9 (8.9)    31.5 (7.4)",
+        "ausschnitt": " (SD)       36.1 (8.9)    36.8 (8.4)    30.7 (7.1)    37.8 (9.5)    38.4 (8.8)    31.4 (7.3)    38.1 (9.5)    38.9 (8.9)",
+        "belegt": true
+      }
+    },
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 393.0,
+      "timepoint": "",
+      "im_ausschnitt": true,
+      "fundstelle": {
+        "position": 2465,
+        "zeile": "# Abstract ## Introduction The objective of this study was to assess the impact of certolizumab pegol (CZP) treatment on health-related quality of life (HRQoL), fatigue and other patient-reported outc",
+        "ausschnitt": "atients A total of 982 patients were randomized in RAPID 1: 393 to CZP 200 mg plus MTX, 390 to CZP 400 mg plus MTX, and ",
+        "belegt": true
+      }
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 31.5,
+      "timepoint": "",
+      "im_ausschnitt": true,
+      "fundstelle": {
+        "position": 8413,
+        "zeile": "Mean score (SD)       36.1 (8.9)    36.8 (8.4)    30.7 (7.1)    37.8 (9.5)    38.4 (8.8)    31.4 (7.3)    38.1 (9.5)    38.9 (8.9)    31.5 (7.4)",
+        "ausschnitt": "    38.4 (8.8)    31.4 (7.3)    38.1 (9.5)    38.9 (8.9)    31.5 (7.4)     Mean change from BL   5.8 (0.5)†    6.4 (0.6)",
+        "belegt": true
+      }
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 7.4,
+      "timepoint": "",
+      "im_ausschnitt": true,
+      "fundstelle": {
+        "position": 8419,
+        "zeile": "Mean score (SD)       36.1 (8.9)    36.8 (8.4)    30.7 (7.1)    37.8 (9.5)    38.4 (8.8)    31.4 (7.3)    38.1 (9.5)    38.9 (8.9)    31.5 (7.4)",
+        "ausschnitt": ".4 (8.8)    31.4 (7.3)    38.1 (9.5)    38.9 (8.9)    31.5 (7.4)     Mean change from BL   5.8 (0.5)†    6.4 (0.6)†    0",
+        "belegt": true
+      }
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 199.0,
+      "timepoint": "",
+      "im_ausschnitt": true,
+      "fundstelle": {
+        "position": 2525,
+        "zeile": "# Abstract ## Introduction The objective of this study was to assess the impact of certolizumab pegol (CZP) treatment on health-related quality of life (HRQoL), fatigue and other patient-reported outc",
+        "ausschnitt": "393 to CZP 200 mg plus MTX, 390 to CZP 400 mg plus MTX, and 199 to PBO plus MTX. Of these, 255 (64.9%), 274 (70.3%) and ",
+        "belegt": true
+      }
+    }
+  ],
+  "gold": [
+    {
+      "field": "intervention_group_size",
+      "arm": "intervention",
+      "value": 393.0,
+      "raw": "393",
+      "timepoint": null,
+      "source": "intervention_group_size"
+    },
+    {
+      "field": "intervention_mean",
+      "arm": "intervention",
+      "value": 38.1,
+      "raw": "38.1",
+      "timepoint": null,
+      "source": "intervention_mean"
+    },
+    {
+      "field": "intervention_standard_deviation",
+      "arm": "intervention",
+      "value": 9.5,
+      "raw": "9.5",
+      "timepoint": null,
+      "source": "intervention_standard_deviation"
+    },
+    {
+      "field": "comparator_group_size",
+      "arm": "comparator",
+      "value": 199.0,
+      "raw": "199",
+      "timepoint": null,
+      "source": "comparator_group_size"
+    },
+    {
+      "field": "comparator_mean",
+      "arm": "comparator",
+      "value": 31.5,
+      "raw": "31.5",
+      "timepoint": null,
+      "source": "comparator_mean"
+    },
+    {
+      "field": "comparator_standard_deviation",
+      "arm": "comparator",
+      "value": 7.4,
+      "raw": "7.4",
+      "timepoint": null,
+      "source": "comparator_standard_deviation"
+    }
+  ],
+  "bilanz_vorher": {
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "ueberzaehlig": 0,
+    "fremdschluessel": 0
+  },
+  "bilanz_nachher": {
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "ueberzaehlig": 0,
+    "fremdschluessel": 0
+  },
+  "f1_vorher": 1.0,
+  "f1_nachher": 1.0,
+  "validierung": [],
+  "fundstellen_belegt": 6
+}

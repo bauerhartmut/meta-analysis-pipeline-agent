@@ -1,0 +1,849 @@
+{
+  "stand": "2026-11-21",
+  "regel": {
+    "unterscheider_pflicht": "Satz muss ein Outcome-Wort (Stamm, mindestens 6 Zeichen) tragen, sonst keine Bindung",
+    "folgesatz": "Unterscheider darf im direkt folgenden Satz stehen",
+    "mehrdeutig": "mehrere Kandidaten werden nicht aufgeloest, der Fall faellt an die Tabellenzeile"
+  },
+  "gespeicherte_faelle": {
+    "anzahl": 10,
+    "zustand": {
+      "mehrere_kandidaten": 5,
+      "eindeutig": 4,
+      "ohne_unterscheider": 1
+    },
+    "mit_goldpaar": 0,
+    "alter_locator_bindungen": 5,
+    "alter_locator_mit_goldpaar": 4,
+    "faelle": [
+      {
+        "record_id": "yun2024:30",
+        "quelle": "predictions_dreifenster_30_qwen_16000.jsonl",
+        "alter_satz": "Mean changes from baseline in the SF-36 Mental Component Summary (MCS) at week 52 for CZP 200 mg and 400 mg plus MTX, and PBO plus MTX were 6.4, 6.4 and 2.1, respectively (*P* < 0.001).",
+        "alter_satz_mit_unterscheider": false,
+        "alter_satz_mit_goldpaar": false,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Pflichtbegriff: At baseline, 82% of patients were female, with mean age 52 y | ANCOVA = analysis of covariance; CZP = certolizumab pegol; I",
+        "unterscheider": [
+          "Short-Form",
+          "improvement"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          7.4,
+          9.5,
+          31.5,
+          38.1,
+          199.0,
+          393.0
+        ]
+      },
+      {
+        "record_id": "yun2024:673",
+        "quelle": "predictions_dreifenster_673_qwen_16000.jsonl",
+        "alter_satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+        "alter_satz_mit_unterscheider": true,
+        "alter_satz_mit_goldpaar": true,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Pflichtbegriff: For those who had previously sought\ntreatment for this illne | The observed agreement between the readings from the indepen",
+        "unterscheider": [
+          "treatment",
+          "guidelines"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          12.0,
+          14.0,
+          22.6,
+          23.0,
+          32.0,
+          36.4
+        ]
+      },
+      {
+        "record_id": "yun2024:674",
+        "quelle": "predictions_dreifenster_674_qwen_16000.jsonl",
+        "alter_satz": "Although clusters in the provider arm tended to have higher proportions of people treated according to guidelines (36% in provider, 23% control, 24% pr",
+        "alter_satz_mit_unterscheider": true,
+        "alter_satz_mit_goldpaar": true,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Pflichtbegriff: For those who had previously sought\ntreatment for this illne | The observed agreement between the readings from the indepen",
+        "unterscheider": [
+          "treatment",
+          "guidelines"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          12.0,
+          14.0,
+          22.6,
+          23.0,
+          23.5,
+          26.0
+        ]
+      },
+      {
+        "record_id": "yun2024:420",
+        "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+        "alter_satz": "Regarding quantitative assessment of contour sharpness, the mean values for the two assessed interfaces were significantly smaller in MR images obtained with the short-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+        "alter_satz_mit_unterscheider": true,
+        "alter_satz_mit_goldpaar": true,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "Subgroup analyses of patients who underwent MR imaging without cross-referral and of sedated patients revealed similar results (data not shown). <figure> 10.1371/journal.pone.0083427.g006 <p><img src=\"\" /></p> <figcaption>Contour Sharpness in MR images of the Cervicothoracic Spine.<br /> Contour sharpness as distance in mm (±SD) that is neeeded for the signal to increase from 25% to 75% of the grayscale pixel value profile obtained with imageJ (see <a href=\"#\">Figure S1</a>).",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'Cervicothoracic'",
+        "unterscheider": [
+          "contour",
+          "sharpness",
+          "Cervicothoracic"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          0.24,
+          0.48,
+          0.95,
+          1.43,
+          18.0,
+          21.0
+        ]
+      },
+      {
+        "record_id": "yun2024:421",
+        "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+        "alter_satz": "rt-bore scanner than with the open MR scanner, thus indicating an improved contour sharpness (0.95 [SD, 0.24] versus 1.43 [SD, 0.48] and 0.83 [SD, 0.22] versus 1.32 [SD, 0.51]; *P*<0.0001).",
+        "alter_satz_mit_unterscheider": true,
+        "alter_satz_mit_goldpaar": true,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "Contour sharpness was defined for the interface between corticospinal fluid (CSF) and spinal cord (SC), and between corticospinal fluid and vertebral body (B)/posterior longitudinal ligament (L) in sagittal T2-weighted, sagittal T1-weighted and axial T2-weighted sequences. <em>P</em> values were &lt;0.0001 for all assessed contours.</figcaption> </figure> <figure> 10.1371/journal.pone.0083427.g007 <p><img src=\"\" /></p> <figcaption>Contour sharpness in MR images of the thoracolumbar spine.<br /> Contour sharpness as distance in mm (±SD) that is neeeded for the signal to increase from 25% to 75% of the grayscale pixel value profile obtained with imageJ (see <a href=\"#\">Figure S1</a>).",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'thoracolumbar'",
+        "unterscheider": [
+          "contour",
+          "sharpness",
+          "thoracolumbar"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          0.22,
+          0.51,
+          0.83,
+          1.32,
+          30.0,
+          34.0
+        ]
+      },
+      {
+        "record_id": "yun2024:582",
+        "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+        "alter_satz": "",
+        "alter_satz_mit_unterscheider": false,
+        "alter_satz_mit_goldpaar": false,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": ".7, *p* = .1] and a nonsignificant increase in the placebo group [ *t*(13) = 1.5, *p* = .2]. ## The Effect of ABM on Attentional Function Positive relative to placebo bias modification produced a differential effect on attentional bias ([Figure 4](#)), as measured by the word based visual-probe task [ABM type × time; *F*(2,112) = 3.1, *p* = .05].",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'Function'",
+        "unterscheider": [
+          "Attentional",
+          "Function"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          16.0
+        ]
+      },
+      {
+        "record_id": "yun2024:671",
+        "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+        "alter_satz": "",
+        "alter_satz_mit_unterscheider": false,
+        "alter_satz_mit_goldpaar": false,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Pflichtbegriff: n/N (%)                              Mean (SD)    Mean (SD)  | Community knowledge was marginally higher among households i",
+        "unterscheider": [
+          "Community",
+          "knowledge"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          12.0,
+          14.0
+        ]
+      },
+      {
+        "record_id": "yun2024:672",
+        "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+        "alter_satz": "",
+        "alter_satz_mit_unterscheider": false,
+        "alter_satz_mit_goldpaar": false,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Pflichtbegriff: n/N (%)                              Mean (SD)    Mean (SD)  | Community knowledge was marginally higher among households i",
+        "unterscheider": [
+          "Community",
+          "knowledge"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          12.0,
+          14.0
+        ]
+      },
+      {
+        "record_id": "yun2024:582",
+        "quelle": "predictions_kette_stichprobe_20261120.jsonl",
+        "alter_satz": "",
+        "alter_satz_mit_unterscheider": false,
+        "alter_satz_mit_goldpaar": false,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "This relative reduction was produced by a nonsignificant decrease in the positive ABM group during follow-up [*t*(14) = 1.7, *p* = .1] and a nonsignificant increase in the placebo group [ *t*(13) = 1.5, *p* = .2]. ## The Effect of ABM on Attentional Function Positive relative to placebo bias modification produced a differential effect on attentional bias ([Figure 4](#)), as measured by the word based visual-probe task [ABM type × time; *F*(2,112) = 3.1, *p* = .05].",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'Function'",
+        "unterscheider": [
+          "Attentional",
+          "Function"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          16.0
+        ]
+      },
+      {
+        "record_id": "yun2024:30",
+        "quelle": "predictions_tabelle_allein_30_qwen_16000.jsonl",
+        "alter_satz": "",
+        "alter_satz_mit_unterscheider": false,
+        "alter_satz_mit_goldpaar": false,
+        "neuer_zustand": "ohne_unterscheider",
+        "neuer_satz": "",
+        "grund": "1 Saetze mit Zahlen, keiner nennt das Outcome",
+        "unterscheider": [
+          "Short-Form",
+          "improvement"
+        ],
+        "goldpaar_im_neuen_satz": false,
+        "goldwerte": [
+          7.4,
+          9.5,
+          31.5,
+          38.1,
+          199.0,
+          393.0
+        ]
+      }
+    ]
+  },
+  "schwierige_faelle": {
+    "anzahl": 30,
+    "zustand": {
+      "mehrere_kandidaten": 10,
+      "eindeutig": 12,
+      "ohne_unterscheider": 8
+    },
+    "mit_goldpaar": 5,
+    "faelle": [
+      {
+        "record_id": "yun2024:30",
+        "feld_gold": [
+          393.0,
+          38.1,
+          9.5,
+          199.0,
+          31.5,
+          7.4
+        ],
+        "fenster_start": 965,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 6,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Pflichtbegriff: tions between PRO responses and clinical responses were also | Changes in SF-36 MCS scores had the lowest correlation with ",
+        "unterscheider": [
+          "Short-Form",
+          "improvement"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:52",
+        "feld_gold": [
+          562.0,
+          13.6,
+          0.07,
+          463.0,
+          11.5,
+          0.13
+        ],
+        "fenster_start": 21225,
+        "goldwerte_im_fenster": 3,
+        "von_goldwerten": 6,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "ospital                                                                                                                                           \n   Yes                          2                     0.5                  6           1                     0.402                7           4.7    10          6.5    0.515\n   No                           396                   99.5                 606         99                    141                  95.3        145    93.5               \n  ----------------------------- --------------------- -------------------- ----------- --------------------- -------------------- ----------- ------ ----------- ------ -----------\n\n*P*-values: a versus b in Control site: <0.001, b versus c: <0.001, a\nversus c: <0.001.\n\n*P*-values: a versus b in Study site: <0.001, b versus c: <0.001, a\nversus c: 0.013.::::  ::::table-wrap\n::: caption\nComparison of the pre- and postintervention restraint rates in the study\nand control sites.\n:::\n\n                           Study site              Control site                                                                                     \n  ------------------------ ----------------------- ------------------------ ---------------------- ----------------------- ------------------------ ----------------------\n                           Preintervention phase   Postintervention phase                          Preintervention phase   Postintervention phase   \n                           *n* = 463               *n* = 562                *P*-value (*t*-test)   *n* = 305               *n* = 310                *P*-value (*t*-test)\n                           M (%) ± SD              M (%) ± SD                                      M (%) ± SD              M (%) ± SD               \n                                                                                                                                                    \n  Intermittent restraint                                                                                                                            \n  A/D                      0.6 ± 0.02              7.1 ± 0.08               <0.001                0.4 ± 0.01              6.3 ± 0.05               <0.001\n  P/D                      0.7 ± 0.02              3.7 ± 0.05               <0.001                                                                 \n  N                        1.0 ± 0.02              2.8 ± 0.04               <0.001                0.0 ± 0.00              0.4 ± 0.02               0.019\n  Overall                  0.7 ± 0.02              5.1 ± 0.07               <0.001                0.2 ± 0.01              3.3 ± 0.05               <0.001\n  Continuous restraint                                                                                                                              \n  A                        10.7 ± 0.12             8.3 ± 0.07               0.001                  4.2 ± 0.03              6.6 ± 0.05               <0.001\n  P                        1",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'Restraint'",
+        "unterscheider": [
+          "Restraint",
+          "frecuency"
+        ],
+        "goldpaar_im_neuen_satz": true
+      },
+      {
+        "record_id": "yun2024:119",
+        "feld_gold": [
+          10.0,
+          70.0,
+          13.0,
+          15.4
+        ],
+        "fenster_start": 814,
+        "goldwerte_im_fenster": 4,
+        "von_goldwerten": 4,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "Even though the highest mean age was found in the control group, the 95% CIs (95% CI) for all three groups were still within the age of <60 years old. ::::table-wrap\n::: caption\nBasic parameters comparison among the 3 studied groups\n:::\n\n![]():::: ## Effect of regional brain cooling on Glasgow outcome score There was a strong significant difference at 6 months post-trauma outcomes with *P* = 0.007 between the two studied groups: Cooling versus no cooling [[Table 2](#)].",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'Glasgow'",
+        "unterscheider": [
+          "Improvement",
+          "Glasgow",
+          "post-trauma"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:128",
+        "feld_gold": [
+          50.0,
+          10.0,
+          50.0,
+          21.0
+        ],
+        "fenster_start": 397,
+        "goldwerte_im_fenster": 4,
+        "von_goldwerten": 4,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "The overall early (0--2 h) and late (2--24 h) incidences of nausea, vomiting, rescue anti-emetic administration, pain, and adverse effects (cardiac arrhythmias and extrapyramidal effects) were assessed postoperatively.",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'nausea'",
+        "unterscheider": [
+          "incidence",
+          "postoperative",
+          "nausea",
+          "vomiting"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:152",
+        "feld_gold": [
+          40.0,
+          14.0,
+          40.0,
+          7.0
+        ],
+        "fenster_start": 726,
+        "goldwerte_im_fenster": 3,
+        "von_goldwerten": 4,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "3 Saetze mit Pflichtbegriff: Postoperative pain scores were measured using the VAS (Visua | The percentages of patients in the calm scale were significa | The percentages of patients in the calm and sedated scale we",
+        "unterscheider": [
+          "percentages"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:159",
+        "feld_gold": [
+          592.0,
+          21.07,
+          6.39,
+          459.0,
+          21.27,
+          5.9
+        ],
+        "fenster_start": 6041,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 6,
+        "neuer_zustand": "ohne_unterscheider",
+        "neuer_satz": "",
+        "grund": "1 Saetze mit Zahlen, keiner nennt das Outcome",
+        "unterscheider": [
+          "reduction"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:171",
+        "feld_gold": [
+          33.0,
+          480.0,
+          15.0,
+          305.0
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 3,
+        "von_goldwerten": 4,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "5 Saetze mit Pflichtbegriff: The optimal treatment to prevent hyperglycemic relapses afte | Hyperglycemic relapse was defined as fasting glucose >130 mg | Disposition index (DI) was calculated as a product of Si and",
+        "unterscheider": [
+          "restricted",
+          "hyperglycemia",
+          "relapse"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:173",
+        "feld_gold": [
+          33.0,
+          13.0,
+          15.0,
+          12.0
+        ],
+        "fenster_start": 1470,
+        "goldwerte_im_fenster": 3,
+        "von_goldwerten": 4,
+        "neuer_zustand": "ohne_unterscheider",
+        "neuer_satz": "",
+        "grund": "6 Saetze mit Zahlen, keiner nennt das Outcome",
+        "unterscheider": [
+          "failure"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:204",
+        "feld_gold": [
+          40.0,
+          40.0
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 2,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "3 Saetze mit Pflichtbegriff: We hypothesized that correction of vitamin D insufficiency o | The levels of 25-hydroxyvitamin D [25(OH)D], Th1/Th2 cytokin | There were no changes in the level of Th1/Th2 cytokines.",
+        "unterscheider": [
+          "cytokines"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:251",
+        "feld_gold": [
+          402.0,
+          8.0,
+          388.0,
+          7.0
+        ],
+        "fenster_start": 708,
+        "goldwerte_im_fenster": 3,
+        "von_goldwerten": 4,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "The incidence of respiratory distress syndrome was similar in both study groups---10.5% (42/402) in the progesterone group and 10.6% (41/388) in the placebo group (adjusted relative risk [RR] 0.98, 95% confidence interval [CI] 0.64--1.49, *p* = 0.912)---as was the severity of any neonatal respiratory disease (adjusted treatment effect 1.02, 95% CI 0.69--1.53, *p* = 0.905).",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'disease'",
+        "unterscheider": [
+          "severity",
+          "neonatal",
+          "respiratory",
+          "disease"
+        ],
+        "goldpaar_im_neuen_satz": true
+      },
+      {
+        "record_id": "yun2024:252",
+        "feld_gold": [
+          402.0,
+          388.0
+        ],
+        "fenster_start": 708,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 2,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "No differences were seen between study groups for other respiratory morbidities and adverse infant outcomes, including serious infant composite outcome (155/406 [38.2%] in the progesterone group and 152/393 [38.7%] in the placebo group, adjusted RR 0.98, 95% CI 0.82--1.17, *p* = 0.798).",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'morbidities'",
+        "unterscheider": [
+          "respiratory",
+          "morbidities"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:273",
+        "feld_gold": [
+          60.0,
+          30.0
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 1,
+        "von_goldwerten": 2,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Pflichtbegriff: There were no differences in laryngoscopy duration and the o | (p<0.05) (Tables [1](#) and [2](#) ). ::::table-wrap\n::: cap",
+        "unterscheider": [
+          "awakening"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:304",
+        "feld_gold": [
+          15.0,
+          14.0,
+          15.0,
+          10.0
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 3,
+        "von_goldwerten": 4,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "On intergroup comparison, there was no statistically significant difference between the groups in the reduction in burning sensation ( *P* = 0.18) and erythematous area ( *P* = 0.07), but there was a statistically highly significant improvement in reduction of clinical scoring ( *P* < 0.01%).",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'erythematous'",
+        "unterscheider": [
+          "reduction",
+          "erythematous"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:356",
+        "feld_gold": [
+          13.0,
+          13.0
+        ],
+        "fenster_start": 2322,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 2,
+        "neuer_zustand": "ohne_unterscheider",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Zahlen, keiner nennt das Outcome",
+        "unterscheider": [
+          "objective-SCORAD"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:420",
+        "feld_gold": [
+          18.0,
+          0.95,
+          0.24,
+          21.0,
+          1.43,
+          0.48
+        ],
+        "fenster_start": 5924,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 6,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "Scanning times were significantly longer for open MR imaging and the perceived noise and pain levels were also higher, although statistically not significant, in patients who were examined with the open MR scanner [[8]](#). ::::table-wrap\n10.1371/journal.pone.0083427.t002\n\n::: caption\n###### Characteristics of the MR Examinations.\n:::\n\n![]()\n\n                                    Short-Bore MR Group   Open MR           *P* Value\n  --------------------------------- --------------------- ----------------- -----------\n  Number of MR examinations[a](#)   48                    55                .9\n  Cervicothoracic spine             18 (37.5)             21 (38.2)         \n  Thoracolumbar spine               30 (62.5)             34 (61.8)         \n  Number of MR sequences                                                    \n  T1w/T2w sagittal                  48                    55                .9\n  Cervicothoracic spine             18 (37.5)             21 (38.2)         \n  Thoracolumbar spine               30 (62.5)             34 (61.8)         \n  T2w axial[b](#)                   68                    76                .9\n  Cervicothoracic spine             19 (28)               22 (28.9)         \n  Thoracolumbar spine               49 (72)               54 (71.1)         \n  Scan duration (min)               19.8 (SD, 8.5)        31.7 (SD, 21.6)   .001\n  Cervicothoracic spine             19 (SD, 5.3)          30.1 (SD, 7.8)    .001\n  Thoracolumbar spine               17.5 (SD, 7.1)        25.8 (SD, 10.2)   .001\n  Whole spine                       37 (SD, 6.8)          70 (SD, 42)       .2\n  Anxiety[c](#)                     58.1 (SD, 33.9)       50.3 (SD, 30.6)   .3\n  Cervicothoracic spine             58.6 (SD, 34.9)       48.1 (SD, 30.1)   .4\n  Thoracolumbar spine               55.8 (SD, 32.8)       51.8 (SD, 31.9)   .7\n  Whole spine                       71 (SD, 44.8)         49 (SD, 30.5)     .4\n  Noise[c](#)                       57.5 (SD, 21.3)       65.9 (SD, 23.1)   .08\n  Cervicothoracic spine             52.2 (SD, 24)         62.5 (SD, 25)     .3\n  Thoracolumbar spine               58.5 (",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'Cervicothoracic'",
+        "unterscheider": [
+          "contour",
+          "sharpness",
+          "Cervicothoracic"
+        ],
+        "goldpaar_im_neuen_satz": true
+      },
+      {
+        "record_id": "yun2024:421",
+        "feld_gold": [
+          30.0,
+          0.83,
+          0.22,
+          34.0,
+          1.32,
+          0.51
+        ],
+        "fenster_start": 2077,
+        "goldwerte_im_fenster": 1,
+        "von_goldwerten": 6,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "All indications were appropriate according to American College of Radiology guidelines [[8]](#), [[19]](#), [[20]](#). ::::table-wrap\n10.1371/journal.pone.0083427.t001\n\n::: caption\n###### Characteristics of the 93 Randomized Patients who Underwent Spinal MR Imaging.\n:::\n\n![]()\n\n                                                  Short-Bore MR (n = 44)   Open MR (n = 49)   *P* Value\n  ----------------------------------------------- ------------------------ ------------------ -----------\n  Female sex                                      35 (79.5)                40 (81.6)          .8\n  Age                                             53 (SD, 11.4)            53.1 (SD, 12.7)    .1\n  Age categories                                                                              .7\n  <30                                            0 (0)                    1 (2)              \n  30 - <50                                       22 (50)                  23 (46.9)          \n  50 - <70                                       16 (36.4)                20 (40.8)          \n  ≥70                                             6 (13.6)                 5 (10.2)           \n  Body height in cm                               167.9 (SD, 8.6)          168.3 (SD, 10.3)   .8\n  Body weight in kg                               79.6 (SD, 23.3)          84.9 (SD, 25.9)    .3\n  Body mass index (BMI)                           28.1 (SD, 7.7)           29.7 (SD, 7.3)     .3\n  BMI categories                                                                              .5\n  <20                                            4 (9.1)                  1 (2)              \n  20- <3                                         (54.5)                   28 (57.1)          \n  30- <40                                        12 (27.3)                15 (30.6)          \n  ≥40                                             4 (9.1)                  5 (10.2)           \n  Maximum body circumference in cm                112.8 (SD, 17.3)         115.6 (SD, 14.4)   .4\n  Region of MR imaging                                                                        .9\n  Cervicothoracic spine                           14 (31.8)                15 (30.6)          \n  Thoracolumbar spine                             26 (59.1)",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'thoracolumbar'",
+        "unterscheider": [
+          "contour",
+          "sharpness",
+          "thoracolumbar"
+        ],
+        "goldpaar_im_neuen_satz": true
+      },
+      {
+        "record_id": "yun2024:446",
+        "feld_gold": [
+          104.0,
+          -0.89,
+          3.32,
+          114.0,
+          0.3,
+          3.54
+        ],
+        "fenster_start": 14786,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 6,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "Overall, it cost approximately AU$80.00 per participant to deliver the GHSH extended contact intervention. ::::table-wrap\n::: caption\nMean changes within the 'Get Healthy, Stay Healthy' (GHSH) intervention\ngroup (I; n=104) and the control group (C; n=114)\n:::\n\n  -----------------------------------------------------------------------------------------------------------------------------------------------\n                                                             MDI           Group   Mean Change                 Within−group    \n                                                                                     (6 months -- baseline)^a^    interpretation   \n  ------------------------ ----------------------------------- ------------- ------- ---------------------------- ---------------- --------------\n                                                                                 Mean (95% CI)                *P*              \n\n  Anthropometry                                                                                                                    \n\n                          Weight (kg)                         1 kg          I       − *0.89 (−1.53, −0.25)*^b^   *.007*           Improved\n\n                                                                          C       0.30 (−0.35, 0.95)           .357             Maintained\n\n                          Waist circumference^c^(cm)          1 cm          I       − *1.34 (−2.31, −0.36)*      *.008*           Improved\n\n                                                                          C       −0.32 (−1.47, 0.82)          .578             Inconclusive\n\n  Physical activity (PA)",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'circumference'",
+        "unterscheider": [
+          "circumference"
+        ],
+        "goldpaar_im_neuen_satz": true
+      },
+      {
+        "record_id": "yun2024:451",
+        "feld_gold": [
+          99.0,
+          7.41,
+          66.12,
+          108.0,
+          -16.1,
+          66.25
+        ],
+        "fenster_start": 2149,
+        "goldwerte_im_fenster": 1,
+        "von_goldwerten": 6,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "Odds of being in the GHSH trial were significantly higher than their respective counterparts for those: aged <60 years; not working; without a post school qualification; self-reported diagnosis of hypertension; self-reported diagnosis of high cholesterol; doing no vigorous activity; and, who consume <1 takeaway meal per week ([Multimedia Appendix 2](#)).",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'vigorous'",
+        "unterscheider": [
+          "accelerometer-assessed",
+          "moderate",
+          "vigorous",
+          "physical",
+          "activity"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:523",
+        "feld_gold": [
+          15.0,
+          10.24,
+          0.77,
+          15.0,
+          9.73,
+          0.77
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 4,
+        "von_goldwerten": 6,
+        "neuer_zustand": "ohne_unterscheider",
+        "neuer_satz": "",
+        "grund": "Outcome traegt kein unterscheidendes Wort",
+        "unterscheider": [],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:525",
+        "feld_gold": [
+          15.0,
+          18.53,
+          0.22,
+          15.0,
+          18.99,
+          0.22
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 4,
+        "von_goldwerten": 6,
+        "neuer_zustand": "ohne_unterscheider",
+        "neuer_satz": "",
+        "grund": "Outcome traegt kein unterscheidendes Wort",
+        "unterscheider": [],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:557",
+        "feld_gold": [
+          12.0,
+          -17.1,
+          68.08,
+          16.0,
+          -19.57,
+          93.53
+        ],
+        "fenster_start": 548,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 6,
+        "neuer_zustand": "ohne_unterscheider",
+        "neuer_satz": "",
+        "grund": "12 Saetze mit Zahlen, keiner nennt das Outcome",
+        "unterscheider": [
+          "Fibromyalgia",
+          "Impact",
+          "Questionnaire"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:559",
+        "feld_gold": [
+          12.0,
+          -4.0,
+          12.35,
+          16.0,
+          -8.0,
+          65.41
+        ],
+        "fenster_start": 548,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 6,
+        "neuer_zustand": "ohne_unterscheider",
+        "neuer_satz": "",
+        "grund": "12 Saetze mit Zahlen, keiner nennt das Outcome",
+        "unterscheider": [
+          "Center",
+          "Epidemiologic",
+          "Studies",
+          "Depression"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:582",
+        "feld_gold": [
+          16.0,
+          16.0
+        ],
+        "fenster_start": 4584,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 2,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "This relative reduction was produced by a nonsignificant decrease in the positive ABM group during follow-up [*t*(14) = 1.7, *p* = .1] and a nonsignificant increase in the placebo group [ *t*(13) = 1.5, *p* = .2]. ## The Effect of ABM on Attentional Function Positive relative to placebo bias modification produced a differential effect on attentional bias ([Figure 4](#)), as measured by the word based visual-probe task [ABM type × time; *F*(2,112) = 3.1, *p* = .05].",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'Function'",
+        "unterscheider": [
+          "Attentional",
+          "Function"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:625",
+        "feld_gold": [
+          8.0,
+          4.0
+        ],
+        "fenster_start": 1451,
+        "goldwerte_im_fenster": 1,
+        "von_goldwerten": 2,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "3 Saetze mit Pflichtbegriff: The compliance rates of the 1-week PPI+MBT group were 91.4%  | In the 2-week PPI+MBT treatment group, the compliance rates  | PPI, proton pump inhibitor; BMT, bismuthate, metronidazole,\n",
+        "unterscheider": [
+          "compliance"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:671",
+        "feld_gold": [
+          14.0,
+          12.0
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 2,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Pflichtbegriff: A stratified cluster-randomized trial in 42 communities in E | A total of 40 communities (12 in control, 14 per interventio",
+        "unterscheider": [
+          "Community",
+          "knowledge"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:672",
+        "feld_gold": [
+          14.0,
+          12.0
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 2,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "2 Saetze mit Pflichtbegriff: A stratified cluster-randomized trial in 42 communities in E | A total of 40 communities (12 in control, 14 per interventio",
+        "unterscheider": [
+          "Community",
+          "knowledge"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:673",
+        "feld_gold": [
+          14.0,
+          36.4,
+          32.0,
+          12.0,
+          22.6,
+          23.0
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 6,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "3 Saetze mit Unterscheider im Folgesatz",
+        "unterscheider": [
+          "treatment",
+          "guidelines"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:674",
+        "feld_gold": [
+          14.0,
+          23.5,
+          26.0,
+          12.0,
+          22.6,
+          23.0
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 6,
+        "neuer_zustand": "mehrere_kandidaten",
+        "neuer_satz": "",
+        "grund": "3 Saetze mit Unterscheider im Folgesatz",
+        "unterscheider": [
+          "treatment",
+          "guidelines"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:678",
+        "feld_gold": [
+          16.0,
+          15.0
+        ],
+        "fenster_start": 0,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 2,
+        "neuer_zustand": "eindeutig",
+        "neuer_satz": "Also, there were no intergroup differences in CAL, PPD, BOP, plaque accumulation, total cultivable microbiota and percentages of *P. gingivalis, A. actinomycetemcomitans* and *T. forsythia* at 3, 6, and 9 months follow-up ([Table 2](#) and [3](#)). ::::table-wrap\n::: caption\n###### Baseline data of patients in the treatment groups\n:::\n\n  Variable                        Treatment Group          p- value                                         \n  ------------------------------- ------------------------ ------------------------- ---------------------- --------",
+        "grund": "ein Satz mit Zahlenpaar und Pflichtbegriff 'cultivable'",
+        "unterscheider": [
+          "cultivable",
+          "microbiota"
+        ],
+        "goldpaar_im_neuen_satz": false
+      },
+      {
+        "record_id": "yun2024:685",
+        "feld_gold": [
+          17.0,
+          17.0
+        ],
+        "fenster_start": 6565,
+        "goldwerte_im_fenster": 2,
+        "von_goldwerten": 2,
+        "neuer_zustand": "ohne_unterscheider",
+        "neuer_satz": "",
+        "grund": "Outcome traegt kein unterscheidendes Wort",
+        "unterscheider": [],
+        "goldpaar_im_neuen_satz": false
+      }
+    ]
+  }
+}

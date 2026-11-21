@@ -1,0 +1,673 @@
+{
+  "stand": "2026-11-21",
+  "pruefung": "goldfrei, nur Zelle und Dokumenttext",
+  "fenster": 45000,
+  "vorher": {
+    "tp": 2014,
+    "fp": 507,
+    "fn": 759
+  },
+  "nachher": {
+    "tp": 2014,
+    "fp": 459,
+    "fn": 759
+  },
+  "f1_vorher": 0.7609,
+  "f1_nachher": 0.7678,
+  "verworfen": 48,
+  "gruende": {
+    "keine_ganzzahl": 31,
+    "ereignisse_zu_gross": 17
+  },
+  "tp_verluste_je_grund": {},
+  "befunde_ohne_verwerfen": {
+    "rate_statt_anzahl": 10,
+    "zahl_nicht_im_text": 87
+  },
+  "beispiele": {
+    "keine_ganzzahl": [
+      {
+        "record_id": "yun2024:1",
+        "quelle": "glm",
+        "index": 0,
+        "feld": "intervention_events",
+        "arm": "intervention",
+        "wert": 14.2,
+        "grund": "keine_ganzzahl",
+        "verworfen": true,
+        "war_tp": false
+      },
+      {
+        "record_id": "yun2024:1",
+        "quelle": "glm",
+        "index": 1,
+        "feld": "comparator_events",
+        "arm": "comparator",
+        "wert": 15.7,
+        "grund": "keine_ganzzahl",
+        "verworfen": true,
+        "war_tp": false
+      },
+      {
+        "record_id": "yun2024:153",
+        "quelle": "glm",
+        "index": 1,
+        "feld": "intervention_events",
+        "arm": "intervention",
+        "wert": 42.5,
+        "grund": "keine_ganzzahl",
+        "verworfen": true,
+        "war_tp": false
+      },
+      {
+        "record_id": "yun2024:153",
+        "quelle": "glm",
+        "index": 3,
+        "feld": "comparator_events",
+        "arm": "comparator",
+        "wert": 17.5,
+        "grund": "keine_ganzzahl",
+        "verworfen": true,
+        "war_tp": false
+      },
+      {
+        "record_id": "yun2024:154",
+        "quelle": "p5",
+        "index": 1,
+        "feld": "intervention_events",
+        "arm": "intervention",
+        "wert": 2.5,
+        "grund": "keine_ganzzahl",
+        "verworfen": true,
+        "war_tp": false
+      }
+    ],
+    "ereignisse_zu_gross": [
+      {
+        "record_id": "yun2024:121",
+        "quelle": "glm",
+        "index": 1,
+        "feld": "intervention_events",
+        "arm": "intervention",
+        "wert": 45.0,
+        "grund": "ereignisse_zu_gross",
+        "verworfen": true,
+        "war_tp": false
+      },
+      {
+        "record_id": "yun2024:121",
+        "quelle": "glm",
+        "index": 3,
+        "feld": "comparator_events",
+        "arm": "comparator",
+        "wert": 35.0,
+        "grund": "ereignisse_zu_gross",
+        "verworfen": true,
+        "war_tp": false
+      },
+      {
+        "record_id": "yun2024:313",
+        "quelle": "p5",
+        "index": 2,
+        "feld": "intervention_events",
+        "arm": "intervention",
+        "wert": 100.0,
+        "grund": "ereignisse_zu_gross",
+        "verworfen": true,
+        "war_tp": false
+      },
+      {
+        "record_id": "yun2024:313",
+        "quelle": "p5",
+        "index": 3,
+        "feld": "comparator_events",
+        "arm": "comparator",
+        "wert": 80.0,
+        "grund": "ereignisse_zu_gross",
+        "verworfen": true,
+        "war_tp": false
+      },
+      {
+        "record_id": "yun2024:369",
+        "quelle": "glm",
+        "index": 1,
+        "feld": "intervention_events",
+        "arm": "intervention",
+        "wert": 86.0,
+        "grund": "ereignisse_zu_gross",
+        "verworfen": true,
+        "war_tp": false
+      }
+    ]
+  },
+  "faelle": [
+    {
+      "record_id": "yun2024:1",
+      "quelle": "glm",
+      "index": 0,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 14.2,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:1",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 15.7,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:121",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 45.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:121",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 35.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:153",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 42.5,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:153",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 17.5,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:154",
+      "quelle": "p5",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 2.5,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:2",
+      "quelle": "glm",
+      "index": 0,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 12.6,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:2",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 13.6,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:305",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 6.7,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:305",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 33.3,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:313",
+      "quelle": "p5",
+      "index": 2,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 100.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:313",
+      "quelle": "p5",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 80.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:358",
+      "quelle": "glm",
+      "index": 0,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 65.5,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:361",
+      "quelle": "glm",
+      "index": 2,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 19.4,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:361",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 24.8,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:369",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 86.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:369",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 89.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:373",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 72.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:376",
+      "quelle": "p5",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 78.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:376",
+      "quelle": "p5",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 69.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:379",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 68.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:379",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 111.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:380",
+      "quelle": "p5",
+      "index": 2,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 79.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:587",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 12.5,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:587",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 25.2,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:588",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 10.5,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:588",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 25.2,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:62",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 47.4,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:62",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 100.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:626",
+      "quelle": "p5",
+      "index": 0,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 2.5,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:626",
+      "quelle": "p5",
+      "index": 1,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 3.7,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:63",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 26.3,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:63",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 100.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:64",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 21.1,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:64",
+      "quelle": "glm",
+      "index": 2,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 61.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:65",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 16.7,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:65",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 61.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:651",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 54.8,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:651",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 72.6,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:654",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 16.1,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:654",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 1.6,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:66",
+      "quelle": "glm",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 21.1,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:66",
+      "quelle": "glm",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 61.0,
+      "grund": "ereignisse_zu_gross",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:84",
+      "quelle": "p5",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 2.3,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:84",
+      "quelle": "p5",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 1.8,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:86",
+      "quelle": "p5",
+      "index": 1,
+      "feld": "intervention_events",
+      "arm": "intervention",
+      "wert": 0.1,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    },
+    {
+      "record_id": "yun2024:86",
+      "quelle": "p5",
+      "index": 3,
+      "feld": "comparator_events",
+      "arm": "comparator",
+      "wert": 0.1,
+      "grund": "keine_ganzzahl",
+      "verworfen": true,
+      "war_tp": false
+    }
+  ]
+}
